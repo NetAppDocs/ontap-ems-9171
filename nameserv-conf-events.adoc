@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: nameserv-conf-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nameserv.conf events
+---
+
+= nameserv.conf events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nameserv.conf.limit.reached
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a UNIX user or group name exceeds 64 characters. This check is performed on the last node upgrade from Data ONTAP(R) 8.2 to 8.3. The names that exceed this limit will not get resolved in Data ONTAP 8.3.
+*Corrective Action*::
+Replace the name with a name that is no longer than 64 characters.
+*Syslog Message*::
+%s exceeds 64 characters for Vserver %s and configuration %s.
+*Parameters*::
+*name* (STRING): Name of the user or group that exceeded 64 characters.
+*vserver_name* (STRING): Name of the Vserver.
+*ns_config_name* (STRING): Name of the name service configuration (unix-user or unix-group).

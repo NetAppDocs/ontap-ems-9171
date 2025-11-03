@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: cpeer-create-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cpeer.create events
+---
+
+= cpeer.create events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cpeer.create.reciprocal.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a peer cluster reciprocal join fails.
+*Corrective Action*::
+Verify network connectivity between the local cluster and the peer cluster. Check the logs, trace buffers, and UI output for more information about the nature of the failure.
+*Syslog Message*::
+Cluster %s attempted to create a reciprocal peer relationship with this cluster but failed.
+*Parameters*::
+*peer* (STRING): Peer cluster which executed the reciprocal join.
+
+== cpeer.create.reciprocal.ok
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a peer cluster reciprocal join succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cluster %s is now peered with this cluster.
+*Parameters*::
+*peer* (STRING): Peer cluster that executed the reciprocal join.

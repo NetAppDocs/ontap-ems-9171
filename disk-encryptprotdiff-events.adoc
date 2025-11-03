@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: disk-encryptprotdiff-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.encryptprotdiff events
+---
+
+= disk.encryptprotdiff events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.encryptProtDiff
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when self-encrypting drives have different settings of data-at-rest protections; that is, some are protected, having a nondefault Data Key ID, and some are not, having one of the default Data Key IDs. Best protection is provided when all encrypting drives are protected, including spares that might be assigned automatically to an aggregate.
+*Corrective Action*::
+Use the "storage encryption disk show -protection-mode !data" command to display the drives that are not protected; use the "storage encryption disk show -protection-mode data" command to show the drives that are protected. Use the "storage encryption disk modify -data-key-id" command to set the Data Key ID to a nondefault value.
+*Syslog Message*::
+Self-encrypting drives on the system have dissimilar data protection settings.
+*Parameters*::
+(None).

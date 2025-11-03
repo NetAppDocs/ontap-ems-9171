@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: monitor-iocard-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.iocard events
+---
+
+= monitor.iocard events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.ioCard.degraded
+*Severity*::
+ALERT
+*Description*::
+This message indicates that an I/O card is degraded.
+*Corrective Action*::
+Exchange or replace the card with a known good card in the same I/O slot. If the problem persists, contact NetApp technical support for replacement assistance.
+*Syslog Message*::
+IO card is degraded: %s
+*Parameters*::
+*reasonText* (STRING): Slot number of the card and the reason the card is degraded.
+
+== monitor.ioCard.ok
+*Severity*::
+NOTICE
+*Description*::
+This message indicates that an I/O card is operating properly.
+*Corrective Action*::
+None.
+*Syslog Message*::
+IO card on slot %d is OK
+*Parameters*::
+*slot_number* (INT): Slot number of the card.

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: snaplock-invalid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snaplock.invalid events
+---
+
+= snaplock.invalid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snaplock.invalid.autocommit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an invalid autocommit period value is found on a SnapLock(R) volume. ONTAP(R) 9.4 software and later releases have a maximum autocommit period value of 10 years. If this maximum is exceeded, autocommit is disabled on the volume.
+*Corrective Action*::
+Correct the autocommit period on the SnapLock volume by using the "volume snaplock modify" command or the "volume-set-snaplock-attrs" Zephyr API.
+*Syslog Message*::
+Disabling autocommit on SnapLock volume %s%s on the Vserver with ID %s because the autocommit period exceeded the maximum of 10 years.
+*Parameters*::
+*volume* (STRING): Name of the SnapLock volume with invalid autocommit period value.
+*app* (STRING): Application Name.
+*volident* (STRING): Unique identifier of the volume when the volume name itself is insufficient.

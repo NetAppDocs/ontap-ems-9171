@@ -1,0 +1,143 @@
+---
+sidebar: sidebar
+permalink: scsiblade-lu-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsiblade.lu events
+---
+
+= scsiblade.lu events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsiblade.lu.gir.end
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when this node completes a group internal rebuild for an LU.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Group internal rebuild complete for LUN %s on this node.
+*Parameters*::
+*LUNSerialNumber* (STRING): Serial number of the LUN.
+
+== scsiblade.lu.gir.hung
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when group internal rebuild for an LUN hangs on this node
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Group internal rebuild hung for LUN %s on this node.
+*Parameters*::
+*LUNSerialNumber* (STRING): Serial number of the LUN.
+
+== scsiblade.lu.gir.start
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the distributed LUN group commences an internal rebuild.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Group internal rebuild has started for LUN %s on this node.
+*Parameters*::
+*LUNSerialNumber* (STRING): Serial number of the LUN.
+
+== scsiblade.lu.incons.memb
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the SCSI target identifies a node that has an incorrect view of the group membership for a LUN. The LUN will be unavailable on this node and will have sporadic availability on other nodes.
+*Corrective Action*::
+To recover from this condition in HA pair configurations, take over the node with the problem by using the "storage failover takeover" command, and then give back the node by using the "storage failover giveback" command. To recover from this condition in non-HA configurations, reboot the nodes having this condition by using the "system node reboot" command.
+*Syslog Message*::
+LUN %s on node %s has an incorrect group membership list. Perform a takeover followed by a giveback of this faulty node.
+*Parameters*::
+*LUNSerialNumber* (STRING): Serial number of the LUN.
+*nodeName* (STRING): Name of the node that has an incorrect view of the group.
+
+== scsiblade.lu.int.rst.hung
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the SCSI target cannot complete an internal reset of a LUN. This LUN is unavailable until the nodes that could not complete the internal reset are taken over and given back.
+*Corrective Action*::
+To recover from this condition in HA pair configurations, take over the node with the problem by using the "storage failover takeover" command, and then give back the node by using the "storage failover giveback" command. To recover from this condition in non-HA configurations, reboot the nodes having this condition by using the "system node reboot" command.
+*Syslog Message*::
+Access to LUN %s is restricted because an internal reset of the LUN was not completed in %d milliseconds. Perform a takeover followed by a giveback for the following nodes: %s.
+*Parameters*::
+*LUNSerialNumber* (STRING): Serial number of the LUN.
+*lu_int_rst_hung_time* (INT): Duration of the internal reset attempt in milliseconds.
+*nodeName* (STRING): Names of the nodes on which the internal reset of the LUN was not completed.
+
+== scsiblade.lu.int.rst.pending
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the SCSI target cannot complete an internal reset of a LUN in 90 seconds. Internal reset is still pending, waiting for internal reset completion within 10 minutes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Access to LUN %s is restricted because an internal reset of the LUN was not completed in %d milliseconds. Internal reset of the LUN is still pending.
+*Parameters*::
+*LUNSerialNumber* (STRING): Serial number of the LUN.
+*lu_int_rst_pending_time* (INT): Duration of the internal reset attempt in milliseconds.
+*nodeName* (STRING): Names of the nodes on which the internal reset of the LUN was not completed.
+
+== scsiblade.lu.resync.end
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the SCSI target internal resynchronization of a LUN is complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Resynchronization of LUN %s on this node was completed successfully.
+*Parameters*::
+*LUNSerialNumber* (STRING): Serial number of the LUN.
+
+== scsiblade.lu.resync.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the SCSI target internal resynchronization of a LUN starts. The LUN is not accessible on LIFs on this node during the resynchronization, but the LUN will recover automatically.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Resynchronization of LUN %s has started. The LUN is not accessible on LIFs on this node until resynchronization is complete and the LUN recovers automatically.
+*Parameters*::
+*LUNSerialNumber* (STRING): Serial number of the LUN.
+
+== scsiblade.lu.resync.timeout
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the SCSI target internal resynchronization of a LUN times out. This LUN is not accessible on this node.
+*Corrective Action*::
+To recover from this condition in HA pair configurations, take over the node with the problem by using the "storage failover takeover" command, and then give back the node by using the "storage failover giveback" command. To recover from this condition in non-HA configurations, reboot the nodes having this condition by using the "system node reboot" command.
+*Syslog Message*::
+Resynchronization of LUN %s on node %s was not completed in %d seconds. LUN is not accessible on LIFs on this node. Perform a takeover followed by a giveback of this node.
+*Parameters*::
+*LUNSerialNumber* (STRING): Serial number of the LUN.
+*nodeName* (STRING): Name of the node where resynchronization of the LUN was not completed.
+*resync_time_out_time* (INT): Duration of the resynchronization attempt in seconds.
+
+== scsiblade.lu.rtpg.lifs
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the SCSI Target processes the RTPG command and the number of LIFs per Vserver exceeds 700.
+*Corrective Action*::
+Reduce the number of LIFS per Vserver to under 700.
+*Syslog Message*::
+The Vserver hosting LUN %s has %d LIFs. RTPG command expects the number of LIFs per Vserver to be below 700.
+*Parameters*::
+*LUNSerialNumber* (STRING): Serial number of the LUN.
+*num_lifs* (INT): Number of LIFs on this Vserver.

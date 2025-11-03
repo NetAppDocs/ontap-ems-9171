@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-diffpool-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.diffpool events
+---
+
+= config.diffpool events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.DiffPool
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a disk is found to be multipathed to two different mirroring pools. This configuration is illegal.
+*Corrective Action*::
+See the NetApp technical support site for guidelines about assigning disks or array LUNs to SyncMirror(R) pools.
+*Syslog Message*::
+Disk %s is dual-attached to two separate mirrored pools. This is an illegal configuration.
+*Parameters*::
+*disk* (STRING): Name of the disk.

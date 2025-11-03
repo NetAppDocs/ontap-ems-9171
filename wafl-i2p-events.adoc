@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: wafl-i2p-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.i2p events
+---
+
+= wafl.i2p events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.i2p.entries.mismatch
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the ONTAP(R) kernel detects that an i2p metafile on one of the snapshot has more entries than necessary for an inode.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+There are more entries in the i2p metafile than there should be in volume %s%s%s%s, for inode %d in snapshot %d.
+*Parameters*::
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume in cases where the volume name itself is insufficient.
+*fileid* (INT): Identifying number for the suspect inode.
+*snapid* (INT): The snapshot identifier.
+
+== wafl.i2p.fix.parent.pointer
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inode-to-parent (i2p) scan detects and rectifies an incorrect parent inode number or cookie in an inode while fixing i2p data in a converted directory.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s%s%s: Inode %u, fixing parent pointer, was: (parent: %u, cookie: 0x%x).
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name itself is insufficient.
+*inode* (INT): Inode number.
+*old_parent_inode* (INT): Existing parent inode number.
+*old_cookie* (INT): Existing parent cookie.

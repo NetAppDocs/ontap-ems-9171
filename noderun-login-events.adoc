@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: noderun-login-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: noderun.login events
+---
+
+= noderun.login events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== noderun.login.success
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a cluster user successfully logs in to the node using the 'run' command.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+'%s' logged in from cluster: '%s'.
+*Parameters*::
+*user* (STRING): Name of the user who logged in to the node.
+*cluster* (STRING): Cluster name from where the user logged in to the node.

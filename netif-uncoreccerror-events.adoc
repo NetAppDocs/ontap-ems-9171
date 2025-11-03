@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: netif-uncoreccerror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.uncoreccerror events
+---
+
+= netif.uncoreccerror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.uncorEccError
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the network interface controller reports an unrecoverable ECC error.
+*Corrective Action*::
+Reboot the controller. If the problem persists, replace the component associated with the network interface (PCIe card or controller motherboard). If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Unrecoverable ECC error on network interface %s.
+*Parameters*::
+*ifName* (STRING): Name of the network interface; for example, "e4a".

@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: callhome-bcom-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.bcom events
+---
+
+= callhome.bcom events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.bcom.vsinit.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when multiple attempts to initialize the SAN Kernel Agent for a Vserver have failed. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Use the "cluster kernel-service show" (advanced) command to verify the cluster kernel quorum service is "in-quorum" on the source node. Contact NetApp technical support for assistance determining the root cause of the failed Vserver initialization.
+*Syslog Message*::
+Call home for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*source* (STRING): The name of the node that failed to initialize.
+*vserver* (STRING): The name of the Vserver that failed to initialize.
+*vserver_uuid* (STRING): The UUID of the Vserver that failed to initialize.
+*error* (STRING): The error of the last failed initialization.

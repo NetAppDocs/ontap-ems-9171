@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ha-tkoverabortednomediatormbx-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.tkoverabortednomediatormbx events
+---
+
+= ha.tkoverabortednomediatormbx events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.tkoverAbortedNoMediatorMbx
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a planned failover is aborted because the mediator mailbox disks were not detected.
+*Corrective Action*::
+Run the "storage failover show -fields local-mailbox-disks partner-mailbox-disks" and "storage failover show -instance" commands to check whether the mediator mailbox disks are missing. If the mediator mailbox disks are not present, rescan the disks on both nodes in the HA pair to determine the latest ownership by using the "storage disk refresh-ownership" command. If the rescan does not work, contact NetApp technical support.
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).

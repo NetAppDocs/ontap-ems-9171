@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: nblade-nfs4illegaldirentname-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.nfs4illegaldirentname events
+---
+
+= nblade.nfs4illegaldirentname events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.Nfs4IllegalDirentName
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a user attempts to list a directory over NFSv4 that contains an entry name with non UTF-8 characters. The problematic directory entry name was most likely created over NFSv2 or NFSv3 and could not be translated to Unicode using the translation table determined by the virtual server's language setting. A possible reason for this could be a client or server language misconfiguration issue.
+*Corrective Action*::
+Use the "vol show -fields msid" command to find the volume name corresponding to the volume MSID. Use the "volume file show-inode" command with the file ID and volume name information to find the file path. Access the parent directory from an NFSv3 client, and then rename the entry using Unicode characters.
+*Syslog Message*::
+Directory entry with file ID '%u' on the volume with MSID '%llu' cannot be listed. Directory entry name is illegal for NFSv4.
+*Parameters*::
+*fileid* (INT): File ID of the directory entry.
+*msid* (LONGINT): MSID of the volume, where the directory entry resides.

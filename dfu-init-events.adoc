@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: dfu-init-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dfu.init events
+---
+
+= dfu.init events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dfu.init.noMemory
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the disk firmware update initialization routine cannot allocate memory.
+*Corrective Action*::
+Memory allocation relies on the availability of memory resources in the system. If possible, reduce the workload so that fewer resources are needed. If the failure persists after reducing the workload, contact NetApp technical support.
+*Syslog Message*::
+Could not allocate memory for disk firmware update. Requested size=%d bytes.
+*Parameters*::
+*size* (INT): Size (in bytes) of the memory allocation request.

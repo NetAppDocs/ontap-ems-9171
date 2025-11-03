@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-root-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.root events
+---
+
+= callhome.root events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.root.vol.recovery.reqd
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the root volume is not working properly and its recovery is required. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Contact NetApp technical support to obtain the root volume recovery procedures and further assistance.
+*Syslog Message*::
+Call home for ROOT VOLUME NOT WORKING PROPERLY: RECOVERY REQUIRED.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

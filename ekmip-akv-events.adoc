@@ -1,0 +1,104 @@
+---
+sidebar: sidebar
+permalink: ekmip-akv-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ekmip.akv events
+---
+
+= ekmip.akv events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ekmip.akv.available
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a configured Azure Key Vault (AKV) that was previously reported unavailable for key operations is now available.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The AKV Key Management Service is now available. AKV configuration details, SVM: "%s", configuration name: "%s", AKV name: "%s".
+*Parameters*::
+*svm* (STRING): Name of the storage virtual machine (SVM) where the AKV is configured.
+*configName* (STRING): Name of the AKV configuration.
+*name* (STRING): Uniform resource identifier (URI) of the AKV.
+
+== ekmip.akv.keyExpired
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the current key version associated with the key identifier of the configured Azure Key Vault (AKV) has expired. The key version might be out of compliance. It is recommended that you update the key version to an active, non-expired key. ONTAP is still able to unwrap the top-level internal key protection key with the expired key version and there is no interruption to data availability.
+*Corrective Action*::
+Update the key-ID to an active, non-expired key at the AKV portal.
+*Syslog Message*::
+The AKV key version has expired. Key ID: "%s". AKV configuration details, SVM: "%s", configuration name: "%s", AKV name: "%s".
+*Parameters*::
+*keyId* (STRING): Key ID.
+*svm* (STRING): Name of the storage virtual machine (SVM) where the AKV is configured.
+*configName* (STRING): Name of the AKV configuration.
+*name* (STRING): Uniform resource identifier (URI) of the AKV.
+
+== ekmip.akv.keyVersionChanged
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the current key version associated with the key identifier of the configured Azure Key Vault (AKV), the AKV key-ID, changes. The key version might have been auto-rotated or manually changed at the AKV. Additionally, the top-level internal key protection key has been successfully re-wrapped with the current key version of the AKV key-ID.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The AKV key version has been changed. AKV configuration details, SVM "%s", configuration name "%s", AKV: "%s", previous key version: "%s", current key version: "%s".
+*Parameters*::
+*svm* (STRING): Name of the storage virtual machine (SVM) where the AKV is configured.
+*configName* (STRING): Name of the AKV configuration.
+*name* (STRING): Uniform resource identifier (URI) of the AKV.
+*oldKeyVersion* (STRING): Previous key version.
+*newKeyVersion* (STRING): Current key version.
+
+== ekmip.akv.notAvailable
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a check for the availability of the configured Azure Key Vault (AKV) for key operations fails. The AKV might be down or there might be a network-related problem preventing communication. Without access to the AKV, the node might not be able to restore authentication keys needed to unlock NetApp Storage Encryption (NSE) or SED drives, or encryption keys needed to mount encrypted volumes. If the AKV is unavailable the next time this node boots, then the failure to restore the keys might prevent the node from booting successfully or prevent the encrypted volumes hosted on this node from coming online.
+*Corrective Action*::
+Ensure that the AKV configuration is correct by using the "security key-manager external azure show -vserver <vserver>" command and verifying that the cluster state is available. If it is not available, run the "security key-manager external azure restore" command to bring the cluster state to available. If the issue still persists, contact technical support.
+*Syslog Message*::
+The AKV Key Management Service is not available. AKV configuration details, SVM: "%s", configuration name: "%s", AKV name: "%s".
+*Parameters*::
+*svm* (STRING): Name of the storage virtual machine (SVM) where the AKV is configured.
+*configName* (STRING): Name of the AKV configuration.
+*name* (STRING): Uniform resource identifier (URI) of the AKV.
+
+== ekmip.akv.volOffline
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the SVM has been blocked and any encrypted volumes belonging to the SVM have been taken offline due to errors received when attempting to access the key owned by the Azure Key Vault (AKV). Reasons for AKV key access errors include a disabled key, a key not being found and a key missing encryption and decryption privileges. ONTAP polls the AKV every 15 minutes to verify key accessibility. If, for 60 minutes, ONTAP does not receive a successful response to a poll, all encrypted volumes are taken offline and remain offline until the key access issues are resolved at the AKV. When ONTAP does receive a successful response, the volumes are brought back online automatically.
+*Corrective Action*::
+Resolve the key access issues at the AKV portal. Ensure that the key is active and has the required encryption and decryption privileges.
+*Syslog Message*::
+The SVM has been blocked and any encrypted volumes belonging to the SVM have been taken offline due to key access errors. AKV configuration details, SVM: "%s", configuration name "%s", key ID: "%s", AKV name: "%s".
+*Parameters*::
+*svm* (STRING): Name of the storage virtual machine (SVM) where the AKV is configured.
+*keyId* (STRING): Key ID.
+*name* (STRING): Uniform resource identifier (URI) of the AKV.
+*configName* (STRING): Name of the AKV configuration.
+
+== ekmip.akv.volOnline
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the volumes configured on the Azure Key Vault (AKV) that were unavailable due to key access issues are now back online.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Encrypted volumes belonging to the SVM are now back online. AKV configuration details, SVM: "%s", configuration name: "%s", key ID "%s", AKV name: "%s".
+*Parameters*::
+*svm* (STRING): Name of the storage virtual machine (SVM) where the AKV is configured.
+*name* (STRING): Uniform resource identifier (URI) of the AKV.
+*configName* (STRING): Name of the AKV configuration.
+*keyId* (STRING): Key ID.

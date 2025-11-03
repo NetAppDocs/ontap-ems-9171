@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: san-fcadapter-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.fcadapter events
+---
+
+= san.fcadapter events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.fcadapter.init.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when FC adapters hosting LIFs fails to initialize during node boot.
+*Corrective Action*::
+Reboot the affected node. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+The following FC adapters with configured LIFs failed to initialize: %s.
+*Parameters*::
+*adapters* (STRING): List of FC adapters that failed to initialize.
+*object_type* (STRING): Type of resource object under notification. For this EMS, the object_type will always be NODE.
+*object_uuid* (STRING): UUID of the resource object. For this EMS, the UUID will be of the node.

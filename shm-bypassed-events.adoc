@@ -1,0 +1,56 @@
+---
+sidebar: sidebar
+permalink: shm-bypassed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: shm.bypassed events
+---
+
+= shm.bypassed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== shm.bypassed.disk.fail
+*Deprecated*::
+Deprecated as of Data ONTAP 9.3 because bypass code has been removed.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system recommends that a disk be failed because it has been bypassed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+shm: Disk %s has been recommended for failure due to being bypassed by the shelf.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+
+== shm.bypassed.disk.fail.disabled
+*Deprecated*::
+Deprecated as of Data ONTAP 9.3 because bypass code has been removed.
+*Severity*::
+ALERT
+*Description*::
+This message occurs when three or more disks have been bypassed on a port.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+shm: Disk bypass check has been disabled due to multiple bypassed disks on host bus adapter %s, shelf %d.
+*Parameters*::
+*hba* (STRING): Name of the host bus adapter.
+*shelf* (INT): Shelf ID.
+
+== shm.bypassed.disk.fail.enabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the bypass disabled state is cleared.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+shm: Disk bypass check has been enabled for host bus adapter %s.
+*Parameters*::
+*hba* (STRING): Name of the host bus adapter.

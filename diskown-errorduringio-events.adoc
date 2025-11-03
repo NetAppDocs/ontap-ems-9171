@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: diskown-errorduringio-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.errorduringio events
+---
+
+= diskown.errorduringio events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.errorDuringIO
+*Severity*::
+ERROR
+*Description*::
+This event is issued when an I/O error occurs during a sanown disk operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+error %d (%s) on disk %s (S/N %s) while %s
+*Parameters*::
+*errorno* (INT): The error number that occurred
+*errortext* (STRING): The error description as text
+*diskname* (STRING): The name of the disk
+*serialno* (STRING): The serial number of the disk
+*details* (STRING): The operation that was going on

@@ -1,0 +1,184 @@
+---
+sidebar: sidebar
+permalink: arl-veto-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: arl.veto events
+---
+
+= arl.veto events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== arl.veto.coredump.saveinprog
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the coredump subsystem vetoes the use of storage failover (SFO) during takeover because a coredump save is in progress; cluster failover (CFO) will be used instead. The coredump save must be complete before the system can perform a takeover.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Takeover use of SFO vetoed because a coredump save was in progress.
+*Parameters*::
+(None).
+
+== arl.veto.coredump.unsavedcor
+*Severity*::
+ERROR
+*Description*::
+This message occurs when aggregate relocation (ARL) is vetoed because there is an unsaved kernel core file on one of the aggregate disks.
+*Corrective Action*::
+Use the "node coredump save" command to save any unsaved cores, or use the "-override-vetoes true" option when relocating aggregates.
+*Syslog Message*::
+Aggregate relocation vetoed due to an unsaved coredump %s on disk %s ("%s").
+*Parameters*::
+*corefile* (STRING): Name of the kernel core file.
+*disk* (STRING): Name of the disk containing the kernel core file.
+*panic* (STRING): Panic string of the unsaved kernel core file that caused the aggregate relocation (ARL) veto.
+
+== arl.veto.kmgr.keysmissing
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an aggregate relocation fails due to the unavailability of volume encryption keys for the encrypted volumes of the aggregate on the destination node.
+*Corrective Action*::
+Wait a few minutes, and then try the aggregate relocation again. If the problem persists, run the "security key-manager external restore" command for external key manager, or the "security key-manager onboard sync" command for Onboard Key Manager. The commands retrieve the encryption keys for the encrypted volumes of the aggregate from the key manager. Then try the aggregate relocation again.
+*Syslog Message*::
+Relocation of aggregate %s failed due to unavailability of volume encryption keys for the encrypted volumes of the aggregate on the destination node %s. Details: %s.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate that was not relocated.
+*node* (STRING): Name of the destination node that is missing encryption keys.
+*details* (STRING): Detailed reason for failure.
+
+== arl.veto.lmgr.CA.volmove
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an aggregate relocation has started but cannot proceed because a volume move to or from this aggregate is in the cutover phase and the volume being moved has continuously available (CA) locks. CA locks are established by opens through CIFS CA shares for regular files on read-write volumes that reside in storage failover (SFO) aggregates. These locks are mirrored to the node's high-availability (HA) partner to support the nondisruptive property of CA shares. The rest of the locks are classified as non-CA locks and are not mirrored to the node's HA partner.
+*Corrective Action*::
+Retry the relocation after volume move exits the cutover phase. To check for volume move state, run the 'volume move show' command.
+*Syslog Message*::
+Could not complete aggregate relocation because volume move of '%s%s%s%s' is in the cutover phase and this volume has CA locks.
+*Parameters*::
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name itself is insufficient.
+
+== arl.veto.lmgr.nonCA.broken
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an aggregate relocation is forced that causes non-continuously available (non-CA) locks on the volume to be dropped. CA locks are established by opens through CIFS CA shares for regular files on read-write volumes that reside in storage failover (SFO) aggregates. These locks are mirrored to the node's high-availability (HA) partner to support the nondisruptive property of CA shares. The rest of the locks are classified as non-CA locks and are not mirrored to the node's HA partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Dropped non-CA locks on volume %s%s%s%s due to forced aggregate relocation of aggregate %s.
+*Parameters*::
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name alone is insufficient.
+*aggrname* (STRING): Aggregate name.
+
+== arl.veto.lmgr.nonCA.locks
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an aggregate relocation has started but cannot proceed because non-continuously available (non-CA) locks are present on the volume. CA locks are established by opens through CIFS CA shares for regular files on read-write volumes that reside in storage failover (SFO) aggregates. These locks are mirrored to the node's high-availability (HA) partner to support the nondisruptive property of CA shares. The rest of the locks are classified as non-CA locks and are not mirrored to the node's HA partner.
+*Corrective Action*::
+Based on how resilient they are to failures, applications must either gracefully close sessions over which non-CA locks are established or accept lock state disruption. To determine the open files that have these sessions established, run the 'vserver cifs session file show -hosting-aggregate "aggregate name" -continuously-available No' command. "aggregate name" is the aggregate for which relocation is being attempted. If lock state disruption for all existing non-CA locks is acceptable, retry the aggregate relocation by using the '-override-vetoes true' option.
+*Syslog Message*::
+Could not complete aggregate relocation because of non-CA locks on volume %s%s%s%s aggregate %s.
+*Parameters*::
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name alone is insufficient.
+*aggrname* (STRING): Aggregate name.
+
+== arl.veto.lmgr.recons.left
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an aggregate relocation has started, but cannot proceed because reconstruction of client file locks from mirrored lock information is not yet complete.
+*Corrective Action*::
+Retry the relocation a few times after checking the status of reconstruction by using the 'debug locks reconstruction show' diagnostic privilege command. If the locks reconstruction operation is not completed, contact NetApp technical support.
+*Syslog Message*::
+Could not relocate aggregate '%s' because lock reconstruction on node %s is in progress.
+*Parameters*::
+*aggregate* (STRING): Name of the aggregate being relocated.
+*node* (STRING): Name of the node reconstructing locks.
+
+== arl.veto.lmgr.syncing
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an aggregate relocation has started but cannot proceed because synchronization of client file locks ("locks sync") with the partner is not yet complete.
+*Corrective Action*::
+Retry the relocation after verifying that lock synchronization is complete,by using the 'debug locks lock-sync show' diagnostic privilege command.
+*Syslog Message*::
+Could not relocate aggregate '%s' because locks sync from node %s to its partner node %s is in progress.
+*Parameters*::
+*aggregate* (STRING): Name of the aggregate being relocated.
+*node* (STRING): Name of the node performing locks sync with its partner.
+*partner* (STRING): Name of the partner node with which locks sync is being performed.
+
+== arl.veto.repl
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an aggregate relocation is vetoed by a critical replication transfer (for example, volume move in the cutover phase).
+*Corrective Action*::
+Either abort the replication transfer that is preventing the aggregate relocation from being completed, retry the 'aggregate relocation start' command with the '-override-vetoes true' option, or wait for the transfer to finish.
+*Syslog Message*::
+Could not complete giveback because a replication transfer with UUID %s involving the aggregate %s is in progress.
+*Parameters*::
+*transferId* (STRING): UUID of the SnapMirror(R) replication transfer that vetoed the aggregate relocation.
+*aggr* (STRING): Name of the aggregate.
+
+== arl.veto.snaprestore
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot perform an aggregate relocation because a volume snaprestore operation is active. The relocation is aborted.
+*Corrective Action*::
+Retry aggregate relocation after the snaprestore operation is finished.
+*Syslog Message*::
+%s %s%s%s%s is running snaprestore. Canceling aggregate relocation.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique volume identity when the volume name itself is insufficient.
+
+== arl.veto.volmove
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an active volume move operation that cannot be automatically aborted prevents aggregate relocation from starting. When the volume move operation is completed, aggregate relocation can be retried using the 'storage aggregate relocation start' command.
+*Corrective Action*::
+When the volume move operation is complete, reissue the 'storage aggregate relocation start' command. To abort the volume move immediately, include the '-override-vetoes true' command option.
+*Syslog Message*::
+Unable to relocate aggregate while volume move for volume (DSID: %llu, NAME: %s) on aggregate %s is in progress.
+*Parameters*::
+*volume_dsid* (LONGINT): Source/destination volume Data Set ID (DSID).
+*vol_name* (STRING): The name of the volume.
+*aggr_name* (STRING): The name of the containing aggregate.
+
+== arl.veto.wafl.volconversion
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an active volume conversion against one or more of the volumes on the source aggregate vetoed aggregate relocation.
+*Corrective Action*::
+When volume conversion is complete, re-run the command 'storage aggregate relocation start'.
+*Syslog Message*::
+Aggregate relocation is blocked as Volume Conversion is in progress on one of the volumes on aggregate %s.
+*Parameters*::
+*aggregate_name* (STRING): The name of the aggregate containing the volume on which conversion is in progress.

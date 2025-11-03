@@ -1,0 +1,99 @@
+---
+sidebar: sidebar
+permalink: volume-check-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: volume.check events
+---
+
+= volume.check events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Volume.Check.Completed
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a 'volume check' scan successfully runs to completion.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The 'volume check' scan was completed for volume [%s] on Vserver [%s].
+*Parameters*::
+*volume* (STRING): Name of the constituent volume.
+*vserver* (STRING): Vserver hosting the volume.
+
+== Volume.Check.Failed
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a 'volume check' scan fails to run to completion.
+*Corrective Action*::
+Correct the reported error and reissue the 'volume check' command. If error persists, contact NetApp technical support.
+*Syslog Message*::
+The 'volume check' scan failed for volume [%s] on Vserver [%s] with error [%s].
+*Parameters*::
+*volume* (STRING): Name of the constituent volume.
+*vserver* (STRING): Vserver hosting the volume.
+*error* (STRING): Error string.
+
+== Volume.Check.Report
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when volume check completes the scan. The report contains information about the following inconsistencies detected and the corrective action taken: 1) Corruption/loss of redirector content. 2) Valid redirector content file, but data file being pointed to did not exist in the Data Constituents. 3) Create Dongle files. 4) NLINKS inconsistency. 5) ACL mismatch. 6) Corrupt data file name. 7) Data file does not have a corresponding redirector file. 8) Corruption/loss of stream redirector content. 9) Valid redirector stream content, but stream data being pointed to did not exist in the Data Constituents. 10) Corrupt stream data file name. 11) Stream data does not have a corresponding redirector stream.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume Check Report for Constituent Volume [%s] in Vserver [%s] - Inconsistency - (Issues Found/Issues Fixed); Corrupt Redirector - (%d/%d); Dangling Redirector - (%d/%d); Temporary Files - (%d/%d); NLinks - (%d/%d); ACL mistatch - (%d/%d); Dangling Data File - (%d/%d); Corrupt Data File - (%d/%d); Corrupt Stream Redirector - (%d/%d); Dangling Stream Redirector - (%d/%d); Dangling Stream Data - (%d/%d); Corrupt Stream Data - (%d/%d);
+*Parameters*::
+*volume* (STRING): Constituent volume.
+*vserver* (STRING): Vserver hosting the volume.
+*numOfCorruptRedirectorsFound* (INT): Number of corrupt or lost redirectors found.
+*numOfCorruptRedirectorsFixed* (INT): Number of corrupt or lost redirectors fixed.
+*numOfDanglingRedirectorsFound* (INT): Number of dangling redirectors found.
+*numOfDanglingRedirectorsFixed* (INT): Number of dangling redirectors fixed.
+*numOfTempFilesFound* (INT): Number of hidden temporary files remaining after failed creates.
+*numOfTempFilesRemoved* (INT): Number of hidden temporary files removed.
+*numOfNlinkMisMatchesFound* (INT): Number of NLINKS mismatches found.
+*numOfNlinkMisMatchesFixed* (INT): Number of NLINKS mismatches fixed.
+*numOfACLMisMatchesFound* (INT): Number of ACL mismatches found.
+*numOfACLMisMatchesFixed* (INT): Number of ACL mismatches fixed.
+*numOfDanglingDataFilesFound* (INT): Number of dangling data files found.
+*numOfDanglingDataFilesFixed* (INT): Number of dangling data files fixed.
+*numOfCorruptDataFilesFound* (INT): Number of corrupt or lost data files found.
+*numOfCorruptDataFilesFixed* (INT): Number of corrupt or lost data files fixed.
+*numOfCorruptStreamRedirectorsFound* (INT): Number of corrupt stream redirectors found.
+*numOfCorruptStreamRedirectorsFixed* (INT): Number of corrupt stream redirectors fixed.
+*numOfDanglingStreamRedirectorsFound* (INT): Number of dangling stream redirectors found.
+*numOfDanglingStreamRedirectorsFixed* (INT): Number of dangling stream redirectors fixed.
+*numOfDanglingStreamDataFound* (INT): Number of dangling stream data instances found.
+*numOfDanglingStreamDataFixed* (INT): Number of dangling stream data instances fixed.
+*numOfCorruptStreamDataFound* (INT): Number of corrupt stream data instances found.
+*numOfCorruptStreamDataFixed* (INT): Number of corrupt stream data instances fixed.
+
+== Volume.Check.Start.Job.Started
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the 'volume check start' command starts the job, but fails to update the RDB(replicated database) table and the corresponding job is still running.
+*Corrective Action*::
+Use the 'job stop' command to abort the reported job before starting another check.
+*Syslog Message*::
+A 'volume check' command started job [ID: %s] for volume [%s] in Vserver [%s].
+*Parameters*::
+*jobid* (STRING): Job ID of the scan.
+*volume* (STRING): Name of the constituent volume for which the job was started.
+*vserver* (STRING): Vserver hosting the volume.

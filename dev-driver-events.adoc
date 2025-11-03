@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: dev-driver-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dev.driver events
+---
+
+= dev.driver events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dev.driver.throttling
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an I/O driver is throttling I/O requests because the underlying controller is overloaded with I/O requests.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s driver unit %d throttling I/O requests due to %s.
+*Parameters*::
+*devname* (STRING): Name of the device.
+*unit* (INT): Unit number of the controller.
+*reason* (STRING): Reason for throttling.
+*current_throttle_sendq* (INT): Current throttle value for send requests
+*lowest_throttle_sendq* (INT): Lowest throttle value for send requests

@@ -1,0 +1,91 @@
+---
+sidebar: sidebar
+permalink: km-run-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: km.run events
+---
+
+= km.run events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== km.run.external.setup
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a node successfully performs a join operation to join a cluster, but the other nodes in the cluster have the External Key Manager configured and the new node does not. The new node cannot perform External Key Manager-related tasks, such as creating encrypted volumes, until it has the External Key Manager configured.
+*Corrective Action*::
+Set up the External Key Manager on the new node by using the "security key-manager setup" command.
+*Syslog Message*::
+External Key Manager setup required after the cluster "%s" operation for node "%s", serial "%s".
+*Parameters*::
+*operation_type* (STRING): Type of cluster operation.
+*node* (STRING): Name of the node that successfully joined the cluster.
+*serial* (STRING): System serial number of the node that successfully joined the cluster.
+
+== km.run.extrnl.enable.needed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a cluster in a MetroCluster(tm) configuration has configured external key management via the "security key-manager external enable -key-servers <ip_address:port> -client-cert <client_cert_name> -server-ca-certs <server_ca_cert_name>" command. This is an alert that the external key management configuration on the two clusters is not consistent, and that the "security key-manager external enable -key-servers <ip_address:port> -client-cert <client_cert_name> -server-ca-certs <server_ca_cert_name>" command" should be run on the local cluster or peer cluster, specifying the same set of key servers. Otherwise, encrypted volumes and NSE drives will not come online after a future switchover or switchback event. This message will be generated on both the local cluster and the peer cluster.
+*Corrective Action*::
+Run the "security key-manager external enable" command on the local cluster or the peer cluster (identified in the "cluster" parameter), specifying the same set of configured key servers, to make the external key management consistent.
+*Syslog Message*::
+The external key management configuration is not consistent between the local cluster and the peer cluster of the MetroCluster configuration. This can lead to a failure during a future switchover or switchback event. Synchronize the configuration on the %s cluster.
+*Parameters*::
+*cluster* (STRING): Local cluster or peer cluster on which to run the command.
+
+== km.run.extrnl.setup.needed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a cluster in a MetroCluster(tm) configuration has configured external key management via the "security key-manager setup" command. This is an alert that the external key management configuration on the two clusters is not consistent, and that the "security key-manager setup" command should be run on the local cluster or peer cluster. Otherwise, encrypted volumes and NSE drives will not come online after a future switchover or switchback event. This message will be generated on both the local cluster and the peer cluster.
+*Corrective Action*::
+Run the "security key-manager setup" command on the local cluster or the peer cluster (identified in the "cluster" parameter) to make the external key management configurations consistent.
+*Syslog Message*::
+The external key management configuration is not consistent between the local cluster and the peer cluster of the MetroCluster configuration. This can lead to a failure during a future switchover or switchback event. Synchronize the configuration on the %s cluster.
+*Parameters*::
+*cluster* (STRING): Local cluster or peer cluster on which to run the command.
+
+== km.run.onboard.setup
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a node successfully performs a join operation to join a cluster, but the other nodes in the cluster have the Onboard Key Manager configured and the new node does not. The new node cannot perform the Onboard Key Manager-related tasks, such as creating encrypted volumes, until it has the Onboard Key Manager configured.
+*Corrective Action*::
+Set up the Onboard Key Manager on the new node by using the "security key-manager setup" command.
+*Syslog Message*::
+The Onboard Key Manager setup required after the cluster "%s" operation for node "%s", serial "%s".
+*Parameters*::
+*operation_type* (STRING): Type of cluster operation.
+*node* (STRING): Name of the node that successfully joined the cluster.
+*serial* (STRING): System serial number of the node that successfully joined the cluster.
+
+== km.run.onboard.setup.needed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a cluster in a MetroCluster(tm) configuration has either configured the Onboard Key Manager via the "security key-manager setup" command or has reconfigured the cluster passphrase via the "security key-manager update-passphrase" command. This is an alert that the onboard key hierarchies on the two clusters are not consistent, and that the "security key-manager setup -sync-metrocluster-config yes" command should be run on the local cluster or peer cluster. Otherwise, a future switchover or switchback event could fail. This message will be generated on both the local cluster and the peer cluster.
+*Corrective Action*::
+Run the "security key-manager setup -sync-metrocluster-config yes" command on the local cluster or the peer cluster (identified in the "cluster" parameter) to make the two onboard key hierarchies consistent.
+*Syslog Message*::
+The Onboard Key Manager configuration is not consistent between the local cluster and the peer cluster of the MetroCluster configuration. This can lead to a failure during a future switchover or switchback event. Synchronize the configuration on the %s cluster.
+*Parameters*::
+*cluster* (STRING): Local cluster or peer cluster on which to run the command.
+
+== km.run.onboard.sync.needed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a cluster in a MetroCluster(tm) configuration has either configured the Onboard Key Manager via the "security key-manager onboard enable" command or has reconfigured the cluster passphrase via the "security key-manager onboard update-passphrase" command. This is an alert that the onboard key hierarchies on the two clusters are not consistent, and that the "security key-manager onboard sync" command should be run on the local cluster or peer cluster. Otherwise, a future switchover or switchback event could fail. This message will be generated on both the local cluster and the peer cluster.
+*Corrective Action*::
+Run the "security key-manager onboard sync" command on the local cluster or the peer cluster (identified in the "cluster" parameter) to make the two onboard key hierarchies consistent.
+*Syslog Message*::
+The Onboard Key Manager configuration is not consistent between the local cluster and the peer cluster of the MetroCluster configuration. This can lead to a failure during a future switchover or switchback event. Synchronize the configuration on the %s cluster.
+*Parameters*::
+*cluster* (STRING): Local cluster or peer cluster on which to run the command.

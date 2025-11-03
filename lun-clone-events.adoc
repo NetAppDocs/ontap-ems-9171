@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: lun-clone-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lun.clone events
+---
+
+= lun.clone events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== LUN.clone.log.full
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when lun clone creation fails because the limit on the maximum number of supported clone log entries (32705) is exceeded.
+*Corrective Action*::
+Retry upon the completion of the pending clone operations for this volume.
+*Syslog Message*::
+Logging the LUN clone creation has failed because the limit on the maximum number of supported clone log entries in the volume %s (DSID %llu) has been exceeded.
+*Parameters*::
+*volume_name* (STRING): Name of the volume for which the LUN clone creation has failed.
+*volume_dsid* (LONGINT): Data Set ID (DSID) of the volume for which the LUN clone creation has failed.
+
+== LUN.clone.snapshot.deleted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the snapshot used to clone a LUN is deleted before the completion of the cloning process. Data may be inaccessible for this LUN, depending on how much of the data was copied before the snapshot was deleted.
+*Corrective Action*::
+The LUN should be destroyed to prevent I/O errors from occurring.
+*Syslog Message*::
+A snapshot containing a file or LUN used to create the LUN clone %s (Inode number %d) in volume %s (DSID %llu) was deleted before the completion of the cloning process.
+*Parameters*::
+*lun_path* (STRING): Path for the LUN clone for which the snapshot was deleted.
+*lun_inode_num* (INT): Inode number of the LUN clone for which the snapshot was deleted.
+*volume_name* (STRING): Name of the containing volume.
+*volume_dsid* (LONGINT): Data Set ID (DSID) of the containing volume.

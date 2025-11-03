@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: nblade-tlshandshakefailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.tlshandshakefailed events
+---
+
+= nblade.tlshandshakefailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.TLSHandshakeFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the NFS over TLS (Transport Layer Security) handshake fails between NFS client and NFS server.
+*Corrective Action*::
+Verify the TLS configuration for the LIF, verify the health of the network and address issues on the network or the client. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Failed to complete TLS handshake for SVM:"%s", LIF:"%s", client IP address:"%s", NFS server certificate UUID:"%s".
+*Parameters*::
+*vsName* (STRING): Storage virtual machine (SVM) name.
+*lifIpAddress* (STRING): LIF IP address of NFS server.
+*remoteIpAddress* (STRING): Client IP address.
+*certificateUuid* (STRING): Universal unique identifier (UUID) of the TLS certificate of the NFS server (ONTAP).

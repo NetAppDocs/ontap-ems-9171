@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: csm-mismatchremotedevice-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: csm.mismatchremotedevice events
+---
+
+= csm.mismatchremotedevice events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== csm.mismatchRemoteDevice
+*Severity*::
+ERROR
+*Description*::
+The message occurs when the Cluster Session Manager (CSM) establishes a connection between nodes over the cluster network interface, but the node's remote device IDs do not match.
+*Corrective Action*::
+Ensure that the Cisco Discover Protocol (CDP) is running on the nodes and switches. In addition, ensure that the cluster ports are up and the cluster LIFs are configured and hosted according to the suggested cluster configuration.
+*Syslog Message*::
+CSM connection between source LIF %d and destination address %s might not be optimal for session %s. The source is currently connected to %s remote device and the destination is currently connected to %s remote device.
+*Parameters*::
+*sourceLIF* (INT): Source logical interface.
+*destAddr* (STRING): Destination IP address.
+*uniquifier* (STRING): Unique identifier for this session.
+*sourceRemoteDevice* (STRING): Remote device associated with the source logical interface.
+*destRemoteDevice* (STRING): Remote device associated with the destination IP address.

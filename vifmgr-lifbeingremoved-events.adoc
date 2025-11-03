@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: vifmgr-lifbeingremoved-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.lifbeingremoved events
+---
+
+= vifmgr.lifbeingremoved events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.lifBeingRemoved
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a logical interface (LIF) IP address is being removed or moved from the node. Data access through this LIF will be temporarily down until the LIF is re-hosted on another node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LIF %s (on virtual server %s), IP address %s, is being removed from node %s, port %s.
+*Parameters*::
+*vifname* (STRING): Name of the LIF that is being removed.
+*vsrvid* (STRING): Virtual server identifier on which this LIF resides.
+*vifip* (STRING): The IP address that is being removed.
+*tonode* (STRING): Name of the node on which the LIF had been hosted.
+*toport* (STRING): Name of the port on which the LIF had been hosted.

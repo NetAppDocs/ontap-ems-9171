@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: repl-data-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.data events
+---
+
+= repl.data events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.data.uncompacted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when compacted data is replicated to a volume that does not have data compaction enabled. The data is uncompacted on the destination volume and its original contents are written.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Data written to volume %s%s%s will be uncompacted.
+*Parameters*::
+*volname* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume.

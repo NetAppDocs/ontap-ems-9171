@@ -1,0 +1,919 @@
+---
+sidebar: sidebar
+permalink: wafl-iron-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.iron events
+---
+
+= wafl.iron events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.iron.7mode
+*Severity*::
+ERROR
+*Description*::
+This message occurs when wafliron is running on a transitioned aggregate in precommit phase and there are 7-Mode volumes present. Wafliron ignores the 7-Mode volumes.
+*Corrective Action*::
+Run the "storage transition aggregate start" command to convert the aggregate to a cluster aggregate.
+*Syslog Message*::
+Transitioned aggregate %s has 7-Mode volumes which cannot be ironed.
+*Parameters*::
+*aggrname* (STRING): Name of the aggregate.
+
+== wafl.iron.abort.noConToCloud
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the file system consistency checker (wafliron) aborts because the connection to the cloud service provider is not available.
+*Corrective Action*::
+Restore the connection to the cloud service provider, then retry the "aggr wafliron start <aggr_name>" command.
+*Syslog Message*::
+File system consistency checker aborted on aggregate "%s". The connection to the cloud service provider is not available.
+*Parameters*::
+*aggrname* (STRING): Aggregate name.
+
+== wafl.iron.abort.offline
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when wafliron is aborted and the aggregate or volume is taken offline. This will occur if the aggregate or volume is inconsistent at the time of abort or if wafliron was invoked in optional commit mode. If wafliron was invoked in optional commit mode, all changes are rejected because they might not be consistent.
+*Corrective Action*::
+No corrective action is required for this notification event. Wafliron automatically takes an inconsistent aggregate or volume offline. Wafliron automatically takes the aggregate offline in optional commit mode.
+*Syslog Message*::
+Wafliron was aborted on %s%s '%s'; the aggregate or volume was taken offline.
+*Parameters*::
+*volinfo* (STRING): Descriptive information about the volume, such as whether it was inconsistent when taken offline.
+*voltype* (STRING): Aggregate or flexible volume.
+*aggrname* (STRING): Aggregate or flexible volume name.
+
+== wafl.iron.abort.offlineFail
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when wafliron is aborted and taking an inconsistent aggregate or volume offline was not successful.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+Wafliron abort failed to take offline inconsistent %s '%s': %s.
+*Parameters*::
+*voltype* (STRING): Aggregate or flexible volume.
+*aggrname* (STRING): Aggregate or flexible volume name.
+*errmsg* (STRING): Error message.
+
+== wafl.iron.abort.offlineMsg
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the wafliron operation is aborted. Taking the aggregate offline was not successful.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Wafliron abort on %s '%s': %s.
+*Parameters*::
+*voltype* (STRING): Aggregate.
+*aggrname* (STRING): Aggregate name.
+*errmsg* (STRING): Error message.
+
+== wafl.iron.backup.exists
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a SnapIron backup image already exists on the volume. Wafliron will continue to run without creating another SnapIron backup image.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+A SnapIron backup image %s already exists on %s.
+*Parameters*::
+*vol* (STRING): Volume name.
+*name* (STRING): Name of the backup image.
+
+== wafl.iron.backup.expired
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a SnapIron backup image expires and will be deleted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The SnapIron backup image %s of %s expired.
+*Parameters*::
+*name* (STRING): Name of the backup image being deleted.
+*vol* (STRING): Volume name.
+
+== wafl.iron.backup.expiring
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a SnapIron backup image is close to expiring.
+*Corrective Action*::
+Pay attention to the integrity of the data on this volume before the backup image expires and is subsequently deleted by automatic deletion of aggregate snapshots. Contact NetApp technical support.
+*Syslog Message*::
+The SnapIron backup image %s of %s will expire in %d hour(s).
+*Parameters*::
+*name* (STRING): Name of the backup image.
+*vol* (STRING): Volume name.
+*hours* (INT): Number of hours remaining from the lifetime of the backup image.
+
+== wafl.iron.backup.impossible
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when wafliron encounters a problem when creating a SnapIron backup image. The message explains the reason. Wafliron will continue to run without the SnapIron backup image.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Wafliron could not create a SnapIron backup image on %s, %s.
+*Parameters*::
+*vol* (STRING): Volume name.
+*reason* (STRING): Reason for not being able to create a SnapIron backup image.
+
+== wafl.iron.backup.removed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a SnapIron backup image is removed. Wafliron will continue to run without a SnapIron backup image if it is running.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The SnapIron backup image %s of %s was deleted.
+*Parameters*::
+*name* (STRING): Name of the backup image being deleted.
+*vol* (STRING): Volume name.
+
+== wafl.iron.backup.rst.failed
+*Severity*::
+ALERT
+*Description*::
+The message occurs when the system cannot restore the aggregate from the wafliron backup image. The active file system will be loaded.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Failed to restore %s %s%s%s%s from its wafliron backup image (ID %d). The active file system will be loaded.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*id* (INT): Backup image ID.
+*reason* (STRING): Reason for the failure.
+
+== wafl.iron.backup.rst.noExist
+*Severity*::
+NOTICE
+*Description*::
+The message occurs when the system cannot restore the aggregate from the wafliron backup image because the image does not exist. The active file system will be loaded.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Could not restore %s %s%s%s%s from its wafliron backup image because the image does not exist. The active file system will be loaded.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== wafl.iron.backup.rst.success
+*Severity*::
+INFORMATIONAL
+*Description*::
+The message occurs when the system restores the aggregate from its wafliron backup image.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Restored %s %s%s%s%s from its wafliron backup image (ID %d).
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*id* (INT): Backup image ID.
+
+== wafl.iron.backup.snaprsv.inc
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when wafliron tries to increase the snapshot reserve of the aggregate temporarily to allow keeping the SnapIron backup image longer. The message shows whether the attempt was successful.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The attempt to increase snapshot reserve of %s temporarily from %d percent by %d %s.
+*Parameters*::
+*vol* (STRING): Volume name.
+*rsv* (INT): Old value of the aggregate snapshot reserve, in percentage.
+*delta* (INT): Change in the new value of the aggregate snapshot reserve, in percentage. If the snapshot reserve was successfully increased, it will be returned to its original value automatically after the SnapIron backup image expires, the new snapshot reserve space becomes full again, or the snapshot is deleted. In the latter case, the SnapIron backup image will be deleted by automatic deletion of aggregate snapshots.
+*result* (STRING): Whether the attempt was successful.
+
+== wafl.iron.backup.snaprsv.rst
+*Deprecated*::
+This is deprecated as success doesn't require any action failure can never happen.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the snapshot reserve of the aggregate, which was temporarily increased by wafliron, is restored to its original value.
+*Corrective Action*::
+If wafliron fails to return the volume's snapshot reserve to the original value, contact NetApp technical support.
+*Syslog Message*::
+The reset of snapshot reserve value of %s by %d from %d was %s.
+*Parameters*::
+*vol* (STRING): Volume name.
+*val* (INT): Current value of the aggregate snapshot reserve, in percentage.
+*delta* (INT): Change in the value of the aggregate snapshot reserve, in percentage.
+*result* (STRING): Whether the attempt was successful.
+
+== wafl.iron.backup.success
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when wafliron creates a SnapIron backup image.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Wafliron created SnapIron backup image %s on volume %s, ID %d.
+*Parameters*::
+*name* (STRING): Backup image name.
+*vol* (STRING): Volume name.
+*id* (INT): Backup image ID.
+
+== wafl.iron.backup.useimage
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when wafliron is using a SnapIron backup image to check the file system.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Wafliron is using SnapIron backup image of %s (ID %u).
+*Parameters*::
+*vol* (STRING): Volume name.
+*id* (INT): ID of SnapIron backup image.
+
+== wafl.iron.backup.verify.data
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when wafliron creates a SnapIron backup image and you need to verify whether user data is stored in the aggregate or volume as soon as possible.
+*Corrective Action*::
+Validate the user data stored in the aggregate or volume as soon as possible, before the SnapIron backup image is deleted. Contact NetApp technical support.
+*Syslog Message*::
+Verify user data of %s.
+*Parameters*::
+*vol* (STRING): Volume name.
+
+== wafl.iron.badfsid
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a flexible volume has an invalid file system ID(FSID). Wafliron skips this volume.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Flexible volume %s%s%s on aggregate %s has an invalid FSID (%08x).
+*Parameters*::
+*volname* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*aggrname* (STRING): Aggregate name.
+*fsid* (INT): File system identifier.
+
+== wafl.iron.completion.times
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event provides the time taken to complete the different phases of Wafliron.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s phase of %s %s took %s.
+*Parameters*::
+*p* (STRING): Name of the iron phase.
+*ty* (STRING): Type of the volume.
+*v* (STRING): Name of the volume.
+*t* (STRING): Time taken for the phase.
+
+== wafl.iron.cont.corrupt
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a volume granular wafliron operation running on an aggregate finds corruption in the container file of a volume on which wafliron is not being run.
+*Corrective Action*::
+Contact Contact NetApp technical support..
+*Syslog Message*::
+Volume granular wafliron is in progress on aggregate %s. Corruption was found in volume %s container file with file id %d in which wafliron might have not run.
+*Parameters*::
+*aggr_name* (STRING): Name of the aggregate on which wafliron is running.
+*vol_name* (STRING): Name of the volume in which corruption was found in the container file.
+*container_file_id* (INT): File id of container file of the volume in which corruption was found.
+
+== wafl.iron.current.phase
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message specifies the phase name that wafliron is currently working on.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+wafliron is active on %s %s : %s.
+*Parameters*::
+*ty* (STRING): Type of the volume.
+*v* (STRING): Name of the volume.
+*phase* (STRING): Name of the current wafliron phase.
+
+== wafl.iron.dp.mirror.broken
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Data Protection mirrored volume is broken from its SnapMirror(R) relationship as a result of starting wafliron with the '-include-mirrors' option. When this happens, the Volume Location Database (VLDB), which is managed by the management host, must also be updated manually after wafliron finishes to avoid any discrepancy between the VLDB and Dblade.
+*Corrective Action*::
+Run the 'debug vreport' command to resolve the inconsistency in the VLDB. Step 1) run 'debug vreport show' to show the object name. Step 2) run 'debug vreport fix -type volume -object object-name'.
+*Syslog Message*::
+WaflIron broke the SnapMirror(R) relationship for volume '%s%s%s'. Use the 'debug vreport' command to resolve inconsistencies before reestablishing the SnapMirror relationship.
+*Parameters*::
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+
+== wafl.iron.grow.fs.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when WAFL(R) cannot grow a volume or aggregate because wafliron is running and the root volume does not have enough free space to grow the iron status files.
+*Corrective Action*::
+Check the free space in the root volume. Abort wafliron or grow the root volume to accommodate the grown status files
+*Syslog Message*::
+WAFL failed to grow %s %s due to a failure in growing wafliron status files in the root volume.
+*Parameters*::
+*voltype* (STRING): Volume type: volume or aggregate.
+*volname* (STRING): Name of the volume or aggregate.
+
+== wafl.iron.i2p.dir.convert
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs to inform you why wafliron is starting the inode-to-parent (i2p) initialization scan. The i2p scan updates the information in the volume necessary to perform i2p path name translations. The reason i2p information needs updating is that the volume contains converted directories, and the entries in the converted directories need their i2p information updated. This message does not indicate anything abnormal or problematic.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Found converted directories in %s %s%s%s%s that require their entry's inode-to-parent (i2p) information updated. Starting the i2p initialization scanner to update the entries in the converted directories. This is normal.
+*Parameters*::
+*type* (STRING): Type of object (volume/aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== wafl.iron.incompleteVol
+*Severity*::
+ALERT
+*Description*::
+This wafliron event indicates that a volume is partially created and might be in an inconsistent state. Wafliron is marking the volume as unrecoverable. For instance, if filer panics before snap restore completes when a clone volume is created it may leave the volume partially created.
+*Corrective Action*::
+If the volume is known not to contain any valuable data, it can be safely destroyed and recreated.
+*Syslog Message*::
+Flexible volume %s%s on aggregate %s is partially created. Marking it unrecoverable. You may destroy this volume and recreate it.
+*Parameters*::
+*volname* (STRING): Volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*aggrname* (STRING): Aggregate name
+
+== wafl.iron.invalid.vvol
+*Severity*::
+ERROR
+*Description*::
+This wafliron message indicates that a volume is invalid. Wafliron cannot run on invalid volumes. A volume can become invalid as a result of an aborted 'vol copy' operation or SnapMirror(R) initial transfer. To bring the volume back online, you must re-create it through a completed 'vol copy' operation or SnapMirror transfer.
+*Corrective Action*::
+If you know that the volume does not contain any valuable data, you can safely destroy and re-created it.
+*Syslog Message*::
+Flexible volume %s%s%s on aggregate %s is invalid. Wafliron cannot run on invalid volumes.
+*Parameters*::
+*volname* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name itself is insufficient.
+*aggrname* (STRING): Aggregate name.
+
+== wafl.iron.lost.blocks
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message indicates that wafliron is running on a particular inode.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Wafliron on %s %s%s%s is verifying %lld %s inode now.
+*Parameters*::
+*voltype* (STRING): Volume type.
+*volname* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.
+*inode_number* (LONGINT): Number of inode buftrees not verified.
+*ino_type* (STRING): The inode type.
+
+== wafl.iron.manualUpgradeRequired
+*Severity*::
+ERROR
+*Description*::
+This event is issued when wafliron can't run on the volume because it's not upgraded yet. This happens when system was upgraded with an offlined or restricted volume (possibly due to corruption) and wafliron is started after the upgrade with the volume offlined or restricted.
+*Corrective Action*::
+Manually online the volume and then restart wafliron. Or fix any corruption on an inconsistent volume and bring it online before a kernel upgrade.
+*Syslog Message*::
+Wafliron cannot run on volume '%s' that is in an older format. Manually online the volume and retry wafliron.
+*Parameters*::
+*volname* (STRING): Volume name.
+
+== wafl.iron.mount.inconsistency
+*Severity*::
+ERROR
+*Description*::
+This message occurs when wafliron finds some WAFL(R) inconsistency issues on an aggregate during mount.
+*Corrective Action*::
+Run the 'storage aggregate wafliron review <aggregate-name>' command to review the issues that wafliron found. If you need assistance resolving any of the issues, contact NetApp technical support.
+*Syslog Message*::
+wafliron on aggregate %s found some WAFL inconsistency issues during mount.
+*Parameters*::
+*aggrname* (STRING): Aggregate name.
+
+== wafl.iron.mount.inconsistent
+*Severity*::
+ALERT
+*Description*::
+This wafliron message indicates that the FlexVol(R) volume cannot be mounted; the volume is marked as inconsistent.
+*Corrective Action*::
+Re-run wafliron with the '-prev_cp' option set to restore the FlexVol volume to the closest Consistency Point(CP)/snapshot.
+*Syslog Message*::
+wafliron could not mount volume %s due to %s. Volume is marked as inconsistent.
+*Parameters*::
+*vvolname* (STRING): Volume name.
+*reason* (STRING): Reason for the failure.
+
+== wafl.iron.mount.times
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message prints the mount times taken by the different phases of aggregate mount during wafliron. This message occurs after wafliron completion or through a wafliron status message.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s mount phase of %s %s took %s.
+*Parameters*::
+*phase* (STRING): Name of the mount phase.
+*voltype* (STRING): Type of the volume (aggergate/flexvol).
+*volname* (STRING): Name of the volume or aggregate.
+*time* (STRING): Time taken for the phase.
+
+== wafl.iron.mounted.volume
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message is used to print on the console that the volume is mounted during wafliron.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Wafliron mounted volume %s.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+
+== wafl.iron.mw.ioc.not.supported
+*Severity*::
+ERROR
+*Description*::
+This event is issued when IOC is issued on metawafl aggregate.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+Iron optional commit is not supported on metawafl aggregate '%s'. Please run wafliron.
+*Parameters*::
+*volname* (STRING): Volume name.
+
+== wafl.iron.nvsave.disable.selection
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message is used to print on the console that the wafliron cannot run in volume select mode on the aggr as the aggregate has nvsave file records.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The aggr %s has nvlog records in the system. Wafliron cannot run in volume selection mode. Volumes will be brought online in random order.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate.
+
+== wafl.iron.oc.abort.bad_blk
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the system aborts wafliron in optional commit mode on the volume due to a bad block in the change log and lost write context status files.
+*Corrective Action*::
+Refer to the Recovery Decision Tree.
+*Syslog Message*::
+Aborting wafliron in optional commit mode because a bad block was found in volume '%s'.
+*Parameters*::
+*volname* (STRING): Volume name.
+
+== wafl.iron.oc.abort.clog_full
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the system aborts an optional commit wafliron operation on a volume because the change log file was full, due to extensive filesystem consistency changes.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Aborting wafliron in optional commit mode on aggregate '%s'. The change log is full.
+*Parameters*::
+*volname* (STRING): Volume name.
+
+== wafl.iron.oc.committedChangeLog
+*Severity*::
+NOTICE
+*Description*::
+This wafliron event indicates that optional commit change log files have been committed to disk.
+*Corrective Action*::
+This happens when the user explicitly commits the changes to disk.
+*Syslog Message*::
+Committed change log files for aggregate %s.
+*Parameters*::
+*volname* (STRING): Volume name
+
+== wafl.iron.oc.deletedChangeLog
+*Severity*::
+EMERGENCY
+*Description*::
+This wafliron event indicates that optional commit change log files have been deleted.
+*Corrective Action*::
+This happens when the change log files have been writted to disk, or have been rejected.
+*Syslog Message*::
+Deleted change log files for aggregate %s.
+*Parameters*::
+*volname* (STRING): Volume name
+
+== wafl.iron.oc.errorCommitLog
+*Severity*::
+EMERGENCY
+*Description*::
+This wafliron event indicates that optional commit change log files' commit process has encountered an error.
+*Corrective Action*::
+Corrective action may include offlining the aggregate and running wafliron in optional commit mode again.
+*Syslog Message*::
+Error committing change log files for aggregate %s.
+*Parameters*::
+*aggrname* (STRING): Aggregate name
+
+== wafl.iron.oc.noCorruption
+*Severity*::
+NOTICE
+*Description*::
+This wafliron event indicates that optional commit did not find any corruption in the aggregate that it is being run on.
+*Corrective Action*::
+No corrective action is required for this notification event. Wafliron will automatically online the aggregate.
+*Syslog Message*::
+Wafliron did not find any corruption on aggregate %s. The aggregate and its volumes will be offlined automatically.
+*Parameters*::
+*aggrname* (STRING): Aggregate name
+
+== wafl.iron.oc.rejectChangeLog
+*Severity*::
+NOTICE
+*Description*::
+This wafliron event indicates that optional commit change log files have been rejected (not committed).
+*Corrective Action*::
+No corrective action required for this notification event.
+*Syslog Message*::
+Rejecting change log files for aggregate %s.
+*Parameters*::
+*aggrname* (STRING): Aggregate name
+
+== wafl.iron.oc.root.committedChanges
+*Severity*::
+NOTICE
+*Description*::
+This wafliron event indicates that optional commit changes have been committed to disks of the root aggregate/tradvol.
+*Corrective Action*::
+No corrective action required.
+*Syslog Message*::
+Committed changes for %s '%s'. The system will reboot now.
+*Parameters*::
+*voltype* (STRING): Volume type - aggregate or tradvol
+*volname* (STRING): Volume name
+
+== wafl.iron.oc.root.lowMemory
+*Severity*::
+EMERGENCY
+*Description*::
+Wafliron Optional Commit on the Root has exhausted available memory and cannot continue. Options will be presented to the administrator to either abort the changes or write to disk.
+*Corrective Action*::
+Changes will have to be committed to disk for wafliron to continue or will have to be rejected.
+*Syslog Message*::
+Wafliron Optional Commit on '%s' has run out of available memory and cannot continue. Please either commit to continue Wafliron by writing changes to disk or reject the changes (which will reboot the system).
+*Parameters*::
+*volname* (STRING): Volume name
+
+== wafl.iron.oc.root.noCorruption
+*Severity*::
+NOTICE
+*Description*::
+This wafliron message indicates that the optional commit operation does not find any corruption in the root aggregate that it is being run on.
+*Corrective Action*::
+No corrective action is required.
+*Syslog Message*::
+Wafliron did not find any corruption on aggregate %s. The system will reboot now.
+*Parameters*::
+*aggrname* (STRING): Root aggregate name.
+
+== wafl.iron.oc.root.rejectedChanges
+*Severity*::
+NOTICE
+*Description*::
+This wafliron event indicates that optional commit changes have been rejected.
+*Corrective Action*::
+No corrective action required.
+*Syslog Message*::
+Rejected changes for %s '%s'. The system will reboot now.
+*Parameters*::
+*voltype* (STRING): Volume type - aggregate or tradvol
+*volname* (STRING): Volume name
+
+== wafl.iron.offline.destroying
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a volume is being destroyed and cannot be ironed/onlined.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume '%s%s%s' is being destroyed and was taken offline.
+*Parameters*::
+*volname* (STRING): Volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.
+
+== wafl.iron.optcommit.upgradeScan
+*Severity*::
+ERROR
+*Description*::
+This message occurs when wafliron optional commit is started in a volume that has an upgrade still in progress.
+*Corrective Action*::
+Wait for the upgrade scanner to finish for this volume, then restart wafliron.
+*Syslog Message*::
+Wafliron optional commit cannot run in volume '%s' that still has an upgrade in progress. Run the advanced CLI command 'wafl scan status' to check whether an upgrade is still in progress.
+*Parameters*::
+*volname* (STRING): Volume name.
+
+== wafl.iron.outofspace
+*Severity*::
+ERROR
+*Description*::
+This message oocurs when an aggregate is out of space. Wafliron omits the volumes in this aggregate when managing the aggregate.
+*Corrective Action*::
+Run the "storage transition commit start" command to commit the aggregate transition and delete the pinned snapshot.
+*Syslog Message*::
+Volumes in the aggregate %s are kept offline since aggregate is out of space. Wafliron omits volumes in this aggregate.
+*Parameters*::
+*aggrname* (STRING): Name of the aggregate.
+
+== wafl.iron.parallel.mount.notify
+*Severity*::
+NOTICE
+*Description*::
+This message indicates that wafliron parallel mount is proceeding for the flexible volumes in an aggregate. All sparse volumes are mounted in parallel first, followed by non-clone flexible volumes in parallel. Each clone is mounted following its parent volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Wafliron parallel mount enabled. Wafliron is mounting flexible volumes in parallel in the aggregate %s.
+*Parameters*::
+*aggr* (STRING): Aggregate name
+
+== wafl.iron.parent.volume.selected
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the parent of a clone volume is added to the list of volumes wafliron will mount first because the clone volume is on the list.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume %s in aggregate %s was added to the list of volumes that wafliron will mount first because its clone volume %s is present in this list.
+*Parameters*::
+*parent_volume* (STRING): Name of the parent volume.
+*aggr* (STRING): Name of the aggregate.
+*clone_volume* (STRING): Name of the clone volume.
+
+== wafl.iron.pending.delete.vvol
+*Severity*::
+ERROR
+*Description*::
+This wafliron event indicates that a volume is awaiting deletion and cannot be ironed/onlined. It's deletion also cannot be canceled while iron is running, so its retention time may need to be extended in order to keep the volume.
+*Corrective Action*::
+If you do not want the volume to be deleted while iron is running, check the retention time and consider extending it.
+*Syslog Message*::
+Flexible volume %s%s%s on aggregate %s is awaiting deletion. Wafliron cannot run on such volumes.
+*Parameters*::
+*volname* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name itself is insufficient.
+*aggrname* (STRING): Aggregate name.
+
+== wafl.iron.ral.exception
+*Severity*::
+ERROR
+*Description*::
+This message occurs when wafliron is loading an inode that has a remote entry, but the corresponding remote volume is not reachable.
+*Corrective Action*::
+Inspect the status of the FlexGroup remote volume, which might be down due to network errors, cluster node failures, or corruption in one or more of its constituent aggregates. Also check the health and connectivity of all nodes that are hosting these aggregates.
+*Syslog Message*::
+Wafliron could not load inode "%d" on volume "%s" because the remote volume is not accessible.
+*Parameters*::
+*inode* (INT): Inode that could not be loaded.
+*volume* (STRING): Volume being inspected by wafliron.
+
+== wafl.iron.ral.inode.loaded
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when wafliron succeeds in loading an inode in a FlexGroup origin volume that was not reachable earlier.
+*Corrective Action*::
+NONE.
+*Syslog Message*::
+After several retries, wafliron has processed inode "%d" in volume "%s".
+*Parameters*::
+*inode* (INT): Inode loaded after retries.
+*volume* (STRING): Volume being inspected by wafliron.
+
+== wafl.iron.readonly
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during wafliron volume initialization, indicating that read-only volumes might not be checked.
+*Corrective Action*::
+Use either the "-f" or the "-include-mirrors" option to run wafliron on SnapMirror(R) destination volumes. For more information or assistance, contact NetApp technical support.
+*Syslog Message*::
+%s%s%s: Readonly volumes require additional command options to be checked using wafliron
+*Parameters*::
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.
+
+== wafl.iron.readonlyQtrees
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during wafliron volume initialization, indicating that volumes with read-only qtrees might not be checked.
+*Corrective Action*::
+Use either the "-f" or the "-include-mirrors" option to run wafliron on SnapMirror(R) destination volumes.
+*Syslog Message*::
+%s%s%s: Volumes containing readonly qtrees require additional command options to be checked using wafliron
+*Parameters*::
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.
+
+== wafl.iron.rebuild.dir.volful
+*Severity*::
+ERROR
+*Description*::
+This message occurs while running wafliron, when there might not be enough free space on the volume to rebuild a damaged directory.
+*Corrective Action*::
+Increase the size of the volume or free space on the aggregate that contains the volume.
+*Syslog Message*::
+Volume %s might run out of space while wafliron is rebuilding the damaged directory %d. The required space is %d MB.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*fileid* (INT): Identifying number for the damaged directory.
+*spaceNeeded* (INT): Amount of spaced needed, in megabytes.
+
+== wafl.iron.salvaged.rootdir
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when wafliron detects a corrupted rootdir in an index-dir-enabled volume and re-creates it with all valid entries in the rootdir. The old corrupted rootdir has been converted into a regular file and linked to the /lost+found directory.
+*Corrective Action*::
+Remove the file from the /lost+found directory.
+*Syslog Message*::
+Rootdir of volume %s has been corrected and contains all valid names. The contents of the old rootdir have been copied to file i#%d.* in the /lost+found directory.
+*Parameters*::
+*volume* (STRING): Name of the volume.
+*fileid* (INT): File ID of the regular file that contains the old rootdir contents as is.
+
+== wafl.iron.scan.skipped
+*Severity*::
+NOTICE
+*Description*::
+This event occurs when non-specified or read only volumes are not processed during a wafliron run on their containing aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Aggregate %s, wafliron completed - Read only, offline, old version or non-specified volume(s) %s not checked.
+*Parameters*::
+*aggr* (STRING): The aggr name
+*vvols* (STRING): Flexible volumes not processed
+
+== wafl.iron.scan.stats
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message prints the wafliron scan details about various data objects: for example, files, directories, blocks.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%llu %s done.
+*Parameters*::
+*count* (LONGINT): Number of data objects scanned so far.
+*object* (STRING): Name of the data object.
+
+== wafl.iron.scanning.status
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message prints wafliron scanning status.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Scanning (%d%% done).
+*Parameters*::
+*percentage* (INT): Scanning percentage.
+
+== wafl.iron.slow
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a "wafliron start" or a "wafliron show" command is issued and the aggregate that hosts wafliron status files for the aggregate on which wafliron is running contains only one data disk.
+*Corrective Action*::
+1.Use the "-status-files-vserver" and "-status-files-volume" parameters of the "aggr wafliron start" command to host status files on a non-root aggregate volume, that has an adequate number of data disks that can accommodate the extra workload. 2.Add more disks to the root aggregate using "aggr add" command.
+*Syslog Message*::
+Aggregate %s: wafliron performance will be significantly impacted because aggregate %s contains only one data disk. Running wafliron with status files hosted on a non-root aggregate volume that has an adequate number of data disks, or adding more disks to the root aggregate is recommended.
+*Parameters*::
+*aggr_name* (STRING): Name of the aggregate on which wafliron is running.
+*status_vol_aggr_name* (STRING): Name of the aggregate containing the volume hosting the wafliron status files.
+
+== wafl.iron.start
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system starts the wafliron process on a volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Starting wafliron on %s %s%s%s%s.
+*Parameters*::
+*type* (STRING): Type of object (volume/aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.
+*optcommit* (STRING): Whether wafliron is running in optional-commit mode. If this mode is used, the decision to commit changes is made by the user after wafliron is complete.
+*prev_cp* (STRING): Whether the prev_cp feature of wafliron is being used and, if so, which consistency point the user chose at the prompt.
+*backup* (STRING): Whether the backup feature of wafliron is being used and, if so, what option {no|yes|force|use} is selected. Only applicable to aggregates.
+
+== wafl.iron.unrecoverable
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a volume is unrecoverable and cannot be ironed or brought online.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Flexible volume %s%s on aggregate %s is unrecoverable.
+*Parameters*::
+*volname* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*aggrname* (STRING): Aggregate name.
+
+== wafl.iron.upgradeRequired
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during volume or aggregate initialization if wafliron is enabled and does not support the volume or aggregate file system version. The message indicates that a volume or aggregate upgrade is required and is being attempted without wafliron checking. A wafliron check of the volume or aggregate might be possible after a successful upgrade.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s '%s%s%s%s' has not been upgraded. Upgrade will proceed without wafliron. The WAFL version on the %s is '%d'; the current WAFL version is '%d'.
+*Parameters*::
+*Type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Owner of the volume or aggregate.
+*vol* (STRING): Name of the volume or aggregate.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume or aggregate in cases where the volume or aggregate name itself is insufficient.
+*type* (STRING): Type of object (volume or aggregate).
+*vol_wafl_version* (INT): WAFL(R) version on the volume or aggregate.
+*current_wafl_version* (INT): Current WAFL version.
+
+== wafl.iron.volumes.selected.not.exist
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message is used to print on the console that the volumes selected for ironing on the aggregate do not exist in the aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Some of the volumes selected for ironing do not exist in the aggregate %s.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate.

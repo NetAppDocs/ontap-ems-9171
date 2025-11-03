@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: sis-c2c-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.c2c events
+---
+
+= sis.c2c events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.c2c.start.fail
+*Severity*::
+ERROR
+*Description*::
+This event is issued when dense scanner could not start on c2c restore volume during restore operation.
+*Corrective Action*::
+Run "sis start" command to manually start the SIS scanner.
+*Syslog Message*::
+SIS scanner on C2C restore volume %s%s could not be started: %s.
+*Parameters*::
+*vol* (STRING): The name of the volume
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*err* (STRING): Error message

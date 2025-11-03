@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: air-qtm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: air.qtm events
+---
+
+= air.qtm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== air.qtm.rebuild.scan.state
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the state of a scanner used to rebuild the qtree metafile changes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Scanner to rebuild the qtree metafile is %s.
+*Parameters*::
+*state* (STRING): State of the scanner.

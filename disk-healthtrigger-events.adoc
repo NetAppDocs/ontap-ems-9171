@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: disk-healthtrigger-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.healthtrigger events
+---
+
+= disk.healthtrigger events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.healthTrigger
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the disk returns a health trigger event.
+*Corrective Action*::
+No action is required because this message is informational only. If the disk is having problems processing I/O, an error will be returned.
+*Syslog Message*::
+Disk %s received NHT health trigger (0x%x 0x%x 0x%x 0x%x)
+*Parameters*::
+*diskName* (STRING): Name of the device.
+*sense_key* (INTHEX): SCSI sense key.
+*sense_code* (INTHEX): SCSI sense code.
+*qualifier* (INTHEX): SCSI sense code qualifier.
+*fru_failed* (INTHEX): SCSI FRU code.

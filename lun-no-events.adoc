@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: lun-no-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lun.no events
+---
+
+= lun.no events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== LUN.no.memory.available
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an operation on LUNs or NVMe namespaces on the node owning the given volume fails due to the unavailability of Data ONTAP(R) memory.
+*Corrective Action*::
+Retry the operation.
+*Syslog Message*::
+An operation on LUNs or NVMe namespaces on the node owning the volume %s (DSID %llu) failed due to unavailability of Data ONTAP(R) memory.
+*Parameters*::
+*volume_name* (STRING): Name of the volume for which the operation has failed.
+*volume_dsid* (LONGINT): Data Set ID (DSID) of the volume for which the operation has failed.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: disk-adaptererror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.adaptererror events
+---
+
+= disk.adaptererror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.adapterError
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an adapter error is detected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s: unexpected adapter error 0x%x
+*Parameters*::
+*diskName* (STRING): Name of the device.
+*error* (INTHEX): Adapter status.

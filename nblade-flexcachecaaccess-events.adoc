@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nblade-flexcachecaaccess-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.flexcachecaaccess events
+---
+
+= nblade.flexcachecaaccess events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.flexcacheCAAccess
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a client tries to access a FlexCache(R) volume via SMB3 using a continuously available share but is denied because FlexCache does not support persistent handle capability.
+*Corrective Action*::
+Either remove the continuously available property from the CIFS share or create a new share without this property to access the FlexCache volume over SMB.
+*Syslog Message*::
+Attempt to access FlexCache volume with MSID %u via SMB3 over a continuously available share is denied.
+*Parameters*::
+*msid* (INT): MSID of the FlexCache volume being accessed.

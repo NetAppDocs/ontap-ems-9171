@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: spm-vifmgr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: spm.vifmgr events
+---
+
+= spm.vifmgr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== spm.vifmgr.process.exit
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the Logical Interface Manager (VIFMgr) subsystem aborts. This error can have one or more causes and might be related to recent or previous operations. The failure of this subsystem can result in logical interfaces (LIFs) on the current node migrating to another node within the same cluster.
+*Corrective Action*::
+Ensure that the LIFs on the current node are hosted on another node in the cluster; if they are not, migrate them to another node. While this problem persists, you should also ensure that the auto-revert and DNS load-balancing features do not migrate the LIFs back to the current node. The system attempts to recover by restarting the subsystem. If the subsystem does not recover within the threshold number of retries, then an AutoSupport message is sent. If your system is not configured to send AutoSupport messages and the issue persists, contact NetApp technical support.
+*Syslog Message*::
+Logical Interface Manager(VifMgr) with ID %d aborted as a result of signal %s. The subsystem will attempt to restart.
+*Parameters*::
+*id* (INT): Process identifier.
+*cause* (STRING): Plain text description of why the process aborted.

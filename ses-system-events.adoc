@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: ses-system-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ses.system events
+---
+
+= ses.system events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ses.system.em.mmErr
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when ONTAP(R) software does not support internal disk drives in this platform.
+*Corrective Action*::
+Check with NetApp technical support whether the combination of this platform type with internal disks is sopported on a later version of ONTAP. If so, upgrade to the appropriate ONTAP version.
+*Syslog Message*::
+Disk shelf %d containing a %.8s system with internal drives (product ID %.16s) is not a supported combination.
+*Parameters*::
+*ShelfID* (INT): ID of the disk shelf.
+*VendorID* (STRING): Vendor ID of the disk shelf.
+*ProductID* (STRING): Product ID of the disk shelf.

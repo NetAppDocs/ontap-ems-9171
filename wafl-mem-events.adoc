@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: wafl-mem-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.mem events
+---
+
+= wafl.mem events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.mem.stomper
+*Severity*::
+NOTICE
+*Description*::
+This event indicates whether memory stomper code is running or not.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+You are %s running in corruption detection diagnostic mode with degraded performance.
+*Parameters*::
+*onoff* (STRING): The stomper code is on/off

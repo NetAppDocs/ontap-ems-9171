@@ -1,0 +1,63 @@
+---
+sidebar: sidebar
+permalink: rdb-env-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rdb.env events
+---
+
+= rdb.env events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rdb.env.IOFailure
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the cluster management Data Replication Module determines that I/O operations on the node's mroot filesystem are failing. This could indicate that the mroot filesystem is full, not mounted, or is encountering other error conditions.
+*Corrective Action*::
+Contact NetApp technical support for assistance with the mroot verification and recovery procedures.
+*Syslog Message*::
+Error encountered in mroot I/O: %s.
+*Parameters*::
+*message* (STRING): Error message.
+
+== rdb.env.processDuplicate
+*Severity*::
+ERROR
+*Description*::
+This message occurs when multiple conflicting instances of the management subsystem processes are executing. The situation was safely detected, but it is necessary to understand why it occurred. Normal system startup and operation should ensure that only one of each process type executes on any node. This can occur when an operator inadvertently runs a second instance by hand under the command shell.
+*Corrective Action*::
+Verify that all the cluster management processes are running using the diagnostic command 'cluster ring show.' Verify that only one of each is running on the node by using the 'ps' command in the command shell. If this event continues to occur, or if there is any question as to why the extra process was started, then contact NetApp technical support to investigate.
+*Syslog Message*::
+Multiple processes executing, detected by advisory locking violation: %s.
+*Parameters*::
+*message* (STRING): Error message.
+
+== rdb.env.replicaCorrupt
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the cluster management Data Replication Module determines that the node's local replica set is corrupted. If the damage extends beyond the replica set, it might be necessary to recover the mroot filesystem.
+*Corrective Action*::
+Contact NetApp technical support for assistance with the Data Replication Module and mroot filesystem verification and recovery procedures.
+*Syslog Message*::
+Corruption in the local database of Data Replication Module: %s
+*Parameters*::
+*message* (STRING): Error message.
+
+== rdb.env.sitelistInvalid
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the cluster management Data Replication Module detects an inconsistency in the local cluster configuration (the 'sitelist'). This sitelist is rejected, but the situation must be evaluated with the help of NetApp technical support. This usually occurs as a result of a procedural error, for example, a repurposed node without a wipeconfig, a problem with a controller replacement, a conflict with the node's 'setup' parameters, and so on.
+*Corrective Action*::
+Contact NetApp technical support to investigate the situation.
+*Syslog Message*::
+The sitelist content does not match the node environment: %s.
+*Parameters*::
+*message* (STRING): Error message.

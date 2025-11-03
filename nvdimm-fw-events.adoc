@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: nvdimm-fw-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvdimm.fw events
+---
+
+= nvdimm.fw events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvdimm.fw.upgrade.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when NVDIMM controller firmware failed to upgrade.
+*Corrective Action*::
+Power-cycle the controller and reboot ONTAP to attempt the firmware update again. If the error persists, contact NetApp technical support for assistance.
+*Syslog Message*::
+NVDIMM controller in slot-%d failed to upgrade firmware because of %s.
+*Parameters*::
+*slot* (INT): NVDIMM slot location.
+*error* (STRING): Reason for upgrade failure, which could be: 1. the image file does not exist or is corrupted 2. it is unable to enter update mode 3. it is unable to clear update mode 3. the firmware image transfer failed 4. of a CRC mismatch with the transferred image 5. it failed to validate or commit the image 6. it failed to restart after the image upgrade
+
+== nvdimm.fw.upgrade.succeed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NVDIMM controller sucessfully upgrades its own firmware image..
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NVDIMM controller firmware in slot-%d was upgraded to %s.
+*Parameters*::
+*slot* (INT): NVDIMM slot location.
+*version* (STRING): New firmware version.

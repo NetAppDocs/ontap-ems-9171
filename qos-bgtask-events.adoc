@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: qos-bgtask-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: qos.bgtask events
+---
+
+= qos.bgtask events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== qos.BgTask.Throttle
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Quality of Service (QoS) subsystem starts throttling requests to help critical background tasks meet their min-throughput and their service-level objectives (SLOs).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+QoS throttle limit for background task: "%s" with id: "%u" is %u IOPS.
+*Parameters*::
+*bg_task_name* (STRING): Name of the Background Task that requested QoS to throttle requests.
+*bg_task_id* (INT): ID of the Background Task that requested QoS to throttle requests.
+*limit* (INT): The limit value enforced in terms of IOPS and a block size of 4K.

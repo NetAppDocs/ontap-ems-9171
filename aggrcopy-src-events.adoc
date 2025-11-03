@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: aggrcopy-src-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: aggrcopy.src events
+---
+
+= aggrcopy.src events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== aggrcopy.src.snapshotErr
+*Severity*::
+ERROR
+*Description*::
+This event is issued when we are not able to obtain all the snapshot information, from the vol copy source volume, required for a vol copy transfer.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Aggr copy not able to obtain snapshot information from source aggregate %s
+*Parameters*::
+*srcaggr* (STRING): The aggr copy source volume

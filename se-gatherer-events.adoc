@@ -1,0 +1,46 @@
+---
+sidebar: sidebar
+permalink: se-gatherer-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: se.gatherer events
+---
+
+= se.gatherer events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== se.gatherer.done
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Single Instance Storage (SIS) auto gathering scanner completed on the auto adaptive volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Auto adaptive gathering scanner completed for %s %s %s %s %s.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+
+== se.gatherer.skip
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Single Instance Storage (SIS) auto adaptive gathering scanner could not be triggered on the volume post migration.
+*Corrective Action*::
+Run "volume efficiency start" command with "-scan-old-data" to manually start the auto adaptive gathering scanner.
+*Syslog Message*::
+Auto adaptive gathering scanner on volume %s%s could not be triggered for %s due to error: %s.
+*Parameters*::
+*vol* (STRING): Name of the volume
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*trigger_type* (STRING): Type of the trigger that was attempted.
+*err* (STRING): Error message that caused the failure.

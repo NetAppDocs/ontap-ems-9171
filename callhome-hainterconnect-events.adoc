@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: callhome-hainterconnect-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.hainterconnect events
+---
+
+= callhome.hainterconnect events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.hainterconnect.down
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the high-availability (HA) interconnect is down. If your system is configured to do so, it generates and transmits an AutoSupport (or "call home") message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Corrective action depends on the number and type of HA interconnect links supported by the platform,as well as the reason for which the interconnect is down. EMS event "ic.HAInterconnectDown" provides the reason information. a. If links are down: Verify that both controllers in the HA pair are operational. For externally connected links, make sure that the interconnect cables are connected properly and that the small form-factor pluggables (SFPs), if applicable, are seated properly on both controllers. For internally connected links, disable and reenable the links one at a time by using the "ic link off" and "ic link on" commands. b. If links are disabled: Enable the links by using the "ic link on" command. c. If a peer is not connected: Disable and reenable the links one at a time by using the "ic link off" and "ic link on" commands. Contact NetApp technical support if the problem persists.
+*Syslog Message*::
+Call home for %s due to %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*reason* (STRING): Reason for interconnect down.

@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: smbc-cg-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: smbc.cg events
+---
+
+= smbc.cg events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== smbc.cg.info.read.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when read of Consistency Group aggregate information entry fails for the SnapMirror(R) active sync volume which results into IO disruption.
+*Corrective Action*::
+To recover from this situation, perform below steps : Run wafliron on the aggregate hosting the SnapMirror(R) active sync volume which failed during mount time. Run resync on all the SnapMirror(R) active sync CG relationships present in the aggregate on which wafliron executed.
+*Syslog Message*::
+Read of Consistency Group aggregate information entry failed for source volume DSID: "%llu" during "%s" because Consistency Group aggregate information file is corrupted.
+*Parameters*::
+*source_volume_dsid* (LONGINT): Source Volume DSID
+*operation* (STRING): Name of operation
+
+== smbc.cg.info.update.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when add or delete of Consistency Group aggregate information entry fails for the SnapMirror(R) active sync volume which results into IO disruption.
+*Corrective Action*::
+To recover from this situation, perform below steps : Run wafliron on the aggregate hosting the SnapMirror(R) active sync volume which failed during mount time. Run resync on all the SnapMirror(R) active sync CG relationships present in the aggregate on which wafliron executed.
+*Syslog Message*::
+"%s" of Consistency Group aggregate information entry failed for source volume DSID: "%llu" because Consistency Group aggregate information file is corrupted.
+*Parameters*::
+*metafile_update_type* (STRING): Name of aggregate metafile update type
+*volume_dsid* (LONGINT): Volume DSID

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: disk-encryptsupportreqd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.encryptsupportreqd events
+---
+
+= disk.encryptsupportreqd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.encryptSupportReqd
+*Severity*::
+ALERT
+*Description*::
+This message occurs when ONTAP(R) software detects one or more nonencrypting drives or non-FIPS-certified self-encrypting drives (SEDs), but the environment variable 'bootarg.storageencryption.support' is set to "true" to indicate that all drives must be FIPS-certified.
+*Corrective Action*::
+Remove all non-FIPS-certified SEDs and standard drives.
+*Syslog Message*::
+Detected nonencrypting drive or non-FIPS-certified drive %s, but only FIPS-certified drives are supported on this node. %d of %d drives checked are FIPS-certified.
+*Parameters*::
+*disk* (STRING): Name of a drive that is not FIPS-certified.
+*encrypting_disks* (INT): Number of FIPS-certified drives detected.
+*disk_count* (INT): Total number of drives checked. For a high-availability pair, this might be fewer than the total number of drives.

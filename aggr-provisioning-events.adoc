@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: aggr-provisioning-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: aggr.provisioning events
+---
+
+= aggr.provisioning events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== aggr.provisioning.unassigned.detected
+*Severity*::
+NOTICE
+*Description*::
+This message is issued when the aggregate provisioning recommendation generated for the cluster is found to be incomplete due to the presence of unasigned disks. Any spare disks that are not owned by a node in the cluster cannot contribute to the usable capacity of new aggregates.
+*Corrective Action*::
+Use the following steps to resolve the issue: - Run 'storage disk show -container-type unassigned' to list all the unassigned disks in the cluster. To assign all unassigned disks, run 'storage disk assign -auto true -node [node-name]'. - If there are still unassigned disks in the cluster, refer to the Storage Management Guide for manual disk assignment best practices. - For further information or assistance, contact NetApp technical support.
+*Syslog Message*::
+The generated aggr provisioning recommendation might be incomplete because of the following reason: %s
+*Parameters*::
+*details* (STRING): Details of the number of unassigned disks visible to a given node
+*source* (STRING): The source that generated this warning.

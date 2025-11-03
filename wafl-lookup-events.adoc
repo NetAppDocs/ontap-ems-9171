@@ -1,0 +1,38 @@
+---
+sidebar: sidebar
+permalink: wafl-lookup-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.lookup events
+---
+
+= wafl.lookup events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.lookup.smDirErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system encounters an unexpected deleted directory entry in a snapmirrored qtree. This message can occur when accessing a directory in a snapmirrored qtree.
+*Corrective Action*::
+This condition is transient. Wait for any in-progress SnapMirror(tm) operations to finish and try the operation again.
+*Syslog Message*::
+wafl_nfs_lookup: unexpected deleted directory entry in snapmirrored qtree %d: {x%x %d %d %d %d} <%.*s> in {x%x %d %d %d %d}.
+*Parameters*::
+*qtree* (INT): Qtree identifier.
+*fh0* (INT): Directory file handle's flags.
+*fh1* (INT): Directory file handle's snapid.
+*fh2* (INT): Directory file handle's fileid.
+*fh3* (INT): Directory file handle's generation.
+*fh4* (INT): Directory file handle's FSID.
+*name* (STRINGARRAY): Name of the directory.
+*dfh0* (INT): Requested file handle's flags.
+*dfh1* (INT): Requested file handle's snapid.
+*dfh2* (INT): Requested file handle's fileid.
+*dfh3* (INT): Requested file handle's generation.
+*dfh4* (INT): Requested file handle's FSID.

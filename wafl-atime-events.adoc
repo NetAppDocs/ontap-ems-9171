@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: wafl-atime-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.atime events
+---
+
+= wafl.atime events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.atime.updates.restarted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the access time updates of all the files in the volumes of an aggregate start because the aggregate has enough free space. Access time updates of all the files were stopped when the aggregate ran out of space. The aggregate now has enough space to start the access time updates.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Access time updates of all the files in the volumes of aggregate "%s" have started.
+*Parameters*::
+*aggregate_name* (STRING): Aggregate name for which access time updates of all the files in the volumes start.
+
+== wafl.atime.updates.stopped
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the access time updates of all the files in the volumes of an aggregate stop because the aggregate has consumed its entire free space.
+*Corrective Action*::
+Create space by increasing the aggregate size or by deleting some volumes or moving volumes to other aggregates. Use the "storage aggregate show-space" command to view the current space usage of the aggregate. To increase an aggregate's size, add disks by using the "storage aggregate add-disks" command. Aggregate snapshots are deleted automatically to make some space when the aggregate is full.
+*Syslog Message*::
+Access time updates of all the files in the volumes of aggregate "%s" have been stopped.
+*Parameters*::
+*aggregate_name* (STRING): Aggregate name for which access time updates of all the files in the volumes stop.
+
+== wafl.atime.updates.will.stop
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the aggregate is nearly full. The access time updates of all the files in the volumes of an aggregate stop when the aggregate consumes its entire free space.
+*Corrective Action*::
+Create space by increasing the aggregate size or by deleting some volumes or moving volumes to other aggregates. Use the "storage aggregate show-space" command to view the current space usage of the aggregate. To increase an aggregate's size, add disks by using the "storage aggregate add-disks" command. Aggregate snapshots are deleted automatically to make some space when the aggregate is full.
+*Syslog Message*::
+Access time updates of all the files in the volumes of aggregate "%s" stop when the aggregate becomes full.
+*Parameters*::
+*aggregate_name* (STRING): Aggregate name for which access time updates of all the files in the volumes stop.

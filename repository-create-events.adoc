@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: repository-create-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repository.create events
+---
+
+= repository.create events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Repository.Create.Placement.Failed
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+ERROR
+*Description*::
+This message occurs during a create request from a client, when the Infinite Volume namespace redirector encounters one or more of the following: 1. It made several attempts to create the item on some data constituents, but failed. It is possible that some data constituents, or aggregates in the Infinite Volume, or nodes in the cluster are not in a healthy state. 2. It could not find a data constituent in which to create the requested item. It is possible that the Infinite Volume is misconfigured or the configuration state of the Infinite Volume is corrupted.
+*Corrective Action*::
+Verify that the Infinite Volume is configured properly. Verify that all the constituents are online by using the 'volume show' command with the '-constituents' option. Verify that all the aggregates for the Infinite Volume are online by using the 'aggregate show' command. If the problem persists or you need assistance, contact NetApp technical support.
+*Syslog Message*::
+A create request failed on the Infinite Volume. Reason: %s. This occurred in VServer %u.
+*Parameters*::
+*reason* (STRING): Reason for the failure.
+*vserverId* (INT): Vserver ID for which the error occurred.

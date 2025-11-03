@@ -1,0 +1,83 @@
+---
+sidebar: sidebar
+permalink: lic-cappool-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lic.cappool events
+---
+
+= lic.cappool events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lic.cappool.reassign.abort
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system aborts an operation of reassigning nodes to a different capacity pool license, because another reassignment operation to a different capacity pool license in the same request has failed.
+*Corrective Action*::
+Look for the "lic.cappool.failed" event that occurred about the same time, which caused the reassignment operation to abort.
+*Syslog Message*::
+"Capacity pool license reassignment is aborted for nodes ("%s") to serial number "%s" due to failure to reassign other nodes to serial number "%s"."
+*Parameters*::
+*aborted_node_names* (STRING): Aborted list of node names.
+*aborted_pool_serial* (STRING): Aborted capacity pool license serial number.
+*failed_pool_serial* (STRING): Another reassignment operation to this capacity pool serial number has failed.
+
+== lic.cappool.reassign.done
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system successfully completes an operation of reassigning nodes to a different capacity pool license.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"Capacity pool license reassignment successfully completed for nodes ("%s") to license serial number "%s"."
+*Parameters*::
+*node_names* (STRING): List of node names that are reassigned to the new capacity pool license.
+*new_pool_serial* (STRING): Capacity pool license serial number to which the nodes are reassigned.
+
+== lic.cappool.reassign.done.info
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system successfully completes an operation of reassigning nodes to a different capacity pool license with with a non-critical error, which does not affect the outcome of the ultimate operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"Capacity pool license reassignment successfully completed for nodes ("%s") to license serial number "%s" with non-critical error "%s"."
+*Parameters*::
+*node_names* (STRING): List of node names that are reassigned to the new capacity pool license.
+*new_pool_serial* (STRING): Capacity pool license serial number to which the nodes are reassigned.
+*non_critical_error* (STRING): Information about the non-critical error encountered during the reassignment operation.
+
+== lic.cappool.reassign.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when operation of reassigning nodes to a different capacity pool license fails.
+*Corrective Action*::
+Resolve the error, which should clearly indicate why the operation has failed. Follow the instructions shown on the ONTAP Select Deploy utility from which the operation was initiated.
+*Syslog Message*::
+"Capacity pool license reassignemnt to license serial number "%s" failed for nodes ("%s") with error: %s"
+*Parameters*::
+*failed_pool_serial* (STRING): Capacity pool license serial number to which the nodes failed to be reassigned.
+*failed_node_names* (STRING): List of node names that failed to be reassigned to the new capacity pool license.
+*error* (STRING): Reason for failure.
+
+== lic.cappool.reassign.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system starts an operation of reassigning nodes to a different capacity pool license.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"Capacity pool license reassignment started for nodes ("%s") to license serial number "%s"."
+*Parameters*::
+*node_names* (STRING): List of node names that are reassigned to the new capacity pool license.
+*new_pool_serial* (STRING): Capacity pool license serial number to which the nodes are reassigned.

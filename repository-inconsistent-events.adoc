@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: repository-inconsistent-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repository.inconsistent events
+---
+
+= repository.inconsistent events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Repository.Inconsistent.Attribute
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+ERROR
+*Description*::
+This message occurs during a client file operation request, when the Infinite Volume namespace redirector detects an inconsistency in the file attributes for a file in the namespace constituent.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+While servicing a protocol request, the Infinite Volume namespace redirector detected an inconsistency in the attributes of a file (handle: %s) in the namespace constituent in Vserver %u.
+*Parameters*::
+*filehandle* (STRING): File handle of the file for which the error occurred.
+*vserverId* (INT): Vserver ID for which the error occurred.

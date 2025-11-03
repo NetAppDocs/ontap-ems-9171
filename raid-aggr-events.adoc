@@ -1,0 +1,72 @@
+---
+sidebar: sidebar
+permalink: raid-aggr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.aggr events
+---
+
+= raid.aggr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.aggr.autoGrow.abort
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the usable size of an aggregate does not expand after a corresponding increase in the size of the underlying storage.
+*Corrective Action*::
+Check the sizes of all disks in the affected aggregate, and make sure that the backing volumes have increased to the same size. Run the "storage disk show -virtual-machine-disk-info" command to get the name of the backing volume for a disk, under the "VM Disk File" column in the command output.
+*Syslog Message*::
+The capacity of aggregate %s couldn't be expanded. The parameters to increase size are raidgroup_count: %d, min_new_size: %llu, max_new_size: %llu. Reason for failure: %s.
+*Parameters*::
+*aggr_name* (STRING): Name of the aggregate that did not expand in size.
+*rg_count* (INT): Number of RAID groups that have disks that have increased in size.
+*max_new_size* (LONGINT): Maximum possible new usable size across the RAID group
+*min_new_size* (LONGINT): Minimum possible new usable size across the RAID group
+*reason* (STRING): Short string describing why the aggregate capacity was not changed.
+
+== raid.aggr.autoGrow.notAllowed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the aggregate cannot be allowed to auto grow due to some transient condition.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The aggregate "%s" cannot grow. Reason: "%s".
+*Parameters*::
+*aggr* (STRING): Name of the aggregate.
+*reason* (STRING): Reason for not allowing aggregate to grow.
+
+== raid.aggr.autoGrow.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the usable size of an aggregate is able to expand after a corresponding increase in the size of the underlying storage.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The capacity of aggregate %s has increased from %llu blocks to %llu blocks.
+*Parameters*::
+*aggr_name* (STRING): Name of the aggregate that has increased in size.
+*old_size* (LONGINT): Previous size, in blocks, of the aggregate that has increased in size.
+*new_size* (LONGINT): New usable size, in blocks, of the aggregate.
+
+== raid.aggr.lock.conflict
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a configuration operation on an aggregate (for example, adding disks, relocating aggregate disks, etc.), fails to get exclusive lock access because of a conflict with an existing configuration operation that is already holding the exclusive lock on the aggregate.
+*Corrective Action*::
+Retry the failed operation after the current operation is complete.
+*Syslog Message*::
+Exclusive access on the aggregate %s by operation %s failed because of a conflict with current operation %s. Retry after a few minutes.
+*Parameters*::
+*aggregate* (STRING): Name of the aggregate.
+*attempted_op_name* (STRING): Name of the operation that tried to get exclusive access.
+*current_op_name* (STRING): Name of the operation that is currently holding the exclusive access.

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: wafl-convert-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.convert events
+---
+
+= wafl.convert events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.convert.directory.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a directory cannot be safely converted to Unicode format. The directory contains files or subdirectories that must first be renamed.
+*Corrective Action*::
+Use the "volume file show-inode" command with the directory inode number and volume name information to find the path of the directory that could not be converted. There are some files or subdirectories within this parent directory that have names like "{123456789}". File names like these can make it unsafe for ONTAP(R) software to automatically convert a directory to Unicode format. To convert the directory, first rename the files or subdirectories in this parent directory that have names matching this pattern. To perform these renames, make sure that the volume has the "-convert-ucode" property set to "false", and then rename the content using an NFSv3 client.
+*Syslog Message*::
+Volume "%s:%s" was unable to convert directory %u to Unicode.
+*Parameters*::
+*vserver_uuid* (STRING): Universal Unique ID (UUID) of the volume's Vserver.
+*volume* (STRING): Volume name that the directory is in.
+*directory_inum* (LONGINT): The Inode number (fileid) of the directory.

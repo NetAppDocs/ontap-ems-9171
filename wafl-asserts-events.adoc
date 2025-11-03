@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: wafl-asserts-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.asserts events
+---
+
+= wafl.asserts events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.asserts.disabled
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs on development kernels when some of the asserts are disabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Warning: Some of the asserts are disabled on the filer.
+*Parameters*::
+(None).

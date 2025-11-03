@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: acp-upgrade-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: acp.upgrade events
+---
+
+= acp.upgrade events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== acp.upgrade.successful
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Alternate Control Path (ACP) Administrator determines that the ACP Processor has successfully upgraded the firmware.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ACP module %s (%s) successfully upgraded firmware, (disk shelf serial number: %s).
+*Parameters*::
+*inband_id* (STRING): Inband ID of the module.
+*ip* (STRING): IP address of the module.
+*shelf_sno* (STRING): Disk shelf serial number of the shelf where this I/O module is seated.

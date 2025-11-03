@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: zapi-retired-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: zapi.retired events
+---
+
+= zapi.retired events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== zapi.retired.usageDetected
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAPI (ZAPI) is used for ONTAP data storage management. ONTAPI (ZAPI) is approaching end of availability. Search your vendor's support site for information about the end of availability for ONTAPI and transition to the ONTAP REST API.
+*Corrective Action*::
+Ensure that all ONTAP data storage management functions using ONTAPI (ZAPI) have transitioned to ONTAP REST API.
+*Syslog Message*::
+ONTAPI (ZAPI), which is approaching end of availability, was last used from source address: %s, for ONTAP data storage management.
+*Parameters*::
+*sourceAddress* (STRING): The source address from which the last ONTAPI (ZAPI) call was made.

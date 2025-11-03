@@ -1,0 +1,62 @@
+---
+sidebar: sidebar
+permalink: sfo-aggr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfo.aggr events
+---
+
+= sfo.aggr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfo.aggr.relocated.cu
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a storage failover aggregate is relocated from one node to another during a nondisruptive controller upgrade.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Aggregate %s was relocated from source node %s to destination node %s in %llu milliseconds during a nondisruptive controller upgrade. The source node has system ID %llu and the destination node has system ID %llu.
+*Parameters*::
+*aggr_name* (STRING): Name of the aggregate that was relocated.
+*src_name* (STRING): Name of the source node.
+*dest_name* (STRING): Name of the destination node.
+*time* (LONGINT): Time, in milliseconds, taken to relocate the aggregate.
+*src_system_id* (LONGINT): System ID of the source node.
+*dest_system_id* (LONGINT): System ID of the destination node.
+
+== sfo.aggr.relocated.perm
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an SFO aggregate is "permanently" relocated from one node to another. However, even though the aggregate relocation is considered "permanent," you can still reverse or undo it.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Aggregate %s was permanently relocated from source node %s to destination node %s.
+*Parameters*::
+*aggr_name* (STRING): Name of the SFO aggregate that was relocated.
+*src_name* (STRING): Name of the source node.
+*dest_name* (STRING): Name of the destination node.
+*time* (LONGINT): Time, in milliseconds, taken to relocate the aggregate.
+
+== sfo.aggr.relocated.temp
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a storage failover aggregate is temporarily relocated from one node to another. This usually happens when the aggregate is relocated during a performance optimized negotiated takeover.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Aggregate %s was temporarily relocated from source node %s to destination node %s in %llu milliseconds.
+*Parameters*::
+*aggr_name* (STRING): Name of the aggregate that was relocated.
+*src_name* (STRING): Name of the source node.
+*dest_name* (STRING): Name of the destination node.
+*time* (LONGINT): Time, in milliseconds, taken to relocate the aggregate.

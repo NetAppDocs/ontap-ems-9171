@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: splog-sp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: splog.sp events
+---
+
+= splog.sp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== splog.sp.not.accessible
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the local or remote node Service Processor (SP) cannot be accessed. This prevents the SP log collection job from communicating with the SP and transferring SP log files when new log files are available. SP log files are usually used for diagnosing abnormal status of the system, for example, abnormal shutdown.
+*Corrective Action*::
+1. Check whether the SP is pingable by using the 'ping sp-ip-address' command at the clustershell prompt. 2. If the remote node SP is not pingable: a) Check whether the network cable is connected with the remote SP. b) If the remote node network cable is connected, check whether the IP address of the remote SP and the e0M port are in the same subnet. From the clustershell prompt, run the 'set diag' and 'system node run-service-processor -node node_name' commands to log in to the remote SP. From the SP prompt, run the 'sp status' command. From the clustershell prompt, run the 'network interface show' command to get e0M port details. c) If the IP address of the remote down node SP and the e0M port are in the same subnet and the remote SP is not pingable, then restart the SP. From the clustershell prompt, run the 'set diag' and 'system node run-service-processor -node node_name' commands to log in to the remote SP. From the SP prompt, run the 'sp reboot' command. 3. If the local node SP is not pingable: a) Check whether the IP address of the local SP and the e0M port are in the same subnet. From the clustershell prompt, press Ctrl-g to log in to the local SP. From the SP prompt, run the 'sp status' command. From the clustershell prompt, run the 'network interface show' command to get e0M port details. b) If the address of local node SP and the e0M port are in the same subnet and the SP is not pingable, then restart the SP. From the clustershell prompt, run the 'system service-processor reboot-sp -image primary' command. 4. After the SP finishes rebooting, if you still cannot ping the SP, then contact NetApp technical support for further assistance.
+*Syslog Message*::
+The SP on the remote node (%s) is not accessible because of %s.
+*Parameters*::
+*node_name* (STRING): Name of the node whose SP is not accessible.
+*reason* (STRING): Reason for the warning.
+
+== splog.sp.not.configured
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the IP address of the Service Processor (SP) is not configured properly. This prevents the SP log collection job from communicating with the SP and transferring SP log files when new log files are available. SP log files are usually used for diagnosing abnormal status of the system, for example, abnormal shutdown.
+*Corrective Action*::
+1. Check the IP address of the SP. Remote node SP case: From the clustershell prompt, run the 'set diag' and 'system node run-service-processor -node node_name' commands to log in to the remote SP. From the SP prompt, run the 'sp status' command. Local node SP case: From the clustershell prompt, press 'Ctrl-g' and log into SP. From the SP prompt, run the 'sp status' command. 2. If there is no IP address for the SP, or if the IP address is invalid, then restart the node. The IP address of the SP will be configured by the host software. 3. If there is still no IP address for the SP after step 2, then contact NetApp technical support for further assistance.
+*Syslog Message*::
+The SP on the node (%s) is not configured properly.
+*Parameters*::
+*node_name* (STRING): Name of the node whose SP has its IP address configured incorrectly.

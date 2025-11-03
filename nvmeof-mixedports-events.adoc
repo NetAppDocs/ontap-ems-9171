@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: nvmeof-mixedports-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvmeof.mixedports events
+---
+
+= nvmeof.mixedports events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvmeof.mixedports.clear
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when there is no longer a nonrecommended mix of a dedicated port and a nondedicated port cabled from a node to a shelf.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+There is no longer a nonrecommended mix of a dedicated port and a nondedicated port cabled from node %s to shelf with SN %s.
+*Parameters*::
+*node_name* (STRING): Host port connected to the cable.
+*shelf_sn* (STRING): Serial number of the shelf connected to the cable.
+
+== nvmeof.mixedports.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when both primary and secondary host ports are incorrectly cabled to a shelf. This cabling might compromise physical data link redundancy and inhibit system performance.
+*Corrective Action*::
+Connect either primary dedicated ports or secondary nondedicated ports to the shelf, but not both port types.
+*Syslog Message*::
+There is a nonrecommended mix of a dedicated port and a nondedicated port cabled from node %s to Shelf with SN %s.
+*Parameters*::
+*node_name* (STRING): Host port connected to the cable.
+*shelf_sn* (STRING): Serial number of the shelf connected to the cable.

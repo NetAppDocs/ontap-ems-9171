@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cloud-cannotresolveip-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cloud.cannotresolveip events
+---
+
+= cloud.cannotresolveip events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cloud.cannotResolveIP
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Cloud Volume ONTAP (CVO) instance fails to resolve an IP address from the cloud database host name. The failure causes cloud mailbox disks to be removed by ONTAP and with takeover/failback disabled.
+*Corrective Action*::
+Ensure DNS is set up correctly on this ONTAP Cloud instance and correct it if necessary.
+*Syslog Message*::
+ONTAP Cloud instance failed to resolve an IP address from host: %s.
+*Parameters*::
+*hostname* (STRING): Cloud database host name.

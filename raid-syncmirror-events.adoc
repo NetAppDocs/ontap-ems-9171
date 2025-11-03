@@ -1,0 +1,70 @@
+---
+sidebar: sidebar
+permalink: raid-syncmirror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.syncmirror events
+---
+
+= raid.syncmirror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.syncmirror.agrsv.to
+*Severity*::
+ERROR
+*Description*::
+This message occurs in a SyncMirror(R) configuration (with SyncMirror aggressive timeout capability), when a disk I/O times out with an error.
+*Corrective Action*::
+The system will attempt to recover using the other plex. If the error persists, consider replacing the drive or the adapter.
+*Syslog Message*::
+Disk driver aggressively timed out an I/O to %s%s belonging to a SyncMirror plex %s. RAID will now attempt to bring the plex offline and redrive the I/O from the other plex.
+*Parameters*::
+*owner* (STRING): String indicating the owner of the affected disk.
+*disk_info* (STRING): Name of the disk.
+*plex* (STRING): Name of the affected plex.
+
+== raid.syncmirror.at.degraded
+*Severity*::
+ALERT
+*Description*::
+This message occurs in a SyncMirror(R) configuration (with SyncMirror aggressive timeout capability), when a mirror goes into degraded state as a result of an offline plex.
+*Corrective Action*::
+To resolve this problem, complete the following steps: 1. Identify the problem aggregate, the offline plex, and plex mirror status from the event logs. 2. Determine the reason for the offline plex, such as adapter, controller or multidisk failures. 3. Replace any faulty components that you discover. If you need assistance, contact NetApp technical support. 4. Bring the plex online manually after you replace the faulty components.
+*Syslog Message*::
+%s%s [UUID:%s] is mirrored and %s plex is offline. It is no longer protected by mirroring.
+*Parameters*::
+*owner* (STRING): Owner of the aggregate.
+*aggregate* (STRING): Name of the aggregate.
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+*plex* (STRING): Name of the offline plex.
+
+== raid.syncmirror.in.use
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the SyncMirror(R) license is currently in use.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*nAggrs* (INT): Total number of aggregates on the system.
+*nMirrored* (INT): Number of aggregates mirrored.
+*rootMirrored* (STRING): Indicates whether root aggregate is mirrored or not.
+
+== raid.syncmirror.plex.online
+*Severity*::
+NOTICE
+*Description*::
+This message occurs in a SyncMirror(R) configuration, when bringing online an offline plex.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The plex %s is now online.
+*Parameters*::
+*plex* (STRING): Name of the plex.

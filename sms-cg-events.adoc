@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: sms-cg-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sms.cg events
+---
+
+= sms.cg events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sms.cg.cascade.not.supported
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) Synchronous Automated Failover relationship is part of a cascade configuration. Cascade configuration is not supported for SnapMirror(R) Synchronous Automated Failover relationships.
+*Corrective Action*::
+Delete the Asynchronous cascade leg from the destination of the SnapMirror(R) Synchronous Consistency Group relationship. Attach the cascade Leg to the source of SnapMirror(R) Synchronous Consistency Group relationship to re-establish the 3 site DR.
+*Syslog Message*::
+The source of the relationship %s (msid:%llu and vserver_uuid:%s) is part of of SnapMirror(R) Synchronous Automated Failover destination relationship. Since cascade is not supported for SnapMirror(R) Synchronous Automated Failover relationship, failing the operation on the cascade leg.
+*Parameters*::
+*RelationshipId* (STRING): UUID of the SnapMirror Relationship.
+*volumeMSID* (LONGINT): Volume MSID.
+*vserverUUID* (STRING): vserver instance UUID.

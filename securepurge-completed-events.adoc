@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: securepurge-completed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: securepurge.completed events
+---
+
+= securepurge.completed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== securepurge.completed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a secure purge operation is completed in a flexible volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Secure purge operation is completed on the volume '%s' in Vserver '%s'.
+*Parameters*::
+*volumename* (STRING): Name of the volume.
+*vservername* (STRING): Name of the Vserver.

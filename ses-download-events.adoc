@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: ses-download-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ses.download events
+---
+
+= ses.download events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ses.download.powerCyclingChannel
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the power cycling channel event is issued after a disk shelf firmware download to disk shelves that require a power-cycle to activate the new code.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Power cycling channel %s.
+*Parameters*::
+*channelName* (STRING): Name of the adapter port or switch port on which the disk shelf is being power-cycled.
+
+== ses.download.shelfToReboot
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs after the completion of shelf firmware transfer to the DS14-Mk2-AT (R200) disk shelf, at which point the disk shelf requires about another five minutes to transfer the new firmware to its nonvolatile program memory, whereupon it reboots to begin to execute the new firmware. During this reboot, a Fibre Channel loop reinitialization occurs, temporarily interrupting the loop.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The DS14-Mk2-AT shelves will be rebooted shortly to run the new firmware. The firmware download process should take about three minutes per shelf.
+*Parameters*::
+(None).
+
+== ses.download.suspendIOForPowerCycle
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the suspending I/O event signals that the storage subsystem is temporarily stopping I/O to disks while one or more disk shelves have their power cycled after a download, if required by the disk shelf design.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Suspending disk I/O prior to shelf power cycle.
+*Parameters*::
+(None).

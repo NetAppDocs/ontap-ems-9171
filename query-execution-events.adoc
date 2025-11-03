@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: query-execution-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: query.execution events
+---
+
+= query.execution events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== query.execution.console
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the dotsql command-line program processes an SQL query.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*query* (STRING): Query that was executed.
+
+== query.execution.failed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a SQL query of the system fails for any reason.
+*Corrective Action*::
+This type of failure can occur legitimately during the course of normal system operation. In cases of unexpected failure, the requestor provides diagnostic advice.
+*Syslog Message*::
+(None).
+*Parameters*::
+*query* (STRING): Query that was executed.
+*error* (STRING): Error message that occurred.

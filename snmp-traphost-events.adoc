@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: snmp-traphost-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snmp.traphost events
+---
+
+= snmp.traphost events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snmp.traphost.resolve.failed
+*Severity*::
+ERROR
+*Description*::
+The snmp daemon could not resolve (find an IP address via DNS for) a traphost. The appliance will try again in an hour to resolve the traphost.
+*Corrective Action*::
+Make sure that the network, including the domain server and traphost, are connected, running, and configured correctly. If you fix this problem, wait until the next retry or run 'snmp init 1' to force a resolve. If you don't fix this problem, you may want to remove this traphost from the list. Attempting to resolve traphosts may take time because of network timeouts.
+*Syslog Message*::
+snmp: cannot send traps to '%s' because it could not be resolved via DNS. Retries occur hourly.
+*Parameters*::
+*host* (STRING): The host that could not be resolved via a DNS lookup.

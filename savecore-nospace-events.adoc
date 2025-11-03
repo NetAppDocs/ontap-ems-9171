@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: savecore-nospace-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: savecore.nospace events
+---
+
+= savecore.nospace events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== savecore.nospace
+*Severity*::
+ERROR
+*Description*::
+Savecore has determined that the space available for storing the unsaved core is not sufficient.
+*Corrective Action*::
+Delete old or unneeded files in the root filesystem. Check in "/etc/crash" ("/crash" on Netcaches) for unneeded cores. Make sure to delete any snapshots that include the deleted files.
+*Syslog Message*::
+The available disk space (%u blocks) is not sufficient to save the core, which may need up to %d blocks.
+*Parameters*::
+*avail* (INT): Number of blocks available for saving the core
+*needed* (INT): Number of blocks needed for saving the core

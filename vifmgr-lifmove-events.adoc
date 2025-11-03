@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: vifmgr-lifmove-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.lifmove events
+---
+
+= vifmgr.lifmove events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.lifmove.blocked
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an attempt to move a logical interface (LIF) IP address to another node/port due to a load-balance event has failed because the LIF has active connections which can not be safely migrated.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LIF %s (on virtual server %s), IP address %s, was blocked when being moved to node %s, port %s.
+*Parameters*::
+*vifname* (STRING): Name of the LIF that is being moved.
+*vsrvid* (STRING): Name of the virtual server identifier on which this LIF resides.
+*vifip* (STRING): The logical interface's IP address that is being moved.
+*tonode* (STRING): Name of the node to where the LIF is moving.
+*toport* (STRING): Name of the port to where the LIF is moving.

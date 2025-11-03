@@ -1,0 +1,71 @@
+---
+sidebar: sidebar
+permalink: fg-quota-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fg.quota events
+---
+
+= fg.quota events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fg.quota.cannot.enforce
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a FlexGroup cannot enforce its quota as expected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FlexGroup %s (fg-uuid %s) cannot enforce quota due to %s.
+*Parameters*::
+*object_name* (STRING): Name of the FlexGroup.
+*object_uuid* (STRING): UUID of the FlexGroup.
+*reason* (STRING): Reason for lack of quota enforcement.
+
+== fg.quota.enforcement.on
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a file operation discovers that the quota enforcement state of a FlexGroup has changed to "on".
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FlexGroup %s (fg-uuid %s) quota enforcement state is on.
+*Parameters*::
+*object_name* (STRING): Name of the FlexGroup.
+*object_uuid* (STRING): UUID of the FlexGroup.
+
+== fg.quota.on.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when enabling quotas (quota on an operation) on a FlexGroup constituent fails.
+*Corrective Action*::
+Correct the problem based on the reason specified. If the error persists, contact technical support.
+*Syslog Message*::
+Failed to execute the quota on operation on FlexGroup constituent %s in Vserver %s. Reason: %s.
+*Parameters*::
+*volumeName* (STRING): Name of the constituent.
+*vserverName* (STRING): Name of the Vserver.
+*reason* (STRING): Reason for the failure.
+
+== fg.quota.usermapping.result
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the quota mapper decides whether to map the Windows quota record and the UNIX quota record of a user into a single multiuser record.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s (uuid %s) tid %d: %s.
+*Parameters*::
+*constituent_name* (STRING): Name of the FlexGroup constituent.
+*object_uuid* (STRING): UUID of the FlexGroup constituent.
+*qtree* (LONGINT): Qtree identifier (tid).
+*result* (STRING): User mapping result.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: haosc-sa-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: haosc.sa events
+---
+
+= haosc.sa events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== haosc.sa.config
+*Severity*::
+ERROR
+*Description*::
+This message occurs when nonvolatile memory on a stand-alone system is configured for a high-availability system. Only half of the available nonvolatile memory will be used and system performance will be affected.
+*Corrective Action*::
+Reboot the system to use all of the nonvolatile memory.
+*Syslog Message*::
+Only half of the available nonvolatile memory is in use. This will affect system performance.
+*Parameters*::
+(None).

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: vol-clone-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vol.clone events
+---
+
+= vol.clone events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vol.clone.split.optimized
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the clone split of a volume clone takes the optimized path which uses an Azure copy blob operation to copy objects from the parent volume to the clone.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Clone split of volume "%s" hosted on FabricPool "%s" takes the optimized path using Azure copy blob operation.
+*Parameters*::
+*volume_name* (STRING): Volume clone.
+*aggregate_name* (STRING): Aggregate which hosts the volume clone.

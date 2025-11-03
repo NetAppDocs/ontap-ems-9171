@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: extcache-configunsupported-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: extcache.configunsupported events
+---
+
+= extcache.configunsupported events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== extCache.configUnsupported
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the controller contains an external cache hardware configuration that cannot be supported on the controller.
+*Corrective Action*::
+Consult the release documentation, check the Interoperability Matrix Tool (IMT) for a supported configuration, or contact Contact NetApp technical support. to understand and correct the hardware configuration.
+*Syslog Message*::
+WAFL external cache hardware configuration is not supported: %s.
+*Parameters*::
+*description* (STRING): String providing information about why the configuration is unsupported.

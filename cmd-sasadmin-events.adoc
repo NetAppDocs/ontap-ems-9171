@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cmd-sasadmin-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cmd.sasadmin events
+---
+
+= cmd.sasadmin events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cmd.sasadmin.fw_update.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an adapter firmware update failure occurs.
+*Corrective Action*::
+Verify that the firmware file is valid and try updating the firmware again. If the firmware update still fails, contact NetApp technical support.
+*Syslog Message*::
+Adapter firmware update failed for adapter: %s.
+*Parameters*::
+*adapterName* (STRING): Name of the associated SAS host bus adapter.

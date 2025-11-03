@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: rdmalib-duplicateid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rdmalib.duplicateid events
+---
+
+= rdmalib.duplicateid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rdmalib.duplicateId
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the local node system identifier matches the partner node's system identifier.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Interconnect : Partner ID %u is the same as our id.
+*Parameters*::
+*id* (INT): System Id

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-weekly-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.weekly events
+---
+
+= callhome.weekly events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.weekly
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the weekly AutoSupport or 'call home' event is sent. Information is sent to NetApp technical support to ensure that subsequent communications work and to enable operations analysis. Some results of these analysis might include recommendations on upgrades, firmware changes, and configuration changes to improve the reliability and performance of the system. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for WEEKLY_LOG
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

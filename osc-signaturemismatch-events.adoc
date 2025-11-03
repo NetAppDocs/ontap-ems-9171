@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: osc-signaturemismatch-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: osc.signaturemismatch events
+---
+
+= osc.signaturemismatch events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== osc.signatureMismatch
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the request signature sent to the object-store server does not match the signature calculated.
+*Corrective Action*::
+Verify that the secret access key is configured correctly. If it is correct, contact NetApp technical support for assistance.
+*Syslog Message*::
+Object-store %s operation server-calculated request signature does not match the signature sent to object-store server %s for bucket or container "%s" on node %s. Check the keys and signing method.
+*Parameters*::
+*operation* (STRING): Request name.
+*serverHostname* (STRING): Hostname of the object-store server.
+*bucket* (STRING): Name of the object-store bucket.
+*nodeUuid* (STRING): UUID of the node.

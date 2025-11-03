@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: smc-dst-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: smc.dst events
+---
+
+= smc.dst events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== smc.dst.snapshot.op
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when SnapMirror creates or deletes a snapshot with a SnapMirror label on a FlexVol destination volume of a SnapMirror(R) relationship.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror snapshot %s %s on destination volume %s, label %s, instance UUID %s, version UUID %s, relationship UUID %s.
+*Parameters*::
+*operation* (STRING): Snapshot operation either "create" or "delete".
+*snapname* (STRING): Snapshot name.
+*dstpath* (STRING): Path name of the destination volume of the SnapMirror relationship.
+*snaplabel* (STRING): SnapMirror label of the snapshot.
+*instance_uuid* (STRING): Instance UUID of the snapshot.
+*version_uuid* (STRING): Version UUID of the snapshot.
+*relationshipID* (STRING): UUID of the SnapMirror relationship.

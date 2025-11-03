@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: fmmb-opaque-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fmmb.opaque events
+---
+
+= fmmb.opaque events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fmmb.opaque.hdr.invalid
+*Severity*::
+ALERT
+*Description*::
+This event is issued when the HA Mailbox opaque header is invalid. The opaque area in the HA Mailbox is used by HA mailbox clients, like RAID, to store persistent information.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+HA %s Mailbox opaque header is invalid.
+*Parameters*::
+*host* (STRING): The node which owns the HA mailbox disk. The node can be either local or partner.

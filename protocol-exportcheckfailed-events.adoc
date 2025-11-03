@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: protocol-exportcheckfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: protocol.exportcheckfailed events
+---
+
+= protocol.exportcheckfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== protocol.exportCheckFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is an export check failure due to, either export-policy configuration not allowing access, or a non-existing filesystem/junction access attempt.
+*Corrective Action*::
+Check the export policy configuration or filesystem name depending on the reason due to which export access check failed.
+*Syslog Message*::
+Export access check failed on Vserver %s for client %s, trying to access volume %s, having policy %s, via protocol %s. Reason: %s
+*Parameters*::
+*vserver* (STRING): Name of the Vserver where the issue occurs.
+*clientIP* (STRING): Client for which the export access check failure happened.
+*volumeName* (STRING): Volume name for which export access check failed.
+*policyName* (STRING): Name of the export policy from which export access check failed.
+*protocol* (STRING): Access protocol used by client for filesystem access.
+*reason* (STRING): Reason for which export access check failed.

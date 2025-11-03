@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: lmgr-enable-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lmgr.enable events
+---
+
+= lmgr.enable events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lmgr.enable.remote.lock.space.error
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the enabling of the remote lock functionality is unsuccessful due to insufficient storage space.
+*Corrective Action*::
+Run "lmgr enable_remote_lock <DSID> -multipart true" command from the diagnostic privilege level for enabling remote lock functionality manually.
+*Syslog Message*::
+Remote lock functionality could not be enabled on volume '%s%s%s' (DSID %llu) due to insufficient storage space. Please consider freeing up some space and then attempt to enable it manually.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name alone is insufficient.
+*volDsid* (LONGINT): Data set identifier (DSID) of the volume.

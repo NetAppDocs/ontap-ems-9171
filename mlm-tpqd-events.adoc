@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: mlm-tpqd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mlm.tpqd events
+---
+
+= mlm.tpqd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mlm.TPQD.TPutilization
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) has lowered the number of I/O commands that are allowed to be active by at least 25 percent for an array's target port. This message indicates degradation of I/O throughput for the indicated array's target port and the cause should be corrected.
+*Corrective Action*::
+Analyze the EMS logs for EMS_fci_device_timeout, EMS_scsi_cmd_adapterResources or EMS_scsi_cmd_targetStatus indicating of "Busy" or "Queue Full" events associated to the array's target port and correct any hardware faults. Reduce the shared load on the device and/or reduce the maximum allowed I/O commands for the array's target port. For example, to reduce the maximum allowed I/O commands for an array's target port, the following command can be run: storage array port modify -name ARRAY_NAME_1 -wwnn 50014380025d1500 -wwpn 50014380025d1508 -max-queue-depth 256
+*Syslog Message*::
+Array target port of %s has had its dynamic target port queue depth lowered to %d which is 25%% or lower of its maximum allowed value of %d.
+*Parameters*::
+*wwpn* (STRING): World Wide Port Name of the array's target port which has its queue depth decreased by 25% or more.
+*current_qdepth* (INT): Current number of allowed active I/O commands for the array's target port.
+*max_qdepth* (INT): Maximum allowed value of the array's target port queue depth.

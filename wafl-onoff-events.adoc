@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: wafl-onoff-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.onoff events
+---
+
+= wafl.onoff events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.onOff.mirType.inv
+*Severity*::
+ERROR
+*Description*::
+This message occurs when WAFL(R) attempts to bring online or take offline a mirror volume that does not have a valid mirror-type attribute.This situation might be a direct result of an upgrade to a version of Data ONTAP(R) that requires the mirror-type attribute or as a result of a corruption.
+*Corrective Action*::
+This condition cannot be fixed by file system repair mechanisms such as wafliron. The data is not lost, but it is inaccessible to the administrator. To access the data, contact NetApp technical support. Alternatively, the administrator can destroy the mirror volume by using the 'volume delete -vserver vserver_name -volume vol_name' command.
+*Syslog Message*::
+The mirror type associated with the mirror volume %s %s%s%s%s is invalid.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name by itself is insufficient.

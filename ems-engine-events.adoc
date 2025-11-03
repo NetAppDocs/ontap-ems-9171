@@ -1,0 +1,65 @@
+---
+sidebar: sidebar
+permalink: ems-engine-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ems.engine events
+---
+
+= ems.engine events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ems.engine.event.dnsLkupFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Event Management System (EMS) fails to send an event to a mail destination due to name resolution lookup failures for the mail server specified in EMS configuration options. Possible reasons for failure: DNS servers are not reachable, name services might not be configured correctly or, the configured mail server host name is no longer valid.
+*Corrective Action*::
+Use the "vserver services name-service dns show" command to check the DNS configuration. If DNS is not configured correctly, use the "vserver services name-service dns modify" command to correct DNS server information, or the "vserver services name-service dns host modify" to correct static host name-to-IP address mapping information. Use the "event config {show|modify}" command to verify or change the configured mail server.
+*Syslog Message*::
+Failed to send EMS event %s to mail server "%s" because the host name could not be resolved.
+*Parameters*::
+*emsId* (STRING): EMS identifier of the event that was not sent to the mail destination.
+*mailserver* (STRING): Mail server specified in EMS configuration options that could not be resolved.
+
+== ems.engine.event.undefinedEvent
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Event Management System (EMS) receives an event that it does not recognize. The event cannot be processed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*requestedEventName* (STRING): EMS identifier of the event that was undefined.
+*requestedEventParams* (STRING): List of parameters provided with the requested event.
+
+== ems.engine.event.unrecognizedEventVersion
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Event Management System (EMS) receives an event name that it recognizes, but the event has unexpected parameters. This might occur naturally when the EMS tries to replay an event that occurred before an upgrade (or revert) and the event definition changed between versions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*originalEventXml* (STRING): Event name and parameters that were not recognized.
+
+== ems.engine.flush
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the event queues are flushed. Event queues are flushed on system shutdown and before some types of AutoSupport(TM) data collection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).

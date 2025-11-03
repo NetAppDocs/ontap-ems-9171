@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: extcache-bypassallocfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: extcache.bypassallocfailed events
+---
+
+= extcache.bypassallocfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== extCache.BypassAllocFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when External Cache cannot be enabled due to a memory allocation error.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+External Cache Bypass was not enabled due to a memory allocation error.
+*Parameters*::
+(None).

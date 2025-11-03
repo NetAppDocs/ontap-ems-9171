@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: encryption-queue-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: encryption.queue events
+---
+
+= encryption.queue events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== encryption.queue.op.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an operation on the volume in the encryption queue failed.
+*Corrective Action*::
+Check the reason for the failure included in the message. Correct the issue and try the operation again.
+*Syslog Message*::
+%s operation failed on the queued volume '%s' in Vserver '%s'. Reason: %s.
+*Parameters*::
+*op* (STRING): Conversion operation.
+*volumename* (STRING): Name of the volume.
+*vservername* (STRING): Name of the Vserver.
+*reason* (STRING): Reason for the failure.

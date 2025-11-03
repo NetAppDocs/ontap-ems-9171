@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: rsh-enabled-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rsh.enabled events
+---
+
+= rsh.enabled events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rsh.enabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when rsh is enabled in the cluster using the (privilege: advanced) "security protocol" command.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Insecure protocol service rsh has been enabled in the cluster.
+*Parameters*::
+(None).

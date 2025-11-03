@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: connectx-ibqsfpdumpctrl-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: connectx.ibqsfpdumpctrl events
+---
+
+= connectx.ibqsfpdumpctrl events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== connectx.IbQsfpDumpCtrl
+*Severity*::
+ERROR
+*Description*::
+This message occurs when InfiniBand retimer programming fails due to a quad small form-factor pluggable (QSFP) transceiver register dump failure, causing the control registers of QSFP to be dumped.
+*Corrective Action*::
+Automatic retry of InfiniBand retimer programming will be done and an AutoSupport(tm) message will be generated if two retries fail.
+*Syslog Message*::
+InfiniBand retimer programming failed on port %s due to %s. Dumping registers: control 0x%0x, data 0x%0x, timeout 0x%0x, clock 0x%0x.
+*Parameters*::
+*port_str* (STRING): InfiniBand port in which the cable is plugged.
+*reason* (STRING): Reason for the failure of InfiniBand retimer programming.
+*ctrlreg* (INTHEX): Contents of the QSFP control register in hexadecimal notation.
+*datareg* (INTHEX): Contents of the QSFP data register in hexadecimal notation.
+*timeoutreg* (INTHEX): Contents of the QSFP timeout register in hexadecimal notation.
+*clockreg* (INTHEX): Contents of the QSFP clock register in hexadecimal notation.

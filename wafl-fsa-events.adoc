@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: wafl-fsa-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.fsa events
+---
+
+= wafl.fsa events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.fsa.autosize.valid.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when enabling file system analytics on a volume with autosize enabled fails because there is insufficient space in the volume.
+*Corrective Action*::
+Increase the volume size or free space on the volume until there is at least 8% free space for transitioned volumes or 5% for non-transitioned ones. Use the "volume modify" command to increase volume size.
+*Syslog Message*::
+Enabling file system analytics on %s "%s" in SVM "%s" with "%s" usage while its size is "%s" fails because there is insufficient space.
+*Parameters*::
+*volDesc* (STRING): This message contains "transitioned volume" when the volume is a transitioned volume, otherwise, it contains "volume".
+*volName* (STRING): Volume name.
+*vserverName* (STRING): Name of the storage virtual machine (SVM) on which the volume resides.
+*spaceUsed* (STRING): Space usage in the volume, represented in bytes.
+*volSize* (STRING): Volume size, represented in bytes.

@@ -1,0 +1,146 @@
+---
+sidebar: sidebar
+permalink: disk-sanit-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.sanit events
+---
+
+= disk.sanit events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.sanit.complete
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when disk sanitization has been completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s [S/N %s] has completed sanitization.
+*Parameters*::
+*diskName* (STRING): Name of the device.
+*serialno* (STRING): Serial number of the device.
+
+== disk.sanit.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk returns an error during sanitization.
+*Corrective Action*::
+Verify that the drive is capable of sanitization and check the knowledgebase of the support vendor website for the error codes.
+*Syslog Message*::
+Disk %s has received an error %d (0%xh/0%xh/0%xh/0%xh) during sanitization.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*scsi_error* (INT): SCSI error code.
+*sense_key* (INT): Actual sense key.
+*sense_code* (INT): Actual sense code.
+*qualifier* (INT): Actual sense code qualifier.
+*fru_failed* (INT): Actual FRU code.
+
+== disk.sanit.formatComplete
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the disk sanitization format phase is complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk sanitization format complete for disk %s [S/N %s], begin pattern writes.
+*Parameters*::
+*diskName* (STRING): Name of the device.
+*serialno* (STRING): Serial number of the device.
+
+== disk.sanit.formatError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when disk sanitization formatting fails.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s has received an error %d (0%xh/0%xh/0%xh) during the formatting of the drive. Format will be retried within fifteen minutes.
+*Parameters*::
+*diskName* (STRING): Name of the device.
+*status* (INT): Error code.
+*sense_key* (INTHEX): Actual sense key.
+*sense_code* (INTHEX): Actual sense code.
+*qualifier* (INTHEX): Actual sense code qualifier.
+
+== disk.sanit.formatFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when disk sanitization reformatting has been retried unsuccessfully the maximum number of times.
+*Corrective Action*::
+Disk sanitization reformatting attempts have been unsuccessful. To make the disk usable, it must be reformatted. You can do this in maintenance mode with the SCSI "format" command.
+*Syslog Message*::
+Disk sanitization reformat has failed for disk %s.
+*Parameters*::
+*diskName* (STRING): Name of the device.
+
+== disk.sanit.patternDone
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when disk sanitization has completed a cycle of a pattern write.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s [S/N %s] cycle %d pattern write of 0x%02x completed in %02d:%02d:%02d.
+*Parameters*::
+*diskName* (STRING): Name of the device.
+*serialno* (STRING): Serial number of the device.
+*cycle* (INT): Sanitization cycle.
+*pattern* (INT): Pattern byte.
+*hours* (INT): Time in hours.
+*minutes* (INT): Time in minutes.
+*seconds* (INT): Time in seconds.
+
+== disk.sanit.randomPatternDone
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when disk sanitization has completed a cycle of random data write.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s [S/N %s] cycle %d pattern write of random data completed in %02d:%02d:%02d.
+*Parameters*::
+*diskName* (STRING): Name of the device.
+*serialno* (STRING): Serial number of the device.
+*cycle* (INT): Sanitization cycle.
+*hours* (INT): Time in hours.
+*minutes* (INT): Time in minutes.
+*seconds* (INT): Time in seconds.
+
+== disk.sanit.reformatComplete
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when disk sanitization reformatting is complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s has been successfully reformatted. To sanitize disk, restart the disk sanitize command. To bypass format, use -s option.
+*Parameters*::
+*diskName* (STRING): Name of the device.
+
+== disk.sanit.sanitComplete
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the SCSI sanitize command phase of a 'disk sanitize' command is complete, and the data pattern write phase begins.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Sanitization phase of the 'disk sanitize' command was completed for disk %s [S/N %s]. Pattern writes have begun.
+*Parameters*::
+*diskName* (STRING): Name of the device.
+*serialno* (STRING): Serial number of the device.

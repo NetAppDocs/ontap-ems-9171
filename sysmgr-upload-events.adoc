@@ -1,0 +1,113 @@
+---
+sidebar: sidebar
+permalink: sysmgr-upload-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sysmgr.upload events
+---
+
+= sysmgr.upload events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sysmgr.upload.bad.method
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an attempt to upload a file through the System Manager web service fails because the HTTP method is not POST.
+*Corrective Action*::
+Retry the upload using the System Manager web interface.
+*Syslog Message*::
+Failed to upload a file because the HTTP method "%s" is not allowed. The method must be POST.
+*Parameters*::
+*method* (STRING): HTTP method.
+
+== sysmgr.upload.bad.type
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a file upload through the System Manager web service fails because the file name has an unsupported extension.
+*Corrective Action*::
+Upload a file with one of the allowed file name extensions using the System Manager web interface.
+*Syslog Message*::
+Failed to upload file "%s" because the extension must be one of: %s.
+*Parameters*::
+*file* (STRING): File name.
+*allowed_types* (STRING): Allowed extensions for the file name.
+
+== sysmgr.upload.exists
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a file upload through the System Manager web service fails because the file already exists. System Manager automatically deletes the existing file and retries the upload.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failed to upload file "%s" because it already exists.
+*Parameters*::
+*file* (STRING): File name.
+
+== sysmgr.upload.internal
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a file upload through the System Manager web service fails because of an internal error.
+*Corrective Action*::
+Retry the upload using the System Manager web interface.
+*Syslog Message*::
+Failed to upload file "%s" because of an internal error.
+*Parameters*::
+*file* (STRING): File name.
+
+== sysmgr.upload.no.file
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an attempt to upload a file through the System Manager web service fails because the file is not received. This might happen if the file is larger than the limit or space is consumed by other uploads.
+*Corrective Action*::
+If the file is larger than the maximum allowed size, then it cannot be uploaded. If other uploads are in progress, allow time for those uploads to finish, and then try again. Otherwise, contact NetApp technical support.
+*Syslog Message*::
+Failed to upload file "%s" due to exceeding size limit %s or insufficient space.
+*Parameters*::
+*file* (STRING): File name.
+*max_filesize* (STRING): Maximum allowed size for the uploaded file.
+
+== sysmgr.upload.no.form
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an attempt to upload a file through the System Manager web service fails because there is a problem with the request format. This might happen if the Content-Type HTTP header is not "multipart/form-data" or there is not a form field named "file" containing the file to upload.
+*Corrective Action*::
+Retry the upload using the System Manager web interface.
+*Syslog Message*::
+Failed to upload a file because a form field named "file" was not found in the HTTP request, or the Content-Type HTTP header is not "multipart/form-data".
+*Parameters*::
+(None).
+
+== sysmgr.upload.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a file is successfully uploaded through the System Manager web service.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+File "%s" has been uploaded.
+*Parameters*::
+*file* (STRING): File name.
+
+== sysmgr.upload.unauthorized
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an attempt to upload a file through the System Manager web service fails because the user is unauthorized. This could be due to a failure to authenticate the user, e.g., the password or user name was wrong, or if the user's role is not granted access to the System Manager web service.
+*Corrective Action*::
+Verify that the user name and password used to log in in to System Manager are correct. Verify that the user exists in the "security login show" table with application "http" and authentication method "password". Verify that the user's role, as shown in "security login show", is granted access to the "sysmgr" web service in "vserver services web access show sysmgr".
+*Syslog Message*::
+Failed to upload file "%s" because the user is unauthorized.
+*Parameters*::
+*file* (STRING): File name.

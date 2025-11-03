@@ -1,0 +1,91 @@
+---
+sidebar: sidebar
+permalink: diskown-aashelf-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.aashelf events
+---
+
+= diskown.aashelf events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.AAShelf.InterPools
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the controller cannot automatically assign a disk because disks on the shelf and disks on the loop have the same owner but belong to different pools.
+*Corrective Action*::
+1) Find all of the disks belonging to the same shelf, loop and owners as disk %s (S/N %s) by using the "storage disk show" command with the "-fields shelf, owner, dr-home, pool" option. 2) Assign all of the disks with the same owners on this shelf and other shelves to the same pool. Alternatively, manually assign all unowned disks belonging to this shelf.
+*Syslog Message*::
+The controller could not automatically assign disk %s (S/N %s) and any other unassigned disks in the same shelf because the disks are shared across multiple pools within the same loop.
+*Parameters*::
+*diskname* (STRING): Name of the disk.
+*serialno* (STRING): Serial number of the disk.
+
+== diskown.AAShelf.MoreShelf
+*Severity*::
+ERROR
+*Description*::
+This message occurs when more than the supported number of shelves are connected to a storage stack.
+*Corrective Action*::
+1) Check which adapter has more than the supported number of shelves attached by using the "run local storage show shelf" command. 2) Reconfigure the shelves so that the adapter is not connected to more than the supported number of shelves.
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).
+
+== diskown.AAShelf.MultiOwners
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the controller cannot automatically assign disks because the disks on the shelf are owned by multiple systems.
+*Corrective Action*::
+1) Find all of the disks belonging to the same shelf as disk %s (S/N %s) by using the "storage disk show" command. 2) View the list of systems by using the "run local disk show -v" command. 3) Either assign all of the disks on this shelf to a single system, or assign all unowned disks belonging to this shelf.
+*Syslog Message*::
+The controller could not automatically assign disk %s (S/N %s) because disks on the shelf are owned by multiple systems. Because of this problem, the controller also could not assign any unowned disks on this shelf.
+*Parameters*::
+*diskname* (STRING): Name of the disk.
+*serialno* (STRING): Serial number of the disk.
+
+== diskown.AAShelf.MultiPools
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the controller cannot automatically assign a disk because the disks on the shelf are shared across multiple pools.
+*Corrective Action*::
+1) Find all of the disks belonging to the same shelf as disk %s (S/N %s) by using the "storage disk show" command. 2) View the list of pools by using the "run local disk show -v" command. 3) Either assign all of the disks on this shelf to a single pool, or assign all unowned disks belonging to this shelf.
+*Syslog Message*::
+The controller could not automatically assign disk %s (S/N %s) and any other unassigned disks in the same shelf because the disks are shared across multiple pools.
+*Parameters*::
+*diskname* (STRING): Name of the disk.
+*serialno* (STRING): Serial number of the disk.
+
+== diskown.AAShelf.NoMemory
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the node cannot allocate memory for shelf-level automatic assignment.
+*Corrective Action*::
+Initiate the automatic disk assign by running the "storage disk assign -auto true -node node-name" CLI command. If the out-of-memory condition persists, perform a manual disk assign.
+*Syslog Message*::
+Memory not allocated for shelf-level automatic assignment.
+*Parameters*::
+(None).
+
+== diskown.AAShelf.NoOwner
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the controller cannot automatically assign a disk because none of the disks on the shelf are owned by any system.
+*Corrective Action*::
+1) Find all of the disks belonging to the same shelf as disk %s (S/N %s) by using the "storage disk show" command. 2) View the list of systems by using the "run local disk show -v" command. 3) Either assign all of unowned disks in this shelf or assign one of the disks on this shelf by using the "storage disk assign" command.
+*Syslog Message*::
+The controller could not automatically assign disk %s (S/N %s) (and other unassigned disks in the same shelf, if any) because no disks on the shelf are owned by any system.
+*Parameters*::
+*diskname* (STRING): Name of the disk.
+*serialno* (STRING): Serial number of the disk.

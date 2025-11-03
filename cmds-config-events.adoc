@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: cmds-config-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cmds.config events
+---
+
+= cmds.config events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cmds.config.file.delete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when there is an error in deleting the specified file.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: Error in deleting %s: (%s).
+*Parameters*::
+*funcname* (STRING): Function name.
+*fname* (STRING): File name.
+*errMessage* (STRING): Error message.

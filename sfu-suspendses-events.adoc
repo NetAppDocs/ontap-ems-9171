@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sfu-suspendses-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfu.suspendses events
+---
+
+= sfu.suspendses events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfu.suspendSES
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a disk shelf firmware update is requested in a high-availability (HA) environment. One partner node updates the firmware on the disk shelf module while the HA partner node temporarily disables enclosure services while the firmware update is in process.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Suspending enclosure services--partner is updating disk shelf firmware.
+*Parameters*::
+(None).

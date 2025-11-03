@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: dfu-firmwareuptodate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dfu.firmwareuptodate events
+---
+
+= dfu.firmwareuptodate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dfu.firmwareUpToDate
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when all eligible disks are determined to be updated to the latest version of firmware available on the system.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Firmware is up-to-date on all eligible disks.
+*Parameters*::
+(None).

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: configbr-backupfailedbm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: configbr.backupfailedbm events
+---
+
+= configbr.backupfailedbm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== configbr.backupFailedBM
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the configuration backup cannot be created.
+*Corrective Action*::
+Verify the boot media file system is available and has enough space to create a backup. From the systemshell, run the "df /droot/etc" command to check the available space on the boot media. Or adjust the size of the memory-backed scratch space using the "configuration backup settings modify" command (privilege: diagnostic). If the scheduled backup could not be created, create a backup file manually with the (privilege: advanced) "system configuration backup create" command, find the remote URL for uploading with the (privilege: advanced) "system configuration backup settings show -fields destination" command, and upload the backup with the (privilege: advanced) "system configuration backup upload" command.
+*Syslog Message*::
+The %s configuration backup %s cannot be created. Error: '%s'.
+*Parameters*::
+*type* (STRING): Type of backup, either cluster or local.
+*backup* (STRING): Backup file.
+*reason* (STRING): Reason for the error.

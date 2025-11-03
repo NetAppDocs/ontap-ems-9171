@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nvram-flash-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvram.flash events
+---
+
+= nvram.flash events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvram.flash.spare.low
+*Severity*::
+ALERT
+*Description*::
+This message occurs periodically when the capacity of the NVRAM flash memory spare blocks is low, before it becomes critically low. This issue typically indicates that the NVRAM hardware is approaching the end of its service life and should be replaced soon.
+*Corrective Action*::
+Contact NetApp technical support for replacement assistance.
+*Syslog Message*::
+NVRAM flash memory spare capacity is low: %s.
+*Parameters*::
+*problem* (STRING): Information about the NVRAM flash memory spare blocks whose capacity is low and about its condition.

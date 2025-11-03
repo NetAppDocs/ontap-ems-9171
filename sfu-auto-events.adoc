@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: sfu-auto-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfu.auto events
+---
+
+= sfu.auto events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfu.auto.update.off.impact
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) software cannot automatically upgrade the firmware on a disk shelf because the hidden 'shelf.fw.auto.update' option is set to off.
+*Corrective Action*::
+Set the hidden option 'shelf.fw.auto.update' to "on", or update the firmware manually.
+*Syslog Message*::
+Firmware could not be updated on I/O module %s with firmware version %s on %s disk shelf %s.shelf%d. Update the firmware manually.
+*Parameters*::
+*moduleType* (STRING): I/O controller module type, for example, AT-FCX/ESH4/SAS/IOM3.
+*productRev* (STRING): Firmware revision level.
+*shelfType* (STRING): Disk shelf enclosure type, for example, DS14-Mk4-FC, DS14-Mk2-FC, or DS14-Mk2-AT.
+*channelName* (STRING): Name of the adapter port or switch port of the disk shelf enclosure.
+*shelfId* (INT): ID of the disk shelf enclosure.

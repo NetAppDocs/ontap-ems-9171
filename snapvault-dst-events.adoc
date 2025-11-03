@@ -1,0 +1,103 @@
+---
+sidebar: sidebar
+permalink: snapvault-dst-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapvault.dst events
+---
+
+= snapvault.dst events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapvault.dst.bkpSnapCreate
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when SnapVault(R) creates a backup snapshot for a given backup schedule.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A backup snapshot was created on volume %s by backup schedule %s (%d of %d allocated snapshot copies consumed).
+*Parameters*::
+*vol_name* (STRING): Name of the SnapVault secondary volume on which the backup snapshot is created.
+*target_name* (STRING): Base name of the backup schedule for which the given backup snapshot is created.
+*snap_cnt* (INT): Total number of backup snapshots created for the given backup schedule.
+*alloc_cnt* (INT): Total number of backup snapshots allocated for the given backup schedule.
+
+== snapvault.dst.bliDataRepaired
+*Severity*::
+NOTICE
+*Description*::
+This message is issued when SnapVault may have repaired data that had previously been made incorrect/incomplete by Bug #137685 which has now been fixed. Under some conditions this message may be issued when, in fact, the data was not previously incorrect or incomplete. Under some conditions, the SnapVault code cannot determine whether the previous version of the data was correct or not, but it does know that after the current transfer completes that the data is correct. This message will only be issued if the hidden snapvault option, repair_bug137685_stats is enabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ONTAP changed data in %d data chunk(s) in %s which may have been missing or incorrect.
+*Parameters*::
+*chunks_repaired* (INT): The number of of chunks which may have been repaired. Up to 2MB of data may be sent in a chunk in the QSM/SnapVault data format. This count is incremented for each chunk in which one or more 4K blocks may have been repaired.
+*dst_path* (STRING): Destination qtree path.
+
+== snapvault.dst.bliWarning
+*Severity*::
+ERROR
+*Description*::
+This event is issued when SnapVault has detected that OSSV secondary data may be incomplete or incorrect.
+*Corrective Action*::
+See the public reports for Bug #137685 and Bug #140930 for corrective action.
+*Syslog Message*::
+ONTAP has detected a condition in which OSSV secondary data for %s may be incomplete or incorrect. See the public reports for Bug #137685 and Bug #140930 for corrective action.
+*Parameters*::
+*dst_path* (STRING): Destination qtree path.
+
+== snapvault.dst.lowSnapWarn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the remaining number of snapshots allocated for a given SnapVault(R) backup schedule on the given volume reaches or falls below the preset warning level. This event occurs on every failed attempt by SnapVault to create a backup snapshot on the given backup schedule, until you resolve the condition.
+*Corrective Action*::
+Consider deleting some backup snapshots from the given backup target to create some free slots. For more information and other solutions, see the Online Backup Recovery Guide.
+*Syslog Message*::
+Remaining number of snapshots on the volume %s for the backup schedule %s is below the set warning level (%d of allocated %d).
+*Parameters*::
+*vol_name* (STRING): Name of the SnapVault secondary volume on which the backup snapshot is created.
+*target_name* (STRING): Base name of the backup schedule for which the given backup snapshot is created.
+*snap_cnt* (INT): Total number of backup snapshots created for the given backup schedule.
+*alloc_cnt* (INT): Total number of backup snapshots allocated to the given backup schedule.
+
+== snapvault.dst.opNotComplete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when SnapVault(R) cannot complete a transfer normally, due to resource unavailability or SnapVault being off.
+*Corrective Action*::
+None needed. SnapVault periodically attempts to complete this transfer.
+*Syslog Message*::
+(None).
+*Parameters*::
+*dst_path* (STRING): Destination qtree path.
+*snapvault_on* (INT): SnapVault enabled? - on(1) or off(0)
+
+== snapvault.dst.updateDelayed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an update request is received on a destination qtree that is being used as the source for another transfer.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: Update from %s:%s to %s:%s is delayed because another update, %s:%s to %s:%s, is already in progress.
+*Parameters*::
+*type* (STRING): SnapVault(R) transfer type.
+*srcfiler1* (STRING): SnapVault source system.
+*srcpath1* (STRING): SnapVault source qtree.
+*dstfiler1* (STRING): SnapVault destination system for first transfer (in progress). Source for second transfer (delayed).
+*dstpath1* (STRING): SnapVault destination qtree for first transfer. Source for second transfer.
+*srcfiler2* (STRING): SnapVault destination system for first transfer. Source for second transfer.
+*srcpath2* (STRING): SnapVault destination qtree for first transfer. Source for second transfer.
+*dstfiler2* (STRING): Destination system for second transfer.
+*dstpath2* (STRING): Destination qtree for second transfer.

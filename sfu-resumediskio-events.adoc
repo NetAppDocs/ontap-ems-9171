@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sfu-resumediskio-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfu.resumediskio events
+---
+
+= sfu.resumediskio events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfu.resumeDiskIO
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a disk shelf firmware update is completed and disk I/O is resumed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Resuming disk I/O after shelf firmware update.
+*Parameters*::
+(None).

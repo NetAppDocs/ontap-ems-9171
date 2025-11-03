@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sk-kt-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sk.kt events
+---
+
+= sk.kt events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sk.kt.rtc
+*Severity*::
+INFORMATIONAL
+*Description*::
+This is the output of debugging command that prints the time of day held in the real-time clock chip.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RTC time: %s
+*Parameters*::
+*rtc_time* (STRING): The time held in the real-time clock chip.

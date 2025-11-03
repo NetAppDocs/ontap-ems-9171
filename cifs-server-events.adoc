@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: cifs-server-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cifs.server events
+---
+
+= cifs.server events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cifs.server.auth.StyleMismatch
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Vserver DR subsystem detects that the authentication style (domain or workgroup) of the source Vserver's CIFS server does not match the authentication style of the destination Vserver's CIFS server.
+*Corrective Action*::
+Use the 'vserver cifs modify' command to configure the source or destination Vserver's CIFS server into a domain or workgroup as necessary for the authentication styles to match.
+*Syslog Message*::
+Vserver DR check found that the CIFS server authentication style of the source Vserver, %s, did not match the authentication style of the destination Vserver, %s.
+*Parameters*::
+*source_vserver* (STRING): Name of the source Vserver of the Vserver DR relationship.
+*destination_vserver* (STRING): Name of the destination Vserver of the Vserver DR relationship.

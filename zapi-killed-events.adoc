@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: zapi-killed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: zapi.killed events
+---
+
+= zapi.killed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== zapi.killed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ZAPI Socket Manager (ZSM) terminates and no longer offers a connection on which a client can deliver Zephyr API (ZAPI) requests.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ZAPI Socket Manager (ZSM) terminated.
+*Parameters*::
+(None).

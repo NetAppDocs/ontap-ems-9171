@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: ha-aggrmigrduration-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.aggrmigrduration events
+---
+
+= ha.aggrmigrduration events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.aggrMigrDuration
+*Severity*::
+NOTICE
+*Description*::
+This message occurs every 60 seconds during an aggregate migration operation. It indicates the current phase of the aggregate migration, the high-availability (HA) operation that triggered the aggregate migration, and the elapsed time since the start of the current phase of the aggregate migration.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+As part of the current %s operation, the aggregate migration phase %s has been ongoing for %lld msecs. Aggregate undergoing migration: %s.
+*Parameters*::
+*aggr_migr_op_name* (STRING): Name of the HA operation that triggered the aggregate migration.
+*aggr_migr_phase* (STRING): Current phase of the aggregate migration.
+*elapsed_time* (LONGINT): Elapsed time since the start of the current phase of the aggregate migration.
+*aggr_name* (STRING): Name of the aggregate undergoing migration.

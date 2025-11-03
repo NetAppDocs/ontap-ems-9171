@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: bdfu-selected-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: bdfu.selected events
+---
+
+= bdfu.selected events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== bdfu.selected
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when background disk firmware update selects a disk for firmware download. The disk contents will be copied to a suitable spare, the disk will be removed from the raid group and then firmware will be downloaded to it. After the firmware download is complete, the contents of the disk will be restored.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s [%s %s %s] S/N [%s] selected for background disk firmware update.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*vendorName* (STRING): Vendor name of the disk.
+*productId* (STRING): Product ID of the disk.
+*fwVersion* (STRING): Firmware version of the disk.
+*serialno* (STRING): Serial number of the disk.

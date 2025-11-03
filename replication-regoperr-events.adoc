@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: replication-regoperr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: replication.regoperr events
+---
+
+= replication.regoperr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== replication.regOpErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system encounters an error during a registry operation related to SnapMirror(R) or SnapVault(R).
+*Corrective Action*::
+The reasons for the error cited in the error message might indicate ways to address the problem.
+*Syslog Message*::
+Replication registry operation error: %s.
+*Parameters*::
+*reason* (STRING): Reason for registry operation failure.

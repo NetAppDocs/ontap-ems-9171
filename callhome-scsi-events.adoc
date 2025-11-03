@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-scsi-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.scsi events
+---
+
+= callhome.scsi events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.scsi.tgt.misconfig
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a LUN (Logical Unit Number) mapping or igroup type misconfiguration has been detected when the cluster interconnect has transitioned from down to up. The detected misconfiguration problems will typically include cases of having a LUN on each storage controller mapped to the same LUN for the same initiator. When the cluster interconnect is down, LUN mapping changes are prevented unless overridden. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Run the "lun config_check" command which will list out the problems that caused this event and resolve this problem list. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for FILER SCSI TARGET MISCONFIGURED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

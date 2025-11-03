@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: configbr-nodesturl-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: configbr.nodesturl events
+---
+
+= configbr.nodesturl events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== configbr.noDestURL
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the cluster backup is saved on only one node and no offsite configuration backup destination URL is configured.
+*Corrective Action*::
+Configure an offsite configuration backup destination URL as soon as possible, using the commands "system configuration backup settings modify -destination <destination-url> -username <username-on-destination-url>" and "system configuration backup settings set-password".
+*Syslog Message*::
+Cluster backup is saved on only one node and no offsite configuration backup destination URL is configured.
+*Parameters*::
+(None).

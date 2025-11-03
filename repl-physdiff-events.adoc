@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: repl-physdiff-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.physdiff events
+---
+
+= repl.physdiff events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.physdiff.invalid.hole
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a block to replicate was found to be inconsistent in the source volume. Replication has been aborted to avoid propagating the inconsistency to the destination node.
+*Corrective Action*::
+Run wafliron on the aggregate containing the source volume of the replication.
+*Syslog Message*::
+Replication of volume '%s%s%s' (DSID %llu) encountered an inconsistent block (VVBN %llu).
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume.
+*volDsid* (LONGINT): Data set identifier (DSID) of the source volume.
+*vvbn* (LONGINT): Virtual Volume Block Number of the affected block.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: zsm-send-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: zsm.send events
+---
+
+= zsm.send events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== zsm.send.request.timeout
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a socket timeout occurs on an intracluster Manage ONTAP(R) API request to an internal ONTAPI(R) server.
+*Corrective Action*::
+Check your network configuration and other potential error conditions, such as the node being down or too busy. Correct the error condition and retry the operation.
+*Syslog Message*::
+An intracluster Manage ONTAP API request timed out while waiting for an internal ONTAPI server response.
+*Parameters*::
+(None).

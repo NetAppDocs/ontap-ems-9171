@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: wafl-lmgr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.lmgr events
+---
+
+= wafl.lmgr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.lmgr.meta.mv
+*Severity*::
+NOTICE
+*Description*::
+The appliance file lock state for a volume could not be moved during a file system check operation (wafliron).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Move of file lock manager state for volume fsid %08x (uuid %s) for file system check received error %s
+*Parameters*::
+*fsId* (INT): File system identifier of the volume.
+*uuid* (STRING): Uuid of the volume.
+*err* (STRING): Error message.
+
+== wafl.lmgr.meta.rm
+*Severity*::
+NOTICE
+*Description*::
+The appliance file lock state for a volume could not be removed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cannot remove lock manager host metafile %s in recycle bin: error %s
+*Parameters*::
+*path* (STRING): Metadata file path.
+*err* (STRING): Error message.

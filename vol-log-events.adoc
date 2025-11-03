@@ -1,0 +1,49 @@
+---
+sidebar: sidebar
+permalink: vol-log-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vol.log events
+---
+
+= vol.log events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vol.log.overalloc
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the volume or aggregate allocates more space than it can honor by way of reservations, or the aggregate has allocated more space than it can honor by way of guarantees. If the reserved or guaranteed space is consumed, there is insufficient physical space, which can cause the volume or aggregate to be taken offline.
+*Corrective Action*::
+For non-ASA r2 platforms, create space by increasing the volume or aggregate size, deleting data, deleting Snapshot copies, or changing the provisioning from thick to thin. To increase a volume's size, use the "volume size" command. To delete a volume's Snapshot copies, use the "volume snapshot delete" command. To change provisioning in a volume, reserved files can be unreserved by using the "volume file reservation" command. To increase an aggregate's size, add disks by using the "storage aggregate add-disks" command. Aggregate Snapshot copies are deleted automatically when the aggregate is full. To change provisioning of a volume in an aggregate, change the volume guarantee from "volume" to "none" by using the "space-guarantee" field of the "volume modify" command. For ASA r2 platforms, create space in the volume or aggregate. To create space in an aggregate, add more disks to the cluster. To create space in a volume, delete data or delete Snapshot copies. To delete a Snapshot copy, use the "vserver consistency-group snapshot delete" command.
+*Syslog Message*::
+%s %s%s%s is logically overallocated, using %s%% logical space and %s%% physical space.
+*Parameters*::
+*object_type* (STRING): Identifier for the type of object to which this event applies (aggregate or volume).
+*name* (STRING): Name of this object.
+*app* (STRING): Application universal unique identifier(UUID).
+*vserver_uuid* (STRING): UUID of the object's storage virtual machine (SVM), if the object is a volume. Otherwise, this string is empty.
+*percent_logically_full* (STRING): Used capacity of the logical space of the object, as a percent. This value can be greater than 100 due to space reserved for metadata. The percentage is computed for the entire object, including Snapshot copy space, and is equivalent to the "Total Used" field in the output of the "volume show-space" or "aggregate show-space" commands.
+*percent_physically_full* (STRING): Used capacity of the physical space of the object, as a percent. This value can be greater than 100 due to space reserved for metadata. The percentage is computed for the entire object, including Snapshot copy space, and is equivalent to the "Total Physical Used" field in the output of the "volume show-space" or "aggregate show-space" commands.
+
+== vol.log.overalloc.inc.sav
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the volume allocates more space than it can honor. Allocated space is based on all of the physical used blocks, reservations, and space saved by storage efficiency features.
+*Corrective Action*::
+Create space by increasing the volume size, deleting data or their reservations, or deleting snapshots. To increase volume size, use the "volume size" command. To delete snapshots, use the "volume snapshot delete" command.
+*Syslog Message*::
+%s %s%s%s (UUID %s) is logically overallocated using %s%% space, which considers space saved by storage efficiency features as well as physically used blocks and reservations.
+*Parameters*::
+*object_type* (STRING): Identifier for the type of object to which this event applies. This event should be applicable only to volumes with logical space enforcement enabled.
+*name* (STRING): Name of this object.
+*app* (STRING): Application Universally Unique ID (UUID).
+*vserver_uuid* (STRING): UUID of the object's or volume's Vserver.
+*object_uuid* (STRING): UUID of the object or volume.
+*percent_full* (STRING): Used capacity of the logical space of the object, along with reservations and space saved by the storage efficiency features, as a percentage. This value can be greater than 100 due to space reserved for metadata. The percentage is computed for the entire object, including snapshot space, and is equivalent to the "logical-used" field in the output of the "volume show-space" command.

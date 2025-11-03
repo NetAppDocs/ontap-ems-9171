@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: auditlog-change-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: auditlog.change events
+---
+
+= auditlog.change events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== auditlog.change.detected
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects that audit log files have been tampered with.
+*Corrective Action*::
+Contact Contact NetApp technical support. for assistance.
+*Syslog Message*::
+Audit log file "%s" was tampered with.
+*Parameters*::
+*file_name* (STRING): Name of the audit log file which was tampered with.

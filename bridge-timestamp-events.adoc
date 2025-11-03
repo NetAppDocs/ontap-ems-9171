@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: bridge-timestamp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: bridge.timestamp events
+---
+
+= bridge.timestamp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== bridge.timestamp.noSync
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the max number of retries is exceeded when attempting to apply SCSI SET TIMESTAMP command on one or more attached FC-to-SAS bridges. A timestamp that is not in sync does not affect the functional operation of the bridge. The SET TIMESTAMP operation is only used to synchronize timestamps between ONTAP(R) and the bridge to assist with correlating log events.
+*Corrective Action*::
+A timestamp operation will always retry in 24 hours. If this notice persists, contact NetApp technical support.
+*Syslog Message*::
+ONTAP timestamp sync did not complete on FC-to-SAS bridge with S/N: %s WWN: %s.
+*Parameters*::
+*bridgeSerialNum* (STRING): Serial number of the bridge.
+*bridgeWWN* (STRING): World Wide Name of the bridge.

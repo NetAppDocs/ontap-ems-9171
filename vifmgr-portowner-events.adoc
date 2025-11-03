@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: vifmgr-portowner-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.portowner events
+---
+
+= vifmgr.portowner events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.portowner.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a port receives a configuration error.
+*Corrective Action*::
+Remove any ports from the bootarg.bsdportname LOADER variable that are of a role other than node-mgmt by resetting the bootarg.bsdportname under the LOADER prompt: LOADER> setenv bootarg.bsdportname "port-name (node-mgmt port only)" Then reboot the node.
+*Syslog Message*::
+Node %s port %s has an invalid port role type. Only node-mgmt network ports can be assigned to use a different driver.
+*Parameters*::
+*nodename* (STRING): Name of the node on which the affected port resides.
+*portname* (STRING): Name of the affected port.

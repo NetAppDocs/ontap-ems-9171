@@ -1,0 +1,71 @@
+---
+sidebar: sidebar
+permalink: esh-pctl-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: esh.pctl events
+---
+
+= esh.pctl events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== esh.pctl.bpCPLDFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a 'power control' command cannot be performed on the specified disk device because the backplane CPLD (Complex Programmable Logic Device) is not operational.
+*Corrective Action*::
+Power-cycle the disk shelf. If the problem persists, replace the disk shelf.
+*Syslog Message*::
+Cannot execute a 'power control' command on disk %d [%s:%s:%s] serial number [%s] in disk shelf %d on channel %s. Backplane CPLD (Complex Programmable Logic Device) in the disk shelf is not operational.
+*Parameters*::
+*loopID* (INT): Loop ID of the disk for which the 'power control' command failed.
+*vendor* (STRING): Vendor name of the disk.
+*model* (STRING): Model name of the disk.
+*fwrev* (STRING): Firmware revision of the disk.
+*serno* (STRING): Serial number of the disk.
+*shelfID* (INT): Disk shelf ID of the disk shelf that reported an error.
+*channelName* (STRING): Name of the Fibre Channel adapter port.
+
+== esh.pctl.connFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a 'power control' command cannot be performed on the specified disk device because the CPLD (Complex Programmable Logic Device) serial link on the specified module has a problem.
+*Corrective Action*::
+Replace the specified I/O module.
+*Syslog Message*::
+Cannot execute a 'power control' command on disk %d [%s:%s:%s] serial number [%s] in disk shelf %d on channel %s. The CPLD (Complex Programmable Logic Device) serial link on I/O module %s has a problem.
+*Parameters*::
+*loopID* (INT): Loop ID of the disk for which the 'power control' command failed.
+*vendor* (STRING): Vendor name of the disk.
+*model* (STRING): Model name of the disk.
+*fwrev* (STRING): Firmware revision of the disk.
+*serno* (STRING): Serial number of the disk.
+*shelfID* (INT): Disk shelf ID of the disk shelf that reported an error.
+*channelName* (STRING): Name of the Fibre Channel adapter port.
+*module* (STRING): Name of the module with a bad CPLD serial link.
+
+== esh.pctl.modCPLDFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a 'power control' command cannot be performed on the specified disk device because the CPLD (Complex Programmable Logic Device) on an I/O module is not operational.
+*Corrective Action*::
+Replace the specifed I/O module.
+*Syslog Message*::
+Cannot execute a 'power control' command on disk %d [%s:%s:%s] serial number [%s] in disk shelf %d on channel %s. The CPLD (Complex Programmable Logic Device) on I/O module %s is not operational.
+*Parameters*::
+*loopID* (INT): Loop ID of the disk for which the 'power control' command failed.
+*vendor* (STRING): Vendor name of the disk.
+*model* (STRING): Model name of the disk.
+*fwrev* (STRING): Firmware revision of the disk.
+*serno* (STRING): Serial number of the disk.
+*shelfID* (INT): Disk shelf ID of the disk shelf that reported an error.
+*channelName* (STRING): Name of the Fibre Channel adapter port.
+*module* (STRING): I/O module with the failed CPLD.

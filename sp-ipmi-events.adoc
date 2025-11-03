@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: sp-ipmi-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sp.ipmi events
+---
+
+= sp.ipmi events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sp.ipmi.lost.shutdown
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when Data ONTAP(R) is no longer receiving the heartbeats from the Service Processor (SP) after all the SP recovery actions have been taken. Without the SP, Data ONTAP cannot monitor the health of the hardware. To prevent hardware damage and data loss, the system will shut down.
+*Corrective Action*::
+Power-cycle the system by pulling the controller out from the chassis, pushing it back in, then powering it on. If the problem persists, replace the controller module.
+*Syslog Message*::
+SP heartbeat stopped and cannot be recovered. To prevent hardware damage and data loss, the system will shut down in %d minutes.
+*Parameters*::
+*num_minutes* (INT): Number of minutes until the system shuts down.
+*object_type* (STRING): Type of resource object under notification. For this EMS, the object_type will always be NODE.
+*object_uuid* (STRING): UUID of the resource object. For this EMS, the UUID will be of the node.

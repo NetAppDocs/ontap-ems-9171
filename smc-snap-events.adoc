@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: smc-snap-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: smc.snap events
+---
+
+= smc.snap events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== smc.snap.upd.retention.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror operation fails to copy the retention period of a snapshot from the source endpoint to the destination endpoint because the ONTAP(R) version of the destination cluster does not support copying the retention period. This issue can happen regardless of the success or failure of the SnapMirror operation.
+*Corrective Action*::
+Check the ONTAP version of the destination cluster using the command "system image show -node <node_name> -iscurrent true -fields version". If the ONTAP version of the destination cluster is earlier than ONTAP 9.12.1 then copying the retention period is not supported on the destination cluster. The destination cluster should be upgraded to ONTAP 9.12.1 or later to copy the retention period of snapshots from the source to the destination.
+*Syslog Message*::
+The SnapMirror relationship with relationship UUID "%s" will not copy the retention period of a snapshot from the source volume "%s" to the destination volume "%s" because the ONTAP version of the destination cluster does not support copying the retention period.
+*Parameters*::
+*relationshipID* (STRING): Relationship UUID.
+*srcpath* (STRING): Path name of the source endpoint of the SnapMirror relationship.
+*dstpath* (STRING): Path name of the destination endpoint of the SnapMirror relationship.

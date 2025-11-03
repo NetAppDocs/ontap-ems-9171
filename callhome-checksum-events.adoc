@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: callhome-checksum-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.checksum events
+---
+
+= callhome.checksum events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.checksum
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects a RAID level checksum error. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for CHECKSUM ERROR
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.checksum.multiple
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects a RAID checksum error involving multiple disk drives. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for CHECKSUM ERROR (multiple disks)
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

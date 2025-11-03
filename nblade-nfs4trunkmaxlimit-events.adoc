@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: nblade-nfs4trunkmaxlimit-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.nfs4trunkmaxlimit events
+---
+
+= nblade.nfs4trunkmaxlimit events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.nfs4TrunkMaxLimit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a session trunking group created by the NFSv41 client exceeds the maximum number of supported trunk connections. NFS traffic does not respond on the new trunk connection over the maximum limit.
+*Corrective Action*::
+Use only up to the maximum number of supported LIFs for session trunked NFS41 clients. Modify the NFS client configurations to limit the number of trunked sessions to the maximum supported to avoid the issue.
+*Syslog Message*::
+In-flight requests from client IP [%s]:%d to destination LIF "%s" (Vserver: %s) is trying to use more than max supported:"%d" trunking connections. This results in NFS41 request getting not responded by NFS server due to limit reached.
+*Parameters*::
+*clientIpAddress* (STRING): IP address of the client.
+*clientPort* (INT): Network port of the client.
+*lifIpAddress* (STRING): IP address of the logical interface.
+*vserverName* (STRING): Name of the Vserver associated with this operation.
+*maxTrunkConnectionLimit* (INT): Maximum number of allowed trunked connection by NFS41 server.

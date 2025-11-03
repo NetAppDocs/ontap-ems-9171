@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-css-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.css events
+---
+
+= callhome.css events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.css.toc.repair
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an inconsistency is discovered in a metadata record of the Cloud Storage Service (CSS). The inconsistency is automatically repaired immediately upon detection. But it can leave behind lost objects that are no longer pointed to by the namespace. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+The (privilege: diag) "object-store-server lost-object-recovery start" command can be used to add lost objects back into the namespace. The progress of this operation can be monitored with the "object-store-server lost-object-recovery show" command. If you need further assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

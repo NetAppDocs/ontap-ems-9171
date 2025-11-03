@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: nvram-hw-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvram.hw events
+---
+
+= nvram.hw events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvram.hw.degraded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the NVRAM hardware is degraded.
+*Corrective Action*::
+Contact NetApp technical support for replacement assistance.
+*Syslog Message*::
+NVRAM hardware is degraded: %s.
+*Parameters*::
+*reasonText* (STRING): Reason the NVRAM hardware is degraded.
+
+== nvram.hw.initFail
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the Data ONTAP(R) NVRAM hardware fails to initialize.
+*Corrective Action*::
+Typically, this type of error is unexpected and indicates that the NVRAM hardware is failing and should be replaced. Contact NetApp technical support for assistance with the replacement.
+*Syslog Message*::
+NVRAM hardware initialization failed: %s.
+*Parameters*::
+*error* (STRING): Description of the error.
+
+== nvram.hw.normal
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NVRAM hardware is operating normally.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NVRAM hardware is operating normally.
+*Parameters*::
+(None).

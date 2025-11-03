@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: disk-fw-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.fw events
+---
+
+= disk.fw events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.fw.autodownrev
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system detects disks with firmware that is not up-to-date. The background firmware update program will update the firmware automatically if the correct firmware files are in place.
+*Corrective Action*::
+Download the correct firmware file onto the system. Check your support provider's web site or knowledgebase for more information about obtaining the latest disk firmware.
+*Syslog Message*::
+%d disks have downrev firmware. They will be updated automatically using background disk firmware update if the correct firmware files are in place.
+*Parameters*::
+*driveCount* (INT): Number of disks that need to have updated firmware.
+
+== disk.fw.downrevWarning
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects disks with firmware that is not up-to-date.
+*Corrective Action*::
+Download and install the latest disk firmware file. Check your support provider's web site or knowledgebase for more information about obtaining the latest disk firmware.
+*Syslog Message*::
+%d disks have downrev firmware that you need to update.
+*Parameters*::
+*driveCount* (INT): Number of disks that need to have updated firmware.

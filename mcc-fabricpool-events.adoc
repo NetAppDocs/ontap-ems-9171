@@ -1,0 +1,58 @@
+---
+sidebar: sidebar
+permalink: mcc-fabricpool-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mcc.fabricpool events
+---
+
+= mcc.fabricpool events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mcc.fabricpool.license.absent
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a FabricPool license exists on only one of the two sites of a MetroCluster(tm) configuration.
+*Corrective Action*::
+Install a FabricPool license on the cluster that is missing the license.
+*Syslog Message*::
+The FabricPool license is installed on only one site of this MetroCluster configuration. The license is missing on cluster %s (ID: %s).
+*Parameters*::
+*cluster_name* (STRING): Name of the cluster which is missing the license.
+*cluster_uuid* (STRING): UUID of the cluster.
+
+== mcc.fabricpool.license.diff
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the FabricPool license capacity or term limits are different for the two sites of a MetroCluster(tm) configuration.
+*Corrective Action*::
+Install a new license on one of the clusters so that the license limits match.
+*Syslog Message*::
+The FabricPool license limits are different for the two sites of this MetroCluster configuration. The license limits are %s and %s on site %s and %s and %s on site %s.
+*Parameters*::
+*local_license_limit* (STRING): License capacity limit from the local cluster.
+*local_term_limit* (STRING): License term limit from the local cluster.
+*local_cluster_name* (STRING): Name of the local cluster.
+*remote_license_limit* (STRING): License capacity limit from the remote cluster.
+*remote_term_limit* (STRING): License term limit from the remote cluster.
+*remote_cluster_name* (STRING): Name of the remote cluster.
+
+== mcc.fabricpool.mirror.missing
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a FabricPool in a MetroCluster configuration does not have a mirror object store attached.
+*Corrective Action*::
+Use the "storage aggregate object-store mirror" command to add a mirror object store to the FabricPool.
+*Syslog Message*::
+FabricPool: "%s" UUID: "%s" in a MetroCluster configuration does not have synchronous data protection enabled because the mirror object store is missing.
+*Parameters*::
+*aggr* (STRING): Name of the FabricPool.
+*UUID* (STRING): UUID of the FabricPool.

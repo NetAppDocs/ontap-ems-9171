@@ -1,0 +1,145 @@
+---
+sidebar: sidebar
+permalink: callhome-svm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.svm events
+---
+
+= callhome.svm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.svm.mig.abort.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Vserver migration failed to be aborted. If the system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Run the "vserver migrate show" command to view the description of the error and the corrective action.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multi-node AutoSupport.
+
+== callhome.svm.mig.aborted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a Vserver migration is successfully aborted. If the system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multi-node AutoSupport.
+
+== callhome.svm.mig.clean.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the cleanup phase of a Vserver migration has failed. If the system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Run the "vserver migrate show" command to view the description of the error and the corrective action.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multi-node AutoSupport.
+
+== callhome.svm.mig.complete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a Vserver migration has completed. If the system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multi-node AutoSupport.
+
+== callhome.svm.mig.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Vserver migration fails. If the system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Run the "vserver migrate show" command to view the description of the error and the corrective action.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multi-node AutoSupport.
+
+== callhome.svm.mig.pause.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Vserver migration failed to be paused. If the system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Run the "vserver migrate show" command to view the description of the error and the corrective action.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multi-node AutoSupport.
+
+== callhome.svm.mig.paused
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a Vserver migration is paused. If the system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multi-node AutoSupport.
+
+== callhome.svm.mig.pstCut.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the post-cutover phase of a Vserver migration has failed. If the system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Run the "vserver migrate show" command to view the description of the error and the corrective action.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multi-node AutoSupport.
+
+== callhome.svm.mig.setCfg.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the setup configuration phase of a Vserver migration has failed. If the system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Run the "vserver migrate show" command to view the description of the error and the corrective action.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multi-node AutoSupport.
+
+== callhome.svm.mig.started
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a Vserver migration has started successfully. If the system is configured to do so, it generates and transmits an AutoSupport (or "call home") message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multi-node AutoSupport.

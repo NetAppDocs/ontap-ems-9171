@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: cifs-lug-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cifs.lug events
+---
+
+= cifs.lug events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cifs.lug.import.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the job to import CIFS local users and groups is completed successfully only at a primary site within a MetroCluster(R) configuration or Vserver DR setup. CIFS local users and groups have either not been applied or only partially applied at the secondary site.
+*Corrective Action*::
+Use the "metrocluster vserver resync -vserver <vserver name>" command to resynchronize the Vserver configuration.
+*Syslog Message*::
+CIFS local users and groups import job failed for Vserver %s. Reason: %s.
+*Parameters*::
+*vserver* (STRING): Name of the Vserver.
+*reason* (STRING): Reason for the failure.

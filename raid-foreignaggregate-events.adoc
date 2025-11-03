@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: raid-foreignaggregate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.foreignaggregate events
+---
+
+= raid.foreignaggregate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.foreignAggregate.online.rtIDChanged
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system changes the RAID tree ID of a foreign aggregate that is being brought online.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: RAID tree ID was changed from %s to %s.
+*Parameters*::
+*aggregate* (STRING): Name of the aggregate.
+*oldrtID* (STRING): Old RAID tree ID of the aggregate.
+*newrtID* (STRING): New RAID tree ID of the aggregate.

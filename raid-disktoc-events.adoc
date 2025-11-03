@@ -1,0 +1,67 @@
+---
+sidebar: sidebar
+permalink: raid-disktoc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.disktoc events
+---
+
+= raid.disktoc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.disktoc.rawsizeChange
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is generated when it is detected from the disk Table Of Contents that a disk's stored rawsize does not match the physical size of the disk. (see burt 81939 for more details).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*disk_info* (STRING): The Formatted information of the disk
+*label_rawsize* (LONGINT): The rawsize according to the label.
+*phys_rawsize* (LONGINT): The rawsize according to the storage layer
+*instanceFile* (STRING): The internal file code
+*instanceId* (INT): The internal instance identifier
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disktoc.tooRecent
+*Severity*::
+ALERT
+*Description*::
+This message occurs when RAID discovers that the disk's table of contents version is newer than that supported by this release of Data ONTAP(R). Data ONTAP takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+If this message was seen during boot, reboot with the previous kernel version. If this message was seen when the system was up and running, it is likely due to adding a disk to a running system. Remove the disk from system. if the intent is to add the disk as a spare disk, use the 'priv set advanced;unfail -s disk_name' command to mark the disk as not zeroed spare. NetApp technical support For information about correcting the problem, search for the "raid.disktoc.tooRecent" keyword on the Knowledgebase of the NetApp Support Site.
+*Syslog Message*::
+%s has a disk table of contents version (%d) more recent than the currently supported version (%d).
+*Parameters*::
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*disktocVersion* (INT): Disk table of contents version.
+*disktocCurrentVersion* (INT): Current disk table of contents version supported by the software.
+*instanceFile* (STRING): Internal file code.
+*instanceId* (INT): Internal instance identifier.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.

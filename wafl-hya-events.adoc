@@ -1,0 +1,159 @@
+---
+sidebar: sidebar
+permalink: wafl-hya-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.hya events
+---
+
+= wafl.hya events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.hya.aggr.policy.init
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the default caching policies are to be configured on all volumes contained in this aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Attempting to configure the default caching policies on all volumes in the aggregate '%s %s'.
+*Parameters*::
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+
+== wafl.hya.bc.add.cbi
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a hybrid aggregate adds one counter file block (CBI - counter block index).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*aggr* (STRING): Aggregate name.
+*aggr_uuid* (STRING): Universal Unique ID (UUID) of the aggregate.
+*volume* (STRING): Volume name.
+*volume_uuid* (STRING): UUID of the volume.
+*btid* (LONGINT): Buftree ID.
+*cbi* (INT): CBI value.
+*volume_info* (STRING): Volume type information.
+
+== wafl.hya.bc.del.flexvol
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a hybrid aggregate block accounting module receives a FlexVol(R) deletion notification.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*aggr* (STRING): Aggregate name.
+*aggr_uuid* (STRING): UUID of the aggregate.
+*volume* (STRING): Volume name.
+*volume_uuid* (STRING): UUID of the volume.
+*volume_info* (STRING): Volume type information.
+*btid* (LONGINT): Buftree ID.
+*cbi* (INT): CBI (counter block index) value.
+*ctr0* (LONGINT): Counter 0, total used blocks by this buftree ID at the time of the delete event.
+
+== wafl.hya.bc.free.cbi
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a hybrid aggregate block accounting module frees a CBI (counter block index).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*aggr* (STRING): Aggregate name.
+*aggr_uuid* (STRING): UUID of the aggregate.
+*btid* (LONGINT): Buftree ID.
+*cbi* (INT): CBI value.
+*ctr0* (LONGINT): Counter 0, total used blocks by this buftree ID at the time of the free event.
+
+== wafl.hya.cache.ret.policy
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the cache retention priority policy for a volume in a hybrid aggregate has been modified.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cache retention priority policy on volume '%s%s%s%s' has been modified to %s.
+*Parameters*::
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*cache_retention_priority* (STRING): Cache retention priority policy configured on the volume.
+
+== wafl.hya.policy.init.skipped
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when cache policies could not be configured because of an invalid volume state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Default caching policies were not set on volume '%s%s%s'.
+*Parameters*::
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+
+== wafl.hya.rcache.policy
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the read caching policy for a volume in a hybrid aggregate has been modified.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Read caching policy on volume '%s%s%s%s' has been modified to '%s'.
+*Parameters*::
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*read_policy* (STRING): Read caching policy configured on the volume.
+
+== wafl.hya.sizer.warning
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Flash Pool (tm) AWA (Automatic Workload Analyzer) encounters an abnormal condition such as low sampling rate or low memory resource.
+*Corrective Action*::
+Contact NetApp technical support for assistance in resolving this issue.
+*Syslog Message*::
+(None).
+*Parameters*::
+*aggr* (STRING): Aggregate name.
+*aggr_uuid* (STRING): UUID of the aggregate.
+*vol* (STRING): Name of the volume.
+*event_info* (STRING): Flash Pool (tm) Sizer warning information.
+
+== wafl.hya.wcache.policy
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when write caching policy for a volume in a hybrid aggregate has been modified.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Write caching policy on volume '%s%s%s%s' has been modified to '%s'.
+*Parameters*::
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*write_policy* (STRING): Write caching policy configured on the volume.

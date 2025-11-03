@@ -1,0 +1,69 @@
+---
+sidebar: sidebar
+permalink: vnvram-jswap-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vnvram.jswap events
+---
+
+= vnvram.jswap events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vnvram.jswap
+*Severity*::
+NOTICE
+*Description*::
+This message occurs whenever a journal swap event takes place.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s journal swap to mode (%s) - %s: elapsed %d ms.
+*Parameters*::
+*jswap_request_type* (STRING): This was a dynamic request or manual swap request.
+*jswap_type* (STRING): The type of journal swap (ephemeral memory or ephemeral disk).
+*jswap_result* (STRING): The result of the journal swap operation.
+*jswap_time_ms* (INT): Time taken to write the NVRAM section.
+
+== vnvram.jswap.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs whenever a NVLog journal swap fails.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s NVLog journal swap (%s) - Failure: %s.
+*Parameters*::
+*jswap_request_type* (STRING): This was a dynamic, manual, or internal swap request.
+*jswap_type* (STRING): The type of NVLog journal swap operation being attempted.
+*jswap_reason* (STRING): The reason for the failure in the NVLog journal swap.
+
+== vnvram.jswap.long
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the NVLOG journal swap operation takes too long.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NVLog journal swap (%s) took too long: elapsed: %d sec.
+*Parameters*::
+*reason* (STRING): Reason for message.
+*elapsed_sec* (INT): Time elapsed in seconds.
+
+== vnvram.jswap.mode
+*Severity*::
+NOTICE
+*Description*::
+This message occurs whenever the NVLog journal swap mode is updated.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NVLog journal swap mode set to %s.
+*Parameters*::
+*jswap_mode* (STRING): The NVLog journal swap mode.

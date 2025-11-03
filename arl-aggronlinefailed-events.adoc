@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: arl-aggronlinefailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: arl.aggronlinefailed events
+---
+
+= arl.aggronlinefailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== arl.aggrOnlineFailed
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the RAID or WAFL(R) subsystem fails to bring online the aggregate or its containing volumes after relocation.
+*Corrective Action*::
+Check the EMS logs for messages from the RAID and WAFL subsystems to determine the exact cause of the failure and the corrective action.
+*Syslog Message*::
+Bringing online of aggregate %s or its volumes failed after relocation with error %d.
+*Parameters*::
+*aggrName* (STRING): Name of the aggregate that was relocated.
+*error* (INT): Error that occurred while bringing online the aggregate or its volumes after relocation.

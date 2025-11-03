@@ -1,0 +1,50 @@
+---
+sidebar: sidebar
+permalink: hya-dup_vbn_lookup-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: hya.dup_vbn_lookup events
+---
+
+= hya.dup_vbn_lookup events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== hya.dup_vbn_lookup
+*Severity*::
+ERROR
+*Description*::
+This event is generated if we detect redundant lookups of a PVBN without an intervening suspend.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s %s %s %s %s %s %s %s %s %s
+*Parameters*::
+*f2* (STRING): Third frame of backtrace.
+*f3* (STRING): Fourth frame of backtrace.
+*f4* (STRING): Fifth frame of backtrace.
+*f5* (STRING): Sixth frame of backtrace.
+*f6* (STRING): Seventh frame of backtrace.
+*f7* (STRING): Eighth frame of backtrace.
+*f8* (STRING): Ninth frame of backtrace.
+*f9* (STRING): Tenth frame of backtrace.
+*f10* (STRING): Eleventh frame of backtrace.
+*f11* (STRING): Twelfth frame of backtrace.
+*f12* (STRING): Thirteenth frame of backtrace.
+
+== hya.dup_vbn_lookup.detail
+*Severity*::
+ERROR
+*Description*::
+This event is generated if we detect redundant lookups of a PVBN without an intervening suspend.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s
+*Parameters*::
+*description* (STRING): Description of failure.
+*buffers* (STRING): Details of buffers that were predirtied.

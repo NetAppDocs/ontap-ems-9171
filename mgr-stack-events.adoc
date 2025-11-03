@@ -1,0 +1,141 @@
+---
+sidebar: sidebar
+permalink: mgr-stack-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgr.stack events
+---
+
+= mgr.stack events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgr.stack.at
+*Severity*::
+NOTICE
+*Description*::
+This message contains the panic string.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Panic occurred at: %s
+*Parameters*::
+*time* (STRING): The time string
+
+== mgr.stack.checkpoint
+*Severity*::
+NOTICE
+*Description*::
+Logs the last checkpoint dumpcore crossed before failing.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Dumpcore failure: At checkpoint %d
+*Parameters*::
+*checkpoint* (INT): (None).
+
+== mgr.stack.frame
+*Severity*::
+NOTICE
+*Description*::
+The stack frame: frame number, functionname, base, offset.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Stack frame %2d: %s(0x%llx) + 0x%x
+*Parameters*::
+*frame* (INT): The frame number
+*sym* (STRING): The symbolic name
+*base* (PTR): The base address
+*offset* (INTHEX): The offset
+
+== mgr.stack.frameaddr
+*Severity*::
+NOTICE
+*Description*::
+The stack frame: frame number, (no function name), base, offset.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Stack frame %2d: 0x%llx + 0x%x
+*Parameters*::
+*frame* (INT): The frame number
+*base* (PTR): The base address
+*offset* (INTHEX): The offset
+
+== mgr.stack.framebase
+*Severity*::
+NOTICE
+*Description*::
+The stack frame: frame number, base address.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Stack frame %2d: 0x%llx
+*Parameters*::
+*frame* (INT): The frame number
+*base* (PTR): The base address
+
+== mgr.stack.longrun.proc
+*Severity*::
+NOTICE
+*Description*::
+The name of the process that hogged the cpu too long.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Long running process: %s
+*Parameters*::
+*name* (STRING): The name of the process
+
+== mgr.stack.noFrames
+*Severity*::
+NOTICE
+*Description*::
+This message is emitted when no stack frames are available. This is normal on platforms which do not support stack tracing, or when the prior release did not support stack trace.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+No stack frames available
+*Parameters*::
+(None).
+
+== mgr.stack.proc
+*Severity*::
+NOTICE
+*Description*::
+The name of the process that we took the panic in.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Panic in process: %s
+*Parameters*::
+*name* (STRING): The name of the process
+
+== mgr.stack.saved
+*Severity*::
+NOTICE
+*Description*::
+This message indicates that we've saved panic information in the NV RAM.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Reboot with saved panic information in log file
+*Parameters*::
+(None).
+
+== mgr.stack.string
+*Severity*::
+NOTICE
+*Description*::
+This message contains the panic string.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Panic string: %s
+*Parameters*::
+*string* (STRING): The panic string

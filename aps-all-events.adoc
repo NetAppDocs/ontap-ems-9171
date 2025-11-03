@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: aps-all-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: aps.all events
+---
+
+= aps.all events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== aps.all.aggrs.full
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the space rebalancing service detects that all flexaggrs in the HA Pair are at risk of running out of space over the next space exhaustion window.
+*Corrective Action*::
+For further assistance, contact NetApp technical support.
+*Syslog Message*::
+All flexaggrs "%s" in the HA Pair will run out of space over the next space exhaustion window of "%s".
+*Parameters*::
+*flexaggrs* (STRING): Name of the flexaggrs.
+*exhaustion_window* (STRING): Space exhaustion window duration.

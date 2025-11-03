@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: configbr-interror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: configbr.interror events
+---
+
+= configbr.interror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== configbr.intError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an attempt to create a configuration backup file encountered an internal software error.
+*Corrective Action*::
+Create the configuration backup file manually by using the (privilege: advanced) "system configuration backup create" command.
+*Syslog Message*::
+Configuration backup and restore detected an internal software error. Error: '%s'.
+*Parameters*::
+*error* (STRING): Internal software error.

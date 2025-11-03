@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: replaycache-nfsv41bindelete-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: replaycache.nfsv41bindelete events
+---
+
+= replaycache.nfsv41bindelete events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ReplayCache.Nfsv41BinDelete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the replay-cache bin associated with an NFSv4.1 session is destroyed due to a policy mismatch. In Data ONTAP(R) releases prior to 9.0, replay-cache bins for NFSv4.1 session were created with a certain policy. The policy associated with these bins has changed and the data in older bins cannot be migrated. Older bins are destroyed and new bins are created. The process of bin policy conversions for NFSv4.1, occurs when the effective cluster version (ECV) changes due to an upgrade or revert operation. Connection Session Manager (CSM) sessions are used to communicate file operations between nodes in the cluster. During this period, if CSM sessions experience timeouts or other errors, NFSv4.1 clients might receive unexpected results for a few of their outstanding requests. All new NFSv4.1 client requests are unaffected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The replay-cache bin associated with a NFSv4.1 session was deleted and recreated due to a policy mismatch. Current NFSv4.1 session might temporarily receive unexpected results.
+*Parameters*::
+(None).

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: pha-add-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: pha.add events
+---
+
+= pha.add events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== pha.add.dev.limitExceeded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an attempt to add a passthrough host adapter (PHA) disk to a virtual disk adapter fails because the supplied disk number exceeds the maximum supported disk ID.
+*Corrective Action*::
+Reduce the number of devices connected to Data ONTAP(R) and retry this operation.
+*Syslog Message*::
+Failed to add a device with unit number %d to virtual disk adapter. Reason: Supplied disk number exceeds the max number of supported disks.
+*Parameters*::
+*disk_num* (INT): Unit number for the rejected disk.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: nblade-httpmemexceeded-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.httpmemexceeded events
+---
+
+= nblade.httpmemexceeded events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.httpMemExceeded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the HTTP subsystem, which operates all the HTTP servers exposed through a given node, has requested more memory than it is allowed in this node. The subsystem is restricted to a percentage of total memory in the node, so the node itself need not be low on memory for this to occur. HTTP memory is not allocated in advance and so HTTP memory requests compete with other system processes. This message might not appear if a memory request from HTTP cannot be honored because the node is already low on memory. This might result in HTTP client connection failures.
+*Corrective Action*::
+Compare the number of memory allocation failures with the previous occurrence of this event to understand the load on the system. Further analyze the memory allocated to the HTTP subsystem on this node by viewing the nblade_http object instance for this node through the "statistics show" interface. Based on that data, consider distributing HTTP load by moving data LIFs, adding data LIFs, and redirecting workloads, or by shutting down non-essential workloads to alleviate the memory pressure.
+*Syslog Message*::
+The HTTP subsystem on this node has exceeded its allotment of %llu bytes of node memory with currently %llu memory allocation failures since boot time. This might result in unexpected HTTP connection failures.
+*Parameters*::
+*availableMemoryInBytes* (LONGINT): Amount of memory available to the HTTP subsystem.
+*memAllocFailures* (LONGINT): Number of memory allocation failures in the HTTP subsystem since boot time.

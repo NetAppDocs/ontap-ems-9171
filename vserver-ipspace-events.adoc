@@ -1,0 +1,52 @@
+---
+sidebar: sidebar
+permalink: vserver-ipspace-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vserver.ipspace events
+---
+
+= vserver.ipspace events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vserver.ipspace.lookupfailed
+*Severity*::
+ALERT
+*Description*::
+This message occurs in a MetroCluster(R) configuration when attempting to replicate a "vserver create" operation onto the destination cluster, but the configured IPspace cannot be found on the destination cluster. This error can occur due to networking subsystem issues on the destination cluster.
+*Corrective Action*::
+The operation is retried several times. Use the "metrocluster vserver show" command to verify that the configuration state of the Vserver becomes healthy. If the configuration state does not become healthy after an hour, contact NetApp technical support for assistance.
+*Syslog Message*::
+Vserver "%s" cannot be created because IPspace information related to the Vserver is not currently available.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver that is being replicated.
+
+== vserver.ipspace.notAvailable
+*Severity*::
+ERROR
+*Description*::
+This message occurs in a MetroCluster(R) configuration when attempting to replicate a "vserver create" operation onto the destination cluster, but the IPspace name for creation of the Vserver has not yet propagated to the destination cluster. This error can occur due to networking subsystem issues on the source cluster.
+*Corrective Action*::
+The operation is retried several times. Use the "metrocluster vserver show" command to verify that the configuration state of the Vserver becomes healthy. If the configuration state does not become healthy after an hour, contact NetApp technical support for assistance.
+*Syslog Message*::
+Vserver "%s" cannot be created because IPspace information related to the Vserver is not currently available.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver that is being replicated.
+
+== vserver.ipspace.notfound
+*Severity*::
+ERROR
+*Description*::
+This message occurs in a Metrocluster configuration when we are attempting to replicate a Vserver create operation on to the destination cluster and the Ipspace provided does not exist on the destination cluster.
+*Corrective Action*::
+Create an Ipspace with the same name as that of the ipspace used for creating the Vserver on the source cluster.
+*Syslog Message*::
+Vserver %s cannot be created as ipspace %s does not exist.
+*Parameters*::
+*vserver_name* (STRING): Name of the vserver we are trying to replicate.
+*ipspace_name* (STRING): Name of the ipspace on which we are trying to create the Vserver.

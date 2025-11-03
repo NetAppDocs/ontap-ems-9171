@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: mw-iron-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mw.iron events
+---
+
+= mw.iron events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mw.iron.mount.idlog.purge
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message is used to notify idlog purge at mount after 7 consecutive unsuccessful iron runs.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume[%s] : Wafliron mount performance may be significantly impacted, because idlog purge is triggered after[%d] unsuccessful iron runs.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*generation* (INT): Iron generation number.

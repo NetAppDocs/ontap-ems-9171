@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: vserver-vol-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vserver.vol events
+---
+
+= vserver.vol events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vserver.vol.max.size.reduced
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the size or the maximum autosize of a destination DP volume in a storage-limit enabled SVM is reduced, which is part of a SnapMirror relationship.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Maximum-autosize or size of destination volume "%s" in the storage-limit enabled SVM "%s" is reduced.
+*Parameters*::
+*volume_name* (STRING): Name of the storage virtual machine (SVM).
+*vserver_name* (STRING): Name of the volume.
+
+== vserver.vol.modify.on.dest.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an attempt to modify either the size or maximum autosize of a source volume in a SnapMirror sync relationship fails because it fails to modify the size or maximum autosize at the destination DP volume which is in a storage limit enabled SVM.
+*Corrective Action*::
+Check the reason for destination volume modify failure and take appropriate actions.
+*Syslog Message*::
+Maximum-autosize or size of destination volume "%s" which is in a storage-limit enabled SVM "%s" was not modified. Reason: "%s"
+*Parameters*::
+*volume_name* (STRING): Name of the storage virtual machine (SVM).
+*vserver_name* (STRING): Name of the volume.
+*reason* (STRING): Error message.

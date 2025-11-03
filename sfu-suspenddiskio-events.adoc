@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sfu-suspenddiskio-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfu.suspenddiskio events
+---
+
+= sfu.suspenddiskio events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfu.suspendDiskIO
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a disk shelf firmware update is started and disk I/O is suspended.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Suspending disk I/O to reboot shelf modules for shelf firmware update.
+*Parameters*::
+(None).

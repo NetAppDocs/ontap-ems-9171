@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: nse-op-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nse.op events
+---
+
+= nse.op events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nse.op.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) does not succeed in performing an operation on a NetApp(R) Storage Encryption (NSE) self-encrypting drive (SED). The message applies to drives that implement either the Trusted Computing Group (TCG) "Enterprise" or "Opal" specification. Some aspect of the operation of NSE drives is compromised.
+*Corrective Action*::
+If the error persists, replace the drive.
+*Syslog Message*::
+Control failure on self-encrypting drive %s; security provider: %s, authority: %s, during operation "%s".
+*Parameters*::
+*deviceName* (STRING): Name of the device.
+*securityProvider* (STRING): Name of the TCG security provider process.
+*authority* (STRING): Name of the affected TCG authority.
+*operation* (STRING): Description of the operation that failed.

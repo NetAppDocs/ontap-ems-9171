@@ -1,0 +1,70 @@
+---
+sidebar: sidebar
+permalink: snapmirror-conf-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapmirror.conf events
+---
+
+= snapmirror.conf events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapmirror.conf.depre.cpsync
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there an entry in the snapmirror.conf file is configured to use the outstanding value of greater than or equal to 10 seconds. This method of specifying cp-sync mode for the SnapMirror(R), is being deprecated in ONTAP 7.3. You should use the new keyword "semi-sync" to configure cp-sync mode. See the na_snapmirror.conf man page for details.
+*Corrective Action*::
+Edit the /etc/snapmirror.conf file to convert the relationship to use the "semi-sync" keyword. See the man page for details about usage.
+*Syslog Message*::
+Entry for SnapMirror relationship %s:%s to %s:%s in the /etc/snapmirror.conf is using a deprecated format to specify cp-sync mode. See the na_snapmirror.conf man page for the new format.
+*Parameters*::
+*src_filer* (STRING): Source system.
+*src_path* (STRING): Source path.
+*dst_filer* (STRING): Destination system.
+*dst_path* (STRING): Destination path.
+
+== snapmirror.conf.full
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the /etc/snapmirror.conf file in the SnapMirror(R) destination has more than the maximum allowed SnapMirror relationships.
+*Corrective Action*::
+Reduce the number of SnapMirror relationships in the /etc/snapmirror.conf file to the maximum allowed limit.
+*Syslog Message*::
+Warning from the SnapMirror configuration parser, error in line number '%d' of snapmirror.conf file, '%s'
+*Parameters*::
+*lineno* (INT): Line number in the /etc/snapmirror.conf file.
+*msg* (STRING): Reason for the error.
+
+== snapmirror.conf.invalidStr
+*Severity*::
+ERROR
+*Description*::
+This message occurs on a replication destination appliance when ONTAP encounters invalid string while collecting replication statistics.
+*Corrective Action*::
+Check snapmirror.conf file for any typing mistakes. In case of a relationship line, path names are typically specified as "filer:volume" or "filer:/vol/volume/qtree". In case of a connection line check for an equal sign. Check snapmirror.conf man page for discussion of path specifications.
+*Syslog Message*::
+Illegal string: %s.
+*Parameters*::
+*snapconfstr* (STRING): The relationship or connection line.
+
+== snapmirror.conf.obsolete.nvsync
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there exists an entry in the snapmirror.conf file that is configured to use the outstanding value of greater than 0 seconds and fewer than 10 seconds. This mode (nvlog semi-sync) is obsolete in ONTAP 7.3. When it is configured in this mode, the relationship is converted automatically to a fully synchronous relationship.
+*Corrective Action*::
+Edit the /etc/snapmirror.conf file to convert the relationship to either a fully synchronous relationship with "sync" parameter or a cp semi-synchronous relationship with "semi-sync" parameter.
+*Syslog Message*::
+SnapMirror relationship %s:%s to %s:%s is being converted to a fully synchronous relationship since the functionality provided by setting the outstanding parameter to a value greater than 0 and less than 10s in the snapmirror.conf file is obsolete.
+*Parameters*::
+*src_filer* (STRING): Source system.
+*src_path* (STRING): Source path.
+*dst_filer* (STRING): Destination system.
+*dst_path* (STRING): Destination path.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: spm-mgwd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: spm.mgwd events
+---
+
+= spm.mgwd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== spm.mgwd.process.exit
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the Management Gateway (mgwd) subsystem involuntarily exits. The subsystem provides administration services to manage the cluster and current node. This failure can disrupt administrative tasks that are being performed on the current node. The system attempts to recover by restarting the subsystem. While this situation persists, if a Cluster Management Logical Interface (LIF) is hosted on the current node, migrate it to another node in the cluster using another node management LIF or console access to another node. If the subsystem does not recover within the threshold number of retries, then an AutoSupport message is sent.
+*Corrective Action*::
+In the rare event that the Management Gateway (mgwd) subsystem has terminated unexpectedly, the automatic restart of the process will often stabilize the situation. While this situation persists, if a Cluster Management Logical Interface (LIF) is hosted on the current node, migrate it to another node in the cluster using another node management LIF or console access to another node. In some cases, there is a systemic issue that can be cleared up by rebooting the node when multiple restarts do not stabilize mgwd. This might be done automatically by the Node Watchdog service for persistent issues within a short window of time. In other cases, recent changes in logging, configuration or external management activities can be contributing factors to the unexpected terminations. Consider reverting one or more of these changes. If the issue persists, contact NetApp technical support.
+*Syslog Message*::
+Management Gateway (mgwd) subsystem with ID %d exited as a result of signal %s. The subsystem will attempt to restart.
+*Parameters*::
+*id* (INT): Process identifier.
+*cause* (STRING): Plain text description of why the process exited.

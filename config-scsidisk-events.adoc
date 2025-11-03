@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-scsidisk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.scsidisk events
+---
+
+= config.scsidisk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.SCSIdisk
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a SCSI disk is found in a CFO configuration.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s is a SCSI disk, and is illegal in a Clustered Failover configuration.
+*Parameters*::
+*disk* (STRING): Name of the SCSI disk which was found.

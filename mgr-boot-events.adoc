@@ -1,0 +1,227 @@
+---
+sidebar: sidebar
+permalink: mgr-boot-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgr.boot events
+---
+
+= mgr.boot events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgr.boot.bios_backup_flash
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system boots from its backup BIOS image because either it failed to boot from its primary BIOS image within the expected timeframe or the image is corrupted.
+*Corrective Action*::
+Power-cycle the system. If the system still does not boot from the primary BIOS image, contact technical support for assistance.
+*Syslog Message*::
+System boot from the primary BIOS flash image failed. system booted from the backup BIOS flash image.
+*Parameters*::
+(None).
+
+== mgr.boot.disk_done
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message is sent when a system completes disk boot.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s boot complete. Last disk update written at %s
+*Parameters*::
+*ver* (STRING): (long) version of the OS which just booted
+*last_write_time* (STRING): time at which the previous OS last wrote to disk
+
+== mgr.boot.floppy_25_7
+*Severity*::
+NOTICE
+*Description*::
+This message is sent when a system completes a 25/7 boot.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s floppy boot complete (after 25/7).
+*Parameters*::
+*ver* (STRING): (long) version of the OS which just booted
+
+== mgr.boot.floppy_done
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message is sent when a system completes a plain old floppy boot.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s floppy boot complete.
+*Parameters*::
+*ver* (STRING): (long) version of the OS which just booted
+
+== mgr.boot.floppy_media
+*Severity*::
+EMERGENCY
+*Description*::
+This message is sent when a system completes a bypass_media boot.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s floppy boot complete (with disk media errors bypassed).
+*Parameters*::
+*ver* (STRING): (long) version of the OS which just booted
+
+== mgr.boot.floppy_prev_cp
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message is sent when a system completes a prev_cp boot.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s floppy boot complete (after prev_cp).
+*Parameters*::
+*ver* (STRING): (long) version of the OS which just booted
+
+== mgr.boot.mroot.done
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event marks the end of populating the mroot during the boot sequence; this event is generated immediately after the process of populating the mroot has completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).
+
+== mgr.boot.mroot.start
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event marks the start of populating the mroot during the boot sequence; this event is generated immediately before the process of populating the mroot begins.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).
+
+== mgr.boot.new_OS2
+*Severity*::
+NOTICE
+*Description*::
+This message is sent when a system boots with a different OS version from before, and the previous version is known.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+This system is running a new version of %s (was %s, now %s)
+*Parameters*::
+*osName* (STRING): The flavor of operating system (Data ONTAP or NetCache)
+*oldOsVersion* (STRING): The previous OS version
+*newOsVersion* (STRING): The new OS version
+
+== mgr.boot.node.unstable
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a node does not reach a stable state within 5 minutes after system boot. The system will continue booting while waiting for a stable state. Under a takeover scenario, the node has to be stable for giveback to be completed.
+*Corrective Action*::
+Run the "storage failover show" command for takeover status. If the issue persists, contact NetApp technical support for assistance.
+*Syslog Message*::
+The node has not reached a stable state within 5 minutes after system boot. Retries are in progress.
+*Parameters*::
+(None).
+
+== mgr.boot.oldOFW
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system firmware is determined to be too old.
+*Corrective Action*::
+For more information about upgrading your system firmware, check your support provider's web site or knowledgebase.
+*Syslog Message*::
+The current system firmware version %s is too old. Upgrade to the minimum version %s or later.
+*Parameters*::
+*currentFW* (STRING): Current system firmware version.
+*newFW* (STRING): Desired system firmware version.
+
+== mgr.boot.pmroot.done
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event marks the end of populating the pmroot during the boot sequence; this event is generated immediately after the process of populating the pmroot has completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).
+
+== mgr.boot.pmroot.start
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event marks the start of populating the pmroot during the boot sequence; this event is generated immediately before the process of populating the pmroot begins.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).
+
+== mgr.boot.process.hung
+*Deprecated*::
+Deprecated as of ONTAP 9.1. Last used in 9.0x.
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a system detects an un-responsive process during system boot. The system will continue booting while waiting for the process to respond.
+*Corrective Action*::
+Contact NetApp technical support to diagnose the issue further.
+*Syslog Message*::
+The %s process is not responding. Error: %s
+*Parameters*::
+*process* (STRING): The process that is hung.
+*error* (STRING): An error message about the problem.
+
+== mgr.boot.reason_abnormal
+*Severity*::
+EMERGENCY
+*Description*::
+This message is sent when a system boots for abnormal reasons (panic, watchdog, etc). The message contains the reboot reason.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s
+*Parameters*::
+*reboot_reason* (STRING): reboot reason
+
+== mgr.boot.reason_ok
+*Severity*::
+NOTICE
+*Description*::
+This message is sent when a system boots for normal reasons (halt/reboot command, etc). The message contains the reboot reason.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s
+*Parameters*::
+*reboot_reason* (STRING): reboot reason
+
+== mgr.boot.unequalDist
+*Severity*::
+ERROR
+*Description*::
+This message occurs during system initialization when the local system finds that the number of disks that it can use to create a partitioned root aggregate is different than on the partner node.
+*Corrective Action*::
+To create a system with an equal number of automatically partitioned disks on the local and partner systems: 1. Make sure that any failed disks in the internal shelf are replaced. 2. Remove ownership from all disks. The system automatically assigns one half of the disks to the local system and the other half to the partner node. To remove disk ownership, boot into maintenance mode and manually remove ownership by using the "disk remove_ownership" command.
+*Syslog Message*::
+Warning: Unequal number of disks will be used for auto-partitioning of the root aggregate on the local system and HA partner. The local system will use %d disks but the HA partner will use %d disks. To correct this situation, boot both controllers into maintenance mode and remove the ownership of all disks.
+*Parameters*::
+*n_local* (INT): Number of partitionable disks that are used by the local system.
+*n_partner* (INT): Number of partitionable disks that are used by the partner system.

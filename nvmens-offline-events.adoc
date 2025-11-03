@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: nvmens-offline-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvmens.offline events
+---
+
+= nvmens.offline events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== NVMeNS.offline
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an NVMe namespace has been brought offline manually.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NVMe namespace %s, vol %s (DSID %llu) was brought offline (UUID: %s).
+*Parameters*::
+*path* (STRING): Path for the NVMe namespace that has been brought offline.
+*volume_name* (STRING): Name of the containing volume.
+*volume_dsid* (LONGINT): Data set ID (DSID) of the containing volume.
+*object_uuid* (STRING): UUID of the NVMe namespace.
+*object_type* (STRING): Type of object under notification.

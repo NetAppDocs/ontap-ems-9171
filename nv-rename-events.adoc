@@ -1,0 +1,52 @@
+---
+sidebar: sidebar
+permalink: nv-rename-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nv.rename events
+---
+
+= nv.rename events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nv.rename.err
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when there is an error while renaming the files specified in /etc/nvfail_rename.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nvfail_rename: %s: %s.
+*Parameters*::
+*fileName* (STRING): File name.
+*error* (STRING): Error string.
+
+== nv.rename.files
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs while renaming the files specified in /etc/nvfail_rename.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Renaming files specified in /etc/nvfail_rename.
+*Parameters*::
+(None).
+
+== nv.rename.longName
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs while renaming the files specified in /etc/nvfail_rename, when the file name is too long.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nvfail_rename: %s: File name too long.
+*Parameters*::
+*fileName* (STRING): File name.

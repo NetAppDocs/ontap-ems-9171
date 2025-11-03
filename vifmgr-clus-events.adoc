@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: vifmgr-clus-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.clus events
+---
+
+= vifmgr.clus events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.clus.linkdown
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a cluster link goes down unexpectedly.
+*Corrective Action*::
+Verify that the cable is plugged in properly to both the NIC and the switch, and that the switch is powered on. If these conditions are met and the cluster link remains down, search the knowledgebase of the NetApp support web site for the "cluster network degraded" keyword.
+*Syslog Message*::
+The cluster port %s on node %s has gone down unexpectedly.
+*Parameters*::
+*portname* (STRING): Name of the affected port.
+*nodename* (STRING): Name of the node on which the affected port resides.

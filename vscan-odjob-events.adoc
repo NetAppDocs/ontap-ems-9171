@@ -1,0 +1,55 @@
+---
+sidebar: sidebar
+permalink: vscan-odjob-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vscan.odjob events
+---
+
+= vscan.odjob events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vscan.odJob.delete.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system fails to delete queued Vscan On-Demand job. The system tries to delete this job internally in a situation such as when Vserver is stopped or when a Vserver is failed over to some other cluster.
+*Corrective Action*::
+Run the "vserver vscan on-demand-task unschedule" command to delete the job.
+*Syslog Message*::
+System failed to delete Vscan On-Demand job for the task "%s" on Vserver "%s". Reason: "%s".
+*Parameters*::
+*taskName* (STRING): Vscan On-Demand task name.
+*vserverName* (STRING): Name of the Vserver.
+*failureReason* (STRING): Reason for the failure.
+
+== vscan.odJob.running.deleted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system deletes a running On-Demand job internally.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+System deleted a running Vscan On-Demand job. Job ID "%s".
+*Parameters*::
+*jobID* (STRING): Job ID.
+
+== vscan.odJob.schedule.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system fails to schedule a previously requested Vscan On-Demand job. The system tries to schedule this job internally in a situation such as when a Vserver is started or when a Vserver is failed over to some other cluster.
+*Corrective Action*::
+Run the "vserver vscan on-demand-task schedule" command to schedule the job.
+*Syslog Message*::
+System failed to schedule Vscan On-Demand job for the task "%s" on Vserver "%s". Reason: "%s".
+*Parameters*::
+*taskName* (STRING): Vscan On-Demand task name.
+*vserverName* (STRING): Name of the Vserver.
+*failureReason* (STRING): Reason for the failure.

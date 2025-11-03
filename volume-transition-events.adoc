@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: volume-transition-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: volume.transition events
+---
+
+= volume.transition events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== volume.transition.plugin.slow
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a volume transition plug-in is taking longer than expected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume transition on volume %s, plug-in %s running %d ms (expected %d ms).
+*Parameters*::
+*voluuid* (STRING): Unique identifier for this volume.
+*plugin* (STRING): Name of the slow plug-in.
+*used* (INT): Runtime for the plug-in, in milliseconds.
+*expected* (INT): Expected runtime for the plug-in, in milliseconds.

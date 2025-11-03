@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: nvdimm-flash-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvdimm.flash events
+---
+
+= nvdimm.flash events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvdimm.flash.lifetime.low
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the NVDIMM device exceeds its warning threshold. This issue typically indicates that the NVDIMM hardware is approaching the end of its service life and should be replaced soon.
+*Corrective Action*::
+Contact NetApp technical support for assistance with replacing the NVDIMM hardware.
+*Syslog Message*::
+Service lifetime of NVDIMM device in slot-%d is low at %d%%.
+*Parameters*::
+*slot* (INT): NVDIMM slot location.
+*percent* (INT): Lifetime percentage.

@@ -1,0 +1,80 @@
+---
+sidebar: sidebar
+permalink: sis-upgrade-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.upgrade events
+---
+
+= sis.upgrade events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.upgrade.aggr.metafile.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Single Instance Storage (SIS) metafiles cannot be created in the aggregate containing the volume, during a Data ONTAP(R) upgrade. The aggregate might be full. The 'sis status' command will not display this volume. SIS operations cannot be triggered manually or according to a schedule for the volume.
+*Corrective Action*::
+Ensure that space is available in the aggregate containing the volume. After correcting the underlying issue indicated by the error message, remount the volume for the SIS upgrade to be triggered again. If the upgrade succeeds, SIS then resumes normally.
+*Syslog Message*::
+Could not create the metafiles for the volume %s%s : %s.
+*Parameters*::
+*volname* (STRING): Volume name.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*err* (STRING): Reason for the failure.
+
+== sis.upgrade.feature.enable
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during upgrade to Data ONTAP(R) 9.2 or later, when we start enabling Volume Efficiency features on the existing compatible volumes on All-Flash Optimized nodes in the background.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume efficiency features will be enabled on Volumes of All-Flash Optimized nodes in the Cluster.
+*Parameters*::
+(None).
+
+== sis.upgrade.feature.enable.done
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during upgrade to Data ONTAP(R) 9.2 or later, when we have completed enabling the Volume Efficiency features on the existing compatible volumes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume efficiency features were enabled on Volumes of All-Flash Optimized nodes in the Cluster.
+*Parameters*::
+(None).
+
+== sis.upgrade.feature.enable.fail
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during upgrade to Data ONTAP(R) 9.2 or later, when we fail to enable Volume Efficiency features on the existing compatible volume on All-Flash Optimized nodes.
+*Corrective Action*::
+Manually try enabling the Volume Efficiency features on the volume using the "volume efficiency modify" command.
+*Syslog Message*::
+Could not enable Volume Efficiency features for Volume %s of vserver %s.%s
+*Parameters*::
+*volume* (STRING): Volume name.
+*vserver* (STRING): Vserver name.
+*reason* (STRING): Reason for failure.
+
+== sis.upgrade.feature.enabled
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during upgrade to Data ONTAP(R) 9.2 or later, when we enable Volume Efficiency features on the existing compatible volume on All-Flash Optimized nodes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume Efficiency features enabled on Volume %s of Vserver %s.
+*Parameters*::
+*volume* (STRING): Volume name.
+*vserver* (STRING): Vserver name.

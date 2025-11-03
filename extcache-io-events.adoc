@@ -1,0 +1,72 @@
+---
+sidebar: sidebar
+permalink: extcache-io-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: extcache.io events
+---
+
+= extcache.io events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== extCache.io.BlockChecksumError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the external cache detects a block checksum verification error while performing a read operation. Checksum errors are infrequent. Some combinations of external cache hardware and software handle these errors automatically without the need for administrator action. If further action is required, other messages will be generated. The operation will be retried from persistent storage (RAID).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*block_num* (INT): Block number that failed checksum verification.
+
+== extCache.io.extInfo
+*Severity*::
+NOTICE
+*Description*::
+This message accompanies read or write errors and prints out any relevant information about the failure.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: fbn: %lld, pvbn: %lld, vvbn: %lld, inum: %d, ecbn: %lld, vol: %s, aggr: %s.
+*Parameters*::
+*description* (STRING): String providing information about the message.
+*fileBlockNum* (LONGINT): fbn of the block that errored.
+*physBlockNum* (LONGINT): pvbn of the block that errored.
+*volBlockNum* (LONGINT): vvbn of the block that errored.
+*fileId* (INT): Inode number of the file that owns the block.
+*ECblockNum* (INT): The ecbn of the block.
+*volName* (STRING): Name of the volume.
+*aggrName* (STRING): Name of the aggregate.
+
+== extCache.io.readError
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the external cache detects an error on a read. Read errors are infrequent and are usually handled automatically by the external cache without the need for administrator action. The operation will be retried from persistent storage (RAID).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache I/O read error: %s, code %d.
+*Parameters*::
+*description* (STRING): String providing information about why the operation failed.
+*detail* (INT): Detailed error code about why the operation failed.
+
+== extCache.io.writeError
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the external cache detects an error on a write. Write errors are infrequent and are usually handled automatically by the external cache without the need for administrator action.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache I/O write error: %s, code %d.
+*Parameters*::
+*description* (STRING): String providing information about why the operation failed.
+*detail* (INT): Detailed error code about why the operation failed.

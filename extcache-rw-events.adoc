@@ -1,0 +1,328 @@
+---
+sidebar: sidebar
+permalink: extcache-rw-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: extcache.rw events
+---
+
+= extcache.rw events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== extCache.rw.alloc
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an external cache cannot obtain sufficient system resources. This causes the external cache component to be unable to rewarm after a reboot, which might cause a temporary performance impact.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache could not allocate resources: %s.
+*Parameters*::
+*description* (STRING): String identifying the specific resources that were not obtained.
+
+== extCache.rw.canceled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the external cache cannot complete cache rewarming. This causes the external cache component to start with no data cached, which might cause a temporary performance impact.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache reconstruct was canceled.
+*Parameters*::
+(None).
+
+== extCache.rw.configChange
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the external cache warming logic detects a change in cache hardware configuration. This causes the external cache component to start with no data cached for any aggregates, which can cause a temporary performance impact. The problem should resolve itself at the next reboot.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache warming aborted due to hardware configuration change.
+*Parameters*::
+(None).
+
+== extCache.rw.emptyCache
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the external cache warming process terminates due to a lack of active cache entries.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache warming canceled: cache is not in use.
+*Parameters*::
+(None).
+
+== extCache.rw.entry
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the external cache cannot rebuild cache entries from stored data. This event is caused by an internal error and results in a small portion of the cache remaining empty during rewarming.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache experienced an internal error during reconstruct.
+*Parameters*::
+(None).
+
+== extCache.rw.headerInvalid
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the external cache warming process encounters an invalid file header. This causes the external cache component to start with no data cached for one or all aggregates, which might cause a temporary performance impact.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache warming encountered an invalid file header: %s.
+*Parameters*::
+*section* (STRING): String identifying the header section in question.
+
+== extCache.rw.io.readLimit
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the external cache exceeds the allowable threshold for I/O errors on reads. This causes the external cache component to start with no data cached for any aggregates and might result in temporarily degraded performance.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache warming encountered too many read errors: %s (%d).
+*Parameters*::
+*description* (STRING): String providing information about the operation.
+*number* (INT): Number of unsuccessful reads detected.
+
+== extCache.rw.io.write
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the external cache detects an I/O error on a write. This causes the external cache component to be unable to reconstruct portions of the cache and might result in slightly degraded performance.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache I/O write: %s, code %d.
+*Parameters*::
+*description* (STRING): String providing information about the operation.
+*detail* (INT): Detailed error code about the operation.
+
+== extCache.rw.io.writeLimit
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the external cache exceeds the allowable threshold for I/O errors on writes. This causes the external cache component to start with no cached data for any aggregates and might result in temporarily degraded performance.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache warming encountered too many write errors: %s (%d).
+*Parameters*::
+*description* (STRING): String providing information about the operation.
+*number* (INT): Number of unsuccessful writes detected.
+
+== extCache.rw.log.bufLoad
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the external cache invalidation log cannot load a WAFL(R) buffer. This causes the external cache component to be unable to rewarm the aggregate in question after a reboot, which might cause a temporary performance impact.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache invalidation log buf could not be loaded: aggregate %s.
+*Parameters*::
+*aggregate* (STRING): String identifying the aggregate that experienced the problem.
+
+== extCache.rw.log.disabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when external cache invalidation logging is disabled for an aggregate. This causes the external cache component to be unable to rewarm that aggregate after a reboot, which might cause a temporary performance impact.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache invalidation log disabled: aggregate %s: %s.
+*Parameters*::
+*aggregate* (STRING): String identifying the aggregate that experienced the problem.
+*reason* (STRING): String indicating the cause of the problem.
+
+== extCache.rw.log.freeSpace
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an external cache log file cannot be written due to lack of free space. This causes the external cache component to be unable to rewarm a specific aggregate or the entire cache after a reboot, which might cause a temporary performance impact.
+*Corrective Action*::
+Make sufficient space available on the aggregate.
+*Syslog Message*::
+WAFL external cache log out of space on aggregate %s (needs %d bytes).
+*Parameters*::
+*aggregate* (STRING): String identifying the aggregate that experienced the failure.
+*bytes* (INT): Number of free bytes needed to successfully open the log file.
+
+== extCache.rw.log.maxSize
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an external cache log file reaches its maximum size. This causes the external cache component to be unable to rewarm a specific aggregate or the entire cache after a reboot, which might cause a temporary performance impact.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache log reached maximum size: aggregate %s, log %s.
+*Parameters*::
+*aggregate* (STRING): String identifying the aggregate that experienced the problem.
+*logtype* (STRING): String identifying the log file that reached the maximum size.
+
+== extCache.rw.log.open
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the external cache cannot open a log file. This causes the external cache component to be unable to rewarm some or all of the cached aggregates after a reboot, which might cause a temporary performance impact.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache log could not be opened: aggregate %s, log %s.
+*Parameters*::
+*aggregate* (STRING): String identifying the aggregate that experienced the problem.
+*logtype* (STRING): String identifying the type of log file that could not be opened.
+
+== extCache.rw.log.range
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the external cache invalidation log has a block address that is not within an aggregate's address range. This causes the external cache component to be unable to rewarm the aggregate in question after a reboot, which might cause a temporary performance impact.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache invalidation log block out of range: aggregate %s block %lld.
+*Parameters*::
+*aggregate* (STRING): String identifying the aggregate that experienced the failure.
+*block* (LONGINT): Block encountered in the invalidation log.
+
+== extCache.rw.log.read
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the external cache cannot read from a log file. This causes the external cache component to be unable to rewarm some or all of the cached aggregates during a reboot, which might cause a temporary performance impact.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache log could not be read: aggregate %s, log %s.
+*Parameters*::
+*aggregate* (STRING): String identifying the aggregate that experienced the problem.
+*logtype* (STRING): String identifying the log file that could not be read.
+
+== extCache.rw.log.seek
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the external cache cannot manipulate a log file. This causes the external cache component to be unable to rewarm after a reboot, which might cause a temporary performance impact.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache log could not be read: aggregate %s, log %s.
+*Parameters*::
+*aggregate* (STRING): String identifying the aggregate that experienced the problem.
+*logtype* (STRING): String identifying the log file that could not be read.
+
+== extCache.rw.log.write
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the external cache cannot write to a log file. This causes the external cache component to be unable to rewarm some or all of the cached aggregates after a reboot, which might cause a temporary performance impact.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache log could not be written: aggregate %s, log %s.
+*Parameters*::
+*aggregate* (STRING): String identifying the aggregate that experienced the problem.
+*logtype* (STRING): String identifying the log file that could not be written.
+
+== extCache.rw.replay.canceled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the external cache cannot successfully process the invalidation logs for an individual aggregate. This causes the external cache component to start with no data cached for the aggregate, which might cause a temporary performance impact.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache replay canceled for aggregate %s: %s.
+*Parameters*::
+*aggregate* (STRING): String identifying the aggregate in question.
+*description* (STRING): String providing information about the operation.
+
+== extCache.rw.replay.complete
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the external cache finishes processing the invalidation logs for an individual aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache warming replay complete for aggregate %s with invalidation log %d%% full.
+*Parameters*::
+*aggregate* (STRING): String identifying the aggregate in question.
+*percent* (INT): Percentage of ilog that is full.
+
+== extCache.rw.replay.start
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the external cache begins processing the invalidation logs for an individual aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache warming replay has begun for aggregate %s.
+*Parameters*::
+*aggregate* (STRING): String identifying the aggregate in question.
+
+== extCache.rw.replay.timeout
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the external cache timed out waiting for an aggregate to come online and purged old cache entries for it. This causes the external cache component to start with no data cached for the aggregate, which might cause a temporary performance impact.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache replay timed out for aggregate %s.
+*Parameters*::
+*aggregate* (STRING): String identifying the aggregate in question.
+
+== extCache.rw.snap.canceled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the external cache cannot save a warming snapshot copy. This causes the external cache component to be unable to rewarm after a reboot, which might cause a temporary performance impact.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache snapshot copy canceled: %s.
+*Parameters*::
+*description* (STRING): String providing information about why the operation was canceled.
+
+== extCache.rw.terminated
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the external cache warming process is terminated. This causes the external cache component to start with no data cached for any aggregates, which might cause a temporary performance impact.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache warming process terminated.
+*Parameters*::
+(None).
+
+== extCache.rw.timeout
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the external cache warming process terminates after exceeding its allowed time. This causes the external cache component to start with a subset of cached data, which might cause a temporary performance impact.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache warming process exceeded its maximum allowable time and was aborted.
+*Parameters*::
+(None).

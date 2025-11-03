@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: nblade-nfsnlmresponsetimeout-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.nfsnlmresponsetimeout events
+---
+
+= nblade.nfsnlmresponsetimeout events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.nfsNlmResponseTimeout
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NLM request times out because ONTAP is not able to respond due to a transient error. System software resets the current connection. The NLM request might be handled successfully in the next request.
+*Corrective Action*::
+If this message occurs more than three times for a particular client in 30-60 minutes, make note of the IP address of the affected client. Verify that the network between the client and the storage system is functioning normally. After verifying the health of the network, verify that there are no issues related to networking on the client side. Check IP connectivity over the cluster interfaces between the two nodes. If the problem persists after addressing issues on the network or the client, contact NetApp technical support.
+*Syslog Message*::
+Shutting down connection with the client due to NLM request timing out. SVM ID: %d, Protocol: %s, Xid: 0x%x, Client IP address/port: %s:%d, Local IP address: %s, Reason is %s.
+*Parameters*::
+*vserverId* (INT): Identifier for the storage virtual machine (SVM) associated with this operation.
+*serviceProtocol* (STRING): Network data protocol used in the connection.
+*rpcXid* (INT): Remote procedure call XID.
+*remoteAddr* (STRING): IP address of the client machine.
+*remotePort* (INT): TCP or User Datagram Protocol (UDP) port number used by the remote client to send the data.
+*localAddr* (STRING): IP address of the local interface serving the protocol operation.
+*reason* (STRING): Reason for the disconnection.

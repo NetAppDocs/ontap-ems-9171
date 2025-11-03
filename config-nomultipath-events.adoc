@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-nomultipath-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.nomultipath events
+---
+
+= config.nomultipath events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.NoMultiPath
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a disk is found with multiple paths and it does not support them.
+*Corrective Action*::
+Remove the second path from the disk shelf.
+*Syslog Message*::
+Disk %s cannot be multipathed.
+*Parameters*::
+*disk* (STRING): Name of the disk that was found.

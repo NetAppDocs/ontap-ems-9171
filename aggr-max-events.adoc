@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: aggr-max-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: aggr.max events
+---
+
+= aggr.max events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== aggr.max.size.increased
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs as a reminder that the maximum aggregate size limit is increased from the default value defined in the Platform Specific Module (PSM) table.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Maximum aggregate size limit is increased from %ld TB to %ld TB.
+*Parameters*::
+*old_limit* (LONGINT): Original aggregate size limit as defined in the PSM table.
+*new_limit* (LONGINT): New maximum aggregate size limit.

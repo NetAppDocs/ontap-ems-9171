@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: ses-multipath-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ses.multipath events
+---
+
+= ses.multipath events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ses.multipath.notSupported
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the AT-FCX disk shelf module does not support the multipath high-availability (Multipath HA) configuration.
+*Corrective Action*::
+Replace this disk shelf module with one that supports the high-availability multipath configuration.
+*Syslog Message*::
+AT-FCX disk shelf module %s on disk shelf %d on channel %s does not support the-high availability multipath configuration. Replace the module with one that supports the-high availability multipath configuration.
+*Parameters*::
+*shelfSlot* (STRING): Slot position the disk shelf module is in, either A for the top slot or B for the bottom slot.
+*shelfId* (INT): Disk shelf identification number of the disk shelf.
+*channelName* (STRING): Name of the channel of the disk shelf.
+
+== ses.multipath.ReqError
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects that a SAS disk shelf is in a single-path cabling configuration.
+*Corrective Action*::
+Check for SAS disk shelf enclosures with only a single path by using the 'sasadmin expander_map' command. Physically inspect all SAS cables on the attached storage for secure and correct connection.
+*Syslog Message*::
+SAS disk shelf detected without a multipath configuration.
+*Parameters*::
+(None).

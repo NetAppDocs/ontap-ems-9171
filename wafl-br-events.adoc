@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: wafl-br-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.br events
+---
+
+= wafl.br events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.br.redir.invalid
+*Severity*::
+ALERT
+*Description*::
+This event is issued if block reallocation has not been performed on an aggregate but a reallocated block was found that subsequently needs to be redirected. Block reallocation operates in two phases: first the blocks on an aggregate are moved (reallocated), later, when the block is read, the old pointers to the block are updated (redirected). This event is issued when the second phase is required without the first phase occurring. Since this may indicate on-disk data corruption, the aggregate has been taken offline.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+Invalid redirection: aggr:%s vol:%s
+*Parameters*::
+*aggr* (STRING): The name of the aggregate
+*vol* (STRING): The name of the volume
+
+== wafl.br.redir.nospace
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when there's not enough free space to complete a redirect scan on a volume. The redirect scan improves performance by updating information that was changed because of block reallocation, but is not required for normal operation. This message is usually caused because reallocated blocks are shared between the active file system and a snapshot and cannot be updated without using more blocks than are currently available.
+*Corrective Action*::
+Create more free space in the volume by deleting snapshots.
+*Syslog Message*::
+The redirect scanner cannot complete its scan on '%s%s%s' because there is not enough disk space. Remove snapshots.
+*Parameters*::
+*volname* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier the volume in cases where the volume name itself is insufficient.

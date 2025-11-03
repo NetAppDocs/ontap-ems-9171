@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: fabricpool-scu-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fabricpool.scu events
+---
+
+= fabricpool.scu events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fabricpool.scu.contacted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when contact has resumed between ONTAP and the Service Control Unit that is used with cloud subscription licenses.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Contact has resumed between ONTAP and the service control unit for the license of type %s. Cluster ID: %s.
+*Parameters*::
+*license_type* (STRING): The type of license which has resumed contact with the Service Control Unit.
+*cluster_uuid* (STRING): UUID of the cluster.

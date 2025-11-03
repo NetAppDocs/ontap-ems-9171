@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: clam-stop-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: clam.stop events
+---
+
+= clam.stop events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== clam.stop.mailbox.polling
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Kernel Cluster Services (KCS) Connectivity, Liveliness, Availability Monitor (CLAM) has stopped polling the CLAM mailboxes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+CLAM on local node (ID=%llu) has stopped the poll to read HA partner (ID=%llu) mailbox.
+*Parameters*::
+*local_id* (LONGINT): Node ID of the local node.
+*partner_id* (LONGINT): Node ID of the partner node.

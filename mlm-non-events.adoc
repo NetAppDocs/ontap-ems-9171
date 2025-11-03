@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: mlm-non-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mlm.non events
+---
+
+= mlm.non events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mlm.non.optimized.TPusage
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) detects non-optimized usage of an array's target port. This message indicates degradation of I/O throughput for the indicated array's target port and the cause should be corrected.
+*Corrective Action*::
+Increase the target port queue depth for the array's target port and/or increase the number of array target ports available for I/O to alleviate the SCSI I/O command load for the array's target port. For example, to increase the maximum allowed I/O commands for an array's target port, the following command can be run: storage array port modify -name ARRAY_NAME_1 -wwnn 50014380025d1500 -wwpn 50014380025d1508 -max-queue-depth 750
+*Syslog Message*::
+Detected non-optimized usage of a array's target port. WWPN: %s, average service time: %dus, average latency: %dus
+*Parameters*::
+*wwpn* (STRING): World Wide Port Name of the array's target port which the non-optimized usage was detected on.
+*avg_service* (INT): Current average service time of I/O commands for the array's target port in microseconds.
+*avg_latency* (INT): Current average latency of I/O commands for the array's target port in microseconds.

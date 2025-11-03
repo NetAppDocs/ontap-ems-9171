@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: callhome-mccip-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.mccip events
+---
+
+= callhome.mccip events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.mccip.auso.disabled
+*Severity*::
+ALERT
+*Description*::
+This message occurs when automatic unplanned switchover (AUSO) in a MetroCluster(tm) IP configuration is disabled because the mediator mailbox disk is not healthy. If a site failure occurs, a manual switchover will be required to restore data access.
+*Corrective Action*::
+Use the "storage failover show -fields local-mailbox-disks" command to verify that all nodes in the cluster can access their respective mailbox disks. Use the (privilege: advanced) "storage iscsi-initiator show" command to verify that iSCSI connections to the mediator are up and healthy.
+*Syslog Message*::
+Callhome for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.mccip.collectstats
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when MetroCluster IP statistics are collected daily. TCP/IP networking statistics for diagnostic purposes are collected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

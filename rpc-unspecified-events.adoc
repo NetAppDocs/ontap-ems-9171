@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: rpc-unspecified-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rpc.unspecified events
+---
+
+= rpc.unspecified events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rpc.unspecified.error
+*Deprecated*::
+Deprecated as of version 9.2 where this RPC mechanism was withdrawn.
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when turning an ypgroup update fails to occur.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RPC: Failed (unspecified error)
+*Parameters*::
+(None).

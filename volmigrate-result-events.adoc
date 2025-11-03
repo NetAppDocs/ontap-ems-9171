@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: volmigrate-result-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: volmigrate.result events
+---
+
+= volmigrate.result events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== volmigrate.result
+*Severity*::
+INFORMATIONAL
+*Description*::
+Description of the result of a volume migration.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Migration of volume %s to %s %s.
+*Parameters*::
+*volName* (STRING): Volume being migrated
+*recipientFiler* (STRING): Name of the filer to which the volume is being migrated
+*result* (STRING): A string describing the result of the migration: either 'was successful' or 'failed'.

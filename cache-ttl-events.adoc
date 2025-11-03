@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cache-ttl-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cache.ttl events
+---
+
+= cache.ttl events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cache.ttl.settings.change
+*Severity*::
+ERROR
+*Description*::
+This message occurs on the last node during the upgrade to ONTAP(R) 9.3, if the default TTL values of any of the SecD or NFS export caches are changed.
+*Corrective Action*::
+Use the "vserver services name-service cache" commands to configure TTL values after the system is fully upgraded to ONTAP 9.3.
+*Syslog Message*::
+One or more default cache TTL values for SecD and NFS export caches have been changed.
+*Parameters*::
+(None).

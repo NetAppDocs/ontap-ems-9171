@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: tapemc-sas-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: tapemc.sas events
+---
+
+= tapemc.sas events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== tapemc.SAS.dedicatedPort
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) detects a SAS device that is connected to a port that is dedicated for SAS disk storage attachment, but is not a disk shelf or a bridge device.
+*Corrective Action*::
+Connect the device using another available port.
+*Syslog Message*::
+"%s" device type should not be connected to port %s, which is dedicated to disk storage attachment. Connect it using another available port.
+*Parameters*::
+*deviceType* (STRING): Type of device connected to the port.
+*connectionPort* (STRING): Connection port for the device.
+
+== tapemc.SAS.not.supported
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a serial attached SCSI (SAS) tape or media changer is detected that is not allowed to be attached to this system. This is likely due to the SAS connections being reserved for disk shelf attachment. Tape drives and media changers cannot reliably share a SAS interface with disk drives.
+*Corrective Action*::
+Remove the SAS tape or media changer device.
+*Syslog Message*::
+Attaching a SAS tape or media changer device on adapter "%s" is not supported on this system.
+*Parameters*::
+*AdapterName* (STRING): Adapter name to which the tape device is attached.

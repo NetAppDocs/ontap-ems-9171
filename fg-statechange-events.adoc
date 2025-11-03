@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: fg-statechange-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fg.statechange events
+---
+
+= fg.statechange events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fg.stateChange
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the FlexGroup has transitioned from one state to another. This message might not occur immediately after the state transition occurred.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FlexGroup %s (fg-uuid %s) has changed state from %s to %s.
+*Parameters*::
+*object_name* (STRING): Human-readable name of the FlexGroup.
+*object_uuid* (STRING): UUID of the FlexGroup.
+*old_state* (STRING): State that the FlexGroup was in before the EMS event.
+*new_state* (STRING): State that the FlexGroup was in at the time of the EMS event.

@@ -1,0 +1,169 @@
+---
+sidebar: sidebar
+permalink: wafl-reallocate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.reallocate events
+---
+
+= wafl.reallocate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.reallocate.aggr.interrupt
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an aggregate reallocation scan is interrupted. The scan was scheduled using the 'reallocate -A' command.
+*Corrective Action*::
+None required.
+*Syslog Message*::
+Aggregate reallocation scan on '%s' was interrupted.
+*Parameters*::
+*path* (STRING): Scan path.
+
+== wafl.reallocate.check.high
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued if an allocation check scan (issued before reallocation starts) returns indicating that the path requires reallocation.
+*Corrective Action*::
+None required. The reallocation scan will automatically be started.
+*Syslog Message*::
+Allocation check on '%s' is %d, hotspot %d (threshold %d), so will reallocate.
+*Parameters*::
+*path* (STRING): The scan path
+*optim* (INT): The current optimization of the path
+*hot_spot* (INT): The current hot-spot optimization of the path
+*threshold* (INT): The reallocation threshold of the path
+
+== wafl.reallocate.check.highAdvise
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued if an allocation check scan returns indicating that the path would benefit from reallocation.
+*Corrective Action*::
+Consider reallocating the path (see na_reallocate(1))
+*Syslog Message*::
+Allocation check on '%s' is %d, hotspot %d (threshold %d), consider running reallocate.
+*Parameters*::
+*path* (STRING): The scan path
+*optim* (INT): The current optimization of the path
+*hot_spot* (INT): The current hot-spot optimization of the path
+*threshold* (INT): The reallocation threshold of the path
+
+== wafl.reallocate.check.value
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued to report the optimization of a path.
+*Corrective Action*::
+None required.
+*Syslog Message*::
+Allocation measurement check on '%s' is %d.
+*Parameters*::
+*path* (STRING): The scan path
+*optim* (INT): The path optimization.
+
+== wafl.reallocate.full.done
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued to report the completion of a full, one-time, reallocation scan.
+*Corrective Action*::
+None required.
+*Syslog Message*::
+Full reallocation on '%s' is complete.
+*Parameters*::
+*path* (STRING): The scan path
+
+== wafl.reallocate.full.interrupt
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued to report that a full, one-time, reallocation scan was interrupted.
+*Corrective Action*::
+None required.
+*Syslog Message*::
+Full reallocation on '%s' was interrupted.
+*Parameters*::
+*path* (STRING): The scan path
+
+== wafl.reallocate.path.invalid
+*Severity*::
+ERROR
+*Description*::
+This event is issued if an invalid scan path is detected.
+*Corrective Action*::
+Check why the scan path is invalid, including file removal or volume offline. If the condition is persistent remove the associated reallocation scan.
+*Syslog Message*::
+Unavailable/invalid reallocation path '%s' detected.
+*Parameters*::
+*path* (STRING): The scan path
+
+== wafl.reallocate.recheck.ok
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued if an allocation recheck scan (issued after reallocation has completed) returns indicating the optimization is under the threshold.
+*Corrective Action*::
+None required.
+*Syslog Message*::
+Allocation check on '%s' is under threshold.
+*Parameters*::
+*path* (STRING): The scan path
+
+== wafl.reallocate.scan.exists
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued if an attempt is made to add a new reallocation scan but a scan job already exists for the supplied path.
+*Corrective Action*::
+Check the path is correct. If it is correct then delete the previous reallocation job, and add a new one. Use the 'reallocate status' command to list reallocation jobs.
+*Syslog Message*::
+A reallocation scan for %s already exists.
+*Parameters*::
+*path* (STRING): The path with the scan.
+
+== wafl.reallocate.scan.noStart
+*Severity*::
+NOTICE
+*Description*::
+Reallocation tasks, such as measuring the layout of a file or performing block reallocation, may be perfomed using an asynchronous WAFL scanner. This event is issued if an error occurs unexpectedly while trying to start such a WAFL scanner.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+reallocate: unable to start '%s' scanner for '%s': %d (%s)
+*Parameters*::
+*scan_type* (STRING): The type of scan operation.
+*path* (STRING): The scan path or aggregate name.
+*err_code* (INT): A numerical error code indicating the reason why the scanner could not be started.
+*err_string* (STRING): A string interpreting the err_code.
+
+== wafl.reallocate.scan.remove
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when a reallocation job is persistently removed from the system.
+*Corrective Action*::
+None required.
+*Syslog Message*::
+Reallocation scan for '%s' is being removed.
+*Parameters*::
+*path* (STRING): The path with the scan.
+
+== wafl.reallocate.schedule.invalid
+*Severity*::
+ERROR
+*Description*::
+This event is issued if an invalid reallocation schedule is detected.
+*Corrective Action*::
+Correct the schedule syntax then retry the operation
+*Syslog Message*::
+Invalid schedule: %s
+*Parameters*::
+*reason* (STRING): The reason why the schedule is invalid

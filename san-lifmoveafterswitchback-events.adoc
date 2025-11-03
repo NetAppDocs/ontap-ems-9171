@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: san-lifmoveafterswitchback-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.lifmoveafterswitchback events
+---
+
+= san.lifmoveafterswitchback events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.lifmoveafterswitchback
+*Severity*::
+ERROR
+*Description*::
+This message occurs during MetroCluster(tm) switchback, when a LIF cannot be placed on one of the disaster recovery (DR) nodes because it is offline. The LIF will be placed on the HA partner of the DR node.
+*Corrective Action*::
+After the MetroCluster switchback operation is completed successfully, bring online the MetroCluster DR node. Change the home node of the LIF to the MetroCluster DR node by using the "network interface modify" command.
+*Syslog Message*::
+MetroCluster DR node %s is offline. The LIF %s belonging to Vserver %s will be placed on the HA partner node %s.
+*Parameters*::
+*dr_node_name* (STRING): Name of the MetroCluster DR node that is offline.
+*lif* (STRING): LIF name.
+*vserver_name* (STRING): Vserver name.
+*node_name* (STRING): Name of the HA partner node of the MetroCluster DR node.

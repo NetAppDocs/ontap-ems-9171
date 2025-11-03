@@ -1,0 +1,45 @@
+---
+sidebar: sidebar
+permalink: diskown-rescan-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.rescan events
+---
+
+= diskown.rescan events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.rescan.notConnected
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the high-availability (HA) messaging layer fails to connect to the specified node for disk ownership updates.
+*Corrective Action*::
+Run the command "run local disk show -v" from the node specified in the node parameter to correct disk ownership.
+*Syslog Message*::
+HA messaging layer on the local node failed to connect to node %s for disk ownership updates.
+*Parameters*::
+*node* (STRING): Name of the node where disk ownership might be outdated.
+*status* (INT): Error number returned by the HA messaging layer from the HA message error space.
+*scope* (INT): Internal scope identifier for the module that returned the error.
+*scope_err* (INT): Internal error number returned by the module.
+
+== diskown.rescan.notSent
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the high-availability (HA) messaging layer fails to send a disk ownership update message.
+*Corrective Action*::
+Run the command "run local disk show -v" from the node specified in the node parameter to correct disk ownership.
+*Syslog Message*::
+HA messaging layer on the local node failed to send a disk ownership update message to node %s.
+*Parameters*::
+*node* (STRING): Name of the node where disk ownership might be outdated.
+*status* (INT): Error number returned by the HA messaging layer from the HA message error space.
+*scope* (INT): Internal scope identifier for the module that returned the error.
+*scope_err* (INT): Internal error number returned by the module.

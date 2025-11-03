@@ -1,0 +1,88 @@
+---
+sidebar: sidebar
+permalink: callhome-invoke-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.invoke events
+---
+
+= callhome.invoke events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.invoke
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when you invoke an AutoSupport(R) message, and the "type" of that message is set to "test". This message contains very little content and is intended for testing AutoSupport(R) end-to-end. When this message arrives at NetApp technical support, a confirmation email is sent to email destinations specified by the -to parameter. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*URI* (STRING): Alternate destination for this ASUP. If this is set, this ASUP is delivered to this alternate destination.
+*force* (INT): This flag indicates this AutoSupport should be generated and delivered even if the AutoSupport configuration is disabled. If zero then obey the normal "state" and "support" flags. If this is "one", then ignore the "state" and "support" configuration and deliver as if both "state" and "support" are enabled.
+*sequence* (LONGINT): Sequence number to use to generate this Autosupport. Use value zero to auto-generate or a value higher than last used ASUP sequence number.
+
+== callhome.invoke.all
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when you invoke an AutoSupport(R) message, and the "type" of that message is set to "all". For the benefit of technical support, the message also contains troubleshooting content, which might lengthen the collection time required. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+User triggered complete call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*URI* (STRING): Alternate destination for this ASUP. If this is set, this ASUP is delivered to this alternate destination.
+*force* (INT): This flag indicates this AutoSupport should be generated and delivered even if the AutoSupport configuration is disabled. If zero then obey the normal "state" and "support" flags. If this is "one", then ignore the "state" and "support" configuration and deliver as if both "state" and "support" are enabled.
+*sequence* (LONGINT): Sequence number to use to generate this Autosupport. Use value zero to auto-generate or a value higher than last used ASUP sequence number.
+
+== callhome.invoke.remotesplog
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an administrator invokes an AutoSupport message on a node to collect the logs from the service processor of another node in the cluster. If the system is configured to do so, it generates and transmits an AutoSupport message (or 'call home' message) to NetApp technical support and to the configured destinations.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home (Remote SP LOG) for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*URI* (STRING): Alternate destination for this ASUP. If this is set, this ASUP is delivered to this alternate destination.
+*force* (INT): This flag indicates this AutoSupport should be generated and delivered even if the AutoSupport configuration is disabled. If zero then obey the normal "state" and "support" flags. If this is "one", then ignore the "state" and "support" configuration and deliver as if both "state" and "support" are enabled.
+*sequence* (LONGINT): Sequence number to use to generate this Autosupport. Use value zero to auto-generate or a value higher than last used ASUP sequence number.
+
+== callhome.invoke.splog
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an administrator invokes an AutoSupport message for Service Processor (SP) log collection from ONTAP(R) CLI. If your system is configured to do so, it generates and transmits an AutoSupport message (or 'call home' message) to NetApp technical support and to the configured destinations.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home (SP LOG %s)
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*URI* (STRING): Alternate destination for this ASUP. If this is set, this ASUP is delivered to this alternate destination.
+*force* (INT): This flag indicates this AutoSupport should be generated and delivered even if the AutoSupport configuration is disabled. If zero then obey the normal "state" and "support" flags. If this is "one", then ignore the "state" and "support" configuration and deliver as if both "state" and "support" are enabled.
+*sequence* (LONGINT): Sequence number to use to generate this Autosupport. Use value zero to auto-generate or a value higher than last used ASUP sequence number.
+*for_node_id* (STRING): Node where the log is being collected (local or partner node).
+
+== callhome.invoke.splog.full
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an administrator invokes an AutoSupport message for full Service Processor (SP) or baseboard management controller (BMC) log collection from ONTAP(R) CLI. If your system is configured to do so, it generates and transmits an AutoSupport message (or 'call home' message) to NetApp technical support and to the configured destinations.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

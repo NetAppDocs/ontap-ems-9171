@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: ha-netparttodisabled-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.netparttodisabled events
+---
+
+= ha.netparttodisabled events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.netPartToDisabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when takeovers due to network partitioning are disabled because of the number of previous, consecutive, network-partition takeovers that occurred within a preceding detection period. Subsequent takeovers due to network partitioning are automatically reenabled after the disable time limit is reached or after a takeover is initiated for a different reason.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Network partitioning takeovers are disabled due to %d network-related takeovers in the preceding %d minutes. Takeovers by local node %d; partner node %d. Takeovers will be be re-enabled in %d minutes or when another type of takeover occurs.
+*Parameters*::
+*takeovers_initiated* (INT): Consecutive takeovers initiated from either node within the detection period that were due to network partitioning.
+*detection_period* (INT): Number of minutes over which the network partition takeover attempts were monitored and counted.
+*local_node_initiated* (INT): Number of takeovers due to network partitioning occurring within the detection period that were initiated by the local node. This number is included in the takeover_initiated number.
+*partner_node_initiated* (INT): Number of takeovers due to network partitioning occurring within the detection period that were initiated by the partner node. This number is included in the takeover_initiated number.
+*minutes_until_reenable* (INT): Minutes until takeover due to network partitioning is reenabled.

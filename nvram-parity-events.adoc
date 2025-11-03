@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nvram-parity-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvram.parity events
+---
+
+= nvram.parity events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvram.parity.threshold
+*Severity*::
+ERROR
+*Description*::
+This message occurs when excessive parity errors are reported by the NVRAM complex. Your system is at risk of data loss in the event of a power failure.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Excessive parity errors detected in the NVRAM module.
+*Parameters*::
+(None).

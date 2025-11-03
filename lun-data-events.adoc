@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: lun-data-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lun.data events
+---
+
+= lun.data events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== LUN.data.unavailable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when data is unable to be read from a capacity tier.
+*Corrective Action*::
+Troubleshoot capacity tier connectivity problems.
+*Syslog Message*::
+Unavailable error was received for the object at path %s (fileid:%u) in volume %s (DSID %llu).
+*Parameters*::
+*lun_path* (STRING): Path for the LUN or NVMe namespace.
+*file_id* (INT): Identifying number for the suspect inode.
+*volume_name* (STRING): Name of the containing volume.
+*volume_dsid* (LONGINT): Data Set ID (DSID) of the containing volume.

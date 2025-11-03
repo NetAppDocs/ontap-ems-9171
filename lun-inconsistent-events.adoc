@@ -1,0 +1,44 @@
+---
+sidebar: sidebar
+permalink: lun-inconsistent-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lun.inconsistent events
+---
+
+= lun.inconsistent events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== LUN.inconsistent.blocks
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the block containing a LUN or NVMe namespace's attributes is found to be inconsistent.
+*Corrective Action*::
+Recover the LUN or NVMe namespace from a good backup. If the unrecoverable RAID is in a Snapshot(tm) copy, delete the Snapshot copy. Contact NetApp technical support for more options.
+*Syslog Message*::
+RAID error was received for the attributes of the object at path %s (fileid:%u) in volume %s (DSID %llu).
+*Parameters*::
+*lun_path* (STRING): Path for the LUN or NVMe namespace.
+*file_id* (INT): Identifying number for the suspect inode.
+*volume_name* (STRING): Name of the containing volume.
+*volume_dsid* (LONGINT): Data Set ID (DSID) of the containing volume.
+
+== LUN.inconsistent.filesystem
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a LUN or NVMe namespace is found whose on-disk structure is inconsistent in the WAFL(R) file system. Such a LUN or NVMe namespace is not accessible for I/O or management operations.
+*Corrective Action*::
+Run wafliron on the containing aggregate, and then recover the LUN from a backup. Contact NetApp technical support for more options.
+*Syslog Message*::
+The on-disk structure of the object at path %s in volume %s (DSID %llu) is inconsistent in the WAFL file system.
+*Parameters*::
+*lun_path* (STRING): Path for the LUN or NVMe namespace.
+*volume_name* (STRING): Name of the containing volume.
+*volume_dsid* (LONGINT): Data set ID (DSID) of the containing volume.

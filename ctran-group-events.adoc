@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: ctran-group-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ctran.group events
+---
+
+= ctran.group events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ctran.group.reset.failed
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when an attempt to reset a group by Kernel Cluster Services (KCS) Cluster Transaction Manager (CTRAN) fails.
+*Corrective Action*::
+KCS CTRAN logs will need to be collected for further analysis. Trigger an ALL autosupport by using "autosupport invoke -node * -message "ctran.group.reset.failed" -type all", a diagnostic autosupport by using "autosupport invoke-diagnostic -node * -message "ctran.group.reset.failed" -subsystem kcs" and contact NetApp technical support support.
+*Syslog Message*::
+Group reset for %s has failed on node %s.
+*Parameters*::
+*localhostname* (STRING): The host name of the local node.
+*group_name* (STRING): The group on which the group reset operation is attempted.

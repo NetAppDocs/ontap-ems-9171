@@ -1,0 +1,75 @@
+---
+sidebar: sidebar
+permalink: callhome-client-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.client events
+---
+
+= callhome.client events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.client.app.alert
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a remote client accesses the node using Manage ONTAP(R) and triggers an event using the ems-autosupport-log API call with "auto-support" field set to "true". If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Identify and resolve the issue on the remote client that is using the Manage ONTAP API to trigger this event. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.client.app.emerg
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a remote client accesses the node using Manage ONTAP(R) and triggers an event using the ems-autosupport-log API call with "auto-support" field set to "true". If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Identify and resolve the issue on the remote client that is using the Manage ONTAP API to trigger this event. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.client.app.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a remote client accesses the node using Manage ONTAP(R) and triggers an event using the ems-autosupport-log API call with "auto-support" field set to "true". If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Identify and resolve the issue on the remote client that is using the Manage ONTAP API to trigger this event. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.client.app.info
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a remote client accesses the node using Manage ONTAP(R) and triggers an event using the ems-autosupport-log API call with "auto-support" field set to "true". If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Identify and resolve the issue on the remote client that is using the Manage ONTAP API to trigger this event. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.client.app.notice
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a remote client accesses the node using Manage ONTAP(R) and triggers an event using the ems-autosupport-log API call with "auto-support" field set to "true". If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Identify and resolve the issue on the remote client that is using the Manage ONTAP API to trigger this event. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

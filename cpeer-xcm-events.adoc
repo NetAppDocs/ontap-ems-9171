@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: cpeer-xcm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cpeer.xcm events
+---
+
+= cpeer.xcm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cpeer.xcm.addr.disc.warn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when address discovery fails for a peer cluster.
+*Corrective Action*::
+Verify network connectivity between the local cluster and the peer cluster. It might be necessary to manually correct the peer configuration using the 'cluster peer modify' command if peer addresses have changed recently. Verify that the peer cluster is up.
+*Syslog Message*::
+Address discovery failed for peer cluster %s. Reason: %s.
+*Parameters*::
+*peer* (STRING): Peer cluster whose address discovery failed.
+*reason* (STRING): Reason for address discovery failure.
+
+== cpeer.xcm.update.warn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the cross-cluster manager job experiences a transient failure. The cross-cluster manager job periodically contacts each peer cluster, requests configuration information, and maintains the node-local network configuration for the remote peer cluster.
+*Corrective Action*::
+Verify network connectivity between the local cluster and its peer clusters. It might be necessary to manually correct the peer clusters' configurations using the 'cluster peer modify' command if peer addresses have changed recently. Verify that each cluster is up.
+*Syslog Message*::
+Periodic update of peer network information failed. The following operations are incomplete: %s.
+*Parameters*::
+*failures* (STRING): Failed peer updates.

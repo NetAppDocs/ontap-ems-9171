@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: vsdr-clonetmp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsdr.clonetmp events
+---
+
+= vsdr.clonetmp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsdr.clonetmp.msid.conflict
+*Severity*::
+ERROR
+*Description*::
+This message occurs during a SnapMirror(R) resync operation on a Storage Virtual Machine (SVM) disaster recovery (DR) relationship, when the MSID of a volume on the source SVM is the same as the MSID of a temporary volume on the destination SVM and the temporary volume is created for a clone parent volume. The resync operation fails to start.
+*Corrective Action*::
+Split the clone volume by using the "volume clone split start" command or delete the clone volume by using the "volume delete" command, and then remove the temporary volume by using the "volume delete" command before executing another "snapmirror resync" command.
+*Syslog Message*::
+The MSID of temporary clone parent volume "%s" on the destination SVM "%s" conflicts with the MSID of volume "%s" on the source".
+*Parameters*::
+*tmp_volume_name* (STRING): Volume name of the temporary volume on the destination SVM that is a parent of a clone volume.
+*vserver_name* (STRING): SVM name for which the SnapMirror resync was initiated.
+*src_volume_name* (STRING): Volume name on the source SVM.

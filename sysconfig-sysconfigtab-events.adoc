@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sysconfig-sysconfigtab-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sysconfig.sysconfigtab events
+---
+
+= sysconfig.sysconfigtab events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sysconfig.sysconfigtab.openFailed
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the sysconfigtab file cannot be opened.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+sysconfig: %s
+*Parameters*::
+*reason* (STRING): Reason why it can't be opened.

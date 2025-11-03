@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: secd-strong-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: secd.strong events
+---
+
+= secd.strong events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== secd.strong.auth.required
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the external LDAP server configured for a Vserver is enforcing stronger authentication than what the ONTAP(R) LDAP client is configured for.
+*Corrective Action*::
+Configure stronger LDAP session security using the following commands: 1. vserver services name-service ldap client modify -session-security 2. vserver cifs security modify -session-security-for-ad-ldap
+*Syslog Message*::
+Stronger authentication enforced by LDAP server for Vserver %s.
+*Parameters*::
+*vserverName* (STRING): Vserver associated with this operation.

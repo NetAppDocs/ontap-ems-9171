@@ -1,0 +1,106 @@
+---
+sidebar: sidebar
+permalink: wafl-snaprestore-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.snaprestore events
+---
+
+= wafl.snaprestore events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.snaprestore.badVersion
+*Severity*::
+ERROR
+*Description*::
+This message occurs during a snapshot restore operation, when the system cannot recognize the version of Data ONTAP(R) from the snapshot it is reverting to. The snapshot is corrupt and cannot be used.
+*Corrective Action*::
+Cancel the snapshot restore operation, if necessary, and restore to a different snapshot.
+*Syslog Message*::
+Snapshot is from an unrecognizable version of Data ONTAP. (vol='%s', volident='%s')
+*Parameters*::
+*vol* (STRING): Volume name.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+
+== wafl.snaprestore.cancel.invalid
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during volume initialization when the system cancels a SnapRestore(R) process due to an invalid snapshot.
+*Corrective Action*::
+Select a different snapshot and reattempt the restore operation.
+*Syslog Message*::
+Snapshot is invalid; canceling pending "vol snaprestore" for %s %s%s%s%s.
+*Parameters*::
+*type* (STRING): Type of object (volume/aggregate).
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.
+
+== wafl.snaprestore.cancel.prevcp
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during volume initialization from a previous consistency point (CP) when the system cancels a SnapRestore(R) process. This happens when booting to a previous CP.
+*Corrective Action*::
+Retry the SnapRestore operation after the system completes bootup.
+*Syslog Message*::
+Canceling pending "vol snaprestore" for %s %s%s%s%s.
+*Parameters*::
+*type* (STRING): Type of object (volume/aggregate).
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.
+
+== wafl.snaprestore.defer.prevcp
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during a read-only boot to the previous consistency point (CP). In this case, the pending SnapRestore(R) process is deferred.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Readonly mode; deferring "vol snaprestore" for %s %s%s%s%s.
+*Parameters*::
+*type* (STRING): Type of object (volume/aggregate).
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.
+
+== wafl.snaprestore.revert
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during volume initialization when the system reverts to a previous snapshot.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Reverting %s %s%s%s%s to a previous snapshot with snapid %d.
+*Parameters*::
+*type* (STRING): Type of object (volume/aggregate).
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.
+*snapId* (INT): Identifier for the snapshot.
+
+== wafl.snaprestore.stale
+*Severity*::
+ERROR
+*Description*::
+This message occurs during a snapshot restore operation, when the system determines that the snapshot it is restoring from is stale. The snapshot is corrupt and cannot be used.
+*Corrective Action*::
+Cancel the snapshot restore operation, if necessary, and restore from a different snapshot.
+*Syslog Message*::
+Snapshot is stale. (vol='%s', volident='%s')
+*Parameters*::
+*vol* (STRING): Volume name.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.

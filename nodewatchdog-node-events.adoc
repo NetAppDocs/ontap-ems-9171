@@ -1,0 +1,68 @@
+---
+sidebar: sidebar
+permalink: nodewatchdog-node-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nodewatchdog.node events
+---
+
+= nodewatchdog.node events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nodewatchdog.node.failure
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when Data ONTAP(R) experiences a prolonged outage of internal services critical to continued data service. The node experiencing this failure might operate in a degraded mode until the condition is addressed. Data ONTAP will attempt to recover by restarting the affected process.
+*Corrective Action*::
+The affected process may produce a core file which can be analyzed. Contact NetApp technical support if the condition persists and possible analysis of the core file.
+*Syslog Message*::
+Data ONTAP has experienced a serious internal error: %s. This might cause the node experiencing the problem to become unresponsive to data access.
+*Parameters*::
+*condition* (STRING): Condition that caused the failure.
+*diagnosis* (STRING): List of system diagnoses that could cause node watchdog issues.
+
+== nodewatchdog.node.longreboot
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a node fails to reboot within the configured time allowed for rebooting.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Data ONTAP has experienced a serious internal error. The node experiencing this problem is unable to reboot within it's allotted time of %d seconds causing it to be unavailable. The node has been panicked to enable it to recover.
+*Parameters*::
+*timeout* (INT): The time in seconds within which reboot did not complete.
+
+== nodewatchdog.node.panic
+*Severity*::
+ALERT
+*Description*::
+This message occurs when Data ONTAP(R) experiences a prolonged outage of internal services critical to continued data service. The node has been restarted to recover from the condition.
+*Corrective Action*::
+Contact NetApp technical support for additional assistance.
+*Syslog Message*::
+Data ONTAP has experienced a serious internal error: %s. This might cause the node experiencing the problem to become unresponsive to data access. %s
+*Parameters*::
+*condition* (STRING): Condition that caused the failure.
+*action* (STRING): Automatic corrective action taken (or why avoided) as a result of detecting this condition.
+*diagnosis* (STRING): List of system diagnoses that could cause node watchdog issues.
+
+== nodewatchdog.node.ucore.hung
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a node fails to generate an application core within the time allotted for application coredump due to a serious internal error. The node is panicked to recover from the internal error.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Unable to generate an application core for %s (pid %d) within the allotted time of %d seconds causing the application to become unavailable. The node has been panicked to recover.
+*Parameters*::
+*process_name* (STRING): Name of the application that failed to generate core.
+*process_id* (INT): PID of the application that failed to generate core.
+*timeout* (INT): Time in seconds within which the application coredump did not complete.

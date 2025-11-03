@@ -1,0 +1,304 @@
+---
+sidebar: sidebar
+permalink: vsdr-vol-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsdr.vol events
+---
+
+= vsdr.vol events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsdr.vol.aff.inline.dedup
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a Vserver DR subsystem does not enable inline deduplication on the destination volume. Inline deduplication is not enabled when the destination volume is on neither an AFF system nor a hybrid aggregate.
+*Corrective Action*::
+If inline deduplication is required on the destination volume, move the volume to a hybrid aggregate, and then enable inline deduplication. For more information, refer to TR-4476.
+*Syslog Message*::
+Vserver DR: The volume %s of the Vserver %s is on neither an AFF system nor a hybrid aggregate. Therefore, inline deduplication is not enabled on the volume.
+*Parameters*::
+*destination_volume* (STRING): Name of the destination volume of the Vserver DR relationship.
+*destination_vserver* (STRING): Name of the destination Vserver of the Vserver DR relationship.
+
+== vsdr.vol.aggregateoffline
+*Severity*::
+ALERT
+*Description*::
+This message occurs during configuration replication, when the aggregate on which the volume needs to be created or modified is either offline or not in the cluster.
+*Corrective Action*::
+Log in to the cluster and bring the aggregate online by using the "storage aggregate online" command. If the node that owns the aggregate is down, bring it back up.
+*Syslog Message*::
+Configuration replication for volume "%s" in Vserver "%s" has failed because the aggregate "%s" is offline.
+*Parameters*::
+*volume_name* (STRING): Volume on which this error occurred.
+*aggregate_name* (STRING): Name of the aggregate.
+*vserver_name* (STRING): Vserver name for which configuration replication is happening.
+
+== vsdr.vol.clusterlifdown
+*Severity*::
+ERROR
+*Description*::
+This message occurs during configuration replication, when the the volume creation fails because the aggregate is not accessible because the cluster logical interface (LIF) is down.
+*Corrective Action*::
+Log in to the source cluster and run the "network interface show" command to see the state of the cluster LIFs and to identify the down LIFs.Verify that port connectors, cabling, and cluster switch ports are correctly installed and configured.
+*Syslog Message*::
+Configuration replication for volume "%s" in Vserver "%s" has failed because the cluster LIF is operationally down.
+*Parameters*::
+*volume_name* (STRING): Volume on which this error occurred.
+*vserver_name* (STRING): Vserver name for which configuration replication is happening.
+
+== vsdr.vol.compr.mismatch
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a Vserver DR subsystem discovers a mismatch between the compression types of the source and destination volumes, and therefore do not apply the compression type setting of the source volume to the destination volume.
+*Corrective Action*::
+Undo all off the compression savings on the destination volume, and then modify the compression type of the volume. For more information, refer to TR-4476.
+*Syslog Message*::
+Vserver DR: Compression type of destination volume %s of Vserver %s is %s, which is different from the source volume compression type %s. Therefore, the compression type of the source volume was not applied on the destination volume.
+*Parameters*::
+*destination_volume* (STRING): Name of the destination volume of the Vserver DR relationship.
+*destination_vserver* (STRING): Name of the destination Vserver of the Vserver DR relationship.
+*destination_compression_type* (STRING): Compression type of the destination volume.
+*source_compression_type* (STRING): Compression type of the source volume.
+
+== vsdr.vol.duplicate.mdv.name
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the configuration of a metadata volume cannot be replicated because there exists another metadata volume with the same name on the destination cluster.
+*Corrective Action*::
+Contact NetApp technical support to remove one of the duplicate metadata volumes.
+*Syslog Message*::
+Configuration replication for metadata volume "%s" in Vserver "%s" has failed because there exists another metadata volume with the same name on the destination cluster.
+*Parameters*::
+*volume_name* (STRING): Volume on which this error occurred.
+*vserver_name* (STRING): Name of the Vserver for which configuration replication is happening.
+
+== vsdr.vol.encryptsrc.plaindst
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an encrypted volume at the source of a Vserver-DR setup is replicated as a non-encrypted volume at the destination. This can happen if: 1) the key management capability is not enabled at the destination Vserver; 2) the destination Vserver does not have an aggregate that supports encrypted volumes; or 3) the volume of the source Vserver has undergone a conversion operation from non-encrypted to encrypted.
+*Corrective Action*::
+If necessary, set up the key management capability at the destination by using the "security key-manager setup" command. Ensure that the destination Vserver contains an aggregate that supports encrypted volumes. Use the "snapmirror show" command to determine the type of relationship. If the displayed type is "XDP", encrypt the destination volume by performing a conversion operation from non-encrypted to encrypted using the "volume encryption conversion start" command. However, if the type is "DP", encrypt the destination volume by performing a volume move operation using the "volume move start -encrypt-destination true" command.
+*Syslog Message*::
+Source volume for volume "%s" in Vserver "%s" is encrypted, but it is replicated as a non-encrypted volume at the destination.
+*Parameters*::
+*dest_volume_name* (STRING): Name of the destination volume.
+*source_vserver_name* (STRING): Name of the source Vserver.
+*dest_vserver_name* (STRING): Name of the destination Vserver.
+
+== vsdr.vol.junction.clash
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects a conflict in the junction path between the volumes of a source and destination Vserver during a SnapMirror resync operation.
+*Corrective Action*::
+Unmount the destination volume or mount it at a different path, and then try the operation again.
+*Syslog Message*::
+Source Vserver "%s" has volume "%s" and junction path "%s" that conflicts with destination Vserver "%s", volume "%s" and the same junction path "%s". Reason: The destination volume is excluded from Vserver DR protection in the reverse direction.
+*Parameters*::
+*source_vserver_name* (STRING): Name of the source Vserver.
+*src_volume_name* (STRING): Name of the source volume.
+*src_volume_junction_path* (STRING): Junction path of the source volume.
+*dest_vserver_name* (STRING): Name of the destination Vserver.
+*dest_volume_name* (STRING): Name of the destination volume.
+*dest_volume_junction_path* (STRING): Junction path of the destination volume.
+
+== vsdr.vol.move.clone.child
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a clone volume is moved in a Vserver DR setup. As a direct consequence, an implicit clone split occurs. The parent volume no longer has any relation with the child volume. Snapshots(tm) copies of the parent volume are unlocked and can get deleted, thereby affecting the SnapMirror(R) replication.
+*Corrective Action*::
+Run "volume move" command to move the volume to the corresponding aggregate.
+*Syslog Message*::
+The volume "%s" of Vserver "%s" has been moved. It is a clone volume. Move the clone volume as well.
+*Parameters*::
+*volume_name* (STRING): Volume that has to be manually moved.
+*vserver_name* (STRING): Vserver name for which configuration replication is happening.
+
+== vsdr.vol.move.clone.parent
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the parent of a clone volume is moved in a Vserver disaster-recovery (DR) configuration. If the moved volume is deleted or its Snapshot(R) copies are deleted, the SnapMirror(R) transfer fails.
+*Corrective Action*::
+Run the "volume move" command to move the volume to an appropriate aggregate. If the volume was deleted at the source and the transfer failed, additionally run "snapmirror resync".
+*Syslog Message*::
+The volume "%s" of Vserver "%s "has been moved. The mirroring of this volume is at risk as it is the parent of a clone volume.
+*Parameters*::
+*volume_name* (STRING): Volume that has to be manually moved.
+*vserver_name* (STRING): Name of the Vserver for which configuration replication is happening.
+
+== vsdr.vol.name.clash
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the source Vserver contains a volume with the same name as one on the destination Vserver, and the volume at the destination is excluded from Vserver Disaster Recovery(DR) Protection in the reverse direction. Future resynchronization attempts might fail unless the problem is resolved.
+*Corrective Action*::
+Rename the source or the destination volume, and then try the operation again.
+*Syslog Message*::
+The source Vserver "%s" has a volume with name "%s" while the destination Vserver "%s" has a volume with the same name "%s" that is excluded from Vserver DR Protection in the reverse direction.
+*Parameters*::
+*source_vserver_name* (STRING): Name of the source Vserver in a Vserver DR setup.
+*src_volume_name* (STRING): Name of the volume on the source Vserver.
+*dest_vserver_name* (STRING): Name of the destination Vserver in a Vserver DR setup.
+*dest_volume_name* (STRING): Name of the volume on the destination Vserver.
+
+== vsdr.vol.noparentvolume
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volume that needs to be created on the destination cluster has a parent volume that did not get replicated. The possible types of volumes for which this error can occur are LS, FlexCache(R), and FlexClone(R).
+*Corrective Action*::
+Log in to the cluster and unlock the Vserver by using "vserver unlock" command at a diag privilege level, and then create the parent volume by using the "volume create" command. Lock the Vserver by using the "vserver lock" command, and start the configuration replication with a resync.
+*Syslog Message*::
+Configuration replication for volume "%s" of type %s in Vserver "%s" has failed because the parent volume for this volume has not been replicated.
+*Parameters*::
+*volume_name* (STRING): Volume on which this error occurred.
+*volume_type* (STRING): Type of volume. Possible values could be LS, FlexCache, or FlexClone.
+*vserver_name* (STRING): Vserver name for which configuration replication is happening.
+
+== vsdr.vol.nospaceinaggregate
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is no space left in the aggregate for new volumes to be created during configuration replication.
+*Corrective Action*::
+Log in to the cluster and assign more disks to the aggregate.
+*Syslog Message*::
+Configuration replication for volume "%s" in Vserver "%s" has failed because the aggregate "%s" does not have enough space.
+*Parameters*::
+*volume_name* (STRING): Volume on which this error occurred.
+*vserver_name* (STRING): Vserver name for which configuration replication is happening.
+*aggregate_name* (STRING): Name of the aggregate.
+
+== vsdr.vol.nospaceinfabricpoolaggregate
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is no matching fabric pool aggregate found for composite source volume or not enough space left in the fabric pool aggregate for new volumes to be created during configuration replication.
+*Corrective Action*::
+Log in to the cluster and assign more disks to the perf tier of fabric pool aggregate.
+*Syslog Message*::
+Couldn't place volume "%s" of Vserver "%s" in fabric pool aggregate as there is no matching fabric pool aggregate found or there is not enough space left in perf tier.
+*Parameters*::
+*volume_name* (STRING): Volume on which this error occurred.
+*vserver_name* (STRING): Vserver name for which configuration replication is happening.
+
+== vsdr.vol.protect.childmnt
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a protected volume is mounted under an unprotected volume on the source of a Storage Virtual Machine (SVM) disaster recvoery (DR) relationship and a SnapMirror(R) transfer is subsequently initiated. Data continues to be served from this volume, but the volume is not protected by the DR relationship.
+*Corrective Action*::
+Execute any of the following operations on the source cluster to ensure that parent and child volumes have matching protection types, and then invoke the "snapmirror resync" command. 1. Mount the volume under a protected volume. 2. Change the protection type of the parent volume in the junction-path to protected. 3. Change the protection type of the volume to unprotected. To change the protection type, use the command "volume modify -vserver vserver_name -volume volume_name -vserver-dr-protection".
+*Syslog Message*::
+Unable to mount the volume %s:%s under an unprotected volume.
+*Parameters*::
+*vserver_name* (STRING): Name of the SVM for which the SnapMirror transfer was initiated.
+*volume_name* (STRING): Name of the volume that the system is trying to replicate on the destination SVM.
+
+== vsdr.vol.quota.off.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a Vserver DR subsystem fails to disable quotas on the destination volume.
+*Corrective Action*::
+Disable quotas on the volume by using the "volume quota off".
+*Syslog Message*::
+Vserver DR: Failed to disable quotas on volume %s of Vserver %s. Reason: %s
+*Parameters*::
+*destination_volume* (STRING): Name of the destination volume of the Vserver DR relationship.
+*destination_vserver* (STRING): Name of the destination Vserver of the Vserver DR relationship.
+*reason* (STRING): Reason.
+
+== vsdr.vol.quota.on.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a Vserver DR subsystem fails to enable quotas on the destination volume.
+*Corrective Action*::
+Enable quotas on the volume by using the "volume quota on" command.
+*Syslog Message*::
+Vserver DR: Failed to enable quotas on volume %s of Vserver %s. Reason: %s
+*Parameters*::
+*destination_volume* (STRING): Name of the destination volume of the Vserver DR relationship.
+*destination_vserver* (STRING): Name of the destination Vserver of the Vserver DR relationship.
+*reason* (STRING): Reason.
+
+== vsdr.vol.sg.data.compact
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a Vserver DR subsystem does not enable data compaction on the destination volume. Data compaction is not enabled when the destination volume space guarantee setting is not set to "none".
+*Corrective Action*::
+Set the space guarantee of the volume to "none", and then enable data compaction. For more information, refer to TR-4476.
+*Syslog Message*::
+Vserver DR: Volume space guarantee setting for volume %s of Vserver %s is not set to "none". Therefore, data compaction is not enabled on the volume.
+*Parameters*::
+*destination_volume* (STRING): Name of the destination volume of the Vserver DR relationship.
+*destination_vserver* (STRING): Name of the destination Vserver of the Vserver DR relationship.
+
+== vsdr.vol.sg.inline.dedup
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a Vserver DR subsystem does not enable cross volume inline deduplication on the destination volume. Inline deduplication is not enabled when the destination volume space guarantee setting is not set to "none".
+*Corrective Action*::
+Set the space guarantee of the volume to "none", and then enable cross volume inline deduplication. For more information, refer to TR-4476.
+*Syslog Message*::
+Vserver DR: Volume space guarantee setting for volume %s of Vserver %s is not set to "none". Therefore, cross volume inline deduplication is not enabled on the volume.
+*Parameters*::
+*destination_volume* (STRING): Name of the destination volume of the Vserver DR relationship.
+*destination_vserver* (STRING): Name of the destination Vserver of the Vserver DR relationship.
+
+== vsdr.vol.sis.capture.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a Vserver DR subsystem fails to replicate the efficiency configuration from the source volume to the destination volume.
+*Corrective Action*::
+Manually enable the efficiency configuration on the destination volume. For more information, refer to TR-4476.
+*Syslog Message*::
+Vserver DR: Failed to replicate the efficiency configuration on volume %s of Vserver %s. Reason: %s
+*Parameters*::
+*source_volume* (STRING): Name of the source volume of the Vserver DR relationship.
+*source_vserver* (STRING): Name of the source Vserver of the Vserver DR relationship.
+*reason* (STRING): Reason for the failure.
+
+== vsdr.vol.sis.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a Vserver DR subsystem fails to apply the efficiency configuration on the destination volume.
+*Corrective Action*::
+Manually apply the efficiency configuration on the volume. For more information, refer to TR-4476.
+*Syslog Message*::
+Vserver DR: Failed to apply the efficiency configuration on volume %s of Vserver %s. Reason: %s
+*Parameters*::
+*destination_volume* (STRING): Name of the destination volume of the Vserver DR relationship.
+*destination_vserver* (STRING): Name of the destination Vserver of the Vserver DR relationship.
+*reason* (STRING): Reason.
+
+== vsdr.vol.vldboffline
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the volume location database (VLDB) goes offline during configuration replication. None of the volume services can commence without bringing it online.
+*Corrective Action*::
+Retry the SnapMirror(R) operation by running the "snapmirror resync" command. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Configuration replication for volume "%s" in Vserver "%s" has failed because the VLDB is offline.
+*Parameters*::
+*volume_name* (STRING): Volume on which this error occurred.
+*vserver_name* (STRING): Vserver name for which configuration replication is happening.

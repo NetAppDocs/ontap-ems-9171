@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cpeer-localid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cpeer.localid events
+---
+
+= cpeer.localid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cpeer.localid.bad
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is an issue reading the local cluster ID. This indicates a serious problem with the cluster which may affect processes outside of cluster peering.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+Unexpected local cluster ID: %s.
+*Parameters*::
+*id* (STRING): The string representation of the bad cluster ID.

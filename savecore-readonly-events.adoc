@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: savecore-readonly-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: savecore.readonly events
+---
+
+= savecore.readonly events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== savecore.readonly
+*Severity*::
+NOTICE
+*Description*::
+An attempt to run the savecore command was made during a read-only boot. This is not permitted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Core dumps not saved in last resort read-only mode
+*Parameters*::
+(None).

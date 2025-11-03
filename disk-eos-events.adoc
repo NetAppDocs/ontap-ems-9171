@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: disk-eos-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.eos events
+---
+
+= disk.eos events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.EOS.OS.error
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a disk is detected that is not supported in this version of Data ONTAP(R) or later
+*Corrective Action*::
+Remove the disk and replace it with a disk that is supported.
+*Syslog Message*::
+%s support ended in version of %s. Current version is %s.
+*Parameters*::
+*disk_information* (STRING): Disk information.
+*EOS_OS_version* (STRING): Latest version of Data ONTAP supported by the disk.
+*cur_OS_version* (STRING): Current version of Data ONTAP.

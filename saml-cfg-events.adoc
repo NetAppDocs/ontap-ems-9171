@@ -1,0 +1,52 @@
+---
+sidebar: sidebar
+permalink: saml-cfg-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: saml.cfg events
+---
+
+= saml.cfg events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== saml.cfg.idp.download
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Security Assertion Markup Language (SAML) Service Provider (SP) configuration fails to download the Identity Provider (IdP) metadata. Any partial configuration is removed automatically on this node only.
+*Corrective Action*::
+Verify that the IdP metadata URI is reachable via the clustered Data ONTAP(R) "network ping" or "network ping6" command. If you need further assistance, contact NetApp technical support.
+*Syslog Message*::
+SAML SP IdP metadata download from %s was not completed successfully. Error: '%s'.
+*Parameters*::
+*idp_uri* (STRING): IdP metadata location.
+*reason* (STRING): Reason for the download failure.
+
+== saml.cfg.setup.incomplete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Security Assertion Markup Language (SAML) Service Provider (SP) configuration is not completed successfully. Any partial configuration is removed automatically on this node only. This failure does not prevent authentication of any user. However, the Identity Provider (IdP) cannot retrieve the SP metadata from this node. This node automatically attempts to complete the configuration when the 'security saml modify -is-enabled true' command is executed.
+*Corrective Action*::
+Use the 'security saml status show' command to see the status of all nodes. Verify the health of all nodes. To create the configuration without enabling SAML authentication, use the 'security saml delete' and 'security saml create' commands to re-create the configuration. If this behavior persists, contact NetApp technical support.
+*Syslog Message*::
+SAML SP configuration creation was not completed successfully.
+*Parameters*::
+(None).
+
+== saml.cfg.sync.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Security Assertion Markup Language (SAML) Service Provider (SP) configuration fails to synchronize on this node. This synchronization is most commonly performed due to SAML SP configuration changes or as new nodes come online. This failure might impact SAML-based authentication of any user, but will not impact data access.
+*Corrective Action*::
+Use the 'security saml status show' command to see the status of all nodes. Verify the health of all nodes. If this behavior persists, contact NetApp technical support.
+*Syslog Message*::
+SAML SP configuration modification was not completed successfully.
+*Parameters*::
+(None).

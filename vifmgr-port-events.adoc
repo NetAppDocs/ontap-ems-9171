@@ -1,0 +1,303 @@
+---
+sidebar: sidebar
+permalink: vifmgr-port-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.port events
+---
+
+= vifmgr.port events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.port.discovered
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a physical network port has been discovered.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Physical network port %s (node %s) has been discovered.
+*Parameters*::
+*port* (STRING): Name of the network port.
+*node* (STRING): Name of the node on which the network port resides.
+
+== vifmgr.port.ifgrpAddPort
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an administrative action adds a port to an interface group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Port %s, node %s has been added to ifgrp %s.
+*Parameters*::
+*portName* (STRING): Name of the port that was added to an interface group.
+*nodeName* (STRING): Name of the node on which the port resides.
+*ifgrpName* (STRING): Name of the interface group to which the port was added.
+
+== vifmgr.port.ifgrpCreated
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an administrative action creates an interface group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Ifgrp %s, node %s has been created.
+*Parameters*::
+*ifgrpName* (STRING): Name of the interface group that was created.
+*nodeName* (STRING): Name of the node on which the interface group resides.
+
+== vifmgr.port.ifgrpDeleted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an administrative action deletes an interface group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Ifgrp %s, on node %s has been deleted.
+*Parameters*::
+*ifgrpName* (STRING): Name of the interface group that was deleted.
+*nodeName* (STRING): Name of the node on which the ifgrp was deleted.
+
+== vifmgr.port.ifgrpRemovePort
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an administrative action removes a port from an interface group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Port %s, node %s has been removed from ifgrp %s.
+*Parameters*::
+*portName* (STRING): Name of the port that was removed from an interface group.
+*nodeName* (STRING): Name of the node on which the port resides.
+*ifgrpName* (STRING): Name of the interface group from which the port was removed.
+
+== vifmgr.port.mismatchState
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an administratively down port is not operationally down.
+*Corrective Action*::
+The operational state of the port does not match the state in the ports configuration. Use the advanced mode command "network port modify" command specifying the desired state by setting the paramter -up-admin" to true if the desired state is up and to false if the desired state is down.
+*Syslog Message*::
+port %s is administratively down and operationally up.
+*Parameters*::
+*port* (STRING): Name of port that should be operationally down.
+
+== vifmgr.port.monitor.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a port fails a health check.
+*Corrective Action*::
+Check the network cables that are connected to the specified port for any loose connections. Ensure that the physical Ethernet NIC is functioning properly.
+*Syslog Message*::
+The "%s" health check for port %s (node %s) has failed. The port is operating in a degraded state.
+*Parameters*::
+*healthCheckType* (STRING): The type of health check that this port failed. The possible health checks are Frequent Link Flapping and Insufficient L2 Reachability.
+*portName* (STRING): Name of the port that failed the health check.
+*nodeName* (STRING): Name of the node on which the port resides.
+
+== vifmgr.port.monitor.passed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a port successfully passes a health check.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The "%s" health check for port %s (node %s) has passed.
+*Parameters*::
+*healthCheckType* (STRING): The type of health check that this port passed. The possible health checks are Frequent Link Flapping and Insufficient L2 Reachability.
+*portName* (STRING): Name of the port that passed the health check.
+*nodeName* (STRING): Name of the node on which the port resides.
+
+== vifmgr.port.mtumismatch
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the administrator modifies a cluster port's MTU while the node is out of quorum to a value other than the broadcast domain MTU, and then the node rejoins quorum.
+*Corrective Action*::
+Change the port's MTU by using the "network port modify" command, or change the broadcast domain's MTU by using the "network port broadcast-domain modify" command.
+*Syslog Message*::
+The MTU of port %s (%d) does not match the MTU of broadcast domain %s (%d).
+*Parameters*::
+*port* (STRING): Name of the port.
+*portmtu* (INT): MTU of the port.
+*broadcast_domain* (STRING): Name of the broadcast domain.
+*bdmtu* (INT): MTU of the broadcast domain.
+
+== vifmgr.port.restored
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when configuration data for a network port is restored, typically for a network port that no longer exists or was partially removed previously. No action is required unless you were intentionally intending to remove the network port.
+*Corrective Action*::
+If you intentionally intended to remove the port, use the (privilege: advanced) "cluster ring show -unitname vifmgr" command to confirm that the network management component is online. If the component is online, use either the "network port ifgrp delete" or "network port vlan delete" command to remove the port again.
+*Syslog Message*::
+Configuration data for port %s in IPspace "%s" has been restored.
+*Parameters*::
+*port* (STRING): Name of the affected port.
+*ipspace* (STRING): Name of the IPspace to which the port is assigned.
+
+== vifmgr.port.settings
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when MTU, speed, flowcontrol, or duplex administrative settings are applied to a network port. If link autonegotiation is enabled, the negotiated operational values might override these administrative settings.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Port %s on node "%s" is configured with MTU: %s, speed: %s, flowcontrol: %s, duplex: %s.
+*Parameters*::
+*port_name* (STRING): Name of the Ethernet port.
+*node* (STRING): Name of the node.
+*mtu* (STRING): MTU value.
+*speed* (STRING): Speed value.
+*flowcontrol* (STRING): Flow control value.
+*duplex* (STRING): Duplex value.
+
+== vifmgr.port.shareBd
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an administrator attempts to move a network port out of IPspace "Cluster", and that port is being used by the back-end HA or DR interconnect. Ports used for either the HA or DR interconnect must remain in IPspace "Cluster" and must be wired to either the cluster switch or directly to the associated HA partner, for two-node switchless clusters.
+*Corrective Action*::
+If the port has been added to a new broadcast domain, use the "network port broadcast-domain remove-ports" command to remove the port's broadcast domain association. When the port is no longer assigned to a broadcast domain, use the "network port broadcast-domain add-ports" command to add it to broadcast domain "Cluster" in IPspace "Cluster".
+*Syslog Message*::
+Port %s is shared with the HA or DR interconnect but has been moved from broadcast domain "Cluster" to broadcast domain "%s" of IPspace "%s".
+*Parameters*::
+*port* (STRING): Name of the affected port.
+*broadcast_domain* (STRING): Name of the broadcast domain to which the port is assigned.
+*ipspace* (STRING): Name of the IPspace to which the port is assigned.
+
+== vifmgr.port.shareIpspace
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a cluster port that is shared with either the back-end HA or DR interconnect is assigned to an IPspace other than "Cluster", which is required for all shared ports. This condition can be encountered when a hardware refresh introduces a new platform that includes ports shared with either the HA or DR interconnect.
+*Corrective Action*::
+If necessary, use the "network port broadcast-domain remove-ports" command to remove the broadcast domain association from the port. After the port is no longer assigned to a broadcast domain, use the "network port broadcast-domain add-ports" command to add the port to broadcast domain "Cluster" in IPspace "Cluster".
+*Syslog Message*::
+Port %s in broadcast domain "%s" of IPspace "%s" is shared with the HA or DR interconnect, but is not assigned to IPspace "Cluster".
+*Parameters*::
+*port* (STRING): Name of the affected port.
+*broadcast_domain* (STRING): Name of the broadcast domain to which the port is assigned.
+*ipspace* (STRING): Name of the IPspace to which the port is assigned.
+
+== vifmgr.port.shareMtu
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a cluster port shared with either the back-end HA or DR interconnect is found to be using an MTU other than 9000 bytes. For optimal performance, ports shared with the back-end interconnect should use an MTU of 9000 bytes. This condition can occur when a platform using network ports shared with either the back-end HA or DR interconnect is used in a mixed-version cluster, where one or more nodes still allows changes to the MTU setting for broadcast domain "Cluster".
+*Corrective Action*::
+If the port is currently assigned to broadcast domain "Cluster", use the "network port broadcast-domain modify" command to update broadcast domain "Cluster" to use an MTU of 9000 bytes.
+*Syslog Message*::
+Port %s in broadcast domain "%s" of IPspace "%s" is shared with the HA or DR interconnect, but has an MTU of %d bytes instead of 9000 bytes.
+*Parameters*::
+*port* (STRING): Name of the affected port.
+*broadcast_domain* (STRING): Name of the broadcast domain to which the port is assigned.
+*ipspace* (STRING): Name of the IPspace to which the port is assigned.
+*mtu* (INT): MTU setting of the port.
+
+== vifmgr.port.sharingDisabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when port sharing is disabled for a network port. This transition occurs when a network port is no longer available to be shared with the back-end HA or DR interconnect.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Sharing is disabled for port %s.
+*Parameters*::
+*port* (STRING): Name of the affected port.
+
+== vifmgr.port.sharingEnabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when port sharing is enabled for a network port. Enabling port sharing facilitates bandwidth sharing with the back-end (high availability) HA and DR interconnect, which use the same physical port.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Sharing is enabled for port %s.
+*Parameters*::
+*port* (STRING): Name of the affected port.
+
+== vifmgr.port.sharingError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an error is encountered while attempting to enable or disable sharing of a network port. If the port is being shared with the back-end HA or DR interconnect on this platform, those components might not be safely isolated from LIFs configured on the port. High utilization by either HA or DR traffic might negatively impact latency and bandwidth available to the cluster network.
+*Corrective Action*::
+Use the "network port show" command to display the current link status of the affected network port. If the port is down, check any associated cabling and the status of the network switch it is connected to. If the problem persists, contact NetApp technical support for assistance.
+*Syslog Message*::
+Port "%s" could not be updated to the requested sharing state. Error: %s.
+*Parameters*::
+*port* (STRING): Name of the affected port.
+*error* (STRING): Description of the error.
+
+== vifmgr.port.vipCreated
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an administrative action causes a VIP port to be created.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+VIP port %s on node %s in IPspace %s has been created.
+*Parameters*::
+*vipPortName* (STRING): Name of the VIP port that was created.
+*nodeName* (STRING): Name of the node on which the VIP port resides.
+*ipspace* (STRING): Name of the IPspace where the VIP port resides.
+
+== vifmgr.port.vipDeleted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an administrative action causes a VIP port to be deleted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+VIP port %s on node %s in IPspace %s has been deleted.
+*Parameters*::
+*vipPortName* (STRING): Name of the VIP port that was deleted.
+*nodeName* (STRING): Name of the node from which the VIP port was deleted.
+*ipspace* (STRING): Name of the IPspace where the VIP port resides.
+
+== vifmgr.port.vlanCreated
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an administrative action creates a VLAN on a port.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Vlan %s is created on port %s, node %s.
+*Parameters*::
+*vlanName* (STRING): Name of the VLAN created on the port.
+*portName* (STRING): Name of the port on which the VLAN was created.
+*nodeName* (STRING): Name of the node on which the port resides.
+
+== vifmgr.port.vlanDeleted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an administrative action deletes a VLAN from a port.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Vlan %s is deleted from port %s, node %s.
+*Parameters*::
+*vlanName* (STRING): Name of the VLAN deleted from the port.
+*portName* (STRING): Name of the port from which the VLAN was deleted.
+*nodeName* (STRING): Name of the node on which the port resides.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: wafl-spacemgmnt-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.spacemgmnt events
+---
+
+= wafl.spacemgmnt events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.spacemgmnt.policyChg
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when autodelete/autosize policy of a volume is changed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The space management policy for volume %s has changed: %s.
+*Parameters*::
+*vol* (STRING): Volume name.
+*changes* (STRING): A string of changes being made.

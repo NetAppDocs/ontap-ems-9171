@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: san-lifrepfieldsmissing-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.lifrepfieldsmissing events
+---
+
+= san.lifrepfieldsmissing events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.LifRepFieldsMissing
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot replicate a SAN logical interface (LIF) in a MetroCluster(tm) configuration, because one or more attributes of the source LIF cannot be determined.
+*Corrective Action*::
+Verify that the home node of the LIF created or modified on the primary cluster is up. Also verify that the LIF's operational status is up, by using the "network interface show -vserver <vserver_name> -lif <lif_name>-fields status-oper" command. Check whether the Vserver configuration state is healthy by using the "metrocluster vserver show -vserver <vserver_name>" command. If the configuration state is unhealthy, resynchronize the Vserver with its partner by using the "metrocluster vserver resync" command.
+*Syslog Message*::
+Attempted LIF replication failed on the destination cluster node %s for SAN LIF %s for Vserver %s.
+*Parameters*::
+*node* (STRING): Name of the destination cluster node (DR partner) that attempted LIF replication.
+*lif* (STRING): Name of the SAN LIF.
+*vserver* (STRING): Name of the Vserver.

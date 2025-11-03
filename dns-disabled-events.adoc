@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: dns-disabled-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dns.disabled events
+---
+
+= dns.disabled events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dns.disabled.configs.removed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the last system to be upgraded in a cluster removes DNS configurations that were marked as disabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+All DNS configurations with the "-state" parameter set to "disabled" were removed.
+*Parameters*::
+(None).

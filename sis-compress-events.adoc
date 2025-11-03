@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: sis-compress-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.compress events
+---
+
+= sis.compress events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.compress.skip
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when postprocess compression is skipped during a deduplication operation, even though postprocess compression is enabled on the volume. Post process compression is not supported on a node configured with the All-Flash Optimized personality.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Skipped postprocess compression on volume %s%s because the node is All-Flash Optimized.
+*Parameters*::
+*path* (STRING): Path to the deduplicated volume.
+*volident* (STRING): Unique volume identifier.

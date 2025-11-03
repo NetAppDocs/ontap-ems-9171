@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: certificate-node-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: certificate.node events
+---
+
+= certificate.node events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== certificate.node.vserver
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an installed certificate record exists in a node Vserver. Such records are not treated consistently by the system, but were unintentionally permitted in prior releases.
+*Corrective Action*::
+Delete the problematic record by using the "security certificate delete" command.
+*Syslog Message*::
+The certificate record with UUID %s, named "%s" is installed in the node Vserver "%s".
+*Parameters*::
+*uuid* (STRING): UUID of the offending record.
+*cert_name* (STRING): Name (unique within a Vserver) of the offending record.
+*vserver* (STRING): Name of the node Vserver in which the offending record is installed.

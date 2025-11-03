@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: monitor-raidtec-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.raidtec events
+---
+
+= monitor.raidtec events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.raidtec.dblDegraded
+*Severity*::
+ERROR
+*Description*::
+This message occurs as part of an hourly system check, when a RAID-TEC aggregate is in double degraded mode. This happens when there are two disk failures in any RAID group in the RAID-TEC aggregate and the RAID subsystem cannot find suitable replacement disks to start reconstruction. One more disk failure in the same RAID group leads to the aggregate being in its worst degraded state.
+*Corrective Action*::
+Replace the failed disks, which are identifiable by lighted fault LED lights, to start reconstruction. After reconstruction is complete, the output of the "aggr show" command shows that the aggregate is back to normal state.
+*Syslog Message*::
+%s in RAID group "%s" are broken.
+*Parameters*::
+*type* (STRING): Type of disks: data, parity, dparity, or tparity disk.
+*rgname* (STRING): RAID group name.

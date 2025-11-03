@@ -1,0 +1,54 @@
+---
+sidebar: sidebar
+permalink: cluster-epsilon-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cluster.epsilon events
+---
+
+= cluster.epsilon events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cluster.epsilon.assign.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when automatic assignment of epsilon to a node fails, alerting the customer that there is no epsilon on their system. Attempts to assign epsilon continue until automatic assignment succeeds or epsilon is assigned manually.
+*Corrective Action*::
+Try to manually assign epsilon to a healthy node using the command 'cluster modify -node node-name -epsilon true'. Contact NetApp technical support if epsilon cannot be assigned.
+*Syslog Message*::
+Epsilon could not be automatically assigned to node %s with error %s.
+*Parameters*::
+*node* (STRING): Name of the node that epsilon was being assigned to.
+*error* (STRING): Error string detailing why epsilon assignment failed.
+
+== cluster.epsilon.assigned
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when epsilon is assigned to a node either manually by a user-initiated command or automatically by the system.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Epsilon was assigned to node %s by %s.
+*Parameters*::
+*node* (STRING): Name of the node epsilon was assigned to.
+*actor* (STRING): Whether the change was made manually by a user command or automatically by the system.
+
+== cluster.epsilon.removed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when epsilon is removed from a node either manually by a user-initiated command or automatically by the system.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Epsilon was removed from node %s by %s.
+*Parameters*::
+*node* (STRING): Name of the node that epsilon was removed from.
+*actor* (STRING): Whether the change was made manually by a user command or automatically by the system.

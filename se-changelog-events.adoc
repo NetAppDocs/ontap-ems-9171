@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: se-changelog-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: se.changelog events
+---
+
+= se.changelog events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== se.changelog.full
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Single Instance Storage (SIS) change logging metafile is full during migration workflow through Snapmirror. SIS will be disabled and file will be truncated to recover space.
+*Corrective Action*::
+Upon replication break, sis will enable. If there is significant loss of savings, then Run "volume efficiency start" command with "-scan-old-data".
+*Syslog Message*::
+Changelog metafile for volume %s%s%s is full.
+*Parameters*::
+*host* (STRING): Owning host of the volume.
+*vol* (STRING): Name of the volume.
+*volident* (STRING): Uniquely identifies the volume when the volume name itself is insufficient.

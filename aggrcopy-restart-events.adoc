@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: aggrcopy-restart-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: aggrcopy.restart events
+---
+
+= aggrcopy.restart events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== aggrcopy.restart.dst.chkFail
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when 'aggr copy' checks for restart capability on the destination storage system fail. The 'aggr copy' transfer operation cannot be restarted. It starts as usual from the beginning (0 %%) without any further user action.
+*Corrective Action*::
+No action necessary
+*Syslog Message*::
+Destination side checks fail; 'aggr copy' transfer starts from 0%%.
+*Parameters*::
+(None).

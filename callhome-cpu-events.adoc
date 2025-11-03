@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: callhome-cpu-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.cpu events
+---
+
+= callhome.cpu events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.cpu.fan
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a CPU fan failed or the fan is spinning too slowly or too fast. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Analyze whether you need to replace the CPU fan. CPU fan replacement might require that you replace the motherboard as well. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.cpu.fan.fault
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a CPU fan failed or the fan is spinning too slowly or too fast. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Analyze whether you need to replace the CPU fan. CPU fan replacement might require that you replace the motherboard as well. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

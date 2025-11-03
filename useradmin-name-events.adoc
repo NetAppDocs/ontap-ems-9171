@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: useradmin-name-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: useradmin.name events
+---
+
+= useradmin.name events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== useradmin.name.too.long
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an administrative name in the cluster is longer than the maximum allowed 255 characters.
+*Corrective Action*::
+Assign administrative names that are no more than 255 characters.
+*Syslog Message*::
+%s name : %s.. is too long
+*Parameters*::
+*type* (STRING): Type of the name, which can be group, role or capability.
+*invalidname* (STRING): Invalid name.

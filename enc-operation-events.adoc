@@ -1,0 +1,71 @@
+---
+sidebar: sidebar
+permalink: enc-operation-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: enc.operation events
+---
+
+= enc.operation events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== enc.operation.completed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when rekey or conversion to encryption operation is completed in a flexible volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s operation is completed in the volume '%s' (aggr '%s').
+*Parameters*::
+*op* (STRING): Rekey or conversion operation.
+*volume* (STRING): Volume name.
+*aggr* (STRING): Name of the containing aggregate.
+
+== enc.operation.disableAid
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system automatically disables the Aggregate Inline Deduplication (AID) feature for a volume as it is converted from a non-encrypted volume to an encrypted volume because AID is not supported for an encrypted volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+AID is disabled for volume %s within aggregate %s during conversion to encryption operation.
+*Parameters*::
+*volume* (STRING): Volume name.
+*aggr* (STRING): Name of the containing aggregate.
+
+== enc.operation.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is a failure in encryption operation. The operation description explains the nature of operation and reason for failure.
+*Corrective Action*::
+Ensure that there is enough space in the aggregate, cluster is healthy, volume location database is online, and then retry the volume encryption operation.
+*Syslog Message*::
+Failure in %s operation on volume '%s' (aggr '%s'). Reason '%s'.
+*Parameters*::
+*op* (STRING): Rekey or conversion operation.
+*volume* (STRING): Volume name.
+*aggr* (STRING): Name of the containing aggregate.
+*desc* (STRING): Describes the reason for the failure of operation with arguments.
+
+== enc.operation.started
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when rekey or conversion to encryption operation is started in a flexible volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s operation is started in the volume '%s' (aggr '%s').
+*Parameters*::
+*op* (STRING): Rekey or conversion operation.
+*volume* (STRING): Volume name.
+*aggr* (STRING): Name of the containing aggregate.

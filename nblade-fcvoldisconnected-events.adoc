@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: nblade-fcvoldisconnected-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.fcvoldisconnected events
+---
+
+= nblade.fcvoldisconnected events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.fcVolDisconnected
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NFS client attempts to access a FlexCache(R) volume, but the origin of the FlexCache volume cannot be accessed due to poor network connectivity. As a result, NFS clients will lose access to the FlexCache volume.
+*Corrective Action*::
+Verify that the FlexCache volume can connect with its origin. If the FlexCache volume and origin volume are on the same cluster, then check the node health by using the "system node show" command. If the FlexCache volume and origin volume are on different clusters, then ensure that the intercluster LIFs on both clusters can connect by using the "network ping" commands to check the connectivity on both the clusters.
+*Syslog Message*::
+Attempt to access FlexCache volume with MSID %u on Vserver ID %u failed because FlexCache origin volume with MSID %u is not reachable.
+*Parameters*::
+*cacheMsid* (LONGINT): MSID of the FlexCache volume.
+*cacheVserverId* (INT): Identifier for the FlexCache Vserver associated with this operation.
+*originMsid* (LONGINT): MSID of the origin of the FlexCache volume.

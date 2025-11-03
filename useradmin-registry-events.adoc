@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: useradmin-registry-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: useradmin.registry events
+---
+
+= useradmin.registry events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== useradmin.registry
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system encounters an internal registry error while reading the useradmin entries.
+*Corrective Action*::
+If the error persists, contact NetApp technical support for further assistance.
+*Syslog Message*::
+A general registry error occurred when %s.
+*Parameters*::
+*operation* (STRING): Operation in execution when the registry error occurred.
+
+== useradmin.registry.specific
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system encounters an internal registry error while reading/writing a specific useradmin entry for a specific user.
+*Corrective Action*::
+Try to delete and re-create the user/group/role. If this is does not work, then you may have to modify the registry directly.
+*Syslog Message*::
+A general registry error occurred during a %s for %s: '%s'.
+*Parameters*::
+*operation* (STRING): Operation in execution when the registry error occurred.
+*type* (STRING): The type of name which is the source of the error. This can be one of the following values: "user", "group", "role", or "capability".
+*name* (STRING): The name of the subject which is the source of the error.

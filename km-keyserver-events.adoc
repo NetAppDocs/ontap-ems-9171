@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: km-keyserver-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: km.keyserver events
+---
+
+= km.keyserver events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== km.keyserver.available
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a check by the key manager for connectivity with a configured key management server indicates that the key management server that was previously unavailable is now available.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The external key management server "%s" is now available for Vserver "%s".
+*Parameters*::
+*address* (STRING): IP address of the key management server.
+*vserver* (STRING): Name of the Vserver where the key management server is configured.
+
+== km.keyserver.notavailable
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a check by the key manager for connectivity with a configured key management server indicates that the key management server is not available. The key management server might be down, there might be a network-related problem preventing communication with the key server, or the security certificates used to authenticate with the key management server might have expired. Without access to the key management server, the node might not be able to restore authentication keys needed to unlock NSE drives or encryption keys needed to mount encrypted volumes. If the key management server is not available the next time this node boots, then the failure to restore the keys might prevent the node from booting successfully or prevent the encrypted volumes hosted on this node from coming online.
+*Corrective Action*::
+Ensure that the key management server is online using the server's management interface. If the server is online, use the "network ping -lif <lif> -vserver <vserver> -destination <address>" command to verify that the node can communicate with the server. If this command indicates that the server is available, use the "security key-manager external show -vserver <vserver>" command to get the certificate names, and then check whether they are expired with the "security certificate show-user-installed -vserver <vserver> -cert-name <cert>" command. If so, install the updated certificates with the "security certificate install" and "security key-manager external modify" commands.
+*Syslog Message*::
+The external key management server "%s" is not available for Vserver "%s", status: "%s".
+*Parameters*::
+*address* (STRING): IP address of the key management server.
+*vserver* (STRING): Name of the Vserver where the key management server is configured.
+*keyserver_status* (STRING): Status of the key management server.

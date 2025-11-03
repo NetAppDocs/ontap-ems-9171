@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: ata-timeout-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ata.timeout events
+---
+
+= ata.timeout events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ata.timeout.failed
+*Deprecated*::
+Last used 9.2
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an I/O request to the ATA driver times out. This might be indicative of an overloaded back-end storage subsystem. The retries for this I/O operation have been exhausted; the I/O operation has failed and will not be retried.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ATA device timeout (%s).
+*Parameters*::
+*ata_timeout* (STRING): Timeout message from the ATA driver.
+
+== ata.timeout.retry
+*Deprecated*::
+This event is no longer used because of misleading text. See new EMS of EMS_cam_timeout_retry. Last used 9.7.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an I/O request to the ATA driver times out. This might be indicative of an overloaded back-end storage subsystem. The I/O operation will be retried; this message does not indicate failure.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ATA device timeout (%s).
+*Parameters*::
+*ata_timeout* (STRING): Timeout message from the ATA driver.

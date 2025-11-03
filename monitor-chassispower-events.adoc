@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: monitor-chassispower-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.chassispower events
+---
+
+= monitor.chassispower events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.chassisPower.degraded
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a power supply is degraded.
+*Corrective Action*::
+Degraded power might be caused by bad power supplies, bad wall power, or bad components on the motherboard. If spare power supplies are available, try exchanging them to see if that alleviates the problem. Otherwise contact NetApp technical support for further direction.
+*Syslog Message*::
+Chassis power is degraded: %s
+*Parameters*::
+*reasonText* (STRING): Description of the degradation.
+
+== monitor.chassisPower.ok
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the motherboard power is OK.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Chassis power is OK.
+*Parameters*::
+(None).

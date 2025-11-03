@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: netif-nicnotsupported-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.nicnotsupported events
+---
+
+= netif.nicnotsupported events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.nicNotSupported
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the installed network interface card (NIC) version is not supported.
+*Corrective Action*::
+Replace the NIC with one purchased from NetApp.
+*Syslog Message*::
+The NIC in slot %d is not supported. The %s is not supported.
+*Parameters*::
+*slot* (INT): Slot number of the NIC.
+*reason* (STRING): Specific reason the NIC is not supported.

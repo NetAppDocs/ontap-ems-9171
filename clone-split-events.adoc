@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: clone-split-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: clone.split events
+---
+
+= clone.split events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== clone.split.objcopy.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volume clone split object copy operation (which copies objects from source volume to a clone) fails because it is unable to read source objects due to unauthorized access to the object store container. The volume clone split object copy operation will be aborted and must be restarted manually after a valid access token is added to the object store configuration.
+*Corrective Action*::
+Ensure that you have added the shared access signature token to the object store configuration. The access token can be added to the configuration using the "storage aggregate object-store config modify" command. Additionally, ensure that the configuration of your object store has not changed, and that login and connectivity information are still accurate. The volume clone split object copy operation can be restarted using the "volume clone split start -match-parent-storage-tier true" command. If the condition persists, contact NetApp technical support.
+*Syslog Message*::
+Clone split object copy operation to copy objects from source volume to clone failed on volume "%s" (aggregate %s) because of unauthorized access to the object store container. Aborting the volume clone object copy split operation.
+*Parameters*::
+*volume_name* (STRING): Clone volume.
+*aggregate_name* (STRING): FabricPool aggregate.

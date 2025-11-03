@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: arl-aggrstart-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: arl.aggrstart events
+---
+
+= arl.aggrstart events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== arl.aggrStart
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when relocation of a storage failover aggregate starts.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Starting relocation of aggregate %s at time %llu.
+*Parameters*::
+*aggrName* (STRING): Name of the aggregate being relocated.
+*time* (LONGINT): Time at which relocation of the aggregate started.
+*aggrUUID* (STRING): UUID of the aggregate being relocated.

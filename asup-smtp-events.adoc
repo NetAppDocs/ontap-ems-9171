@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: asup-smtp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: asup.smtp events
+---
+
+= asup.smtp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== asup.smtp.drop
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the AutoSupport(R) mechanism drops email messages after having retried for the specified times.
+*Corrective Action*::
+Use the "system node autosupport check show-details" command to check for connectivity errors with the configured mailhost. If the connectivity check shows no errors and if the problem persists, contact NetApp technical support for further assistance.
+*Syslog Message*::
+AutoSupport mail (%s) was not sent. The system will drop the message.
+*Parameters*::
+*subject* (STRING): AutoSupport message title.
+
+== asup.smtp.invalid.credential
+*Severity*::
+ERROR
+*Description*::
+This message occurs when incorrect credentials are configured for the AutoSupport SMTP mailhost. AutoSupport will not be delivered to the configured email destinations until the credentials are corrected.
+*Corrective Action*::
+Configure the AutoSupport SMTP mailhost with the correct credentials. Use the "system node autosupport modify -mail-hosts <username@mailhost>" command to update the mailhost configuration.
+*Syslog Message*::
+AutoSupport SMTP connection to "%s" failed due to invalid credentials.
+*Parameters*::
+*mailhost* (STRING): Mailhost name.
+
+== asup.smtp.missing.cert
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Root CA certificates to validate the SMTP server certificate is missing in ONTAP. AutoSupport will not be delivered to the configured email destinations until the correct Root CA certificate is installed.
+*Corrective Action*::
+Install the correct Root CA certificates for the SMTP server using the "security certificate install" command.
+*Syslog Message*::
+AutoSupport SMTP connection to "%s" failed due to missing Root CA certificate.
+*Parameters*::
+*mailhost* (STRING): Mailhost name.

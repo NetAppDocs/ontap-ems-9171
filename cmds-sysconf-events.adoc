@@ -1,0 +1,101 @@
+---
+sidebar: sidebar
+permalink: cmds-sysconf-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cmds.sysconf events
+---
+
+= cmds.sysconf events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cmds.sysconf.haltERR1
+*Severity*::
+ALERT
+*Description*::
+This message occurs to log the reason for system halt, before actually system is halted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Halting system due to %d configuration problems.
+*Parameters*::
+*errCount* (INT): Number of error which caused the system halt.
+
+== cmds.sysconf.haltERR2
+*Severity*::
+ALERT
+*Description*::
+This message occurs to log the reason for system halt, before actually system is halted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Halting system due to a configuration problem.
+*Parameters*::
+(None).
+
+== cmds.sysconf.inconstRule
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs because the rule for the card is applicable to both non_cluster_only and cluster_only systems, which is inconsistent.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Rule for model %s card %s is inconsistent: it applies both to cluster-only and non-cluster-only.
+*Parameters*::
+*model* (STRING): Model ID.
+*card* (STRING): Card ID.
+
+== cmds.sysconf.logErr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs to log the error through syslog as an Error or Informational message depending upon the error count which is in this case greater than 0.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s.
+*Parameters*::
+*errMsg* (STRING): Error message to be logged.
+
+== cmds.sysconf.logInfo
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs to log the error through syslog as an Error or informational message depending upon the error count which is in this case less than or equal to 0.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s.
+*Parameters*::
+*errMsg* (STRING): Error message to be logged.
+
+== cmds.sysconf.perIntSmall
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs because the value for a periodic interval for internal testing is set too small, less than the minimum allowed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+options.sysconfig.periodic_interval of %d minutes is too small; using %d.
+*Parameters*::
+*valueUsed* (INT): Value used for testing purpose.
+*defaultMinValue* (INT): Minimum value allowed for a periodic interval.
+
+== cmds.sysconf.syslogger
+*Severity*::
+NOTICE
+*Description*::
+This message occurs to send the output to syslog rather than command prompt because the option '-l' with sysconfig command is not documented and is included in DEBUG builds only.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s.
+*Parameters*::
+*message* (STRING): 'sysconfig -l' Command output message.

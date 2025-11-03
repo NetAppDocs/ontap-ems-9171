@@ -1,0 +1,61 @@
+---
+sidebar: sidebar
+permalink: snaplock-disk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snaplock.disk events
+---
+
+= snaplock.disk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snaplock.disk.import.7mode
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the configuration management detects that an older(7-Mode) version of a SnapLock(R) disk is attached to a system running a Data ONTAP(R) release that cannot support it.
+*Corrective Action*::
+Remove the SnapLock(R) disks from the system.
+*Syslog Message*::
+File system %s has SnapLock(R) disks. This version of Data ONTAP(R) does not support older(7-Mode) SnapLock(R) versions
+*Parameters*::
+*disk_info* (STRING): Formatted information about the disk.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of disk in RPM.
+*failure_reason* (STRING): A text description of storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk drive is installed.
+*site* (STRING): For a MetroCluster(R) configuration, indicates the site ("Local" or "Remote") where the disk is located. For non-MetroCluster configurations, the site is "Local".
+
+== snaplock.disk.on.unsupported.version
+*Severity*::
+ERROR
+*Description*::
+This event is issued when configuration management detects that a SnapLock(R) disk is attached to a system running ONTAP(R) release which doesn't support SnapLock(R).
+*Corrective Action*::
+Install a version of Data ONTAP that supports SnapLock, or remove the SnapLock disks.
+*Syslog Message*::
+File system %s has SnapLock disks. This version of Data ONTAP does not support SnapLock.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*failure_reason* (STRING): A text description of storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk drive is installed.
+*site* (STRING): For a MetroCluster configuration(tm), indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.

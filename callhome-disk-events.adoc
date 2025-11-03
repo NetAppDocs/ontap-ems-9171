@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: callhome-disk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.disk events
+---
+
+= callhome.disk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.disk.carrier.evacuation.notpossible
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a system does not contain enough spares to correct existing disk failures. This message is seen only on systems containing disk carriers capable of holding more than one disk. When this message occurs, manual intervention is required because ONTAP(R) cannot automatically correct the existing issues with the system's disk configuration. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+To correct this issue on systems that contain carriers with multiple disks, try the following (in the specified order): (1) Assign any unassigned disks that are contained within a multidisk carrier. (2) Add multidisk carriers. (3) If a replacement carrier is available, do the following: a) Fail ALL disks within the carrier. Do not remove a multidisk carrier that contains non-failed disks; doing so results in system degradation and might result in system failure. b) Wait until the disk's amber Attention LEDs stop flashing and are lit continuously. Do not remove a carrier while the shelf OPS panel is alternating between the shelf ID and the Attention Code H1, or while the disks within the carrier are flashing their amber Attention LEDs. c) Replace the carrier. (4) Reassign partner spare disks in the HA configuration. (5) If the problem persists, call NetApp technical support.
+*Syslog Message*::
+Call home for DISK_CARRIER_EVACUATION_NOTPOSSIBLE
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.disk.low.io
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the storage health monitor detected low disk drive throughput. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for DISK_LOW_THRUPUT
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.disk.orphan
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when RAID subsystem detects an orphan or broken drive and is processing it. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

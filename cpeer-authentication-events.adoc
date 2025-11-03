@@ -1,0 +1,65 @@
+---
+sidebar: sidebar
+permalink: cpeer-authentication-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cpeer.authentication events
+---
+
+= cpeer.authentication events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cpeer.authentication.create
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when authentication is successfully established with a peer cluster.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The peering relationship with cluster %s is now authenticated.
+*Parameters*::
+*peer* (STRING): Peer cluster with which this cluster is now mutually authenticated.
+
+== cpeer.authentication.disable
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when authentication is disabled for a cluster peer relationship.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The peering relationship with cluster %s is now unauthenticated.
+*Parameters*::
+*peer* (STRING): Peer cluster that is now peered to this cluster without authentication.
+
+== cpeer.authentication.revoke
+*Severity*::
+ERROR
+*Description*::
+This message occurs when authentication is revoked for a cluster peer relationship.
+*Corrective Action*::
+Modify the relationship to match on both of the peered clusters. To have them agree on an unauthenticated relationship, use the 'cluster peer modify -authentication no-auth' command. To have them agree on an authenticated relationship, use the same passphrase with the 'cluster peer modify -authentication use-auth' command.
+*Syslog Message*::
+The peering relationship with cluster %s is now revoked and is no longer functional.
+*Parameters*::
+*peer* (STRING): Peer cluster for which the peering relationship has had its peering authentication revoked.
+
+== cpeer.authentication.viol
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a cross-cluster access should be authenticated, but is not. The access has been denied successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Access as peer cluster %s was claimed from network address %s, but has not been granted because %s.
+*Parameters*::
+*peer* (STRING): Peer cluster on behalf of which this access was made.
+*remoteAddress* (STRING): Remote network address of the violating connection.
+*reason* (STRING): Justification for the violation claim.

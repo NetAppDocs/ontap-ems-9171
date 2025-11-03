@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: flexcache-encryption-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: flexcache.encryption events
+---
+
+= flexcache.encryption events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== flexcache.encryption.mismatch.with.origin
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a plaintext FlexCache volume has been created for an encrypted origin volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A plaintext FlexCache volume "%s" in Vserver "%s" has been created for origin volume "%s" in Vserver "%s".
+*Parameters*::
+*originVolumeName* (STRING): Origin Volume Name.
+*cacheVolumeName* (STRING): Cache Volume Name.
+*cacheVserverName* (STRING): Cache Vserver Name.
+*originVserverName* (STRING): Origin Vserver Name.

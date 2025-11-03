@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: wafl-check-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.check events
+---
+
+= wafl.check events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.check.info
+*Severity*::
+ERROR
+*Description*::
+Generic wafl check message
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s
+*Parameters*::
+*msg* (STRING): The message from wafl check
+
+== wafl.check.lostnfound.error
+*Severity*::
+NOTICE
+*Description*::
+WAFL failed to cleanup the lostnfound directory present in the metadir of the given volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failed to cleanup lostnfound from the metadir of volume %s (reason: %s)
+*Parameters*::
+*vol* (STRING): The volume name
+*err* (STRING): The error string

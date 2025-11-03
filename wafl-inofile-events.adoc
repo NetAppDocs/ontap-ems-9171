@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: wafl-inofile-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.inofile events
+---
+
+= wafl.inofile events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.inofile.buf.badHeader
+*Severity*::
+ERROR
+*Description*::
+This event can occur when a snapshot's inofile buffer header has the wrong magic or file block number.
+*Corrective Action*::
+Contact customer support.
+*Syslog Message*::
+Bad header in snapshot %s inofile in %s %s%s%s%s, snapid %d, fbn %llu, vbn %llu, cp_count %u was magic 0x%x, fbn %llu, cp_count %u
+*Parameters*::
+*ino_type* (STRING): The type of inofile
+*type* (STRING): The type of object (volume/aggregate)
+*owner* (STRING): The owner of the volume
+*vol* (STRING): The name of the volume
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*snapid* (INT): The snapshot identifier
+*fbn* (LONGINT): The file block number
+*vbn* (LONGINT): The volume block number
+*cp_count* (INT): The volume CP count
+*omagic* (INT): The magic number in the header
+*ofbn* (LONGINT): The file block number in the header
+*ocp_count* (INT): The CP count in the header

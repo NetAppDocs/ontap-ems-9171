@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: mcc-notify-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mcc.notify events
+---
+
+= mcc.notify events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mcc.notify.auto_heal_queue_failure
+*Severity*::
+ERROR
+*Description*::
+Failed to queue the "MetroCluster Auto Heal" job
+*Corrective Action*::
+Manually complete the healing phase using the command "metrocluster heal aggregates" and "metrocluster heal root-aggregates"
+*Syslog Message*::
+(None).
+*Parameters*::
+*retries_attempted* (INT): Number of retries attempted

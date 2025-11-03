@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: fpolicy-unsupportedpathlen-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fpolicy.unsupportedpathlen events
+---
+
+= fpolicy.unsupportedpathlen events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fpolicy.unsupportedPathLen
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an FPolicy screen request has a path name longer than 4k bytes. The associated file operation will not be screened by FPolicy.
+*Corrective Action*::
+If possible remove the volume generating long path notification from FPolicy screening.
+*Syslog Message*::
+FPolicy notification has path names with unsupported length of "%lld". Max supported path length is %lld. The associated file operation will not be screened by FPolicy.
+*Parameters*::
+*currentPathLen* (LONGINT): Length of the file or directory path from root of volume.
+*allowedPathLen* (LONGINT): Maximum supported path length.

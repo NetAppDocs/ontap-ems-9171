@@ -1,0 +1,104 @@
+---
+sidebar: sidebar
+permalink: cloud-aws-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cloud.aws events
+---
+
+= cloud.aws events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cloud.aws.iamCredsExpired
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the IAM Role thread acquires Amazon Web Services (AWS) Identity and Access Management (IAM) role-based credentials that have already expired. The credentials are acquired from the AWS metadata server using the IAM role, and are used in signing API requests to AWS S3.
+*Corrective Action*::
+Log in to the AWS EC2 Management Console, click on the 'Instances' page, and then find and check the health of the instance pertaining to this ONTAP Cloud deployment. Also verify that the AWS IAM role associated with the instance exists and grants proper privileges to the instance.
+*Syslog Message*::
+ONTAP acquired AWS credentials associated with the AWS IAM role named '%s' on the AWS metadata server that have already expired. Node %s.
+*Parameters*::
+*iamRole* (STRING): Name of the IAM role associated with this ONTAP Cloud(R) instance.
+*nodeUuid* (STRING): UUID of the node.
+
+== cloud.aws.iamCredsInvalid
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system acquires Amazon Web Services (AWS) Identity and Access Management (IAM) role-based credentials that are not valid.
+*Corrective Action*::
+In the AWS EC2 Management Console, find and check the health of the instance pertaining to this ONTAP Cloud deployment. Also, verify that the AWS IAM role associated with the instance exists and grants proper privileges to the instance.
+*Syslog Message*::
+AWS credentials that were acquired by ONTAP are not valid. AWS IAM role: %s. Node: %s.
+*Parameters*::
+*iamRole* (STRING): Name of the IAM role associated with this ONTAP Cloud instance.
+*nodeUuid* (STRING): UUID of the node.
+
+== cloud.aws.iamCredsNotFound
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the cloud credentials thread cannot acquire Amazon Web Services (AWS) Identity and Access Management (IAM) role-based credentials from the AWS metadata server. The credentials are used in signing API requests to AWS S3.
+*Corrective Action*::
+Log in to the AWS EC2 Management Console, click on the 'Instances' page, and then find and check the health of the instance pertaining to this Cloud Volumes ONTAP(R) deployment. Also verify that the AWS IAM role associated with the instance exists and grants proper privileges to the instance.
+*Syslog Message*::
+ONTAP cannot acquire credentials associated with the AWS IAM role or GCP Service Account named '%s' on the metadata server. Node %s.
+*Parameters*::
+*iamRole* (STRING): Name of the AWS IAM role associated associated with this Cloud Volumes ONTAP(R) instance.
+*nodeUuid* (STRING): UUID of the node.
+
+== cloud.aws.iamNotInitialized
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a module attempts to access Amazon Web Services (AWS) Identity and Access Management (IAM) role-based credentials from the cloud credentials thread before the cloud thread is finished initializing.
+*Corrective Action*::
+Wait for the cloud credential thread, and by extension the system, to complete initialization.
+*Syslog Message*::
+A module attempted to access credential information before the cloud credential thread initialized on node %s.
+*Parameters*::
+*nodeUuid* (STRING): UUID of the node.
+
+== cloud.aws.iamRoleInvalid
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system acquires an Amazon Web Services (AWS) Identity and Access Management (IAM) role on the AWS metadata server that is not valid.
+*Corrective Action*::
+In the AWS EC2 Management Console, find and check the health of the instance pertaining to this ONTAP Cloud deployment. Also, verify that the AWS IAM role associated with the instance exists and grants proper privileges to the instance.
+*Syslog Message*::
+IAM role "%s" on the AWS metadata server is not valid for this ONTAP instance (node %s).
+*Parameters*::
+*iamRole* (STRING): Name of the IAM role associated with this ONTAP Cloud instance.
+*nodeUuid* (STRING): UUID of the node.
+
+== cloud.aws.iamRoleNotFound
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the IAM Role thread cannot find an Amazon Web Services (AWS) Identity and Access Management (IAM) role on the AWS metadata server. The IAM role is needed to obtain role-based credentials used in signing API requests to AWS S3.
+*Corrective Action*::
+Log in to the AWS EC2 Management Console, click on the 'Instances' page, and then find and check the health of the instance pertaining to this ONTAP Cloud(R) deployment. Also verify that the AWS IAM role associated with the instance exists.
+*Syslog Message*::
+ONTAP node %s cannot find an IAM role on the AWS metadata server.
+*Parameters*::
+*nodeUuid* (STRING): UUID of the node.
+
+== cloud.aws.metadataConnFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the IAM Role thread cannot establish a communication link with the Amazon Web Services (AWS) metadata server. Communication must be established to acquire the necessary AWS Identity and Access Management (IAM) role-based credentials used in signing API requests to AWS S3.
+*Corrective Action*::
+Log in to the AWS EC2 Engine Management Console, click on the 'Instances' page, and then find and check the health of the instance pertaining to this Cloud Volumes ONTAP(R) deployment.
+*Syslog Message*::
+ONTAP cannot communicate with the AWS metadata server needed to acquire IAM role-based or Service Account based credentials for access to AWS S3 Storage. Error returned: %s Node: %s
+*Parameters*::
+*error* (STRING): Error code and string, if applicable.
+*nodeUuid* (STRING): UUID of the node.

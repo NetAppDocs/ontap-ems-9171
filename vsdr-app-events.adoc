@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: vsdr-app-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsdr.app events
+---
+
+= vsdr.app events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsdr.app.cg.conflict
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during the configuration replication phase of a Vserver DR transfer when the consistency group that the system is trying to replicate already exists in the cluster on a different Vserver.
+*Corrective Action*::
+Remove the existing consistency group or make the Vserver that has the conflicting consistency group in it the destination in the Vserver DR relationship.
+*Syslog Message*::
+Consistency group %s cannot be created in Vserver %s due to conflicting consistency group %s in Vserver %s.
+*Parameters*::
+*consistency_group* (STRING): Name of the consistency group that the system is trying to replicate.
+*destination_vserver* (STRING): Name of the destination Vserver into which the consistency group is being replicated.
+*conflicting_consistency_group* (STRING): Name of the conflicting consistency group.
+*found_in_vserver* (STRING): Name of the Vserver in which the conflicting consistency group was found.

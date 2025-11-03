@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: mgmt-nfslisteners-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmt.nfslisteners events
+---
+
+= mgmt.nfslisteners events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmt.nfslisteners.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the listener for the NFS service is not configured. If the problem persists, NFS access is not available.
+*Corrective Action*::
+This problem might be resolved by subsequent automatic retries of the NFS request. If NFS service is not available, check the NFS configuration of the service and the external services it uses. To verify NFS configuration of the service, use the "nfs server show -vserver <vserver name> [-fields <field name>]" command. If the problem persists after you check the NFS configuration, delete the NFS Vserver, and then re-create it. See the NFS man page guide for information about deleting and re-creating the NFS Vserver, or contact NetApp technical support.
+*Syslog Message*::
+Failed to configure NFS listener. Error: %s.
+*Parameters*::
+*reason* (STRING): Message provided by the NFS service when a listener configuration does not succeed.
+
+== mgmt.nfslisteners.success
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the listener for the NFS service is configured after a failure.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).

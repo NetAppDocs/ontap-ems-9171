@@ -1,0 +1,196 @@
+---
+sidebar: sidebar
+permalink: wafl-voltrans-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.voltrans events
+---
+
+= wafl.voltrans events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.voltrans.clear.noi2p
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a volume transition clears the noi2p option on a volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume transition will disable the noi2p option by default on volume %s.
+*Parameters*::
+*volname* (STRING): Name of the volume.
+
+== wafl.voltrans.clear.svo
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a volume transition operation clears the SnapValidator for Oracle options on a volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume transition will disable the SnapValidator(R) for Oracle (svo) options by default on volume %s.
+*Parameters*::
+*volname* (STRING): Name of the volume.
+
+== wafl.voltrans.dircopy.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a volume transition convert directory operation fails.
+*Corrective Action*::
+Check the status of the job by using the "volume transition-convert-dir show" (privilege: diag) command. Retry the volume transition after all volume directory transition operations have finished. If the operation fails on the second attempt, contact NetApp technical support.
+*Syslog Message*::
+Volume transition-convert-dir operation failed on volume "%s", copying path "%s" to temporary directory "%s". Error code: %d.
+*Parameters*::
+*volname* (STRING): Name of the volume.
+*path* (STRING): Path of the directory to be copied.
+*tempname* (STRING): Directory name to use as the temporary target for copy conversion.
+*errcode* (INT): Error code upon completion.
+
+== wafl.voltrans.flexcache
+*Severity*::
+ERROR
+*Description*::
+This message occurs during volume transition workflow when the transition volume is a FlexCache(R) volume. Support for FlexCache is deprecated.
+*Corrective Action*::
+Delete the FlexCache volume.
+*Syslog Message*::
+Volume transition failed due to unsupported FlexCache volume %s uuid %s.
+*Parameters*::
+*volname* (STRING): Name of the volume.
+*voluuid* (STRING): Unique identifier for this volume.
+
+== wafl.voltrans.inconsistent.state
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a volume transition operation fails because the volume is in an inconsistent state.
+*Corrective Action*::
+Delete the inconsistent volume. Alternatively, return the disks to a 7-Mode environment to repair the volume.
+*Syslog Message*::
+Volume transition failed for volume %s uuid %s due to its inconsistent state.
+*Parameters*::
+*volname* (STRING): Name of the volume.
+*voluuid* (STRING): Unique identifier for this volume.
+
+== wafl.voltrans.qtree.novfiler
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a volume transition operation encounters qtrees not associated with the default vFiler unit.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume transition detected non-default vfiler qtrees in volume %s%s%s.
+*Parameters*::
+*volname* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Uniquely identifies the owning Vserver when the volume name alone is insufficient.
+
+== wafl.voltrans.qtree.replica
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a volume transition operation is attempted on a volume that is a qtree replica volume. Transitioning volumes that are qtree replica volumes is an unsupported operation. This condition exists because the source volume for the Transition Data Protection (TDP) SnapMirror(R) relationship is a qtree replica volume.
+*Corrective Action*::
+Break all of the qtree replica relationships associated with the source volume of the TDP SnapMirror relationship. After that is done, perform a 'snapmirror update' or 'snapmirror resync' operation, and then a 'snapmirror break' operation, to attempt the volume transition operation again.
+*Syslog Message*::
+The source of volume %s is a qtree replica. It cannot be transitioned to clustered Data ONTAP.
+*Parameters*::
+*volname* (STRING): Name of the volume.
+
+== wafl.voltrans.sfsr.pending
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a volume transition operation fails because of a pending file restore process.
+*Corrective Action*::
+Move the disks back to 7-Mode, use ZAPI command 'snapshot-restore-file-info' to ensure that all pending single file restore sessions are completed, and then try the transition again.
+*Syslog Message*::
+Volume transition failed for volume %s uuid %s due to pending single file restore process.
+*Parameters*::
+*volname* (STRING): Name of the volume.
+*voluuid* (STRING): Unique identifier for this volume.
+
+== wafl.voltrans.snapids
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a volume transition operation fails because it cannot update the logical SnapID table.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume %s failed to update the logical SnapID table and could not be transitioned.
+*Parameters*::
+*volname* (STRING): Name of the volume.
+
+== wafl.voltrans.snapshot.32bit
+*Severity*::
+ERROR
+*Description*::
+This message occurs during volume transition workflow when 32-bit snapshot is detected for the transition volume.
+*Corrective Action*::
+Retry volume transition to bypass this specific error. All 32-bit snapshots are automatically deleted as part of the volume transition.
+*Syslog Message*::
+Volume transition failed due to unsupported 32-bit snapshots on volume %s uuid %s.
+*Parameters*::
+*volname* (STRING): Name of the volume.
+*voluuid* (STRING): Unique identifier for this volume.
+
+== wafl.voltrans.ss.lun.clone
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a volume transition operation detects one or more LUN clones backed up by snapshots within a voliume.
+*Corrective Action*::
+Retry volume transition to bypass this specific error, force the volume online, and continue the transition operation. This results in data loss for all the LUN clones that have snapshots in this volume. Alternatively, return the disks to a 7-Mode environment, split the LUN clones, and then repeat the transition workflow.
+*Syslog Message*::
+Volume transition failed for volume %s uuid %s due to one or more snapshot backed lun clones.
+*Parameters*::
+*volname* (STRING): Name of the volume.
+*voluuid* (STRING): Unique identifier for this volume.
+
+== wafl.voltrans.vol.32bit
+*Severity*::
+ERROR
+*Description*::
+This message occurs during volume transition workflow when a 32-bit volume is detected for the transition volume.
+*Corrective Action*::
+Delete the 32-bit volume. Alternatively, return the disks to a 7-Mode environment and upgrade the 32-bit volume to a 64-bit volume and then repeat the transition workflow.
+*Syslog Message*::
+Volume transition failed due to unsupported 32-bit volume %s uuid %s.
+*Parameters*::
+*volname* (STRING): Name of the volume.
+*voluuid* (STRING): Unique identifier for this volume.
+
+== wafl.voltrans.was.offline
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a volume transition operation encounters an offline volume.
+*Corrective Action*::
+Retry volume transition to bypass this specific error, force the volume online, and continue the transition operation. This might lead to data loss if the offline volume contains uncommitted data.
+*Syslog Message*::
+Volume transition failed for offline volume %s uuid %s.
+*Parameters*::
+*volname* (STRING): Name of the volume.
+*voluuid* (STRING): Unique identifier for this volume.
+
+== wafl.voltrans.was.restricted
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a volume transition operation encounters a restricted volume.
+*Corrective Action*::
+Retry volume transition to bypass this specific error, force the volume online, and continue the transition operation.
+*Syslog Message*::
+Volume transition failed for restricted volume %s uuid %s.
+*Parameters*::
+*volname* (STRING): Name of the volume.
+*voluuid* (STRING): Unique identifier for this volume.

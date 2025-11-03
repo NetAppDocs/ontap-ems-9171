@@ -1,0 +1,66 @@
+---
+sidebar: sidebar
+permalink: vifmgr-hv-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.hv events
+---
+
+= vifmgr.hv events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.hv.nohostconfig
+*Severity*::
+ALERT
+*Description*::
+This message occurs when no Hypervisor host configuration is available. This is required by ONTAP(R) software to monitor the health of the hypervisor uplinks.
+*Corrective Action*::
+Verify the Hypervisor host configuration. Without it, ONTAP cannot monitor the health of the hypervisor uplinks, preventing data LIFs from failing over if the uplink were to go down.
+*Syslog Message*::
+The %s health monitor cannot access the Hypervisor host configuration.
+*Parameters*::
+*monitor* (STRING): Health monitor name.
+
+== vifmgr.hv.nosnmpconfig
+*Severity*::
+ALERT
+*Description*::
+This message occurs when no Hypervisor SNMP configuration is available. This is required by ONTAP(R) software to monitor the health of the hypervisor uplinks.
+*Corrective Action*::
+Verify the Hypervisor SNMP configuration. Without it, ONTAP cannot monitor the health of the hypervisor uplinks, preventing data LIFs from failing over if the uplink were to go down.
+*Syslog Message*::
+The %s health monitor cannot access the required Hypervisor SNMP configuration.
+*Parameters*::
+*monitor* (STRING): Health monitor name.
+
+== vifmgr.hv.nouplinkmapping
+*Severity*::
+ALERT
+*Description*::
+This message occurs when no Hypervisor uplink mapping is available for the specified port. This is required by ONTAP(R) software to monitor the health of the hypervisor uplinks.
+*Corrective Action*::
+Verify the Hypervisor uplink mapping configuration. Without it, ONTAP cannot monitor the health of the hypervisor uplinks, preventing data LIFs from failing over if the uplink were to go down.
+*Syslog Message*::
+The %s health monitor cannot access the Hypervisor uplink mapping configuration for node %s port %s.
+*Parameters*::
+*monitor* (STRING): Health monitor name.
+*node* (STRING): Name of the node.
+*port* (STRING): Name of the port.
+
+== vifmgr.hv.nouplinkstatus
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is an error obtaining the Hypervisor uplink status for the specified port.
+*Corrective Action*::
+Verify the Hypervisor's host and SNMP configuration.
+*Syslog Message*::
+Unable to obtain the hypervisor uplink status for port %s with hypervisor uplinks %s.
+*Parameters*::
+*port* (STRING): Name of the port.
+*uplinks* (STRING): List of hypervisor uplinks associated with the port.

@@ -1,0 +1,126 @@
+---
+sidebar: sidebar
+permalink: license-check-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: license.check events
+---
+
+= license.check events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== license.check.expired
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the license checker determines that the Base license has expired. If this is the case, you cannot add nodes to the cluster
+*Corrective Action*::
+Install a permanent Base license on this cluster.
+*Syslog Message*::
+License Checking: Expired Base license (%s)
+*Parameters*::
+*error* (STRING): Interpreted error string from the license validation check.
+
+== license.check.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the license checker has run and has been unable to validate the Base license due to an internal error. If there is not a valid Base license, then no additional nodes can be added to the cluster.
+*Corrective Action*::
+Install a valid Base license on this cluster.
+*Syslog Message*::
+License Checking: internal error validating Base license (%s)
+*Parameters*::
+*error* (STRING): Interpreted error string from the license validation check.
+
+== license.check.invalid
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the license checker determines that the Base license is incorrect in some way. If Base license is invalid, you cannot add nodes to the cluster.
+*Corrective Action*::
+Install a valid Base license on this cluster.
+*Syslog Message*::
+License Checking: The Base license is invalid (%s)
+*Parameters*::
+*error* (STRING): Interpreted error string from the license validation check.
+
+== license.check.mirror
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the license checker has run and has determined that at least one volume is being mirrored but there isn't a valid Mirror license installed.
+*Corrective Action*::
+Install a valid Mirror license on this cluster.
+*Syslog Message*::
+License Checking: Mirror License failure: (%s)
+*Parameters*::
+*volume* (STRING): The first volume detected that requires a Mirror license
+
+== license.check.missing
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the license checker determines that the Base license is missing. If this is the case, you cannot add nodes to the cluster.
+*Corrective Action*::
+Reinstall the Base license.
+*Syslog Message*::
+License Checking: Missing Base license
+*Parameters*::
+(None).
+
+== license.check.nodes
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the license checker determines that the number of nodes in the cluster exceeds the number of nodes allowed by the Base license
+*Corrective Action*::
+Install a Base license with the correct node count, or remove nodes from the cluster using the unjoin command until the number of total nodes is equal to, or less than, the specified node count limit.
+*Syslog Message*::
+License Checking: Current node count (%d) exceeds the licensed node limit (%d)
+*Parameters*::
+*nodecount* (INT): Number of nodes detected in the cluster
+*nodelimit* (INT): Number of nodes allowed by the Base license
+
+== license.check.nonodes
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the license checker determines that it cannot retrieve the number of nodes in the cluster to compare against the Base license node count. If this is the case, then you cannot add nodes to the cluster.
+*Corrective Action*::
+Re-install the Base license so that the node count is correctly reflected. If that fails to fix the problem please contact Customer Support.
+*Syslog Message*::
+License Checking: Cannot to retrieve the number of nodes in the cluster.
+*Parameters*::
+(None).
+
+== license.check.warn.expired
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the license checker determines that a license has expired.
+*Corrective Action*::
+Install a permanent license on this cluster.
+*Syslog Message*::
+The license for package "%s" expired on %s.
+*Parameters*::
+*package* (STRING): Name of the license package.
+*expiration* (STRING): Expiration date.
+
+== license.check.warn.expiring
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the license checker determines that a license is within a week of its expiration date.
+*Corrective Action*::
+Install a permanent license on this cluster.
+*Syslog Message*::
+The license for package "%s" expires on %s.
+*Parameters*::
+*package* (STRING): Name of the license package.
+*expiration* (STRING): Expiration date.

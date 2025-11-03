@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: repl-space-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.space events
+---
+
+= repl.space events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.space.guarantee.transfer.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the attempt to change space guarantee type fails on the destination volume.
+*Corrective Action*::
+Change the space guarantee type of the source volume to be the same as the space guarantee type of the destination volume.
+*Syslog Message*::
+The volume with DSID %llu, name %s%s, Vserver UUID %s cannot support changing the space guarantee to %s on the destination aggregate, error %d.
+*Parameters*::
+*dstVolDsid* (LONGINT): Destination volume Data Set ID (DSID).
+*dstVolName* (STRING): Destination volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume
+*srcSpcGuarantee* (STRING): Source volume space guarantee.
+*code* (INT): Error code returned when setting the space guarantee of the destination volume.

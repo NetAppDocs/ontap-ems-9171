@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: cam-counters-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cam.counters events
+---
+
+= cam.counters events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cam.counters.device.gone
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a device goes away when collecting I/O statistics.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Device %s is going away, current flags are 0x%x.
+*Parameters*::
+*device_name* (STRING): Device name.
+*flags* (INTHEX): Device flags.

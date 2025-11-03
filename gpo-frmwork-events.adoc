@@ -1,0 +1,66 @@
+---
+sidebar: sidebar
+permalink: gpo-frmwork-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: gpo.frmwork events
+---
+
+= gpo.frmwork events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== gpo.frmwork.RSoPApplied
+*Severity*::
+NOTICE
+*Description*::
+This event occurs after the resultant set of Group Policy (GPO) is calculated and applied to the Replicated Database (RDB) successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+GPO policy applied into RDB successfully.
+*Parameters*::
+*vserver* (STRING): Vserver name.
+
+== gpo.frmwork.secJobFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when starting or restarting the GPO Security Apply job fails.
+*Corrective Action*::
+Address the specific reason for the issue, and then start the job by entering the "vserver cifs group-policy update -force-reapply-all-settings true -vserver <vserver-name>" command.
+*Syslog Message*::
+Failed to start a GPO Security Apply job run for Vserver %s, reason: %s.
+*Parameters*::
+*vserver* (STRING): Vserver name.
+*reason* (STRING): Reason for the failure.
+
+== gpo.frmwork.updateFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when updating group policy object (GPO) tables fails.
+*Corrective Action*::
+Address the specific reason for the issue, and then update the tables by entering the "vserver cifs group-policy update -force-reapply-all-settings true -vserver <vserver-name>" command.
+*Syslog Message*::
+GPO tables update failed for Vserver %s, reason: %s.
+*Parameters*::
+*vserver* (STRING): Vserver name.
+*reason* (STRING): Reason for the failure.
+
+== gpo.frmwork.updateRSoPFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when updating group policy object (GPO) RSoP (Resultant Set of Policy) settings fails.
+*Corrective Action*::
+Address the specific reason for the issue, and then update the settings by entering the "vserver cifs group-policy update -force-reapply-all-settings true -vserver <vserver-name>" command.
+*Syslog Message*::
+GPO RSoP update failed for Vserver %s, reason: %s.
+*Parameters*::
+*vserver* (STRING): Vserver name.
+*reason* (STRING): Reason for the failure.

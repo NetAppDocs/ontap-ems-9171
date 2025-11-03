@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: sis-enable-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.enable events
+---
+
+= sis.enable events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.enable.post.sm.break
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the "storage efficiency" feature is enabled on a destination volume due to a broken SnapMirror(R) relationship on an All Flash Optimized system. When the relationship breaks, the DP volume is converted to RW, and all RW volumes have the "storage efficiency" feature enabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"Storage efficiency" feature has been enabled on the destination volume %s due to a SnapMirror break operation.
+*Parameters*::
+*volume* (STRING): Destination FlexVol(R) volume name on which the "storage efficiency" feature is enabled.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== sis.enable.post.ssm.init
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the "storage efficiency" feature is enabled on a destination volume with Synchronous SnapMirror(R) on an All Flash Optimized system.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"Storage efficiency" feature has been enabled on the destination volume %s after Asynchronous Snapmirror converted to Synchronous Snapmirror.
+*Parameters*::
+*volume* (STRING): Destination FlexVol(R) volume name on which the "storage efficiency" feature is enabled.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.

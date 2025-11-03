@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: shelf-test-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: shelf.test events
+---
+
+= shelf.test events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== shelf.test.in.progress
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a TEST request is now in progress.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Test request in progress.
+*Parameters*::
+(None).
+
+== shelf.test.request.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a TEST request cannot be performed because the disk shelf does not exist.
+*Corrective Action*::
+Run the test against a shelf that exists.
+*Syslog Message*::
+Could not perform TEST request; the disk shelf does not exist.
+*Parameters*::
+(None).

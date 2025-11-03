@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: fg-create-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fg.create events
+---
+
+= fg.create events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fg.create.workflow.non.auto
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a user creates a FlexGroup volume that has a workflow with a type that is not "auto".
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FlexGroup volume "%s" in Vserver "%s" was created with workflow type "%s"
+*Parameters*::
+*volumeName* (STRING): Name of the FlexGroup volume.
+*vserverName* (STRING): Name of the Vserver on which the FlexGroup volume resides.
+*workflow* (STRING): The type of workflow for the FlexGroup volume.

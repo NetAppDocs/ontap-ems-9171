@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: diskshelf-supported-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskshelf.supported events
+---
+
+= diskshelf.supported events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskShelf.supported
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a newly supported disk shelf is detected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk shelf %s (%s) is now supported.
+*Parameters*::
+*device* (STRING): Device address of the disk shelf.
+*product_id* (STRING): Product ID of the disk shelf.

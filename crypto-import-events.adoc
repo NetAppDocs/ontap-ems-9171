@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: crypto-import-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: crypto.import events
+---
+
+= crypto.import events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== crypto.import.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the import of a cryptographic key fails.
+*Corrective Action*::
+This message might be seen when attempting to bring an encrypted volume online. Contact NetApp technical support if manual attempts to bring the encrypted volume online fail.
+*Syslog Message*::
+ERROR: Import of key with key ID %s failed. Additional information: %s.
+*Parameters*::
+*key_id* (STRING): Key ID for the cryptographic key.
+*msg* (STRING): Associated failure message.

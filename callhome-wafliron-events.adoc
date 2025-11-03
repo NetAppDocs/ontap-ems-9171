@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-wafliron-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.wafliron events
+---
+
+= callhome.wafliron events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.wafliron.chg.pending
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when WAFL(R) Iron (wafliron) Optional Commit changes are pending. WAFL(R) Iron is a detection and repair process. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Work with NetApp technical support on this issue. If you decide against this, it is recommended that the pending changes be committed.
+*Syslog Message*::
+Call home for WAFLIRON CHANGES PENDING
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

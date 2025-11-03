@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: replication-lcl-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: replication.lcl events
+---
+
+= replication.lcl events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== replication.lcl.noHostname
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) or SnapVault(R) transfer is started on a system without a host name.
+*Corrective Action*::
+Configure the hostname on the indicated system before attempting a SnapMirror or SnapVault transfer operation.
+*Syslog Message*::
+%s transfer could not be started because no host name is configured on this system.
+*Parameters*::
+*rtype* (STRING): Replication type (SnapMirror, SnapVault, and so on).
+*srcfiler* (STRING): Replication source system.
+*srcpath* (STRING): Replication source path.
+*dstfiler* (STRING): Replication destination system.
+*dstpath* (STRING): Replication destination path.
+*rplerror* (STRING): Replication error message.
+*waflerror* (STRING): WAFL(R) error.

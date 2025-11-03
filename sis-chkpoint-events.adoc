@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: sis-chkpoint-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.chkpoint events
+---
+
+= sis.chkpoint events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.chkpoint.delete
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a Single Instance Storage (SIS) checkpoint is deleted. The current SIS operation is restarted from the beginning.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SIS checkpoint on the volume '%s%s' is deleted. Starting current SIS operation from the beginning.
+*Parameters*::
+*volume* (STRING): Volume path.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== sis.chkpoint.restore.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Single Instance Storage (SIS) operation fails to restore from a previous checkpoint. The SIS operation is restarted from the beginning.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SIS operation on the volume '%s%s' failed to restore from a previous checkpoint. Starting SIS operation from the beginning.
+*Parameters*::
+*volume* (STRING): Volume name.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.

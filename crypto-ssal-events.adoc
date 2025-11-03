@@ -1,0 +1,52 @@
+---
+sidebar: sidebar
+permalink: crypto-ssal-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: crypto.ssal events
+---
+
+= crypto.ssal events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== crypto.ssal.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a Secure Storage Access Layer(SSAL) operation fails. This might cause import of the onboard key hierarchy to fail and might result in a temporary loss of access to any data secured using the SSAL.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+SSAL operation failed: %s. %s
+*Parameters*::
+*failure_msg* (STRING): Message describing which operation failed.
+*additional_msg* (STRING): Additional information regarding the failure.
+
+== crypto.ssal.tpm.clear
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a Trusted Platform Module(TPM) clear operation is performed successfully. A TPM clear operation can happen while reverting to a previous release or when the "security tpm clear" command was executed. A TPM clear operation clears out the TPM and resets it with a new seed for the TPM's storage hierarchy.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A TPM clear operation has been completed successfully.
+*Parameters*::
+(None).
+
+== crypto.ssal.tpm.reset
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a Trusted Platform Module(TPM) reset operation is performed successfully. A TPM reset operation can happen when the node boots up for the first time or when the "security tpm reset" command was executed. A TPM reset operation clears out the TPM and resets it with a new seed for the TPM's storage hierarchy. The TPM then generates a new primary key under the same hierarchy and makes it persistent.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A TPM reset operation has been completed successfully.
+*Parameters*::
+(None).

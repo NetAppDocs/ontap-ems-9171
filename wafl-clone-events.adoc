@@ -1,0 +1,113 @@
+---
+sidebar: sidebar
+permalink: wafl-clone-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.clone events
+---
+
+= wafl.clone events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.clone.invalid.inherited.counters
+*Severity*::
+ERROR
+*Description*::
+This message alerts about invalid inherited counters for the clone flexible volume.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+clone inherited counters for clone flexible volume %s on aggregate %s are invalid. The clone volume will be offlined. It is recommended to online parent volume if not already onlined. Once the parent volume is onlined, the clone also be onlined. Contact technical support for assistance.
+*Parameters*::
+*clonename* (STRING): Clone flexible volume name.
+*aggrname* (STRING): Aggregate name.
+
+== wafl.clone.no.basesnap
+*Severity*::
+ERROR
+*Description*::
+This message alerts you about a missing clone flexible volume base snapshot and strongly recommends that you take the clone flexible volume offline and destroy it.
+*Corrective Action*::
+Take the clone flexible volume offline immediately. If you know that the clone does not contain any valuable data, you can safely destroy and re-create it.
+*Syslog Message*::
+Base snapshot for clone flexible volume %s on aggregate %s is missing. It is strongly recommended that you take the clone offline and destroy it. Failure to do so might lead to clone panic at any time.
+*Parameters*::
+*clonename* (STRING): Clone flexible volume name.
+*aggrname* (STRING): Aggregate name.
+
+== wafl.clone.quota.error.ignored
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a clone op cannot fail due to quota error because either quota accounting is ignored by the user (e.g, sfsr) or the clone op cannot fail (eg, split), so it ignores the quota error it received during quota check.
+*Corrective Action*::
+None required.
+*Syslog Message*::
+Sis clone running in (vol='%s', volident='%s') ignored quota error '%u' during '%s' operation.
+*Parameters*::
+*vol* (STRING): Volume name.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*error_code* (INT): A numerical error code indicating the reason why the quota check failed.
+*op_type* (STRING): Type of sis clone operation (create/split).
+
+== wafl.clone.snapSpcGuar
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued if an attempt is made to delete a snapshot in a clone volume that would require the space guarantee on the clone to exceed the available space in the aggregate. A clone volume initially shares one or more snapshots with its parent volume. This allows the space guarantee to be optimized, reducing the space requirement in the aggregate. If a shared snapshot is deleted then extra space is required in the aggregate to ensure the space guarantee for the volume can be enforced. If the freespace in the aggregate is too small to allow this then the snap delete is rejected.
+*Corrective Action*::
+This state can be corrected by performing one or more of the following actions: o Change the space guarantee on the volume so that less space is required in the aggregate. o Free space in the aggregate by shrinking or removing volumes. o Add space to the aggregate, e.g. by adding disks.
+*Syslog Message*::
+Snapshot '%s' in clone volume '%s%s%s' cannot be deleted, there is insufficient space in the aggregate to enforce the space guarantee (%s)
+*Parameters*::
+*snap_name* (STRING): The snapshot name
+*vol_name* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*guarantee* (STRING): The current guarantee
+
+== wafl.clone.snapsplit.nospace
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when there is not enough free space to complete a file clone split operation from the snapshot. The clone file might become unreadable when the parent snapshot is automatically deleted.
+*Corrective Action*::
+Increase the space available to the volume by either adding disks or by freeing space in the volume to allow the split operation to continue.
+*Syslog Message*::
+File clone split from snapshot of '%s%s%s' cannot be completed due to lack of disk space.
+*Parameters*::
+*name* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Uniquely identifies the volume in cases where the volume name itself is insufficient.
+
+== wafl.clone.split.start.vol.fenced
+*Severity*::
+NOTICE
+*Description*::
+This event indicates that vol clone split start was called for a fenced volume after iron completion.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume clone split start called for fenced volume '%s%s%s'.
+*Parameters*::
+*volname* (STRING): Volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== wafl.clone.unrecoverable
+*Severity*::
+ALERT
+*Description*::
+This message occurs during boot when a clone is marked unrecoverable due to its missing base snapshot.
+*Corrective Action*::
+If you know that the clone does not contain any valuable data, you can safely destroy and re-create it. If it contains any valuable data, you can recover only the data which was written after the volume clone was created. Trying to access the data which was shared with the base snapshot (original data) will result in error.
+*Syslog Message*::
+Base snapshot for clone %s on aggregate %s is missing. Marking it unrecoverable.
+*Parameters*::
+*clonename* (STRING): Clone name.
+*aggrname* (STRING): Aggregate name.

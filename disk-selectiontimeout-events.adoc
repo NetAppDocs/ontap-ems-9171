@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: disk-selectiontimeout-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.selectiontimeout events
+---
+
+= disk.selectiontimeout events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.selectionTimeout
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a selection timeout is received.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s: selection timeout
+*Parameters*::
+*diskName* (STRING): Name of the device.

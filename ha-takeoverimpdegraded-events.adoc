@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ha-takeoverimpdegraded-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.takeoverimpdegraded events
+---
+
+= ha.takeoverimpdegraded events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.takeoverImpDegraded
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the partner node is down and it is currently impossible to perform a takeover because the partner mailbox disks are not available.
+*Corrective Action*::
+Check connectivity to the partner disks. Identify the mailbox disks on the partner node by using the "storage failover show -instance" command. Verify that this node has connectivity to the partner mailbox disks by using the "storage disk show -instance" command. Resolve any connectivity issues by fixing cabling or shelf issues.
+*Syslog Message*::
+Takeover of the partner node is impossible due to lack of connectivity to the partner mailbox disks.
+*Parameters*::
+(None).

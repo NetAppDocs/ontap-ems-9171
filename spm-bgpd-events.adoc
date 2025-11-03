@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: spm-bgpd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: spm.bgpd events
+---
+
+= spm.bgpd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== spm.bgpd.process.exit
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Border Gateway Protocol daemon (bgpd) involuntarily terminates. This daemon is responsible for communicating route information between a storage system and gateway for the virtual IP (VIP) feature. This failure will be automatically addressed by spmctl restarting bgpd. However, if bgpd fails to restart for any reason, the VIP feature will not function correctly.
+*Corrective Action*::
+The system attempts to recover by restarting the subsystem. If the subsystem does not recover within the threshold number of retries, then an AutoSupport(R) message is sent. If your system is not configured to send AutoSupport messages and the issue persists, contact NetApp technical support.
+*Syslog Message*::
+Border Gateway Protocol daemon (bgpd) with ID %d exited as a result of signal: %s. The service will attempt to restart.
+*Parameters*::
+*id* (INT): Process identifier.
+*cause* (STRING): Cause of the process exit.

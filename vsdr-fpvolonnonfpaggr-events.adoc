@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: vsdr-fpvolonnonfpaggr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsdr.fpvolonnonfpaggr events
+---
+
+= vsdr.fpvolonnonfpaggr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsdr.FPVolOnNonFPAggr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a source volume of an SVM disaster recovery (SVMDR) relationship residing on a FabricPool aggregate at the primary cluster is placed on a non-FabricPool aggregate at the secondary cluster.
+*Corrective Action*::
+Move the source volume of SVMDR relationship from the FabricPool aggregate to a non-FabricPool aggregate at the primary cluster by using the "volume move start -vserver <vserver-name> -volume <volume-name> -destination-aggregate <aggregate>" command.
+*Syslog Message*::
+Source volume "%s" of the SVMDR relationship residing on a FabricPool aggregate on the primary cluster is placed on a non-FabricPool aggregate "%s" at the destination cluster.
+*Parameters*::
+*source_volume_name* (STRING): Name of the source volume on the FabricPool aggregate of the SVMDR relationship.
+*dest_aggr_name* (STRING): Name of the destination non-FabricPool aggregate at the secondary cluster.

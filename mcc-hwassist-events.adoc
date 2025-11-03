@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: mcc-hwassist-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mcc.hwassist events
+---
+
+= mcc.hwassist events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mcc.hwassist.trap.AUSO
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a HW assist trap is received from the Service Processor of the DR-partner and is used to trigger an Automatic SwitchOver.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+HW assist trap of type=%s, severity=%s received for event=%s from sysid=%s.
+*Parameters*::
+*type* (STRING): Type of event, such as system_down.
+*severity* (STRING): Severity of the event, such as alert.
+*event* (STRING): Specific event, such as power_loss.
+*sysid* (STRING): System-id of the node generating the event.

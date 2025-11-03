@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: ucore-not-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ucore.not events
+---
+
+= ucore.not events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ucore.not.enabled
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a userspace core cannot be dumped either because coredumps are not enabled or because the process called setuid, and coredump is disabled for processes that have changed their user credentials.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+'Process ID %d (%s) cannot be dumped because coredumps are not enabled.'
+*Parameters*::
+*process_id* (INT): Process ID of the process.
+*process_name* (STRING): The name of the process.

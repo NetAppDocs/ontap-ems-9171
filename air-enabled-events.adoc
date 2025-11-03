@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: air-enabled-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: air.enabled events
+---
+
+= air.enabled events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== air.enabled.fg.qtree
+*Severity*::
+NOTICE
+*Description*::
+This message occurs in a FlexGroup, when the qtree support is enabled on the volume, but disabled on one or more constituent volumes. ONTAP(R) software automatically enabled the qtree support on the relevant constituent volumes.
+*Corrective Action*::
+This message indicates that the qtree support is enabled on the volume, but disabled in one or more constituents within the FlexGroup. ONTAP(R) software automatically enabled the qtree support in the relevant constituent FlexGroup volumes.
+*Syslog Message*::
+Enabled qtree support in FlexGroup constituent volume %s after detecting inconsistency in %s.
+*Parameters*::
+*volume* (STRING): Name of the volume.
+*source* (STRING): Location of the failing metadata validation.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: csm-nomemory-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: csm.nomemory events
+---
+
+= csm.nomemory events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== csm.noMemory
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the memory allocator temporarily runs out of memory that can be allocated or when the entire node has an insufficient amount of free system memory. If the issue persist, the cluster session manager (CSM) might not be able to create connections to remote cluster nodes to serve data traffic.
+*Corrective Action*::
+If the condition persists, contact NetApp technical support.
+*Syslog Message*::
+CSM was unable to process events due to insufficient free memory.
+*Parameters*::
+*filename* (STRING): Name of the file where the event occurred.
+*lineno* (INT): Line number where the event occurred.

@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: diskown-diskhaswronginfo-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.diskhaswronginfo events
+---
+
+= diskown.diskhaswronginfo events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.diskHasWrongInfo
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the disk ownership information on a disk does not belong to the disk that it was read from. This could be a result of a read going to the wrong disk or a prior write intended for some other disk getting written to the disk.
+*Corrective Action*::
+On the controller that owns the disk, use the "storage disk assign" command to rewrite the ownership information to the disk.
+*Syslog Message*::
+Disk %s (S/N %s) has ownership information for disk %s (S/N %s) on it.
+*Parameters*::
+*diskname* (STRING): Name of the disk from which the ownership information was read.
+*serialno* (STRING): Serial number of the disk from which the ownership information was read.
+*infoForDiskname* (STRING): Name of the disk that the ownership information is for.
+*infoForSerialno* (STRING): Serial number of the disk that the ownership information is for.

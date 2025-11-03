@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: nblade-ecv-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.ecv events
+---
+
+= nblade.ecv events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nblade.ecv.not.ready
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP(R) software uses a default Effective Cluster Version (ECV) before the actual ECV has been conclusively determined. Some features might not work as expected until ONTAP can select the correct ECV.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Default ECV %s has been used. The ECV value '%d' does not reflect the cluster's true ECV status.
+*Parameters*::
+*ecv_variable_name* (STRING): Name of the ECV value being used.
+*ecv_variable_value* (INT): ECV value being used.

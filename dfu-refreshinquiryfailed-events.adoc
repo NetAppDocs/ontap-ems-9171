@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: dfu-refreshinquiryfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dfu.refreshinquiryfailed events
+---
+
+= dfu.refreshinquiryfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dfu.refreshInquiryFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs after a successful disk firmware update, when the 'SCSI inquiry' command, which is issued to all disks as part of the disk firmware download process, fails to finish. It is also possible to get messages indicating that disks have downrev firmware.
+*Corrective Action*::
+When this error happens, check the connection to the partner node and manually retry the firmware download process. If the problem still persists, open a support case to investigate the underlying cause.
+*Syslog Message*::
+(None).
+*Parameters*::
+*retryCount* (INT): Number of times the command was retried and failed.

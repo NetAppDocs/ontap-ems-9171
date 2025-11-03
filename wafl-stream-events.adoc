@@ -1,0 +1,56 @@
+---
+sidebar: sidebar
+permalink: wafl-stream-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.stream events
+---
+
+= wafl.stream events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.stream.check.complete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the "wafl scan stream_check" command is completed successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"wafl scan stream_check" command successfully completed on volume "%s:%s". The total number of invalid stream files detected is %u.
+*Parameters*::
+*volume* (STRING): Volume name.
+*vserver_uuid* (STRING): Universal Unique ID (UUID) of the volume's SVM.
+*total* (INT): Total number of invalid stream files detected.
+
+== wafl.stream.check.invalid.file
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the "wafl scan stream_check" command detects a stream file with the name "." or "..". Files with these names are not allowed. If you have files with these names, you might be unable to access these files.
+*Corrective Action*::
+Manually delete the base file which in turn will also delete the invalid stream file.
+*Syslog Message*::
+Detected invalid stream file associated with base file inode "%d" on volume "%s:%s".
+*Parameters*::
+*fileId* (INT): The base file inode number that has a stream file with the name "." or "..".
+*volume* (STRING): Volume name.
+*vserver_uuid* (STRING): Universal Unique ID (UUID) of the volume's SVM.
+
+== wafl.stream.check.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the "wafl scan stream_check" command is started.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"wafl scan stream_check" command successfully started on volume "%s:%s".
+*Parameters*::
+*volume* (STRING): Volume name.
+*vserver_uuid* (STRING): Universal Unique ID (UUID) of the volume's SVM.

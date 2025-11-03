@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: mgmt-vdr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmt.vdr events
+---
+
+= mgmt.vdr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmt.vdr.fsecurity.cfig.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a "snapmirror break" operation is executed while a file security job is running and the previous "snapmirror update" operation only partially transfers the changes made to the file system by the file security job. This results in the policy being applied only partially to the partner; that is, ACLs on the files are applied partially.
+*Corrective Action*::
+Verify that the file security job has been successfully applied on the Vserver DR partner by using the "job show" command on the source; it should display the "complete" status. Then resync the SnapMirror(R) relationship by using the "snapmirror resync -source-vserver <source-vserver-name> -destination-vserver <destination-vserver-name>" command. Alternatively, you can break the SnapMirror relationship, and then reapply the job on the destination by using the "vserver security file-directory apply -vserver <vserver-name> -policy-name <policy-name>" command. See the "vserver security file-directory" man pages for more information. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Failed to apply file security policy "%s" on Vserver "%s".
+*Parameters*::
+*policy* (STRING): Fsecurity policy name.
+*vservername* (STRING): Name of the Vserver.

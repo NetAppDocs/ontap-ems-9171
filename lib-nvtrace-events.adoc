@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: lib-nvtrace-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lib.nvtrace events
+---
+
+= lib.nvtrace events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lib.nvtrace.syslog.relog.alert
+*Deprecated*::
+This event is deprecated as of ONTAP 9.1.
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system sorts the syslog messages when syslog is not yet initialized, and the panic messages are relogged.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Relog syslog %s.
+*Parameters*::
+*data* (STRING): Syslog data in NVRAM(Non Volatile RAM).

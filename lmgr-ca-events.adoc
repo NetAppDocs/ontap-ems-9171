@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: lmgr-ca-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lmgr.ca events
+---
+
+= lmgr.ca events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lmgr.CA.recons.mcc.veto
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system vetoes MetroCluster(tm) switchback or negotiated switchover because one of the volumes affected by the switch has CIFS Continuously Available (CA) locks that are still being reconstructed.
+*Corrective Action*::
+Retry the switchback or negotiated switchover after verifying that lock reconstruction is complete by using the 'debug locks reconstruction show' diagnostic privilege command.
+*Syslog Message*::
+Vetoed MetroCluster switchback or negotiated switchover because CA lock reconstruction is in progress.
+*Parameters*::
+(None).

@@ -1,0 +1,59 @@
+---
+sidebar: sidebar
+permalink: vifmgr-svcpolicy-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.svcpolicy events
+---
+
+= vifmgr.svcpolicy events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.svcPolicy.addSvc
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a service is added to a network interface service policy.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Service %s has been added to network interface service policy %s on Vserver %s.
+*Parameters*::
+*service* (STRING): Name of the service that has been added.
+*policy* (STRING): Name of the affected service policy.
+*vserver* (STRING): Name of the Vserver associated with this policy.
+*allowed_addresses* (STRING): List of allowed address masks for this service.
+
+== vifmgr.svcPolicy.deprecated
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a network interface (LIF) is configured to use a deprecated service policy.
+*Corrective Action*::
+Use the recommended service policy to replace the deprecated service policy.
+*Syslog Message*::
+LIF "%s" on Vserver "%s" is using deprecated service policy: %s. Recommended service policy: %s.
+*Parameters*::
+*lif_name* (STRING): LIF name.
+*vserver* (STRING): Vserver name.
+*deprecated_service_policy* (STRING): Deprecated service policy name.
+*service_policy* (STRING): Recommended service policy.
+
+== vifmgr.svcPolicy.remSvc
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a service is removed from a network interface service policy.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Service %s has been removed from network interface service policy %s on Vserver %s.
+*Parameters*::
+*service* (STRING): Name of the service that has been removed.
+*policy* (STRING): Name of the affected service policy.
+*vserver* (STRING): Name of the Vserver associated with this policy.

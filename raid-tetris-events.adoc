@@ -1,0 +1,217 @@
+---
+sidebar: sidebar
+permalink: raid-tetris-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.tetris events
+---
+
+= raid.tetris events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.tetris.cksum.bno
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a block number mismatch during a write operation. The expected Virtual Block Number (VBN)/Disk Block Number (DBN) is not the same as the stored VBN/DBN from the checksum entry indicating that the block is read from the wrong location. Data ONTAP(R) makes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Block number mismatch on %s%s: stored_dbn = %u, expected_dbn = %llu; stored_vbn = %llu, expected_vbn = %llu during write operation.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Information about the disk object that contains the error, including disk name, path, shelf, bay, serial number, vendor, model, rpm, and carrier serial number.
+*stored_dbn* (INT): Physical disk block number stored in the checksum entry.
+*expected_dbn* (LONGINT): Expected physical disk block number.
+*stored_vbn* (LONGINT): Volume block number stored in the checksum entry.
+*expected_vbn* (LONGINT): Expected volume block number.
+*shelf* (STRING): Identifier of the shelf where the disk drive is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk drive is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.tetris.cksum.embed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an invalid checksum entry during a write operation. The embedded checksum computed over the checksum entry do not match, indicating the corruption of the checksum entry. Data ONTAP(R) makes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Invalid checksum entry on %s%s, block #%llu, during write operation.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Information about the disk object that contains the error, including disk name, path, shelf, bay, serial number, vendor, model, rpm, and carrier serial number.
+*blockNum* (LONGINT): Physical disk block number containing the error.
+*shelf* (STRING): Identifier of the shelf where the disk drive is located.
+*bay* (STRING): Disk bay within the shelf where the disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk drive is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.tetris.cksum.err
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when tetris I/O detects a checksum error. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Checksum error on %s%s, block #%llu during stripe write.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Information about the disk object that contains the error, including disk name, path, shelf, bay, serial number, vendor, model, rpm , and carrier serial number.
+*blockNum* (LONGINT): Physical block number containing the error.
+*shelf* (STRING): Identifier of the shelf where the disk drive is located.
+*bay* (STRING): Disk bay within the shelf where the disk drive is located.
+*vendor* (STRING): Name of the vendor of the disk drive.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk drive is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.tetris.cksum.rderr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a checksum block media error in an advanced_zoned checksum's (AZCS) RAID group during a stripe write operation. Data ONTAP(R) makes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Checksum block read error on %s%s for blocks [#%llu - #%llu] during stripe write.
+*Parameters*::
+*owner* (STRING): Owner of the disk drive.
+*disk_info* (STRING): Information about the disk object that contains the error, including disk name, path, shelf, bay, serial number, vendor, model, rpm, and carrier serial number.
+*blockNum* (LONGINT): First physical disk block number containing the error.
+*LblockNum* (LONGINT): Last physical disk block number containing the error.
+*shelf* (STRING): Identifier of the shelf where the disk drive is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk drive is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.tetris.cksum.zero
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an empty checksum entry during a write operation. The checksum entry is zeroed, but the corresponding block is not zeroed. Data ONTAP(R) makes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Empty checksum entry for non-zeroed block on %s%s, block #%llu, during a write operation.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Information about the disk object that contains the error, including disk name, path, shelf, bay, serial number, vendor, model, rpm, and carrier serial number.
+*blockNum* (LONGINT): Physical disk block number containing the error.
+*shelf* (STRING): Identifier of the shelf where the disk drive is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk drive is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.tetris.lw.id.inconsist
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during a write operation, when the system detects an inconsistent RAID write signature on a RAID stripe. Data ONTAP(R) makes appropriate recovery actions. It automatically fails this device safely if the device exceeds the allowed number of inconsistent RAID write signature errors on the disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Inconsistent RAID write signature detected on RAID group %s%s, stripe #%llu, stripe bitmap %llu, during write operation.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*rg* (STRING): Name of the raid group.
+*stripe* (LONGINT): Stripe number.
+*more_stripes* (LONGINT): Bitmap representing all of the stripes that encountered the lost write error. The bit set in this bitmap gives the stripe number relative to the stripes parameter.
+
+== raid.tetris.lw.id.inconsist.dirty
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during a write operation, when the system detects an inconsistent RAID write signature on a RAID stripe that belongs to a dirty parity region.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*rg* (STRING): Name of the RAID group.
+*stripe* (LONGINT): Stripe number.
+*more_stripes* (LONGINT): Bitmap representing all of the stripes that encountered the lost write error. The bit set in this bitmap gives the stripe number relative to the stripes parameter.
+
+== raid.tetris.media.err
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when tetris i/o detects a medium error
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Read error on %s%s, block #%llu during stripe write
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Formatted information of the disk object that contains the error.
+*blockNum* (LONGINT): The physical block number containing the error.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.tetris.media.recommend.reassign.err
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when RAID tetris I/O detects a "recommend reassign" error for a disk block. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Block recommended for reassignment on %s%s, Block #%llu during stripe write.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*blockNum* (LONGINT): Physical block number containing the error.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.

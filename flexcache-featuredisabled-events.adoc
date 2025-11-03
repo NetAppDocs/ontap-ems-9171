@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: flexcache-featuredisabled-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: flexcache.featuredisabled events
+---
+
+= flexcache.featuredisabled events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== flexcache.featureDisabled
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an attempt is made to mount a FlexCache volume. FlexCache is no longer supported, please remove any remaining FlexCache volumes left over from upgrading the cluster.
+*Corrective Action*::
+Delete all FlexCache volumes in the cluster. They can be displayed by using the "volume flexcache show" command.
+*Syslog Message*::
+(None).
+*Parameters*::
+*volume* (STRING): FlexCache volume involved.

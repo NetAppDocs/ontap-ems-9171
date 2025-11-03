@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: san-slmsupportcheckfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.slmsupportcheckfailed events
+---
+
+= san.slmsupportcheckfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.slmSupportCheckFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs during reboot when SAN capability is enabled, the cluster has more than 8 nodes and lun.reporting.nodes options is disabled. It leads to host instability as the number of paths exposed exceeds the threshold that the host stacks can handle.
+*Corrective Action*::
+Set the option "lun.reporting_nodes.enable" to "on" with the command "vserver options lun.reporting_nodes.enable on" and enable Selective LUN Map on existing maps with the command "lun mapping add-reporting-nodes -vserver * -path * -igroup * -local-nodes".
+*Syslog Message*::
+Clusters with more than 8 nodes must have SLM support enabled.
+*Parameters*::
+(None).

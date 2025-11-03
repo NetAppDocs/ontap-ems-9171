@@ -1,0 +1,531 @@
+---
+sidebar: sidebar
+permalink: snapmirror-src-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapmirror.src events
+---
+
+= snapmirror.src events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapmirror.src.cannotFind
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a SnapMirror is issued from a source volume which is offline, restricted or does not exist.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror : source %s %s is offline, is restricted, or does not exist.
+*Parameters*::
+*volaggr* (STRING): Whether volume or aggregate
+*src* (STRING): The SnapMirror source
+
+== snapmirror.src.chkDone
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the source in a SnapMirror(R)/SnapVault(tm) relationship has finished a replication 'check' operation. The user should review the destination appliance's SnapMirror log file to make sure that no mismatches were found.
+*Corrective Action*::
+Please review destination appliance's SnapMirror log file to make sure that no mismatches were found in the relationship.
+*Syslog Message*::
+Replication 'check' from %s to %s:%s completed: Please review destination appliance's SnapMirror log file for more information.
+*Parameters*::
+*srcpath* (STRING): The source path.
+*dstfiler* (STRING): The destination appliance.
+*dstpath* (STRING): The destination path.
+
+== snapmirror.src.chkSnapInfo
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs at the source appliance of a SnapMirror(R) 'check' operation to notify the appliance about which base snapshot will be used for the operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Snapmirror 'check' from '%s' to '%s':'%s' will use '%s' as the base snapshot. All snapshots older than and including the base snapshot on the source volume will be used.
+*Parameters*::
+*srcpath* (STRING): Source path.
+*dstfiler* (STRING): Destination appliance.
+*dstpath* (STRING): Destination path.
+*snapname* (STRING): Name of the base snapshot.
+
+== snapmirror.src.connDropped
+*Severity*::
+ERROR
+*Description*::
+This event is issued when SnapMirror source gets an error reading/writing to the network when communicating with the destination at the beginning of a SnapMirror transfer.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Error reading/writing to network, connection dropped.
+*Parameters*::
+(None).
+
+== snapmirror.src.diffSnap
+*Severity*::
+ERROR
+*Description*::
+This event is issued when SnapMirror destination requests for a different snapshot than expected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror transfer from %s to %s:%s : snapshot %s confusion, aborting transfer.
+*Parameters*::
+*srcpath* (STRING): The SnapMirror source volume or qtree
+*dstfiler* (STRING): The SnapMirror destination filer
+*dstpath* (STRING): The SnapMirror destination volume or qtree
+*snapname* (STRING): The snapshot requested by the destination
+
+== snapmirror.src.fixDone
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the source in a SnapMirror(R)/SnapVault(tm) relationship has finished a replication fix ('check -F') operation. The user should check the destination appliance's SnapMirror log file to make sure that all fixes were applied successfully.
+*Corrective Action*::
+Please review destination appliance's SnapMirror log file to make sure that all mismatches were fixed for the relationship.
+*Syslog Message*::
+Replication fix ('check -F') from %s to %s:%s completed: Please review destination storage appliance's SnapMirror log file for more information.
+*Parameters*::
+*srcpath* (STRING): The source path.
+*dstfiler* (STRING): The destination appliance.
+*dstpath* (STRING): The destination path.
+
+== snapmirror.src.inCutOver
+*Severity*::
+ERROR
+*Description*::
+This message occurs under two conditions: 1) When a new SnapMirror(R) command is issued on the destination volume of a volume being moved using the 'vol move'command. 2) When a new SnapMirror command is issued on the source volume of a volume being moved using the 'vol move' that is in the cutover phase. The new SnapMirror operation will abort.
+*Corrective Action*::
+Retry the new SnapMirror operation after the current 'vol move' operation is complete.
+*Syslog Message*::
+SnapMirror: source volume %s is part of a 'vol move' operation.
+*Parameters*::
+*src* (STRING): SnapMirror source volume.
+
+== snapmirror.src.inopick.abort
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the SnapMirror(R) source appliance aborts a qtree transfer it was doing because the producer thread aborted, usually due to lack of memory.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*srcpath* (STRING): SnapMirror source path.
+*dstfiler* (STRING): SnapMirror destination appliance.
+*dstpath* (STRING): SnapMirror destination path.
+
+== snapmirror.src.markedCorrupt
+*Severity*::
+ALERT
+*Description*::
+This event is issued when a SnapMirror is issued from a source volume or aggregate which is offline, restricted or does not exist.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Source %s %s is marked as corrupt, transfer not done.
+*Parameters*::
+*volaggr* (STRING): Whether volume or aggregate
+*src* (STRING): The SnapMirror source
+
+== snapmirror.src.multipath.connErr
+*Severity*::
+ERROR
+*Description*::
+This event is issued when the SnapMirror source filer is unable to setup a multipath connection with the destination filer. This can happen in case of a network connection failure.
+*Corrective Action*::
+Check network connectivity. SnapMirror uses ports 10565 and 10566. Please make sure they are open in the firewall configuration.
+*Syslog Message*::
+SnapMirror is unable to set up a multipath/failover connection from %s to %s:%s, SnapMirror is resorting to a single TCP connection. Please ensure ports 10565 and 10566 are open in the firewall configuration.
+*Parameters*::
+*srcpath* (STRING): SnapMirror source
+*dstfiler* (STRING): SnapMirror destination filer
+*dstpath* (STRING): SnapMirror destination
+
+== snapmirror.src.noNewData
+*Severity*::
+NOTICE
+*Description*::
+This generic event is issued when the SnapMirror source volume/aggregate itself is a SnapMirror destination and has no new data to send to its SnapMirror destination.
+*Corrective Action*::
+Please do a SnapMirror transfer to the source first.
+*Syslog Message*::
+SnapMirror source %s %s has no new data for %s:%s.
+*Parameters*::
+*volaggr* (STRING): Whether volume or aggregate
+*srcpath* (STRING): The SnapMirror source
+*dstfiler* (STRING): The SnapMirror destination filer
+*dstpath* (STRING): The SnapMirror destination
+
+== snapmirror.src.notLicensed
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a SnapMirror source filer receives a request for transfer when SnapMirror is not even licensed on it.
+*Corrective Action*::
+Please license SnapMirror.
+*Syslog Message*::
+Command request while SnapMirror not licensed on this filer.
+*Parameters*::
+(None).
+
+== snapmirror.src.notOn
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a SnapMirror(R) source system receives a request for transfer when SnapMirror is off on the system.
+*Corrective Action*::
+Issue the 'snapmirror on' command.
+*Syslog Message*::
+Command request while SnapMirror is off on this filer.
+*Parameters*::
+(None).
+
+== snapmirror.src.notReady
+*Severity*::
+ERROR
+*Description*::
+This event is issued when the SnapMirror source volume is not yet ready for a SnapMirror transfer.
+*Corrective Action*::
+Please try again.
+*Syslog Message*::
+Source %s %s not ready for SnapMirror transfer, please try again.
+*Parameters*::
+*volaggr* (STRING): Whether volume or aggregate
+*src* (STRING): The SnapMirror source
+
+== snapmirror.src.offline
+*Severity*::
+ERROR
+*Description*::
+This event is issued when the SnapMirror source volume or aggregate is taken offline.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Source %s %s requested offline.
+*Parameters*::
+*volaggr* (STRING): Whether volume or aggregate
+*src* (STRING): The SnapMirror source
+
+== snapmirror.src.phaseI
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the SnapMirror source doing a qtree transfer enters phase I of the transfer.
+*Corrective Action*::
+No corrective action required.
+*Syslog Message*::
+[ SnapMirror source transfer %s --> %s:%s ] starting phase I.
+*Parameters*::
+*srcpath* (STRING): The SnapMirror source path
+*dstfiler* (STRING): The SnapMirror destination filer
+*dstpath* (STRING): The SnapMirror destination path
+
+== snapmirror.src.phaseII
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the SnapMirror source doing a qtree transfer enters phase II of the transfer.
+*Corrective Action*::
+No corrective action required.
+*Syslog Message*::
+[ SnapMirror source transfer %s --> %s:%s ] starting phase II.
+*Parameters*::
+*srcpath* (STRING): The SnapMirror source path
+*dstfiler* (STRING): The SnapMirror destination filer
+*dstpath* (STRING): The SnapMirror destination path
+
+== snapmirror.src.requestDenied
+*Severity*::
+ERROR
+*Description*::
+This event is issued when the destination filer requesting a SnapMirror transfer from the source filer is denied the transfer request.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror transfer request from %s to host %s at IP address %s denied: %s.
+*Parameters*::
+*srcpath* (STRING): The SnapMirror source, can be volume or qtree
+*hostname* (STRING): The hostname of the destination filer
+*ipaddress* (STRING): The IP address of the destination filer
+*error* (STRING): The reason why the request was denied.
+
+== snapmirror.src.restart.chkptFailed
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when we are not able to set a restart checkpoint on the qtree SnapMirror source.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror transfer to %s:%s : restart checkpoint setup failed.
+*Parameters*::
+*dstfiler* (STRING): The SnapMirror destination filer
+*dstpath* (STRING): The SnapMirror destination qtree
+
+== snapmirror.src.restart.noSnap
+*Severity*::
+ERROR
+*Description*::
+This event is issued when SnapMirror source is not able to find the latest snapshot needed for restart.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Could not find the latest snapshot needed for restart.
+*Parameters*::
+(None).
+
+== snapmirror.src.resync.snapNotFound
+*Severity*::
+ERROR
+*Description*::
+This event is issued on the source when the resync base snapshot is not found on the source.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Could not find base snapshot to resync %s %s:%s to %s.
+*Parameters*::
+*volaggr* (STRING): Whether volume or aggregate
+*dstfiler* (STRING): SnapMirror destination filer
+*dstpath* (STRING): SnapMirror destination
+*srcpath* (STRING): SnapMirror source
+
+== snapmirror.src.resync.toSelf
+*Severity*::
+ERROR
+*Description*::
+This event is issued when SnapMirror source detects and attempt to resync a volume to itself.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror cannot resync %s %s to itself, operation not permitted.
+*Parameters*::
+*volaggr* (STRING): Where source volume or aggregate
+*srcpath* (STRING): SnapMirror source
+
+== snapmirror.src.revertPending
+*Severity*::
+NOTICE
+*Description*::
+This message indicates the source is being reverted by WAFL and cannot currently be used for a snapmirror operation.
+*Corrective Action*::
+This message indicates the source is being reverted. After the revert completes the operation should be retried.
+*Syslog Message*::
+snapmirror copy: The source is being reverted by WAFL.
+*Parameters*::
+(None).
+
+== snapmirror.src.snapGotDeleted
+*Severity*::
+ERROR
+*Description*::
+This event is issued when the base snapshot on the SnapMirror source got deleted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror snapshot %s was deleted or renamed, transfer from %s to %s:%s aborted.
+*Parameters*::
+*snapname* (STRING): The SnapMirror base snapshot
+*srcpath* (STRING): The SnapMirror source, can be a volume or qtree
+*dstfiler* (STRING): The SnapMirror destination filer
+*dstpath* (STRING): The SnapMirror destination, can be a volume or qtree
+
+== snapmirror.src.snapshotErr
+*Severity*::
+ERROR
+*Description*::
+This event is issued when we are not able to obtain all the snapshot information, from the SnapMirror source volume, required for a SnapMirror transfer.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror not able to obtain snapshot information from source %s %s
+*Parameters*::
+*volaggr* (STRING): Whether volume or aggregate
+*src* (STRING): The SnapMirror source volume
+
+== snapmirror.src.sockErr
+*Severity*::
+ERROR
+*Description*::
+This event is issued when SnapMirror on the source filer has problems opening a socket.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cannot accept SnapMirror destination requests: %s.
+*Parameters*::
+*error* (STRING): The error message
+
+== snapmirror.src.sockOk
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when SnapMirror on the source filer had problems opening a socket, but is fine now.
+*Corrective Action*::
+No corrective action required.
+*Syslog Message*::
+SnapMirror now accepting destination requests.
+*Parameters*::
+(None).
+
+== snapmirror.src.sync.compressedVol
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a Synchronous SnapMirror source attempts to go into fully synchronous mode when compression is enabled on the source volume.
+*Corrective Action*::
+SnapMirror currently does not support a compressed volume as a synchronous volume source. In order to synchronously mirror the volume, the compression feature must be disabled on the volume.
+*Syslog Message*::
+Synchronous SnapMirror source volume %s has compression enabled, which is not supported.
+*Parameters*::
+*src* (STRING): Name of the source volume.
+
+== snapmirror.src.sync.flexSameFilerOrHA
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a SnapMirror request for going synchronous is received for two flexible volumes that reside on the same filer or belong to the same HA pair.
+*Corrective Action*::
+Synchronous SnapMirror cannot operate on two flexible volumes on the same filer or on the same HA pair. Please move one of the volumes off the filer or HA pair.
+*Syslog Message*::
+Synchronous SnapMirror cannot run between two flexible volumes on the same filer or HA pair; this mode is not allowed from %s to %s.
+*Parameters*::
+*src* (STRING): The source volume name
+*dst* (STRING): The destination volume name
+
+== snapmirror.src.sync.FvolSyncTooSmall
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a source side SnapMirror request attempts to go into fully synchronous mode on a flexible volume and it is smaller than the supported size.
+*Corrective Action*::
+SnapMirror currently does not support a filer having a synchronous flexible volume source that is smaller than the minimum supported size. Increase the size of the flexible volume source and destination to at least the minimum supported size.
+*Syslog Message*::
+The flexible volume Synchronous SnapMirror source %s is %llu MB, which is smaller than the minimum supported size of %llu MB.
+*Parameters*::
+*src* (STRING): Name of the source flexible volume.
+*size* (LONGINT): Size of the source flexible volume (MB).
+*minsize* (LONGINT): Minimum supported volume size (MB) for flexible volume synchronous snapmirror transfers.
+
+== snapmirror.src.sync.license
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a SnapMirror request for going synchronous is received when the feature is not licensed.
+*Corrective Action*::
+Please license synchronous SnapMirror on the source filer.
+*Syslog Message*::
+Synchronous SnapMirror is not licensed. Synchronous mode from %s to %s:%s is not allowed.
+*Parameters*::
+*srcvol* (STRING): The source volume name
+*dstfiler* (STRING): The SnapMirror destination filer
+*dstvol* (STRING): The destination volume name
+
+== snapmirror.src.sync.platform
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a SnapMirror request for going synchronous is received when an inappropriate platform is used.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Synchronous SnapMirror is not supported on this platform. Synchronous mode from %s to %s:%s is not allowed.
+*Parameters*::
+*srcvol* (STRING): The source volume name
+*dstfiler* (STRING): The SnapMirror destination filer
+*dstvol* (STRING): The destination volume name
+
+== snapmirror.src.sync.rootFullSync
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a SnapMirror request for going fully synchronous is received for the root volume or aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Root %s %s not allowed as a fully sync source.
+*Parameters*::
+*volaggr* (STRING): Whether volume or aggregate
+*src* (STRING): The SnapMirror source
+
+== snapmirror.src.sync.sanitization
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a SnapMirror request for going synchronous is received when SnapMirror features are only enabled due to a sanitization license.
+*Corrective Action*::
+The sanitization feature only enables certain pieces of SnapMirror functionality. Please license synchronous SnapMirror in order to use synchronous mode.
+*Syslog Message*::
+The sanitization feature does not allow synchronous SnapMirror to be run from volume %s to volume %s.
+*Parameters*::
+*src* (STRING): The source volume name
+*dst* (STRING): The destination volume name
+
+== snapmirror.src.sync.tradSameFilerOrHA
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a SnapMirror request for going into fully synchronous mode is received for two traditional volumes that reside on the same filer or belong to the same HA pair.
+*Corrective Action*::
+Fully synchronous SnapMirror does not operate on two traditional volumes on the same filer or on the same HA pair. The volumes can be put into semi-synchronous (i.e. cpsync) mode, or one of the volumes can be moved off the filer or HA pair.
+*Syslog Message*::
+Fully synchronous SnapMirror cannot run between two traditional volumes on the same filer or HA pair; this mode is not allowed from %s to %s.
+*Parameters*::
+*src* (STRING): The source volume name
+*dst* (STRING): The destination volume name
+
+== snapmirror.src.threadErr
+*Severity*::
+ERROR
+*Description*::
+This event is issued when we are not able to allocate a thread to do SnapMirror source side operations.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Concurrent operation resource limit reached, SnapMirror source delayed.
+*Parameters*::
+(None).
+
+== snapmirror.src.versionMismatch
+*Severity*::
+ERROR
+*Description*::
+This event is issued when there is SnapMirror version mismatch between the source and destination.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Received SnapMirror request with incompatible version.
+*Parameters*::
+(None).
+
+== snapmirror.src.vfiler.migrating
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) transfer involves a source volume that is a member of a migrating vFiler(tm) unit. In such a case, the SnapMirror transfer aborts.
+*Corrective Action*::
+Wait for the vFiler migration to be completed, then retry the transfer.
+*Syslog Message*::
+SnapMirror source volume %s is member of a migrating vFiler unit.
+*Parameters*::
+*src* (STRING): SnapMirror source volume
+
+== snapmirror.src.vfilerAccess
+*Severity*::
+ERROR
+*Description*::
+This event occurs when a SnapMirror source running on a vfiler tries to access a volume that it does not own.
+*Corrective Action*::
+For a non-default vfiler to act as a SnapMirror source it must own the target volume. Do one of the following: a) use the 'vfiler move' command to make the given vfiler the owner of the volume, b) connect to the default vfiler that has access to all volumes, or c) connect to the vfiler that currently owns the specified SnapMirror source volume. See the na_vfiler man page and MultiStore(R) documentation for details.
+*Syslog Message*::
+SnapMirror : vfiler %s tried to use volume %s as a SnapMirror source volume, but the vfiler is not the owner of that volume.
+*Parameters*::
+*vfiler* (STRING): The current vfiler's name
+*src* (STRING): The SnapMirror source volume

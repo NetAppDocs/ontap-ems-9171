@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: fpolicy-pspath-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fpolicy.pspath events
+---
+
+= fpolicy.pspath events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fpolicy.pspath.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the creation of the FPolicy persistent store active or backlog directories fails. This disrupts the persistent store workflow in FPolicy.
+*Corrective Action*::
+Check the space availability and permission on volume and recreate the PS config.
+*Syslog Message*::
+Failed to create FPolicy persistent store path "%s" in SVM "%s".
+*Parameters*::
+*path* (STRING): The directory path name that failed while it's creation.
+*vserverName* (STRING): Name of the Vserver.

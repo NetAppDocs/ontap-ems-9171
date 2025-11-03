@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: scsiblade-kernel-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsiblade.kernel events
+---
+
+= scsiblade.kernel events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsiblade.kernel.volume.limbo.group
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the kernel cluster group for the specified volume is in an indeterminate state.
+*Corrective Action*::
+Contact NetApp technical support. For further information about correcting the problem, see the knowledgebase article 2017368.
+*Syslog Message*::
+The kernel cluster group for volume MSID 0x%llx of Vserver %s is in an indeterminate state. This will impact SAN management and configuration. Additionally, LUNs might not be accessible on this volume from this node.
+*Parameters*::
+*volume* (LONGINTHEX): Volume identifier.
+*vserver* (STRING): UUID of the Vserver.
+
+== scsiblade.kernel.vserver.limbo.group
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the kernel cluster group for the specified Vserver is in an indeterminate state.
+*Corrective Action*::
+Contact NetApp technical support. For further information about correcting the problem, see the Knowledgebase article 2017367.
+*Syslog Message*::
+The kernel cluster group for Vserver %s is in an indeterminate state. This will impact SAN management and configuration. Additionally, LUNs might not be accessible on this Vserver from this node.
+*Parameters*::
+*vserver* (STRING): UUID of the Vserver.

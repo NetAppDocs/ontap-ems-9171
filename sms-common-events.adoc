@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: sms-common-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sms.common events
+---
+
+= sms.common events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sms.common.snapshot.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is a failure in creating a common snapshot. The SnapMirror(R) Sync relationship continues to be in "in-sync" status. The latest common snapshot is used for recovery in case the relationship status changes to "out-of-sync." The common snapshot should be created at scheduled intervals to decrease the recovery time of "out-of-sync" relationships.
+*Corrective Action*::
+Create a common snapshot manually by using the "snapmirror update" command at the destination volume.
+*Syslog Message*::
+Creating a common snapshot for source volume "%s" and destination volume "%s" with relationship UUID "%s" has failed due to the following reason: "%s". Elapsed time since the latest successful common snapshot is %s.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume of the SnapMirror relationship.
+*dstpath* (STRING): Path name of the destination volume of the SnapMirror relationship.
+*relationship_id* (STRING): Relationship UUID.
+*error_msg* (STRING): Error that prevented the common snapshot from being created.
+*css_fail_interval* (STRING): Interval between the last successful common snapshot creation and recent failure to create a common snapshot.

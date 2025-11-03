@@ -1,0 +1,52 @@
+---
+sidebar: sidebar
+permalink: ccma-quota-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ccma.quota events
+---
+
+= ccma.quota events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ccma.quota.datastore.leak
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a datastore has been orphaned due to the system not having sufficient memory to keep track of it in the quota system. Orphaned datastores will take up disk space and may build up over time if this problem recurs.
+*Corrective Action*::
+Delete the orphaned datastore and/or restart the CM daemon once the out of memory condition has been resolved.
+*Syslog Message*::
+A datastore may have been orphaned due to the system being out of memory. Please delete this datastore: %s
+*Parameters*::
+*datastore* (STRING): Name of the datastore that has been orphaned and needs to be deleted.
+
+== ccma.quota.file.leak
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an archiver file has been orphaned due to the system not having sufficient memory to keep track of the file in the quota system. Orphaned files will take up disk space and may build up over time if this problem recurs.
+*Corrective Action*::
+Delete the orphaned file and/or restart the CM daemon once the out of memory condition has been resolved.
+*Syslog Message*::
+An archiver file may have been orphaned due to the system being out of memory. Please delete this file: %s
+*Parameters*::
+*filename* (STRING): Name of the archiver file that has been orphaned and needs to be deleted.
+
+== ccma.quota.throughput
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the performance archive data collection rate is too high for the amount of reserved disk space, possibly resulting in a shortened history of the system's performance (less than the configured datastore-max-retention value). A shortened history might limit the ability of support staff to triage performance problems.
+*Corrective Action*::
+Using the (diagnostic privilege) "statistics archive config" commands, increase the performance archive's datastore-max-percent configuration parameter so that the reported datastore-max-size value on this node is increased by the stated "size" amount.
+*Syslog Message*::
+The performance archive data collection rate is too high for the amount of space available. The system can only keep %ld days of performance archive data at this rate, and needs %ld MB of additional space to maintain a system performance history equal to the datastore-max-retention configuration value.
+*Parameters*::
+*days* (LONGINT): Number of days of performance archive data that can be stored at the current rate.
+*size* (LONGINT): Size increase (in MB) needed to maintain a system performance history equal to the datastore-max-retention configuration value.

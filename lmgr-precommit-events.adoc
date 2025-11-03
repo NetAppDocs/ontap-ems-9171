@@ -1,0 +1,67 @@
+---
+sidebar: sidebar
+permalink: lmgr-precommit-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lmgr.precommit events
+---
+
+= lmgr.precommit events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lmgr.precommit.oplock.recall.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system fails aggregate giveback or relocation because SMB oplock or NFSv4 delegation recall fails. Giveback or relocation cannot proceed until all oplocks are recalled successfully or the lock manager pre-commit phase is forced, in which case cached writes in clients might be lost.
+*Corrective Action*::
+There are two options for allowing aggregate giveback or relocation to proceed: (1) Force the sendhome pre-commit phase. For aggregate relocation, this can be done by specifying the '-override-destination-checks true' option. For giveback, this can be done by specifying the '-require-partner-waiting false' option. (2) Recall oplocks for Vservers on aggregates participating in the operation by using the 'volume qtree oplocks -volume <vol-name> -qtree <qtree-name> -vserver <vserver-name> -oplock-mode disable' command for volumes or qtrees with oplocks enabled. Then retry the operation, and reenable oplocks after the operation is complete. If the error persists, contact NetApp technical support for assistance.
+*Syslog Message*::
+Aggregate "%s" failed giveback or relocation because lock manager oplock recall failed. Error: %s.
+*Parameters*::
+*aggrname* (STRING): Aggregate name.
+*error* (STRING): Error details.
+
+== lmgr.precommit.oplock.recall.fail.oam
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system fails aggregate giveback or relocation because SMB oplock or NFSv4 delegation recall fails. Giveback or relocation cannot proceed until all oplocks are recalled successfully or the lock manager pre-commit phase is forced, in which case cached writes in clients might be lost.
+*Corrective Action*::
+There are two options for allowing aggregate relocation to proceed: (1) Force the sendhome pre-commit phase. It can be done by specifying the '-override-destination-checks true' option. (2) Recall oplocks for Vservers on aggregates participating in the operation by using the 'volume qtree oplocks -volume <vol-name> -qtree <qtree-name> -vserver <vserver-name> -oplock-mode disable' command for volumes or qtrees with oplocks enabled. Then retry the operation, and reenable oplocks after the operation is complete. To allow aggregate giveback to proceed: (1) Recall oplocks for Vservers on aggregates participating in the operation by using the 'volume qtree oplocks -volume <vol-name> -qtree <qtree-name> -vserver <vserver-name> -oplock-mode disable' command for volumes or qtrees with oplocks enabled. Then retry the operation, and reenable oplocks after the operation is complete. If the error persists, contact NetApp technical support for assistance.
+*Syslog Message*::
+Aggregate "%s" failed giveback or relocation because lock manager oplock recall failed. Error: %s.
+*Parameters*::
+*aggrname* (STRING): Aggregate name.
+*error* (STRING): Error details.
+
+== lmgr.precommit.oplock.recall.forced
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the lock manager oplock recall fails during aggregate giveback or relocation, but the pre-commit phase has been forced to proceed. It is possible that cached writes in clients might have been lost as a result.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Lock manager oplock recall failed for aggregate "%s" during giveback or relocation. The failure abort was overridden. Error: %s.
+*Parameters*::
+*aggrname* (STRING): Aggregate name.
+*error* (STRING): Error details.
+
+== lmgr.precommit.oplock.recall.timeout
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the lock manager oplock recall fails during aggregate giveback or relocation because the recalls could not be completed within the internal timeout window. The timeout typically can expire due to CPU overload, slow client response, or a large number of open files.
+*Corrective Action*::
+The timeout can can be ignored by specifying the '-override-vetoes true' option in the giveback or relocation command.
+*Syslog Message*::
+Lock manager oplock recall failed to be completed for aggregate "%s" within %d seconds.
+*Parameters*::
+*aggrname* (STRING): Aggregate name.
+*timeout* (INT): Timeout value.

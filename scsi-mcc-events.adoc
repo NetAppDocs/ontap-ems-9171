@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: scsi-mcc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsi.mcc events
+---
+
+= scsi.mcc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsi.mcc.adt.ioTransportError
+*Severity*::
+ERROR
+*Description*::
+Generated when an I/O request encounters an error because of an iSCSI Protocol Error, a end device error, or some stack internal error.
+*Corrective Action*::
+Transport errors are typically unexpected events; the exception being when drives are physically added or removed from the bus or drive enclosure. However, transport protocols do account for detection and recovery of transmission errors through CRC or Parity mechanisms. When such an error is reported to the adapter driver, the associated request is retried. Common things to check include complete seating of drive carriers in enclosure bays, properly secured cable connections, LRC/ESH seating, and crimped or otherwise damaged cables.
+*Syslog Message*::
+mcc_adt[%u] - Transport error during execution of command: HA status 0x%x: CAM transport status 0x%x : cdb %s.
+*Parameters*::
+*path_instance* (INTHEX): Value returned by the host adapter driver describing path instance.
+*ha_status* (INTHEX): Value returned by the host adapter driver describing completion status of I/O request execution at the transport or physical link layer.
+*cam_status* (INTHEX): Value returned by the host adapter driver in the FreeBSD CAM transport layer
+*cdb* (STRING): A string containing the opcode byte of the CDB which was sent to the device. If the opcode was for a READ (0x28) or a WRITE (x02a) command, the logical block address and the transfer length are included as well.

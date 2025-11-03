@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: nvmeof-port-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvmeof.port events
+---
+
+= nvmeof.port events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvmeof.port.modify
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the mode of an NVMe-oF port is changed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Changing NVMe-oF port %s to %s mode.
+*Parameters*::
+*port* (STRING): Name of port being configured.
+*mode* (STRING): Mode in which to configure port: network or storage.

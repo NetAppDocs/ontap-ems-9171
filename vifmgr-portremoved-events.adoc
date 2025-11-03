@@ -1,0 +1,64 @@
+---
+sidebar: sidebar
+permalink: vifmgr-portremoved-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.portremoved events
+---
+
+= vifmgr.portremoved events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.portRemoved
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a port is removed because it no longer exists.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Port %s on node %s has been removed because it no longer exists.
+*Parameters*::
+*port* (STRING): Name of the nonexistent port.
+*node* (STRING): Name of the node on which the nonexistent port used to reside.
+
+== vifmgr.portRemoved.lifHomed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a logical interface's (LIF's) home port is updated because its previous home port has been removed from its broadcast domain.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Home port of LIF %s (Vserver %s), IP addr %s updated to node %s port %s from node %s port %s: port removed from broadcast domain.
+*Parameters*::
+*vifName* (STRING): Name of the LIF on which the home port is being updated.
+*vsrvId* (STRING): ID of the virtual server on which the LIF resides.
+*vifIp* (STRING): IP address of the LIF on which the home port is being updated.
+*toNode* (STRING): Name of the node to which the LIF's home port is being updated.
+*toPort* (STRING): Name of the port to which the LIF's home port is being updated.
+*fromNode* (STRING): Name of the node from which the LIF's home port is being updated.
+*fromPort* (STRING): Name of the port from which the LIF's home port is being updated.
+
+== vifmgr.portRemoved.lifMoved
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a logical interface (LIF) is moved from a port that has been removed from its broadcast domain.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LIF %s (Vserver %s), IP addr %s moving to node %s port %s from node %s port %s: port removed from broadcast domain.
+*Parameters*::
+*vifName* (STRING): Name of the LIF that is being moved.
+*vsrvId* (STRING): ID of the virtual server on which the LIF resides.
+*vifIp* (STRING): IP address of the LIF that is being moved.
+*toNode* (STRING): Name of the node to which the LIF is moving.
+*toPort* (STRING): Name of the port to which the LIF is moving.
+*fromNode* (STRING): Name of the node from which the LIF is moving.
+*fromPort* (STRING): Name of the port from which the LIF is moving.

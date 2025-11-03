@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: rsh-setsockopt-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rsh.setsockopt events
+---
+
+= rsh.setsockopt events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rsh.setsockopt.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the setsockopt option on the RemoteShell(RSH) socket fails; RSH is not available.
+*Corrective Action*::
+Use the error message to determine the problem.
+*Syslog Message*::
+RSH setsockopt error: option level '%s', option value '%s', error code '%d', error message '%s'.
+*Parameters*::
+*socketlevel* (STRING): Socket option level parameter.
+*socketoption* (STRING): Socket option value parameter.
+*errorcode* (INT): Error code returned from setsockopt.
+*reason* (STRING): Error message for the failure.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: mcc-forced-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mcc.forced events
+---
+
+= mcc.forced events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mcc.forced.auso.issued
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the node triggers a forced automatic unplanned switchover because the "allow-auto-forced-switchover" option is true.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The node has triggered a forced automatic unplanned switchover of the DR partner. Reason: "%s".
+*Parameters*::
+*reason* (STRING): Reason for triggering a forced automatic unplanned switchover with "allow-auto-forced-switchover" option.

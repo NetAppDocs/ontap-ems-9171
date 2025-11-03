@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-fans-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.fans events
+---
+
+= callhome.fans events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.fans.failed
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when multiple fans inside the appliance case fail. This failure can lead to overheating and cause damage to your equipment. The system shuts down within 10 minutes unless you resolve the fan problems. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Replace the fans within 10 minutes. If that is not possible, perform a graceful shutdown of the system and power it off. Then replace the fans when you can, power on the system, and restore it to normal operation. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for MULTIPLE FAN FAILURE
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

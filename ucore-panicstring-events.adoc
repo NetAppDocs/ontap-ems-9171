@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: ucore-panicstring-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ucore.panicstring events
+---
+
+= ucore.panicstring events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ucore.panicString
+*Severity*::
+ERROR
+*Description*::
+This event occurs when a userspace application crashes, and we manage to obtain a panic string indicating the cause of the crash.
+*Corrective Action*::
+Contact customer support, and if necessary upload the core and/or the core report.
+*Syslog Message*::
+'%s'
+*Parameters*::
+*panic_string* (STRING): The panic string of the crashed process.
+*process_name* (STRING): The name of the crashed process.
+*fault_type* (STRING): The type of fault we encountered (eg SIGSEGV, SIGHUP).

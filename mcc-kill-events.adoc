@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: mcc-kill-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mcc.kill events
+---
+
+= mcc.kill events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mcc.kill.received
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the node is halting because it received a "kill" message from the disaster recovery (DR) partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Node is halting because a kill message with reason %s has been received from the DR partner with system ID %ld.
+*Parameters*::
+*reason* (STRING): Reason for halting the node.
+*sender_sysid* (LONGINT): System ID of the sender.

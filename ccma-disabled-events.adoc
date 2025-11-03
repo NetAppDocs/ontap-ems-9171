@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ccma-disabled-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ccma.disabled events
+---
+
+= ccma.disabled events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ccma.disabled
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Performance Archive has been disabled for more than an hour. This is caused by setting the -is-enabled flag to false. This message will be repeated every hour that the archiver is turned off. The messages will only displayed once a day.
+*Corrective Action*::
+Run the 'statistics archive config modify -is-enable true' command. This will enable the Performance Archive.
+*Syslog Message*::
+The Performance Archive has been disabled for more than an hour. It is Important for the analysis and diagnoses of performance related issues. Consider enabling it.
+*Parameters*::
+(None).

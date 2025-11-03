@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: sis-upgrademetafile-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.upgrademetafile events
+---
+
+= sis.upgrademetafile events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.upgrademetafile.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Single Instance Storage (SIS) metafiles cannot be created during a Data ONTAP(R) upgrade. The 'sis status' command will not display this volume. SIS operations cannot be triggered manually or according to a schedule for the volume.
+*Corrective Action*::
+Correct the underlying issue indicated by the error message, and then run 'sis on' command to trigger the SIS upgrade again. If the upgrade succeeds, SIS then resumes normally.
+*Syslog Message*::
+Could not create the metafiles for the volume %s%s: %s.
+*Parameters*::
+*vol* (STRING): Path to the volume.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*err* (STRING): Reason for the failure.

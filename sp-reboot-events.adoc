@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: sp-reboot-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sp.reboot events
+---
+
+= sp.reboot events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sp.reboot.ro.partition
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the node's Service Processor (SP) or Baseboard Management Controller (BMC) log partition is mounted as read-only after an internal error has occurred. The system automatically reboots the SP or BMC to attempt to remount the log partition as read-write.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Rebooting the %s because the log partition is in a read-only state.
+*Parameters*::
+*sp_type* (STRING): Service processor type (SP or BMC)
+
+== sp.reboot.sensor.unreadable
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when one or more sensors are unreadable from Service Processor (SP) or Baseboard Management Controller (BMC).SP or BMC is rebooted in attempt to recover the sensor reading.
+*Corrective Action*::
+No user action is required.
+*Syslog Message*::
+Rebooting %s because one or more sensors are unreadable.
+*Parameters*::
+*sp_type* (STRING): Service processor type (SP or BMC).

@@ -1,0 +1,64 @@
+---
+sidebar: sidebar
+permalink: nis-netgrp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nis.netgrp events
+---
+
+= nis.netgrp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nis.netgrp.db.build.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Network Information Service (NIS) netgroup database build fails.
+*Corrective Action*::
+Ensure that the configured NIS domain is reachable for the SVM and bound. Ensure that the number of characters per record in the NIS server for the netgroup database does not exceed 1,024. See the ONTAP(R) 9 Documentation Center for managing NIS domains.
+*Syslog Message*::
+Failed to build the NIS netgroup database for Vserver "%s". Error: %s.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*error_string* (STRING): Error encountered while building the NIS netgroup database.
+
+== nis.netgrp.db.build.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Network Information Service (NIS) netgroup database build is successful.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NIS netgroup database is successfully built for Vserver "%s".
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+
+== nis.netgrp.db.job.kick.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system fails to run the NIS netgroup.byhost database job. The NIS netgroup.byhost database available on the local system is not refreshed. The subsequent netgroup-by-host query might return outdated information.
+*Corrective Action*::
+Use the (privilege: advanced) "vserver services name-service nis-domain netgroup-database build" command to run the NIS netgroup database job.
+*Syslog Message*::
+NIS netgroup database job run failed for Vserver %s.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+
+== nis.netgrp.db.job.queue.fail
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system fails to queue the NIS netgroup.byhost database job. The NIS netgroup.byhost database is not available on the local system. The subsequent netgroup-by-host query will be fetched from the external NIS server.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NIS netgroup database job queue failed for Vserver %s.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.

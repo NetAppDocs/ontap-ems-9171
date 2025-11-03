@@ -1,0 +1,45 @@
+---
+sidebar: sidebar
+permalink: repository-dangling-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repository.dangling events
+---
+
+= repository.dangling events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Repository.Dangling.Data.File
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+ERROR
+*Description*::
+This message occurs during a client file operation request, when the Infinite Volume namespace redirector runs into failures that prevent it from cleaning up a file on a data constituent. This dangling file is unnecessarily consuming resources.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Failures caused the Infinite Volume namespace redirector to leave a dangling file (handle: %s) on a data constituent in Vserver %u.
+*Parameters*::
+*filehandle* (STRING): File handle of the file that is left dangling in the data constituent.
+*vserverId* (INT): Vserver ID for which the error occurred.
+
+== Repository.Dangling.Redirector
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+ERROR
+*Description*::
+This message occurs during a client file operation request, when the Infinite Volume namespace redirector runs into a dangling redirector file on the namespace constituent.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Failures caused the Infinite Volume namespace redirector to leave a dangling redirector file %s on the namespace constituent in Vserver %u.
+*Parameters*::
+*filehandle* (STRING): File handle of the redirector file that is left dangling in the namespace constituent.
+*vserverId* (INT): Vserver ID for which the error occurred.

@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: scsiblade-init-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsiblade.init events
+---
+
+= scsiblade.init events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsiblade.init.abort
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the specified Vserver initialization was skipped due to a user-initiated abort. Giveback was allowed to succeed--in a degraded state--to allow further recovery. LUNs in the Vserver might not be accessible or might not be accessible on all paths.
+*Corrective Action*::
+Resolve the previously identified fault for which the abort was issued, and then restart SAN initialization on the node by using the "debug san node restart-vserver-initialization" command.
+*Syslog Message*::
+Vserver "%s" was not initialized due to a user-initiated abort request. SAN service for this Vserver might be degraded or unavailable on this node.
+*Parameters*::
+*vserver* (STRING): Name of the Vserver.
+
+== scsiblade.init.failure
+*Severity*::
+ALERT
+*Description*::
+This message occurs when there is a problem initializing the SAN Kernel Agent for one or more Vservers. LUNs in the affected Vserver(s) might not be accessible or might not be accessible via all paths.
+*Corrective Action*::
+Perform a planned takeover of the node with the failure followed by a giveback.
+*Syslog Message*::
+There was a problem initializing the SAN Kernel Agent for one or more Vservers. Vserver: %s. Reason: %s.
+*Parameters*::
+*vserver* (STRING): Name of the Vserver for which the SAN Kernel Agent failed to initialize.
+*error* (STRING): Error encountered while initializing the SAN Kernel Agent for the Vserver.

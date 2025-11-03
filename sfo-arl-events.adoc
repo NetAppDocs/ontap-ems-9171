@@ -1,0 +1,57 @@
+---
+sidebar: sidebar
+permalink: sfo-arl-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfo.arl events
+---
+
+= sfo.arl events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfo.arl.gb.failed.conversion
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ARL/giveback of the Storage Failover (SFO) aggregate fails because of active volume conversion operations against one or more volumes on this aggregate while acquiring the RAID lock.
+*Corrective Action*::
+When volume conversion is complete, re-run the command 'storage failover takeover/giveback'.
+*Syslog Message*::
+%s %s.
+*Parameters*::
+*msg* (STRING): Error that prevented ARL/GB.
+*aggr* (STRING): Name of the aggregate that was not TO/GB.
+
+== sfo.arl.notAllowed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a requested Storage Failover (SFO) aggregate relocation operation is refused because the destination node is not the high-availability (HA) partner of the source node.
+*Corrective Action*::
+Verify that the destination node of the aggregate relocation is the source node's high-availability (HA) partner by using the "storage failover show" command. Retry the aggregate relocation with the correct source and destination node.
+*Syslog Message*::
+SFO aggregate relocation refused for aggregate %s because the destination is not an HA partner. Source node: %s (NVRAM ID: %llu), destination node: %s (NVRAM ID: %llu).
+*Parameters*::
+*aggr_name* (STRING): Name of the aggregate.
+*src_name* (STRING): Name of the source node.
+*src_nvram_id* (LONGINT): NVRAM ID of the source node.
+*dest_name* (STRING): Name of the destination node.
+*dest_nvram_id* (LONGINT): NVRAM ID of the destination node.
+
+== sfo.arl.recvdBadSignal
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the aggregate relocation worker thread receives an unexpected signal from the kernel subsystem.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*signal_info* (STRING): Additional information on the signal received, indicating if it was a bad message type or a bad signal mask.
+*signal_value* (INT): Value of the unexpected signal.

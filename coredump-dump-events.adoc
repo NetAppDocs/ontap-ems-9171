@@ -1,0 +1,275 @@
+---
+sidebar: sidebar
+permalink: coredump-dump-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: coredump.dump events
+---
+
+= coredump.dump events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== coredump.dump.abort
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is an unsaved core on the dump device. The abort prevents a new crash from overwriting the original dump core, which is expected to contain more interesting information for analysis.
+*Corrective Action*::
+If the default behavior is not desired, then set the boot option 'save-latest-core?' to true.
+*Syslog Message*::
+Dump is aborted because a core in the dump device is not saved yet.
+*Parameters*::
+(None).
+
+== coredump.dump.disk.failed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs once for each core disk that has read or write errors while dumping the core. Each disk is marked as failed, so further writes to the disks are dropped. Dumpcore tries to recover from this error, and continue dumping the core.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s had %u read and %u write error(s) during dumpcore.
+*Parameters*::
+*disk* (STRING): Name of this core disk marked failed with read or write errors.
+*readErrorCount* (INT): Number of read errors seen on this core disk.
+*writeErrorCount* (INT): Number of write errors seen on this core disk.
+
+== coredump.dump.disk_failed.count
+*Severity*::
+ERROR
+*Description*::
+During the last dumpcore attempt, disk write errors are ignored, and dumpcore continues. In this case, too many disks failed during the last dump attempt for savecore to create a core file. The core will be deleted, and no core will be available from this panic.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%d of %d disks failed during dumpcore
+*Parameters*::
+*failed* (INT): Number of failed disks
+*total* (INT): Number of disks used
+
+== coredump.dump.disks.count
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system fails to write a coredump due to lack of disk space.
+*Corrective Action*::
+Disk space needed for a coredump can be reduced by enabling sparse cores, which is the default setting. Verify that sparse cores are enabled by using the "system node coredump config show" command. If not, enable them by using the "system node coredump modify -node local -sparse-enabled true" command. If there is still not enough disk space to write a coredump, add a spare disk that is at least 0.6 times the sum of primary memory size and NVRAM memory size. You can obtain sizes of primary memory and NVRAM memory by using the "run local sysconfig" command and reading entries for system board and NVRAM.
+*Syslog Message*::
+Not enough disks to write core dump.
+*Parameters*::
+(None).
+
+== coredump.dump.dont
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a core dump is not performed because the system was configured to not dump cores or dump is disabled in the code path that caused the system to panic. Any of the following configuration methods can disable coredump: - Environment variable "dont-dump-core?" is "true" - Parameter "-coredump-attempts" in the command "system node coredump config" is "0".
+*Corrective Action*::
+If the reason is "dump disabled in the current code path", there is no corrective action that can be taken. If the reason is "coredump configured to not dump cores", 1. "-coredump-attempts" parameter might be set to "0". Check the "Max Dump Attempts" value in the output of the "system node coredump config show -node node_name" command. If "0", use the "system node coredump config modify <-node node_name> -coredump-attempts <number_of_attempts>" command to set a non-zero value. The default is 2 attempts. 2. "dont-dump-core?" environment variable might be set to "true". From the nodeshell, use the (priv: diag) "bootargs dump" command to check whether "dont-dump-core?" exists and is set to "true". To unset the variable, use the "bootargs unset dont-dump-core?" command.
+*Syslog Message*::
+Coredump not performed because %s.
+*Parameters*::
+*reason* (STRING): Reason that coredump was not performed.
+
+== coredump.dump.failed
+*Severity*::
+EMERGENCY
+*Description*::
+Coredump failed to complete.
+*Corrective Action*::
+Previously logged coredump.dump.* events should help explain the exact cause of the failure.
+*Syslog Message*::
+Dumpcore failed
+*Parameters*::
+(None).
+
+== coredump.dump.find.all.used
+*Severity*::
+ERROR
+*Description*::
+Unsaved cores occupy all the disks available to dumpcore.
+*Corrective Action*::
+Save the unsaved cores using "savecore" or "savecore -f". If the cores aren't needed, run "savecore -k" to delete them.
+*Syslog Message*::
+All available disks contain unsaved cores
+*Parameters*::
+(None).
+
+== coredump.dump.find.disks.failed
+*Severity*::
+ERROR
+*Description*::
+Could not find any suitable disks for dumping a core.
+*Corrective Action*::
+Make sure there are non-broken disks connected to (and owned by) the panicking host.
+*Syslog Message*::
+No valid disks found
+*Parameters*::
+(None).
+
+== coredump.dump.find.spare.failed
+*Severity*::
+ERROR
+*Description*::
+A sparecore dump is supposed to be done, but no suitable spare disk can be found. In these situations, it is more important to allow a fast takeover than it is to get the core, so the dump is terminated, and takeover begins.
+*Corrective Action*::
+Add a spare disk to the system, or disable the "cf.takeover.on_panic" option.
+*Syslog Message*::
+No valid spare disk found
+*Parameters*::
+(None).
+
+== coredump.dump.nvram.copy.failed
+*Severity*::
+ERROR
+*Description*::
+Error while copying NVRAM into main memory during dumpcore. The resulting coredump will have dummy data in the NVRAM segment.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Error while copying NVRAM contents into main memory
+*Parameters*::
+(None).
+
+== coredump.dump.raid.notready
+*Severity*::
+ERROR
+*Description*::
+RAID has not yet processed the labels on the, disks, so dumpcore cannot proceed. This is typically the case for panics very early during boot.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RAID not ready to dump cores
+*Parameters*::
+(None).
+
+== coredump.dump.recursive.late
+*Severity*::
+ERROR
+*Description*::
+A recursive panic situation has been encountered. The location of the second panic makes it unsafe to attempt another dump.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Late recursive panic caused dumpcore to abort
+*Parameters*::
+(None).
+
+== coredump.dump.save.latest.core
+*Severity*::
+ERROR
+*Description*::
+The boot option save-latest-core? is set to true. This will discard all unsaved cores during coredump.
+*Corrective Action*::
+If the behavior is not desired then set the boot option save-latest-core? to false.
+*Syslog Message*::
+Saving the latest core and discarding all unsaved cores.
+*Parameters*::
+(None).
+
+== coredump.dump.scrub.skipped
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the coredump process was asked to scrub sensitive memory areas but could not do so. The dump must be aborted to avoid saving such memory areas to disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Could not scrub protected memory regions.
+*Parameters*::
+(None).
+
+== coredump.dump.segments.count
+*Severity*::
+ERROR
+*Description*::
+Dumpcore ran out of space for the core segments in the header. This core cannot be dumped.
+*Corrective Action*::
+Disable the "coredump.metadata_only" option.
+*Syslog Message*::
+Out of segment space in the core header
+*Parameters*::
+(None).
+
+== coredump.dump.spare.no.space
+*Severity*::
+ERROR
+*Description*::
+The selected spare disk might not be big enough to hold the core. The dump attempt has been aborted.
+*Corrective Action*::
+Make sure a spare disk is available that is at least as big as the sum of main memory and NVRAM. Set the option "coredump.metadata_only" to "on". If the problem persists, turn off the option "cf.takeover.on_panic". This will disable the sparecore feature, and delay takeovers until the panicking partner has finished dumping the core.
+*Syslog Message*::
+Spare disk too small for coredump
+*Parameters*::
+(None).
+
+== coredump.dump.started
+*Severity*::
+INFORMATIONAL
+*Description*::
+Basic info about start of dumpcore
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s starting with %d disks
+*Parameters*::
+*type* (STRING): Type of dump. Possible types are compressed, sprayed, and sparecore.
+*disks* (INT): Number of disks being used
+
+== coredump.dump.time
+*Severity*::
+INFORMATIONAL
+*Description*::
+Information about how long dumpcore took to complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s completed in %d seconds
+*Parameters*::
+*type* (STRING): Type of dump. Possible types are compressed, sprayed, and sparecore.
+*seconds* (INT): Number of seconds spent on the dump
+
+== coredump.dump.write.blocks.failed
+*Severity*::
+ERROR
+*Description*::
+Failed to write dump data blocks to disk. If the write failed because of disk problems, dumpcore will restart, without the disk that failed. If the write failed for other reasons (eg. attempt to write to a bad position on the disk), dumpcore will be aborted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Error dumping %llu blocks starting at block %llu to disk %s
+*Parameters*::
+*blocks* (LONGINT): Number of blocks trying to be dumped
+*start* (LONGINT): Starting block number
+*disk* (STRING): Name of disk on which the write failed
+
+== coredump.dump.write.error
+*Severity*::
+ERROR
+*Description*::
+An i/o error occurred while attempting to write a coredump to disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+An i/o error occurred while attempting to dump core.
+*Parameters*::
+(None).
+
+== coredump.dump.write.header.failed
+*Severity*::
+ERROR
+*Description*::
+Failed to write the core header to disk during dumpcore.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Error writing core header to block %llu on disk %s
+*Parameters*::
+*header* (LONGINT): Block number of the core header block
+*disk* (STRING): Name of disk on which the write failed

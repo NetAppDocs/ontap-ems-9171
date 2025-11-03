@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: fmmb-add-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fmmb.add events
+---
+
+= fmmb.add events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fmmb.add.problem
+*Severity*::
+ERROR
+*Description*::
+This event is issued when the HA mailbox is attempting to add a mailbox disk and a problem occurred.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Error attempting to add disk %s as a %s HA mailbox disk.
+*Parameters*::
+*disk* (STRING): The name of the disk. If the disk name is not available, a ?.? will be used.
+*host* (STRING): The node which owns the HA mailbox disk. The node can be either local or partner.

@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: upgrademgr-bm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: upgrademgr.bm events
+---
+
+= upgrademgr.bm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== upgrademgr.bm.update.started
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the upgrade manager starts to update boot media of the node with the target ONTAP image. If a later version of BIOS or LOADER is installed on the boot media compared to what is available in the target ONTAP image, the upgrade manager will not copy BIOS and LOADER firmware from the target ONTAP image to the boot media.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Starting update of target ONTAP image to the boot media. Target ONTAP BIOS/LOADER version: %s/%s, boot media BIOS/LOADER version: %s/%s, forced update from bundle: %s, overwrite boot media: %s"
+*Parameters*::
+*target_ontap_bios_version* (STRING): BIOS version in the target ONTAP image.
+*target_ontap_loader_version* (STRING): LOADER version in the target ONTAP image.
+*bootmedia_bios_version* (STRING): BIOS version on the boot media.
+*bootmedia_loader_version* (STRING): LOADER version on the boot media.
+*force_update_from_bundle* (STRING): Force update of BIOS and LOADER firmware using the versions bundled in the target ONTAP image. Values are "yes" or "no".
+*overwrite_bootmedia* (STRING): Based on the version check of BIOS and LOADER on the boot media and target ONTAP image and force_update_from_bundle parameter, boot media is overwritten using the versions bundled in the image. Values are "yes" or "no".

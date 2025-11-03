@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: cf-mccip-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.mccip events
+---
+
+= cf.mccip events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.mccip.med.auso.stDisabled
+*Severity*::
+ERROR
+*Description*::
+This message occurs when automatic switchover in a MetroCluster(tm) IP configuration is disabled because the mediator mailbox disk is not healthy.
+*Corrective Action*::
+Use the "storage failover show -fields local-mailbox-disks" command to verify that all nodes in the cluster can access their respective mailbox disks. Use the (privilege: advanced) "storage iscsi-initiator show" command to verify that iSCSI connections to the mediator are up and healthy.
+*Syslog Message*::
+Automatic switchover disabled: Mediator mailbox disk not healthy.
+*Parameters*::
+(None).
+
+== cf.mccip.med.auso.stEnabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when automatic switchover in a MetroCluster(tm) IP configuration is enabled because the mediator mailbox disk is online.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Automatic switchover enabled.
+*Parameters*::
+(None).

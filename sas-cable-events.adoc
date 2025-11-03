@@ -1,0 +1,52 @@
+---
+sidebar: sidebar
+permalink: sas-cable-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sas.cable events
+---
+
+= sas.cable events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sas.cable.degraded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the cable attached to SAS (Serial Attached SCSI) adapter port is functioning in a degraded mode.
+*Corrective Action*::
+This condition implies one or more of the lanes in a 4-wide cable is fuctioning at a less-than-optimal speed, or is not functioning and has been disabled. The port will continue functioning but in a degraded, lower-performing mode. The cable should be replaced at some point in the future.
+*Syslog Message*::
+Cable attached to SAS port "%s" is functioning in a degraded mode.
+*Parameters*::
+*adapterName* (STRING): The name of the associated SAS host bus adapter.
+
+== sas.cable.linkratelow
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the expander or cable attached to the SAS (serial-attached SCSI) host bus adapter port is functioning at a speed lower than its specification. This could happen because the HBA is connected to an IOM that supports a lower speed, or because of a speed degradation due to a faulty component, or because of a lower common shelf stack speed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Expander or cable attached to SAS port %s is operating at %s, which is lower than expected.
+*Parameters*::
+*adapterName* (STRING): Name of the associated SAS host bus adapter.
+*currentSpeed* (STRING): Current link rate for SAS host bus adapter, cable, and IOM expander.
+
+== sas.cable.unqualified
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a Serial Attached SCSI (SAS) cable attached to a controller port has not been qualified by NetApp. Unqualified cables might exhibit unpredictable behavior or experience higher error rates than qualified cables.
+*Corrective Action*::
+Replace the cable with one qualified by NetApp
+*Syslog Message*::
+Cable attached to SAS port %s has not been qualified by NetApp
+*Parameters*::
+*adapterName* (STRING): Name of the associated SAS host bus adapter port.

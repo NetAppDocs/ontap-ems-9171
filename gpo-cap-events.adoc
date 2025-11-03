@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: gpo-cap-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: gpo.cap events
+---
+
+= gpo.cap events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== gpo.CAP.applied
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when applying group policy object (GPO) central access policy (CAP) settings succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Successfully applied CAP settings to Vserver %s.
+*Parameters*::
+*vserver* (STRING): Vserver name.
+
+== gpo.CAP.notApplied
+*Severity*::
+ERROR
+*Description*::
+This message occurs when applying group policy object (GPO) central access policy (CAP) settings fails.
+*Corrective Action*::
+Address the specific reason for the issue, and then apply the settings again by entering the "vserver cifs group-policy update -force-reapply-all-settings true -vserver <vserver-name>" command.
+*Syslog Message*::
+Failed to apply CAP settings to Vserver %s failed, reason: %s.
+*Parameters*::
+*vserver* (STRING): Vserver name.
+*reason* (STRING): Reason for the failure.

@@ -1,0 +1,84 @@
+---
+sidebar: sidebar
+permalink: mgmtgwd-fg-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmtgwd.fg events
+---
+
+= mgmtgwd.fg events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmtgwd.fg.32bit.nfs3ids
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the user creates a FlexGroup on a Vserver that has NFSv3 enabled, but uses 32-bit identifiers, which could cause file ID collisions.
+*Corrective Action*::
+To prevent file ID collisions within the FlexGroup, enable NFSv3 64-bit FSIDs and file IDs on the Vserver. For more information or assistance, contact NetApp technical support.
+*Syslog Message*::
+FlexGroup %s was created on Vserver %s which uses 32-bit NFSv3 FSIDs and File IDs. File ID collisions may occur.
+*Parameters*::
+*volumeName* (STRING): Name of the volume.
+*vserverName* (STRING): Name of the Vserver.
+
+== mgmtgwd.fg.32bit.nfs4ids
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the user creates a FlexGroup on a Vserver that has NFSv4.x enabled, but uses 32-bit identifiers, which could cause file ID collisions.
+*Corrective Action*::
+To prevent file ID collisions within the FlexGroup, enable NFSv4.x 64-bit FSIDs and file IDs on the Vserver. For more information or assistance, contact NetApp technical support.
+*Syslog Message*::
+FlexGroup %s was created on Vserver %s which uses 32-bit NFSv4.x FSIDs and File IDs. File ID collisions may occur.
+*Parameters*::
+*volumeName* (STRING): Name of the volume.
+*vserverName* (STRING): Name of the Vserver.
+
+== mgmtgwd.fg.modify.constituent.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when modification of a FlexGroup constituent's state fails during the operation to modify the state of the FlexGroup. The FlexGroup will be in the 'mixed' state and constituents that are still online will be able to serve data. Constituents that are offline will not be able to serve data. All management operations will be unavailable on the FlexGroup until it is brought completely online.
+*Corrective Action*::
+Correct the problem based on the reason specified. If the error persists, contact NetApp technical support.
+*Syslog Message*::
+Failed to modify the state of FlexGroup constituent %s in Vserver %s. Reason: %s.
+*Parameters*::
+*volumeName* (STRING): Name of the constituent.
+*vserverName* (STRING): Name of the Vserver.
+*reason* (STRING): Reason for the failure.
+
+== mgmtgwd.fg.modify.rlbk.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs after a series of failures. First, the FlexGroup resize fails. To recover, we try to rollback the FlexGroup constituents to their original sizes. If we fail to rollback any of these constituents, this message will occur.
+*Corrective Action*::
+Correct the problem based on the reason specified. If the error persists, contact NetApp technical support.
+*Syslog Message*::
+Failed to rollback the size of FlexGroup constituent %s in Vserver %s Reason: %s.
+*Parameters*::
+*volumeName* (STRING): Name of the constituent.
+*vserverName* (STRING): Name of the Vserver.
+*reason* (STRING): Reason for the failure.
+
+== mgmtgwd.fg.sis.op.constituent.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the execution of the efficiency operation on a FlexGroup constituent fails.
+*Corrective Action*::
+Correct the problem based on the reason specified. If the error persists, contact Netapp technical support for further assistance.
+*Syslog Message*::
+Failed to execute the efficiency operation on FlexGroup constituent %s in Vserver %s. Operation: %s. Reason: %s.
+*Parameters*::
+*volumeName* (STRING): Name of the constituent.
+*vserverName* (STRING): Name of the Vserver.
+*operationType* (STRING): Type of the efficiency operation.
+*reason* (STRING): Reason for the failure.

@@ -1,0 +1,95 @@
+---
+sidebar: sidebar
+permalink: fg-space-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fg.space events
+---
+
+= fg.space events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fg.space.member.allOK
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when conditions that led to previous "fg.space.member.nearlyFull" and "fg.space.member.full" events no longer apply. All constituents within this FlexGroup have sufficient space for normal operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The FlexGroup %s (fg-uuid %s) no longer has any full constituents.
+*Parameters*::
+*object_name* (STRING): Human-readable name of the FlexGroup.
+*object_uuid* (STRING): UUID of the FlexGroup.
+
+== fg.space.member.full
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a constituent volume within a FlexGroup volume is now full. Although new files can still be created within the FlexGroup volume and some files can still be expanded, none of the files that are stored on this constituent volume can be modified. The user might see random out-of-space errors as a consequence when trying to perform write operations on this FlexGroup volume.
+*Corrective Action*::
+Adding capacity to the FlexGroup volume by using the "volume modify -size +X" command is the best way to solve this problem. Alternatively, deleting files from the FlexGroup volume might work, but it is difficult to determine which files have landed on which constituent volume.
+*Syslog Message*::
+Constituent volume "%llu" in FlexGroup volume "%s" (fg-uuid "%s") is out of space. This constituent volume ("%s") is %llu bytes in size with %llu bytes used (%u percent full). The FlexGroup volume is %llu bytes in size with %llu bytes used (%u percent full).
+*Parameters*::
+*constituent_dsid* (LONGINT): DSID of the constituent volume that is out of space.
+*object_name* (STRING): Human-readable name of the FlexGroup volume.
+*object_uuid* (STRING): UUID of the FlexGroup volume.
+*constituent_name* (STRING): Name of the constituent volume.
+*size* (LONGINT): Size in bytes of the constituent volume.
+*used* (LONGINT): Size in bytes of the used space of the constituent volume.
+*percent_full* (INT): Percentage of filled space in the constituent volume.
+*flexgroup_size* (LONGINT): Size in bytes of the FlexGroup volume.
+*flexgroup_used* (LONGINT): Size used in bytes of the FlexGroup volume.
+*flexgroup_percent_full* (INT): Percentage of filled space in the FlexGroup volume.
+*event_time* (LONGINT): When the event occurred, shown in system time.
+
+== fg.space.member.nearlyFull
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a constituent volume within a FlexGroup volume is nearly out of space. Although files can be created and expanded, if the constituent volume runs out of space, the user's ability to append to and modify those files that reside on this constituent volume will be impeded.
+*Corrective Action*::
+Adding capacity to the FlexGroup volume by using the "volume modify -size +X" command is the best way to solve this problem. Alternatively, deleting files from the FlexGroup volume might work, but it is difficult to determine which files have landed on which constituent volume.
+*Syslog Message*::
+Constituent volume "%llu" in FlexGroup volume "%s" (fg-uuid "%s") is nearly out of space. This constituent volume ("%s") is %llu bytes in size with %llu bytes used (%u percent full). The FlexGroup volume is %llu bytes in size with %llu bytes used (%u percent full).
+*Parameters*::
+*constituent_dsid* (LONGINT): DSID of the constituent volume that is nearly out of space.
+*object_name* (STRING): Human-readable name of the FlexGroup volume.
+*object_uuid* (STRING): UUID of the FlexGroup volume.
+*constituent_name* (STRING): Name of the constituent volume.
+*size* (LONGINT): Size in bytes of the constituent volume.
+*used* (LONGINT): Size in bytes of the used space of the constituent volume.
+*percent_full* (INT): Percentage of filled space in the constituent volume.
+*flexgroup_size* (LONGINT): Size in bytes of the FlexGroup volume.
+*flexgroup_used* (LONGINT): Size used in bytes of the FlexGroup volume.
+*flexgroup_percent_full* (INT): Percentage of filled space in the FlexGroup volume.
+*event_time* (LONGINT): When the event occurred, shown in system time.
+
+== fg.space.resize.failed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a resize of a FlexGroup member was blocked. This can occur due to issues with the FlexGroup configuration, current state, or internal issues such as memory allocation failures. This message gives information that can help correct the issue.
+*Corrective Action*::
+Monitor the constituent. If its space usage continues to grow and the filer is unable to add space, then writes to the constituent may start to fail. Evaluate the error reason identified in the event and determine if it can be corrected. If it's not clear how to correct the error, contact Support.
+*Syslog Message*::
+Constituent volume "%s" in FlexGroup volume "%s" (fg-uuid "%s") has had a resize failure of type "%s" with error: "%s". This constituent volume is %llu bytes in size with %llu bytes used (%u percent full). The FlexGroup volume is %llu bytes in size with %llu bytes used (%u percent full).
+*Parameters*::
+*constituent_name* (STRING): Name of the constituent volume.
+*object_name* (STRING): Human-readable name of the FlexGroup volume.
+*object_uuid* (STRING): UUID of the FlexGroup volume.
+*resize_type* (STRING): The type of resize that was attempted.
+*resize_error* (STRING): The resize error that occurred.
+*size* (LONGINT): Size in bytes of the constituent volume.
+*used* (LONGINT): Size in bytes of the used space of the constituent volume.
+*percent_full* (INT): Percentage of filled space in the constituent volume.
+*flexgroup_size* (LONGINT): Size in bytes of the FlexGroup volume.
+*flexgroup_used* (LONGINT): Size used in bytes of the FlexGroup volume.
+*flexgroup_percent_full* (INT): Percentage of filled space in the FlexGroup volume.
+*event_time* (LONGINT): When the event occurred, shown in system time.

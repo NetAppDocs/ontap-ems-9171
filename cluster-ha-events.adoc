@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cluster-ha-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cluster.ha events
+---
+
+= cluster.ha events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cluster.ha.not.configured
+*Severity*::
+ERROR
+*Description*::
+This message occurs when cluster HA has not been configured on a 2-node cluster with HA mode enabled.
+*Corrective Action*::
+Use the 'cluster ha modify -configured true' command to configure cluster HA.
+*Syslog Message*::
+Cluster HA has not been configured. Cluster HA must be configured on a 2-node cluster to ensure data access availability in the event of storage failover.
+*Parameters*::
+(None).

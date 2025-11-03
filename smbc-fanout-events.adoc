@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: smbc-fanout-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: smbc.fanout events
+---
+
+= smbc.fanout events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== smbc.fanout.svms.not.peered
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) detects that source volumes of SnapMirror(R) active sync relationships are involved in an async fanout protection, but the two destination storage virtual machine (SVM)s are not peered with each other. This prevents an automatic reconfiguration of the async protection when the source volumes failover.
+*Corrective Action*::
+1. Use the "cluster peer show" command to verfiy that the SnapMirror fanout destination and SnapMirror active sync destination clusters are peered. 2. Use the "cluster peer create" command on both clusters to peer the clusters together. 3. Use the "vserver peer show" command to verify that the SnapMirror fanout destination and SnapMirror active sync destination SVMs are peered. 4. Use the "vserver peer create" and "vserver peer accept" commands to peer the SVMs together.
+*Syslog Message*::
+SnapMirror fanout destination SVM "%s" and SnapMirror active sync destination SVM "%s" are not peered. Use command "cluster peer show" to verify if SnapMirror fanout destination cluster "%s" and SnapMirror active sync destination cluster "%s" are peered.
+*Parameters*::
+*asyncDstSvmName* (STRING): SnapMirror fanout destination SVM name.
+*syncDstSvmName* (STRING): SnapMirror active sync destination SVM name.
+*asyncDstClusterName* (STRING): SnapMirror fanout destination cluster name.
+*syncDstClusterName* (STRING): SnapMirror active sync destination cluster name.

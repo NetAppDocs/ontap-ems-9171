@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: monitor-chassispowersupplies-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.chassispowersupplies events
+---
+
+= monitor.chassispowersupplies events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.chassisPowerSupplies.ok
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when all power supplies are OK.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Chassis power supplies OK.
+*Parameters*::
+(None).

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: monitor-rtchighpower-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.rtchighpower events
+---
+
+= monitor.rtchighpower events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.rtcHighPower
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the real-time clock (RTC) battery voltage is above normal level.
+*Corrective Action*::
+Correct any environmental problems, such as chassis over- temperature. If the real-time clock battery voltage is still above normal 60 minutes after environmental problems have been corrected, replace it at the next available maintenance window.
+*Syslog Message*::
+Real-time clock battery voltage is above normal (%s).
+*Parameters*::
+*reading* (STRING): Battery voltage reading (mV).

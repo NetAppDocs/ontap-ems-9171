@@ -1,0 +1,267 @@
+---
+sidebar: sidebar
+permalink: raid-multierr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.multierr events
+---
+
+= raid.multierr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.multierr.bad.block
+*Severity*::
+ERROR
+*Description*::
+This message occurs when RAID encounters more errors than the RAID level protection affords, and RAID cannot recover the block. The blocks with errors are marked as bad. When the file system reads this bad block, an error is returned. The file system identifies the bad file and block and recommends the necessary corrective action.
+*Corrective Action*::
+Check for the WAFL(R) message "wafl.raid.incons.xxx" and follow the corrective actions outlined there.
+*Syslog Message*::
+Marking '%s%s', block number %llu, volume block number %llu, as a bad block.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Formatted information of the disk object that contains the error.
+*blockNum* (LONGINT): Physical block number containing the error.
+*volumeBno* (LONGINT): Volume block number.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the disk vendor.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.multierr.cksum.bno
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a block number mismatch during an error recovery operation. The expected Virtual Block Number (VBN)/Disk Block Number (DBN) is not the same as the stored VBN/DBN from the checksum entry, indicating that the block is read from the wrong location. Data ONTAP(R) makes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Block number mismatch on %s%s: stored_dbn = %u, expected_dbn = %llu; stored_vbn = %llu, expected_vbn = %llu during an error recovery operation.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*stored_dbn* (INT): Physical disk block number stored in the checksum entry.
+*expected_dbn* (LONGINT): Expected physical disk block number.
+*stored_vbn* (LONGINT): Volume block number stored in the checksum entry.
+*expected_vbn* (LONGINT): Expected volume block number.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.multierr.cksum.embed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an invalid checksum entry during error recovery operations. The embedded checksum computed over the checksum entry does not match, indicating the corruption of the checksum entry. Data ONTAP(R) makes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Invalid checksum entry on %s%s, block #%llu, during an error recovery operation.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*blockNum* (LONGINT): Physical disk block number containing the error.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.multierr.cksum.err
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a checksum error during error recovery operations. The checksum computed does not match the stored checksum, indicating that the block is corrupted. Data ONTAP(R) makes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Checksum error on %s%s, block #%llu during an error recovery operation.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*blockNum* (LONGINT): Physical block number containing the error.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.multierr.cksum.rderr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a checksum block media error in an advanced_zoned checksum's (AZCS) RAID group during an error recovery operation. In this case, the data cannot be verified. Data ONTAP(R) takes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Checksum block read error on %s%s for blocks [#%llu - #%llu] during error recovery.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*blockNum* (LONGINT): First physical disk block number containing the error.
+*LblockNum* (LONGINT): Last physical disk block number containing the error.
+*shelf* (STRING): Shelf identifier for the disk shelf on which the disk is located.
+*bay* (STRING): Disk bay within the disk shelf on which the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.multierr.cksum.zero
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an empty checksum entry during an error recovery operation. The checksum entry is zeroed, but the corresponding block is not zeroed. Data ONTAP(R) makes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Empty checksum entry for non-zeroed block on %s%s, block #%llu, during an error recovery operation.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*blockNum* (LONGINT): Physical disk block number containing the error.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.multierr.lw.block.rewrite
+*Severity*::
+NOTICE
+*Description*::
+This message occurs on a RAID stripe with an inconsistent RAID write signature, when the system cannot detect the bad blocks or if the number of blocks with an error are more than the RAID protection level. The system restores the RAID write signature consistency by rewriting one or more disk blocks with the same data, but with the RAID write signature being corrected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Rewriting %s%s, block #%llu with RAID write signature corrected.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Formatted information of the disk object that contains the error.
+*blockNum* (LONGINT): Physical Disk block number being rewritten.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the disk vendor.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.multierr.lw.block.rewrite.dirty
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs on a RAID stripe with an inconsistent RAID write signature that belongs to a dirty parity region, when the system cannot detect the bad blocks or if the number of blocks with an error are more than the RAID protection level. The system restores the RAID write signature consistency by rewriting one or more disk blocks with the same data, but with the RAID write signature being corrected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Formatted information of the disk object that contains the error.
+*blockNum* (LONGINT): Physical Disk block number being rewritten.
+*shelf* (STRING): Disk shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk is located.
+*vendor* (STRING): Name of the disk vendor.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.multierr.lw.id.inconsist
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an inconsistent RAID write signature on a RAID stripe while fixing multiple errors on a stripe. Data ONTAP(R) makes appropriate recovery actions. It automatically fails this device safely if the device exceeds the allowed number of inconsistent RAID write signature errors on the disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Inconsistent RAID write signature detected on RAID group %s%s, stripe #%llu, during RAID multiple error handling operation.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*rg* (STRING): Name of the raid group.
+*stripe* (LONGINT): Stripe number.
+
+== raid.multierr.lw.id.inconsist.dirty
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system detects an inconsistent RAID write signature on a RAID stripe while fixing multiple errors on a stripe that belongs to a dirty parity region.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*rg* (STRING): Name of the RAID group.
+*stripe* (LONGINT): Stripe number.
+
+== raid.multierr.unverified.blk
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when RAID encounters more errors than the RAID level protection allows and RAID cannot recover the block. Any block with a checksum error is marked as unverified.
+*Corrective Action*::
+Check for the WAFL(R) error message "wafl.raid.incons.xxx" and follow the corrective actions in that message, or contact NetApp technical support.
+*Syslog Message*::
+Marking '%s%s', block number [%llu - %llu], volume block number [%llu - %llu], as an unverified block.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Formatted information of the disk object that contains the error.
+*blockNum* (LONGINT): First physical block number containing the error.
+*LblockNum* (LONGINT): Last physical block number containing the error.
+*volumeBno* (LONGINT): First volume block number containing the error.
+*LvolumeBno* (LONGINT): Last volume block number containing the error.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the disk vendor.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(R) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.

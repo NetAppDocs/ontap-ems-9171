@@ -1,0 +1,743 @@
+---
+sidebar: sidebar
+permalink: mlm-array-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mlm.array events
+---
+
+= mlm.array events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mlm.array.aluaSupported
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects an array LUN from an unsupported array. Defines whether the array supports ALUA(asymmetric logical unit access) or not.
+*Corrective Action*::
+Detach the unsupported array. See the NetApp Support Site Interoperability Matrix Tool for further information about supported arrays.
+*Syslog Message*::
+Unsupported array: [Vendor '%s' Product '%s'] ALUA Support for array %s.
+*Parameters*::
+*vendor* (STRING): Vendor ID of the array LUN.
+*product* (STRING): Product ID of the array LUN.
+*alua* (STRING): Whether the array supports ALUA or not.
+
+== mlm.array.apf.cancel
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when any one of the path to an Array comes back online when the last path failure to an Array is extended.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Delay on last path to Array '%s' is cancelled as target port: WWNN: %s, WWPN: %s seen from initiator '%s' is up.
+*Parameters*::
+*arrayName* (STRING): Name of the Array.
+*wwnn* (STRING): World Wide Node Name of the array target port.
+*wwpn* (STRING): World Wide Port Name of the array target port.
+*adapterName* (STRING): Name of the Fibre Channel adapter accessing the array target port.
+
+== mlm.array.apf.enter
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the all-path-fail-delay option for an Array is set to a non-zero value and when last path to an Array goes down. This allows Data ONTAP to suspend I/O operations for a longer period of time before declaring a data access disruption, allowing for I/O operations to resume if any path comes back online within the specified duration.
+*Corrective Action*::
+In such cases, you should evaluate the specified device for possible replacement. Sometimes the problem results from the partial failure of a component involved in the Fibre Channel. Common things to check include properly secured cable connections, and crimped or otherwise damaged cables. If the adapter is in use check cabling.
+*Syslog Message*::
+Last path to Array '%s' target port: WWNN: %s, WWPN: %s seen from initiator '%s' is down. Failing this path will be extended for %d seconds.
+*Parameters*::
+*arrayName* (STRING): Name of the Array.
+*wwnn* (STRING): World Wide Node Name of the array target port.
+*wwpn* (STRING): World Wide Port Name of the array target port.
+*adapterName* (STRING): Name of the Fibre Channel adapter accessing the array target port.
+*delay* (INT): All Path Fail delay in seconds.
+
+== mlm.array.apf.exit
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when all path to an Array goes down and the Array remains inaccessible even after the extended duration is set by all-path-fail-delay option.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+No path to Array '%s' came back online when last path failure is extended to %d seconds.
+*Parameters*::
+*arrayName* (STRING): Name of the Array.
+*delay* (INT): All Path Fail delay in seconds.
+
+== mlm.array.discovery
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system discovers a new array.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A new array (%s) was connected to this node.
+*Parameters*::
+*arrayName* (STRING): Name of the array.
+
+== mlm.array.inquiryPage80
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects an array LUN from an unsupported array.
+*Corrective Action*::
+Detach the unsupported array. See the NetApp Support Site Interoperability Matrix Tool for further information about supported arrays.
+*Syslog Message*::
+Array LUN %s [S/N '%s' vendor '%s' product '%s'] Inquiry page 80: devtype '%d' page_code '%d' reserved '%d' page_len '%d' data '%s' hex_dump '%s'
+*Parameters*::
+*diskName* (STRING): Name of the array LUN.
+*serialno* (STRING): Serial number of the array LUN.
+*vendor* (STRING): Vendor ID of the array LUN.
+*product* (STRING): Product ID of the array LUN.
+*dev_type* (INT): Device type of the array LUN.
+*page_code* (INT): Page code of the array LUN.
+*reserved* (INT): Reserved fields in inquiry page 80.
+*page_len* (INT): Inquiry page 80 length.
+*data* (STRING): Serial number from inquiry page 80.
+*P_80_hex* (STRING): Inquiry page 80 hexadecimal dump.
+
+== mlm.array.inquiryPage83
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects an array LUN from an unsupported array.
+*Corrective Action*::
+Detach the unsupported array. See the NetApp Support Site Interoperability Matrix Tool for further information about supported arrays.
+*Syslog Message*::
+[Vendor '%s' Product '%s'] Inquiry page 83: devtype '%d' page_code '%d' reserved '%d' page_len '%d' code_set '%d' association_id '%d' reserved_msb '%d' id_len '%d' hex_dump '%s'.
+*Parameters*::
+*vendor* (STRING): Vendor ID of the array LUN.
+*product* (STRING): Product ID of the array LUN.
+*dev_type* (INT): Device type of the array LUN.
+*page_code* (INT): Page code of the array LUN.
+*reserved* (INT): Reserved fields in inquiry page 83.
+*page_len* (INT): Inquiry page 83 length.
+*code_set* (INT): Inquiry page 83 code set.
+*association_id* (INT): Inquiry page 83 association ID.
+*reserved_msb* (INT): Most significant byte of page_len in SPC3 spec.
+*id_len* (INT): Inquiry page 83 ID length.
+*P_83_hex* (STRING): Inquiry page 83 hexadecimal dump.
+
+== mlm.array.inquiryStd
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects an array LUN from an unsupported array.
+*Corrective Action*::
+Detach the unsupported array. See the NetApp Support Site Interoperability Matrix Tool for further information about supported arrays.
+*Syslog Message*::
+[S/N '%s' vendor '%s' product '%s'] STD inquiry : devtype '%d' dev_modifier '%d' support_level '%d' dev_mode '%d' revision '%s' hex_dump '%s'
+*Parameters*::
+*serialno* (STRING): Serial number of the array LUN.
+*vendor* (STRING): Vendor ID of the array LUN.
+*product* (STRING): Product ID of the array LUN.
+*dev_type* (INT): Device type of the array LUN.
+*dev_modifier* (INT): Device modifier of the array LUN.
+*support_level* (INT): Support level.
+*dev_mode* (INT): Development mode.
+*revision* (STRING): Product revision level(product firmware release number).
+*inquiry_hex* (STRING): Inquiry hexadecimal dump.
+
+== mlm.array.lun.discovery
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system discovers a new array LUN.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+New array LUN %s (S/N: %s) was discovered on initiator port %s at array target port WWNN: %s, WWPN: %s.
+*Parameters*::
+*diskName* (STRING): Name of the array LUN.
+*serialno* (STRING): Serial number of the array LUN.
+*adapter* (STRING): Name of the initiator port discovering the array LUN.
+*wwnn* (STRING): World Wide Node Name of the array target port exporting the new array LUN.
+*wwpn* (STRING): World Wide Port Name of the array target port exporting the new array LUN.
+
+== mlm.array.lun.forceResume
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system is forced to resume I/O to a previously quiesced array LUN path when no other viable non-quiesced paths remain. For arrays with asymmetric logical unit access a forced resume will also happen when there are no other viable non-quiesced paths on the current target port group.
+*Corrective Action*::
+Verify the configuration and check why array lun is usable through only one path.
+*Syslog Message*::
+Array LUN '%s' (%s) has had I/O resumed on the path from initiator %s to %s's target port: WWNN: %s, WWPN: %s to ensure LUN access through atleast one path. User settings are preempted.
+*Parameters*::
+*diskName* (STRING): Name of the array LUN.
+*serialno* (STRING): Serial number of the array LUN.
+*adapterName* (STRING): Name of the initiator port used to access the array LUN.
+*arrayName* (STRING): Name of the array.
+*wwnn* (STRING): World Wide Node Name of the array's target port.
+*wwpn* (STRING): World Wide Port Name of the array's target port.
+
+== mlm.array.lun.hiddenDMXVCMDB
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system determines that a Symmetrix LUN is write protected.
+*Corrective Action*::
+Either write enable the LUN or, if this is the Symmetrix VCMDB control device, consider unmapping the LUN to Data ONTAP.
+*Syslog Message*::
+Symmetrix LUN (%s, %s) is write protected and will be ignored. This logical unit may be the VCMDB control device.
+*Parameters*::
+*diskName* (STRING): Name of the LUN.
+*serialno* (STRING): Serial number of the LUN.
+
+== mlm.array.lun.multipleIDs
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a logical device (LDEV) on an array has more than one LUN ID.
+*Corrective Action*::
+Verify the LUN configuration and make sure that the LUN ID is the same on all array target ports.
+*Syslog Message*::
+Array LUN '%s' (%s): Multiple LUN IDs are associated with the same LDEV on array %s. An LDEV can only have one LUN ID associated with it across all array target ports.
+*Parameters*::
+*diskName* (STRING): Name of the array LUN.
+*serialno* (STRING): Serial number of the array LUN.
+*arrayName* (STRING): Name of the array.
+
+== mlm.array.lun.OnePath
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an array LUN has only one path.
+*Corrective Action*::
+Verify the configuration and make sure that there are at least two paths to this array LUN.
+*Syslog Message*::
+Array LUN '%s' is connected using only one path. To avoid the potential for data loss caused by the remaining path's failure, all array LUNs should have at least two paths.
+*Parameters*::
+*diskName* (STRING): Name of the array LUN.
+
+== mlm.array.lun.PathAdded
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a new path is added for an array LUN.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Array LUN '%s' (%s) is now connected on initiator port %s through %s's target port: WWNN: %s, WWPN: %s at LUN ID: %d.
+*Parameters*::
+*diskName* (STRING): Name of the array LUN
+*serialno* (STRING): Serial number of the array LUN.
+*adapterName* (STRING): Name of the Fibre Channel adapter used to access the array LUN.
+*arrayName* (STRING): Name of the array.
+*wwnn* (STRING): World Wide Node Name of the array target port.
+*wwpn* (STRING): World Wide Port Name of the array target port.
+*LUNID* (INT): LUN ID to which a path was added.
+
+== mlm.array.lun.PathFO
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an array LUN path becomes inaccessible and after a user-configurable delay, a path failover begins if the path remains inaccessible. The delay time can be modified using the "storage array modify -name array_name -path-failover-time delay_time" command.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Path via adapter %s and device "%s" to array "%s" is currently offline, but path failover is delayed for %d seconds. After this delay, if the path is back online, I/O will resume on this same path. Otherwise, I/O will fail over to an alternate path.
+*Parameters*::
+*adapterName* (STRING): Name of the adapter involved in the path offline operation.
+*deviceName* (STRING): Name of the Fibre Channel device.
+*arrayName* (STRING): Name of the array.
+*delay* (INT): Path failover delay, in seconds.
+
+== mlm.array.lun.PathRemoved
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a path to this array LUN is removed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Array LUN '%s' (%s) is no longer available on initiator port %s through %s's target port: WWNN: %s, WWPN: %s.
+*Parameters*::
+*diskName* (STRING): Name of the array LUN.
+*serialno* (STRING): Serial number of the array LUN.
+*adapterName* (STRING): Name of the Fibre Channel adapter used to access the array LUN.
+*arrayName* (STRING): Name of the array.
+*wwnn* (STRING): World Wide Node Name of the array target port.
+*wwpn* (STRING): World Wide Port Name of the array target port.
+
+== mlm.array.lun.quiesced
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when I/O is quiesced on an array LUN.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Array LUN '%s' (%s) has had I/O quiesced on the path from initiator %s to %s's target port: WWNN: %s, WWPN: %s.
+*Parameters*::
+*diskName* (STRING): Name of the array LUN.
+*serialno* (STRING): Serial number of the array LUN.
+*adapterName* (STRING): Name of the Fibre Channel adapter used to access the array LUN.
+*arrayName* (STRING): Name of the array.
+*wwnn* (STRING): World Wide Node Name of the array's target port.
+*wwpn* (STRING): World Wide Port Name of the array's target port.
+
+== mlm.array.lun.removed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the last path to an array LUN is removed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Array LUN '%s' (%s) is no longer being presented to this node.
+*Parameters*::
+*diskName* (STRING): Name of the array LUN.
+*serialno* (STRING): Serial number of the array LUN.
+
+== mlm.array.lun.resumed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when I/O is resumed on an array LUN that was quiesced.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Array LUN '%s' (%s) has had I/O resumed on the path from initiator %s to %s's target port: WWNN: %s, WWPN: %s.
+*Parameters*::
+*diskName* (STRING): Name of the array LUN.
+*serialno* (STRING): Serial number of the array LUN.
+*adapterName* (STRING): Name of the Fibre Channel adapter used to access the array LUN.
+*arrayName* (STRING): Name of the array.
+*wwnn* (STRING): World Wide Node Name of the array's target port.
+*wwpn* (STRING): World Wide Port Name of the array's target port.
+
+== mlm.array.lun.type.control
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the array LUN is a control LUN on the array. A control LUN cannot be used as a data LUN.
+*Corrective Action*::
+Disable or mask off control LUNs.
+*Syslog Message*::
+Array LUN '%s' is a control LUN and is not usable for data storage. Disable it or mask it off.
+*Parameters*::
+*diskName* (STRING): Name of the array LUN.
+
+== mlm.array.mixedFailoverMode
+*Severity*::
+ALERT
+*Description*::
+This message occurs when Data ONTAP(R) determines that the set of paths to a storage device is configured with more than one failover mode policy.
+*Corrective Action*::
+Reconfigure the storage array so that each target port reports the same failover mode policy. When the reconfiguration is complete, reboot the system node that detected the error.
+*Syslog Message*::
+Fibre Channel host bus adapter %s detects that storage array %s reports a failover mode policy (%s) on target port WWNN: %s, WWPN: %s that doesn't match the policy (%s) currently in effect. The failover mode policy must be consistent on each path presented.
+*Parameters*::
+*adapterName* (STRING): Name of the Fibre Channel adapter detecting the failover mode conflict.
+*arrayName* (STRING): Name of the array.
+*policy1* (STRING): Inconsistent failover mode policy detected.
+*wwnn* (STRING): World Wide Node Name of the array target port reporting the inconsistent failover mode policy.
+*wwpn* (STRING): World Wide Port Name of the array target port reporting the inconsistent failover mode policy.
+*policy2* (STRING): Failover mode policy currently in effect.
+
+== mlm.array.ndu.complete
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when you set the is-upgrade-pending flag status for the array to "false".
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Array '%s' has the is-upgrade-pending flag status set to "false".
+*Parameters*::
+*arrayName* (STRING): Name of the array.
+
+== mlm.array.ndu.doneTgtPort
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when you set the is-upgrade-pending flag status for the array to "false". This message is logged for every array target port seen by the initiators from this node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Array '%s' has the is-upgrade-pending flag status set to "false" for the path from initiator '%s' to the target port: WWNN: %s, WWPN: %s.
+*Parameters*::
+*arrayName* (STRING): Name of the array.
+*adapterName* (STRING): Name of the Fibre Channel adapter accessing the array target port.
+*wwnn* (STRING): World Wide Node Name of the array target port.
+*wwpn* (STRING): World Wide Port Name of the array target port.
+
+== mlm.array.ndu.pending
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when you set the is-upgrade-pending flag status to "true" for a specific array, to indicate that the array will undergo a firmware upgrade in the near future. After the upgrade is complete, you must manually set the is-upgrade-pending flag status back to "false" to maintain optimal path failover detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Array '%s' has its is-upgrade-pending flag status set to "true". Path failover performance will be degraded during the array firmware upgrade. After the upgrade is complete, set the is-upgrade-pending flag status for this array to "false".
+*Parameters*::
+*arrayName* (STRING): Name of the array.
+
+== mlm.array.ndu.pendingTgtPort
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when you set the is-upgrade-pending flag status for the array to "true". This message is logged for every array target port seen by the initiators from this node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Array '%s' has the is-upgrade-pending flag status set to "true" for the path from initiator %s to the target port: WWNN: %s, WWPN: %s.
+*Parameters*::
+*arrayName* (STRING): Name of the array.
+*adapterName* (STRING): Name of the Fibre Channel adapter accessing the array target port.
+*wwnn* (STRING): World Wide Node Name of the array target port.
+*wwpn* (STRING): World Wide Port Name of the array target port.
+
+== mlm.array.ndu.portsDown
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the array target port does not come back online after 80 seconds. This message is logged for every array target port seen by the initiators of this node that does not come back online after the array firmware upgrade.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Array '%s' target port: WWNN: %s, WWPN: %s seen from initiator '%s' is down.
+*Parameters*::
+*arrayName* (STRING): Name of the array.
+*wwnn* (STRING): World Wide Node Name of the array target port.
+*wwpn* (STRING): World Wide Port Name of the array target port.
+*adapterName* (STRING): Name of the Fibre Channel adapter accessing the array target port.
+
+== mlm.array.ndu.portsOffline
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when all array ports for a specific array go offline while the array has its is-upgrade-pending flag status set to "true".
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Array '%s' has target ports changed to offline state while its is-upgrade-pending status flag is set to "true".
+*Parameters*::
+*arrayName* (STRING): Name of the array.
+
+== mlm.array.ndu.portsOnline
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the first array target port is detected back online after a firmware upgrade where the array is marked with the is-upgrade-pending flag status set to "true".
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Array '%s' has target ports changed to online state during a firmware upgrade.
+*Parameters*::
+*arrayName* (STRING): Name of the array.
+
+== mlm.array.ndu.stillPending
+*Severity*::
+ERROR
+*Description*::
+This message occurs once every 60 minutes while the is-upgrade-pending flag status is set to "true" on an array. You should set the is-upgrade-pending flag status to "false" after the array firmware upgrade is complete to avoid path failover performance issues.
+*Corrective Action*::
+After the array firmware upgrade is complete, set the is-upgrade-pending flag status for the array to "false".
+*Syslog Message*::
+Array '%s' has the is-upgrade-pending flag status set to "true". After the array's firmware update is complete, set the is-upgrade-pending flag status for this array to "false".
+*Parameters*::
+*arrayName* (STRING): Name of the array.
+
+== mlm.array.path.autoQuiesced
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the path to the array is quiesced,auto path quiesce happens when the number of path failures reached path_failure count in the given duration(in mins).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Path from initiator %s to array %s target_port:WWNN:%s,WWPN:%s has quiesced as path-failure has reached %d in %d mins duration.
+*Parameters*::
+*adapterName* (STRING): Name of the Fibre Channel adapter used to access the path.
+*arrayName* (STRING): Name of the array.
+*wwnn* (STRING): World Wide Node Name of the array's target port.
+*wwpn* (STRING): World Wide Port Name of the array's target port.
+*path_failure* (INT): Number of failures occured in the specified path.
+*duration* (INT): Duration in minutes to monitor the path failures.
+
+== mlm.array.path.discovery
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system discovers a new path to an array.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A new path was discovered: initiator port %s is now connected to array %s's target port: WWNN: %s, WWPN: %s. There are %d array LUNs visible on this target port.
+*Parameters*::
+*adapter* (STRING): Initiator port on which a new path to the array was discovered.
+*arrayName* (STRING): Name of the array.
+*wwnn* (STRING): World Wide Node Name of the array's newly discovered target port.
+*wwpn* (STRING): World Wide Port Name of the array's newly discovered target port.
+*count* (INT): Number of array LUNs visible on this target port.
+
+== mlm.array.path.forceResume
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the path to the array is resumed forcefully when no other path except the quiesced path available for I/O in the node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Path from initiator %s to array %s target_port:WWNN:%s,WWPN:%s has resumed forcefully as it is the last available path for the I/O. User settings are preempted.
+*Parameters*::
+*adapterName* (STRING): Name of the Fibre Channel adapter used to access the path.
+*arrayName* (STRING): Name of the array.
+*wwnn* (STRING): World Wide Node Name of the array's target port.
+*wwpn* (STRING): World Wide Port Name of the array's target port.
+
+== mlm.array.path.quiesced
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the path to the array is quiesced when user request the particular path to be quiesced.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Path from initiator %s to array %s target_port:WWNN:%s,WWPN:%s has quiesced.
+*Parameters*::
+*adapterName* (STRING): Name of the Fibre Channel adapter used to access the path.
+*arrayName* (STRING): Name of the array.
+*wwnn* (STRING): World Wide Node Name of the array's target port.
+*wwpn* (STRING): World Wide Port Name of the array's target port.
+
+== mlm.array.path.resumed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the path to the array is resumed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Path from initiator %s to array %s target_port:WWNN:%s,WWPN:%s has resumed.
+*Parameters*::
+*adapterName* (STRING): Name of the Fibre Channel adapter used to access the path.
+*arrayName* (STRING): Name of the array.
+*wwnn* (STRING): World Wide Node Name of the array's target port.
+*wwpn* (STRING): World Wide Port Name of the array's target port.
+
+== mlm.array.port.discovery
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system discovers a new target port for an array.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A new array target port was discovered on array %s: WWNN: %s, WWPN: %s.
+*Parameters*::
+*arrayName* (STRING): Name of the array.
+*wwnn* (STRING): World Wide Node Name of the new array target port.
+*wwpn* (STRING): World Wide Port Name of the new array target port.
+
+== mlm.array.portDuplicateID
+*Severity*::
+ALERT
+*Description*::
+This message occurs when more than one logical device (LDEV) has the same LUN ID on the same array. The error is set on these logical devices and these devices will not function until the error is resolved.
+*Corrective Action*::
+Ensure that each LDEV has a different LUN ID.
+*Syslog Message*::
+%s: %d appears more than once on %s's target port: WWNN: %s, WWPN: %s. LUN ID reuse on an array target port is not supported, even in different host groups.
+*Parameters*::
+*diskName* (STRING): Name of the array LUN.
+*lunid* (INT): LUN ID that represents more than one LDEV.
+*arrayName* (STRING): Name of the array.
+*wwnn* (STRING): World Wide Node Name of the array's target port that is presenting this LUN ID.
+*wwpn* (STRING): World Wide Port Name of the array's target port that is presenting this LUN ID.
+
+== mlm.array.portEmpty.direct
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a host group on an array is empty.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Fibre Channel host bus adapter %s reports no LUNs presented by storage array %s, target port WWNN: %s WWPN: %s.
+*Parameters*::
+*adapterName* (STRING): Name of the initiator port detecting the empty host group.
+*arrayName* (STRING): Name of the array.
+*wwnn* (STRING): World Wide Node Name of the array target port.
+*wwpn* (STRING): World Wide Port Name of the array target port.
+
+== mlm.array.portEmpty.switch
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a host group on an array is empty.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Fibre Channel host bus adapter %s reports no LUNs presented by storage array %s, target port WWNN: %s WWPN: %s, switch:port %s.
+*Parameters*::
+*adapterName* (STRING): Name of the initiator port detecting the empty host group.
+*arrayName* (STRING): Name of the array.
+*wwnn* (STRING): World Wide Node Name of the array target port.
+*wwpn* (STRING): World Wide Port Name of the array target port.
+*switchPort* (STRING): Name of the switch and port connected to the storage array.
+
+== mlm.array.portMixedAddress
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a back-end array is set to Volume Set Addressing mode on one port but not on another. This results in LUN IDs that do not match in value or format. The error is set on these logical devices and these devices will not function until the error is resolved.
+*Corrective Action*::
+Consult the back-end array documentation to disable Volume Set Addressing mode on all ports.
+*Syslog Message*::
+Array %s is using inconsistent LUN addressing schemes. Check LUN addressing settings on port WWNN: %s, WWPN %s.
+*Parameters*::
+*arrayName* (STRING): Name of the array.
+*wwnn* (STRING): World Wide Node Name of the array's target port that is reporting Volume Set Addressing Enabled.
+*wwpn* (STRING): World Wide Port Name of the array's target port that is reporting Volume Set Addressing Enabled.
+
+== mlm.array.portOneController
+*Severity*::
+ERROR
+*Description*::
+This message occurs when all paths for an array LUN are connected to the same controller on the array. This configuration results in a single point of failure at the array.
+*Corrective Action*::
+Reconfigure your back-end SAN so that array LUNs are presented from controllers in different fault domains on the target array.
+*Syslog Message*::
+All paths for array LUN %s are connected to the same controller on array %s. This configuration is a single point of failure. Ensure that array LUNs are accessible through controllers in different fault domains.
+*Parameters*::
+*diskName* (STRING): Name of the array LUN.
+*arrayName* (STRING): Name of the array.
+
+== mlm.array.prCapabilities
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects an array LUN from an unsupported array.
+*Corrective Action*::
+Detach the unsupported array. See the NetApp Support Site Interoperability Matrix Tool for further information about supported arrays.
+*Syslog Message*::
+[Vendor '%s' Product '%s'] PR_CAP : sip_c : %x, atp_c : %x, res_c : %x, ptpl_c : %x.
+*Parameters*::
+*vendor* (STRING): Vendor ID of the array LUN.
+*product* (STRING): Product ID of the array LUN.
+*sip_c* (INTHEX): Specify initiator ports capable bit.
+*atp_c* (INTHEX): All target ports capable bit.
+*res_c* (INTHEX): Reserved bit.
+*ptpl_c* (INTHEX): Persist through power loss capable bit.
+
+== mlm.array.prReadReservation
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects an array LUN from an unsupported array.
+*Corrective Action*::
+Detach the unsupported array. See the NetApp Support Site Interoperability Matrix Tool for further information about supported arrays.
+*Syslog Message*::
+[Vendor '%s' Product '%s'] Data_key : '0x%llx' Reservation : generation '%u' length '%u' resv_key '0x%llx' scope_address '%u' scope_type '0x%x' extent_len '%d' hex_dump '%s'.
+*Parameters*::
+*vendor* (STRING): Vendor ID of the array LUN.
+*product* (STRING): Product ID of the array LUN.
+*resv_key* (LONGINTHEX): SCSI persistent reservation key.
+*generation* (INT): SCSI persistent reserve data generation value.
+*len* (INT): SCSI persistent reserve data header generation length.
+*read_in_resv_key* (LONGINTHEX): SCSI persistent reserve data reservation key.
+*scope_address* (INT): SCSI persistent reserve data scope address.
+*scope_type* (INTHEX): SCSI persistent reserve data scope.
+*extent_length* (INT): SCSI persistent reserve data extent length.
+*pr_reservation_hex* (STRING): SCSI persistent reservation hexadecimal dump.
+
+== mlm.array.reportluns
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects an array LUN from an unsupported array.
+*Corrective Action*::
+Detach the unsupported array. See the NetApp Support Site Interoperability Matrix Tool for further information about supported arrays.
+*Syslog Message*::
+Unsupported array: [Vendor '%s' Product '%s'] Report LUNs: lun_count '%d' reserved field '%d'.
+*Parameters*::
+*vendor* (STRING): Vendor ID of the array LUN.
+*product* (STRING): Product ID of the array LUN.
+*lun_count* (INT): Total number of LUNs visible.
+*reserved* (INT): Report luns reserved field.
+
+== mlm.array.rptpgs
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects an array LUN from an unsupported array.
+*Corrective Action*::
+Detach the unsupported array. See the NetApp Support Site Interoperability Matrix Tool for further information about supported arrays.
+*Syslog Message*::
+Unsupported array: [Vendor '%s' Product '%s'] ASS : %d , Access flag : %d.
+*Parameters*::
+*vendor* (STRING): Vendor ID of the array LUN.
+*product* (STRING): Product ID of the array LUN.
+*aas* (INT): Asymmetric Access State.
+*flags* (INT): Access state flags.
+
+== mlm.array.setPortTPQD
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when you set the target port queue depth for a specific target port of an array.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Array '%s' target port: WWNN: %s, WWPN: %s has a target port queue depth value set to %d.
+*Parameters*::
+*arrayName* (STRING): Name of the array.
+*wwnn* (STRING): World Wide Node Name of the array target port.
+*wwpn* (STRING): World Wide Port Name of the array target port.
+*tpqd* (INT): Target port queue depth value set for the specified target port of an array.
+
+== mlm.array.setTPQD
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when you set the target port queue depth for an array.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Target ports on the array '%s' have a target port queue depth value set to %d.
+*Parameters*::
+*arrayName* (STRING): Name of the array.
+*tpqd* (INT): Target port queue depth value set for the target ports of the array.
+
+== mlm.array.unknown
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an array LUN is detected from an unknown array that is not supported in this version of Data ONTAP(R).
+*Corrective Action*::
+Remove the array from the system.
+*Syslog Message*::
+Array LUN %s [S/N '%s' vendor '%s' product '%s'] is unknown and is not supported in this version of Data ONTAP.
+*Parameters*::
+*diskName* (STRING): Name of the array LUN.
+*serialno* (STRING): Serial number of the array LUN.
+*vendor* (STRING): Vendor ID of the array LUN.
+*product* (STRING): Product ID of the array LUN.
+
+== mlm.array.unsupported
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an array LUN is detected from an unsupported array.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Array LUN %s [S/N '%s' vendor '%s' product '%s'] is not supported in this version of Data ONTAP.
+*Parameters*::
+*diskName* (STRING): Name of the array LUN.
+*serialno* (STRING): Serial number of the array LUN.
+*vendor* (STRING): Vendor ID of the array LUN.
+*product* (STRING): Product ID of the array LUN.

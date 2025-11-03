@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-bootfs-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.bootfs events
+---
+
+= callhome.bootfs events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.bootfs.chkdsk
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a consistency check of the boot media (compact flash or other type) has shown a problem and has not been corrected automatically. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+The boot media should be reformatted and/or replaced. After corrective steps have been taken, the "bootfs chkdsk" command should be used to confirm the recovery has been successful. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for BOOTFS CHKDSK
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

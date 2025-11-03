@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: netif-linkdown-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.linkdown events
+---
+
+= netif.linkdown events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.linkDown
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a network link goes down or the interface is not operational when first configured up.
+*Corrective Action*::
+If the message describes the link as "down," check the cabling and switch port configuration. If the message states "controller initialization failure", report this to NetApp technical support.
+*Syslog Message*::
+%s %s: Link %s.
+*Parameters*::
+*lanType* (STRING): Local area network (LAN) type.
+*ifName* (STRING): Name of the network interface.
+*status* (STRING): Brief information about the problem.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: wafl-arl-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.arl events
+---
+
+= wafl.arl events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.arl.vol.limitChkFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs during the relocation of an aggregate, when the destination node fails the volume count limit and volume size limit checks.
+*Corrective Action*::
+Ensure that the destination node supports the volume size and volume count limits, or select a different destination node and retry the operation.
+*Syslog Message*::
+Aggregate '%s': Volume limits check failed on destination node %s.
+*Parameters*::
+*vol* (STRING): Name of the aggregate.
+*reason* (STRING): Activity that is preventing the aggregate relocation operation.

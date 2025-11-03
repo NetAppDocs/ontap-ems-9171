@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: useradmin-rootaccess-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: useradmin.rootaccess events
+---
+
+= useradmin.rootaccess events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== useradmin.rootaccess.enabled
+*Severity*::
+INFORMATIONAL
+*Description*::
+The root account has been enabled or disabled because of the option security.rootaccess.enable. If this option is off, then the message appears on reboots and any time root tries to authenticate. A boot without etc/rc will not check this option, so root is temporarily enabled until the next boot.
+*Corrective Action*::
+This event is informational-only. No action by the system administrator is necessary.
+*Syslog Message*::
+root is %s due to a %s. Review option security.passwd.rootaccess.enable.
+*Parameters*::
+*status* (STRING): This can be one of the following values: "enabled" or "disabled". If disabled, then root access is disabled.
+*location* (STRING): Where the informational message appears. This can be in the authentication check (someone is checking root's password), reboot check (root is being disabled during a normal boot) manual change (someone changed the option manually)

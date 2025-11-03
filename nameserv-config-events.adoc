@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: nameserv-config-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nameserv.config events
+---
+
+= nameserv.config events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nameserv.config.write.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a file write for name service configuration fails.
+*Corrective Action*::
+Autocorrection is triggered for failing Vserver, configuration and node. Ensure that the root volume File System(FS) is available and has enough space and check the status using "vserver services name-service file-version show". Contact technical support if the problem persists.
+*Syslog Message*::
+%s configuration failed for Vserver %s on node %s.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*ns_config_name* (STRING): Name of the name service configuration.
+*node_name* (STRING): Name of the node.

@@ -1,0 +1,66 @@
+---
+sidebar: sidebar
+permalink: ses-drive-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ses.drive events
+---
+
+= ses.drive events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ses.drive.badPlacement
+*Severity*::
+ALERT
+*Description*::
+This message occurs when disk drives are placed in locations that do not provide for proper signal integrity. In some older shelf types only, circuitry in the disk drives conditions the signals on their way through the disk shelves. If the disk drives are not in certain locations, the signal might degrade and cause errors. Disk drives must be kept in the proper locations even if one or more disk drives are removed for maintenance reasons.
+*Corrective Action*::
+If only loop A is used, always keep at least one disk drive in bays 0-2 and at least one disk drive in bays 3-6. If loop B is also used, always keep at least one disk drive in bays 0-2 and at least one disk drive in bays 4-6. The integrity requirement of both loops is satisfied if disk drives are placed as required for loop B. Remember that bays 3 and 4 are used for enclosure services access in XL400/XL500 disk shelves.
+*Syslog Message*::
+Improper disk drive placement in channel %s disk shelf %d. Loop integrity requires certain disk shelf bays to be populated.
+*Parameters*::
+*ChannelName* (STRING): Name of the affected adapter port or switch port loop.
+*ShelfID* (INT): ID of the disk shelf.
+
+== ses.drive.missingFromLoopMap
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a disk shelf detects a disk but the storage adapter cannot detect the disk. (Note: If the message "ses.drive.possShelfAddr" subsequently appears, follow the corrective actions in that message.)
+*Corrective Action*::
+Monitor the storage system for approximately 15 minutes. If a "monitor.shelf.accessError.ok" event appears, then the condition has cleared, and no corrective action is needed. If the problem occurs to multiple disks on the same loop or is not resolved in 15 minutes, check the I/O modules at the back of the disk shelves on that loop for errors.
+*Syslog Message*::
+The following device attached through adapter %s have not taken expected addresses: %s
+*Parameters*::
+*ChannelName* (STRING): Channel the disk shelf is on.
+*DiskList* (STRING): List of disks missing from Loop Map.
+
+== ses.drive.missingFromSESMap
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the storage adapter detects a disk on the Fibre Channel loop or the SAS domain, but enclosure services in the disk shelf does not report a disk with that address. This error indicates that the disk took an address other than what the disk shelf should have provided, or that enclosure services in the disk shelf cannot be contacted for address information. (Note: If the message "ses.drive.possShelfAddr" subsequently appears, follow the corrective actions in that message.) In this condition, the SCSI Enclosure Services (SES) process in the system might be unable to perform certain operations on the disk, such as setting failure LEDs or detecting disk swaps.
+*Corrective Action*::
+If the disk is not part of an active aggregate or volume, pull out the disk and push it back into the slot to ensure that the disk is in place. If the problem persists, insert a spare disk into the slot. If the problem is then gone, replace the original disk with the spare one. If the problem occurs to multiple disks on the same loop, check the I/O modules at the back of the disk shelves on that loop for errors. SAS domain disk shelves, DS14mk2 AT disk shelves, and SAS/SATA disk shelves do not rely on disk placement for enclosure services, since they have dedicated SES devices.
+*Syslog Message*::
+On adapter %s, the device(s) with the following IDs are detected but are not reported as present by the shelf which should have supplied the IDs: %s
+*Parameters*::
+*ChannelName* (STRING): Channel the disk shelf is on.
+*LoopIds* (STRING): Loop or SCSI/SAS IDs of the missing disks.
+
+== ses.drive.PossShelfAddr
+*Severity*::
+ERROR
+*Description*::
+This message occurs in conjunction with the messages ses.drive.missingFromSESmap or ses.drive.missingFromLoopMap when there are devices that have apparently taken a wrong address; the adapter shows device addresses that SCSI Enclosure Services (SES) indicates should not exist, and vice versa. This error is not a fatal condition. It means that SES cannot perform certain operations on the affected disk drives, such as setting failure LEDs, because it is not certain which disk shelf the affected disk drive is in.
+*Corrective Action*::
+If the problem is throughout the disk shelf, replace the disk shelf. If the error is only one disk drive per disk shelf, the drive might have taken an incorrect address at power-on. Arrange to make this disk drive a spare, and then reseat it to cause it to take its address again. If the problem persists, insert a different spare disk drive into the slot. If the error then clears, replace the original disk drive. If the problem still persists, there is a hardware problem with the individual disk bay. Replace the disk shelf.
+*Syslog Message*::
+Possible actual locations for devices with unexpected addresses: %s.
+*Parameters*::
+*Msg* (STRING): Physical locations of disks that do not have expected addresses in the adapter's map of disks.

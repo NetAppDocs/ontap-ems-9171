@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-fcsameloop-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.fcsameloop events
+---
+
+= config.fcsameloop events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.FCSameLoop
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk is multipathed to the same Fibre Channel loop.
+*Corrective Action*::
+Recable the disk shelf containing the specified disk so that it is multipathed to different Fibre Channel loops.
+*Syslog Message*::
+Disk %s is attached to the same Fibre Channel loop. The disk should be multipathed to different loops.
+*Parameters*::
+*disk* (STRING): Name of the disk.

@@ -1,0 +1,70 @@
+---
+sidebar: sidebar
+permalink: sis-changelog-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.changelog events
+---
+
+= sis.changelog events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.changelog.full
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Single Instance Storage (SIS) change logging metafile is full. Change logging is stopped. New writes to the volume will not be change logged until the next SIS operation.
+*Corrective Action*::
+Issue the 'sis start' command on the volume to process existing changelogs. To process changelog files more frequently before they reach full, adjust the SIS operation schedule with the 'sis config -s' command. If there is significant loss of savings, then run the 'sis start -s' command, allowing it to run to completion.
+*Syslog Message*::
+SIS change logging metafile for volume %s%s%s is full.
+*Parameters*::
+*host* (STRING): Owning host of the volume.
+*vol* (STRING): Name of the volume.
+*volident* (STRING): Uniquely identifies the volume when the volume name itself is insufficient.
+
+== sis.changelog.noinit
+*Severity*::
+ERROR
+*Description*::
+This event is issued when the change logging operation could not be initialized on a SIS volume.
+*Corrective Action*::
+Run "sis on" command to reinitialzie the change logging operation.
+*Syslog Message*::
+Change logging operation on volume %s%s could not be initialized: %s.
+*Parameters*::
+*vol* (STRING): The name of the volume
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*err* (STRING): Error message
+
+== sis.changelog.noload
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when prior change logging metafiles could not be reused during the initialization. New metafiles will be created for the operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Prior Change logging metafiles on volume %s%s could not be reused.
+*Parameters*::
+*vol* (STRING): The name of the volume
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== sis.changelog.truncate
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Single Instance Storage (SIS) change logging metafile is truncated as part of ADS session.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Prior Change logging metafiles on volume %s%s are truncated.
+*Parameters*::
+*host* (STRING): Owning host of the volume.
+*vol* (STRING): Name of the volume.
+*volident* (STRING): Uniquely identifies the volume when the volume name itself is insufficient.

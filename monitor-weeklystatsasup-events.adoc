@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: monitor-weeklystatsasup-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.weeklystatsasup events
+---
+
+= monitor.weeklystatsasup events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.weeklyStatsASUP.off
+*Severity*::
+ERROR
+*Description*::
+This message occurs when weekly performance AutoSupport(tm) is disabled.
+*Corrective Action*::
+Enable the weekly performance AutoSupport by entering the "options stats.autosupport.weekly.enable on" command. You must have the correct privilege to run this command.
+*Syslog Message*::
+Weekly performance AutoSupport has been disabled.
+*Parameters*::
+(None).

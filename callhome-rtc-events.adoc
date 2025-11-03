@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-rtc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.rtc events
+---
+
+= callhome.rtc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.rtc.battery.low
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the voltage for the Real-Time Clock (RTC) battery is low. The message is repeated once every hour until you replace the battery. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Replace the RTC battery as soon as possible. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for RTC BATTERY LOW
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

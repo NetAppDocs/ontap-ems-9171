@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: cf-diskinventory-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.diskinventory events
+---
+
+= cf.diskinventory events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.diskinventory.cksum.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the computed checksum of the disk inventory message is different from the checksum sent as part of the disk inventory message.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk inventory checksum mismatch: old %d new %d.
+*Parameters*::
+*oldCkSum* (INT): Old checksum, sent as part of the message.
+*newCkSum* (INT): Checksum of the disk inventory message computed locally.
+
+== cf.diskinventory.many.disks
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a node receives more than maximum supported disks in the disk inventory message.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+disk inventory: ndisks %d max_disks %d
+*Parameters*::
+*ndisks* (INT): Number of disk descriptions sent in the inventory message.
+*maxdisks* (INT): Maximum number of disks supported.

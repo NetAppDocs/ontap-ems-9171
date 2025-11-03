@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: shm-ssd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: shm.ssd events
+---
+
+= shm.ssd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== shm.ssd.threshold.ioLatency
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP(R) detects that a solid-state drive (SSD) has an average block latency during a five-minute timeframe that is greater than expected. ONTAP will continue to monitor the SSD latency and might fail the SSD if it exceeds latency thresholds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SSD %s has exceeded the expected block latency in the current timeframe with an average latency of %d us and an average utilization of %d percent. The next highest SSD latency: %d us. %s
+*Parameters*::
+*disk_name* (STRING): Name of the disk.
+*latency_avg* (INT): Average block latency in the current timeframe in microseconds (us).
+*util_avg* (INT): Average drive utilization percent in the current timeframe.
+*next_hi_latency_avg* (INT): Average block latency for the SSD with the next highest block latency in the current timeframe.
+*disk_information* (STRING): Formatted information about the disk. This includes the disk's vendor, model, firmware revision, and serial number.

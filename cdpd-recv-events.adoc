@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cdpd-recv-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cdpd.recv events
+---
+
+= cdpd.recv events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cdpd.recv.cacheOverflow
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the CDP (Cisco Discovery Protocol) daemon running on the storage controller receives more unique neighbor advertisements than it can cache. The storage controller stops saving incoming CDP advertisements after the CDP neighbor cache has the maximum allowed neighbor entries. The CDP daemon will start processing new advertisements again after entries in the CDP neighbor cache start timing out.
+*Corrective Action*::
+Use the 'cdpd show-stats' CLI command under the "Cache overflow" receive statistic to view the number of unique advertisements in excess of the maximum. Check the traffic statistics on the neighboring switches and bridges. If the storage controller has more than 64 CDP neighbors, you can ignore this message. Otherwise, take a packet trace on the network or on each network port of the storage controller to check the source of the CDP advertisements.
+*Syslog Message*::
+The CDP neighbors table is full.
+*Parameters*::
+(None).

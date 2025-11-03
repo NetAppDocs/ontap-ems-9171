@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: extcache-control-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: extcache.control events
+---
+
+= extcache.control events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== extCache.control
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the external cache software cannot signal its administrative thread.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache: %s
+*Parameters*::
+*detail* (STRING): Specific details of the event.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: dump-xfercomplete-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dump.xfercomplete events
+---
+
+= dump.xfercomplete events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dump.xfercomplete.inconsistent_data
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the dump engine completes data backup with disk errors in user files.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Dump of source path (%s): One or more files in the backup encountered disk errors. Refer to /etc/log/backup for a list of files that encountered disk errors.
+*Parameters*::
+*src_path* (STRING): Source path being backed up.

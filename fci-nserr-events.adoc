@@ -1,0 +1,57 @@
+---
+sidebar: sidebar
+permalink: fci-nserr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fci.nserr events
+---
+
+= fci.nserr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fci.nserr.general
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Fibre Channel fabric cannot successfully complete a Name Server query issued to obtain configuration and device information when an adapter is connected to the Fibre Channel fabric. Included in the event are the specific Name Server query and text describing the reason and explanation codes returned by the fabric.
+*Corrective Action*::
+If the system happens to issue a Name Server query while the fabric is processing one or more configuration changes, the fabric might not successfully complete the request. After the fabric stabilizes, the Name Server can resume processing requests and the system automatically recovers from the error. If this error continues to occur after the fabric has stabilized, contact NetApp technical support.
+*Syslog Message*::
+The Fibre Channel fabric Name Server request (%s) sent from adapter %s failed with reason code 0x%x (%s), explanation code 0x%x (%s) and response code 0x%x.
+*Parameters*::
+*nsRequest* (STRING): Name of the failing Fibre Channel Name Server request.
+*adapterName* (STRING): Name of the associated Fibre Channel host bus adapter.
+*reasonCode* (INTHEX): Reason code provided by the fabric for failure of the Name Server request.
+*reason* (STRING): Reason text provided by the fabric for failure of the Name Server request.
+*explanationCode* (INTHEX): Explanation code provided by the fabric qualifying the stated reason.
+*explanation* (STRING): Explanation text provided by the fabric qualifying the stated reason.
+*responseCode* (INTHEX): Response code provided by the fabric for failure of the specified Name Server request.
+
+== fci.nserr.noDevices
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the fabric to which the specified adapter is attached reports that no Fibre Channel devices are present.
+*Corrective Action*::
+Check the fabric to ensure that all expected devices appear in the Name Server. If they appear in the Name Server but have not been reported to the specified adapter, review fabric zoning (if zoning is in use) to ensure that devices are present in the zone containing the adapter. If all expected devices are not present in the Name Server, verify the devices are powered-on, in an operational state, and switch connections/ports are operational.
+*Syslog Message*::
+The Fibre Channel fabric attached to adapter %s reports the presence of no Fibre Channel devices.
+*Parameters*::
+*adapterName* (STRING): Name of the associated Fibre Channel host bus adapter.
+
+== fci.nserr.peerWWN
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the fabric connected to the specified adapter is zoned such that the adapter (or switch port if port zoning is in use) is not included in a fabric zone.
+*Corrective Action*::
+Check the fabric to ensure that the specified adapter is included in a fabric zone. If port zoning is in use, make sure that the switch port to which the adapter is attached is included in the active zone configuration. If WWN zoning is in use, ensure that the WWN of the specified adapter is included in the active zone configuration. Also make sure that the associated switch port is in an operational state.
+*Syslog Message*::
+Adapter %s is not in a fabric zone.
+*Parameters*::
+*adapterName* (STRING): Name of the associated Fibre Channel host bus adapter.

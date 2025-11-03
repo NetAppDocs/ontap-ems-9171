@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: dump-notify-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dump.notify events
+---
+
+= dump.notify events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dump.notify.backward.ctime
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the dump incremental backup might be incomplete. When setting ctime to past values is allowed, files copied to volumes through SMB/CIFS might have timestamps that are in the past compared to the time of copy. If an inode number is reused for the files with timestamps in the past that were copied into the volume after the last backup, the files will be missed in the incremental backup.
+*Corrective Action*::
+Disable updates to ctime with past values by setting "bootarg.wafl.allow_ctime_backward" to "false", reboot the nodes, and then start a new backup chain from the baseline. For more information on the workaround, contact Technical Support.
+*Syslog Message*::
+The incremental backup (Dump name = "%s", Snapshot copy ID = "%d") might be incomplete because setting ctime to past values is allowed on this node.
+*Parameters*::
+*dump_name* (STRING): Dump name.
+*snap_id* (INT): ID of the Snapshot copy being backed up.

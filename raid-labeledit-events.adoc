@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: raid-labeledit-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.labeledit events
+---
+
+= raid.labeledit events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.labeledit.buildtree
+*Severity*::
+NOTICE
+*Description*::
+This event occurs when you run the 'label buildtree' command to create an aggregate from a collection of disks.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s %s was created using the 'label buildtree' command.
+*Parameters*::
+*voltype* (STRING): Volume type.
+*volname* (STRING): Name of the aggregate created by the command.
+*cmdline* (STRING): Command line used to create the aggregate.

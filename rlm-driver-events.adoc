@@ -1,0 +1,63 @@
+---
+sidebar: sidebar
+permalink: rlm-driver-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rlm.driver events
+---
+
+= rlm.driver events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rlm.driver.hourly.stats
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system encounters an error while trying to get hourly statistics from the Remote LAN Module (RLM).
+*Corrective Action*::
+1. Issue the 'rlm status' command at the Data ONTAP(R) prompt to check whether the RLM is online. 2. If the RLM is online and this message persists, issue the 'rlm reboot' command at the Data ONTAP prompt to reboot the RLM.
+*Syslog Message*::
+The software driver for the Remote LAN Module (RLM) detected a problem: %s.
+*Parameters*::
+*reason* (STRING): This error could be due to a communication error with the RLM or because the RLM is not operational.
+
+== rlm.driver.mailhost
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Remote LAN module (RLM) setup verifies whether a mailhost specified in ONTAP can be reached. In this case, RLM setup cannot connect to the specified mailhost.
+*Corrective Action*::
+1. Verify that a valid mailhost is configured in Data ONTAP by checking the system AutoSupport configuration. 2. Ensure that Data ONTAP can successfully connect to the specified mailhost by invoking test command to invoke AutoSupport.
+*Syslog Message*::
+RLM setup could not access the mailhost specified in Data ONTAP.
+*Parameters*::
+(None).
+
+== rlm.driver.network.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system encounters a failure during network configuration of the Remote LAN Module (RLM). The system cannot assign the RLM a DHCP (Dynamic Host Configuration Protocol) or fixed IP address.
+*Corrective Action*::
+1. Check whether the network cable is correctly plugged into the RLM network port. 2. Check the link status LED on the RLM. 3. The RLM supports a 10/100 Ethernet network in autonegotiation mode. Verify that the network that the RLM is connected to has autonegotiation enabled.
+*Syslog Message*::
+The network configuration of the Remote LAN Module (RLM) failed due to cable or network errors.
+*Parameters*::
+(None).
+
+== rlm.driver.timeout
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is a failure during communication with the Remote LAN Module (RLM) firmware.
+*Corrective Action*::
+1. Issue the 'rlm status' command at the Data ONTAP(R) prompt to check whether the RLM is online. 2. If the RLM is operational and this message persists, issue the 'rlm reboot' command at the Data ONTAP prompt to reboot the RLM. After the reboot, this message should no longer occur. If the message occurs again, contact NetApp technical support and explain that you already performed the preceding steps.
+*Syslog Message*::
+The software driver for the Remote LAN Module (RLM) detected a problem: %s.
+*Parameters*::
+*reason* (STRING): This error could be due to a communication error with the RLM or because the RLM is not operational.

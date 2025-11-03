@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: wafl-metadata-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.metadata events
+---
+
+= wafl.metadata events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.metadata.rsrv.decreased
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the space reserved for volume metadata is decreased when the value of "space-guarantee" for a FlexClone volume is changed from "volume" to "none". After the decrease in the metadata reserve, the freed up space is added to the space available in the aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Metadata reserve for volume "%s" has decreased.
+*Parameters*::
+*volume_name* (STRING): Volume name.
+
+== wafl.metadata.rsrv.increased
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the space reserved for volume metadata is increased when the value of "space-guarantee" for a FlexClone volume is changed from "none" to "volume" or when a FlexClone volume is split from its parent volume. This metadata reserve is required to store volume metadata inside an aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Metadata reserve for volume "%s" has increased.
+*Parameters*::
+*volume_name* (STRING): Volume name.

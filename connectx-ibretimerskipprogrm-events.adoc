@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: connectx-ibretimerskipprogrm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: connectx.ibretimerskipprogrm events
+---
+
+= connectx.ibretimerskipprogrm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== connectx.IbRetimerSkipProgrm
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when InfiniBand retimer programming is skipped after the system detects that a cable is plugged in, because there was no change in the cable's type and length.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+InfiniBand retimer programming was skipped on port %s for %s cable.
+*Parameters*::
+*port_str* (STRING): InfiniBand port in which the cable is plugged.
+*cable_type* (STRING): InfiniBand cable type.

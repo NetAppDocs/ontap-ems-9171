@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: shelf-reset-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: shelf.reset events
+---
+
+= shelf.reset events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== shelf.reset.counters
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when ONTAP(R) software resets the error counters on a disk shelf module.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Resetting error counters for module %s in disk shelf %s.%d.
+*Parameters*::
+*element* (STRING): Disk shelf module designator (A is the upper module, B is the lower module).
+*channel* (STRING): Channel the disk shelf module is on.
+*shelfID* (INT): ID of the disk shelf the module is in.

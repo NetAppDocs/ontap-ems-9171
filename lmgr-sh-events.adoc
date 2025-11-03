@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: lmgr-sh-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lmgr.sh events
+---
+
+= lmgr.sh events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lmgr.sh.oplock.recall.fail
+*Deprecated*::
+This EMS was replaced by the new "lmgr.precommit.oplock.recall.*" variants below and is no longer needed.
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system vetoes aggregate giveback or relocation because CIFS oplock recall fails. Some oplocks could not be recalled because of CPU overload, slow CIFS client response, or a large number of open files. Giveback or relocation cannot proceed until all oplocks are recalled successfully or the veto is overridden, in which case cached writes in clients might be lost.
+*Corrective Action*::
+Recall oplocks for Vservers on aggregates participating in the operation by using the command 'volume qtree oplocks -volume <vol-name> -qtree <qtree-name> -vserver <vserver-name> -oplock-mode disable' for volumes or qtrees with oplocks enabled. Then retry the operation, and reenable oplocks after the operation is complete. If the error persists, contact NetApp technical support for assistance.
+*Syslog Message*::
+Aggregate "%s" vetoed giveback or relocation because CIFS oplock recall failed. Internal error: %s.
+*Parameters*::
+*aggrname* (STRING): Aggregate name.
+*error* (STRING): Error details.

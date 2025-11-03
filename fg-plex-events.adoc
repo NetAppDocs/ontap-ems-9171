@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: fg-plex-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fg.plex events
+---
+
+= fg.plex events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fg.plex.del.unmirror.aggr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a user unmirrors an aggregate (plex delete) that contains a FlexGroup constituent on nodes in a MetroCluster(tm) configuration. However, unmirrored aggregates, as a rule, do not have synchronous disaster protection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Aggregate %s, which contains a FlexGroup constituent, was unmirrored.
+*Parameters*::
+*aggregateName* (STRING): Name of the aggregate that is unmirrored.

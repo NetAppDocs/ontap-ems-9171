@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: restore-cluster-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: restore.cluster events
+---
+
+= restore.cluster events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== restore.cluster.fsa.default
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during an ONTAP revert operation when the auto-enable-analytics parameter in the cluster configuration is restored from "-" (not set) to "false". "-" is the default state starting with ONTAP 9.17.1.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The auto-enable-analytics parameter in the cluster configuration has been restored from "-" to "false" during a revert operation.
+*Parameters*::
+(None).

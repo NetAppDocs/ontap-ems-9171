@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: kern-cron-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: kern.cron events
+---
+
+= kern.cron events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== kern.cron.dstError
+*Severity*::
+ERROR
+*Description*::
+This event is issued when the kernel cron daemon is unable to reschedule an internal process due to an error in handling of daylight savings time.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Daylight Saving Time change caused %s to be scheduled at an invalid time could not reschedule it, deleting further scheduling
+*Parameters*::
+*owner* (STRING): The name of the process that was supposed to be scheduled
+
+== kern.cron.reschedDst
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the kernel cron daemon reschedules an event to run at a newly scheduled time as a result of a daylight savings time change.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Daylight Savings Time change: rescheduling %s to run at %s
+*Parameters*::
+*owner* (STRING): The name of the process that was scheduled
+*time* (STRING): The text version of the time string at which the event was scheduled

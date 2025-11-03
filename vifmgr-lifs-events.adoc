@@ -1,0 +1,68 @@
+---
+sidebar: sidebar
+permalink: vifmgr-lifs-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.lifs events
+---
+
+= vifmgr.lifs events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.lifs.clusterlimit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the total number of logical interfaces (LIFs) exceeds the supported per-cluster limit. To ensure system stability, the total number of IP data LIFs should be kept at or below this limit.
+*Corrective Action*::
+Use the "network interface show -role data" command to review existing LIFs, and use the "network interface delete" command to remove enough LIFs to meet the cluster maximum. To facilitate this process, you can display the current number of LIFs by using the "network interface capacity show" command.
+*Syslog Message*::
+The total number of data LIFs in this cluster (%u) exceeds the supported limit of %u.
+*Parameters*::
+*numLifs* (INT): The number of IP data LIFs present in this cluster.
+*lifLimit* (INT): The maximum number of supported LIFs for this cluster.
+
+== vifmgr.lifs.lowredundancy
+*Severity*::
+ALERT
+*Description*::
+This message occurs when one or more logical interfaces (LIFs) are configured to use a failover policy that implies failover to a specific set of nodes but does not have available failover targets on enough of those nodes. If the specified home node is offline or unavailable, all affected LIFs will be operationally down and unable to serve any data.
+*Corrective Action*::
+Add additional ports to the broadcast domains or failover groups used by the affected LIFs, or modify each LIF's failover policy to include one or more nodes with available failover targets. For example, the "broadcast-domain-wide" failover policy will consider all failover targets in a LIF's failover group. Use the "network interface show -failover" command to review the currently assigned failover targets for each LIF.
+*Syslog Message*::
+Insufficient redundancy in the failover configuration for %u LIFs assigned to node "%s". LIFs: %s
+*Parameters*::
+*lifcount* (INT): Number of affected LIFs.
+*homenode* (STRING): Home node of the affected LIFs.
+*liflist* (STRING): List of the first several affected LIFs.
+
+== vifmgr.lifs.noredundancy
+*Severity*::
+ALERT
+*Description*::
+This message occurs when one or more logical interfaces (LIFs) are configured to use a failover policy that implies failover to one or more ports but have no failover targets beyond their home ports. If any affected home port or home node is offline or unavailable, the corresponding LIFs will be operationally down and unable to serve data.
+*Corrective Action*::
+Add additional ports to the broadcast domains or failover groups used by the affected LIFs, or modify each LIF's failover policy to include one or more nodes with available failover targets. For example, the "broadcast-domain-wide" failover policy will consider all failover targets in a LIF's failover group. Use the "network interface show -failover" command to review the currently assigned failover targets for each LIF. If the intent is to never fail over the LIF to any other failover targets, set the failover-policy for the LIF to 'disabled' to prevent this alert in the future. For additional information about configuring LIF failover targets, search the NetApp(R) support site for TR-4182.
+*Syslog Message*::
+No redundancy in the failover configuration for %u LIFs assigned to node "%s". LIFs: %s
+*Parameters*::
+*lifcount* (INT): Number of affected LIFs.
+*homenode* (STRING): Home node of the affected LIFs.
+*liflist* (STRING): List of the first several affected LIFs.
+
+== vifmgr.lifs.overcapacity
+*Severity*::
+ALERT
+*Description*::
+This message occurs when logical interfaces (LIFs) have been over-provisioned. As a result, some LIFs might report a status of "down" during a node outage, even if the LIF is configured to have a remote failover target.
+*Corrective Action*::
+Removing LIFs from the system, adjusting the failover settings of some LIFs, and reconfiguring failover groups are all possible options for correcting the situation. Use the "network interface check failover show" command to gather more detailed information about the over-provisioning.
+*Syslog Message*::
+Node with failover targets over-provisioned: %u LIFs could be marked "down" during node outage.
+*Parameters*::
+*overamount* (INT): Number of LIFs that might be displayed as "down".

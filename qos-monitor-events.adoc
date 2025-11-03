@@ -1,0 +1,45 @@
+---
+sidebar: sidebar
+permalink: qos-monitor-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: qos.monitor events
+---
+
+= qos.monitor events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== qos.monitor.memory.abated
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Quality of Service (QoS) subsystem's dynamic memory is no longer at its limit for the current platform hardware. All QoS features will operate as normal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+QoS dynamic memory is no longer at its limit. All QoS features will operate as normal.
+*Parameters*::
+*subject* (STRING): QoS Memory message title.
+*count* (INT): Number of times this has happened.
+*object_type* (STRING): Type of resource object under notification. For this EMS, the object_type will always be NODE.
+*object_uuid* (STRING): UUID of the resource object. For this EMS, the UUID will be of the node.
+
+== qos.monitor.memory.maxed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Quality of Service (QoS) subsystem's dynamic memory hits its limit for the current platform hardware. As a result, some QoS features might operate in a limited capacity.
+*Corrective Action*::
+Some active workloads or streams should be deleted to free up memory. Use the 'statistics show -object workload -counter ops' command to determine which workloads are active. Active workloads will show non-zero ops. Then use the 'workload delete [workload name]' command multiple times to remove particular workloads. Alternatively, use the 'stream delete -workload [workload name] *' command to delete the associated streams from the active workload.
+*Syslog Message*::
+QoS dynamic memory has reached its limit. Some QoS features might operate in a limited capacity.
+*Parameters*::
+*subject* (STRING): QoS Monitor message title.
+*count* (INT): Number of times this has happened.
+*object_type* (STRING): Type of resource object under notification. For this EMS, the object_type will always be NODE.
+*object_uuid* (STRING): UUID of the resource object. For this EMS, the UUID will be of the node.

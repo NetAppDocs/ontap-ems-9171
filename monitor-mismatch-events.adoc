@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: monitor-mismatch-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.mismatch events
+---
+
+= monitor.mismatch events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.mismatch.hourly
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the version of ONTAP(R) is not supported on this hardware. You cannot run a version of ONTAP produced by one vendor on hardware supplied by another. The system will shut down if you do not install a correctly branded version of ONTAP.
+*Corrective Action*::
+Install a correctly branded version of ONTAP before the timer expires.
+*Syslog Message*::
+ONTAP detected a branding mismatch. The hardware is branded by %s and ONTAP is branded by %s. There are %d hour(s) left before shutdown. Install a version of ONTAP branded by your hardware vendor.
+*Parameters*::
+*hardware* (STRING): Vendor brand associated with the hardware.
+*software* (STRING): Vendor brand associated with the version of ONTAP.
+*hours* (INT): Number of hours before shutdown.
+
+== monitor.mismatch.shutdown
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the system shuts down because the hardware brand does not match the ONTAP(R) version brand.
+*Corrective Action*::
+Install a correctly branded version of ONTAP to prevent subsequent shutdowns for brand mismatch. Monitor the EMS_monitor_mismatch_hourly message to determine when the next shutdown will occur because of the brand mismatch.
+*Syslog Message*::
+Shutting down because of a software branding mismatch. The hardware is branded by %s and ONTAP is branded by %s.
+*Parameters*::
+*hardware* (STRING): Vendor brand associated with the hardware.
+*software* (STRING): Vendor brand associated with the version. of ONTAP.

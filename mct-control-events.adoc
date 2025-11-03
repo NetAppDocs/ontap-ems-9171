@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: mct-control-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mct.control events
+---
+
+= mct.control events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mct.control.error
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Mirror Cache Transport layer encounters an error in its control group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Mirror Cache transport control error: '%s'.
+*Parameters*::
+*error_message* (STRING): Details for the encountered error.

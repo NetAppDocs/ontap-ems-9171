@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: wafl-ialloc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.ialloc events
+---
+
+= wafl.ialloc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.ialloc.is.disabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inode allocation in a stripe is disabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Inode allocation in stripe is disabled for %s inode space.
+*Parameters*::
+*ino_type* (STRING): Inode type.

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: fabricpool-nearly-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fabricpool.nearly events
+---
+
+= fabricpool.nearly events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fabricpool.nearly.full
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the total, cluster-wide FabricPool space usage of object stores from capacity-licensed providers has nearly reached the license limit.
+*Corrective Action*::
+To find the percentage of the licensed capacity used by each FabricPool, use the "storage aggregate object-store show-space" command. To create more space, delete snapshots from volumes with the tiering policy "snapshot" or "backup" by using the "volume snapshot delete" command. To increase the licensed capacity, install a new license on the cluster.
+*Syslog Message*::
+Total, cluster-wide FabricPool space usage of object stores from capacity-licensed providers has nearly reached the licensed limit. Cluster id: %s. Current usage: %s, licensed capacity: %s.
+*Parameters*::
+*cluster_uuid* (STRING): UUID of the cluster.
+*used_capacity* (STRING): Total usage of capacity-licensed object stores.
+*licensed_capacity* (STRING): FabricPool licensed capacity.

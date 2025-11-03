@@ -1,0 +1,75 @@
+---
+sidebar: sidebar
+permalink: nvmem-voltage-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvmem.voltage events
+---
+
+= nvmem.voltage events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvmem.voltage.high
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVMEM supply voltage is high and the system is at a high risk of data loss if power fails. The system will shut down.
+*Corrective Action*::
+Correct any environmental or battery problems. If the problem persists, replace the controller module.
+*Syslog Message*::
+The NVMEM supply voltage is high and the system is at a high risk of data loss if power fails. The system will shut down to prevent data loss.
+*Parameters*::
+(None).
+
+== nvmem.voltage.high.warn
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the NVMEM supply voltage is above normal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVMEM supply voltage is above normal.
+*Parameters*::
+(None).
+
+== nvmem.voltage.low
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the NVMEM supply voltage is low and the system is at a high risk of data loss if power fails.
+*Corrective Action*::
+First, correct any environmental or battery problems. If the problem continues, replace the controller module.
+*Syslog Message*::
+The NVMEM supply voltage is low and the system is at a high risk of data loss if power fails.
+*Parameters*::
+(None).
+
+== nvmem.voltage.low.warn
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the NVMEM supply voltage is below normal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVMEM supply voltage is below normal.
+*Parameters*::
+(None).
+
+== nvmem.voltage.normal
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the NVMEM supply voltage is normal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVMEM supply voltage is normal.
+*Parameters*::
+(None).

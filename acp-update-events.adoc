@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: acp-update-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: acp.update events
+---
+
+= acp.update events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== acp.update.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Alternate Control Path (ACP) Administrator receives notification from the ACP Processor that it cannot upgrade the firmware because it is in some faulty state or the firmware file is not valid. The ACP processor will continue to run with the older firmware version.
+*Corrective Action*::
+Try issuing the firmware download again using the "system node run -node <nodename> -command storage download acp" command.
+*Syslog Message*::
+ACP module %s (%s) failed to upgrade firmware, (disk shelf serial number: %s).
+*Parameters*::
+*inband_id* (STRING): Inband ID of the module.
+*ip* (STRING): IP address of the module.
+*shelf_sno* (STRING): Disk shelf serial number of the shelf where this I/O module is seated.

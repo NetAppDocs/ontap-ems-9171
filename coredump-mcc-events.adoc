@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: coredump-mcc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: coredump.mcc events
+---
+
+= coredump.mcc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== coredump.mcc.nso.veto
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the coredump subsystem vetoes MetroCluster(tm) negotiated switchover because a coredump save is in progress.
+*Corrective Action*::
+Use the "node coredump status" command to verify the completion of the active coredump save, or use the "-override-vetoes true" option when performing MetroCluster switchover. Using the "-override-vetoes true" option will abort the active coredump save.
+*Syslog Message*::
+MetroCluster switchover vetoed because a coredump save was in progress.
+*Parameters*::
+(None).

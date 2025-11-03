@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: vsdr-volmov-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsdr.volmov events
+---
+
+= vsdr.volmov events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsdr.volmov.msid.conflict
+*Severity*::
+ERROR
+*Description*::
+This message occurs during a SnapMirror(R) resync operation on a Storage Virtual Machine (SVM) disaster recovery (DR) relationship, when the MSID of a volume on the source SVM is the same as the MSID of a temporary volume on the destination SVM and the temporary volume is created for a volume move operation. The resync operation fails to start.
+*Corrective Action*::
+Abort the volume move operation by using the "volume move abort" command, or wait for the volume move operation to finish before issuing another "snapmirror resync" command on the SVM DR relationship.
+*Syslog Message*::
+The MSID of temporary volume "%s" on the destination SVM "%s" conflicts with the MSID of volume "%s" on the source.
+*Parameters*::
+*tmp_volume_name* (STRING): Volume name of the temporary volume on the destination SVM.
+*vserver_name* (STRING): SVM name for which the SnapMirror resync was initiated.
+*src_volume_name* (STRING): Volume name on the source SVM.

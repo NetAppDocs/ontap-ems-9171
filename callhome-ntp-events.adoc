@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: callhome-ntp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.ntp events
+---
+
+= callhome.ntp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.ntp.clock.skew.detected
+*Severity*::
+ERROR
+*Description*::
+This message occurs when severe NTP clock skew is detected between nodes in the cluster or with an external NTP server. If your system is configured to do so, it generates and transmits an AutoSupport(tm) (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+For further information about correcting the problem, search the knowledgebase of the NetApp technical support support web site for "How to troubleshoot NTP synchronization in ONTAP".
+*Syslog Message*::
+Callhome for "%s". Clock skew of %s seconds detected between "%s" and "%s".
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*time_diff_sec* (STRING): The difference in seconds between the clock sources.
+*server1* (STRING): The first clock source.
+*server2* (STRING): The second clock source.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: fmmb-current-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fmmb.current events
+---
+
+= fmmb.current events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fmmb.current.lock.disk
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when HA mailbox disks are discovered or allocated.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s is a %s HA mailbox disk.
+*Parameters*::
+*disk* (STRING): The name of the disk. If the disk name is not available, the name ?.? will be used.
+*host* (STRING): The node which owns the HA mailbox disk. The node can be either local or partner.

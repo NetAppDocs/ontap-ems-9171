@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: mcc-so-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mcc.so events
+---
+
+= mcc.so events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mcc.so.nodeObjectLmt.chkFail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a MetroCluster(tm) switchover operation cannot be performed on this node because it is in the takeover state and one of the nodes in its disaster recovery(DR) group has the "node-object-limit" MetroCluster configuration option set to off.
+*Corrective Action*::
+Use the "storage failover giveback" command to take this node out of takeover state.
+*Syslog Message*::
+Switchover operation cannot be performed on this node because it is in the takeover state and one of the nodes in its DR group has the "node-object-limit" MetroCluster configuration option set to off.
+*Parameters*::
+(None).

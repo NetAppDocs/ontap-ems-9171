@@ -1,0 +1,67 @@
+---
+sidebar: sidebar
+permalink: secd-cifsauth-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: secd.cifsauth events
+---
+
+= secd.cifsauth events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== secd.cifsAuth.denied
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a CIFS authentication attempt fails for any reason other than an unknown user name or bad password.
+*Corrective Action*::
+Examine the failure details to determine corrective action. A common failure is the inability to communicate with a domain controller.
+*Syslog Message*::
+vserver (%s) Cannot authenticate CIFS user. %s
+*Parameters*::
+*vserverName* (STRING): vserver associated with this operation.
+*failureDetail* (STRING): Error journal is a collection of events leading up to a failure. This failure is likely to impact many (if not all) users, and might reflect a misconfiguration or environmental problem..
+
+== secd.cifsAuth.noNameMap
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a CIFS authentication succeeds, but system cannot map the Windows user to an appropriate UNIX user.
+*Corrective Action*::
+Examine the failure details to determine corrective action. Common failures include no appropriate Windows-to-UNIX name mapping rules, no configured default UNIX user, or the inability of the system to communicate with NS-SWITCH authorization sources.
+*Syslog Message*::
+vserver (%s) CIFS name to UNIX name mapping problem. %s
+*Parameters*::
+*vserverName* (STRING): vserver associated with this operation.
+*failureDetail* (STRING): Error journal is a collection of events leading up to a failure. This failure is likely to impact many (if not all) users, and might reflect a misconfiguration or environmental problem..
+
+== secd.cifsAuth.noUnixCreds
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system is unable to retrieve necessary UNIX credentials for a Windows user during the CIFS authentication process.
+*Corrective Action*::
+Examine the failure details to determine corrective action. A common failure is the inability to communicate with NS-SWITCH authorization sources.
+*Syslog Message*::
+vserver (%s) Cannot get UNIX credentials for CIFS user. %s
+*Parameters*::
+*vserverName* (STRING): vserver associated with this operation.
+*failureDetail* (STRING): Error journal is a collection of events leading up to a failure. This failure is likely to impact many (if not all) users, and might reflect a misconfiguration or environmental problem..
+
+== secd.cifsAuth.problem
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a CIFS authentication attempt fails for any reason other than an unknown user name or bad password.
+*Corrective Action*::
+Examine the failure details to determine corrective action. Common failures include the inability to communicate with domain controllers, NIS servers, or LDAP servers due to connectivity or configuration problems.
+*Syslog Message*::
+vserver (%s) General CIFS authentication problem. %s
+*Parameters*::
+*vserverName* (STRING): vserver associated with this operation.
+*failureDetail* (STRING): Error journal is a collection of events leading up to a failure. This failure is likely to impact many (if not all) users, and might reflect a misconfiguration or environmental problem..

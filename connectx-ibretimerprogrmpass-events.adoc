@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: connectx-ibretimerprogrmpass-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: connectx.ibretimerprogrmpass events
+---
+
+= connectx.ibretimerprogrmpass events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== connectx.IbRetimerProgrmPass
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when InfiniBand retimer programming is succesfully completed after the system detects that a cable is plugged in.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+InfiniBand retimer programming was successful on port %s.
+*Parameters*::
+*port_str* (STRING): InfiniBand port in which the cable is plugged.

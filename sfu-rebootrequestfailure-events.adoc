@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: sfu-rebootrequestfailure-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfu.rebootrequestfailure events
+---
+
+= sfu.rebootrequestfailure events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfu.rebootRequestFailure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an attempt to issue a reboot request after downloading disk shelf firmware fails, indicating a software error.
+*Corrective Action*::
+Retry the (advanced privilege) "storage shelf firmware update" command.
+*Syslog Message*::
+Could not issue the request to reboot disk shelf %s.shelf%d module %s.
+*Parameters*::
+*channelName* (STRING): Name of the adapter port or switch port of the disk shelf to be rebooted.
+*shelfId* (INT): ID of the disk shelf to be rebooted.
+*module* (STRING): Module to be rebooted.

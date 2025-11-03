@@ -1,0 +1,655 @@
+---
+sidebar: sidebar
+permalink: nvmem-battery-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvmem.battery events
+---
+
+= nvmem.battery events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvmem.battery.capacity.low
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVMEM battery lacks the capacity to preserve the NVMEM contents for the required minimum of 72 hours. The system is at the risk of data loss if the power fails. This message repeats every hour while the problem continues and the system shuts down in 24 hours if automatic recharging of the battery does not restore its charge.
+*Corrective Action*::
+Correct any environmental problems, such as chassis over- temperature. The battery charges automatically. If the capacity is not restored in several hours, replace the battery pack. If the problem persists, replace the controller module.
+*Syslog Message*::
+The NVMEM battery lacks the capacity to preserve the NVMEM contents.
+*Parameters*::
+(None).
+
+== nvmem.battery.capacity.low.warn
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the NVMEM battery capacity is below normal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVMEM battery capacity is below normal.
+*Parameters*::
+(None).
+
+== nvmem.battery.capacity.normal
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the NVMEM battery capacity is normal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVMEM battery capacity is normal.
+*Parameters*::
+(None).
+
+== nvmem.battery.capLow
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the NVMEM battery capacity is low. To prevent data loss, the system schedules a clean shutdown if the problem is not corrected.
+*Corrective Action*::
+Correct any environmental problems, such as chassis overheating. The battery charges automatically. If the capacity is not restored automatically within 30 minutes after the system is powered on, replace the NVMEM battery. If the problem persists, replace the controller module.
+*Syslog Message*::
+The NVMEM battery capacity is low (%s).
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+
+== nvmem.battery.capLowCrit
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVMEM battery capacity is critically low. If this issue is not resolved within the specified time, the system shuts down to prevent data loss.
+*Corrective Action*::
+Correct any environmental problems, such as overheating. The battery charges automatically. If the capacity is not restored automatically within 30 minutes after the system is powered on, replace the NVMEM battery. If the problem persists, replace the controller module.
+*Syslog Message*::
+The NVMEM battery capacity is critically low (%s). To prevent data loss, the system will shut down in %d minutes.
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+*num_minutes* (INT): Number of minutes until the system shuts down.
+
+== nvmem.battery.capLowWarn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the NVMEM battery capacity is below normal.
+*Corrective Action*::
+Correct any environmental problems, such as overheating. The battery charges automatically. If the capacity is not restored automatically within 30 minutes after the system is powered on, replace the NVMEM battery within three months. If the problem persists, replace the controller module.
+*Syslog Message*::
+The NVMEM battery capacity is below normal (%s).
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+
+== nvmem.battery.capNormal
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NVMEM battery capacity is normal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVMEM battery capacity is normal.
+*Parameters*::
+(None).
+
+== nvmem.battery.chgrFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the NVMEM battery charger is disabled because a bad charger circuit is detected. The system continues to run as normal but the NVMEM battery does not start charging when it falls below a certain capacity.
+*Corrective Action*::
+Contact NetApp technical support for assistance to replace the circuit at the next available maintenance window.
+*Syslog Message*::
+The NVMEM battery charger is disabled because a bad charger circuit is detected.
+*Parameters*::
+(None).
+
+== nvmem.battery.current.high
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVMEM battery current is excessively high and the system will shut down.
+*Corrective Action*::
+First, correct any environmental problems, such as chassis over- temperature. If the NVMEM battery current is still too high, replace the battery pack. If the problem persists, replace the controller module.
+*Syslog Message*::
+The NVMEM battery current is excessively high and the system will shut down.
+*Parameters*::
+(None).
+
+== nvmem.battery.current.high.warn
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the NVMEM battery current is above normal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVMEM battery current is above normal.
+*Parameters*::
+(None).
+
+== nvmem.battery.current.normal
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the NVMEM battery current is normal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVMEM battery current is normal.
+*Parameters*::
+(None).
+
+== nvmem.battery.currentHigh
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVMEM battery charging current is critically high. If this issue is not resolved within the specified time, the system shuts down to prevent data loss.
+*Corrective Action*::
+Replace the NVMEM battery. If the problem persists, replace the controller module.
+*Syslog Message*::
+The NVMEM battery current is critically high (%s). To prevent data loss, the system will shut down in %d minutes.
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+*num_minutes* (INT): Number of minutes until the system shuts down.
+
+== nvmem.battery.currentHiWarn
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the NVMEM battery charging current is above normal. If this issue is not resolved within the specified time, the system shuts down to prevent data loss.
+*Corrective Action*::
+Replace the NVMEM battery. If the problem persists, replace the controller module.
+*Syslog Message*::
+The NVMEM battery current is above normal (%s). To prevent data loss, the system will shut down %s.
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+*countdown* (STRING): Remaining time before chassis shutdown.
+
+== nvmem.battery.currentLow
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVMEM battery detects a short circuit. If this issue is not resolved within the specified time, the system shuts down to prevent data loss.
+*Corrective Action*::
+Replace the controller module.
+*Syslog Message*::
+The NVMEM battery has a short circuit (%s). To prevent data loss, the system will shut down in %d minutes.
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+*num_minutes* (INT): Number of minutes until the system shuts down.
+
+== nvmem.battery.currentLowWarn
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the NVMEM battery is discharging when it should not. If this issue is not resolved within the specified time, the system shuts down to prevent data loss.
+*Corrective Action*::
+Replace the NVMEM battery. If the problem persists, replace the controller module.
+*Syslog Message*::
+The NVMEM battery current is below normal (%s). To prevent data loss, the system will shut down %s.
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+*countdown* (STRING): Remaining time before chassis shutdown.
+
+== nvmem.battery.discFET.normal
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NVMEM battery discharge field-effect transistor (FET) is on.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVMEM battery discharge FET is on.
+*Parameters*::
+(None).
+
+== nvmem.battery.discFET.off
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVMEM battery discharge field-effect transistor (FET) is off. To prevent data loss, the system shuts down.
+*Corrective Action*::
+Shut down the system and power-cycle the controller. If the discharge FET remains off, replace the NVMEM battery. If the problem persists, replace the controller module.
+*Syslog Message*::
+The NVMEM battery discharge FET is off. To prevent data loss, the system will shut down in %d minutes.
+*Parameters*::
+*num_minutes* (INT): Number of minutes until the system shuts down.
+
+== nvmem.battery.end_of_life.high
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the NVMEM battery-cycle count indicates that the battery has reached its anticipated life expectancy.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVMEM battery has reached its anticipated life expectancy.
+*Parameters*::
+(None).
+
+== nvmem.battery.end_of_life.high.warn
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the NVMEM battery-cycle count indicates that the battery is nearing its anticipated life expectancy.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVMEM battery is nearing its anticipated life expectancy.
+*Parameters*::
+(None).
+
+== nvmem.battery.end_of_life.normal
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the NVMEM battery-cycle count indicates that the battery is well below its anticipated life expectancy.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVMEM battery is well below its anticipated life expectancy.
+*Parameters*::
+(None).
+
+== nvmem.battery.fccLow
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the NVMEM battery full-charge capacity is low. If this issue is not resolved within the specified time, the system shuts down to prevent data loss.
+*Corrective Action*::
+Use the "system battery show" SP CLI command to get the battery manufactured date. If the battery is newer than three years old, correct any chronic environmental problems, such as overheating. If the full-charge capacity is still below normal, contact technical support for assistance with replacement of the NVMEM battery. If the problem persists, replace the controller module.
+*Syslog Message*::
+The NVMEM battery full-charge capacity is low (%s). To prevent data loss, the system will shut down %s.
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+*countdown* (STRING): Remaining time before chassis shutdown.
+
+== nvmem.battery.fccLowCrit
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVMEM battery full-charge capacity is critically low. If this issue is not resolved within the specified time, the system shuts down to prevent data loss.
+*Corrective Action*::
+Use the "system battery show" SP CLI command to get the battery manufactured date. If the battery is newer than three years old, correct any chronic environmental problems, such as overheating. If the full-charge capacity is still below normal, contact technical support for assistance with replacement of the NVMEM battery. If the problem persists, replace the controller module.
+*Syslog Message*::
+The NVMEM battery full-charge capacity is critically low (%s). To prevent data loss, the system will shut down in %d minutes.
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+*num_minutes* (INT): Number of minutes until the system shuts down.
+
+== nvmem.battery.fccLowWarn
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the NVMEM battery full-charge capacity is below normal.
+*Corrective Action*::
+Use the "system battery show" SP CLI command to get the battery manufactured date. If the battery is newer than three years old, correct any chronic environmental problems, such as overheating. If the full-charge capacity is still below normal, contact technical support for assistance with replacement of the NVMEM battery. If the problem persists, replace the controller module.
+*Syslog Message*::
+The NVMEM battery full-charge capacity is below normal (%s).
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+
+== nvmem.battery.fccNormal
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NVMEM battery full-charge capacity is normal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVMEM battery full-charge capacity is normal.
+*Parameters*::
+(None).
+
+== nvmem.battery.FET.normal
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NVMEM battery charge field-effect transistor (FET) is on.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVMEM battery charge FET is on.
+*Parameters*::
+(None).
+
+== nvmem.battery.FET.off
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the NVMEM battery charge field-effect transistor (FET) is off. If this issue is not resolved within the specified time, the system shuts down to prevent data loss.
+*Corrective Action*::
+Shut down the system and power-cycle the controller. If the charge FET remains off, replace the NVMEM battery. If the problem persists, replace the controller module.
+*Syslog Message*::
+The NVMEM battery charge FET is off. To prevent data loss, the system will shut down %s.
+*Parameters*::
+*countdown* (STRING): Remaining time before chassis shutdown.
+
+== nvmem.battery.noCharge
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the NVMEM battery requests a charge but does not receive it. If this issue is not resolved within the specified time, the system shuts down to prevent data loss.
+*Corrective Action*::
+Pull the controller from the slot and ensure that the NVMEM battery connector is seated properly. If the problem occurs again, replace the NVMEM battery. If the problem persists, replace the controller module.
+*Syslog Message*::
+The NVMEM battery is requesting to be charged but the charger is not charging the battery. To prevent data loss, the system will shut down %s.
+*Parameters*::
+*countdown* (STRING): Remaining time before chassis shutdown.
+
+== nvmem.battery.normalCharge
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NVMEM battery charging status is normal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVMEM battery charging status is normal.
+*Parameters*::
+(None).
+
+== nvmem.battery.notPresent
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the NVMEM battery is not present. To prevent data loss, the system shuts down.
+*Corrective Action*::
+While the system is shut down, pull the controller from the slot and ensure that the NVMEM battery is present. If the NVMEM battery is already present, ensure that the connector is seated properly. Push the controller back in and power on the system. If this does not correct the problem, replace the NVMEM battery. If the system still does not detect the battery, replace the controller module.
+*Syslog Message*::
+The NVMEM battery is not present. To prevent data loss, the system will shut down in %d minutes.
+*Parameters*::
+*num_minutes* (INT): Number of minutes until the system shuts down.
+
+== nvmem.battery.packInvalid
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when an unsupported NVMEM battery pack is installed in the system. To prevent data loss, the system initiates a clean shutdown if the problem is not corrected.
+*Corrective Action*::
+Shut down the system and replace the NVMEM battery with a correct battery pack.
+*Syslog Message*::
+The incorrect NVMEM battery is installed. Expected part number is %s. To prevent data loss, the system will shut down in %d minutes.
+*Parameters*::
+*partnum* (STRING): Valid battery part number.
+*num_minutes* (INT): Number of minutes until the system shuts down.
+
+== nvmem.battery.packInvalidHrs
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when an unsupported NVMEM battery pack is installed in the system. To prevent data loss, the system initiates a clean shutdown if the problem is not corrected.
+*Corrective Action*::
+Shut down the system and replace the NVMEM battery with a correct battery pack.
+*Syslog Message*::
+The incorrect NVMEM battery is installed. Expected part number is %s. To prevent data loss, the system will shut down in %s.
+*Parameters*::
+*partnum* (STRING): Valid battery part number.
+*remaining_time* (STRING): Number of hours until the system shuts down.
+
+== nvmem.battery.packValid
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a valid NVMEM battery pack is present and readable.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A valid NVMEM battery pack is present.
+*Parameters*::
+(None).
+
+== nvmem.battery.powerFault
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVMEM battery is not receiving power. If this issue is not resolved within the specified time, the system shuts down to prevent data loss.
+*Corrective Action*::
+Pull the controller from the slot and ensure that the NVMEM battery connector is seated properly. Push the controller back in and boot the system. If the NVMEM battery is still not receiving power, replace the NVMEM battery. If the problem persists, replace the controller module.
+*Syslog Message*::
+The NVMEM battery is not receiving power. To prevent data loss, the system will shut down in %d minutes.
+*Parameters*::
+*num_minutes* (INT): Number of minutes until the system shuts down.
+
+== nvmem.battery.powerNormal
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NVMEM battery power is normal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVMEM battery power is normal.
+*Parameters*::
+(None).
+
+== nvmem.battery.sensor.unread
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the battery state of the battery-backed memory (NVMEM) is unknown. One of the battery sensors is not readable.
+*Corrective Action*::
+Shut down the system and power-cycle the controller module. If the problem is not corrected, replace the battery. If the sensor is still not readable, replace the controller module.
+*Syslog Message*::
+The battery state of the battery-backed memory (NVMEM) is unknown. Sensor "%s" is not readable.
+*Parameters*::
+*sensor_name* (STRING): Sensor name.
+
+== nvmem.battery.temp.high
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVMEM battery is too hot and the system is at a high risk of data loss if power fails. The system will shut down.
+*Corrective Action*::
+If the system is excessively warm, allow it to cool gradually. If the NVMEM battery temperature reading is still too high, replace the battery pack. If the problem persists, replace the controller module.
+*Syslog Message*::
+The NVMEM battery is too hot and the system is at a high risk of data loss if power fails. The system will shut down to prevent data loss.
+*Parameters*::
+(None).
+
+== nvmem.battery.temp.high.warn
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the NVMEM battery temperature high.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVMEM battery temperature is high.
+*Parameters*::
+(None).
+
+== nvmem.battery.temp.low
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the NVMEM battery is too cold and the system is at a high risk of data loss if power fails.
+*Corrective Action*::
+If the system is excessively cold, allow it to warm gradually. If the NVMEM battery temperature reading is still too low, replace the battery pack. If the problem persists, replace the controller module.
+*Syslog Message*::
+The NVMEM battery is too cold and the system is at a high risk of data loss if power fails.
+*Parameters*::
+(None).
+
+== nvmem.battery.temp.low.warn
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the NVMEM battery temperature is low.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVMEM battery temperature is low.
+*Parameters*::
+(None).
+
+== nvmem.battery.temp.normal
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the NVMEM battery temperature is normal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVMEM battery temperature is normal.
+*Parameters*::
+(None).
+
+== nvmem.battery.tempHigh
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVMEM battery temperature is critically high. If this issue is not resolved within the specified time, the system shuts down to prevent data loss.
+*Corrective Action*::
+Correct any environmental problems, such as an overheating. If the NVMEM battery temperature is still above normal, replace the NVMEM battery. If the problem persists, replace the controller module.
+*Syslog Message*::
+The NVMEM battery temperature is critically high (%s). To prevent data loss, the system will shut down in %d minutes.
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+*num_minutes* (INT): Number of minutes until the system shuts down.
+
+== nvmem.battery.tempLow
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the NVMEM battery is too cold. If this issue is not resolved within the specified time, the system shuts down to prevent data loss.
+*Corrective Action*::
+If the system is excessively cold, allow it to warm gradually. If the NVMEM battery temperature is still too low, replace the NVMEM battery. If the problem persists, replace the controller module.
+*Syslog Message*::
+The NVMEM battery is too cold (%s). To prevent data loss, the system will shut down %s.
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+*countdown* (STRING): Remaining time before chassis shutdown.
+
+== nvmem.battery.unread
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVMEM battery state cannot be determined because the sensor is unreadable. If this issue is not resolved within the specified time, the system shuts down to prevent data loss.
+*Corrective Action*::
+Pull the controller from the slot and ensure that the NVMEM battery connector is seated properly. If the problem is not corrected, replace the NVMEM battery. If the sensor is still not readable, replace the controller module.
+*Syslog Message*::
+The NVMEM battery state cannot be determined because the '%s' sensor is unreadable. To prevent data loss, the system will shut down in %d minutes.
+*Parameters*::
+*sensor_name* (STRING): Sensor name.
+*num_minutes* (INT): Number of minutes until the system shuts down.
+
+== nvmem.battery.unreadHrs
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVMEM battery state cannot be determined because the sensor is unreadable. If this issue is not resolved within the specified time, the system shuts down to prevent data loss.
+*Corrective Action*::
+Pull the controller from the slot and ensure that the NVMEM battery connector is seated properly. If the problem is not corrected, replace the NVMEM battery. If the sensor is still not readable, replace the controller module.
+*Syslog Message*::
+The NVMEM battery state cannot be determined because the '%s' sensor is unreadable. To prevent data loss, the system will shut down in %s.
+*Parameters*::
+*sensor_name* (STRING): Sensor name.
+*remaining_time* (STRING): Remaining time before chassis shutdown.
+
+== nvmem.battery.voltage.high
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVMEM battery voltage is excessively high and the system will shut down.
+*Corrective Action*::
+First, correct any environmental problems, such as chassis over- temperature. If the NVMEM battery voltage is still too high, replace the battery pack. If the problem persists, replace the controller module.
+*Syslog Message*::
+The NVMEM battery voltage is excessively high and the system will shut down.
+*Parameters*::
+(None).
+
+== nvmem.battery.voltage.high.warn
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the NVMEM battery voltage is above normal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVMEM battery voltage is above normal.
+*Parameters*::
+(None).
+
+== nvmem.battery.voltage.normal
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the NVMEM battery voltage is normal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVMEM battery voltage is normal.
+*Parameters*::
+(None).
+
+== nvmem.battery.voltageHigh
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVMEM battery voltage is critically high. If this issue is not resolved within the specified time, the system shuts down to prevent data loss.
+*Corrective Action*::
+Replace the NVMEM battery. If the problem persists, replace the controller module.
+*Syslog Message*::
+The NVMEM battery voltage is critically high (%s). To prevent data loss, the system will shut down in %d minutes.
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+*num_minutes* (INT): Number of minutes until the system shuts down.
+
+== nvmem.battery.voltageHiWarn
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the NVMEM battery voltage is above normal. If this issue is not resolved within the specified time, the system shuts down to prevent data loss.
+*Corrective Action*::
+Correct any environmental problems, such as overheating. If the NVMEM battery voltage is still above normal, replace the NVMEM battery. If the problem persists, replace the controller module.
+*Syslog Message*::
+The NVMEM battery voltage is above normal (%s). To prevent data loss, the system will shut down %s.
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+*countdown* (STRING): Remaining time before chassis shutdown.
+
+== nvmem.battery.voltageLow
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVMEM battery voltage is critically low. If this issue is not resolved within the specified time, the system shuts down to prevent data loss.
+*Corrective Action*::
+Correct any environmental problems, such as overheating. If the NVMEM battery voltage is still critically low, replace the NVMEM battery. If the problem persists, replace the controller module.
+*Syslog Message*::
+The NVMEM battery voltage is critically low (%s). To prevent data loss, the system will shut down in %d minutes.
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+*num_minutes* (INT): Number of minutes until the system shuts down.
+
+== nvmem.battery.voltageLowWarn
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the NVMEM battery voltage is below normal. To prevent data loss, the system schedules a clean shutdown if the problem is not corrected.
+*Corrective Action*::
+Correct any environmental problems, such as overheating. If the NVMEM battery voltage is still below normal 30 minutes after environmental problems have been corrected, replace the NVMEM battery. If the problem persists, replace the controller module.
+*Syslog Message*::
+The NVMEM battery voltage is below normal (%s).
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+
+== nvmem.battery.wrongCharge
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the NVMEM battery charger charges the battery without a request to do so. If this issue is not resolved within the specified time, the system shuts down to prevent data loss.
+*Corrective Action*::
+Replace the NVMEM battery. If the problem persists, replace the controller module.
+*Syslog Message*::
+The NVMEM battery charger is charging the battery even though the battery is not requesting to be charged. To prevent data loss, the system will shut down %s.
+*Parameters*::
+*countdown* (STRING): Remaining time before chassis shutdown.

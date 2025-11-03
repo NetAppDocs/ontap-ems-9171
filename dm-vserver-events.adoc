@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: dm-vserver-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dm.vserver events
+---
+
+= dm.vserver events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dm.vserver.mcc.rebaselinefailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when resynchronization of the Vserver configuration failed in a MetroCluster(tm) configuration.
+*Corrective Action*::
+Use the "metrocluster vserver resync" command to resynchronize the Vserver configuration.
+*Syslog Message*::
+Vserver configuration resynchronization failed for Vserver %s.
+*Parameters*::
+*vserver* (STRING): Name of the Vserver whose configuration is being replicated.
+
+== dm.vserver.sm.rebaselinefailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when resynchronization of the Vserver configuration failed in a Vserver DR relationship.
+*Corrective Action*::
+Use the "snapmirror resync" command to resynchronize the Vserver configuration.
+*Syslog Message*::
+Vserver configuration resynchronization failed for Vserver %s.
+*Parameters*::
+*vserver* (STRING): Name of the Vserver whose configuration is being replicated.
+
+== dm.vserver.unlockfailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when unlocking the Vserver failed after resynchronization of the Vserver configuration in a MetroCluster(tm) configuration or Vserver DR setup. Management operations on this Vserver will fail, until an unlock operation is done by the admin manually.
+*Corrective Action*::
+Use the "vserver unlock -force true" command at diagnostic privilege to manually unlock the Vserver.
+*Syslog Message*::
+Vserver unlock failed for Vserver %s.
+*Parameters*::
+*vserver* (STRING): Name of the Vserver whose unlock operation failed.

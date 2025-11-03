@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: diskown-ownerchangefailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.ownerchangefailed events
+---
+
+= diskown.ownerchangefailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.ownerChangeFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk ownership change request fails.
+*Corrective Action*::
+Verify that there are no disk connectivity issues, that disks are not in a failed state, and that the procedures for executing the "storage disk assign" command are being followed.
+*Syslog Message*::
+Disk ownership change request failed on disk %s (S/N %s). Reason: %s.
+*Parameters*::
+*diskname* (STRING): Name of the disk.
+*serialno* (STRING): Serial number of the disk.
+*status* (STRING): Description of the error in the ownership change request.
+*thread* (STRING): Name of the thread that issued the ownership change request.
+*APIname* (STRING): Name of the API that issued the ownership change request.

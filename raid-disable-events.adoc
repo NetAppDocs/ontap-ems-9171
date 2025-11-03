@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: raid-disable-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.disable events
+---
+
+= raid.disable events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.disable.remote.nvlog
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when RAID sub system disables recording in the partner's NVRAM entries for the log based file system.
+*Corrective Action*::
+Need to replace NVRAM if observed repeatedly during different boot-ups.
+*Syslog Message*::
+Disabled Remote NVRAM logging.
+*Parameters*::
+(None).

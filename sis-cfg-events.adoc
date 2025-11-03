@@ -1,0 +1,57 @@
+---
+sidebar: sidebar
+permalink: sis-cfg-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.cfg events
+---
+
+= sis.cfg events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.cfg.deleted
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the configuration file for a Single Instance Storage (SIS) volume is deleted. This leads to the loss of deduplication configuration for the volume and statistics of deduplication operations.
+*Corrective Action*::
+Remount the volume, enable deduplication using the "sis on" command, configure the volume using the "sis config" command, and then run the "sis start -s -m" command to start building deduplication metadata.
+*Syslog Message*::
+SIS configuration for volume %s%s was deleted: %s. Remount the volume, then enable SIS and reconfigure the volume to resume deduplication.
+*Parameters*::
+*path* (STRING): Path to a SIS volume.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*reason* (STRING): Reason for deletion.
+
+== sis.cfg.invalidEntry
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a SIS volume operation found an invalid configuration for the volume.
+*Corrective Action*::
+Automatically checks and creates default configuration after detection. Please use 'sis' command to change default settings.
+*Syslog Message*::
+SIS volume configuration: found invalid SIS configuration file %s%s: %s
+*Parameters*::
+*path* (STRING): Path to a SIS volume
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*reason* (STRING): Reason why SIS operation considered it as wrong.
+
+== sis.cfg.setFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Single Instance Storage (SIS) volume operation fails to write in the configuration file. This might lead to incorrect reporting of statistics. If the error occured during a Data ONTAP(R) version upgrade, it might also lead to the upgraded configuration not being loaded. The volume might not appear in the 'sis status' command output as a result. Also, the system might not allow changing the configuration for that volume.
+*Corrective Action*::
+Ensure that space is available in the indicated volume. If this error occured during a Data ONTAP version upgrade and the volume does not appear in the 'sis status' command output, remount the volume after correcting the underlying condition. If enough space is available, start wafliron on the aggregate containing the indicated flexible volume.
+*Syslog Message*::
+Saving SIS volume configuration for volume %s%s : %s
+*Parameters*::
+*path* (STRING): Path to the SIS volume.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*reason* (STRING): Reason for the failure.

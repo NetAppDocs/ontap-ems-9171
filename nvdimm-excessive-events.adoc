@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: nvdimm-excessive-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvdimm.excessive events
+---
+
+= nvdimm.excessive events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvdimm.excessive.cecc.errs
+*Severity*::
+ALERT
+*Description*::
+This message occurs when excessive correctable error-correcting code (ECC) memory errors are reported by the NVDIMM controller.
+*Corrective Action*::
+Use the "system environment sensors show -hidden true" clustershell command to view the current "NV Correctable ECC Count" value. Contact NetApp technical support for further assistance.
+*Syslog Message*::
+Excessive correctable ECC errors in the NVDIMM in slot-%d. Count: %d.
+*Parameters*::
+*slot* (INT): NVDIMM slot location.
+*count* (INT): CECC count.

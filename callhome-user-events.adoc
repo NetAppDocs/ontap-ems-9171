@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-user-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.user events
+---
+
+= callhome.user events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.user.snmp.trap
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a SNMP (Simple Network Management Protocol) has been configured to cause an SNMP trap. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for SNMP USER DEFINED TRAP
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

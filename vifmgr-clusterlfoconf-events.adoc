@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: vifmgr-clusterlfoconf-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.clusterlfoconf events
+---
+
+= vifmgr.clusterlfoconf events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.clusterLFOConf
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the failover policy and failover group for a cluster LIF are restored to their default values. It is necessary to restore the default values for these settings to ensure non-disruptive operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Setting failover settings for cluster LIF %s to avoid disruption.
+*Parameters*::
+*LIF* (STRING): Name of the Cluster LIF that was modified.

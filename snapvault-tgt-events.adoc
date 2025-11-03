@@ -1,0 +1,81 @@
+---
+sidebar: sidebar
+permalink: snapvault-tgt-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapvault.tgt events
+---
+
+= snapvault.tgt events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapvault.tgt.dupCoalesced
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when SnapVault(R) detects more than one coalesced snapshot of a specific type in a SnapVault secondary volume. SnapVault attempts to repair this condition.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Detected multiple coalesced %s snapshots in volume %s.
+*Parameters*::
+*snaptype* (STRING): Type of coalesced snapshot that has duplicates.
+*volume* (STRING): Name of the SnapVault secondary volume on which the target was invoked.
+
+== snapvault.tgt.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapVault(R) snapshot target fails, either because it could not start or because it encountered an error while processing. The target could have been scheduled or manually invoked (through the 'snapvault snap create' command or programmatic interfaces).
+*Corrective Action*::
+The corrective action depends on the cited reason regarding why the snapshot target could not start or why it failed. After you correct the situation, invoke the snapshot target again, or wait for the next scheduled invocation. If the volume could not be found, make sure that it is online, check the spelling of the volume name, and correct the SnapVault snapshot schedule if it is misspelled. If the target could not start due to a temporary lack of resources (such as threads or memory), no corrective action might be necessary, because SnapVault periodically retries the operation. If the problem persists, you might need to schedule SnapVault and/or other services to run less frequently. If the target could not create a snapshot, or could not create or write either data or metadata to the volume, check whether the volume has any available space, inodes, and snapshots. If any of these have been exhausted, free some up for SnapVault use. If the target didn't run because it is not a create target, install a SnapVault secondary license or unconfigure the target. If the target didn't run because some other service is actively using the volume and would interfere with SnapVault, either stop that service or wait for it to be completed.
+*Syslog Message*::
+Could not create snapshot target "%s" on volume %s: %s.
+*Parameters*::
+*snapname* (STRING): Base name of the snapshot that the target was meant to create.
+*volume* (STRING): Name of the SnapVault secondary volume on which the target was invoked.
+*reason* (STRING): Reason why the target could not start, or the specific error encountered during processing.
+
+== snapvault.tgt.NBUfailure
+*Severity*::
+ERROR
+*Description*::
+This event occurs when a snapshot creation on the destination volume used to back up primary qtrees using SnapVault(tm) managed by VERITAS(R) NetBackup(R) fails. Because the snapshot creation failure also causes the NetBackup backup request to fail, this is considered an error. This failure occurs when the number of snapshots in the volume exceeds the maximum limit, there is insufficient disk space in the destination volume, or the destination volume is offline or restricted.
+*Corrective Action*::
+Use the 'snap list volname' command to list the snapshots in the volume and to see whether there are close to 255 snapshots (the maximum). Use the 'df -k' command to check the amount of disk space available in the volume. If either of these conditions is the cause of the failure, contact the NetBackup Administrator and ask for some old backups stored on this volume to be deleted. This results in both the number of snapshots being reduced and disk space getting freed. Also check the status of the volume by using the 'vol status' command to confirm that the volume is offline or restricted. If it is, use the 'vol online volname' command to bring the volume online.
+*Syslog Message*::
+SnapVault snapshot creation for volume (%s) failed.
+*Parameters*::
+*volume* (STRING): The name of the destination volume for which the snapshot creation failed.
+
+== snapvault.tgt.qtreeIgnore
+*Severity*::
+ERROR
+*Description*::
+This message occurs when SnapVault(R) intentionally ignores a configuration entry for a secondary qtree. After ignoring it once, SnapVault continues ignoring the qtree (silently) until you update the qtree manually, until you restart the SnapVault service, or until the next boot.
+*Corrective Action*::
+The corrective action depends on the cited reason regarding why the qtree configuration was ignored. Frequently, the qtree simply doesn't exist, in which case the configuration entry is stale and should be removed (through the 'snapvault stop' command). If the qtree was ignored due to some transient reason, you need to manually update the qtree, or disabled and reenable SnapVault to begin operating on the qtree again.
+*Syslog Message*::
+Ignoring configuration entry for %s in volume %s: %s.
+*Parameters*::
+*qtpath* (STRING): Path to the qtree whose configuration entry was ignored.
+*volume* (STRING): Name of the SnapVault secondary volume with the ignored configuration entry.
+*reason* (STRING): Reason why the qtree configuration was ignored.
+
+== snapvault.tgt.unstableSnap
+*Severity*::
+ERROR
+*Description*::
+This message occurs when SnapVault(R) detects a coalesced snapshot with transitioning qtree replicas. If this event occurs, it suggests that archive snapshots might have captured some SnapVault secondary qtrees in a transitioning state, which you can verify by running the 'snap list -q' command. SnapVault attempts to recover from this situation, but that only affects new archive snapshots created after the event, and not any existing snapshots.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Recovery detected %s snapshot with transitioning qtrees in volume %s.
+*Parameters*::
+*snaptype* (STRING): Type of coalesced snapshot that contains transitioning SnapVault qtree replicas.
+*volume* (STRING): Name of the SnapVault secondary volume on which the target was invoked.

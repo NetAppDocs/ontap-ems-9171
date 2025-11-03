@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: callhome-hba-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.hba events
+---
+
+= callhome.hba events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.hba.failed
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a HBA port is taken offline due to read-after-write verification errors. This AutoSupport message and associated EMS messages are issued once for a given port. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Hardware components might need to be replaced. Contact NetApp technical support for assistance.
+*Syslog Message*::
+Call home for %s. Keep the adapter offline and contact NetApp technical support for assistance.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*adapterName* (STRING): Name of the adapter.

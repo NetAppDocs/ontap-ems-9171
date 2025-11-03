@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: telnet-enabled-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: telnet.enabled events
+---
+
+= telnet.enabled events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== telnet.enabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when telnet is enabled in the cluster using the (privilege: advanced) "security protocol" command.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Insecure protocol service telnet has been enabled in the cluster.
+*Parameters*::
+(None).

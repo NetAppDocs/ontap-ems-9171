@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cloud-secddnserror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cloud.secddnserror events
+---
+
+= cloud.secddnserror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cloud.SecdDNSError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when this ONTAP Cloud instance fails to communicate with DNS/SECD for the cloud database endpoint.
+*Corrective Action*::
+Verify that DNS/SECD is set up correctly on this ONTAP Cloud instance and fix it if not.
+*Syslog Message*::
+This ONTAP Cloud instance fails to communicate with DNS/SECD for the cloud database endpoint "%s".
+*Parameters*::
+*db_endpoint* (STRING): Name of the cloud database endpoint associated with this ONTAP Cloud instance.

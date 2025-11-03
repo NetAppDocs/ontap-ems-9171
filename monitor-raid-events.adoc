@@ -1,0 +1,54 @@
+---
+sidebar: sidebar
+permalink: monitor-raid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.raid events
+---
+
+= monitor.raid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.raid.brokenDisk
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the monitor detects a broken disk.
+*Corrective Action*::
+Replace the disk.
+*Syslog Message*::
+%s in RAID group "%s" %s broken.
+*Parameters*::
+*type* (STRING): Type of disk.
+*rgname* (STRING): Name of the RAID group.
+*verb* (STRING): Description of the broken state.
+
+== monitor.raid.reconstruct
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a RAID reconstruct is initiated.
+*Corrective Action*::
+No user action is required for the reconstruct operation to succeed. Refrain from removing disks from the affected RAID group until reconstruction is completed.
+*Syslog Message*::
+Reconstructing broken %s in RAID group "%s".
+*Parameters*::
+*type* (STRING): Type of disk.
+*rgname* (STRING): RAID group name.
+
+== monitor.raid.reconstruct.susp
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a RAID reconstruction needs to be performed on a RAID group, but reconstruction is suspended or disabled.
+*Corrective Action*::
+Contact NetApp technical support for assistance with reenabling RAID reconstruction.
+*Syslog Message*::
+Reconstruction needs to be performed on RAID group "%s", but RAID reconstruction is suspended or disabled.
+*Parameters*::
+*rgname* (STRING): RAID group name.

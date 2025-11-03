@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: san-mccpurgeverifyfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.mccpurgeverifyfailed events
+---
+
+= san.mccpurgeverifyfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.MCCPurgeVerifyFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs in MetroCluster(TM) configurations on clustered Data ONTAP(R) systems when a SAN cache purge verify operation fails. The corresponding Vservers are not available to take part in the subsequent switchover or switchback operation until the purge verify operation succeeds.
+*Corrective Action*::
+Contact NetApp technical support for assistance in purging the SAN cache.
+*Syslog Message*::
+The following Vservers: %s failed in the SAN cache purge verify operation. Contact NetApp technical support for assistance in purging the SAN cache.
+*Parameters*::
+*vserver* (STRING): List of Vservers that failed the purge verify operation.

@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: lsm-rangedelete-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lsm.rangedelete events
+---
+
+= lsm.rangedelete events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lsm.rangeDelete.problem
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a block store encounters an error while performing a range delete operation. Normally these deletes should recover, but it is important to keep track of exactly when and where the problem happened to help with performance tuning and recovery options.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Block store LSM "%u" (level %u) of keyspace "%u" on volume "%s" has encountered the following error while performing a range delete operation: "%u : %s"
+*Parameters*::
+*lsm_id* (INT): LSM identifier.
+*lsm_level* (INT): LSM level.
+*keyspace_id* (INT): Keyspace identifier.
+*volume_name* (STRING): Volume name.
+*error_code* (INT): Error code.
+*error_string* (STRING): Error string.

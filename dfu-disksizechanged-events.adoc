@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: dfu-disksizechanged-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dfu.disksizechanged events
+---
+
+= dfu.disksizechanged events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dfu.diskSizeChanged
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a size change is detected after a firmware update. This can be either an increase or decrease in physical size of the disk.
+*Corrective Action*::
+The disk might not be usable any longer by the RAID subsystem because of the size change that occurred. If RAID cannot access the disk any longer, it will be failed and should be returned for RMA. If the disk is still accessible, leaving it in the system is perfectly fine.
+*Syslog Message*::
+Disk %s [%s %s %s] S/N [%s] size changed (%x:%x %llx:%llx %llx:%llx %llx:%llx %llx:%llx)
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*vendorName* (STRING): Vendor name of the disk.
+*productId* (STRING): Product ID of the disk.
+*fwVersion* (STRING): Firmware version of the disk.
+*serialno* (STRING): Serial number of the disk.
+*oldSectorSize* (INTHEX): Old sector size of the disk.
+*newSectorSize* (INTHEX): New sector size of the disk.
+*oldLastSector* (LONGINTHEX): Old right-size of the disk.
+*newLastSector* (LONGINTHEX): New right-size of the disk.
+*oldDiskBlocks* (LONGINTHEX): Old right-sized blocks on the disk.
+*newDiskBlocks* (LONGINTHEX): New right-sized blocks on the disk.
+*oldRealLastSector* (LONGINTHEX): Old raw size of the disk.
+*newRealLastSector* (LONGINTHEX): New raw size of the disk.
+*oldRealDiskBlocks* (LONGINTHEX): Old raw blocks on the disk.
+*newRealDiskBlocks* (LONGINTHEX): New raw blocks on the disk.

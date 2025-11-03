@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: download-requestdoneerror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: download.requestdoneerror events
+---
+
+= download.requestdoneerror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== download.requestDoneError
+*Severity*::
+ERROR
+*Description*::
+This event is generated when a user-initiated download did not complete successfully because of a problem. See console log for problem and corrective action.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Operator requested download failed.
+*Parameters*::
+(None).

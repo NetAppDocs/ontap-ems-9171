@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: diskown-replayingownership-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.replayingownership events
+---
+
+= diskown.replayingownership events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.replayingOwnership
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event occurs during a boot or takeover when a disk ownership request is replayed from NVRAM.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Replaying ownership request for %d disks
+*Parameters*::
+*diskcount* (INT): The number of disks in the ownership request
+
+== diskown.replayingOwnership.Nv
+*Severity*::
+ERROR
+*Description*::
+This message occurs during takeover, when a disk ownership request is replayed from NVRAM but NVRAM corruption is detected.
+*Corrective Action*::
+1) If you changed the ownership of disks on the partner in the last five minutes prior to takeover, verify their ownerships were stored by using the "storage disk show" command. 2) If you see this message often or in other modules, the partner's NVRAM card might be faulty and might need to be replaced.
+*Syslog Message*::
+Failed to replay disk ownership because NVRAM corruption was detected.
+*Parameters*::
+(None).

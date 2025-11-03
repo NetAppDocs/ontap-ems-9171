@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: crypto-debug-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: crypto.debug events
+---
+
+= crypto.debug events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== crypto.debug
+*Severity*::
+INFORMATIONAL
+*Description*::
+The Crypto module debug event.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s.
+*Parameters*::
+*debug_string* (STRING): Description of the event being logged.

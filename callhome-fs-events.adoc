@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-fs-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.fs events
+---
+
+= callhome.fs events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.fs.lun.resized
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system has detected that a filesystem logical disk array or LUN (Logical Unit Number) stored raw size no longer matches the reported physical size of the LUN. Resizing of a filesystem gateway LUN is not supported. Only gateway LUNs that are spare (not used in a filesystem) may be resized. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Restore the logical disk array or LUN raw size to the expected file system size that system expects. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for FILESYSTEM LUN RESIZED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

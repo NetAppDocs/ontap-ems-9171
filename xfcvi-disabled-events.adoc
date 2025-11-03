@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: xfcvi-disabled-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: xfcvi.disabled events
+---
+
+= xfcvi.disabled events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== xfcvi.disabled
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the HA interconnect card is disabled by the ic-type environment variable.
+*Corrective Action*::
+Either remove the HA interconnect card from the controller or change the ic-type environment variable.
+*Syslog Message*::
+FC-VI adapter: Port %s has been disabled because of the ic-type environment variable.
+*Parameters*::
+*port* (STRING): xfcvi Interconnect NIC.

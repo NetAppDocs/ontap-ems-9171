@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: dev-path-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dev.path events
+---
+
+= dev.path events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dev.path.inquiry.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system fails to discover the drive.
+*Corrective Action*::
+Use the "disk show -fields vmdisk-target-address" command to get the list of drives that are visible to the system and to verify that the missing drive is connected properly.
+*Syslog Message*::
+Failed to discover drive (device name:%s%d).
+*Parameters*::
+*periph_name* (STRING): Drive name.
+*unit_no* (INT): Drive unit number.

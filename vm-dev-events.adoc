@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: vm-dev-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vm.dev events
+---
+
+= vm.dev events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vm.dev.diskSlowIO
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) is running on a virtual platform, and slow I/O is detected.
+*Corrective Action*::
+Collect virtual platform logs and trigger a performance archive AutoSupport(R) messsage with the "autosupport invoke-performance-archive" command, and then contact NetApp technical support for troubleshooting assistance.
+*Syslog Message*::
+The %s request on disk %s took %u seconds (data size %u bytes, threshold %u seconds).
+*Parameters*::
+*op* (STRING): Read/write operation.
+*disk* (STRING): Disk name.
+*secUsed* (INT): Seconds the I/O spent.
+*size* (INT): Data size.
+*secLimit* (INT): Threshold in seconds that triggers the warning.
+
+== vm.dev.writeprotected
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) software is running on a virtual platform, and a write-protected device is detected. The device is not presented to ONTAP.
+*Corrective Action*::
+Detach the device, and then reattach the device as writable.
+*Syslog Message*::
+The device %s is write-protected and is not presented to ONTAP.
+*Parameters*::
+*device* (STRING): Device name.

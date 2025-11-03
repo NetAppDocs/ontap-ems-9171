@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: xfcvi-initfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: xfcvi.initfailed events
+---
+
+= xfcvi.initfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== xfcvi.initFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the driver fails to initialize a FC-VI port.
+*Corrective Action*::
+Reboot the controller. Contact NetApp technical support if the problem persists.
+*Syslog Message*::
+FC-VI adapter: %s failed for port %s.
+*Parameters*::
+*operation* (STRING): Type of operation
+*port* (STRING): xfcvi Interconnect NIC.

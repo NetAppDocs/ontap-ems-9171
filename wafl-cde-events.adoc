@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: wafl-cde-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.cde events
+---
+
+= wafl.cde events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.cde.decompression.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the WAFL(R) kernel cannot decompress a compressed user data block. This is an abnormal condition that can lead to inconsistencies in the user data.
+*Corrective Action*::
+Contact Contact NetApp technical support. for assistance.
+*Syslog Message*::
+Failed to decompress a block on volume "%s" (vvbn=%llu pvbn=%llu). Details: %s.
+*Parameters*::
+*vol* (STRING): Volume name.
+*vvbn* (LONGINT): Virtual volume block number for which decompression failed.
+*pvbn* (LONGINT): Physical volume block number for which decompression failed.
+*details* (STRING): Additional information.

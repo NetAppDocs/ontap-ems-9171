@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: disk-writeverifyerror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.writeverifyerror events
+---
+
+= disk.writeverifyerror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.writeVerifyError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a write verify error occurs.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WRITE VERIFY on disk %s received an unexpected status %d.
+*Parameters*::
+*diskName* (STRING): Name of the device.
+*error* (INT): Returned error code

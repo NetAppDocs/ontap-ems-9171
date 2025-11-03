@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: ctrl-link-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ctrl.link events
+---
+
+= ctrl.link events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ctrl.link.degraded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the software detects either symbol errors or out-of-sequence errors on HA interconnect links.
+*Corrective Action*::
+If possible, replace the degraded interconnect cables and reenable automatic switchover by using the "options -option-name rdma.link_monitor -option-value on" command. If the problem persists after replacing both interconnect cables, replace the interconnect hardware on both nodes.
+*Syslog Message*::
+Link errors detected on card in slot %d. Number of symbol errors (Port1:Port2): %d:%d; Number of OOS errors(RQ:SQ): %d:%d.
+*Parameters*::
+*slot* (INT): Slot number of the HA Interconnect device.
+*sym_err1* (INT): Symbol errors on the first port.
+*sym_err2* (INT): Symbol errors on the second port.
+*rq_oos* (INT): Out-of-sequence errors on the receive queue.
+*sq_oos* (INT): Out-of-sequence errors on the send queue.
+
+== ctrl.link.switchover
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the software initiates a switchover of the active interconnect link, which has been declared degraded.
+*Corrective Action*::
+If possible, replace the degraded interconnect cable and reenable the automatic switchover by using the "options -option-name rdma.link_monitor -option-value on" command. If the problem persists after replacing both the interconnect cables, replace the interconnect hardware on both nodes.
+*Syslog Message*::
+Link switchover initiated to switch active interconnect link %s.
+*Parameters*::
+*degraded_port_name* (STRING): Port name of the degraded link that is being switched from.

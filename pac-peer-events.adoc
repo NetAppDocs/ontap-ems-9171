@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: pac-peer-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: pac.peer events
+---
+
+= pac.peer events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== pac.peer.getName
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the protocol access control fails to get the peer name.
+*Corrective Action*::
+Check Domain Name System (DNS) for possible errors.
+*Syslog Message*::
+%s: getpeername() failed in protocol access control with %s.
+*Parameters*::
+*protocol* (STRING): Protocol.
+*errMessage* (STRING): Internal error message indicating why the peer name could not be obtained.

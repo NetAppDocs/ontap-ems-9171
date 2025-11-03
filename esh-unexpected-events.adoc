@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: esh-unexpected-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: esh.unexpected events
+---
+
+= esh.unexpected events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== esh.unexpected.status
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a disk shelf reports an unknown status.
+*Corrective Action*::
+Ensure that the shelf module firmware and ONTAP(R) software are compatible versions. Find firmware versions at the NetApp technical support web site.
+*Syslog Message*::
+Unexpected ESH status of: %d.
+*Parameters*::
+*status* (INT): Unexpected/unknown status code that was received.

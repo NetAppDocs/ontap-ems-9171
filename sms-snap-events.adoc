@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: sms-snap-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sms.snap events
+---
+
+= sms.snap events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sms.snap.not.replicated
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a snapshot for SnapMirror(R) Synchronous relationship is not successfully replicated.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Snapshot '%s' is not sucessfully replicated for the relationship '%s' with source volume DSID '%llu' and path '%s'. Reason: %s.
+*Parameters*::
+*snapshot* (STRING): Name of the snapshot to be replicated.
+*transferId* (STRING): UUID of the SnapMirror transfer.
+*volumeDSID* (LONGINT): Volume data set ID (DSID).
+*volumePath* (STRING): Path of the volume.
+*failureReason* (STRING): Reason for the failure.

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: bcomd-lun-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: bcomd.lun events
+---
+
+= bcomd.lun events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== bcomd.lun.update.lost
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the SAN Kernel Agent is unable to process a LUN metadata update resulting from a Snapshot(R) copy restore operation or other LUN event.
+*Corrective Action*::
+Resolve the error and then reload the indicated Vserver with the command "debug san vserver reload".
+*Syslog Message*::
+A metadata change notification for a LUN in VServer %s on volume %llu has been lost due to error: %s
+*Parameters*::
+*vserver* (STRING): Name of the Vserver.
+*volume* (LONGINT): MSID of the volume.
+*error* (STRING): Error preventing the update from being processed.

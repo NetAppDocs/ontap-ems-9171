@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: ipsec-ob-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ipsec.ob events
+---
+
+= ipsec.ob events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ipsec.ob.no.acquire
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the kernel cannot acquire an IPsec Security Association (SA) to protect an outbound packet.
+*Corrective Action*::
+Double check the IPsec policy configuration on both ends to make sure that they match each other.
+*Syslog Message*::
+IPsec: Could not acquire SA for packet %s ==> %s.
+*Parameters*::
+*srcAddr* (STRING): Source IP address.
+*dstAddr* (STRING): Destination IP address.

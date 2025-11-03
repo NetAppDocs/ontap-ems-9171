@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: snapmirror-reconstruct-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapmirror.reconstruct events
+---
+
+= snapmirror.reconstruct events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapmirror.reconstruct.complete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the SnapMirror(R) requested reconstruction of a per-volume meta file used for labeling block information is complete.
+*Corrective Action*::
+No corrective action.
+*Syslog Message*::
+Reconstruction %s for data to be transferred by SnapMirror from %s to %s:%s was completed successfully in %u secs.
+*Parameters*::
+*volume* (STRING): SnapMirror volume.
+*srcpath* (STRING): Replication source path.
+*dstfiler* (STRING): Replication destination system.
+*dstpath* (STRING): Replication destination path.
+*time* (INT): Time it took for the reconstruction to be complete.

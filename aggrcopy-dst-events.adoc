@@ -1,0 +1,75 @@
+---
+sidebar: sidebar
+permalink: aggrcopy-dst-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: aggrcopy.dst events
+---
+
+= aggrcopy.dst events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== aggrcopy.dst.autoRestrictMsg
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when an aggregate copy start is issued on an aggregate which is offline.
+*Corrective Action*::
+Aggr copy start is issued on a restricted aggregate use "aggr restrict" to restrict the destination aggregate.
+*Syslog Message*::
+Aggr copy automatically restricting destination aggregate %s (currently offline).
+*Parameters*::
+*dst* (STRING): The aggr copy destination aggregate
+
+== aggrcopy.dst.noMemory
+*Severity*::
+ERROR
+*Description*::
+This event is issued when there is insufficient memory on the aggr copy destination for the transfer to continue.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+System is low on memory, aborting aggr copy destination transfer.
+*Parameters*::
+(None).
+
+== aggrcopy.dst.revert
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when an aggr copy start operation has to revert the checksum state of the destination volume aggregate because the source and destination aggregates have differing checksum states.
+*Corrective Action*::
+No corrective action required.
+*Syslog Message*::
+An aggr copy transfer to destination aggregate %s has found that the source and destination aggregates have differing checksum states. Data ONTAP is aborting the transfer and reverting the checksum state for the destination aggregate. After ONTAP displays a message showing the revert is complete, you will need to retry the operation. You can use the "aggr status -c" command to see the progress of the reversion.
+*Parameters*::
+*dst* (STRING): The aggr copy destination volume
+
+== aggrcopy.dst.revertErr
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a aggr copy start operation is not able to revert the checksum state of the destination aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ONTAP cannot revert the checksum state of destination aggregate %s.
+*Parameters*::
+*dst* (STRING): The aggr copy destination
+
+== aggrcopy.dst.reverting
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when an aggr copy start operation is issued on an aggregate which is reverting its checksum state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Aborting aggr copy transfer to aggregate %s because it is reverting its checksum state.
+*Parameters*::
+*dst* (STRING): The aggr copy destination aggregate

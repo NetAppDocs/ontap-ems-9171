@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: unowned-disk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: unowned.disk events
+---
+
+= unowned.disk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== unowned.disk.reminder
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system has unowned/unassigned disks. Use the "disk assign" command to assign the disks to the systems so that they can be used.
+*Corrective Action*::
+Use 'disk show -n' to determine which disks are unowned. Use 'disk assign' to assign ownership of the disks to a system.
+*Syslog Message*::
+%d disks are currently unowned. Use the "disk assign" command to assign the disks to a system.
+*Parameters*::
+*count* (INT): Number of unowned disks.

@@ -1,0 +1,36 @@
+---
+sidebar: sidebar
+permalink: disk-senseerror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.senseerror events
+---
+
+= disk.senseerror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.senseError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the drive reports an error.
+*Corrective Action*::
+Check the event log for related error messages and corrective actions.
+*Syslog Message*::
+Disk %s: op %s sector %llu %s - %s (%x %x %x %x)
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*op* (STRING): I/O operation being performed.
+*sector* (LONGINT): Sector where the error was detected.
+*senseInfo* (STRING): Sense data.
+*sCode* (STRING): Sector code.
+*sense_key* (INTHEX): SCSI sense key.
+*sense_code* (INTHEX): SCSI sense code.
+*qualifier* (INTHEX): SCSI sense code qualifier.
+*fru_failed* (INTHEX): SCSI FRU code.
+*disk_information* (STRING): Formatted information about the disk. This includes the disk's vendor, model, firmware revision, and serial number.

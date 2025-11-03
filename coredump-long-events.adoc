@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: coredump-long-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: coredump.long events
+---
+
+= coredump.long events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== coredump.long.queued.msg
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the coredump manager thread detects that a message has been queued longer than expected, as defined by an internal threshold. System features and performance are not affected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Coredump manager starts processing a long queued message: "%s" queued "%lu" ms.
+*Parameters*::
+*message_type* (STRING): Coredump message type.
+*queue_time* (LONGINT): Message queued duration, in milliseconds.
+*threshold* (LONGINT): Message queued threshold, in milliseconds.
+
+== coredump.long.running.msg
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the coredump manager thread has finished processing a message that took longer than expected, as defined by an internal threshold.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Coredump manager finished processing a long running message: %s took %lu ms.
+*Parameters*::
+*message_type* (STRING): Coredump message type.
+*duration* (LONGINT): Message processing duration, in milliseconds.
+*threshold* (LONGINT): Message processing threshold, in milliseconds.

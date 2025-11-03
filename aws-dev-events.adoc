@@ -1,0 +1,56 @@
+---
+sidebar: sidebar
+permalink: aws-dev-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: aws.dev events
+---
+
+= aws.dev events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== aws.dev.diskFailure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) is running as an instance in Amazon Web Services (AWS), and a data disk failure occurs because of an I/O hang. ONTAP marks the disk as broken and marks the data aggregate as partial or degraded.
+*Corrective Action*::
+Detach the failed device from the AWS instance.
+*Syslog Message*::
+Disk failure detected after I/O to device %s hung for %d seconds.
+*Parameters*::
+*dev* (STRING): Name of the device.
+*timeout* (INT): Number of seconds the disk is hung.
+
+== aws.dev.diskNotUnique
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) is running as an instance in Amazon Web Services (AWS), and the volume being added has a UUID that is already used by the attached volumes. This usually happens when the user creates a Snapshot(R) copy from a volume, creates the volume from this copy and then tries to attach the volume to the instance.
+*Corrective Action*::
+Detach the being added duplicate UUID device from the AWS instance.
+*Syslog Message*::
+The volume #%d(%s) being added has a duplicate UUID which is already used by the attached volume #%d(%s).
+*Parameters*::
+*curr_unit* (INT): Unit number of the device which is being attached.
+*curr_devname* (STRING): Name of the device which is being attached.
+*orig_unit* (INT): Unit number of the original device which is being duplicated.
+*orig_devname* (STRING): Name of the original device which is being duplicated.
+
+== aws.dev.limitExceeded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) is running as an instance in Amazon Web Services (AWS), and the volume being added is attached to an unsupported device name. Data ONTAP supports attaching a maximum of 51 Elastic Block Storage (EBS) volumes to a single instance. Supported device names are xvdf-xvdz, xvdaa-xvdaz, and xvdba-xvdbd.
+*Corrective Action*::
+Detach the unsupported device from the AWS instance.
+*Syslog Message*::
+The volume being added is attached to an unsupported device name #%d(%s). Data ONTAP supports attaching a maximum of 51 device volumes to a single instance. Supported device names are xvdf-xvdz, xvdaa-xvdaz, and xvdba-xvdbd.
+*Parameters*::
+*unit* (INT): Device unit number.
+*devname* (STRING): Device name.

@@ -1,0 +1,64 @@
+---
+sidebar: sidebar
+permalink: sp-firmware-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sp.firmware events
+---
+
+= sp.firmware events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sp.firmware.corruption
+*Severity*::
+ALERT
+*Description*::
+This message occurs when neither of the firmware images of the node's Service Processor (SP) or Baseboard Management Controller (BMC) on the primary flash chip can be booted. The SP or BMC is now running from the image on the spare flash storage. The SP or BMC spare image does not have all the features of the primary image, and it does not support updating the primary flash images.
+*Corrective Action*::
+Contact NetApp technical support to recover the primary flash chip.
+*Syslog Message*::
+"%s" is running from the spare recovery flash storage.
+*Parameters*::
+*sp_type* (STRING): Service processor type (SP or BMC).
+
+== sp.firmware.incompatible
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the firmware on the Service Processor (SP) is not compatible with this version of Data ONTAP(R).
+*Corrective Action*::
+Update the SP firmware to a version supported by this version of Data ONTAP. Contact NetApp technical support to obtain SP firmware files and update instructions, and for further assistance if the error persists after SP firmware is updated. Additional support might be available from the vendor's support site or knowledge base.
+*Syslog Message*::
+The SP firmware version %s is not compatible with this version of Data ONTAP.
+*Parameters*::
+*current_sp_fw_version* (STRING): Current firmware version on the SP.
+
+== sp.firmware.upgrade.reqd
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Service Processor (SP) firmware version and the Data ONTAP(R) software version are incompatible and cannot communicate correctly about a particular capability.
+*Corrective Action*::
+Update the firmware version of the SP to the version recommended for your version of Data ONTAP. Contact NetApp technical support to get a copy of the appropriate SP firmware and SP firmware update instructions. For more information about downloading and installing updated firmware, check your support provider's support web site or knowledgebase. If you need further assistance, contact NetApp technical support. After you update the firmware, this message should no longer occur. If the message occurs again, contact NetApp technical support and explain that you already updated the firmware to the recommended version.
+*Syslog Message*::
+The SP firmware %s is incompatible with Data ONTAP for %s.
+*Parameters*::
+*current_sp_fw_version* (STRING): Current firmware version on the SP.
+*capability* (STRING): SP capability needed by Data ONTAP.
+
+== sp.firmware.version.unsupported
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the firmware on the Service Processor (SP) is not an official release and must be updated.
+*Corrective Action*::
+Contact NetApp technical support to get a copy of the recommended version of SP firmware and SP firmware update instructions. For more information about downloading and installing updated firmware, check your support provider's web site or knowledgebase. If you need further assistance, contact NetApp technical support. After the SP is running the new firmware, this message should no longer occur. If the message occurs again, contact NetApp technical support and explain that you already updated the firmware to the recommended version.
+*Syslog Message*::
+The SP firmware version %s is not an official release.
+*Parameters*::
+*current_sp_fw_version* (STRING): Current firmware version on the SP.

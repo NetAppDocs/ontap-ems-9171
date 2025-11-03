@@ -1,0 +1,58 @@
+---
+sidebar: sidebar
+permalink: prov-rollback-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: prov.rollback events
+---
+
+= prov.rollback events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== prov.rollback.fail.cmd
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) software cannot complete a rollback of a provisioning operation sequence that failed. Depending on the action that failed, objects might need to be created, deleted, or modified to bring the system back to a consistent state.
+*Corrective Action*::
+Resolve the error and attempt the failed command again. If the problem persists, contact NetApp technical support to resolve the rollback failure. It is possible that other related rollback actions have also failed. Check for other 'prov.rollback.fail.*' messages with similar time stamps, and perform the suggested corrective actions in the same order that the messages occurred.
+*Syslog Message*::
+Failed to roll back an action performed by the provisioning engine. Command: "%s". Reason: %s.
+*Parameters*::
+*failed_command* (STRING): Command that failed.
+*error* (STRING): Error that the provisioning engine encountered.
+
+== prov.rollback.fail.obj
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) software cannot complete a rollback of a provisioning operation sequence that failed. Depending on the action that failed, objects might need to be created, deleted, or modified to bring the system back to a consistent state.
+*Corrective Action*::
+Contact NetApp technical support to resolve the rollback failure. It is possible that other related rollback actions have also failed. Check for other 'prov.rollback.fail.*' messages with similar time stamps, and perform the suggested corrective actions in the same order that the messages occurred.
+*Syslog Message*::
+Failed to roll back an action performed by the provisioning engine. Action: "%s". Object: "%s". Fields: "%s". Reason: %s.
+*Parameters*::
+*action* (STRING): Attempted action.
+*object* (STRING): Type of object.
+*fields* (STRING): Fields of the object.
+*error* (STRING): Error that the provisioning engine encountered.
+
+== prov.rollback.fail.rest
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) software cannot complete a rollback of a provisioning operation sequence that failed. Depending on the action that failed, objects might need to be created, deleted, or modified to bring the system back to a consistent state.
+*Corrective Action*::
+Resolve the error and attempt the failed REST API again. If the problem persists, contact NetApp technical support to resolve the rollback failure. It is possible that other related rollback actions have also failed. Check for other 'prov.rollback.fail.*' messages with similar time stamps, and perform the suggested corrective actions in the same order that the messages occurred.
+*Syslog Message*::
+Failed to roll back an action performed by the provisioning engine. API: curl -X %s 'https://<mgmt-ip>%s' -H 'accept: application/hal+json' -d '%s' Reason: %s.
+*Parameters*::
+*failed_uri* (STRING): REST API resource that failed.
+*failed_body* (STRING): REST API JSON body that failed.
+*failed_method* (STRING): REST API method that failed.
+*error* (STRING): Error that the provisioning engine encountered.

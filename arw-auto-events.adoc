@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: arw-auto-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: arw.auto events
+---
+
+= arw.auto events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== arw.auto.switch.enabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when anti-ransomware has been automatically switched from learning mode to enabled after various conditions have been satisfied, such as learning period, file creation, file write, and file extension discovery activities.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Anti-ransomware has been automatically switched from learning mode to enabled on volume "%s" in SVM "%s".
+*Parameters*::
+*VolumeName* (STRING): Name of the volume.
+*VserverName* (STRING): Name of the SVM.
+*LearningPeriod* (INT): Number of days needed for learning.
+*IncomingWrite* (INT): Amount of write (in MB) received during Learning mode.
+*DurationWithoutNewExtension* (INT): Number of days without a new file extension being discovered.
+*FileCount* (INT): Number of new files created in a volume.
+*FileExtensionCount* (INT): Number of new file extensions discovered in a volume.

@@ -1,0 +1,100 @@
+---
+sidebar: sidebar
+permalink: arl-precmt-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: arl.precmt events
+---
+
+= arl.precmt events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== arl.precmt.lmgr.resync.abrt
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during aggregate relocation, when automatic lock resynchronization with the node's high-availability (HA) partner for files on this aggregate was aborted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Automatic lock resynchronization was aborted for aggregate %s on forced relocation.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate for which resynchronization was aborted.
+
+== arl.precmt.lmgr.resyncing
+*Severity*::
+ERROR
+*Description*::
+This message occurs during aggregate relocation, when automatic lock resynchronization with the node's high-availability (HA) partner is in progress for files on this aggregate.
+*Corrective Action*::
+Retry the relocation after verifying that lock synchronization is complete by using the 'debug locks auto-resync-status -aggregate <aggregate>' diagnostic privilege command. If lock state disruption for all CA locks on the aggregate is acceptable, retry the aggregate relocation with the '-override-vetoes true' option.
+*Syslog Message*::
+Could not relocate aggregate %s because automatic lock resynchronization was in progress.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate with locks not yet in sync.
+
+== arl.precmt.lmgr.sync.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when relocation of an aggregate has started but mirrored lock state cannot be created locally for the relocating aggregate. The relocate operation is aborted.
+*Corrective Action*::
+Take the appropriate action based on the reason supplied in the logged message: - 'Timed Out': Retry the aggregate relocation with the '-override-destination-checks' option. Overriding the check might result in a longer administrative outage period during which no administrative operations can be performed for volumes on this aggregate. - 'Fatal Error': Contact NetApp technical support.
+*Syslog Message*::
+Could not relocate the aggregate %s because creating locally mirrored lock state failed.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate being relocated.
+*reason* (STRING): Reason the local mirrored lock state creation failed.
+
+== arl.precmt.lmgr.sync.forced
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during aggregate relocation, when local mirrored lock state creation is allowed to proceed without any time restrictions. This might result in a longer administrative outage period during which no administrative operations can be performed for volumes on this aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Local mirrored lock state creation for relocating aggregate %s is proceeding without time restrictions.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate being relocated.
+
+== arl.precmt.repl
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when all replication transfers are aborted because of aggregate relocation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Replication transfers aborted due to aggregate relocation.
+*Parameters*::
+(None).
+
+== arl.precmt.vdom.lowMem
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an aggregate relocation fails due to the unavailability of Data ONTAP(R) memory on the source node.
+*Corrective Action*::
+Free some memory and retry the aggregate relocation.
+*Syslog Message*::
+Relocation of aggregate %s failed due to unavailability of Data ONTAP(R) memory on the source node.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate that was not relocated.
+
+== arl.precmt.wafl.volconversion
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an active volume conversion is running on one or more volumes on the source aggregate. Pre-commit is aborted.
+*Corrective Action*::
+When volume conversion is complete, re-run the command 'storage aggregate relocation start'.
+*Syslog Message*::
+Aggregate relocation/takeover is blocked as Volume Conversion is in progress on one of the volumes on aggregate %s.
+*Parameters*::
+*aggregate_name* (STRING): The name of the aggregate containing the volume on which conversion is in progress.

@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: vifmgr-displaced-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.displaced events
+---
+
+= vifmgr.displaced events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.displaced.lifHomed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the home port of a displaced logical interface (LIF) has been restored to its original home port.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Home port of displaced LIF %s (Vserver: %s, IP: %s) restored to node %s, port %s.
+*Parameters*::
+*vifName* (STRING): Name of the LIF on which the home port is being updated.
+*vsrvId* (STRING): ID of the Vserver on which the LIF resides.
+*vifIp* (STRING): IP address of the LIF on which the home port is being updated.
+*toNode* (STRING): Name of the node to which the LIF's home port is being updated.
+*toPort* (STRING): Name of the port to which the LIF's home port is being updated.

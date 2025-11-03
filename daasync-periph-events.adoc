@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: daasync-periph-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: daasync.periph events
+---
+
+= daasync.periph events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== daasync.periph.alloc.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot attach a drive.
+*Corrective Action*::
+Use the "disk show -fields vmdisk-target-address" command to get the list of drives that are visible to the system and to verify that the missing drive is connected properly.
+*Syslog Message*::
+Unable to attach new device %s due to status 0x%x.
+*Parameters*::
+*device_name* (STRING): Drive name.
+*status* (INTHEX): Status of the system.

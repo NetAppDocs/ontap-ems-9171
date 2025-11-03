@@ -1,0 +1,92 @@
+---
+sidebar: sidebar
+permalink: fci-config-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fci.config events
+---
+
+= fci.config events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fci.config.autoReboot
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system reboots automatically to enable correct adapter operation after changing the state of a reconfigurable adapter.
+*Corrective Action*::
+No user action is required. The system is rebooting to enable the new adapter configuration.
+*Syslog Message*::
+Rebooting for Fibre Channel adapter %s to become available.
+*Parameters*::
+*adapters* (STRING): Affected adapters.
+
+== fci.config.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is an error during the Fibre Channel adapter auto-reconfiguration process. The specified adapters will be unavailable until the problem is fixed.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Auto-reconfiguration for Fibre channel %s adapter(s) %s has failed.
+*Parameters*::
+*type* (STRING): Adapter type.
+*adapters* (STRING): Affected adapter(s).
+
+== fci.config.missing
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot find Fibre Channel adapter configuration stored on disk, but the adapter is configured in the boot environment. The boot environment information will be used, but you should update the on-disk configuration to be consistent and to prevent the adapter from getting into an unexpected state if the boot environment settings are lost.
+*Corrective Action*::
+Use the 'fcadmin config' command to reapply the on-disk configuration to match the setting in the boot environment. If the on-disk configuration is not saved and the boot environment is lost, recovery of this adapter's port personality is not possible. No action is taken automatically to correct the problem.
+*Syslog Message*::
+Fibre Channel adapter %s is configured in the boot environment but the on-disk configuration information is missing.
+*Parameters*::
+*adapter* (STRING): Name of the affected Fibre Channel adapter.
+
+== fci.config.needsReboot
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the state of a reconfigurable adapter is changed, but the system must be rebooted to place the adapter into service.
+*Corrective Action*::
+Reboot the system to enable the new adapter configuration.
+*Syslog Message*::
+Reboot the system for Fibre channel %s adapter %s to become available.
+*Parameters*::
+*type* (STRING): Adapter type.
+*adapters* (STRING): Affected adapter(s).
+
+== fci.config.offline
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a configurable Fibre Channel adapter cannot be brought online because the configured adapter type needs to be changed.
+*Corrective Action*::
+Use the 'fcadmin config' utility to change the adapter configuration state and/or reboot the system to allow the PENDING adapter state change to take effect before bringing the adapter online.
+*Syslog Message*::
+Fibre Channel adapter %s is offline because it is in the %s state.
+*Parameters*::
+*adapter* (STRING): Name of the associated Fibre Channel adapter.
+*state* (STRING): Configured adapter state.
+
+== fci.config.state
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the state of a configurable Fibre Channel adapter changes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Fibre Channel %s adapter %s is in the %s state.
+*Parameters*::
+*type* (STRING): Current adapter type.
+*adapter* (STRING): Name of the associated Fibre Channel adapter.
+*state* (STRING): Configured adapter state.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: suspend-zapi-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: suspend.zapi events
+---
+
+= suspend.zapi events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== suspend.zapi
+*Severity*::
+ALERT
+*Description*::
+This message occurs when ONTAPI (ZAPI) has been suspended due to a lack of use.
+*Corrective Action*::
+Ensure that all ONTAP data storage management functions using ONTAPI (ZAPI) have transitioned to ONTAP REST API. To unsuspend ONTAPI (ZAPI), run the "system services web ontapi modify -suspended false" command.
+*Syslog Message*::
+ONTAPI (ZAPI) was suspended on "%s" due to a lack of use.
+*Parameters*::
+*date* (STRING): Date ONTAPI (ZAPI) was suspended.

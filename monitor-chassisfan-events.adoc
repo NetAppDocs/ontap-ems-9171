@@ -1,0 +1,75 @@
+---
+sidebar: sidebar
+permalink: monitor-chassisfan-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.chassisfan events
+---
+
+= monitor.chassisfan events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.chassisFan.degraded
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a chassis fan is degraded.
+*Corrective Action*::
+Replace the fan unit.
+*Syslog Message*::
+Chassis fan is degraded: %s
+*Parameters*::
+*fan_name* (STRING): Name of the fan.
+
+== monitor.chassisFan.ok
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the chassis fans are OK.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Chassis fan %s is ok.
+*Parameters*::
+*fru_name* (STRING): Name of the field-replaceable unit (FRU) containing the fan.
+
+== monitor.chassisFan.removed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a chassis fan is removed This is a warning message.
+*Corrective Action*::
+Reinsert the FRU.
+*Syslog Message*::
+Chassis fan %s is removed
+*Parameters*::
+*fan_name* (STRING): Name of the field-replaceable unit (FRU) containing the fan.
+
+== monitor.chassisFan.stop
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a chassis fan is stopped. This is a warning message.
+*Corrective Action*::
+Reseat the FRU. If the FRU is an I/O module, schedule unit downtime and power off the unit before reseating the FRU. If the error persists, replace the FRU.
+*Syslog Message*::
+Chassis fan contains at least one stopped fan: %s
+*Parameters*::
+*fru_name* (STRING): Name of the field-replaceable unit (FRU) containing the fan.
+
+== monitor.chassisFan.warning
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a chassis fan is spinning either too slowly or too fast. This is a warning message.
+*Corrective Action*::
+Replace the FRU.
+*Syslog Message*::
+Chassis fan is in warning state: %s
+*Parameters*::
+*fru_name* (STRING): Name of the field-replaceable unit (FRU) containing the fan.

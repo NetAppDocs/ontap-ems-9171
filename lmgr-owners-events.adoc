@@ -1,0 +1,56 @@
+---
+sidebar: sidebar
+permalink: lmgr-owners-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lmgr.owners events
+---
+
+= lmgr.owners events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lmgr.owners.limit.hit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a lock manager owner object cannot be allocated due to reaching the limit for owner objects in the associated pool. It is possible that the system is overloaded. Clients will have problems accessing files through NAS protocols while at or above the owner object limit.
+*Corrective Action*::
+Move volumes to a node with a lower utilization of lock manager resources. Lock manager statistics can be displayed from the diagnostic privilege level. Use the "statistics show -raw true -object lmgr_ng" command for displaying all lock manager resource counters. Use the "statistics show -raw true -object lmgr_ng -instance <node-name>" command for displaying the lock manager statistics for a node's limit pool. Use the "statistics show -raw true -object lmgr_ng -node <node-name>" command for displaying all lock manager statistics on the specified node.
+*Syslog Message*::
+The number of owner objects %u has reached the limit %u for the pool %s. The current number/limit of other lock manager objects are: files %u/%u hosts %u/%u, locks %u/%u.
+*Parameters*::
+*owners_total* (INT): Number of allocated owners in the pool.
+*owners_limit* (INT): Allocated owners limit for the pool.
+*pool_name* (STRING): Name of the limit pool.
+*files_total* (INT): Number of allocated files in the pool.
+*files_limit* (INT): Allocated files limit for the pool.
+*hosts_total* (INT): Number of allocated hosts in the pool.
+*hosts_limit* (INT): Allocated hosts limit for the pool.
+*locks_total* (INT): Number of allocated locks in the pool.
+*locks_limit* (INT): Allocated locks limit for the pool.
+
+== lmgr.owners.threshold.hit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a lock manager owner object has reached the threshold limit for owner objects in the associated pool.The system might become overloaded. Clients will have problems accessing files through NAS protocols while at or above the owner object limit.
+*Corrective Action*::
+Move volumes to a node with a lower utilization of lock manager resources. Lock manager statistics can be displayed from the diagnostic privilege level. Use the "statistics show -raw true -object lmgr_ng" command for displaying all lock manager resource counters. Use the "statistics show -raw true -object lmgr_ng -instance <node-name>" command for displaying the lock manager statistics for a node's limit pool. Use the "statistics show -raw true -object lmgr_ng -node <node-name>" command for displaying all lock manager statistics on the specified node.
+*Syslog Message*::
+The current number of owner objects %u with maximum limit of %u has reached the threshold limit percentage of %u for pool "%s". The current number/limit of other lock manager objects are: files %u/%u, hosts %u/%u and locks %u/%u.
+*Parameters*::
+*owners_total* (INT): Number of allocated owners in the pool.
+*owners_limit* (INT): Allocated owners limit for the pool.
+*thresold_percentage* (INT): Threshold locks limit for the pool.
+*pool_name* (STRING): Name of the limit pool.
+*files_total* (INT): Number of allocated files in the pool.
+*files_limit* (INT): Allocated files limit for the pool.
+*hosts_total* (INT): Number of allocated hosts in the pool.
+*hosts_limit* (INT): Allocated hosts limit for the pool.
+*locks_total* (INT): Number of allocated locks in the pool.
+*locks_limit* (INT): Allocated locks limit for the pool.

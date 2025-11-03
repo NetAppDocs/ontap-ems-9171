@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: replaycache-arcbktallocerr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: replaycache.arcbktallocerr events
+---
+
+= replaycache.arcbktallocerr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ReplayCache.ArcBktAllocErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the replay-cache bucket (which is used to hold the responses of non-idempotent operations, to prevent the execution of duplicate I/O requests) that is associated with a bin (through a client connection) has fully utilized the maximum allowed memory and old bins holding the bucket is not able to release requests due to the configured expiration time. I/O operations are suspended until the bucket has available memory.
+*Corrective Action*::
+Modify the replay cache bin expiration time using the "spinnp-replay-cache attributes modify -arc-initial-bucket-count 16 -arc-bin-expiration 30" command (privilege: diag). Specify a smaller value for the bin expiration time and initial bucket count, so that the bin eviction will happen sooner and new bin creation will require less memory in the bucket, which might help avoid the issue.
+*Syslog Message*::
+A replay-cache bucket memory exhaust occurred due to the slow eviction of old bins and the high number of I/O operations being received by the server.
+*Parameters*::
+(None).

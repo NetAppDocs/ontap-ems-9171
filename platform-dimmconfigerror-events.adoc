@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: platform-dimmconfigerror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: platform.dimmconfigerror events
+---
+
+= platform.dimmconfigerror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== platform.dimmConfigError
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the DIMM configuration of the controller is different from the configuration supported by this model. This often occurs when an incorrect DIMM memory size is used in a DIMM slot.
+*Corrective Action*::
+Place correctly sized and supported DIMMs in the designated slots. For replacement instructions, search the NetApp technical support website using the keywords "replacing", "DIMM", and "system".
+*Syslog Message*::
+Memory DIMM configuration mismatch in slots %s.
+*Parameters*::
+*slots* (STRING): List of slots with the incorrect DIMM.

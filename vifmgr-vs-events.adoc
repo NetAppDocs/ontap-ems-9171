@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: vifmgr-vs-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.vs events
+---
+
+= vifmgr.vs events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.vs.cache.updateFailed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when Logical Interface Manager (VIFMgr) is unable to retrieve the list of Vservers from the management gateway Vserver cache in the allotted time. VIFMgr attempts to recover from this issue. If unsuccessful, clients might not be able to access data through this node.
+*Corrective Action*::
+If the problem persists, contact Contact NetApp technical support. for assistance.
+*Syslog Message*::
+VIFMgr is unable to receive a Vserver cache update from the management gateway.
+*Parameters*::
+(None).

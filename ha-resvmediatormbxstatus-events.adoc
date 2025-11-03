@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: ha-resvmediatormbxstatus-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.resvmediatormbxstatus events
+---
+
+= ha.resvmediatormbxstatus events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.ResvMediatorMbxStatus
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the local node attempts to reserve a mailbox disk while trying to acquire the takeover lock as part of the takeover operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Attempting to reserve mailbox disk %s (UUID: %s) on node "%s" as part of takeover lock. Status: %d.
+*Parameters*::
+*mailbox_disk_name* (STRING): Name of the disk being reserved.
+*mailbox_disk_uid* (STRING): UUID of the mailbox disk on which a reservation was attempted.
+*mailbox_host* (STRING): Name of the node that owns the mailbox disk.
+*mailbox_op_status* (INT): Result of the disk reservation attempt on the mailbox disk.

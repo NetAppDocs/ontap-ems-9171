@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: callhome-hm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.hm events
+---
+
+= callhome.hm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.hm.alert.critical
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an error is detected during the periodic health health monitoring of system health monitors. System health monitors create alerts for potential problems detected while monitoring the subsystem. The alerts contain information about probable cause along with recommended actions to rectify the problem. This message is generated after every polling interval if new alerts are detected during this interval. Polling interval is configurable. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Run the "system health alert show" command to view details about new alerts in the system. Details of the alerts can be found in the AutoSupport. To correct the alert conditions, refer to the corrective actions described in the alert. Contact NetApp technical support for additional information.
+*Syslog Message*::
+Call home for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.hm.alert.major
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an error is detected during the periodic health health monitoring of system health monitors. System health monitors create alerts for potential problems detected while monitoring the subsystem. The alerts contain information about probable cause along with recommended actions to rectify the problem. This message is generated after every polling interval if new alerts are detected during this interval. Polling interval is configurable. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Run the "system health alert show" command to view details about new alerts in the system. Details of the alerts can be found in the AutoSupport. To correct the alert conditions, refer to the corrective actions described in the alert. Contact NetApp technical support for additional information.
+*Syslog Message*::
+Call home for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.hm.alert.minor
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an error is detected during the periodic health health monitoring of system health monitors. System health monitors create alerts for potential problems detected while monitoring the subsystem. The alerts contain information about probable cause along with recommended actions to rectify the problem. This message is generated after every polling interval if new alerts are detected during this interval. Polling interval is configurable. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Run the "system health alert show" command to view details about new alerts in the system. Details of the alerts can be found in the AutoSupport. To correct the alert conditions, refer to the corrective actions described in the alert. Contact NetApp technical support for additional information.
+*Syslog Message*::
+Call home for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

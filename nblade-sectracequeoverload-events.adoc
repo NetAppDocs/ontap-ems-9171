@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nblade-sectracequeoverload-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.sectracequeoverload events
+---
+
+= nblade.sectracequeoverload events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.sectraceQueOverload
+*Severity*::
+ALERT
+*Description*::
+This message occurs when there are too many Sectrace work items. This might be the result of a very generic filter. For example, tracing of succesful NFS accesses can quickly generate a large number of Sectrace items, since all ops (each read or write) might generate a security trace.
+*Corrective Action*::
+Check the Sectrace filter and make it more specific.
+*Syslog Message*::
+Too many events [%d] present in SectraceGlobal task queue.
+*Parameters*::
+*queueSize* (INT): Number of queued events waiting to be processed.

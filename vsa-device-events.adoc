@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: vsa-device-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsa.device events
+---
+
+= vsa.device events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsa.device.bad.config
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects that the kernel environment variables (kenvs) that are used to configure the core dump and NVRAM devices are missing or inconsistent. If the system is rebooted with a bad configuration, this may result in a failure to boot or incorrect operation of NVRAM or core dump.
+*Corrective Action*::
+Correct the configuration as directed. Use the "kenv" systemshell command to set and verify the environment variables. Then reboot the system. If the node is not booting or is in a boot loop, use the Loader commands to set and verify the kernel environment variables before rebooting.
+*Syslog Message*::
+Core dump or NVRAM device configuration problem: %s.
+*Parameters*::
+*detail* (STRING): Detail about the misconfiguration and suggestions for correcting the problem.

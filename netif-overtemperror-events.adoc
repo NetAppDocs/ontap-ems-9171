@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: netif-overtemperror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.overtemperror events
+---
+
+= netif.overtemperror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.overTempError
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a network port is too hot or a sensor has malfunctioned. Depending on how the port is deployed, the failure may disrupt user data access, node access or cluster communication.
+*Corrective Action*::
+Ensure adequate cooling and ventilation is available. If that does not resolve the issue, replace the failed card.
+*Syslog Message*::
+Network port %s is over temperature.
+*Parameters*::
+*ifName* (STRING): Name of the network port: for example, "e4a".

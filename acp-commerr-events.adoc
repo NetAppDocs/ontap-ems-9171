@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: acp-commerr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: acp.commerr events
+---
+
+= acp.commerr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== acp.commErr
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Alternate Control Path (ACP) Administrator determines that the SAS shelf I/O module (IOM) that is configured for in-band ACP is experiencing communication errors. With this condition the system may experience performance degradation for additional error recovery activities.
+*Corrective Action*::
+Examine the event log for I/O errors that might have a common source such as faulty cabling, and correct them. If the errors persist, the IOM might need to be replaced. Contact NetApp technical support.
+*Syslog Message*::
+IOM "%s" is reporting multiple in-band ACP communication errors. Shelf serial number: %s.
+*Parameters*::
+*inband_id* (STRING): Inband ID of the module.
+*shelf_sno* (STRING): Storage shelf serial number of the shelf where the I/O module is seated.

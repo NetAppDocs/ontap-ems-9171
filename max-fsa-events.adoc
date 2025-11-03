@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: max-fsa-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: max.fsa events
+---
+
+= max.fsa events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== max.fsa.init.scan.limit
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the File System Analytics initialization scan cannot be started because the maximum number of concurrent initialization scans are already running on the cluster. File System Analytics cannot currently be enabled on the volume.
+*Corrective Action*::
+Use the "volume analytics show" command to check for volumes with the File System Analytics state of "initializing" or "initialization_paused". Wait for a File System Analytics initialization scan to complete, and then try enabling File System Analytics again.
+*Syslog Message*::
+Enabling File System Analytics on volume "%s" in SVM "%s" fails because the maximum number of concurrent initialization scans are already running on the cluster.
+*Parameters*::
+*volumeName* (STRING): Name of the volume on which File System Analytics enable request fails.
+*vserverName* (STRING): Name of the storage virtual machine (SVM) on which the volume resides.

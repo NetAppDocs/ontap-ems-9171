@@ -1,0 +1,46 @@
+---
+sidebar: sidebar
+permalink: wafl-bad-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.bad events
+---
+
+= wafl.bad events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.bad.aggr.buftree.type
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when you attempt to bring an aggregate online whose file system buftree type and RAID label format are inconsistent. Buftree type indicates whether the filesystem is a 32-bit or a 64-bit. Attempting to online this aggregate can cause data corruption or a system panic.
+*Corrective Action*::
+Contact NetApp technical suppor
+*Syslog Message*::
+Aggregate %s: Inconsistency found with the file system buftree type and RAID label format (large aggr: %d, fs: 0x%x, RAID: %d).
+*Parameters*::
+*name* (STRING): The aggregate name.
+*large* (INT): Flag showing if the aggregate size is bigger than 16 TB.
+*fsbuftree* (INT): File system buftree type.
+*raidfmt* (INT): RAID buftree format.
+
+== wafl.bad.vol.buftree.type
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when you attempt to bring online a volume whose file system and volume descriptor buftree type show inconsistency. The buftree type shows whether the file system is a 32-bit or 64-bit. Bringing online such a volume can cause data corruption or system panic.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+Volume %s: Inconsistency found with the file system buftree type and volume descriptor buftree type (large vol: %d, fs: 0x%x, label: 0x%x, RAID: %d). Bringing the volume online can cause data corruptions or system panic. Contact NetApp technical support.
+*Parameters*::
+*volname* (STRING): Volume name.
+*large* (INT): Flag showing if the volume size is bigger than 16 TB.
+*fsbuftree* (INT): File system buftree type.
+*labelfmt* (INT): Volume descriptor buftree type.
+*raidfmt* (INT): RAID buftree type.

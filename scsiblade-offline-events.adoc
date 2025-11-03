@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: scsiblade-offline-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsiblade.offline events
+---
+
+= scsiblade.offline events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsiblade.offline
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the node loses connectivity with the majority of the cluster. When this occurs, both FCP and iSCSI traffic are disabled on this node. Remote cluster traffic is impacted. After connectivity is restored, the node automatically recovers and enables FCP and iSCSI services.
+*Corrective Action*::
+Correct the issue that caused the node to lose connectivity with the majority of the cluster. After the issue is corrected, service is restored.
+*Syslog Message*::
+This node lost connectivity with the majority of the cluster. When this occurs, both FCP and iSCSI traffic are disabled on this node.
+*Parameters*::
+(None).

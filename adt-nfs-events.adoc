@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: adt-nfs-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: adt.nfs events
+---
+
+= adt.nfs events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== adt.nfs.root.access.no.map
+*Severity*::
+ERROR
+*Description*::
+This message occurs in the auditing subsytem, when the NFS root user is accessing the file without a valid CIFS credential. Access is being allowed because the "ignore-nt-acl-for-root" NFS option is set, and hence the BUILTIN\Administrator credential is used for auditing.
+*Corrective Action*::
+If NFS root user access to the file without NT ACL check should be prohibited, disable the "ignore-nt-act-for-root" option by using the "nfs modify -ignore-nt-acl-for-root" command. If a more appropriate CIFS credential should be used for auditing, configure the SVM name-mapping by using the "vserver name-mapping" command.
+*Syslog Message*::
+NFS root user is accessing the file without a valid CIFS credential. Access is being allowed because the "ignore-nt-acl-for-root" NFS option is set, and hence the BUILTIN\Administrator credential is used for auditing.
+*Parameters*::
+*VserverUuid* (STRING): UUID of the Storage Virtual Machine (SVM, formerly Vserver).

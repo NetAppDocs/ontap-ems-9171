@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: netif-phynotread-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.phynotread events
+---
+
+= netif.phynotread events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.phyNotRead
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot read identification information from the physical layer (PHY) of a network interface. This might be caused by a software bug or hung hardware, and the link might not come up.
+*Corrective Action*::
+If the link does not come up, power-cycle (not just reboot) the system. If the link still does not come up, replace the motherboard or network interface card, depending on the location of the interface.
+*Syslog Message*::
+Cannot read PHY for network interface %s, status mask=0x%llx.
+*Parameters*::
+*ifName* (STRING): Name of the network interface, for example, "e8a".
+*statusMask* (LONGINTHEX): Technical information about the event for Data ONTAP(R) developers.

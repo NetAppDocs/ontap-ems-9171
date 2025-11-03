@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: pha-disk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: pha.disk events
+---
+
+= pha.disk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== pha.disk.type.changed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the backing disk type for an existing disk was changed from the cloud API.
+*Corrective Action*::
+Check whether the disk type of the failed disk was changed. Change the backing disk type to the original value.
+*Syslog Message*::
+Backing disk type changed for Disk: %s, Volume: %s. Error: %s.
+*Parameters*::
+*d_name* (STRING): Disk name
+*d_id* (STRING): Disk ID
+*errmsg* (STRING): Indicating the stage at which the disk lookup failed.
+
+== pha.disk.type.lookup.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the backing disk type lookup fails.
+*Corrective Action*::
+Check that the disk type of the failed disk is supported. Remove the affected disk.
+*Syslog Message*::
+Failed to recognize backing disk type for Disk: %s, Volume: %s. Error: %s.
+*Parameters*::
+*d_name* (STRING): Disk name.
+*d_id* (STRING): Disk ID
+*errmsg* (STRING): Indicating the stage at which the disk lookup failed.

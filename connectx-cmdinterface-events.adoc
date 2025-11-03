@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: connectx-cmdinterface-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: connectx.cmdinterface events
+---
+
+= connectx.cmdinterface events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== connectx.cmdInterface.hung
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the command interface of ConnectX HA interconnect hardware is temporarily hung. If the command interface fails to recover, the HA interconnect goes down.
+*Corrective Action*::
+Typically, the command interface recovers after a few seconds. If not, an AutoSupport message is generated when the HA interconnect goes down.
+*Syslog Message*::
+HA interconnect ConnectX hardware command interface is temporarily hung.
+*Parameters*::
+(None).

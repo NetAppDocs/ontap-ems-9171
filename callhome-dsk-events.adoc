@@ -1,0 +1,257 @@
+---
+sidebar: sidebar
+permalink: callhome-dsk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.dsk events
+---
+
+= callhome.dsk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.dsk.bypass
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk drive failure occurred and the Embedded Switched Hub (ESH) removed the disk drive from the loop electronically--bypassing the disk drive on one or possibly both ports. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Depending on your system configuration, you might need to place the disk drive software into a failed state to match what the ESH module did. Then locate and replace the failed disk drive. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for DISK_FAIL - Bypassed by ESH
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.dsk.config
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects a configuration problem with a disk drive, Fibre Channel switch, or host bus adapter (HBA). A cabling issue might be causing the problem. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Review and repair the cabling and SAN configuration. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for DISK CONFIGURATION ERROR
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.dsk.disable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk drive failure occurred and the I/O Module (IOM) removed the disk drive from the system by disabling the PHY on one or possibly both ports. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Depending on your system configuration, you might need to place the disk drive software into a failed state to match what the IOM did. Then locate and replace the failed disk drive. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for DISK_FAIL - Disabled by IOM
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.dsk.fault
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk drive fails. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Use the “storage disk show -broken” command to locate the failed drive. Confirm the location by looking for a drive whose red and amber LED fault lights are lit. Replace the failed disk drive. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.dsk.fw.needed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects one or more disk drives with out of date or "downrev" disk firmware. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Check and update all the disk drive firmware levels to the current the disk drive firmware level. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for DISK_FIRMWARE_NEEDED_UPDATE
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.dsk.init
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk drive failed to initialize. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Use the “storage disk show -broken” command to locate the failed drive. Confirm the location by looking for a drive whose red and amber LED fault lights are lit. Replace the failed disk drive. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for DISK INIT FAILED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.dsk.io.degraded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the storage health monitor detects degraded disk I/O (taking too long) that indicates a problem with a disk drive. A disk drive might not be using the most recent disk drive firmware. If the disk drive is using the most recent firmware, it might be at a higher risk of failing. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Identify the disk drive that caused this event and verify that it is running the most recent firmware. If the firmware is not up to date, update it to ensure that problems do not continue. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for DISK_IO_DEGRADED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.dsk.label
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a disk drive failed due to unexpected RAID metadata. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Use the “storage disk show -broken” command to locate the failed drive. Confirm the location by looking for a drive whose red and amber LED fault lights are lit. Replace the failed disk drive. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for DISK BAD LABEL
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.dsk.label.broken
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk drive fails. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Use the “storage disk show -broken” command to locate the failed drive. Confirm the location by looking for a drive whose red and amber LED fault lights are lit. Replace the failed disk drive. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for DISK LABELED BROKEN
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.dsk.label.v
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk drive failed due to a version number in its RAID metadata that is inconsistent with the operating system version installed. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Use the “storage disk show -broken” command to locate the failed drive. Confirm the location by looking for a drive whose red and amber LED fault lights are lit. Replace the failed disk drive. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for DISK BAD LABEL VERSION
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.dsk.missing
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot detect a disk drive in the Fibre Channel network (or loop) that it previously discovered. The error might be caused by a failed disk drive in the chassis still awaiting replacement or a broken connection to the disk drive. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Locate and replace the defective disk drive. If you already replaced it, check the Fibre Channel network for network connectivity from the appliance to the disk drive. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for DISK MISSING
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.dsk.no.spin
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk drive fails to start. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Logged message 'disk.init.failure.spinup' identifies the failed disk drive. Locate and replace the disk drive. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for DISK NOT SPINNING
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.dsk.noio
+*Severity*::
+ERROR
+*Description*::
+This message occurs when disk drive device commands to a disk drive are failing with link errors, adapter errors, or timeouts. With this type of problem, the disk drives's red or amber LED fault light may not be lit. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Use the “storage disk show -broken” command to locate the failed drive. Confirm the location by looking for a drive whose red and amber LED fault lights are lit. Replace the failed disk drive. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for DISK NOT RESPONDING
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.dsk.predict
+*Deprecated*::
+Deprecated as of ONTAP 9.2. Last used in DOT 7.1.1.
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the storage health monitor PFA (predictive failure analysis) determines that disk drive failure is forthcoming. A disk drive might not be using the most recent disk drive firmware. If the disk drive is using the most recent firmware, it might be at higher risk of failing. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Identify the disk drive that caused this event and check whether the firmware is up-to-date. If the firmware is not up-to-date, update it to ensure that problems do not continue. If the firmware is up-to-date, manually fail the faulty disk drive and remove it from the system to ensure the integrity of data. At the earliest opportunity, install a replacement disk drive. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for DISK_FAILURE_PREDICTED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.dsk.redun.fault
+*Severity*::
+ERROR
+*Description*::
+This message occurs when redundant access to disk storage is lost. This message and associated Autosupport are issued at most once per day. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Locate disks which have lost redundancy by using the following command: "storage disk show -fields disk,primary-port,secondary-name,secondary-port,shelf,bay" Note all channels with single path connectivity. Check for failures using these commands: "system health node-connectivity shelf show" and "system health system-connectivity shelf show". If a module or cable failure is identified, replace the failed module or cable. Confirm redundancy has been restored with the following command: "storage disk show -fields disk,primary-port,secondary-name,secondary-port,shelf,bay" If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for DISK REDUNDANCY FAILED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.dsk.scrub
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the weekly scheduled disk scrub detects checksum errors. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Review the results of the disk scrub. Your next steps depend on the result of your review, and might include replacing the disk drive. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for DISK SCRUB CHECKSUM ERROR
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.dsk.scrub.done
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk scrub finishes bypassing media errors and places the aggregate in a normal state. This type of disk scrub is started automatically after walfiron when disk reconstruction is bypassing media errors. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Review the results of the disk reconstruction, wafliron, and disk scrub. Your next steps depend on the result of your review, and might include replacing the disk drive. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for DISK SCRUB COMPLETED (bypassing media errors)
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.dsk.scrub.parity
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the scheduled disk scrub detects parity inconsistencies. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Review the results of the disk scrub. Your next steps depend on the result of your review, and might include replacing the disk drive. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for DISK SCRUB PARITY INCONSISTENCY
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.dsk.sense
+*Severity*::
+ERROR
+*Description*::
+This message occurs when storage health monitor detects a SCSI sense error that indicates a problem with a disk drive. A disk drive might not be using the most recent disk drive firmware. If the disk drive is using the most recent firmware, it might be at a higher risk of failing. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Identify the disk drive that caused this event and verify that it is running the most recent firmware. If the firmware is not up-to- date, update it to ensure that problems do not continue. If the firmware is up-to-date, manually fail the faulty disk drive and remove it from the system to ensure the integrity of data. At the earliest opportunity, install a replacement disk drive. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for DISK_RECOVERED_ERRORS
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.dsk.shrank
+*Severity*::
+ALERT
+*Description*::
+This message occurs when either an aggregate or hot spare disk drive fails because its raw capacity was downsized due to a firmware change. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Use the “storage disk show -broken” command to locate the failed drive. Confirm the location by looking for a drive whose red and amber LED fault lights are lit. Replace the failed disk drive. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for DISK RAWSIZE SHRANK
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

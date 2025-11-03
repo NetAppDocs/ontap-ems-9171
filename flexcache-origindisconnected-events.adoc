@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: flexcache-origindisconnected-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: flexcache.origindisconnected events
+---
+
+= flexcache.origindisconnected events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== flexcache.originDisconnected
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a FlexCache(R) volume cannot communicate with its origin volume. The cache volume might therefore present stale data to its clients. Client I/O to the cache volume might also not appear to respond if the client is requesting data that has not been cached.
+*Corrective Action*::
+Verify that the FlexCache volume can connect with its origin volume. If both volumes are within the same cluster, check the health of the owning nodes by using the "system node show" command. If the volumes are on different clusters, ensure that the intercluster LIFs on each cluster can connect by using the "network ping" command.
+*Syslog Message*::
+FlexCache volume with Name %s MSID %lu on Vserver Name %s UUID %s is disconnected from its origin volume with Vserver UUID %s and MSID %lu.
+*Parameters*::
+*cacheVolumeName* (STRING): Volume Name of the FlexCache volume.
+*cacheMsid* (LONGINT): MSID of the FlexCache volume.
+*cacheVserverName* (STRING): Vserver Name of the FlexCache volume.
+*cacheVserverUuid* (STRING): Vserver UUID of the FlexCache volume.
+*originVserverUuid* (STRING): Vserver UUID of the origin volume.
+*originMsid* (LONGINT): Master data set identifier (MSID) of the origin volume.

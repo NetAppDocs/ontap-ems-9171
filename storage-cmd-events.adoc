@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: storage-cmd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: storage.cmd events
+---
+
+= storage.cmd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== storage.cmd.balanceRequest
+*Severity*::
+INFORMATIONAL
+*Description*::
+Indicates a user request to balance I/O across initiator ports has been issued.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Storage related I/O has been balanced across available initiator ports.
+*Parameters*::
+(None).
+
+== storage.cmd.logPortIO
+*Severity*::
+INFORMATIONAL
+*Description*::
+Logs the mix of I/O bound to a specific initiator port prior to balancing. Issued for all initiator ports when a user requests a balancing of I/O.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Initiator Port %s had %d percent of all storage bound I/O traffic routed through it.
+*Parameters*::
+*portName* (STRING): The name of the initiator port
+*ioPct* (INT): The percentage of overall backend I/O routed through this port

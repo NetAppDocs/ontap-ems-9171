@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-disks-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.disks events
+---
+
+= callhome.disks events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.disks.missing
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detected simultaneously that multiple disk drives were missing from the system. It generated a single "MULTIPLE DISKS MISSING" message rather than multiple "DISK MISSING" messages. The problem might be due to a Fibre Channel loop (connection) or a disk shelf or disk drive operating incorrectly. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for MULTIPLE DISKS MISSING
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

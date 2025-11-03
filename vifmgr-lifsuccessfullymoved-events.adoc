@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: vifmgr-lifsuccessfullymoved-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.lifsuccessfullymoved events
+---
+
+= vifmgr.lifsuccessfullymoved events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.lifsuccessfullymoved
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a logical interface (LIF) IP address was successfully moved to another node/port.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LIF %s (on virtual server %s), IP address %s, is now hosted on node %s, port %s.
+*Parameters*::
+*vifname* (STRING): Name of the LIF that was moved.
+*vsrvid* (STRING): Name of the virtual server identifier on which this LIF resides.
+*vifip* (STRING): The logical interface's IP address that was moved.
+*tonode* (STRING): Name of the node to which the LIF was moved.
+*toport* (STRING): Name of the port to which the LIF was moved.

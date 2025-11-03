@@ -1,0 +1,52 @@
+---
+sidebar: sidebar
+permalink: pn-mvia-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: pn.mvia events
+---
+
+= pn.mvia events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== pn.mvia.freeq.empty
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the pass-through network layer depletes its supply of buffers for sending traffic, which could cause an Interconnect timeout.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Pass-through network layer free queue empty for %d msecs, which might cause Interconnect timeout.
+*Parameters*::
+*time* (INT): Duration of depletion in msecs.
+
+== pn.mvia.nic.reset
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the passthrough network layer detects network interface card (NIC) state change caused by an NIC reset.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Passthrough network layer detected NIC %s has changed its operational state. New state: %s.
+*Parameters*::
+*nic_name* (STRING): NIC name.
+*nic_state_change* (STRING): NIC state change.
+
+== pn.mvia.send.starvation
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the pass-through network layer takes too long to execute the logic for sending traffic, which could cause an Interconnect timeout.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Pass-through network layer "send" thread not run for %d msecs, which might cause Interconnect timeout.
+*Parameters*::
+*time* (INT): How long the pass-through network layer has not executed the logic for sending traffic.

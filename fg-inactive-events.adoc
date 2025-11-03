@@ -1,0 +1,46 @@
+---
+sidebar: sidebar
+permalink: fg-inactive-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fg.inactive events
+---
+
+= fg.inactive events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fg.inactive.dc.only.delete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system automatically deletes an inactive FlexGroup constituent that existed only in the data component.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Constituent with DSID "%lu" of FlexGroup volume "%s" (MSID "%lu") in Vserver "%s", which exists only in the data component and is inactive, has been automatically deleted.
+*Parameters*::
+*constituentDsid* (LONGINT): Data Set ID (DSID) of the deleted constituent.
+*volumeName* (STRING): Name of the FlexGroup volume owning the deleted constituent.
+*volumeMsid* (LONGINT): Master Data Set ID (MSID) of the FlexGroup volume owning the deleted constituent.
+*vserverName* (STRING): Name of the Vserver on which the FlexGroup volume resides.
+
+== fg.inactive.delete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system automatically deletes an inactive FlexGroup constituent.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Constituent "%lu" (DSID "%lu") of FlexGroup volume "%s" (MSID "%lu") in Vserver "%s" is inactive and has been automatically deleted.
+*Parameters*::
+*flexgroupIndex* (LONGINT): FlexGroup index of the deleted constituent.
+*constituentDsid* (LONGINT): Data Set ID (DSID) of the deleted constituent.
+*volumeName* (STRING): Name of the FlexGroup volume owning the deleted constituent.
+*volumeMsid* (LONGINT): Master Data Set ID (MSID) of the FlexGroup volume owning the deleted constituent.
+*vserverName* (STRING): Name of the Vserver on which the FlexGroup volume resides.

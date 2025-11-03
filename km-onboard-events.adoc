@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: km-onboard-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: km.onboard events
+---
+
+= km.onboard events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== km.onboard.ccmode.wrongpass
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a cluster administrator supplies the wrong Onboard Key Manager cluster-wide passphrase more than three times in a row while attempting to enable Common Criteria (CC) mode.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The Onboard Key Manager cluster-wide passphrase has been entered incorrectly %s times by user "%s" while attempting to enable Common Criteria mode.
+*Parameters*::
+*username* (STRING): Name of the user who issued the command to enable CC mode.
+*failure_count* (STRING): Number of sequential times that the cluster-wide passphrase has been entered incorrectly.

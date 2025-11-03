@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: secd-nfs-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: secd.nfs events
+---
+
+= secd.nfs events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== secd.nfs.groupLimit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) truncates the number of groups to which a user belongs. This can happen when a user of a UNIX-based system is in more groups than the limit supported by the system.
+*Corrective Action*::
+Determine the maximum number of groups allowed for the Vserver in question with the "nfs show -vserver <vservername> -fields extended-groups-limit" command. If necessary, configure the limit of extended groups on the Vserver by using the (privilege mode: advanced) command "nfs modify -vserver <vsname> -extended-groups-limit <0..1024>". Make sure that the user does not belong to more than the maximum number of groups supported on the site NIS or LDAP server. (This maximum should correspond to the value of the "extended-groups-limit" field that was either displayed or set in the given commands.)
+*Syslog Message*::
+User (%s) is in too many groups (%d): on Vserver (%s).
+*Parameters*::
+*uname* (STRING): UNIX user name.
+*gidCount* (INT): Total number of auxillary groups that a user belongs to, in various name services.
+*vserverName* (STRING): Name of the Vserver.

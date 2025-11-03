@@ -1,0 +1,105 @@
+---
+sidebar: sidebar
+permalink: scsiblade-lun-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsiblade.lun events
+---
+
+= scsiblade.lun events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsiblade.lun.ids.change
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects a change in identifiers (serial number, UUID, device ID) of a LUN. As a result, SAN hosts might see the previous identifiers of the LUN. Other LUNs on specified volume are also affected. This can occur due to incomplete processing of a 'snapmirror break' operation for the volume containing this LUN. It can also occur due to the command 'lun rescan' having been issued without following up with bringing the volume offline and then bringing it online.
+*Corrective Action*::
+If the LUN is in a mirrored volume and wafliron has been run on the aggregate containing the volume, issue the command 'lun rescan -oovc-to-vol'. Otherwise, bring the volume offline and then online.
+*Syslog Message*::
+A change in identifiers of a LUN in Vserver %s and volume with MSID %llu has been detected. The previous and new serial numbers are '%s', '%s'. The previous and new UUIDs are '%s', '%s'. The previous and new device text IDs are '%s', '%s'. The previous and new device binary IDs are '%s', '%s'. Other LUNs on this volume are also affected.
+*Parameters*::
+*vserver* (STRING): Name or UUID of the Vserver.
+*volumeMSID* (LONGINT): MSID of the container volume.
+*prevSerial* (STRING): Previous LUN serial number.
+*newSerial* (STRING): New LUN serial number.
+*prevUUID* (STRING): Previous LUN UUID.
+*newUUID* (STRING): New LUN UUID.
+*prevDevTextID* (STRING): Previous LUN Device Text ID.
+*newDevTextID* (STRING): New LUN Device Text ID.
+*prevDevBinID* (STRING): Previous LUN Device Binary ID.
+*newDevBinID* (STRING): New LUN Device Binary ID.
+
+== scsiblade.lun.move.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the result status message of a LUN move job is lost. The LUN move job will not complete until this message is received, even if the LUN has been moved.
+*Corrective Action*::
+Use the 'lun move show' command to see if the affected job is still running. If it is, then find the affected LUN path by finding the other EMS entries with the same job UUID and file ID. Once the affected LUN has been found, then offlining and onlining the destination volume to which the LUN is being moved will make the On Demand job manager retry the operation. If the success status is 1 then all lun maps and QoS entries were successfully updated, otherwise they were not. For further assistance, contact NetApp technical support.
+*Syslog Message*::
+This message occurs when the result status %d of a LUN move job %s for file ID %llu is lost.
+*Parameters*::
+*Success* (INT): Success status contained in the lost message.
+*OnDemandUUID* (STRING): UUID of the On Demand job.
+*OnDemandIndex* (LONGINT): Index of File in the On Demand Job.
+
+== scsiblade.lun.move.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a commit operation fails while updating LUN maps during a LUN move operation. The LUN move fails if this occurs.
+*Corrective Action*::
+Use the provided reason to help determine the corrective action, and then retry the command. For further assistance, contact NetApp technical support.
+*Syslog Message*::
+This message occurs when the RDB update fails for lun move job %s-%llu. Failure reason: %s.
+*Parameters*::
+*OnDemandUUID* (STRING): UUID of the On Demand job.
+*OnDemandIndex* (LONGINT): Index of File in the On Demand job.
+*Reason* (STRING): Reason for the failure.
+
+== scsiblade.lun.offline.system
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a LUN is brought offline by Data ONTAP (R) because of a write failure caused by lack of space in the volume.
+*Corrective Action*::
+Add space to the volume and bring the LUN online using the "LUN modify" command.
+*Syslog Message*::
+LUN %s in volume with MSID %llu on Vserver %s has been brought offline due to lack of space in the volume.
+*Parameters*::
+*lunSerial* (STRING): Serial number of the LUN.
+*volumeMSID* (LONGINT): MSID of the volume.
+*vserver* (STRING): Name or UUID of the Vserver.
+
+== scsiblade.lun.stale.map
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a LUN or NVMe namespace attributes lookup operation fails because the LUN Vdisk ID or NVMe namespace NSID is not known to Vdisk Operations and Management. This results in degraded switchover, switchback, and Vserver initialization times.
+*Corrective Action*::
+Verify that the volume is online by using the "volume show -vserver [vserver name] -volume [volume name] -fields state" command. If necessary, bring the volume online by using the "volume online -vserver [vserver name] -volume [volume name]" command. If you cannot find the volume or the problem persists, contact NetApp technical support for assistance with the diagnostic privilege commands to view and remove stale maps.
+*Syslog Message*::
+Could not look up LUN or NVMe namespace attributes for the object with ID '%s' in volume with MSID '%llu' in Vserver '%s'.
+*Parameters*::
+*vdiskId* (STRING): Vdisk ID of the LUN or NSID of the NVMe namespace.
+*volume* (LONGINTHEX): Volume identifier.
+*vserver* (STRING): UUID of the Vserver that hosts the LUN or NVMe namespace.
+
+== scsiblade.lun.state.invalid
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a LUN map operation fails because the state of the LUN in the SAN cache is incorrect.
+*Corrective Action*::
+Shut down the node and retry mapping the LUN by issuing the ZAPI/CLI command to one of the other nodes in the cluster. Reboot the node once the LUN has been successfully mapped.
+*Syslog Message*::
+The LUN with Vdisk ID %s on Vserver "%s" cannot be mapped because its state in the SAN cache is incorrect.
+*Parameters*::
+*vdiskId* (STRING): Vdisk ID of the LUN.
+*vserver* (STRING): UUID of the Vserver that hosts the LUN.

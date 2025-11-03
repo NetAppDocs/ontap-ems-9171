@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: hotplug-init-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: hotplug.init events
+---
+
+= hotplug.init events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== hotplug.init.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the "slot module insert" command encounters an error while initializing the module.
+*Corrective Action*::
+Retry the "slot module remove" and "slot module insert" commands. If errors persist, contact NetApp technical support.
+*Syslog Message*::
+Initialization of ports "%s" in slot %d failed after hot plug module insert. Error: "%s".
+*Parameters*::
+*port_list* (STRING): Port list of the inserted module.
+*slot* (INT): Slot number of the module.
+*reason* (STRING): Error that was encountered during module initialization.
+
+== hotplug.init.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the "slot module insert" command successfully initializes the ports of the inserted module.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Initialization of ports "%s" in slot %d succeeded after hot plug module insert.
+*Parameters*::
+*port_list* (STRING): Port list of the inserted module.
+*slot* (INT): Slot number of the module.

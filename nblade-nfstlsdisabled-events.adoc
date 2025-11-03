@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nblade-nfstlsdisabled-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.nfstlsdisabled events
+---
+
+= nblade.nfstlsdisabled events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.NfsTlsDisabled
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the client is trying to use NFS over TLS (Transport Layer Security), but the NFS feature is marked as disabled on the server side.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Failed to create NFS over TLS (Transport Layer Security) connection, because NFS over TLS is disabled for SVM: "%s".
+*Parameters*::
+*vsName* (STRING): Storage virtual machine (SVM) name.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: fpolicy-memory-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fpolicy.memory events
+---
+
+= fpolicy.memory events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fpolicy.memory.pressure
+*Severity*::
+ALERT
+*Description*::
+This message occurs when either the FPolicy Service Manager (FSM) receives too many requests to process immediately, or when the number of requests is accumulating due to server connectivity issues. FSM processing time might degrade as a result.
+*Corrective Action*::
+Check the connection between the node and the FPolicy server by using the "vserver fpolicy show-engine" command. Verify that FPolicy is only monitoring file operations that are recommended by the FPolicy server vendor. Verify that FPolicy is using filters recommended by the server vendor for common file operations, for example, close, read, write and open.
+*Syslog Message*::
+FSM is experiencing memory pressure.
+*Parameters*::
+(None).

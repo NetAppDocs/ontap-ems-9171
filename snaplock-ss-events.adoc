@@ -1,0 +1,171 @@
+---
+sidebar: sidebar
+permalink: snaplock-ss-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snaplock.ss events
+---
+
+= snaplock.ss events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snaplock.ss.lockBadVolume
+*Severity*::
+ALERT
+*Description*::
+This event is generated if an attempt is made to lock a snapshot on a SnapLock volume that has previously failed to find or load its SnapLock snapshot state.
+*Corrective Action*::
+Run wafliron on the volume.
+*Syslog Message*::
+A snapshot on SnapLock volume '%s%s' on the Vserver with ID '%s', could not be locked because the SnapLock snapshot state could not be found or loaded for the volume.
+*Parameters*::
+*volume* (STRING): The name of the SnapLock volume on which the snapshot could not be locked.
+*app* (STRING): Application Name.
+*volident* (STRING): Unique identifier of the volume when the volume name itself is insufficient.
+
+== snaplock.ss.state.badMagic
+*Severity*::
+ALERT
+*Description*::
+This event is generated if the SnapLock snapshot state on a SnapLock volume is corrupt with an invalid magic file identifier. This volume will not allow SnapLock locking or unlocking of any further snapshots until this erroneous volume state is corrected.
+*Corrective Action*::
+Run wafliron on this volume.
+*Syslog Message*::
+The SnapLock snapshot state is corrupt with an invalid magic file identifier on SnapLock volume '%s%s' on the Vserver with ID '%s'.
+*Parameters*::
+*volume* (STRING): The name of the SnapLock volume on which the SnapLock snapshot state is corrupt with an invalid magic file identifier.
+*app* (STRING): Application Name.
+*volident* (STRING): Unique identifier of the volume when the volume name itself is insufficient.
+
+== snaplock.ss.state.badSize
+*Severity*::
+ALERT
+*Description*::
+This event is generated if the SnapLock snapshot state on a SnapLock volume is corrupt with an incorrect size. This volume will not allow SnapLock locking or unlocking of any further snapshots until this erroneous volume state is corrected.
+*Corrective Action*::
+Run wafliron on this volume.
+*Syslog Message*::
+The SnapLock snapshot state is corrupt with an incorrect size on SnapLock volume '%s%s' on the Vserver with ID '%s'.
+*Parameters*::
+*volume* (STRING): The name of the SnapLock volume on which the SnapLock snapshot state is corrupt with an incorrect size.
+*app* (STRING): Application Name.
+*volident* (STRING): Unique identifier of the volume when the volume name itself is insufficient.
+
+== snaplock.ss.state.badState
+*Severity*::
+ERROR
+*Description*::
+This message occurs when SnapLock(R) Snapshot(R) copies on the volume are corrupted, which prevents updates on the lockvault from succeeding until this is corrected.
+*Corrective Action*::
+Run the "snapshot fix-snaplock-state" command on this volume.
+*Syslog Message*::
+The SnapLock snapshot state is corrupt on SnapLock volume '%s%s' on the Vserver with ID '%s'.
+*Parameters*::
+*volume* (STRING): Name of the SnapLock volume on which the SnapLock Snapshot state is corrupt.
+*app* (STRING): Application Name.
+*volident* (STRING): Unique identifier of the volume when the volume name itself is insufficient.
+
+== snaplock.ss.state.badVersion
+*Severity*::
+ALERT
+*Description*::
+This event is generated if the SnapLock snapshot state on a SnapLock volume has an invalid version number. This volume will not allow SnapLock locking or unlocking of any further snapshots until this erroneous volume state is corrected.
+*Corrective Action*::
+Run wafliron on this volume.
+*Syslog Message*::
+The SnapLock snapshot state has an invalid version number on SnapLock volume '%s%s' on the Vserver with ID '%s'. The bad version number found was %d and the expected version was %d.
+*Parameters*::
+*volume* (STRING): The name of the SnapLock volume on which the SnapLock snapshot state has an invalid version number.
+*app* (STRING): Application Name.
+*volident* (STRING): Unique identifier of the volume when the volume name itself is insufficient.
+*bad_version* (INT): The invalid version number of the SnapLock snapshot state.
+*expected_version* (INT): The expected version number of the SnapLock snapshot state.
+
+== snaplock.ss.state.createFail
+*Severity*::
+ALERT
+*Description*::
+This event is generated if SnapLock is unable to create the state for the SnapLock snapshot state on a SnapLock volume. This volume will not allow SnapLock locking or unlocking of any further snapshots until this erroneous volume state is corrected.
+*Corrective Action*::
+Run wafliron on this volume.
+*Syslog Message*::
+Failed to create the SnapLock snapshot state on SnapLock volume '%s%s' on the Vserver with ID '%s'.
+*Parameters*::
+*volume* (STRING): The name of the SnapLock volume on which the SnapLock snapshot state could not be created.
+*app* (STRING): Application Name.
+*volident* (STRING): Unique identifier of the volume when the volume name itself is insufficient.
+
+== snaplock.ss.state.dir.createFail
+*Severity*::
+ALERT
+*Description*::
+This event is generated if SnapLock is unable to create the SnapLock state directory for storage of SnapLock state on a SnapLock volume.
+*Corrective Action*::
+Run wafliron on this volume.
+*Syslog Message*::
+Failed to create the SnapLock state directory for storage of SnapLock state on SnapLock volume '%s%s' on the Vserver with ID '%s'.
+*Parameters*::
+*volume* (STRING): The name of the SnapLock volume on which the SnapLock state directory could not be created.
+*app* (STRING): Application Name.
+*volident* (STRING): Unique identifier of the volume when the volume name itself is insufficient.
+
+== snaplock.ss.state.loadFail
+*Severity*::
+ALERT
+*Description*::
+This event is generated if the SnapLock snapshot state on a SnapLock volume failed to load. This volume will not allow SnapLock locking or unlocking of any further snapshots until this erroneous volume state is corrected.
+*Corrective Action*::
+Run wafliron on this volume.
+*Syslog Message*::
+The SnapLock snapshot state could not be loaded from SnapLock volume '%s%s' on the Vserver with ID '%s'.
+*Parameters*::
+*volume* (STRING): The name of the SnapLock volume from which the SnapLock snapshot state could not be loaded.
+*app* (STRING): Application Name.
+*volident* (STRING): Unique identifier of the volume when the volume name itself is insufficient.
+
+== snaplock.ss.state.notFound
+*Severity*::
+ALERT
+*Description*::
+This event is generated if the SnapLock snapshot state cannot be found on a SnapLock volume. This volume will not allow SnapLock locking or unlocking of any further snapshots until this erroneous volume state is corrected.
+*Corrective Action*::
+Run wafliron on this volume.
+*Syslog Message*::
+The SnapLock snapshot state could not be found on SnapLock volume '%s%s' on the Vserver with ID '%s'.
+*Parameters*::
+*volume* (STRING): The name of the SnapLock volume on which the SnapLock snapshot state could not be found.
+*app* (STRING): Application Name.
+*volident* (STRING): Unique identifier of the volume when the volume name itself is insufficient.
+
+== snaplock.ss.state.upgradeFail
+*Severity*::
+ALERT
+*Description*::
+This event is generated if SnapLock is unable to upgrade the the SnapLock snapshot state on a SnapLock volume. This volume will not allow SnapLock locking or unlocking of any further snapshots until this erroneous volume state is corrected.
+*Corrective Action*::
+Run wafliron on this volume.
+*Syslog Message*::
+Failed to upgrade the SnapLock snapshot state to SnapLock volume '%s%s' on the Vserver with ID '%s'.
+*Parameters*::
+*volume* (STRING): The name of the SnapLock volume on which the SnapLock snapshot state could not be written.
+*app* (STRING): Application Name.
+*volident* (STRING): Unique identifier of the volume when the volume name itself is insufficient.
+
+== snaplock.ss.state.writeFail
+*Severity*::
+ALERT
+*Description*::
+This event is generated if SnapLock is unable to write the the SnapLock snapshot state on a SnapLock volume. This volume will not allow SnapLock locking or unlocking of any further snapshots until this erroneous volume state is corrected.
+*Corrective Action*::
+Run wafliron on this volume.
+*Syslog Message*::
+Failed to write the SnapLock snapshot state to SnapLock volume '%s%s' on the Vserver with ID '%s'.
+*Parameters*::
+*volume* (STRING): The name of the SnapLock volume on which the SnapLock snapshot state could not be written.
+*app* (STRING): Application Name.
+*volident* (STRING): Unique identifier of the volume when the volume name itself is insufficient.

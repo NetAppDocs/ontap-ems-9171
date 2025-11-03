@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: vol-mount-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vol.mount events
+---
+
+= vol.mount events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vol.mount.readOnly
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a volume or aggregate is mounted as read-only.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Mounting vol/aggr '%s' readonly due to 'online -ro' command.
+*Parameters*::
+*name* (STRING): Name of the volume or aggregate.

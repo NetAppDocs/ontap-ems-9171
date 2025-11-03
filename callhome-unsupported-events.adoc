@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-unsupported-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.unsupported events
+---
+
+= callhome.unsupported events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.unsupported.snaplock
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system generates an AutoSupport event to notify you that a SnapLock(R) disk is attached to a system running a release of ONTAP(R) that does not support SnapLock.
+*Corrective Action*::
+Remove the SnapLock disks from this system and attach them to a system that supports SnapLock. You can also revert or upgrade this system to a release that supports SnapLock.
+*Syslog Message*::
+Call home for SNAPLOCK DISKS IN UNSUPPORTED RELEASE
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

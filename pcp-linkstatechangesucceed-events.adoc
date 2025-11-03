@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: pcp-linkstatechangesucceed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: pcp.linkstatechangesucceed events
+---
+
+= pcp.linkstatechangesucceed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== pcp.linkStateChangeSucceed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a change of network port state can now be confirmed after the initial attempt failed due to some race condition. The affected port is now operational.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Link state change for port %s can now be confirmed after the change %u seconds ago.
+*Parameters*::
+*portname* (STRING): Port name.
+*retrySeconds* (INT): Number of seconds that the port state change could not be confirmed.

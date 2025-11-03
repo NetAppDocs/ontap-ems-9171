@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: nblade-cifswitnessfonotify-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.cifswitnessfonotify events
+---
+
+= nblade.cifswitnessfonotify events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.cifsWitnessFONotify
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Witness system has requested its CIFS clients to move their Continuously Available connections to the local node, due to a failure of the partner node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The Witness service received a failure notification for the partner node. Notification of %d CIFS clients to move their Continuously Available connections to this node took %d milliseconds to complete.
+*Parameters*::
+*numNotificationsSent* (INT): Number of clients notified.
+*timeTakenInMsecs* (INT): Number of milleseconds taken to notify the clients.

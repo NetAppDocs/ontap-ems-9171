@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: netif-linkerrors-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.linkerrors events
+---
+
+= netif.linkerrors events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.linkErrors
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the driver detects an excessive link error rate. Link errors are cyclic redundancy checks (CRC), runt frames, fragment, jabber, and alignment errors. Use the 'ifstat' command to display counts.
+*Corrective Action*::
+Verify that the cable is securely connected at both ends. Verify that both devices are configured the same with respect to autonegotiation, speed, and duplex. If the problem persists, there might be bad hardware at one end, or a bad cable or connector.
+*Syslog Message*::
+Excessive link errors on network interface %s. Might indicate a bad cable, switch port, or NIC, or that a cable connector is not fully inserted in a socket. On a 10/100 port, might indicate a duplex mismatch.
+*Parameters*::
+*ifName* (STRING): Name of the network interface; for example, "e8a".

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: nblade-httpmaxconntimeouts-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.httpmaxconntimeouts events
+---
+
+= nblade.httpmaxconntimeouts events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.httpMaxConnTimeOuts
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the HTTP subsystem, which monitors connection timeouts due to an unresponsive client or data not received from the client within a specified time, especially a PUT request or an HTTP Request containing Request Body. If the number of timeouts allowed in a given period of time is being exceeded, it could be due to network failures or DoS(Denial of Service) attacks. This might result in HTTP client connection failures, because most connections are using resources and waiting for data.
+*Corrective Action*::
+Inspect the clients that are experiencing a long delay in packet trace tools. Inspecting the client network might be helpful as well.
+*Syslog Message*::
+The HTTP subsystem on this node on vserver %u has exceeded its connection timeout limit of %llu times, currently %llu connection timeout failures observed since boot time. This might result in unexpected HTTP connection failures.
+*Parameters*::
+*vsId* (INT): Id of the vserver, on which this event occurred.
+*currentNumConnTimeouts* (LONGINT): Total number of connection timeouts that occurred in the HTTP subsystem.
+*totalNumConnTimeouts* (LONGINT): Maximum number of connection timeouts allowed in the HTTP subsystem.

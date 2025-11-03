@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: mgr-avail-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgr.avail events
+---
+
+= mgr.avail events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgr.avail.stat.reset
+*Severity*::
+NOTICE
+*Description*::
+This message is emitted when statistics is reset
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Availability statistics reset
+*Parameters*::
+(None).

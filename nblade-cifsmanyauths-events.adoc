@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: nblade-cifsmanyauths-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.cifsmanyauths events
+---
+
+= nblade.cifsmanyauths events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.cifsManyAuths
+*Severity*::
+ERROR
+*Description*::
+This message occurs when many authentication negotiations occur simultaneously. There are 256 new session requests from this client that are not yet complete.
+*Corrective Action*::
+Investigate why the client is creating 256 or more new connection requests. It might be necessary to contact the vendor of the client or of the application in order to determine why this is occurring.
+*Syslog Message*::
+Many simultaneous new CIFS connections are occurring on Vserver ID %u from IP address %s object type is %s with UUID %s.
+*Parameters*::
+*vsId* (INT): ID of the Vserver on which this event occurred.
+*remoteIpAddress* (STRING): IP address of the client machine.
+*object_type* (STRING): Type of the resource object under notification.
+*object_uuid* (STRING): UUID of the Vserver.

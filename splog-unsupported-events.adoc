@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: splog-unsupported-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: splog.unsupported events
+---
+
+= splog.unsupported events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== splog.unsupported
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the current firmware of the Service Processor (SP) does not support the log collection function.
+*Corrective Action*::
+Check the firmware version from the SP CLI using the 'version' command and compare it to the most current supported version for your storage system. If necessary, download and update the SP firmware to the latest supported version.
+*Syslog Message*::
+The firmware on the SP does not support the log collection function.
+*Parameters*::
+(None).

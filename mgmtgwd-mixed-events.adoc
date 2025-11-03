@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: mgmtgwd-mixed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmtgwd.mixed events
+---
+
+= mgmtgwd.mixed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmtgwd.mixed.version
+*Severity*::
+ALERT
+*Description*::
+This message occurs when not all nodes are running the same version of ONTAP. Not all features of a software version are available to the cluster unless all nodes are at the same version. This message can occur when upgrade or revert is in progress or has not completed successfully.
+*Corrective Action*::
+Use "version" to check the current cluster version and use "version -node *" to check the version on individual nodes.
+*Syslog Message*::
+Not all nodes are at the same ONTAP version. Cluster is operating in version %s. One or more nodes are at %s.
+*Parameters*::
+*ClusterVersion* (STRING): Current cluster version.
+*HighestVersion* (STRING): Highest version in the cluster.

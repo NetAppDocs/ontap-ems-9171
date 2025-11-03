@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: xfcvi-qlgc_regdumpfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: xfcvi.qlgc_regdumpfailed events
+---
+
+= xfcvi.qlgc_regdumpfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== xfcvi.qlgc_regDumpFailed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the HA interconnect driver could not save a diagnostic dump.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Failed to save diagnostic dump for port %s. %s.
+*Parameters*::
+*port* (STRING): xfcvi Interconnect NIC.
+*reason* (STRING): Reason for the failure.

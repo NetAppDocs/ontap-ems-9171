@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: cpeer-duplicate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cpeer.duplicate events
+---
+
+= cpeer.duplicate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cpeer.duplicate.remote.addr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an IP address from a peer cluster is also in use by the local cluster in the same IPspace. This may prevent the cluster peering relationship from reaching an available state.
+*Corrective Action*::
+Replace the duplicate address on the local cluster with a different address.
+*Syslog Message*::
+Cannot use address %s from peer cluster %s because it is already in use on the local cluster.";
+*Parameters*::
+*address* (STRING): Duplicate address from the peer cluster.
+*peer* (STRING): Name of the peer cluster.

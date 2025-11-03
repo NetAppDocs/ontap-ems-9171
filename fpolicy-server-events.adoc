@@ -1,0 +1,95 @@
+---
+sidebar: sidebar
+permalink: fpolicy-server-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fpolicy.server events
+---
+
+= fpolicy.server events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fpolicy.server.bkPressApply
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the FPolicy server has applied backpressure which means that the server is busy and does not want to receive requests until it removes backpressure.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FPolicy server "%s" has applied backpressure.
+*Parameters*::
+*fpserver* (STRING): IP Address of the FPolicy server.
+
+== fpolicy.server.bkPressRemove
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the FPolicy server removes backpressure, which it has previously applied. The FPolicy server removes backpressure when it is ready to receive requests.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FPolicy server "%s" has removed backpressure.
+*Parameters*::
+*fpserver* (STRING): IP Address of the FPolicy server.
+
+== fpolicy.server.connect
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a control channel is established between the node and the FPolicy server.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Control channel with the FPolicy server "%s" of policy "%s" is established for Vserver %s.
+*Parameters*::
+*fpserver* (STRING): IP Address of the FPolicy server.
+*policy* (STRING): Name of the policy.
+*vserver* (STRING): Vserver Name.
+
+== fpolicy.server.connectError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the node fails to establish a control channel with the FPolicy server. The control channel is used for communication between the node and the FPolicy server. The error could be because of a failure in establishing TCP connection, SSL failure, FPolicy handshake failure, or some internal error.
+*Corrective Action*::
+Depending on the failure reason, check the following: On the node, check whether the correct IP and port entries are specified in the policy configuration. Also, the FPolicy server should be running and listening on the port specified in the policy configuration. Run the command "network interface show" to determine that at least one data logical interface (LIF) is configured to the Vserver on the node. Run the command "routing-groups route show" to verify that the network route exists to the FPolicy server. Run the command "network ping" to verify that the FPolicy server is reachable from the node. For any other reason, see the Cluster-Mode documentation.
+*Syslog Message*::
+Node failed to establish a connection with the FPolicy server "%s" of policy "%s" for Vserver %s (reason: "%s").
+*Parameters*::
+*fpserver* (STRING): IP address of the FPolicy server.
+*policy* (STRING): Name of the policy.
+*vserver* (STRING): Vserver Name.
+*reason* (STRING): Reason for failure.
+
+== fpolicy.server.disconnect
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the TCP connection to the FPolicy(tm) server is broken.
+*Corrective Action*::
+Reestablish the connection by using "vserver fpolicy engine-connect" command.
+*Syslog Message*::
+Connection to the FPolicy server "%s" of policy "%s" is broken for Vserver %s ( reason: "%s" ).
+*Parameters*::
+*fpserver* (STRING): IP address of the FPolicy server.
+*policy* (STRING): Name of the policy.
+*vserver* (STRING): Vserver Name.
+*reason* (STRING): Reason for disconnection.
+
+== fpolicy.server.maxPendingReq
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the maximum outstanding requests for a FPolicy server from a node has reached. The value is configurable through CLI.
+*Corrective Action*::
+If you want to increase the maximum pending request modify the "-max-server-reqs" option using command "fpolicy policy external-engine modify" from CLI.
+*Syslog Message*::
+Maximum outstanding requests for the FPolicy server "%s" has reached.
+*Parameters*::
+*fpserver* (STRING): IP Address of the FPolicy server.

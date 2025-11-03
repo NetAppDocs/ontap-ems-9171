@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: mct-channel-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mct.channel events
+---
+
+= mct.channel events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mct.channel.destroy
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Mirror Cache Transport layer destroys a communication channel between two nodes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Mirror Cache transport destroyed channel '%s'.
+*Parameters*::
+*channel* (STRING): Name of the data channel.

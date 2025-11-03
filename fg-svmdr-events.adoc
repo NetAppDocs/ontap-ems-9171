@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: fg-svmdr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fg.svmdr events
+---
+
+= fg.svmdr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fg.svmdr.qos.wklds.insuff
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during FlexGroup volume replication in an SVM DR setup when the available QoS workloads are insufficient on the secondary cluster.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Available QoS workloads are insufficient to support replicated FlexGroup "%s" in Vserver "%s".
+*Parameters*::
+*volume* (STRING): FlexGroup name.
+*vserver* (STRING): Vserver name.

@@ -1,0 +1,55 @@
+---
+sidebar: sidebar
+permalink: net-cg-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: net.cg events
+---
+
+= net.cg events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== net.cg.backpressureEntered
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the current connection group experiences backpressure. The client workload is distributed among connection groups. If a connection group has too much work waiting to be processed, incoming packets will be dropped. If one connection group experiences backpressure, it might indicate an imbalance that could affect the subset of clients using that connection group. If all connection groups are experiencing backpressure, it might indicate that the workload is nearing the capacity of the storage controller.
+*Corrective Action*::
+Use the "statistics show -raw -object cgstat -counter is_backpressured" command to monitor the connection group backpressure status. Use the "statistics show -raw -object cgstat -counter bkp_exited" command to monitor the connection group backpressure rate. Use the "statistics show -raw -object cgstat -counter bkp_ipv4_drops" and "statistics show -raw -object cgstat -counter bkp_ipv6_drops" commands to monitor packet drops due to the connection group backpressure. Adjust the workload or increase the capacity to avoid over-utilization.
+*Syslog Message*::
+Connection group "%d" experienced backpressure %d times.
+*Parameters*::
+*connection_group* (INT): Connection group which dropped packets due to backpressure.
+*count* (INT): Number of times the current connection group experienced backpressure.
+
+== net.cg.ratelimited
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the rate of incoming traffic exceeds the threshold limit of the current connection group. The client workload is distributed among connection groups. If a connection group is receiving certain kinds of packets at a rate exceeding the allowed threshold, those incoming packets will be dropped. Packets subject to rate limits include UDP, ICMP, IP fragments, broadcast, and multicast. If a connection group is receiving packets at a rate that exceeds its threshold, the storage controller might be experiencing a packet storm.
+*Corrective Action*::
+Use the "statistics show -raw -object cgstat -counter ratelimit_icmp", "statistics show -raw -object cgstat -counter ratelimit_bcast", "statistics show -raw -object cgstat -counter ratelimit_frag", "statistics show -raw -object cgstat -counter ratelimit_udp", and "statistics show -raw -object cgstat -counter ratelimit_other" commands to monitor packets that are being dropped because they are being received by the connection group at a rate that exceeds the threshold limit. Use packet traces to determine if there is a packet storm or network misconfiguration causing packets not intended for consumption by the storage controller to be sent to the connection group. If using NFS-over-UDP, adjust the workload or increase the capacity to avoid over-utilization.
+*Syslog Message*::
+"%s traffic received by connection group "%d" was received at a rate that exceeded the threshold limit.
+*Parameters*::
+*reason* (STRING): The type of packets the current connection group received at a rate greater than its threshold limit.
+*connection_group* (INT): Connection group which dropped packets because it received them at a rate greater than its threshold limit.
+
+== net.cg.utilThresholdExceed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the current connection group utilization exceeds the configured threshold. The client workload is distributed among connection groups. If one connection group utilization is much higher than the others, it might indicate an imbalance that could affect the subset of clients using that connection group. If all connection groups are experiencing high utilization, it might indicate that the workload is nearing the capacity of the storage controller.
+*Corrective Action*::
+Use the "statistics show -raw -object nwk_ctx -counter utilization" command to monitor the connection group utilization. Adjust the workload or increase the capacity to avoid over-utilization.
+*Syslog Message*::
+Utilization of connection group "%d" (%d%%) exceeds the configured threshold (%d%%).
+*Parameters*::
+*connection_group* (INT): Connection group whose utilization exceeded the configured threshold.
+*current_utilization* (INT): Current connection group utilization.
+*configured_threshold* (INT): Configured connection group utilization threshold.

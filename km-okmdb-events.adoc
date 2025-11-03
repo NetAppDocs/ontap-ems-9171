@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: km-okmdb-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: km.okmdb events
+---
+
+= km.okmdb events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== km.okmdb.read.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a read of the Onboard Key Manager's database file fails. This may occur when the Onboard Key Manager has been configured to use a USB based mount-point and the USB device has not been mounted on the node.
+*Corrective Action*::
+Check that the USB device is attached to the node.
+*Syslog Message*::
+The system is not able to read from the Onboard Key Manager's database file.
+*Parameters*::
+(None).
+
+== km.okmdb.write.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a write to the Onboard Key Manager's database file fails. This may occur when the Onboard Key Manager has been configured to use a USB based mount-point and the USB device has either not been mounted on the node or the USB device is write-protected.
+*Corrective Action*::
+Check that the USB device is attached to the node and that it is not write-protected.
+*Syslog Message*::
+The system is not able to write to the Onboard Key Manager's database file.
+*Parameters*::
+(None).

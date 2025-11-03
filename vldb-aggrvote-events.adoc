@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: vldb-aggrvote-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vldb.aggrvote events
+---
+
+= vldb.aggrvote events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vldb.aggrVote.noRepl
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a row of the aggr vote table is not replicated to the local table when an update is received from the remote cluster. Replication is skipped if the storage and NVRAM mirroring connectivity was indicated as down when the record was updated.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*aggrUUID* (STRING): The UUID of the aggregate whose mirror vote was not replicated.
+*localNplexes* (INT): The value of nplexes in the local table.
+*localPlex0* (INT): The value of plex0 id in the local table.
+*localPlex1* (INT): The value of plex1 id in the local table.
+*remoteNplexes* (INT): The value of nplexes from the remote cluster update.
+*remotePlex0* (INT): The value of plex0 id from the remote cluster update.
+*remotePlex1* (INT): The value of plex1 id from the remote cluster update.

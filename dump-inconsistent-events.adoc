@@ -1,0 +1,84 @@
+---
+sidebar: sidebar
+permalink: dump-inconsistent-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dump.inconsistent events
+---
+
+= dump.inconsistent events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dump.inconsistent.acl_data
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the dump engine encounters a disk error in an ACL file in a Snapshot(tm) copy. Backup will abort.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Dump of source path (%s), Snapshot copy ID (%d): WAFL ACL data inconsistent due to disk errors. Aborting the backup.
+*Parameters*::
+*src_path* (STRING): Source path being backed up.
+*snap_id* (INT): ID of the Snapshot copy where the disk error was encountered.
+
+== dump.inconsistent.file_data
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the dump engine encounters a disk error in a file in a Snapshot(tm) copy. Backup will abort because the user selected the option to abort on disk error.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Dump of source path (%s), Snapshot copy ID (%d), inum (%u): WAFL data inconsistent due to disk errors. Aborting the backup as directed by ndmpd.abort_on_disk_error option.
+*Parameters*::
+*src_path* (STRING): Source path being backed up.
+*snap_id* (INT): ID of the Snapshot copy where the disk error was encountered.
+*inum* (INT): Inode number of the file that encountered the disk error.
+
+== dump.inconsistent.ind_buf
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the dump engine encounters a disk error in indirect buffers of a file in a Snapshot(tm) copy. Backup will abort because the user selected the option to abort on disk error.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Dump of source path (%s), Snapshot copy ID (%d), inum (%u): WAFL metadata and data inconsistent due to disk errors. Aborting the backup as directed by ndmpd.abort_on_disk_error option.
+*Parameters*::
+*src_path* (STRING): Source path being backed up.
+*snap_id* (INT): ID of the Snapshot copy where the disk error was encountered.
+*inum* (INT): Inode number of the file that encountered the disk error.
+
+== dump.inconsistent.stream_data
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the dump engine encounters a disk error in a stream associated with a file in a Snapshot(tm) copy. Backup will abort because the user selected the option to abort on disk error.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Dump of source path (%s), Snapshot copy ID (%d), stream inum (%u), base inum(%u): WAFL data inconsistent due to disk errors. Aborting the backup as directed by ndmpd.abort_on_disk_error option.
+*Parameters*::
+*src_path* (STRING): Source path being backed up.
+*snap_id* (INT): ID of the Snapshot copy where the disk error was encountered.
+*sinum* (INT): Inode number of the stream that encountered the disk error.
+*inum* (INT): Inode number of the basefile whose associated stream encountered the disk error.
+
+== dump.inconsistent.wafl_metadata
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the dump engine encounters a disk error in either the inode file, a directory or a stream directory in a Snapshot(tm) copy. As a result of this error, the backup is aborted.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Dump of source path (%s), Snapshot copy ID (%d): WAFL metadata inconsistent due to disk errors. Aborting the backup.
+*Parameters*::
+*src_path* (STRING): Source path being backed up.
+*snap_id* (INT): ID of the Snapshot copy where the disk error was encountered.

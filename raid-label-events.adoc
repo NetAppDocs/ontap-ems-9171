@@ -1,0 +1,141 @@
+---
+sidebar: sidebar
+permalink: raid-label-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.label events
+---
+
+= raid.label events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.label.io.readError
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a RAID label read I/O failure is detected. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Label read on %s failed with storage error %s. The system will stop using the disk for I/O operations.
+*Parameters*::
+*disk_info* (STRING): Formatted information about the disk.
+*error_str* (STRING): Error string.
+*instanceFile* (STRING): Internal file code.
+*instanceId* (INT): Internal instance identifier.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Character string representing the model of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.label.io.revertError
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a RAID label revert to consistent state fails during assimilation. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Label revert on plex %s, %s failed.
+*Parameters*::
+*plex* (STRING): Name of the containing plex.
+*disk_info* (STRING): Formatted information about the disk.
+*error_str* (STRING): Error string.
+*instanceFile* (STRING): Internal file code.
+*instanceId* (INT): Internal instance identifier.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Character string representing the model of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.label.io.writeError
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a RAID label write I/O failure is detected. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Label write on %s failed with storage error %s. The system will stop using the disk for I/O operations.
+*Parameters*::
+*disk_info* (STRING): Formatted information about the disk.
+*error_str* (STRING): Error string.
+*instanceFile* (STRING): Internal file code.
+*instanceId* (INT): Internal instance identifier.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Character string representing the model of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.label.raidarea.invalidVersion
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system discovers that a disk has a RAIDArea object version of 0, which is invalid. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s has %s RAIDArea object with a version (%d) that is not supported (the current object version is %d).
+*Parameters*::
+*disk_info* (STRING): Formatted information about the disk.
+*type* (STRING): RAIDArea object type.
+*version* (INT): RAIDArea object version.
+*currentVersion* (INT): Current version of this RAIDArea object type supported by the software.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Character string representing the model of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.label.raidarea.tooRecent
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system discovers that a disk has an invalid RAIDArea object version. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s has %s raidarea object with a version (%d) more recent than the currently supported version (%d).
+*Parameters*::
+*disk_info* (STRING): Formatted information about the disk.
+*type* (STRING): RAIDArea object type.
+*version* (INT): RAIDArea object version.
+*currentVersion* (INT): Current version of this RAIDArea object type supported by the software.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Character string representing the model of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.

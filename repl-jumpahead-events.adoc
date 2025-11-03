@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: repl-jumpahead-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.jumpahead events
+---
+
+= repl.jumpahead events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.jumpahead.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot bring a replica volume online after applying the latest update to the replica because of possible inconsistencies detected in the update. The system rolls back the volume to the file system that existed prior to applying the update and brings the volume back online.
+*Corrective Action*::
+Run wafliron as soon as possible on the aggregate where the replica volume resides as well as on the aggregate where the source volume of the replica resides. If the problem persists, contact NetApp technical support for further assistance.
+*Syslog Message*::
+Rolling back after jump-ahead failure for volume '%s%s%s' (DSID %llu) with error %d.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume
+*volDsid* (LONGINT): Data Set Identifier (DSID) of the volume
+*code* (INT): Error code returned while bringing online the volume with the latest update

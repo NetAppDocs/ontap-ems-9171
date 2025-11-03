@@ -1,0 +1,247 @@
+---
+sidebar: sidebar
+permalink: vifmgr-cluscheck-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.cluscheck events
+---
+
+= vifmgr.cluscheck events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.cluscheck.assigned
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the named cluster logical interface (LIF) was not assigned to any network port and is now assigned to a port.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cluster LIF %s (node %s) is now assigned to port %s.
+*Parameters*::
+*lif_name* (STRING): Name of cluster LIF that was not assigned to a network port but now is.
+*node_name* (STRING): Name of the node on which the cluster LIF that was not assigned to a port now resides.
+*port_name* (STRING): Name of the port to which the LIF is now assigned.
+
+== vifmgr.cluscheck.badping
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the ping test for cluster logical interface (LIF) interconnnectivity displays unexpected results.
+*Corrective Action*::
+Ensure connectivity amoung the cluster LIFs. Several issues that can cause this problem. Some things to check include the following: - Port connectivity to the correct network or switch - Link connectivity - Proper switch configuration - Proper LIF configuration
+*Syslog Message*::
+Cluster check ping command (%s) failed: %d, %s.
+*Parameters*::
+*cmd_line* (STRING): Ping test command line.
+*exit_status* (INT): Ping test result.
+*cmd_output* (STRING): Ping test command output.
+
+== vifmgr.cluscheck.crcerrors
+*Deprecated*::
+Deprecated as of version 9.8.0 and replaced by vifmgr.cluscheck.hwerrors.
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a network device reports a high number of observed hardware errors, such as CRC errors, length errors, alignment errors, or dropped frames.
+*Corrective Action*::
+The errors could be originating from the specified port, a remote port, or a port on another component of the network. Check the statistics for both the port and the switch. Contact NetApp technical support for assistance and specific instructions.
+*Syslog Message*::
+Port %s on node %s is reporting a high number of observed hardware errors, possibly CRC errors.
+*Parameters*::
+*portname* (STRING): Name of the device that is reporting a high number of hardware errors.
+*nodename* (STRING): Name of the node on which the port resides.
+
+== vifmgr.cluscheck.ctdpktloss
+*Severity*::
+ALERT
+*Description*::
+This message occurs when continued packet loss during the ping test is observed. Continued packet loss means multiple failures of the ping test persisted over several iterations of the test. The ping test tests the connectivity of a cluster logical interface (LIF) to all other cluster logical interfaces (LIFs).
+*Corrective Action*::
+Ensure connectivity of the cluster LIFs. There are a number of issues that can cause this problem. Some things to check: - is the port connected to the correct network/switch - link light - switch configuration
+*Syslog Message*::
+Continued packet loss when pinging from cluster lif %s (node %s) to cluster lif %s (node %s).
+*Parameters*::
+*src_vif* (STRING): Name of the source cluster LIF.
+*src_node* (STRING): Node name of the source cluster LIF.
+*dst_vif* (STRING): Name of the desination cluster LIF.
+*dst_node* (STRING): Node name of the destination cluster LIF.
+
+== vifmgr.cluscheck.droppedall
+*Severity*::
+ALERT
+*Description*::
+This message occurs when all packets of the ping test are dropped. The ping test tests the connectivity of a cluster logical interface (LIF) to all other cluster logical interfaces (LIFs).
+*Corrective Action*::
+Ensure connectivity of the cluster LIFs. There are a number of issues that can cause this problem. Some things to check: - is the port connected to the correct network/switch - link light - switch configuration
+*Syslog Message*::
+Total packet loss when pinging from cluster lif %s (node %s) to cluster lif %s (node %s).
+*Parameters*::
+*src_vif* (STRING): Name of the source cluster LIF.
+*src_node* (STRING): Node name of the source cluster LIF.
+*dst_vif* (STRING): Name of the desination cluster LIF.
+*dst_node* (STRING): Node name of the destination cluster LIF.
+
+== vifmgr.cluscheck.droppedlarge
+*Severity*::
+ALERT
+*Description*::
+This message occurs when all of the packets in the large packet ping test are dropped. This most likely suggests an MTU misconfiguration. The ping test tests the connectivity of a cluster logical interface (LIF) to all other cluster logical interfaces (LIFs).
+*Corrective Action*::
+First, resolve any outstanding instances of vifmgr.cluscheck.mtumismatch. Second, verify that the cluster switches themselves are configured to support the same MTU as configured for the cluster LIFs.
+*Syslog Message*::
+Partial packet loss when pinging from cluster lif %s (node %s) to cluster lif %s (node %s).
+*Parameters*::
+*src_vif* (STRING): Name of the source cluster LIF.
+*src_node* (STRING): Node name of the source cluster LIF.
+*dst_vif* (STRING): Name of the desination cluster LIF.
+*dst_node* (STRING): Node name of the destination cluster LIF.
+
+== vifmgr.cluscheck.droppednone
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when where was some ping test failure that is now no longer occuring.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+No packet loss when pinging from cluster lif %s (node %s) to cluster lif %s (node %s).
+*Parameters*::
+*src_vif* (STRING): Name of the source cluster LIF.
+*src_node* (STRING): Node name of the source cluster LIF.
+*dst_vif* (STRING): Name of the desination cluster LIF.
+*dst_node* (STRING): Node name of the destination cluster LIF.
+
+== vifmgr.cluscheck.hwerrors
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a network device reports a high number of observed hardware errors, such as CRC errors, length errors, alignment errors, or dropped frames.
+*Corrective Action*::
+The errors could be originating from the specified port, a remote port, or a port on another component of the network. Check the statistics for both the port and the switch. Contact NetApp technical support for assistance and specific instructions.
+*Syslog Message*::
+Port %s on node %s is reporting a high number (at least 1 per %d packets) of observed hardware errors (CRC, length, alignment, dropped).
+*Parameters*::
+*portname* (STRING): Name of the device that is reporting a high number of hardware errors.
+*nodename* (STRING): Name of the node on which the port resides.
+*threshold* (INT): Threshold at which this message is logged, at least 1 error per threshold.
+
+== vifmgr.cluscheck.hwerrors.ifgrp
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a network device that is part of an interface group reports a high number of observed hardware errors, such as CRC errors (cyclic redundancy check), length errors, alignment errors, or dropped frames, and those errors are limited to a single network interface card (NIC) slot.
+*Corrective Action*::
+The errors could be originating from the specified port, a remote port, or a port on another component of the network. Check the statistics for both the port and the switch. Contact NetApp technical support for assistance and specific instructions.
+*Syslog Message*::
+Ifgrp member port %s on node %s is reporting a high number (at least one per %d packets) of hardware errors. No other NIC slot in the ifgrp is over threshold.
+*Parameters*::
+*portname* (STRING): Name of the device that is reporting a high number of hardware errors.
+*nodename* (STRING): Name of the node on which the port resides.
+*threshold* (INT): An event is emitted when one or more errors occur for this number of packets.
+
+== vifmgr.cluscheck.l2ping
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the l2ping test fails. This test verifies L2 reachability between cluster ports. This condition typically results in loss of communication between the two nodes.
+*Corrective Action*::
+Verify that the cable is plugged in properly to both the NIC and the switch, and that the switch is powered on. If these conditions are met and the cluster link remains down, contact NetApp technical support to investigate further.
+*Syslog Message*::
+l2ping failure when pinging from cluster port %s (node %s) to cluster port %s (node %s).
+*Parameters*::
+*src_prt* (STRING): Name of the source cluster port.
+*src_node* (STRING): Node name of the source cluster port.
+*dst_port* (STRING): Name of the desination cluster port.
+*dst_node* (STRING): Node name of the destination cluster port.
+
+== vifmgr.cluscheck.lifdown
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the named cluster logical interface (LIF) is configured administratively "down".
+*Corrective Action*::
+Use the "network interface modify" command to change the status-admin value of the LIF to "up".
+*Syslog Message*::
+Cluster LIF %s is administratively "down".
+*Parameters*::
+*lif_name* (STRING): Name of the LIF that is currently inactive.
+
+== vifmgr.cluscheck.lifup
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a cluster logical interface (LIF) was configured administratively "down" and is now configured administratively "up".
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cluster LIF %s is administratively "up".
+*Parameters*::
+*lif_name* (STRING): Name of the LIF that is currently active.
+
+== vifmgr.cluscheck.mtumatch
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Maximum Transmission Unit (MTU) of a port assigned to a cluster logical interface (LIF) did not match the MTU of a port assigned to a different cluster logical interface but now does match.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+MTU %s on cluster port %s (node %s) now matchs MTU %s on cluster port %s (node %s).
+*Parameters*::
+*src_mtu* (STRING): MTU of the source cluster LIF port.
+*src_port* (STRING): Name of the source cluster LIF port.
+*src_node* (STRING): Name of the source node on which source cluster LIF port resides.
+*dst_mtu* (STRING): MTU of the destination cluster LIF port.
+*dst_port* (STRING): Name of the destination cluster LIF port.
+*dst_node* (STRING): Name of the node on which destination cluster LIF port resides.
+
+== vifmgr.cluscheck.mtumismatch
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Maximum Transmission Unit (MTU) of a port assigned to a cluster logical interface (LIF) does not match the MTU of a port assigned to a different cluster logical interface. This condition may cause loss of packets between these two LIFs.
+*Corrective Action*::
+Ensure the that MTUs of the LIFs are identical. The "network port show" command will display the port MTU settings. Any mismatched MTUs can modified from the "network port" subcommand.
+*Syslog Message*::
+MTU %s on cluster port %s (node %s) does not match MTU %s on cluster port %s (node %s).
+*Parameters*::
+*src_mtu* (STRING): MTU of the source cluster LIF port.
+*src_port* (STRING): Name of the source cluster LIF port.
+*src_node* (STRING): Name of the source node on which source cluster LIF port resides.
+*dst_mtu* (STRING): MTU of the destination cluster LIF port.
+*dst_port* (STRING): Name of the destination cluster LIF port.
+*dst_node* (STRING): Name of the node on which destination cluster LIF port resides.
+
+== vifmgr.cluscheck.notassigned
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the named cluster logical interface (LIF) is not assigned to any network port.
+*Corrective Action*::
+Verify that the LIF's current port is configured administratively "up". Use the "network interface show" command to determine the current port of the LIF. Use the "network port show -fields up-admin" command to show the port's administrative state. Ensure that the network cabling connecting the remote network port is in place and secure. Ensure that the remote network port is configured administratively "up". If the port's link state is "up", attempt to migrate the cluster LIF to another cluster port. Use the "network port show" command to view the port's link state. If the current port is "up", use the "network interface migrate" command to migrate the LIF to another port.
+*Syslog Message*::
+Cluster LIF %s (node %s) is not assigned to any port.
+*Parameters*::
+*lif_name* (STRING): Name of the cluster LIF.
+*node_name* (STRING): Name of the node on which the cluster LIF resides.
+
+== vifmgr.cluscheck.sameRmtDev
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the home ports of the two cluster LIFs used for internal cluster replicated database (RDB) operations are connected to the same cluster switch. These LIFs should be connected to different cluster switches for optimal cluster resiliency.
+*Corrective Action*::
+Use the "network port show -ipspace Cluster -fields remote-device-id" command to verify that the home ports of the specified cluster LIFs are connected to different cluster switches. If necessary, re-home one of the cluster LIFs to a port that is connected to the other switch. For help, search the NetApp knowledge base for "ONTAP Cluster interconnect management communication is improperly configured".
+*Syslog Message*::
+Cluster LIFs "%s" and "%s" on node "%s" are used for RDB operations. The home ports of these LIFs are connected to the same cluster switch: "%s".
+*Parameters*::
+*clus1_lif* (STRING): Name of a cluster LIF.
+*clus2_lif* (STRING): Name of a cluster LIF.
+*node* (STRING): Node name of the cluster LIFs.
+*remote_device* (STRING): Name of the cluster switch.

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: mcc-toomany-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mcc.toomany events
+---
+
+= mcc.toomany events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mcc.toomany.vols.per.aggr
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a volume is added to an aggregate in which the recommended maximum number of volumes for an aggregate in a MetroCluster setup is exceeded. An excessive number of volumes in a MetroCluster aggregate can result in high failover times, which may disrupt data availability from the affected node.
+*Corrective Action*::
+Re-distribute the volumes among the aggregates to comply with the volume limit per aggregate in a MetroCluster setup. The number of volumes in an aggregate can be found by using the "aggregate show -fields volcount" command. Volumes can be moved between aggregates by using the "volume move start -vserver <vserver_name> -volume <vol_name> -destination-aggregate <destination_aggregate>" command.
+*Syslog Message*::
+MetroCluster protected aggregate %s has volume count %d, which exceeds the recommended maximum %d.
+*Parameters*::
+*aggregate* (STRING): Name of the aggregate.
+*current_volume* (INT): Current number of volumes on the aggregate.
+*volume_limit* (INT): Recommended maximum number of volumes per aggregate.

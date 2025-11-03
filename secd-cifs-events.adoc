@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: secd-cifs-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: secd.cifs events
+---
+
+= secd.cifs events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== secd.cifs.machacct.missing
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the CIFS server machine account is missing from the Active Directory domain.
+*Corrective Action*::
+Create the missing CIFS server machine account in Active Directory under the appropriate domain and organizational unit. Then run "vserver cifs password-change" command to begin using it.
+*Syslog Message*::
+The CIFS server machine account '%s' for Vserver '%s' is missing from the Active Directory domain '%s'.
+*Parameters*::
+*acctName* (STRING): Name of the missing CIFS server machine account.
+*vserverName* (STRING): Vserver whose CIFS server machine account is missing.
+*domainName* (STRING): Name of the Active Directory domain.

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: snaplock-state-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snaplock.state events
+---
+
+= snaplock.state events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snaplock.state.dir.destroyFail
+*Severity*::
+NOTICE
+*Description*::
+This event is generated if SnapLock is unable to destroy the SnapLock state for a SnapLock volume. This will not affect the operation of the reverted volume and does not require any corrective action.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failed to destroy the SnapLock state for SnapLock volume '%s%s' on the Vserver with ID '%s'.
+*Parameters*::
+*volume* (STRING): The name of the SnapLock volume on which the SnapLock state could not be destroyed.
+*app* (STRING): Application Name.
+*volident* (STRING): Unique identifier of the volume when the volume name itself is insufficient.

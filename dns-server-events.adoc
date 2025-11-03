@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: dns-server-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dns.server events
+---
+
+= dns.server events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dns.server.timed.out
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the DNS server fails to respond to a query and timeout occurs.
+*Corrective Action*::
+Make sure that the DNS server is up and running and that there are no networking issues preventing the Vserver from communicating with the DNS server.
+*Syslog Message*::
+DNS server %s did not respond to vserver = %s within timeout interval.
+*Parameters*::
+*ipaddr* (STRING): Ip address of the DNS server.
+*vsName* (STRING): Name of the Vserver for which DNS response timed out.

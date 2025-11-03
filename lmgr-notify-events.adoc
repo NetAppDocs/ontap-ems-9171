@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: lmgr-notify-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lmgr.notify events
+---
+
+= lmgr.notify events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lmgr.notify.host.skip.write
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the volume lock manager cannot write to the notify hosts file due to an error, for example, insufficient space. In such cases, writing to the notify hosts file is skipped.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Skipped writing to notify hosts file %s on volume %s due to error: %s.
+*Parameters*::
+*file_name* (STRING): Name of the file that writing was skipped on.
+*vol* (STRING): Name of the volume.
+*error* (STRING): Error code.

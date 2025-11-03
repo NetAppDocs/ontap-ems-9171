@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: msata-boot-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: msata.boot events
+---
+
+= msata.boot events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== msata.boot.device.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) module that is responsible for monitoring the health of the mSATA device determines that the associated boot device is reporting a failure condition.
+*Corrective Action*::
+Replace the device.
+*Syslog Message*::
+Boot device %s has become read-only.
+*Parameters*::
+*device* (STRING): Name of the device.
+
+== msata.boot.device.pfa
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) determines that failure is forthcoming for the associated mSATA boot device.
+*Corrective Action*::
+Replace the device.
+*Syslog Message*::
+Failure predicted for boot device %s.
+*Parameters*::
+*device* (STRING): Name of the device.

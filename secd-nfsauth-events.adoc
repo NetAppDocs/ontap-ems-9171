@@ -1,0 +1,93 @@
+---
+sidebar: sidebar
+permalink: secd-nfsauth-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: secd.nfsauth events
+---
+
+= secd.nfsauth events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== secd.nfsAuth.noCifsCred
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an NFS authorization attempt fails because of the inability of the system to retrieve a matching CIFS credential for use in multi-protocol security operations.
+*Corrective Action*::
+Examine the failure details to determine corrective action. This failure usually occurs because the system is unable to communicate with Active Directory.
+*Syslog Message*::
+vserver (%s) NFS authorization cannot retrieve CIFS credentials. %s
+*Parameters*::
+*vserverName* (STRING): vserver associated with this operation.
+*failureDetail* (STRING): Error journal is a collection of events leading up to a failure. This failure is likely to impact many (if not all) users, and might reflect a misconfiguration or environmental problem..
+
+== secd.nfsAuth.noCifsSid
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an NFS authorization attempt fails because the system could not resolve an associated Windows security identifier (SID).
+*Corrective Action*::
+Examine the failure details to determine corrective action. This failure usually occurs because the system is unable to communicate with Active Directory.
+*Syslog Message*::
+vserver (%s) Unable to resolve CIFS security identifier (SID). %s
+*Parameters*::
+*vserverName* (STRING): vserver associated with this operation.
+*failureDetail* (STRING): Error journal is a collection of events leading up to a failure. This failure is likely to impact many (if not all) users, and might reflect a misconfiguration or environmental problem..
+
+== secd.nfsAuth.noCifsUser
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an NFS authorization attempt fails because the Windows user that NFS maps to cannot be found.
+*Corrective Action*::
+Examine the failure details to determine corrective action. Common failures include faulty UNIX-to-Windows name mapping rules, an improperly configured default Windows user, or the system is unable to communicate with Active Directory.
+*Syslog Message*::
+vserver (%s) Mapped CIFS user name not found. %s
+*Parameters*::
+*vserverName* (STRING): vserver associated with this operation.
+*failureDetail* (STRING): Error journal is a collection of events leading up to a failure. This failure is likely to impact many (if not all) users, and might reflect a misconfiguration or environmental problem..
+
+== secd.nfsAuth.noNameMap
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an NFS authorization attempt fails because of a UNIX to Windows name mapping issue.
+*Corrective Action*::
+Examine the failure details to determine corrective action. Common failures include no appropriate UNIX-to-Windows name mapping rules, no configured default Windows user, or the inability of the system to contact LDAP if LDAP is configured for name mapping.
+*Syslog Message*::
+vserver (%s) Cannot map UNIX name to CIFS name. %s
+*Parameters*::
+*vserverName* (STRING): vserver associated with this operation.
+*failureDetail* (STRING): Error journal is a collection of events leading up to a failure. This failure is likely to impact many (if not all) users, and might reflect a misconfiguration or environmental problem..
+
+== secd.nfsAuth.noUnixCreds
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an NFS authorization attempt fails because credentials for a UNIX user cannot be determined.
+*Corrective Action*::
+Examine the error journal for the collection of events that led to the specific failure. A common failure is the inability to communicate with NS-SWITCH authorization sources.
+*Syslog Message*::
+Vserver "%s" cannot determine UNIX identity. %s
+*Parameters*::
+*vserverName* (STRING): Vserver associated with this operation.
+*failureDetail* (STRING): Error journal is a collection of events leading up to a failure. This failure is likely to impact many (if not all) users, and might reflect a misconfiguration or environmental problem.
+
+== secd.nfsAuth.problem
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an NFS authorization attempt fails.
+*Corrective Action*::
+Examine the failure details to determine corrective action. Common failures include name mapping issues, or the inability to communicate with domain controllers, NIS servers, or LDAP servers due to connectivity or configuration problems.
+*Syslog Message*::
+vserver (%s) General NFS authorization problem. %s
+*Parameters*::
+*vserverName* (STRING): vserver associated with this operation.
+*failureDetail* (STRING): Error journal is a collection of events leading up to a failure. This failure is likely to impact many (if not all) users, and might reflect a misconfiguration or environmental problem..

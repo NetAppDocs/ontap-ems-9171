@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: callhome-sas-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.sas events
+---
+
+= callhome.sas events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.sas.init.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the SAS adapter fails to initialize the link. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp Global Services and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+If the adapter is in use, check cabling and connected equipment. If the adapter is connected to storage shelves, check connected I/O modules (IOM).
+*Syslog Message*::
+Callhome for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*adapterName* (STRING): Name of the associated SAS host bus adapter.

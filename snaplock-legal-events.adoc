@@ -1,0 +1,75 @@
+---
+sidebar: sidebar
+permalink: snaplock-legal-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snaplock.legal events
+---
+
+= snaplock.legal events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snaplock.legal.hold.dump.files.op.status
+*Severity*::
+NOTICE
+*Description*::
+This message occurs on completion of a legal-hold dump-files operation on a SnapLock(R) compliance volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A legal-hold dump-files operation with ID %lu ended for litigation %s on volume %s:%s and output path: "%s", with status: "%s", details: "%s". The operation passed on %lu files, failed on %lu files, skipped %lu files and ignored %lu inodes.
+*Parameters*::
+*operation_id* (LONGINT): Operation ID of the legal-hold dump-files operation.
+*litigation_name* (STRING): Name of the litigation.
+*vserver* (STRING): Name of the vserver.
+*volume* (STRING): Name of the SnapLock compliance volume, on which legal-hold dump-files operation is running.
+*output_path* (STRING): Output path of legal-hold dump-files operation.
+*operation_status* (STRING): Status of the legal-hold dump-files operation.
+*status_details* (STRING): Completion string of the legal-hold dump-files operation.
+*num_files_processed* (LONGINT): Total count of files for which legal-hold dump-files operation was performed.
+*num_files_failed* (LONGINT): Total count of files for which legal-hold dump-files operation failed.
+*num_files_skipped* (LONGINT): Total count of files for which legal-hold dump-files operation was skipped.
+*num_inodes_ignored* (LONGINT): Total count of inodes which were ignored by legal-hold dump-files operation because they are not regular files.
+
+== snaplock.legal.hold.dump.litigations.job.status
+*Severity*::
+NOTICE
+*Description*::
+This message occurs on completion of a legal-hold dump-litigations operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A legal-hold dump-litigations operation with ID %s ended for %s with status: "%s", details: "%s".
+*Parameters*::
+*job_id* (STRING): Job ID of the legal-hold operation.
+*vserver_and_volume* (STRING): Name of the vserver and volume (if any).
+*job_status* (STRING): Status of the legal-hold dump-litigations job.
+*status_details* (STRING): Completion string of the legal-hold dump-litigations job.
+
+== snaplock.legal.hold.op.status
+*Severity*::
+NOTICE
+*Description*::
+This message occurs on completion of a legal-hold begin or end operation on a SnapLock(R) compliance volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A legal-hold %s operation with ID %lu ended for litigation %s on path %s in volume %s:%s with status: "%s", details: "%s". The operation passed on %lu files, failed on %lu files, skipped %lu files and ignored %lu inodes.
+*Parameters*::
+*operation_type* (STRING): Type of the legal-hold operation.
+*operation_id* (LONGINT): Operation ID of the legal-hold operation.
+*litigation_name* (STRING): Name of the litigation.
+*path* (STRING): Path of the form '/(directory path)' relative to volume root.
+*vserver* (STRING): Name of the vserver.
+*volume* (STRING): Name of the SnapLock compliance volume, on which legal-hold operation is running.
+*operation_status* (STRING): Status of the legal-hold operation.
+*status_details* (STRING): Completion string of the legal-hold operation.
+*num_files_processed* (LONGINT): Total count of files for which legal-hold operation was performed.
+*num_files_failed* (LONGINT): Total count of files for which legal-hold operation failed.
+*num_files_skipped* (LONGINT): Total count of files for which legal-hold operation was skipped.
+*num_inodes_ignored* (LONGINT): Total count of inodes which were ignored by legal-hold operation because they are not regular files.

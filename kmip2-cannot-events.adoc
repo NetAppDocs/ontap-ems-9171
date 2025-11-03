@@ -1,0 +1,75 @@
+---
+sidebar: sidebar
+permalink: kmip2-cannot-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: kmip2.cannot events
+---
+
+= kmip2.cannot events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== kmip2.cannot.import.MROOTAK
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the KMIP2 client cannot import the MROOT-AK key from a Key Management Interoperability Protocol (KMIP) key server. A key was retrieved from a KMIP key server, but an error occurred when trying to add the key to ONTAP(R). The node fails the boot up process when this happens.
+*Corrective Action*::
+Reboot the node. If the issue persists, contact NetApp technical support for assistance.
+*Syslog Message*::
+KMIP2 client fails to import MROOT-AK from KMIP key server. Error: %d.
+*Parameters*::
+*err* (INT): Error code from system call to sysctlbyname().
+
+== kmip2.cannot.import.NSE.key
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the KMIP2 client cannot import an NSE key from a KMIP key server. A key was retrieved from a KMIP key server, but an error occurred when trying to add the key to an ONTAP(R) data structure.
+*Corrective Action*::
+Run the "security key-manager restore" command to restore keys from external key servers.
+*Syslog Message*::
+KMIP2 client failed to import NSE key from KMIP key server, error: %d
+*Parameters*::
+*err* (INT): Error code from system call to sysctlbyname().
+
+== kmip2.cannot.import.NVE.key
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the KMIP2 client cannot import an NVE key from a KMIP key server. A key was retrieved from a KMIP key server, but an error occurred when trying to add the key to an ONTAP(R) data structure.
+*Corrective Action*::
+Run the "security key-manager restore" command to restore keys from external key servers.
+*Syslog Message*::
+KMIP2 client failed to import NVE key from KMIP key server, error: %d
+*Parameters*::
+*err* (INT): Error code from system call to sysctlbyname().
+
+== kmip2.cannot.read.client.cert
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the client certificate cannot be read. On a Cloud ONTAP(R) system, this message indicates one of the following: 1) A request to create an encrypted aggregate will not succeed because the key cannot be sent to the external KMIP server, or 2) The request to retrieve a key from the external KMIP server will fail. In this case, the encrypted aggregate will not be able to be mounted. On a NSE system, this message indicates one of the following: 1) A request to re-key a NSE drive will not succeed because the key cannot be sent to the external KMIP server, or 2) The ability to read/write data to/from a NSE drive might be impacted if power to the drive or to the disk shelf is lost.
+*Corrective Action*::
+Examine the KMIP client certificate and ensure that the certificate has been created properly.
+*Syslog Message*::
+KMIP Failed to read client certificate with error: %s
+*Parameters*::
+*err* (STRING): KMIP error code.
+
+== kmip2.cannot.read.private.key
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the client private key certificate can't be read. On a Cloud ONTAP(R) system, this message indicates one of the following: 1) A request to create an encrypted aggregate will not succeed because the key cannot be sent to the external KMIP server, or 2) The request to retrieve a key from the external KMIP server will fail. In this case, the encrypted aggregate will not be able to be mounted. On a NSE system, this message indicates one of the following: 1) A request to re-key a NSE drive will not succeed because the key cannot be sent to the external KMIP server, or 2) The ability to read/write data to/from a NSE drive might be impacted if power to the drive or to the disk shelf is lost.
+*Corrective Action*::
+Examine the KMIP client private certificate and ensure that the certificate has been created properly.
+*Syslog Message*::
+KMIP Failed to read client private certificate with error: %s
+*Parameters*::
+*err* (STRING): KMIP error code.

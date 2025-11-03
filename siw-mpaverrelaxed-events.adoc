@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: siw-mpaverrelaxed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: siw.mpaverrelaxed events
+---
+
+= siw.mpaverrelaxed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== siw.mpaVerRelaxed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is a mismatch in SW-iWARP versions, but due to negotiation or enhanced connect being enabled. The SW-iWARP booted up with reduced functionality and performance capabilities.
+*Corrective Action*::
+Upgrade the ONTAP(R) release on the local node and the partner node to the same version of SW-iWARP to run with full functionality and performance capabilities.
+*Syslog Message*::
+SIW Version mismatch between the local node and partner node. Local IRD: %d ORD: %d Partner IRD: %d ORD: %d
+*Parameters*::
+*localIRD* (INT): Local IRD value.
+*localORD* (INT): Local ORD value.
+*partnerIRD* (INT): Partner IRD value.
+*partnerORD* (INT): Partner ORD value.

@@ -1,0 +1,82 @@
+---
+sidebar: sidebar
+permalink: tape-device-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: tape.device events
+---
+
+= tape.device events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== tape.device.adapterErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an adapter error occurs that Data ONTAP(R) does not recognize.
+*Corrective Action*::
+If the error persists, contact NetApp technical support for assistance if the error persists.
+*Syslog Message*::
+Tape device %s: Unexpected adapter error 0x%x.
+*Parameters*::
+*deviceName* (STRING): Electrical path name of the device on which the command failed.
+*adapterError* (INT): Internal adapter error that was detected.
+
+== tape.device.cmdAbort
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a tape command fails with an error detected by the adapter. This is not an error reported by the tape drive. The adapter status values reported under this message indicate that a timeout in the transport of the command has occurred, or that other devices on the bus or loop have induced an error in the communication with this device, which might not be at fault. These errors might be of a transient nature.
+*Corrective Action*::
+Verify that the loop or bus cabling is correctly installed, and retry the operation. If the error occurs only on this device and not on others on the same interface, ensure that the external and internal cabling, if any, of this device are securely connected. If this error occurs on more than one device, then a more general debug of the cabling infrastructure might be required. If errors of other types occur on other devices on the same bus or loop, attend to those first, because they could be the cause of this error.
+*Syslog Message*::
+Tape device %s: command aborted by host, ha_status 0x%x.
+*Parameters*::
+*deviceName* (STRING): Electrical path name of the device on which the command failed.
+*adapterError* (INT): Internal adapter error that was detected.
+
+== tape.device.noCompress
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the tape device does not support the compression mode that Data ONTAP(R) attempted to set it to. This error indicates a mismatch in expectations between Data ONTAP and the tape drive over whether compression is supported. This error can occur if the the tape drive is qualified with a tape configuration file in /etc/tape_config (7-Mode) or /mroot/etc/tape_config (Cluster-Mode), and the file has been modified from its released condition, an action that is not recommended.
+*Corrective Action*::
+Verify whether the device documentation indicates that it supports compression. If support is indicated, then the device might need to be power-cycled to clear an abnormal condition, or it might need to be repaired. If Data ONTAP employs a tape configuration file to enable support of this drive and the file has been modified, the file should be returned to its original condition. Support using the configuration file is indicated if the device appears in the output of the "storage show tape supported" (7-Mode or Cluster-Mode nodeshell) command with the notation "(Dynamically Qualified)". Revert to a previous configuration file version, or retrieve a new version from NetApp Support, if one is available.
+*Syslog Message*::
+Tape device %s does not support compression %s.
+*Parameters*::
+*devAddr* (STRING): Device address.
+*modifier* (STRING): The SCSI component that is not supported; the Mode Select Compression Page or compression capability represented in that page.
+
+== tape.device.notSupported
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) does not recognize this tape drive as a supported device.
+*Corrective Action*::
+Go to support.netapp.com/NOW/download/tools/tape_config/index.shtml to determine whether NetApp has qualified this tape drive, and download the appropriate configuration file, if necessary. If this tape drive emulates a qualified tape drive, see na_cloned_tapes(5) for more information.
+*Syslog Message*::
+Data ONTAP does not recognize this tape drive: %s: %.8s%.16s%.4s
+*Parameters*::
+*address* (STRING): Address identifier of the tape device.
+*vendorID* (STRING): Tape device vendor, as found in the SCSI Inquiry data field "VENDOR IDENTIFICATION".
+*productID* (STRING): Product name, as found in the SCSI Inquiry data field "PRODUCT IDENTIFICATION".
+*revision* (STRING): Product revision, as found in the SCSI Inquiry data field "PRODUCT REVISION LEVEL".
+
+== tape.device.selectTimeout
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the adapter cannot select the tape drive. This can be caused by the failure of the device, or by unstable loop or bus conditions that corrupt the selection signals so that the device does not detect selection request, or the adapter does not recognize the device response. This is not an error reported by the tape drive. This error might be of a transient nature.
+*Corrective Action*::
+Verify that the loop or bus cabling is correctly installed, and retry the operation. If this error occurs on more than one device, then a more general debug of the cabling infrastructure might be required. For SCSI devices, carefully examine the bus pins for damage, especially if cables have been moved since the last time this device functioned correctly. If the error persists, power-cycling the drive might clear a hang condition in the device.
+*Syslog Message*::
+Tape %s: selection timeout, ha_status 0x%x.
+*Parameters*::
+*deviceName* (STRING): Electrical path name of the device on which the command failed.
+*adapterError* (INT): Internal adapter error that was detected.

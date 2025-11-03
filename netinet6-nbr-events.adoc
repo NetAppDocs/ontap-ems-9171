@@ -1,0 +1,268 @@
+---
+sidebar: sidebar
+permalink: netinet6-nbr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netinet6.nbr events
+---
+
+= netinet6.nbr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netinet6.nbr.bad.addr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP receives unexpected Neighbor Discovery (ND) packets. The packets could come from various sources, but usually they come from a source IP address. The EMS message shows the information from the packet. If something specific is wrong, another EMS message with more information will display with this EMS message.
+*Corrective Action*::
+ONTAP received an invalid Neighbor Discovery (ND) packet. If the condition persists, check your network infrastructure, such as switches, routers, or other connected equipment.
+*Syslog Message*::
+nd6_ns_input: src=%s, dst=%s, tgt=%s.
+*Parameters*::
+*srcIpAddress* (STRING): Source IPv6 address.
+*dstIpAddress* (STRING): Destination IPv6 address.
+*tgtIpAddress* (STRING): Target IPv6 address.
+
+== netinet6.nbr.bad.tgtAddr
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the target address packet is found to be multicast.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nd6_ns_input: Bad NS target (multicast).
+*Parameters*::
+(None).
+
+== netinet6.nbr.badDstAddr.pkt1
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the destination address packet is bad due to a wrong destination IP6 address.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nd6_ns_input: Bad DAD packet (wrong ip6 dst).
+*Parameters*::
+(None).
+
+== netinet6.nbr.badDstAddr.pkt2
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the destination address packet is bad due to link-layer address option.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nd6_ns_input: Bad DAD packet (link-layer address option).
+*Parameters*::
+(None).
+
+== netinet6.nbr.dad.complete
+*Severity*::
+ALERT
+*Description*::
+This message occurs when Duplicate address Detection (DAD) for the specified interface address is completed, and duplicate address is found.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: DAD complete for %s - duplicate found.
+*Parameters*::
+*ifAddress* (STRING): Interface address.
+*ip6address* (STRING): Printable that is a loggable representation of the IP address.
+
+== netinet6.nbr.dad.ignrNS
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when Duplicate address Detection (DAD) ignores Neighbor Solicitation (NS) packet for the specified interface address.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nd6_dad_ns_input: Ignoring DAD NS packet for address %s(%s).
+*Parameters*::
+*targetAddress* (STRING): Printable that is loggable representation of target IPv6 address.
+*ifAddress* (STRING): Interface address.
+
+== netinet6.nbr.dad.memAlcFail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when Duplicated Address Detection (DAD) is started and memory allocated fails for the specified interface address.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nd6_dad_start: Memory allocation failed for %s(%s).
+*Parameters*::
+*ip6address* (STRING): Printable that is a loggable representation of an IP6 address.
+*ifAddress* (STRING): Interface address.
+
+== netinet6.nbr.dad.timeout
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during Duplicated Address Detection (DAD), when number of tries or count to transmit DAD packet exceeds the predefined maximum number of tries.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: could not run DAD, driver or link problem?
+*Parameters*::
+*ifAddress* (STRING): Interface address.
+
+== netinet6.nbr.dadtmr.duplcAdr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Duplicated Address Detection (DAD) timer is called, and the parameter passed to it, is a duplicated interface address.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nd6_dad_timer: Called with duplicated address %s(%s).
+*Parameters*::
+*ip6address* (STRING): Printable that is a loggable representation of an IP6 address.
+*ifAddress* (STRING): Interface address.
+
+== netinet6.nbr.dadTmr.nTntvAdr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Duplicated Address Detection (DAD) Timer is called with non tentative interface address.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nd6_dad_timer: Called with non-tentative address %s(%s).
+*Parameters*::
+*ip6address* (STRING): Printable that is a loggable representation of an IP6 address.
+*ifAddress* (STRING): Interface address.
+
+== netinet6.nbr.dadtmr.nullPrm
+*Deprecated*::
+Deprecated as of Data ONTAP 9.8 since this EMS is no longer needed.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Duplicated Address Detection (DAD) timer is called and the interface address passed to it is NULL.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nd6_dad_timer: Called with null parameter.
+*Parameters*::
+(None).
+
+== netinet6.nbr.duplcte.taddr
+*Severity*::
+ALERT
+*Description*::
+This message occurs when there is a duplicate target IP6 address.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nd6_na_input: Duplicate IP6 address %s.
+*Parameters*::
+*targetAddress* (STRING): Printable that is a loggable representation of target IP6 address.
+
+== netinet6.nbr.duplcteSrc.addr
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when there is duplicate source IP6 address.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nd6_ns_input: Duplicate IP6 address %s.
+*Parameters*::
+*srcAddress* (STRING): Printable that is a loggable representation of source IP6 address.
+
+== netinet6.nbr.invld.ndOpt1
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs because of invalid Neighbor Discovery (ND)option.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nd6_ns_input: Invalid ND option; ignored.
+*Parameters*::
+(None).
+
+== netinet6.nbr.invld.ndOpt2
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs because of an invalid Neighbour Discovery (ND) option during neighbor advertising input handling.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nd6_na_input: Invalid ND option; ignored.
+*Parameters*::
+(None).
+
+== netinet6.nbr.invld.tgtAddr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during Neighbor Advertising (NA)input handling, because of invalid target address.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nd6_na_input: Invalid target address %s.
+*Parameters*::
+*targetAddress* (STRING): Target IP6 address.
+
+== netinet6.nbr.manl.intvtnReq
+*Severity*::
+ERROR
+*Description*::
+This message occurs when 'dad_duplicated' is called and manual intervention is required.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: Manual intervention required.
+*Parameters*::
+*ifAddress* (STRING): Interface address.
+
+== netinet6.nbr.misMth.lladrln1
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when there is a lladdrlen mismatch for the specified IP6 address.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nd6_ns_input: lladdrlen mismatch for %s (if %d, NS packet %d).
+*Parameters*::
+*ip6address* (STRING): Printable that is a loggable representation of an IP address.
+*ifAddrlen* (INT): Interface address length.
+*lladdrlen* (INT): Address length.
+
+== netinet6.nbr.misMth.lladrln2
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during Neighbor Advertising (NA) input handling, when there is a lladdrlen mismatch for the specified IP6 address.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nd6_na_input: lladdrlen mismatch for %s (if %d, NA packet %d).
+*Parameters*::
+*ip6address* (STRING): Printable that is a loggable representation of target IP address.
+*ifAddrlen* (INT): Interface address length.
+*lladdrlen* (INT): Address length.
+
+== netinet6.nbr.solAdv.mlticstd
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during Neighbor Advertising(NA) input handling, as solicited advertising is multicast.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nd6_na_input: A solicited advertising is multicast.
+*Parameters*::
+(None).

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: vserver-volume-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vserver.volume events
+---
+
+= vserver.volume events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vserver.volume.nonhomogen
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a volume is placed on nonhomogeneous aggregates, because of errors on homogeneous aggregates, such as max volumes is reached or aggregate is not home.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume "%s" in Vserver "%s" was placed on nonhomogeneous aggregate "%s".
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*volume_name* (STRING): Name of the Volume.
+*aggr_name* (STRING): Name of the aggregate used for volume provisioning.

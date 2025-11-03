@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: smc-restore-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: smc.restore events
+---
+
+= smc.restore events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== smc.restore.src.cleanup.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror restore operation or a SnapMirror restore cleanup operation fails to cleanup a SnapMirror restore source relationship information. This issue can happen regardless of the success or failure of the SnapMirror operation.
+*Corrective Action*::
+If the SnapMirror restore operation or the SnapMirror restore cleanup operation has failed, check the reason for the error, take action accordingly, and then run the command again. If the operation has succeeded, run the "snapmirror list-destinations -type RST" command on the cluster containing the source information for the SnapMirror restore relationship, and identify the corresponding relationship. Then remove the stale entry by running the "snapmirror release -destination-path <dst_path> -source-path <src_path>" command.
+*Syslog Message*::
+Restore of volume '%s' from volume '%s' with relationship UUID '%s' failed to remove source information for the relationship.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume of the SnapMirror restore relationship.
+*dstpath* (STRING): Path name of the destination volume of the SnapMirror restore relationship.
+*relationshipID* (STRING): Relationship UUID.

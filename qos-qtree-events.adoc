@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: qos-qtree-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: qos.qtree events
+---
+
+= qos.qtree events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== qos.qtree.fh.error.report
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Quality of Service (QoS) subsystem recognizes that an older version of a filehandle is still being used to access a qtree associated with a QoS policy group. Use of this filehandle will impact the ability of the qtree workload to meet its service-level objectives (SLOs).
+*Corrective Action*::
+Use the "qos workload show -wid workloadID" command to show the affected qtree. Use the "network connections active show -local-port 2049" command to show all of the active NFS protocol connections to each node. Verify that, after a QoS policy group was associated with the qtree, each client did in fact remount all of its mount points with the qtree. If any client did not remount, first determine which Vserver exported the mount points by using the "volume qtree show -fields qtree,vserver" command. Next stop all applications that are using the qtree and unmount all exports from the Vserver in question. Finally, remount the exports and restart the applications.
+*Syslog Message*::
+QoS qtree violation for qtree with workload ID = %u.
+*Parameters*::
+*wid* (INT): The QoS workload ID of the qtree.

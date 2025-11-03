@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: lun-restore-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lun.restore events
+---
+
+= lun.restore events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== LUN.restore.complete
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the SFSR (Single File SnapRestore(R)) for a LUN or NVMe namespace is complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LUN or NVMe namespace was restored at path %s in volume %s (DSID %llu).
+*Parameters*::
+*lun_path* (STRING): Path for the LUN or NVMe namespace that was restored.
+*volume_name* (STRING): Name of the containing volume.
+*volume_dsid* (LONGINT): Data set ID (DSID) of the containing volume.

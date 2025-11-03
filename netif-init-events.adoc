@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: netif-init-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.init events
+---
+
+= netif.init events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.init.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when initialization of a network interface failed due to an unexpected software error.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Initialization of network interface %s failed due to unexpected software error %s:%d.
+*Parameters*::
+*ifName* (STRING): Name of the network interface; for example, "e8a".
+*module* (STRING): Name of the software module or driver.
+*error* (INT): Module-specific error code.

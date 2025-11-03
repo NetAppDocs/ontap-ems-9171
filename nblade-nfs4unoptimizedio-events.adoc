@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: nblade-nfs4unoptimizedio-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.nfs4unoptimizedio events
+---
+
+= nblade.nfs4unoptimizedio events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.nfs4UnOptimizedIO
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a session trunking group that is created by the NFSv41 client is split across multiple nodes. This can occur when one or more trunked data LIFs used in the trunking group migrate to the partner node. A split session trunking group can severely degrade performance of NFS client operations.
+*Corrective Action*::
+Address any network or hardware issues that might have caused the LIFs to migrate. Ensure trunked data LIFs are on the same node. Use the "network interface show" and "network interface migrate" commands to revert the migrated LIF to the original node where the trunking relationship was created for that LIF.
+*Syslog Message*::
+In-flight requests from client IP [%s]:%d to destination LIF "%s" (Vserver: %s) was using an unoptimized path for processing the request because of a split session trunking group. The NFSv4 client might experience degraded performance.
+*Parameters*::
+*clientIpAddress* (STRING): IP address of the client.
+*clientPort* (INT): Network port of the client.
+*lifIpAddress* (STRING): IP address of the logical interface.
+*vserverName* (STRING): Name of the Vserver associated with this operation.

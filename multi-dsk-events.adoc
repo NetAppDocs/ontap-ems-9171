@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: multi-dsk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: multi.dsk events
+---
+
+= multi.dsk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== multi.dsk.cksum.err
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when multiple errors are detected during checksum verification, and the adapter is not taken offline or the "disk.offline_adapter.enable" option is disabled.
+*Corrective Action*::
+Contact Contact NetApp technical support. for assistance with troubleshooting the reason for the write verification errors.
+*Syslog Message*::
+Checksum verification failures reported by multiple disks connected to adapter %s.
+*Parameters*::
+*adapterName* (STRING): Name of the adapter.

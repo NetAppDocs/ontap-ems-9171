@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: extcache-unallowed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: extcache.unallowed events
+---
+
+= extcache.unallowed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== extCache.unallowed.option
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an external cache bootarg or setflag is set without the required privilege. The default value is used instead.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache %s %s is set without the required privilege; using the default value.
+*Parameters*::
+*type* (STRING): Whether the option set is a bootarg or a setflag.
+*option* (STRING): Option name.

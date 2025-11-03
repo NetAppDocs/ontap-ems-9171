@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: upgrademgr-cmd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: upgrademgr.cmd events
+---
+
+= upgrademgr.cmd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== upgrademgr.cmd.invoke.done
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the execution of the commands listed in the support file has completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The commands are invoked from the support file: %s
+*Parameters*::
+*command* (STRING): Commands that are invoked from the support file when the automated nondisruptive upgrade (ANDU) has completed.
+
+== upgrademgr.cmd.invoke.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the support file is invoked by an automated nondisruptive upgrade (ANDU).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The commands are invoked from the support file: %s
+*Parameters*::
+*command* (STRING): Commands that are invoked from the support file when the ANDU has started.

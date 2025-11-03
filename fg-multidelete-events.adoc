@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: fg-multidelete-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fg.multidelete events
+---
+
+= fg.multidelete events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fg.multidelete.inval.snapid
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a Snapshot copy in an invalid state is deleted from a FlexGroup volume. For example, if a Snapshot copy creation fails on some constituent volumes of a FlexGroup volume, but succeeds on others, it is deemed invalid and deleted by ONTAP.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Invalid Snapshot copy ID "%u" on FlexGroup volume "%s" is being deleted (UUID: %s, MSID: %llx).
+*Parameters*::
+*snapid* (INT): ID of the invalid Snapshot copy to be deleted.
+*flexgroup_name* (STRING): Name of the FlexGroup volume.
+*flexgroup_uuid* (STRING): UUID of the FlexGroup volume.
+*flexgroup_msid* (LONGINTHEX): Master Data Set ID (MSID) of the FlexGroup volume.

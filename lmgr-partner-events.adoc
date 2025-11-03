@@ -1,0 +1,50 @@
+---
+sidebar: sidebar
+permalink: lmgr-partner-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lmgr.partner events
+---
+
+= lmgr.partner events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lmgr.partner.locks.outOfSync
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a partner node's mirrored lock state goes out of sync with the actual lock state.
+*Corrective Action*::
+Under normal conditions, no action is necessary. There is an automatic synchronize process that will attempt to resynchronize the lock state. You can wait for this process to synchronize the lock state, or you can manually resynchronize the lock state by running the 'debug locks mirrored sync' command in diag mode, with the Vserver, volume, and file ID supplied in this message.
+*Syslog Message*::
+Mirrored lock state is out of sync for %s%s/%s (DSID %08x) for file %d Snapshot copy %d (mirroring status %d communication status %d)
+*Parameters*::
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Volume identifier to uniquely identify the volume in cases where the volume name alone is insufficient.
+*dsid* (LONGINT): Data set identifier.
+*fileid* (INT): File identifier.
+*snapid* (INT): Snapshot(tm) copy in which the file exists, 0 for the active file system.
+*mirroring_status* (INT): Error status from the mirroring operation.
+*csm_status* (INT): Communication status from the mirroring operation.
+
+== lmgr.partner.locks.resynched
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a partner node's mirrored lock state is resynchronized with the actual lock state after having been out of sync previously.
+*Corrective Action*::
+The mirrored lock state is now synchronized between the partner nodes. You can verify the mirror state of the locks by running the 'debug locks mirrored show' command in diag mode, with the Vserver, volume, and file ID supplied in this message.
+*Syslog Message*::
+Mirrored lock state is now in sync for %s/%s (DSID %08x) for file %d Snapshot copy %d.
+*Parameters*::
+*vol* (STRING): Volume name.
+*volident* (STRING): Volume identifier to uniquely identify the volume in cases where the volume name alone is insufficient.
+*dsid* (LONGINT): Data set identifier.
+*fileid* (INT): File identifier.
+*snapid* (INT): Snapshot(tm) copy in which the file exists, 0 for the active file system.

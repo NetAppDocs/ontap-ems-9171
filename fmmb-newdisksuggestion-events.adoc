@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: fmmb-newdisksuggestion-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fmmb.newdisksuggestion events
+---
+
+= fmmb.newdisksuggestion events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fmmb.NewDiskSuggestion
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when RAID sends to the high-availability (HA) mailbox code a list of disks to use for HA mailbox disks.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*count* (INT): Number of suggested disks.
+*new* (STRING): List of suggested disks.
+*old* (STRING): Current list of HA mailbox disks.

@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: nvme-link-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvme.link events
+---
+
+= nvme.link events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvme.link.disabled.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the NVMe driver disables the PCIe link due to excessive errors.
+*Corrective Action*::
+Remove or replace the NVMe SSD.
+*Syslog Message*::
+PCIe link disabled for NVMe SSD in slot %d due to excessive errors.
+*Parameters*::
+*slot* (INT): Slot number of associated NVMe SSD.
+
+== nvme.link.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the NVMe SSD PCIe link does not intialize.
+*Corrective Action*::
+Remove or replace the NVMe SSD.
+*Syslog Message*::
+PCIe link initialization error for NVMe SSD in slot %d.
+*Parameters*::
+*slot* (INT): Slot number of associated NVMe SSD.

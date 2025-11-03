@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: replication-status-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: replication.status events
+---
+
+= replication.status events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== replication.status.timeSkewed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the time skew between the source and destination system is greater than 1 minute.
+*Corrective Action*::
+Use either the 'date' or 'rdate' command to synchronize the time between the systems.
+*Syslog Message*::
+%s: Clock on source %s is ahead of destination system %s.
+*Parameters*::
+*rtype* (STRING): Replication type (SnapMirror, SnapVault, and so on.).
+*srcfiler* (STRING): The host name of the source system.
+*dstfiler* (STRING): The host name of the destination system.

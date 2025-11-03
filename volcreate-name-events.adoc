@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: volcreate-name-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: volcreate.name events
+---
+
+= volcreate.name events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== volcreate.name.dup
+*Severity*::
+ERROR
+*Description*::
+Flexible volumes were created with names which conflict with existing volume names. This can happen when aggregates are forced offline.
+*Corrective Action*::
+if this is not the root volume of the vfiler: 1. run 'vfiler remove' on the vfiler and the new vvol 2. run 'vol rename' on the new vvol 3. resolve FSID conflicts if any 4. add the old vvol back to the vfiler if this is the root of volume of the vfiler: 1. run 'vfiler destroy' on the vfiler 2. run 'vol rename' on the new vvol 3. resolve FSID conflicts if any 4. run 'vfiler create -r' on the vfiler
+*Syslog Message*::
+Volume '%s' has a name which conflicts with a volume owned by vfiler '%s'.
+*Parameters*::
+*volName* (STRING): Volume being created
+*vfiler_name* (STRING): This vfiler owns an existing volume with the same name.

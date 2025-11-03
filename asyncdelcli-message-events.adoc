@@ -1,0 +1,48 @@
+---
+sidebar: sidebar
+permalink: asyncdelcli-message-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: asyncdelcli.message events
+---
+
+= asyncdelcli.message events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== asyncDelCli.message.finish
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an async-delete job has finished on the specified path.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Async-delete "%s" has finished on inode: %llu in volume (DSID: %llu, MSID: %llu). Number of files deleted: %llu, Number of directories deleted: %llu. Total number of bytes deleted: %llu.
+*Parameters*::
+*Job_Id* (STRING): Async-delete job ID.
+*Inode* (LONGINT): Inode that is deleted.
+*volume_dsid* (LONGINT): DSID of the volume containing the directory.
+*volume_msid* (LONGINT): MSID of the volume containing the directory.
+*file_count* (LONGINT): Total number of files deleted.
+*dir_count* (LONGINT): Total number of directories deleted.
+*deleted_size* (LONGINT): Total number of bytes deleted.
+
+== asyncDelCli.message.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an async-delete job starts on the specified path.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Async-delete "%s" has started on inode: %llu in volume (DSID: %llu, MSID: %llu).
+*Parameters*::
+*Job_Id* (STRING): Async-delete job ID.
+*Inode* (LONGINT): Inode to be deleted.
+*volume_dsid* (LONGINT): DSID of the volume containing the directory.
+*volume_msid* (LONGINT): MSID of the volume containing the directory.

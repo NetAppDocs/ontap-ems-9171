@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: diskshelf-support-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskshelf.support events
+---
+
+= diskshelf.support events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskShelf.support.file
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a new disk shelf support file is detected. Current support level of existing shelves will be checked.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+New disk shelf support file (DQP) detected.
+*Parameters*::
+(None).

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: splog-failed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: splog.failed events
+---
+
+= splog.failed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== splog.failed.to.transfer.log
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system fails to transfer the SP log file from the remote Service Processor (SP). This prevents abnormal status of the system from being diagnosed by using the SP log files.
+*Corrective Action*::
+1. Check whether you can transfer SP log files from the remote SP manually. From the clustershell prompt: a. Enter the 'system node autosupport invoke-splog -remote-node "nodename"' command. b. Check the output message of the command to determine whether the command succeeded. 2. If you cannot tranfer SP log files from the remote SP manually, then restart the SP. From the clustershell prompt, run the 'set diag' and 'system node run-service-processor -node "down_node_name"' commands to log in to the remote SP. From the SP prompt, run the 'sp reboot' command. Example: splog-cmode::> set diag splog-cmode::*> system node run-service-processor -node splog-cmode-01 SP splog-cmode> sp reboot 3. After the SP finishes rebooting, if you still cannot transfer SP log files from the remote SP manually, then contact NetApp technical support for further assistance.
+*Syslog Message*::
+Failed to transfer log from Service Processor (SP) on the remote node (%s) because of %s.
+*Parameters*::
+*node_name* (STRING): Name of the remote node that is down and whose SP the log file cannot be transferred from.
+*reason* (STRING): Reason for the warning.

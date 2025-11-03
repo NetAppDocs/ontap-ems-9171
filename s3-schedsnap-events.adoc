@@ -1,0 +1,48 @@
+---
+sidebar: sidebar
+permalink: s3-schedsnap-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: s3.schedsnap events
+---
+
+= s3.schedsnap events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== s3.schedSnap.create.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system fails to create a scheduled S3 bucket snapshot for the given S3 bucket. The system then skips the failed create process, and moves on to the next bucket with the same policy or the next policy to perform any pending scheduled creation work. The failed create process is retried in the next iteration when the schedule time is reached.
+*Corrective Action*::
+Correct the problem based on the reason specified. If the error persists, contact NetApp technical support.
+*Syslog Message*::
+Skipping creation of scheduled S3 bucket snapshot "%s" for S3 bucket "%s" on Vserver "%s" for policy "%s" with schedule prefix "%s". Reason: "%s"
+*Parameters*::
+*snapshotName* (STRING): Name of the S3 bucket snapshot.
+*bucketName* (STRING): Name of the S3 bucket.
+*vserverName* (STRING): Name of the storage virtual machine (SVM).
+*policyName* (STRING): Name of the snapshot policy.
+*prefixName* (STRING): Name of the schedule prefix associated with the snapshot policy schedule.
+*reason* (STRING): Reason for the creation failure.
+
+== s3.schedSnap.limit.del.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system fails to delete the oldest scheduled S3 bucket snapshots for the given S3 bucket when trying to enforce the policy schedule limit for the maximum number of snapshots during a new scheduled create snapshot process. If the limit enforcement fails, the enforcement is retried in the next iteration when the schedule time is reached for a new scheduled snapshot creation or until the corresponding snapshot policy schedule is removed to ensure the number of snapshots is under the defined limit.
+*Corrective Action*::
+Correct the problem based on the reason specified. If the error persists, contact NetApp technical support.
+*Syslog Message*::
+The deletion of old scheduled S3 bucket snapshots to enforce policy maximum snapshot limit (%d) for S3 bucket "%s" on Vserver "%s" for schedule "%s" has failed. Reason: "%s"
+*Parameters*::
+*scheduleLimit* (INT): Maximum number of snapshots for the snapshot policy schedule.
+*bucketName* (STRING): Name of the S3 bucket.
+*vserverName* (STRING): Name of the storage virtual machine (SVM).
+*schduleName* (STRING): Name of the snapshot policy schedule.
+*reason* (STRING): Reason for the deletion failure.

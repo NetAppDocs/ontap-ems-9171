@@ -1,0 +1,69 @@
+---
+sidebar: sidebar
+permalink: cpeer-addr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cpeer.addr events
+---
+
+= cpeer.addr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cpeer.addr.bad.dns
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a stable address for the peer cluster cannot be resolved because of a bad name-server. This will make the peer cluster unreachable and cross-cluster operations will fail. Stable addresses are normally provided by the administrator during cluster peer creation.
+*Corrective Action*::
+Delete the incorrect DNS server entry for the local cluster using the 'vserver services dns delete' command.Create a new DNS entry with the correct name-server using the 'vserver services dns create' command. If you need further assistance,contact NetApp technical support.
+*Syslog Message*::
+Failed to resolve address %s of peer cluster %s, Reason:bad name-server.
+*Parameters*::
+*addr* (STRING): Peer cluster stable IP addresses that cannot be contacted.
+*peer* (STRING): Name of the peer cluster whose stable address cannot be contacted.
+
+== cpeer.addr.bad.host
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a stable IP address for the peer cluster is no longer valid. This will make the peer cluster unreachable and cross-cluster operations will fail. Stable addresses are normally provided by the administrator during cluster peer creation.
+*Corrective Action*::
+Correct the stable IP address using the 'cluster peer modify' command. If you need further assistance, contact NetApp technical support.
+*Syslog Message*::
+Failed to resolve address %s of peer cluster %s, Reason:invalid address.
+*Parameters*::
+*addr* (STRING): Peer cluster stable addresses that is not valid.
+*peer* (STRING): Name of the peer cluster whose stable address is not valid.
+
+== cpeer.addr.stable.down
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a stable address cannot be contacted. Stable addresses are provided by the administrator during peer creation.
+*Corrective Action*::
+Verify network connectivity between the local cluster and the peer cluster. Check the logs, trace buffers, and UI output for more information about the nature of the failure.
+*Syslog Message*::
+Stable address %s of cluster %s, in IPspace %s, cannot be contacted.
+*Parameters*::
+*addr* (STRING): Stable address that cannot be contacted.
+*peer* (STRING): Name of the peer cluster whose address cannot be contacted.
+*ipspace* (STRING): IPspace in which the contact attempt was made.
+
+== cpeer.addr.warn.host
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a stable IP address for the peer cluster is no longer valid, making the peer cluster unreachable and causing cross-cluster operations to fail.
+*Corrective Action*::
+Correct the stable IP address using the "cluster peer modify" command. Valid addresses for the remote ("peer") cluster are given under "Active IP Addresses" when you use the "cluster peer show -instance" command. Verify connectivity by using the "cluster peer ping" command. If you need further assistance, contact NetApp technical support.
+*Syslog Message*::
+Address %s is not any of the addresses that peer cluster %s considers valid for the cluster peer relationship; Details: %s
+*Parameters*::
+*addr* (STRING): Peer cluster stable address that is not valid.
+*peer* (STRING): Name of the peer cluster whose stable address is not valid.
+*complaint* (STRING): Details, if any, of the issue with the stable address.

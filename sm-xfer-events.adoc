@@ -1,0 +1,113 @@
+---
+sidebar: sidebar
+permalink: sm-xfer-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sm.xfer events
+---
+
+= sm.xfer events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sm.xfer.fail.del.snap
+*Severity*::
+ERROR
+*Description*::
+This message occurs when deletion of a snapshot on the destination volume fails, and therefore a subsequent transfer exceeds the maximum supported snapshot count for the vault destination.
+*Corrective Action*::
+Manually delete the snapshots from the destination volume and reissue the failed SnapMirror command.
+*Syslog Message*::
+Unable to delete snapshot '%s' from destination volume '%s' of the relationship with relationship UUID '%s' to make space for for newer snapshots.
+*Parameters*::
+*snap_name* (STRING): Snapshot that was not deleted.
+*dst_path* (STRING): Destination volume of the relationship.
+*relationship_id* (STRING): UUID of the snapmirror relationship.
+
+== sm.xfer.fail.maxlim.snap
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a SnapMirror(R) transfer fails because the maximum supported snapshot limit for a SnapMirror destination is reached and there is no space for a new, incoming snapshot.
+*Corrective Action*::
+Reduce the "keep" count by using the "snapmirror policy modify-rule -policy [policy_name] -keep [keep_count]" command, or by manually deleting snapshots from the SnapMirror(R) destination.
+*Syslog Message*::
+The number of snapshots on destination volume '%s' of the relationship with relationship UUID '%s' and policy '%s' has reached the maximum supported.
+*Parameters*::
+*dst_path* (STRING): Destination volume of the relationship.
+*relationship_id* (STRING): UUID of the snapmirror relationship.
+*policy_name* (STRING): SnapMirror policy name.
+
+== sm.xfer.incr.snap.rename
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an incomplete SnapMirror(R) operation is detected for an incremental snapshot that no longer exists on the SnapMirror(R) source volume. As a result, SnapMirror creates a snapshot with the name "snapmirror_vlt_xfer_recovery" and requires a SnapMirror Resync operation to be performed on the SnapVault relationship to resume data protection.
+*Corrective Action*::
+Resume data protection either by retaining or deleting the snapshot Use the 'snapmirror resync -preserve' to retain it or use the 'snapmirror resync' command to delete it.
+*Syslog Message*::
+An incomplete SnapMirror operation was detected for an incremental snapshot that no longer exists on the source volume '%s'. The data transfer for the incremental snapshot was completed but the snapshot on the vault destination '%s' was not created. Instead, a snapshot with the name "snapmirror_vlt_xfer_recovery" was created.
+*Parameters*::
+*src_path* (STRING): Source volume of the relationship.
+*dst_path* (STRING): Destination volume of the relationship.
+
+== sm.xfer.no.new.snap
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a SnapMirror(R) update does not find any new snapshots to transfer. This can happen when none of the newer snapshots on the source has a SnapMirror(R) label that matches a SnapMirror policy.
+*Corrective Action*::
+Check that the SnapMirror label from the snapshot policy matches SnapMirror policy rules.
+*Syslog Message*::
+SnapMirror update did not find any new snapshots to transfer from the source volume '%s' of the relationship with relationship UUID '%s'.
+*Parameters*::
+*src_path* (STRING): Source volume of the SnapMirror relationship.
+*relationship_id* (STRING): UUID of the snapmirror relationship.
+
+== sm.xfer.same.name.snap.dst
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a snapshot was not transferred from the source volume to the destination volume during a snapmirror transfer because a snapshot with the same name already exists in the destination volume.
+*Corrective Action*::
+Rename the snapshot in the source volume to a name that does not match the name of any snapshot in the destination volume. Then, wait for the next scheduled update or trigger a manual snapmirror update.
+*Syslog Message*::
+Snapshot "%s" was not transferred from the source volume "%s" to the destination volume "%s" because the destination volume has a snapshot with the same name.
+*Parameters*::
+*snap_name* (STRING): Name of the snapshot that was not transferred.
+*src_path* (STRING): Source volume of the relationship.
+*dst_path* (STRING): Destination volume of the relationship.
+
+== sm.xfer.warn.limit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) transfer receives a warning when it is approaching the "keep" count of a particular SnapMirror(R) relationship.
+*Corrective Action*::
+Increase the "keep" count to transfer more snapshots with the same label using the following command: snapmirror policy modify-rule -policy [policy_name] -keep [keep_count]
+*Syslog Message*::
+Warnings issued for SnapMirror relationship with source volume '%s' and destination volume '%s' with relationship UUID '%s' : %s
+*Parameters*::
+*src_path* (STRING): Source volume of the relationship.
+*dst_path* (STRING): Destination volume of the relationship.
+*relationship_id* (STRING): UUID of the snapmirror relationship.
+*warn_str* (STRING): SnapMirror transfer warning.
+
+== sm.xfer.warn.snapshot.count.limit
+*Severity*::
+ERROR
+*Description*::
+This message occurs during a SnapMirror(R) transfer, when the snapshot count limit is reached for the SnapMirror relationship between the indicated source and destination volumes.
+*Corrective Action*::
+Delete some snapshots from the destination volume to create space for new snapshots to be transferred to it.
+*Syslog Message*::
+Snapshot count limit for SnapMirror relationship with source volume '%s' and destination volume '%s' with relationship UUID '%s' has been reached : %s
+*Parameters*::
+*src_path* (STRING): Source volume of the SnapMirror relationship.
+*dst_path* (STRING): Destination volume of the SnapMirror relationship.
+*relationship_id* (STRING): UUID of the snapmirror relationship.
+*warn_str* (STRING): SnapMirror transfer warning.

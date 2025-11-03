@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: objstore-host-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: objstore.host events
+---
+
+= objstore.host events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== objstore.host.unresolvable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the object-store server host name cannot be resolved to an IP address. The object-store client will not be able to communicate with the object-store server without resolving to an IP address.
+*Corrective Action*::
+Check the DNS configuration to verify that the host name is configured correctly with an IP address.
+*Syslog Message*::
+Object-store server host name "%s" cannot be resolved to an IP address on node %s.
+*Parameters*::
+*hostname* (STRING): Host name of the object-store server.
+*nodeUuid* (STRING): UUID of the node.

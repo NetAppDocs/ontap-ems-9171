@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: acp-bind-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: acp.bind events
+---
+
+= acp.bind events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== acp.bind.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system encounters a socket binding error while setting up the Alternate Control Path (ACP) Management Ethernet port. ACP functionality is inactive after encountering this.
+*Corrective Action*::
+Verify that the Ethernet cable is properly attached to the ACP port and the green LED is on. Reenable the ACP port using the "options acp.enabled" command.
+*Syslog Message*::
+An error was encountered while configuring the ACP Management Ethernet Port: %s.
+*Parameters*::
+*ErrorString* (STRING): Error string.

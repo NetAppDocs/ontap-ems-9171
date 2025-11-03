@@ -1,0 +1,64 @@
+---
+sidebar: sidebar
+permalink: scsiblade-san-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsiblade.san events
+---
+
+= scsiblade.san events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsiblade.san.config.active
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the SAN active-active state has changed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The symmetric active-active state is %s on %lld LUNs.
+*Parameters*::
+*state* (STRING): Active-active state.
+*num_luns* (INT): Number of LUNs.
+
+== scsiblade.san.rtpgid.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a report target port group ID space inconsistency between cluster peers is detected. This can result in no I/O progress or I/O disruption or both on the host.
+*Corrective Action*::
+Recovery from inconsistency is required. Please contact Contact NetApp technical support. for assistance.
+*Syslog Message*::
+Consistency group that has LUN %s is in an inconsistent state.
+*Parameters*::
+*LUNSerialNumber* (STRING): Serial number of the LUN.
+
+== scsiblade.san.ssm.lu.degraded
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a LUN is marked as degraded due to a SnapMirror(R) Active Synchronous relationship going out of sync. The LUN is no longer accessible from the host.
+*Corrective Action*::
+Restore LUN access to the host by using the "snapmirror resync" command to bring the out-of-sync relationship back in sync. For assistance, contact technical support.
+*Syslog Message*::
+LUN %s was marked as degraded due to a SnapMirror Active Synchronous relationship going out of sync.
+*Parameters*::
+*LUNSerialNumber* (STRING): Serial number of the LUN.
+
+== scsiblade.san.ssm.lu.online
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a LUN is back online and might be accessible again from the host.
+*Corrective Action*::
+If the host still can't access the LUN even though the LUN is back online, perform a host-side rescan operation or a reboot to enable the host to access the LUN.
+*Syslog Message*::
+LUN %s is back online.
+*Parameters*::
+*LUNSerialNumber* (STRING): Serial number of the LUN.

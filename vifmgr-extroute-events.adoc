@@ -1,0 +1,155 @@
+---
+sidebar: sidebar
+permalink: vifmgr-extroute-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.extroute events
+---
+
+= vifmgr.extroute events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.extRoute.addTable
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a new external route table is added successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+External route table %s was added successfully.
+*Parameters*::
+*table* (STRING): Route table name.
+
+== vifmgr.extRoute.ipCreate
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a LIF was successfully added to or updated in external route tables.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LIF with IP address %s is mapped to external port ID %s in external route tables.
+*Parameters*::
+*vifip* (STRING): IP address of the logical interface.
+*extportid* (STRING): External port ID on which this LIF was created.
+
+== vifmgr.extRoute.ipDelete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a LIF was successfully deleted from external route tables.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LIF with IP address %s was removed from external route tables.
+*Parameters*::
+*vifip* (STRING): IP address of the logical interface.
+
+== vifmgr.extRoute.ipMove
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a LIF was successfully moved to a new external port ID in external route tables.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LIF with IP address %s was moved to external port ID %s in external route tables.
+*Parameters*::
+*vifip* (STRING): IP address of the logical interface.
+*extportid* (STRING): External port ID to which this LIF was moved.
+
+== vifmgr.extRoute.noAddTable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP fails to add a new external route table to the cloud network. As a result, IP packets routed to the subnet associated with the external route table will not be possible.
+*Corrective Action*::
+1. Add the external route table manually using the tools provided by the cloud provider. 2. Check for cloud authorization and resource permission issues.
+*Syslog Message*::
+Failed to add external route table %s (error %s).
+*Parameters*::
+*table* (STRING): Route table name.
+*error* (STRING): Error that is reported.
+
+== vifmgr.extRoute.noConn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot verify connectivity to the external mediator server.
+*Corrective Action*::
+Use the "network route show -vserver Cluster" command to verify that a suitable route exists to the mediator. Ensure that the external network security configuration enables communication between all nodes and the mediator.
+*Syslog Message*::
+Failed to verify connectivity with the mediator server, IP %s (error %s).
+*Parameters*::
+*mediatorip* (STRING): IP address of the mediator.
+*error* (STRING): Error that is reported.
+
+== vifmgr.extRoute.noIpCreate
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a LIF cannot be added to or updated in external route tables.
+*Corrective Action*::
+If an entry is found in the external route tables for the given IP address and external port ID, remove that entry from the tables using the tools provided by the cloud provider. Note that any subsequent LIF created with the same IP address will replace any entry remaining in the external route table.
+*Syslog Message*::
+Failed to successfully map LIF with IP address %s to external port ID %s in external route tables (error %s).
+*Parameters*::
+*vifip* (STRING): IP address of the logical interface.
+*extportid* (STRING): External port ID on which this LIF was to be created.
+*error* (STRING): Error that is reported.
+
+== vifmgr.extRoute.noIpDelete
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP fails to update the external route tables maintained by the cloud provider to reflect a LIF removal. As a result, IP packets to the IP address might still be routed to the deleted external port ID.
+*Corrective Action*::
+1. Remove the entry from the tables using the tools provided by the cloud provider if an entry is found in the external route tables for the given IP address and external port ID. 2. Verify connectivity, authentication, and permissions to the cloud endpoint using the tools provided by the cloud provider.
+*Syslog Message*::
+Failed to remove LIF with IP address %s from external route tables (error %s).
+*Parameters*::
+*vifip* (STRING): IP address of the logical interface.
+*error* (STRING): Error that is reported.
+
+== vifmgr.extRoute.noIpMove
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP fails to update the external route tables maintained by the cloud provider to reflect a LIF move. As a result, IP packets to the IP address might still be routed to the previously assigned external port ID.
+*Corrective Action*::
+1. Remove the entry from the tables using the tools provided by the cloud provider if an entry is found in the external route tables for the given IP address and external port ID. 2. Verify connectivity, authentication and permissions to the cloud endpoint using the tools provided by the cloud provider. 3. Admin the status of the LIF associated with the IP down and up to force the IP movement. "network interface modify -vserver [x] -lif [xx] -status-admin down" "network interface modify -vserver [x] -lif [xx] -status-admin up"
+*Syslog Message*::
+Failed to move LIF. Error: %s
+*Parameters*::
+*error* (STRING): Error that is reported.
+
+== vifmgr.extRoute.noRmTable
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP fails to remove the external route table from the cloud network. As a result, IP packets routed to the subnet associated with the external route table might still be valid in the virtual private cloud.
+*Corrective Action*::
+1. Remove the external route table manually using the tools provided by the cloud provider. 2. Check for cloud authorization and resource permission issues.
+*Syslog Message*::
+Failed to remove external route table %s (error %s).
+*Parameters*::
+*table* (STRING): Route table name.
+*error* (STRING): Error that is reported.
+
+== vifmgr.extRoute.rmTable
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an external route table is removed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+External route table %s was removed successfully.
+*Parameters*::
+*table* (STRING): Route table name.

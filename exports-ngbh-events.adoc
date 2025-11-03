@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: exports-ngbh-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: exports.ngbh events
+---
+
+= exports.ngbh events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== exports.ngbh.allFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a netgroup by host request fails because all ns-switch sources for the netgroup database have returned connection errors and files are unusable as a source.
+*Corrective Action*::
+There might be temporary connectivity issues with the Vserver's configured ns-switch sources for the netgroup database. Check connectivity to the name servers configured for netgroups.
+*Syslog Message*::
+Connectivity issues encountered in all ns-switch sources when matching Client IP "%s" in Netgroup "%s" for Vserver "%s".
+*Parameters*::
+*client* (STRING): IP address of the client for which the lookup failed.
+*netgroup* (STRING): Name of the netgroup being evaluated.
+*vserver* (STRING): Name of the Vserver where the problem is occurring.

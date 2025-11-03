@@ -1,0 +1,250 @@
+---
+sidebar: sidebar
+permalink: wafl-mcc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.mcc events
+---
+
+= wafl.mcc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.mcc.config.notFound
+*Deprecated*::
+Deprecated as of version 9.4 as this debug EMS not supported now.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when WAFL(R) does not find the MetroCluster configuration information on this node.
+*Corrective Action*::
+Run the 'metrocluster check' command to verify the MetroCluster configuration.
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).
+
+== wafl.mcc.exceed.volcnt.limit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the MetroCluster(R) volume count limit for this node is reached. No additional volumes can be created on this node unless some existing volumes are moved or destroyed.
+*Corrective Action*::
+Either destroy some existing volumes or perform a 'volume move' operation to move some existing volumes to a storage aggregate located on a different node to make room for the new ones. Alternatively, you can also create new volumes on a different node to avoid moving or deleting the existing volumes.
+*Syslog Message*::
+MCC volume count limit of %d reached for this node.
+*Parameters*::
+*max_volcnt* (INT): Volume count limit for this node.
+
+== wafl.mcc.nso.left.behind
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system aborts a negotiated switchover because an online left-behind aggregate was found on this node.
+*Corrective Action*::
+Check whether there exists any online left-behind aggregates on this node from a previous switchover or takeover operation. If such an aggregate exists, then perform the corrective actions specified in the earlier EMS messages for the left-behind aggregate to return it to its original owner, and then retry the operation. You can use the "override-vetoes" option to proceed without performing the corrective action.
+*Syslog Message*::
+One or more online left-behind aggregates exist. Negotiated switchover is canceled.
+*Parameters*::
+(None).
+
+== wafl.mcc.nso.veto.cmode.vols
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system aborts negotiated switchover because a cluster volume was found on an aggregate with Controller Failover (CFO) HA policy.
+*Corrective Action*::
+Retry the negotiated switchover operation after the volume is deleted or moved to an aggregate with SFO HA policy. The override-vetoes option may be used to proceed without deleting or moving the volume.
+*Syslog Message*::
+%s %s%s%s%s has a CFO HA policy and contains one or more cluster volumes. Negotiated switchover canceled.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique volume identity when the volume name itself is insufficient.
+
+== wafl.mcc.sb.left.behind
+*Severity*::
+ERROR
+*Description*::
+This message occurs when WAFL(R) leaves behind an aggregate during MetroCluster(tm) switchback because this aggregate does not meet all the WAFL veto criteria for switchback.
+*Corrective Action*::
+Correct the issue that caused the aggregate to be left behind, based on the specific reason identified in an earlier EMS message. After correcting the issue, run the 'metrocluster switchback' command to return the aggregate to its original owner.
+*Syslog Message*::
+Aggregate %s was left behind during switchback.
+*Parameters*::
+*vol* (STRING): Name of the aggregate that was left behind.
+
+== wafl.mcc.sb.nso.veto.create
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system aborts a switchback or negotiated switchover because a volume create operation is running.
+*Corrective Action*::
+Retry the switchback or negotiated switchover operation after the volume create operation is complete.
+*Syslog Message*::
+%s %s%s%s%s is being created. Switchback or negotiated switchover canceled.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique volume identity when the volume name itself is insufficient.
+
+== wafl.mcc.sb.nso.veto.fence
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system aborts a switchback or negotiated switchover operation because a volume has a fence set.
+*Corrective Action*::
+A volume in the aggregate is currently fenced for group operations. Retry the switchback or negotiated switchover operation after any group SnapRestore(R) or mirror transfers are complete. If the problem persists, contact technical support.
+*Syslog Message*::
+%s %s%s%s%s has a fence set. Switchback or negotiated switchover canceled.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique volume identity when the volume name itself is insufficient.
+
+== wafl.mcc.sb.nso.veto.iron
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system aborts a switchback or negotiated switchover because wafliron is running.
+*Corrective Action*::
+Retry the switchback or negotiated switchover operation after wafliron is finished.
+*Syslog Message*::
+%s %s%s%s%s is running wafliron. Switchback or negotiated switchover canceled.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique volume identity when the volume name itself is insufficient.
+
+== wafl.mcc.sb.nso.veto.lock
+*Severity*::
+ERROR
+*Description*::
+This message occurs when WAFL(R) vetoes a switchback or negotiated switchover operation because the system cannot obtain an aggregate level lock.
+*Corrective Action*::
+Retry the switchback or negotiated switchover operation after waiting for other operations on the aggregate to finish.
+*Syslog Message*::
+Switchback or negotiated switchover vetoed because the system could not obtain a lock on aggregate %s.
+*Parameters*::
+*vol* (STRING): Aggregate name.
+
+== wafl.mcc.sb.nso.veto.nvsave
+*Severity*::
+ERROR
+*Description*::
+This message occurs when WAFL(R) vetoes a switchback or negotiated switchover operation because there are NVSave files for an aggregate or a flexible volume that must be replayed before the aggregate or flexible volume can be switched back.
+*Corrective Action*::
+Retry the switchback or negotiated switchover operation after replaying NVSave files (by bringing the aggregate or flexible volume online) or deleting them from the root volume.
+*Syslog Message*::
+Switchback or negotiated switchover vetoed due to presence of NVSave files for '%s' (FSID %d, UUID %s).
+*Parameters*::
+*vol_type* (STRING): Whether this message refers to NVSave files for an aggregate or a flexible volume.
+*fsid* (INT): File system identifier.
+*UUID* (STRING): UUID of the Volume.
+
+== wafl.mcc.sb.nso.veto.revert
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system aborts a switchback or negotiated switchover because a volume revert operation is running.
+*Corrective Action*::
+Retry the switchback or negotiated switchover operation after the volume revert operation is complete.
+*Syslog Message*::
+%s %s%s%s%s is being reverted. Switchback or negotiated switchover canceled.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique volume identity when the volume name itself is insufficient.
+
+== wafl.mcc.so.replay.disabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during MetroCluster(tm) switchover processing on a simulator. WAFL(R) replay is disabled on simulators.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+MetroCluster switchover: WAFL replay disabled on simulators.
+*Parameters*::
+(None).
+
+== wafl.mcc.so.start
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when WAFL starts switchover operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL starts switchover operation (force-nvfail-all=%s).
+*Parameters*::
+*force_nvfail_all* (STRING): Switchover command option.
+
+== wafl.mcc.so.vols.mounted
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the volumes are mounted during switchover.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).
+
+== wafl.mcc.subphase.times
+*Severity*::
+INFORMATIONAL
+*Description*::
+Issued upon completion of the WAFL portion of a MetroCluster operation with sub-phase timings in milliseconds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*operation* (STRING): Operation that was completed, such as switchover or switchback.
+*subPhaseTimes* (STRING): Report of sub-phase times for the WAFL portion of the MetroCluster operation.
+
+== wafl.mcc.total.maxvvols
+*Severity*::
+NOTICE
+*Description*::
+This message occurs in a MetroCluster(tm) configuration when the system cannot configure a FlexVol(R) volume because the maximum number of volumes has been reached.
+*Corrective Action*::
+Check whether there exists a left-behind aggregate on this node from a previous switchover or takeover operation. If such an aggregate exists, then perform the corrective actions specified in the earlier EMS messages for the left-behind aggregate to return it to its original owner. Otherwise, either destroy some existing volumes or perform a 'volume move' operation to move some existing volumes to a storage aggregate located on a different node to make room for the new ones.
+*Syslog Message*::
+Cannot configure FlexVol volume '%s' (UUID %s) in aggregate '%s': There are too many FlexVol volumes on the system.
+*Parameters*::
+*vol* (STRING): FlexVol volume name.
+*uuid* (STRING): FlexVol volume unique ID.
+*aggregate* (STRING): Aggregate name.
+
+== wafl.mcc.volLimit.exceeded
+*Deprecated*::
+Deprecated as of version 9.2 as the additional volume count soft limit for MCC is removed. The regular MCC limit based on the setting of node-object-limit is still in place.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the total volume count exceeds the limit supported on this node.
+*Corrective Action*::
+Bring the number of volumes below the supported limit on this node, either by performing a 'volume move' operation to move the extra volumes to a storage aggregate located on a different node, or by destroying some or all of the unused extra volumes on this node.
+*Syslog Message*::
+There are more volumes (%d) than the maximum number of volumes (%d) supported on this node for host: %s.
+*Parameters*::
+*numVols* (INT): Current number of volumes.
+*limit* (INT): Maximum number of volumes supported.
+*host* (STRING): Host on this node for which the volume limit has been exceeded.

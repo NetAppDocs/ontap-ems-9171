@@ -1,0 +1,58 @@
+---
+sidebar: sidebar
+permalink: nvmf-graceperiod-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvmf.graceperiod events
+---
+
+= nvmf.graceperiod events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvmf.graceperiod.active
+*Severity*::
+ALERT
+*Description*::
+This message occurs daily while the NVMe over Fabrics (NVMe-oF) protocol is in use and the license grace period is active. NVMe-oF functionality requires a license in this version of ONTAP(R) software after the license grace period expires.
+*Corrective Action*::
+Contact your sales representative to obtain an NVMe-oF license and add it to the cluster, or remove all NVMe-oF configuration from the cluster.
+*Syslog Message*::
+The NVMe-oF feature requires a license in this version of ONTAP. NVMe-oF functionality will be disabled in %d days (%s) unless a license is added to the cluster.
+*Parameters*::
+*days_remaining* (INT): Days until the license grace period expires.
+*expiration_date* (STRING): Date the license grace period expires.
+*object_type* (STRING): Type of resource object under notification. For this EMS, the object_type is CLUSTER.
+*object_uuid* (STRING): UUID of the resource object. For this EMS, the UUID is that of the cluster.
+
+== nvmf.graceperiod.expired
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the NVMe over Fabrics (NVMe-oF) license grace period expires and NVMe-oF functionality is disabled. NVMe-oF functionality requires a license in this version of ONTAP(R) software after the license grace period expires.
+*Corrective Action*::
+Contact your sales representative to obtain an NVMe-oF license, and then add it to the cluster.
+*Syslog Message*::
+The NVMe-oF feature requires a license in this version of ONTAP and the grace period has expired. NVMe-oF functionality will be disabled until a license is added to the cluster.
+*Parameters*::
+*object_type* (STRING): Type of resource object under notification. For this EMS, the object_type is CLUSTER.
+*object_uuid* (STRING): UUID of the resource object. For this EMS, the UUID is that of the cluster.
+
+== nvmf.graceperiod.start
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an NVMe over Fabrics (NVMe-oF) configuration is detected during upgrade to ONTAP(R) 9.5 software. NVMe-oF functionality requires a license in this version of ONTAP after the license grace period expires.
+*Corrective Action*::
+Contact your sales representative to obtain an NVMe-oF license, and then add it to the cluster.
+*Syslog Message*::
+The NVMe-oF feature requires a license in this version of ONTAP. NVMe-oF functionality will be disabled in %d days (%s) unless a license is added to the cluster.
+*Parameters*::
+*days_remaining* (INT): Days until the license grace period expires.
+*expiration_date* (STRING): Date the license grace period expires.
+*object_type* (STRING): Type of resource object under notification. For this EMS, the object_type is CLUSTER.
+*object_uuid* (STRING): UUID of the resource object. For this EMS, the UUID is that of the cluster.

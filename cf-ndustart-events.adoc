@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: cf-ndustart-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.ndustart events
+---
+
+= cf.ndustart events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.nduStart
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a nondisruptive upgrade starts.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*token* (STRING): Unique token that identifies an instance of a nondisruptive upgrade.
+*host* (STRING): Name of system that started the nondisruptive upgrade.

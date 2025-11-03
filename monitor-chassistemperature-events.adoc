@@ -1,0 +1,63 @@
+---
+sidebar: sidebar
+permalink: monitor-chassistemperature-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.chassistemperature events
+---
+
+= monitor.chassistemperature events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.chassisTemperature.cool
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the chassis temperature is too cool. This is a warning message.
+*Corrective Action*::
+The appliance cannot function in an environment that is too cold; find ways to warm the appliance.
+*Syslog Message*::
+Chassis temperature is too cool: %s
+*Parameters*::
+*describe_toocool* (STRING): Description of the condition.
+
+== monitor.chassisTemperature.ok
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the chassis temperature is normal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Chassis temperature is ok.
+*Parameters*::
+(None).
+
+== monitor.chassisTemperature.state.unknown
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system cannot read multiple chassis temperature sensors. The condition can be caused by software, firmware, or hardware problems.
+*Corrective Action*::
+Arrange to AC power-cycle the unit to address possible software and firmware issues. If the condition persists, contact NetApp technical support for assistance with Processor Control Module (PCM) replacement.
+*Syslog Message*::
+Chassis temperature state is unknown: %s.
+*Parameters*::
+*reasonText* (STRING): Description of the temperature sensor issue.
+
+== monitor.chassisTemperature.warm
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the chassis temperature is too warm. This is a warning message. If the condition persists, the system will shut down automatically.
+*Corrective Action*::
+Ensure that sufficient cooling air is being supplied to the chassis and that the air inlets and outlets of the unit are not blocked. If you cannot resolve the situation, shut down all clients that are attached to the storage appliance, and then shut down the system.
+*Syslog Message*::
+Chassis temperature is too warm: %s
+*Parameters*::
+*describe_toowarm* (STRING): Description of the condition.

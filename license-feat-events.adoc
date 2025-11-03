@@ -1,0 +1,70 @@
+---
+sidebar: sidebar
+permalink: license-feat-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: license.feat events
+---
+
+= license.feat events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== license.feat.delete.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot successfully delete a license for a feature. (This message is currently used only for FlexCache(R) licenses.)
+*Corrective Action*::
+The feature might be vetoing deletion for specific, valid reasons (e.g., it is still in use), or it might be in a state that is inconsistent with deletion. Examine the error condition for more information. Contact NetApp technical support.
+*Syslog Message*::
+License for feature %s and serial %s not deleted: %s.
+*Parameters*::
+*feature* (STRING): Name of the feature.
+*serial* (STRING): Serial number associated with the license.
+*reason* (STRING): Error condition encountered.
+
+== license.feat.deleted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system deletes a license for a feature. (This message is currently used only for FlexCache(R) licenses.)
+*Corrective Action*::
+(None).
+*Syslog Message*::
+License deleted: feature %s, serial %s.
+*Parameters*::
+*feature* (STRING): Name of the feature.
+*serial* (STRING): Serial number associated with the license.
+
+== license.feat.install.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot successfully install a license for a feature. (This message is currently used only for FlexCache(R) licenses.)
+*Corrective Action*::
+Check whether the feature is supported by the target instance of ONTAP(R) software. Check whether the target instance supports the change in the entitlements as specified by the license. Contact NetApp technical support.
+*Syslog Message*::
+License for feature %s and serial %s not installed: %s.
+*Parameters*::
+*feature* (STRING): Name of the feature.
+*serial* (STRING): Serial number associated with the license.
+*reason* (STRING): Error condition encountered.
+
+== license.feat.installed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system successfully installs a license for a feature. (This message is currently used only for FlexCache(R) licenses.)
+*Corrective Action*::
+(None).
+*Syslog Message*::
+License installed for feature %s: serial: %s, %s.
+*Parameters*::
+*feature* (STRING): Name of the feature.
+*serial* (STRING): Serial number associated with the license.
+*attrs* (STRING): Attributes of interest for this license, listed as a colon-separated key-value pairs.

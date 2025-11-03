@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: cecc_log-entry-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cecc_log.entry events
+---
+
+= cecc_log.entry events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cecc_log.entry
+*Severity*::
+NOTICE
+*Description*::
+Correctable ECC errors occurred in the system memory. The system automatically corrects these errors. All the corrected errors are reported by the ECC error logger to track the history of occurrence of these errors.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%lld: %s
+*Parameters*::
+*cecc_entry_num* (LONGINT): Number of correctable ECC errors since boot.
+*cecc_msg* (STRING): Information about the ECC error.

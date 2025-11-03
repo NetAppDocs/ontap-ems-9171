@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sasmon-disable-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sasmon.disable events
+---
+
+= sasmon.disable events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sasmon.disable.module
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Data ONTAP(R) module responsible for monitoring Serial Attached SCSI (SAS) domain's transient errors is disabled due to the environment variable disable-sasmon? being set to "true".
+*Corrective Action*::
+Set the environment variable disable-sasmon? to "false" to enable this monitor module.
+*Syslog Message*::
+SAS domain is not monitoring transient errors.
+*Parameters*::
+(None).

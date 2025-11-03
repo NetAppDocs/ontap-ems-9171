@@ -1,0 +1,474 @@
+---
+sidebar: sidebar
+permalink: wafl-ca-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.ca events
+---
+
+= wafl.ca events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.ca.cap.tier.usage.limit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the space used in the capacity tier of a FabricPool aggregate has exceeded or is projected to exceed the size limit set on the capacity tier. The projected usage is calculated based on the cold data already identified for tiering. The system will continue to serve data while space exists in the performance tier, but cold data will not be tiered to the capacity tier.
+*Corrective Action*::
+Perform one or more of the following actions: o Free space in the capacity tier of the aggregate by moving volumes, removing volumes, or deleting data. o Increase the size limit set on the capacity tier.
+*Syslog Message*::
+Aggregate %s capacity tier usage (%llu MB) has exceeded its size limit (%llu MB).
+*Parameters*::
+*aggregate* (STRING): Aggregate name.
+*capacityTierUsage* (LONGINT): Current capacity tier usage in MB.
+*capacityTierSizeLimit* (LONGINT): Capacity tier size limit in MB.
+
+== wafl.ca.cloud.retrieval.policy
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the cloud retrieval policy for a volume in a FabricPool has been modified.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cloud retrieval policy on volume '%s%s%s%s' has been modified to %s.
+*Parameters*::
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Identifier of the volume.
+*cloud_retrieval_policy* (STRING): Cloud retrieval policy configured on the volume.
+
+== wafl.ca.cloud.write.disabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the cloud write option is disabled on a volume in a FabricPool aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The Cloud Write option is disabled on volume %s.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+
+== wafl.ca.cloud.write.enabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the cloud write option is enabled on a volume in a FabricPool aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The Cloud Write option is enabled on volume %s.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+
+== wafl.ca.cs.hdr.cfg.mismatch
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects that the IDs recorded in the configuration map for FabricPool object stores for a specific aggregate do not match the configuration IDs currently in use by the aggregate itself. This mismatch might affect the reporting of statistics and counters for FabricPool object stores.
+*Corrective Action*::
+Run the "aggr wafliron start <aggr_name>" command on the aggregate specified to fix the inconsistency.
+*Syslog Message*::
+Aggregate "%s" with bin ID "%d" has configuration IDs in the FabricPool statistics file (configuration ID 1: %d, configuration ID 2: %d) that are different from the configuration IDs of the object stores in the configuration map (primary configuration ID: %d, mirror configuration ID: %d).
+*Parameters*::
+*aggr* (STRING): Name of the aggregate.
+*bin* (INT): Bin ID of the object stores.
+*cfg_id_1* (INT): Configuration ID 1, as reported by the aggregate.
+*cfg_id_2* (INT): Configuration ID 2, as reported by the aggregate.
+*primary_cfg_id* (INT): Configuration ID of the primary object store.
+*mirror_cfg_id* (INT): Non-zero configuration ID of the mirror object store, or zero if no such store exists.
+
+== wafl.ca.GET.latency.thresh
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the measured latency for a GET request from a cloud provider, for a specific aggregate and object store, exceeds the maximum threshold specified for that object store. This can impact performance and lead to request timeouts.
+*Corrective Action*::
+Ensure that the configuration of your object store has not changed, and that login and connectivity information are still accurate. If the condition persists, contact NetApp technical support.
+*Syslog Message*::
+Measured latency for GET request from cloud (%d msec) exceeds the threshold (%d msec) (aggregate: %s, aggregate UUID: %s, object store: %s, object store provider: %s, object name: %s, offset: %d, length: %d).
+*Parameters*::
+*latency_msec* (INT): Latency cycles specified in milliseconds.
+*threshold_msec* (INT): Threshold value in milliseconds for the latency.
+*aggr* (STRING): Name of the containing aggregate.
+*aggr_uuid* (STRING): Universal unique identifier (UUID) of the aggregate.
+*config_name* (STRING): Object store configuration name.
+*objstore_name* (STRING): Object store provider name.
+*object_name* (STRING): Object name.
+*offset* (INT): Offset for GET request.
+*len* (INT): Request length for GET request.
+
+== wafl.ca.GET.timeout.failure
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when ONTAP fails to read a block from a cloud object because the underlying GET request times out.
+*Corrective Action*::
+Ensure that the configuration of your object store has not changed, and that login and connectivity information are still accurate. If the condition persists, contact NetApp technical support.
+*Syslog Message*::
+Failed to read an object from cloud due to GET request timeout (aggregate: %s, aggregate UUID: %s, object store: %s, object store provider: %s, object name: %s, offset: %d, length: %d).
+*Parameters*::
+*aggr* (STRING): Name of the containing aggregate.
+*aggr_uuid* (STRING): Universal unique identifier (UUID) of the aggregate.
+*config_name* (STRING): Object store configuration name.
+*objstore_name* (STRING): Object store provider name.
+*object_name* (STRING): Object name.
+*offset* (INT): Offset for GET operation.
+*len* (INT): Request length for GET operation.
+
+== wafl.ca.latency.threshold
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the measured I/O latency from a cloud provider, for a specific aggregate and object store, exceeds the maximum threshold. This can impact performance and lead to request timeouts.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Measured latency from cloud (%d msec) exceeds the threshold (%d msec) (aggregate: %s, aggregate UUID: %s, object store: %s, S3 request: %s, object store provider: %s).
+*Parameters*::
+*latency_msec* (INT): Latency cycles specified in milliseconds.
+*threshold_msec* (INT): Threshold value in milliseconds for the latency.
+*aggr* (STRING): Name of the containing aggregate.
+*aggr_uuid* (STRING): Universal unique identifier (UUID) of the aggregate.
+*config_name* (STRING): Object store configuration name.
+*op_name* (STRING): S3 or Azure blob operation name.
+*objstore__name* (STRING): Object store provider name
+
+== wafl.ca.mcc.tlog.drain.event
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when tiering is enabled or disabled on a FabricPool in a MetroCluster(tm) configuration, when one or more mirrored plexes transitions from normal to degraded state or vice versa. Enabling or disabling tiering does not impact data availability or client read/write performance.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Mirrored plex "%s" on FabricPool "%s" is in "%s" state. Tiering is %s.
+*Parameters*::
+*plex_name* (STRING): Name of the plex.
+*aggregate_name* (STRING): Name of the FabricPool.
+*plex_state* (STRING): Operational state of the plex.
+*message* (STRING): Indicates whether tiering is enabled or disabled.
+
+== wafl.ca.migrate.aggr.nospace
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when one or more FabricPool aggregates does not have space for hot data to be migrated back to the performance tier.
+*Corrective Action*::
+Either free space in the performance tier of the aggregate (by moving volumes, removing volumes, or deleting data), or add space to the performance tier of the aggregate by adding disks.
+*Syslog Message*::
+Aggregate %s: Current available space in the performance tier is below %d%%. Data migration from the capacity tier to the performance tier is stopped.
+*Parameters*::
+*aggr* (STRING): Aggregate name.
+*threshold_percentage* (INT): Percentage of aggregate space that must be unused for migration to occur.
+
+== wafl.ca.name.fmt.mismatch
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects an internal discrepancy on the name format version used by the FabricPool. Cloud operations on the FabricPool is affected.
+*Corrective Action*::
+Run the 'debug vreport show' command to see the object name format version discrepancy. Follow the vreport guidance to fix the issue.
+*Syslog Message*::
+Name format version discrepancy detected for FabricPool "%s". Operations to the object store affected.
+*Parameters*::
+*aggr* (STRING): Name of the FabricPool.
+
+== wafl.ca.object.check.done
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued to indicate that the object check operation on a FabricPool aggregate completed successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Object check operation completed on FabricPool %s. Total lost objects: %d.
+*Parameters*::
+*aggr* (STRING): Name of the containing aggregate.
+*num_lost_objs* (INT): Number of lost objects identified.
+
+== wafl.ca.object.check.start
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when object check operation on a FabricPool aggregate is started successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Object check operation was started on FabricPool %s. Output will be saved at %s.
+*Parameters*::
+*aggr* (STRING): Name of the containing aggregate.
+*logfile* (STRING): Path for the logfile for object check output.
+
+== wafl.ca.object.storage.class.updated
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the object storage class is updated on a volume in a FabricPool aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The tiering storage class on volume %s is updated from %s to %s.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*old_storage_class* (STRING): Old tiering storage class.
+*new_storage_class* (STRING): Updated tiering storage class.
+
+== wafl.ca.objtag.retry.limit
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the object tagging scanner fails to update tags on an object in the object store even after retrying for the maximum allowed attempts. The scanner is aborted for the current scan and will attempt to tag the object again the next time the scanner runs. The scanner is invoked every minute to check whether there are objects to be tagged.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failed to update object tags in the object store even after multiple retry attempts, aggregate = %s, object ID =%lu, object name =%s, retries attempted = %d.
+*Parameters*::
+*aggregate_name* (STRING): Aggregate name.
+*object_id* (LONGINT): Object ID.
+*object_name* (STRING): Object name.
+*num_retries* (INT): Number of retries attempted.
+
+== wafl.ca.objtag.skip.retry
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the object tagging scanner fails to update tags on an object in the object store even after retrying for the maximum allowed attempts. The scanner continues to update tags on other objects instead of aborting the scan due to repeated failures over one or more objects.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failed to update object tags in the object store even after multiple retry attempts. Tagging skipped on object: aggregate = %s, object ID =%lu, object name =%s, retries attempted = %d.
+*Parameters*::
+*aggregate_name* (STRING): Aggregate name.
+*object_id* (LONGINT): Object ID.
+*object_name* (STRING): Object name.
+*num_retries* (INT): Number of retries attempted.
+
+== wafl.ca.objtag.unsupported
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when object tags are added or updated on a FabricPool volume. This message indicates that objects tiered from this volume will not be tagged in the object store.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Object tagging is supported only for a StorageGRID(R) object store in this version of ONTAP(R) software. Objects in %s object store (%s) attached to FabricPool %s will not be tagged in this version.
+*Parameters*::
+*provider_name* (STRING): Object store name.
+*object_store_type* (STRING): Object store type (primary or mirror).
+*aggregate* (STRING): Name of the FabricPool.
+
+== wafl.ca.promote.none.nospc
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a FabricPool volume with tiering policy set to "none" and cloud retrieve policy set to "promote" does not have enough free space available to fetch all the data from the cloud. The scanner to fetch the data will abort and be periodically rescheduled until the space is available.
+*Corrective Action*::
+Ensure the aggregate has the estimated amount of space needed available.
+*Syslog Message*::
+Aggregate %s, Volume %s: Current available space in the performance tier is %llu bytes. There needs to be at least %llu bytes free in the aggregate to fetch an estimated %llu bytes from the cloud. Data migration from the capacity tier to the performance tier is paused.
+*Parameters*::
+*aggr* (STRING): Aggregate name.
+*vol* (STRING): Volume name.
+*avail_space* (LONGINT): Free space in aggregate.
+*space_needed* (LONGINT): Estimated amount of physical space that must be free to accommodate data fetched from the cloud.
+*cloud_space_to_fetch* (LONGINT): Estimated amount of physical space to fetch from the cloud.
+
+== wafl.ca.promote.snap.nospc
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a FabricPool volume with tiering policy set to "snapshot_only" and cloud retrieve policy set to "promote" does not have enough free space available to fetch the AFS data from the cloud. The scanner to fetch the data will abort and be periodically rescheduled until the space is available.
+*Corrective Action*::
+Ensure the aggregate has the estimated amount of space needed available.
+*Syslog Message*::
+Aggregate %s, Volume %s: Current available space in the performance tier is %llu bytes. There needs to be at least %llu bytes free in the aggregate to fetch AFS data from the cloud. Data migration from the capacity tier to the performance tier is paused.
+*Parameters*::
+*aggr* (STRING): Aggregate name.
+*vol* (STRING): Volume name.
+*avail_space* (LONGINT): Free space in aggregate.
+*space_needed* (LONGINT): Minimum amount of physical space that must be free to accommodate AFS data fetched from the cloud.
+
+== wafl.ca.remove.object.tag
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system encounters a bad header in the block that stores the tag values associated with the objects that belong to the volume. As a result of this corruption, all the tags information stored in the block is cleared.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Clearing all tags due to inconsistencies found in the object tag metafile associated with volume %s.
+*Parameters*::
+*volname* (STRING): Volume name.
+
+== wafl.ca.repaired.metafile
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an inconsistency is discovered in one of the FabricPool metafile blocks. The inconsistency is automatically repaired upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Inconsistent block (%s) found in %s metafile on FabricPool aggregate (%s). Repaired.
+*Parameters*::
+*state* (STRING): A description of the metafile block that was found to be inconsistent.
+*metafile_name* (STRING): Name of the metafile.
+*aggr* (STRING): Name of the FabricPool aggregate.
+
+== wafl.ca.resync.complete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Data ONTAP(R) completes the resync process from the primary object store to the mirror object store for a mirrored FabricPool aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FabricPool mirror resync process is completed for FabricPool %s (uuid %s) from primary object store (config id %u) to mirror object store (config id %u).
+*Parameters*::
+*aggr* (STRING): Name of the containing aggregate.
+*aggr_uuid* (STRING): Universal Unique ID (UUID) of the aggregate.
+*primary_config_id* (INT): Primary object store config id.
+*mirror_config_id* (INT): Mirror object store config id.
+
+== wafl.ca.resync.read.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when FabricPool mirror resynchronize attempt receives too many consecutive timeout failures while reading a single object from the primary. The mirror will stay in a degraded state until all objects can be read and copied to the mirror.
+*Corrective Action*::
+Verify that your intercluster LIF is online and functional by using the "network interface show" command. Also, check network connectivity to the object store server by using the "ping" command over the destination node intercluster LIF. Additionally, ensure that the configuration of your object store has not changed, and that login and connectivity information is still accurate. If the condition persists, contact NetApp technical support.
+*Syslog Message*::
+Unable to read cloud object from capacity tier (objid %llu, btuuid %s, seqno %llu) during FabricPool mirror resync.
+*Parameters*::
+*object_id* (LONGINT): Object identifier.
+*btuuid* (STRING): Buftree UUID.
+*seqno* (LONGINT): Sequence number.
+
+== wafl.ca.resync.read.set.err.obj
+*Severity*::
+ALERT
+*Description*::
+This message occurs when Data ONTAP(R) marks all blocks in an object in a capacity tier object with an error due to FabricPool mirror resync read errors. This is useful for tracking generation of some pseudobad blocks due to resync read issues.
+*Corrective Action*::
+Contact Contact NetApp technical support..
+*Syslog Message*::
+Unable to read cloud object from capacity tier (objid %llu, btuuid %s, seqno %llu) during FabricPool mirror resync. As a result, all blocks in this object are marked with error (%u).
+*Parameters*::
+*object_id* (LONGINT): Object identifier.
+*btuuid* (STRING): Buftree UUID.
+*seqno* (LONGINT): Sequence number.
+*error* (INT): Error on the block.
+
+== wafl.ca.revert.ufmt.paused
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the revert operation to convert a unified object format is paused either because there are one or more offline volumes in the FabricPool aggregate or because the tiering of unified format objects to the object store is pending.
+*Corrective Action*::
+Bring the volumes online in the aggregate to resume the unified object format revert operation. Use the "volume object-store tiering show" command to check the tiering status of a volume.
+*Syslog Message*::
+The operation to revert the object format to the native format paused on aggregate "%s" because there are offline volumes or the tiering of unified format objects to the object store is pending.
+*Parameters*::
+*aggregate_name* (STRING): Aggregate name.
+
+== wafl.ca.slothdr.repair.done
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued to indicate that the slothdr repair operation for a FabricPool aggregate completed successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Slothdr metafile repair operation completed for FabricPool %s.
+*Parameters*::
+*aggr* (STRING): Name of the containing aggregate.
+
+== wafl.ca.slothdr.repair.start
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an operation to repair the slothdr metafile for a FabricPool aggregate is started successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Slothdr metafile repair operation was started for FabricPool %s.
+*Parameters*::
+*aggr* (STRING): Name of the containing aggregate.
+
+== wafl.ca.tier.aggr.spc.limit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the FabricPool aggregate does not have enough free space to tier cold data to the capacity tier. The system will continue to serve data, but cold data will not be tiered.
+*Corrective Action*::
+Either free space in the performance tier of the aggregate by moving volumes, removing volumes, or deleting data, or add space to the performance tier of the aggregate by adding disks.
+*Syslog Message*::
+Aggregate %s: Current available space in the performance tier is below %d%%. Data tiering from the performance tier is stopped.
+*Parameters*::
+*aggr* (STRING): Aggregate name.
+*threshold_percentage* (INT): Percentage of aggregate space that must be unused for tiering to occur.
+
+== wafl.ca.tier.max.size.limit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the capacity tier of a FabricPool aggregate reaches the maximum supported capacity tier size. The system will continue to serve data, but cold data will not be migrated to the capacity tier.
+*Corrective Action*::
+This state can be corrected by performing one or more of the following actions: o Free space in the capacity tier of the aggregate by moving volumes, removing volumes, or deleting data.
+*Syslog Message*::
+Aggregate %s capacity tier usage (%llu MB) has reached the maximum capacity tier size limit (%llu MB).
+*Parameters*::
+*aggregate* (STRING): Aggregate name.
+*capacityTierUsage* (LONGINT): Current capacity tier usage in MB.
+*maxCapacityTierSizeLimit* (LONGINT): Maximum capacity tier size in MB.
+
+== wafl.ca.tiering.policy
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the tiering policy for a volume in a FabricPool has been modified.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Tiering policy on volume '%s%s%s%s' has been modified to %s.
+*Parameters*::
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*tiering_policy* (STRING): Tiering policy configured on the volume.
+
+== wafl.ca.tlogput.modified
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the FabricPool Put operation settings are modified by an administrator.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FabricPool Put operation settings were modified. New Values, bytes-limit: %llu, latency-limit: %llu, preserved: %u,%u
+*Parameters*::
+*bytes_limit* (LONGINT): The put-rate-bytes-limit value.
+*latency_limit* (LONGINT): The put-latency-limit value.
+*preserve* (INT): The preserve setting value.
+*can_preserve* (INT): Non-Zero if the node supports preserving settings.
+
+== wafl.ca.total.space.incons
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the counter tracking the total amount of space used in an object store bucket becomes inconsistent due to other inconsistencies in the object metadata.
+*Corrective Action*::
+For more information or assistance, contact NetApp technical support.
+*Syslog Message*::
+Inconsistency was found in the total object store space used by FabricPool aggregate "%s". Skipped space adjustments have caused overcounting by as much as %llu bytes.
+*Parameters*::
+*aggrname* (STRING): Name of the aggregate.
+*space_delta* (LONGINT): The estimated amount of space in bytes that could be overcounted as a result of other inconsistencies.

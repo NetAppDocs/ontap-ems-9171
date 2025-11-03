@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sp-fwud-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sp.fwud events
+---
+
+= sp.fwud events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sp.fwud.cert.verify.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Service Processor (SP) or baseboard management controller (BMC) firmware update fails because the image failed digital signature verification.
+*Corrective Action*::
+1. Consult the vendor support site for information about firmware upgrade restrictions due to code signing certificates. 2. Determine the SP or BMC firmware version that is required to transition to new certificates. Upgrade to that version. 3. Upgrade the SP or BMC firmware to a newer version. Note: Once upgraded to the transition version, you cannot downgrade the firmware.
+*Syslog Message*::
+SP or BMC firmware update fails because the image failed digital signature verification.
+*Parameters*::
+(None).

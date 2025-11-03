@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-config-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.config events
+---
+
+= callhome.config events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.config
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects a disk shelf configuration error for one or more disk shelves. The system continues to report this error until you resolve the problem. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Use the command "storage errors show" to display outstanding storage errors in the system. Use the "event log show" command to identify earlier EMS messages related to shelf configuration errors. Correct the cause of the configuration error. Common causes of configuration errors are as follows: - A previously attached disk shelf was removed - A loss of disk shelf enclosure services occurred - A disk shelf fan module failed - An invalid disk shelf drive configuration was created - An operating environment temperature was 50C (122F) degrees or higher - A disk shelf environment module failure occurred If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for CONFIGURATION_ERROR
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

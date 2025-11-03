@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: security-invalid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: security.invalid events
+---
+
+= security.invalid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== security.invalid.login
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an attempt is made to access the system by using invalid authentication credentials.
+*Corrective Action*::
+Verify that the user made a genuine attempt to access the system. If not, use the "security login delete" command to either remove the account or use the "security login lock" command to lock the account to disallow access to the system using that user account. Also, strengthen the authentication credentials of the user account by updating it. More detail regarding the authentication failure is available in audit.log file.
+*Syslog Message*::
+Failed to authenticate login attempt to Vserver: %s, username: %s, application: %s, location: %s.
+*Parameters*::
+*vserver* (STRING): The name of the Vserver to which the access was attempted.
+*userName* (STRING): The user name used to gain access to the Vserver.
+*application* (STRING): The name of the application used to gain access to the Vserver.
+*location* (STRING): The remote address used to gain access to the Vserver.

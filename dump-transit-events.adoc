@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: dump-transit-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dump.transit events
+---
+
+= dump.transit events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dump.transit.fail
+*Severity*::
+ERROR
+*Description*::
+This event is generated when the failover is still in transit while waiting for the dump to be initialized
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover is still in transit.
+*Parameters*::
+(None).

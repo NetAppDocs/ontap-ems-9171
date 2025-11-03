@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: monitor-rtcnormal-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.rtcnormal events
+---
+
+= monitor.rtcnormal events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.rtcNormal
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the real-time clock (RTC) battery voltage is normal. Previously occurred fault is now cleared.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Real-time clock battery voltage is normal.
+*Parameters*::
+(None).

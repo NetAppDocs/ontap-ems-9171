@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: mgmt-s3-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmt.s3 events
+---
+
+= mgmt.s3 events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmt.s3.sm.license.near.limit
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the total cluster-wide logical used size for S3 Snapmirror external object store relationships is near the license capacity limit but does not exceed the limit.
+*Corrective Action*::
+To increase the license capacity, install a new license on the cluster. Alternatively, remove some data you are managing.
+*Syslog Message*::
+%s.
+*Parameters*::
+*message* (STRING): Capacity warning message for users
+
+== mgmt.s3.sm.license.over.limit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the total cluster-wide bucket used size for S3 Snapmirror external object store relationships is over the license capacity limit.
+*Corrective Action*::
+To increase the license capacity, install a new license on the cluster. Alternatively, remove some data you are managing.
+*Syslog Message*::
+%s.
+*Parameters*::
+*message* (STRING): Capacity warning message for users

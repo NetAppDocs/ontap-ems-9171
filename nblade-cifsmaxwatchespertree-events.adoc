@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: nblade-cifsmaxwatchespertree-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.cifsmaxwatchespertree events
+---
+
+= nblade.cifsmaxwatchespertree events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.cifsMaxWatchesPerTree
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the total number of directory watch (Change Notify) requests exceed the per-tree limit. This request and any further directory watch requests are denied. This typically indicates abnormal client behavior.
+*Corrective Action*::
+Inspect the application using the connection and also monitor the other applications on the client. The client might be operating incorrectly due to a faulty application running on it. Rebooting the client might also be helpful. In some cases, clients are operating as expected but require a higher threshold, which can be set using the (privilege: advanced) "cifs option modify -max-watches-set-per-tree" command.
+*Syslog Message*::
+Received too many Change Notify requests on one tree: clientIP:port %s:%d, directory "%s" on share "%s", vserver: "%s".
+*Parameters*::
+*IpAddress* (STRING): IP address of the client requesting Change Notify functionality.
+*port* (INT): Port number of the client from which the TCP connection has been established.
+*dirPath* (STRING): Path of the directory on which Change Notify is requested.
+*shareName* (STRING): Name of the share that holds the directory.
+*vserverName* (STRING): Vserver associated with this operation.

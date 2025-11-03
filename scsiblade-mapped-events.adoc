@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: scsiblade-mapped-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsiblade.mapped events
+---
+
+= scsiblade.mapped events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsiblade.mapped.ns.attr.mod
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a mapped NVMe namespace attribute changes as a result of a management operation. Changes in NVMe namespace attributes like size, state, or OS type, are not supported in this release.
+*Corrective Action*::
+Remove the namespace map using "vserver nvme subsystem map remove" command, then reapply it with the "vserver nvme subsystem map add" command.
+*Syslog Message*::
+The Namespace attributes of the Namespace with Vdisk ID '%s' in volume with MSID '%llu' in Vserver '%s' changed.
+*Parameters*::
+*vdiskId* (STRING): Vdisk ID of the LUN.
+*volume* (LONGINTHEX): Volume identifier.
+*vserver* (STRING): UUID of the Vserver that hosts the LUN.

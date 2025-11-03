@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: repl-switch-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.switch events
+---
+
+= repl.switch events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.switch.to.seq.split
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the average Op Latency increases beyond the threshold value in parallel splitting mode.
+*Corrective Action*::
+Switch to sequential splitting mode by setting the SnapMirror policy option "-are-data-ops-sequentially-split".
+*Syslog Message*::
+Operation Latency has exceeded the threshold value "%llu" in the parallel split mode for sync relationship with UUID "%s".
+*Parameters*::
+*average_overall_latency* (LONGINT): Average overall latency.
+*relationship_id* (STRING): Relationship UUID.

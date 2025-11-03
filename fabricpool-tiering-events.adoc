@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: fabricpool-tiering-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fabricpool.tiering events
+---
+
+= fabricpool.tiering events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fabricpool.tiering.stopped.no.scu
+*Severity*::
+ALERT
+*Description*::
+This message occurs when ONTAP has stopped tiering data to the cloud tier because it has lost contact with the Service Control Unit used for one or more cloud subscription licenses.
+*Corrective Action*::
+Ensure that the Service Control Unit is running and ONTAP should have connectivity to it.
+*Syslog Message*::
+Ontap has stopped tiering data to the cloud tier because it lost contact with the Service Control Unit for the license of type %s. Cluster ID: %s.
+*Parameters*::
+*license_type* (STRING): The type of license which has lost contact with the Service Control Unit.
+*cluster_uuid* (STRING): UUID of the cluster.

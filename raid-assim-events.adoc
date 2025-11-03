@@ -1,0 +1,658 @@
+---
+sidebar: sidebar
+permalink: raid-assim-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.assim events
+---
+
+= raid.assim events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.assim.add.offline.disk
+*Severity*::
+NOTICE
+*Description*::
+This event is generated when adding an offline disk into a raidtree.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Adding offline %s to plex_id:%d
+*Parameters*::
+*disk_info* (STRING): Formatted information of the offline disk.
+*plexId* (INT): The identifier for the plex.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.assim.build.errorDisk
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when RAID cannot build a RAID tree for a specific plex from a specific disk. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Error building RAID tree %s, plex %d, from disk %s.
+*Parameters*::
+*tree* (STRING): Volume type.
+*plexId* (INT): Identifier for the plex.
+*disk* (STRING): Name of the disk.
+
+== raid.assim.cfo.aggr.offline
+*Deprecated*::
+Deprecated as of version 9.17.1 to rename the event to raid.assim.root.aggr.offline.
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event occurs when a CFO aggregate which is orginally homed to the disaster recovery (DR) partner or DR auxiliary partner is taken offline during assimilation after switchover in a MetroCluster(tm) configuration. Switched over CFO aggregates are kept offline.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Aggregate %s%s originally homed to %u is taken offline. Reason: %s.
+*Parameters*::
+*owner* (STRING): Owner of affected aggregate.
+*aggregate* (STRING): The name of the aggregate.
+*dr_home_owner_id* (INT): NVRAM system ID of the aggregate's disaster recovery (DR) home owner.
+*reason* (STRING): The reason for taking the aggregate offline.
+
+== raid.assim.cls.mismatchGens
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Data ONTAP(R) excludes a disk from assimilation into this RAID tree because of a configuration error detected by the consistent label set (CLS) algorithm: the disk transaction generation contains an internal inconsistency. Data ONTAP takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+Data ONTAP takes appropriate recovery actions but if the aggregate is still shown as 'failed' when the command 'sysconfig -r' or 'aggr status -r' is run, then contact NetApp technical support for information about how to resolve the issue.
+*Syslog Message*::
+Orphaning disk %s, because of generation count mismatch (%d/%d).
+*Parameters*::
+*disk* (STRING): Name of the disk.
+*l1gen* (INT): Generation count of the disk's L1 transaction.
+*l2gen* (INT): Generation count of the disk's L2 transaction.
+
+== raid.assim.cls.noStableCls
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the consistent label set (CLS) algorithm is restarted because Data ONTAP(R) could not determine a consistent CLS for all of the RAID aggregates. Data ONTAP takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Unable to find a stable CLS for all RAID trees. Resorting disks.
+*Parameters*::
+(None).
+
+== raid.assim.cls.noStableCls2
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the consistent label set (CLS) algorithm is restarted because Data ONTAP(R) could not determine a consistent CLS for all of the RAID aggregates with Label 2. Data ONTAP takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Unable to find a stable CLS for all RAID trees with Label 2. Resorting disks.
+*Parameters*::
+(None).
+
+== raid.assim.cls.retryCls
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the consistent label set (CLS) algorithm is restarted due to a disk that appears with an unreasonable timestamp (appears to be a future time). Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Suspect unreasonable timestamp in future for disk in plex %s/%d. Restarting CLS algorithm.
+*Parameters*::
+*plex* (STRING): Plex name.
+*pid* (INT): Plex ID.
+
+== raid.assim.cls.tooManyPlexes
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the number of plexes detected exceeds the maximum limit allowed, during consistent label set (CLS) computation. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Raidtree %s has more than %d plexes (plex IDs %d, %d, %d)
+*Parameters*::
+*vol* (STRING): Name of the aggregate.
+*maxPlexes* (INT): Maximum number of plexes allowed per tree.
+*plex1* (INT): Plex #1.
+*plex2* (INT): Plex #2.
+*plex3* (INT): Plex #3.
+
+== raid.assim.cls.tooRecent
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Data ONTAP(R) excludes a disk from assimilation into this RAID tree because of a configuration error detected by the consistent label set (CLS) algorithm: the disk transaction identifier indicates that it is more recent than the base transaction ID of the CLS. Data ONTAP takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+Data ONTAP takes appropriate recovery actions but if the aggregate is still shown as 'failed' when the command 'sysconfig -r' or 'aggr status -r' is run, then contact NetApp technical support for information about how to resolve the issue.
+*Syslog Message*::
+Orphaning disk %s, because its generation (%d/%d) is more recent than %d/%d.
+*Parameters*::
+*disk* (STRING): Name of the disk.
+*t1gen* (INT): Generation count of the disk's transaction.
+*t1time* (INT): Timestamp of the disk's transaction.
+*vgen* (INT): Generation count of the aggregate.
+*vtime* (INT): Timestamp of the aggregate transaction.
+
+== raid.assim.cxt.degradedDirty
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when RAID detects that a context parity protected aggregate contains a degraded RAID group and has dirty parity.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s "%s%s" is degraded and has dirty parity.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*host* (STRING): 'Local' or 'Partner' where the aggregate is located.
+*vol* (STRING): Name of the aggregate.
+
+== raid.assim.disk.badlabelversion
+*Severity*::
+ALERT
+*Description*::
+This message occurs when RAID assimilation discovers that a disk has an invalid raid label version. Data ONTAP(R) marks the disk as broken.
+*Corrective Action*::
+Contact NetApp technical support. For information about correcting the problem, search for the "raid.assim.disk.badlabelversion" keyword on the Knowledgebase of the NetApp Support Site.
+*Syslog Message*::
+%s has %s RAID label with version (%d), which is not within the currently supported range (%d - %d).
+*Parameters*::
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM and carrier serial number.
+*gen* (STRING): Non-empty string for the old format label.
+*version* (INT): Label version number.
+*versionLow* (INT): Lower range of the valid label version.
+*versionHigh* (INT): Upper range of the valid label version.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.assim.disk.broken
+*Severity*::
+ERROR
+*Description*::
+This message occurs when we discover that a broken disk has been discovered during assimilation.
+*Corrective Action*::
+Wait for the event message raid.disk.unload.done or raid.carrier.remove to be issued and then replace the carrier containing the failed disk. If the disk is contained in a single-disk carrier, raid.disk.unload.done will be issued immediately. Otherwise, wait for raid.carrier.remove which indicates the carrier has been fully prepared for removal.
+*Syslog Message*::
+Broken %s detected during assimilation.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.assim.disk.brokenPreAssim
+*Severity*::
+ERROR
+*Description*::
+This message occurs when we discover that a broken disk has been discovered prior to assimilation.
+*Corrective Action*::
+Wait for the event message raid.disk.unload.done or raid.carrier.remove to be issued and then replace the carrier containing the failed disk. If the disk is contained in a single-disk carrier, raid.disk.unload.done will be issued immediately. Otherwise, wait for raid.carrier.remove which indicates the carrier has been fully prepared for removal.
+*Syslog Message*::
+Broken %s detected prior to assimilation.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.assim.disk.md5error
+*Severity*::
+NOTICE
+*Description*::
+This event occurs when we detect that a disk label has an MD5 signature that is different from the MD5 signature of the disk that it's on. Usually this is due to a disk serial number change.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s%s, diskobj_verify: MD5 signature of disk %s (S/N %s) does not match with its label signature. This has been corrected.
+*Parameters*::
+*container* (STRING): The type of container (aggregate, disk pool).
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*disk* (STRING): The name of the disk
+*serial* (STRING): The serial number of the disk
+*oldmd5* (STRING): The old MD5 checksum of the disk
+*newmd5* (STRING): The new MD5 checksum of the disk
+
+== raid.assim.disk.nolabels
+*Severity*::
+EMERGENCY
+*Description*::
+This event occurs when we detect that a disk has no valid labels. Disks in NetApp systems should always have valid labels; therefore, a disk without labels implies that there is corruption somewhere in the data path to the disk. (This is the most common cause, often because of loose cables or a newly added shelf.) It is possible, although much less likely, that the disk itself is experiencing silent data corruption. The affected disk is taken out of service for the reason "bad label."
+*Corrective Action*::
+If the disk was newly added and really should be treated as a spare, the "disk unfail" command will mark the disk as a spare. Otherwise, if the disk was previously working normally, check the connectivity to the disk. Are all the cables secured? Sometimes newly added shelves or loose cables can cause electrical noise on the bus that corrupts data transmission. If the connectivity to the disk is good and there is filesystem data on the disk, contact NetApp technical support for help.
+*Syslog Message*::
+%s has no valid labels. It will be taken out of service to prevent possible data loss.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.assim.disk.region.hole
+*Severity*::
+ALERT
+*Description*::
+This message occurs when RAID assimilation detects that a disk has a hole between the two disk regions. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+Contact NetApp technical support. For information about correcting the problem, search for the "raid.assim.disk.region.hole" keyword on the Knowledgebase of the NetApp Support Site.
+*Syslog Message*::
+Disk %s (S/N %s) has a hole in its allocated space between region %d (type %s,start %llu, size %llu) and region %d (type %s, start %llu, size %llu).
+*Parameters*::
+*disk* (STRING): Name of the disk.
+*diskSerialno* (STRING): Serial number of the disk.
+*regionId1* (INT): First disk region identifier.
+*region1* (STRING): First disk region name.
+*start1* (LONGINT): Start of the first disk region.
+*size1* (LONGINT): Size of the first disk region.
+*regionId2* (INT): Second disk region identifier.
+*region2* (STRING): Second disk region name.
+*start2* (LONGINT): Start of the second disk region.
+*size2* (LONGINT): Size of the second disk region.
+
+== raid.assim.disk.region.overlap
+*Severity*::
+ERROR
+*Description*::
+This message occurs when RAID assimilation detects that a disk has two regions overlapping. Data ONTAP(R)takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+Contact NetApp technical support. For information about correcting the problem, search for the "raid.assim.disk.region.overlap" keyword on the Knowledgebase of the NetApp Support Site.
+*Syslog Message*::
+On disk %s (S/N %s), region %d (type %s, start %llu, size %llu) overlaps with region %d (type %s, start %llu, size %llu).
+*Parameters*::
+*disk* (STRING): Name of the disk.
+*diskSerialno* (STRING): Serial number of the disk.
+*regionId1* (INT): First disk region identifier.
+*region1* (STRING): First disk region name.
+*start1* (LONGINT): Start of the first disk region.
+*size1* (LONGINT): Size of the first disk region.
+*regionId2* (INT): Second disk region identifier.
+*region2* (STRING): Second disk region name.
+*start2* (LONGINT): Start of the second disk region.
+*size2* (LONGINT): Size of the second disk region.
+
+== raid.assim.disk.rightsizeChange
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event indicates that the rightsize stored in this disk's Table Of Contents(TOC) is different from the rightsize currently being reported by the disk.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+(None).
+*Parameters*::
+*diskType* (STRING): Indicates if this a spare or filesystem disk.
+*disk_info* (STRING): Formatted information of the disk
+*toc_rightsize* (LONGINT): The disk rightsize according to the disk TOC.
+*changeType* (STRING): Type of change: growth or shrinkage.
+*storage_rightsize* (LONGINT): The disk rightsize according to the storage layer.
+*systemAction* (STRING): The action being taken by the system to deal with this event.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm)(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.assim.disk.spare
+*Severity*::
+NOTICE
+*Description*::
+This event is generated when we spare an error disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Sparing %s, because %s
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk
+*reason* (STRING): (None).
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.assim.fatal
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when assimilation encounters a fatal error, such as running out of memory.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Assimilation failed: %s
+*Parameters*::
+*reason* (STRING): Reason assimilation failed.
+
+== raid.assim.fatal.upgrade
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when RAID assimilation encounters a fatal error during an unsuccessfull upgrade to a newer version of Data ONTAP(R).
+*Corrective Action*::
+Contact NetApp technical support. For information about correcting the problem, search for the "raid.assim.fatal" keyword on the Knowledgebase of the NetApp Support Site. You can also boot with the previous version of Data ONTAP.
+*Syslog Message*::
+Assimilation failed: This system appears to be upgrading from a previous version of Data ONTAP. Errors were found while upgrading the aggregates. The upgrade will abort now.
+*Parameters*::
+(None).
+
+== raid.assim.label.makeForeignVol
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ownership cannot be claimed over a previously non-native aggregate.
+*Corrective Action*::
+Use the 'storage aggregate online' command to bring the aggregate online.
+*Syslog Message*::
+%s %s could not be turned into a %snative aggregate; it will appear to be foreign.
+*Parameters*::
+*vol_type* (STRING): Volume type. Always aggregate.
+*vol* (STRING): Name of the aggregate.
+*host* (STRING): Empty string for local aggregates, or "partner" for partner aggregates.
+*vol_type2* (STRING): No longer used.
+
+== raid.assim.label.makeNativeVol
+*Severity*::
+NOTICE
+*Description*::
+This event is generated when we claim ownership over a previously non-native aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s turned into a %snative %s.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*vol* (STRING): Name of the aggregate.
+*host* (STRING): Empty string for local aggregates, or "partner " for partner aggregates.
+*vol_type2* (STRING): Volume type.
+
+== raid.assim.label.noNativeVols
+*Severity*::
+NOTICE
+*Description*::
+This event is generated when we complete assimilation and discover that none of the volumes or aggregates match the local system id. This can occur if the NVRAM card has been swapped. The system will attempt to select a set of volumes and aggregates to make native.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+No native volumes or aggregates detected, assuming NVRAM card swap. %d NVRAM system id(s) (%u, %u, %u...) found among all volumes. NVRAM system id %u selected. NVRAM card swap detected by %s.
+*Parameters*::
+*nsets* (INT): Number of different serial numbers found in non-native volumes.
+*nvram_sysid1* (INT): First NVRAM system id to select from.
+*nvram_sysid2* (INT): Second NVRAM system id to select from.
+*nvram_sysid3* (INT): Third NVRAM system id to select from.
+*selected_nvram_sysid* (INT): Selected NVRAM system id of volumes before swap.
+*who* (STRING): Module detected NVRAM card swap.
+
+== raid.assim.label.upgrade
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is generated when we upgrade RAID labels to the new 6.2-and-later format.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Upgrading RAID labels.
+*Parameters*::
+(None).
+
+== raid.assim.label.upgrade.corruptSize
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an old RAID label is being upgraded and the label appears to be corrupted due to the parity type and the sizes[0] entry (describing the size of the parity disk) conflicting. This deals with burt 79966.
+*Corrective Action*::
+Wait for the event message raid.disk.unload.done or raid.carrier.remove to be issued and then replace the carrier containing the failed disk. If the disk is contained in a single-disk carrier, raid.disk.unload.done will be issued immediately. Otherwise, wait for raid.carrier.remove which indicates the carrier has been fully prepared for removal. Contact NetApp technical support.
+*Syslog Message*::
+Disk %s has a corrupt old label: sizes[%d] is %u.
+*Parameters*::
+*disk* (STRING): Disk with the corrupted label.
+*rgdn* (INT): Disk number given by the RAID Group.
+*size* (INT): Size of the disk.
+
+== raid.assim.label.upgrade.parityMismatch
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an old RAID label is being upgraded and the label appears to be corrupted due to the parity type and the sizes[0] entry (describing the size of the parity disk) conflicting. This deals with burt 79966.
+*Corrective Action*::
+Wait for the event message raid.disk.unload.done or raid.carrier.remove to be issued and then replace the carrier containing the failed disk. If the disk is contained in a single-disk carrier, raid.disk.unload.done will be issued immediately. Otherwise, wait for raid.carrier.remove which indicates the carrier has been fully prepared for removal. Contact NetApp technical support.
+*Syslog Message*::
+Disk %s has a corrupt old label: parity type mismatch.
+*Parameters*::
+*disk* (STRING): Disk with the corrupted label.
+
+== raid.assim.mark.error.disk.broken
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when RAID moves an invalid disk into a broken disk pool. Invalid disks can be ones with bad labels or with an unsupported label version.
+*Corrective Action*::
+Wait for the event message raid.disk.unload.done or raid.carrier.remove to be issued and then replace the carrier containing the failed disk. If the disk is contained in a single-disk carrier, raid.disk.unload.done will be issued immediately. Otherwise, wait for raid.carrier.remove which indicates the carrier has been fully prepared for removal.
+*Syslog Message*::
+Marking disk %s, which failed assimilation in %s %s, as broken, because %s.
+*Parameters*::
+*disk* (STRING): Name of the disk.
+*vol_type* (STRING): Volume type.
+*tree* (STRING): Name of the aggregate.
+*reason* (STRING): Reason for marking the disk broken.
+
+== raid.assim.rg.dupChildId
+*Severity*::
+ALERT
+*Description*::
+This event occurs when we detect that a RAID group object has an inconsistent list of disk objects in its label configuration record.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+%s %s%s, rgobj_verify: RAID object %d has duplicate child objects (%s and %s) with ID %d.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*rgId* (INT): The RAID group identifier
+*diskName1* (STRING): One disk with this identifier
+*diskName2* (STRING): Another disk with this identifier
+*childId* (INT): The child identifier
+
+== raid.assim.rg.offlineVerifyFailed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an offline disk within a RAID group fails verification checks. For example, ownership information differs with the parent aggregate, or the parent tree map specifies this disk is unmapped. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s "%s%s", Offline child object (ID=%d) in RAID object %d failed verification
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*rgId* (INT): RAID group identifier.
+*childId* (INT): Child identifier.
+
+== raid.assim.root.aggr.offline
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a root aggregate which is orginally homed to the disaster recovery (DR) partner or DR auxiliary partner is taken offline during assimilation after switchover in a MetroCluster(tm) configuration. Switched over root aggregates are kept offline until the MetroCluster(tm) is switched back.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Aggregate %s%s originally homed to %u is taken offline. Reason: %s.
+*Parameters*::
+*owner* (STRING): Owner of affected aggregate.
+*aggregate* (STRING): Name of the aggregate.
+*dr_home_owner_id* (INT): NVRAM system ID of the aggregate's disaster recovery (DR) home owner.
+*reason* (STRING): Reason for taking the aggregate offline.
+
+== raid.assim.tree.degradedDirty
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when an aggregate contains a degraded RAID group and has dirty parity. Wafliron must be run before the aggregate can be brought online.
+*Corrective Action*::
+Run wafliron for the aggregate by using the command 'aggr wafliron start'.
+*Syslog Message*::
+%s "%s%s" is degraded and has dirty parity. You must run wafliron on this aggregate before it can be brought online.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*host* (STRING): 'Local' or 'Partner' where the aggregate is located.
+*vol* (STRING): Name of the aggregate.
+*vol_type2* (STRING): Volume type.
+
+== raid.assim.tree.dupId
+*Severity*::
+ALERT
+*Description*::
+This message occurs when RAID assimilation detects that a duplicate volume identifier exists. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+Contact NetApp technical support. For information about correcting the problem, search for the "raid.assim.tree.dupId" keyword on the Knowledgebase of the NetApp Support Site.
+*Syslog Message*::
+%s %s%s and %s %s%s have the same RAID tree ID. RAID assimilation will be aborted.
+*Parameters*::
+*vol_type1* (STRING): Volume type.
+*owner1* (STRING): Owner of the first aggregate.
+*vol1* (STRING): Name of the first aggregate.
+*vol_type2* (STRING): Volume type.
+*owner2* (STRING): Owner of the second aggregate.
+*vol2* (STRING): Name of the second aggregate.
+
+== raid.assim.tree.dupName
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a duplicate name for a volume or an aggregate. In this case, the second volume or aggregate with that name is renamed.
+*Corrective Action*::
+Use the 'vol rename' command or 'aggr rename' command to resolve the conflict permanently.
+*Syslog Message*::
+Duplicate %s names found, an instance of %s%s is being renamed to %s%s.
+*Parameters*::
+*vol_type* (STRING): Whether the duplicate name is for a volume or an aggregate.
+*owner1* (STRING): String indicating the owner of the volume or aggregate.
+*vol* (STRING): Original name of the volume or aggregate.
+*owner2* (STRING): String indicating the owner of the volume or aggregate.
+*newName* (STRING): New name of the volume or aggregate.
+
+== raid.assim.tree.foreign
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a RAID tree object contains an ownership identifier that is different from the local system. In this case, the aggregate is declared "foreign" and is marked offline.
+*Corrective Action*::
+Use the 'storage aggregate online' command to bring the aggregate online.
+*Syslog Message*::
+raidtree_verify: %s %s is a foreign aggregate and is being taken offline. Use the 'storage aggregate online' command to bring it online.
+*Parameters*::
+*vol_type* (STRING): Volume type. Always aggregate.
+*vol* (STRING): Name of the aggregate.
+*vol_type2* (STRING): No longer used.
+*vol_type3* (STRING): No longer used.
+
+== raid.assim.tree.multipleRootVols
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the system detects an assimilation error indicating that two aggregates claim to be the root volume.
+*Corrective Action*::
+Go into Maintenance mode and use the 'aggr options' command with the 'root' option to pick a root aggregate.
+*Syslog Message*::
+Volume %s and volume %s both claim to be the %sroot volume.
+*Parameters*::
+*vol1* (STRING): Name of the first aggregate.
+*vol2* (STRING): Name of the second aggregate.
+*host* (STRING): Empty string for local aggregate, or "partner " for partner aggregate.
+
+== raid.assim.tree.noRootVol
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects an assimilation error indicating that no root aggregate is found.
+*Corrective Action*::
+Go into Maintenance mode and use the 'aggr options' command with the 'root' option to pick an aggregate to be the root volume.
+*Syslog Message*::
+No usable %sroot volume was found!
+*Parameters*::
+*host* (STRING): Empty string for local aggregates, or "partner " for partner aggregates.
+
+== raid.assim.tree.tooManyChild
+*Severity*::
+ALERT
+*Description*::
+This event occurs when we detect that a RAID tree object has more than one root volume objects in its label configuration record.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+%s %s%s,raidtree_verify: Raidtree has multiple root objects.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.assim.upgrade.aggr.fail
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when assimilation is attempting to upgrade the RAID labels for all aggregates (usually because of a kernel upgrade) and a aggregate can not be successfully upgraded. The RAID label upgrade is aborted. Boot with the previous release to fix the problem with the aggregate (which should be noted in the boot-time messages).
+*Corrective Action*::
+Boot with the previous version of Data ONTAP to fix the problem with the aggregate (which should be noted in the boot-time messages).
+*Syslog Message*::
+RAID label upgrade of %s %s%s failed.
+*Parameters*::
+*voltype* (STRING): Type of RAID volume (volume or aggregate)
+*owner* (STRING): Whether this is a partner or local volume
+*volume* (STRING): Name of the volume that had a problem.

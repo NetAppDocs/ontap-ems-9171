@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: ses-bridge-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ses.bridge events
+---
+
+= ses.bridge events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ses.bridge.fw.getFailWarn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the bridge firmware revision cannot be obtained.
+*Corrective Action*::
+Check the connection to the bank of Maxtor drives.
+*Syslog Message*::
+On channel %s, the bridge firmware revision could not be obtained using disk IDs %d-%d.
+*Parameters*::
+*ChannelName* (STRING): Name of the adapter or switch port that the system tried to get the revision number of.
+*DiskID* (INT): Starting ID of the bank of Maxtor disks that was used to obtain the bridge firmware.
+*DiskRange* (INT): Number of drives in that bank of Maxtor disks.
+
+== ses.bridge.fw.mmErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the bridge firmware revision is inconsistent.
+*Corrective Action*::
+Check the firmware revision number and make sure that they are consistent. You might have to update the firmware.
+*Syslog Message*::
+On channel %s, the bridge firmware revision appears to be inconsistent : %8.8s and %8.8s.
+*Parameters*::
+*ChannelName* (STRING): Name of the channel that contains the inconsistent firmware revision.
+*PrevRev* (STRING): Previous firmware revision.
+*CurRev* (STRING): Current firmware revision.

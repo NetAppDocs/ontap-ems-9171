@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: callhome-fcp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.fcp events
+---
+
+= callhome.fcp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.fcp.adapter.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Fibre Channel Protocol (FCP) HBA Host Bus Adapter (HBA) in this node has failed to read a critical setting from the adapter's internal configuration. The adapter should be replaced. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Locate the FCP adapter in the slot specified in this message. Replace the adapter. If the adapter name starts with 0, the motherboard may need to be replaced. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.fcp.sram.dump
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Fibre Channel Protocol (FCP) HBA Host Bus Adapter (HBA) in this node has recorded to disk a memory image from its Static Random Access Memory (SRAM). The SRAM dump has been performed as the result of several possible reasons, including a command directive and HBA firmware restart. Note that performing a dump of a HBA can disrupt data access operations. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+If this event happens as a result of a command directive such as "fcp dump", the dump operation is expected. If this event happens as a result of HBA reset, the collected dump files can be used by technical support for subsequent analysis. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for FCP SRAM DUMP.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*portInstance* (INT): Instance number of the target port where the dump occurs.
+*dumpDirName* (STRING): Directory location where the FC dumps are stored.
+*portName* (STRING): FC HBA's name.

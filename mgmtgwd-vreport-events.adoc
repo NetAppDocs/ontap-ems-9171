@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: mgmtgwd-vreport-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmtgwd.vreport events
+---
+
+= mgmtgwd.vreport events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmtgwd.vreport.nodesUnreachable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the 'debug vreport' command found that some nodes were unreachable. Such nodes may contain WAFL-VLDB discrepancies which will not get reported.
+*Corrective Action*::
+The file mgwd.log logs the list of unavailable nodes. Ensure all these nodes are reachable from the node where the 'debug vreport' is run.
+*Syslog Message*::
+Vreport encountered some unreachable nodes. The report may be incomplete.
+*Parameters*::
+(None).

@@ -1,0 +1,79 @@
+---
+sidebar: sidebar
+permalink: quota-scan-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: quota.scan events
+---
+
+= quota.scan events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== quota.scan.abort
+*Severity*::
+ERROR
+*Description*::
+This message occurs after the administrator uses the "volume quota on" command, when the quota scanner aborts without finishing due to an error condition. Any quotas configured on the volume will not be tracked or enforced.
+*Corrective Action*::
+If the volume quota status is not displayed as "off", turn quotas off by executing the "volume quota off" command, and then retry the "volume quota on" command. If this condition persists, contact NetApp technical support.
+*Syslog Message*::
+Quota scan aborted on %s %s%s%s%s.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Additional volume identifier, used to uniquely identify the volume if the volume name alone cannot.
+
+== quota.scan.cancel
+*Severity*::
+NOTICE
+*Description*::
+This message occurs after the administrator uses the "volume quota on" command, when the quota scanner is canceled by other activity in the system. An example of such activity would be the "volume quota off" command.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Quota scan canceled on %s %s%s%s%s.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Additional volume identifier, used to uniquely identify the volume if the volume name alone cannot.
+
+== quota.scan.complete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the administrator uses the "volume quota on" command and the quota scanner has completed scanning.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Quota scan completed on %s %s%s%s%s.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Additional volume identifier, used to uniquely identify the volume if the volume name alone cannot.
+
+== quota.scan.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the administrator uses the "volume quota on" command and starts the quota scanner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Quota scan started on %s %s%s%s%s.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Additional volume identifier, used to uniquely identify the volume if the volume name alone cannot.

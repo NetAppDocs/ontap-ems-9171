@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: secd-nonetgroupfile-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: secd.nonetgroupfile events
+---
+
+= secd.nonetgroupfile events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== secd.noNetgroupFile
+*Severity*::
+ALERT
+*Description*::
+This message occurs when trying to process a netgroup in an export policy while the Vserver "ns-switch" option is set exclusively to "file" but no netgroup file is loaded. Client requests cannot be processed until a netgroup file is loaded or another name service is added to the Vserver "ns-switch" option.
+*Corrective Action*::
+Load a netgroup file for the Vserver by using the "netgroup load" command, or add another name service to the Vserver "ns-switch" option.
+*Syslog Message*::
+Cannot evaluate a netgroup in an export policy without a properly configured "ns-switch" option for Vserver "%s". It is set exclusively to "file" but no netgroup file is loaded.
+*Parameters*::
+*vserverName* (STRING): Vserver associated with this operation.

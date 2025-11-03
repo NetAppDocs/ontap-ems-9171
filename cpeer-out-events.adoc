@@ -1,0 +1,36 @@
+---
+sidebar: sidebar
+permalink: cpeer-out-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cpeer.out events
+---
+
+= cpeer.out events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cpeer.out.pp.mismatch
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an outgoing cluster peer request authentication fails due to a passphrase mismatch.
+*Corrective Action*::
+For multiple occurrences of this event, verify the peering request with the admin of this local cluster. If the admin is not responsible for the attempts, the local cluster might be under attack.
+*Syslog Message*::
+This cluster did not accept a cluster peering authentication offer from cluster %s//%s due to a passphrase mismatch. Acceptance was attempted on session %s, command %s, application %s, location %s, port %s, user name %s, auth_method %s, and PSK method %s.
+*Parameters*::
+*remotename* (STRING): Name of the cluster to which the contact was made.
+*remoteuuid* (STRING): UUID of the cluster to which the contact was made.
+*session* (STRING): Session ID over which the contact was made.
+*command* (STRING): Command ID for which the contact was made.
+*application* (STRING): Application used for the contact.
+*location* (STRING): Location from which the contact was made.
+*port* (STRING): Port over which the contact was made.
+*username* (STRING): User name for the contact.
+*authMethod* (STRING): Authentication method for the user.
+*offerStyle* (STRING): Style of authentication offer.

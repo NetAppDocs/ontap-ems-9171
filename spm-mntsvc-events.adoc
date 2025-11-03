@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: spm-mntsvc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: spm.mntsvc events
+---
+
+= spm.mntsvc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== spm.mntsvc.process.exit
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Node Root Mount Service (mntsvc) involuntarily terminates. The termination of this service affects all Remote Support Agent services provided by the node.
+*Corrective Action*::
+The system attempts to recover by restarting the process. If the process does not restart within the threshold number of retries, then an AutoSupport message is sent. If your system is not configured to send AutoSupport messages and the issue persists, contact technical support.
+*Syslog Message*::
+The Node Root Mount Service (mntsvc) with ID %d exited as a result of %s. This server will attempt to restart.
+*Parameters*::
+*id* (INT): Process identifier.
+*cause* (STRING): Plain text description of why the process exited.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-ext-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.ext events
+---
+
+= callhome.ext events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.ext.cache.bad
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a check of the external memory cache used for increasing system performance has failed and this cache has been disabled. System operations will continue with possibly reduced performance. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+The external memory cache should checked and possibly repaired to restore its service to the system. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for EXTERNAL CACHE FAILURE
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

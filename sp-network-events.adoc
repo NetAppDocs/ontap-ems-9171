@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: sp-network-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sp.network events
+---
+
+= sp.network events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sp.network.ipv6.disable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when either a user or the system disables the network IPv6 option and the service processor (SP) is configured only with an IPv6 address.
+*Corrective Action*::
+Ensure that the service processor (SP) is configured with an IPv4 address prior to disabling the network IPv6 option.
+*Syslog Message*::
+The IPv6 address can be disabled only if the IPv4 address is enabled.
+*Parameters*::
+(None).
+
+== sp.network.ipv6.notifdisable
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the IPv6 address of Service Processor (SP) is disabled as network IPv6 option of the system is disabled either by user or by cluster configuration.
+*Corrective Action*::
+If IPv6 usage is desired, enable network IPv6 option of the system and assign IPv6 address to SP.
+*Syslog Message*::
+The IPv6 address of service processor SP is disabled.
+*Parameters*::
+(None).
+
+== sp.network.link.down
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Service Processor (SP) detects a link error on the SP network port. This can happen if a network cable is not plugged into the SP network port. It can also happen if the network that the SP is connected to cannot run at 10/100 Mbps.
+*Corrective Action*::
+1. Check whether the network cable is correctly plugged into the SP network port. 2. Check the link status LED on the SP. 3. Verify that the network that the SP is connected to supports autonegotiation to 10/100 Mbps or is running at one of those speeds; otherwise, SP network connectivity does not work.
+*Syslog Message*::
+Service Processor (SP) network port link down due to cable or network errors.
+*Parameters*::
+(None).

@@ -1,0 +1,93 @@
+---
+sidebar: sidebar
+permalink: secd-kerberos-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: secd.kerberos events
+---
+
+= secd.kerberos events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== secd.kerberos.clockskew
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is a "time error"(clock skew, time skew, time out of bounds). This error indicates that there is a time discrepancy between client and node or client and Key Distribution Center (KDC). The Kerberos authentication request from the client or the node was forwarded to the KDC and it failed because the timestamp encrypted in the Kerberos ticket was different by more than the maximum time difference that is configured on the KDC.
+*Corrective Action*::
+Ensure that the clock time of the node is identical to that of the client and to that of the KDC. To keep the node and KDC time clocks in synchronization automatically, configure Network Time Protocol (NTP) services on the node. Increasing the clock skew interval may also alleviate this condition: To do so, modify the Kerberos-realm configuration clock-skew parameter (denoted as "Maximum tolerance for computer clock synchronization" in Windows(R) Active Directory) from the default 300 seconds to 600 seconds or more. Note: Increasing the clock-skew interval makes the client protocols less secure against network replay attacks.
+*Syslog Message*::
+Kerberos client or node clock skew error for vserver (%s)%s
+*Parameters*::
+*vserverName* (STRING): Name of the vserver that is having the error.
+*clientInfo* (STRING): Information of the client that is having the error if available.
+
+== secd.kerberos.lookupFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Kerberos user is not a part of any name-service. ONTAP maps the Kerberos Service Principal Name(SPN) to a NFS user name while establishing a security context. If the NFS user name is not found in any of the name-services (LDAP, NIS, file), it leads to a failure in establishing security context, which in turn fails the Kerberos mount.
+*Corrective Action*::
+Ensure that there is a corresponding UNIX user name for the Kerberos Service Principal Name(SPN) in name services such as NIS, LDAP, or file.
+*Syslog Message*::
+Unable to map Kerberos user (%s) to appropriate UNIX user on Vserver (%s).
+*Parameters*::
+*uname* (STRING): Kerberos NFS user.
+*vserverName* (STRING): Name of the Vserver.
+
+== secd.kerberos.noAuthdata
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Kerberos ticket for a user does not contain authorization data.
+*Corrective Action*::
+Ask the user to obtain a new, valid Kerberos ticket and map the share again.
+*Syslog Message*::
+Kerberos client has no authorization data for Vserver "%s" with user account "%s".
+*Parameters*::
+*vserverName* (STRING): Name of the Vserver on which the error occurred.
+*userAccount* (STRING): User account for which there is insufficient credential information.
+
+== secd.kerberos.preauth
+*Severity*::
+ERROR
+*Description*::
+This message occurs when invalid credentials are provided for an Active Directory user or the machine account password is out of sync with the credentials set in the Active Directory.
+*Corrective Action*::
+If the reported error is due to invalid credentials, make sure valid credentials are provided for the Active Directory user. Otherwise, if the reported error is due to an out-of-sync machine account password, run the "vserver cifs password-reset -vserver vserver_name" command to update the password in the Active Directory.
+*Syslog Message*::
+A Kerberos pre-authentication failure occurred for SVM "%s" due to %s.
+*Parameters*::
+*vserverName* (STRING): Name of the storage VM (SVM) that is having the error.
+*errReason* (STRING): Reason for the pre-authentication error.
+
+== secd.kerberos.tktexpired
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the client's ticket has expired. This error indicates that the timestamp encrypted in the client's Kerberos ticket has exceeded it's maximum lifetime or expired.
+*Corrective Action*::
+Ensure that the clock time of the node is identical to that of the client and to that of the KDC. To keep the node and KDC time clocks in synchronization automatically, configure Network Time Protocol (NTP) services on the node. Increasing the clock skew interval may also alleviate this condition: To do so, modify the Kerberos-realm configuration clock-skew parameter (denoted as "Maximum tolerance for computer clock synchronization" in Windows(R) Active Directory) from the default 300 seconds to 600 seconds or more. Note: Increasing the clock-skew interval makes the client protocols less secure against network replay attacks.
+*Syslog Message*::
+Kerberos client ticket has expired for vserver (%s)%s
+*Parameters*::
+*vserverName* (STRING): Name of the vserver that is having the error.
+*clientInfo* (STRING): Information of the client that is having the error if available.
+
+== secd.kerberos.tktnyv
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the client presented a ticket to the server that is not yet valid (in relationship to the server time). This error indicates that the clocks on the KDC and the client are not synchronized.
+*Corrective Action*::
+Ensure that the clock time of the node is identical to that of the client and to that of the KDC. To keep the node and KDC time clocks in synchronization automatically, configure Network Time Protocol (NTP) services on the node. Increasing the clock skew interval may also alleviate this condition: To do so, modify the Kerberos-realm configuration clock-skew parameter (denoted as "Maximum tolerance for computer clock synchronization" in Windows(R) Active Directory) from the default 300 seconds to 600 seconds or more. Note: Increasing the clock-skew interval makes the client protocols less secure against network replay attacks.
+*Syslog Message*::
+Kerberos client ticket not yet valid for vserver (%s)%s
+*Parameters*::
+*vserverName* (STRING): Name of the vserver that is having the error.
+*clientInfo* (STRING): Information of the client that is having the error if available.

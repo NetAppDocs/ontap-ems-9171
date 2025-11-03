@@ -1,0 +1,137 @@
+---
+sidebar: sidebar
+permalink: snapmirror-migrate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapmirror.migrate events
+---
+
+= snapmirror.migrate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapmirror.migrate.complete
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a migrate completes successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror migrate from %s:%s to %s:%s complete.
+*Parameters*::
+*srcfiler* (STRING): SnapMirror source system.
+*srcpath* (STRING): SnapMirror source volume.
+*dstfiler* (STRING): SnapMirror destination system.
+*dstpath* (STRING): SnapMirror destination volume.
+
+== snapmirror.migrate.dstErr
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a migrate request encounters an error on the SnapMirror(R) destination.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror migration from %s:%s to %s:%s reports error: %s.
+*Parameters*::
+*srcfiler* (STRING): SnapMirror source system.
+*srcpath* (STRING): SnapMirror source volume.
+*dstfiler* (STRING): SnapMirror destination system.
+*dstpath* (STRING): SnapMirror destination volume.
+*error* (STRING): Error encountered on the SnapMirror destination.
+
+== snapmirror.migrate.entryFound
+*Severity*::
+ERROR
+*Description*::
+This event is issued when partially completed SnapMirror migrate entry is encountered while parsing the registry at boot time looking for SnapMirror migrate entries.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror found %s in mid-migration state : %s.
+*Parameters*::
+*volume* (STRING): The volume whose migrate entry is found
+*error* (STRING): The error string
+
+== snapmirror.migrate.fsidErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a migrate request encounters an error after rewriting the File System IDentifier (FSID) of a volume. During the migration process, the FSIDs of both source and destination sides are rewritten. When this process encounters an error, the migration process must roll back both volumes to their original states. This message notifies you that it cannot restore their FSIDs back to their orignalFSIDs.
+*Corrective Action*::
+Set the privilege level to advanced. Rewrite the FSID of the volume to its original FSID using the 'vol rewrite_fsid' command.
+*Syslog Message*::
+Cannot rewrite volume %s FSID to its original FSID after migration failure: to 0x%x
+*Parameters*::
+*volume* (STRING): Volume name where the problem is detected.
+*toFSID* (INT): Original FSID of the volume.
+
+== snapmirror.migrate.incorrectEntry
+*Severity*::
+ERROR
+*Description*::
+This event is issued when an incorrect migrate entry is encountered while parsing the registry at boot time trying to find out partially completed SnapMirror migrate operations.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s has an unrecognizable SnapMirror migrate state entry associated with it : %s.
+*Parameters*::
+*volume* (STRING): The volume whose migrate entry is found
+*error* (STRING): The error string
+
+== snapmirror.migrate.registryErr
+*Severity*::
+ERROR
+*Description*::
+This event is issued when an error is encountered parsing the registry at boot time when trying to find out partially completed SnapMirror migrate operations.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Unable to find SnapMirror migrate entries in the registry, registry parsing error : %s.
+*Parameters*::
+*error* (STRING): The error encountered while parsing the registry looking for partially completed migrate operations.
+
+== snapmirror.migrate.srcErr
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a migrate request encounters an error on the SnapMirror(R) source.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror migration from %s:%s to %s:%s reports error: %s.
+*Parameters*::
+*srcfiler* (STRING): SnapMirror source system.
+*srcpath* (STRING): SnapMirror source volume.
+*dstfiler* (STRING): SnapMirror destination system.
+*dstpath* (STRING): SnapMirror destination volume.
+*error* (STRING): Error encountered on the SnapMirror source.
+
+== snapmirror.migrate.srcNotReady
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a migrate request is received for a source volume which is not yet ready.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror migrate request for volume %s, which is not in migrating state.
+*Parameters*::
+*src* (STRING): SnapMirror source volume
+
+== snapmirror.migrate.unknownState
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when an unknown state for a volume in migration is encountered.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror found volume in illegal migration state : %d.
+*Parameters*::
+*state* (INT): Migration state of the volume

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: diskown-autoassignproblem-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.autoassignproblem events
+---
+
+= diskown.autoassignproblem events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.AutoAssignProblem
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) attempts to assign a disk automatically, but the request fails. The failure could be due to a disk error or a user simultaneously assigning the disk to a storage system.
+*Corrective Action*::
+Use the "disk show -v" nodeshell command to determine the status of the disk. Use the "storage disk assign" command to assign the disk.
+*Syslog Message*::
+Automatic assigning failed for disk %s (S/N %s). Reason: %s
+*Parameters*::
+*diskname* (STRING): Name of the disk.
+*serialno* (STRING): Serial number of the disk.
+*reason* (STRING): Reason for the failure.

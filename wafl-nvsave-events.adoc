@@ -1,0 +1,177 @@
+---
+sidebar: sidebar
+permalink: wafl-nvsave-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.nvsave events
+---
+
+= wafl.nvsave events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.nvsave.deletion.status
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when one or more NVSave files are deleted from the local root volume or the partner root volume while in takeover mode, or from the partner node when the partner node is not in takeover mode.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Deleted NVSave files corresponding to %s %s with FSID %d, HA policy %d, CP_count %d %s on %s node. UUID is %s.
+*Parameters*::
+*vol_type* (STRING): Whether this message refers to NVSave files for an aggregate or a flexible volume.
+*vol_name* (STRING): Volume name.
+*fsid* (INT): File system identifier.
+*ha_policy* (INT): High-availability (HA) policy of the parent aggregate.
+*CP_count* (INT): Volume's WAFL(R) consistency point (CP) count.
+*status* (STRING): Whether deletion failed or succeeded.
+*node* (STRING): Whether deletion was attempted on a local or partner node.
+*UUID* (STRING): UUID of Volume.
+
+== wafl.nvsave.overwritingstale
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during replay of the WAFL(R) nvlog, when the system discovers records associated with an offline volume. These records need to be stored in a system file on the root volume for future replay. However, a previously saved replay file already exists for this volume in the root volume. The system overwrites the stale replay file if the Consistency Point (CP) count stored in the file is less than that in nvlog.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Detected stale system nvlog replay file for a nonexistent volume with FSID '%d' in the '%s' root volume for WAFL nvlog %d. This stale file was overwritten because of '%s'.
+*Parameters*::
+*fsid* (INT): File system ID (FSID) of the missing volume.
+*host* (STRING): Owner of the root volume to which the detected nvlog records are successfully stored.
+*log* (INT): WAFL NV log section in which nvlog records for the volume are located.
+*error* (STRING): Reason for overwriting the existing nvsave file.
+
+== wafl.nvsave.replaying
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a volume comes online and detects relevant nvlog data to be replayed from the system file in the root volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Relevant nvlog data detected for volume %s%s%s%s, FSID %d, CP count %d in WAFL NV log %d. Replaying nvlog records for the volume from a system file in the root volume.
+*Parameters*::
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*fsid* (INT): File system ID (FSID) of the missing volume.
+*cp_count* (INT): Consistency Point (CP) count found in the system nvlog file.
+*log* (INT): WAFL nvlog section in which nvlog records for the volume are located.
+*vol_type* (STRING): Whether this message refers to NVSave files for an aggregate or a flexible volume.
+
+== wafl.nvsave.replaying.fail
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a volume comes online and fails to replay relevant nvlog data from the system file in the root volume. The nvlog data for the volume might be lost.
+*Corrective Action*::
+Take appropriate recovery action to recover from data loss, if any.
+*Syslog Message*::
+Relevant nvlog data detected for volume %s%s%s%s, FSID %d, CP count %d. Failed to replay nvlog records in WAFL nvlog %d for the volume from a system file in the root volume due to error: %s.
+*Parameters*::
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*fsid* (INT): File system ID (FSID) of the missing volume.
+*cp_count* (INT): Consistency Point (CP) count found in the system nvlog file that could not be replayed.
+*log* (INT): WAFL(R) nvlog section in which nvlog records for the volume are located.
+*error* (STRING): Reason for the failure.
+*log0_replay_time* (LONGINT): Milliseconds to replay nvlog records from the first NVSave file.
+*log0_cp_time* (LONGINT): Milliseconds to complete the WAFL CP after nvlog records from the first NVSave file are replayed.
+*log1_replay_time* (LONGINT): Milliseconds to replay nvlog records from the second NVSave file.
+*log1_cp_time* (LONGINT): Milliseconds to complete the WAFL CP after nvlog records from the second NVSave file are replayed.
+*vol_type* (STRING): Whether this message refers to NVSave files for an aggregate or a flexible volume.
+
+== wafl.nvsave.replaying.partial
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a volume comes online and does a partial replay of the nvlog data from the system file in the root volume. The reason for the partial replay is listed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s. Nvlog records from the system file in the root volume for volume with FSID %d might have been partially replayed.
+*Parameters*::
+*reason* (STRING): Reason for the partial replay.
+*fsid* (INT): File system ID (FSID) of the volume.
+
+== wafl.nvsave.replaying.pass
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a volume comes online and successfully replays relevant nvlog data from the system file in the root volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Relevant nvlog data detected for volume %s%s%s%s, FSID %d, CP count %d. Successfully replayed nvlog records for the volume from a system file in the root volume.
+*Parameters*::
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*fsid* (INT): File system ID (FSID) of the missing volume.
+*cp_count* (INT): Consistency Point (CP) count found in the system nvlog file.
+*log0_replay_time* (LONGINT): Milliseconds to replay nvlog records from the first NVSave file.
+*log0_cp_time* (LONGINT): Milliseconds to complete WAFL(R) CP after nvlog records from the first NVSave file are replayed.
+*log1_replay_time* (LONGINT): Milliseconds to replay nvlog records from the second NVSave file.
+*log1_cp_time* (LONGINT): Milliseconds to complete the WAFL CP after nvlog records from the second NVSave file are replayed.
+*vol_type* (STRING): Whether this message refers to NVSave files for an aggregate or a flexible volume.
+
+== wafl.nvsave.saving
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during replay of the WAFL(R) nvlog, when records associated with a nonexistent or currently offline volume are discovered. These records will be stored in a system file on the root volume and will be replayed when the offline volume comes online.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Replay detected nvlog records for a nonexistent or offline volume with FSID %d and CP count %d in WAFL nvlog %d. The nvlog records will be stored in a system file in the "%s" root volume for possible future replay.
+*Parameters*::
+*fsid* (INT): File system ID (FSID) of the missing volume.
+*cp_count* (INT): Volume's WAFL Consistency Point (CP) count found in the nvlog.
+*log* (INT): WAFL nvlog section in which nvlog records for the volume are located.
+*host* (STRING): Owner of the root volume on which the detected nvlog records are stored.
+*vol_type* (STRING): Whether this message refers to NVSave files for an aggregate or a flexible volume.
+
+== wafl.nvsave.saving.fail
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when, during replay of the WAFL(R) nvlog, records associated with a non-existent or offline volume are discovered, but not successfully saved to a system file on the root volume. Data loss is possible when the volume comes back online.
+*Corrective Action*::
+Nvlog records for an offline volume were not successfully saved, data loss is possible when the volume comes back online. Take appropriate recovery action to recover from data loss, if any, when the volume comes back online.
+*Syslog Message*::
+Replay detected nvlog records for a nonexistent volume with FSID %d and CP count %d in WAFL nvlog %d. Failed to store nvlog records in a system file in the "%s" root volume due to error: %s.
+*Parameters*::
+*fsid* (INT): File system ID (FSID) of the missing volume.
+*cp_count* (INT): Volume's WAFL Consistency Point (CP) count found in the nvlog.
+*log* (INT): WAFL nvlog section in which nvlog records for the volume are located.
+*host* (STRING): Owner of the root volume on which the detected nvlog records were intended to be stored.
+*error* (STRING): Error code.
+*vol_type* (STRING): Whether this message refers to NVSave files for an aggregate or a flexible volume.
+
+== wafl.nvsave.saving.pass
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when, during replay of the WAFL(R) nvlog, records associated with a currently offline volume are discovered and successfully stored in a system file on the root volume. These records are replayed when the volume comes back online.
+*Corrective Action*::
+The nvlog records for an offline volume are successfully saved on the root volume. These records are replayed when the volume comes back online.
+*Syslog Message*::
+Replay detected nvlog records for an offline volume with FSID %d and CP count %d in WAFL nvlog %d. The nvlog records were successfully stored in a system file on the "%s" root volume in %llu milliseconds.
+*Parameters*::
+*fsid* (INT): File system ID (FSID) of the missing volume.
+*cp_count* (INT): Volume's WAFL Consistency Point (CP) count found in the system nvlog file.
+*log* (INT): WAFL NV log section in which nvlog records for the volume are located.
+*host* (STRING): Owner of the root volume on which the detected nvlog records are successfully stored.
+*timetaken* (LONGINT): Time taken to save the nvlog records, in milliseconds.
+*vol_type* (STRING): Whether this message refers to NVSave files for an aggregate or a flexible volume.

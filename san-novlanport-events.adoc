@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: san-novlanport-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.novlanport events
+---
+
+= san.novlanport events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.NoVlanPort
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a clustered Data ONTAP(R) system is in a MetroCluster(TM) configuration. The system cannot find a virtual LAN (VLAN) port on the destination cluster node (that is, the DR partner) to host an IP LIF, and has instead chosen to place the LIF on a physical port.
+*Corrective Action*::
+Ensure that the destination cluster node (DR partner) has ports connected to the same VLANs as in the source with the command "network port show -node <node> -fields vlan-tag". Ensure that the DR partner has VLAN interfaces similar to those in the source with the command "network port show -node <node> -fields type". If necessary, create a VLAN interface or interfaces on the DR partner node using the "network port vlan create" command. After ensuring that the proper VLAN port exists, run the "metrocluster check lif repair-placement" command on the source cluster, with the SVM name and LIF name as inputs to perform LIF placement. Then verify the results with the command "metrocluster check lif show".
+*Syslog Message*::
+There are no VLAN ports with tag "%s" on node "%s" in IPspace "%s" to host the %s LIF "%s" for SVM "%s".
+*Parameters*::
+*node* (STRING): Name of the DR partner that does not have a VLAN port.
+*vlan_tag* (STRING): VLAN tag.
+*ipspace_name* (STRING): Name of the IPspace.
+*data_protocol* (STRING): Data protocol of the LIF.
+*lif* (STRING): Name of the IP LIF.
+*vserver* (STRING): Name of the SVM for which the IP LIF was incorrectly placed.

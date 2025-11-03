@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ha-bdfu-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.bdfu events
+---
+
+= ha.bdfu events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.bdfu.notEnabledOnDest
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during storage failover (SFO) giveback or aggregate relocation when the source node cannot reenable background disk firmware update (BDFU) on the destination node. BDFU will be reenabled automatically on the destination node after all the aggregates have been given back.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*nodename* (STRING): Destination node.

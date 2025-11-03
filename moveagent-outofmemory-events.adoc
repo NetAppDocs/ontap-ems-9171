@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: moveagent-outofmemory-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: moveagent.outofmemory events
+---
+
+= moveagent.outofmemory events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== moveagent.outofmemory
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the move agent fails to allocate memory for the move object. The system continues to retry the operation until it is successful.
+*Corrective Action*::
+If the problem persists, it indicates a system-level problem. Contact NetApp technical support.
+*Syslog Message*::
+Unable to finish the volume move operation for DSID %llu. Failed to allocate sufficient memory.
+*Parameters*::
+*volume_dsid* (LONGINT): Source or destination volume data set ID (DSID).

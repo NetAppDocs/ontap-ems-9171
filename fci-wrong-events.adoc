@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: fci-wrong-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fci.wrong events
+---
+
+= fci.wrong events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fci.wrong.speed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the fixed speed level requested by the fc-force-XG-ports bootarg is out of range for the corresponding FC port.
+*Corrective Action*::
+If another fixed speed is desired, adjust accordingly. Otherwise, the port will autonegotiate.
+*Syslog Message*::
+Fibre Channel adapter port %s does not support a speed setting of %u Gbps, which does not fall within port range %x.
+*Parameters*::
+*port* (STRING): Name of the adapter port.
+*speed* (INT): Speed the adapter port was assigned.
+*range* (INTHEX): Range of speeds the adapter port is capable of using.

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: netif-fwupdatefailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.fwupdatefailed events
+---
+
+= netif.fwupdatefailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.fwUpdateFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is an error during a network interface firmware update.
+*Corrective Action*::
+In very rare cases, a firmware update failure might leave the interface inoperable. If the driver initialization routine subsequently fails and logs a message, the motherboard or card might need to be replaced. For more information or assistance, contact NetApp technical support.
+*Syslog Message*::
+Firmware update of network interface %s to version %s failed :%s.
+*Parameters*::
+*ifName* (STRING): Name of the network interface.
+*version* (STRING): Version of the firmware update.
+*reason* (STRING): Reason for the firmware update failure.

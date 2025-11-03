@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: fg-move-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fg.move events
+---
+
+= fg.move events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fg.move.unmirrored.aggr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a user moves a FlexGroup constituent to an unmirrored aggregate on nodes in a MetroCluster(tm) configuration. However, unmirrored aggregates, as a rule, do not have synchronous disaster protection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FlexGroup constituent %s was moved to unmirrored aggregate %s on Vserver %s.
+*Parameters*::
+*volumeName* (STRING): Name of the FlexGroup constituent moved to the unmirrored aggregate.
+*aggregateName* (STRING): Name of the unmirrored aggregate.
+*vserverName* (STRING): Name of the Vserver on which the FlexGroup constituent resides.

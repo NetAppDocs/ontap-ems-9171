@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: arl-opaborted-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: arl.opaborted events
+---
+
+= arl.opaborted events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== arl.OpAborted
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an aggregate relocation operation is aborted.
+*Corrective Action*::
+Refer to other generated error messages to identify the exact cause of failure and the corrective action.
+*Syslog Message*::
+Aggregate relocation operation aborted by node %s because %s.
+*Parameters*::
+*node* (STRING): Name of the node that aborted relocation.
+*msg* (STRING): Error that prevented relocation.

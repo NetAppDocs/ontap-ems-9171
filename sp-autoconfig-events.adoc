@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sp-autoconfig-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sp.autoconfig events
+---
+
+= sp.autoconfig events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sp.autoconfig.out.of.address
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot automatically obtain IP configuration because the subnet associated with the Service Processor does not have any available IP addresses.
+*Corrective Action*::
+Expand the subnet range to include more IP addresses with command "network subnet add-ranges". If failures persist, contact NetApp technical support.
+*Syslog Message*::
+(None).
+*Parameters*::
+*subnet* (STRING): Name of the subnet associated with the Service Processor.

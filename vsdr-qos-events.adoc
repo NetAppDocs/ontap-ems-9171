@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: vsdr-qos-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsdr.qos events
+---
+
+= vsdr.qos events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsdr.QoS.MaxQoSPGs
+*Severity*::
+ERROR
+*Description*::
+This message occurs during QoS configuration replication in a MetroCluster(tm) setup when there are maximum number of QoS policy groups already existing on the destination cluster and the system attempts to create a new QoS policy group.
+*Corrective Action*::
+Delete few QoS policy groups on the destination cluster using "qos policy-group delete" command and then resynchronize the configuration from the source cluster using "metrocluster vserver resync" command.
+*Syslog Message*::
+Reached the maximum of %d QoS policy groups. Cannot create QoS policy group %s in Vserver %s.
+*Parameters*::
+*max_QoS_groups* (INT): Maximum number of QoS policy groups.
+*QoS_policy_group* (STRING): QoS policy group name.
+*vserver_name* (STRING): Vserver name.
+
+== vsdr.qos.pg.conflict
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during the configuration replication phase of a Vserver DR transfer when the Quality of Service (QoS) policy group that the system is trying to replicate already exists in the cluster on a different Vserver.
+*Corrective Action*::
+Remove the existing QoS policy group or make the Vserver that already has the QoS policy group in it the destination in the Vserver DR relationship.
+*Syslog Message*::
+QoS policy group %s cannot be created in Vserver %s as the same QoS policy exists in Vserver %s.
+*Parameters*::
+*qos_policy_group* (STRING): Name of the QoS policy group that the system is trying to replicate.
+*destination_vserver* (STRING): Name of the destination Vserver into which the QoS policy group is being replicated.
+*found_in_vserver* (STRING): Name of the Vserver in which the same QoS policy group was found.

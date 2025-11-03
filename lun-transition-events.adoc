@@ -1,0 +1,126 @@
+---
+sidebar: sidebar
+permalink: lun-transition-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lun.transition events
+---
+
+= lun.transition events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== LUN.transition.fail.no.i2p
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the transition of a 7-Mode LUN to clustered Data ONTAP(R) fails because the i2p database for the destination volume is not fully built.
+*Corrective Action*::
+Wait a few seconds and then issue the 'lun transition start' command to retry the transition of LUNs in the volume.
+*Syslog Message*::
+LUNs in volume %s (DSID %llu) could not be transitioned because the i2p database for the volume has not been fully built.
+*Parameters*::
+*volume_name* (STRING): Name of the containing volume.
+*volume_dsid* (LONGINT): Data set ID (DSID) of the containing volume.
+
+== LUN.transition.fail.no.space
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the transition of a 7-Mode LUN to clustered Data ONTAP(R) fails due to lack of space in the destination volume or containing aggregate.
+*Corrective Action*::
+Set the 'filesys-size-fixed' option to false for the volume, add 1MB space for each LUN in the volume, and then issue the 'lun transition start' command to retry the transition.
+*Syslog Message*::
+LUN %s in volume %s (DSID %llu) could not be transitioned due to lack of space in the volume.
+*Parameters*::
+*lun_path* (STRING): Path for the LUN that could not be transitioned.
+*volume_name* (STRING): Name of the containing volume.
+*volume_dsid* (LONGINT): Data set ID (DSID) of the containing volume.
+
+== LUN.transition.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the transition of a LUN to clustered Data ONTAP(R) fails.
+*Corrective Action*::
+Determine the cause of failure and the specific corrective action by looking at other events issued for LUNs. Use the ''lun transition start'' command to retry the transition.
+*Syslog Message*::
+LUN %s in volume %s (DSID %llu) could not be transitioned.
+*Parameters*::
+*lun_path* (STRING): Path for the LUN that could not be transitioned.
+*volume_name* (STRING): Name of the containing volume.
+*volume_dsid* (LONGINT): Data Set ID (DSID) of the containing volume.
+
+== LUN.transition.incons.attrs
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a LUN is found whose 7-Mode on-disk structure is inconsistent in the WAFL(R) file system. This LUN cannot be transitioned and is not accessible for management.
+*Corrective Action*::
+If the volume was being transitioned, destroy the LUN by using the ''lun transition 7-mode delete'' advanced-privilege command in clustered Data ONTAP(R). Issue the command ''lun transition 7-mode start'' to retry transition on the volume.
+*Syslog Message*::
+The 7-mode on-disk structure of the LUN at path %s in volume %s (DSID %llu) is inconsistent in the WAFL file system.
+*Parameters*::
+*lun_path* (STRING): Path for the LUN.
+*volume_name* (STRING): Name of the containing volume.
+*volume_dsid* (LONGINT): Data set ID (DSID) of the containing volume.
+
+== LUN.transition.no.type
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Data ONTAP(R) encounters a LUN that is scheduled for transition and for which the multiprotocol type of the LUN cannot be determined. Data ONTAP substitutes a default value of "linux" for the type and calculates geometry values to match.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Multiprotocol type for LUN "%s" in volume "%s" (DSID: %llu) could not be determined. Once transitioned, this LUN will be assigned the default type "linux".
+*Parameters*::
+*lun_path* (STRING): Path of the LUN.
+*volume_name* (STRING): Name of the containing volume.
+*volume_dsid* (LONGINT): Data Set ID (DSID) of the containing volume.
+
+== LUN.transition.unsupp.clone
+*Severity*::
+ERROR
+*Description*::
+This message occurs when transition of a LUN to clustered Data ONTAP(R) fails because the LUN is a Snapshot(R) copy-backed LUN clone. This LUN cannot be transitioned and is not accessible for management.
+*Corrective Action*::
+Destroy the LUN by using the ''lun transition 7-mode delete'' advanced-privilege command in clustered Data ONTAP. To make your original LUN a supported candidate for transition, split your Snapshot copy-backed LUN clone prior to transition.
+*Syslog Message*::
+LUN %s in volume %s (DSID %llu) could not be transitioned.
+*Parameters*::
+*lun_path* (STRING): Path for the LUN that cannot be transitioned.
+*volume_name* (STRING): Name of the containing volume.
+*volume_dsid* (LONGINT): Data set ID (DSID) of the containing volume.
+
+== LUN.transition.unsupp.geom
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Data ONTAP(R) encounters a 7-Mode LUN that is scheduled for transition and for which the extent size or cylinder size is absent or unsupported. Data ONTAP substitutes reasonable geometry values upon transition.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LUN "%s" in volume "%s" (DSID: %llu) has a geometry that is not supported in clustered Data ONTAP. Once transitioned, this LUN will be assigned reasonable geometry values.
+*Parameters*::
+*lun_path* (STRING): Path of the LUN.
+*volume_name* (STRING): Name of the containing volume.
+*volume_dsid* (LONGINT): Data Set ID (DSID) of the containing volume.
+
+== LUN.transition.unsupported.type
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Data ONTAP(R) encounters a 7-Mode LUN that is scheduled for transition and for which the multiprotocol type is unsupported in clustered Data ONTAP. Data ONTAP substitutes a default value of "linux" for the type upon transition and calculates geometry values to match.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LUN "%s" in volume "%s" (DSID: %llu) has a multiprotocol type that is not supported in clustered Data ONTAP. Once transitioned, this LUN will be assigned the default type of "linux".
+*Parameters*::
+*lun_path* (STRING): Path of the LUN.
+*volume_name* (STRING): Name of the containing volume.
+*volume_dsid* (LONGINT): Data Set ID (DSID) of the containing volume.

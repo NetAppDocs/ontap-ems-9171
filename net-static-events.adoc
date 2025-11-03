@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: net-static-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: net.static events
+---
+
+= net.static events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== net.static.hostroute.replaced
+*Severity*::
+NOTICE
+*Description*::
+This event is generated when user configured static host route entry being replaced with a dynamic entry by route redirect message.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+rtredirect_fib: User static route to destination(%s) through gateway(%s) being redirected to new gateway(%s)
+*Parameters*::
+*Dest* (STRING): IP address of the destination.
+*OldGW* (STRING): IP address of the old gateway.
+*NewGW* (STRING): IP address of the new gateway.

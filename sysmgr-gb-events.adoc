@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sysmgr-gb-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sysmgr.gb events
+---
+
+= sysmgr.gb events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sysmgr.gb.ecv
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when acquiring the desired Effective Cluster Version (ECV) of System Manager was not accomplished within the time limit during the first storage giveback phase. This node will provide the last version of System Manager instead of the desired ECV. This node might acquire the desired version later.
+*Corrective Action*::
+Use the diagnostic level "system manager version show" command to see the status of the node. If this behavior persists, contact NetApp technical support.
+*Syslog Message*::
+ECV version of System Manager was not acquired within %d seconds during the first phase of storage giveback.
+*Parameters*::
+*timeout* (INT): Timeout in seconds.

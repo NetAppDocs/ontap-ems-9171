@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: wafl-access-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.access events
+---
+
+= wafl.access events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.access.fenced.file
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the user attempts to access a fenced file. Depending on the type of fence, reads and/or writes will not be permitted for the file.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The file with inode %d on volume %s cannot be accessed because it is fenced by %s operation.
+*Parameters*::
+*fid* (INT): Inode number of the fenced file.
+*vol* (STRING): Name of the volume that contains the fenced file.
+*owner* (STRING): Name of the operation that fenced the file.

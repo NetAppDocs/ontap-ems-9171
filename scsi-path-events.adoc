@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: scsi-path-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsi.path events
+---
+
+= scsi.path events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsi.path.excessiveErrors
+*Severity*::
+ERROR
+*Description*::
+This message occurs when excessive errors are encountered on this device within a short-enough time period to raise concern that there might be a faulty component between the storage initiator and device. You can use the option 'ra.path_switch.threshold' to control how sensitive Data ONTAP(R) is to device errors. Setting it to a higher value requires more errors to trigger this event.
+*Corrective Action*::
+Device errors are a common indication of storage domain stability problems. In some cases, the interconnect is operating normally and the specified device is having trouble processing I/O requests in a timely manner. In such cases, evaluate the specified device for possible replacement. Quite often the problem results from the partial failure of a component involved in the storage transport. Common things to check include complete seating of drive carriers in enclosure bays, properly secured cable connections, shelf IOM seating, failing Fibre Channel switch components, failing FC SAS bridge components and crimped or otherwise damaged cables.
+*Syslog Message*::
+Excessive errors encountered by adapter %s on %s device %s.
+*Parameters*::
+*adapterName* (STRING): Name of the associated storage host bus adapter.
+*deviceType* (STRING): Device type.
+*deviceName* (STRING): Name of the storage device.

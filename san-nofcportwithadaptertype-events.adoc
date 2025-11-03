@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: san-nofcportwithadaptertype-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.nofcportwithadaptertype events
+---
+
+= san.nofcportwithadaptertype events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.NoFCportwithAdapterType
+*Severity*::
+ERROR
+*Description*::
+This message occurs in MetroCluster(tm) configurations on clustered Data ONTAP(R) systems, when Data ONTAP cannot replicate an FC/FC-NVMe logical interface (LIF) to a candidate port in the destination cluster. A candidate port is one that satisfies the following conditions: 1) It must reside on the disaster recovery (DR) partner node. 2) It must be of the same adapter type (CNA/FC) as the home port of the primary Vserver FC/FC-NVMe LIF.
+*Corrective Action*::
+Ensure that there are ports in the destination cluster node (DR partner) that have the same adapter type (FC/CNA) as the source cluster port that hosts the primary Vserver FC/FC-NVMe LIF. Use the "fcp adapter show -fields physical-protocol" command to view the FC port-adapter type information. Run the "metrocluster check lif repair-placement" command in the source cluster with the Vserver name and LIF name as inputs after ensuring that there are ports in the destination cluster node (DR partner) that have the same adapter type. After running the command mentioned previously, run the "metrocluster check lif show" to see whether lif placement succeeded or not.
+*Syslog Message*::
+There are no ports on node "%s" in the destination cluster that have the adapter type "%s" required to host the "%s" LIF "%s" for Vserver "%s".
+*Parameters*::
+*node* (STRING): Name of the destination cluster node (DR partner) that does not have a port of the same adapter type as the port in the source cluster.
+*adapter_type* (STRING): Adapter type of the source cluster port that hosts the primary Vserver FC/FC-NVMe LIF.
+*data_protocol* (STRING): Data Protocol of the lif.
+*lif* (STRING): Name of the FC/FC-NVMe LIF to be placed.
+*vserver* (STRING): Name of the secondary Vserver in the MetroCluster relationship.

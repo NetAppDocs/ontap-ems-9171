@@ -1,0 +1,132 @@
+---
+sidebar: sidebar
+permalink: mgmt-cr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmt.cr events
+---
+
+= mgmt.cr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmt.cr.constituent.added
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a constituent volume is added to the Infinite Volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Constituent volume "%s" has been added to Infinite Volume "%s" in Vserver "%s". Its size is %ld bytes.
+*Parameters*::
+*constituentName* (STRING): Name of the added volume.
+*repositoryName* (STRING): Name of the Infinite Volume.
+*vserverName* (STRING): Name of the Vserver.
+*size* (LONGINT): Size of the added volume.
+
+== mgmt.cr.constituent.deleted
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a constituent volume is deleted from the Infinite Volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Constituent volume "%s" has been deleted from the Infinite Volume "%s" in Vserver "%s".
+*Parameters*::
+*constituentName* (STRING): Name of the deleted volume.
+*repositoryName* (STRING): Name of the Infinite Volume.
+*vserverName* (STRING): Name of the Vserver.
+
+== mgmt.cr.constituent.failure
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an Infinite Volume operation that operates on the constituent volumes succeeds, but fails on an individual constituent.
+*Corrective Action*::
+Fix the cause of the failure listed in the error, and then run the command again.
+*Syslog Message*::
+Repository job "%s" run on Infinite Volume "%s" in Vserver "%s" failed for constituent volume "%s": %s
+*Parameters*::
+*jobName* (STRING): Name of the repository job.
+*repositoryName* (STRING): Name of the Infinite Volume.
+*vserverName* (STRING): Name of the Vserver.
+*constituentName* (STRING): Name of the constituent volume.
+*reason* (STRING): Reason for the failure.
+
+== mgmt.cr.constituent.resized
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an Infinite Volume constituent volume is resized.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Constituent volume "%s" of Infinite Volume "%s" in Vserver "%s" has been resized to %ld bytes.
+*Parameters*::
+*constituentName* (STRING): Name of the resized volume.
+*repositoryName* (STRING): Name of the Infinite Volume.
+*vserverName* (STRING): Name of the Vserver.
+*size* (LONGINT): New size of the volume.
+
+== mgmt.cr.job.failed
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a repository job fails.
+*Corrective Action*::
+Fix the cause of the failure, listed in the error, and run the command again.
+*Syslog Message*::
+Repository job "%s" has failed for Infinite Volume "%s" in Vserver "%s": %s
+*Parameters*::
+*jobName* (STRING): Name of the repository job.
+*repositoryName* (STRING): Name of the Infinite Volume.
+*vserverName* (STRING): Name of the Vserver.
+*reason* (STRING): Reason for the failure.
+
+== mgmt.cr.job.succeeded
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a repository job is completed successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Repository job "%s" has succeeded for Infinite Volume "%s" in Vserver "%s": %s
+*Parameters*::
+*jobName* (STRING): Name of the repository job.
+*repositoryName* (STRING): Name of the Infinite Volume.
+*vserverName* (STRING): Name of the Vserver.
+*reason* (STRING): Success message of the job.
+
+== mgmt.cr.missing.footprint
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) is attempting to create or expand an Infinite Volume and cannot retrieve volume footprint information about a volume. The footprint information for all volumes on aggregates used by an Infinite Volume, even those in other Vservers, must be known to safely create or expand an Infinite Volume.
+*Corrective Action*::
+Ensure that the volume is healthy and online, and then retry the operation.
+*Syslog Message*::
+Unable to get footprint information about volume "%s" in Vserver "%s".;
+*Parameters*::
+*constituentName* (STRING): Name of the volume for which footprint information could not be retrieved.
+*vserverName* (STRING): Name of the Vserver the volume belongs to.

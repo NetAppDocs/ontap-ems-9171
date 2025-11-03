@@ -1,0 +1,59 @@
+---
+sidebar: sidebar
+permalink: acp-fw-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: acp.fw events
+---
+
+= acp.fw events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== acp.fw.download
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Alternate Control Path (ACP) Processor receives a command to initiate a firmware download.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Firmware image %s will be downloaded to %s (%s), (disk shelf serial number: %s).
+*Parameters*::
+*command* (STRING): Firmware image name.
+*inband_id* (STRING): In-band ID of the module.
+*ip* (STRING): IP address of the module.
+*status* (STRING): Status code returned by the 'initiation' command.
+
+== acp.fw.download.failed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Alternate Controller Path Administrator fails in its attempt to download firmware.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Firmware download on %s (%s) failed with status (%s), (disk shelf serial number: %s).
+*Parameters*::
+*inband_id* (STRING): In-band ID of the module.
+*ip* (STRING): IP address of the module.
+*status* (STRING): Type of failure that occurred during the firmware download.
+*shelf_sno* (STRING): Disk shelf serial number of the shelf where this I/O module is seated.
+
+== acp.fw.download.success
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a 'firmware download' command sent to the Alternate Controller Path Processor succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Firmware download on %s (%s) was successful, (disk shelf serial number: %s).
+*Parameters*::
+*inband_id* (STRING): In-band ID of the module.
+*ip* (STRING): IP address of the module.
+*shelf_sno* (STRING): Disk shelf serial number of the shelf where this I/O module is seated.

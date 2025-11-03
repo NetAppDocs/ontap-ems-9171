@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: vpeer-request-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vpeer.request events
+---
+
+= vpeer.request events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vpeer.request.diff.ipspace
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Vserver peer request is received and Vserver peer permission exists for the Vserver and peer-cluster, but the Vserver belongs to an ipspace that is different from the cluster peer relationship ipspace. The Vserver peer request will remain in the pending state unless explicitly accepted.
+*Corrective Action*::
+Use the "vserver peer accept" command in the destination cluster to explicitly accept the Vserver peer request, and use the "vserver peer show" command to verify that the Vserver peer goes to peered state.
+*Syslog Message*::
+"Vserver peer request for the peer-Vserver '%s' and the peer-cluster '%s' needs to be explicitly accepted, because the local Vserver '%s' ipspace: '%s' is different from the cluster peer relationship ipspace: '%s'."
+*Parameters*::
+*peer_vserver* (STRING): Peer Vserver name.
+*peer_cluster* (STRING): Peer cluster name.
+*local_vserver* (STRING): Local Vserver name.
+*vserver_ipspace* (STRING): Ipspace of the local Vserver.
+*cluster_peer_ipspace* (STRING): Ipspace of the cluster peer relationship.

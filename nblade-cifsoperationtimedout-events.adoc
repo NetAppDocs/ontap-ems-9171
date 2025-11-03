@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: nblade-cifsoperationtimedout-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.cifsoperationtimedout events
+---
+
+= nblade.cifsoperationtimedout events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.CifsOperationTimedOut
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a CIFS operation times out because it could not be processed completely within 40 seconds.
+*Corrective Action*::
+Check the QoS policy configuration for the target volume. If there are no QoS policies set, check the load on the target volume and check IP connectivity over the cluster interfaces between the two nodes. For further assistance, contact NetApp technical support and indicate that you need assistance with a potential internal cluster performance problem.
+*Syslog Message*::
+Detected a timed out CIFS operation. SMB command for this operation: %s, Number of times this command was suspended: %llu, Number of times this command was restarted: %llu, Last CSM error during this operation: %s, Remote blade UUID: %s, Is QoS enabled: %s, Last nBlade error during this operation: %s, Client IP address: %s, Local IP address: %s, Target Vserver ID: %d, Target disk's DSID: %d, Target Vserver Name: %s, Target Volume Name: %s
+*Parameters*::
+*commandName* (STRING): CIFS command for this operation.
+*suspensionCnt* (LONGINT): Number of times this command has been suspended.
+*cmdRestartCnt* (LONGINT): Number of times this command has been restarted.
+*lastCsmError* (STRING): Last CSM error.
+*remoteBladeID* (STRING): Remote blade ID for this CSM session.
+*isQosEnabled* (STRING): Whether QoS is enabled.
+*lastSpinNpError* (STRING): Last internal network component(nBlade) error.
+*clientIpAddress* (STRING): IP address of the client machine.
+*localIpAddress* (STRING): IP address of the local interface serving the protocol operation.
+*vserverId* (INT): Identifier for the Vserver associated with this operation.
+*dsId* (INT): Data set ID (DSID) of the target volume.
+*vserverName* (STRING): Vserver name associated with this operation.
+*volumeName* (STRING): Volume name corresponding to the DSID.

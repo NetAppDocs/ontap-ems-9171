@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sp-orftp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sp.orftp events
+---
+
+= sp.orftp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sp.orftp.failed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when there is a communication error while sending information to or receiving information from the Service Processor (SP). This error could be due to a communication error while the information is being sent or received, or the SP might not be operational.
+*Corrective Action*::
+1. Run the 'system service-processor show' command at the Data ONTAP prompt to check whether the SP is operational. 2. If the SP is operational and this message persists, run the 'system service-processor reboot-sp' command at the Data ONTAP prompt to reboot the SP. 3. If this message persists after the SP has been rebooted, contact NetApp technical support.
+*Syslog Message*::
+SP communication error, %s.
+*Parameters*::
+*reason* (STRING): Reason for the failure.

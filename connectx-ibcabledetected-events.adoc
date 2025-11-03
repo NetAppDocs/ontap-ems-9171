@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: connectx-ibcabledetected-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: connectx.ibcabledetected events
+---
+
+= connectx.ibcabledetected events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== connectx.IbCableDetected
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an InfiniBand cable is detected on the InfiniBand port.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Detected %s of length %dM on InfiniBand port %s.
+*Parameters*::
+*cable_type* (STRING): InfiniBand cable type.
+*cable_length* (INT): Length of the InfiniBand cable in meters.
+*port_str* (STRING): InfiniBand port in which the cable is plugged.

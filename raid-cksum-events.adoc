@@ -1,0 +1,1198 @@
+---
+sidebar: sidebar
+permalink: raid-cksum-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.cksum events
+---
+
+= raid.cksum events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.cksum.bad.file.block
+*Severity*::
+ERROR
+*Description*::
+This event is issued when WAFL accesses a block that was zeroed because it could not be recovered correctly.
+*Corrective Action*::
+Please restore the corrupted file from snapshot or from the backup media.
+*Syslog Message*::
+Reading bad block on %s %s%s, %s, disk block %llu, %s inode number %d, snapid %d, file block %llu, level %d.
+*Parameters*::
+*vol_type* (STRING): Whether the block was being accessed for a flexible volume or an aggregate.
+*owner* (STRING): Owner of the affected volume or aggregate.
+*vol* (STRING): The name of the volume or aggregate
+*disk_info* (STRING): Formatted information of the disk
+*blockNum* (LONGINT): The block number
+*ino_type* (STRING): The inode type
+*fileid* (INT): The file identifier
+*snapid* (INT): The snapshot identifier
+*bno* (LONGINT): The block number in the file
+*level* (INT): The level
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.cksum.buf.read.error.embedded
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an embedded checksum error. This can occur when a zeroing disk is added to the RAID group for reconstruction, and the zeroing is never completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Embedded checksum error on %s %s%s, %s, phys checksum block %llu
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*disk_info* (STRING): Formatted information about the disk.
+*blockNum* (LONGINT): Disk block number.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model name of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.cksum.bypass
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a read error has occurred while media error bypass is enabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+raid_cksum_compare: media error bypass enabled; Ignoring read error - %s %s%s, %s disk block %llu
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*disk_info* (STRING): Formatted information about the disk.
+*blockNum* (LONGINT): Block number.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model name of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.cksum.bypass.bno
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a block number mismatch while media error bypass is enabled. The expected virtual block number (VBN)/disk block number (DBN) is not the same as the stored VBN/DBN from the checksum entry, indicating that the block is read from the wrong location. The error is ignored.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Block number mismatch: %s %s%s, %s stored_dbn = %u, expected_dbn = %llu; stored_vbn = %llu, expected_vbn = %llu; media error bypass enabled; ignoring read error.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*disk_info* (STRING): Formatted information about the disk.
+*stored_dbn* (INT): Physical disk block number stored in the checksum entry.
+*expected_dbn* (LONGINT): Expected physical disk block number.
+*stored_vbn* (LONGINT): Volume block number stored in the checksum entry.
+*expected_vbn* (LONGINT): Expected volume block number.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk is located.
+*vendor* (STRING): Name of the disk vendor.
+*model* (STRING): Model name of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.cksum.bypass.embed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an invalid checksum entry while media error bypass is enabled. The checksum computed over the checksum entry does not match the embedded checksum, indicating that the checksum entry is corrupted. The error is ignored.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Invalid checksum entry: %s %s%s, %s disk block %llu; Media error bypass enabled; Ignoring read error.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*disk_info* (STRING): Formatted information about the disk.
+*blockNum* (LONGINT): Physical disk block number containing the error.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk is located.
+*vendor* (STRING): Name of the disk vendor.
+*model* (STRING): Model name of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.cksum.bypass.unknown
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a read error has occurred and has been ignored because media error bypass is enabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+raid_cksum_compare: media error bypass enabled; Ignoring read error - %s %s%s, on disk block %llu
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*blockNum* (LONGINT): Block number.
+
+== raid.cksum.bypass.unkwn.bno
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a block number mismatch while media error bypass is enabled. The expected virtual block number (VBN)/disk block number (DBN) is not the same as the stored VBN/DBN from the checksum entry, indicating that the block is read from the wrong location. The error is ignored. Details on which disk the error was encountered on are not Available because the disk transitioned to an unavailable state between the detection of the error and the logging of this message.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Block number mismatch: %s %s%s, stored_dbn = %u, expected_dbn = %llu; stored_vbn = %llu, expected_vbn = %llu; Media error bypass enabled; Ignoring read error.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*stored_dbn* (INT): Physical disk block number stored in the checksum entry.
+*expected_dbn* (LONGINT): Expected physical disk block number.
+*stored_vbn* (LONGINT): Volume block number stored in the checksum entry.
+*expected_vbn* (LONGINT): Expected volume block number.
+
+== raid.cksum.bypass.unkwn.embd
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an invalid checksum entry while media error bypass is enabled. The embedded checksum computed over the checksum entry does not match the stored embedded checksum in the checksum entry, indicating the corruption of the checksum entry. The error is ignored. Details on which disk the error was encountered on are not Available, because the disk transitioned to an unavailable state between the detection of the error and the logging of this message.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Invalid checksum entry: %s %s%s, on block %llu; Media error bypass enabled; Ignoring read error.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*blockNum* (LONGINT): Physical disk block number containing the error.
+
+== raid.cksum.bypass.unkwn.zero
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an empty checksum entry while media error bypass is enabled. The checksum entry is zeroed, but the corresponding block is not zeroed. The error is ignored. Details on which disk the error was encountered on are not Available because the disk transitioned to an unavailable state between the detection of the error and the logging of this message.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Empty checksum entry for non-zeroed block: %s %s%s, on disk block %llu; Media error bypass enabled; Ignoring read error.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*blockNum* (LONGINT): Physical disk block number containing the error.
+
+== raid.cksum.bypass.zero
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an empty checksum entry while media error bypass is enabled. The checksum entry is zeroed, but the corresponding block is not zeroed. The error is ignored.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Empty checksum entry for non-zeroed block: %s %s%s, %s disk block %llu; Media error bypass enabled; Ignoring read error.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*disk_info* (STRING): Formatted information about the disk.
+*blockNum* (LONGINT): Physical disk block number containing the error.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk is located.
+*vendor* (STRING): Name of the disk vendor.
+*model* (STRING): Model name of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.cksum.disabled
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when we disable checksums on an aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disabled checksums on %s %s%s.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.cksum.embedded.error
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the stored checksum of a checksum block does not match the computed checksum of the checksum block. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Checksum Entry of volume %s, disk %s, disk block %llu is bad: expected checksum %x, actual checksum %x
+*Parameters*::
+*vol* (STRING): Name of the aggregate.
+*disk* (STRING): Name of the disk.
+*blockNum* (LONGINT): Disk block number.
+*expected_cksum* (INT): Expected checksum of the checksum entry.
+*actual_cksum* (INT): Actual embedded checksum in the checksum entry.
+
+== raid.cksum.enabled
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when we enable checksums on an aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Enabled checksums on %s %s%s.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.cksum.err.recFail
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a disk is recommended for failure because we encountered more than allowed number of checksum errors.
+*Corrective Action*::
+Wait for the event message raid.disk.unload.done or raid.carrier.remove to be issued and then replace the carrier containing the failed disk. If the disk is contained in a single-disk carrier, raid.disk.unload.done will be issued immediately. Otherwise, wait for raid.carrier.remove which indicates the carrier has been fully prepared for removal.
+*Syslog Message*::
+Disk recommended for failure for exceeding threshold of %d checksum errors on %s%s.
+*Parameters*::
+*threshold* (INT): The threshold for checksum errors
+*owner* (STRING): String indicating the owner of the affected volume.
+*disk_info* (STRING): The name of the disk.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.cksum.fsm.phase1
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is generated when phase 1 of a checksum upgrade is complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Completed RAID checksum upgrade phase 1 (of 2) on %s %s%s; phase 2 will occur during the next disk scrub.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*host* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.cksum.fsm.phase1.abort
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is generated when phase 1 of a checksum upgrade is aborted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RAID checksum upgrade phase 1 (of 2) on %s %s%s %s aborted.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*host* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*disk_info* (STRING): Formatted information of disk object that has completed its zeroing operation
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.cksum.fsm.reinit
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is generated when reinitialization of checksums is complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Completed RAID checksum reinitialization on %s %s%s.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*host* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.cksum.fsm.reinit.abort
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is generated when checksum reinitialization is aborted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RAID checksum reinitialization on %s %s%s %s aborted.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*host* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*disk_info* (STRING): Formatted information of disk object that has completed its zeroing operation
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.cksum.fsm.revert
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is generated when a checksum revert is complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Checksum revert of %s %s%s completed; vol copy, aggr copy and snapmirror now allowed.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*host* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.cksum.ignore.bno
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a block number mismatch. The expected virtual block number (VBN)/disk block number (DBN) is not the same as the stored VBN/DBN from the checksum entry, indicating that the block is read from the wrong location. This error is ignored if one of the following conditions is true: - It was encountered during WAFL(R) check. - It was encountered during wafliron and in ignore unrecoverable checksum error mode. - The block cannot be recovered from parity and the volume is ignoring unrecoverable errors. - It was encountered in ignore checksum error mode. - It was encountered in boot bypass media error mode.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Block number mismatch on %s %s %s, %s: stored_dbn = %u, expected_dbn = %llu; stored_vbn = %llu, expected_vbn = %llu. Ignoring unrecoverable error.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*stored_dbn* (INT): Physical disk block number stored in the checksum entry.
+*expected_dbn* (LONGINT): Expected physical disk block number.
+*stored_vbn* (LONGINT): VBN stored in the checksum entry.
+*expected_vbn* (LONGINT): Expected VBN.
+*shelf* (STRING): Identifier of the disk shelf where the disk is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk is located.
+*vendor* (STRING): Name of the disk vendor.
+*model* (STRING): Model name of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.cksum.ignore.embed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an invalid checksum entry. The embedded checksum computed over the checksum entry does not match, indicating the corruption of the checksum entry. This error is ignored if one of the following conditions is true: - It was encountered during WAFL(R) check. - It was encountered during wafliron and in ignore unrecoverable checksum error mode. - The block cannot be recovered from parity and the volume is ignoring unrecoverable errors. - It was encountered in ignore checksum error mode. - It was encountered in boot bypass media error mode.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Invalid checksum entry on %s %s %s, %s, disk block %llu. Ignoring unrecoverable error.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*blockNum* (LONGINT): Physical disk block number of the disk containing the error.
+*shelf* (STRING): Identifier of the disk shelf where the disk is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk is located.
+*vendor* (STRING): Name of the disk vendor.
+*model* (STRING): Model name of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.cksum.ignore.error
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system ignores a checksum error. This error is ignored if one of the following conditions is true: * It was encountered during WAFL(R) check. * It was encountered during wafliron and in ignore unrecoverable checksum error mode. * The block cannot be recovered from parity and the volume is ignoring unrecoverable errors. * It was encountered in ignore checksum error mode. * It was encountered in boot bypass media error mode.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s on %s %s%s, %s, disk block %llu. Ignoring unrecoverable error.
+*Parameters*::
+*error* (STRING): Name of the error.
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*disk_info* (STRING): Information about the disk object including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*blockNum* (LONGINT): Block number.
+*shelf* (STRING): Identifier of the disk shelf where the disk is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk is located.
+*vendor* (STRING): Name of the disk vendor.
+*model* (STRING): Model name of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.cksum.ignore.file.bno
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects a block number mismatch in a block of a file. The expected Virtual Block Number (VBN)/Disk Block Number (DBN) is not the same as the stored VBN/DBN from the checksum entry indicating that the block is read from the wrong location. This error is ignored if one of the following conditions is true: - It was encountered during WAFL(R) check. - It was encountered during wafliron and in ignore unrecoverable checksum error mode. - The block cannot be recovered from parity and the volume is ignoring unrecoverable errors. - It was encountered in ignore checksum error mode. - It was encountered in boot bypass media error mode.
+*Corrective Action*::
+Contact technical support for information about how to resolve the unrecoverable checksum error in the referenced file.
+*Syslog Message*::
+Block number mismatch on %s %s %s, %s, stored_dbn = %u, expected_dbn = %llu; stored_vbn = %llu, expected_vbn = %llu, %s inode number %d, snapid %d, file block %llu, level %d. Ignoring unrecoverable error.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*disk_info* (STRING): Formatted information of the disk drive.
+*stored_dbn* (INT): Physical disk block number stored in the checksum entry.
+*expected_dbn* (LONGINT): Expected physical disk block number.
+*stored_vbn* (LONGINT): Volume block number stored in the checksum entry.
+*expected_vbn* (LONGINT): Expected volume block number.
+*ino_type* (STRING): The inode type
+*fileid* (INT): File identifier.
+*snapid* (INT): Snapshot identifier.
+*bno* (LONGINT): Block number in the file.
+*level* (INT): Level.
+*shelf* (STRING): Disk shelf identifier where the disk drive is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.cksum.ignore.file.embed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects an invalid checksum entry in a block of a file. The embedded checksum computed over the checksum entry do not match, indicating the corruption of the checksum entry. This error is ignored if one of the following conditions is true: - It was encountered during WAFL(R) check. - It was encountered during wafliron and in ignore unrecoverable checksum error mode. - The block cannot be recovered from parity and the volume is ignoring unrecoverable errors. - It was encountered in ignore checksum error mode. - It was encountered in boot bypass media error mode.
+*Corrective Action*::
+Contact technical support for information about how to resolve the unrecoverable checksum error in the referenced file.
+*Syslog Message*::
+Invalid checksum entry on %s %s %s, %s, disk block %llu, %s inode number %d, snapid %d, file block %llu, level %d. Ignoring unrecoverable error.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*disk_info* (STRING): Formatted information of the disk drive.
+*blockNum* (LONGINT): Physical disk block number containing the error.
+*ino_type* (STRING): The inode type
+*fileid* (INT): File identifier.
+*snapid* (INT): Snapshot identifier.
+*bno* (LONGINT): Block number in the file.
+*level* (INT): Level.
+*shelf* (STRING): Disk shelf identifier where the disk drive is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.cksum.ignore.zero
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an empty checksum entry. The checksum entry is zeroed, but the corresponding block is not zeroed. This error is ignored if one of the following conditions is true: - It was encountered during WAFL(R) check. - It was encountered during wafliron and in ignore unrecoverable checksum error mode. - The block cannot be recovered from parity and the volume is ignoring unrecoverable errors. - It was encountered in ignore checksum error mode. - It was encountered in boot bypass media error mode.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Empty checksum entry for non-zeroed block on %s %s %s, %s, disk block %llu. Ignoring unrecoverable error.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*blockNum* (LONGINT): Physical disk block number of the disk containing the error.
+*shelf* (STRING): Identifier of the disk shelf where the disk drive is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): String representing the name of the model of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.cksum.nvram.error
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when we cannot write out the checksum for an aggregate because of uninitialized NVRAM. System panics because of this error and will attempt to perform recovery in the next boot.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cannot write checksum for %s %s%s, %s, disk block %llu: NVRAM is not initialized.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*disk_info* (STRING): Information about the disk object including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*blockNum* (LONGINT): Block number.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the disk shelf where disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): String representing the name of the model of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.cksum.nvram.uninit
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an aggregate checksum cannot be repaired because of uninitialized NVRAM.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cannot repair checksum for %s %s%s, %s, disk block %llu: NVRAM is not initialized.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*blockNum* (LONGINT): Block number.
+*shelf* (STRING): Identifier of the disk shelf where the disk is located.
+*bay* (STRING): Disk bay within the disk shelf where disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): String representing the name of the model of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.cksum.replay.bad.entry
+*Severity*::
+ERROR
+*Description*::
+This event is issued at the end of checksum replay when bad checksum entries are detected in NVRAM during that replay (indicating corrupted NVRAM). Reparity will start automatically and update checksum blocks involved in recent writes.
+*Corrective Action*::
+Need to replace NVRAM if observed repeatedly during different boot-ups.
+*Syslog Message*::
+Skipped %d bad checksum entries in NVRAM.
+*Parameters*::
+*nentries* (INT): The number of bad entries
+
+== raid.cksum.replay.disk.missing
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when we encounter an NVRAM checksum entry for a missing disk during checksum replay. The disk will be reconstructed if an appropriate spare is available.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Skipping checksum block %llu because disk with index %d is missing in %s %s%s, plex %s, RAID group %d.
+*Parameters*::
+*cbn* (LONGINT): Checksum block number
+*diskid* (INT): Index of the disk in the RAID group.
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*plex* (STRING): The name of the plex.
+*rgid* (INT): The identifier of the RAID group.
+
+== raid.cksum.replay.mismatch
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when we encounter an NVRAM checksum entry which does not match the partner NVRAM shadow checksum entry.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Skipping checksum block %ld for disk %s because the checksum 0x%x and shadow checksum 0x%x do not match.
+*Parameters*::
+*block_number* (LONGINT): Checksum block number.
+*diskname* (STRING): Name of the disk.
+*checksum* (INT): Checksum value.
+*shadow_checksum* (INT): Shadow checksum value.
+
+== raid.cksum.replay.nvgen.mismatch
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when we encounter an NVRAM generation mismatch for an aggregate during checksum replay. Reparity will start automatically and update checksum blocks involved in recent writes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NVRAM generation mismatch for %s %s%s.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.cksum.replay.plex.missing
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when we encounter an NVRAM checksum entry for a missing plex during checksum replay. Reparity will start automatically when the plex comes online. At that time, reparity will update checksum blocks involved in recent writes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cannot find plex with identifier %d in %s %s%s.
+*Parameters*::
+*plexid* (INT): The identifier of the plex.
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.cksum.replay.plex.unavailable
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when we encounter an NVRAM checksum entry for an offline or failed plex during checksum replay. Reparity will start automatically when the plex comes online. At that time, reparity will update checksum blocks involved in recent writes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Plex %s in %s %s%s is offline or failed.
+*Parameters*::
+*plex* (STRING): The name of the plex.
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.cksum.replay.rg.invalid
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when we encounter an NVRAM checksum entry for a missing RAID group during checksum replay.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Invalid RAID group identifier %d in %s %s%s, plex %s.
+*Parameters*::
+*rgid* (INT): The identifier of the RAID group.
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*plex* (STRING): The name of the plex.
+
+== raid.cksum.replay.summary
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is generated when checksum replay is complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Replayed %u checksum blocks.
+*Parameters*::
+*nblocks* (INT): The number of blocks
+
+== raid.cksum.replay.vol.clean
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when we encounter an NVRAM checksum entry for a cleanly shutdown aggregate during checksum replay.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s was cleanly shut down.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.cksum.replay.vol.missing
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when we encounter an NVRAM checksum entry for a missing volume or aggregate during checksum replay. Reparity will start automatically when the aggregate appears again. At that time, reparity will update checksum blocks involved in recent writes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cannot find aggregate with identifier %s.
+*Parameters*::
+*volId* (STRING): The identifier of the volume or aggregate.
+
+== raid.cksum.replay.vol.offline
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when we encounter an NVRAM checksum for an offline aggregate during checksum replay. Reparity will start automatically when the aggregate comes online. At that time, reparity will update checksum blocks involved in recent writes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s is not online.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.cksum.unverify.file.block
+*Severity*::
+ERROR
+*Description*::
+This event is issued when WAFL accesses a block that could not be verified because of medium error on the checkusm block.
+*Corrective Action*::
+Please restore the corrupted file from snapshot or from the backup media.
+*Syslog Message*::
+Reading unverified block on %s %s%s, %s, disk block %llu, %s inode number %d, snapid %d, file block %llu, level %d.
+*Parameters*::
+*vol_type* (STRING): Whether the block was being accessed for a flexible volume or an aggregate.
+*owner* (STRING): Owner of the affected volume or aggregate.
+*vol* (STRING): The name of the volume or aggregate
+*disk_info* (STRING): Formatted information of the disk
+*blockNum* (LONGINT): The block number
+*ino_type* (STRING): The inode type
+*fileid* (INT): The file identifier
+*snapid* (INT): The snapshot identifier
+*bno* (LONGINT): The block number in the file
+*level* (INT): The level
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.cksum.validate.zoned
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the aggregate cannot support Zone checksum.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Checksums cannot be enabled on %s %s%s due to its disk sizes.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.cksum.verify.bno
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a block number mismatch in an aggregate when it is being accessed by RAID, and not in response to a WAFL(R) request; therefore, there is no usable WAFL(R) context. The expected virtual block Number (VBN)/ disk block number (DBN) is not the same as the stored VBN/DBN from the checksum entry, indicating that the block is read from the wrong location. Additional messages are logged as the system attempts to perform recovery.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Block number mismatch on %s %s%s, %s: stored_dbn = %u, expected_dbn = %llu; stored_vbn = %llu, expected_vbn = %llu. System will attempt to perform recovery.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*disk_info* (STRING): Information about the disk object including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*stored_dbn* (INT): Physical disk block number stored in the checksum entry.
+*expected_dbn* (LONGINT): Expected physical disk block number.
+*stored_vbn* (LONGINT): Volume block number stored in the checksum entry.
+*expected_vbn* (LONGINT): Expected volume block number.
+*shelf* (STRING): Identifier of the disk shelf where the disk drive is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): String representing the name of the model of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+*physDiskBlockNum* (LONGINT): Physical disk block number for partitioned disk.
+
+== raid.cksum.verify.embed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an invalid checksum entry in an aggregate when it is being accessed by RAID, and not in response to a WAFL(R) request; therefore, there is no usable WAFL context. The embedded checksum computed over the checksum entry does not match, indicating the corruption of the checksum entry. Additional messages are logged as the system attempts to perform recovery.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Invalid checksum entry on %s %s%s, %s, disk block %llu. System will attempt to perform recovery.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*blockNum* (LONGINT): Physical disk block number of the disk containing the error.
+*shelf* (STRING): Identifier of the disk shelf where the disk is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk is located.
+*vendor* (STRING): Name of the disk vendor.
+*model* (STRING): String representing the name of the model of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+*physDiskBlockNum* (LONGINT): Physical disk block number for partitioned disk.
+
+== raid.cksum.verify.error
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a checksum error in an aggregate when it is being accessed by RAID, and not in response to a WAFL(R) request; therefore, there is no usable WAFL(R) context. Additional messages are logged as the system attempts to perform recovery.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s on %s %s%s, %s, disk block %llu, cpcount %d, buftreeid %llu. System will attempt to perform recovery.
+*Parameters*::
+*error* (STRING): Name of the error.
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*blockNum* (LONGINT): Block number.
+*stored_cpcount* (INT): Stored CP count in the checksum entry.
+*stored_buftreeid* (LONGINT): Stored buftree identifier in the checksum entry.
+*shelf* (STRING): Identifier of the disk shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where disk is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): String representing the name of the model of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+*physDiskBlockNum* (LONGINT): Physical disk block number for partitioned disk.
+
+== raid.cksum.verify.error.file
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system discovers a checksum error in a block of a file. The computed checksum over the stored data does not match the stored checksum, indicating corruption.Data ONTAP(R) makes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s on %s %s%s, %s, disk block %llu, cpcount %d, buftreeid %llu, %s inode number %d, snapid %d, file block %llu, level %d.
+*Parameters*::
+*error* (STRING): Name of the error.
+*vol_type* (STRING): Whether the file is contained in an aggregate or a flexible volume.
+*owner* (STRING): Owner of the affected volume or aggregate.
+*vol* (STRING): Name of the volume or aggregate.
+*disk_info* (STRING): Formatted information of the disk drive.
+*blockNum* (LONGINT): Block number.
+*stored_cpcount* (INT): Stored CP count in the checksum entry.
+*stored_buftreeid* (LONGINT): Stored buftree identifier in the checksum entry.
+*ino_type* (STRING): Inode type.
+*fileid* (INT): File identifier.
+*snapid* (INT): Snapshot identifier.
+*bno* (LONGINT): Block number in the file.
+*level* (INT): Level.
+*shelf* (STRING): Disk shelf identifier where the disk drive is located.
+*bay* (STRING): Disk bay within the shelf where the disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of the disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+*physDiskBlockNum* (LONGINT): Physical disk block number for partitioned disk.
+
+== raid.cksum.verify.file.bno
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a block number mismatch in a block of a file. The expected virtual block number (VBN)/disk block number (DBN) is not the same as the stored VBN/DBN from the checksum entry, indicating that the block is read from the wrong location. Data ONTAP(R) makes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Block number mismatch on %s %s%s, %s: stored_dbn = %u, expected_dbn = %llu; stored_vbn = %llu, expected_vbn = %llu, %s inode number %d, snapid %d, file block %llu, level %d.
+*Parameters*::
+*vol_type* (STRING): Whether the file is contained in an aggregate or a flexible volume.
+*owner* (STRING): Owner of the affected volume or aggregate.
+*vol* (STRING): Name of the volume or aggregate.
+*disk_info* (STRING): Formatted information of the disk drive.
+*stored_dbn* (INT): Physical disk block number stored in the checksum entry.
+*expected_dbn* (LONGINT): Expected physical disk block number.
+*stored_vbn* (LONGINT): Volume block number stored in the checksum entry.
+*expected_vbn* (LONGINT): Expected volume block number.
+*ino_type* (STRING): Inode type.
+*fileid* (INT): File identifier.
+*snapid* (INT): Snapshot identifier.
+*bno* (LONGINT): Block number in the file.
+*level* (INT): Level.
+*shelf* (STRING): Disk shelf identifier where the disk drive is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of the disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+*physDiskBlockNum* (LONGINT): Physical disk block number for partitioned disk.
+
+== raid.cksum.verify.file.embed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an invalid file block checksum. The embedded checksum does not match the computed checksum, indicating corruption of the checksum entry. Data ONTAP(R) makes appropriate recovery actions, and other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Invalid checksum entry on %s %s%s, %s, disk block %llu, %s inode number %d, snapid %d, file block %llu, level %d.
+*Parameters*::
+*vol_type* (STRING): Whether the file is contained in an aggregate or a flexible volume.
+*owner* (STRING): Owner of the affected volume or aggregate.
+*vol* (STRING): Name of the volume or aggregate.
+*disk_info* (STRING): Formatted information about the disk drive.
+*blockNum* (LONGINT): Physical disk block number that contains the error.
+*ino_type* (STRING): Inode type.
+*fileid* (INT): File identifier.
+*snapid* (INT): Snapshot identifier.
+*bno* (LONGINT): Block number in the file.
+*level* (INT): Level.
+*shelf* (STRING): Disk shelf identifier where the disk drive is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): Model of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of the disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(TM) configuration, indicates the site {local|remote} where the disk is located. For non-MetroCluster configurations, the site is 'local'.
+*physDiskBlockNum* (LONGINT): Physical disk block number of the partitioned disk.
+
+== raid.cksum.verify.file.zero
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an empty checksum entry in a block of a file. The checksum entry is zeroed, but the corresponding block is not zeroed. Data ONTAP(R) makes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Empty checksum entry for non-zeroed block on %s %s%s, %s, disk block %llu, %s inode number %d, snapid %d, file block %llu, level %d.
+*Parameters*::
+*vol_type* (STRING): Whether the file is contained in an aggregate or a flexible volume.
+*owner* (STRING): Owner of the affected volume or aggregate.
+*vol* (STRING): Name of the volume or aggregate.
+*disk_info* (STRING): Formatted information of the disk drive.
+*blockNum* (LONGINT): Physical disk block number containing the error.
+*ino_type* (STRING): Inode type.
+*fileid* (INT): File identifier.
+*snapid* (INT): Snapshot identifier.
+*bno* (LONGINT): Block number in the file.
+*level* (INT): Level.
+*shelf* (STRING): Disk shelf identifier where the disk drive is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of the disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+*physDiskBlockNum* (LONGINT): Physical disk block number for partitioned disk.
+
+== raid.cksum.verify.zero
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an empty checksum entry for a non-zeroed block in an aggregate when it is being accessed by RAID, and not in response to a WAFL(R) request; therefore there is no usable WAFL(R) context. The checksum entry is zeroed, but the corresponding block is not zeroed. Additional messages are logged as the system attempts to perform recovery.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Empty checksum entry for non-zeroed block on %s %s%s, %s, disk block %llu. System will attempt to perform recovery.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*blockNum* (LONGINT): Physical disk block number of the disk containing the error.
+*shelf* (STRING): Identifier of the disk shelf where the disk drive is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): String representing the name of the model of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+*physDiskBlockNum* (LONGINT): Physical disk block number for partitioned disk.
+
+== raid.cksum.wc.blkErr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a checksum error due to a WAFL(R) context mismatch. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+Please restore the corrupted file from snapshot or from the backup media.
+*Syslog Message*::
+Checksum error due to WAFL context mismatch on %s %s%s, %s, disk block %llu, buftree ID %d, %s inode number %d, snapshot ID %d, file block %llu, level %d: checksum context has buftree ID %d, file block %llu, %s.
+*Parameters*::
+*vol_type* (STRING): Whether the file is contained in an aggregate or within a flexible volume.
+*owner* (STRING): Owner of the affected volume or aggregate.
+*vol* (STRING): Name of the volume or aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*blockNum* (LONGINT): Block number.
+*buftreeid* (LONGINT): Buftree identifier.
+*ino_type* (STRING): Inode type.
+*fileid* (INT): File identifier.
+*snapid* (INT): Snapshot identifier.
+*bno* (LONGINT): Block number in the file.
+*level* (INT): Indirection level in the WAFL buffer.
+*stored_buftreeid* (LONGINT): Stored buftree identifier in the checksum entry.
+*stored_fbn* (LONGINT): Stored file block number in the checksum entry.
+*remaining_stored_context* (STRING): String containing CP count, Physical Volume Block Number (PVBN), encrypted flag, encyption key index stored in the checksum entry.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.cksum.wc.sblkErr
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system encounters a super block with bad WAFL(R) context information in its checksum entry.
+*Corrective Action*::
+Start wafliron on the indicated volume or aggregate.
+*Syslog Message*::
+Checksum error due to WAFL context mismatch for super block %llu on %s %s%s, %s.
+*Parameters*::
+*blockNum* (LONGINT): Block number.
+*vol_type* (STRING): Whether the file is contained in an aggregate or a flexible volume.
+*owner* (STRING): Owner of the affected volume or aggregate.
+*vol* (STRING): Name of the volume or aggregate.
+*disk_info* (STRING): Formatted information of the disk drive.
+*shelf* (STRING): Disk shelf identifier where the disk drive is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of the disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+*physDiskBlockNum* (LONGINT): Physical disk block number for partitioned disk.
+
+== raid.cksum.zeroed.blkErr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system discovers that the stored checksum for a block allocated by WAFL(R) is zero. Data ONTAP(R) makes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Checksum error due to zeroed block on %s %s%s, %s, disk block %llu, %s inode number %d, snapid %d, file block %llu, level %d.
+*Parameters*::
+*vol_type* (STRING): Whether the file is contained in an aggregate or a flexible volume.
+*owner* (STRING): Owner of the affected volume or aggregate.
+*vol* (STRING): Name of the volume or aggregate.
+*disk_info* (STRING): Formatted information of the disk drive.
+*blockNum* (LONGINT): Block number.
+*ino_type* (STRING): Inode type.
+*fileid* (INT): File identifier.
+*snapid* (INT): Snapshot identifier.
+*bno* (LONGINT): Block number in the file.
+*level* (INT): Level.
+*shelf* (STRING): Disk shelf identifier where the disk drive is located.
+*bay* (STRING): Disk bay within the shelf where the disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+*physDiskBlockNum* (LONGINT): Physical disk block number for partitioned disk.
+
+== raid.cksum.zeroed.sblkErr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system encounters a zeroed super block.Data ONTAP(R) makes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Checksum error due to zeroed super block %llu on %s %s%s, %s.
+*Parameters*::
+*blockNum* (LONGINT): Block number.
+*vol_type* (STRING): Whether the file is contained in an aggregate or a flexible volume.
+*owner* (STRING): Owner of the affected volume or aggregate.
+*vol* (STRING): Name of the volume or aggregate.
+*disk_info* (STRING): Formatted information of the disk drive.
+*shelf* (STRING): Disk shelf identifier where the disk drive is located.
+*bay* (STRING): Disk bay within the shelf where the disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of the disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+*physDiskBlockNum* (LONGINT): Physical disk block number for partitioned disk.

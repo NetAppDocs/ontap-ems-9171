@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: snapmirror-sockstrreaderr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapmirror.sockstrreaderr events
+---
+
+= snapmirror.sockstrreaderr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapmirror.sockStrReadErr
+*Severity*::
+ERROR
+*Description*::
+This event is issued when SnapMirror tries to read a large string from the socket.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Attempted read of a large string of length %d.
+*Parameters*::
+*len* (INT): String length SnapMirror tried to read from socket.

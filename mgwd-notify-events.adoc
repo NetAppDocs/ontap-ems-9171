@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: mgwd-notify-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgwd.notify events
+---
+
+= mgwd.notify events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgwd.notify.halt.result
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message reports the result of the Management Gateway process notification attempt to the Connectivity, Liveliness, Availability Monitor (CLAM) instance on its high-availability (HA) partner node that this node is undergoing a planned shutdown.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+MGWD %s to notify CLAM on its HA partner node that this node is undergoing a planned shutdown (reason: %s). Error: %s
+*Parameters*::
+*result* (STRING): Result of the notify attempt.
+*reason* (STRING): Reason for the partner beginning the halt process.
+*error* (STRING): Error encountered in the notify attempt (if any).

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: mcc-network-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mcc.network events
+---
+
+= mcc.network events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mcc.network.congestion
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a MetroCluster over IP configuration detects network congestion over the inter-cluster links (ISL) that connect sites and an action is taken to reduce further network congestion.
+*Corrective Action*::
+Verify that network between MetroCluster sites is following minimum SLA requirements and fix any such violations if needed. If the issue persists, contact NetApp technical support.
+*Syslog Message*::
+Network congestion detected. Action taken: %s.
+*Parameters*::
+*action_taken* (STRING): Action taken to reduce network congestion.

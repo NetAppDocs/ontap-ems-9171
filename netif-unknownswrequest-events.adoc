@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: netif-unknownswrequest-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.unknownswrequest events
+---
+
+= netif.unknownswrequest events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.unknownSwRequest
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a network driver does not recognize a request from another software module, possibly because the request is invalid.
+*Corrective Action*::
+Power-cycle the controller; a reboot is not sufficient. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Software module %s was passed unknown %s %d for %s.
+*Parameters*::
+*driver* (STRING): Driver module reporting the error.
+*object* (STRING): Name of the requested object.
+*value* (INT): Value that is not recognized.
+*ifName* (STRING): Name of the network interface.

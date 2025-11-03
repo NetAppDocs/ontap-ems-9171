@@ -1,0 +1,46 @@
+---
+sidebar: sidebar
+permalink: mgmt-exovol-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmt.exovol events
+---
+
+= mgmt.exovol events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmt.exovol.transfer.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the replication engine fails to transfer exo-volume data.
+*Corrective Action*::
+If problem persists, Contact NetApp technical support.
+*Syslog Message*::
+The replication for volume dsid %jd, transfer-id %s failed to transfer %s exo-volume data, error: %d, failure reason: %s, extended failure reason: %s.
+*Parameters*::
+*volDsid* (LONGINT): Data set identifier of the volume.
+*transferId* (STRING): Replication transfer id.
+*streamType* (STRING): Type of data being transferred.
+*error* (INT): Transfer failure error code.
+*failureReason* (STRING): Basic reason for the failure.
+*extendendFailureReason* (STRING): Detailed reason for the failure.
+
+== mgmt.exovol.xfer.dest.no.space
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is no free space left on the destination aggregate.
+*Corrective Action*::
+Please increase the amount of free space available on the destination aggregate.
+*Syslog Message*::
+The replication for volume dsid %jd, transfer-id %s failed to transfer %s exo-volume data because there is no free space left on the destination aggregate.
+*Parameters*::
+*volDsid* (LONGINT): Data set identifier of the volume.
+*transferId* (STRING): Replication transfer id.
+*streamType* (STRING): Type of data being transferred.

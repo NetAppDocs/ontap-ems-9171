@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: siw-pollingenablefailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: siw.pollingenablefailed events
+---
+
+= siw.pollingenablefailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== siw.pollingEnableFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when SW-iWARP device polling cannot be enabled during the boot-up and SW-iWARP will be running in a degraded state.
+*Corrective Action*::
+Try a takeover and giveback of the local node. If it still fails, contact NetApp technical support.
+*Syslog Message*::
+SW-iWARP polling could not be enabled because the polling device was not ready.
+*Parameters*::
+(None).

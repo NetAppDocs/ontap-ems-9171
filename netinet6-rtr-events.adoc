@@ -1,0 +1,144 @@
+---
+sidebar: sidebar
+permalink: netinet6-rtr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netinet6.rtr events
+---
+
+= netinet6.rtr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netinet6.rtr.high.mtu
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Maximum Transmission Unit (MTU) size of the Router Advertisement (RA) message, sent from the specified source IPv6 address, is higher than the upper bound of the Link MTU.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nd6_ra_input: MTU option mtu=%d sent from %s; exceeds the maxmtu %d on '%s'; ignoring.
+*Parameters*::
+*mtu* (INT): MTU size.
+*ip6Address* (STRING): Printable that is a loggable representation of the source IPv6 address.
+*maxmtu* (INT): Upper bound of the Link MTU.
+*ifName* (STRING): Interface name.
+
+== netinet6.rtr.invld.ndOpt1
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs because of an invalid Neighbor Discovery(ND) option.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nd6_rs_input: Invalid ND option; ignored.
+*Parameters*::
+(None).
+
+== netinet6.rtr.invld.ndOpt2
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs because of an invalid Neighbor Discovery(ND) option in the receiving Router Advertising (RA)message.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nd6_ra_input: Invalid ND option; ignored.
+*Parameters*::
+(None).
+
+== netinet6.rtr.invld.optLength
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs because of an invalid option length for a prefix information option, when receiving a Router Advertising (RA)message. The option length must be equal to 4. This invalid option length is ignored.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nd6_ra_input: Invalid option length %d for prefix information option; ignored.
+*Parameters*::
+*optLength* (INT): Option length.
+
+== netinet6.rtr.invld.prefix
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs because of an invalid prefix in the prefix information structure, when receiving Router Advertising(RA) message.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nd6_ra_input: Invalid prefix %s; ignored.
+*Parameters*::
+*prefix* (STRING): Prefix.
+
+== netinet6.rtr.invld.prfxLen1
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs because of an invalid prefix length for prefix information option, when receiving Router Advertising(RA) message. The prefix length must be less than 128.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nd6_ra_input: Invalid prefix length %d for prefix information option; ignored.
+*Parameters*::
+*prfxLength* (INT): Prefix length.
+
+== netinet6.rtr.low.mtu
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Maximum Transmission Unit (MTU) size is lower than 1,280, which is the minimal MTU and reassembly size.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nd6_ra_input: MTU option mtu=%d sent from %s is less than the minimum Link MTU on '%s'; ignoring.
+*Parameters*::
+*mtu* (INT): MTU size.
+*ip6Address* (STRING): Printable that is a loggable representation of the source IPv6 address.
+*ifName* (STRING): Interface name.
+
+== netinet6.rtr.misMth.lladrln1
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when there is a lladdrlen mismatch for the specified IP6 address of the Router Solicitation (RS) packet.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nd6_rs_input: lladdrlen mismatch for %s (if %d, RS packet %d).
+*Parameters*::
+*ip6address* (STRING): Printable that is a loggable representation of source IPv6 address.
+*ifAddrlen* (INT): Interface address length.
+*lladdrlen* (INT): Address length.
+
+== netinet6.rtr.misMth.lladrln2
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when there is a lladdrlen mismatch for the specified IPv6 address of the Router Advertising (RA) packet.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nd6_ra_input: lladdrlen mismatch for %s (if %d, RA packet %d).
+*Parameters*::
+*ip6address* (STRING): Printable that is a loggable representation of source IPv6 address.
+*ifAddrlen* (INT): Interface address length.
+*lladdrlen* (INT): Address length
+
+== netinet6.rtr.srcAdr.invld
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during the validation of source address in the received Router Solicitation (RS) message, when it is found that the source address is a non-link local address.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nd6_ra_input: Source %s is not a link-local address.
+*Parameters*::
+*srcAddr* (STRING): Source IPv6 address.

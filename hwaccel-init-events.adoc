@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: hwaccel-init-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: hwaccel.init events
+---
+
+= hwaccel.init events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== hwaccel.init.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when initialization of a hardware accelerator fails due to an unexpected software error. The system falls back to software acceleration and continues to function normally, but expect reduced performance.
+*Corrective Action*::
+Rebooting the system might clear the problem. The problem might be caused by a software bug, but is likely indicative of a hardware failure. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Initialization of hardware accelerator %s fails due to unexpected software error %s:%d.
+*Parameters*::
+*devName* (STRING): Name of the acceleration device; for example, "qat0".
+*module* (STRING): Name of the software module or driver.
+*error* (INT): Module-specific error code.

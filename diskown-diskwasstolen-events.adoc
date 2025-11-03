@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: diskown-diskwasstolen-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.diskwasstolen events
+---
+
+= diskown.diskwasstolen events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.diskWasStolen
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the ownership of a disk owned by the system is changed such that the disk is no longer owned by the system.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s (S/N %s) has had its ownership changed so that it is no longer owned by this system. This can lead to a system panic if the disk is a filesytem disk.
+*Parameters*::
+*diskname* (STRING): The name of the disk
+*serialno* (STRING): The serial number of the disk

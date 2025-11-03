@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-nocheck-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.nocheck events
+---
+
+= config.nocheck events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.NoCheck
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system should be halting, but it cannot because the "no-config-check? " environment variable is set to true.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+This is an illegal configuration. However the Filer is not halting due to no-config-check? being set to true.
+*Parameters*::
+(None).

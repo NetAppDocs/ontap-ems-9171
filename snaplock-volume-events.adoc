@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: snaplock-volume-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snaplock.volume events
+---
+
+= snaplock.volume events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snaplock.volume.repair
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when wafliron is run on a SnapLock(R) volume. If inconsistency is detected, wafliron will repair SnapLock volume. File system data before inconsistency occurred and the file system data after repair, may be different. WORM protected data may be changed. Administrator must ensure that the data on the volume is verified and restored, if needed, from backup copy or replica.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s repair such as wafliron has been issued on SnapLock %s '%s'. %s data may be changed.
+*Parameters*::
+*vtype1* (STRING): type of volume.
+*vtype2* (STRING): type of volume.
+*volume* (STRING): The name of the SnapLock volume on which volume repair is issued.
+*vtype3* (STRING): type of volume.

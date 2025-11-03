@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: ndmp-data-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ndmp.data events
+---
+
+= ndmp.data events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ndmp.data.on.e0m
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the IP address of the logical interface (LIF) that hosts the NDMP data connection is hosted on maintenance port "e0M". This port does not provide sufficient bandwidth for NDMP.
+*Corrective Action*::
+Ensure that the LIF is moved out of port "e0M" and hosted on a high bandwidth port, or create a new LIF hosted on a high bandwidth port which NDMP can use for the data connection.
+*Syslog Message*::
+NDMP data connection is established on "%s" which is hosted on port "%s". This is a low bandwidth port and might impact performance.
+*Parameters*::
+*lif_addr* (STRING): Local data connection IP address.
+*lif_port* (STRING): Port on which the data connection IP address is hosted.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: bootfs-env-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: bootfs.env events
+---
+
+= bootfs.env events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== bootfs.env.issue
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an error is detected while trying to access the environment file stored on the boot device. Environment variables on the system cannot be changed or saved.
+*Corrective Action*::
+Reformat or replace the boot media. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Environmental variables cannot be accessed or saved on the boot device (%s).
+*Parameters*::
+*err_str* (STRING): Error string.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nblade-cifsetcdactionfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.cifsetcdactionfailed events
+---
+
+= nblade.cifsetcdactionfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.cifsEtcdActionFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the DMAP container encounters an error processing an etcd request, such as a connection failure.
+*Corrective Action*::
+Check the network connectivity of the etcd server to the ONNIX pod, and correct any networking faults. Scan the DMAP and etcd logs for additional information.
+*Syslog Message*::
+Received an etcd failure event, Message is %s.
+*Parameters*::
+*pMessage* (STRING): Description of the SMB configuration update failure.

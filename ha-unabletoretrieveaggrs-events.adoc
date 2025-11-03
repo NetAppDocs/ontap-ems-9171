@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ha-unabletoretrieveaggrs-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.unabletoretrieveaggrs events
+---
+
+= ha.unabletoretrieveaggrs events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.unableToRetrieveAggrs
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the node is unable to retrieve a list of aggregates from the replicated database (RDB).
+*Corrective Action*::
+Wait for the nodes to reach quorum. Check for quorum using the (privilege: advanced) "cluster ring show" command.
+*Syslog Message*::
+This node was unable to retrieve the list of %s aggregates.
+*Parameters*::
+*own_partner* (STRING): The message "partner" will occur if the node is trying to retrieve its partner's aggregate, and "its own" if the node is trying to retrieve its own aggregates.

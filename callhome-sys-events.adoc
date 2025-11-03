@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: callhome-sys-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.sys events
+---
+
+= callhome.sys events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.sys.config
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the appliance has an unsupported PCI slot configuration. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Examine the command-line interface and System Configuration Guide for more information about slot assignments and hardware configuration, and then correct the unsupported configuration. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for SYSTEM CONFIGURATION WARNING
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.sys.config.crit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the appliance has an unsupported PCI slot configuration. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Examine the command-line interface and System Configuration Guide for more information about slot assignments and hardware configuration, and then correct the unsupported configuration. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for SYSTEM CONFIGURATION ERROR
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

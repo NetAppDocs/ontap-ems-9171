@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: spm-ucoreman-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: spm.ucoreman events
+---
+
+= spm.ucoreman events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== spm.ucoreman.process.exit
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Usercore Manager (ucoreman) daemon involuntarily terminates. This daemon is responsible for generating a crash report when an application crashes and dumps core. The crash report helps technical support to diagnose issues with the application. This failure does not affect client access.
+*Corrective Action*::
+The system attempts to recover by restarting the subsystem. If the subsystem does not recover within the threshold number of retries, then an AutoSupport message is sent. If your system is not configured to send AutoSupport messages and the issue persists, call technical support.
+*Syslog Message*::
+Usercore Manager (ucoreman) with ID %d exited as a result of signal %s. The service will attempt to restart.
+*Parameters*::
+*id* (INT): Process identifier.
+*cause* (STRING): Plain text description of why the process exited.

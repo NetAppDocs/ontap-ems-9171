@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sp-autoupd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sp.autoupd events
+---
+
+= sp.autoupd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sp.autoupd.partner.offline
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Service Processor (SP) or baseboard management controller (BMC) firmware automatic update is cancelled because the high-availability (HA) partner node is offline.
+*Corrective Action*::
+Ensure that the HA partner node is online for SP or BMC firmware autoupdate to occur. Use the "cluster show" and "storage failover show" command output to evaluate the state of the HA partner node.
+*Syslog Message*::
+SP autoupdate cancelled because the HA partner node is offline.
+*Parameters*::
+(None).

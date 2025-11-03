@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-badswitchlocal-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.badswitchlocal events
+---
+
+= config.badswitchlocal events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.BadSwitchLocal
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a disk is found to be attached locally, but there are also disks attached via switches. Mixed switch-attached and direct-attached disks are an illegal configuration.
+*Corrective Action*::
+Correct the cabling so that all disks are attached either directly or through switches. Consult the hardware cabling guides at the NetApp technical support site.
+*Syslog Message*::
+Disk %s is attached locally. However, there are also switch attached disks. This is an illegal configuration.
+*Parameters*::
+*disk* (STRING): Name of the disk.

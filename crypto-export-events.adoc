@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: crypto-export-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: crypto.export events
+---
+
+= crypto.export events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== crypto.export.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the export of a cryptographic key fails.
+*Corrective Action*::
+This message might be seen when attempting to create an encrypted volume. Contact NetApp technical support if further attempts to create the encrypted volume fail.
+*Syslog Message*::
+ERROR: Export of key with key ID %s failed. Additional information: %s.
+*Parameters*::
+*key_id* (STRING): Key ID for the cryptographic key.
+*msg* (STRING): Associated failure message.

@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: config-mirroring-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.mirroring events
+---
+
+= config.mirroring events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.mirroring.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the name-service configuration is not replicated in the node. The out-of-sync configuration file can impact access during data access attempts.
+*Corrective Action*::
+Use the "vserver services name-service unix-user load-from-uri" or "vserver services name-service unix-group load-from-uri" command to reload the configuration file. Use the (privilege: advanced) "vserver services name-service unix-user file status" or "vserver services name-service unix-group file status" command to verify that the configuration file was successfully loaded and corresponding database was successfully generated.
+*Syslog Message*::
+Failed getting the latest %s file for Vserver %s on node %s with error %s.
+*Parameters*::
+*configuration* (STRING): Name of the configuration.
+*vserver_name* (STRING): Name of the vserver, for which the configuration was not successfully replicated.
+*node_name* (STRING): Name of the node on which configuration failed to replicate.
+*error_string* (STRING): Error encountered while extracting package.

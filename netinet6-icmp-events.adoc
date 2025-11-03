@@ -1,0 +1,93 @@
+---
+sidebar: sidebar
+permalink: netinet6-icmp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netinet6.icmp events
+---
+
+= netinet6.icmp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netinet6.icmp.chksum
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system receives an Internet Control Message Protocol(ICMP) message, and while processing the ICMP message it finds a checksum error.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ICMP6 checksum error (%d|%x) %s.
+*Parameters*::
+*icmpType* (INT): ICMP header type field.
+*checksum* (INTHEX): Checksum value.
+*ipAddress* (STRING): Printable that is a loggable representation of IP address.
+
+== netinet6.icmp.redirect
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an ICMPv6 redirect message is received. The redirect might be received due to either a misconfigured route or a man-in-the-middle ICMP redirect attack.
+*Corrective Action*::
+When enabled, ICMP redirects can be disabled using the "network tuning icmp6 modify -is-v6-redirect-accepted false" command. However, disabling ICMP redirects might lead to connectivity problems or longer delays of data transfers.
+*Syslog Message*::
+Received %lu ICMPv6 redirect messages for IPspace "%s".
+*Parameters*::
+*no_of_redirects* (LONGINT): Total number of ICMPv6 redirects received for the specific IPspace.
+*ipspace* (STRING): The IPspace for which the redirect packets are received.
+
+== netinet6.icmp.reject.equal
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system rejects a redirect because both router case and on-link destination case are equal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ICMP6 redirect rejected; neither router case nor onlink case: %s.
+*Parameters*::
+*addressBuff* (STRING): Contains IP6 addresses.
+
+== netinet6.icmp.reject.length
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when there is a lladdrlen mismatch for the specified IP6 address.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+icmp6_redirect_input: lladdrlen mismatch for %s (if %d, icmp6 packet %d): %s.
+*Parameters*::
+*ip6address* (STRING): Printable that is a loggable representation of the IP address.
+*mediaAddrlen* (INT): Media address length.
+*lladdrlen* (INT): Address length.
+*addressBuff* (STRING): Contains IP6 addresses.
+
+== netinet6.icmp.reject.link
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system rejects an Internet Control Message Protocol6 (ICMP6) redirect.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ICMP6 redirect sent from %s rejected;It must be from the linklocal address.
+*Parameters*::
+*ipAddress* (STRING): Printable that is a loggable representation of the IP address.
+
+== netinet6.icmp.reject.ndopt
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs because of invalid neighbor discovery options.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+icmp6_redirect_input: Invalid neighbor discovery option, rejected: %s.
+*Parameters*::
+*addressBuff* (STRING): Contains IP6 addresses.

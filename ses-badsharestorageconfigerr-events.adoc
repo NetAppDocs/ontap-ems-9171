@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: ses-badsharestorageconfigerr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ses.badsharestorageconfigerr events
+---
+
+= ses.badsharestorageconfigerr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ses.badShareStorageConfigErr
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a disk shelf module that is not supported in a Shared Storage system, such as an LRC module, is detected in a Shared Storage system.
+*Corrective Action*::
+Replace the unsupported module with one that is supported.
+*Syslog Message*::
+Disk shelf %d on adapter %s has an unsupported module for a Shared Storage configuration.
+*Parameters*::
+*shelf_num* (INT): Disk shelf number the unsupported module is on.
+*ha_name* (STRING): Host adapter on which the disk shelf resides.

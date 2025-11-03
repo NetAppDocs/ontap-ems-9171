@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: vsdr-clone-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsdr.clone events
+---
+
+= vsdr.clone events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsdr.clone.cleanup.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a clone create job fails prematurely. As result, there is a partially created clone in the cluster.
+*Corrective Action*::
+Use the (privilege: diag) "debug vreport show -type volume" command to show the list of inconsistent volumes. For each of these inconsistent volumes, use the (privilege: diag) "debug vreport fix -type volume" command to resolve all of the issues. If this is a SnapMirror(R) or MetroCluster(tm) environment, run the "snapmirror resync" command or the "metrocluster vserver resync" command, respectively, after the inconsistencies are resolved.
+*Syslog Message*::
+Clone create job failed prematurely for volume "%s" (Vserver Id %d). Reason:%s.
+*Parameters*::
+*volume* (STRING): Name of the clone volume for which the create operation failed.
+*vserver_id* (INT): ID of the Vserver that owns the volume.
+*errmsg* (STRING): Error message string.
+
+== vsdr.clone.splitOnSource
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a clone volume is split on the source Vserver in a Vserver DR setup, and a SnapMirror(R) transfer is initiated after this operation.
+*Corrective Action*::
+Run the "volume clone split start" command to split the volume on the dp-destination Vserver. Then run the "volume delete" command to remove the volume from the dp-destination Vserver. Then run the "snapmirror resync" command on the VserverDR relationship.
+*Syslog Message*::
+The volume "%s" of Vserver "%s" has been split on the source Vserver. Split the clone volume on the destination as well. After splitting, delete the volume and execute a "snapmirror resync" command.
+*Parameters*::
+*volume_name* (STRING): Volume clone that needs to be split.
+*vserver_name* (STRING): Vserver name for which the SnapMirror transfer has been initiated.

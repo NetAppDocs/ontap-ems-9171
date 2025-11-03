@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cf-noautogb-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.noautogb events
+---
+
+= cf.noautogb events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.noAutoGB.ptnrLowerVersion
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an automatic giveback operation is cancelled because the high-availability (HA) partner is using an earlier and incompatible Data ONTAP(R) version than the local node. Subsequent failover events might not be successful when HA partners are not using compatible Data ONTAP versions.
+*Corrective Action*::
+Run the "system node image show" command to determine which image on the partner should be booted to be compatible with the local node. After rebooting the node, automatic giveback is performed.
+*Syslog Message*::
+Auto-giveback cancelled because the HA partner is using a lower Data ONTAP version than the local node.
+*Parameters*::
+(None).

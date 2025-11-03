@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: monitor-ioxmtemp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.ioxmtemp events
+---
+
+= monitor.ioxmtemp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.ioxmTemp.warm
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the I/O module is above the recommended operating temperature.
+*Corrective Action*::
+Evaluate the environment in which the system is functioning for proper air flow and temperature control.
+*Syslog Message*::
+I/O expansion module is too warm: %s
+*Parameters*::
+*describe_toowarm* (STRING): Reading and state of the temperature sensors on the I/O expansion module.

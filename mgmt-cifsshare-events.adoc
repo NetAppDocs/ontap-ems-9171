@@ -1,0 +1,57 @@
+---
+sidebar: sidebar
+permalink: mgmt-cifsshare-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmt.cifsshare events
+---
+
+= mgmt.cifsshare events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmt.cifsshare.duplicatesid
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a network client attempts to set a CIFS share's discretionary access control list (DACL) to a list where any security descriptor (SID) appears in more than one access control entry (ACE). The operation is failed and no changes are made to the share's DACL.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Duplicate SID not supported in CIFS share DACL %s
+*Parameters*::
+*vservername* (STRING): Name of the Vserver.
+*cifssharename* (STRING): Name of the CIFS share.
+*sid* (STRING): Textual SID.
+
+== mgmt.cifsshare.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when configuration of a CIFS share fails; CIFS access to the share might not be available.
+*Corrective Action*::
+Check the reason for the error and take action accordingly.
+*Syslog Message*::
+Failed to configure CIFS share. Error: %s.
+*Parameters*::
+*reason* (STRING): Reason for the failure.
+*vservername* (STRING): Name of the vserver.
+*cifsservername* (STRING): Name of the cifs server.
+*cifssharename* (STRING): Name of the cifs share.
+
+== mgmt.cifsshare.success
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a CIFS share is successfully configured after a failure.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*vservername* (STRING): Name of the vserver.
+*cifssharename* (STRING): Name of the cifs share.

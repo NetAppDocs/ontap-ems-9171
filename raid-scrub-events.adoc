@@ -1,0 +1,66 @@
+---
+sidebar: sidebar
+permalink: raid-scrub-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.scrub events
+---
+
+= raid.scrub events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.scrub.failed.to.schedule
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when scrub cannot be scheduled as specified by the "raid.scrub.schedule" option.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failed to schedule scrub as specified by the "raid.scrub.schedule" option. Default scrub schedule is added.
+*Parameters*::
+(None).
+
+== raid.scrub.lw.id.inconsist
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an inconsistent RAID write signature on a RAID stripe during a RAID scrub operation. This inconsistent RAID write signature might be due to a write operation not being successfully committed to disk. Data ONTAP(R) attempts to recover the bad block automatically. It automatically fails this device safely if the device exceeds the allowed number of inconsistent RAID write signature errors on the disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Inconsistent RAID write signature on RAID group %s%s, stripe #%llu, stripe bitmap %llu, during scrub.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*rg* (STRING): Name of the RAID group.
+*stripe* (LONGINT): Stripe number.
+*more_stripes* (LONGINT): Bitmap representing all of the stripes that encountered the lost write error. The bit set in this bitmap gives the stripe number relative to the stripes parameter.
+
+== raid.scrub.suspended
+*Severity*::
+NOTICE
+*Description*::
+This event is issued if automatic/scheduled scrub is suspended on some raid group because of a group state transition.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk scrub suspended.
+*Parameters*::
+(None).
+
+== raid.scrub.suspended.timer
+*Severity*::
+NOTICE
+*Description*::
+This event is issued if automatic/scheduled scrub is suspended on some raid group because the allocated time limit was exceeded.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk scrub suspended because the scrub time limit %d was exceeded. It will resume at the next weekly/scheduled scrub.
+*Parameters*::
+*duration* (INT): Duration (in mins) after which scrub is automatically suspended.

@@ -1,0 +1,119 @@
+---
+sidebar: sidebar
+permalink: wafl-incons-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.incons events
+---
+
+= wafl.incons events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.incons.compr.metadata
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the WAFL(R) kernel detects inconsistent compression metadata for a compression group.
+*Corrective Action*::
+If the snapshot ID (snapid) is 0, the inconsistency is in the active file system and you need to run wafliron. To run wafliron, first find the aggregate the volume belongs to by running the "volume show -volume [ vol_name ]" command. Then enter diag mode by using the "set diagnostic" command, and start wafliron by running the command: "storage aggregate wafliron start -aggregate [ aggr_name ]". If the snapid is not 0, then run the "snapshot show -volume [ vol-name ] -instance" command, and then delete the snapshot whose Snap ID field matches the given snapid.
+*Syslog Message*::
+WAFL inconsistent: bad compression indirect found (level:%u compression group first vbn:%llu) in %s inode (fileid:%d snapid:%u) in volume %s%s%s%s.
+*Parameters*::
+*level* (INT): Metadata level.
+*cg_first_vbn* (LONGINT): First block of the compression group in which the inconsistency was found.
+*ino_type* (STRING): Inode type.
+*fileid* (INT): Identifying number for the suspect inode.
+*snapid* (INT): Snapshot identifier: (0) - active file system (non-zero) - refers to snapshot
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Uniquely identifies the volume in cases where the volume name itself is insufficient.
+
+== wafl.incons.compressed.buf
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the WAFL(R) kernel detects an inconsistent compressed block on a disk.
+*Corrective Action*::
+Use the "volume file show-inode" command with the file ID and volume name information to find the file path. Restore the inconsistent file from the snapshot.
+*Syslog Message*::
+WAFL inconsistent: bad compressed block at VBN %llu (vvbn:%llu fbn:%llu level:%u compression group first vbn:%llu compression group size %d) in %s inode (fileid:%d snapid:%u) in volume %s%s%s%s.
+*Parameters*::
+*vbn* (LONGINT): Volume block number.
+*vvbn* (LONGINT): Virtual block number.
+*fbn* (LONGINT): File block number.
+*level* (INT): Buffer level.
+*cg_first_vbn* (LONGINT): First block of the compression group in which the inconsistency was found.
+*cg_size* (INT): Number of allocated blocks in the compression group.
+*ino_type* (STRING): Inode type.
+*fileid* (INT): Identifying number for the suspect inode.
+*snapid* (INT): Snapshot identifier: (0) - active file system (non-zero) - refers to snapshot
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Uniquely identifies the volume in cases where the volume name itself is insufficient.
+
+== wafl.incons.objslothdr.buf.fixup.required
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when number of inconsistent objslothdr entries are more than threshold on a FabricPool aggregate with unified format enabled.
+*Corrective Action*::
+For further assistance, contact NetApp technical support.
+*Syslog Message*::
+Number of inconsistent objslothdr entriesi(%d) are more than threshold. For further assistance, contact NetApp technical support.
+*Parameters*::
+*invalid_entry_count* (INT): Number of invalid entries present in slothdr metafile.
+*aggregate_name* (STRING): Aggregate name.
+
+== wafl.incons.snap.metadata
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a snapshot or its metadata is found to be inconsistent.
+*Corrective Action*::
+Delete the inconsistent snapshot by using the "volume snapshot delete" command.
+*Syslog Message*::
+WAFL inconsistent: Inconsistent snapshot found in volume %s%s%s%s with snapshot ID %d. Reason: %s.
+*Parameters*::
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*snapid* (INT): Snapshot identifier.
+*reason* (STRING): Reason the snapshot is bad.
+
+== wafl.incons.tlog
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an object cannot be written to the object store due to a corrupted data block within one of the metafiles.
+*Corrective Action*::
+Contact NetApp technical support for further assistance.
+*Syslog Message*::
+Inconsistency found in the staging metafile in FabricPool aggregate %s. Skip writing object to object store due to bad block (pvbn %llu).
+*Parameters*::
+*aggrname* (STRING): Name of the aggregate.
+*pvbn* (LONGINT): Unloadable block number that resulted in skipping a write of the corresponding object to the object store.
+
+== wafl.incons.userdata.vol
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the WAFL(R) kernel discovers an inconsistent volume with bad user data blocks.
+*Corrective Action*::
+The volume has an inconsistent user data block. Use the fileid and volume name information to run the 'inodepath' command. The 'inodepath' command will output the path name for the fileid. Recover the file from a backup. For a SnapMirror(R) target, rebuild from the source or resynchronize. If the block is in a snapshot, delete the snapshot. Then contact NetApp technical support.
+*Syslog Message*::
+WAFL inconsistent: %s %s%s%s%s has an inconsistent user data block. Note: Any new snapshots might contain this inconsistency.
+*Parameters*::
+*type* (STRING): Container type (volume/aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Uniquely identifies the volume in cases where the volume name itself is insufficient.
+*vendor* (STRING): Vendor name.

@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: nblade-vscanbaduserprivaccess-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.vscanbaduserprivaccess events
+---
+
+= nblade.vscanbaduserprivaccess events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.vscanBadUserPrivAccess
+*Severity*::
+ERROR
+*Description*::
+This message occurs during a client attempt to connect to the privileged ONTAP_ADMIN$ share, when the logged-in user of that client is not found in the list of allowed users.
+*Corrective Action*::
+Ensure that the mentioned user name and IP address is configured in one of the active vscan scanner pools. Use the "vserver vscan scanner pool show-active" command to view the currently active scanner pool configuration.
+*Syslog Message*::
+For Vserver "%s", the attempt to connect to the privileged ONTAP_ADMIN$ share by the client "%s" is rejected because its logged-in user "%s" is not configured in any of the Vserver active scanner pools.
+*Parameters*::
+*vserverName* (STRING): Vserver associated with this operation.
+*scannerIp* (STRING): IP address of the client.
+*userName* (STRING): Logged-in user of the client.
+*object_type* (STRING): Type of the resource object under notification.
+*object_uuid* (STRING): UUID of the resource object.

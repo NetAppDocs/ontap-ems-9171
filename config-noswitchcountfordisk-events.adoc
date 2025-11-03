@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-noswitchcountfordisk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.noswitchcountfordisk events
+---
+
+= config.noswitchcountfordisk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.NoSwitchCountForDisk
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an attempt to obtain the switch port count fails because it does not exist.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Unable to obtain switch port count information for disk %s.
+*Parameters*::
+*disk* (STRING): Name of the disk.

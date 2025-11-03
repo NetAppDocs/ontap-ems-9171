@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: lmgr-scrub-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lmgr.scrub events
+---
+
+= lmgr.scrub events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lmgr.scrub.lock.space.error
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the internal scrubbing of Remote Lock Entry Metafile (RLEM) fails due to insufficient storage space.
+*Corrective Action*::
+Run "lmgr scrub_remote_lock <DSID> -multipart true" command from the diagnostic privilege level for scrubbing the Remote Lock Entry Metafile (RLEM) manually.
+*Syslog Message*::
+The system was unable to scrub the Remote Lock Entry Metafile (RLEM) automatically on volume '%s%s%s' (DSID %llu). Please scrub it manually.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name alone is insufficient.
+*volDsid* (LONGINT): Data set identifier (DSID) of the volume.

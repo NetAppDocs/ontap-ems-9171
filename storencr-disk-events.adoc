@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: storencr-disk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: storencr.disk events
+---
+
+= storencr.disk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== storencr.disk.opDone
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a Storage Encryption disk command operation that modifies encrypting drive parameters is completed successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Storage Encryption disk %s operation was completed successfully.
+*Parameters*::
+*operation* (STRING): Name of the operation.

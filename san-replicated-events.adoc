@@ -1,0 +1,47 @@
+---
+sidebar: sidebar
+permalink: san-replicated-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.replicated events
+---
+
+= san.replicated events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.replicated.igroup.map.unreplicated.lun
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an unreplicated LUN becomes mapped to a replicated initiator group.
+*Corrective Action*::
+Configure replication for the mapped, unreplicated LUN.
+*Syslog Message*::
+Unreplicated LUN "%s" was mapped to replicated initiator group "%s" in Vserver %s. This does not automatically enable replication for the LUN.
+*Parameters*::
+*lun_path* (STRING): The path of the mapped, unreplicated LUN.
+*igroup_name* (STRING): The name of the initiator group.
+*vserver_name* (STRING): The Vserver containing the initiator group and LUN.
+*vserver_uuid* (STRING): The UUID of the Vserver.
+*igroup_uuid* (STRING): The UUID of the initiator group.
+
+== san.replicated.igroup.unreplicated.lun
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an unreplicated initiator group becomes replicated but has unreplicated LUNs mapped to it.
+*Corrective Action*::
+Configure replication for the unreplicated LUNs that are mapped to this initiator group.
+*Syslog Message*::
+Initiator group "%s" in Vserver %s became replicated, but it contains unreplicated LUNs "%s". Enabling initiator group replication does not automatically enable replication for LUNs that are mapped to it.
+*Parameters*::
+*igroup_name* (STRING): The name of the initiator group.
+*vserver_name* (STRING): The Vserver containing the initiator group and LUNs.
+*lun_path* (STRING): The paths of the unreplicated LUNs.
+*vserver_uuid* (STRING): The UUID of the Vserver.
+*igroup_uuid* (STRING): The UUID of the initiator group.

@@ -1,0 +1,38 @@
+---
+sidebar: sidebar
+permalink: disk-iomediumerror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.iomediumerror events
+---
+
+= disk.iomediumerror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.ioMediumError
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the drive reports a medium error.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Medium error on disk %s: op %s sector %llu %s - %s %s (%x %x %x %x) (%d) %s
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*op* (STRING): I/O operation being performed.
+*sector* (LONGINT): Sector where the error was detected.
+*senseInfo* (STRING): Sense data.
+*sCode* (STRING): Sector code.
+*disk_info* (STRING): Static description of events on the disk.
+*sense_key* (INTHEX): Actual sense key.
+*sense_code* (INTHEX): Actual sense code.
+*qualifier* (INTHEX): Actual sense code qualifier.
+*fru_failed* (INTHEX): Actual FRU code.
+*CTime* (INT): Time, in milliseconds, from when the command was first issued until this I/O operation completed.
+*disk_information* (STRING): Formatted information about the disk. This includes the disk's vendor, model, firmware revision, and serial number.

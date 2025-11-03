@@ -1,0 +1,64 @@
+---
+sidebar: sidebar
+permalink: repl-holdblock-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.holdblock events
+---
+
+= repl.holdblock events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.holdblock.arrived
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during an incremental transfer when the replica volume did a snapshot restore before the transfer. It records the VVBN of the block which is supposed to be held in memory until the end of transfer as it arrives from the source.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Held block for volume '%s%s%s' (DSID %llu) with VVBN %llu has arrived.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume.
+*volDsid* (LONGINT): Data set identifier (DSID) of the volume.
+*vvbn* (LONGINT): VVBN of the held block.
+
+== repl.holdblock.begin
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs at the beginning of an incremental transfer if the replica volume did a snapshot restore. It records the VVBN of the block that needs to be held in memory until the end of transfer.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Holding block for volume '%s%s%s' (DSID %llu) with VVBN %llu because Revert-to snapshot is set to %d.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume.
+*volDsid* (LONGINT): Data set identifier (DSID) of the volume.
+*vvbn* (LONGINT): VVBN of the block to be held.
+*snapId* (INT): Revert-to snapshot Id.
+
+== repl.holdblock.end
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs at the end of an incremental transfer when the replica volume did a snapshot restore. The required VVBN arrived from the source and has been applied to WAFL.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Applied held block for volume '%s%s%s' (DSID %llu) with VVBN %llu to WAFL.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume.
+*volDsid* (LONGINT): Data set identifier (DSID) of the volume.
+*vvbn* (LONGINT): VVBN of the held block applied to WAFL.

@@ -1,0 +1,52 @@
+---
+sidebar: sidebar
+permalink: sfo-sendhome-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfo.sendhome events
+---
+
+= sfo.sendhome events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfo.sendhome.NoPartnerDisks
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the giveback request fails because there are no disks that belong to the partner.
+*Corrective Action*::
+Use the "storage disk show" command to validate that home information is set correctly on the disks that should belong to the partner.
+*Syslog Message*::
+Giveback request failed because there are no disks to return to the partner.
+*Parameters*::
+(None).
+
+== sfo.sendhome.partnerNoBoot
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Storage Failover giveback process cannot proceed because the partner node did not boot successfully after its root aggregate was sent home. Volumes in the root aggregate are unavailable until you remedy this situation. Other aggregates belonging to the partner remain assigned to this node until you run another "storage failover giveback" command following a successful boot of the partner node.
+*Corrective Action*::
+Look at the partner logs and console output to determine why the node is not booting. Fix the problem, and then reboot the node. After the partner node boots successfully, run the "storage failover giveback" command again to return the remaining aggregates.
+*Syslog Message*::
+The giveback terminated because the partner node (%s) did not boot successfully.
+*Parameters*::
+*partner_name* (STRING): Name of the partner node.
+
+== sfo.sendhome.subsystemAbort
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the specified subsystem aborts the Storage Failover giveback operation for the aggregate.
+*Corrective Action*::
+Check the syslog/EMS output for a subsystem-specific reason for aborting the giveback operation. The corrective action is subsystem-specific and is detailed in the corrective action portion of the message. Follow the corrective action specified by the subsystem and then reissue the 'giveback' command. If you cannot perform the corrective action, then use the 'override-vetoes' option in the 'giveback' command to force the giveback.
+*Syslog Message*::
+The giveback operation of '%s' was aborted by '%s'.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate on which the subsystem attempted the giveback operation.
+*subsystem* (STRING): Name of the subsystem that aborted the giveback operation.

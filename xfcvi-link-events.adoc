@@ -1,0 +1,46 @@
+---
+sidebar: sidebar
+permalink: xfcvi-link-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: xfcvi.link events
+---
+
+= xfcvi.link events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== xfcvi.link.down
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the physical link of the Fibre Channel Virtual Interface (FC-VI) adapter goes down.
+*Corrective Action*::
+1. Ensure that the FC-VI link has not been tampered with. 2. Verify that the physical status of the FC-VI adapter is "Up" by using the command "metrocluster interconnect adapter show". 3. If the configuration includes fabric switches, ensure that they are properly cabled and configured.
+*Syslog Message*::
+(None).
+*Parameters*::
+*alertId* (STRING): Alert ID.
+*alertingResource* (STRING): Alerting resource unique name.
+*alertingResourceName* (STRING): Alerting resource name.
+*possibleEffect* (STRING): Possible effect for link transition.
+*probableCause* (STRING): Probable cause of the event.
+*probableCauseDescription* (STRING): Probable cause description of the event.
+*additionalInfo* (STRING): Any additional information for the event.
+
+== xfcvi.link.up
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the physical link of the Fibre Channel Virtual Interface (FC-VI) adapter comes up.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*alertId* (STRING): Alert ID.
+*alertingResource* (STRING): Alerting resource unique name.

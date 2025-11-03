@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: sms-resync-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sms.resync events
+---
+
+= sms.resync events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sms.resync.attempt.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a resynchronize operation between the source volume and destination volume fails. The SnapMirror(R) Sync relationship is in "out-of-sync" status. Data protection is impacted.
+*Corrective Action*::
+Monitor SnapMirror Sync status using the "snapmirror show" command. If the auto-resync attempts fail, bring the relationship back to "in-sync" status manually by using the "snapmirror resync" command.
+*Syslog Message*::
+Resynchronize operation between source volume "%s" and destination volume "%s" with relationship UUID "%s" has failed. The next auto-resync will be attempted after "%d" mins.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume of the SnapMirror relationship.
+*dstpath* (STRING): Path name of the destination volume of the SnapMirror relationship.
+*relationship_id* (STRING): Relationship UUID.
+*next_resync_interval* (INT): Interval after which the next resync will be attempted.

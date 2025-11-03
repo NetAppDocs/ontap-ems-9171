@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: vol-inconsistent-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vol.inconsistent events
+---
+
+= vol.inconsistent events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vol.inconsistent.modify
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the "vol inconsistent" command is used to modify a volume's state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume %s: 'vol inconsistent' command used to change inconsistent state to '%s'.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*state* (STRING): State of the action "set" or "clear".

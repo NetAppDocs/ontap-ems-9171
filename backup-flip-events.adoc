@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: backup-flip-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: backup.flip events
+---
+
+= backup.flip events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== backup.flip.inodemap
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message is generated while flipping inodemap.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Took %u seconds to flip inodemap.
+*Parameters*::
+*time* (INT): Time in seconds taken to flip inodemap.

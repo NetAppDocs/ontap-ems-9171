@@ -1,0 +1,49 @@
+---
+sidebar: sidebar
+permalink: lsm-merge-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lsm.merge events
+---
+
+= lsm.merge events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lsm.merge.alog.problem
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a block store encounters an error while merging an append log. Normally these merges should recover, but it is important to keep track of exactly when and where the problem happened to help with performance tuning and recovery options.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Block store LSM "%u" (level %u) of keyspace "%u" on volume "%s" has encountered the following error while merging an append log: "%u : %s"
+*Parameters*::
+*lsm_id* (INT): LSM identifier.
+*lsm_level* (INT): LSM level.
+*keyspace_id* (INT): Keyspace identifier.
+*volume_name* (STRING): Volume name.
+*error_code* (INT): Error code.
+*error_string* (STRING): Error string.
+
+== lsm.merge.slog.problem
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a block store encounters an error while merging a sorted log. Normally these merges should recover, but it is important to keep track of exactly when and where the problem happened to help with performance tuning and recovery options.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Block store LSM "%u" (level %u) of keyspace "%u" on volume "%s" has encountered the following error while merging a sorted log: "%u : %s"
+*Parameters*::
+*lsm_id* (INT): LSM identifier.
+*lsm_level* (INT): LSM level.
+*keyspace_id* (INT): Keyspace identifier.
+*volume_name* (STRING): Volume name.
+*error_code* (INT): Error code.
+*error_string* (STRING): Error string.

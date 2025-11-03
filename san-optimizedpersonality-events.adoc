@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: san-optimizedpersonality-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.optimizedpersonality events
+---
+
+= san.optimizedpersonality events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.optimizedPersonality.mismatch
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a mismatch is detected between the san-optimized personality of a node and the cluster.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+The san-optimized value "%s" does not match the san-optimized value of the cluster.
+*Parameters*::
+*san_optimized* (STRING): The san-optimized value for the node.
+*object_type* (STRING): Type of resource object under notification. For this EMS, the object_type will always be NODE.
+*object_uuid* (STRING): UUID of the resource object. For this EMS, the UUID will be of the node.

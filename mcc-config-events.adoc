@@ -1,0 +1,344 @@
+---
+sidebar: sidebar
+permalink: mcc-config-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mcc.config events
+---
+
+= mcc.config events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mcc.config.assignConfigFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the MetroCluster(tm) local node configuration assignment to persistent storage failed.
+*Corrective Action*::
+Contact NetApp technical support for assistance.
+*Syslog Message*::
+(None).
+*Parameters*::
+*error* (STRING): Description of assign config error.
+*nodeID* (STRING): Node UUID.
+*dbladeID* (STRING): Dblade UUID.
+
+== mcc.config.auso.enableIgnore
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an attempt to enable automatic unplanned switchover fails because the capability has been manually disabled by the user or disabled because of a failed switchover or switchback operation.
+*Corrective Action*::
+If you want to keep automatic switchover enabled, enable it using the advanced mode command "metrocluster modify -automatic-switchover-onfailure true".
+*Syslog Message*::
+Failed to enable Automatic Unplanned Switchover because the capability has been manually disabled by the user or disabled because of a failed Switchover or Switchback operation.
+*Parameters*::
+(None).
+
+== mcc.config.auso.stDisabled
+*Severity*::
+ERROR
+*Description*::
+This message occurs when automatic unplanned switchover capability is disabled.
+*Corrective Action*::
+Run the "metrocluster modify -node-name <nodename> -automatic-switchover-onfailure true" command for each node in the cluster to enable automatic switchover.
+*Syslog Message*::
+The state of Automatic Unplanned Switchover capability has been disabled.
+*Parameters*::
+*alertId* (STRING): Identifier for this condition.
+*alertingResource* (STRING): Unique name of the resource responsible for this condition.
+*alertingResourceName* (STRING): Display name of the resource responsible for this condition.
+*possibleEffect* (STRING): Possible effect of the event.
+*probableCause* (STRING): Probable cause of the event.
+*probableCauseDescription* (STRING): Further description of the probable cause.
+*additionalInfo* (STRING): Additional information about this event.
+
+== mcc.config.auso.stEnabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when automatic unplanned switchover capability is enabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The state of Automatic Unplanned Switchover capability has been enabled.
+*Parameters*::
+*alertId* (STRING): Identifier for this condition.
+*alertingResource* (STRING): Unique name of the resource responsible for this condition.
+
+== mcc.config.bootConfigNotRead
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the MetroCluster(tm) configuration cannot be read from persistent storage. This could be because the partner has active reservations on the disk, the root aggregate is not assimilated, or the configuration has not been performed on the system yet. The system will try to retrieve or set the configuration try to retrieve or set the configuration automatically later during boot.
+*Corrective Action*::
+If the problem persists, contact NetApp technical support for assistance in resolving this issue.
+*Syslog Message*::
+Configuration could not be read from persistent storage due to internal error %s. The system will try to retrieve or set the configuration automatically later, during boot.
+*Parameters*::
+*error* (STRING): Actual error that caused configuration read to fail.
+
+== mcc.config.checkPartnerError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an error is found during a MetroCluster(tm) configuration check. The checks include partner operational status and valid disaster recovery (DR) group configurations.
+*Corrective Action*::
+Make sure that all of the nodes are online and healthy by running the "cluster show" command and verifying that the "Health" and "Eligibility" fields displayed as true. Check the switch and controller configuration and make sure that all of the controllers in the DR group and HA/DR Interconnect ports are properly connected for DR group communication.
+*Syslog Message*::
+(None).
+*Parameters*::
+*partner_names* (STRING): List of disaster recovery partner names.
+*error* (STRING): Description of the error that occurred.
+
+== mcc.config.disableDrMirror
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when NVlog mirroring to the disaster recovery(DR) partners gets disabled persistently in a MetroCluster(tm) configuration.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*reason* (STRING): Reason the disaster recovery (DR) NVlog mirroring is disabled persistently.
+
+== mcc.config.disableMirrorMem
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when NVlog mirroring to the disaster recovery(DR) partners gets disabled in a MetroCluster(tm) configuration.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*reason* (STRING): Reason the DR NVlog mirroring is disabled in memory.
+
+== mcc.config.drPartner.mbxFail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a node in a 2-node MetroCluster(tm) configuration fails to access it's DR partner's mailbox. This may impact automatic unplanned switchover.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Read of DR partner's mailbox failed with error (%d).
+*Parameters*::
+*err* (INT): Error returned from mailbox access.
+
+== mcc.config.drPartner.mbxRead
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a node in 2-node MetroCluster(tm) configuration is successfully able to access it's DR partner's mailbox.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Read of DR partner's mailbox successful.
+*Parameters*::
+(None).
+
+== mcc.config.enableDrMirror
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when NVlog mirroring to the disaster recovery(DR) partners gets persistently enabled in a MetroCluster(tm) configuration.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).
+
+== mcc.config.enableMirrorMem
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when NVlog mirroring to the disaster recovery(DR) partners gets enabled in a MetroCluster(tm) configuration.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).
+
+== mcc.config.headswapComplete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when headswap update completes successfully on a node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).
+
+== mcc.config.headswapMsgSent
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a headswap HA message is successfully sent to a partner node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*role* (INT): Role of the node.
+
+== mcc.config.headswapNoNotify
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the MetroCluster(tm) node cannot communicate with one or more of its partners after a headswap. In a MetroCluster configuration, partners need to be informed of the old and new system ID of the local node through an HA message, so that they use the correct partner system ID during disaster recovery(DR) operations. Data ONTAP(R) takes appropriate recovery actions.
+*Corrective Action*::
+Other than making sure that all of the partners are online, there is no explicit user intervention required; the node automatically retries the operation at regularly scheduled intervals (every 30 seconds).
+*Syslog Message*::
+Local node system ID changed from %d to %d. Local node could not inform its HA or DR partner node of this change due to error %s.
+*Parameters*::
+*old_system_id* (INT): Old system ID of the node.
+*new_system_id* (INT): New system ID of the node.
+*error* (STRING): Internal error description identifying the reason for the failure.
+
+== mcc.config.headswapPartnerEr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the partner returns a failure during a MetroCluster(tm) headswap configuration update. This can be due to configuration mismatches on the remote partner, disk ownership reassignment failure, or persistent storage write failure.
+*Corrective Action*::
+This could potentially be because the partner that failed was not fully functional or was operating in a degraded state. Make sure that the partner is online by issuing the "metrocluster show" and the "metrocluster node show" command. The partner configuration update will be retried at regular intervals automatically. In case of other configuration mismatch failure, check the relevant subsystem cited in the error and run the "disk show" command to examine the disk state. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Partner %s failed to update configuration due to error %s.
+*Parameters*::
+*partner* (STRING): Name of the partner node.
+*error* (STRING): Error description returned by the partner.
+
+== mcc.config.headswapRevert
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the receiver of a headswap HA message detects that the old head was brought back in before headswap processing completed. The receiver will undo any nvram id update it had processed earlier.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*old_sys_id* (INT): Old system id received from the HA message
+*new_sys_id* (INT): New system id received from the HA message
+
+== mcc.config.locHeadswapDetect
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a headswap is detected on the local node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*old_system_id* (INT): Old system ID of the node.
+*new_system_id* (INT): New system ID of the node.
+
+== mcc.config.restoreFailure
+*Severity*::
+NOTICE
+*Description*::
+Error returned while recovering the Configuration.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+MetroCluster configuration was not restored from persistent source because of reason :%d.
+*Parameters*::
+*err* (INT): Error returned while recovering the mailbox.
+
+== mcc.config.restoreSuccessful
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the MetroCluster(tm) configuration is successfully restored from an alternate persistent configuration source.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+MetroCluster configuration was successfully restored from persistent source %s.
+*Parameters*::
+*source* (STRING): Source from which the MetroCluster configuration was retrieved.
+
+== mcc.config.selfNodeInvalid
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the local node UUID and the node UUID returned by the Connectivity, Liveness, Availability Monitor (CLAM) do not match. This is a configuration error and can result in failures during disaster recovery operations.
+*Corrective Action*::
+Contact NetApp technical support for assistance.
+*Syslog Message*::
+Configuration error: Local node UUID and the node UUID reported by CLAM do not match.
+*Parameters*::
+*local_node_uuid* (STRING): Local node UUID.
+*clam_node_uuid* (STRING): Node UUID returned by the CLAM.
+
+== mcc.config.sysidNoNotify
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the local node is unable to notify its HA or DR partners of its system ID after a reboot.
+*Corrective Action*::
+Verify that the HA or DR partner node is healthy and can be reached over the intercluster network.
+*Syslog Message*::
+The node could not notify its nvram system id to partner %s. Error: %s.
+*Parameters*::
+*partner* (STRING): Name of the partner node.
+*error* (STRING): Error description.
+
+== mcc.config.teardown
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message is generated whenever CTRL connections to MetroCluster(tm) partners are torn down.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*reason* (STRING): Reason for tearing down the CTRL connections.
+
+== mcc.config.update.role
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message is generated whenever the roles of CTRL connections to MetroCluster(tm) partners are updated.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*reason* (STRING): Reason for updating the role of the CTRL connections.
+
+== mcc.config.vso.disabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the "vserver configuration override" command is disabled for MetroCluster over IP after controller replacement operations are completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+MetroCluster over IP Vserver configuration override is disabled.
+*Parameters*::
+(None).
+
+== mcc.config.vso.enabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the "vserver configuration override" command is enabled for MetroCluster over IP controller replacement operations.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+MetroCluster over IP Vserver configuration override is enabled.
+*Parameters*::
+(None).

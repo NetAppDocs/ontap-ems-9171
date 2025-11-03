@@ -1,0 +1,103 @@
+---
+sidebar: sidebar
+permalink: tape-config-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: tape.config events
+---
+
+= tape.config events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== tape.config.badKey
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the tape configuration file has a format error in a required parameter or is missing a required parameter. The error prevents the file from being used to specify parameters for the tape drive. Data ONTAP(R) examines tape configuration files in the storage controller's /etc/tape_config (7-Mode) or /mroot/etc/tape_config (Cluster-Mode) directory to dynamically qualify devices that are not part of the Data ONTAP image. This error can occur if a configuration file is altered, an action that is not recommended.
+*Corrective Action*::
+Recover the original file from a backup file or Snapshot(tm) copy, if possible. A copy of the file might be available from NetApp Support, although not all tape configuration files are made available there.
+*Syslog Message*::
+Required key (%s) is missing or badly formatted in tape configuration file %s.
+*Parameters*::
+*badKey* (STRING): Required parameter.
+*configFile* (STRING): Name of the file with the error.
+
+== tape.config.badOpt
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when Data ONTAP(R) detects an incorrect format on an option key in a tape configuration file. Data ONTAP will use a default setting for this key. This message can occur if a configuration file is altered, an action that is not recommended. This condition does not prevent the use of the specified tape device. Data ONTAP examines tape configuration files in the storage controller's /etc/tape_config (7-Mode) or /mroot/etc/tape_config (Cluster-Mode) directory to dynamically qualify devices that are not part of the Data ONTAP image.
+*Corrective Action*::
+Recover the original file from a backup file or Snapshot(tm) copy, if possible. A copy of the file might be available from NetApp Support, although not all tape configuration files are made available there.
+*Syslog Message*::
+Option key %s is absent or badly formatted in tape configuration file %s. Default %s will be used.
+*Parameters*::
+*badOptKey* (STRING): Absent or badly formatted option keys.
+*configFile* (STRING): Name of the file with the incorrect or absent option key.
+*defaultOpt* (STRING): Default values used in place of the option keys.
+
+== tape.config.fmtChkFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a tape configuration file has a format error in a parameter that prevents use of the tape drive that the file specifies. This error can occur if a configuration file is altered, an action that is not recommended. Additional messages detail the missing or badly formatted keys. Data ONTAP(R) examines tape configuration files in the storage controller's /etc/tape_config (7-Mode) or /mroot/etc/tape_config (Cluster-Mode) directory to dynamically qualify devices that are not part of the Data ONTAP image.
+*Corrective Action*::
+Recover the original file from a backup file or Snapshot(tm) copy, if possible. A copy of the file might be available from NetApp Support, although not all tape configuration files are made available there.
+*Syslog Message*::
+Tape configuration file %s has missing or badly formatted required keys. Format check has failed.
+*Parameters*::
+*configFile* (STRING): Name of the file with the error.
+
+== tape.config.fmtErrKey
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the file has a parameter format error in a tape configuration file that prevents the file from being used to specify tape drive parameters. Data ONTAP(R) examines tape configuration files in the storage controller's /etc/tape_config (7-Mode) or /mroot/etc/tape_config (Cluster-Mode) directory to dynamically qualify devices that are not part of the Data ONTAP image. This error can occur if a configuration file is altered, an action that is not recommended.
+*Corrective Action*::
+Recover the original file from a backup file or Snapshot(tm) copy, if possible. A copy of the file might be available from NetApp Support, although not all tape configuration files are made available there.
+*Syslog Message*::
+Tape configuration file %s has a format error in the information appended to key %s.
+*Parameters*::
+*configFile* (STRING): Name of the file with the error.
+*line* (STRING): Line containing the error.
+
+== tape.config.infoExist
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the information in a tape configuration file specifies a tape drive that Data ONTAP(R) already has parameters for. This error can occur if duplicate or multiple files for the same device are in the /etc/tape_config (7-Mode) or /mroot/etc/tape_config (Cluster-Mode) directory. Data ONTAP examines files in the storage controller's tape_config directory to dynamically qualify devices that are not part of the Data ONTAP image.
+*Corrective Action*::
+Remove any duplicates. If the device appears in the output of the "storage show tape supported" (7-Mode or Cluster-Mode nodeshell) command without the notation "(Dynamically qualified)", then Data ONTAP contains this information internally, and the file should be removed from the directory. This file might have been left over from a previous Data ONTAP release that did not have internal information for the device.
+*Syslog Message*::
+Tape device information already exists. Dynamic tape configuration file %s not used. Tape product ID already qualified.
+*Parameters*::
+*configFile* (STRING): Name of the file with the extra or duplicate information.
+
+== tape.config.maxFilesExceeded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the maximum number of tape configuration files that Data ONTAP(R) will examine has been exceeded. Data ONTAP examines files in the storage controller's /etc/tape_config (7-Mode) or /mroot/etc/tape_config (Cluster-Mode) directory to dynamically qualify devices that are not part of the Data ONTAP image. This error might be caused by the addition of tape configuration files retrieved from the NetApp Support site, or by user attempts to create configuration files.
+*Corrective Action*::
+Remove any files that might be duplicates, and remove any user-created files.
+*Syslog Message*::
+The maximum number of Dynamic Tape Qualification configuration files (%d) has been exceeded.
+*Parameters*::
+*maxFiles* (INT): Maximum number of dynamic qualification files allowed.
+
+== tape.config.openFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) cannot open a file in the tape configuration directory. Data ONTAP examines files in the storage controller's /etc/tape_config (7-Mode) or /mroot/etc/tape_config (Cluster-Mode) directory to dynamically qualify devices that are not part of the Data ONTAP image.
+*Corrective Action*::
+This error might be a temporary condition. If any files in the /etc/tape_config (7-Mode) or /mroot/etc/tape_config (Cluster-Mode) directory are opened by an editor or viewer, close them. Data ONTAP will try to open the file again for qualification when a tape operation is attempted.
+*Syslog Message*::
+Failed to open tape configuration input file %s.
+*Parameters*::
+*configFile* (STRING): File that could not be opened.

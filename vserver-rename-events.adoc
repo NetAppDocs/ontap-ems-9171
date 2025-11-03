@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: vserver-rename-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vserver.rename events
+---
+
+= vserver.rename events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vserver.rename.fail.peer
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the "vserver rename" command fails to update the peer Vserver name on the peer cluster in a Vserver peer relationship.
+*Corrective Action*::
+Use the (privilege: advanced) "vserver peer repair-peer-name" command in the local cluster to update the peer Vserver name in the Vserver peer relationships present on the peer cluster.
+*Syslog Message*::
+Failed to update new peer Vserver %s name on peer cluster %s.
+*Parameters*::
+*vserver_name* (STRING): Vserver name that caused the update attempt to fail.
+*peer_cluster* (STRING): Peer cluster name.

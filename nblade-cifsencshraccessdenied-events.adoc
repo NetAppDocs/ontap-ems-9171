@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: nblade-cifsencshraccessdenied-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.cifsencshraccessdenied events
+---
+
+= nblade.cifsencshraccessdenied events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.cifsEncShrAccessDenied
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a client not capable of SMB encryption tries to connect to a CIFS share that requires SMB encryption.
+*Corrective Action*::
+Either ensure that the client is capable of SMB encryption or disable SMB encryption on the CIFS share.
+*Syslog Message*::
+Client (IP: %s, Vserver: %d) could not connect to CIFS share "%s" because SMB encryption is required.
+*Parameters*::
+*IpAddress* (STRING): IP address of the client from which Share Connect requests are being attempted.
+*vserverId* (INT): Identifier of the Vserver associated with this operation.
+*shareName* (STRING): Name of the share to which the client is connecting.

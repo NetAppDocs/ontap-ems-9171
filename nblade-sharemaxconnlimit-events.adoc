@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: nblade-sharemaxconnlimit-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.sharemaxconnlimit events
+---
+
+= nblade.sharemaxconnlimit events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.shareMaxConnLimit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a CIFS share exceeds its maximum configured connection limit.
+*Corrective Action*::
+Increase the "max-connections-per-share" limit using "vserver cifs share modify" command.
+*Syslog Message*::
+CIFS share: %s of Vserver: %s hit its maximum connection limit.
+*Parameters*::
+*shareName* (STRING): Name of the CIFS share that the user attempted to connect.
+*vserverName* (STRING): Name for the Vserver associated with this operation.

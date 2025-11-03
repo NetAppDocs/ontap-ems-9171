@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cecc_log-dropped-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cecc_log.dropped events
+---
+
+= cecc_log.dropped events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cecc_log.dropped
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the ECC error logger dropped some correctable ECC errors without logging them. Typically, correctable ECC errors are logged in the system even though they are automatically corrected. They are dropped due to lack of buffer space in the ECC error logger. This might be a sign of high frequency of ECC errors. If the number of ECC errors dropped crosses a certain predefined threshold, the ECC error logger issues a cecc_log.masked message.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Dropped %lld additional correctable ECC error details.
+*Parameters*::
+*num_cecc_batch_dropped* (LONGINT): Number of correctable ECC errors dropped without being logged.

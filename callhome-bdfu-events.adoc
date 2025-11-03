@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-bdfu-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.bdfu events
+---
+
+= callhome.bdfu events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.bdfu.suspended
+*Severity*::
+ALERT
+*Description*::
+This message occurs when drive unlock fails for firmware download on a FIPS-certified NetApp Storage Encryption SAS drive.
+*Corrective Action*::
+Contact NetApp technical support for assistance with restoring valid authentication keys on the disk.
+*Syslog Message*::
+Call home for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

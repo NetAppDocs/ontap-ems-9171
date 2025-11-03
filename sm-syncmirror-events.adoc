@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: sm-syncmirror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sm.syncmirror events
+---
+
+= sm.syncmirror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sm.syncmirror.out.of.sync
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a sync granular CG relationship transitions from in-sync status to out-of-sync status.
+*Corrective Action*::
+Verify network connections between the primary cluster and the secondary cluster. Check for error information in the "snapmirror show" command output for the relationship. Quiesce the relationship if the condition cannot be addressed immediately.
+*Syslog Message*::
+Sync granular CG relationship with source path %s and destination path %s has transitioned from in-sync to out-of-sync for the follow reason: %s.
+*Parameters*::
+*src_path* (STRING): Source path of the sync granular CG relationship that transitioned from in-sync to out-of-sync.
+*dst_path* (STRING): Destination path of the sync granular CG relationship that transitioned from in-sync to out-of-sync.
+*reason* (STRING): Reason that the relationship went out-of-sync.

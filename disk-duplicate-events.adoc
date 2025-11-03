@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: disk-duplicate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.duplicate events
+---
+
+= disk.duplicate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.duplicate.name
+*Severity*::
+ERROR
+*Description*::
+This message occurs when duplicate disk names are detected. This can be caused by corruption of the disk's shelf id or bay number or failure to determine the stack id. There is no known impact to functional systems, but failure to correct this error may result in operations taken on the wrong disk and ambiguity where the disks are referenced.
+*Corrective Action*::
+If any disk reports a shelf id or bay number not corresponding to its physical location, choose one of the following options: 1. Perform a takeover and giveback of the affected systems. 2. Remove the disk for at least 20 seconds, and then reinsert it. Note: If the disk is part of an aggregate, this option will result in a degraded RAID group and disk reconstruction will be initiated. Otherwise: 1. Verify cabling. 2. Contact NetApp technical support.
+*Syslog Message*::
+Multiple disks detected with the same name %s. Disks: %s (%s).
+*Parameters*::
+*disk_name* (STRING): Name of the disks.
+*disk_uid_list* (STRING): UIDs of disks with the same name.
+*disk_serialno_list* (STRING): Serial numbers of disks with the same name.

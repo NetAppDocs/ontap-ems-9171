@@ -1,0 +1,34 @@
+---
+sidebar: sidebar
+permalink: disk-cksum-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.cksum events
+---
+
+= disk.cksum events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.cksum.bno.verifyFailed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects a block number mismatch during disk checksum verification. The expected Virtual Block Number (VBN)/Disk Block Number (DBN) is not the same as the stored VBN/DBN from the checksum entry, indicating that the block is read from the wrong location.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Block number mismatch on WRITE VERIFY: Disk %s, expected_dbn = %u, stored_dbn = %u, expected_vbn = %llu, stored_vbn = %llu, Volume %s, FileId %d, Block #%llu.
+*Parameters*::
+*diskName* (STRING): Name of the device.
+*expected_dbn* (INT): Expected physical disk block number.
+*stored_dbn* (INT): Physical disk block number stored in the checksum entry.
+*expected_vbn* (LONGINT): Expected volume block number.
+*stored_vbn* (LONGINT): Volume block number stored in the checksum entry.
+*vol* (STRING): Volume name.
+*fileid* (INT): File ID.
+*block* (LONGINT): File block ID.

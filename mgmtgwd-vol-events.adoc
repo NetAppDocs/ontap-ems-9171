@@ -1,0 +1,53 @@
+---
+sidebar: sidebar
+permalink: mgmtgwd-vol-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmtgwd.vol events
+---
+
+= mgmtgwd.vol events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmtgwd.vol.upgrade.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when one of the volume upgrade tasks fails. When any upgrade task fails, the volume upgrade is aborted and no other upgrade tasks are run for the volume at this point.
+*Corrective Action*::
+Trigger the mhost upgrade tasks manually using the advanced privilege "volume upgrade-tasks run -vserver [vserver_name] -volume [volume_name]" command.
+*Syslog Message*::
+Upgrade task %d (%s) has failed on volume "%s".
+*Parameters*::
+*task_id* (INT): Task identifier of the specific upgrade task that failed on the volume.
+*task_description* (STRING): Task description of the specific upgrade task that failed on the volume.
+*vol_uuid* (STRING): Volume UUID.
+
+== mgmtgwd.vol.upgrade.started
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a volume with a filesystem version representing an earlier ONTAP release is brought online. When this occurs, the volume's filesystem is automatically upgraded to the current ONTAP release. This message marks the start of any upgrade workflows that are required in response to these filesystem updates.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Upgrade has started for volume "%s".
+*Parameters*::
+*vol_uuid* (STRING): Volume UUID.
+
+== mgmtgwd.vol.upgrade.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when all the upgrade tasks for this volume completed successfully. This indicates that all of the necessary upgrade tasks for a volume that was offline prior to the last system level upgrade have run successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Upgrade has completed successfully for volume "%s".
+*Parameters*::
+*vol_uuid* (STRING): Volume UUID.

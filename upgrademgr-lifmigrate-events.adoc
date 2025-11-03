@@ -1,0 +1,54 @@
+---
+sidebar: sidebar
+permalink: upgrademgr-lifmigrate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: upgrademgr.lifmigrate events
+---
+
+= upgrademgr.lifmigrate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== upgrademgr.LIFmigrate.end
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an ONTAP automated nondisruptive upgrade (ANDU) of ONTAP finishes the data LIF migration or failover stage.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ANDU in "%s" mode finishes the LIF migration. Result: %s.
+*Parameters*::
+*mode* (STRING): ONTAP ANDU is selecting nodes based on the "batch" or "rolling" upgrade mode.
+*result* (STRING): Result of the LIF migrations - "Success" or "Failure".
+
+== upgrademgr.LIFmigrate.sfo
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during an ONTAP automated nondisruptive upgrade (ANDU) of ONTAP in batch mode when a LIF migrated to the storage failover (SFO) partner rather than a destination node in another batch. This migration occurs because the selected destination node does not have network ports in the required broadcast domains.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LIF "%s" from node "%s" is migrated to SFO partner node "%s".
+*Parameters*::
+*lif_name* (STRING): LIF being migrated.
+*source_node* (STRING): Starting node of the LIF being migrated.
+*target_node* (STRING): Target node of the LIF being migrated.
+
+== upgrademgr.LIFmigrate.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an ONTAP automated nondisruptive upgrade (ANDU) of ONTAP starts the data LIF migration or failover stage.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ANDU in "%s" mode starts data LIF migrations.
+*Parameters*::
+*mode* (STRING): ONTAP ANDU selects nodes to migrate or failover data LIFs based on the "batch" or "rolling" upgrade mode.

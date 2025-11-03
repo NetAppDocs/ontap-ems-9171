@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: recover-abort-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: recover.abort events
+---
+
+= recover.abort events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== recover.abort.ROOLR
+*Severity*::
+NOTICE
+*Description*::
+This event is generated when restore has been aborted and currently ROOLR (Read Only On Line Replica) is running on the Filer. This might be because of the user terminating restore or might be because of bad tape device
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The abort event, %s, is just notified.
+*Parameters*::
+*errmsg* (STRING): The error message is notified
+
+== recover.abort.STSP
+*Severity*::
+NOTICE
+*Description*::
+This event is generated when a recover has been aborted which was started by VERITAS NBU STSP Protocol. This might be because of the user terminating restore or might be because of bad tape device
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The abort event, %s, is just notified.
+*Parameters*::
+*errmsg* (STRING): The error message is notified

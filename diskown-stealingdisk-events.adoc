@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: diskown-stealingdisk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.stealingdisk events
+---
+
+= diskown.stealingdisk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.StealingDisk
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a user reassigns a disk that is owned and has a reservation from another system.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Ownership for disk %s (S/N %s) is being stolen from node "%s" (System ID: %u).
+*Parameters*::
+*diskname* (STRING): Name of the disk whose ownership is being reassigned.
+*serialno* (STRING): Serial number of the disk.
+*hostname* (STRING): Name of the host that currently owns the disk.
+*systemid* (INT): System ID of the host that currently owns the disk.
+*thread* (STRING): Name of the thread that issued the ownership change request.
+*APIname* (STRING): Name of the API that issued the ownership change request.

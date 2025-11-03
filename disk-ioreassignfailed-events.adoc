@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: disk-ioreassignfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.ioreassignfailed events
+---
+
+= disk.ioreassignfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.ioReassignFailed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a disk reports a medium error and the sector reassignment fails. The system will fail the disk after possible recovery of retrieviable disk data.
+*Corrective Action*::
+Replace the disk when the system indicates that you should remove it in subsequent logged events.
+*Syslog Message*::
+disk %s: sector %llu failed to be reassigned (%d). %s
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*sector* (LONGINT): Sector where the error was detected.
+*ETime* (INT): Time, in milliseconds, from when the command was first issued until this I/O operation failed.
+*disk_information* (STRING): Formatted information about the disk. This includes the disk's vendor, model, firmware revision, and serial number.

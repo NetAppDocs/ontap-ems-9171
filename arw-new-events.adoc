@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: arw-new-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: arw.new events
+---
+
+= arw.new events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== arw.new.file.extn.seen
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a new file extension is observed in anti-ransomware enabled volume. Its purpose is to promptly notify about the extension seen and enabling timely investigation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A new file-extension "%s" is observed on volume "%s" (UUID: "%s") in SVM "%s" (UUID: "%s") at "%s".
+*Parameters*::
+*fileExtension* (STRING): Name of the File-Extension seen.
+*volumeName* (STRING): Name of the volume.
+*volumeUuid* (STRING): UUID of the Volume.
+*vserverName* (STRING): Name of the SVM.
+*vserverUuid* (STRING): UUID of the SVM.
+*time* (STRING): Time when new extension is seen.

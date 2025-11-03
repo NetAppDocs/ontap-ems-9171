@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: sfu-firmwaredownrev-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfu.firmwaredownrev events
+---
+
+= sfu.firmwaredownrev events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfu.firmwareDownrev
+*Severity*::
+ERROR
+*Description*::
+This message occurs when disk shelf firmware is downrev and therefore cannot be updated automatically. Before updating the disk shelf firmware, always check the NetApp Support Site for the latest disk shelf firmware available: http://support.netapp.com/NOW/download/tools/diskshelf/.
+*Corrective Action*::
+Copy updated disk shelf firmware into the /etc/shelf_fw directory on the storage appliance and then manually issue the (advanced privilege) "storage shelf firmware update" command.
+*Syslog Message*::
+Disk shelf firmware needs to be updated on %d disk %s.
+*Parameters*::
+*downrevShelves* (INT): Number of shelves in the system that are downrev.
+*pluralShelf* (STRING): Shelf or Shelves.
+
+== sfu.firmwareDownrev.shelf
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the disk shelf is running downrev firmware, and a later version is available in the /etc/shelf_fw directory. The shelf cannot be updated automatically, possibly because the automatic shelf firmware update is disabled.
+*Corrective Action*::
+Use the "options shelf.fw.auto.update" command to check whether the automatic shelf firmware update is off. Manually issue the (advanced privilege) "storage shelf firmware update" command if the background update is disabled.
+*Syslog Message*::
+Shelf %s has downrev firmware.
+*Parameters*::
+*ShelfId* (STRING): Shelf that is running downrev firmware.

@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: gpo-security-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: gpo.security events
+---
+
+= gpo.security events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== gpo.security.unrecogFileForm
+*Severity*::
+ERROR
+*Description*::
+This event occurs when the GptTmpl.inf file is not in UNICODE (16 bit)format.
+*Corrective Action*::
+Ensure the security file GptTmpl.inf is in UNICODE 16bit format.
+*Syslog Message*::
+Security file is not unicoded.
+*Parameters*::
+*filename* (STRING): The security filename.
+
+== gpo.security.unrecogTemplate
+*Severity*::
+ERROR
+*Description*::
+This event occurs when the system fails to recognize the security template.
+*Corrective Action*::
+Ensure the security file GptTmpl.inf has the correct header.
+*Syslog Message*::
+Unable to recognize the security template.
+*Parameters*::
+(None).

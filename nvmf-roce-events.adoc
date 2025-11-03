@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nvmf-roce-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvmf.roce events
+---
+
+= nvmf.roce events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvmf.roce.lif.create.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there was an internal error while creating a NVMe over RoCE logical network interface (LIF).
+*Corrective Action*::
+To recover from this condition, use the "network interface modify" command to change the status-admin of the LIF to "down" and then back to "up" again.
+*Syslog Message*::
+NVMe/RoCE LIF "%s" create operation failed because of an internal error.
+*Parameters*::
+*lifname* (STRING): Name of the NVMe/RoCE LIF that encountered the failure.

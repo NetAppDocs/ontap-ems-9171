@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: coredump-shutdown-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: coredump.shutdown events
+---
+
+= coredump.shutdown events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== coredump.shutdown.trace
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a core is about to be generated. Durations of various activities at that time are reported.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+coredump shutdown times: kmod dumper start %llu, panic_info set %llu, sf_dumpcore sent %llu, sparecore id sent %llu, fmot_outage info sent %llu, disk_dump_start done %llu, coredump begin %llu (all in msec).
+*Parameters*::
+*kmodDumperStartTime* (LONGINT): Duration from panic start to dump processing start, in milliseconds.
+*panicInfoTime* (LONGINT): Duration until panic information is collected, in milliseconds.
+*sfDumpcoreSentTime* (LONGINT): Duration until SF_DUMPCORE state is sent over the interconnect, in milliseconds.
+*sparecoreSentTime* (LONGINT): Duration for sending the sparecore ID over the interconnect, in milliseconds.
+*fmotOutageSentTime* (LONGINT): Duration for sending FMOT (Failover Monitor Outage Tracker) Outage information over the interconnect, in milliseconds.
+*diskDumpStartTime* (LONGINT): Duration until disk dump start stage, in milliseconds.
+*coredumpBeginTime* (LONGINT): Duration until the start of the actual core dump, in milliseconds.

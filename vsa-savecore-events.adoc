@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: vsa-savecore-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsa.savecore events
+---
+
+= vsa.savecore events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsa.savecore.nospace
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the savecore tool determines that the space available is not sufficient for storing the core image from a dump device to a readable core file in the /etc/crash directory.
+*Corrective Action*::
+Try performing the following steps to make sufficient room in root volume: Delete old or unneeded core files by using the "coredump delete" command. Delete old or unneeded core file segments by using the "coredump segment delete" command. Delete any Snapshot(R) copies that include the deleted files. Adjust minimum free space on the root file system by using "coredump config modify" command. Once there is sufficient room, take the following steps to save the cores: To save all core files using "coredump save-all" command, run the "coredump status -instance" command and ensure that "Space Available On Internal Filesystem" is greater than "Space Needed to Save All Unsaved Cores" plus "Minimum Free Bytes on Root Filesystem". To save a specific core file, run the "coredump save" command, when available space of "Space Needed To Save Core" (from the "coredump show" command) plus "Minimum Free Bytes on Root Filesystem" is sufficient.
+*Syslog Message*::
+Available space (%llu %dKB blocks) is not enough to save the core image (requires up to %llu blocks) and maintain the minimum free space of %llu blocks.
+*Parameters*::
+*avail* (LONGINT): Number of blocks available for saving the core image.
+*blocksize* (INT): Block size in kilobytes.
+*needed* (LONGINT): Number of blocks needed for saving the core image.
+*minfree* (LONGINT): Number of blocks reserved for normal system operation.

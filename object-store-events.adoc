@@ -1,0 +1,221 @@
+---
+sidebar: sidebar
+permalink: object-store-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: object.store events
+---
+
+= object.store events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== object.store.available
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the node can connect to the object store again after an "object.store.unavailable" error.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Able to connect to the object store "%s" from node %s.
+*Parameters*::
+*configname* (STRING): Object store configuration name.
+*node_uuid* (STRING): UUID of the node.
+
+== object.store.c2s.clock.ahead
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the cluster has a Commercial Cloud Services (C2S) object store configured, and the clock on a node is skewed forward more than the maximum allowed number of minutes.
+*Corrective Action*::
+Correct the clock on a node by using the "date" command. Make sure that the nodes sync their clocks through the NTP service by using the "cluster time-service ntp" commands. If the condition persists, contact NetApp technical support.
+*Syslog Message*::
+The clock on node "%s" is ahead by more than the maximum of %d minutes. Current skew is %d:%d minutes.
+*Parameters*::
+*node_uuid* (STRING): UUID of the node.
+*max_allowed_skew_minutes* (INT): Maximum allowed number of minutes by which the clock on a node can be skewed forward.
+*clock_skew_minutes* (INT): Number of minutes by which the clock on a node is skewed forward.
+*clock_skew_seconds* (INT): Number of seconds by which the clock on a node is skewed forward.
+
+== object.store.c2s.clock.late
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the cluster has a Commercial Cloud Services (C2S) object store configured, and the clock on a node is skewed backwards more than the maximum allowed number of minutes. Data in the C2S object store might become inaccessible for some time because the node might not update expired temporary credentials on time.
+*Corrective Action*::
+Correct the clock on a node by using the "date" command. Make sure that the nodes synchronize their clocks through the NTP service by using the "cluster time-service ntp" commands. If the condition persists, contact NetApp technical support.
+*Syslog Message*::
+The clock on node "%s" is behind by more than the maximum of %d minutes. Current skew is %d:%d minutes.
+*Parameters*::
+*node_uuid* (STRING): UUID of the node.
+*max_allowed_skew_minutes* (INT): Maximum allowed number of minutes by which the clock on a node can be skewed backwards.
+*clock_skew_minutes* (INT): Number of minutes by which the clock on a node is skewed backwards.
+*clock_skew_seconds* (INT): Number of seconds by which the clock on a node is skewed backwards.
+
+== object.store.c2s.notupdated
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the node fails to update temporary credentials required for accessing a Commercial Cloud Services (C2S) object store. Data in the C2S object store might not be accessible.
+*Corrective Action*::
+Verify that LIFs in the appropriate IPSpace are online and functional by using the "network interface show" command. Also, check network connectivity to the CAP through a LIF in the appropriate IPSpace by using the "network ping" command. Additionally, ensure that security certificates for the server certificate authorities (CA) and for the client are installed and valid. If the condition persists, contact NetApp technical support.
+*Syslog Message*::
+Failed to update temporary credentials that expired on %s in object store "%s" from node "%s". %s. CAP URL: %s
+*Parameters*::
+*credentials_expiration* (STRING): Date and time when temporary credentials expired.
+*object_store_name* (STRING): Object store configuration name.
+*node_uuid* (STRING): UUID of the node.
+*reason* (STRING): Reason the temporary credentials were not updated.
+*cap_url* (STRING): Full URL of the request to a C2S Authentication Portal (CAP).
+
+== object.store.c2s.updated
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the node updates temporary credentials required for accessing a Commercial Cloud Services (C2S) object store after an "object.store.c2s.notupdated" error.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Successfully updated temporary credentials for object store "%s" from node "%s". New expiration: %s, CAP URL: %s
+*Parameters*::
+*object_store_name* (STRING): Object store configuration name.
+*node_uuid* (STRING): UUID of the node.
+*credentials_expiration* (STRING): Updated date and time when temporary credentials expire.
+*cap_url* (STRING): Full URL of the request to a C2S Authentication Portal (CAP).
+
+== object.store.certificate.off
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when SSL/TLS certificate validation is disabled for an object store configuration.
+*Corrective Action*::
+Enable certificate validation by using the "storage aggregate object-store config modify -object-store-name <name> -is-certificate-validation-enabled true" command.
+*Syslog Message*::
+SSL/TLS certificate validation is disabled for an object store configuration %s.
+*Parameters*::
+*object_store_name* (STRING): Name of the object store configuration.
+
+== object.store.certificate.on
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when SSL/TLS certificate validation is enabled for an object store configuration for which it was previously disabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SSL/TLS certificate validation is enabled for object store configuration %s.
+*Parameters*::
+*object_store_name* (STRING): Name of the object store configuration.
+
+== object.store.degraded.mirror.swapped
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a FabricPool's primary object store and its mirror object store are swapped while the mirror object store is in a degraded state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The primary object store (%s) and the degraded mirror object store (%s) are swapped for FabricPool %s.
+*Parameters*::
+*primary_object_store* (STRING): Name of the primary object store before swap.
+*mirror_object_store* (STRING): Name of the mirror object store before swap.
+*aggr* (STRING): Name of the FabricPool.
+
+== object.store.force.tier.mcc
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the "-force-tiering-on-metrocluster" parameter is changed for an object store attached to a FabricPool that is in a MetroCluster(tm) configuration.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The "-force-tiering-on-metrocluster" parameter is set to "%s" on the object store "%s" attached to FabricPool "%s".
+*Parameters*::
+*is_force_tier_on_mcc* (STRING): Current setting of the "-force-tiering-on-metrocluster" parameter (true or false).
+*object_store* (STRING): Name of the object store.
+*aggr* (STRING): Name of the FabricPool.
+
+== object.store.full
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the node failed to write data to the specified object store because it is out of space. You may see other EMS notifications from dependent subsystems.
+*Corrective Action*::
+Examine the object store, check the space settings, and if necessary, create space by adding capacity to the object store.
+*Syslog Message*::
+Failed to write to object store %s because it is out of space.
+*Parameters*::
+*config_name* (STRING): Object store configuration name.
+
+== object.store.mirror.added
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the second object store is attached to the FabricPool. After mirror operation, FabricPool contain primary and mirror object store.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A second object store (%s) is added to FabricPool %s with primary object store (%s) as a mirror.
+*Parameters*::
+*mirror_object_store* (STRING): Name of the mirror object store.
+*aggr* (STRING): Name of the FabricPool.
+*primary_object_store* (STRING): Name of the primary object store.
+
+== object.store.mirror.swapped
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a FabricPool's primary object store and its mirror object store are swapped.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The primary object store (%s) and the mirror object store (%s) are swapped for FabricPool %s.
+*Parameters*::
+*primary_object_store* (STRING): Name of the primary object store before swap.
+*mirror_object_store* (STRING): Name of the mirror object store before swap.
+*aggr* (STRING): Name of the FabricPool.
+
+== object.store.mirror.unmirror
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the mirror object store is removed from a FabricPool. FabricPool is said to be unmirrored.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The mirror object store (%s) is removed from FabricPool %s with primary object store (%s).
+*Parameters*::
+*mirror_object_store* (STRING): Name of the mirror object store.
+*aggr* (STRING): Name of the FabricPool.
+*primary_object_store* (STRING): Name of the primary object store.
+
+== object.store.no.proxy
+*Severity*::
+ALERT
+*Description*::
+This message occurs when one or more object store configurations have use-http-proxy set to true but no HTTP proxy is configured for the IPspace. This can lead to client I/O failures.
+*Corrective Action*::
+Create an HTTP proxy configuration for the IPspace or change use-http-proxy to false for the object store configurations associated with that IPspace.
+*Syslog Message*::
+One or more object store configurations have use-http-proxy set to true but no HTTP proxy configuration was found for the IPspace.
+*Parameters*::
+*ipspace_name* (STRING): Name of the IPspace that does not have an HTTP proxy server configured.
+
+== object.store.unavailable
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the node cannot connect to the object store.
+*Corrective Action*::
+Verify that your intercluster LIF is online and functional by using the "network interface show" command. Also, check network connectivity to the object store server by using the "ping" command over the destination node intercluster LIF. Additionally, ensure that the configuration of your object store has not changed, and that login and connectivity information is still accurate. If the condition persists, contact NetApp technical support.
+*Syslog Message*::
+Unable to connect to the object store "%s" from node %s. Reason: %s.
+*Parameters*::
+*configname* (STRING): Object store configuration name.
+*node_uuid* (STRING): UUID of the node.
+*reason* (STRING): Reason for the failure to connect.

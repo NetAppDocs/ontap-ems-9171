@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: raid-syncmirr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.syncmirr events
+---
+
+= raid.syncmirr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.syncmirr.at.IOrecovery
+*Severity*::
+ERROR
+*Description*::
+This message occurs in a SyncMirror(R) configuration (with SyncMirror aggressive timeout capability), when RAID cannot service earlier timed-out I/O from the other plex.
+*Corrective Action*::
+To resolve this problem, complete the following steps: 1. Identify the problem aggregate, offline plex, and plex mirror status from the event logs. 2. Determine the reason for attempting to bring the plex offline, such as adapter, controller or multidisk failures. 3. Replace any faulty components that you discover. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Expect longer I/O service time on plex %s due to error status %s.
+*Parameters*::
+*plex* (STRING): Name of the plex.
+*status* (STRING): Status while the plex was brought offline.

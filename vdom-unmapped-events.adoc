@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: vdom-unmapped-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vdom.unmapped events
+---
+
+= vdom.unmapped events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== VDOM.unmapped.event
+*Severity*::
+NOTICE
+*Description*::
+This message occurs for Virtual Disk Object Manager (VDOM) errors that do not currently map to specific VDOM EMS events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+VDOM error code %u occurred without a specific EMS event mapping, file: %s, line %u.
+*Parameters*::
+*vdom_error* (INT): VDOM error code.
+*filename* (STRING): Name of file containing error.
+*linenum* (INT): Line number in file containing error.

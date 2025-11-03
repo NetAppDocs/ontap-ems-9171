@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: fmmb-disk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fmmb.disk events
+---
+
+= fmmb.disk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fmmb.disk.IDchange
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when the unique identifier of one of the disks used by the HA mailbox has changed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s has changed its unique identifier.
+*Parameters*::
+*disk* (STRING): The name of the disk whose identifier has changed.
+
+== fmmb.disk.notAccsble
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when mailbox disks of the specified host are not accessible.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+All %s mailbox disks are inaccessible.
+*Parameters*::
+*host* (STRING): Host string, which is either local or partner.

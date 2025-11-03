@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nblade-nocsmsession-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.nocsmsession events
+---
+
+= nblade.nocsmsession events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.noCsmSession
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the local node could not acquire a Connection Session Manager (CSM) session. CSM sessions are used to communicate file operations between nodes in the cluster. This might be a transient condition. If this condition persists, volumes on the destination node remain unavailable from this node. The destination node can be either local or remote.
+*Corrective Action*::
+Check IP connectivity over the cluster interfaces between the two nodes. If further assistance is needed, contact NetApp technical support.
+*Syslog Message*::
+(None).
+*Parameters*::
+*bladeId* (STRING): UUID of the node that could not be reached.

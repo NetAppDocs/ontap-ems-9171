@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: secd-quark-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: secd.quark events
+---
+
+= secd.quark events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== secd.quark.ddns.updt.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the server can not a send dynamic DNS (DDNS) update to the DNS server.
+*Corrective Action*::
+For "NOTIMP" errors, enable DDNS on the DNS server. For "REFUSED" errors, verify the DDNS settings on the DNS server. For all other errors, Contact NetApp technical support..
+*Syslog Message*::
+DDNS update failed with error %s.
+*Parameters*::
+*cmdError* (STRING): Error from the attempted DDNS update.
+
+== secd.quark.sid.lookup.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Active Directory server cannot find the Security Identifier (SID) for a given account name.
+*Corrective Action*::
+Provide a valid account name.
+*Syslog Message*::
+Failed to lookup the SID for account name "%s" with error "%s".
+*Parameters*::
+*accountName* (STRING): Name of the account whose SID is looked up in the server.
+*errorMsg* (STRING): Error received from the server while doing a SID lookup for the given account name.

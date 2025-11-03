@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: vs-multiple-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vs.multiple events
+---
+
+= vs.multiple events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vs.multiple.adtjobs
+*Severity*::
+ERROR
+*Description*::
+This message occurs when more than one Vserver audit consolidation jobs is found.
+*Corrective Action*::
+Check Vserver audit configuration. If enabled, disable it using the following commands: cluster::> vserver audit show cluster::> vserver audit disable -vserver Check for Vserver audit consolidation jobs. If still present, delete the jobs using the following commands: cluster::> job show cluster::> job expunge -id Check for consolidation processes. If any still exist, kill the processes using the following commands from systemshell: > ps -auxw | grep adtcons > sudo kill -9 "pid of the process" Enable the Vserver audit configuration by using the following command: cluster::> vserver audit enable
+*Syslog Message*::
+More than one Vserver audit consolidation jobs found for Vserver %s.
+*Parameters*::
+*vserver* (STRING): Name of the Vserver that has more than one consolidation job.

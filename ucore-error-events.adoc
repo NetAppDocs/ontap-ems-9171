@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: ucore-error-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ucore.error events
+---
+
+= ucore.error events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ucore.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is an error while processing a user space core dump.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Could not dump core for process ID %d (%s). Reason: %s.
+*Parameters*::
+*process_id* (INT): Process ID of the process.
+*process_name* (STRING): Name of the process.
+*reason* (STRING): Error condition encountered.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: fci-sfp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fci.sfp events
+---
+
+= fci.sfp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fci.sfp.invalid
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an invalid Small Form-factor Pluggable (SFP) is inserted into the adapter. For example, a 10-GB SFP was inserted into an 8-GB FC adapter.
+*Corrective Action*::
+Replace the SFP with one that supports the proper speed.
+*Syslog Message*::
+The SFP in FC adapter %s is not valid. (%s)
+*Parameters*::
+*port* (STRING): Name of the adapter port.
+*reason* (STRING): Reason for Invalid SFP.

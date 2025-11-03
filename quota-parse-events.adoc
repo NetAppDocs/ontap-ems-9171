@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: quota-parse-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: quota.parse events
+---
+
+= quota.parse events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== quota.parse.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects an error while scanning the quota rules. The parser would be skipping this quota definition.
+*Corrective Action*::
+Fix the error in quota rules definition using the CLI commands "quota policy rule modify" or "quota policy rule delete".
+*Syslog Message*::
+%s
+*Parameters*::
+*errmsg* (STRING): Message describing the error in detail.

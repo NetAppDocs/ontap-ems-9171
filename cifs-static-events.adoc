@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: cifs-static-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cifs.static events
+---
+
+= cifs.static events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cifs.static.homedir.create
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a user creates a static home directory without a substitution value (%u or %w) to uniquely identify a home directory share. If multiple users from the same client access their home directories at the same time, unprotected access to each other's files can occur. This might cause unexpected \"access denied\" errors on those files, and data corruption within those files. Note: multiple users from a single client is most likely in a Citrix or Windows Terminal Services environment.
+*Corrective Action*::
+Ensure that a substitution value (%u or %w) is provided to the name of the home directory share.
+*Syslog Message*::
+A static home directory share "%s" without a substitution value (%%u or %%w) is created on Vserver: %s.
+*Parameters*::
+*shareName* (STRING): Name of the share that the user has created.
+*vserverName* (STRING): Name of the Vserver associated with this operation.

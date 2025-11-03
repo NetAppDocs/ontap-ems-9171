@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: spm-timestate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: spm.timestate events
+---
+
+= spm.timestate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== spm.timeState.process.exit
+*Deprecated*::
+This event is removed since time_state server was removed in 8.3.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the subsystem managing timekeeping parameters (time_state) stops running. The failure of this subsystem can cause Network Time Protocol (NTP) settings and the time zone to be inconsistent among subsystems. This might also have an effect on time displayed in log messages.
+*Corrective Action*::
+The system attempts to recover by restarting the subsystem. If the subsystem does not recover within the threshold number of retries, then an AutoSupport message is sent. If your system is not configured to send AutoSupport messages and the issue persists, contact NetApp technical support.
+*Syslog Message*::
+Subsystem managing timekeeping parameters (time_state) with ID %d exited as a result of signal %s. The subsystem will attempt to restart.
+*Parameters*::
+*id* (INT): Process identifier.
+*cause* (STRING): Plain text description of why the process stopped running.

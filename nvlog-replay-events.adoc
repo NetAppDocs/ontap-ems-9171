@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nvlog-replay-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvlog.replay events
+---
+
+= nvlog.replay events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvlog.replay.source
+*Severity*::
+NOTICE
+*Description*::
+This message occurs on Cloud Volumes ONTAP platforms to identify the source of the nonvolatile log (nvlog) replay that follows.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+nvlog replay data source is %s.
+*Parameters*::
+*Source* (STRING): Source of the nvlog replay data.

@@ -1,0 +1,45 @@
+---
+sidebar: sidebar
+permalink: vifmgr-bcastdomain-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.bcastdomain events
+---
+
+= vifmgr.bcastdomain events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.bcastdomain.portadd
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a network port is added to a broadcast domain.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Network port %s on node %s was added to broadcast domain %s in IPspace %s.
+*Parameters*::
+*port* (STRING): Name of the network port.
+*node* (STRING): Name of the node on which the network port resides.
+*broadcastDomain* (STRING): Name of the broadcast domain associated with the port.
+*ipspace* (STRING): Name of the IPspace associated with the port.
+
+== vifmgr.bcastdomain.portrem
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a network port is removed from a broadcast domain.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Network port %s on node %s was removed from broadcast domain %s in IPspace %s.
+*Parameters*::
+*port* (STRING): Name of the network port.
+*node* (STRING): Name of the node on which the network port resides.
+*broadcastDomain* (STRING): Name of the broadcast domain associated with the port.
+*ipspace* (STRING): Name of the IPspace associated with the port.

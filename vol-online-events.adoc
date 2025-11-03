@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: vol-online-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vol.online events
+---
+
+= vol.online events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vol.online.upgrade.tasks.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP cannot correctly trigger volume upgrade tasks when a volume is brought online outside of an ONTAP upgrade cycle. Information about the volume is accurate in nodeshell, but the clustershell and the REST interface shows inaccurate information until the situation is corrected.
+*Corrective Action*::
+Trigger the mhost upgrade tasks manually using the advanced privilege "volume upgrade-tasks run -vserver [vserver_name] -volume [volume_name]" command.
+*Syslog Message*::
+The triggering of mhost upgrade tasks has failed for volume %s from source version %s. Run the upgrade tasks manually.
+*Parameters*::
+*volume* (STRING): Name of the volume.
+*source_version* (STRING): Version from which the upgrade is happening.

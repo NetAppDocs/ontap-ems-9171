@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: acp-dev-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: acp.dev events
+---
+
+= acp.dev events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== acp.dev.notify
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Alternate Control Path (ACP) Administrator encounters an error event in a development-only kernel.
+*Corrective Action*::
+Notify ACP development. No user action is needed.
+*Syslog Message*::
+ACP error: %s
+*Parameters*::
+*debug_string* (STRING): Error statement that occurred in a developement kernel.

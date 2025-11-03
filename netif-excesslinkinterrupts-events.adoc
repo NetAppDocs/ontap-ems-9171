@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: netif-excesslinkinterrupts-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.excesslinkinterrupts events
+---
+
+= netif.excesslinkinterrupts events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.excessLinkInterrupts
+*Severity*::
+ERROR
+*Description*::
+This message occurs when excessive link status change interrupts occur on the network interface. One or two events might indicate a momentary glitch on the link, but many events might indicate a bad switch port, cable, or network interface card (NIC).
+*Corrective Action*::
+Try using a different switch port and cable. If the problem persists, replace the NIC.
+*Syslog Message*::
+Excessive link status change interrupts occurred on network interface %s.
+*Parameters*::
+*ifName* (STRING): Name of the network interface; for example, "e8a".

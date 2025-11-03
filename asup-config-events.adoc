@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: asup-config-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: asup.config events
+---
+
+= asup.config events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== asup.config.minimal.parse
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when we are unable to parse /etc/asup_content.conf
+*Corrective Action*::
+Either the /etc/asup_content.conf file was corrupt or it may have been accidentally modified, compare the file to the released version of the file and make the appropriate modifications.
+*Syslog Message*::
+AutoSupport could not parse section %s in /etc/asup_content.conf
+*Parameters*::
+*section* (STRING): The section that failed to parse.
+
+== asup.config.minimal.unavailable
+*Severity*::
+ERROR
+*Description*::
+This event is issued when we are unable to access /etc/asup_content.conf
+*Corrective Action*::
+Either the /etc/asup_content.conf file does not exist or the permissions don't allow it to be accessed. Verify that the file is in the correct location and that the system has access to it.
+*Syslog Message*::
+Minimal AutoSupports unavailable. Could not read /etc/asup_content.conf
+*Parameters*::
+(None).

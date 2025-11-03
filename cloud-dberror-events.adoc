@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: cloud-dberror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cloud.dberror events
+---
+
+= cloud.dberror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cloud.DBError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the cloud database service fails the update request and returns this error.
+*Corrective Action*::
+Verify that the cloud database endpoint, table and permissions are valid. Once the issue is addressed, take over and give back the node.
+*Syslog Message*::
+Cloud database service fails to update table "%s" with error "%s".
+*Parameters*::
+*db_table* (STRING): Name of the cloud database table associated with this ONTAP Cloud instance.
+*err_msg* (STRING): Error message from the cloud database service.

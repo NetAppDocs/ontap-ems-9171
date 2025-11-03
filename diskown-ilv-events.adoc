@@ -1,0 +1,52 @@
+---
+sidebar: sidebar
+permalink: diskown-ilv-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.ilv events
+---
+
+= diskown.ilv events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.ilv.hShlf.invShlf
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the controller cannot automatically assign drives to a shelf using interleaved-half-shelf-based drive assignment, either because the shelf is offline, or is temporarily unavailable and therefore cannot be queried for the information required to properly divide the drives for assignment to the controller. This can also occur when multiple shelves in a cluster have the same shelf ID. Automatic interleaved-half-shelf-based drive assignment is bypassed for drives in this shelf until the shelf is back online or any shelf ID conflicts within a cluster are resolved.
+*Corrective Action*::
+Use the "storage shelf show" command to ensure that the specified shelf is online and to ensure connectivity from the controller to all paths to the shelf. Ensure that each shelf within the cluster has a unique shelfID.
+*Syslog Message*::
+Interleaved-half-shelf-based drive assignment will be skipped for shelf "%d" because the shelf is in invalid state.
+*Parameters*::
+*shelf_id* (INT): Shelf identifier.
+
+== diskown.ilv.hShlf.mOwners
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the controller cannot automatically assign drives using interleaved-half-shelf based drive assignment because drives in a shelf are assigned to multiple systems in a conflicting manner.
+*Corrective Action*::
+1) Find all of the drives belonging to the shelf specified by using the "storage disk show" command. 2) View the list of systems by using the "run local disk show -v" command. 3) Ensure that drives assigned on first and third quarter bays of the shelf are owned by a single owner. Similarly, ensure that drives assigned on second and fourth quarter bays of that shelf are owned by a single owner. Ensure that drives assigned on first and third quarter bays have a different owner than drives assigned on second and fourth quarter bays.
+*Syslog Message*::
+The controller cannot automatically assign drives using interleaved-half-shelf based drive assignment because drives in shelf "%d" are assigned to multiple systems in a conflicting manner.
+*Parameters*::
+*shelf_id* (INT): Shelf identifier.
+
+== diskown.ilv.hShlf.status
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when interleaved-half-shelf based drive assignment is either enabled or disabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Interleaved-half-shelf based automatic drive assignment for shelf %d is "%s".
+*Parameters*::
+*shelf_id* (INT): Shelf identifier.
+*state* (STRING): Interleaved-half-shelf based automatic drive assignment state.

@@ -1,0 +1,67 @@
+---
+sidebar: sidebar
+permalink: ipsec-ib-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ipsec.ib events
+---
+
+= ipsec.ib events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ipsec.ib.bad.encrypt
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an inbound IPsec packet cannot be successfully decrypted. Corrupt data is received.
+*Corrective Action*::
+The IPsec SA database could be out of sync to cause this decryption failure. Use the "security ipsec policy modify -is-enabled" command to disable and then reenable the affected policy matching the source and destination IP address.
+*Syslog Message*::
+IPsec: %s packet cannot be successfully decrypted.
+*Parameters*::
+*sa2str* (STRING): IPsec Security Association (SA) in string format SA (Security Parameter Index, source IP address, destination IP address).
+
+== ipsec.ib.no.lookup
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inbound IPsec packet cannot able to locate the IPsec Security Association (SA) from the SA database. The remote side is using an SA which does not exist in the local SA database.
+*Corrective Action*::
+The IPsec SA database is out of sync. Use the "security ipsec policy modify -is-enabled" command to disable and then reenable the affected policy matching the source and destination IP address.
+*Syslog Message*::
+IPsec: SA not found. SPI: %s Src IP: %s Dst IP: %s.
+*Parameters*::
+*spi* (STRING): IPsec SA Security Parameter Index (SPI).
+*srcAddr* (STRING): Source IP address.
+*dstAddr* (STRING): Destination IP address.
+
+== ipsec.ib.no.replay
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inbound IPsec Security Association (SA) encounters a replay check failure. Number of out-of-order and retransmitted IPsec packet received. Possible causes include a denial-of-service (DoS) attack or traffic congestion.
+*Corrective Action*::
+Possible traffic congestion or DoS attack.
+*Syslog Message*::
+IPsec: %s replay packets detected. Possible DoS attack or traffic congestion.
+*Parameters*::
+*sa2str* (STRING): IPsec SA in string format SA (Security Parameter Index, source IP address, destination IP address).
+
+== ipsec.ib.policy.violation
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an inbound IPsec packet is found to violate the security policy. It is either not IPsec protected or it is protected in a different way than the policy specifies.
+*Corrective Action*::
+check the IPsec policy configuration on both ends to make sure that they match each other.
+*Syslog Message*::
+IPsec: Inbound %s packet %s ==> %s security policy violation.
+*Parameters*::
+*protocol* (STRING): Packet protocol.
+*srcAddr* (STRING): Source IP address.
+*dstAddr* (STRING): Destination IP address.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: wafl-pnso-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.pnso events
+---
+
+= wafl.pnso events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.pnso.offload.engine.error
+*Severity*::
+ALERT
+*Description*::
+This message occurs when hardware offload engine requests failed with EIO error.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+%s [%d]
+*Parameters*::
+*msg* (STRING): Error message to be displayed.
+*err* (INT): Error code received.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ha-nomediatormbx-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.nomediatormbx events
+---
+
+= ha.nomediatormbx events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.noMediatorMbx
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the non-local mailbox disks of a node are not accessible. The system will not be able to perform a takeover and can potentially prevent a takeover by the partner as well.
+*Corrective Action*::
+Use the "storage failover show -fields local-mailbox-disks" command to verify that all nodes in the cluster can access their respective mailbox disks. Use the (privilege: advanced) "storage iscsi-initiator show" command to verify that all iSCSI connections are up and healthy. If not healthy, use the "storage iscsi-initiator add-target" and "storage iscsi-initiator connect" commands to add and connect any missing or misconnected iSCSI targets.
+*Syslog Message*::
+Takeover not possible because non-local mailbox disks owned by node "%s" cannot be accessed.
+*Parameters*::
+*mailbox_owner* (STRING): Node that owns the non-local mailbox disks that could not be accessed.

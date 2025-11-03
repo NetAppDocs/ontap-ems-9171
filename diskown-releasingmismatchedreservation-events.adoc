@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: diskown-releasingmismatchedreservation-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.releasingmismatchedreservation events
+---
+
+= diskown.releasingmismatchedreservation events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.releasingMismatchedReservation
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when we release the reservation because the DOWN says the disk is owned by someone else.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s is releasing reservation on disk %s (S/N %s) as it is owned by %s (ID %u)
+*Parameters*::
+*originator* (STRING): The internal component of diskown issuing the event
+*diskname* (STRING): The name of the disk
+*serialno* (STRING): The serial number of the disk
+*filername* (STRING): The name of the filer that owns the disk
+*systemid* (INT): The system id of the filer that owns the disk

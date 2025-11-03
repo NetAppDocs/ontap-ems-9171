@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: rlm-heartbeat-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rlm.heartbeat events
+---
+
+= rlm.heartbeat events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rlm.heartbeat.resumed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is generated when the appliance detects resumption of Remote LAN Module (RLM) heartbeat notifications indicating that the RLM is now available. The earlier issue indicated by the rlm.heartbeat.stopped event has been resolved.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Heartbeat received from the Remote LAN Module (RLM).
+*Parameters*::
+(None).
+
+== rlm.heartbeat.stopped
+*Severity*::
+ERROR
+*Description*::
+This event is generated when the filer does not receive Remote LAN Module (RLM) heartbeat notifications. The RLM card and the filer exchange heartbeat messages so that they can detect when one or the other is unavailable. This event is generated when the filer has not received an expected heartbeat message from the RLM.
+*Corrective Action*::
+Connect to the RLM CLI and issue 1. rlm version 2. rlm config 3. priv set advanced 3.1 rlm log debug 3.2 rlm log messages 4. Run RLM system diagnostics 5. Consult RLM Troubleshooting Guide
+*Syslog Message*::
+Have not received a heartbeat from the Remote LAN Module (RLM) in last %d seconds.
+*Parameters*::
+*max_anx* (INT): Heartbeats have not been received from the Remote Lan Module (RLM) for this period of time in seconds.

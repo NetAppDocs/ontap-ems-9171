@@ -1,0 +1,156 @@
+---
+sidebar: sidebar
+permalink: ktls-health-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ktls.health events
+---
+
+= ktls.health events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ktls.health.actionQGrowing
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the depth of the action queue in the ktlsd subsystem is increasing in the majority of time intervals. It is a potential indication of back-pressure accumulating within ktlsd or the kernel.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"The depth of the action queue in the ktlsd subsystem has trended upward over the last "%d" intervals of" %d" seconds."
+*Parameters*::
+*intervalQuantity* (INT): Number of intervals over which the problem was observed.
+*intervalLength* (INT): Length of the observation intervals for this problem, in seconds.
+
+== ktls.health.actionQHigh
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the depth of the action queue in the ktlsd subsystem accounts for a significant percentage of our total available handshake slots. It is a potential indication of back-pressure accumulating within ktlsd or the kernel.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"The depth of the action queue in the ktlsd subsystem has been at an elevated level over the last %d intervals of %d seconds."
+*Parameters*::
+*intervalQuantity* (INT): Number of intervals over which the problem was observed.
+*intervalLength* (INT): Length of the observation intervals for this problem, in seconds.
+
+== ktls.health.backoffGrowing
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the number of backoffs in the ktlsd subsystem is increasing in the majority of time intervals. It is most likely an indication that handshake timeouts are occurring frequently.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"The number of self-imposed backoffs in the ktlsd subsystem has trended upward over the last "%d" intervals of "%d" seconds."
+*Parameters*::
+*intervalQuantity* (INT): Number of intervals over which the problem was observed.
+*intervalLength* (INT): Length of the observation intervals for this problem, in seconds.
+
+== ktls.health.highStress
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a combination of indicators suggest high stress within the Kernel Transport Layer Security (KTLS) subsystem. This subsystem does not perform adequately as a consequence.
+*Corrective Action*::
+There might be a variety of potential corrective actions. The first course of action should be to check for other ktls.health.* events around the same time. These might have their own guidance. In general it is likely that the resolution involves reducing the inbound load on KTLS, which requires different steps depending on the feature.
+*Syslog Message*::
+"The KTLS subsystem is exhibiting signs of high stress."
+*Parameters*::
+(None).
+
+== ktls.health.inactiveGrowing
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the total length of time handshakes spend in an active state has been increasing in the majority of time intervals.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"The inactive period for TLS handshakes has trended upward over the last "%d" intervals of "%d" seconds."
+*Parameters*::
+*intervalQuantity* (INT): Number of intervals over which the problem was observed.
+*intervalLength* (INT): Length of the observation intervals for this problem, in seconds.
+
+== ktls.health.latencyGrowing
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the latency of handshakes has been increasing in the majority of time intervals.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"The latency of TLS handshakes has trended upward over the last "%d" intervals of "%d" seconds."
+*Parameters*::
+*intervalQuantity* (INT): Number of intervals over which the problem was observed.
+*intervalLength* (INT): Length of the observation intervals for this problem, in seconds.
+
+== ktls.health.lowCompletion
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a significant percentage of handshakes initiated in the ktlsd subsystem over an interval of time do not succeed.
+*Corrective Action*::
+There might be a variety of potential corrective actions. Any ktls.failed events generated around the same time contain a "reason" parameter which provides a good starting point for probable causes of this condition.
+*Syslog Message*::
+"A high percentage of handshakes initiated in the ktlsd subsystem over the last "%d" intervals of "%d" seconds have not completed successfully."
+*Parameters*::
+*intervalQuantity* (INT): Number of intervals over which the problem was observed.
+*intervalLength* (INT): Length of the observation intervals for this problem, in seconds.
+
+== ktls.health.startLatencyHigh
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the amount of time handshakes are spending in the start queue in the ktlsd subsystem is at an elevated level over some time intervals. It is a potential indication of back-pressure accumulating within ktlsd.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"The amount of time handshakes have spent in the start queue of the ktlsd subsystem has been at an elevated level over the last "%d" intervals of "%d" seconds."
+*Parameters*::
+*intervalQuantity* (INT): Number of intervals over which the problem was observed.
+*intervalLength* (INT): Length of the observation intervals for this problem, in seconds.
+
+== ktls.health.startQGrowing
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the depth of the start queue in the ktlsd subsystem is increasing in the majority of time intervals. It is a potential indication of back-pressure accumulating within ktlsd.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"The depth of the start queue in the ktlsd subsystem has trended upward over the last "%d" intervals of "%d" seconds."
+*Parameters*::
+*intervalQuantity* (INT): Number of intervals over which the problem was observed.
+*intervalLength* (INT): Length of the observation intervals for this problem, in seconds.
+
+== ktls.health.startQHigh
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the depth of the start queue in the ktlsd subsystem accounts for a significant percentage of total available handshake slots. It is a potential indication of back-pressure accumulating within ktlsd.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"The depth of the start queue in the ktlsd subsystem has been at an elevated level over the last "%d" intervals of "%d" seconds."
+*Parameters*::
+*intervalQuantity* (INT): Number of intervals over which the problem was observed.
+*intervalLength* (INT): Length of the observation intervals for this problem, in seconds.
+
+== ktls.health.stress
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a combination of indicators suggest moderate stress within the Kernel Transport Layer Security (KTLS) subsystem.
+*Corrective Action*::
+There might be a variety of potential corrective actions. The first course of action should be to check for other ktls.health.* events around the same time. These might have their own guidance. In general it is likely that the resolution involves reducing the inbound load on KTLS, which requires different steps depending on the feature.
+*Syslog Message*::
+"The KTLS subsystem is exhibiting signs of moderate stress."
+*Parameters*::
+(None).

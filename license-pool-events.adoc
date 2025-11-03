@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: license-pool-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: license.pool events
+---
+
+= license.pool events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== license.pool.sfo.gb.veto
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a storage failover giveback is vetoed because the aggregate has no valid capacity lease from the capacity pool. This might be because the capacity pool license has expired, because there is not sufficient capacity in the pool, or because the License Manager is not accessible.
+*Corrective Action*::
+If the node could not check the compliance status of an aggregate, check that the License Manager is accessible by using the "system license license-manager check" command. If the License Manager is not accessible, verify that it is up and running in ONTAP Select Deploy, and that there are no network connectivity issues. If an aggregate has been found to be out of compliance, verify on ONTAP Select Deploy that the capacity pool license has not expired, and that there is enough capacity remaining for the aggregate. For all other reasons, Contact NetApp technical support.
+*Syslog Message*::
+SFO giveback vetoed. %s.
+*Parameters*::
+*reason* (STRING): Explanation for the veto.

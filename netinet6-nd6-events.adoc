@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: netinet6-nd6-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netinet6.nd6 events
+---
+
+= netinet6.nd6 events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netinet6.nd6.setmtu.small
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the port MTU (Maximum Transmission Unit) is set to a smaller value than the IPv6 minimum MTU of 1280. If you set the port MTU value to less than 1280, which is not recommended, IPv6 packets larger than the set value cannot be sent from or received by the controller.
+*Corrective Action*::
+Use the 'broadcast-domain modify' command with the '-mtu' option to increase MTU of all ports in the domain to at least the IPv6 minimum MTU of 1280.
+*Syslog Message*::
+nd6_setmtu: new port MTU '%lu' on the port '%s' is too small for IPv6.
+*Parameters*::
+*linkmtu* (LONGINT): Configured MTU value for the port.
+*ifName* (STRING): Name of the port on which the MTU is being set.

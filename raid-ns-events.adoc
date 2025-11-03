@@ -1,0 +1,55 @@
+---
+sidebar: sidebar
+permalink: raid-ns-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.ns events
+---
+
+= raid.ns events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.ns.init.removeOwnership
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system removes ownership of its disks during initialization of a non-shared HA system.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Removed ownership of %d disks.
+*Parameters*::
+*num_disks_reverted* (INT): Number of disks whose ownership was removed.
+*num_disks_not_reverted* (INT): Number of disks whose ownership was not removed.
+*status* (STRING): Status of the disk ownership remove operation.
+
+== raid.ns.init.skipUnpartition
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system skips unpartitioning a disk during initialization of a non-shared HA system.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Skipped unpartitioning disk %s(UID: %s) due to %s.
+*Parameters*::
+*disk_name* (STRING): Name of the disk.
+*disk_uid* (STRING): Unique identifier of the disk.
+*reason* (STRING): Reason for skipping unpartitioning the disk.
+
+== raid.ns.init.unpartition
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system unpartitions one or more disks during initialization of a non-shared HA system.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Unpartitioned %d disk(s).
+*Parameters*::
+*num_disks_unpartitioned* (INT): Number of disks unpartitioned.

@@ -1,0 +1,59 @@
+---
+sidebar: sidebar
+permalink: sms-status-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sms.status events
+---
+
+= sms.status events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sms.status.in.sync
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a SnapMirror(R) Sync initialize or resynchronize operation is completed successfully, and the source volume and destination volume are in "in-sync" status.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Initialize or resynchronize operation was successful. Source volume "%s" and destination volume "%s" with relationship UUID "%s" are in "in-sync" status.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume of the SnapMirror relationship.
+*dstpath* (STRING): Path name of the destination volume of the SnapMirror relationship.
+*relationship_id* (STRING): Relationship UUID.
+
+== sms.status.out.of.sync
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) Sync relationship changes status from "in-sync" to "out-of-sync". I/O restrictions are imposed on the source volume based on the mode of replication. For relationships with policy type "strict-sync-mirror", client read or write access to volume is prevented. Data protection is impacted.
+*Corrective Action*::
+Check network connection between the source and destination volumes. Monitor the SnapMirror Sync relationship status by using the "snapmirror show" command. Auto-resync will attempt to bring the relationship back to "in-sync" status.
+*Syslog Message*::
+Source volume "%s" and destination volume "%s" with relationship UUID "%s" is in "out-of-sync" status due to the following reason: "%s".
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume of the SnapMirror relationship.
+*dstpath* (STRING): Path name of the destination volume of the SnapMirror relationship.
+*relationship_id* (STRING): Relationship UUID.
+*error_msg* (STRING): Error that caused the relationship to change to "out-of-sync" status.
+
+== sms.status.out.of.sync.cg
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) active sync relationship changes status from "in-sync" to "out-of-sync". Due to this RPO=0 data protection will be disrupted.
+*Corrective Action*::
+Check the network connection between the source and destination volumes. Monitor the SnapMirror(R) active sync relationship status by using the "snapmirror show" command on the destination, and by using the "snapmirror list-destinations" command on the source. Auto-resync will attempt to bring the relationship back to "in-sync" status. If the resync fails, verify that all the nodes in the cluster are in quorum and are healthy.
+*Syslog Message*::
+Source CG "%s" and destination CG "%s" with relationship UUID "%s" is in "out-of-sync" status. Reason: "%s".
+*Parameters*::
+*srccgpath* (STRING): Source Consistency Group (CG) path.
+*dstcgpath* (STRING): Destination CG path.
+*cg_relationship_id* (STRING): CG relationship UUID.
+*error_msg* (STRING): Error that caused the relationship to change to "out-of-sync" status.

@@ -1,0 +1,86 @@
+---
+sidebar: sidebar
+permalink: replication-src-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: replication.src events
+---
+
+= replication.src events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== replication.src.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects an error on a SnapMirror(R) or SnapVault(R) source volume or qtree.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: source transfer from %s to %s:%s : %s.
+*Parameters*::
+*rtype* (STRING): Replication type (SnapMirror, SnapVault, and so on.).
+*srcpath* (STRING): Replication source volume or qtree.
+*dstfiler* (STRING): Replication destination system.
+*dstpath* (STRING): Replication destination volume or qtree.
+*error* (STRING): Specific error message.
+
+== replication.src.inconsistent.snapmap
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a replication source engine encounters a disk error in a snapmap block. Replication transfer will abort.
+*Corrective Action*::
+Run wafliron as soon as possible, and then Contact NetApp technical support.
+*Syslog Message*::
+WAFL metadata inconsistent due to disk errors in volume %s. The affected snapshot ID is %d (level: %d). Aborting transfer.
+*Parameters*::
+*volname* (STRING): Aggregate, traditional volume, or flexible volume name.
+*snapid* (INT): Snapshot ID.
+*level* (INT): Buffer level.
+
+== replication.src.throttleChange
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the replication source, receives a request from the destination to change the current throttle value.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Throttle value changed to %d Kbytes/s for destination %s:%s
+*Parameters*::
+*throttle* (INT): The new throttle value.
+*dstfiler* (STRING): The SnapMirror destination filer
+*dstpath* (STRING): The SnapMirror destination volume or qtree
+
+== replication.src.throttleChange.err
+*Severity*::
+ERROR
+*Description*::
+This event is issued when the replication source, receives a request from the destination to change the current throttle value, but failed to complete the operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failed to change throttle value to %d Kbytes/s for destination %s:%s : %s
+*Parameters*::
+*throttle* (INT): The new throttle value.
+*dstfiler* (STRING): The SnapMirror destination filer
+*dstpath* (STRING): The SnapMirror destination volume or qtree
+*error* (STRING): The error message
+
+== replication.src.unknownCommand
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the replication source, SnapMirror or SnapVault, receives a request from the destination which it does not understand. This can be seen when changes are made to the negotiation phase internally during development. This error message should NEVER show up on customer builds.
+*Corrective Action*::
+This message is normally seen after upgrading the source or the destination. ONTAP version mismatch between the source and destination can cause this. One should not see this problem if the source and destination filers are running the same version of ONTAP.
+*Syslog Message*::
+Replication source received an unknown command from the destination. This might be due to ONTAP version mismatch between the source and destination.
+*Parameters*::
+(None).

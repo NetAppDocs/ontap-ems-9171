@@ -1,0 +1,97 @@
+---
+sidebar: sidebar
+permalink: ekmip-gckms-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ekmip.gckms events
+---
+
+= ekmip.gckms events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ekmip.gckms.available
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a configured Google Cloud Key Management Service (GCKMS) that was previously reported as unavailable for key operations is now available.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The GCKMS with project ID: %s, key ring location: %s, key ring: %s and key name: %s configured for Vserver "%s" is now available.
+*Parameters*::
+*projectId* (STRING): Project ID.
+*keyringLocation* (STRING): Location of the key ring.
+*keyringName* (STRING): Name of the key ring.
+*keyName* (STRING): Name of the key.
+*vserver* (STRING): Name of the Vserver where the GCKMS is configured.
+
+== ekmip.gckms.keyVersionChg
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a change is made to the current key version associated with the key name of the configured Google Cloud KMS (GCKMS). The key version might have been auto-rotated or manually changed at the GCKMS. Additionally, the top-level internal key-protection key has been successfully re-wrapped with the current key version of the GCKMS key name.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The version of the key "%s" owned by Google Cloud KMS Project "%s", with key ring "%s" at "%s", configured for Vserver "%s", has been changed from "%s" to "%s".
+*Parameters*::
+*keyName* (STRING): Name of the key.
+*projectId* (STRING): Project ID of the GCKMS.
+*keyringName* (STRING): Name of the key ring.
+*keyringLocation* (STRING): Location of the key ring.
+*vserver* (STRING): Name of the Vserver where the GCKMS is configured.
+*oldKeyVersion* (STRING): Prior key version.
+*newKeyVersion* (STRING): New key version.
+
+== ekmip.gckms.notAvailable
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a check for the availability of the configured Google Cloud Key Management Service (GCKMS) fails. The GCKMS might be down, there might be a network related problem preventing communication, or there might be an error in the GCKMS key manager configuration. Without access to the GCKMS, one or more nodes might not be able to restore the authentication keys needed to unlock NSE drives or the encryption keys needed to mount encrypted volumes. If the GCKMS is not available to a node, then the next time the node boots, the failure to restore the keys might prevent the node from booting successfully or the encrypted volumes hosted on the node from coming online.
+*Corrective Action*::
+Verify that the GCKMS configuration is correct by using the "security key-manager external gcp check -vserver <vserver_name>" command. If the issue still persists, contact technical support.
+*Syslog Message*::
+The GCKMS with project ID: %s, key ring location: %s, key ring: %s and key name: %s configured for Vserver "%s" is not available.
+*Parameters*::
+*projectId* (STRING): Project ID.
+*keyringLocation* (STRING): Location of the key ring.
+*keyringName* (STRING): Name of the key ring.
+*keyName* (STRING): Name of the key.
+*vserver* (STRING): Name of the Vserver where the GCKMS is configured.
+
+== ekmip.gckms.volOffline
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Vserver has been blocked and any encrypted volumes belonging to the Vserver have been taken offline due to errors received when trying to access the key owned by the Google Cloud KMS (GCKMS). Reasons for GCKMS key access errors include a disabled key, a destroyed key, key not found, or a user not having sufficient privileges to access the key. ONTAP polls the GCKMS every 15 minutes to verify key accessibility. If, after 60 minutes, ONTAP has not received a successful response to a poll, volumes are taken offline and remain offline until the key access issues are resolved at the GCKMS. Subsequently, if ONTAP does receive a successful response, the volumes will be brought back online automatically.
+*Corrective Action*::
+Resolve the key access issues at the GCKMS portal. Ensure that the key is active and the user has the required privileges to access the key.
+*Syslog Message*::
+The Vserver has been blocked and any encrypted volumes belonging to Vserver "%s" have been taken offline due to key access errors associated with key "%s" owned by Google Cloud KMS Project "%s" with key ring location "%s" and key ring "%s".
+*Parameters*::
+*vserver* (STRING): Name of the Vserver where the GCKMS is configured.
+*keyName* (STRING): Name of the key.
+*projectId* (STRING): ID of the GCKMS project.
+*keyringLocation* (STRING): Location of the key ring.
+*keyringName* (STRING): Name of the key ring.
+
+== ekmip.gckms.volOnline
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the volumes configured on the Google Cloud KMS (GCKMS) that were unavailable due to key access issues are now back online.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Encrypted volumes belonging to Vserver "%s" associated with key-id "%s" owned by Google Cloud KMS Project "%s" with key ring location "%s" and key ring "%s" are now back online.
+*Parameters*::
+*vserver* (STRING): Name of the Vserver where the GCKMS is configured.
+*keyName* (STRING): Name of the key.
+*projectId* (STRING): ID of the GCKMS project.
+*keyringLocation* (STRING): Location of the key ring.
+*keyringName* (STRING): Name of the key ring.

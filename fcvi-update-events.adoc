@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: fcvi-update-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fcvi.update events
+---
+
+= fcvi.update events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fcvi.update.link.state
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when there is a change in physical link state of the Fibre Channel Virtual Interface (FC-VI) adapter.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Physical link is %s on port %s.
+*Parameters*::
+*link_state* (STRING): New link state.
+*port* (STRING): Interconnect NIC.

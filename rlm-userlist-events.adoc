@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: rlm-userlist-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rlm.userlist events
+---
+
+= rlm.userlist events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rlm.userlist.update.failed
+*Severity*::
+ERROR
+*Description*::
+There was an error while updating user information for the Remote Lan Module (RLM). When user information is updated on Data ONTAP(R), the RLM is also updated with the new changes. This allows users to login to the RLM.
+*Corrective Action*::
+1. Issue the 'rlm status' command at the Data ONTAP() prompt to check whether the Remote Lan Module (RLM) is operational. 2. If the RLM is operational, and this message persists, issue the 'rlm reboot' command at the Data ONTAP(R) prompt to reboot the RLM. 3. Retry the operation that caused the error message. 4. If this message persists after the RLM has been rebooted, contact NetApp technical support.
+*Syslog Message*::
+Error updating RLM user information, %s.
+*Parameters*::
+*reason* (STRING): User information update for the Remote Lan Module (RLM) may have failed due to : 1. Communication error with the RLM. 2. RLM may not be operational.

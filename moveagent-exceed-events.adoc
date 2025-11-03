@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: moveagent-exceed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: moveagent.exceed events
+---
+
+= moveagent.exceed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== moveagent.exceed.window
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the time window for a volume move operation exceeds the specified limit.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cutover window was exceeded for volume with source DSID %llu in Vserver with ID %llu Total elapsed cutover time elapsed is %llums; cutover window is %llums. Time spent in committing the source volume is %llums and for destination cutover operations is %llums.
+*Parameters*::
+*volume* (LONGINT): Volume data set ID(DSID).
+*vserver* (LONGINT): Vserver ID where the move takes place.
+*total_cutover_time* (LONGINT): Total cutover time elapsed.
+*cutover_window* (LONGINT): Predetermined cutover window.
+*source_commit_time* (LONGINT): Time for the source volume to be commited on disk.
+*destination_operation_latency* (LONGINT): Time for commit destination and swap VLDB.

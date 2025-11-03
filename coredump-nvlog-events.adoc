@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: coredump-nvlog-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: coredump.nvlog events
+---
+
+= coredump.nvlog events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== coredump.nvlog.replay.dump.dont
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when one or more unsuccessful attempts have been made to process information in the WAFL (R) NVlog after a previous failure. The number of allowed core dumps has been exceeded and this core dump will not be taken.
+*Corrective Action*::
+The node will reboot. No further action is necessary.
+*Syslog Message*::
+Core dump was not taken for the latest failure while processing the WAFL NVlog.
+*Parameters*::
+(None).

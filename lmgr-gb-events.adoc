@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: lmgr-gb-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lmgr.gb events
+---
+
+= lmgr.gb events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lmgr.gb.CA.locks.lost
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when giveback veto is overridden. Locks established through CIFS continuously available (CA) shares on the aggregate being given back are dropped because the giveback occurs before lock sync completion.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Dropping partner aggregate locks during lock sync on aggregate %s.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate for which CA locks are lost.
+
+== lmgr.gb.CA.locks.may.lost
+*Severity*::
+ALERT
+*Description*::
+This message occurs when giveback veto is overridden. Locks established using CIFS continuously available (CA) shares on the aggregate being given back might be dropped, because giveback commit occurs simultaneously with lock sync completion.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Continuously Available (CA) locks may be lost on aggregate %s due to forced giveback commit occurring simultaneously with lock sync completion.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate for which CA locks might be lost.

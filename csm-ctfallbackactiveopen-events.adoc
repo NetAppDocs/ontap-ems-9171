@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: csm-ctfallbackactiveopen-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: csm.ctfallbackactiveopen events
+---
+
+= csm.ctfallbackactiveopen events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== csm.ctFallbackActiveOpen
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Cluster Session Manager (CSM) uses CT (TCP transport) as the default when creating LIF pairs because connections running CSM over remote direct memory access (RDMA) repeatedly fail during successive retry attempts.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cluster Session Manager (CSM) could not successfully create the RDMA connections for session "%s" even after several retry attempts. CSM will use TCP connections as defaults.
+*Parameters*::
+*uniquifier* (STRING): Unique identifier for this session.

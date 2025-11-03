@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: callhome-jpc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.jpc events
+---
+
+= callhome.jpc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.jpc.selection.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Kernel Cluster Services (KCS) / Cluster Transaction Manager (CTRAN) detects that the algorithm to reselect the Join Proposal Coordinator (JPC) is failing repeatedly. The JPC is reselected when the node that hosted the JPC goes out of quorum. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Call NetApp technical support immediately for further assistance.
+*Syslog Message*::
+Call home for JOIN PROPOSAL COORDINATOR SELECTION FAILING.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multi node ASUP.

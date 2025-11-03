@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: objstore-interclusterlifdown-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: objstore.interclusterlifdown events
+---
+
+= objstore.interclusterlifdown events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== objstore.interclusterlifDown
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the object store client cannot find an operational LIF to communicate with the object store server. This node does not allow object store client traffic until the intercluster LIF is operational.
+*Corrective Action*::
+Check the intercluster LIFs and route configurations. Use the "network interface show -service-policy default-intercluster" command to check intercluster LIF status. Verify that the intercluster LIF is configured correctly and is operational. If an intercluster LIF is not configured, use the "network interface create -role intercluster" command to create it.
+*Syslog Message*::
+Object store client cannot find an operational intercluster LIF (system SVM ID: %u) or an associated route on node with UUID "%s", making the object store server unreachable.
+*Parameters*::
+*sysVserverID* (INT): System storage virtual machine ID of the intercluster LIF.
+*nodeUuid* (STRING): Universal unique identifier (UUID) of the node.

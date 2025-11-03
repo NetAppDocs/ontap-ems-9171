@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: san-noportsinipspace-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.noportsinipspace events
+---
+
+= san.noportsinipspace events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.NoPortsInIpspace
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an attempt to place an IP LIF on a particular node fails because the system cannot find any ports in an IPspace on that node.
+*Corrective Action*::
+Add at least one port belonging to the node to the IPspace by using the "network port broadcast-domain add-ports" command and then resynchronize the SVM configuration using the "metrocluster vserver resync" command.
+*Syslog Message*::
+Cannot find ports in IPspace "%s" on node "%s" for placing LIF "%s" in SVM "%s".
+*Parameters*::
+*ipspace_name* (STRING): IPspace name.
+*node_name* (STRING): Node name.
+*lif* (STRING): LIF name.
+*vserver_name* (STRING): SVM name.

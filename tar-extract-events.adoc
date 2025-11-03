@@ -1,0 +1,54 @@
+---
+sidebar: sidebar
+permalink: tar-extract-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: tar.extract events
+---
+
+= tar.extract events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== tar.extract.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs during the process of extracting a TAR archive, when an error while processing a particular entry causes the extraction of the archive to fail.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failure while extracting file (%d): '%s' %s.
+*Parameters*::
+*type* (INT): Type identifier of the TAR archive entry being processed when the error was encountered. Type identifiers and corresponding file types are as follows: 48 = Regular file, 49 = Hard link, 50 = Symbolic link, 51 = Character device, 52 = Block device, 53 = Directory, 54 = FIFO special file, 55 = Reserved.
+*path* (STRING): Relative path of the TAR archive entry being processed when the error was encountered.
+*errstr* (STRING): Error string providing more information about the error that caused the extraction process to fail.
+
+== tar.extract.success
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a TAR archive has been successfully extracted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Completed extracting %s.
+*Parameters*::
+*path* (STRING): Path to the TAR archive that has been successfully extracted.
+
+== tar.extract.unhandledType
+*Severity*::
+ERROR
+*Description*::
+This message occurs during the process of extracting a TAR archive, when the system discovers an entry that has an unsupported type identifier.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+File: %s has unhandled file type: %d.
+*Parameters*::
+*path* (STRING): Relative path of this entry of the TAR archive.
+*type* (INT): Type code of this entry of the TAR archive. Type identifiers and corresponding file types are as follows: 48 = Regular file, 49 = Hard link, 50 = Symbolic link, 51 = Character device, 52 = Block device, 53 = Directory, 54 = FIFO special file, 55 = Reserved.

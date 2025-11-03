@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sfu-partnerupdatecomplete-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfu.partnerupdatecomplete events
+---
+
+= sfu.partnerupdatecomplete events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfu.partnerUpdateComplete
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs in a high-availability (HA) configuration in which an HA partner was downloading disk shelf firmware and the download was completed, at which point this notification is sent and enclosure services are resumed by the partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Partner is no longer updating disk shelf firmware. Resuming enclosure services.
+*Parameters*::
+(None).

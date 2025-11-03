@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: netif-speednotsupported-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.speednotsupported events
+---
+
+= netif.speednotsupported events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.speedNotSupported
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a network interface autonegotiates to an unsupported speed.
+*Corrective Action*::
+Connect to 1 or 10 gigabits per second (Gbps) switch port.
+*Syslog Message*::
+Autonegotiation on network interface %s resolved to speed %d. This speed is not supported.
+*Parameters*::
+*ifname* (STRING): Name of network interface.
+*speed* (INT): Speed in megabits per second (Mbps).

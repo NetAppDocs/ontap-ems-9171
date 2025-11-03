@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cm-rest-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cm.rest events
+---
+
+= cm.rest events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cm.rest.throttleQueueOverflow
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the number of incoming REST requests involving a 'metrics' endpoint, a 'metric' field, or a 'statistics' field exceeds the current processing rate.
+*Corrective Action*::
+Reduce the rate of REST requests involving the 'metric' field, 'statistics' field, or 'metrics' endpoints.
+*Syslog Message*::
+The system is too busy to handle the REST requests involving a 'metrics' endpoint, a 'metric' field, or a 'statistics' field.
+*Parameters*::
+(None).

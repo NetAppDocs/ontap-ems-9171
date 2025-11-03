@@ -1,0 +1,46 @@
+---
+sidebar: sidebar
+permalink: certificate-insecure-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: certificate.insecure events
+---
+
+= certificate.insecure events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== certificate.insecure.hash
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an installed certificate uses a hash function that is no longer considered secure. Client-server communication using this certificate should be presumed insecure, and could be disrupted.
+*Corrective Action*::
+Delete the insecure certificate by using the "security certificate delete" command. Install an appropriate replacement by using the "security certificate install" command or "security certificate create" command.
+*Syslog Message*::
+A digital certificate with UUID %s in Vserver %s with name %s is using the insecure hash function %s.
+*Parameters*::
+*uuid* (STRING): UUID of the offending certificate.
+*vserver* (STRING): Name of the Vserver in which the offending certificate is installed.
+*cert_name* (STRING): Name (unique within a Vserver) of the offending certificate.
+*hash_function* (STRING): Hash function used by the offending certificate.
+
+== certificate.insecure.key
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an installed certificate uses a key length that is no longer considered secure for the corresponding key algorithm. Client-server communication using this certificate should be presumed insecure, and could be disrupted.
+*Corrective Action*::
+Delete the insecure certificate by using the "security certificate delete" command. Install an appropriate replacement by using the "security certificate install" command or "security certificate create" command.
+*Syslog Message*::
+A digital certificate with UUID %s in Vserver %s with name %s has an insecure key of type %s and length %d.
+*Parameters*::
+*uuid* (STRING): UUID of the offending certificate.
+*vserver* (STRING): Name of the Vserver in which the offending certificate is installed.
+*cert_name* (STRING): Name (unique within a Vserver) of the offending certificate.
+*key_algorithm* (STRING): Algorithm (e.g., RSA) of the key for the corresponding certificate.
+*key_length* (INT): Length of the key in bits for the corresponding certificate.

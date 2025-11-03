@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: netif-autonegfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.autonegfailed events
+---
+
+= netif.autonegfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.autoNegFailed
+*Severity*::
+ERROR
+*Description*::
+This message occcurs when autonegotiation fails and the interface is operating at half-duplex, which might not be the desired mode.
+*Corrective Action*::
+Verify that autonegotiation is enabled on the switch or device to which the interface is connected. Or, if the desired speed is 10 or 100 Mbps, disable autonegotiation on the interface by setting the mediatype.
+*Syslog Message*::
+Autonegotiation failed, interface %s operating at %d Mbps half-duplex.
+*Parameters*::
+*ifName* (STRING): Name of the network interface; for example, "e8a".
+*speed* (INT): Speed used by the interface.

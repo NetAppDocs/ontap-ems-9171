@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: vifmgr-gcp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.gcp events
+---
+
+= vifmgr.gcp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.gcp.NlbdDown
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the network load balancing listener becomes unresponsive. This event causes data LIFs to be moved to a healthier node.
+*Corrective Action*::
+Reboot the node.
+*Syslog Message*::
+The network load balancing listener is unresponsive.
+*Parameters*::
+(None).
+
+== vifmgr.gcp.NlbdUp
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the network load balancing listener recovers after a period of unresponsiveness. If data LIFs assigned to this node have been configured to automatically revert to their home port, this will cause them to return to their home port.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The network load balancing listener has recovered after a period of unresponsiveness.
+*Parameters*::
+(None).

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: vifmgr-secondaryoffline-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.secondaryoffline events
+---
+
+= vifmgr.secondaryoffline events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.secondaryOffline
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system determines that a remote node has been offline for more than a minute and assigns logical network interfaces (LIFs) from that node to other available nodes in the cluster.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LIFs from offline node "%s" are being assigned to other available nodes in the cluster.
+*Parameters*::
+*offlineNode* (STRING): Name of the offline node.

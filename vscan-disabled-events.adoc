@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: vscan-disabled-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vscan.disabled events
+---
+
+= vscan.disabled events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vscan.disabled
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a Vserver or cluster administrator disables Vscan on a Vserver. No subsequent client requests will trigger virus scanning.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Vscan is disabled on Vserver '%s'.
+*Parameters*::
+*vserverName* (STRING): Name of the Vserver.

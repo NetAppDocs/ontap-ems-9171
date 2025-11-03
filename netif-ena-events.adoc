@@ -1,0 +1,55 @@
+---
+sidebar: sidebar
+permalink: netif-ena-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.ena events
+---
+
+= netif.ena events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.ena.express.changed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when AWS ENA Express feature is changed for the NIC.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+AWS ENA Express for "%s" is changed from mode "%s" to "%s".
+*Parameters*::
+*ifName* (STRING): Name of the network interface.
+*oldMode* (STRING): ENA Express feature bits (0: off, 1: on with TCP, 2: on with UDP)
+*newMode* (STRING): ENA Express feature bits (0: off, 1: on with TCP, 2: on with UDP)
+
+== netif.ena.express.detected
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when AWS ENA Express feature is turned on for the NIC.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+AWS ENA Express for "%s" is detected: mode "%s".
+*Parameters*::
+*ifName* (STRING): Name of the network interface.
+*mode* (STRING): ENA Express feature bits (0: off, 1: on with TCP, 2: on with UDP)
+
+== netif.ena.express.disabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when AWS ENA Express feature is disabled for the NIC.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+AWS ENA Express for "%s" is disabled from mode "%s".
+*Parameters*::
+*ifName* (STRING): Name of the network interface.
+*oldMode* (STRING): ENA Express feature bits (0: off, 1: on with TCP, 2: on with UDP)

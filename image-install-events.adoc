@@ -1,0 +1,75 @@
+---
+sidebar: sidebar
+permalink: image-install-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: image.install events
+---
+
+= image.install events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== image.install.bypass.ds.chk
+*Severity*::
+ALERT
+*Description*::
+This message occurs when ONTAP software installation was performed via the boot menu, which does not verify the digital signature of the software image. Since boot_recovery or netboot was used, the boot device is formatted and both primary and backup software images are installed.
+*Corrective Action*::
+Corrective action is not required if the software was installed by authorized personnel. Corrective action might be required if the software was installed by unauthorized personnel because it might not be authorized or digitally signed.
+*Syslog Message*::
+The installed primary and backup ONTAP software images were not digitally verified.
+*Parameters*::
+(None).
+
+== image.install.fail.aggregate
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a software image installation fails, because one or more aggregates or volumes are not online.
+*Corrective Action*::
+Ensure that aggregates and volumes are all online by using the "storage aggregate show -state !online" command and the "volume show -state !online -state !restricted" command.
+*Syslog Message*::
+Image installation fail: One or more aggregates are not online.
+*Parameters*::
+(None).
+
+== image.install.fail.mcluster
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a software image installation fails because a MetroCluster(tm) switchover operation is in progress or already switched over.
+*Corrective Action*::
+Use the "metrocluster show" command to verify that both the local and remote clusters are neither performing switchover nor in switchover mode.
+*Syslog Message*::
+MetroCluster switchover operation is in progress or already switched over.
+*Parameters*::
+(None).
+
+== image.install.fail.sfostate
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a software image installation fails because the node is in takeover state.
+*Corrective Action*::
+Ensure that all storage failover operations have been completed and that no nodes remain taken over by using the "storage failover show-giveback" command, and then try the installation again.
+*Syslog Message*::
+The node is taken over, cannot set to new image.
+*Parameters*::
+(None).
+
+== image.install.fail.sign
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the software installation process cannot verify the digital signature of the intended image.
+*Corrective Action*::
+Replace the image, and then try the command again.
+*Syslog Message*::
+Image installation fail: Image digital signature check failed.
+*Parameters*::
+(None).

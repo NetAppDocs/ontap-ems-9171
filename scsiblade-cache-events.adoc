@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: scsiblade-cache-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsiblade.cache events
+---
+
+= scsiblade.cache events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsiblade.cache.commit.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the SAN cache encounters an error that might cause configuration inconsistencies within the cluster. SAN data traffic might be interrupted until the problem is addressed.
+*Corrective Action*::
+Reload the scsi-blade by using the (privilege: diagnostic) "debug san vserver reload" command for all Vservers on this node, or perform a planned takeover/giveback of this node.
+*Syslog Message*::
+The SAN cache might be inconsistent. SAN data traffic might be interrupted.
+*Parameters*::
+(None).

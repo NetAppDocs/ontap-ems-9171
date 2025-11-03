@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: replication-global-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: replication.global events
+---
+
+= replication.global events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== replication.global.throttle
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the request to change/set the throttling value for a replication association is failed. This is because the network layer does not support throttling traffic. This usually happens when the connection is going through a tcp offload device.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failed to set global throttle value for transfer from %s:%s to %s:%s
+*Parameters*::
+*srcfiler* (STRING): The replication source filer
+*srcpath* (STRING): The replication src volume or qtree
+*dstfiler* (STRING): The replication destination filer
+*dstpath* (STRING): The replication destination volume or qtree

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: rpl-snapshot-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rpl.snapshot events
+---
+
+= rpl.snapshot events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rpl.snapshot.delete.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when SnapMirror(R) or SnapVault(R) cannot delete one of its snapshots.
+*Corrective Action*::
+SnapMirror or SnapVault tries to delete this snapshot during the next update. However, if no further updates are possible or planned, you should delete this snapshot manually.
+*Syslog Message*::
+(None).
+*Parameters*::
+*snapname* (STRING): Snapshot copy name.
+*volname* (STRING): Volume name.
+*error* (STRING): WAFL(R) error message.

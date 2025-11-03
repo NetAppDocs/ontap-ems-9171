@@ -1,0 +1,253 @@
+---
+sidebar: sidebar
+permalink: wafl-dir-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.dir events
+---
+
+= wafl.dir events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.dir.convert
+*Severity*::
+NOTICE
+*Description*::
+This message indicates that CIFS directory conversion is in progress and WAFL will not hang due to timeout. Directory conversion happens the first time a volume with 8.3-format names is accessed by a CIFS client.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL %s directory conversion in progress.
+*Parameters*::
+*type* (STRING): Type of directory operation (revert/convert).
+
+== wafl.dir.convert.denied.2big
+*Severity*::
+ERROR
+*Description*::
+This message occurs when access to a directory is rejected because an attempted operation requires the directory to be converted to Unicode format and the directory is too large to be converted quickly. Directory conversion is required for a directory with 8.3-format names to be accessed by a CIFS or NFSv4 client.
+*Corrective Action*::
+Use the "volume modify" command to enable the "convert_ucode" option on the volume experiencing the rejected access, and then retry the access attempt. Note that this might result in system performance degradation or temporary loss of service while the conversion occurs. Search on "Converting existing directories to Unicode format" for more information.
+*Syslog Message*::
+Access to large directory on volume MSID:%u, file ID:%u rejected for requiring conversion.
+*Parameters*::
+*msid* (LONGINTHEX): Volume master data set identifier (MSID) of the volume experiencing the rejected access.
+*fileid* (INT): File identifier of the directory experiencing the rejected access.
+
+== wafl.dir.depth.max
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a directory depth reaches its maximum depth limit. The default maximum depth is 2000.
+*Corrective Action*::
+Reduce the depth of the directory, by moving directory hierarchy to higher levels.
+*Syslog Message*::
+Directory depth for inum %d in volume %s%s exceeds the maximum directory depth limit. To fix this issue, please reduce the directory depth.
+*Parameters*::
+*fileid* (INT): Fileid of the directory for which directory depth reached its maximum limit.
+*vol* (STRING): Volume in which directory depth reached its maximum limit.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique volume identifier in cases where volume name itself is insufficient.
+
+== wafl.dir.duplicate.hash
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a directory entry has a duplicate index hash for longname and dosname/altname is deleted from the directory.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+An entry with duplicate index hash is found in directory inum %d in volume %s%s%s. Directory index clears to fix this issue.
+*Parameters*::
+*fileid* (INT): File ID of the directory.
+*vol* (STRING): Volume name.
+*app* (STRING): Application universal unique identifier(UUID).
+*volident* (STRING): Unique volume identifier in cases where volume name itself is insufficient.
+
+== wafl.dir.entries.warning
+*Severity*::
+ALERT
+*Description*::
+This message occurs when directory entries have exceeded the currently configured maximum directory size (maxdirsize) percentage.
+*Corrective Action*::
+Execute the "volume file show-inode" command with the volume name and file ID to determine the file path and then reduce the number of files in the directory. If the number of files cannot be reduced, maxdirsize can be increased. Read the documentation and knowledge base articles to ensure ramifications of increasing maxdirsize are understood as once increased, performance impacts may be observed. The value for maxdirsize can be increased (but not decreased) by executing (privilege; advanced) "volume modify -volume vol_name -maxdir-size new_value". If you need to increase the value of maxdirsize, contact NetApp technical support.
+*Syslog Message*::
+Directory entries for File ID "%d" in volume "%s%s%s" have reached "%d" percentage of the maxdirsize limit.
+*Parameters*::
+*fileid* (INT): File ID of the directory
+*vol* (STRING): Name of the volume in which the directory is located.
+*app* (STRING): Universally unique identifier (UUID) of the application.
+*volident* (STRING): Volume UUID where the directory is located.
+*percent* (INT): Percentage of the directory entries filled.
+
+== wafl.dir.fileId.err
+*Severity*::
+ERROR
+*Description*::
+This event is issued when directory prefetch results in inconsistent file identifier data. The fh[0] to fh[4] parameters represent the encoded filehandle value.
+*Corrective Action*::
+If this error condition occurs, contact NetApp technical support for further assistance.
+*Syslog Message*::
+wafl_prefetch_dir_inos: inconsistent fileid %d in %s directory {x%x %d %d %d %d}.
+*Parameters*::
+*fileId* (INT): The file identifier
+*ino_type* (STRING): The inode type
+*fh0* (INT): fh[0]
+*fh1* (INT): fh[1]
+*fh2* (INT): fh[2]
+*fh3* (INT): fh[3]
+*fh4* (INT): fh[4]
+
+== wafl.dir.link.max
+*Severity*::
+ERROR
+*Description*::
+This message occurs as a warning when a parent directory reaches its maximum link limit within a specified time interval and the no of parent directory reached maximum hard link limit reached the upper limit. A directory has only one parent directory, which counts as a hard link. All other hard links are from the directories contained within this directory. The link to the parent directory cannot be removed.
+*Corrective Action*::
+Use the "volume file show-inode" command with the file ID and volume name information to find the file path. Reduce the hard link count of this directory by moving some of its subdirectories to another directory, or remove some of its subdirectories.
+*Syslog Message*::
+This is the last warning for failure to create a new sub-directory since parent directory with fileid %d in volume %s%s has reached its sub-directory limit.
+*Parameters*::
+*fileid* (INT): File ID of the parent directory that has reached its maximum hard link limit.
+*vol* (STRING): Name of the volume in which the parent directory resides.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique volume identifier (UUID) of the volume in which the parent directory resides, when the volume name alone is insufficient.
+
+== wafl.dir.link.reachingLimit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a parent directory surpasses 90% of its maximum hard link limit. The total hard link count for a directory is the number of its subdirectories plus other hard links to the directory.
+*Corrective Action*::
+Use the "volume file show-inode" command with the file ID and volume name information to find the file path. Move some of the parent directory's subdirectories to a different directory. Take care not to create too many new subdirectories in the parent directory that is reaching its limit until you reduce the hard link count.
+*Syslog Message*::
+The directory with fileid %d in volume %s%s%s is approaching the maximum link limit of %d. Reduce the number of links to the existing parent directory.
+*Parameters*::
+*fileid* (INT): File ID of the parent directory that has surpassed 90% of its maximum hard link limit.
+*vol* (STRING): Name of the volume in which the parent directory resides.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique volume identifier (UUID) of the volume in which the parent directory resides, when the volume name alone is insufficient.
+*maxLink* (INT): Maximum number of hard links for the parent directory.
+
+== wafl.dir.link.trap
+*Severity*::
+ALERT
+*Description*::
+This message occurs as a warning when a directory has reached its maximum hard link limit and the specified time interval is exceeded.
+*Corrective Action*::
+Use the "volume file show-inode" command with the file ID and volume name information to find the file path. Reduce the hard link count of this directory by moving some of its subdirectories to another directory, or remove some of its subdirectories.
+*Syslog Message*::
+(None).
+*Parameters*::
+*fileid* (INT): File ID of the parent directory that has reached its maximum hard link limit.
+*vol* (STRING): Name of the volume in which the parent directory resides.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique volume identifier (UUID) of the volume in which the parent directory resides, when the volume name alone is insufficient.
+*maxLink* (INT): Maximum number of hard links allowed.
+
+== wafl.dir.link.warning
+*Severity*::
+ERROR
+*Description*::
+This event occurs as a warning when a parent directory reached its maximum hard link limit within a specified time interval and the no of parent directory reached maximum hard link limit is below the upper limit.
+*Corrective Action*::
+Use the "volume file show-inode" command with the file ID and volume name information to find the file path. create new subdirectories in a different parent directory. Alternatively, move some of the current parent directory's subdirectories to a different directory.
+*Syslog Message*::
+A request to make a subdirectory in parent directory with fileid %d in volume %s%s could not be handled because the parent directory has reached its link limit; use a different parent directory or reduce the number of hard links by moving some of its subdirectories to a different directory.
+*Parameters*::
+*fileid* (INT): File ID of the parent directory that has reached its maximum hard link limit.
+*vol* (STRING): Name of the volume in which the parent directory resides.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique volume identifier (UUID) of the volume in which the parent directory resides, when the volume name alone is insufficient.
+
+== wafl.dir.nt.max
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an inode has reached its maximum number of NT streams.
+*Corrective Action*::
+Reduce the number of streams on the file.
+*Syslog Message*::
+Inode "%d" in volume "%s%s%s" has reached its maximum number of NT streams.
+*Parameters*::
+*fileId* (INT): File identifier.
+*vol* (STRING): Name of the volume in which the inode resides.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique volume identifier (UUID) of the volume in which the inode is present.
+
+== wafl.dir.nt.warning
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inode is nearing its maximum number of NT streams.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Inode "%d" in volume "%s%s%s" is nearing its maximum number of NT streams.
+*Parameters*::
+*fileId* (INT): File identifier.
+*vol* (STRING): Name of the volume in which the inode resides.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique volume identifier (UUID) of the volume in which the inode is present.
+
+== wafl.dir.size.max
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs after a directory has reached its maximum directory size (maxdirsize) limit.
+*Corrective Action*::
+Use the "volume file show-inode" command with the file ID and volume name information to find the file path. Reduce the number of files in the directory. If not possible, use the (privilege:advanced) option "volume modify -volume vol_name -maxdir-size new_value" to increase the maximum number of files per directory. However, doing so could impact system performance. If you need to increase the maximum directory size, contact NetApp technical support.
+*Syslog Message*::
+Directory size for fileid "%d" in volume "%s%s" reached the maxdirsize limit.
+*Parameters*::
+*fileid* (INT): File ID of the directory that has reached maximum size for directories in its volume.
+*vol* (STRING): Volume in which the directory is present.
+*app* (STRING): Application universal unique identifier(UUID).
+*volident* (STRING): Unique volume identifier (UUID) of the volume in which the parent directory resides, when the volume name alone is insufficient.
+
+== wafl.dir.size.max.warning
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the size of a directory has reached or surpassed a configured percentage (default: 90%) of its current maximum directory size (maxdirsize) limit, and the current maxdirsize is less than the default maxdirsize, which is 1% of total system memory.
+*Corrective Action*::
+Use the "volume file show-inode" command with the file ID and volume name information to find the file path. Reduce the number of files in the directory. If not possible, use the (privilege:advanced) option "volume modify -volume vol_name -maxdir-size new_value" to increase the maximum number of files per directory. However, doing so could impact system performance. If you need to increase the maximum directory size, contact technical support.
+*Syslog Message*::
+Directory size for file ID "%d" in volume "%s%s" is approaching the maximum directory size (maxdirsize) limit.
+*Parameters*::
+*fileid* (INT): File ID of the directory that has reached or is approaching the current maximum size for directories in its volume.
+*vol* (STRING): Name of the volume in which the directory is located.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique volume identifier (UUID) of the volume in which the parent directory is located, when the volume name alone is insufficient.
+
+== wafl.dir.size.warning
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the size of a directory surpasses a configured percentage (default: 90%) of its current maximum directory size (maxdirsize) limit.
+*Corrective Action*::
+Use the "volume file show-inode" command with the file ID and volume name information to find the file path. Reduce the number of files in the directory. If not possible, use the (privilege:advanced) option "volume modify -volume vol_name -maxdir-size new_value" to increase the maximum number of files per directory. However, doing so could impact system performance. If you need to increase the maximum directory size, contact NetApp technical support.
+*Syslog Message*::
+Directory size for file ID "%d" in volume "%s%s" is approaching the maximum directory size (maxdirsize) limit.
+*Parameters*::
+*fileid* (INT): File ID of the directory that has surpassed 90% of current maximum size for directories in its volume.
+*vol* (STRING): Name of the volume in which the directory is located.
+*app* (STRING): Application universal unique identifier(UUID).
+*volident* (STRING): Unique volume identifier (UUID) of the volume in which the parent directory is located, when the volume name alone is insufficient.
+
+== wafl.dir.surrpair.filename
+*Severity*::
+ERROR
+*Description*::
+This message occurs as a warning when a file name with surrogate pair characters in UTF-16 encoding fails to be created in a parent directory.
+*Corrective Action*::
+To allow names with surrogate pairs to be created, use the following command: "setflag wafl_reject_surrogate_pair 0". If the option needs to be set across reboots, set the bootarg 'wafl-accept-surrogate-pair?' to "true" at the LOADER prompt.
+*Syslog Message*::
+Failed to create a file with surrogate pair characters in the name in the directory %s.
+*Parameters*::
+*dir* (STRING): Parent directory.

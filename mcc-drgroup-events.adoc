@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: mcc-drgroup-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mcc.drgroup events
+---
+
+= mcc.drgroup events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mcc.drgroup.fetch.failed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when MCC DR group information cannot be retrieved from RDB tables.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Unable to fetch DR-group information from RDB, error: %s.
+*Parameters*::
+*reason* (STRING): Reason why RDB operation failed to fetch DR-group information.

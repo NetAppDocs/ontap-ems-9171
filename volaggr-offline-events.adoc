@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: volaggr-offline-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: volaggr.offline events
+---
+
+= volaggr.offline events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== volaggr.offline
+*Severity*::
+ALERT
+*Description*::
+Some aggregates are forced offline. volume creation could cause duplicate FSIDs.
+*Corrective Action*::
+Bring all offline aggregates online.
+*Syslog Message*::
+Some aggregates are offline. Volume creation could cause duplicate FSIDs.
+*Parameters*::
+(None).

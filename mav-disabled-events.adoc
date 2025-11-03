@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: mav-disabled-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mav.disabled events
+---
+
+= mav.disabled events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mav.disabled.used.console
+*Severity*::
+ALERT
+*Description*::
+This message occurs when multi-admin verification (MAV) is enabled, the bootarg "bootarg.multi_admin.enable" is set to false, and an operation that normally requires MAV approval is executed via the console. This results in an MAV request, executed from the console only, without requiring approval for the operation.
+*Corrective Action*::
+Set the bootarg "bootarg.multi_admin.enable" to true or to unset as soon as it's no longer needed.
+*Syslog Message*::
+The multi-admin verification (MAV) feature is disabled by a bootarg. An MAV rule is being triggered by the execution of "%s" command by "%s" user. Allow execution from the console.
+*Parameters*::
+*command* (STRING): Command that was executed.
+*user* (STRING): User that executed the command.

@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: nblade-cifsmaxopensamefilenotice-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.cifsmaxopensamefilenotice events
+---
+
+= nblade.cifsmaxopensamefilenotice events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.cifsMaxOpenSameFileNotice
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the number of open instances of a particular file under a CIFS tree nears the configuration limit. Upon reaching this limit, any further requests to open the same file by the user are denied until some open instances of the file are closed. This typically indicates abnormal application behavior.
+*Corrective Action*::
+Inspect the application running on the client using this TCP connection. The client might be operating incorrectly due to the application running on it. Rebooting the client might also be helpful. In some cases, clients are operating as expected but require a higher threshold, which you can set by using the (privilege: advanced) "cifs option modify -max-opens-same-file-per-tree" command.
+*Syslog Message*::
+Received %d open file requests, nearing the configured limit of %d, for the same file by one user on a connection: clientIP:port %s:%d, file: "%s" on share: "%s", vserver: "%s".
+*Parameters*::
+*currentCount* (INT): Current count of the open instances on the file.
+*maxValue* (INT): Maximum allowed open instances on a file.
+*IpAddress* (STRING): IP address of the client requesting the file open.
+*port* (INT): Port number of the client from which the connection has been established.
+*filePath* (STRING): Path of the file being opened.
+*shareName* (STRING): Name of the share that holds the file.
+*vserverName* (STRING): Vserver associated with this operation.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: telnet-firewall-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: telnet.firewall events
+---
+
+= telnet.firewall events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== telnet.firewall.remove
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when telnet is automatically removed from firewall policies during a revert operation from Data ONTAP(R) 9.0 to 8.3. Telnet is removed because it is an insecure protocol and it is by default disabled in Data ONTAP 9.0. In Data ONTAP 8.3, the presence of telnet in firewall policies after a revert operation enables telnet. To prevent this, the telnet firewall policy is removed during the operation.
+*Corrective Action*::
+Use the "system services firewall policy create" command to reenable telnet.
+*Syslog Message*::
+Telnet removed from firewall policy because of Data ONTAP revert operations. Telnet is now disabled.
+*Parameters*::
+(None).

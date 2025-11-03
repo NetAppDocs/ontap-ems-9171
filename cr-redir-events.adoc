@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: cr-redir-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cr.redir events
+---
+
+= cr.redir events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== CR.Redir.File.Inaccessible
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the data scanner skips an inode for which it cannot access the redirector file. This might be due to the namespace volume being offline.
+*Corrective Action*::
+Bring the namespace volume back online using the "volume online" command. If the problem persists, retry the scan operation.
+*Syslog Message*::
+The data file [%s] on data volume [%s] will be skipped by "Volume Check" because the corresponding redirector file on namespace volume [%s] on Vserver [%s] is not accessible.
+*Parameters*::
+*dataFilePath* (STRING): Path of the data file that will get skipped.
+*dataVol* (STRING): Name of the constituent data volume that hosts the data file.
+*nsVol* (STRING): Name of the constituent namespace volume that hosts the redirector file.
+*vserver* (STRING): Vserver hosting the constituent volumes.

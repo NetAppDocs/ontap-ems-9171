@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: monitor-rtclowpower-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.rtclowpower events
+---
+
+= monitor.rtclowpower events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.rtcLowPower
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the real-time clock (RTC) battery is at a dangerously low power level.
+*Corrective Action*::
+Replace the real-time clock battery.
+*Syslog Message*::
+Real-time clock battery is dangerously low. Replace it at the next available maintenance window.
+*Parameters*::
+(None).

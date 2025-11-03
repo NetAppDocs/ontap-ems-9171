@@ -1,0 +1,34 @@
+---
+sidebar: sidebar
+permalink: lmgr-recons-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lmgr.recons events
+---
+
+= lmgr.recons events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lmgr.recons.CA.lock.dropped
+*Severity*::
+ERROR
+*Description*::
+This message occurs when locks established through CIFS Continuously Available (CA) shares are dropped after a takeover, giveback, or aggregate relocation. This is because the multi-protocol lock manager finds bad mirrored lock state for CA locks and skips reconstructing them. This causes a client to see a service disruption on the file to which the CA locks belong.
+*Corrective Action*::
+Reopen the file to reestablish CA locks.
+*Syslog Message*::
+A Continuously Available (CA) lock for volume %s%s/%s (DSID %08x) file %d snapshot copy %d reconnect key %d is dropped because of %s.
+*Parameters*::
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Volume identifier to uniquely identify the volume in cases where the volume name alone is insufficient.
+*dsid* (LONGINT): Data set identifier.
+*fileid* (INT): File identifier.
+*snapid* (INT): Snapshot(tm) copy in which the file exists, 0 for the active file system.
+*reconnect_key* (INT): Open identifier to uniquely identify a durable or persistent open on a volume
+*reason* (STRING): Description of the reason for dropping a CA lock.

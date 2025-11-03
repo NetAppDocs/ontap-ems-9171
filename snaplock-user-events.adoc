@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: snaplock-user-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snaplock.user events
+---
+
+= snaplock.user events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snaplock.user
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the SnapLock(R) logging system fails to securely log either the addition or deletion of the compliance admin role to or from a user account. The actual operation might have succeeded.
+*Corrective Action*::
+No corrective action is necessary. However, a secure log of the request might not exist and the SnapLock log volume should be checked for correct operation.
+*Syslog Message*::
+There was a problem securely logging the %s of the "%s" role %s the user "%s" by "%s". Reason: %s
+*Parameters*::
+*event* (STRING): Identifies whether the role was added or deleted.
+*role* (STRING): Name of the compliance admin role.
+*tofrom* (STRING): Describes whether the role is being added to or deleted from the user account.
+*username* (STRING): User name to or from which the role is being added or deleted.
+*whodidit* (STRING): Name of the user performing the operation.
+*reason* (STRING): Reason for the logging failure.

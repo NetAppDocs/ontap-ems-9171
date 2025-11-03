@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: login-auth-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: login.auth events
+---
+
+= login.auth events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== login.auth.loginDenied
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a login attempt is refused due to authentication failure.
+*Corrective Action*::
+Use a valid username/password combination to login.
+*Syslog Message*::
+(None).
+*Parameters*::
+*message* (STRING): Details about the failed login attempt.

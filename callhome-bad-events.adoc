@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-bad-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.bad events
+---
+
+= callhome.bad events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.bad.ram
+*Severity*::
+ERROR
+*Description*::
+This message occurs when correctable ECC errors are masked off, possibly due to bad or poorly seated memory or a faulty motherboard. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+If anyone recently installed memory, try removing and reseating it. If problems persist, replace the memory module. If problems still persist, replace the motherboard. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for POSSIBLE BAD RAM
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

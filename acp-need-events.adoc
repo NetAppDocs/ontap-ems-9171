@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: acp-need-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: acp.need events
+---
+
+= acp.need events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== acp.need.firmware.update
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Alternate Control Path (ACP) Administrator determines that the ACP processor is running an older firmware revision that supports only the Secure Socket Library (SSL) channel. The "/etc/acpp_fw" directory requires the latest firmware file for the update to succeed. This module is marked as inactive.
+*Corrective Action*::
+Copy the latest firmware file for this module into "/etc/acpp_fw", and then use the "system node run -node <nodename> -command storage download acp" command to download the firmware.
+*Syslog Message*::
+ACP module %s (%s) needs a firmware upgrade, (disk shelf serial number: %s).
+*Parameters*::
+*inband_id* (STRING): Inband ID of the module.
+*ip* (STRING): IP address of the module.
+*shelf_sno* (STRING): Disk shelf serial number of the shelf where this I/O module is seated.
+
+== acp.need.module.upgrade
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Alternate Control Path (ACP) Administrator determines that the I/O module (IOM) does not support InBand ACP.
+*Corrective Action*::
+Upgrade the IOM to IOM6 or later.
+*Syslog Message*::
+IOM %s does not support InBand ACP. Upgrade the IOM to IOM6 or later for supportability (disk shelf serial number: %s).
+*Parameters*::
+*inband_id* (STRING): Inband ID of the module.
+*shelf_sno* (STRING): Disk shelf serial number of the shelf where this IOM is seated.

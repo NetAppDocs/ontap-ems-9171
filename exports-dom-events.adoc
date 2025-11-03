@@ -1,0 +1,46 @@
+---
+sidebar: sidebar
+permalink: exports-dom-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: exports.dom events
+---
+
+= exports.dom events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== exports.dom.notFound
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the reverse lookup record mapping an IP address to its hostname cannot be found in the configured name servers. This record must be present to evaluate the export-policy rule that has a domain name in its clientmatch entry.
+*Corrective Action*::
+The reverse mapping record might have been incorrectly entered, inadvertently removed from the name service, or never entered at all. Check the configuration with the appropriate tools for each name service.
+*Syslog Message*::
+IP address "%s" does not have a reverse mapping for its corresponding hostname in the configured name servers when evaluating the export-policy rule at index "%u" in policy-id "%llu" for Vserver "%s".
+*Parameters*::
+*ipaddr* (STRING): IP address of the client that does not have the reverse lookup record.
+*ruleindex* (INT): Index of the export-policy rule for which the problem is occurring.
+*policyid* (LONGINT): Identifier for the export-policy owning the export-policy rule.
+*vserver* (STRING): Name of the data Vserver for which the problem is occurring.
+
+== exports.dom.transient
+*Severity*::
+ERROR
+*Description*::
+This message occurs when reverse lookup of the IP address of a client using the configured name servers in a data Vserver is unsuccessful for an export-policy rule that uses the domain name in clientmatch.
+*Corrective Action*::
+The name service might not be functioning correctly. Check the configuration with the appropriate tools for each name service.
+*Syslog Message*::
+IP address "%s" could not be resolved to a hostname (error %d) when evaluating export-policy rule at index "%u" in policy-id "%llu" in Vserver "%s".
+*Parameters*::
+*ipaddr* (STRING): IP address of the client encountering the reverse lookup error.
+*retcode* (INT): Error code returned by the name service reverse lookup.
+*ruleindex* (INT): Index of the export-policy rule for which the problem is occurring.
+*policyid* (LONGINT): Identifier for the export-policy owning the export-policy rule.
+*vserver* (STRING): Name of the data Vserver for which the problem is occurring.

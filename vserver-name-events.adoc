@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: vserver-name-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vserver.name events
+---
+
+= vserver.name events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vserver.name.conflict.local
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when use of the "vserver rename" command creates a Vserver name conflict in the local cluster, and the local cluster resolves the name conflict by incorporating the Vserver Unique Identifier (UID) into the name. This creates a new and unique Vserver name, but that new name is not the name specified in the original rename command.
+*Corrective Action*::
+None
+*Syslog Message*::
+Vserver name conflict in local cluster with existing local or peer Vserver %s. Local cluster has assigned unique Vserver name %s
+*Parameters*::
+*vserver_name* (STRING): Vserver name that caused the renaming conflict.
+*unique_vserver_name* (STRING): Unique Vserver name that Local cluster has assigned.
+
+== vserver.name.conflict.peer
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when use of the "vserver rename" command creates a Vserver name conflict in the peer cluster, and the peer cluster resolves the name conflict by incorporating the Vserver Unique Identifier (UID) into the name. This creates a new and unique Vserver name, but that new name is not the name specified in the original rename command.
+*Corrective Action*::
+None
+*Syslog Message*::
+Vserver name conflict occured in peer cluster %s with existing local or peer Vserver %s. Peer cluster has assigned unique Vserver name %s.
+*Parameters*::
+*peer_cluster* (STRING): Peer cluster name.
+*vserver_name* (STRING): Vserver name that caused the renaming conflict.
+*unique_vsname* (STRING): Unique Vserver name that Peer cluster has assigned.

@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: cpeer-pp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cpeer.pp events
+---
+
+= cpeer.pp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cpeer.pp.mismatch
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an incoming cluster peer authentication request fails due to a passphrase mismatch.
+*Corrective Action*::
+For multiple occurrences of this event, verify the peering request with the admin of the remote cluster. If the admin is not responsible for the attempts, the local or remote cluster might be under attack.
+*Syslog Message*::
+Remote cluster %s//%s did not accept a cluster peering authentication offer (from address %s in IPspace %s) due to a passphrase mismatch. Local offer made on %s, valid for %s, with the %s PSK method.
+*Parameters*::
+*remotename* (STRING): Name of the cluster for which the contact was made.
+*remoteuuid* (STRING): UUID of the cluster for which the contact was made.
+*address* (STRING): Network address from which the authentication attempt was made.
+*ipspace* (STRING): IPspace from which the contact attempt was made.
+*offerTime* (STRING): Time at which the offer from the local cluster was generated.
+*offerDuration* (STRING): Duration of the offer from the local cluster.
+*offerStyle* (STRING): Style of authentication offer.

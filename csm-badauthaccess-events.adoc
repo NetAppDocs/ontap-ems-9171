@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: csm-badauthaccess-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: csm.badauthaccess events
+---
+
+= csm.badauthaccess events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== csm.badAuthAccess
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a blade fails an attempt to authenticate as a given peer cluster, and Cluster Session Manager (CSM), which establishes and manages SpinNP sessions between blades in the cluster, denies access of the unauthenticated blade. This could indicate that an interloper is attempting to gain access to the cluster.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Access as peer cluster %s was claimed from network address %s, but has not been granted because %s.
+*Parameters*::
+*clusterUuid* (STRING): UUID of the cluster to which the blade claimed to belong.
+*addrstr* (STRING): Remote network address of the blade.
+*msg* (STRING): Reason that access could not be authenticated.

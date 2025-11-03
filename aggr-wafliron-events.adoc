@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: aggr-wafliron-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: aggr.wafliron events
+---
+
+= aggr.wafliron events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== aggr.wafliron.attemptStart
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when wafliron is started. A later message indicates the success or failure of wafliron.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*volname* (STRING): Volume name.
+*arguments* (STRING): Arguments supplied to wafliron on the command line.

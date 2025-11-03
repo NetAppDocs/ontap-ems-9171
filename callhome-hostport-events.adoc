@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: callhome-hostport-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.hostport events
+---
+
+= callhome.hostport events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.hostport.bypass
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an Embedded Switched Hub (ESH) bypasses a host port due to excessive errors on the port. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Depending on your system configuration, you might need to replace the ESH Module or replace the Fibre Channel cable to the host port. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for HOST_PORT_FAIL - Bypassed by ESH
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.hostport.disable
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an I/O Module (IOM) disables a host port due to excessive errors on the port. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Depending on your system configuration, you might need to replace the IOM or ensure that a good cable is attached to the host port. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for HOST_PORT_FAIL - Disabled by IOM
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

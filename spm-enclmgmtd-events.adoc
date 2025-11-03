@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: spm-enclmgmtd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: spm.enclmgmtd events
+---
+
+= spm.enclmgmtd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== spm.enclmgmtd.process.exit
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Enclosure Management Daemon (enclmgmtd) involuntarily terminates. This daemon is responsible for enclosure monitoring for this platform. This failure does not affect client access. However, enclosure monitoring might be in a degraded state if the service fails to restart.
+*Corrective Action*::
+The system attempts to recover by restarting the subsystem. If the subsystem does not recover within the threshold number of retries, then an AutoSupport(R) message is sent. If your system is not configured to send AutoSupport messages and the issue persists, contact NetApp technical support.
+*Syslog Message*::
+Enclosure Management Daemon (enclmgmtd) with ID %d exited as a result of signal %s. The service will attempt to restart.
+*Parameters*::
+*id* (INT): Process identifier.
+*cause* (STRING): Plain text description of why the process exited.

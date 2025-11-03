@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: license-cert-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: license.cert events
+---
+
+= license.cert events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== license.cert.expired
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the license validation certificate is expired. No new license can be validated.
+*Corrective Action*::
+Contact your sales representative or reseller about renewing your license validation certificate.
+*Syslog Message*::
+No new license can be validated. Certificate expired on %s.
+*Parameters*::
+*exp_date* (STRING): Expiration date.
+
+== license.cert.expired.check
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the license validation certificate is near its expiration date. After the certificate expires, no new license can be validated.
+*Corrective Action*::
+Contact your sales representative or reseller about renewing your license validation certificate.
+*Syslog Message*::
+Certificate to validate licenses will expire on %s.
+*Parameters*::
+*exp_date* (STRING): Expiration date.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: mcc-check-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mcc.check events
+---
+
+= mcc.check events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mcc.check.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the MetroCluster (tm) check job has failed to complete all checks for the system.
+*Corrective Action*::
+Run "metrocluster operation history show" command to check the reason for this failure. Make sure that all nodes in each of the clusters are healthy, and both clusters are in normal mode using the "metrocluster node show" and "metrocluster show" commands. Then retry the operation using the command "metrocluster check run". If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+The MetroCluster (tm) check job has failed to complete all checks for the system in cluster %s.
+*Parameters*::
+*Cluster* (STRING): Cluster where the check was running.

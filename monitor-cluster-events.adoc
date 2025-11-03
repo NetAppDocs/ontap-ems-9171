@@ -1,0 +1,65 @@
+---
+sidebar: sidebar
+permalink: monitor-cluster-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.cluster events
+---
+
+= monitor.cluster events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.cluster.full
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the cluster is full after consuming space beyond the threshold value.
+*Corrective Action*::
+Create space by increasing the cluster size, or by deleting data or deleting snapshots.
+*Syslog Message*::
+Physical space used by the cluster (%s%%) exceeds the full threshold (%d%%).
+*Parameters*::
+*percent_full* (STRING): Physical used space of the cluster, as a percent.
+*percent_threshold* (INT): Threshold percent of physical used space which triggers the cluster full condition.
+
+== monitor.cluster.nearlyFull
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the cluster is nearly full after consuming space beyond the threshold value.
+*Corrective Action*::
+Create space by increasing the cluster size, or by deleting data or deleting snapshots.
+*Syslog Message*::
+Physical used space by the cluster (%s%%) exceeds the nearly full threshold (%d%%).
+*Parameters*::
+*percent_full* (STRING): Physical used space of the cluster, as a percent.
+*percent_threshold* (INT): Threshold percent of physical used space which triggers the cluster nearly full condition.
+
+== monitor.cluster.ok
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the previously reported cluster full condition is fixed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cluster is no longer full. Physical space used by the cluster (%s%%).
+*Parameters*::
+*percent_full* (STRING): Physical used space of the cluster, as a percent.
+
+== monitor.cluster.overalloc
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the cluster is over allocated after consuming space beyond cluster size.
+*Corrective Action*::
+Create space by increasing the cluster size, or by deleting data or deleting snapshots.
+*Syslog Message*::
+Physical space used by the cluster (%s%%) exceeds maximum space in the cluster.
+*Parameters*::
+*percent_full* (STRING): Physical used space of the cluster, as a percent.

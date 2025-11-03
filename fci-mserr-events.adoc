@@ -1,0 +1,34 @@
+---
+sidebar: sidebar
+permalink: fci-mserr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fci.mserr events
+---
+
+= fci.mserr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fci.mserr.general
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Fibre Channel fabric cannot successfully complete a request to the Management Server to retrieve configuration information. This query request is issued when the specified adapter is connected to a Fibre Channel fabric. Included in the event is the specific Management Server query along with text describing the reason and explanation codes returned by the fabric.
+*Corrective Action*::
+If the system happens to issue a Management Server query while the fabric is processing one or more configuration changes, the fabric might not successfully complete the request. After the fabric stabilizes, the Management Server can resume processing requests and the system automatically recovers from the error. This error is expected on McData switches that do not have the OSMS license installed, and devices on those switches cannot be seen by the Fibre Channel adapter. This error might also take place if the configuration has not been cabled properly, particularly if the explanation code translates into something like 'Invalid name for interconnect element or port'. If this error continues to occur after the fabric has stabilized and it is not happening on a McData switch without the OSMS license installed, check cabling, and contact NetApp technical support.
+*Syslog Message*::
+The Fibre Channel fabric Management Server request (%s) sent from adapter %s for WWN (%s) failed with reason code 0x%x (%s), explanation code 0x%x (%s), and response code 0x%x.
+*Parameters*::
+*msRequest* (STRING): Name of the failing Fibre Channel Management Server request.
+*adapterName* (STRING): Name of the associated Fibre Channel host bus adapter (HBA).
+*queryWWN* (STRING): World Wide Name that was used for the query.
+*reasonCode* (INTHEX): Reason code provided by the fabric for failure of the Management Server request.
+*reason* (STRING): Reason text provided by the fabric for failure of the Management Server request.
+*explanationCode* (INTHEX): Explanation code provided by the fabric qualifying the stated reason.
+*explanation* (STRING): Explanation text provided by the fabric qualifying the stated reason.
+*responseCode* (INTHEX): Response code provided by the fabric for failure of the specified Management Server request.

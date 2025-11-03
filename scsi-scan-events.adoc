@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: scsi-scan-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsi.scan events
+---
+
+= scsi.scan events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsi.scan.bus.halted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the creation of the SCSI transport (xpt) path fails.
+*Corrective Action*::
+Check whether the device is connected correctly.
+*Syslog Message*::
+The path that is creating the xpt path has failed with status 0x%x. Bus scan halted.
+*Parameters*::
+*status* (INTHEX): SCSI scan bus halt status.
+
+== scsi.scan.lun.halted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the creation of the SCSI transport (xpt) path fails.
+*Corrective Action*::
+Check whether the device is connected correctly.
+*Syslog Message*::
+The path that is creating the xpt path has failed with status 0x%x. Bus scan halted.
+*Parameters*::
+*status* (INTHEX): SCSI scan LUN halted status.

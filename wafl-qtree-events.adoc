@@ -1,0 +1,128 @@
+---
+sidebar: sidebar
+permalink: wafl-qtree-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.qtree events
+---
+
+= wafl.qtree events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.qtree.id.mismatch
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a qtree ID derived from a WAFL(R) buffer does not match the given tree ID in a snapshot.
+*Corrective Action*::
+Delete the snapshot containing the qtree for non SnapMirror(R) DP volumes. For SnapMirror DP volumes, run wafliron with the "-include-mirrors" option set to true to fix the entry. For example, run the "wafliron start -aggr aggr_name -include-mirrors true" command, where aggr_name is the aggregate for the given volume.
+*Syslog Message*::
+Qtree ID %d is recorded as ID %d in %s %s%s%s%s in snapshot %d.
+*Parameters*::
+*tid* (INT): Source tree identifier.
+*id* (INT): Qtree root identifier.
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*snapId* (INT): Snapshot identifier.
+
+== wafl.qtree.invalid.state
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the qtree file in a snapshot is in an invalid state.
+*Corrective Action*::
+Delete the snapshot containing the qtree for non SnapMirror(R) DP volumes. For SnapMirror DP volumes, run wafliron with the "-include-mirrors" option set to true to fix the entry.For example, run the "wafliron start -aggr aggr_name -include-mirrors true" command, where aggr_name is the aggregate for the given volume.
+*Syslog Message*::
+Qtree file in %s %s%s%s%s is in an invalid state %d in snapshot %d.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume in cases in which the volume name alone is insufficient.
+*reason* (INT): State of the qtree file.
+*snapId* (INT): Snapshot identifier.
+
+== wafl.qtree.metafile.corrupt
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the qtree metafile in a snapshot is inconsistent.
+*Corrective Action*::
+Run wafliron to fix the inconsistent volume. Use the "-include-mirrors" option if the volume is a SnapMirror(R) DP volume. For example, run the "wafliron start -aggr aggr_name -include-mirrors true" command, where aggr_name is the aggregate for the given volume.
+*Syslog Message*::
+Qtree metafile inconsistent in volume %s%s%s, snapshot %d.
+*Parameters*::
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume in cases in which the volume name alone is insufficient.
+*snapId* (INT): Snapshot identifier.
+
+== wafl.qtree.qsmBreak.base
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the SnapMirror(R) information of the qtree is being removed as result of WAFL_check operation.
+*Corrective Action*::
+Use the "snapmirror resync" or "snapmirror initialize" to reestablish the SnapMirror relationship.
+*Syslog Message*::
+Breaking SnapMirror qtree %d in %s %s%s%s%s: base snapshot no longer exists. Use the "snapmirror resync" or "snapmirror initialize" to reestablish the SnapMirror relationship.
+*Parameters*::
+*qtree* (INT): Qtree identifier.
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+
+== wafl.qtree.qsmBreak.iron
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the SnapMirror(R) information of the qtree is being removed as result of a wafliron operation.
+*Corrective Action*::
+Use the "snapmirror resync" or "snapmirror initialize" command to reestablish the SnapMirror relationship.
+*Syslog Message*::
+Breaking SnapMirror qtree %d in %s %s%s%s%s: wafliron broke all SnapMirror relationships in %s %s%s%s%s. Use the "snapmirror resync" or "snapmirror initialize" command to reestablish the SnapMirror relationship.
+*Parameters*::
+*qtree* (INT): Qtree identifier.
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident1* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*type2* (STRING): Type of object (volume or aggregate).
+*owner2* (STRING): Volume owner.
+*vol2* (STRING): Volume name.
+*app2* (STRING): Application UUID.
+*volident2* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+
+== wafl.qtree.qsmBreak.wc
+*Severity*::
+ERROR
+*Description*::
+This message occurs when snapmirror information of the qtree is being removed as result of wack
+*Corrective Action*::
+Use the "snapmirror resync" or "snapmirror initialize" command to reestablish the SnapMirror relationship.
+*Syslog Message*::
+Breaking SnapMirror qtree %d in %s %s%s%s%s: WAFL_check broke all SnapMirror relationships in %s %s%s%s%s. Use the "snapmirror resync" or "snapmirror initialize" command to reestablish the SnapMirror relationship.
+*Parameters*::
+*qtree* (INT): Qtree identifier.
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident1* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*type2* (STRING): Type of object (volume or aggregate).
+*owner2* (STRING): Volume owner.
+*vol2* (STRING): Volume name.
+*app2* (STRING): Application UUID.
+*volident2* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.

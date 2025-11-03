@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: wafl-spacetax-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.spacetax events
+---
+
+= wafl.spacetax events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.spacetax.disabled
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the spacetax feature is disabled for all flexible volumes in the system because of the 'wafl-disable-spacetax?' boot option.
+*Corrective Action*::
+Reboot with the 'wafl-disable-spacetax?' boot option removed.
+*Syslog Message*::
+Spacetax disabled for all flexible volumes.
+*Parameters*::
+(None).

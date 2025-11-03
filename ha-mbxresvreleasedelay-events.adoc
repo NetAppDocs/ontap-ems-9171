@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: ha-mbxresvreleasedelay-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.mbxresvreleasedelay events
+---
+
+= ha.mbxresvreleasedelay events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.mbxResvReleaseDelay
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the takeover node cannot release a disk reservation for a mailbox disk in preparation for a giveback event. The mailbox reservation release will be automatically retried after a few minutes.
+*Corrective Action*::
+The mailbox reservation release will be automatically retried after a few minutes. If this problem persists and "storage failover giveback" is not run automatically or cannot be run manually, release the mailbox disks reservations manually using maintenance mode.
+*Syslog Message*::
+Problem releasing reservation for mailbox disk attached to node with System ID %d. Disk name %s, disk owner %s, disk UUID: %s, status: %d.
+*Parameters*::
+*physical_location* (LONGINT): System ID of the node directly attached to the mailbox disk on which the reservation release failure occurred.
+*disk_name* (STRING): Name of the disk for which the reservation release failed.
+*mbx_disk_owner* (STRING): Owner of the mailbox disk where the reservation release failed. Values are Local Node or Partner Node.
+*disk_uid* (STRING): Unique identifier of the disk where the reservation release failed.
+*status* (INT): Reservation release status code.

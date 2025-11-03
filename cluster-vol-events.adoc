@@ -1,0 +1,95 @@
+---
+sidebar: sidebar
+permalink: cluster-vol-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cluster.vol events
+---
+
+= cluster.vol events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cluster.vol.create.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the volume required to store the system data needed for cluster-wide storage is created successfully after one or more attempts to create it failed. An event was previously raised for the failures.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Successfully created the volume for feature %s, after earlier attempts to create it failed.
+*Parameters*::
+*Feature* (STRING): Feature using the cluster-wide storage.
+
+== cluster.vol.delete.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the volume that was used for cluster-wide storage cannot be deleted.
+*Corrective Action*::
+Study the error message and take steps to rectify the problem. For example, if the error message indicates that the volume delete operation failed because the aggregate is offline, use the "aggr online -aggregate aggregate_name" command to bring it back online. If the error message does not indicate an obvious problem, contact NetApp technical support.
+*Syslog Message*::
+Could not delete volume %s %d times on aggregate %s for feature %s. Most recent delete before this EMS failed with error message: "%s".
+*Parameters*::
+*Volume* (STRING): Volume name.
+*AttemptsMade* (INT): Count of failed attempts to delete the volume.
+*Aggregate* (STRING): Aggregate name.
+*Feature* (STRING): Feature using the cluster-wide storage.
+*ErrorMessage* (STRING): Error message resulting from the delete failure at the time of EMS generation.
+
+== cluster.vol.delete.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the volume that was used for cluster-wide storage is deleted successfully after one or more attempts to delete it failed. An event was previously raised for the failures.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Successfully deleted volume %s on aggregate %s for feature %s, after earlier attempts to delete it failed.
+*Parameters*::
+*Volume* (STRING): Volume name.
+*Aggregate* (STRING): Aggregate name.
+*Feature* (STRING): Feature using the cluster-wide storage.
+
+== cluster.vol.feature.inoper
+*Severity*::
+ALERT
+*Description*::
+This message occurs when it is detected that a feature relying on cluster-wide storage has been unable to create its storage. This condition leaves the feature inoperative.
+*Corrective Action*::
+Look for any instances of the callhome.clus.vol.cre.fail event and follow any corrective action suggested there. For more information or assistance, contact NetApp technical support.
+*Syslog Message*::
+Feature %s is inoperative due to failures creating the cluster-wide storage that it requires.
+*Parameters*::
+*Feature* (STRING): Feature using the cluster-wide storage.
+
+== cluster.vol.feature.ok
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when it is detected that a feature relying on cluster-wide storage has been able to create its storage after previously not being able to.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Feature %s degraded state has been cleared.
+*Parameters*::
+*Feature* (STRING): Feature using the cluster-wide storage.
+
+== cluster.vol.on.same.aggr
+*Severity*::
+ALERT
+*Description*::
+This message occurs when both active and standby volumes used for cluster-wide storage are hosted on the same aggregate. This is typically due to there not being a suitable second aggregate to host the standby volume. In this configuration, the loss of the single aggregate would remove all cluster-wide storage for the feature, which would severely affect its functionality.
+*Corrective Action*::
+Use the "volume show" command to identify the size of the specified volumes and on which aggregate they are hosted. Use the "storage aggregate show -fields mirror" command to identify if the aggregate that currently hosts the volumes is mirrored. Use the "storage aggregate show -fields mirror,size,usedsize,state" command to find an online aggregate with the same mirror attribute and with enough free space to host the standby volume. If a suitable aggregate cannot be found, then bring an offline aggregate back online using the "storage aggregate online" command or create a new aggregate using the "storage aggregate create" command. If creating a new aggregate, ensure that it is large enough to host the volume and that it has the same mirror attribute as the current aggregate. After a suitable aggregate has been identified or created, move the standby volume to this aggregate using the "volume move start" command. For more information or assistance, contact NetApp technical support.
+*Syslog Message*::
+Both active and standby cluster-wide storage volumes (%s, %s) for %s feature are on the same aggregate.
+*Parameters*::
+*ActiveVolume* (STRING): Active volume name.
+*StandbyVolume* (STRING): Standby volume name.
+*Feature* (STRING): Feature using the cluster-wide storage.

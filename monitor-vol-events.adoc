@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: monitor-vol-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.vol events
+---
+
+= monitor.vol events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.vol.full.inc.sav
+*Severity*::
+ALERT
+*Description*::
+This message occurs when one or more file systems are full, typically indicating at least 98% full. Space usage is computed based on the active file system size as well as all of the space saved by storage efficiency features. This value is computed by subtracting the value of the "Snapshot Reserve" field, and is equivalent to the "logical-used" field of the "volume show-space" command. The volume can be over 100% full due to space used or including savings by storage efficiency features or reserved by metadata. A value greater than 100% can cause the volume to become logically overallocated. See the "vol.log.overalloc.inc.sav" event message for more information.
+*Corrective Action*::
+Create space by increasing the volume size, deleting data, or deleting snapshots. To increase volume size, use the "volume size" command. To delete snapshots, use the "volume snapshot delete" command.
+*Syslog Message*::
+%s %s%s%s (UUID %s) is full (reserved or using %d%% of space including savings and %d%% of inodes).
+*Parameters*::
+*object_type* (STRING): Identifier for the type of object to which this event applies. This event should be applicable only to volumes with logical space enforcement enabled.
+*name* (STRING): Name of this object.
+*app* (STRING): Application Universally Unique ID (UUID).
+*vserver_uuid* (STRING): UUID of the object's or volume's Vserver.
+*object_uuid* (STRING): UUID of the object or volume.
+*percent_full_blocks* (INT): Used capacity of the space of the object, as a percentage.
+*percent_full_inodes* (INT): Used capacity of inodes of the object, as a percent.
+
+== monitor.vol.nearFull.inc.sav
+*Severity*::
+ALERT
+*Description*::
+This message occurs when one or more file systems are nearly full, typically indicating at least 95% full. Space usage is based on the active file system size as well as all of the space saved by storage efficiency features. This value is computed by subtracting the value of the "Snapshot Reserve" field, and is equivalent to the "logical-used" field of the "volume show-space" command.
+*Corrective Action*::
+Create space by increasing the volume size, deleting data, or deleting snapshots. To increase volume size, use the "volume size" command. To delete snapshots, use the "volume snapshot delete" command.
+*Syslog Message*::
+%s %s%s%s (UUID %s) is nearly full (reserved or using %d%% of space including savings and %d%% of inodes).
+*Parameters*::
+*object_type* (STRING): Identifier for the type of object to which this event applies. This event should be applicable only to volumes with logical space enforcement enabled.
+*name* (STRING): Name of this object.
+*app* (STRING): Application Universally Unique ID (UUID).
+*vserver_uuid* (STRING): UUID of the object's or volume's Vserver.
+*object_uuid* (STRING): UUID of the object or volume.
+*percent_full_blocks* (INT): Used capacity of the space of the object, including space saved by the storage efficiency features, as a percentage.
+*percent_full_inodes* (INT): Used capacity of inodes of the object, as a percentage.

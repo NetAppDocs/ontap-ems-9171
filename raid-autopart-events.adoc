@@ -1,0 +1,79 @@
+---
+sidebar: sidebar
+permalink: raid-autopart-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.autopart events
+---
+
+= raid.autopart events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.autoPart.disabled
+*Severity*::
+ALERT
+*Description*::
+This message occurs when auto-partitioning for root aggregate creation is disabled on a system. When auto-partitioning is disabled, the root aggregate is created on whole disks. Systems with a root aggregate on partitioned disks can devote more space to non-root aggregates than systems with a root aggregate on whole disks. If this message occurs after root aggregate creation, then further partitioning of the disks is disabled.
+*Corrective Action*::
+If the system is already initialized with root aggregate on partitioned disks, ONTAP will try to re-enable auto-partitioning after the system boots up and the root aggregate is online. The event raid.autoPart.enabled will be logged when auto-partitioning is re-enabled. To create a root aggregate on partitioned disks: 1. Halt the controller. 2. Replace any failed internal disks (see the "reason" field in the EMS message). 3. Reboot the controller. 4. Re-initialize the system. If this message is seen after the system initialization and the root aggregate is already created on partitioned disks, then the system will continue to function, as follows: 1. Expansion of existing aggregates created from partitioned disks may not work. 2. If a disk fails in a RAID group created out of partitioned disks, then a spare will fail to be partitioned and disk reconstruction will not start. 3. If a disk is marked for predictive failure in a RAID group created out of partition disks, then a spare will fail to be partitioned and the sick disk copy will not start. 4. If disks are available, then manually partition the disks and keep them as spares. 5. If you were previously directed to disable ADP by NetApp technical support, reach out to NetApp technical support to re-enable ADP.
+*Syslog Message*::
+Disk auto-partitioning is disabled on this system: %s.
+*Parameters*::
+*reason* (STRING): Reason that auto-partitioning was disabled.
+
+== raid.autoPart.done
+*Severity*::
+NOTICE
+*Description*::
+This message indicates that auto-partitioning has completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Successfully auto-partitioned %d of %d disks.
+*Parameters*::
+*n_partitioned* (INT): Number of disks successfully auto-partitioned.
+*n_total* (INT): Number of disks available for auto-partitioning.
+
+== raid.autoPart.enabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when auto-partitioning for root volume creation is enabled on the system.
+*Corrective Action*::
+None.
+*Syslog Message*::
+Auto-partitioning is enabled on the system %s for partition method %s with %llu root size blocks.
+*Parameters*::
+*node* (STRING): Node on which auto-partitioning is enabled.
+*partition_method* (STRING): Partition method which is enabled.
+*size_blocks* (LONGINT): Thin partition size in blocks for root.
+
+== raid.autoPart.paramsModified
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the "root-configuration" environment variable, which controls auto-partitioning for the initial root volume, contains one or more invalid parameters. When invalid parameters are discovered, the system reverts to using default parameters instead of the invalid parameters.
+*Corrective Action*::
+Use the suggested "root-configuration" setting instead of the existing "root-configuration" setting.
+*Syslog Message*::
+Invalid "root-configuration" settings: "%s". The system will auto-partition as if "root-configuration" had been set to: "%s".
+*Parameters*::
+*original_setting* (STRING): Original environment variable.
+*modified_setting* (STRING): Modified environment variable.
+
+== raid.autoPart.start
+*Severity*::
+NOTICE
+*Description*::
+This message indicates that auto-partitioning has started.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+System has started auto-partitioning %d disks.
+*Parameters*::
+*n_total* (INT): Number of disks available for auto-partitioning.

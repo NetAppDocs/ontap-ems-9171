@@ -1,0 +1,56 @@
+---
+sidebar: sidebar
+permalink: vscan-pool-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vscan.pool events
+---
+
+= vscan.pool events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vscan.pool.autoActivated
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Vscan scanner pool is automatically activated.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Vscan scanner pool '%s' is automatically activated on Vserver '%s'.
+*Parameters*::
+*scannerPool* (STRING): Name of the scanner pool.
+*vserverName* (STRING): Name of the Vserver.
+
+== vscan.pool.autoDeactivated
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Vscan scanner pool is automatically deactivated.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Vscan scanner pool '%s' is automatically deactivated on Vserver '%s'.
+*Parameters*::
+*scannerPool* (STRING): Name of the scanner pool.
+*vserverName* (STRING): Name of the Vserver.
+
+== vscan.pool.largeReqTimeout
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the request timeout of a Vscan scanner pool is configured more than what can be honored for an On-Access policy whose scan-mandatory option is set to "off". The system internally adjusts the request timeout to the maximum allowed value.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+For scanner-pool '%s' created on Vserver '%s', request-timeout is configured as %ds but that would internally be taken as %ds if the applicable On-Access policy has scan-mandatory set to "off". This ensures that the file-access is granted to the client for such policy.
+*Parameters*::
+*scannerPool* (STRING): Name of the scanner pool.
+*vserverName* (STRING): Name of the Vserver on which the scanner pool is configured.
+*requestTimeout* (INT): Request timeout value configured by the user.
+*adjustedRequestTimeout* (INT): Request timeout value that the system internally adjusts to.

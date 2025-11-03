@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: san-volrehostsanbestpractice-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.volrehostsanbestpractice events
+---
+
+= san.volrehostsanbestpractice events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.volRehostSANBestPractice
+*Severity*::
+ERROR
+*Description*::
+This message occurs on ONTAP(R) systems for volume rehost operation when the destination storage virtual machine (SVM) does not comply with SAN best practices.
+*Corrective Action*::
+Verify SAN LIFs are present on the LUN-owning node and its high availability (HA) partner in the destination SVM. If needed, create a new SAN LIF on both the nodes by using the "network interface create" command and retry the operation.
+*Syslog Message*::
+Node "%s" for SVM "%s" does not comply with SAN best practices to create LUN maps. SAN LIFs in a SVM must be available on both nodes in an HA system to create a LUN map.
+*Parameters*::
+*node_name* (STRING): Name of the LUN owning node.
+*vserver_name* (STRING): SVM name.

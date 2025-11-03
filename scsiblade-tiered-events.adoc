@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: scsiblade-tiered-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsiblade.tiered events
+---
+
+= scsiblade.tiered events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsiblade.tiered.lun.offline
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a LUN is brought offline by Data ONTAP (R) because of too many consecutive failures to access object storage or no response from object storage.
+*Corrective Action*::
+Bring object storage online and bring the LUN online using the "LUN modify" command.
+*Syslog Message*::
+LUN %s in volume with MSID %llu on Vserver %s has been brought offline due to too many consecutive failed attempts to access object storage or no response from object storage.
+*Parameters*::
+*lunSerial* (STRING): Serial number of the LUN.
+*volumeMSID* (LONGINT): MSID of the volume.
+*vserver* (STRING): Name or UUID of the Vserver.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nblade-nfscredcacheflushed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.nfscredcacheflushed events
+---
+
+= nblade.nfscredcacheflushed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.nfsCredCacheFlushed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the administrator modifies the options "extended-groups-limit", "auth-sys-extended-groups" or "v4-id-domain" option using the "vserver nfs modify" command. This results in the flushing of the credential cache of that corresponding storage virtual machine (SVM) that holds credentials on connections that use mixed-mode security style volumes, RPCSEC_GSS authentication or extended groups over AUTH_SYS. As a result, the subsequent operations are slower for a short while until the credential cache is repopulated.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Credential cache flushed on SVM "%s" after modification of "extended-groups-limit", "auth-sys-extended-groups" or "v4-id-domain" NFS options. NFS connection operations are slower until the credential cache is repopulated.
+*Parameters*::
+*vserverName* (STRING): Name of the SVM associated with this operation.

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: callhome-netinet-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.netinet events
+---
+
+= callhome.netinet events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.netinet.dup.clustIP
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a new node that is trying to join the cluster is using the same IP address that is configured on this node's cluster interface. This can prevent data from being served to clients and potentially bring down the entire cluster. This event generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Use the Ethernet (MAC) address with the "network port show -mac <mac>" command to find network port. Use "network interface show -curr-port <port>" command to identify the cluster interface that is configured with the duplicate IP address. Remove the LIF on the cluster interface of the new node in the cluster network by using the "net int delete -vserver <vserver_name > -lif <lif_name>" command. After removing the LIF, assign a new, unique IP address to the cluster interface.
+*Syslog Message*::
+Call home for DUPLICATE CLUSTER IP.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*ipaddr* (STRING): Duplicate IP address that was detected on the cluster network.
+*ethaddr* (STRING): Ethernet (MAC) address that uniquely identifies the node configured with the duplicate IP address.

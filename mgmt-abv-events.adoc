@@ -1,0 +1,77 @@
+---
+sidebar: sidebar
+permalink: mgmt-abv-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmt.abv events
+---
+
+= mgmt.abv events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmt.abv.service.filling
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the percentage of data used on one or more data constituents in a storage service of a managed Infinite Volume exceeds the full watermark. Constituents that have exceeded the full watermark will receive no new content.
+*Corrective Action*::
+Either increase the size of this Infinite Volume by entering the "volume modify -size" command, or enter the "autobalance volume start" command to equalize the percentage of data used across all data constituents within this storage service.
+*Syslog Message*::
+(None).
+*Parameters*::
+*vserver* (STRING): Vserver that hosts the constituent.
+*storageService* (STRING): Storage service that holds the constituents.
+*fullCount* (INT): Number of constituents that are full.
+*totalCount* (INT): Total number of constituents within this storage service.
+
+== mgmt.abv.service.full
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the percentage of data used for all of the data constituents within an Infinite Volume's storage service have exceeded the Infinite Volume's full watermark. As a result, users cannot write any more data to this Infinite Volume that would be stored in this storage service by the create-time policy, and the post-ingest policy cannot move files to this storage service while all of its data constituents are in excess of the full watermark.
+*Corrective Action*::
+This storage service requires more capacity. Either increase the size of one or more of its data constituents, or add one or more new data constituents to it. After adding more capacity, it is strongly recommended that you enter the "autobalance volume start" command to equalize the percentage of data used across all data constituents in this storage service.
+*Syslog Message*::
+The percentage of data used for all of the data constituents within an Infinite Volume's storage service has exceeded the Infinite Volume's full watermark. Vserver: %s, storage service: %s.
+*Parameters*::
+*vserver* (STRING): Vserver that hosts these constituents.
+*storageService* (STRING): Storage service that holds the constituents.
+
+== mgmt.abv.volume.filling
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the percentage of data used on one or more data constituents in this Infinite Volume exceeds the full watermark. Constituents that have exceeded the full watermark will receive no new content.
+*Corrective Action*::
+Either increase the size of this Infinite Volume by entering the "volume modify -size" command, or enter the "autobalance volume start" command to equalize the percentage of data used across all data constituents.
+*Syslog Message*::
+(None).
+*Parameters*::
+*vserver* (STRING): Vserver that hosts the constituent.
+*fullCount* (INT): Number of full data constituents within this Infinite Volume.
+*totalCount* (INT): Total number of data constituents within this Infinite Volume.
+
+== mgmt.abv.volume.full
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+ALERT
+*Description*::
+This message occurs when all of the data constituents within an Infinite Volume have exceeded the Infinite Volume's full watermark. Users cannot write any more data to this Infinite Volume.
+*Corrective Action*::
+Expand this Infinite Volume by entering the "volume modify -size" command. After expanding the Infinite Volume, it is strongly recommended that you enter the "autobalance volume start" command to equalize the percentage of data used across all data constituents.
+*Syslog Message*::
+(None).
+*Parameters*::
+*vserver* (STRING): Vserver that hosts the constituents.

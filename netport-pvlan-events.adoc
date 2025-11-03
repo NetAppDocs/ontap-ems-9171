@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: netport-pvlan-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netport.pvlan events
+---
+
+= netport.pvlan events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netport.pvlan.created
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a pseudo-VLAN port has been created.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Pseudo-VLAN port "%s" was created on node "%s".
+*Parameters*::
+*port* (STRING): Name of the pseudo-VLAN port.
+*node* (STRING): Name of the node on which the pseudo-VLAN port resides.

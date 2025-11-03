@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ha-localnodeshutdown-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.localnodeshutdown events
+---
+
+= ha.localnodeshutdown events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.localNodeShutDown
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when shutdown of the local node is initiated.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Shutdown of the local node has been initiated with inhibit_takeover set to %s.
+*Parameters*::
+*inhibit_takeover* (STRING): Specifies whether takeover by the partner node is inhibited on shutdown of the local node.

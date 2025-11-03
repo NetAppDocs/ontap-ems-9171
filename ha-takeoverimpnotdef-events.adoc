@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ha-takeoverimpnotdef-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.takeoverimpnotdef events
+---
+
+= ha.takeoverimpnotdef events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.takeoverImpNotDef
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the partner node is down and it is currently impossible to perform a takeover.
+*Corrective Action*::
+Check the reason string and repair the problem reported.
+*Syslog Message*::
+Takeover of the partner node is impossible due to reason %s.
+*Parameters*::
+*reason* (STRING): Reason the takeover is currently impossible.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: arl-aggrdesttimeout-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: arl.aggrdesttimeout events
+---
+
+= arl.aggrdesttimeout events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== arl.aggrDestTimeout
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during an aggregate relocation operation, when the source node does not receive notification from the destination node, within the specified time, that the aggregate is online.
+*Corrective Action*::
+Use the "storage aggregate show" command to verify that the aggregate and its volumes are online on the destination node.
+*Syslog Message*::
+Node did not receive notification from the destination in %llu milliseconds that aggregate %s is online after relocation.
+*Parameters*::
+*time* (LONGINT): Timeout, in milliseconds, for notification from the destination node that an aggregate is online after relocation.
+*aggrName* (STRING): Name of the aggregate that was relocated.

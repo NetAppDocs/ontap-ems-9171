@@ -1,0 +1,57 @@
+---
+sidebar: sidebar
+permalink: raid-recons-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.recons events
+---
+
+= raid.recons events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.recons.lw.id.inconsist
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during a RAID reconstruction operation, when the system detects an inconsistent RAID write signature on a RAID stripe. Data ONTAP(R) makes appropriate recovery actions. It automatically fails this device safely if the device exceeds the allowed number of inconsistent RAID write signature errors on the disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Inconsistent RAID write signature detected on RAID group %s%s, stripe #%llu, during reconstruction.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*rg* (STRING): Name of the raid group.
+*stripe* (LONGINT): Stripe number.
+
+== raid.recons.lw.id.inconsist.dirty
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during a RAID reconstruction operation, when the system detects an inconsistent RAID write signature on a RAID stripe that belongs to a dirty parity region.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*rg* (STRING): Name of the RAID group.
+*stripe* (LONGINT): Stripe number.
+
+== raid.recons.MP
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a user enables or disables multiprocessing for reconstruction. It also is emitted when reconstruction actually starts and multiprocessing is enabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RAID reconstruct multiprocessing is %s (raid.reconstruct.threads: %d rows, RAID I/O threads: %d).
+*Parameters*::
+*status* (STRING): Whether multiprocessing is enabled or disabled
+*rows* (INT): Number of reconstruct rows ("raid.reconstruct.threads") in use per RAID I/O thread.
+*raidio_nthreads* (INT): Number of RAID I/O threads in use.

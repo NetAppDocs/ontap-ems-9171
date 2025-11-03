@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: maxcid-limit-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: maxcid.limit events
+---
+
+= maxcid.limit events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== maxCID.limit.exceeded
+*Severity*::
+ALERT
+*Description*::
+This message occurs when system exceeds the maximum number of open network data connections on the node.
+*Corrective Action*::
+Balance the network load across all nodes within the cluster in order to avoid disruptions in service. Contact NetApp technical support.
+*Syslog Message*::
+Number of active data connections is %d and system limit is %d.
+*Parameters*::
+*activeCID* (INT): Number of open data connections on the node.
+*maxCID* (INT): Maximum allowed limit of data connections per node.

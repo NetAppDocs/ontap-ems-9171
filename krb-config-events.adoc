@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: krb-config-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: krb.config events
+---
+
+= krb.config events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== krb.config.updateFail
+*Severity*::
+ERROR
+*Description*::
+The CIFS server's security settings could not be written to the configuration file on this node.
+*Corrective Action*::
+Modify any of the 'vserver cifs security' fields using the 'vserver cifs security modify' command, which will attempt to write to the configuration file again on every node. Change the setting back to its original value if desired. Afterward, verify that the event log does not contain any new instances of this error.
+*Syslog Message*::
+The CIFS server's security settings could not be written to the configuration file on this node.
+*Parameters*::
+(None).

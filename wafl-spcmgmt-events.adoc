@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: wafl-spcmgmt-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.spcmgmt events
+---
+
+= wafl.spcmgmt events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.spcmgmt.policyConflict
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a space management strategy or an autosize grow threshold for a volume is being configured and the autogrow or autodelete thresholds conflict with the space-mgmt-try-first policy. The conflict can arise when the autogrow threshold is less than the autodelete threshold and the space-mgmt-try-first policy is configured for "snap_delete". The conflict can also arise when the autogrow threshold is more than the autodelete threshold and space-mgmt-try-first is configured for "volume_grow".
+*Corrective Action*::
+Consider changing either the space-mgmt-try-first policy with the command "volume modify -volume <volume_name> -space-mgmt-try-first <option>" or the autogrow threshold with the command "volume modify -volume <vol_name> -autosize-grow-threshold-percent <value>", and keep them in sync.
+*Syslog Message*::
+While configuring "%s" for volume "%s", space_mgmt_try_first policy ("%s") is conflicted with the autogrow threshold (%d%%) and autodelete threshold (%d%%).
+*Parameters*::
+*command* (STRING): Command being executed.
+*volume_name* (STRING): Name of the volume.
+*space_mgmt_try_first* (STRING): space-mgmt-try-first policy for volume_grow or snap_delete.
+*grow_threshold* (INT): Used-space threshold, as a percentage, for the automatic growth of the volume.
+*delete_threshold* (INT): Used-space threshold, as a percentage, for the auto-deletion of snapshots.

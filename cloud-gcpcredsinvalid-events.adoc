@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cloud-gcpcredsinvalid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cloud.gcpcredsinvalid events
+---
+
+= cloud.gcpcredsinvalid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cloud.gcpCredsInvalid
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system acquires Google Cloud Platform (GCP) Service Account based credentials that are not valid.
+*Corrective Action*::
+In the Google Cloud Console, find and check the health of the instance pertaining to this Cloud Volumes ONTAP(R) deployment. Also, verify that the Service Account associated with the instance exists and grants proper privileges to the instance.
+*Syslog Message*::
+GCP credentials that were acquired by ONTAP are not valid. Node: %s.
+*Parameters*::
+*nodeUuid* (STRING): UUID of the node.

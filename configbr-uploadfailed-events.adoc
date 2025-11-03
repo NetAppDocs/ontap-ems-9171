@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: configbr-uploadfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: configbr.uploadfailed events
+---
+
+= configbr.uploadfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== configbr.uploadFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the configuration backup cannot be uploaded to the destination URL.
+*Corrective Action*::
+Ensure that the destination URL is reachable, the protocol in the URL is supported, and the user credentials are valid.
+*Syslog Message*::
+Configuration backup file %s cannot be uploaded to the destination URL %s. Error: '%s'.
+*Parameters*::
+*backup* (STRING): Backup file.
+*destination* (STRING): Destination URL.
+*reason* (STRING): Reason for the upload failure.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: rlm-notconfigured-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rlm.notconfigured events
+---
+
+= rlm.notconfigured events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rlm.notConfigured
+*Severity*::
+ERROR
+*Description*::
+This message occurs weekly to remind you to configure the Remote LAN Module (RLM). The RLM is a physical device that is incorporated into your system to provide remote access and remote management capabilities. To use the full functionality of RLM, you need to configure it first.
+*Corrective Action*::
+1. Use the 'rlm setup' command to configure the RLM. If necessary, use the 'rlm status' command to obtain its MAC address. 2. Use the 'rlm status' command to verify the RLM network configuration. 3. Use the 'rlm test autosupport' command to verify that the RLM can send AutoSupport email. Note that AutoSupport mailhosts and recipients must be properly configured in Data ONTAP before issuing this command.
+*Syslog Message*::
+The system's Remote LAN Module (RLM) is not configured. Use the 'rlm setup' command to configure it.
+*Parameters*::
+(None).

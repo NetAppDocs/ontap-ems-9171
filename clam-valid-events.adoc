@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: clam-valid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: clam.valid events
+---
+
+= clam.valid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== clam.valid.config
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Kernel Cluster Services (KCS) Connectivity, Liveliness, Availability Monitor (CLAM) determines that the local node is in a valid configuration for providing CLAM functionality.
+*Corrective Action*::
+No action is needed.
+*Syslog Message*::
+Local node (name=%s, id=%llu) is operating in a suitable configuration for providing CLAM functionality.
+*Parameters*::
+*localhostname* (STRING): Host name of the local node.
+*localnodeid* (LONGINT): Node ID of the local node.
+*partnerhostname* (STRING): Host name of the partner node.
+*partnernodeid* (LONGINT): Node ID of the partner node.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sp-dup-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sp.dup events
+---
+
+= sp.dup events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sp.dup.ip
+*Severity*::
+ERROR
+*Description*::
+This message occurs when another system has been detected to be using the same IP address as the one configured on the Service Processor (SP).
+*Corrective Action*::
+If the network in question has been configured to use this address as a static address, change the configured IP address on at least one system to ensure that only one system is using this address. If the network is configured to use DHCP, ensure that this address is not a static IP address that falls within the range being used by the DHCP server.
+*Syslog Message*::
+SP IP address %s in use by another system.
+*Parameters*::
+*ipaddr* (STRING): IP address.

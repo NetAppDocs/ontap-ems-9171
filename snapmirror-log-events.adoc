@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: snapmirror-log-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapmirror.log events
+---
+
+= snapmirror.log events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapmirror.log.openErr
+*Severity*::
+ERROR
+*Description*::
+This event is issued when an error is encountered when opening the SnapMirror log file for writing.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failed to open SnapMirror log file: %s.
+*Parameters*::
+*error* (STRING): The error encountered while opening the SnapMirror log file for writing.
+
+== snapmirror.log.unknownEvent
+*Severity*::
+ERROR
+*Description*::
+This event is issued when an unknown event is sent to be logged in the SnapMirror log file.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror log encountered unknown event : %d.
+*Parameters*::
+*event* (INT): The unknown event
+
+== snapmirror.log.writeErr
+*Severity*::
+ERROR
+*Description*::
+This event is issued when an error is encountered when writing to the SnapMirror log file.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failed to write to SnapMirror log file: %s.
+*Parameters*::
+*error* (STRING): The error encountered while writing to the SnapMirror log file.

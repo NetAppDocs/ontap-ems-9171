@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: ses-mismatch-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ses.mismatch events
+---
+
+= ses.mismatch events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ses.mismatch.fw.version
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the two disk shelf modules within the same disk shelf are running different versions of the firmware.
+*Corrective Action*::
+Download the latest disk shelf firmware to the disk shelf module that is not up-to-date.
+*Syslog Message*::
+The disk shelf modules on disk shelf %s.%d are running two different firmware versions. Disk shelf module A is running %s, and disk shelf module B is running %s.
+*Parameters*::
+*channelName* (STRING): Name of the adapter port or switch port.
+*shelfID* (INT): ID of the disk shelf.
+*revision_str* (STRING): Revision number for disk shelf module A, the top disk shelf module.
+*revision_str2* (STRING): Revision number for disk shelf module B, the bottom disk shelf module.

@@ -1,0 +1,226 @@
+---
+sidebar: sidebar
+permalink: smc-snapmir-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: smc.snapmir events
+---
+
+= smc.snapmir events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== smc.snapmir.dst.invalidType
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the destination volume of a SnapMirror(R) relationship is not a Data Protection (DP) type and a snapmirror initialize operation is attempted. A volume must be of a DP type to accept a snapmirror initialize operation.
+*Corrective Action*::
+For ASA r2 systems, contact NetApp technical support for assistance to resolve this internal error. For all other systems: Use a different volume of type DP, or use the "volume create" command to create a new volume of type DP to use as a destination of the SnapMirror relationship. You cannot modify the type of a volume using the 'volume modify' command.
+*Syslog Message*::
+Destination volume '%s' of a SnapMirror relationship is not a DP type. Relationship UUID "%s".
+*Parameters*::
+*dstpath* (STRING): Path name of the destination volume of the SnapMirror relationship.
+*relationshipID* (STRING): Universal unique identifier(UUID) of the SnapMirror relationship.
+
+== smc.snapmir.frest.clean.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when SnapMirror(R) fails to clean up fenced files and file restore restartability information on a volume and no more retries will be attempted.
+*Corrective Action*::
+Check the reason for the error, take action accordingly and issue 'snapmirror restore -file-restore-clean-up true' on the volume in diagnostic mode.
+*Syslog Message*::
+File restore clean up on volume '%s' failed with error '%s'.
+*Parameters*::
+*dstpath* (STRING): Path name of the volume.
+*error* (STRING): Error message.
+
+== smc.snapmir.init.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) 'initialize' command fails and no more retries will be attempted.
+*Corrective Action*::
+Check the reason for the error, take action accordingly, and issue the command again.
+*Syslog Message*::
+Initialize from source volume '%s' to destination volume '%s' failed with error '%s'. Relationship UUID '%s'.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume of the SnapMirror relationship.
+*dstpath* (STRING): Path name of the destination volume to which the initialize failed.
+*error* (STRING): Error message.
+*relationshipID* (STRING): Relationship UUID.
+
+== smc.snapmir.lrb.auto.resync
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the latest snapshot on the SnapMirror(R) or SnapVault(R) destination is not the base snapshot and the source volume is read-only. Generally this is a rare event and a local-rollback-based SnapMirror resync will be attempted to automatically recover from this situation. If this event occurs frequently, it is likely that the snapshot policy on the primary volume in the cascade is deleting snapshots too soon.
+*Corrective Action*::
+Check the snapshot policy on the primary (read-write) volume and increase the retention count of the snapshots that must be backed up all the way to the destination.
+*Syslog Message*::
+Latest snapshot %s on the destination %s is not the base snapshot. Attempting a local rollback based SnapMirror resync to correct this issue.
+*Parameters*::
+*snap_name* (STRING): Name of the latest snapshot on the SnapMirror or SnapVault destination.
+*dst_path* (STRING): Destination volume of the SnapMirror/SnapVault relationship.
+
+== smc.snapmir.partnr.noconnect
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) Sync relationship cannot detect the heartbeat signal from the partner node.
+*Corrective Action*::
+Check the network connection between the source and destination volumes by using the "net interface show -role intercluster -status-admin up" command.
+*Syslog Message*::
+Source volume "%s" and destination volume "%s" with relationship UUID "%s" lost heartbeat to partner node.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume of the SnapMirror relationship.
+*dstpath* (STRING): Path name of the destination volume of the SnapMirror relationship.
+*relationship_id* (STRING): Relationship UUID.
+
+== smc.snapmir.release.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) 'release' command fails and no more retries will be attempted.
+*Corrective Action*::
+Check the reason for the error, take action accordingly, and issue the command again.
+*Syslog Message*::
+Release on the source volume '%s' for destination volume '%s' failed with error '%s'. Relationship UUID '%s'.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume of the SnapMirror relationship.
+*dstpath* (STRING): Path name of the destination volume to which the resync failed.
+*error* (STRING): Error message.
+*relationshipID* (STRING): Relationship UUID.
+
+== smc.snapmir.restore.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) 'restore' command fails and no more retries will be attempted.
+*Corrective Action*::
+Check the reason for the error, take action accordingly, and issue the command again.
+*Syslog Message*::
+Restore of volume '%s' from volume '%s' failed with error '%s'. Relationship UUID '%s'.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume of the SnapMirror relationship.
+*dstpath* (STRING): Path name of the destination volume to which the resync failed.
+*error* (STRING): Error message.
+*relationshipID* (STRING): Relationship UUID.
+
+== smc.snapmir.resync.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) 'resync' command fails and no more retries will be attempted.
+*Corrective Action*::
+Check the reason for the error, take action accordingly, and issue the command again.
+*Syslog Message*::
+Resync from source volume '%s' to destination volume '%s' failed with error '%s'. Relationship UUID '%s'.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume of the SnapMirror relationship.
+*dstpath* (STRING): Path name of the destination volume to which the resync failed.
+*error* (STRING): Error message.
+*relationshipID* (STRING): Relationship UUID.
+
+== smc.snapmir.schd.trans.overrun
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a scheduled SnapMirror(R) transfer overruns the schedule window.
+*Corrective Action*::
+Check the reason for the schedule overrun and take action accordingly.
+*Syslog Message*::
+Scheduled transfer from source volume '%s' to destination volume '%s' is taking longer than the schedule window. Relationship UUID '%s'.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume of the SnapMirror relationship.
+*dstpath* (STRING): Path name of the destination volume of the scheduled transfer.
+*relationshipID* (STRING): Relationship UUID.
+
+== smc.snapmir.suspending.io
+*Severity*::
+ALERT
+*Description*::
+This message occurs when SnapMirror(R) I/O has been suspended, due either to a loss of connectivity between the SnapMirror Mediator software and partner, or to a denial of network access by the Mediator software.
+*Corrective Action*::
+Check the status of the connection to the Mediator software by using the "net interface show -role intercluster -status-admin up" command.
+*Syslog Message*::
+Suspending I/O as with relationship UUID "%s".
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume of the SnapMirror relationship.
+*dstpath* (STRING): Path name of the destination volume of the SnapMirror relationship.
+*relationship_id* (STRING): Relationship UUID.
+*error_msg* (STRING): Description of the error responsible for the suspension.
+
+== smc.snapmir.tb.noconnect
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an ONTAP(R) node is not reachable from the SnapMirror(R) Mediator software.
+*Corrective Action*::
+Check the network connection between the source and destination volumes, by using the "network ping -node node_name" command.
+*Syslog Message*::
+Connection lost to the Mediator software from node: %s, with relationship UUID "%s".
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume of the SnapMirror relationship.
+*dstpath* (STRING): Path name of the destination volume of the SnapMirror relationship.
+*relationship_id* (STRING): Relationship UUID.
+*node* (STRING): Node name.
+*mediator_id* (STRING): IP of the Mediator.
+
+== smc.snapmir.unexpected.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) operation encounters an unexpected error.
+*Corrective Action*::
+Retry the SnapMirror operation. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+SnapMirror unexpected error '%s'. Relationship UUID '%s'. Operation UUID '%s'.
+*Parameters*::
+*error* (STRING): Error message.
+*relationshipID* (STRING): Relationship UUID.
+*operationID* (STRING): Operation UUID.
+
+== smc.snapmir.unsupp.nvmf
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) operation encounters an NVMe Namespace that is unsupported on the destination side.
+*Corrective Action*::
+Upgrade the destination to a version that supports NVMe Namespace objects.
+*Syslog Message*::
+SnapMirror unsupported NVMe Namespace. Relationship UUID '%s'.
+*Parameters*::
+*relationshipID* (STRING): Relationship UUID.
+
+== smc.snapmir.unsupp.nvmf.ns
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) operation encounters a 512-byte block size NVMe namespace that is unsupported on the destination.
+*Corrective Action*::
+Upgrade the destination to a version that supports 512-byte block size NVMe namespace objects.
+*Syslog Message*::
+SnapMirror unsupported 512-byte block size NVMe namespace. Relationship UUID '%s'.
+*Parameters*::
+*relationshipID* (STRING): Relationship UUID.
+
+== smc.snapmir.update.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a scheduled SnapMirror(R) transfer fails.
+*Corrective Action*::
+Check the snapmirror_error log in the destination filer and take action accordingly.
+*Syslog Message*::
+Snapmirror update from source volume '%s' to destination volume '%s' failed with error '%s'. Relationship UUID '%s'.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume of the SnapMirror relationship.
+*dstpath* (STRING): Path name of the destination volume to which the snapmirror transfer failed.
+*error* (STRING): Error message.
+*relationshipID* (STRING): Relationship UUID.

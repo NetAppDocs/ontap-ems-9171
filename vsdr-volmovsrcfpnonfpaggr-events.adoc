@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: vsdr-volmovsrcfpnonfpaggr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsdr.volmovsrcfpnonfpaggr events
+---
+
+= vsdr.volmovsrcfpnonfpaggr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsdr.volMovSrcFPNonFPAggr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a volume move operation is executed between FabricPool and non-FabricPool aggregates on the source Vserver of an SVM disaster recovery (SVMDR) relationship.
+*Corrective Action*::
+If the aggregate type hosting the volume differs at the primary and secondary clusters, move the destination Vserver of the SVMDR relationship at the secondary cluster by using the "volume move start -vserver <vserver-name> -volume <volume-name> -destination-aggregate <aggregate>" command.
+*Syslog Message*::
+Source volume "%s" on Vserver "%s" of the SVMDR relationship is moved from "%s" aggregate "%s" to "%s" aggregate "%s".
+*Parameters*::
+*source_volume_name* (STRING): Name of the source volume of the SVMDR relationship.
+*source_vserver_name* (STRING): Name of the source Vserver of the SVMDR relationship.
+*src_aggr_type* (STRING): Source aggregate type, either FabricPool or non-FabricPool.
+*source_aggr_name* (STRING): Name of the source aggregate at the primary cluster.
+*dest_aggr_type* (STRING): Destination aggregate type, either FabricPool or non-FabricPool.
+*dest_aggr_name* (STRING): Name of the destination aggregate at the primary cluster.

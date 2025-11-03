@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: nblade-css-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.css events
+---
+
+= nblade.css events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nblade.css.s3.AccessDenied
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) object-store-server denies access to a user.
+*Corrective Action*::
+Verify that the user has permission to access the resource. Check access and bucket policy configurations using these commands: 'vserver object-store-server policy show', 'vserver object-store-server policy show-statements', 'vserver object-store-server bucket policy show'.
+*Syslog Message*::
+Access is denied for user '%s' (Vserver %d), from client IP %s accessing resource '%s'.
+*Parameters*::
+*userName* (STRING): Name of the user.
+*vserverId* (INT): ID of the Vserver.
+*ipAddress* (STRING): IP address of the client.
+*resource* (STRING): Resource that the user is trying to access.

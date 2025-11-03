@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: monitor-ioexpansionpower-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.ioexpansionpower events
+---
+
+= monitor.ioexpansionpower events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.ioexpansionPower.degraded
+*Severity*::
+NOTICE
+*Description*::
+This message indicates that power on the I/O expansion module is degraded.
+*Corrective Action*::
+Degraded power might be caused by bad power supplies, bad wall power, or bad components on the motherboard. If spare power supplies are available, try exchanging them to see whether the problem is resolved. Otherwise, contact NetApp technical support.
+*Syslog Message*::
+Power on I/O expansion module is degraded: %s
+*Parameters*::
+*reasonText* (STRING): Reading and state of voltage sensors on the I/O expansion module.
+
+== monitor.ioexpansionPower.ok
+*Severity*::
+NOTICE
+*Description*::
+This messages indicates that power on the I/O expansion module is OK.
+*Corrective Action*::
+No corrective action is needed.
+*Syslog Message*::
+Power on the I/O expansion module is OK.
+*Parameters*::
+(None).

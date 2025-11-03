@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: rlm-orftp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rlm.orftp events
+---
+
+= rlm.orftp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rlm.orftp.failed
+*Severity*::
+NOTICE
+*Description*::
+A communication error occured while sending or receiving information from the Remote Lan Module (RLM).
+*Corrective Action*::
+1. Issue the 'rlm status' command at the Data ONTAP prompt to check whether the RLM is operational. 2. If the RLM is operational and this message persists, issue the 'rlm reboot' command at the Data ONTAP(tm) prompt to reboot the RLM. 3. If this message persists after the RLM has been rebooted, contact NetApp technical support.
+*Syslog Message*::
+RLM communication error, %s.
+*Parameters*::
+*reason* (STRING): This error could be due to : 1. Communication error while the information is being sent or received. 2. Remote Lan Module (RLM) being non-operational.

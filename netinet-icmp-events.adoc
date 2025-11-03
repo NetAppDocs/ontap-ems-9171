@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: netinet-icmp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netinet.icmp events
+---
+
+= netinet.icmp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netinet.icmp.redirect
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an ICMPv4 redirect message is received. The redirect might be received due to either a misconfigured route or a man-in-the-middle ICMP redirect attack.
+*Corrective Action*::
+When enabled, ICMP redirects can be disabled using the "network tuning icmp modify -is-drop-redirect-enabled true" command. However, disabling ICMP redirects might lead to connectivity problems or longer delays of data transfers.
+*Syslog Message*::
+Received %lu ICMPv4 redirect messages for IPspace "%s".
+*Parameters*::
+*no_of_redirects* (LONGINT): Total number of ICMPv4 redirects received for the specific IPspace.
+*ipspace* (STRING): The IPspace for which the redirect packets are received.

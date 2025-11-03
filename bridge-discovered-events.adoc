@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: bridge-discovered-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: bridge.discovered events
+---
+
+= bridge.discovered events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== bridge.discovered
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system discovers an FC-to-SAS bridge.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-to-SAS bridge %s [%s %s %s] S/N [%s] was discovered.
+*Parameters*::
+*bridgeName* (STRING): Name of the bridge.
+*bridgeVendor* (STRING): Vendor name of the bridge.
+*bridgeModel* (STRING): Model name of the bridge.
+*bridgeRevision* (STRING): Firmware revision of the bridge.
+*bridgeSerialNum* (STRING): Serial number of the bridge.

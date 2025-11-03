@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: sm-disable-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sm.disable events
+---
+
+= sm.disable events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sm.disable.se
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the "storage efficiency" feature on a destination volume is automatically disabled successfully by the SnapMirror(R) resync or update operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disabled the "storage efficiency" feature for volume %s during a %s.
+*Parameters*::
+*dst_path* (STRING): Destination FlexVol(R) volume path on which the "storage efficiency" feature is disabled.
+*workflow_type* (STRING): Workflow that disabled the "storage efficiency feature".
+
+== sm.disable.se.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the "storage efficiency" feature fails to disable on a destination volume during a SnapMirror(R) resync or update operation.
+*Corrective Action*::
+For ASA r2 systems, contact NetApp technical support for assistance to resolve this internal error. For all other systems: Disable storage efficiency manually by using the "volume efficiency off "volume_name" " command. If the failure persists, contact NetApp technical support.
+*Syslog Message*::
+Failed to disable the "storage efficiency" feature for volume %s during a %s. Reason: %s.
+*Parameters*::
+*dst_path* (STRING): Destination FlexVol(R) volume path on which the "storage efficiency" feature fails to disable.
+*workflow_type* (STRING): Workflow that fails to disable the "storage efficiency" feature.
+*reason* (STRING): Reason for the failure.

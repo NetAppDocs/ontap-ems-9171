@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-micro-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.micro events
+---
+
+= callhome.micro events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.micro.core
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a "micro-core" file is available. A "micro-core" file is a very small and simple binary image representing some state of ONTAP(R) and can be collected and reported to support. Transmission of a normal core file which can be several gigabytes or larger can take a significant time so isn't done. The subject line provides the filename of the micro- core file which is included as part of a special AutoSupport normally only sent to support. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Call home for MICRO-CORE: %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

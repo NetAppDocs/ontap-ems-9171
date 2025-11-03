@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: raid-hybrid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.hybrid events
+---
+
+= raid.hybrid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.hybrid.SSDHAExceed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the sum of all sizes of solid state disks (SSDs) disks of hybrid aggregates on this node and its partner node is larger than the maximum system limit. Takeover might fail because of this. It is issued by the Storage Health Monitor.
+*Corrective Action*::
+Bring the sum of all sizes of SSDs of hybrid aggregates on this node and its partner below the limit. If you cannot bring the sum of all sizes of SSDs of hybrid aggregates on both nodes below the limit, disable HA failover by using the 'storage failover modify -node [nodename] -enabled false' command. However, this compromises the high availability of your system and is only recommended for use until the size issue has been resolved. To avoid this problem in the future, be careful when adding SSDs to existing hybrid aggregates not to exceed the limit for both nodes in the HA pair.
+*Syslog Message*::
+The sum of all sizes of SSD disks of hybrid aggregates on this node and its partner %s, exceeds %s. Takeover might fail because of this.
+*Parameters*::
+*hybrid_ssd_disks_sizes* (STRING): Sum of sizes of SSDs disks of hybrid aggregates on this node and its partner node.
+*limit* (STRING): Maximum system limit total of sizes of SSDs of hybrid aggregates.
+
+== raid.hybrid.SSDTotExceed
+*Severity*::
+ERROR
+*Description*::
+This message occurs as a reminder that the sum of all sizes of SSD disks of hybrid aggregates is too large. It is issued by Storage Health Monitor.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+The sum of sizes of SSD disks of hybrid aggregates %s exceeds the %s maximum. Contact NetApp technical support.
+*Parameters*::
+*ssd_disks_size* (STRING): Total of sizes of SSD disks of hybrid aggregates.
+*limit* (STRING): Maximum total of sizes of SSD disks of hybrid aggregates.

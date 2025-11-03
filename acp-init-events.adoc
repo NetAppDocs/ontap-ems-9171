@@ -1,0 +1,54 @@
+---
+sidebar: sidebar
+permalink: acp-init-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: acp.init events
+---
+
+= acp.init events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== acp.init.configIP
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) software cannot configure the Ethernet port designated for the Alternate Control Path (ACP) with 30 seconds, and marks the ACP as inactive.
+*Corrective Action*::
+Verify the connection to the disk shelf ACP port, and make sure that it is not connected to a public network. Try plugging it into another Ethernet port with no devices.
+*Syslog Message*::
+Could not configure the ACP Ethernet port within 30 seconds.
+*Parameters*::
+(None).
+
+== acp.init.netmask
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during initialization state, when the Alternate Control Path (ACP) Administrator netmask was configured incorrectly. The system sets the netmask to a default value.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Setting ACP Administrator netmask value to %s (reason: %s).
+*Parameters*::
+*value* (STRING): Default netmask.
+*reason* (STRING): Reason to choose the default.
+
+== acp.init.ssl
+*Deprecated*::
+Deprecated as of ONTAP(R) version 9.2. The ACP process was never really responsible for initializing SSL, and has not tried to do so for a very long time.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Alternate Control Path (ACP) process cannot initialize the underlying Secure Socket Library (SSL). The ACP Administrator will be inactive.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Could not initialize SSL.
+*Parameters*::
+(None).

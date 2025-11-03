@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: callhome-dumptriage-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.dumptriage events
+---
+
+= callhome.dumptriage events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.dumptriage
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when kernel dumptriage files are collected for a coredump event. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*core_filename* (STRING): Coredump filename used to find the correct set of dumptriage files.

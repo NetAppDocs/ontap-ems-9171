@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: wafl-latest-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.latest events
+---
+
+= wafl.latest events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.latest.physical.snapid.info
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when WAFL(R) detects an inconsistent physical snapshot ID for the latest snapshot on a volume or an aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Corrected the latest_snapid for %s %s from %d to %d.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*volume* (STRING): Volume or aggregate name.
+*invalid_latest_snapid* (INT): Invalid latest snapshot ID stored on disk.
+*corrected_latest_snapid* (INT): The corrected latest snapshot ID.

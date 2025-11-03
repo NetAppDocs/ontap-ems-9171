@@ -1,0 +1,495 @@
+---
+sidebar: sidebar
+permalink: callhome-dbs-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.dbs events
+---
+
+= callhome.dbs events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.dbs.assign.error
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the Distributed Block Store (DBS) assignments reports a validation error. An assignment validation error may indicate that data is inaccessible or data loss has occurred. The DBS is responsible for managing the data that backs the FlexVols(R). If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Contact NetApp technical support for assistance.
+*Syslog Message*::
+Call home for %s, event %s, type %s, service %u, node %u/%s, drive %u/%s, eventID %u.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*evtMessage* (STRING): Description of the data event, including context details.
+*evtType* (STRING): Type of the original DBS event.
+*serviceID* (INT): Service ID that identifies the associated DBS service. It will be "0" if there is no associated service.
+*nodeID* (INT): Node ID number of the associated node. It will be 0 if there is no associated node.
+*nodeUuid* (STRING): Node UUID of the associated node. It will be zeroes if there is no associated node.
+*driveID* (INT): Drive ID number of the associated drive. It will be 0 if there is no associated drive.
+*driveUuid* (STRING): Drive UUID of the associated drive. It will be zeroes if there is no associated drive.
+*evtID* (INT): DBS event ID number.
+*collectAsupNodes* (STRING): List of the node universal unique identifiers (UUIDs) from which AutoSupport messages should be collected.
+*evtDetails* (STRING): Specific details of the DBS data event. It may be a string, in JSON format, or empty.
+
+== callhome.dbs.block.repair
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the Distributed Block Store (DBS) attempts a new block repair or fails to repair block in maximum number of repair attempts allowed. See event details for more information. The DBS is responsible for managing the data that backs the FlexVols(R). Multiple DBS events that indicate inconsistent data are mapped to this one event. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Contact NetApp technical support for help immediately.
+*Syslog Message*::
+Call home for %s, event %s, type %s, service %u, node %u/%s, drive %u/%s, eventID %u.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*evtMessage* (STRING): Description of the data event, including context details.
+*evtType* (STRING): Type of the original DBS event.
+*serviceID* (INT): Service ID that identifies the associated DBS service. It will be "0" if there is no associated service.
+*nodeID* (INT): Node ID number of the associated node. It will be 0 if there is no associated node.
+*nodeUuid* (STRING): Node UUID of the associated node. It will be zeroes if there is no associated node.
+*driveID* (INT): Drive ID number of the associated drive. It will be 0 if there is no associated drive.
+*driveUuid* (STRING): Drive UUID of the associated drive. It will be zeroes if there is no associated drive.
+*evtID* (INT): DBS event ID number.
+*collectAsupNodes* (STRING): List of the node universal unique identifiers (UUIDs) from which AutoSupport messages should be collected.
+*evtDetails* (STRING): Specific details of the DBS data event. It may be a string, in JSON format, or empty.
+
+== callhome.dbs.cannot.sync.blk
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the Distributed Block Store (DBS) detects the cluster Block data is in a degraded state, and the auto-heal process to restore full Block data redundancy cannot proceed. Block resources need to be added or restored to the cluster. Too many nodes, Block services, FireStorm services or aggregates may be offline; or possibly the cluster Block services are full. The DBS is responsible for managing the data that backs the FlexVols(R). If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Evaluate the storage capacity of the cluster. If some capacity is currently unavailable due to drives or nodes being offline, attempt the repairs needed to bring them online. Free storage used by FlexVols by deleting unneeded volumes.
+*Syslog Message*::
+The DBS cluster Block data cannot be made fully redundant.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*cfType* (STRING): DBS cluster fault type of the associated object.
+*cfID* (INT): DBS cluster fault ID number associated with the fault.
+*cfStatus* (INT): Current status of the cluster fault. 1 = New (just reported), 2 = Existing (updated), 3 = Resolved (closed).
+*collectAsupNodes* (STRING): List of the node universal unique identifiers (UUIDs) from which AutoSupport messages should be collected.
+*cfDetails* (STRING): Description of the cluster fault, including context details.
+*cfExtSrc* (STRING): DBS cluster fault externalSource label created by the CreateClusterFault API command and attached to the fault for testing purposes.
+*skip_callhome* (INT): If 1, then the ASUP call home was not executed for this event. Call home is only done for newly reported faults (see cfStatus).
+
+== callhome.dbs.clcap.full
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the Distributed Block Store (DBS) detects the cluster (or node in the cluster) has completely consumed its capacity. The DBS is responsible for managing the data that backs the FlexVols(R). The cluster data is now read-only. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Evaluate the available capacity of this cluster relative to its usage. If some capacity is currently unavailable due to drives or nodes being offline, attempt the repairs needed to bring them online. Free storage used by FlexVols by deleting unneeded volumes. If the cluster's available capacity appears inconsistent with the calculated expected capacity, then contact NetApp technical support.
+*Syslog Message*::
+The DBS cluster capacity is 100%% full.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*cfType* (STRING): DBS cluster fault type of the associated object.
+*cfID* (INT): DBS cluster fault ID number associated with the fault.
+*cfStatus* (INT): Current status of the cluster fault. 1 = New (just reported), 2 = Existing (updated), 3 = Resolved (closed).
+*collectAsupNodes* (STRING): List of the node universal unique identifiers (UUIDs) from which AutoSupport messages should be collected.
+*cfDetails* (STRING): Description of the cluster fault, including context details.
+*cfExtSrc* (STRING): DBS cluster fault externalSource label created by the CreateClusterFault API command and attached to the fault for testing purposes.
+*skip_callhome* (INT): If 1, then the ASUP call home was not executed for this event. Call home is only done for newly reported faults (see cfStatus).
+
+== callhome.dbs.clcap.near.full
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Distributed Block Store (DBS) detects the cluster (or node in the cluster) has consumed nearly all of its capacity. The DBS is responsible for managing the data that backs the FlexVols(R). If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Evaluate the available capacity of this cluster relative to its usage. If some capacity is currently unavailable due to drives or nodes being offline, attempt the repairs needed to bring them online. Free storage used by FlexVols by deleting unneeded volumes.
+*Syslog Message*::
+The DBS cluster capacity is nearly full.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*cfType* (STRING): DBS cluster fault type of the associated object.
+*cfID* (INT): DBS cluster fault ID number associated with the fault.
+*cfStatus* (INT): Current status of the cluster fault. 1 = New (just reported), 2 = Existing (updated), 3 = Resolved (closed).
+*collectAsupNodes* (STRING): List of the node universal unique identifiers (UUIDs) from which AutoSupport messages should be collected.
+*cfDetails* (STRING): Description of the cluster fault, including context details.
+*cfExtSrc* (STRING): DBS cluster fault externalSource label created by the CreateClusterFault API command and attached to the fault for testing purposes.
+*skip_callhome* (INT): If 1, then the ASUP call home was not executed for this event. Call home is only done for newly reported faults (see cfStatus).
+
+== callhome.dbs.clst.ekm.server
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the Distributed Block Store (DBS) detects one or more of the following: 1. An External Key Management server cannot be reached by any node and is considered down. 2. A fatal communication error has occured with an External Key Management server. Seek corrective-action immediately.
+*Corrective Action*::
+Verify that the External Key Management server is running and can be reached by the management network. Verify that the correct root CA certificate and client certificate are configured for the Key Server (use openssl s_client to assist with troubleshooting). Check the logs on the External Key Management server for additional troubleshooting help. Contact NetApp technical support for assistance.
+*Syslog Message*::
+Callhome for %s. Fault type %s, fault ID %u, status %u, nodes %s. %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*cfType* (STRING): DBS cluster fault type of the associated object.
+*cfID* (INT): DBS cluster fault ID number associated with the fault.
+*cfStatus* (INT): Current status of the cluster fault. 1 = New (just reported), 2 = Existing (updated), 3 = Resolved (closed).
+*collectAsupNodes* (STRING): List of the node universal unique identifiers (UUIDs) from which AutoSupport messages should be collected.
+*cfDetails* (STRING): Description of the cluster fault, including context details.
+*cfExtSrc* (STRING): DBS cluster fault externalSource label created by the CreateClusterFault API command and attached to the fault for testing purposes.
+*skip_callhome* (INT): If 1, then the ASUP call home was not executed for this event. Call home is only done for newly reported faults (see cfStatus).
+
+== callhome.dbs.data.unavail
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when some portion of the Distributed Block Store (DBS) data cannot be accessed. The DBS is responsible for managing the data that backs the FlexVols(R). Multiple DBS events that indicate data is unavailable are mapped to this one event. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Contact NetApp technical support for help immediately.
+*Syslog Message*::
+Call home for %s, event %s, type %s, service %u, node %u/%s, drive %u/%s, eventID %u.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*evtMessage* (STRING): Description of the data event, including context details.
+*evtType* (STRING): Type of the original DBS event.
+*serviceID* (INT): Service ID that identifies the associated DBS service. It will be "0" if there is no associated service.
+*nodeID* (INT): Node ID number of the associated node. It will be 0 if there is no associated node.
+*nodeUuid* (STRING): Node UUID of the associated node. It will be zeroes if there is no associated node.
+*driveID* (INT): Drive ID number of the associated drive. It will be 0 if there is no associated drive.
+*driveUuid* (STRING): Drive UUID of the associated drive. It will be zeroes if there is no associated drive.
+*evtID* (INT): DBS event ID number.
+*collectAsupNodes* (STRING): List of the node universal unique identifiers (UUIDs) from which AutoSupport messages should be collected.
+*evtDetails* (STRING): Specific details of the DBS data event. It may be a string, in JSON format, or empty.
+
+== callhome.dbs.dup.master
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the Distributed Block Store (DBS) detects an internal database inconsistency. Master services have multiple entries for cluster master candidacy. Manual intervention is required.
+*Corrective Action*::
+Contact NetApp technical support immediately.
+*Syslog Message*::
+Callhome for %s. DBS has detected a critical issue. Cluster fault type %s, fault ID %u, status %u, nodes %s. %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*cfType* (STRING): DBS cluster fault type of the associated object.
+*cfID* (INT): DBS cluster fault ID number associated with the fault.
+*cfStatus* (INT): Current status of the cluster fault. 1 = New (just reported), 2 = Existing (updated), 3 = Resolved (closed).
+*collectAsupNodes* (STRING): List of the node universal unique identifiers (UUIDs) from which AutoSupport messages should be collected.
+*cfDetails* (STRING): Details of the duplicate master candidates.
+*cfExtSrc* (STRING): DBS cluster fault externalSource label created by the CreateClusterFault API command and attached to the fault for testing purposes.
+*skip_callhome* (INT): If 1, then the ASUP call home was not executed for this event. Call home is only done for newly reported faults (see cfStatus).
+
+== callhome.dbs.ekm.cert.emer
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the Distributed Block Store (DBS) detects that an External Key Management server configuration contains a certificate that is invalid, is expired, or will expire in less than 3 days. Seek corrective-action immediately.
+*Corrective Action*::
+Renew or correct each listed certificate and update the associated Key Server configuration. Contact NetApp technical support for assistance.
+*Syslog Message*::
+Callhome for %s. Fault type %s, fault ID %u, status %u, nodes %s. %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*cfType* (STRING): DBS cluster fault type of the associated object.
+*cfID* (INT): DBS cluster fault ID number associated with the fault.
+*cfStatus* (INT): Current status of the cluster fault. 1 = New (just reported), 2 = Existing (updated), 3 = Resolved (closed).
+*collectAsupNodes* (STRING): List of the node universal unique identifiers (UUIDs) from which AutoSupport messages should be collected.
+*cfDetails* (STRING): Description of the cluster fault, including context details.
+*cfExtSrc* (STRING): DBS cluster fault externalSource label created by the CreateClusterFault API command and attached to the fault for testing purposes.
+*skip_callhome* (INT): If 1, then the ASUP call home was not executed for this event. Call home is only done for newly reported faults (see cfStatus).
+
+== callhome.dbs.ensemble.emer
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Distributed Block Store (DBS) loses the database connection to over half of the ensemble nodes (of 3 or 5 total). DB quorum has been lost and the DB is down. The cluster cannot operate without access to the DB.
+*Corrective Action*::
+Bring offline nodes back online and/or restore node network connectivity. If that does not resolve the fault, contact NetApp technical support.
+*Syslog Message*::
+Callhome for %s. DBS has lost network connectivity or power on ensemble node. Cluster fault type %s, fault ID %u, status %u, nodes %s. %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*cfType* (STRING): DBS cluster fault type of the associated object.
+*cfID* (INT): DBS cluster fault ID number associated with the fault.
+*cfStatus* (INT): Current status of the cluster fault. 1 = New (just reported), 2 = Existing (updated), 3 = Resolved (closed).
+*collectAsupNodes* (STRING): List of the node universal unique identifiers (UUIDs) from which AutoSupport messages should be collected.
+*cfDetails* (STRING): Description of the degraded ensemble.
+*cfExtSrc* (STRING): DBS cluster fault externalSource label created by the CreateClusterFault API command and attached to the fault for testing purposes.
+*skip_callhome* (INT): If 1, then the ASUP call home was not executed for this event. Call home is only done for newly reported faults (see cfStatus).
+
+== callhome.dbs.ffmAggrFlagSet
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the Distributed Block Store (DBS) detects one or more aggrs have a don't attach, don't mount or don't detach flag set.
+*Corrective Action*::
+Resolve the issue that required the flag to be set, then remove the flag using the SetAggrFlags API command.
+*Syslog Message*::
+Callhome for %s. Fault type %s, fault ID %u, status %u, nodes %s. %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*cfType* (STRING): DBS cluster fault type of the associated object.
+*cfID* (INT): DBS cluster fault ID number associated with the fault.
+*cfStatus* (INT): Current status of the cluster fault. 1 = New (just reported), 2 = Existing (updated), 3 = Resolved (closed).
+*collectAsupNodes* (STRING): List of the node universal unique identifiers (UUIDs) from which AutoSupport messages should be collected.
+*cfDetails* (STRING): Description of the cluster fault, including context details.
+*cfExtSrc* (STRING): DBS cluster fault externalSource label created by the CreateClusterFault API command and attached to the fault for testing purposes.
+*skip_callhome* (INT): If 1, then the ASUP call home was not executed for this event. Call home is only done for newly reported faults (see cfStatus).
+
+== callhome.dbs.ffmFlexvolsOffl
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the Distributed Block Store (DBS) detects one or more FlexVols are offline.
+*Corrective Action*::
+Solve any issue contributing to the FlexVols being taken offline.
+*Syslog Message*::
+Callhome for %s. Fault type %s, fault ID %u, status %u, nodes %s. %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*cfType* (STRING): DBS cluster fault type of the associated object.
+*cfID* (INT): DBS cluster fault ID number associated with the fault.
+*cfStatus* (INT): Current status of the cluster fault. 1 = New (just reported), 2 = Existing (updated), 3 = Resolved (closed).
+*collectAsupNodes* (STRING): List of the node universal unique identifiers (UUIDs) from which AutoSupport messages should be collected.
+*cfDetails* (STRING): Description of the cluster fault, including context details.
+*cfExtSrc* (STRING): DBS cluster fault externalSource label created by the CreateClusterFault API command and attached to the fault for testing purposes.
+*skip_callhome* (INT): If 1, then the ASUP call home was not executed for this event. Call home is only done for newly reported faults (see cfStatus).
+
+== callhome.dbs.generic.cfault
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a Distributed Block Store (DBS) emergency cluster fault is reported as a generic fault. The DBS is responsible for managing the data that backs the FlexVols(R). Multiple faults are mapped to this one event. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Contact NetApp technical support for interpretation of this event.
+*Syslog Message*::
+Call home for %s, fault %s (%u), sev %u, service %u, node %u/%s, drives %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*cfCodeName* (STRING): Name of the original DBS cluster fault code.
+*cfCode* (INT): DBS cluster fault code number.
+*cfSeverity* (INT): Severity of the original DBS cluster fault. This is different than the EMS severity.
+*serviceID* (INT): Service ID that identifies the associated cluster service. It will be "0" if there is no associated service.
+*nodeID* (INT): Node ID number of the associated node. It will be "0" if there is no associated node.
+*nodeUuid* (STRING): Node UUID of the associated node. It will be zeroes if there is no associated node.
+*cfDriveIDs* (STRING): List of the drive IDs associated with the fault. The list might be empty.
+*cfDriveUuids* (STRING): List of the drive UUIDs associated with the fault. The list might be empty.
+*cfType* (STRING): DBS cluster fault type of the associated object.
+*cfID* (INT): DBS cluster fault ID number associated with the fault.
+*cfStatus* (INT): Current status of the cluster fault. 1 = New (just reported), 2 = Existing (updated), 3 = Resolved (closed).
+*collectAsupNodes* (STRING): List of the node universal unique identifiers (UUIDs) from which AutoSupport messages should be collected.
+*cfDetails* (STRING): Description of the cluster fault, including context details.
+*cfExtSrc* (STRING): DBS cluster fault externalSource label created by the CreateClusterFault API command and attached to the fault for testing purposes.
+*skip_callhome* (INT): If 1, then the ASUP call home was not executed for this event. Call home is only done for newly reported faults (see cfStatus).
+
+== callhome.dbs.inv.block.data
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a block stored in the Distributed Block Store (DBS) has inconsistent data. The cluster is checking the compression, block ID and checksum of the block against expected values. The DBS is responsible for managing the data that backs the FlexVols(R). Multiple DBS events that indicate inconsistent data are mapped to this one event. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Contact NetApp technical support for help immediately.
+*Syslog Message*::
+Call home for %s, event %s, type %s, service %u, node %u/%s, drive %u/%s, eventID %u.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*evtMessage* (STRING): Description of the data event, including context details.
+*evtType* (STRING): Type of the original DBS event.
+*serviceID* (INT): Service ID that identifies the associated DBS service. It will be "0" if there is no associated service.
+*nodeID* (INT): Node ID number of the associated node. It will be 0 if there is no associated node.
+*nodeUuid* (STRING): Node UUID of the associated node. It will be zeroes if there is no associated node.
+*driveID* (INT): Drive ID number of the associated drive. It will be 0 if there is no associated drive.
+*driveUuid* (STRING): Drive UUID of the associated drive. It will be zeroes if there is no associated drive.
+*evtID* (INT): DBS event ID number.
+*collectAsupNodes* (STRING): List of the node universal unique identifiers (UUIDs) from which AutoSupport messages should be collected.
+*evtDetails* (STRING): Specific details of the DBS data event. It may be a string, in JSON format, or empty.
+
+== callhome.dbs.mem.thresh.emer
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the Distributed Block Store (DBS) detects container memory 100 percent consumed.
+*Corrective Action*::
+Add additional nodes, or purge deleted volumes and run GC
+*Syslog Message*::
+Callhome for %s. DBS has detected free memory is completely consumed on a node's container. Cluster fault node %u, node UUID %s, type %s, fault ID %u, status %u, nodes %s. %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*nodeID* (INT): Node ID number of the associated node.
+*nodeUUID* (STRING): Node UUID string of the associated node.
+*cfType* (STRING): DBS cluster fault type of the associated object.
+*cfID* (INT): DBS cluster fault ID number associated with the fault.
+*cfStatus* (INT): Current status of the cluster fault. 1 = New (just reported), 2 = Existing (updated), 3 = Resolved (closed).
+*collectAsupNodes* (STRING): List of the node universal unique identifiers (UUIDs) from which AutoSupport messages should be collected.
+*cfDetails* (STRING): Details of the memory usage threshold.
+*cfExtSrc* (STRING): DBS cluster fault externalSource label created by the CreateClusterFault API command and attached to the fault for testing purposes.
+*skip_callhome* (INT): If 1, then the ASUP call home was not executed for this event. Call home is only done for newly reported faults (see cfStatus).
+
+== callhome.dbs.multSliceSvcDn
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the Distributed Block Store (DBS) detects multiple unhealthy slice services. This may cause some data to be unavailable.
+*Corrective Action*::
+If multiple slice services are unhealthy, repair offline nodes and drives to bring slice services back online. Contact NetApp technical support.
+*Syslog Message*::
+Call home for %s. Fault type %s, fault id %u, status %u, nodes %s. %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*cfType* (STRING): DBS cluster fault type of the associated object.
+*cfID* (INT): DBS cluster fault ID number associated with the fault.
+*cfStatus* (INT): Current status of the cluster fault. 1 = New (just reported), 2 = Existing (updated), 3 = Resolved (closed).
+*collectAsupNodes* (STRING): List of the node universal unique identifiers (UUIDs) from which AutoSupport messages should be collected.
+*cfDetails* (STRING): Description of the cluster fault, including context details.
+*cfExtSrc* (STRING): DBS cluster fault externalSource label created by the CreateClusterFault API command and attached to the fault for testing purposes.
+*skip_callhome* (INT): If 1, then the ASUP call home was not executed for this event. Call home is only done for newly reported faults (see cfStatus).
+
+== callhome.dbs.node.ekm.server
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the Distributed Block Store (DBS) detects that a node is unable to reach an External Key Management server that is not considered down (other nodes are able to reach it). Seek corrective-action immediately.
+*Corrective Action*::
+Perform troubleshooting at the network or node-specific level to determine why the listed node is unable to reach the External Key Management server. Contact NetApp technical support for assistance.
+*Syslog Message*::
+Callhome for %s. Cluster fault node %u, node UUID %s, type %s, fault ID %u, status %u, nodes %s. %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*nodeID* (INT): Node ID number of the associated node.
+*nodeUUID* (STRING): Node UUID string of the associated node.
+*cfType* (STRING): DBS cluster fault type of the associated object.
+*cfID* (INT): DBS cluster fault ID number associated with the fault.
+*cfStatus* (INT): Current status of the cluster fault. 1 = New (just reported), 2 = Existing (updated), 3 = Resolved (closed).
+*collectAsupNodes* (STRING): List of the node universal unique identifiers (UUIDs) from which AutoSupport messages should be collected.
+*cfDetails* (STRING): Description of the cluster fault, including context details.
+*cfExtSrc* (STRING): DBS cluster fault externalSource label created by the CreateClusterFault API command and attached to the fault for testing purposes.
+*skip_callhome* (INT): If 1, then the ASUP call home was not executed for this event. Call home is only done for newly reported faults (see cfStatus).
+
+== callhome.dbs.sec.cache.full
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the Distributed Block Store (DBS) detects that Slice volume secondary write cache is full. This is caused when Slice service write requests to the Block service (and by extension the FireStorm service) are not receiving replies. Client write performance may be reduced while this condition exists. The DBS is responsible for managing the data that backs the FlexVols(R). If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Verify that all nodes are online. Verify that all Block and FireStorm services, and associated aggregates, are online. Attempt repairs needed to bring nodes and aggregrates online. If the reason for this condition cannot be found, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s, service %u, node %u/%s, drives %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*serviceID* (INT): Service ID that identifies the associated cluster service.
+*nodeID* (INT): Node ID number of the associated node.
+*nodeUuid* (STRING): Node UUID of the associated node. It will be zeroes if there is no associated node.
+*cfDriveIDs* (STRING): List of the drive IDs associated with the fault. The list might be empty.
+*cfDriveUuids* (STRING): List of the drive UUIDs associated with the fault. The list might be empty.
+*cfType* (STRING): DBS cluster fault type of the associated object.
+*cfID* (INT): DBS cluster fault ID number associated with the fault.
+*cfStatus* (INT): Current status of the cluster fault. 1 = New (just reported), 2 = Existing (updated), 3 = Resolved (closed).
+*collectAsupNodes* (STRING): List of the node universal unique identifiers (UUIDs) from which AutoSupport messages should be collected.
+*cfDetails* (STRING): Description of the cluster fault, including context details.
+*cfExtSrc* (STRING): DBS cluster fault externalSource label created by the CreateClusterFault API command and attached to the fault for testing purposes.
+*skip_callhome* (INT): If 1, then the ASUP call home was not executed for this event. Call home is only done for newly reported faults (see cfStatus).
+
+== callhome.dbs.ssl.ndcert.exc
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the Distributed Block Store (DBS) detects that a node has a missing or corrupted certificate.
+*Corrective Action*::
+Contact NetApp technical support for assistance.
+*Syslog Message*::
+Callhome for %s. Cluster fault node %u, node UUID %s, type %s, fault ID %u, status %u, nodes %s. %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*nodeID* (INT): Node ID number of the associated node.
+*nodeUUID* (STRING): Node UUID string of the associated node.
+*cfType* (STRING): DBS cluster fault type of the associated object.
+*cfID* (INT): DBS cluster fault ID number associated with the fault.
+*cfStatus* (INT): Current status of the cluster fault. 1 = New (just reported), 2 = Existing (updated), 3 = Resolved (closed).
+*collectAsupNodes* (STRING): List of the node universal unique identifiers (UUIDs) from which AutoSupport messages should be collected.
+*cfDetails* (STRING): Description of the cluster fault, including context details.
+*cfExtSrc* (STRING): DBS cluster fault externalSource label created by the CreateClusterFault API command and attached to the fault for testing purposes.
+*skip_callhome* (INT): If 1, then the ASUP call home was not executed for this event. Call home is only done for newly reported faults (see cfStatus).
+
+== callhome.dbs.ssl.ndcert.exp
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the Distributed Block Store (DBS) detects that a node contains an SSL certificate that has expired or will expire imminently.
+*Corrective Action*::
+Contact NetApp technical support for assistance.
+*Syslog Message*::
+Callhome for %s. Cluster fault node %u, node UUID %s, fault type %s, fault ID %u, status %u, nodes %s. %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*nodeID* (INT): Node ID number of the associated node.
+*nodeUUID* (STRING): Node UUID string of the associated node.
+*cfType* (STRING): DBS cluster fault type of the associated object.
+*cfID* (INT): DBS cluster fault ID number associated with the fault.
+*cfStatus* (INT): Current status of the cluster fault. 1 = New (just reported), 2 = Existing (updated), 3 = Resolved (closed).
+*collectAsupNodes* (STRING): List of the node universal unique identifiers (UUIDs) from which AutoSupport messages should be collected.
+*cfDetails* (STRING): Description of the cluster fault, including context details.
+*cfExtSrc* (STRING): DBS cluster fault externalSource label created by the CreateClusterFault API command and attached to the fault for testing purposes.
+*skip_callhome* (INT): If 1, then the ASUP call home was not executed for this event. Call home is only done for newly reported faults (see cfStatus).
+
+== callhome.dbs.svcap.full
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the Distributed Block Store (DBS) detects a service (Slice or Block) that has completely consumed its capacity. The DBS is responsible for managing the data that backs the FlexVols(R). The data for this service is now read-only. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Evaluate the available capacity of this service relative to its usage. If some capacity is currently unavailable due to drives or nodes being offline, attempt the repairs needed to bring them online. Free storage used by FlexVols by deleting unneeded volumes. If the services's available capacity appears inconsistent with the calculated expected capacity, then contact NetApp technical support.
+*Syslog Message*::
+Call home for %s, service %u, node %u/%s, drives %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*serviceID* (INT): Service ID that identifies the associated cluster service.
+*nodeID* (INT): Node ID number of the associated node.
+*nodeUuid* (STRING): Node UUID of the associated node. It will be zeroes if there is no associated node.
+*cfDriveIDs* (STRING): List of the drive IDs associated with the fault. The list might be empty.
+*cfDriveUuids* (STRING): List of the drive UUIDs associated with the fault. The list might be empty.
+*cfType* (STRING): DBS cluster fault type of the associated object.
+*cfID* (INT): DBS cluster fault ID number associated with the fault.
+*cfStatus* (INT): Current status of the cluster fault. 1 = New (just reported), 2 = Existing (updated), 3 = Resolved (closed).
+*collectAsupNodes* (STRING): List of the node universal unique identifiers (UUIDs) from which AutoSupport messages should be collected.
+*cfDetails* (STRING): Description of the cluster fault, including context details.
+*cfExtSrc* (STRING): DBS cluster fault externalSource label created by the CreateClusterFault API command and attached to the fault for testing purposes.
+*skip_callhome* (INT): If 1, then the ASUP call home was not executed for this event. Call home is only done for newly reported faults (see cfStatus).
+
+== callhome.dbs.svcap.near.full
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Distributed Block Store (DBS) detects a service (Slice or Block) that has consumed nearly all of its capacity. The DBS is responsible for managing the data that backs the FlexVols(R). If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Evaluate the available capacity of this service relative to its usage. If some capacity is currently unavailable due to drives or nodes being offline, attempt the repairs needed to bring them online. Free storage used by FlexVols by deleting unneeded volumes.
+*Syslog Message*::
+Call home for %s, service %u, node %u/%s, drives %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*serviceID* (INT): Service ID that identifies the associated cluster service.
+*nodeID* (INT): Node ID number of the associated node.
+*nodeUuid* (STRING): Node UUID of the associated node. It will be zeroes if there is no associated node.
+*cfDriveIDs* (STRING): List of the drive IDs associated with the fault. The list might be empty.
+*cfDriveUuids* (STRING): List of the drive UUIDs associated with the fault. The list might be empty.
+*cfType* (STRING): DBS cluster fault type of the associated object.
+*cfID* (INT): DBS cluster fault ID number associated with the fault.
+*cfStatus* (INT): Current status of the cluster fault. 1 = New (just reported), 2 = Existing (updated), 3 = Resolved (closed).
+*collectAsupNodes* (STRING): List of the node universal unique identifiers (UUIDs) from which AutoSupport messages should be collected.
+*cfDetails* (STRING): Description of the cluster fault, including context details.
+*cfExtSrc* (STRING): DBS cluster fault externalSource label created by the CreateClusterFault API command and attached to the fault for testing purposes.
+*skip_callhome* (INT): If 1, then the ASUP call home was not executed for this event. Call home is only done for newly reported faults (see cfStatus).
+
+== callhome.dbs.volumes.offline
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the Distributed Block Store (DBS) detects that one or more volumes in the storage cluster are offline. For the volumes listed, both copies of volume slice data are unavailable. The volumes are degraded and the primary slice service becomes unresponsive, as detected by the Cluster Master. The VolumesDegraded fault will also be present. The DBS is responsible for managing the data that backs the FlexVols(R). If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Check for network connectivity issues and hardware errors. There should be other faults if specific hardware components have failed. Attempt to resolve these issues. The fault will clear when the primary slice service is responsive. Contact Support if there are no associated hardware faults and this fault persists long enough to affect client applications.
+*Syslog Message*::
+Call home for %s. One or more DBS volumes offline.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*cfType* (STRING): DBS cluster fault type of the associated object.
+*cfID* (INT): DBS cluster fault ID number associated with the fault.
+*cfStatus* (INT): Current status of the cluster fault. 1 = New (just reported), 2 = Existing (updated), 3 = Resolved (closed).
+*collectAsupNodes* (STRING): List of the node universal unique identifiers (UUIDs) from which AutoSupport messages should be collected.
+*cfDetails* (STRING): Description of the cluster fault, including context details.
+*cfExtSrc* (STRING): DBS cluster fault externalSource label created by the CreateClusterFault API command and attached to the fault for testing purposes.
+*skip_callhome* (INT): If 1, then the ASUP call home was not executed for this event. Call home is only done for newly reported faults (see cfStatus).

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: cfvm-cutover-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cfvm.cutover events
+---
+
+= cfvm.cutover events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cfvm.cutover.languish
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a copy free volume move operation languishes beyond the volume move cutover outage window. The operation will be retried indefinitely, but may result in an outage to data service if the condition persists.
+*Corrective Action*::
+Volume move is languishing. Contact NetApp technical support for further assistance if needed.
+*Syslog Message*::
+Volume Move to volume "%s" in aggregate "%s" has languished for %llu seconds.
+*Parameters*::
+*volname* (STRING): Destination volume name.
+*aggrname* (STRING): Destination aggregate name.
+*time_waiting* (LONGINT): Seconds waiting for cutover to complete.

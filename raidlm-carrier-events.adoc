@@ -1,0 +1,107 @@
+---
+sidebar: sidebar
+permalink: raidlm-carrier-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raidlm.carrier events
+---
+
+= raidlm.carrier events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raidlm.carrier.copy.abort
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Data ONTAP(R) determines that an ongoing disk copy operation is no longer required and has stopped the disk copy previously started for this disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s copy from carrier %s is no longer needed. Operation stopped.
+*Parameters*::
+*source_disk* (STRING): Name of the disk that was being copied.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+
+== raidlm.carrier.copy.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an undesirable RAID layout and Data ONTAP(R) is attempting to correct the issue by copying a disk to an available spare. The issue is that two disks from the same carrier are part of a single RAID group. If Data ONTAP does not copy one of the disks to an available spare disk, the RAID group would become double degraded if the carrier is removed accidentally. Such an action would result in significant system performance issues and the possibility of exposing the system to data loss.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s will be copied to disk %s to correct the RAID layout.
+*Parameters*::
+*source_disk* (STRING): Name of the disk being copied.
+*target_disk* (STRING): Name of the copy destination disk.
+*owner* (STRING): RAID group owner.
+*raid_group_name* (STRING): RAID group name.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+
+== raidlm.carrier.evac.abort
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Data ONTAP(R) determines that an ongoing carrier evacuation operation is no longer required and has stopped the disk copy previously started for this disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Copy operation for disk %s no longer needed. Operation stopped.
+*Parameters*::
+*disk* (STRING): Name of the disk in the carrier.
+*shelf* (STRING): Disk shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+
+== raidlm.carrier.evac.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a carrier evacuation operation is initiated in a multidisk carrier containing at least one failed disk. Do NOT remove the carrier until the carrier evacuation operation is complete. The carrier evacuation operation is not complete until both of the following occur: the shelf OPS panel stops alternating between the shelf ID and Attention Code H1, and all amber Attention LEDs on the disks stop flashing and are lit continuously.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s is being copied as part of the carrier evacuation process (Shelf Attention Code: H1). Do not remove the carrier until the disk copy is complete.
+*Parameters*::
+*disk* (STRING): Name of the disk in the carrier.
+*shelf* (STRING): Disk shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier being evacuated.
+
+== raidlm.carrier.splitOwner
+*Severity*::
+ERROR
+*Description*::
+This message occurs when disks within a multidisk carrier belong to different owners. This situation might occasionally occur in takeover or giveback scenarios (partial giveback).
+*Corrective Action*::
+All disks within a multidisk carrier should belong to one owner. If the system is in takeover mode, the situation might correct itself when the partner node recovers, or by repeating the giveback. If the system is not in takeover mode, then do the following: (1) Determine which owner should own the disks. (2) If the disk is a spare, assign it to the correct owner. (3) If the disk is not a spare, copy the data to another disk.
+*Syslog Message*::
+Disk %s belongs to a different owner than other disks within the carrier.
+*Parameters*::
+*disk* (STRING): Name of the disk in the carrier.
+*shelf* (STRING): Disk shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier.

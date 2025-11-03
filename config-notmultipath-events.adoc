@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-notmultipath-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.notmultipath events
+---
+
+= config.notmultipath events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.NotMultiPath
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk is not multipathed.
+*Corrective Action*::
+Multipath the disk shelf stack by also attaching it to a different host adapter via the other shelf module in each disk shelf in the stack.
+*Syslog Message*::
+Disk %s and other disks on this loop/domain are not multipathed and should be for improved availability.
+*Parameters*::
+*disk* (STRING): Name of the disk.

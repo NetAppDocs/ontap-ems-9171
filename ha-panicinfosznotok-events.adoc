@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: ha-panicinfosznotok-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.panicinfosznotok events
+---
+
+= ha.panicinfosznotok events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.panicInfoSzNotOk
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the size of the panic information received from the high-availability (HA) partner is not equal to the expected panic information size. The receiving node will discard this panic information message. A takeover might still occur if the local node detects that its HA partner is down by other means, and takeover of the panicking node is allowed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Panic information message received from the HA partner is the wrong size. Expected size: %u. Received size: %u. Partner name: %s. Partner system ID: %llu.
+*Parameters*::
+*expected_size* (LONGINT): Expected size of the panic information.
+*received_size* (LONGINT): Received size of the panic information.
+*partner_name* (STRING): Name of the HA partner.
+*partner_systemid* (LONGINT): System ID of the HA partner.

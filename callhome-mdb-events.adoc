@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-mdb-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.mdb events
+---
+
+= callhome.mdb events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.mdb.recovery.unsuccessful
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs after an unsuccessful recovery of an inconsistent management database. The message is from the management processes identified by name in the auto-support subject line. The unsuccessful recovery results in the loss of all records contained in the 'job history' and 'rdb statistics' databases. Also, no additional records will be collected until the problem is resolved by NetApp technical support. The affected management process will function normally without these databases.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Call home for %s WARNING.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

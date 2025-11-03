@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: nblade-tlsconfigerror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.tlsconfigerror events
+---
+
+= nblade.tlsconfigerror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.TLSConfigError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the client is trying to use NFS over TLS (Transport Layer Security), but it is disabled on the NFS server side.
+*Corrective Action*::
+Enable the configuration by running "nfs tls interface enable" command.
+*Syslog Message*::
+Failed to create NFS over TLS (Transport Layer Security) connection from client IP address:"%s", because NFS over TLS configuration not found for SVM:"%s", LIF:"%s".
+*Parameters*::
+*clientIpAddress* (STRING): Client IP address.
+*vsName* (STRING): Storage virtual machine (SVM) name.
+*lifIpAddress* (STRING): LIF IP address of NFS server.

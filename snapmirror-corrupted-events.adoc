@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: snapmirror-corrupted-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapmirror.corrupted events
+---
+
+= snapmirror.corrupted events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapmirror.corrupted.replay
+*Severity*::
+ALERT
+*Description*::
+This message occurs when metadata replay fails in the process of making a Synchronous SnapMirror(R) destination flexible volume writable. This failure occurs because the filesystem on disk is corrupt.
+*Corrective Action*::
+This error will not allow the destination volume to be made writable. Wafliron must be run on the destination to correct the filesystem consistency. Once the inconsistency is fixed, snapmirror break can be attempted again.
+*Syslog Message*::
+Synchronous SnapMirror cannot proceed with snapmirror break for volume '%s' in containing aggregate '%s' because the filesystem on disk is corrupt.
+*Parameters*::
+*dst_volume* (STRING): The name of the Synchronous SnapMirror(R) destination volume
+*dst_aggr* (STRING): The name of the aggregate containing the destination volume

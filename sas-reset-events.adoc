@@ -1,0 +1,67 @@
+---
+sidebar: sidebar
+permalink: sas-reset-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sas.reset events
+---
+
+= sas.reset events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sas.reset.exp.discovery.resp
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when SAS adapter driver resets the expander because of failure status of discovery response.
+*Corrective Action*::
+If this message is infrequent, no action is needed. Otherwise, contact NetApp technical support.
+*Syslog Message*::
+SAS adapter [%s]: Incorrect status in discovery response, resetting expander: %s
+*Parameters*::
+*adapterName* (STRING): Name of the associated SAS adapter.
+*expanderName* (STRING): Name of the expander being reset.
+
+== sas.reset.exp.open.dest
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when SAS adapter driver resets the expander because open frames are recieving excessive no/bad destination status.
+*Corrective Action*::
+If this message is infrequent, no action is needed. Otherwise, contact NetApp technical support.
+*Syslog Message*::
+SAS adapter [%s]: Excessive open no/bad destination status, resetting expander: %s
+*Parameters*::
+*adapterName* (STRING): Name of the associated SAS adapter.
+*expanderName* (STRING): Name of the expander being reset.
+
+== sas.reset.exp.open.to
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when SAS adapter driver resets the expander because of excessive open timeouts.
+*Corrective Action*::
+If this message is infrequent, no action is needed. Otherwise, contact NetApp technical support.
+*Syslog Message*::
+SAS adapter [%s]: Excessive open timeouts occured, resetting expander: %s
+*Parameters*::
+*adapterName* (STRING): Name of the associated SAS adapter.
+*expanderName* (STRING): Name of the expander being reset.
+
+== sas.reset.exp.smp
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when SAS adapter driver resets the expander because of excessive SMP failures.
+*Corrective Action*::
+If this message is infrequent, no action is needed. Otherwise, contact NetApp technical support.
+*Syslog Message*::
+SAS adapter [%s]: Excessive SMP failures occured, resetting expander: %s
+*Parameters*::
+*adapterName* (STRING): Name of the associated SAS adapter.
+*expanderName* (STRING): Name of the expander being reset.

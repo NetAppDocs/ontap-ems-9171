@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-svo-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.svo events
+---
+
+= callhome.svo events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.svo.prevented
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a write to a SnapValidator enabled volume failed to be validated and was rejected by the server. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Check the configuration of the server to insure correct 'svf_offset' setting on the lun (if applicable) and correct use of svo_options. This includes making sure that RMAN data is not being stored on a volume that does not have the svo_allow_rman option set. If the server appears to be correctly configured, the problem may exist at any point between Oracle client and the server. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for SNAPVALIDATOR ERROR PREVENTED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

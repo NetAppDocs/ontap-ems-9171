@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-link-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.link events
+---
+
+= callhome.link events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.link.change.stuck
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a network port link state change cannot be confirmed for more than 5 minutes because another configuration task is still in progress. Network port states can change when the node reboots or is administratively changed by a system administrator. The affected port might still be operating in the state before the attempted change. While this condition exists, additional configuration changes or status queries will not be possible. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+The link state change request will keep retrying until it succeeds. If the request does not succeed, it indicates that there is a configuration task that has not correctly completed and the node should be rebooted. For further assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

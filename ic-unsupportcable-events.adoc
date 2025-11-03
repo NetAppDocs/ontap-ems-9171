@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: ic-unsupportcable-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ic.unsupportcable events
+---
+
+= ic.unsupportcable events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ic.unsupportCable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an unsupported cable is detected on the high-availability interconnect port. An unsupported cable might cause the interconnect to be unstable, resulting in unsynchronized logs.
+*Corrective Action*::
+Unplug the unsupported cable, and then plug in a supported cable. Search the support site "Hardware Universe" for information about supported high-availability cables for this platform.
+*Syslog Message*::
+Detected unsupported %s cable with part number %s.
+*Parameters*::
+*cable_type* (STRING): Cable type.
+*cable_part* (STRING): Cable part number.

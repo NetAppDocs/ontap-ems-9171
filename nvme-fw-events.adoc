@@ -1,0 +1,64 @@
+---
+sidebar: sidebar
+permalink: nvme-fw-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvme.fw events
+---
+
+= nvme.fw events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvme.fw.activate.complete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when new firmware has been successfully activated on the drive and running normally.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NVMe caching module in physical slot %s with serial number %s, and model number %s successfully replaced firmware version %s with %s in firmware slot %u.
+*Parameters*::
+*slot_subslot* (STRING): PCI slot of the NVMe device.
+*serial* (STRING): Serial number of the controller.
+*model* (STRING): Model number of the controller.
+*old* (STRING): Version of firmware that has been replaced.
+*new* (STRING): Version of firmware that was activated.
+*fw_slot* (INT): Firmware slot that the new version was programmed to.
+*reset* (INT): An indication on whether the device had to be reset or not in order to activate the firmware.
+
+== nvme.fw.activate.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there was an issue while activating the new firmware on the the NVMe drive. The caching module will continue normal operation with obsolete firmware.
+*Corrective Action*::
+The caching module is still completely functional, but it is running with obsolete firmware. Contact NetApp technical support for alternative solutions.
+*Syslog Message*::
+NVMe caching module in slot %s with serial number %s and model number %s failed to activate firmware. Error code: 0x%llx.
+*Parameters*::
+*slot_subslot* (STRING): PCI slot of the NVMe device.
+*serial* (STRING): Serial number of the controller.
+*model* (STRING): Model number of the controller.
+*code* (LONGINTHEX): Internal error code.
+
+== nvme.fw.program.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there was an issue while downloading new firmware to the NVMe drive. The caching module will continue normal operation with obsolete firmware.
+*Corrective Action*::
+The caching module is still completely functional however it is running with obsolete firmware. Contact NetApp technical support for alternative solutions.
+*Syslog Message*::
+NVMe caching module in slot %s with serial number %s, and model number %s failed to download firmware version %s to the drive with error code 0x%llx.
+*Parameters*::
+*slot_subslot* (STRING): PCI slot of the NVMe device.
+*serial* (STRING): Serial number of the controller.
+*model* (STRING): Model number of the controller.
+*version* (STRING): Version of firmware attempted to download.
+*code* (LONGINTHEX): Internal error code.

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: disk-partition-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.partition events
+---
+
+= disk.partition events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.partition.exceeded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the disk partition layout contains more partitions than are supported by the system.
+*Corrective Action*::
+Fix the unsupported disk partition layout by using the 'disk unpartition' command to make the disk a spare disk.
+*Syslog Message*::
+Disk %s has %d partitions, which exceeds the maximum of %d partitions.
+*Parameters*::
+*disk_name* (STRING): Name of the disk.
+*partition_count* (INT): Number of partitions on the disk.
+*max_partition_count* (INT): Maximum number of partitions supported per disk.

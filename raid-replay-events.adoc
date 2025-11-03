@@ -1,0 +1,61 @@
+---
+sidebar: sidebar
+permalink: raid-replay-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.replay events
+---
+
+= raid.replay events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.replay.nvfile.done
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when an aggregate becomes available and system successfully replayed the preserved NVRAM entries associated with that aggregate. The NVRAM entries replayed are saved in a system file on the root volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Successfully replayed %d checksum, %d stripe %d pzero block entries from preserved NVRAM file for %s %s%s having raidtreeID %s.
+*Parameters*::
+*nchecksum_replayed* (INT): Identifies the number of checksum NVRAM entries replayed
+*nstripe_replayed* (INT): Identifies the number of stripe NVRAM entries replayed
+*nblkbuf_replayed* (INT): Identifies the number of pzero entries replayed
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*raidtreeID* (STRING): RAIDtree identifier of the aggregate.
+
+== raid.replay.nvfile.start
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued while starting the raid nvfile replay for an aggregate. When a aggregate becomes available and system determines that there are relevant nvram entries saved in a system file for such aggregate, those saved nvram entries must be replayed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Starting raid nvfile replay for %s %s%s having raidtreeID %s stored on %s host root volume.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*raidtreeID* (STRING): Raidtree identifier of the aggregate.
+*host* (STRING): The preserved nvfile being replayed for this aggregate was found on the host root volume.
+
+== raid.replay.partner.nvram
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when RAID replays partner nonvolatile RAM (NVRAM).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Replaying partner NVRAM.
+*Parameters*::
+(None).

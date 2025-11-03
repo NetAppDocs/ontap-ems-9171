@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: nblade-fpolpsvolnospace-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.fpolpsvolnospace events
+---
+
+= nblade.fpolpsvolnospace events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.fpolPsVolNoSpace
+*Severity*::
+ERROR
+*Description*::
+This message occurs when persistent store volume is full. This causes disruption in FPolicy where persistent store is enabled.
+*Corrective Action*::
+Increase the persistent store volume size.
+*Syslog Message*::
+FPolicy persistent store volume "%s" belonging to SVM "%s" has no space for new notifications. This leads to drop of notifications.
+*Parameters*::
+*volName* (STRING): Persistent store volume.
+*vserverName* (STRING): Name of the SVM.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: raid-offline-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.offline events
+---
+
+= raid.offline events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.offline.busy
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an attempt to offline an aggregate fails due to active operations on the contained volumes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Active operations in progress on aggregate %s: %s.
+*Parameters*::
+*aggrname* (STRING): Aggregate name.
+*operation* (STRING): Operation.

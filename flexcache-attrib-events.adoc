@@ -1,0 +1,56 @@
+---
+sidebar: sidebar
+permalink: flexcache-attrib-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: flexcache.attrib events
+---
+
+= flexcache.attrib events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== flexcache.attrib.sync.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when when syncing properties between an origin of a FlexCache volume and its FlexCache volume fails, and due to which FlexCache volume may not be able to proceed with accurate data.
+*Corrective Action*::
+Use the "volume flexcache sync-properties" command on the cluster hosting the FlexCache volume to sync the origin volume properties with the FlexCache volume.
+*Syslog Message*::
+Failed to sync the FlexCache configuration for cluster %s in Vserver %s hosting FlexCache volume %s.
+*Parameters*::
+*cacheCluster* (STRING): Name of the cluster hosting the FlexCache volume.
+*cacheVserver* (STRING): Name of the Vserver hosting the FlexCache volume.
+*cacheVolName* (STRING): Name of FlexCache volume for which sync failed.
+
+== flexcache.attrib.sync.passed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when origin of a FlexCache volume properties sync succeeds for all connected FlexCache volumes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Sync of origin of a FlexCache volume %s in Vserver %s succeeded for all connected FlexCache volumes.
+*Parameters*::
+*originVolName* (STRING): Origin of a FlexCache volume.
+*originVserver* (STRING): Name of the Vserver hosting the origin of a FlexCache volume.
+
+== flexcache.attrib.sync.warn
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when syncing properties between an origin of a FlexCache volume and its FlexCache volume fails, and the sync operation will be retried.
+*Corrective Action*::
+Use the "volume flexcache sync-properties" command on the cluster hosting the FlexCache volume to sync the origin volume properties with the FlexCache volume.
+*Syslog Message*::
+Failed to sync the FlexCache configuration for cluster %s in Vserver %s hosting FlexCache volume %s. Operation will be retried.
+*Parameters*::
+*cacheCluster* (STRING): Name of the cluster hosting the FlexCache volume.
+*cacheVserver* (STRING): Name of the Vserver hosting the FlexCache volume.
+*cacheVolName* (STRING): Name of FlexCache volume for which sync failed.

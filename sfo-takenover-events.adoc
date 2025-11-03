@@ -1,0 +1,57 @@
+---
+sidebar: sidebar
+permalink: sfo-takenover-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfo.takenover events
+---
+
+= sfo.takenover events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfo.takenOver.aborted
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an attempted optimized negotiated takeover is aborted by the node about to be taken over.
+*Corrective Action*::
+1. Use the "storage failover show" command to verify that the partner node is up. 2. Use the "network interface show" command to verify that the cluster network interfaces on the local and partner nodes are up. If they are not up, correct any network issues that could be preventing it. 3. Check whether any operation is running on the partner that might have slowed it down. If so, either abort the operation or wait until it is over. 4. Use the "storage aggregate plex show" command to check mirror degraded aggregates, if the remote plex is offline, bring it online using the "storage aggregate plex online" command.
+*Syslog Message*::
+The local node has aborted an optimized negotiated takeover that was initiated by the partner. Reason: %s
+*Parameters*::
+*reason* (STRING): Reason for the failure, which might be as follows: 1. Conflicting takeover/giveback/relocation operation. 2. High-availability (HA) partner not being eligible for takeover. 3. Communication failure with the partner over the cluster network. 4. Local node has mirror degraded aggregates with remote plex inactive or unmirrored aggregates.
+
+== sfo.takenOver.commFailed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the local node cannot communicate over the cluster network with its high-availability (HA) partner during an optimized negotiated takeover initiated by the HA partner node.
+*Corrective Action*::
+1. Use the "storage failover show" command to verify that the partner node is up. 2. Use the "network interface show" command to verify that the cluster network interfaces on the local and partner nodes are up. If they are not up, address any network issues that could be preventing it.
+*Syslog Message*::
+The local node could not communicate with its HA partner, %s, (partner's D-blade ID: %s) during an optimized negotiated takeover initiated by the partner node. The communication request returned a status of %d. The level %d returned a status of %lld.
+*Parameters*::
+*partner_name* (STRING): Name of the partner node.
+*partner_dbladeid* (STRING): D-blade ID of the partner node.
+*status* (INT): Status returned by the hamsg message layer.
+*scope* (INT): Specific module level where the message did not succeed.
+*scope_status* (LONGINT): Module-level specific reason the message did not succeed.
+
+== sfo.takenOver.relocDone
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during optimized negotiated takeover, when the high-availability (HA) partner notifies the local node that it has completed the relocation of all aggregates to the local node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*partner_name* (STRING): Name of the partner node.
+*partner_sysid* (LONGINT): System ID of the partner node.
+*relocation_status* (INT): Status of the "relocation done" response received from the HA partner.

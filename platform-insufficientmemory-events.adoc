@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: platform-insufficientmemory-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: platform.insufficientmemory events
+---
+
+= platform.insufficientmemory events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== platform.insufficientMemory
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when there is not enough system memory for the system to function, likely due to slots that contain incorrect, failed, or missing DIMMs.
+*Corrective Action*::
+Replace the incorrect, failed, or missing DIMMs.
+*Syslog Message*::
+Not enough system memory for the system to function. Detected %d GB, expected %d GB. Check DIMMs slots %s.
+*Parameters*::
+*mem_detected* (INT): Amount of system memory that was detected.
+*mem_expected* (INT): Amount of system memory that this model supports.
+*slots* (STRING): List of slots with incorrect, failed, or missing DIMMs.

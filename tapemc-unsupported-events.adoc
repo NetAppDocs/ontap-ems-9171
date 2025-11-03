@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: tapemc-unsupported-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: tapemc.unsupported events
+---
+
+= tapemc.unsupported events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== tapemc.unsupported.allow
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a tape or media changer is detected that is not supported on this system, but its usage is not blocked. Use at your own risk.
+*Corrective Action*::
+Remove the tape or media changer device, or use at your own risk.
+*Syslog Message*::
+Attaching a tape or media changer device on adapter %s is not supported on this system.
+*Parameters*::
+*AdapterName* (STRING): Adapter name to which the tape device is attached.

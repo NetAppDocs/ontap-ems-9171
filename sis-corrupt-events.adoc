@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: sis-corrupt-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.corrupt events
+---
+
+= sis.corrupt events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.corrupt.metafile.deleted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a Single Instance Storage (SIS) metafile is deleted because there are Disk/Media errors affecting the file.
+*Corrective Action*::
+The deleted metafile might be recovered automatically the next time you run the 'sis start' command. If you have not previously run the 'sis start' command on this volume, run the 'sis start -s' command to generate metafiles and obtain efficient deduplication. Contact NetApp technical support for guidance.
+*Syslog Message*::
+SIS metafile on volume '%s%s' is deleted.
+*Parameters*::
+*volume* (STRING): Volume path.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.

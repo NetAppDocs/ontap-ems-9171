@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cpeer-long-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cpeer.long events
+---
+
+= cpeer.long events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cpeer.long.remote.update
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a cross-cluster update takes longer than 15 minutes. This indicates a communication failure between the clusters.
+*Corrective Action*::
+Ensure cross-cluster network connectivity by performing network diagnostics using the "cluster peer ping" command and either the "network ping" or "network ping6" command. Correct IP address issues by using the "cluster peer modify" command. Ensure that LIFs of the appropriate address family exist on both the local cluster and the remote peer. Confirm that the DNS services are appropriately configured by using the "vserver services dns show" command. You can use "cluster peer show" to list the state of all peer clusters. This is a point-in-time command and the health of remote clusters might not have been updated yet. If you need further assistance, contact NetApp technical support.
+*Syslog Message*::
+Cross-cluster update job took longer than 15 minutes. Potential network connectivity issues.
+*Parameters*::
+(None).

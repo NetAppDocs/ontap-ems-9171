@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: rsh-rcmd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rsh.rcmd events
+---
+
+= rsh.rcmd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rsh.rcmd.port.bind
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is an error in binding a reserved port.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+rcmd.c: Bind error %d on reserved port %d.
+*Parameters*::
+*errNum* (INT): Error number.
+*port* (INT): Port number.
+
+== rsh.rcmd.port.used
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is no port available for binding to a socket, because all the reserved ports are in use.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+rcmd.c: All reserved ports have been used.
+*Parameters*::
+(None).

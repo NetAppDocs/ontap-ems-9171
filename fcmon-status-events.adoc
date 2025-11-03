@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: fcmon-status-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fcmon.status events
+---
+
+= fcmon.status events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fcmon.status
+*Deprecated*::
+Deprecated as of Data ONTAP 9.2 because FCMON process has been removed.
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when FCMON starts up, halts or is requested to print it's current state.
+*Corrective Action*::
+None.
+*Syslog Message*::
+FCMON is %s
+*Parameters*::
+*status* (STRING): The status of FCMON (initializing|running|sleeping|halted)

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: objectattach-hw-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: objectattach.hw events
+---
+
+= objectattach.hw events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== objectAttach.hw.unsupported
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an object store attach failed due to an unsupported hardware configuration.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Object store attach failed because node %s with model %s is not supported by FabricPools.
+*Parameters*::
+*node* (STRING): Node that has the unsupported hardware version.
+*model* (STRING): Model information.

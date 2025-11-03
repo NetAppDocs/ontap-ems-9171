@@ -1,0 +1,88 @@
+---
+sidebar: sidebar
+permalink: replication-vol-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: replication.vol events
+---
+
+= replication.vol events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== replication.vol.activemapdelta.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs when SnapMirror(R) or VolCopy replication encounters a disk error in the active map delta blocks on the destination and cannot continue replication.
+*Corrective Action*::
+For a SnapMirror update operation, break the SnapMirror relation and then resynchronize the relation. For a VolCopy or SnapMirror Initialize operation, destroy the destination volume and retry the operation. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+WAFL active map delta file is inconsistent due to disk errors '%s%s%s'. Aborting transfer.
+*Parameters*::
+*volname* (STRING): Flexible volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Volume unique identifier.
+
+== replication.vol.dst.disk.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the replication destination engine receives the first disk error from the replication source in a transfer. Replication will continue. Subsequent disk errors encountered during this transfer will not trigger this event, but will be logged to /etc/log/snapmirror. A replication.vol.dst.disk.error.summary event is logged at the end of the transfer to report on the total number of errors encountered.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+%s: %s: Source volume has disk errors. Continuing replication. See /etc/log/snapmirror for inconsistency details.
+*Parameters*::
+*rpltype* (STRING): Replication type - SnapMirror, Aggr copy, Vol copy.
+*transfer_paths* (STRING): Replication source path and destination path.
+
+== replication.vol.dst.disk.error.abort
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the replication destination engine receives blocks with disk errors from the source Replication will abort because the user selected the option to abort on disk error.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+%s: %s: Source volume has disk errors (vbn:%llu). Aborting transfer.
+*Parameters*::
+*rpltype* (STRING): Replication type - SnapMirror, Aggr copy, Vol copy
+*transfer_paths* (STRING): Replication source path and destination path
+*vbn* (LONGINT): Volume Block Number
+
+== replication.vol.dst.disk.error.summary
+*Severity*::
+ERROR
+*Description*::
+This message occurs on the replication destination in a transfer that encounters disk errors. Details about the errors are in /etc/log/snapmirror.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+%s: %s: Source volume has disk errors. %u blocks out of %llu blocks replicated are inconsistent. See /etc/log/snapmirror for inconsistency details.
+*Parameters*::
+*rpl_type* (STRING): Replication type - SnapMirror, Aggr copy, Vol copy.
+*transfer_path* (STRING): Replication source path and destination path.
+*total_bad_blocks* (INT): Total number of blocks with disk errors replicated.
+*total_blocks* (LONGINT): Total number of blocks replicated.
+
+== replication.vol.src.inconsistent.metadata
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a replication source engine encounters a disk error in the file system metadata. Replication transfer will abort.
+*Corrective Action*::
+If the specified snapshot IDs contain 0 (active file system), run wafliron to fix the active file system. To continue replication transfer, delete the specified snapshots during the next reboot, either by using the boot menu command 'boot_snap_delete' or by using the CLI command 'vol online -r'. Then contact NetApp technical support.
+*Syslog Message*::
+%s: %s: WAFL metadata inconsistent due to disk errors. (vbn:%llu level:%u file_type:%d) The affected snapshot IDs are %s. Aborting transfer.
+*Parameters*::
+*rpltype* (STRING): Replication type - SnapMirror, Aggr copy, Vol copy
+*transfer_paths* (STRING): Replication source path and destination path.
+*vbn* (LONGINT): Virtual Volume Block Number
+*level* (INT): Buffer level.
+*file_type* (INT): Inode type.
+*snapstring* (STRING): String containing the list of snapshot IDs of the snapshots that have the inconsistent blocks.

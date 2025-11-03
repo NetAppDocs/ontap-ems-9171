@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: vol-phys-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vol.phys events
+---
+
+= vol.phys events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vol.phys.overalloc
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the volume or aggregate is running dangerously low on free blocks to write to.
+*Corrective Action*::
+For non-ASA r2 platforms, create space by increasing the volume or aggregate sizes, or by deleting data or deleting Snapshot copies. To increase a volume's size, use the "volume size" command. To delete a volume's Snapshot copies, use the "volume snapshot delete" command. To increase an aggregate's size, add disks by using the "storage aggregate add-disks" command. Aggregate Snapshot copies are deleted automatically when the aggregate is full. For ASA r2 platforms, create space in the volume or aggregate. To create space in an aggregate, add more disks to the cluster. To create space in a volume, delete data or delete Snapshot copies. To delete a Snapshot copy, use the "vserver consistency-group snapshot delete" command.
+*Syslog Message*::
+%s %s%s%s is physically overallocated, using %s%% logical space and %s%% physical space.
+*Parameters*::
+*object_type* (STRING): Identifier for the type of object to which this event applies (aggregate or volume).
+*name* (STRING): Name of this object.
+*app* (STRING): Application universal unique identifier(UUID).
+*vserver_uuid* (STRING): UUID of the object's storage virtual machine (SVM), if the object is a volume. Otherwise, this string is empty.
+*percent_logically_full* (STRING): Used capacity of the logical space of the object, as a percent. This value can be greater than 100 due to space reserved for metadata. The percentage is computed for the entire object, including Snapshot copy space, and is equivalent to the "Total Used" field in the output of the "volume show-space" or "aggregate show-space" commands.
+*percent_physically_full* (STRING): Used capacity of the physical space of the object, as a percent. This value can be greater than 100 due to space reserved for metadata. The percentage is computed for the entire object, including Snapshot copy space, and is equivalent to the "Total Physical Used" field in the output of the "volume show-space" or "aggregate show-space" commands.

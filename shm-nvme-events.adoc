@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: shm-nvme-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: shm.nvme events
+---
+
+= shm.nvme events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== shm.NVME.critical.warning
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the NVMe drive returns a critical warning to the health monitor.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s returned a critical warning 0x%x and will be recommended for failure.
+*Parameters*::
+*disk_name* (STRING): Name of the disk.
+*warning_code* (INTHEX): Warning code returned.

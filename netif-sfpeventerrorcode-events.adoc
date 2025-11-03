@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: netif-sfpeventerrorcode-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.sfpeventerrorcode events
+---
+
+= netif.sfpeventerrorcode events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.sfpEventErrorCode
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the installed Small Form-factor Pluggable (SFP+ or QSFP+) module is either not supported or faulty.
+*Corrective Action*::
+The cable could be unsupported or faulty. Replace the cable and check the switch port configuration for errors.
+*Syslog Message*::
+Unsupported or faulty transceiver or cable in port %s. Error :%s.
+*Parameters*::
+*ifName* (STRING): Name of the network interface.
+*error_string* (STRING): module event error string.

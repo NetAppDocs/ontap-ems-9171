@@ -1,0 +1,36 @@
+---
+sidebar: sidebar
+permalink: kern-uptime-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: kern.uptime events
+---
+
+= kern.uptime events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== kern.uptime.filer
+*Severity*::
+NOTICE
+*Description*::
+This message occurs to display the uptime status of the controller. Typically, this message is generated once per hour.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s
+*Parameters*::
+*msg* (STRING): Text message describing the current status of the controller.
+*secs* (LONGINT): Number of seconds since the controller was booted.
+*nfsOps* (LONGINT): Number of NFS operations that have been performed.
+*cifsOps* (LONGINT): Number of CIFS operations that have been performed.
+*httpOps* (LONGINT): Number of HTTP operations that have been performed.
+*fcpOps* (LONGINT): Number of FCP operations that have been performed.
+*iscsiOps* (LONGINT): Number of iSCSI operations that have been performed.
+*nvmeFcOps* (LONGINT): Number of NVMe/FC operations that have been performed.
+*nvmeTcpOps* (LONGINT): Number of NVMe/TCP operations that have been performed.
+*nvmeRoceOps* (LONGINT): Number of NVMe/RDMA over Converged Ethernet(RoCE) operations that have been performed.

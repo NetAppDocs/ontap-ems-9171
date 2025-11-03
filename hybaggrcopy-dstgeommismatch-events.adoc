@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: hybaggrcopy-dstgeommismatch-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: hybaggrcopy.dstgeommismatch events
+---
+
+= hybaggrcopy.dstgeommismatch events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== hybAggrCopy.dstGeomMismatch
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is a mismatch between the disk geometries of source and destination hybrid aggregates.
+*Corrective Action*::
+Satisfy the following conditions: Both aggregates are hybrid. The destination aggregate has at least the same number of HDD and SSD disks as the source aggregate. The disk size and type of each disk of the source aggregate matches those of the destination aggregate.
+*Syslog Message*::
+Aggregate %s cannot be copied. Source and destination hybrid aggregate geometries do not match.
+*Parameters*::
+*srcaggr* (STRING): Aggr copy source aggregate.

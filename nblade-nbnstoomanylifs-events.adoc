@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nblade-nbnstoomanylifs-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.nbnstoomanylifs events
+---
+
+= nblade.nbnstoomanylifs events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.NbnsTooManyLifs
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the NetBIOS Name Service receives more than 25 IP addresses for a name registration request. This is typically caused because of an upgrade from a previous release that had more than 25 IP addresses configured for a Vserver and WINS was configured. In such a scenario, clients might not be able to access data because some of the IP addresses might not have registered with WINS.
+*Corrective Action*::
+If there are more than 25 IP addresses configured for a Vserver, modify the "nbns-enabled-lifs" CIFS option to no more than a maximum of 25 LIFs by using the 'vserver cifs options modify -vserver <vserver> -nbns-enabled-lifs' command in advanced privilege mode when the effective cluster version is Data ONTAP 9.0 or later. In a mixed-mode cluster with a node running Data ONTAP 8.3, do not configure more than 25 LIFs per Vserver because of the following WINS server limitation: https://www.microsoft.com/resources/documentation/windowsnt/4/server/reskit/en-us/net/sur_wins.mspx
+*Syslog Message*::
+The NetBIOS Name Service received more than 25 IP addresses for name registration for Vserver %u.
+*Parameters*::
+*vserverId* (INT): Identifier for the Vserver associated with this operation.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ssh-sshrsa-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ssh.sshrsa events
+---
+
+= ssh.sshrsa events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ssh.sshrsa.defDisabledFuture
+*Severity*::
+ERROR
+*Description*::
+This message informs the user that future ONTAP releases will, by default, disable the "ssh-rsa (RSA/SHA-1)" form of the signature scheme used with RSA keys for host-based authentication and publickey-based user authentication.
+*Corrective Action*::
+To avoid future errors, do the following before upgrading to future ONTAP release, where RSA/SHA-1 will be disabled by default: 1. Upgrade previous SSH clients, using RSA/SHA-1 for host-based authentication or publickey-based user authentication to newer versions, or 2. Switch to other types of keys, both for host-based authentication and publickey-based user authentication, for example ECDSA or ED25519. If neither is possible, then in future ONTAP releases, RSA/SHA-1 can be reconfigured using the "security ssh modify" command or using the PATCH method on "/api/security/ssh" or "/api/security/ssh/svms/{svm.uuid}" REST API.
+*Syslog Message*::
+The "ssh-rsa" signature scheme for RSA keys, which uses SHA-1 hashing, will be disabled by default in future ONTAP releases.
+*Parameters*::
+(None).

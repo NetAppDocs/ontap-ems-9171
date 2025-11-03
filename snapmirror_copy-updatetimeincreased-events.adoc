@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: snapmirror_copy-updatetimeincreased-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapmirror_copy.updatetimeincreased events
+---
+
+= snapmirror_copy.updatetimeincreased events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapmirror_copy.UpdateTimeIncreased
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the update time taken by the latest transfer is 5 minutes more than the previous three transfer times.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Update time for volume %s has increased.
+*Parameters*::
+*dstpath* (STRING): Destination volume.

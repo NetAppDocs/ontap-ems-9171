@@ -1,0 +1,222 @@
+---
+sidebar: sidebar
+permalink: cf-ic-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.ic events
+---
+
+= cf.ic events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.ic.cc.config.changed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the controller configuration is changed from a single enclosure HA configuration to a dual enclosure HA configuration.
+*Corrective Action*::
+If the controller is part of a dual enclosure HA configuration, make sure that the psm-cc-config? environment variable is unset and reboot.
+*Syslog Message*::
+HA interconnect: Controller configuration was changed from single enclosure HA configuration to dual enclosure HA configuration.
+*Parameters*::
+(None).
+
+== cf.ic.clientinitFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the interconnect client fails to initialize due to remote VI setup failure.
+*Corrective Action*::
+Reboot the controller. Contact NetApp technical support if the problem persists.
+*Syslog Message*::
+HA interconnect: Initialization failure for %s client.
+*Parameters*::
+*client* (STRING): Name of the client that failed to initialize.
+
+== cf.ic.disabled
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the HA interconnect is disabled by the ic-type environment variable.
+*Corrective Action*::
+Either remove the HA interconnect from the controller or change the ic-type environment variable.
+*Syslog Message*::
+HA interconnect: Card in slot %d has been disabled because of the ic-type environment variable.
+*Parameters*::
+*slot* (INT): Slot that the interconnect is in.
+
+== cf.ic.driver.flush.idWarn
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the HA interconnect cannot process a flush request for a particular driver I/O request.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+HA interconnect: Flush %s failed for channel %d and ID %d.
+*Parameters*::
+*s* (STRING): Name of the error.
+*nvidx* (INT): Interconnect channel.
+*wrid* (INT): Work request ID.
+
+== cf.ic.failed.memReg
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when memory registration fails.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+HA interconnect: Memory registration operation failed at %d.
+*Parameters*::
+*source* (INT): Source for the memory operation.
+
+== cf.ic.flush.ACKWarn
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the HA interconnect cannot send acknowledgments through its completion channel.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+HA interconnect: Flush completion %s error.
+*Parameters*::
+*s* (STRING): Name of the error.
+
+== cf.ic.flush.MemError
+*Severity*::
+ERROR
+*Description*::
+This message occurs during boot time initialization, when the HA interconnect encounters an error with memory registration or allocation.
+*Corrective Action*::
+Reboot the controller to restart the HA interconnect. Contact NetApp technical support if the problem persists.
+*Syslog Message*::
+HA interconnect: Flush memory %s error.
+*Parameters*::
+*s* (STRING): Name of the error.
+
+== cf.ic.flush.oodIinitFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is a failure in the initialization of a NIC to enable out-of-order delivery on the HA interconnect.
+*Corrective Action*::
+Reboot the controller to enable HA interconnect flushing. Contact NetApp technical support if the problem persists.
+*Syslog Message*::
+HA interconnect: Flush out-of-order delivery initialization failed.
+*Parameters*::
+(None).
+
+== cf.ic.heartBeatFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when heartbeats cannot be sent or received over the HA interconnect.
+*Corrective Action*::
+Verify that both controllers in the HA pair are operational. If this message persists, disable and reenable the links one at a time by using the (privilege: advanced) "system ha interconnect link off" and "system ha interconnect link on" commands.
+*Syslog Message*::
+HA interconnect: Heartbeat failed.
+*Parameters*::
+(None).
+
+== cf.ic.initFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the driver fails to find an HA interconnect adapter or the interconnect is nonfunctional.
+*Corrective Action*::
+Verify that the High Availability interconnect card is present and operational on the system. Reboot the controller. Contact NetApp technical support if this problem persists.
+*Syslog Message*::
+HA interconnect: Unable to initialize process.
+*Parameters*::
+(None).
+
+== cf.ic.non.cc.config.changed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the controller configuration is changed from a dual enclosure HA configuration to a single enclosure HA configuration.
+*Corrective Action*::
+If the controller is part of single enclosure HA configuration, make sure that that the other controller is physically present in the chassis and that the psm-cc-config? environment variable is set to true, and then reboot.
+*Syslog Message*::
+HA interconnect: Controller configuration was changed from dual enclosure HA configuration to single enclosure HA configuration.
+*Parameters*::
+(None).
+
+== cf.ic.notifyTimeout
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when data transfer over the HA interconnect times out.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+HA interconnect: %s transfer timed out.
+*Parameters*::
+*qp_name* (STRING): Queue-pair name.
+
+== cf.ic.portsCrossConnected
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the HA interconnect driver determines that the ports between this controller and its partner are cross-connected.
+*Corrective Action*::
+Connect port 1 on this controller to port 1 on the partner, and connect port 2 on this controller to port 2 on the partner. If the interconnect cables have serial number tags on both ends, use the serial numbers to verify that the ports are properly connected. If the interconnect cables do not have serial number tags, disconnect one of the HA interconnect ports from one of the controllers. The LEDs of this port and one of the ports on the partner turn off. If the two ports have different port numbers, the cables are cross-connected. Reversing the connection on one of the controllers rectifies the problem.
+*Syslog Message*::
+HA interconnect: Port %d of this controller seems to be connected to port %d on the partner.
+*Parameters*::
+*localPort* (INT): Local port number.
+*remotePort* (INT): Remote port number.
+
+== cf.ic.probe.error
+*Severity*::
+ALERT
+*Description*::
+This event is generated when we fail to detect an High Availability (HA) interconnect communication device during system initialization. If this error occurs, internode communication within the HA pair is down.
+*Corrective Action*::
+Examine the logs for messages regarding the HA interconnect. Resolve the HA interconnect problems.
+*Syslog Message*::
+Failover monitor: no interconnect found WARNING: Failover monitor operating in degraded mode
+*Parameters*::
+*errorCode* (INT): The internal error code
+
+== cf.ic.sbb
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a system SBB (Storage Bridge Bay) Compatibility event occurs. SBB Compatibility events determine the presence or absence of the HA partner controller on some platforms.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+HA interconnect: SBB Compatibility Event. %s
+*Parameters*::
+*event_description* (STRING): Presence or absence of the partner controller and what action has been taken on the interconnect device.
+
+== cf.ic.xferTimedOut
+*Severity*::
+ERROR
+*Description*::
+This message occurs when data transfer over the HA interconnect times out. This is usually seen when the interconnect link goes down. It can also be encountered when the interconnect hardware, firmware, or driver experiences a hang.
+*Corrective Action*::
+Contact NetApp technical support if the problem persists.
+*Syslog Message*::
+HA interconnect: %s transfer timed out.
+*Parameters*::
+*qp_name* (STRING): Name of the connection queue-pair that timed out.
+
+== cf.ic.xferTimedOutVSA
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when data transfer over the high-availability (HA) interconnect times out on virtual platforms. This is usually seen when the underlying network is busy or the system is operating under heavy load.
+*Corrective Action*::
+Contact NetApp technical support if the problem persists.
+*Syslog Message*::
+HA interconnect: %s transfer timed out.
+*Parameters*::
+*qp_name* (STRING): Name of the connection queue-pair that timed out.

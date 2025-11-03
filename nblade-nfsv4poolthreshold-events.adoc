@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: nblade-nfsv4poolthreshold-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.nfsv4poolthreshold events
+---
+
+= nblade.nfsv4poolthreshold events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.nfsV4PoolThreshold
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when one of the NFSv4 store pools is nearing exhaustion (80% of max size). If the condition is allowed to continue, the store pool limits will be reached leading certain NFSv4 request failures.
+*Corrective Action*::
+Reduce NFSv4 workload like active opens, users and client connections which consume store pool objects to ensure their counts remain under pre-defined limits.
+*Syslog Message*::
+NFS Store Pool for %s is nearing exhaustion (%s of pool currently in use).
+*Parameters*::
+*poolname* (STRING): NFSv4 store pool type where the maximum limits are nearing.
+*percent* (STRING): Percentage of store pool objects of type currently in use.

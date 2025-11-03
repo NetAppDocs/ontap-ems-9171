@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: nvmens-smbc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvmens.smbc events
+---
+
+= nvmens.smbc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== NVMeNS.SMBC.vol.unsupp
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an NVMe namespace is partially restored to a SnapMirror(R) active sync volume because the SnapMirror(R) active sync volume does not support NVMe namespace.
+*Corrective Action*::
+Restore of NVMe namespace to the SnapMirror(R) active sync volume is not supported although it is partially created on the SnapMirror(R) active sync volume as part of restore. The NVMe namespace needs to be manually deleted. Contact NetApp technical support for assistance.
+*Syslog Message*::
+NVMe namespace "%s" is not supported on SnapMirror(R) active sync volume "%s" (DSID %llu).
+*Parameters*::
+*path* (STRING): Path for the NVMe namespace that has been restored.
+*volume_name* (STRING): Name of the containing volume.
+*volume_dsid* (LONGINT): Dataset ID (DSID) of the containing volume.

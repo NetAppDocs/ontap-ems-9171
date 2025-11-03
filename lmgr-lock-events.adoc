@@ -1,0 +1,47 @@
+---
+sidebar: sidebar
+permalink: lmgr-lock-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lmgr.lock events
+---
+
+= lmgr.lock events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lmgr.lock.reclaim.aborted
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system aborts the volume lock reclaim process. A volume attempts to reclaim file locks when you bring the volume online after a reboot or after a takeover or giveback event. This error is usually caused by the volumes going offline during the initialization process.
+*Corrective Action*::
+None;When the volumes come back online the reclaim process will be restarted.
+*Syslog Message*::
+Aborting Lock manager grace period initialization on volume %s due to error: %s.
+*Parameters*::
+*aggr* (STRING): The name of the aggregate.
+*error* (STRING): Error code.
+
+== lmgr.lock.type.counts
+*Severity*::
+NOTICE
+*Description*::
+This message provides additional information about the current count of lock manager objects when a lock manager pool limit is reached. The combination of the counts from a message indicating a limit has been reached and this message provide context for investigating and resolving the limit issues.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The number of lock manager object types in pool %s are: share locks %u byte locks %u waiting locks %u callback waiting %u pfs (clustered Data ONTAP FlexCache delegations) %u cached locks %u WAN FlexCache delegations %u
+*Parameters*::
+*pool_name* (STRING): Name of the limit pool.
+*share* (INT): Number of allocated share locks in the pool.
+*byte* (INT): Number of allocated byte locks in the pool.
+*waiting* (INT): Number of allocated waiting locks in the pool.
+*cb_waiting* (INT): Number of allocated cb_waiting locks in the pool.
+*pfs* (INT): Number of allocated clustered Data ONTAP(R) FlexCache(R) delegations in the pool.
+*cached* (INT): Number of allocated clustered Data ONTAP FlexCache cached locks in the pool.
+*delegations* (INT): Number of allocated WAN FlexCache delegations in the pool.

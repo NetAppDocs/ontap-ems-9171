@@ -1,0 +1,958 @@
+---
+sidebar: sidebar
+permalink: cf-fm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.fm events
+---
+
+= cf.fm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.fm.cpuUtilDuringTOAndGB
+*Deprecated*::
+Deprecated as of version 9.0.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs at the start of a takeover, end of a successful takeover, start of root aggregate giveback, and completion of data aggregate giveback. It records the maximum, minimum, and average CPU and disk utilization on the node executing the takeover or giveback.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+CPU and disk utilization during the %d seconds %s: cpu_util_high: %lld; cpu_util_low: %lld; cpu_util_avg: %lld; disk_util_high: %lld; disk_util_low: %lld; disk_util_avg: %lld
+*Parameters*::
+*window_sz* (INT): Duration, in seconds, over which CPU and disk utilization are tracked.
+*when* (STRING): Event during which CPU and disk utilization are tracked.
+*cpu_util_high* (LONGINT): Maximum CPU utilization.
+*cpu_util_low* (LONGINT): Minimum CPU utilization.
+*cpu_util_avg* (LONGINT): Average CPU utilization.
+*disk_util_high* (LONGINT): Maximum disk utilization.
+*disk_util_low* (LONGINT): Minimum disk utilization.
+*disk_util_avg* (LONGINT): Average disk utilization.
+
+== cf.fm.discardNvram
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when we discover that the partner has previously taken us over, forcing us to invalidate our own nvram contents. This is a normal condition, subsequent to a takeover/giveback.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: node was previously taken over, nvram may be discarded
+*Parameters*::
+(None).
+
+== cf.fm.diskInventoryOff
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system discovers that disk inventory gathering has been disabled. During normal operation, the high-availability (HA) nodes transmit their disk inventory data at regular intervals. This is intended to prevent a situation in which loop connectivity problems are unnoticed until a takeover event occurs. If this event occurs, contact NetApp technical support.
+*Corrective Action*::
+Use the "sysconfig" and "storage" nodeshell commands to determine whether there are problems with the loop, adapter, or shelf. Resolve those problems.
+*Syslog Message*::
+Failover monitor: HA disk inventory disabled.
+*Parameters*::
+(None).
+
+== cf.fm.diskRelease
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when we're using a debug build and failover monitor reservations are released.
+*Corrective Action*::
+n/a
+*Syslog Message*::
+Failover monitor: released disk reservations.
+*Parameters*::
+(None).
+
+== cf.fm.diskReleaseFail
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the release of a reservation on a disk fails in preparation for a giveback event. The error indicates that a disk is not ready, that it failed, or that it does not exist. If the reservation is detected by the partner node, it will reboot.
+*Corrective Action*::
+Look for the cf.disk.releaseFailed event in the EMS log to find the name of the disk where the reservation could not be released. Follow the corrective action described in the cf.disk.releaseFailed event to address any problems with the disk.
+*Syslog Message*::
+Could not release disk reservations of at least one disk.
+*Parameters*::
+(None).
+
+== cf.fm.duplicateId
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the local node system identifier is the same as the partner's. This could happen if the HA-Interconnect is configured for loopback in maintenance mode systems or if the system was not properly configured. The local node will halt in this case and the partner node will do a takeover of the local node resources, provided takeover is enabled.
+*Corrective Action*::
+If this message occurs only while the system is configured in maintenance mode, it can be ignored as HA-interconnect loopback tests send a message with a node's own system identifier to itself. If this message occurs while a system is not in maintenance mode, check if the HA-interconnect cables are properly connected. If cabling is correct, contact NetApp technical support for assistance.
+*Syslog Message*::
+Partner ID %u is the same as that of this node. This node will halt and the partner will perform a takeover, if takeover is enabled.
+*Parameters*::
+*id* (INT): System ID.
+
+== cf.fm.earlyGivebackDone
+*Severity*::
+NOTICE
+*Description*::
+This event occurs when we are aborting a takeover that was initiated during a previous boot sequence. This event should only occur under unusual circumstances, indicating successful recovery from a software failure.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: giveback of previous takeover complete
+*Parameters*::
+(None).
+
+== cf.fm.earlyTakeoverFailed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an error during early takeover prevents the node from booting into takeover mode. The node instead boots up without taking over its partner and also releases its partner resources, allowing the partner node to boot up. Note: Early takeover occurs when a node boots up after rebooting while in takeover mode.
+*Corrective Action*::
+Check the EMS log for the cf.rsrc.takeoverFail error or other errors indicating why the node could not boot into takeover mode.
+*Syslog Message*::
+Early takeover failed; node will boot without taking over partner node. Partner resources released, allowing partner node to boot.
+*Parameters*::
+(None).
+
+== cf.fm.fastTimeoutBlocked
+*Severity*::
+ERROR
+*Description*::
+This event is issued if the monitor fast timeout thread has been blocked for an unacceptable amount of time. The event indicates a heavy load on the system and may result in an unexpected (false) takeover.
+*Corrective Action*::
+Check CPU load and make sure system is not over subscribed.
+*Syslog Message*::
+WARNING failover monitor fast timeout was blocked for %lld secs
+*Parameters*::
+*secs* (LONGINT): Number of seconds that the High Availability (HA) node has been blocked
+
+== cf.fm.gbCancelledDuetoDR
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a giveback has been cancelled due to an ongoing metrocluster disaster recovery operation.
+*Corrective Action*::
+Check the status of metrocluster disaster recovery operation by executing command 'metrocluster operation show'. If the command reports metrocluster disaster recovery operation is in progress wait for it to complete and then issue a manual giveback.
+*Syslog Message*::
+Failover monitor: giveback cancelled
+*Parameters*::
+(None).
+
+== cf.fm.givebackCancelled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a giveback is canceled due to a preexisting state, such as an active CIFS session, a reconstruction, and so on.
+*Corrective Action*::
+To override, use the "storage failover giveback -override-vetoes true" command.
+*Syslog Message*::
+Failover monitor: giveback canceled.
+*Parameters*::
+*partner_node_uuid* (STRING): UUID of the partner node.
+
+== cf.fm.givebackComplete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when giveback succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: giveback completed
+*Parameters*::
+*token* (STRING): Unique token that identifies a failover instance.
+*partner_node_uuid* (STRING): UUID of the partner node.
+
+== cf.fm.givebackDuration
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a giveback is completed successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: giveback duration time is %llu seconds.
+*Parameters*::
+*giveback_duration* (LONGINT): Giveback duration time.
+
+== cf.fm.givebackFailed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the failover monitor determines that a giveback has failed. The reason code is a string that describes the reason for the failure.
+*Corrective Action*::
+Resolve the issue based on the reason logged in the message.
+*Syslog Message*::
+Failover monitor: giveback failed '%s'
+*Parameters*::
+*reason* (STRING): Internal reason code for the failure.
+*token* (STRING): Unique token that identifies a failover instance.
+*partner_node_uuid* (STRING): UUID of the partner node.
+
+== cf.fm.givebackForced
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the takeover node detects that the takeover process has not been completed within the expected time, and/or normal attempts to give back partner resources also fail. Subsequent to this event, the takeover node will panic and reboot.
+*Corrective Action*::
+Attempt to find the panic string in the event logs by using the "event log show" command from the CLI, and then look up the string by using the Panic Message Analyzer tool on the NetApp support site: http://mysupport.netapp.com/NOW/cgi-bin/pmsg/. Contact NetApp technical support to confirm the analysis.
+*Syslog Message*::
+Failover monitor: forcing reboot to clear state.
+*Parameters*::
+*partner_node_uuid* (STRING): UUID of the partner node.
+
+== cf.fm.givebackStarted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the failover monitor initiates a giveback.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: giveback started with token %s. "override-vetoes" set to %s.
+*Parameters*::
+*token* (STRING): Unique token that identifies a failover instance.
+*override_vetoes* (STRING): Flag that indicates whether the system overrides veto checks during a giveback operation. This flag corresponds to the "-override-vetoes" parameter of the "storage failover giveback" command. When the parameter is set to true, some veto checks made by subsystems on the source node might be overridden.
+*require_partner_waiting* (STRING): Flag that indicates whether, during a giveback, the storage is given back regardless of whether the partner node is available to take back the storage. This flag corresponds to the "-require-partner-waiting" parameter of the "storage failover giveback" command. When set to true, the parameter might cause the giveback to proceed, even if the destination node is not ready to receive the aggregate being migrated.
+*partner_node_uuid* (STRING): UUID of the partner node.
+
+== cf.fm.givebackUpdateFail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when GIVEBACK_DONE is not written to the backup mailbox after all other giveback processing is done. The issuing node is no longer in takeover mode, but the partner node cannot boot (without operator intervention) because the partner mailbox claims it has been taken over.
+*Corrective Action*::
+Boot the previously taken over node. During the boot operation, the node requests confirmation to proceed.
+*Syslog Message*::
+Failover Monitor: Unexpected error %d while trying to update backup mailbox during giveback
+*Parameters*::
+*errcode* (INT): Error code.
+*partner_node_uuid* (STRING): UUID of the partner node.
+
+== cf.fm.haltUpdateFail
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued if we are unable to update the partner state as part of halt processing. This occurrence of this event should not affect the operation of the High Availability (HA) pair.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+halt: Unable to update failover monitor with NoTakeover state
+*Parameters*::
+(None).
+
+== cf.fm.hogger
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the fast timeout thread is blocked for a very long time and the system can identify threads that might have been responsible for the fast timeout thread not being scheduled.
+*Corrective Action*::
+Determine why the process is consuming the CPU, and either correct the problem, or end the offending process.
+*Syslog Message*::
+Failover monitor: Process %s ran continuously for %llu ms.
+*Parameters*::
+*procName* (STRING): Name of the process that is consuming the CPU.
+*schedTime* (LONGINT): Time for which the process ran without releasing the CPU.
+
+== cf.fm.initError
+*Severity*::
+ALERT
+*Description*::
+This message occurs when failover monitor initialization fails. If this event occurs, the failover monitor cannot be started. The node will reboot after this event.
+*Corrective Action*::
+Check the logs for other messages from the failing component listed in the message by using the "event log show" command from the CLI. Also check for errors from other components or errors indicating hardware failures. If the problem occurs again after the node reboots, contact NetApp technical support.
+*Syslog Message*::
+Failover monitor: initialize(%s) fails.
+*Parameters*::
+*component* (STRING): Software component that has failed to initialize.
+
+== cf.fm.kernelMismatch
+*Severity*::
+ERROR
+*Description*::
+This event is issued when we detect a possible mismatch of kernel versions in the High Availability (HA) pair. This situation is allowed, although takeover may be disabled if the mismatch imposes version differences in the metadata formats (nvram, filesystem, etc.) of the system.
+*Corrective Action*::
+Upgrade both nodes to the same release.
+*Syslog Message*::
+Failover monitor: possible kernel mismatch detected local '%s', partner '%s'
+*Parameters*::
+*myVersion* (STRING): My version
+*partnerVersion* (STRING): The partner's version
+
+== cf.fm.kernelMismatchOk
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when we detect a possible mismatch of kernel versions in the High Availability (HA) pair has been resolved.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: possible kernel mismatch resolved
+*Parameters*::
+(None).
+
+== cf.fm.launch
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when the failover monitor is launched. It occurs very early in the system startup sequence.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Launching failover monitor
+*Parameters*::
+(None).
+
+== cf.fm.lmgrVetoOverride
+*Deprecated*::
+Deprecated as of version 9.7.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during an SFO aggregate giveback, when system settings indicate that giveback should be vetoed but the veto was overridden by the automated nondisruptive update procedure. The automated nondisruptive update procedure verifies the expected state of aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"%s" subsystem veto was overridden during giveback operation of "%s" aggregate.
+*Parameters*::
+*subsystem* (STRING): Name of the vetoed subsystem.
+*aggregate* (STRING): Name of the aggregate.
+
+== cf.fm.localmbReadStatus
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message reports the status of a local mailbox disk read.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*returncode* (INT): Status returned by the read of the local mailbox disk.
+
+== cf.fm.lowMemory
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the local node does not have sufficient memory to run failover monitor services.
+*Corrective Action*::
+Verify that the recommended amount of memory is installed on the system. If there is sufficient memory, the error might be related to hardware issues. In this case, capture the console logs, and then call NetApp technical support.
+*Syslog Message*::
+Takeover is disabled due to insufficient memory.
+*Parameters*::
+(None).
+
+== cf.fm.MBstatusOnBoot
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs on system boot when the failover monitor detects that no takeover is in progress.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*status* (INT): Failover monitor status as reported by the mailbox disk.
+
+== cf.fm.mirrorConsistencyOff
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system discovers that the NVRAM mirror consistency option has been disabled. This option should ONLY be disabled under operator control. If mirror consistency is disabled, a takeover can result in a loss of recently logged data.
+*Corrective Action*::
+Run the "cf enable mirrorconsistency" advanced privilege nodeshell command to reenable mirror consistency.
+*Syslog Message*::
+Failover monitor: NVRAM mirror consistency is disabled.
+*Parameters*::
+(None).
+
+== cf.fm.missingAdapter
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the high availability (HA) mode is set to "ha" but no interconnect adapter is found. This is an error indicating a misconfiguration of the system.
+*Corrective Action*::
+Install the HA interconnect adapter, or if not using ASA r2, set the HA mode to "non_ha" by using the "storage failover modify -mode non_ha" command.
+*Syslog Message*::
+Warning: HA mode is set to "ha" but the interconnect adapter is not found.
+*Parameters*::
+(None).
+
+== cf.fm.monitorBlocked
+*Severity*::
+ERROR
+*Description*::
+This event is issued if the failover monitor has been blocked for an unacceptable amount of time. The event indicates a heavy load on the system and may result in an unexpected (false) takeover.
+*Corrective Action*::
+Check CPU load and make sure system is not over subscribed.
+*Syslog Message*::
+WARNING failover monitor was blocked for %lld secs
+*Parameters*::
+*secs* (LONGINT): Number of seconds that the failover monitor has been blocked
+
+== cf.fm.noearlyrelease
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an early release of reservations is not done.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*state* (INT): Partner firmware state.
+*version* (INT): Partner firmware version.
+
+== cf.fm.nofwUpdateinTO
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when there is no progress in the firmware status received from the partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).
+
+== cf.fm.noICbutFoundMb
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when no firmware state is obtained over the High Availability (HA) interconnect but the mailbox disks are found.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*status* (INT): Status of the active/active configuration based on the mailbox disks.
+
+== cf.fm.nombdisks
+*Severity*::
+INFORMATIONAL
+*Description*::
+This messages indicates the status of the local mailbox disks.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*returncode* (INT): Return value from the call to read the local mailbox disks.
+*mbstatus* (INT): Current status of the active/active configuration.
+
+== cf.fm.noMBdisksOnSFUP
+*Severity*::
+ERROR
+*Description*::
+This message occurs when no local mailbox disks are detected, even though the partner performed a giveback.
+*Corrective Action*::
+Check connectivity to all disks by running the "run local storage show" command on each partner, and then comparing the results.
+*Syslog Message*::
+Could not find the local mailbox disks after a giveback. Check connectivity to all disks.
+*Parameters*::
+(None).
+
+== cf.fm.noMBDisksOrIc
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) cannot access the local mailbox disks and cannot determine partner status through the high-availability (HA) interconnect.
+*Corrective Action*::
+Check connectivity to all disks by running the "run local storage show" command on each partner, and then comparing the results. Verify that the interconnect cables are properly cabled.
+*Syslog Message*::
+Could not find the local mailbox disks. Could not determine the firmware state of the partner through the HA interconnect.
+*Parameters*::
+(None).
+
+== cf.fm.noPartnerVariable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot identify the serial number of the partner because the firmware variable is not set.
+*Corrective Action*::
+1) Use the "storage failover show" command to verify that that high-availability (HA) is enabled. 2) If HA is enabled, there might be too many environment variables defined. Halt the system, and then enter the "printenv" command at the LOADER prompt. Use the "unsetenv" command to remove unneeded environment variables.
+*Syslog Message*::
+Unknown partner serial number: firmware %s variable is not set.
+*Parameters*::
+*variable* (STRING): Name of the firmware variable.
+
+== cf.fm.noTakeoverNoRc
+*Severity*::
+ERROR
+*Description*::
+This message indicates that we cannot do takeover during a no-rc boot.
+*Corrective Action*::
+Reboot the node normally
+*Syslog Message*::
+Failover monitor: reboot normally to enable takeover
+*Parameters*::
+(None).
+
+== cf.fm.notkoverBadMbox
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when we discover that a mailbox is uninitialized.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: uninitialized %s mailbox data detected
+*Parameters*::
+*whose* (STRING): Indicates which mailbox is uninitialized
+
+== cf.fm.notkoverClusterDisable
+*Severity*::
+ERROR
+*Description*::
+This event is issued when we discover that failover between the High Availability (HA) pair has been disabled. Failover may be disabled under operator control or when a condition has been discovered (e.g., kernel mismatch) that necessitates disabling of the HA pair.
+*Corrective Action*::
+Resolve the reason provided in the message.
+*Syslog Message*::
+Failover monitor: takeover disabled (%s)
+*Parameters*::
+*reason* (STRING): The reason code for disabling the HA pair
+
+== cf.fm.notkoverOperatorDeny
+*Severity*::
+ERROR
+*Description*::
+This event is issued when we discover that the operator has disabled takeover-by-partner.
+*Corrective Action*::
+If takeover by the partner is desired, re-enable takeover.
+*Syslog Message*::
+Failover monitor: takeover by partner disabled
+*Parameters*::
+(None).
+
+== cf.fm.notkoverOperatorDisableNvram
+*Severity*::
+ERROR
+*Description*::
+This event is issued when we discover that the operator has disabled the nvram mirror.
+*Corrective Action*::
+Re-enable NVRAM mirroring
+*Syslog Message*::
+Failover monitor: nvram mirror disabled
+*Parameters*::
+(None).
+
+== cf.fm.overwriteState
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the operator has manually intervened and has forced an overwrite of failover monitor state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+System continuing after overwriting failover monitor state!
+*Parameters*::
+(None).
+
+== cf.fm.panicAfterToDone
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a node panics too soon after the completion of a takeover. The node reboots in normal mode to avoid recursive panics.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Failover monitor: Panic occurred too soon after takeover was completed (currentTime %llu ms, Takeover completed %llu ms).
+*Parameters*::
+*currentTime* (LONGINT): Time when the panic occurred.
+*ToDoneTime* (LONGINT): Time when the takeover was completed.
+
+== cf.fm.panicInToMode
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the node panics after taking over the partner node. When the node comes back up, it will do so in takeover mode.
+*Corrective Action*::
+Attempt to find the panic string in the event logs by using the "event log show" command from the CLI, and then look up the string by using the Panic Message Analyzer tool on the NetApp support site: http://mysupport.netapp.com/NOW/cgi-bin/pmsg/. Contact NetApp technical support to confirm the analysis.
+*Syslog Message*::
+Failover monitor: Panic in takeover mode; takeover will occur on reboot.
+*Parameters*::
+(None).
+
+== cf.fm.panicOnGBforced
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a node panics while a forced giveback is in progress. The node performs giveback and releases partner resources on reboot.
+*Corrective Action*::
+Capture the console log and contact NetApp technical support.
+*Syslog Message*::
+Failover monitor: Panic during forced giveback; node will release partner resources on reboot.
+*Parameters*::
+(None).
+
+== cf.fm.panicToInProgress
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a node panics while the takeover is in progress. The node reboots in normal mode with takeover disabled.
+*Corrective Action*::
+Capture the console log and contact NetApp technical support.
+*Syslog Message*::
+Failover monitor: Panic during takeover; takeover will be disabled on reboot.
+*Parameters*::
+(None).
+
+== cf.fm.partner
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued to announce the name of the partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: partner '%s'
+*Parameters*::
+*partner* (STRING): The name of the High Availability (HA) partner
+
+== cf.fm.partnerChange
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued to announce a change in the name of the partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: partner hostname has changed: '%s'
+*Parameters*::
+*partner* (STRING): The name of the High Availability (HA) partner
+
+== cf.fm.partnerFwState
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message reports the firmware status of the partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*state* (INT): Partner firmware status.
+
+== cf.fm.partnerFwTransition
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when there is a change in the partner firmware state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*prevstate* (STRING): Previously reported partner firmware state.
+*newstate* (STRING): New firmware state, as reported by the partner.
+*progresscounter* (LONGINT): New progress counter, as reported by the partner.
+
+== cf.fm.partnerICFwVersion
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the partner is using a different version of the interconnect firmware.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*version* (INT): Partner firmware version.
+
+== cf.fm.partnerSysid
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued to announce the system id of the partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: partner system id: %u
+*Parameters*::
+*sysid* (LONGINT): The sysid of the High Availability (HA) partner
+
+== cf.fm.partnerSysidChange
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued to announce a change in the system id of the partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: partner system id has changed: %u
+*Parameters*::
+*sysid* (LONGINT): The sysid of the High Availability (HA) partner
+
+== cf.fm.partnerVolumesOnline
+*Severity*::
+NOTICE
+*Description*::
+This event is issued to indicate that the partner's volumes have been brought on-line as part of early takeover processing.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: partner volumes on-line
+*Parameters*::
+(None).
+
+== cf.fm.replayOnlyTakeover
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when the failover monitor initiates a replay-only takeover, which essentially means performing takeover till the partner logs have been replayed, and then initiating a giveback.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: Starting replay-only takeover. A giveback will be initiated after the partner logs have been replayed.
+*Parameters*::
+(None).
+
+== cf.fm.replayOnReboot
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs if a node panics in takeover mode and replay of the partner logs will be attempted on reboot.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: replay of partner logs will be attempted on reboot.
+*Parameters*::
+(None).
+
+== cf.fm.reserveDisksOff
+*Severity*::
+EMERGENCY
+*Description*::
+This event is issued if we discover that disk reservations have been disabled. If this event occurs, contact NetApp technical support.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+Failover monitor: disk reservations disabled
+*Parameters*::
+(None).
+
+== cf.fm.reserveMBproblem
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) cannot reserve a high-availability (HA) partner mailbox disk during a takeover.
+*Corrective Action*::
+Check connectivity to all disks by using the "storage disk show -fields diskpathnames" command to verify each node in the HA pair has access to all disks. If some disks are not fully accessible, confirm the disks are correctly cabled. To check whether one HA node cannot access disks that are visible to the HA partner node, use the "storage failover show -fields local-missing-disks, partner-missing-disks" command.
+*Syslog Message*::
+Takeover has been aborted because the partner mailbox disk: %s could not be reserved. Error: %u.
+*Parameters*::
+*diskname* (STRING): Partner mailbox disk that ONTAP could not reserve.
+*disk_error* (INT): Disk reservation error that was encountered.
+
+== cf.fm.slowTimeoutBlocked
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the High Availability slow timeout thread has been blocked for an unacceptable amount of time. The event indicates a heavy load on the system and may result in an unexpected takeover.
+*Corrective Action*::
+Check CPU load and make sure system is not over subscribed. Contact NetApp technical support for further assistance.
+*Syslog Message*::
+High Availability slow timeout was blocked for %lld secs.
+*Parameters*::
+*secs* (LONGINT): Number of seconds that the High Availability (HA) slow timeout thread has been blocked.
+
+== cf.fm.smsVetoOverride
+*Deprecated*::
+Deprecated as of version 9.7.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during an SFO aggregate giveback, when the SnapMirror(R) subsystem indicates that giveback should be vetoed but the veto was overridden by the automated nondisruptive update procedure. The automated nondisruptive update procedure verifies the expected state of the aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"%s" subsystem veto was overridden during giveback operation of "%s" aggregate.
+*Parameters*::
+*subsystem* (STRING): Name of the vetoed subsystem.
+*aggregate* (STRING): Name of the aggregate.
+
+== cf.fm.softError
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a "soft error" has occurred in the failover monitor.
+*Corrective Action*::
+Resolve the failure listed in the message.
+*Syslog Message*::
+Failover monitor: %s
+*Parameters*::
+*reason* (STRING): Description of the failure.
+
+== cf.fm.takeoverComplete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a takeover succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: takeover completed
+*Parameters*::
+*token* (STRING): Unique token that identifies a failover instance.
+*partner_node_uuid* (STRING): UUID of the partner node.
+
+== cf.fm.takeoverDetectionSeconds.Default
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the takeover detection time is set to a value less than the DEFAULT_FIRMWARE_TIMEOUTS setting. This can result in false takeovers and takeovers without diagnostic core dumps.
+*Corrective Action*::
+Modify the takeover detection time to the recommended value by using the "storage failover modify -detection-time" command.
+*Syslog Message*::
+Takeover detection time is set to %d seconds, which is below the recommended value of %d seconds. False takeovers and takeovers without diagnostic core dumps might occur.
+*Parameters*::
+*SECONDS* (INT): Value that the takeover detection time is set to.
+*FIRMWARE_TIMEOUT_DEF* (INT): Recommended value.
+
+== cf.fm.takeoverDetectionSeconds.Kernel
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the takeover detection time is set to a value less than the KERNEL_TIMEOUT setting (as specified by the "sk.process.timeout.override" option). This can result in takeovers without accompanying diagnostic core dumps of the taken over node.
+*Corrective Action*::
+Set the takeover detection time to the recommended value by using the "storage failover modify -detection-time" command.
+*Syslog Message*::
+Takeover detection time is set to %d seconds, which is below %d (= sk.process.timeout.override + 5) seconds. Takeovers without diagnostic core dumps might occur.
+*Parameters*::
+*SECONDS* (INT): Value that the takeover detection time is set to.
+*KERNEL_TIMEOUT* (INT): Minimum value that should be used.
+
+== cf.fm.takeoverDuration
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a takeover is completed successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: takeover duration time is %llu seconds.
+*Parameters*::
+*takeover_duration* (LONGINT): Takeover duration time.
+
+== cf.fm.takeoverFailed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the failover monitor determines that a takeover has failed. The reason code is a string that describes the reason for the failure. Any data LIFs that were migrated as part of the takeover operation are not automatically reverted.
+*Corrective Action*::
+Resolve the issue based on the reason logged in the message.
+*Syslog Message*::
+Failover monitor: takeover failed '%s'
+*Parameters*::
+*reason* (STRING): Internal reason code for the failure.
+*token* (STRING): Unique token that identifies a failover instance.
+*partner_node_uuid* (STRING): UUID of the partner node.
+
+== cf.fm.takeoverStarted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the failover monitor initiates a takeover.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: takeover started
+*Parameters*::
+*token* (STRING): Unique token that identifies a failover instance.
+*partner_node_uuid* (STRING): UUID of the partner node.
+
+== cf.fm.timeMasterStatus
+*Deprecated*::
+Deprecated as of version 9.17.1.
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is when we determine our status as time master or slave.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Acting as time %s
+*Parameters*::
+*masterOrSlave* (STRING): Master or Slave
+
+== cf.fm.TODetectionSecs.reset
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the current setting of takeover detection time is shorter than the minimum takeover detection time allowed by this version of Data ONTAP(R). This can result in false takeovers or takeovers without diagnostic core dumps. Data ONTAP resets the takeover detection time to the new minimum.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Takeover detection time was set to %d seconds, shorter than the minimum allowed. Reset the detection time to a new minimum of %d seconds.
+*Parameters*::
+*SECONDS* (INT): Current takeover detection seconds.
+*FIRMWARE_TIMEOUT_DEF* (INT): New default takeover detection seconds.
+
+== cf.fm.transitTimeChange
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when you set the takeover or giveback transit timeout to a value other than the default value. During takeover or giveback, if the timeout is exceeded by a subsystem during the takeover/giveback processing, a panic occurs. If the timeout is set too high, longer client outages might occur instead of aborting the takeover/giveback.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*SECONDS* (INT): Transit timeout value (in seconds).
+*DEFAULT_VAL* (INT): Default transit timeout value (in seconds).
+
+== cf.fm.undoFailedTakeover
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when we initiate an undo of a failed takeover.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: initiate giveback due to failed takeover
+*Parameters*::
+(None).
+
+== cf.fm.unexpectedPartner
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the HA mode is set to "non_ha" but the HA mode was set to "ha" previously. This is not an error, but indicates a possible misconfiguration of the system.
+*Corrective Action*::
+Determine whether the HA mode should be set to "ha", and if so, set it.
+*Syslog Message*::
+Warning: HA mode is set to "non_ha" but the node once had a storage failover partner.
+*Parameters*::
+(None).
+
+== cf.fm.versionMismatch
+*Severity*::
+ALERT
+*Description*::
+This event occurs when a version mismatch is detected during internode initialization. Each node transmits its version information to its partner. If a mismatch is detected, the High Availability (HA) takeover capability is disabled.
+*Corrective Action*::
+Boot both nodes on the same release.
+*Syslog Message*::
+Failover monitor: %s version mismatch detected: %d/%d
+*Parameters*::
+*subsystem* (STRING): The name of the versioned subsystem
+*myVersion* (INT): My version
+*partnerVersion* (INT): The partner's version
+
+== cf.fm.waitBeforeWFG
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a system waits, during boot, for a module to come up before declaring itself ready for giveback. Examples include waiting for the NVRAM battery to be charged.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: waited %llu seconds for module %s.
+*Parameters*::
+*secs* (LONGINT): Amount of time spent waiting, in seconds.
+*module_name* (STRING): Name of the module the system is waiting for.

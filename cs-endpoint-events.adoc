@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cs-endpoint-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cs.endpoint events
+---
+
+= cs.endpoint events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cs.endpoint.has.no.snapshots
+*Severity*::
+ALERT
+*Description*::
+This message occurs when volume delete operations attempts to clean-up snapmirror resources and finds that there are no cloud snapshots associated with the volume. The cloud endpoint is automatically deleted on deletion of last cloud snapshot. So it's unusual to find a cloud snapshot endpoint with no snapshots.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The volume "%s" has no cloud snapshots associated with it.
+*Parameters*::
+*volumeUUID* (STRING): UUID of the volume.

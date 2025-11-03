@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: nvme-ssd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvme.ssd events
+---
+
+= nvme.ssd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvme.ssd.attach.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the NVMe drive encounters an error before the drive is reported to upper layers. The drive will not be discovered, and will not appear in sysconfig output.
+*Corrective Action*::
+The drive could not be attached. Remove or replace the drive.
+*Syslog Message*::
+NVMe SSD encountered error: "%s" on slot %d. Could not attach drive.
+*Parameters*::
+*error* (STRING): Type of error that occurred.
+*slot* (INT): Slot number of associated NVMe SSD.

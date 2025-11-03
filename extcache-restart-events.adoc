@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: extcache-restart-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: extcache.restart events
+---
+
+= extcache.restart events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== extCache.restart
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the external cache encounters an internal consistency issue and triggers an automatic reset.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache reset: %s
+*Parameters*::
+*detail* (STRING): String providing additional information about what triggered the reset.

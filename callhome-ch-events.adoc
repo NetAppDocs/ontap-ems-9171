@@ -1,0 +1,63 @@
+---
+sidebar: sidebar
+permalink: callhome-ch-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.ch events
+---
+
+= callhome.ch events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.ch.ps.degraded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a degraded chassis power supply unit (PSU) state exists. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+You might need to replace a chassis PSU. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.ch.ps.fan.bad.xmin
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a power supply fan has been detected as no longer working and the overheating is expected shortly. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Replace the power supply unit or the power supply unit's fan. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.ch.ps.fault
+*Severity*::
+ERROR
+*Description*::
+This message occurs when one chassis power supply unit (PSU) fails. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+You might need to replace a chassis PSU. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.ch.ps.wrong.in
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a power supply is not connected to the correct type of power source (voltage, amperage, type, etc. difference). If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Connect the power supply to the proper power source or replace the power supply with the appropriate one for the available power source. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

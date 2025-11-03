@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: ucore-limits-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ucore.limits events
+---
+
+= ucore.limits events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ucore.limits.reached
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a userspace core is not dumped because system limits for this process are reached.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Process ID %d (%s) cannot be dumped because system limits for this process are reached.
+*Parameters*::
+*process_id* (INT): Process ID of the process.
+*process_name* (STRING): Name of the process.

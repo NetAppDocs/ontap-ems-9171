@@ -1,0 +1,77 @@
+---
+sidebar: sidebar
+permalink: coredump-spare-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: coredump.spare events
+---
+
+= coredump.spare events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== coredump.spare.abort
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when coredump attempts to terminate any sparecore dump that might be in progress on the partner. This process can take up to 60 seconds. During this time, other coredump operations are not serviced.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Pausing to abort partner sparecore dump because %s.
+*Parameters*::
+*reason* (STRING): Reason for aborting the partner sparecore dump.
+
+== coredump.spare.abort.failed
+*Severity*::
+ERROR
+*Description*::
+Unable to reserve the sparecore disk. This disk cannot be used by RAID until it is successfully reserved.
+*Corrective Action*::
+If the other partner can be booted, do a giveback. Otherwise, periodic attempts will automatically be made to reserve the disk in question.
+*Syslog Message*::
+Sparecore disk could not be reserved
+*Parameters*::
+(None).
+
+== coredump.spare.abort.release
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system enounters an error while trying to release the disk reservation from a disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Could not release disk reservation from disk %s (0x%x)
+*Parameters*::
+*diskname* (STRING): Name of the disk whose disk reservation could not be released.
+*diskid* (INTHEX): ID of the disk whose disk reservation could not be released.
+
+== coredump.spare.dump
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs to tell you which disk was used as the sparecore disk at dumpcore time.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s was used as the sparecore disk at dumpcore time.
+*Parameters*::
+*diskname* (STRING): Name of the sparecore disk.
+
+== coredump.spare.invalid.size
+*Severity*::
+ERROR
+*Description*::
+This message occurs when coredump subsystem encounters a spare disk with an invalid size. If an unsaved core file exists on this disk, it will be deleted because it can no longer be saved.
+*Corrective Action*::
+Run the "storage disk show -disk disk_name" command to make sure that the disk is still connected as a spare disk. If so, replace the disk. If not, the disk is part of an aggregate or is in the process of being assigned to one, and no action is required.
+*Syslog Message*::
+sparecore disk: %s has invalid size: %llu, skipping it from all coredump subsystem operations
+*Parameters*::
+*disk* (STRING): Name of the disk.
+*size* (LONGINT): Size available on the disk, reported by RAID.

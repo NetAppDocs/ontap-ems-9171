@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: netgroup-files-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netgroup.files events
+---
+
+= netgroup.files events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netgroup.files.missing
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a netgroup lookup request finds that files is specified as a ns-switch source, but a netgroup file cannot be found.
+*Corrective Action*::
+Check that the local netgroup file is present and load it if necessary. The commands to perform this are "vserver services netgroup load" and "vserver services netgroup status".
+*Syslog Message*::
+Netgroup file missing for Vserver "%s" during lookup for netgroup "%s".
+*Parameters*::
+*vserver* (STRING): Name of the Vserver on which the problem is occurring.
+*netgroup* (STRING): Name of the netgroup for the lookup request.

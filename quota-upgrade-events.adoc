@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: quota-upgrade-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: quota.upgrade events
+---
+
+= quota.upgrade events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== quota.upgrade
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a quota upgrade on the volume is started, ended or aborted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Quota upgrade %s for volume %s%s%s.
+*Parameters*::
+*status* (STRING): Indicates that the upgrade has started or is over for this vFiler.
+*volname* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume in cases in which volume name alone is insufficient.

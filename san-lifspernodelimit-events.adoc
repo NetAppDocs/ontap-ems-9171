@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: san-lifspernodelimit-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.lifspernodelimit events
+---
+
+= san.lifspernodelimit events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.LifsPerNodeLimit
+*Severity*::
+ERROR
+*Description*::
+This message occurs in MetroCluster(tm) configurations on clustered Data ONTAP(R) systems, when Data ONTAP cannot replicate a SAN or NVMe logical interface (LIF) in the destination cluster due to the LIF limits per node per Vserver.
+*Corrective Action*::
+Make sure all the nodes are online by running "storage failover show" command on both the clusters. If a node is taken-over by its HA partner, giveback the node using "storage failover giveback -ofnode <name_of_node_to_giveback>". Once the nodes are online and healthy, run the "metrocluster vserver resync -vserver <vserver_name>" from the source cluster. Verify the vserver's configuration-state is healthy using "metrocluster vserver show -vserver <vserver_name>" command. Contact technical support for assistance if configuration-state of the vserver does not change to healthy.
+*Syslog Message*::
+Metrocluster does not support more than %s %s LIFs per node per Vserver.
+*Parameters*::
+*limit* (STRING): LIF limit supported on Metrocluster
+*data_protocol* (STRING): Data protocol of the LIF that exceeds the LIF per node per Vserver limit.

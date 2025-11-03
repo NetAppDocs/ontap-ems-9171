@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: disk-toomanypartitioneddisks-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.toomanypartitioneddisks events
+---
+
+= disk.toomanypartitioneddisks events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.tooManyPartitionedDisks
+*Severity*::
+ALERT
+*Description*::
+This message occurs when Data ONTAP(R) finds more partitioned disks present on a platform than the platform supports. The system ignores any partitioned disks above the limit, and they will be unusable.
+*Corrective Action*::
+Too many partitioned disks have been installed. Reconfigure the system to the maximum number of partitioned disks supported.
+*Syslog Message*::
+Ignoring partitioned disk %s because the maximum limit of %d partitioned disks supported on this system has been reached.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*maxPartitionedDisks* (INT): Maximum number of partitioned disks supported on this platform.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: replication-upgrade-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: replication.upgrade events
+---
+
+= replication.upgrade events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== replication.upgrade.complete
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when post-upgrade operations for SnapMirror(R) and SnapVault(R), as a part of ONTAP upgrade, are complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Post-upgrade operations for SnapMirror and SnapVault are complete.
+*Parameters*::
+(None).

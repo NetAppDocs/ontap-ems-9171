@@ -1,0 +1,567 @@
+---
+sidebar: sidebar
+permalink: snapmirror-dst-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapmirror.dst events
+---
+
+= snapmirror.dst events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapmirror.dst.abortOps
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a SnapMirror incremental transfer to a destination volume is nearing completion and has to abort any dump, vol copy, snapmirror or snapvault operations from that volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Aborting any dump, vol copy, aggr copy, snapmirror or snapvault operations from %s; snapmirror incremental transfer to it is nearing completion.
+*Parameters*::
+*dst* (STRING): SnapMirror destination volume
+
+== snapmirror.dst.autoRestrictMsg
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a SnapMirror initialize is issued on a volume or aggregate which is offline.
+*Corrective Action*::
+SnapMirror initialize is issued on a restricted volume, use "vol/aggr restrict" to restrict the destination volume/aggregate.
+*Syslog Message*::
+SnapMirror automatically restricting destination %s %s (currently offline).
+*Parameters*::
+*volaggr* (STRING): Whether volume or aggregate
+*dst* (STRING): The SnapMirror destination volume
+
+== snapmirror.dst.cannotFind
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a SnapMirror incremental transfer is issued on a volume which is offline, restricted or does not exist.
+*Corrective Action*::
+Please make sure you entered the destination volume name correctly.
+*Syslog Message*::
+Destination %s %s is offline, is restricted, or does not exist, SnapMirror operation terminated.
+*Parameters*::
+*volaggr* (STRING): Whether volume or aggregate
+*dst* (STRING): The SnapMirror destination
+
+== snapmirror.dst.chk.stats
+*Severity*::
+INFORMATIONAL
+*Description*::
+Statistical information reported by "snapmirror check".
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*dstpath* (STRING): The destination volume.
+*statistics* (STRING): Statistical information in the format: block_no - offset : src_val, dst_val block_no denotes whether it is vbn1 or 2. offset is the byte from the start of the block. src_val is the value of that offset at the src, while dst_val is at the destination.
+
+== snapmirror.dst.chkDegradedMirrorErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a replication 'check' operation is issued on a SnapMirror(R) destination volume that is smgr-mirrored and its smgr-mirror state is mirror-degraded or resyncing.
+*Corrective Action*::
+Restore the smgr-mirror state to normal or break the existing smgr-mirror relationship and try again. If available, see the diagnostic man pages and the 'aggr' command man pages for details.
+*Syslog Message*::
+Destination volume '%s' is smgr-mirrored and mirror-degraded or resyncing. Cannot execute a replication 'check' operation.
+*Parameters*::
+*dstpath* (STRING): The destination volume.
+
+== snapmirror.dst.chkDone
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the destination in a SnapMirror(R)/SnapVault(tm) relationship has finished a replication 'check' operation and no mismatches were found on the destination volume or qtree.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Replication 'check' from %s:%s to %s completed and no mismatches were found.
+*Parameters*::
+*srcfiler* (STRING): The source appliance.
+*srcpath* (STRING): The source path.
+*dstpath* (STRING): The destination path.
+
+== snapmirror.dst.chkDoneErr
+*Severity*::
+ERROR
+*Description*::
+This event is issued when the destination in a SnapMirror(R)/SnapVault(tm) relationship has finished a replication 'check' operation and mismatches were found on the destination volume or qtree.
+*Corrective Action*::
+Run replication fix ('check -F') to fix the mismatches in the relationship.
+*Syslog Message*::
+Replication 'check' from %s:%s to %s found mismatches. Please run replication fix ('check -F') to fix these mismatches.
+*Parameters*::
+*srcfiler* (STRING): The source appliance.
+*srcpath* (STRING): The source path.
+*dstpath* (STRING): The destination path.
+
+== snapmirror.dst.chkSnapInfo
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs at the destination appliance of a SnapMirror(R) 'check' operation to notify the appliance about which base snapshot will be used for the operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Snapmirror 'check' from '%s':'%s' to '%s' will use '%s' as the base snapshot. All snapshots older than and including the base snapshot on the source volume will be used.
+*Parameters*::
+*srcfiler* (STRING): Source appliance.
+*srcpath* (STRING): Source path.
+*dstpath* (STRING): Destination path.
+*snapname* (STRING): Name of the base snapshot.
+
+== snapmirror.dst.chkSyncErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs on the destination system when a SnapMirror(R) 'check' operation is run on a Synchronous SnapMirror destination volume that has not been quiesced.
+*Corrective Action*::
+Quiesce the destination volume by running the 'snapmirror quiesce' command before starting the SnapMirror 'check' operation.
+*Syslog Message*::
+Could not run a SnapMirror 'check' operation on destination volume '%s', a Synchronous SnapMirror destination volume that has not been quiesced.
+*Parameters*::
+*dstpath* (STRING): Destination volume.
+
+== snapmirror.dst.chkVersionErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs on the destination system of a SnapMirror(R) 'check' operation when the source system's ONTAP version does not support SnapMirror 'check' on FlexVol(R) volumes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ONTAP version at source '%s' does not support SnapMirror 'check' on flexible volumes. Cannot execute a SnapMirror 'check' operation.
+*Parameters*::
+*srcfiler* (STRING): Source system.
+
+== snapmirror.dst.directoryOperationFailASCII
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a SnapVault or Qtree SnapMirror destination encounters an error in a directory operation - typically creating an entry, or trying to move an entry to purgatory (for rename or delete), and the name entry consists only of ASCII characters.
+*Corrective Action*::
+It may be necessary to break and reinitialize the relationship. Contact NetApp technical support.
+*Syslog Message*::
+Logical replication destination directory operation failed: source inode %d, name="%s%s%s".
+*Parameters*::
+*srcInum* (INT): The inode number of the file (or directory, link, etc.) on the source system.
+*n1* (STRING): The first of three name components. When combined, these will either be the path to the file on the destination system (usual case), or the NFS name and NFS alternate name of the directory entry (in those cases where we run into trouble building the full path).
+*n2* (STRING): The second of three name components.
+*n3* (STRING): The last of three name components.
+
+== snapmirror.dst.directoryOperationFailIntl
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a SnapVault or Qtree SnapMirror destination encounters an error in a directory operation - trying to create, rename, or delete an entry. This event can occur as a result of the conditions that cause burts 106216 and 110298.
+*Corrective Action*::
+If the destination volume's "vol lang" was changed after the baseline transfer, then the relationship may need to be broken and reinitialized. Please be aware that "vol lang" does not take effect on the volume until the filer is rebooted; thus, if a baseline transfer occurs after the setting was changed but before the filer was rebooted, then the "vol lang" actually changes after the baseline transfer takes place. If no change in the destination volume's "vol lang" has occurred, you may need to change the source volume's language to match that on the destination volume. For guidelines on this procedure, please contact NetApp technical support.
+*Syslog Message*::
+Logical replication destination directory operation failed: source inode %d, name="%s%s%s". If the destination volume's "vol lang" was changed after the baseline transfer, then the relationship may need to be broken and reinitialized.
+*Parameters*::
+*srcInum* (INT): The inode number of the file (or directory, link, etc.) on the source system.
+*n1* (STRING): The first of three name components. When combined, these will either be the path to the file on the destination system (usual case), or the NFS name and NFS alternate name of the directory entry (in those cases where we run into trouble building the full path).
+*n2* (STRING): The second of three name components.
+*n3* (STRING): The last of three name components.
+
+== snapmirror.dst.fixDone
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the destination in a SnapMirror(R)/SnapVault(tm) relationship has successfully finished a replication fix ('check -F') operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Replication fix ('check -F') from %s:%s to %s completed successfully.
+*Parameters*::
+*srcfiler* (STRING): The source appliance.
+*srcpath* (STRING): The source path.
+*dstpath* (STRING): The destination path.
+
+== snapmirror.dst.fixUsingPriorChk
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a relationship fix ('check -F') operation issued on a SnapMirror(R) destination volume is leveraging a previously executed replication 'check' operation and thus does not require to recompute the mismatches.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Replication fix ('check -F') from %s:%s to %s is leveraging a previously executed replication 'check' operation and does not require re-computation of the mismatches for the relationship.
+*Parameters*::
+*srcfiler* (STRING): The source appliance.
+*srcpath* (STRING): The source path.
+*dstpath* (STRING): The destination path.
+
+== snapmirror.dst.multipath.connErr
+*Severity*::
+ERROR
+*Description*::
+This event is issued when the SnapMirror destination filer is unable to setup a multipath connection with the source filer. This can happen in case of a network connection failure or due to the lack of resources on the destination filer.
+*Corrective Action*::
+Check network connectivity and also make sure that a maximum number of SnapMirror transfers are not going on.
+*Syslog Message*::
+SnapMirror is unable to setup a multipath connection to %s, resorting to the standard single TCP connection.
+*Parameters*::
+*dstpath* (STRING): SnapMirror destination
+
+== snapmirror.dst.multipath.maxConnErr
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the SnapMirror destination filer has reached the maximum number of active SnapMirror multipath connections that it can support.
+*Corrective Action*::
+Wait for some active SnapMirror transfers to complete and free up the necessary resources; then retry this transfer.
+*Syslog Message*::
+SnapMirror has reached the maximum number of active multipath connections, unable to allocate resources for a multipath transfer to %s.
+*Parameters*::
+*dstpath* (STRING): SnapMirror destination
+
+== snapmirror.dst.noBuffers
+*Severity*::
+ERROR
+*Description*::
+This event is issued when no buffers are available on the SnapMirror destination.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+No buffers available on SnapMirror destination.
+*Parameters*::
+(None).
+
+== snapmirror.dst.noSnapshots
+*Severity*::
+ERROR
+*Description*::
+SnapMirror requires the presence of a common base snapshot on the source and the destination for doing an incremental transfer. This event is issued when a SnapMirror incremental transfer is issued on a volume or aggregate which has no snapshots, as such the transfer is aborted.
+*Corrective Action*::
+Since there are no snapshots on the destination volume/aggregate, the only way to establish a SnapMirror is by doing a SnapMirror initialize.
+*Syslog Message*::
+SnapMirror found no snapshots in destination %s %s, aborting transfer.
+*Parameters*::
+*volaggr* (STRING): Whether volume or aggregate
+*dst* (STRING): The SnapMirror destination
+
+== snapmirror.dst.OnlineCompres
+*Severity*::
+ERROR
+*Description*::
+This message occurs when SnapMirror(R) cannot bring the destination online after a transfer because compression is not supported in this version of ONTAP.
+*Corrective Action*::
+Install a version of ONTAP that supports compression, available from your vendor.
+*Syslog Message*::
+SnapMirror could not bring destination volume %s online. Compression is not supported in this version of ONTAP.
+*Parameters*::
+*dst* (STRING): SnapMirror destination.
+
+== snapmirror.dst.OnlineErr
+*Severity*::
+ERROR
+*Description*::
+This event is issued when SnapMirror is not able to bring the destination online after a transfer.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror not able to bring destination %s %s online, %s.
+*Parameters*::
+*volaggr* (STRING): Whether volume or aggregate
+*dst* (STRING): SnapMirror destination
+*error* (STRING): The error message
+
+== snapmirror.dst.onlineFailed
+*Severity*::
+ERROR
+*Description*::
+This event is issued when after SnapMirror transfer it is not able to bring the destination online.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failed to bring destination %s %s online (%d,%d).
+*Parameters*::
+*volaggr* (STRING): Whether volume or aggregate
+*dst* (STRING): The SnapMirror destination
+*errcode1* (INT): Error code 1
+*errcode2* (INT): Error code 2
+
+== snapmirror.dst.OnlineNotComp
+*Severity*::
+ERROR
+*Description*::
+This message occurs when SnapMirror(R) cannot bring the destination online after a transfer because SnapLock(R) is not supported on this version of ONTAP.
+*Corrective Action*::
+Install a version of ONTAP that is supported with SnapLock, available from your vendor.
+*Syslog Message*::
+SnapMirror could not bring destination %s %s online. SnapLock is not supported on this version of ONTAP.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*dst* (STRING): SnapMirror destination.
+
+== snapmirror.dst.requestDenied
+*Severity*::
+ERROR
+*Description*::
+This event is issued when the destination filer requesting a SnapMirror transfer from the source filer is denied the transfer request.
+*Corrective Action*::
+Please check the error message on source.
+*Syslog Message*::
+SnapMirror transfer request for %s from %s denied, %s.
+*Parameters*::
+*dstpath* (STRING): The SnapMirror destination, can be volume or qtree
+*srcfiler* (STRING): The SnapMirror source filer
+*error* (STRING): The error message
+
+== snapmirror.dst.restart.createErr
+*Severity*::
+ERROR
+*Description*::
+This event is issued when SnapMirror is not able to create files required for a restart
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror not able to create %s which is needed for restart.
+*Parameters*::
+*filepath* (STRING): The file SnapMirror is not able to create
+
+== snapmirror.dst.restart.failed
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when SnapMirror restart negotiation fails.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror restart negotiation failed.
+*Parameters*::
+(None).
+
+== snapmirror.dst.restart.invalidChkpt
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when an invalid restart checkpoint is detected on the destination.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Restart checkpoint for destination volume %s is no longer valid, removing checkpoint.
+*Parameters*::
+*dst* (STRING): The SnapMirror destination volume
+
+== snapmirror.dst.restart.invalidSnaps
+*Severity*::
+ERROR
+*Description*::
+This very rare message occurs on a replication destination appliance, when SnapMirror(R) detects that a transfer restarted from a checkpoint is attempting to transfer additional snapshots that were not recorded in the checkpoint. In this case, SnapMirror aborts the transfer and clears the checkpoint to prevent corruption on the destination appliance.
+*Corrective Action*::
+No action is required for a scheduled SnapMirror transfer. The next scheduled transfer starts from the beginning. If you manually initiated this transfer, manually start a new transfer.
+*Syslog Message*::
+SnapMirror cannot restart the transfer from %s:%s to %s due to a change in the state of snapshots on the source appliance. The checkpoint has been cleared, and the next transfer will start from beginning.
+*Parameters*::
+*srcfiler* (STRING): Source appliance.
+*srcpath* (STRING): SnapMirror source volume.
+*dstpath* (STRING): SnapMirror destination volume.
+
+== snapmirror.dst.restart.noRootVol
+*Severity*::
+ERROR
+*Description*::
+This event is issued when SnapMirror destination is not able to find the root volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cannot find root volume.
+*Parameters*::
+(None).
+
+== snapmirror.dst.restart.readErr
+*Severity*::
+ERROR
+*Description*::
+This event is issued when SnapMirror is not able to read files which were created for a restart.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror not able to read %s which is needed for restart.
+*Parameters*::
+*filepath* (STRING): The file SnapMirror is not able to read
+
+== snapmirror.dst.restart.writeErr
+*Severity*::
+ERROR
+*Description*::
+This event is issued when SnapMirror is not able to write to files which were created for a restart.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror not able to write to %s which is needed for restart.
+*Parameters*::
+*filepath* (STRING): The file SnapMirror is not able to write to
+
+== snapmirror.dst.resync.info
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a SnapMirror resync operation is successful and tells the base snapshot being used.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror resync of %s to %s:%s is using %s as the base snapshot.
+*Parameters*::
+*dstpath* (STRING): SnapMirror destination volume or qtree
+*srcfiler* (STRING): SnapMirror source filer
+*srcpath* (STRING): SnapMirror source volume or qtree
+*basesnapname* (STRING): The base snapshot being used.
+
+== snapmirror.dst.resync.noAction
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a SnapMirror resync -n is executed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror resync of %s not performed because -n(ot really) option set.
+*Parameters*::
+*dstpath* (STRING): SnapMirror destination
+
+== snapmirror.dst.revertAggr
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a SnapMirror initialize operation has to revert the checksum state of the destination aggregate because the source and destination aggregate have differing checksum states.
+*Corrective Action*::
+No corrective action required.
+*Syslog Message*::
+A SnapMirror transfer to destination aggregate %s has found that the source and destination aggregates have differing checksum states. Data ONTAP is aborting the transfer and reverting the checksum state for the destination aggregate. After ONTAP displays a message showing the revert is complete, you will need to retry the operation. You can use the "aggr status -c" command to see the progress of the reversion.
+*Parameters*::
+*dst* (STRING): The SnapMirror destination aggregate
+
+== snapmirror.dst.revertErr
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a SnapMirror initialize operation is not able to revert the checksum state of the destination volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ONTAP cannot revert the checksum state of destination %s %s.
+*Parameters*::
+*volaggr* (STRING): Whether volume or aggregate
+*dst* (STRING): The SnapMirror destination
+
+== snapmirror.dst.reverting
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a SnapMirror initialize operation is issued on a volume/aggregate which is reverting its checksum state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Aborting SnapMirror transfer to %s %s because it is reverting its checksum state.
+*Parameters*::
+*volaggr* (STRING): Whether volume or aggregate
+*dst* (STRING): The SnapMirror destination volume
+
+== snapmirror.dst.revertVol
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a SnapMirror initialize operation has to revert the checksum state of the destination volume because the source and destination have differing checksum states.
+*Corrective Action*::
+No corrective action required.
+*Syslog Message*::
+A SnapMirror transfer to destination volume %s has found that the source and destination volumes have differing checksum states. Data ONTAP is aborting the transfer and reverting the checksum state for the destination volume. After ONTAP displays a message showing the revert is complete, you will need to retry the operation. You can use the "vol status -c" command to see the progress of the reversion.
+*Parameters*::
+*dst* (STRING): The SnapMirror destination
+
+== snapmirror.dst.snapCreateWarning
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a named snapshot creation at the end of a qtree SnapMirror transfer fails. Since the transfer succeeded, only the snap create in the end failed, we just issue a warning.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror transfer from %s:%s to %s : creation of named snapshot "%s" failed.
+*Parameters*::
+*srcfiler* (STRING): The SnapMirror source filer
+*srcpath* (STRING): The SnapMirror source qtree
+*dstpath* (STRING): The SnapMirror destination qtree
+*snapname* (STRING): The snapshot which was supposed to be created on the destination volume
+
+== snapmirror.dst.snapDelErr
+*Severity*::
+ERROR
+*Description*::
+This event is issued when on a SnapMirror incremental the snapshot that SnapMirror tries to delete in the destination volume is softlocked.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Snapshot %s in destination volume %s is in use, cannot delete.
+*Parameters*::
+*snapname* (STRING): The snapshot which is locked
+*dst* (STRING): The SnapMirror destination volume
+
+== snapmirror.dst.sync.chkErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) destination volume tries to go into sync while an active SnapMirror 'check' operation is in progress.
+*Corrective Action*::
+The mirror gets back into sync after the SnapMirror 'check' operation is complete. To expedite this process, abort the ongoing SnapMirror 'check' operation by running the 'snapmirror check abort' command on the destination system.
+*Syslog Message*::
+The destination volume '%s' has an active SnapMirror 'check' operation in progress. Could not go into sync.
+*Parameters*::
+*dstpath* (STRING): Destination volume.
+
+== snapmirror.dst.sync.mm.nvlog
+*Severity*::
+ERROR
+*Description*::
+This message occurs when NVLOG version mismatch between the source and destination appliance prevents the use of synchronous SnapMirror(R). The source and destination appliances must use the same version of NVLOG to mirror synchronously. ONTAP will use periodic updates to mirror the volume until the mismatch is resolved.
+*Corrective Action*::
+Upgrade the source or destination appliance so that they both use the same NVLOG version. It is also recommended that both appliances run the same version of ONTAP.
+*Syslog Message*::
+NVLOG version mismatch for Synchronous SnapMirror from %s:%s to %s. The source and destination appliances must use the same NVLOG version to mirror synchronously. Reverting to periodic updates to mirror the volume.
+*Parameters*::
+*srcfiler* (STRING): Name of the SnapMirror source appliance.
+*srcpath* (STRING): Name of the SnapMirror source volume.
+*dstpath* (STRING): Name of the SnapMirror destination volume.
+
+== snapmirror.dst.sync.mm.proto
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a protocol version mismatch between the source and destination appliance prevents the use of synchronous SnapMirror(R). The source and destination appliances must use the same version of protocol to mirror synchronously. ONTAP will use periodic updates to mirror the volume until the mismatch is resolved.
+*Corrective Action*::
+Upgrade the source or destination appliance so that they both use the same protocol version. It is also recommended that both appliances run the same version of ONTAP.
+*Syslog Message*::
+Protocol version mismatch for Synchronous SnapMirror from %s:%s to %s. The source and destination appliances must use the same protocol version to mirror synchronously. Reverting to periodic updates to mirror the volume.
+*Parameters*::
+*srcfiler* (STRING): Name of the SnapMirror source appliance.
+*srcpath* (STRING): Name of the SnapMirror source volume.
+*dstpath* (STRING): Name of the SnapMirror destination volume.
+
+== snapmirror.dst.updateDelayed
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when an update request is received on a destination qtree, which is being used as the source for another transfer.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Transfer from %s to %s:%s is in progress, SnapMirror transfer from %s:%s delayed.
+*Parameters*::
+*dstpath* (STRING): The SnapMirror destination
+*dstfiler2* (STRING): The destination filer for dstpath
+*dstpath2* (STRING): The destination for dstpath
+*srcfiler* (STRING): The source filer for dstpath
+*srcpath* (STRING): The source for dstpath

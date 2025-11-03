@@ -1,0 +1,737 @@
+---
+sidebar: sidebar
+permalink: air-repaired-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: air.repaired events
+---
+
+= air.repaired events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== air.repaired.bucket.header
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP(R) discovers an inconsistency in a metadata bucket header record. The inconsistency is automatically repaired immediately upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+TOC metadata (%s) has an inconsistent record for the bucket upload table (%s). %s.
+*Parameters*::
+*toc_fh* (STRING): File handle of the TOC metadata file.
+*upload_table_fh* (STRING): File handle of the bucket upload table file.
+*state* (STRING): Description of the metadata that was found to be inconsistent.
+*condition* (STRING): Initial metadata validation test that failed.
+*source* (STRING): Location of the failing metadata validation test.
+
+== air.repaired.cbmap
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered in the type/subtype of CloudBlockMap metafile. The inconsistency is automatically repaired immediately upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+CloudBlockMap metafile %s certification failed: %s, %s (%s)
+*Parameters*::
+*fh* (STRING): File handle of the affected metafile.
+*condition* (STRING): The initial metadata validation test that failed.
+*source* (STRING): The location of the failing metadata validation test.
+*state* (STRING): A description of the CloudBlockMap metafile that was found to be inconsistent.
+
+== air.repaired.cbmap.entry
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when context mismatch is discovered in any entry of CloudBlockMap metafile. The inconsistency is automatically repaired immediately upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s certification failed: %s, %s (%s)
+*Parameters*::
+*fh* (STRING): File handle of the affected metafile.
+*condition* (STRING): The initial metadata validation test that failed.
+*source* (STRING): The location of the failing metadata validation test.
+*state* (STRING): A description of the metafile that was found to be inconsistent.
+*pvbn* (LONGINT): Inconsistency found in cbmap entry of this PVBN.
+
+== air.repaired.cbmap.header
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered in the header of CloudBlockMap metafile. The inconsistency is automatically repaired immediately upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s certification failed: %s, %s (%s)
+*Parameters*::
+*fh* (STRING): File handle of the affected metafile.
+*condition* (STRING): The initial metadata validation test that failed.
+*source* (STRING): The location of the failing metadata validation test.
+*state* (STRING): A description of the metafile that was found to be inconsistent.
+
+== air.repaired.chapter.entry
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered in a metadata record. The inconsistency is automatically repaired immediately upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Chapter metadata (%s) has inconsistent record for object (%s). Source %s (%s).
+*Parameters*::
+*chapter_fh* (STRING): File handle of the metadata file.
+*object_fh* (STRING): File handle of the object.
+*source* (STRING): Location of the failing metadata validation test.
+*condition* (STRING): Initial metadata validation test that failed.
+*state* (STRING): Description of the metadata that was found to be inconsistent.
+
+== air.repaired.cssSnapdbFh
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP(R) discovers an inconsistency in a metadata bucket header record. The inconsistency is automatically repaired immediately upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Inconsistency in the css snapdb filehandle information of the TOC metadata %s belonging to bucket %u is being repaired.
+*Parameters*::
+*toc_fh* (STRING): File handle of the TOC metafile.
+*bucket_num* (INT): Bucket number.
+*state* (STRING): Description of the metadata that was found to be inconsistent.
+
+== air.repaired.cssSnapdbHdr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP(R) discovers an inconsistency in the user header of the css snapdb metafile. The inconsistency is automatically repaired immediately upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Inconsistency in user header of css snapdb metafile %s belonging to bucket %u is being repaired.
+*Parameters*::
+*snapdb_fh* (STRING): File handle of the snapdb metafile.
+*bucket_num* (INT): Bucket number.
+*state* (STRING): Description of the metadata that was found to be inconsistent.
+
+== air.repaired.cssSnapdbInode
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP(R) discovers an inconsistency in the css snapdb metafile inode. The inconsistency is automatically repaired immediately upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Inconsistency in the css snapdb inode information of the TOC metadata %s belonging to bucket %u is being repaired.
+*Parameters*::
+*toc_fh* (STRING): File handle of the TOC metafile.
+*bucket_num* (INT): Bucket number.
+*state* (STRING): Description of the metadata that was found to be inconsistent.
+
+== air.repaired.cssSnapdbTid
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP(R) discovers an inconsistency in the qtree id of the css snapdb metafile inode. The inconsistency is automatically repaired immediately upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Inconsistency in the TID of the css snapdb metafile inode %s belonging to bucket %u is being repaired.
+*Parameters*::
+*snapdb_fh* (STRING): File handle of the snapdb metafile.
+*bucket_num* (INT): Bucket number.
+*state* (STRING): Description of the metadata that was found to be inconsistent.
+
+== air.repaired.dir.hole
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered in the hole list of a directory. The inconsistency is repaired automatically as soon as it is detected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Directory hole list %s certification failed: %s, %s.
+*Parameters*::
+*fh* (STRING): File handle of the affected directory.
+*condition* (STRING): Initial metadata validation test that failed.
+*source* (STRING): Location of the failing metadata validation test.
+
+== air.repaired.dir.inode
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered in a directory. The inconsistency is repaired automatically as soon as it is detected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Directory %s certification failed: %s, %s.
+*Parameters*::
+*fh* (STRING): File handle of the affected directory.
+*condition* (STRING): Initial metadata validation test that failed.
+*source* (STRING): Location of the failing metadata validation test.
+
+== air.repaired.enc.vvol.info
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered in the encryptable aggregate metafile inodes encrypted flexvol information which stores vvol_btid and vvol_fid. The inconsistency is repaired automatically as soon as it is detected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Inode %s certification failed: %s, %s.
+*Parameters*::
+*fh* (STRING): File handle of the affected inode.
+*condition* (STRING): Initial metadata validation test that failed.
+*source* (STRING): Location of the failing metadata validation test.
+
+== air.repaired.fabriclink
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a metadata inconsistency is discovered and repaired within an object storage replication data structure.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+AIR repaired %s, condition %s at %s, object "%s"
+*Parameters*::
+*fh* (STRING): File handle of the replication data structure that was found to be inconsitent.
+*expr* (STRING): The nature of the inconsistency that was discovered and repaired.
+*source* (STRING): Location where the metadata inconsistency was detected.
+*object* (STRING): Optionally represents the name of a particular object whose replication state was affected.
+
+== air.repaired.fc.dir
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered in any directory in the volume. The inconsistency is repaired automatically as soon as it is discovered.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Evicted inconsistent directory with fh %s due to corruption in volume %s.
+*Parameters*::
+*fh* (STRING): File handle of the affected inode.
+*volume* (STRING): Name of the volume.
+
+== air.repaired.fc.qtree.id
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered in the qtree ID of an inode. The inconsistent inode is evicted automatically as soon as it is discovered.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Evicted inconsistent inode with fh %s due to a corrupted qtree ID: qtree ID %d, volume %s.
+*Parameters*::
+*fh* (STRING): File handle of the affected inode.
+*tid* (INT): Qtree ID.
+*volume* (STRING): Name of the volume.
+
+== air.repaired.hardlink.i2p
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the AIR subsystem repairs an inconsistent inode and previously unreachable hard links are returned to availability.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+AIR repaired inconsistent hardlink for inode %d: %d %d %s
+*Parameters*::
+*inode* (INT): Inode number.
+*parent_inode* (INT): Parent inode number.
+*link_count* (INT): Inode link count.
+*volume* (STRING): Name of the volume.
+
+== air.repaired.label.database
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered within a WAFL label database. The inconsistency is automatically repaired immediately upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Label database %s certification failed: %s, %s (%s)
+*Parameters*::
+*fh* (STRING): File handle of the affected metafile.
+*condition* (STRING): The initial metadata validation test that failed.
+*source* (STRING): The location of the failing metadata validation test.
+*state* (STRING): A description of the metadata that was found to be inconsistent.
+
+== air.repaired.lsm.bfc.lkp
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an inconsistency in the LSM BFC Lookup file. The inconsistency is repaired automatically as soon as it is detected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LSM BFC Lookup file %s was corrected at block %d. Source %s.
+*Parameters*::
+*fh* (STRING): File handle of the affected file.
+*block* (LONGINT): Block number of the inconsistent block.
+*source* (STRING): Location of the failing metadata validation test.
+
+== air.repaired.lsm.bloom.file
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an inconsistency in the LSM Bloomfilter file. The inconsistency is repaired automatically as soon as it is detected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LSM Bloomfilter file %s was corrected at block %d. Source %s.
+*Parameters*::
+*fh* (STRING): File handle of the affected file.
+*block* (LONGINT): Block number of the inconsistent block.
+*source* (STRING): Location of the failing metadata validation test.
+
+== air.repaired.lsm.info.file
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered in the LSM Info file. The inconsistency is repaired automatically as soon as it is detected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LSM Info file %s was corrected at block %d. Source %s.
+*Parameters*::
+*fh* (STRING): File handle of the affected file.
+*block* (INT): Block number of the inconsistent block.
+*source* (STRING): Location of the failing metadata validation test.
+
+== air.repaired.lsm.keyspc.file
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an inconsistency in the LSM Keyspace Information file. The inconsistency is repaired automatically as soon as it is detected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Inconsistent LSM Keyspace Information metafile on aggregate "%s" was repaired. Source %s.
+*Parameters*::
+*aggregate* (STRING): Name of the aggregate.
+*source* (STRING): Location of the failing metadata validation test.
+
+== air.repaired.lsm.lookup.file
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an inconsistency in the LSM Lookup file. The inconsistency is repaired automatically as soon as it is detected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LSM Lookup file %s was corrected at block %d. Source %s.
+*Parameters*::
+*fh* (STRING): File handle of the affected file.
+*block* (LONGINT): Block number of the inconsistent block.
+*source* (STRING): Location of the failing metadata validation test.
+
+== air.repaired.merkle
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered in the metadata (Merkle tree file). Repairs to the Merkle tree file have automatically been started.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Merkle file "%s" certification failed: %s, directory ID (%llu), branch ID (%llu), buffer level %d, fbn (%llu), Merkle tree level (%d)
+*Parameters*::
+*fh* (STRING): File handle of the Merkle file that needs repairs.
+*condition* (STRING): Initial validation test that failed.
+*dir_id* (LONGINT): Slice directory ID of the Merkle file.
+*branch_id* (LONGINT): Slice branch ID of the Merkle file.
+*level* (INT): Buffer level of the Merkle file block.
+*fbn* (LONGINT): File block number (FBN) of the Merkle file.
+*merkle_level* (INT): Merkle checksum level of the Merkle file.
+*source* (STRING): The location of the failing validation test.
+
+== air.repaired.mpu.catalog
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP(R) discovers an inconsistency in a multipart upload catalog record of a bucket upload table. The inconsistency is automatically repaired immediately upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Bucket upload table (%s) has an inconsistent record for the multipart upload catalog (%s). %s.
+*Parameters*::
+*upload_table_fh* (STRING): File handle of the bucket upload table file.
+*mp_catalog_fh* (STRING): File handle of the multipart catalog file.
+*state* (STRING): Description of the metadata that was found to be inconsistent.
+*condition* (STRING): Initial metadata validation test that failed.
+*source* (STRING): Location of the failing metadata validation test.
+
+== air.repaired.multipart.database
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered in the metadata of a multipart inode. The inconsistency is automatically repaired immediately upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Multipart inode %s certification failed: %s, %s (%s)
+*Parameters*::
+*fh* (STRING): File handle of the affected file.
+*condition* (STRING): The database validation test that failed.
+*source* (STRING): The location of the failing database validation test.
+*state* (STRING): A description of the metadata that was found to be inconsistent.
+
+== air.repaired.multipart.inode
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered in a multipart inode. The inconsistency is automatically repaired immediately upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Multipart inode %s certification failed: %s, %s
+*Parameters*::
+*fh* (STRING): File handle of the affected file.
+*condition* (STRING): The initial multipart inode validation test that failed.
+*source* (STRING): The location of the failing multipart inode validation test.
+
+== air.repaired.multipart.record
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered in the metadata of the multipart inode. The inconsistency is automatically repaired immediately upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Multipart inode %s certification failed: %s, %s (%s)
+*Parameters*::
+*fh* (STRING): File handle of the affected file.
+*condition* (STRING): The initial record validation test that failed.
+*source* (STRING): The location of the failing record validation test.
+*state* (STRING): A description of the record that was found to be inconsistent.
+
+== air.repaired.multipart.rectify
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered in the rectification metadata for a multipart file. The inconsistency is automatically repaired immediately upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Multipart inode %s certification failed: %s, %s (%s)
+*Parameters*::
+*fh* (STRING): File handle of the affected file.
+*condition* (STRING): The initial record validation test that failed.
+*source* (STRING): The location of the failing record validation test.
+*state* (STRING): A description of the record that was found to be inconsistent.
+
+== air.repaired.multipart.userheader
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered in the userheader section of a multipart file. The inconsistency is automatically repaired immediately upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Multipart inode %s userheader certification failed: %s, %s
+*Parameters*::
+*fh* (STRING): File handle of the affected file.
+*condition* (STRING): The initial userheader validation test that failed.
+*source* (STRING): The location of the failing userheader validation test.
+
+== air.repaired.name.info.flags
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered in the name information flags of a directory. The inconsistency is repaired automatically as soon as it is detected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Name information flags for directory entry %s corrected at block %d and index %d. Source %s.
+*Parameters*::
+*fh* (STRING): File handle of the affected directory.
+*block* (INT): Block number that contains the affected entry
+*index* (INT): Location within the block that holds the affected entry
+*source* (STRING): Location of the failing metadata validation test.
+
+== air.repaired.pct.entry
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered in a metadata record. The inconsistency is automatically repaired immediately upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+PCT metadata has inconsistent record for bucket (%u) file (%u). Source %s (%s, %s).
+*Parameters*::
+*bucketid* (INT): Bucket identifier.
+*fileid* (INT): File identifier.
+*source* (STRING): Location of the failing metadata validation test.
+*condition* (STRING): Initial metadata validation test that failed.
+*state* (STRING): Description of the metadata that was found to be inconsistent.
+
+== air.repaired.qtree.id
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered in the qtree ID of an inode. The inconsistency is repaired automatically as soon as it is discovered.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Repaired inconsistent inode with fh %s due to a corrupted qtree ID: Old qtree ID %d, new qtree ID %d, volume %s.
+*Parameters*::
+*fh* (STRING): File handle of the affected inode.
+*old_tid* (INT): Old qtree ID.
+*new_tid* (INT): New qtree ID.
+*volume* (STRING): Name of the volume.
+
+== air.repaired.qtree.metafile
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered in a qtree metafile.The inconsistency is repaired automatically as soon as it is detected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Qtree metafile %s
+*Parameters*::
+*details* (STRING): Description of the metadata failure that has been fixed.
+
+== air.repaired.qtree.root
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system discovers an inconsistency between the qtree file root and a qtree metafile entry. The system repairs this inconsistency automatically, as soon as it detects it.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Qtree root %s certification failed: %s, %s corrections: %s.
+*Parameters*::
+*fh* (STRING): File handle of the affected qtree root.
+*condition* (STRING): Initial metadata validation test that failed.
+*source* (STRING): Location of the failing metadata validation test.
+*state* (STRING): Description of the metadata that has been fixed.
+
+== air.repaired.ral.clone.exp
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered between the source, clone created via ral retrieve and the clone expansion structure in source's remote state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Remote RAL Clone %s certification failed: %s, %s (%s)
+*Parameters*::
+*fh* (STRING): File handle of the affected clone.
+*condition* (STRING): The initial metadata validation test that failed.
+*source* (STRING): The location of the failing metadata validation test.
+*state* (STRING): A description of the source and clone files.
+
+== air.repaired.rclone.database
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered within the WAFL Remote Clone Database. The inconsistency is automatically repaired immediately upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Remote Clone Database %s certification failed: %s, %s (%s)
+*Parameters*::
+*fh* (STRING): File handle of the affected metafile.
+*condition* (STRING): The initial metadata validation test that failed.
+*source* (STRING): The location of the failing metadata validation test.
+*state* (STRING): A description of the metafile that was found to be inconsistent.
+
+== air.repaired.rclone.record
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered in any record of the WAFL Remote Clone Database. The inconsistency is automatically repaired immediately upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Remote Clone Record %s certification failed: %s, %s (%s)
+*Parameters*::
+*fh* (STRING): File handle of the affected record.
+*condition* (STRING): The initial record validation test that failed.
+*source* (STRING): The location of the failing record validation test.
+*state* (STRING): A description of the entry that was found to be inconsistent.
+
+== air.repaired.remote.index
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered within the WAFL RAL index. The inconsistency is automatically repaired immediately upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Remote index %s certification failed: %s, %s (%s)
+*Parameters*::
+*fh* (STRING): File handle of the affected metafile.
+*condition* (STRING): The initial metadata validation test that failed.
+*source* (STRING): The location of the failing metadata validation test.
+*state* (STRING): The RAL index record that was discovered to be incorrect.
+
+== air.repaired.remote.inode
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered between a file and its RAL state within WAFL. The inconsistency is automatically repaired immediately upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Remote inode %s certification failed: %s, %s (%s)
+*Parameters*::
+*fh* (STRING): File handle of the affected file.
+*condition* (STRING): The initial metadata validation test that failed.
+*source* (STRING): The location of the failing metadata validation test.
+*state* (STRING): A description of the RAL state metadata that was found to be inconsistent.
+
+== air.repaired.remote.metafile
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered within a WAFL RAL metafile. The inconsistency is automatically repaired immediately upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Remote metafile %s certification failed: %s, %s (%s)
+*Parameters*::
+*fh* (STRING): File handle of the affected metafile.
+*condition* (STRING): The initial metadata validation test that failed.
+*source* (STRING): The location of the failing metadata validation test.
+*state* (STRING): A description of the RAL metafile that was found to be inconsistent.
+
+== air.repaired.remote.tallies
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered in the tallies in Remote Entry metafile. The inconsistency is automatically repaired immediately upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Remote metafile %s certification failed: %s, %s (%s)
+*Parameters*::
+*fh* (STRING): File handle of the affected metafile.
+*condition* (STRING): The initial metadata validation test that failed.
+*source* (STRING): The location of the failing metadata validation test.
+*state* (STRING): A description of the RAL metafile that was found to be inconsistent.
+
+== air.repaired.remote.writeback.dirtylist.record
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered between a file and its writeback metadata within WAFL. The inconsistency is automatically repaired immediately upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Remote inode %s writeback certification failed: %s, %s (%s)
+*Parameters*::
+*fh* (STRING): File handle of the affected file.
+*condition* (STRING): The initial metadata validation test that failed.
+*source* (STRING): The location of the failing metadata validation test.
+*state* (STRING): A description of the writeback metadata that was found to be inconsistent.
+
+== air.repaired.rlem.tallies
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered in the tallies in Remote Lock Entry metafile(RLEM). The inconsistency is automatically repaired immediately upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Remote lock entry metafile %s certification failed: %s, %s (%s)
+*Parameters*::
+*fh* (STRING): File handle of the affected metafile.
+*rlem* (STRING): Describes the metafile to which this lock entry belongs to.
+*condition* (STRING): The initial metadata validation test that failed.
+*source* (STRING): The location of the failing metadata validation test.
+*state* (STRING): A description of the RLEM that was found to be inconsistent.
+
+== air.repaired.slice
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered in the metadata (slice file). Repairs to the slice file from the secondary copy have automatically been started.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Slice file "%s" certification failed: %s, dir ID (%llu), branch ID (%llu), level %d, fbn (%llu)
+*Parameters*::
+*fh* (STRING): File handle of the slice file that needs repairs.
+*condition* (STRING): The initial validation test that failed.
+*dir_id* (LONGINT): Slice directory ID of the slice file.
+*branch_id* (LONGINT): Slice branch ID of the slice file.
+*level* (INT): Buffer level of the slice file block.
+*fbn* (LONGINT): File block number (FBN) of the slice file.
+*source* (STRING): The location of the failing validation test.
+
+== air.repaired.snapinfo.block
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an inconsistency in the persistent lock entry metafile. The inconsistent entry has been removed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Repaired inconsistent block (%s) found in Snapinfo metafile on volume "%s".
+*Parameters*::
+*state* (STRING): Description of the Snapinfo metafile block that was found to be inconsistent.
+*volume* (STRING): Name of the volume.
+
+== air.repaired.ssm.iftp.inode
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered in ssm iftp metafile. The inconsistency is repaired automatically as soon as it is detected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+AIR vlist metafile %s certification failed: %s, %s.
+*Parameters*::
+*fh* (STRING): File handle of the affected metafile.
+*condition* (STRING): Initial metadata validation test that failed.
+*source* (STRING): Location of the failing metadata validation test.
+
+== air.repaired.toc.entry
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an inconsistency is discovered in a metadata record. The inconsistency is automatically repaired immediately upon detection. But it can leave behind lost objects that are no longer pointed to by the namespace.
+*Corrective Action*::
+The command "object-store-server lost-object-recovery start" under diag privilege can be used to add lost objects back into namespace. The progress of this command can be monitored using "object-store-server lost-object-recovery show" command.
+*Syslog Message*::
+TOC metadata (%s) has inconsistent record for chapter (%s). %s (%s).
+*Parameters*::
+*toc_fh* (STRING): File handle of the TOC metadata file.
+*chapter_fh* (STRING): File handle of the chapter metadata file.
+*state* (STRING): Description of the metadata that was found to be inconsistent.
+*condition* (STRING): Initial metadata validation test that failed.
+
+== air.repaired.user.ind
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an inconsistency is discovered in the user indirect block. The inconsistency is repaired automatically immediately upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+User indirect %s certification failed: %s (%s)
+*Parameters*::
+*fh* (STRING): File handle of the affected file.
+*condition* (STRING): Initial metadata validation test that failed.
+*state* (STRING): Description of the user indirect block that was found to be inconsistent.
+*source* (STRING): Location of the failing metadata validation test.
+
+== air.repaired.vplus
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an indexed storage tree is rebuilt to repair a metadata inconsistency that was discovered.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+AIR vplus rebuild of %s completed for subtype %d
+*Parameters*::
+*fh* (STRING): File handle of the storage tree.
+*subtype* (INT): Subtype of the inode encountering the inconsistency.
