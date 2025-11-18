@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: kern-syslog-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: kern.syslog events
+---
+
+= kern.syslog events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== kern.syslog.drops
+*Severity*::
+ERROR
+*Description*::
+This event is generated when we detect that syslog messages were dropped before being logged. Syslog messages may be dropped if one or more Data ONTAP subsystems are generating many syslog messages over short period of time. That can be an indicator that those subsystems are experiencing problems that need to be resolved.
+*Corrective Action*::
+Look in the syslog messages file at the messages prior to this message. If they all seem to be coming from a common subsystem, it may indicate that there is a problem with that subsystem. Attempt to resolve the problem with that subsystem.
+*Syslog Message*::
+Dropped %d syslog messages starting at %s due to lack of internal log buffers
+*Parameters*::
+*numDrops* (INT): The number of messages that have been dropped.
+*timestamp* (STRING): A timestamp that indicates the time when the syslog messages started being dropped.
+
+== kern.syslog.msg
+*Severity*::
+NOTICE
+*Description*::
+This event is generated when a kernel syslog message is detected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s
+*Parameters*::
+*msg* (STRING): The text of the message
+*vfilerName* (STRING): The name of the vfiler that generated the message

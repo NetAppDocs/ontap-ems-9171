@@ -1,0 +1,44 @@
+---
+sidebar: sidebar
+permalink: lun-copy-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lun.copy events
+---
+
+= lun.copy events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== LUN.copy.dstPresent
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a LUN appears in the public namespace of the destination volume during a LUN copy operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LUN copy job with UUID %s created destination LUN (%s) successfully.
+*Parameters*::
+*job_uuid* (STRING): UUID of the LUN copy job.
+*dst_path* (STRING): Destination path of the LUN copy job.
+
+== LUN.copy.started
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a LUN copy operation is successfully started.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LUN copy started from (DSID:%llu)%s to (DSID:%llu)%s with job-uuid %s.
+*Parameters*::
+*src_vol_dsid* (LONGINT): Source volume Data Set ID (DSID).
+*src_lun* (STRING): Source LUN.
+*dst_vol_dsid* (LONGINT): Destination volume Data Set ID (DSID).
+*dst_lun* (STRING): Destination LUN.
+*UUID* (STRING): UUID identifying the copy operation.

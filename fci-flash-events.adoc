@@ -1,0 +1,53 @@
+---
+sidebar: sidebar
+permalink: fci-flash-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fci.flash events
+---
+
+= fci.flash events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fci.flash.preload.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is a failure updating the Fibre Channel adapter flash preload table. If the preload table cannot be updated, the adapter might not have the best configuration settings for the PCI Express link.
+*Corrective Action*::
+In most cases the adapter will still function normally. However, if you see PCI Express correctable errors on this adapter, you should replace the adapter.
+*Syslog Message*::
+Failed to update flash preload table on Fibre Channel adapter %s with error %d.
+*Parameters*::
+*port* (STRING): Name of the adapter port.
+*errorCode* (INT): Update error code.
+
+== fci.flash.preload.reboot
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Fibre Channel adapter flash preload table has been updated and the controller is rebooting for the new settings to take effect.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Rebooting for updated Fibre Channel flash preload table to take effect.
+*Parameters*::
+(None).
+
+== fci.flash.preload.updated
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Fibre Channel adapter flash preload table is updated. The preload table contains configuration settings for the adapter.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Updated flash preload table on Fibre Channel adapter %s to version %s.
+*Parameters*::
+*port* (STRING): Name of the adapter port.
+*version* (STRING): Preload table version.

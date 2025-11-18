@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: vldb-update-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vldb.update events
+---
+
+= vldb.update events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vldb.update.duringsofail
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the aggregate ownership update fails during switchover. The update is initiated by the management gateway daemon (mgwd), to fetch aggregate information from all of the nodes in the cluster and to update the volume location database (VLDB).
+*Corrective Action*::
+Contact NetApp technical support for assistance.
+*Syslog Message*::
+Aggregate ownership update failed for node '%s'.
+*Parameters*::
+*hostname* (STRING): Name of the node.

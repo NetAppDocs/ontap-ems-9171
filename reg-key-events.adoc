@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: reg-key-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: reg.key events
+---
+
+= reg.key events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== reg.key.invalid
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) software cannot access the registry because the key is not valid.
+*Corrective Action*::
+Use a valid key.
+*Syslog Message*::
+registry: Invalid key %s: %s
+*Parameters*::
+*key* (STRING): Registry key that is not valid.
+*reason* (STRING): Reason the key is not valid.
+*accessID* (STRING): Shows how the registry was accessed.
+
+== reg.key.null
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the value of key is NULL while the registry set is being implemented on a vFiler(tm) key.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+vfiler_registry_set: Set of key=%s received NULL for value.
+*Parameters*::
+*keyName* (STRING): Name of the key.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: spm-vldb-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: spm.vldb events
+---
+
+= spm.vldb events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== spm.vldb.process.exit
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when Volume Location Database (VLDB) subsystem stops running. This can be due to one or more causes and might be related to some recent or previous operations. The failure of this subsystem can affect client access.
+*Corrective Action*::
+Ensure that none of the volume/aggregate operations are performed on the current node. While this problem persists, you might want to migrate the Logical Interfaces (LIFs) to another node in the cluster and ensure that auto-revert and DNS load-balancing features do not migrate the LIFs back to the current node. The system attempts to recover by restarting the subsystem. If the subsystem does not recover within the threshold number of retries, then an AutoSupport message is sent. If your system is not configured to send AutoSupport messages and the issue persists, contact NetApp technical support.
+*Syslog Message*::
+Volume Location Database(VLDB) subsystem with ID %d exited as a result of signal %s. The subsystem will attempt to restart.
+*Parameters*::
+*id* (INT): Process identifier.
+*cause* (STRING): Plain text description of why the process exited.

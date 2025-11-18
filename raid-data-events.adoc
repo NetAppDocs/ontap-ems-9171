@@ -1,0 +1,126 @@
+---
+sidebar: sidebar
+permalink: raid-data-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.data events
+---
+
+= raid.data events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.data.lw.blkErr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a WAFL(R) generated read detects a stale block due to a lost write. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Bad data detected on %s%s, disk block (DBN) %llu, aggregate block (VBN) %llu.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, rpm, and carrier serial number that contains the error.
+*blockNum* (LONGINT): Physical block number containing the error.
+*vbn* (LONGINT): Volume block number containing the error.
+
+== raid.data.lw.recFail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when raid recommends a drive for failure because it detected more than the allowed number of lost-write errors on the disk. These errors are caused by a malfunction in the disk.
+*Corrective Action*::
+Wait for the event message raid.disk.unload.done or raid.carrier.remove to be issued and then replace the carrier containing the failed disk. If the disk is contained in a single-disk carrier, raid.disk.unload.done will be issued immediately. Otherwise, wait for raid.carrier.remove which indicates the carrier has been fully prepared for removal.
+*Syslog Message*::
+Disk recommended for failure for exceeding threshold of %d lost-write error%s on %s%s.
+*Parameters*::
+*threshold* (INT): The threshold for checksum errors due to wafl context mismatches
+*suffix* (STRING): The suffix used to report in syslog
+*owner* (STRING): String indicating the owner of the affected volume.
+*disk_info* (STRING): The name of the disk.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.data.ws.blkErr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when RAID detects a stale data block using WAFL(R) sanity check. The bad block is then reconstructed from parity and the remaining data disks. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL sanity check detected bad data on volume %s%s, %s, disk block %llu, %s inode number %d, snapid %d, file block %llu, level %d.
+*Parameters*::
+*owner* (STRING): Owner of the affected volume.
+*vol* (STRING): Name of the volume.
+*disk_info* (STRING): Formatted information about the disk.
+*blockNum* (LONGINT): Block number.
+*ino_type* (STRING): Inode type.
+*fileid* (INT): File identifier.
+*snapid* (INT): Snapshot identifier.
+*fileBlockNum* (LONGINT): Block number in the file.
+*level* (INT): Indirection level.
+
+== raid.data.ws.blkErr.ignore
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when WAFL(R) sanity check detects a stale data block while wafliron is running. RAID ignores the error because wafliron fixes it. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL sanity check detected bad data on volume %s%s, %s, disk block %llu, %s inode number %d, snapid %d, file block %llu, level %d. RAID is ignoring this error because wafliron is already running.
+*Parameters*::
+*owner* (STRING): String indicating the owner of the affected volume.
+*vol* (STRING): Name of the volume.
+*disk_info* (STRING): Formatted information about the disk.
+*blockNum* (LONGINT): Block number.
+*ino_type* (STRING): Inode type.
+*fileid* (INT): File identifier.
+*snapid* (INT): Snapshot identifier.
+*fileBlockNum* (LONGINT): Block number in the file.
+*level* (INT): Indirection level.
+
+== raid.data.ws.sblkErr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a WAFL(R) sanity check detects a stale superblock. The bad superblock is reconstructed from parity and the remaining data disks. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL sanity check detected bad superblock on volume %s%s, %s, disk block (DBN) %llu, aggregate block (VBN) %llu.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the volume.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, rpm, and carrier serial number.
+*blockNum* (LONGINT): Block number.
+*vbn* (LONGINT): Volume block number.
+
+== raid.data.ws.sblkErr.ignore
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when WAFL(R) sanity check detects a stale superblock while wafliron is running. RAID ignores the error because wafliron tries to fix it. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL sanity check detected bad superblock on volume %s%s, %s, block %llu. RAID is ignoring this error because wafliron is already running.
+*Parameters*::
+*owner* (STRING): String indicating the owner of the affected volume.
+*vol* (STRING): Name of the volume.
+*disk_info* (STRING): Formatted information of the disk.
+*blockNum* (LONGINT): Block number.

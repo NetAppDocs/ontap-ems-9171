@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: maxcid-threshold-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: maxcid.threshold events
+---
+
+= maxcid.threshold events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== maxCID.threshold.exceeded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system is approaching the maximum number of open data connections supported on the node.
+*Corrective Action*::
+Balance the network load across all nodes within the cluster.
+*Syslog Message*::
+Number of active data connections is %d and maximum supported threshold is %d.
+*Parameters*::
+*activeCID* (INT): Number of open data connections on the node.
+*maxCIDThreshold* (INT): Maximum threshold of data connections supported per node.

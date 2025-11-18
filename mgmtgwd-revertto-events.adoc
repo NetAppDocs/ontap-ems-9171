@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: mgmtgwd-revertto-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmtgwd.revertto events
+---
+
+= mgmtgwd.revertto events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmtgwd.revertTo.forceErrors
+*Deprecated*::
+This event was replaced by revertTo.force.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a revert to process is being initiated with the "force" flag, and configuration errors have been detected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Forcing revert in spite of detected configuration errors.
+*Parameters*::
+(None).

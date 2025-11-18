@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: replication-cluster-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: replication.cluster events
+---
+
+= replication.cluster events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== replication.cluster.vol
+*Severity*::
+ERROR
+*Description*::
+This message occurs because the transfer of clustered volumes is not supported in nonclustered environments.
+*Corrective Action*::
+Use clustered ONTAP to transfer cluster volumes.
+*Syslog Message*::
+Canceled transfer of %s volume '%s', %s transfer of cluster volume is not supported in nonclustered environments.
+*Parameters*::
+*type* (STRING): Destination or source.
+*volume* (STRING): Replica volume.
+*transfertype* (STRING): Type of transfer.

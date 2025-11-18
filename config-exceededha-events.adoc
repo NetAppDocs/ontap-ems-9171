@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: config-exceededha-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.exceededha events
+---
+
+= config.exceededha events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.ExceededHA
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the number of local attached FC adapters exceeds the maximum allowed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%d Fibre Channel disk adapters were detected and the maximum allowed is only %d.
+*Parameters*::
+*numHA* (INT): (None).
+*maxHA* (INT): (None).

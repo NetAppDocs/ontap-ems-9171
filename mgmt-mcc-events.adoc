@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: mgmt-mcc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmt.mcc events
+---
+
+= mgmt.mcc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmt.mcc.fsecurity.cfig.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs when MetroCluster(tm) switchback or switchover happens while applying a file security (fsecurity) policy on the MetroCluster partner. The policy was not applied to the partner.
+*Corrective Action*::
+Reapply the policy by using the "vserver security file-directory apply" command. See the "vserver security file-directory" man pages for information. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Failed to apply file security policy "%s" on Vserver "%s".
+*Parameters*::
+*policy* (STRING): Fsecurity policy name.
+*vservername* (STRING): Name of the Vserver.

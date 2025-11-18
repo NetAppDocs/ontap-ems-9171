@@ -1,0 +1,228 @@
+---
+sidebar: sidebar
+permalink: raid-readerr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.readerr events
+---
+
+= raid.readerr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.readerr.lw.data.ckinfo
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system detects an inconsistent RAID write signature, during a RAID error handling operation to log the on-disk RAID checksum information of the data block on the corresponding RAID stripe.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_name* (STRING): Name of the data disk.
+*dbn* (LONGINT): Disk block number of the block being reported.
+*disk_pos* (INT): Position of this data disk in the corresponding RAID group. The generation count of this data block on the parity bitmap resides at this position.
+*stripe_id* (INTHEX): Stripe ID field of the RAID write signature on the data block.
+*gen_cnt* (INTHEX): Generation count field of the RAID write signature on the data block.
+*comp_cksum* (INTHEX): Computed RAID checksum of the disk block.
+*sto_vbn* (LONGINT): Volume block number stored in the checksum entry.
+*wafl_cxt0* (INTHEX): Bytes 0-3 of WAFL(R) context information in the checksum.
+*wafl_cxt1* (INTHEX): Bytes 4-7 of WAFL context information in the checksum.
+*wafl_cxt2* (INTHEX): Bytes 8-11 of WAFL context information in the checksum.
+*wafl_cxt3* (INTHEX): Bytes 12-15 of WAFL context information in the checksum.
+*wafl_cxt4* (INTHEX): Bytes 16-19 of WAFL context information in the checksum.
+*wafl_cxt5* (INTHEX): Bytes 20-23 of WAFL context information in the checksum.
+*wafl_cxt6* (INTHEX): Bytes 24-27 of WAFL context information in the checksum.
+*wafl_cxt7* (INTHEX): Bytes 28-31 of WAFL context information in the checksum.
+*disk_serialno* (STRING): Serial number of the disk drive.
+
+== raid.readerr.lw.dparity.ckinfo
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system detects an inconsistent RAID write signature, during a RAID error handling operation to log the on-disk RAID checksum information of the diag parity block on the corresponding RAID stripe.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_name* (STRING): Name of the diag parity disk.
+*dbn* (LONGINT): Disk block number of the block being reported.
+*stripe_id* (INTHEX): Stripe ID field of the RAID write signature on the diag parity block.
+*is_ext_scheme* (INT): Is parity in extended scheme.
+*gen_cnt1* (INTHEX): Generation count bitmap field of the RAID write signature on the diag parity block, for data blocks 0-15.
+*gen_cnt2* (INTHEX): Generation count bitmap field of the RAID write signature on the diag parity block, for data blocks 16-27.
+*gen_cnt3* (INTHEX): Extended generation count bitmap field of the RAID write signature on the diag parity block.
+*comp_cksum* (INTHEX): Computed RAID checksum of the disk block.
+*wafl_cxt0* (INTHEX): Bytes 0-3 of WAFL(R) context information in the checksum.
+*wafl_cxt1* (INTHEX): Bytes 4-7 of WAFL context information in the checksum.
+*wafl_cxt2* (INTHEX): Bytes 8-11 of WAFL context information in the checksum.
+*wafl_cxt3* (INTHEX): Bytes 12-15 of WAFL context information in the checksum.
+*wafl_cxt4* (INTHEX): Bytes 16-19 of WAFL context information in the checksum.
+*wafl_cxt5* (INTHEX): Bytes 20-23 of WAFL context information in the checksum.
+*wafl_cxt6* (INTHEX): Bytes 24-27 of WAFL context information in the checksum.
+*wafl_cxt7* (INTHEX): Bytes 28-31 of WAFL context information in the checksum.
+*disk_serialno* (STRING): Serial number of the disk drive.
+
+== raid.readerr.lw.id.inconsist
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an inconsistent RAID write signature on a RAID stripe, during a RAID error handling operation. Data ONTAP(R) makes appropriate recovery actions. It automatically fails this device safely if the device exceeds the allowed number of inconsistent RAID write signature errors on the disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Inconsistent RAID write signature detected on RAID group %s%s, stripe #%llu, during RAID error handling operation
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*rg* (STRING): Name of the RAID group.
+*stripe* (LONGINT): Stripe number.
+
+== raid.readerr.lw.id.inconsist.dirty
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system detects an inconsistent RAID write signature on a RAID stripe that belongs to a dirty parity region, during a RAID error handling operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*rg* (STRING): Name of the RAID group.
+*stripe* (LONGINT): Stripe number.
+
+== raid.readerr.lw.parity.ckinfo
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system detects an inconsistent RAID write signature, during a RAID error handling operation to log the on-disk RAID checksum information of the row parity block on the corresponding RAID stripe.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_name* (STRING): Name of the row parity disk.
+*dbn* (LONGINT): Disk block number of the block being reported.
+*stripe_id* (INTHEX): Stripe ID field of the RAID write signature on the row parity block.
+*is_ext_scheme* (INT): Is parity in extended scheme.
+*gen_cnt1* (INTHEX): Generation count bitmap field of the RAID write signature on the row parity block, for data blocks 0-15.
+*gen_cnt2* (INTHEX): Generation count bitmap field of the RAID write signature on the row parity block, for data blocks 16-27.
+*gen_cnt3* (INTHEX): Extended Generation count bitmap field of the RAID write signature on the row parity block.
+*comp_cksum* (INTHEX): Computed RAID checksum of the disk block.
+*wafl_cxt0* (INTHEX): Bytes 0-3 of WAFL(R) context information in the checksum.
+*wafl_cxt1* (INTHEX): Bytes 4-7 of WAFL context information in the checksum.
+*wafl_cxt2* (INTHEX): Bytes 8-11 of WAFL context information in the checksum.
+*wafl_cxt3* (INTHEX): Bytes 12-15 of WAFL context information in the checksum.
+*wafl_cxt4* (INTHEX): Bytes 16-19 of WAFL context information in the checksum.
+*wafl_cxt5* (INTHEX): Bytes 20-23 of WAFL context information in the checksum.
+*wafl_cxt6* (INTHEX): Bytes 24-27 of WAFL context information in the checksum.
+*wafl_cxt7* (INTHEX): Bytes 28-31 of WAFL context information in the checksum.
+*disk_serialno* (STRING): Serial number of the disk drive.
+
+== raid.readerr.lw.reconsBadBlk.ckinfo
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system encounters a RAID stripe with an inconsistent RAID write signature that might indicate a bad data block somewhere on the stripe. Based on this block's RAID signature, the system suspects this block as containing bad data and reconstructs the the block for a data integrity check. This message logs the RAID checksum information from the reconstructed block.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_name* (STRING): Name of the data disk.
+*dbn* (LONGINT): Disk block number of the block being reported.
+*comp_cksum* (INTHEX): Computed RAID checksum of the reconstructed block.
+*wafl_cxt0* (INTHEX): Bytes 0-3 of WAFL(R) context information in the checksum.
+*wafl_cxt1* (INTHEX): Bytes 4-7 of WAFL context information in the checksum.
+*wafl_cxt2* (INTHEX): Bytes 8-11 of WAFL context information in the checksum.
+*wafl_cxt3* (INTHEX): Bytes 12-15 of WAFL context information in the checksum.
+*wafl_cxt4* (INTHEX): Bytes 16-19 of WAFL context information in the checksum.
+*wafl_cxt5* (INTHEX): Bytes 20-23 of WAFL context information in the checksum.
+*wafl_cxt6* (INTHEX): Bytes 24-27 of WAFL context information in the checksum.
+*wafl_cxt7* (INTHEX): Bytes 28-31 of WAFL context information in the checksum.
+*iteration* (INT): Parity consistency of this RAID stripe is restored by performing a data integrity check on one or two stripe blocks at a time in an iteration. This variable prints the current iteration.
+*disk_serialno* (STRING): Serial number of the disk drive.
+
+== raid.readerr.lw.reconsGoodBlk.ckinfo
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system encounters a RAID stripe with an inconsistent RAID write signature that might indicate a bad data block somewhere on the stripe. Based on this block's RAID signature, the system identifies this block as containing good data and reconstructs the block to perform a data integrity check on a suspected bad data block in the stripe. This message logs the RAID checksum information from the reconstructed good block.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_name* (STRING): Name of the data disk.
+*dbn* (LONGINT): Disk block number of the block being reported.
+*comp_cksum* (INTHEX): Computed RAID checksum of the reconstructed block.
+*wafl_cxt0* (INTHEX): Bytes 0-3 of WAFL(R) context information in the checksum.
+*wafl_cxt1* (INTHEX): Bytes 4-7 of WAFL context information in the checksum.
+*wafl_cxt2* (INTHEX): Bytes 8-11 of WAFL context information in the checksum.
+*wafl_cxt3* (INTHEX): Bytes 12-15 of WAFL context information in the checksum.
+*wafl_cxt4* (INTHEX): Bytes 16-19 of WAFL context information in the checksum.
+*wafl_cxt5* (INTHEX): Bytes 20-23 of WAFL context information in the checksum.
+*wafl_cxt6* (INTHEX): Bytes 24-27 of WAFL context information in the checksum.
+*wafl_cxt7* (INTHEX): Bytes 28-31 of WAFL context information in the checksum.
+*iteration* (INT): Parity consistency of this RAID stripe is restored by performing a data integrity check on one or two stripe blocks at a time in an iteration. This variable prints the current iteration.
+*disk_serialno* (STRING): Serial number of the disk drive.
+
+== raid.readerr.lw.tparity.ckinfo
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system detects an inconsistent RAID write signature, during a RAID error handling operation to log the on-disk RAID checksum information of the tparity block on the corresponding RAID stripe.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_name* (STRING): Name of the tparity disk.
+*dbn* (LONGINT): Disk block number of the block being reported.
+*stripe_id* (INTHEX): Stripe ID field of the RAID write signature on the tparity block.
+*is_ext_scheme* (INT): Is parity in extended scheme.
+*gen_cnt1* (INTHEX): Generation count bitmap field of the RAID write signature on the tparity block, for data blocks 0-15.
+*gen_cnt2* (INTHEX): Generation count bitmap field of the RAID write signature on the tparity block, for data blocks 16-27.
+*gen_cnt3* (INTHEX): Extended generation count bitmap field of the RAID write signature on the tparity block.
+*comp_cksum* (INTHEX): Computed RAID checksum of the disk block.
+*wafl_cxt0* (INTHEX): Bytes 0-3 of WAFL(R) context information in the checksum.
+*wafl_cxt1* (INTHEX): Bytes 4-7 of WAFL context information in the checksum.
+*wafl_cxt2* (INTHEX): Bytes 8-11 of WAFL context information in the checksum.
+*wafl_cxt3* (INTHEX): Bytes 12-15 of WAFL context information in the checksum.
+*wafl_cxt4* (INTHEX): Bytes 16-19 of WAFL context information in the checksum.
+*wafl_cxt5* (INTHEX): Bytes 20-23 of WAFL context information in the checksum.
+*wafl_cxt6* (INTHEX): Bytes 24-27 of WAFL context information in the checksum.
+*wafl_cxt7* (INTHEX): Bytes 28-31 of WAFL context information in the checksum.
+*disk_serialno* (STRING): Serial number of the disk drive.
+
+== raid.readerr.recovered.file
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a lost write block has been recovered from parity and other remaining data disks.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Recovered the bad disk block %llu on %s%s, %s inode number %d, snapid %d, treeid %d, file block %llu level %d.
+*Parameters*::
+*blockNum* (LONGINT): The disk block number
+*owner* (STRING): String indicating the owner of the affected volume.
+*disk_info* (STRING): Formatted information of the disk
+*ino_type* (STRING): The inode type
+*fileid* (INT): The file identifier
+*snapid* (INT): The snapshot identifier
+*treeid* (INT): The snapshot identifier
+*fileBlockNum* (LONGINT): The block number in the file
+*level* (INT): The level

@@ -1,0 +1,81 @@
+---
+sidebar: sidebar
+permalink: smbc-pfo-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: smbc.pfo events
+---
+
+= smbc.pfo events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== smbc.pfo.completed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the SnapMirror(R) active sync planned failover operation completes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror(R) active sync planned failover operation completed. Destination path: %s.
+*Parameters*::
+*dstpath* (STRING): Path name of the destination group of the SnapMirror(R) active sync relationship.
+
+== smbc.pfo.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the SnapMirror(R) active sync planned failover operation fails.
+*Corrective Action*::
+Determine the cause of the failure by using the "snapmirror failover show -fields error-reason" command. After addressing the cause, retry the "snapmirror failover start -destination-path destination_path" command.
+*Syslog Message*::
+SnapMirror(R) active sync planned failover operation failed. Destination path: %s.
+*Parameters*::
+*dstpath* (STRING): Path name of the destination group of the SnapMirror(R) active sync relationship.
+
+== smbc.pfo.io.outage.compl.dst
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the secondary (erstwhile) side conversion completes after a planned failover operation of a SnapMirror(R) active sync relationship.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+In the planned failover of the SnapMirror(R) active sync relationship with destination path %s and relationship-ID %s, the destination side I/O disruption started at %s and lasted for %u msecs.
+*Parameters*::
+*dstpath* (STRING): Destination path of the SnapMirror(R) active sync relationship.
+*cg_rel_id* (STRING): ID of the SnapMirror(R) active sync relationship.
+*start_time* (STRING): I/O disruption start time.
+*latency* (LONGINT): I/O disruption window (msecs).
+
+== smbc.pfo.io.outage.compl.src
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the primary (erstwhile) side conversion completes after a planned failover operation of a SnapMirror(R) active sync relationship and IO outage completes as the Report Target Port Group(RTPG) is consistent.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+In the planned failover of the SnapMirror(R) active sync relationship with destination path %s and relationship-ID %s, the source side I/O disruption started at %s and lasted for %u msecs.
+*Parameters*::
+*dstpath* (STRING): Destination path of the SnapMirror(R) active sync relationship.
+*cg_rel_id* (STRING): ID of the SnapMirror(R) active sync relationship.
+*start_time* (STRING): I/O disruption start time.
+*latency* (LONGINT): I/O disruption window (msecs).
+
+== smbc.pfo.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the SnapMirror(R) active sync planned failover operation starts.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror(R) active sync planned failover operation started. Destination path: %s.
+*Parameters*::
+*dstpath* (STRING): Path name of the destination group of the SnapMirror(R) active sync relationship.

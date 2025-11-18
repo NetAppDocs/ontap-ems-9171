@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: snmp-link-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snmp.link events
+---
+
+= snmp.link events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snmp.link.down
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a network interface is down.
+*Corrective Action*::
+If this message is not followed by a LinkUp message, the cluster administrator should manually check the link state with the "network port show" command, verifying that the port is administratively up. If the link state is still down and the port is not intentionally disabled, there might be a physical network problem: 1. Verify the switch has the corresponding port administratively and operationally up. 2. Verify that the network cable between the storage controller port and the corresponding switch is connected to the correct port and is not damaged. 3. Verify the integrity of the network cable with a cable tester, or swap in another cable known to be in good condition. 4. For further information or assistance contact NetApp technical support
+*Syslog Message*::
+Interface %d is down.
+*Parameters*::
+*interface* (INT): Number of the interface.
+
+== snmp.link.up
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a network interface is up.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Interface %d is up
+*Parameters*::
+*interface* (INT): The number of the interface

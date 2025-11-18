@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: nvmf-subsystem-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvmf.subsystem events
+---
+
+= nvmf.subsystem events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvmf.subsystem.hidden
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a NVMe-oF target subsystem is hidden due to a SnapMirror(R) Active Synchronous relationship going out of sync. The NVMe-oF target subsystem is no longer accessible from the host.
+*Corrective Action*::
+Restore NVMe-oF target subsystem access to the host by using the "snapmirror resync" command to bring the out-of-sync relationship back in sync. If "snapmirror resync" does not fix the issue, contact NetApp technical support.
+*Syslog Message*::
+NVMe-oF target subsystem NQN %s is hidden and reason code is %d.
+*Parameters*::
+*subsystem_nqn* (STRING): NVMe Qualified Name (NQN) of the subsystem.
+*reason_code* (INT): Reason code for NVMe-oF target subsystem hiding.
+
+== nvmf.subsystem.unhidden
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a previously hidden NVMe-oF target subsystem is now unhidden.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NVMe-oF target subsystem NQN %s is unhidden.
+*Parameters*::
+*subsystem_nqn* (STRING): NVMe Qualified Name (NQN) of the subsystem.

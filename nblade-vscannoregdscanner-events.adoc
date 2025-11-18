@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: nblade-vscannoregdscanner-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.vscannoregdscanner events
+---
+
+= nblade.vscannoregdscanner events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.vscanNoRegdScanner
+*Severity*::
+ERROR
+*Description*::
+This message occurs when AV Connector notifies ONTAP(R) that it does not have a registered scan-engine. This could happen if the scan-engine never registered or unregistered because of some reason like it is misconfigured or shutdown. This might cause data unavailability if the scan-mandatory option is enabled.
+*Corrective Action*::
+Ensure that the scan-engine software installed on the AV server is compatible with ONTAP(R). Also ensure that it is running and is configred to connect to the AV Connector over local loopback.
+*Syslog Message*::
+For Vserver "%s", AV Connector running on the AV server "%s" does not have a registered scan-engine to it.
+*Parameters*::
+*vserverName* (STRING): Vserver associated with this operation.
+*scannerIp* (STRING): IP address of the AV server.
+*object_type* (STRING): Type of the resource object under notification.
+*object_uuid* (STRING): UUID of the resource object.

@@ -1,0 +1,77 @@
+---
+sidebar: sidebar
+permalink: mgmtgwd-filereplication-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmtgwd.filereplication events
+---
+
+= mgmtgwd.filereplication events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmtgwd.filereplication.failverify
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the startup scan of the file replication publishing root directory fails to verify packages. This might be due to file corruption or a mixed-version issue.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+The startup scan of the file replication publishing directory failed to verify one or more packages.
+*Parameters*::
+(None).
+
+== mgmtgwd.filereplication.forbidden
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the file replication service receives a request on an unsecure network interface.
+*Corrective Action*::
+Use the "network interface show" command to verify that the source IP address of the request is from an internal, authorized source. This could be a security breach attempt. File replication never attempts to communicate over nonclustered interfaces.
+*Syslog Message*::
+The file replication service denied an incoming request that came from '%s' through the virtual interface address '%s'.
+*Parameters*::
+*client_ip* (STRING): IP address of the client.
+*server_ip* (STRING): IP address of the server interface.
+
+== mgmtgwd.filereplication.nopubroot
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the file replication service cannot find or initialize the publishing root directory.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+The publishing root directory at '%s' could not be initialized. Error: '%s'.
+*Parameters*::
+*dir* (STRING): Location of the publishing root directory.
+*reason* (STRING): Reason the directory cannot be used.
+
+== mgmtgwd.filereplication.noserver
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the file replication module cannot initialize the local server process.
+*Corrective Action*::
+Ensure that the local replication network port is not in use ("network port show" and "network port broadcast-domain show") and that system resources are not limited.
+*Syslog Message*::
+The file replication service could not initialize its server process. Error: '%s'.
+*Parameters*::
+*description* (STRING): Reason for the failure.
+
+== mgmtgwd.filereplication.nostart
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the file replication service cannot be started.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+The file replication service could not be started.
+*Parameters*::
+(None).

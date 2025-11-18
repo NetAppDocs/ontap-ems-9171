@@ -1,0 +1,643 @@
+---
+sidebar: sidebar
+permalink: xfcvi-qlgc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: xfcvi.qlgc events
+---
+
+= xfcvi.qlgc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== xfcvi.qlgc.async.event.overflow
+*Severity*::
+ERROR
+*Description*::
+This message occurs when total number of async events are overflowed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Port %s async event overflowed. Resetting the adapter.
+*Parameters*::
+*port* (STRING): xfcvi Interconnect NIC.
+
+== xfcvi.qlgc.connErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the FC-VI adapter detects a connection error. The FC-VI driver will attempt to retry the connection.
+*Corrective Action*::
+If this message repeats frequently, there may be an issue with the FC fabric or the adapter. Contact NetApp technical support.
+*Syslog Message*::
+FC-VI adapter: Port %s detects connection error. FC-VI opcode = %s(0x%x), QP name = %s, QP index = %d, Remote node's system id = %llu. %s
+*Parameters*::
+*port* (STRING): Interconnect NIC.
+*opcode_str* (STRING): xfcvi opcode.
+*opcode* (INTHEX): xfcvi opcode.
+*qpname* (STRING): QP name.
+*qpnum* (INT): QP number.
+*systemID* (LONGINT): Remote node's system ID.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.cpr.reset.cancelled
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the CPR reset initiated by the FC-VI port got cancelled.
+*Corrective Action*::
+Reboot the filer. If issue still persists then replace the xfcvi adapter.
+*Syslog Message*::
+FC-VI adapter: CPR reset initiated by port %s got cancelled. Offlining the port.
+*Parameters*::
+*port* (STRING): xfcvi Interconnect adapter.
+
+== xfcvi.qlgc.cpr.reset.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the CPR reset initiated by the FC-VI port fails.
+*Corrective Action*::
+Reboot the filer. If issue still persists then replace the xfcvi adapter.
+*Syslog Message*::
+FC-VI adapter: CPR reset initiated by port %s failed.
+*Parameters*::
+*port* (STRING): xfcvi Interconnect adapter.
+
+== xfcvi.qlgc.cpr.reset.unsupported
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the CPR reset is not supported by the adapter.
+*Corrective Action*::
+Reboot the filer. If issue still persists then replace the xfcvi adapter.
+*Syslog Message*::
+FC-VI adapter: CPR reset is not supported by port %s.
+*Parameters*::
+*port* (STRING): xfcvi Interconnect adapter.
+
+== xfcvi.qlgc.FrameDiscardErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the FC-VI adapter firmware discards a received frame because of a receive frame error.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Discarded a received frame because of a receive frame error. Port %s, QP name = %s, QP index = %d, exchange ID 0x%x, address offset 0x%x, remote node's system id = %llu. %s
+*Parameters*::
+*port* (STRING): xfcvi Interconnect NIC.
+*qp_name* (STRING): QP name.
+*qp_index* (INT): QP number.
+*exchange_id* (INTHEX): Exchange ID.
+*address* (INTHEX): Address offset of the last good frame.
+*system_id* (LONGINT): Remote node's system id.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.hard.reset.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an FC-VI port's soft reset fails.
+*Corrective Action*::
+If CPR reset is not supported in the platform, then reboot the filer to recover from this issue. If issue persists then replace the xfcvi adapter.
+*Syslog Message*::
+FC-VI adapter: Hard reset failed at port %s.
+*Parameters*::
+*port* (STRING): xfcvi Interconnect adapter.
+
+== xfcvi.qlgc.invalid.data
+*Severity*::
+ERROR
+*Description*::
+This message occurs when xfcvi driver receives invalid data from firmware.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Port %s received invalid data. QP index = %d, completion status = %s(status code = %d), opcode = %s(%d), remote node's system id = %llu. %s
+*Parameters*::
+*port* (STRING): xfcvi Interconnect NIC.
+*qpnum* (INT): QP index.
+*status* (STRING): Completion status.
+*status_code* (INT): Completion status code.
+*opcode_str* (STRING): xfcvi opcode in string.
+*opcode* (INT): xfcvi opcode.
+*systemID* (LONGINT): Remote node's system Id.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.invalid.exch.address
+*Severity*::
+ERROR
+*Description*::
+This message occurs when xfcvi driver receives a response with invalid exchange address.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Port %s received invalid exchange address for %s. QP name = %s, QP index = %d, expected exchange address = 0x%x, received exchange address = 0x%x. %s
+*Parameters*::
+*port* (STRING): xfcvi Interconnect NIC.
+*resp_type* (STRING): Response type.
+*qpname* (STRING): QP name.
+*qpnum* (INT): QP number.
+*exp_oxid* (INTHEX): Expected exchange address.
+*rcvd_oxid* (INTHEX): Received exchange address.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.invalid.qp
+*Severity*::
+ERROR
+*Description*::
+This message occurs when xfcvi driver receives invalid QP index from firmware.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Port %s received invalid QP. Received QP index = %d, completion status = %s(status code = %d), entry type = %s(entry code = %d). %s
+*Parameters*::
+*port* (STRING): xfcvi Interconnect NIC.
+*qpnum* (INT): QP index.
+*status* (STRING): Completion status.
+*status_code* (INT): Completion status code.
+*entry_type* (STRING): Request/Response entry type.
+*entry_code* (INT): Request/Response entry code.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.invalid.response
+*Severity*::
+ERROR
+*Description*::
+This message occurs when xfcvi driver receives invalid response from firmware.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Port %s received invalid response. %s. %s
+*Parameters*::
+*port* (STRING): xfcvi Interconnect NIC.
+*error_type* (STRING): Type of error.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.ioErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the FC-VI driver receives some IO error.
+*Corrective Action*::
+No corrective action is required. The driver internally resets the adapter if required. However, if you see this message frequently, there might be an issue with the FC fabric or the adapter. Contact NetApp technical support.
+*Syslog Message*::
+FC-VI adapter: xfcvi driver on port %s received IO error. Status = %s(status code = 0x%x), xfcvi opcode = %s(0x%x), QP name = %s, QP index = %d, Remote node's system id = %llu.
+*Parameters*::
+*port* (STRING): Interconnect NIC.
+*status_str* (STRING): Completion status in string.
+*status* (INTHEX): Completion status code.
+*opcode_str* (STRING): xfcvi opcode in string.
+*opcode* (INTHEX): xfcvi opcode.
+*qpName* (STRING): QP name.
+*qpIndex* (INT): QP number.
+*systemID* (LONGINT): Remote node's system ID.
+
+== xfcvi.qlgc.login.timedout
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when port login request times out.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Remote port login timedout on port %s. Remote port id = 0x%x, Remote port handle = %d. %s
+*Parameters*::
+*port* (STRING): xfcvi Interconnect NIC.
+*portid* (INTHEX): Remote port identifier.
+*porthandle* (INT): Remote port handle.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.ls.reject
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the xfcvi firmware rejects a link service.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Link service = %s(code = %d), rejected on port %s. %s
+*Parameters*::
+*ls* (STRING): Link service name.
+*ls_code* (INT): Link service code.
+*port* (STRING): xfcvi Interconnect NIC.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.mbox.cmd.pending
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a mailbox command is pending for a long time.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Mailbox command '%s(code = 0x%x)' pending on port %s. %s
+*Parameters*::
+*cmd* (STRING): Mailbox command.
+*cmd_code* (INTHEX): Mailbox command code.
+*port* (STRING): xfcvi Interconnect NIC.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.mbox.cmd.timedout
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a mailbox command times out.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Mailbox command '%s(code = 0x%x)' timedout on port %s. %s
+*Parameters*::
+*cmd* (STRING): Mailbox command.
+*cmd_code* (INTHEX): Mailbox command code.
+*port* (STRING): xfcvi Interconnect NIC.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.no.iu.buffer
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the xfcvi firmware identifies no more incoming IU buffers in the free pool.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Port %s doesn't have free IU buffer. %s
+*Parameters*::
+*port* (STRING): xfcvi Interconnect NIC.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.no.recv.buffer
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the xfcvi firmware identifies no more receive buffers available for the incoming receive frames.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Port %s doesn't have free receive buffer. QP name = %s, QP index = %d, Message ID = 0x%x. %s
+*Parameters*::
+*port* (STRING): xfcvi Interconnect NIC.
+*qpname* (STRING): QP name.
+*qpnum* (INT): QP index.
+*msg_id* (INTHEX): Message id of the incoming message.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.oodErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the FC-VI driver receives out of order completions.
+*Corrective Action*::
+No corrective action is required. The driver internally resets the adapter if required. However, if you see this message frequently, there might be an issue with the FC fabric or the adapter. Contact NetApp technical support.
+*Syslog Message*::
+FC-VI adapter: xfcvi driver on port %s receives out of order completions. xfcvi opcode = %s(0x%x), QP name = %s, QP index = %d, Remote node's system id = %llu.
+*Parameters*::
+*port* (STRING): Interconnect NIC.
+*opcode_str* (STRING): xfcvi opcode in string.
+*opcode* (INTHEX): xfcvi opcode.
+*qpName* (STRING): QP name.
+*qpIndex* (INT): QP number.
+*systemID* (LONGINT): Remote node's system ID.
+
+== xfcvi.qlgc.PCIErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the FC-VI adapter firmware encounters a PCI error because it cannot write a frame to host memory.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: PCI error while writing a frame to host memory. Port %s, QP name = %s, QP index = %d, exchange ID 0x%x, address offset 0x%x, remote node's system id = %llu. %s
+*Parameters*::
+*port* (STRING): xfcvi Interconnect NIC.
+*qp_name* (STRING): QP name.
+*qp_index* (INT): QP number.
+*exchange_id* (INTHEX): Exchange ID.
+*address* (INTHEX): Address offset of the last good frame.
+*system_id* (LONGINT): Remote node's system id.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.port.reset
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a xfcvi port resets.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Resetting the port %s. %s
+*Parameters*::
+*port* (STRING): xfcvi Interconnect NIC.
+*reason* (STRING): Reason for port reset.
+
+== xfcvi.qlgc.qp.create.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs when QP creation fails.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Failed to create QP on port %s. Requested QP index = %d, completion status = %s(status code = %d). %s
+*Parameters*::
+*port* (STRING): xfcvi Interconnect NIC.
+*qpnum* (INT): QP index.
+*status* (STRING): Completion status.
+*status_code* (INT): Completion status code.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.qp.destroy.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the QP destroy request failed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: QP destroy failed on port %s. QP index = %d. %s
+*Parameters*::
+*port* (STRING): xfcvi Interconnect NIC.
+*qpnum* (INT): QP index.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.qpErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the FC-VI driver receives a QP error from the Firmware. The FC-VI driver will attempt to retry the connection.
+*Corrective Action*::
+If this message repeats frequently, there may be an issue with the FC fabric or the adapter. Contact NetApp technical support.
+*Syslog Message*::
+FC-VI adapter: xfcvi driver on port %s received QP Error. QP name = %s, QP index = 0x%x, VI state = %s(state code = 0x%x), sub-error = %s(error code = 0x%x). Remote node's system id = %llu. This error has occurred %d times. %s
+*Parameters*::
+*port* (STRING): Interconnect Adapter.
+*qpname* (STRING): QP name.
+*qpnum* (INTHEX): QP number.
+*state_str* (STRING): QP state.
+*state* (INTHEX): QP state code.
+*suberror* (STRING): Sub-error.
+*code* (INTHEX): Sub-error code.
+*system_id* (LONGINT): Remote node's system ID.
+*errcnt* (INT): Number of times QP async error was encountered.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.rcvd.invalid.iu.buffer
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the FC-VI adapter receives invalid information unit buffer.
+*Corrective Action*::
+No corrective action is required. The driver internally resets the adapter if required. However, if you see this message frequently, there might be an issue with the FC fabric or the adapter. Contact NetApp technical support.
+*Syslog Message*::
+FC-VI adapter: Port %s received invalid IU buffer. Status = %s(status code = 0x%x), xfcvi opcode = %s(0x%x), QP name = %s, QP index = %d, buffer handle = %d, Remote node's system id = %llu. %s
+*Parameters*::
+*port* (STRING): Interconnect NIC.
+*status_str* (STRING): Completion status in string.
+*status* (INTHEX): Completion status code.
+*opcode_str* (STRING): xfcvi opcode in string.
+*opcode* (INTHEX): xfcvi opcode.
+*qpname* (STRING): QP name.
+*qpnum* (INT): QP number.
+*bufhdl* (INT): Buffer handle.
+*systemID* (LONGINT): Remote node's system ID.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.receive.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the xfcvi firmware detects an error in the received frame.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Received bad frame on port %s. Mailbox-1 = %d, Mailbox-2 = %d. %s
+*Parameters*::
+*port* (STRING): xfcvi Interconnect NIC.
+*mbox1* (INT): Content of mailbox-1.
+*mbox2* (INT): Content of mailbox-2.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.received.disconnect
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when xfcvi driver receives disconnect request from partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Disconnect request received on port %s. QP name = %s, QP index = %d, Remote node's system id = %llu. %s
+*Parameters*::
+*port* (STRING): xfcvi Interconnect NIC.
+*qpname* (STRING): QP name.
+*qpnum* (INT): QP index.
+*system_id* (LONGINT): Remote node's system id.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.received.reject
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when xfcvi driver receives connection reject from partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Connect request rejected on port %s. QP name = %s, QP index = %d, Remote node's system id = %llu. %s
+*Parameters*::
+*port* (STRING): xfcvi Interconnect NIC.
+*qpname* (STRING): QP name.
+*qpnum* (INT): QP index.
+*system_id* (LONGINT): Remote node's system id.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.recvIUErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the FC-VI adapter receives some error in received information unit.
+*Corrective Action*::
+No corrective action is required. The driver internally resets the adapter if required. However, if you see this message frequently, there might be an issue with the FC fabric or the adapter. Contact NetApp technical support.
+*Syslog Message*::
+FC-VI adapter: Port %s received IU error. Status = %s(status code = 0x%x), xfcvi opcode = %s(0x%x), QP name = %s, QP index = %d, buffer handle = %d, Remote node's system id = %llu.
+*Parameters*::
+*port* (STRING): Interconnect NIC.
+*status_str* (STRING): Completion status in string.
+*status* (INTHEX): Completion status code.
+*opcode_str* (STRING): xfcvi opcode in string.
+*opcode* (INTHEX): xfcvi opcode.
+*qpname* (STRING): QP name.
+*qpnum* (INT): QP number.
+*bufhdl* (INT): Buffer handle.
+*systemID* (LONGINT): Remote node's system ID.
+
+== xfcvi.qlgc.regDumped
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the xfcvi driver saves a diagnostic dump in a file.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Diagnostic dump for port %s saved to file %s.
+*Parameters*::
+*port* (STRING): xfcvi Interconnect NIC.
+*filename* (STRING): File to which the diagnostic dump was saved.
+
+== xfcvi.qlgc.RespFrameErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the adapter firmware sends a response frame with the error bit set.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Firmware sent a response with the error bit set. Port %s, QP name = %s, QP index = %d, exchange ID 0x%x, address offset 0x%x, remote node's system id = %llu. %s
+*Parameters*::
+*port* (STRING): xfcvi Interconnect NIC.
+*qpname* (STRING): QP name.
+*qp_index* (INT): QP number.
+*exchange_id* (INTHEX): Exchange ID.
+*address* (INTHEX): Address offset of the last good frame.
+*system_id* (LONGINT): Remote node's system id.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.risc.paused
+*Severity*::
+ERROR
+*Description*::
+This message occurs when xfcvi RISC is paused.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Port %s detected a RISC pause error. %s
+*Parameters*::
+*port* (STRING): xfcvi Interconnect NIC.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.rmt.link.down
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when xfcvi driver lost link to partner port.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Link to partner node over port %s is down. Partner port id = 0x%x, partner node's system id = %llu. %s
+*Parameters*::
+*port* (STRING): xfcvi Interconnect NIC.
+*port_id* (INTHEX): Partner port id.
+*system_id* (LONGINT): Partner node's system id.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.rmt.link.up
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when xfcvi driver gets link to partner port.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Link to partner node over port %s is up. Partner port id = 0x%x, partner node's system id = %llu. %s
+*Parameters*::
+*port* (STRING): xfcvi Interconnect NIC.
+*port_id* (INTHEX): Partner port id.
+*system_id* (LONGINT): Partner node's system id.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.sendIUError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the FC-VI adapter fails to send an information unit.
+*Corrective Action*::
+No corrective action is required. The driver internally retries. However, if you see this message frequently, there might be an issue with the FC fabric or the adapter. Contact NetApp technical support.
+*Syslog Message*::
+FC-VI adapter: Port %s sendIU status = %s(status code = 0x%x), xfcvi opcode = %s(0x%x), QP name = %s, QP index = %d, Remote node's system id = %llu. %s
+*Parameters*::
+*port* (STRING): Interconnect NIC.
+*status_str* (STRING): Completion status in string.
+*status* (INTHEX): Completion status code in hex.
+*opcode_str* (STRING): xfcvi opcode in string.
+*opcode* (INTHEX): xfcvi opcode in hex.
+*qpName* (STRING): QP name.
+*qpIndex* (INT): QP number.
+*systemID* (LONGINT): Remote node's system id.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.sent.disconnect
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when xfcvi driver sends disconnect request to remote partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Disconnect request sent on port %s. QP name = %s, QP index = %d, Remote node's system id = %llu. %s
+*Parameters*::
+*port* (STRING): xfcvi Interconnect NIC.
+*qpname* (STRING): QP name.
+*qpnum* (INT): QP index.
+*system_id* (LONGINT): Remote node's system id.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.soft.reset.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an FC-VI port's soft reset fails.
+*Corrective Action*::
+None.
+*Syslog Message*::
+FC-VI adapter: Soft reset failed at port %s.
+*Parameters*::
+*port* (STRING): xfcvi Interconnect adapter.
+
+== xfcvi.qlgc.system.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when xfcvi driver receives system error from xfcvi firmware.
+*Corrective Action*::
+No corrective action is required. The driver internally resets the adapter. However, if you see this message frequently, there might be an issue with the adapter/firmware. Contact NetApp technical support.
+*Syslog Message*::
+FC-VI adapter: System Error on port %s. %s
+*Parameters*::
+*port* (STRING): xfcvi Interconnect NIC.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.TimeOutErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the adapter firmware cannot send a request.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Firmware could not send a request. Port %s, QP name = %s, QP index = %d, exchange ID 0x%x, address offset 0x%x, remote node's system id = %llu. %s
+*Parameters*::
+*port* (STRING): xfcvi Interconnect NIC.
+*qp_name* (STRING): QP name.
+*qp_index* (INT): QP number.
+*exchange_id* (INTHEX): Exchange ID.
+*address* (INTHEX): Address offset of the last good frame.
+*system_id* (LONGINT): Remote node's system id.
+*info* (STRING): Additional info.
+
+== xfcvi.qlgc.transfer.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the xfcvi firmware detects a transfer error.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: %s transfer error on port %s. Affected queue number = %d. %s
+*Parameters*::
+*trans_type* (STRING): Transfer type.
+*port* (STRING): xfcvi Interconnect NIC.
+*queue_num* (INT): Queue number.
+*info* (STRING): Additional info.

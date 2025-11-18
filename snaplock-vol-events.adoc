@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: snaplock-vol-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snaplock.vol events
+---
+
+= snaplock.vol events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snaplock.vol.compclock.skewed
+*Severity*::
+NOTICE
+*Description*::
+This event is generated when the SnapLock(R) volume compliance clock time is skewed from the SnapLock system compliance clock by more than one day.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The compliance clock time (%s) of volume '%s' is skewed from the system compliance clock (%s) by more than one day.
+*Parameters*::
+*volume_compliance_clock_time* (STRING): Human readable volume compliance clock time.
+*volume_name* (STRING): Volume name.
+*system_compliance_clock_time* (STRING): Human readable system compliance clock time.

@@ -1,0 +1,111 @@
+---
+sidebar: sidebar
+permalink: cr-fix-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cr.fix events
+---
+
+= cr.fix events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== CR.Fix.Corrupt.Redir.Failed
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when corrective action for corrupt redirector file failed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Corrective action failed for corrupt redirector of data file [%s] on volume [%s] in Vserver [%s].
+*Parameters*::
+*path* (STRING): File path.
+*volume* (STRING): Name of the constituent volume where the data file resides.
+*vserver* (STRING): Vserver hosting the volume.
+
+== CR.Fix.Crpt.Data.Dir.Failed
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the corrective action for a corrupt data directory fails. These entries were created when they were moved to the [lost+found] folder by waflIron, on the data constituents.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Corrective action failed for corrupt data directory [%s] on volume [%s].
+*Parameters*::
+*path* (STRING): Directory path.
+*volume* (STRING): Name of the constituent volume where the directory resides.
+*vserver* (STRING): Vserver hosting the volume.
+
+== CR.Fix.Crpt.Data.File.Failed
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the corrective action for a corrupt data file fails.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Corrective action failed for corrupt data file [%s] on volume [%s] in Vserver [%s].
+*Parameters*::
+*path* (STRING): File path.
+*volume* (STRING): Name of the constituent volume where the file resides.
+*vserver* (STRING): Vserver hosting the volume.
+
+== CR.Fix.CrptStreamRedir.Fail
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the fix for corrupt stream redirector fails.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Corrective action failed for corrupt stream redirector of stream data [%s] on volume [%s] in Vserver [%s].
+*Parameters*::
+*path* (STRING): Stream path.
+*volume* (STRING): Name of the constituent volume where the stream redirector resides.
+*vserver* (STRING): Vserver hosting the volume.
+
+== CR.Fix.Dang.Data.File.Failed
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the corrective action for a dangling data file fails. This file was created when there was a failure in cleaning up a file on the data constituent, which left a dangling file that is unnecessarily consuming resources.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Corrective action failed for dangling data file [%s] on volume [%s] in Vserver [%s].
+*Parameters*::
+*path* (STRING): File path.
+*volume* (STRING): Name of the constituent volume where the file resides.
+*vserver* (STRING): Vserver hosting the volume.
+
+== CR.Fix.Nlinks.Failed
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the corrective action for an Nlinks (number of hardlinks on the file) mismatch fails.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Corrective action failed for Nlinks mismatch on file [%s] on volume [%s] in Vserver [%s].
+*Parameters*::
+*path* (STRING): File path.
+*volume* (STRING): Name of the constituent volume where the file resides.
+*vserver* (STRING): Vserver hosting the volume.

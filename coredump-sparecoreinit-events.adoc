@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: coredump-sparecoreinit-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: coredump.sparecoreinit events
+---
+
+= coredump.sparecoreinit events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== coredump.sparecoreinit.times
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when sparecore initialization is completed. Durations of constituent activities within sparecore initialization are reported.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+sparecore_init: update firmware %llu msec, write partial headers %llu msec, clear abort area %llu msec, write node status %lld msec.
+*Parameters*::
+*fwUpdateTime* (LONGINT): Time taken to update firmware, in milliseconds.
+*partialHeaderTime* (LONGINT): Time taken to write partial headers, in milliseconds.
+*clearAbortAreaTime* (LONGINT): Time taken to clear sparecore abort area, in milliseconds.
+*writeNodeStatusTime* (LONGINT): Time taken to write the node status information to the sparecore disk, in milliseconds, if any.

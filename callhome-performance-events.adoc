@@ -1,0 +1,62 @@
+---
+sidebar: sidebar
+permalink: callhome-performance-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.performance events
+---
+
+= callhome.performance events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.performance.archive
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when you invoke an AutoSupport for performance archives. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Performance archive callhome for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*URI* (STRING): Alternate destination for this AutoSupport message. If this is set, this AutoSupport message is delivered to this alternate destination.
+*force* (INT): This flag indicates this AutoSupport should be generated and delivered even if the AutoSupport configuration is disabled. If 0 then obey the normal "state" and "support" flags. If this is "1", then ignore the "state" and "support" configuration and deliver as if both "state" and "support" are enabled.
+*case_number* (STRING): Case number to be associated with this performance archive AutoSupport message.
+*aod_initiated* (INT): This flag indicates that NetApp technical support has remotely requested for this AutoSupport via AutoSupport OnDemand.
+*start_date* (STRING): Date at which data collection will begin.
+*end_date* (STRING): Date at which data collection will end.
+*sequence* (LONGINT): Sequence number to use to generate this Autosupport. Use value zero to auto-generate or a value higher than last used ASUP sequence number.
+*aod_req_id* (STRING): AOD request ID
+
+== callhome.performance.data
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the weekly AutoSupport or 'call home' event is sent for performance data. Information is sent to NetApp technical support to ensure that subsequent communications work and to enable operations analysis. Some results of these analysis might include recommendations on upgrades, firmware changes, and configuration changes to improve the reliability and performance of the system. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for PERFORMANCE DATA
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.performance.snap
+*Severity*::
+NOTICE
+*Description*::
+This message occurs some minutes after a reboot or storage takeover operation occurs so that performance information can be sent. Information is sent to NetApp technical support to ensure that subsequent communications work and to enable operations analysis. Some results of these analysis might include recommendations on upgrades, firmware changes, and configuration changes to improve the reliability and performance of the system. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for PERFORMANCE SNAPSHOT
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*URI* (STRING): Alternate destination for this ASUP. If this is set, this ASUP is delivered to this alternate destination.
+*force* (INT): This flag indicates this AutoSupport should be generated and delivered even if the AutoSupport configuration is disabled. If zero then obey the normal "state" and "support" flags. If this is "one", then ignore the "state" and "support" configuration and deliver as if both "state" and "support" are enabled.
+*sequence* (LONGINT): Sequence number to use to generate this Autosupport. Use value zero to auto-generate or a value higher than last used ASUP sequence number.

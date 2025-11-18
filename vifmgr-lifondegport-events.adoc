@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: vifmgr-lifondegport-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.lifondegport events
+---
+
+= vifmgr.lifondegport events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.lifOnDegPort.noPorts
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an attempt to move a logical interface (LIF) currently hosted on a port with degraded health status to a healthy port fails because there are no healthy ports in the LIF's failover group.
+*Corrective Action*::
+Add ports to the broadcast domain or failover group used by the affected LIF. Use the "network interface show -failover" command to review the currently assigned failover targets for each LIF.
+*Syslog Message*::
+LIF %s (on virtual server %s), IP address %s, is currently hosted on node %s, port %s, whose health status is degraded.
+*Parameters*::
+*vifName* (STRING): Name of the LIF that is hosted on the port with degraded health status.
+*vsrvId* (STRING): ID of the virtual server on which the LIF resides.
+*vifIp* (STRING): IP address of the LIF that is hosted on the port with degraded health status.
+*node* (STRING): Name of the node on which the degraded port resides.
+*port* (STRING): Name of the port with degraded health status.

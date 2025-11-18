@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: shm-pulllogwarning-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: shm.pulllogwarning events
+---
+
+= shm.pulllogwarning events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== shm.pullLogWarning
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the disk dongle requests the system to retrieve the error log.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+shm: Disk %s has returned %d warnings and the log will be saved.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*count* (INT): Count of warnings received.

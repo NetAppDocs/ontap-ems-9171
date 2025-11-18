@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: telnet-setsockopt-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: telnet.setsockopt events
+---
+
+= telnet.setsockopt events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== telnet.setsockopt.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when setsockopt on telnet socket fails
+*Corrective Action*::
+Use the error code contained in this message to determine the problem.
+*Syslog Message*::
+Telnet setsockopt error: option %s, option value %s, error code %d (%s).
+*Parameters*::
+*socketlevel* (STRING): This is the socket option level parameter
+*socketoption* (STRING): This is the socket option value parameter
+*errorcode* (INT): This is the error code returned from setsockopt
+*reason* (STRING): Reason why setsockopt failed on telnet socket.

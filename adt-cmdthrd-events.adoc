@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: adt-cmdthrd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: adt.cmdthrd events
+---
+
+= adt.cmdthrd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== adt.cmdthrd.create.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when audit initialization fails because the necessary execution threads cannot be created.
+*Corrective Action*::
+Available system resources are required for this feature to function. The best way to accomplish that is through a system reboot. For HA configurations, operational disruption can be minimized by initiating a partner takeover followed by a reboot of this partner. After the reboot is complete, issue a "giveback" command to return services to this partner.
+*Syslog Message*::
+Audit subsystem internal error: Could not start required audit command threads, system reboot might be required.
+*Parameters*::
+(None).

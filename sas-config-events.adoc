@@ -1,0 +1,66 @@
+---
+sidebar: sidebar
+permalink: sas-config-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sas.config events
+---
+
+= sas.config events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sas.config.bad
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the SAS (Serial Attached SCSI) adapter is connected to a misconfigured SAS domain. Most likely a shelf in-port is attached to another in-port, or a shelf out-port is attached to another out-port. The SAS domain is effectively inoperative and attached SAS adapters will be taken offline. When the misconfiguration is corrected, the affected adapters can be brought back online.
+*Corrective Action*::
+Correct the inter-shelf cabling configuration as defined in the applicable hardware documentation, and then bring the affected adapters back online.
+*Syslog Message*::
+Adapter "%s" is connected to misconfigured SAS domain and being taken offline.
+*Parameters*::
+*adapterName* (STRING): The name of the associated SAS host bus adapter.
+
+== sas.config.badtransition
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SAS (Serial Attached SCSI) adapter is connected to a misconfigured SAS domain. A shelf with a 12 Gigabit-per-second (12 Gb/s) data rate might have been attached to a 3 or 6 Gb/s homogeneous stack or vice-versa. An external homogeneous stack does not allow for any transitions between 12 Gb/s and other data rates. The only exception is when an adapter is attached to an embedded internal shelf. A single transition between an internal shelf and the first external shelf attached to it is allowed. The message will appear the first time a transition is detected on a reboot or storage discovery operation.
+*Corrective Action*::
+Correct the inter-shelf cabling configuration as defined in the applicable hardware documentation. Ensure that the shelf stack is homogeneous. 3 Gb/s and 6 Gb/s shelves are considered homogeneous.
+*Syslog Message*::
+Unsupported speed transition by expander WWN: %s at level %d in SAS stack on adapter port %s.
+*Parameters*::
+*expanderWWN* (STRING): WWN of the expander that caused the illegal transition.
+*expanderLevel* (INT): Level of the expander in the stack causing the transition. It is the physical depth of the shelf in the SAS stack where the error occurs, counting outwards from the adapter port.
+*adapterName* (STRING): Name of the associated SAS host bus adapter port.
+
+== sas.config.invalid
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the SAS (Serial Attached SCSI) adapter is connected to a SAS domain that contains more than the supported number of disk shelves orenclosures. The SAS domain is functional, but some disk shelves/enclosures might not be visible to the system.
+*Corrective Action*::
+Remove disk shelves or enclosures attached to the applicable SAS adapter in question, until the supported limit is reached. (4 for FAS2040 and FAS2050 systems, 10 for all other systems)
+*Syslog Message*::
+Adapter "%s" is connected to more than the supported number of disk shelves or enclosures.
+*Parameters*::
+*adapterName* (STRING): The name of the associated SAS adapter.
+
+== sas.config.mixed.detected
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SAS (Serial Attached SCSI) disk shelf contains a mixture of SAS drives, SATA drives or Bridged SAS drives. Mixing drive types within a disk shelf is not supported.
+*Corrective Action*::
+Ensure that each SAS disk shelf is populated with drives of only one type.
+*Syslog Message*::
+SAS shelf "%s" attached to adapter "%s" contains a mixture of drive types. Mixed configurations are not supported.
+*Parameters*::
+*shelfID* (STRING): ID or serial number of the disk shelf where a mixture of drive types was detected.
+*adapterName* (STRING): Name of the associated SAS host bus adapter.

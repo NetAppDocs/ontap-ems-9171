@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: netinet6-in6-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netinet6.in6 events
+---
+
+= netinet6.in6 events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netinet6.in6.invlid.prfxLen1
+*Severity*::
+ERROR
+*Description*::
+This message occurs because of equal prefix length.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+in6_are_prefix_equal: Invalid prefix length (%d).
+*Parameters*::
+*prfxLen* (INT): Prefix length.
+
+== netinet6.in6.invlid.prfxLen2
+*Severity*::
+ERROR
+*Description*::
+This message occurs because of invalid prefix length.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+in6_prefixlen2mask: Invalid prefix length (%d).
+*Parameters*::
+*prfxLen* (INT): Prefix length.

@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: snaplock-sys-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snaplock.sys events
+---
+
+= snaplock.sys events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snaplock.sys.compclock.set
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system's compliance clock time and date is set.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The compliance clock time of the system has been set to %s. Reason: %s.
+*Parameters*::
+*date* (STRING): Human-readable compliance clock date and time.
+*reason* (STRING): Reason for initialization of the system's compliance clock.
+
+== snaplock.sys.compclock.skew.fixed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the SnapLock(R) system compliance clock time is skewed from the storage system's system clock by more than one day and skew is subsequently fixed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The system compliance clock time (%s) was skewed from the system clock (%s) by more than one day. The system compliance clock time has been reset to the system clock time.
+*Parameters*::
+*system_compliance_clock_time* (STRING): Human readable system compliance clock time.
+*system_time* (STRING): Human readable system time.

@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: nis-group-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nis.group events
+---
+
+= nis.group events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nis.group.db.build.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the NIS group database build fails.
+*Corrective Action*::
+Ensure that the configured NIS domain is reachable and bound. Ensure that the number of characters per record in the NIS server for group database does not exceed 1,024. Run the "vserver services name-service nis-domain group-database build" command to build the NIS group database again.
+*Syslog Message*::
+Failed to build the NIS group database for Vserver %s. Error: %s.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*error_string* (STRING): Error encountered while building the NIS group database.
+
+== nis.group.db.build.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NIS group database build is successful.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NIS group database is successfully built for Vserver %s.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.

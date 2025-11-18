@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: daasync-inquiry-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: daasync.inquiry events
+---
+
+= daasync.inquiry events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== daasync.inquiry.changed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the inquiry data of a target device changes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Inquiry data has changed in path %s with target address %s.
+*Parameters*::
+*path* (STRING): Device path.
+*targ_addr* (STRING): Target address.

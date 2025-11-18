@@ -1,0 +1,52 @@
+---
+sidebar: sidebar
+permalink: cr-rdb-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cr.rdb events
+---
+
+= cr.rdb events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== CR.RDB.Counters.Not.Updated
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the RDB (replicated database) cannot be updated with the inode counters for a particular scan.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The inode counters [percentage scan complete: %d], [estimated time remaining: %s], [number of issues detected: %d] and [number of issues fixed: %d] could not be updated in the RDB due to [error: %s] for [volume: %s] in [Vserver: %s].
+*Parameters*::
+*percentComplete* (INT): Percentage of the inodes scanned.
+*estimatedTime* (STRING): Estimated time remaining for the scan to finish.
+*issuesDetected* (INT): Number of issues detected by the scan so far.
+*issuesFixed* (INT): Number of issues fixed by the scan so far.
+*reason* (STRING): Reason for the failed update.
+*volume* (STRING): Name of the constituent volume for which the RDB could not be updated.
+*vserver* (STRING): Vserver hosting the volume.
+
+== CR.RDB.State.Not.Updated
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the RDB (replicated database) cannot be updated with the final state of the scan, that is, success/failure.
+*Corrective Action*::
+Run the 'volume check stop' command on the respective volume.
+*Syslog Message*::
+The final state [%s] of the 'volume check' scan could not be updated in the RDB due to [error: %s] for volume [%s] in Vserver [%s].
+*Parameters*::
+*state* (STRING): Final state of the scan that has to be updated.
+*reason* (STRING): Reason for the failed update.
+*volume* (STRING): Name of the constituent volume for which the RDB could not be updated.
+*vserver* (STRING): Vserver hosting the volume.

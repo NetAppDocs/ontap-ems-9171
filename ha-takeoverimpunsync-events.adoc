@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ha-takeoverimpunsync-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.takeoverimpunsync events
+---
+
+= ha.takeoverimpunsync events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.takeoverImpUnsync
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the partner node is down and it is currently impossible to perform a takeover because the takeover node does not have partner NVRAM data.
+*Corrective Action*::
+Verify that the interconnect cables are correctly connected between the nodes. Boot the partner node to reestablish the interconnect if it was shut down. If necessary, force a takeover with the '[run node] cf forcetakeover' command. This action might cause data loss if there is NVRAM data on the partner node not written to disk.
+*Syslog Message*::
+Takeover of the partner node is impossible due to lack of partner NVRAM data.
+*Parameters*::
+(None).

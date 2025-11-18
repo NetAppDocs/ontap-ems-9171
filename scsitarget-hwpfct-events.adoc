@@ -1,0 +1,153 @@
+---
+sidebar: sidebar
+permalink: scsitarget-hwpfct-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsitarget.hwpfct events
+---
+
+= scsitarget.hwpfct events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsitarget.hwpfct.dump.saved
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an unexpected event or illegal condition is detected by the FC target driver and the contents of the FC target's memory is saved. Dump files are stored on the system's root volume in the /etc/log directory, with the following file name format: *fct*_[adapter]_[date]_[time].[dmp |queue]
+*Corrective Action*::
+Send the dump file to technical support for analysis.
+*Syslog Message*::
+A dump for adapter %s was stored in %s.
+*Parameters*::
+*adapter* (STRING): Target adapter name.
+*filename* (STRING): Name of the file containing the dump.
+
+== scsitarget.hwpfct.els.rjt
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an Extended Link Services (ELS) request is rejected by the fabric. Depending on the ELS request that is rejected, the initiator might experience issues discovering the target devices.
+*Corrective Action*::
+Ensure that the fabric is zoned and configured correctly. Consult NetApp technical support providing the reason code, reason string, and explanation for further analysis.
+*Syslog Message*::
+The Fibre Channel ELS request %s sent from adapter %s NPIV port %d to port ID 0x%x failed with reason code 0x%x (%s) and explanation code 0x%x.
+*Parameters*::
+*elsrequest* (STRING): ELS request that was rejected by the destination port ID.
+*adapterName* (STRING): Name of the associated Fibre Channel host bus adapter (HBA).
+*npiv_port* (INT): NPIV (N Port ID Virtualization) LIF ID of the source of the ELS request.
+*portID* (INTHEX): Destination port ID of the ELS request.
+*reasonCode* (INTHEX): Reason code provided by the destination port ID for rejection of the ELS request.
+*reason* (STRING): Reason text provided by the destination port ID for rejection of the ELS request.
+*explanationCode* (INTHEX): Explanation code provided by the destination port ID qualifying the stated reason.
+
+== scsitarget.hwpfct.errorReset
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the FCT driver encounters an error which was resolved by resetting the adapter.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+An error was encountered in the FC target driver on Fibre Channel target adapter %s. The adapter will be automatically reset to clear the %s condition.
+*Parameters*::
+*hba* (STRING): Name of the target HBA (host bus adapter) to reset.
+*details* (STRING): Details of the error that caused the reset.
+
+== scsitarget.hwpfct.extraHBA
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects more than the maximum number of supported Fibre Channel target host bus adapters (HBAs). The extra HBAs are not initialized.
+*Corrective Action*::
+Remove the extra Fibre Channel target HBAs from the system.
+*Syslog Message*::
+HBA %s will not be initialized. More than %d Fibre Channel target HBAs were found in the system.
+*Parameters*::
+*hba* (STRING): Name of the Fibre Channel target HBA (host bus adapter) that were not initialized.
+*max* (INT): Maximum number of supported Fibre Channel target HBAs.
+
+== scsitarget.hwpfct.fabRegFail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when Fibre Channel target port fails to register with the fabric. As a result the intended initiators can not see the target devices.
+*Corrective Action*::
+If fabric did not send a rejection the next step is to check cables and connection with the switch. Also ensure that the fabric is zoned correctly. Consult NetApp technical support providing the details and if available, the reason code, string and explanation for further analysis.
+*Syslog Message*::
+Fibre Channel target adapter %s unable to register fc4_type with fabric and export target devices.
+*Parameters*::
+*hba* (STRING): The name of the target HBA (host bus adapter) that failed.
+*portID* (INT): Port ID of the target port trying to register with the fabric.
+*command* (INT): Command that failed during fabric registration.
+*reasonCode* (INTHEX): Reason code (as defined in FC-FS) of the rejection response from the fabric.
+*reasonString* (STRING): Reason string explaining why the request from target was rejected.
+*explanation* (INTHEX): Explanation code (as defined in FC-FS). This provides further detail on the rejection.
+
+== scsitarget.hwpfct.globalLogout
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the FC HBA (host bus adapter) detectes a link down condition and all the initiators have logged out.
+*Corrective Action*::
+Confirm that the filer is still connected to the switch and that the switch is functional.
+*Syslog Message*::
+FC Target %s: Link down, all initiators logged out.
+*Parameters*::
+*hba* (STRING): FC target adapter name.
+
+== scsitarget.hwpfct.initFailed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the FCT driver fails to initialize the HBA (host bus adapter).
+*Corrective Action*::
+Replace the adapter.
+*Syslog Message*::
+Initialization of adapter failed on Fibre Channel target adapter %s.
+*Parameters*::
+*hba* (STRING): (None).
+
+== scsitarget.hwpfct.linkUp
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when FCT driver receives a link up notification.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Link up on Fibre Channel target adapter %s.
+*Parameters*::
+*hba* (STRING): Name of the target HBA which received link-up.
+
+== scsitarget.hwpfct.thirdPartyLogout
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the FCT driver determines that an initiator has issued a third-party logout. Because the initiator is logged out, all SCSI commands from this port are aborted. If the global bit was set, all initiators are logged out and all commands are terminated.
+*Corrective Action*::
+Check to ensure that the initiator is still connected to the fabric.
+*Syslog Message*::
+FC target %s: The initiator at port ID: 0x%x (WWPN %s) issued a third-party logout with %s.
+*Parameters*::
+*hba* (STRING): FC target adapter name.
+*port_id* (INT): Initiator's Fibre Channel "Port Identifier" or "Port Address", as defined in FC-PH. This identifier is mapped to the WWPN and reported in the output of the system CLI command "fcp initiator show" command.
+*node* (STRING): WWPN of the initiator that changed and had commands reset.
+*globalBit* (STRING): Message to indicate whether the global bit in the third-party logout frame was set.
+
+== scsitarget.hwpfct.tooManyInitiatorsConnected
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects too many initiators on the Fibre Channel fabric.
+*Corrective Action*::
+Remove initiators from the fabric until the maximum is no longer being hit. You can remove initiators via zoning or physical disconnection.
+*Syslog Message*::
+Fibre Channel target adapter %s cannot have more than %d initiators connected. Resetting adapter.
+*Parameters*::
+*hba* (STRING): System name for the target HBA(host bus adapter) that has too many initiators attempting to connect to it.
+*max_initiators* (INT): Max initiators that can connect to the HBA.

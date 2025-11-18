@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: vsdr-fpvoldropqospolicy-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsdr.fpvoldropqospolicy events
+---
+
+= vsdr.fpvoldropqospolicy events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsdr.FPVolDropQosPolicy
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system clears or drops an incompatible quality of service (QoS) policy group setting with minimum throughput value set on a destination volume having tiering policy other than "none" on a FabricPool aggregate at the destination cluster.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+QoS policy group with minimum throughput setting cannot be set on the volume "%s" on storage virtual machine (SVM) "%s" on a FabricPool aggregate having a tiering policy other than "none".
+*Parameters*::
+*source_volume_name* (STRING): Name of the source volume on FabricPool aggregate of SVM DR relationship.
+*src_vserver_name* (STRING): Name of the source SVM.

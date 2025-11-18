@@ -1,0 +1,54 @@
+---
+sidebar: sidebar
+permalink: diskown-autoassign-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.autoassign events
+---
+
+= diskown.autoassign events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.AutoAssign.MultipleOwners
+*Severity*::
+ERROR
+*Description*::
+This message occurs when automatic assigning of a disk fails because the disks on the loop are owned by multiple systems.
+*Corrective Action*::
+Use the "storage disk show" command to view the list of systems, and then assign all of the disks on this loop to a single system. Or use the "storage disk assign" command to manually assign this disk.
+*Syslog Message*::
+Automatic assigning failed for disk %s (S/N %s) because the disks on the loop are owned by multiple systems. Automatic assigning failed for all unowned disks on this loop.
+*Parameters*::
+*diskname* (STRING): Name of the disk.
+*serialno* (STRING): Serial number of the disk.
+
+== diskown.AutoAssign.MultiplePools
+*Severity*::
+ERROR
+*Description*::
+This message occurs when automatic assigning of a disk fails because the disks on the loop are shared across multiple pools.
+*Corrective Action*::
+Use the "storage disk assign -pool" command to assign all of the disks on this loop to a single pool. Or use the "storage disk assign" command to manually assign this disk.
+*Syslog Message*::
+Automatic assigning failed for disk %s (S/N %s) because the disks on the loop are shared across multiple pools. Automatic assigning failed for all unowned disks on this loop.
+*Parameters*::
+*diskname* (STRING): Name of the disk.
+*serialno* (STRING): Serial number of the disk.
+
+== diskown.AutoAssign.NoOwner
+*Severity*::
+ERROR
+*Description*::
+This message occurs when automatic assigning of a disk fails because none of the disks on the loop are owned by any system.
+*Corrective Action*::
+Use the "run local disk show -v" command to get the list of systems and unowned disks. Manually assign one of the disks on this loop by using the "storage disk assign" command.
+*Syslog Message*::
+Automatic assigning failed for disk %s (S/N %s) because none of the disks on the loop are owned by any system. Automatic assigning failed for all unowned disks on this loop.
+*Parameters*::
+*diskname* (STRING): Name of the disk.
+*serialno* (STRING): Serial number of the disk.

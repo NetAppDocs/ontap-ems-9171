@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: sis-incorrect-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.incorrect events
+---
+
+= sis.incorrect events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.incorrect.duration.notify
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Single Instance Storage (SIS) volume repeatedly can not finish SIS operation within user-given 'duration' settings.
+*Corrective Action*::
+Change duration settings appropriately, based on SIS completion time history and total amount data that needs to be processed.
+*Syslog Message*::
+SIS operation repeatedly can not finish within duration limits specified by user.
+*Parameters*::
+*volname* (STRING): Path to the SIS volume.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.

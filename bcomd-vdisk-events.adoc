@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: bcomd-vdisk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: bcomd.vdisk events
+---
+
+= bcomd.vdisk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== bcomd.vdisk.repl.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs after a replication failure of a LUN or an NVMe namespace configuration in a MetroCluster(TM) configuration.
+*Corrective Action*::
+Use the "metrocluster vserver resync" command to resynchronize the Vserver configuration for the affected Vserver.
+*Syslog Message*::
+Replication of a LUN or an NVMe namespace configuration failed on Vserver "%s". Reason: %s.
+*Parameters*::
+*vserver* (STRING): Name of the Vserver.
+*error* (STRING): Error encountered while replicating the configuration.
+
+== bcomd.vdisk.transition
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a user attempts to convert a LUN into an NVMe namespace or vice-versa.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Conversion for "%s", Vserver "%s" to type "%s" completed with status "%s".
+*Parameters*::
+*source_vdisk_path* (STRING): Path to the LUN or NVMe namespace to be converted.
+*vserver* (STRING): Name of the Vserver.
+*destination_vdisk_type* (STRING): Destination vdisk type after conversion.
+*status* (STRING): Status of conversion operation.

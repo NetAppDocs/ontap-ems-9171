@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: sectrace-warning-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sectrace.warning events
+---
+
+= sectrace.warning events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sectrace.warning.aboutperf
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a security tracing filter is enabled. It can cause a significant performance degradation and should be disabled as soon as it is no longer needed.
+*Corrective Action*::
+Consider disabling the Security tracing filters as soon as it is no longer needed. 'sectrace filter modify -vserver [id] -index [index] -enabled disabled'
+*Syslog Message*::
+Security tracing is enabled on Vserver %s for the next %d minutes.
+*Parameters*::
+*vservername* (STRING): Name of the vserver on which file/directory tracing is enabled.
+*duration* (INT): Duration of the sectrace filter that is enabled.

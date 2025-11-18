@@ -1,0 +1,116 @@
+---
+sidebar: sidebar
+permalink: acp-exp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: acp.exp events
+---
+
+= acp.exp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== acp.exp.power.cycle
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Alternate Control Path (ACP) Processor receives a command to power-cycle the SAS expander.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SAS expander power-cycle request sent to %s (%s), (disk shelf serial number: %s).
+*Parameters*::
+*inband_id* (STRING): In-band ID of the module.
+*ip* (STRING): IP address of the module.
+*status* (STRING): Status code returned by the 'expander power cycle' command.
+
+== acp.exp.power.cycle.failed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Alternate Controller Path Administrator fails in its attempt to power-cycle the SAS expander.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SAS expander power-cycle request sent to %s (%s) failed with status (%s), (disk shelf serial number: %s).
+*Parameters*::
+*inband_id* (STRING): In-band ID of the module.
+*ip* (STRING): IP address of the module.
+*status* (STRING): Reason for the 'expander power-cycle' failure.
+*shelf_sno* (STRING): Shelf serial number of the shelf where this I/O module is seated.
+
+== acp.exp.power.cycle.success
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an 'expander power cycle' command sent to the Alternate Controller Path (ACP) Processor succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SAS expander power cycle command sent to %s (%s) was successful, (disk shelf serial number: %s).
+*Parameters*::
+*inband_id* (STRING): In-band ID of the module.
+*ip* (STRING): IP address of the module.
+*shelf_sno* (STRING): Disk shelf serial number of the shelf where this I/O module is seated.
+
+== acp.exp.reset
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Alternate Control Path (ACP) Processor receives a command to reset a SAS expander.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SAS expander reset issued to %s (%s), (disk shelf serial number: %s).
+*Parameters*::
+*inband_id* (STRING): In-band ID of the module.
+*ip* (STRING): IP address of the module.
+*status* (STRING): Status code returned by the 'expander reset' command.
+
+== acp.exp.reset.failed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Alternate Controller Path Administrator fails in its attempt to reset the SAS expander.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SAS expander reset request sent to %s (%s) failed with status (%s), (disk shelf serial number: %s).
+*Parameters*::
+*inband_id* (STRING): In-band ID of the module.
+*ip* (STRING): IP address of the module.
+*status* (STRING): Reason for the 'expander reset' failure.
+*shelf_sno* (STRING): Disk shelf serial number of the shelf where this I/O module is seated.
+
+== acp.exp.reset.success
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an 'expander reset' command sent to the Alternate Controller Path (ACP) Processor succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SAS expander reset command sent to %s (%s) was successful, (disk shelf serial number: %s).
+*Parameters*::
+*inband_id* (STRING): In-band ID of the module.
+*ip* (STRING): IP address of the module.
+*shelf_sno* (STRING): Disk shelf serial number of the shelf where this I/O module is seated.
+
+== acp.exp.vpd.failed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an attempt to get SAS expander VPD (Vital Product Data) data from the Alternate Control Path Processor fails.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+An 'expander vpd' request sent to %s (%s) failed with status (%s), (disk shelf serial number: %s).
+*Parameters*::
+*inband_id* (STRING): In-band ID of the module.
+*ip* (STRING): IP address of the module.
+*status* (STRING): Reason for the failure to get the SAS expander vpd data.
+*shelf_sno* (STRING): Disk shelf serial number of the shelf where this I/O module is seated.

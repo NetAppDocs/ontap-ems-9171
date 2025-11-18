@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: cloud-dbinfo-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cloud.dbinfo events
+---
+
+= cloud.dbinfo events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cloud.DBInfo
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP detects that the connection to the cloud database has been closed, which the database service may do periodically for enhanced security. ONTAP will automatically reopen the connection for continued operation.
+*Corrective Action*::
+None.
+*Syslog Message*::
+Cloud database service on table "%s" with message "%s".
+*Parameters*::
+*db_table* (STRING): Name of the cloud database table associated with this ONTAP Cloud instance.
+*info_msg* (STRING): Message in progress to the closed database when the closed database connection was detected.

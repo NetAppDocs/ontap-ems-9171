@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: flexcache-name-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: flexcache.name events
+---
+
+= flexcache.name events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== flexcache.name.sync.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the FlexCache(R) volume rename operation fails to synchronize the FlexCache name information to the origin cluster. Because of this failure, the "volume flexcache origin show-caches" command shows the old FlexCache volume name for the origin relationship.
+*Corrective Action*::
+Use the "volume flexcache sync-properties" command on the FlexCache cluster to update the FlexCache name on the origin cluster. Make sure that the FlexCache cluster and the origin of the FlexCache cluster are running on the same ONTAP(R) build.
+*Syslog Message*::
+Volume rename failed to update the new FlexCache volume "%s" on Vserver "%s" to the origin of the FlexCache cluster. Error: %s.
+*Parameters*::
+*cacheVolName* (STRING): Name of the FlexCache volume.
+*cacheVserver* (STRING): Name of the Vserver hosting the FlexCache volume.
+*errorString* (STRING): Error string.

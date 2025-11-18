@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: rbac-spuser-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rbac.spuser events
+---
+
+= rbac.spuser events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rbac.spuser.role.notfound
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the role that was earlier associated with the service-processor application user in a previous release was deleted in the current release and is not found during a revert to a previous release.
+*Corrective Action*::
+Re-create the deleted role for the service-processor application user using the command "security login role create".
+*Syslog Message*::
+Role "%s" for service-processor user "%s" was not found on SVM "%s".
+*Parameters*::
+*role_name* (STRING): Name of the role which was deleted.
+*user_name* (STRING): Name of the user for which the role modification failed.
+*vserver_name* (STRING): Name of the SVM.

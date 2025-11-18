@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ha-takeoverimphotshelf-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.takeoverimphotshelf events
+---
+
+= ha.takeoverimphotshelf events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.takeoverImpHotShelf
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the partner node is down and it is currently impossible to perform a takeover due to disk shelves that are overheating.
+*Corrective Action*::
+Check cooling for the disk shelves.
+*Syslog Message*::
+Takeover of the partner node is impossible due to disk shelves that are overheating.
+*Parameters*::
+(None).

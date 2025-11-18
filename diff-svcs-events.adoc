@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: diff-svcs-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diff.svcs events
+---
+
+= diff.svcs events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diff.svcs.setting.topartner
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot automatically apply the Differentiated Services (diff-svcs) setting to the High Availability (HA) partner. In the event there is a setting mismatch between HA pairs the node with the incorrect setting may produce an incorrect At-Risk-System (ARS) report.
+*Corrective Action*::
+Manually apply the diff-svcs setting to the HA partner to ensure the setting is consistent across both nodes in the HA pair. In the event of a failure, issue the following command on the HA partner: "system node modify -node nodename -diff-svcs true|false" .
+*Syslog Message*::
+Differentiated services setting was not automatically applied to the HA partner of node %s: %s.
+*Parameters*::
+*node* (STRING): Name of the node where the setting was successfully applied. A failure occurred while trying to apply the same setting to its HA partner.
+*error* (STRING): Error reported when attempting to apply the setting to the HA partner.

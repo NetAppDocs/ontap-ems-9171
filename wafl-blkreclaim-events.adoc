@@ -1,0 +1,80 @@
+---
+sidebar: sidebar
+permalink: wafl-blkreclaim-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.blkreclaim events
+---
+
+= wafl.blkreclaim events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.blkreclaim.abort
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs to inform you that the block reclamation scanner was aborted.
+*Corrective Action*::
+You can disable this message as follows: setflag wafl_blk_reclaim_scan_log 0
+*Syslog Message*::
+Block reclamation scanner was aborted on %s %s%s%s%s.
+*Parameters*::
+*type* (STRING): Type of object (volume/aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Uniquely identifies the volume when the volume name alone is insufficient.
+
+== wafl.blkreclaim.complete
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the block reclamation scanner is complete.
+*Corrective Action*::
+Disable this message by running the 'setflag wafl_blk_reclaim_scan_log 0' command.
+*Syslog Message*::
+Block reclamation scanner was completed on %s %s%s%s%s. The scanner took %ld ms.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*run_time* (LONGINT): Total run time of the scanner.
+
+== wafl.blkreclaim.noscan
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued to inform the user that the block reclamation scanner was not started.
+*Corrective Action*::
+This message may be disabled with: setflag wafl_blk_reclaim_scan_log 0
+*Syslog Message*::
+Block reclamation scanner not started on %s %s%s%s%s.
+*Parameters*::
+*type* (STRING): The type of object (volume/aggregate)
+*owner* (STRING): The volume owner
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== wafl.blkreclaim.reset
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs to inform you that the block reclamation scanner was reset.
+*Corrective Action*::
+You can disable this message as follows: setflag wafl_blk_reclaim_scan_log 0
+*Syslog Message*::
+Block reclamation scanner was reset on %s %s%s%s%s.
+*Parameters*::
+*type* (STRING): Type of object (volume/aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Uniquely identifies the volume when the volume name alone is insufficient.

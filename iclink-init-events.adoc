@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: iclink-init-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: iclink.init events
+---
+
+= iclink.init events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== iclink.init.error
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the HA interconnect fails to initialize.
+*Corrective Action*::
+Reboot the system. If the problem persists, run diagnostics on the memory in the node.
+*Syslog Message*::
+(None).
+*Parameters*::
+*errorCode* (INT): The internal error code.

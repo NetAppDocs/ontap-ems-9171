@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: daasync-capacity-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: daasync.capacity events
+---
+
+= daasync.capacity events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== daasync.capacity.changed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the capacity data of a target device changes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Capacity data has changed for device path %s with target address %s.
+*Parameters*::
+*path* (STRING): Device path.
+*targ_addr* (STRING): Target address.

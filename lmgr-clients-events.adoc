@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: lmgr-clients-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lmgr.clients events
+---
+
+= lmgr.clients events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lmgr.clients.st.limit.hit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the number of NFSv4 session trunked clients reaches the max limit thereby prohibiting allocations for any new trunked clients. This possibly happens due to system being overloaded.
+*Corrective Action*::
+Use the "statistics show -raw true -object lmgr_ng" command for displaying all lock manager resource counters. Use the "statistics show -raw true -object lmgr_ng -instance <node-name>" command for displaying the lock manager statistics for a node's limit pool. Use the "statistics show -raw true -object lmgr_ng -node <node-name>" command for displaying all lock manager statistics on the specified node.
+*Syslog Message*::
+The number of session trunked clients %u has reached the limit %u for the pool %s.
+*Parameters*::
+*clients_st_total* (INT): Number of session trunked clients in total in the pool.
+*clients_st_limit* (INT): Max supported limit for the session trunked clients in the pool.
+*pool_name* (STRING): Name of the limit pool.

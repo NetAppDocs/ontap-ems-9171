@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: nblade-s3bucketpathisstale-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.s3bucketpathisstale events
+---
+
+= nblade.s3bucketpathisstale events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.s3BucketPathIsStale
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the path of the NAS directory corresponding to an S3 NAS Bucket is stale (deleted or deleted and recreated) after the bucket was created. This will cause all accesses to that S3 bucket to fail.
+*Corrective Action*::
+Check the NAS path corresponding to the S3 bucket using the command "object-store-server bucket show -bucket bucket-name -instance". Either delete the S3 NAS bucket if no longer needed or delete and recreate it with the required NAS path.
+*Syslog Message*::
+NAS path "%s" corresponding to S3 bucket "%s" was found to be stale on SVM "%s".
+*Parameters*::
+*nasPath* (STRING): NAS directory path of the S3 bucket that was stale.
+*bucketName* (STRING): Name of the S3 bucket associated with this operation.
+*SVM* (STRING): SVM associated with this operation.

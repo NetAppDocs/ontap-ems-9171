@@ -1,0 +1,87 @@
+---
+sidebar: sidebar
+permalink: cf-partner-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.partner events
+---
+
+= cf.partner events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.partner.login
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when a login to the console of the partner occurs as a result of the 'partner' command being issued with no arguments.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Login to partner shell: %s
+*Parameters*::
+*hostname* (STRING): The name of this node
+
+== cf.partner.logoff
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when a logoff from the console of the partner occurs as a result of the 'partner' command being issued with no arguments.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Logoff from partner shell: %s
+*Parameters*::
+*hostname* (STRING): The name of this node
+
+== cf.partner.nvram.notSync
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during takeover, when the system finds the partner nonvolatile memory (NVRAM) unsynchronized. There might be data loss.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Partner NVRAM was not synchronized. Some data might be lost.
+*Parameters*::
+(None).
+
+== cf.partner.nvram.state
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during takeover, when the system determines that the partner mailbox is stale. This might mean that partner nonvolatile memory (NVRAM) is unsynchronized and might have some data loss.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Partner mailbox was stale. Partner NVRAM might not be synchronized and some data might be lost.
+*Parameters*::
+(None).
+
+== cf.partner.ready.giveback
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the partner is booted and ready for giveback.
+*Corrective Action*::
+Verify that network connectivity is restored, and then use the "storage failover giveback" command to initiate giveback to the partner.
+*Syslog Message*::
+Partner is booted and ready for giveback.
+*Parameters*::
+(None).
+
+== cf.partner.shortUptime
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a node in a controller failover pair determines that the partner node has stayed up for a very short time period. This might result in a takeover
+*Corrective Action*::
+Check the disk connectivity to the partner node. If the problem persists and the partner node restarts multiple times, perform hardware diagnostics in maintenance mode, and then consult the EMS logs to determine why this is happening.
+*Syslog Message*::
+Partner up for %llu seconds only.
+*Parameters*::
+*seconds* (LONGINT): Time duration for which the partner was up.

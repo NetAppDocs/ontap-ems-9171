@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: vscan-enabled-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vscan.enabled events
+---
+
+= vscan.enabled events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vscan.enabled
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a Vserver or cluster administrator enables Vscan on a Vserver. Based on the configuration, subsequent client requests can trigger virus scanning.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Vscan is enabled on Vserver '%s'.
+*Parameters*::
+*vserverName* (STRING): Name of the Vserver.

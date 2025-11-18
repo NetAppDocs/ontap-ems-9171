@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: scsi-security-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsi.security events
+---
+
+= scsi.security events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsi.security.authLockOut
+*Deprecated*::
+This event is removed to disassociate from SCSI, with the advent of NVMe encrypting drives. See replacement message EMS_nse_authLockedOut.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a self-encrypting drive (SED) reports excessive sequential failed authentication attempts with an incorrect Authentication Key (AK). To prevent brute-force AK attacks, the SED will no longer accept even the correct AK. Access and control of the SED are affected. BandMaster1 authority lockout affects protection controls on user data. The system cannot authenticate using the data AK. A device power-cycle will result in data loss on the drive. For other lockouts, some aspect of compliance with Federal Information Processing Standard (FIPS) PUB 140-2 is compromised. Erase Master lockout disables cryptographic sanitize and destroy.
+*Corrective Action*::
+For BandMaster1 authority lockout, reset the AK to its default value and simultaneously erase user data using the "storage encryption disk sanitize" command or the (advanced privilege) "disk encrypt sanitize" command in node shell/maintenance mode. Power-cycle clears Physical Ownership lockout in some SEDs. For other lockouts, reset the SED to its as-manufactured state and erase user data using the "storage encryption disk revert-to-original-state" command or the (advanced privilege) "disk encrypt revert_original" command in node shell/maintenance mode with the PSID value from the device label. If the PSID is not available, replace the drive. After clearing lockout, make the drive a spare by using the "storage disk assign" command and (advanced privilege) "storage disk unfail [-spare]" command as needed. To prevent lockouts, ensure that all cluster NSE nodes have all SED AKs. Display SED key IDs by using the "storage encryption disk show [-fips]" command. Verify them against those retrieved from the AK storage method: KMIP servers: Use the "security key-manager restore" command. Onboard key management: Use the "security key-manager key show" command.
+*Syslog Message*::
+Lockout on Storage Encryption device %s; security provider: %s, authority: %s, during operation "%s".
+*Parameters*::
+*deviceName* (STRING): Name of the device.
+*securityProvider* (STRING): Name of the security provider.
+*authority* (STRING): Name of the authority.
+*operation* (STRING): Description of the operation that attempted authentication.

@@ -1,14 +1,18 @@
 indexpage:
-  title: # Unquoted string 
-  lead: # Quoted string
-  summary: # Quoted string 
-  keywords: # Unquoted comma-delimited list of keywords 
-  tiles: 
-    # Tile definition 
-    - title: # Quoted or unquoted string
-      links: 
-        # Link definition
-        - title: # Quoted or unquoted string
-          url: # Path to target
-        # Next link on this tile (title/url pair)
-    # Next tile on this page (title/links)
+  title: ONTAP 9.17.1 EMS reference
+  lead: 'The ONTAP 9.17.1 EMS reference documents all EMS (Event Management System) events in the ONTAP 9.17.1 release.'
+  summary: 'The ONTAP 9.17.1 EMS reference documents all EMS (Event Management System) events in the ONTAP 9.17.1 release.'
+  keywords: ems, message, messages, event, events, group, catalog
+  tiles:
+    - title: About the ONTAP 9 EMS
+      links:
+        - title: Configure EMS
+          url: https://docs.netapp.com/us-en/ontap/error-messages/index.html
+    - title: More resources
+      links:
+        - title: ONTAP 9 Release Notes
+          url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508
+        - title: ONTAP 9 documentation
+          url: https://docs.netapp.com/us-en/ontap/
+        - title: Automate with the REST API
+          url: https://docs.netapp.com/us-en/ontap-automation/getting_started_with_the_rest_api.html

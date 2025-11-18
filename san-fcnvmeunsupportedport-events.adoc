@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: san-fcnvmeunsupportedport-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.fcnvmeunsupportedport events
+---
+
+= san.fcnvmeunsupportedport events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.FcNvmeUnsupportedPort
+*Severity*::
+ERROR
+*Description*::
+This message occurs in MetroCluster(tm) configurations on clustered Data ONTAP(R) systems, when Data ONTAP has an FC NVMe (Nonvolatile Memory Express) logical interface (LIF) hosted on an unsupported FC port.
+*Corrective Action*::
+Use the "fcp adapter show -fields data-protocols-supported" command to view the list of valid Fibre-Channel ports in the fabric. Identify the Fibre-Channel ports that supports FC-NVMe LIFs with the help of the "data-protocols-supported" field. Bring down the FC-NVMe LIF using the "network interface modify -vserver <vserver_name> -lif <lif_name> -status-admin down" command and move the FC-NVMe LIF to an FC port which support FC-NVMe LIFs using the "network interface modify -vserver <vserver_name> -lif <lif_name> -home-port <FC_NVME_LIF_supported_FC_port_name> -home-node <Node_name_of_supported_FC_port>" command. Bring the FC-NVMe LIF back up using the "network interface modify -vserver <vserver_name> -lif <lif_name> -status-admin up" command, run the "metrocluster check run" command and then verify that the LIF placement succeeded by using the "metrocluster check lif show -vserver <vserver_name> -lif <lif_name>" command.
+*Syslog Message*::
+Port "%s" on node "%s" does not support hosting FC-NVMe LIF "%s".
+*Parameters*::
+*port* (STRING): Unsupported port that hosts the FC-NVMe LIF.
+*node* (STRING): Name of the node on which the LIF is hosted.
+*lif* (STRING): Name of the FC-NVMe LIF hosted on unsupported FC port.

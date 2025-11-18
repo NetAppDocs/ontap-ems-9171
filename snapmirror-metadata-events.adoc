@@ -1,0 +1,54 @@
+---
+sidebar: sidebar
+permalink: snapmirror-metadata-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapmirror.metadata events
+---
+
+= snapmirror.metadata events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapmirror.metadata.create.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Synchronous SnapMirror(R) destination flexible volume is unable to enter synchronous replication mode because the containing aggregate does not have enough space left to allow the update to proceed.
+*Corrective Action*::
+This error can be fixed by creating more space in the containing aggregate. This can be done by adding additional disks to the containing aggregate.
+*Syslog Message*::
+Synchronous SnapMirror failed to update volume '%s' because there is not enough space in containing aggregate '%s'.
+*Parameters*::
+*dst_volume* (STRING): The name of the Synchronous SnapMirror(R) destination volume
+*dst_aggr* (STRING): The name of the aggregate containing the destination volume
+
+== snapmirror.metadata.definite.loss
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Synchronous SnapMirror(R) destination flexible volume has lost metadata while entering synchronous replication mode.
+*Corrective Action*::
+This error becomes obsolete if the destination volume successfully goes into sync. If the destination volume is made writable before it goes into sync, then it will come online with a recovery point (a snapshot) that's behind the on-disk recovery point that the destination had when it fell out of sync. Wafliron and Snapmirror Checker must be run on the destination after it is made writable to verify filesystem consistency.
+*Syslog Message*::
+Synchronous SnapMirror has lost metadata for volume '%s' in containing aggregate '%s' when going into sync.
+*Parameters*::
+*dst_volume* (STRING): The name of the Synchronous SnapMirror(R) destination volume
+*dst_aggr* (STRING): The name of the aggregate containing the destination volume
+
+== snapmirror.metadata.possible.loss
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Synchronous SnapMirror(R) destination flexible volume may or may not have lost metadata while entering synchronous replication mode.
+*Corrective Action*::
+This warning becomes obsolete if the destination volume successfully goes into sync. If the destination volume is made writable before it goes into sync, then there are two possible outcomes. If the destination comes online with a recovery point (a snapshot) that's behind the on-disk recovery point that the destination had when it fell out of sync, then the system has lost the recovery point. If however the destination comes online with a recovery point (a snapshot) that's better than before then there are no problems. In either case, wafliron and Snapmirror Checker must be run on the destination after it is made writable to check for any possible errors.
+*Syslog Message*::
+Synchronous SnapMirror may or may not have lost metadata for volume '%s' in containing aggregate '%s' when going into sync.
+*Parameters*::
+*dst_volume* (STRING): The name of the Synchronous SnapMirror(R) destination volume
+*dst_aggr* (STRING): The name of the aggregate containing the destination volume

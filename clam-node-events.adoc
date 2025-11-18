@@ -1,0 +1,104 @@
+---
+sidebar: sidebar
+permalink: clam-node-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: clam.node events
+---
+
+= clam.node events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== clam.node.disabled
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the local Connectivity, Liveliness and Availability Monitor (CLAM) concludes that the local node is now disabled.
+*Corrective Action*::
+This EMS is logged when the local node has lost connectivity with the rest of the nodes in the cluster and the connectivity has not been restored in time for the local node to participate in cluster quorum. Take the actions prescribed for "EMS_clam_node_ooq" event.
+*Syslog Message*::
+CLAM published an event indicating the local node is now disabled(reason: %s).
+*Parameters*::
+*disabled_reason* (STRING): Reason for the node getting disabled.
+
+== clam.node.inq
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Kernel Cluster Services (KCS) Connectivity, Liveliness, Availability Monitor (CLAM) determines that a node in the cluster has transitioned to "cluster quorum".
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cluster node (name=%s, ID=%llu) is in "CLAM quorum".
+*Parameters*::
+*hostname* (STRING): Host name of the cluster node that transitioned to quorum.
+*nodeid* (LONGINT): Node ID of the cluster node that transitioned to quorum.
+
+== clam.node.ooq
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the Kernel Cluster Services (KCS) Connectivity, Liveliness, Availability Monitor (CLAM) determines that a node in the cluster is out of "cluster quorum".
+*Corrective Action*::
+Take one or more of the following actions: - Follow the KB article 2022109 to troubleshoot the resolve the issue. - Check the connectivity of the node to the cluster interconnect and fix any problems. - If the local node is administratively disabled, enable it by running the following command from the clustershell 'cluster modify -node node_name -eligibility true'. - If the node is supposed to be in an HA pair but is not, enable the HA pair. You can check whether a node is in an HA pair by running 'storage failover show' command from the clustershell. You can enable storage failover by running the 'storage failover modify -enabled true' command from the clustershell. - If there is a version incompatibility between the local node and the other nodes in the cluster, upgrade the nodes as needed. You can see the software version of all the nodes from the clustershell using the 'version -node *' command.
+*Syslog Message*::
+Node (name=%s, ID=%llu) is out of "CLAM quorum" (reason=%s).
+*Parameters*::
+*hostname* (STRING): Host name of the node that is out of quorum.
+*nodeid* (LONGINT): Node ID of the node that is out of quorum.
+*reason* (STRING): Reason for the out of quorum transition.
+
+== clam.node.paused
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the local Connectivity, Liveliness and Availability Monitor (CLAM) entered a paused state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+CLAM published an event indicating the local node has paused.
+*Parameters*::
+(None).
+
+== clam.node.resumed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the local Connectivity, Liveliness and Availability Monitor (CLAM) was previously in a paused state and has now resumed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+CLAM published an event indicating the local node has resumed.
+*Parameters*::
+(None).
+
+== clam.node.start.voting
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Kernel Cluster Services (KCS) Connectivity, Liveliness, Availability Monitor (CLAM) on a local node has started to vote for its high-availability (HA) partner node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+CLAM on local node (ID:%llu) has started to vote for its HA partner node (ID:%llu).
+*Parameters*::
+*local_id* (LONGINT): Node ID of the local node.
+*partner_id* (LONGINT): Node ID of the partner node.
+
+== clam.node.stop.voting
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Kernel Cluster Services (KCS) Connectivity, Liveliness, Availability Monitor (CLAM) on a local node has stopped voting for its high-availability (HA) partner node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+CLAM on local node (ID:%llu) has stopped to vote for its HA partner node (ID:%llu).
+*Parameters*::
+*local_id* (LONGINT): Node ID of the local node.
+*partner_id* (LONGINT): Node ID of the partner node.

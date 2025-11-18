@@ -1,0 +1,55 @@
+---
+sidebar: sidebar
+permalink: fg-recover-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fg.recover events
+---
+
+= fg.recover events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fg.recover.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the recovery of a FlexGroup volume back into a FlexVol(R) fails. The FlexGroup volume is still operable.
+*Corrective Action*::
+Ensure that the FlexGroup volume is a valid candidate for the recovery operation, and then retry the command. If the error persists, contact NetApp technical support.
+*Syslog Message*::
+Conversion of FlexVol volume %s to FlexGroup with MSID %llu failed. Reason: %s
+*Parameters*::
+*volumeName* (STRING): Name of volume being recovered back into a FlexVol.
+*flexgroupMsid* (LONGINTHEX): MSID of the recovered FlexVol.
+*reason* (STRING): Reason why the recovery failed.
+
+== fg.recover.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the recovery of a FlexGroup volume back into a FlexVol(R) begins.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Starting recovery of FlexGroup volume %s back into a FlexVol(R) with MSID %llu.
+*Parameters*::
+*volumeName* (STRING): Name of volume being recovered back into a FlexVol.
+*volMsid* (LONGINTHEX): MSID of the recovered FlexVol.
+
+== fg.recover.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the recovery of a FlexGroup volume back into a FlexVol(R) succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Conversion of FlexVol volume %s to FlexGroup with MSID %llu successful.
+*Parameters*::
+*volumeName* (STRING): Name of volume being recovered back into a FlexVol.
+*volMsid* (LONGINTHEX): MSID of the recovered FlexVol.

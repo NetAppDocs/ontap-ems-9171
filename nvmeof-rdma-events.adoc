@@ -1,0 +1,47 @@
+---
+sidebar: sidebar
+permalink: nvmeof-rdma-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvmeof.rdma events
+---
+
+= nvmeof.rdma events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvmeof.rdma.disconnect.event
+*Deprecated*::
+Deprecated as of version 9.13.1.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NVMe-oF driver detects an RDMA disconnect. There might be a decrease in performance while reconnecting.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NVMe-oF RDMA disconnect on subnqn %s, controller ID %d, qpair ID %d.
+*Parameters*::
+*subnqn* (STRING): Subsystem NVMe qualified name.
+*ctrlr_id* (INT): Controller ID.
+*qpair* (INT): Qpair ID.
+
+== nvmeof.rdma.disconnect.status
+*Deprecated*::
+Deprecated as of version 9.13.1.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NVMeoF driver detects a command that finishes with a disconnect status. There might be a decrease in performance while reconnecting.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NVMe-oF disconnect on subnqn %s, controller ID %d, qpair ID %d.
+*Parameters*::
+*subnqn* (STRING): Subsystem NVMe qualified name.
+*ctrlr_id* (INT): Controller ID.
+*qpair* (INT): Qpair ID.

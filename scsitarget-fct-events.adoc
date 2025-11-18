@@ -1,0 +1,246 @@
+---
+sidebar: sidebar
+permalink: scsitarget-fct-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsitarget.fct events
+---
+
+= scsitarget.fct events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsitarget.fct.fabNameRSCN
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a Fibre Channel (FC) Registered State Change Notification (RSCN) frame is received, specifically for a fabric name change event.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Fibre Channel target adapter "%s" is receiving a fabric name change notification.
+*Parameters*::
+*hba* (STRING): Name of the HBA (host bus adapter) that is receiving the notification frame.
+
+== scsitarget.fct.fntimeout
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Fibre Channel (FC) target's fabric name retrieval mechanism times out on a given adapter port. This can cause failures for the "fcp adapter show" command, and it might also be associated with issues during procedures such as storage virtual machine (SVM) disaster recovery initialization.
+*Corrective Action*::
+Confirm that the port is still connected to the switch port, and that the switch port is functional. On a MetroCluster system, it might be helpful to run the "fcp adapter show -adapter port -field fabric-name" command, prior to performing operations such as MetroCluster resync.
+*Syslog Message*::
+Fabric name retrieval mechanism timed out for FC target port: %s with WWPN: %s. Status code: %d.
+*Parameters*::
+*adapterName* (STRING): The name of the associated Fibre Channel (FC) host bus adapter port.
+*wwpn* (STRING): World wide port name (WWPN) of the target adapter port that gave the error.
+*fabricStatus* (INT): Status code returned by fabric retrieval call.
+
+== scsitarget.fct.linkError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Fibre Channel (FC) Host Bus Adapter (HBA) encounters a physical layer issue. This might result in the frame being dropped. The following are examples of protocol errors that result in this message: - Bad start of frame (SOF) - Bad end of frame (EOF) - CRC error - Running disparity error - Link Reset primitive detection
+*Corrective Action*::
+Recurring instances of this message indicate a physical layer issue. Perform the following recovery actions: - Verify that the overall SAN fabric is healthy. - Verify that the SFP is healthy at both endpoints, replace if necessary. - Clean or replace the cables. Contact technical support with the code and status information for further analysis.
+*Syslog Message*::
+FC target HBA: %s received unexpected error: %s, %s Status1: 0x%x, Status2: 0x%x, Status3: 0x%x.
+*Parameters*::
+*hba* (STRING): Name of the target HBA that issued the error.
+*error1* (STRING): String associated with the error.
+*error2* (STRING): Additional string associated with the error.
+*status1* (INTHEX): Firmware status code 1.
+*status2* (INTHEX): Firmware status code 2.
+*status3* (INTHEX): Firmware status code 3.
+
+== scsitarget.fct.loginfailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Fibre Channel target driver encounters a FDISC or FLOGI failure. The failure can cause the FC target port or the LIF to be operationally down.
+*Corrective Action*::
+Contact technical support for further analysis.
+*Syslog Message*::
+FC port %s, NPIV port %d failed fabric login with status of %d and an extended status of x%x.
+*Parameters*::
+*hba* (STRING): FC HBA where the login failure occurred.
+*npiv_port* (INT): NPIV (N Port ID Virtualization) LIF ID.
+*status* (INT): Status value communicated by the firmware after login processing.
+*extended_status* (INTHEX): Extended status value communicated by the firmware after login processing.
+
+== scsitarget.fct.npivErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Fibre Channel (FC) fabric does not have NPIV (N Port ID Virtualization) enabled.
+*Corrective Action*::
+Enable NPIV on the FC fabric for the FC LIF (logical interface) to come online. The fabric port related to the FC LIF should be disabled and then reenabled after NPIV is enabled. Use the "network interface" command to mark the operational status of the LIF as "up".
+*Syslog Message*::
+NPIV is disabled on the fabric %s port %s. The target HBA resides at host %s at port %s.
+*Parameters*::
+*switch_name* (STRING): FC fabric name.
+*switch_port_num* (STRING): Fabric port number where NPIV is disabled.
+*target_host_name* (STRING): Host name of the target node.
+*target_host_port_name* (STRING): Port name of the target HBA.
+
+== scsitarget.fct.offlineComplete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the FCT adapter offline process is complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Fibre Channel target adapter %s was brought offline.
+*Parameters*::
+*hba* (STRING): HBA (host bus adapter) that was taken offline.
+
+== scsitarget.fct.offlineStart
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the FCT adapter offline process starts.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Fibre Channel target adapter %s is being brought offline.
+*Parameters*::
+*hba* (STRING): Name of the HBA(host bus adapter) that is being taken offline.
+
+== scsitarget.fct.onlining
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the FCT adapter is online.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Fibre Channel target adapter %s is being brought online.
+*Parameters*::
+*hba* (STRING): Name of the HBA (host bus adapter) that is being brought online.
+
+== scsitarget.fct.pingErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the ELS_ECHO reply does not match the ELS_ECHO request issued by the 'fcp ping' CLI command. This means that the 'fcp ping' command failed the signal quality tests specified in the Methodologies for Signal Quality Specification (MSQS).
+*Corrective Action*::
+Check the applicable section of MSQS (http://www.t11.org/ftp/t11/pub/fc/msqs/10-314v3.pdf): if a default payload was specified in the 'fcp ping' command and the platform is 8GFC or lower then the JSPAT (scrambled jitter pattern) test failed. Check the MSQS section 2.1 for a list of tests that JSPAT verifies. If the platform is 10GFC or higher and a default payload was specified, then an OMA (Optical Modulation Amplitude) or VMA (Voltage Modulation Amplitude) test failed. Check the MSQS section 2.2.1 for an explanation of these methods.
+*Syslog Message*::
+FC ping failed because of a mismatch between request and response payloads. The request payload is %s and the response payload is %s at index %d. The link rate of the port is %d.
+*Parameters*::
+*req_payload* (STRING): First mismatched character of ELS ECHO request payload.
+*res_payload* (STRING): First mismatched character of ELS ECHO response payload.
+*index* (INT): Index of the first mismatch between the ECHO request and response payloads.
+*link_rate* (INT): Link rate of the Fibre Channel (FC) port.
+
+== scsitarget.fct.port.full
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the number of outstanding commands on a physical FC target port exceeds the supported limit on that port.
+*Corrective Action*::
+To recover from this condition, evaluate the host fan-in on the port, and then take one of the following actions: - Reduce the number of hosts that are logging in to this port. - Reduce the number of LUs being accessed by the hosts logging in to this port. - Reduce the host command queue depth. Monitor the queue_full counter on the fcp_port CM object, and make sure that it is not increasing. Example: statistics show -object fcp_port -counter queue_full -instance port.portname -raw Monitor and verify that the threshold counter is also not increasing. Example: statistics show -object fcp_port -counter threshold_full -instance port.portname -raw
+*Syslog Message*::
+FC target port %s has %d outstanding commands, which exceeds the maximum number of commands %d that can be supported by this port.
+*Parameters*::
+*portname* (STRING): Port name on which the outstanding commands exceeded the supported limit.
+*active_commands* (INT): Number of outstanding commands on the port.
+*max_commands* (INT): Number of maximum commands supported on the port.
+
+== scsitarget.fct.port.offline
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Fibre Channel target port is taken offline due to too many errors received by the FCT driver. As a result, the port is not able to support FCP traffic.
+*Corrective Action*::
+To determine the cause of the errors, run the "fcp adapter show" command and use the output to determine the next course of action.
+*Syslog Message*::
+Fibre Channel Target port %s was taken operationally offline due to too many errors received by the FCT driver.
+*Parameters*::
+*adapterName* (STRING): The name of the associated Fibre Channel host bus adapter.
+
+== scsitarget.fct.port.thresh
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the number of outstanding commands on a physical FC target port exceeds best practices as defined in the SAN configuration guide.
+*Corrective Action*::
+To recover from this condition, evaluate the host fan-in on the port, and then take one of the following actions: - Reduce the number of hosts that are logging in to this port. - Reduce the number of LUs being accessed by the hosts logging in to this port. - Reduce the host command queue depth. Monitor the threshold_full counter on the fcp_port CM object, and make sure that it is not increasing. Example: statistics show -object fcp_port -counter threshold_full -instance port.portname -raw
+*Syslog Message*::
+FC target port %s has %d outstanding commands, which exceeds the threshold %d for this port.
+*Parameters*::
+*portname* (STRING): Port name on which the outstanding commands exceeded the threshold.
+*active_commands* (INT): Number of outstanding commands on the port.
+*supported_threshold* (INT): Threshold of the number of commands supported on the port.
+
+== scsitarget.fct.portLogin
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an initiator logs into a target port.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Login at target FC port: '%s' by initiator port: '%s' address 0x%x. The target virtual port is: '%s'.
+*Parameters*::
+*hba* (STRING): Name of target Fiber Channel host bus adapter (HBA) where the port logged in.
+*portname* (STRING): Port name of the initiator that logged in.
+*addr* (INTHEX): Initiator's Fibre Channel 'Port Identifier' or 'Port Address'as defined in FC-PH. This identifier is mapped to the WWPN and reported in the output of the filer CLI "fcp initiator show" command.
+*lifname* (STRING): The name of the virtual port of the FC host bus adapter (HBA) where the initiator logged in.
+
+== scsitarget.fct.postFailed
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the host bus adapter (HBA) failed its power-on self test (POST).
+*Corrective Action*::
+Configure the HBA down then up again by using the "fcp config" command. If the HBA consistently fails its POST, replace it. Otherwise, monitor the HBA for intermittent errors and replace it if the errors occur too frequently. As part of the failing POST, an SRAM dump file is saved in the /etc/log directory. Contact NetApp technical support with this file for further analysis.
+*Syslog Message*::
+FC target HBA %s could not initialize because of a POST failure.
+*Parameters*::
+*hba* (STRING): HBA that failed its POST.
+
+== scsitarget.fct.reset
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the FCT adapter is being reset.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Resetting Fibre Channel target adapter %s.
+*Parameters*::
+*hba* (STRING): Name of the target HBA (host bus adapter) being reset.
+
+== scsitarget.fct.sfpRxPowerLow
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the power received (RX) by a small form-factor pluggable transceiver (SFP) is at a level below the defined threshold, which might indicate a failing or faulty part.
+*Corrective Action*::
+Monitor the operating value. If it continues to decrease, then replace the SFP and/or the cables.
+*Syslog Message*::
+The SFP in FC target adapter %s reports that it is receiving (RX) at a low level of power. Operating value %d (uWatts), Threshold value %d (uWatts).
+*Parameters*::
+*adapter* (STRING): Target adapter name.
+*operating_value* (INT): The current operating value. The value is in microwatts (uWatts).
+*threshold_value* (INT): The defined threshold value. The value is in microwatts (uWatts).
+
+== scsitarget.fct.sfpTxPowerLow
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a small form-factor pluggable transceiver (SFP) is transmitting (TX) power at a level below the defined threshold, which might indicate a failing or faulty part.
+*Corrective Action*::
+Monitor the operating value. If it continues to decrease then replace the SFP and/or the cables.
+*Syslog Message*::
+The SFP in FC target adapter %s reports that it is transmitting (TX) at a low level of power. Operating value %d (uWatts), Threshold value %d (uWatts).
+*Parameters*::
+*adapter* (STRING): Target adapter name.
+*operating_value* (INT): The current operating value. The value is in microwatts (uWatts).
+*threshold_value* (INT): The defined threshold value. The value is in microwatts (uWatts).

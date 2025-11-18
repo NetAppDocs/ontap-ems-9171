@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: quota-resize-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: quota.resize events
+---
+
+= quota.resize events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== quota.resize.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when quota resize starts.
+*Corrective Action*::
+None.
+*Syslog Message*::
+%s
+*Parameters*::
+*noticestring* (STRING): Quota resize started.
+
+== quota.resize.stop
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when quota resize stops or finishes.
+*Corrective Action*::
+None.
+*Syslog Message*::
+%s
+*Parameters*::
+*noticestring* (STRING): Quota resize stopped or completed. It also reports the duration for the quota resize.

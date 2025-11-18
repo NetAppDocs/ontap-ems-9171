@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: bcomd-fcnvmelifremoved-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: bcomd.fcnvmelifremoved events
+---
+
+= bcomd.fcnvmelifremoved events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== bcomd.fcNvmeLifRemoved
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an FC NVMe (Nonvolatile Memory Express) logical interface (LIF) is removed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LIF %s (on Vserver %s), WWPN %s, was removed from node %s, port %s.
+*Parameters*::
+*lifname* (STRING): Name of the LIF that was removed.
+*vserver* (STRING): Name of the Vserver on which the LIF resided.
+*wwpn* (STRING): WWPN that was removed.
+*node* (STRING): Name of the node on which the LIF had been hosted.
+*port* (STRING): Name of the port on which the LIF had been hosted.

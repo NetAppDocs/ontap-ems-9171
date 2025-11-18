@@ -1,0 +1,60 @@
+---
+sidebar: sidebar
+permalink: mgmtgwd-certificate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmtgwd.certificate events
+---
+
+= mgmtgwd.certificate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmtgwd.certificate.expired
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a digital certificate for a Vserver expires. Client-server communication is not secure.
+*Corrective Action*::
+Install a new digital certificate on the system using the 'security certificate create' or 'security certificate install' command.
+*Syslog Message*::
+A digital certificate with Fully Qualified Domain Name (FQDN) %s, Serial Number %s, Certificate Authority '%s' and type %s for Vserver %s has expired.
+*Parameters*::
+*common_name* (STRING): Name of the Fully Qualified Domain Name(FQDN) whose digital certificate expired.
+*serial_number* (STRING): Serial Number of the digital certificate.
+*certificate_authority* (STRING): Name of the Certificate Authority.
+*type* (STRING): Type of the digital certificate.
+*vserver* (STRING): Name of the Vserver.
+
+== mgmtgwd.certificate.expiring
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a digital certificate for a Vserver is about to expire. Client-server communication will not be secure if the certificate expires.
+*Corrective Action*::
+Install a new digital certificate on the system using the 'security certificate create' or 'security certificate install' command.
+*Syslog Message*::
+A digital certificate with Fully Qualified Domain Name (FQDN) %s, Serial Number %s, Certificate Authority '%s' and type %s for Vserver %s will expire in the next %d day(s).
+*Parameters*::
+*common_name* (STRING): Name of the Fully Qualified Domain Name(FQDN) whose digital certificate is about to expire.
+*serial_number* (STRING): Serial Number of the digital certificate.
+*certificate_authority* (STRING): Name of the Certificate Authority whose digital certificate is about to expire.
+*type* (STRING): Type of the digital certificate.
+*vserver* (STRING): Name of the Vserver.
+*days* (LONGINT): Number of days remaining until the certificate expires.
+
+== mgmtgwd.certificate.switch
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the user installed certificates of the service processor API service become invalid and are subsequently replaced with internal certificates.
+*Corrective Action*::
+Install new digital certificates on the system using the "security certificate create" or "security certificate install" command and enable them using "system service-processor api-service enable-installed-certificates" command.
+*Syslog Message*::
+User installed certificates of the service processor API service are replaced with internal certificates.
+*Parameters*::
+(None).

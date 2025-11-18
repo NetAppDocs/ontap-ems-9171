@@ -1,0 +1,52 @@
+---
+sidebar: sidebar
+permalink: wafl-nvlog-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.nvlog events
+---
+
+= wafl.nvlog events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.nvlog.stats.createError
+*Severity*::
+NOTICE
+*Description*::
+This event is issued to indicate that the system is unable to create nvlog stats file.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Can't create nvlog replay stats file
+*Parameters*::
+(None).
+
+== wafl.nvlog.stats.writeError
+*Severity*::
+NOTICE
+*Description*::
+This event is issued to indicate the system is unable to write to nvlog stats file.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Nvlog replay stats fio_write failed
+*Parameters*::
+(None).
+
+== wafl.nvlog.versionFail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the nvlog version found in the NV log is not recognized by the current version of Data ONTAP(R).
+*Corrective Action*::
+This might be the result of an upgrade or revert attempt after a dirty boot. If so, try the upgrade or revert after a clean shutdown. If the problem persists, or if this was not due to an upgrade or revert, contact NetApp technical support.
+*Syslog Message*::
+Could not replay WAFL NV log: nvlog format is of a prior or future release (%d, %d).
+*Parameters*::
+*version* (INT): WAFL(R) NV log version in the NV log.
+*myversion* (INT): Kernel WAFL NV log version.

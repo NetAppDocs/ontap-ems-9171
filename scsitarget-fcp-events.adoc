@@ -1,0 +1,64 @@
+---
+sidebar: sidebar
+permalink: scsitarget-fcp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsitarget.fcp events
+---
+
+= scsitarget.fcp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsitarget.fcp.sfp.inserted
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a small form-factor pluggable (SFP) is inserted into the Fibre Channel (FC) target adapter.
+*Corrective Action*::
+You can obtain detailed SFP information by using the 'fcp adapter show' command.
+*Syslog Message*::
+An SFP was inserted into FC target adapter %s.
+*Parameters*::
+*adapter* (STRING): Target adapter name.
+
+== scsitarget.fcp.sfp.invalid
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an invalid Small Form-factor Pluggable (SFP) is inserted into the adapter. For example, a 10-GB SFP was inserted into an 8-GB FC adapter.
+*Corrective Action*::
+Replace the SFP with a supported SFP.
+*Syslog Message*::
+The SFP in FC adapter %s is not valid. (%s)
+*Parameters*::
+*adapter* (STRING): Target adapter name.
+*reason* (STRING): Reason for invalid SFP.
+
+== scsitarget.fcp.sfp.removed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a Small Form-factor Pluggable (SFP) is removed from the Fibre Channel (FC) target adapter.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+An SFP was removed from FC target adapter %s.
+*Parameters*::
+*adapter* (STRING): Target adapter name.
+
+== scsitarget.fcp.sfp.warning
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a small form-factor pluggable (SFP) that is not supported for FCoE links is inserted into an adapter that is configured for FCoE. For example, a 1-GB SFP is inserted into a converged network adapter (CNA) port. Note that the underlying Ethernet link might still be supported with the original SFP.
+*Corrective Action*::
+Replace the SFP with an SFP that supports FCoE link speed.
+*Syslog Message*::
+The SFP in FC adapter %s does not support 10 Gbit/sec speed. FCoE is supported only at 10 Gbit/sec and so the FCoE link will not be online.
+*Parameters*::
+*adapter* (STRING): Target adapter name.

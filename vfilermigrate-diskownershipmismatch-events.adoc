@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: vfilermigrate-diskownershipmismatch-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vfilermigrate.diskownershipmismatch events
+---
+
+= vfilermigrate.diskownershipmismatch events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vfilermigrate.diskOwnershipMismatch
+*Severity*::
+ERROR
+*Description*::
+The SnapMover feature is licensed but the disk ownership model is not using the software-based disk ownership model.
+*Corrective Action*::
+Boot the filer into maintenance mode and use the 'disk assign' or 'disk upgrade_ownership' command to assign disk ownership.
+*Syslog Message*::
+SnapMover is licensed but the system is not using software-based disk ownership.
+*Parameters*::
+(None).

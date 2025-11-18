@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: wackiron-panic-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wackiron.panic events
+---
+
+= wackiron.panic events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wackiron.panic.warning
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the bootarg 'wackiron_enforce_panic' will cause the system to panic after the next boot if you do not run wafliron on the affected volume before the completion of the next boot.
+*Corrective Action*::
+Run wafliron on the affected volume. From the boot menu, run 'wafliron'. From the dblade CLI, run 'aggr wafliron start [aggr-name]'.
+*Syslog Message*::
+Warning: System will panic if wafliron is not run on '%s' before the next boot is complete.
+*Parameters*::
+*volname* (STRING): Name of the aggregate.

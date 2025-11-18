@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: repl-src-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.src events
+---
+
+= repl.src events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.src.snaps.check.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when SnapMirror(R) logical transfer is not possible due to incompatible snapshots.
+*Corrective Action*::
+Create new snapshot on the source volume and use that for Logical transfer.
+*Syslog Message*::
+SnapMirror operation failed because the reference and/or the transfer snapshots on the source volume are either a) from a release prior to Data ONTAP 8.2 b) captured in a nonclustered format c) not upgraded to dual inode space. These snapshots cannot be used for logical transfer.
+*Parameters*::
+*srcVolMsid* (LONGINT): Source volume Master Data Set ID (MSID).
+*srcVolDsid* (LONGINT): Source volume Data Set ID (DSID).
+*srcVolVserverId* (INT): Source volume Vserver ID.
+*srcInstanceImageUuid* (STRING): Source transfer instance snapshot UUID.
+*srcVersionImageUuid* (STRING): Source transfer version snapshot UUID.
+*srcInstanceRefImageUuid* (STRING): Source reference instance snapshot UUID.
+*srcVersionRefImageUuid* (STRING): Source reference version snapshot UUID.

@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: callhome-vfiler-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.vfiler events
+---
+
+= callhome.vfiler events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.vfiler.move.to.dst
+*Severity*::
+ALERT
+*Description*::
+This message occurs on the destination controller during the final phase of migrating a vfiler when the 120 second time limit has been reached . During the final phase of migrating a vfiler from a source controller to a destination controller, input/output data access is stalled until the destination is ready. The amount of time spent with I/O data access stalled within 120 seconds, since many pre-checks have be done to ensure this can be achieved. With the time limit reached, operations will resume to using the vfiler on the source controller. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Check that service has been restored to the vfiler on the source controller. If not, contact NetApp technical support. Many pre-checks have been done to ensure timely migration of the vfiler from one controller to another. It is unclear whether network or other conditions have changed, such as changes in controller loads have prevented successful vfiler migration. Check the network connectivity, network bandwidth, load on the source controller and load on the destination controller. If they are not within normal expecations, resolve the issue. If they are within normal expectations, consult with NetApp technical support. If you need further assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for VFILER MIGRATION EXCEEDED 120 SECONDS ON DESTINATION
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.vfiler.move.to.src
+*Severity*::
+NOTICE
+*Description*::
+This message occurs on the source controller at the request of the destination controller. The destination controller has exceeded a 120 second time limit during the final phase of migrating a vfiler. During the final phase of migrating a vfiler from a source controller to a destination controller, input/output data access is stalled until the destination is ready. The amount of time spent with I/O data access stalled within 120 seconds, since many pre-checks have be done to ensure this can be achieved. With the time limit reached, operations will resume to using the vfiler on the source controller. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Check that service has been restored to the vfiler on this controller. If not, contact NetApp technical support. Many pre-checks have been done to ensure timely migration of the vfiler from one controller to another. It is unclear whether network or other conditions have changed, such as changes in controller loads have prevented successful vfiler migration. Check the network connectivity, network bandwidth, load on the source controller and load on the destination controller. If they are not within normal expectations, please resolve. If they are within normal expectations, consult with NetApp technical support. If you need further assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for VFILER MIGRATION TIME OUT EXCEEDED BY DESTINATION
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

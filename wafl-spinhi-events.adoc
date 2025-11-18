@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: wafl-spinhi-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.spinhi events
+---
+
+= wafl.spinhi events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.spinhi.new.err.code
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a new spinnp error is being propagated to a blade that does not understand that error yet. Nothing bad should happen because the error will receive default error handling when received by that blade. This message is for debugging in case you need to know the original source and reason for the error.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Spinnp operation %s was executed on DSID(%08x), fileid %u, snapid %u, proto %s and returned spinnp error %d to blade UUID %s.'
+*Parameters*::
+*opname* (STRING): Spinnp operation name.
+*dsid* (LONGINT): The data set identifier.
+*fileid* (INT): ID of the file specified by the spinnp operation.
+*snapid* (INT): Snapshot identifier: (0) - active file system (non-zero) - refers to snapshot
+*proto* (STRING): Protocol used on the operation.
+*spinerror* (INT): Spinnp error number.
+*bladeuuid* (STRING): Universally Unique Identifier (UUID) of the blade where this error will be returned.

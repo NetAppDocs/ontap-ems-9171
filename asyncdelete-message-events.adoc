@@ -1,0 +1,58 @@
+---
+sidebar: sidebar
+permalink: asyncdelete-message-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: asyncdelete.message events
+---
+
+= asyncdelete.message events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== asyncDelete.message.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an async delete job fails.
+*Corrective Action*::
+Ensure that all nodes in the cluster are online and healthy, and that all volumes needed for the directory traversal are online. Then retry the operation.
+*Syslog Message*::
+Async delete job on path %s of volume (MSID: %llu) failed: %s.
+*Parameters*::
+*path* (STRING): Path to be deleted.
+*volume_msid* (LONGINT): MSID of the volume containing the directory.
+*error* (STRING): Description of the error that occurred.
+
+== asyncDelete.message.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an async delete job starts on the path specified.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Async delete job started on path %s of volume (MSID: %llu).
+*Parameters*::
+*path* (STRING): Path to be deleted.
+*volume_msid* (LONGINT): MSID of the volume containing the directory.
+
+== asyncDelete.message.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an async delete job finishes successfully on the specified path.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Async delete job on path %s of volume (MSID: %llu) was completed. Number of files deleted: %llu, Number of directories deleted: %llu. Total number of bytes deleted: %llu.
+*Parameters*::
+*path* (STRING): Path to be deleted.
+*volume_msid* (LONGINT): MSID of the volume containing the directory.
+*file_count* (LONGINT): Total number of files deleted.
+*dir_count* (LONGINT): Total number of directories deleted.
+*deleted_size* (LONGINT): Total number of bytes deleted.

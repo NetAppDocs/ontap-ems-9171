@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: vfiler-unable-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vfiler.unable events
+---
+
+= vfiler.unable events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vFiler.unable.initModules
+*Severity*::
+ERROR
+*Description*::
+This message occurs during vFiler(tm) unit discovery, if one of the vFiler(tm) unit module initialization functions fails.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Could not initialize modules for vFiler unit "%s".
+*Parameters*::
+*vfName* (STRING): The vFiler unit on the source.

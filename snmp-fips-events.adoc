@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: snmp-fips-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snmp.fips events
+---
+
+= snmp.fips events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snmp.fips.objs.del.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system fails to delete SNMP traphosts and users that are not FIPS compliant. The system tries to automatically delete them when FIPS is configured in the cluster. The SNMP traphosts and users that are left become inoperable.
+*Corrective Action*::
+Delete remaining noncompliant SNMP traphosts first by using the "system snmp traphost delete" command. Then delete the remaining noncompliant SNMP users by using the "security login delete" command. The following SNMP users and traphosts are not FIPS compliant: 1. SNMPv1 users, SNMPv2c users, and SNMPv3 users having "none" or "MD5" as the authentication method or having "none" or "DES" as the encryption protocol. 2. SNMPv1 traphosts and SNMPv3 traphosts configured with a user that is not FIPS compliant.
+*Syslog Message*::
+Failed to delete SNMP traphosts and users that are not FIPS compliant.
+*Parameters*::
+(None).
+
+== snmp.fips.support
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when Data ONTAP is operating in FIPS compliant mode but SNMPv3 is configured with non-compliant/weaker ciphers or hash algorithms. Hence SNMPv3 is disabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Data ONTAP is operating in FIPS compliant mode and SNMPv3 is configured with non-compliant ciphers or hash algorithms. Hence SNMPv3 is disabled.
+*Parameters*::
+(None).

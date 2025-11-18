@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: pci-init-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: pci.init events
+---
+
+= pci.init events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== PCI.init.process.timeWarn
+*Severity*::
+NOTICE
+*Description*::
+This message occurs to warn about the time taken by PCI initialization when PCI configuration is waiting for outstanding background threads that might still be running.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The PCI initialization process has taken %d seconds.
+*Parameters*::
+*processTime* (INT): Time taken by PCI initialization process.

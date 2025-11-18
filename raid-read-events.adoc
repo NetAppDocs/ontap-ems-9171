@@ -1,0 +1,154 @@
+---
+sidebar: sidebar
+permalink: raid-read-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.read events
+---
+
+= raid.read events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.read.cksum.blk.err
+*Deprecated*::
+Deprecated as of version 9.9.1 because this EMS does not appropriately describe the checksum block error.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a checksum block media error in an advanced zoned checksums(AZCS) RAID group during a read operation. Data ONTAP(R) takes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Checksum block read error on %s%s for blocks [#%llu - #%llu] during RAID group I/O.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*blockNum* (LONGINT): First physical disk block number containing the error.
+*LblockNum* (LONGINT): Last physical disk block number containing the error.
+
+== raid.read.cksum.blk.notAvail
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a checksum block media error in an advanced zoned checksums(AZCS) RAID group during a read operation. As a result checksum information is not available. Data ONTAP(R) takes appropriate recovery actions to reconstruct the block. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Checksum block is not available on %s%s for blocks [#%llu - #%llu] during RAID group I/O.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*blockNum* (LONGINT): First physical disk block number containing the error.
+*LblockNum* (LONGINT): Last physical disk block number containing the error.
+
+== raid.read.cksum.bno
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a block number mismatch during a read operation. The expected Virtual Block Number (VBN)/Disk Block Number (DBN) is not the same as the stored VBN/DBN from the checksum entry, indicating that the block is read from the wrong location. Data ONTAP(R) makes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Block number mismatch on %s%s: stored_dbn = %u, expected_dbn = %llu; stored_vbn = %llu, expected_vbn = %llu during a read operation.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*stored_dbn* (INT): Physical disk block number stored in the checksum entry.
+*expected_dbn* (LONGINT): Expected physical disk block number.
+*stored_vbn* (LONGINT): Volume block number stored in the checksum entry.
+*expected_vbn* (LONGINT): Expected volume block number.
+
+== raid.read.cksum.embed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an invalid checksum entry during a read operation. The embedded checksum computed over the checksum entry do not match, indicating the corruption of the checksum entry. Data ONTAP(R) makes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Invalid checksum entry on %s%s, block #%llu, during a read operation.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*blockNum* (LONGINT): Physical disk block number containing the error.
+
+== raid.read.cksum.err
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a checksum error during a read operation. The checksum computed does not match the stored checksum, indicating that the block is corrupted. Data ONTAP(R) makes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Checksum error on %s%s, block #%llu.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*blockNum* (LONGINT): Physical block number containing the error.
+
+== raid.read.cksum.zero
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an empty checksum entry during a read operation. The checksum entry is zeroed, but the corresponding block is not zeroed. Data ONTAP(R) makes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Empty checksum entry for non-zeroed block on %s%s, block #%llu, during a read operation.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*blockNum* (LONGINT): Physical disk block number containing the error.
+
+== raid.read.media.err
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when rg i/o detects a single-disk medium error
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Read error on %s%s, block #%llu
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Formatted information of disk object that contains the error.
+*blockNum* (LONGINT): The physical block number containing the error.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.read.media.recommend.reassign.err
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when rg i/o detects a single-disk recommend reassign error
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Block recommended for reassignment on %s%s, block #%llu
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Formatted information of the disk object that contains the error.
+*blockNum* (LONGINT): The physical block number containing the error.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.

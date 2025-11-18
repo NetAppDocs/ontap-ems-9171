@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: fmmb-blobnotwritten-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fmmb.blobnotwritten events
+---
+
+= fmmb.blobnotwritten events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fmmb.BlobNotWritten
+*Deprecated*::
+Deprecated as of version 9.2.
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a mailbox 'blob' write operation to the on-disk mailbox data structure fails. A 'blob' is a piece of data that has been stored for a non-high availability (HA) Data ONTAP(R) subsystem in the HA mailbox.
+*Corrective Action*::
+If the blob ID is "3" and this is a two-node cluster, use the 'cluster ha modify -configure' command to unconfigure HA and then reconfigure it.
+*Syslog Message*::
+(None).
+*Parameters*::
+*blob_id* (INT): 'blob' ID.
+*owner* (STRING): Owner of the blob, either PARTNER or LOCAL.
+*reason* (STRING): Reason for the problem.

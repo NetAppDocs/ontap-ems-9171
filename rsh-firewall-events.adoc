@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: rsh-firewall-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rsh.firewall events
+---
+
+= rsh.firewall events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rsh.firewall.policy.remove
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when rsh is automatically removed from firewall policies during a revert operation from Data ONTAP(R) 9.0 to 8.3. Rsh is removed because it is an insecure protocol and it is by default disabled in Data ONTAP 9.0. In Data ONTAP 8.3, the presence of rsh in firewall policies after a revert operation enables rsh. To prevent this, the rsh firewall policy is removed during the operation.
+*Corrective Action*::
+Use the "system services firewall policy create" command to reenable rsh.
+*Syslog Message*::
+Rsh removed from firewall policy because of Data ONTAP revert operations. Rsh is now disabled.
+*Parameters*::
+(None).

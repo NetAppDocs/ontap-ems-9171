@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-okm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.okm events
+---
+
+= callhome.okm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.okm.sync.needed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the cluster has reached an inconsistent state with respect to the onboard key hierarchy. This is an alert that the "security key-manager onboard sync" command should be run on the local cluster to prevent any future usage failures with onboard key management. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to Netapp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for CLUSTER OKM SYNC NEEDED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

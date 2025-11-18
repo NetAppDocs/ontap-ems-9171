@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: vldb-aggregatename-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vldb.aggregatename events
+---
+
+= vldb.aggregatename events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vldb.aggregateName.mismatch
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an aggregate's name in the Volume Location Database (VLDB) does not match the aggregate's current name on the node. This could happen if the name of the aggregate was changed or if another aggregate in the cluster has it's UUID changed to another aggregate's UUID in the cluster, as reported to the VLDB.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The aggregate '%s' with name '%s' on node '%s' does not match with the name '%s' in the VLDB.
+*Parameters*::
+*aggregate* (STRING): UUID of the aggregate.
+*newName* (STRING): New name of the aggregate on the node.
+*node* (STRING): Name of the node.
+*existingName* (STRING): Existing name of the aggregate in the VLDB.

@@ -1,0 +1,78 @@
+---
+sidebar: sidebar
+permalink: ctrl-rdma-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ctrl.rdma events
+---
+
+= ctrl.rdma events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ctrl.rdma.badSystemId
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an invalid system ID is found.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Invalid system ID %d. High-availability interconnect might not work properly.
+*Parameters*::
+*name* (INT): Invalid system ID value.
+
+== ctrl.rdma.heartBeat
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message logs heartbeat messages.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+HA interconnect: %s.
+*Parameters*::
+*hb* (STRING): Heartbeat string.
+
+== ctrl.rdma.partnerOK
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the partner resumes from pause state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Partner node (system ID: %lld IP address: %s) has resumed from pause state.
+*Parameters*::
+*sysid* (LONGINT): Partner system ID.
+*ipaddr* (STRING): Partner IP address.
+
+== ctrl.rdma.partnerPause
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the partner enters pause state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Partner node (system ID: %lld IP address: %s) has entered pause state.
+*Parameters*::
+*sysid* (LONGINT): Partner system ID.
+*ipaddr* (STRING): Partner IP address.
+
+== ctrl.rdma.portStateChange
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the state of the HA interconnect link changed frequently in the last hour.
+*Corrective Action*::
+Verify that both controllers in the HA pair are operational. For externally connected links, make sure that the interconnect cables are connected properly and that small form-factor pluggable (SFP) modules, if applicable, are seated properly on both controllers. For internally connected links, disable and reenable the links one at a time by using the (privilege: advanced) "system ha interconnect link off" and "system ha interconnect link on" commands. When one link is down on platforms with two available links, HA link redundancy is lost. However, HA services are still working and enabled on the secondary link.
+*Syslog Message*::
+HA interconnect: Link to %s changed state %d times in the last hour.
+*Parameters*::
+*ip* (STRING): IP address of the peer.
+*num_times* (INT): Number of times the state changed.

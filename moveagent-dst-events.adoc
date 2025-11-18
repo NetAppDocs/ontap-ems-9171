@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: moveagent-dst-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: moveagent.dst events
+---
+
+= moveagent.dst events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== moveagent.dst.partial.commit
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the move agent detects that the attributes of the destination volume are partially updated during the commit destination phase. In such scenarios, the volume move operation may not be able to complete successfully and the client access will be blocked during this whole period.
+*Corrective Action*::
+Monitor the volume move job using the 'volume move show' command. If the problem presists, please contact NetApp technical support for recovery procedures.
+*Syslog Message*::
+Unable to finish the volume move operation as the destination volume with dsid:%llu and uuid:%s is partially committed.
+*Parameters*::
+*volume_dsid* (LONGINT): The destination volume data set identifier (dsid)
+*volume_uuid* (STRING): The destination volume uuid.

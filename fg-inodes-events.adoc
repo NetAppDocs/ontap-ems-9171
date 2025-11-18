@@ -1,0 +1,56 @@
+---
+sidebar: sidebar
+permalink: fg-inodes-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fg.inodes events
+---
+
+= fg.inodes events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fg.inodes.member.allOK
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when conditions that led to previous "fg.inodes.member.nearlyFull" and "fg.inodes.member.full" events no longer apply for any constituent in this FlexGroup. All constituents within this FlexGroup have sufficient inodes for normal operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+All constituents in FlexGroup %s (fg-uuid %s) have sufficient inodes for normal operation.
+*Parameters*::
+*object_name* (STRING): Human-readable name of the FlexGroup.
+*object_uuid* (STRING): UUID of the FlexGroup.
+
+== fg.inodes.member.full
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a constituent with a FlexGroup has run out of inodes. New files cannot be created on this constituent. This might lead to an overall imbalanced distribution of content across the FlexGroup.
+*Corrective Action*::
+Adding capacity to the FlexGroup by using the "volume modify -files +X" command is the best way to solve this problem. Alternatively, deleting files from the FlexGroup may work, but it is difficult to determine which files have landed on which constituent.
+*Syslog Message*::
+Constituent %llu in FlexGroup %s (fg-uuid %s) is out of inodes.
+*Parameters*::
+*constituent_dsid* (LONGINT): DSID of the constituent that is out of inodes.
+*object_name* (STRING): Human-readable name of the FlexGroup.
+*object_uuid* (STRING): UUID of the FlexGroup.
+
+== fg.inodes.member.nearlyFull
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a constituent within a FlexGroup is almost out of inodes. This constituent will receive far fewer new create requests than average, which might impact the FlexGroup's overall performance, because those requests are routed to constituents with more inodes.
+*Corrective Action*::
+Adding capacity to the FlexGroup by using the "volume modify -files +X" command is the best way to solve this problem. Alternatively, deleting files from the FlexGroup might work, although it can be difficult to determine which files have landed on which constituent.
+*Syslog Message*::
+Constituent %llu in FlexGroup %s (fg-uuid %s) is nearly out of inodes.
+*Parameters*::
+*constituent_dsid* (LONGINT): DSID of the constituent that is almost out of inodes.
+*object_name* (STRING): Human-readable name of the FlexGroup.
+*object_uuid* (STRING): UUID of the FlexGroup.

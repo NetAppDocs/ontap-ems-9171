@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: secd-unixlookupfailure-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: secd.unixlookupfailure events
+---
+
+= secd.unixlookupfailure events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== secd.unixLookupFailure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an UNIXi(R) user or group lookup fails. This failure is likely to impact many or all users, and might indicate a misconfiguration or environmental problem.
+*Corrective Action*::
+Examine the error journal in the /mroot/etc/mlog/secd.log file to learn more about why the LOOKUP failed. The error journal is a collection of events leading up to a failure. Common failures include the wrong user name or ID and the inability to communicate with the NIS or LDAP servers due to connectivity or configuration problems. If the vserver's NSSWITCH is set to "file", verify that the user or group that is being looked up has been created using the cluster's ngshell interface. If the vserver's NSSWITCH is set to "NIS", run 'yp' commands from an NIS client workstation to verify that the UNIX lookup works on the configured NIS server. If the vserver's NSSWITCH is set to "LDAP", run 'ldap' commands from an LDAP client workstation to verify that the UNIX lookup works on the configured LDAP server. Verify that the cluster can communicate with the configured NIS or LDAP servers.
+*Syslog Message*::
+UNIX lookup failure on Vserver (%s) for client with IP address (%s). %s
+*Parameters*::
+*vserverName* (STRING): vserver associated with this operation.
+*clientIP* (STRING): IP Address of the client.
+*failureDetail* (STRING): Reason for the failure.

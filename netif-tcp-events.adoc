@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: netif-tcp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.tcp events
+---
+
+= netif.tcp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.tcp.conn.bad.checksum
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a bad checksum is detected in the incoming TCP packets.
+*Corrective Action*::
+If experiencing network issues, corrupted TCP packets might be an issue. Check the network components along the path of TCP connection.
+*Syslog Message*::
+TCP packet with bad checksum detected on port %s. The packet arrived on connection with source address %s and destination_address %s.
+*Parameters*::
+*local_port* (STRING): Ethernet port where the TCP bad checksum packets were detected.
+*source_address* (STRING): Source IP address of the connection.
+*destination_address* (STRING): Destination IP address of the connection.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: spm-perfstatd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: spm.perfstatd events
+---
+
+= spm.perfstatd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== spm.perfstatd.process.exit
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the perfstat daemon (perfstatd) involuntarily terminates.
+*Corrective Action*::
+The system attempts to recover by restarting the perfstat daemon. If the process does not restart within the threshold number of retries, then an AutoSupport message is sent. If your system is not configured to send AutoSupport messages and the issue persists, contact technical support.
+*Syslog Message*::
+The perfstat daemon(perfstatd) with ID %d exited as a result of %s. This server will attempt to restart.
+*Parameters*::
+*id* (INT): Process identifier.
+*cause* (STRING): Plain text description of why the process exited.

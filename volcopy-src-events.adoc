@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: volcopy-src-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: volcopy.src events
+---
+
+= volcopy.src events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== volcopy.src.noMemory
+*Severity*::
+ERROR
+*Description*::
+This event is issued when there is insufficient memory on the vol copy source for the transfer to continue.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+System is low on memory, aborting vol copy source.
+*Parameters*::
+(None).
+
+== volcopy.src.revertPending
+*Severity*::
+NOTICE
+*Description*::
+This message indicates the source is being reverted by WAFL and cannot currently be used for a 'vol copy' operation.
+*Corrective Action*::
+This message indicates the source is being reverted. After the revert completes the operation should be retried.
+*Syslog Message*::
+vol copy: The source is being reverted by WAFL
+*Parameters*::
+(None).
+
+== volcopy.src.snapshotErr
+*Severity*::
+ERROR
+*Description*::
+This event is issued when we are not able to obtain all the snapshot information, from the vol copy source volume, required for a vol copy transfer.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Vol copy not able to obtain snapshot information from source volume %s
+*Parameters*::
+*src* (STRING): The vol copy source volume

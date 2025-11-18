@@ -1,0 +1,46 @@
+---
+sidebar: sidebar
+permalink: callhome-nvme-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.nvme events
+---
+
+= callhome.nvme events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.nvme.exhausted
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a directly attached NVMe module has worn out and is at the end of its write life. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Contact technical support for assistance with possible replacement of the module.
+*Syslog Message*::
+Callhome for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*serial* (STRING): Serial number of the NVMe device.
+*model* (STRING): Model number of the NVMe device.
+*slot_subslot* (STRING): PCI slot/subslot of the NVMe device.
+
+== callhome.nvme.offline
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a directly attached NVMe module goes offline. When a module goes offline, it has either had a critical failure or is no longer reliable. In either case, the card is no longer functioning properly and was taken offline. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Contact technical support for assistance with possible replacement of the module.
+*Syslog Message*::
+Callhome for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*serial* (STRING): Serial number of the NVMe device.
+*model* (STRING): Model number of the NVMe device.
+*slot_subslot* (STRING): PCI slot/subslot of the NVMe device.
+*code* (LONGINTHEX): Bit-encoded error that caused the event.

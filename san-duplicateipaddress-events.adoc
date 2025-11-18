@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: san-duplicateipaddress-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.duplicateipaddress events
+---
+
+= san.duplicateipaddress events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.DuplicateIpAddress
+*Severity*::
+ERROR
+*Description*::
+This message occurs in MetroCluster(TM) configurations of clustered ONTAP(R), when an IP LIF is created in the source cluster, but one of the storage virtual machines (SVMs) in the destination cluster is already configured with an IP LIF having the same IP address.
+*Corrective Action*::
+Provide a unique IP address for the primary SVM IP LIF when creating or modifying the LIF in the source cluster. After modifying the IP address, check that SVM configuration state is healthy by using the "metrocluster vserver show -vserver <vserver>" command. If Vserver configuration state is not healthy, resynchronize the SVM with its partner by using the "metrocluster vserver resync" command.
+*Syslog Message*::
+One of the SVM's in the destination cluster is configured with an %s LIF with the same IP address %s. Provide a different unique IP address for the primary SVM %s LIF %s when creating or modifying the LIF in the source cluster.
+*Parameters*::
+*destination_data_protocol* (STRING): Data protocol of the destination storage virtual machine (SVM) LIF.
+*IpAddress* (STRING): IP address existing in the destination cluster.
+*primary_data_protocol* (STRING): Data protocol of the primary SVM LIF.
+*lif* (STRING): Name of the primary SVM IP LIF.

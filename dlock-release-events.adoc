@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: dlock-release-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dlock.release events
+---
+
+= dlock.release events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dlock.release.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) software reports an error while attempting to release an internal lock. This might impact services like Application-aware data management.
+*Corrective Action*::
+Run the node local "dlock show" diag-level command to confirm whether the lock still exists. If the lock exists, run the node local "dlock release" diag-level command to clear the lock. If the lock does not exist, then the error was likely transient and can be ignored. Contact NetApp technical support for more information or assistance.
+*Syslog Message*::
+Failed to release internal lock. Lock ID: "%s". Owner ID: "%s". Reason: %s.
+*Parameters*::
+*lockid* (STRING): Lock ID.
+*ownerid* (STRING): Owner ID.
+*error* (STRING): Error that was encountered.

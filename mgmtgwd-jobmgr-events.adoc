@@ -1,0 +1,163 @@
+---
+sidebar: sidebar
+permalink: mgmtgwd-jobmgr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmtgwd.jobmgr events
+---
+
+= mgmtgwd.jobmgr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmtgwd.jobmgr.fetcherr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot locate the configuration for a specific Vserver.
+*Corrective Action*::
+Disable and reenable the auditing function of the affected Vserver using the 'vserver audit disable' and 'vserver audit enable' commands to attempt to retrieve the missing configuration information. If the audit enable command fails, contact the system administrator for assistance.
+*Syslog Message*::
+Job '%s' [jobid %d, name "%s", UUID %s] failed on Vserver '%s'.
+*Parameters*::
+*name* (STRING): Name of the job.
+*jobid* (INT): ID of the job.
+*description* (STRING): Description of the job.
+*jobuuid* (STRING): UUID of the job.
+*vservername* (STRING): Vserver name linked with the job.
+
+== mgmtgwd.jobmgr.high.jobs
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the total number of queued jobs, including both the cluster-wide jobs and the node-local jobs, exceeds a configured threshold.
+*Corrective Action*::
+Allow the backlog of jobs to run to completion before adding more jobs. Halt external tools from issuing frequent commands that result in jobs. You can view the job queue thresholds with the diag privilege command "job queue config show". The command "job show" displays cluster-wide jobs. The command "job private show" displays node-local jobs. The command "job history show" displays job history. The command "job queue show" displays the job queues.
+*Syslog Message*::
+High number of jobs: there are %d jobs queued on this node. New jobs will not be accepted by this node when the total number of jobs exceeds %d.
+*Parameters*::
+*jobs* (LONGINT): Number of jobs queued.
+*max* (LONGINT): Maximum number of jobs accepted.
+
+== mgmtgwd.jobmgr.high.jobtype
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the total number of queued jobs of any type, including both the cluster-wide jobs and the node-local jobs, exceeds a configured threshold.
+*Corrective Action*::
+Allow the backlog of jobs to run to completion before adding more jobs. Halt external tools from issuing frequent commands that result in jobs. You can view the job queue thresholds with the diag privilege command "job queue config show". The command "job show" displays cluster-wide jobs. The command "job private show" displays node-local jobs. The command "job history show" displays job history. The command "job queue show" displays the job queues.
+*Syslog Message*::
+High number of "%s" jobs: there are %d of this job type queued on this node. New jobs will not be accepted by this node when the total number of jobs of this type exceeds %d.
+*Parameters*::
+*type* (STRING): Job type.
+*jobs* (LONGINT): Number of jobs queued of this type.
+*max* (LONGINT): Maximum number of jobs accepted of this type.
+
+== mgmtgwd.jobmgr.init.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Job manager cannot load a private job.
+*Corrective Action*::
+Look into the private job history by using the job_id. If necessary, restart the activity by using the applicable command. Example Command: job private show-completed -node node-01 -id 10
+*Syslog Message*::
+"Unable to load private job. Job UUID = %s and ID= %ul. Reason: %s"
+*Parameters*::
+*job_uuid* (STRING): UUID of the private job.
+*job_id* (LONGINT): Human-readable ID of the private job.
+*failure_reason* (STRING): Reason for failure to load.
+
+== mgmtgwd.jobmgr.jobcomplete.failure
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Job Manager completes a job unsuccessfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Job "%s" [id %d] (%s) completed unsuccessfully: %s (%llu).
+*Parameters*::
+*name* (STRING): Name of the job.
+*jobid* (INT): ID of the job.
+*description* (STRING): Description of the job.
+*completion* (STRING): Completion string for the job.
+*code* (LONGINT): Completion code for the job.
+*jobuuid* (STRING): UUID of the job.
+
+== mgmtgwd.jobmgr.jobrestart
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Job Manager restarts a job.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Restarted job "%s" [id %d]: %s.
+*Parameters*::
+*name* (STRING): Name of the job.
+*jobid* (INT): ID of the job.
+*description* (STRING): Description of the job.
+*jobuuid* (STRING): UUID of the job.
+
+== mgmtgwd.jobmgr.private.jobcomplete.failure
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Job Manager completes a private job unsuccessfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Private job "%s" [id %d] (%s) completed unsuccessfully: %s (%llu).
+*Parameters*::
+*name* (STRING): Name of the job.
+*jobid* (INT): ID of the job.
+*description* (STRING): Description of the job.
+*completion* (STRING): Completion string for the job.
+*code* (LONGINT): Completion code for the job.
+*jobuuid* (STRING): UUID of the job.
+
+== mgmtgwd.jobmgr.sched.peer.update
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a job schedule is updated on the peer cluster and might need to be updated on this cluster.
+*Corrective Action*::
+Update the schedule on this cluster to match the peer cluster.
+*Syslog Message*::
+"Schedule "%s" was %s on peer cluster and must also be updated on this cluster. Command on peer cluster: %s."
+*Parameters*::
+*schedule* (STRING): Schedule name.
+*operation* (STRING): Operation performed on schedule: "created," "modified," or "deleted."
+*command* (STRING): Job schedule command that was executed on the peer cluster.
+
+== mgmtgwd.jobmgr.sched.type
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a job schedule is created with the same name as a schedule from the MetroCluster(tm) partner cluster, but with a different schedule type.
+*Corrective Action*::
+Create a replacement schedule with a different name, and then delete one of the same-named schedules.
+*Syslog Message*::
+Schedule "%s" was created with the same name as an existing schedule, but with a different schedule type.
+*Parameters*::
+*schedule* (STRING): Schedule name.
+
+== mgmtgwd.jobmgr.sched.update
+*Deprecated*::
+Deprecated as of version 9.6. Job schedules are automatically replicated to the peer cluster.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a job schedule is updated on this cluster and might need to be updated on the peer cluster.
+*Corrective Action*::
+On the peer cluster, update the schedule to match this cluster.
+*Syslog Message*::
+"Schedule "%s" was %s and must also be updated on the peer cluster. Command: %s."
+*Parameters*::
+*schedule* (STRING): Schedule name.
+*operation* (STRING): Operation performed on schedule: "created," "modified," or "deleted."
+*command* (STRING): Job schedule command that was executed.

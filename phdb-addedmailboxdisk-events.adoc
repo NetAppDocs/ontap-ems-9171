@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: phdb-addedmailboxdisk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: phdb.addedmailboxdisk events
+---
+
+= phdb.addedmailboxdisk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== phdb.addedMailboxDisk
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Cloud Volume ONTAP (CVO) creates and adds a cloud mailbox disk. A cloud mailbox disk is a fake disk using Cloud Database such as AWS DynamoDB to store CVO non-share HA metadata.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cloud mailbox disk unit number: %d with uuid: "%s" was created and added.
+*Parameters*::
+*unit* (INT): Unit number.
+*uuid* (STRING): Disk UUID.

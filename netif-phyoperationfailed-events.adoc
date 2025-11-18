@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: netif-phyoperationfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.phyoperationfailed events
+---
+
+= netif.phyoperationfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.phyOperationFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is a failure in reading or writing the physical layer (PHY) of a network interface.
+*Corrective Action*::
+This might be caused by a software bug. If there are problems with the interface after seeing this message, replace the component associated with the network interface (PCIe card or controller motherboard). If the problem persistis, contact NetApp technical support.
+*Syslog Message*::
+Failure in reading or writing PHY for network interface %s. Driver=%s, error=%d, regaddr=0x%x, command=0x%x, status=0x%x.
+*Parameters*::
+*ifName* (STRING): Name of the network interface; for example, "e2a".
+*driver* (STRING): Driver name.
+*error* (INT): Error code.
+*regaddr* (INTHEX): PHY register address.
+*command* (INTHEX): PHY command.
+*status* (INTHEX): PHY status.

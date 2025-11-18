@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: scsiblade-unavailable-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsiblade.unavailable events
+---
+
+= scsiblade.unavailable events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsiblade.unavailable
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the node loses connectivity with the majority of the cluster and is unable to recover automatically. When this occurs, both FCP and iSCSI traffic are disabled on this node and require manual intervention to come back into service.
+*Corrective Action*::
+Reboot the node, and if the node is waiting for giveback, perform a giveback operation.
+*Syslog Message*::
+This node lost connectivity with the majority of the cluster. When this occurs, both FCP and iSCSI traffic are disabled and will remain disabled on this node until corrective actions are taken.
+*Parameters*::
+(None).

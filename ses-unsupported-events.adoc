@@ -1,0 +1,63 @@
+---
+sidebar: sidebar
+permalink: ses-unsupported-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ses.unsupported events
+---
+
+= ses.unsupported events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ses.unsupported.shelf.psu
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a disk shelf has one unsupported power supply unit installed in it. The unsupported power fits correctly in the shelf, but its functional characteristics are incompatible with the supported power supply.
+*Corrective Action*::
+Replace all unsupported power supplies immediately. Use the "storage shelf show -psu-part-number" command to locate all unsupported power supplies on the disk shelf, using the part number provided in the message as the required command parameter. Contact NetApp technical support for assistance and part number for replacement power supplies.
+*Syslog Message*::
+Shelf id %d serial number %s Part number %s not supported on Product ID %s. %s: power supply %d. %s.
+*Parameters*::
+*ShelfId* (INT): ID of the disk shelf.
+*serialNumber* (STRING): Serial number of the storage shelf enclosure.
+*partNumber* (STRING): Part number of the unsupported power supply.
+*ProdId* (STRING): Product identification of the shelf with the unsupported power supply.
+*prodChannel* (STRING): Disk shelf identity (channel and shelf number).
+*psNumber* (INT): SES element number of the failing power supply.
+*locationText* (STRING): Location of the unsupported power supply on the disk shelf.
+
+== ses.unsupported.shelf.psus
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a shelf has one or more unsupported power supplies installed in it. The unsupported power fits correctly in the shelf, but its functional characteristics are incompatible with the supported power supply.
+*Corrective Action*::
+Replace all unsupported power supplies immediately. Use the "storage shelf show -fields psu-part-number" command to and locate all unsupported power supplies on the disk shelf. Unsupported power supplies can be identified by the part number provided in the message. Contact NetApp technical support for assistance and part number for replacement power supplies.
+*Syslog Message*::
+Part number %s not supported on Product ID %s. %s: %d unsupported power supplies.
+*Parameters*::
+*partNumber* (STRING): Part number of the unsupported power supply.
+*ProdId* (STRING): Product identification of the shelf with unsupported power supply.
+*prodChannel* (STRING): Disk shelf identity (channel and shelf number).
+*psCount* (INT): Number of unsupported power supplies on the shelf.
+
+== ses.unsupported.shelves.psus
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when two or more shelves have unsupported power supply installed in it. The unsupported power fits correctly in the shelf, but its functional characteristics are incompatible with the supported power supply.
+*Corrective Action*::
+Replace all unsupported power supplies immediately. Use the "storage shelf show -fields psu-part-number" command to locate all unsupported power supplies on the disk shelf. Unsupported power supplies can be identified by the part number provided in the message. Contact NetApp technical support for assistance and part number for replacement power supplies.
+*Syslog Message*::
+Part number %s not supported on Product ID %s. %s and other shelves: %d unsupported power supplies.
+*Parameters*::
+*partNumber* (STRING): Part number of the unsupported power supply.
+*ProdId* (STRING): Product identification of the shelf with unsupported power supply.
+*prodChannel* (STRING): Disk shelf identity (channel and shelf number).
+*psCount* (INT): Number of unsupported power supplies on the shelf.

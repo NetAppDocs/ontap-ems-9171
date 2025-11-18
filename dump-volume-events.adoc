@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: dump-volume-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dump.volume events
+---
+
+= dump.volume events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dump.volume.memory
+*Severity*::
+NOTICE
+*Description*::
+This event is generated when we are trying to dump a volume which is full and we cannot write the offsetmap on to the disk and we are using memory instead of disk to do this.
+*Corrective Action*::
+Please free up some of the disk space for this volume in order to avoid this memory consumption.
+*Syslog Message*::
+DUMP using memory due to lack of disk space on /vol/%s.
+*Parameters*::
+*vol_name* (STRING): Name of the volume that is full which needs to be freed

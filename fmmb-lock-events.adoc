@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: fmmb-lock-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fmmb.lock events
+---
+
+= fmmb.lock events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fmmb.lock.disk.remove
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when a disk is removed from the HA mailbox disk lock set.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s removed from %s mailbox set.
+*Parameters*::
+*disk* (STRING): The name of the disk. If the disk name is not available, a ?.? will be used.
+*host* (STRING): The node which owns the HA mailbox disk. The node can be either local or partner.

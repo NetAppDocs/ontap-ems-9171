@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: scsiblade-invalid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsiblade.invalid events
+---
+
+= scsiblade.invalid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsiblade.invalid.xfer.len
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a SCSI command requests a transfer length greater than the LUN's maximum supported transfer length of 1MB. ONTAP(R) software completes the command normally but the host has sent this request in violation of the SCSI protocol.
+*Corrective Action*::
+Rescan the LUNs or reboot the host to enable discovery of the supported maximum transfer length for the LUN.
+*Syslog Message*::
+Host type %s sent command opcode 0x%x with a transfer length of %lld bytes, which exceeds the maximum of 1MB on LUN %s.
+*Parameters*::
+*host_os_type* (STRING): Host OS type.
+*opcode* (INT): SCSI opcode.
+*length* (LONGINT): Request transfer length.
+*LUNSerialNumber* (STRING): Serial number of the LUN.

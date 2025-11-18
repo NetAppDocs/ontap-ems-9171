@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: lmgr-aggr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lmgr.aggr events
+---
+
+= lmgr.aggr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lmgr.aggr.CA.locks.dropped
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when locks established through CIFS Continuously Available (CA) shares on an aggregate are dropped after takeover, giveback, or aggregate relocation. This causes clients to see a service disruption on the aggregate.
+*Corrective Action*::
+Confirm that the aggregate is online by using the 'aggr show -aggregate [name of the aggregate] -fields state' command. Then reopen files to reestablish CA locks. For further information about correcting the problem, search the knowledgebase of the NetApp technical support support web site for the "lmgr.aggr.CA.locks.dropped" keyword.
+*Syslog Message*::
+Continuously Available (CA) locks were dropped on aggregate %s because %s.
+*Parameters*::
+*aggregate* (STRING): Name of the aggregate where CA locks were dropped.
+*reason* (STRING): Reason for dropping CA locks, such as "remote lock synchronization is in progress".

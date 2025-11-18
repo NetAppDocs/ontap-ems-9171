@@ -1,0 +1,86 @@
+---
+sidebar: sidebar
+permalink: smtape-rst-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: smtape.rst events
+---
+
+= smtape.rst events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== smtape.rst.abort.chksum.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an SMTape restore operation from tape is aborted due to checksum error.
+*Corrective Action*::
+Make sure that the correct tape is loaded and the tape is positioned correctly. If the tape is corrupted, contact NetApp technical support for the best effort recovery mechanisms.
+*Syslog Message*::
+SMTape restore session %d to %s from %s was aborted due to checksum error.
+*Parameters*::
+*sessionid* (INT): Session ID of the SMTape operation.
+*dstvolpath* (STRING): SMTape destination volume.
+*tapepath* (STRING): Current source device from which restore was performed.
+
+== smtape.rst.abort.read.err
+*Severity*::
+ERROR
+*Description*::
+This messages occurs when an SMTape restore operation is aborted because a read from the tape device fails.
+*Corrective Action*::
+Make sure that the input tape device and media are readable. Check for error details in the log file at /mroot/etc/log/backup.
+*Syslog Message*::
+SMTape restore session %d to %s from %s was aborted because read from input failed.
+*Parameters*::
+*sessionid* (INT): Session ID of the SMTape operation.
+*dstvolpath* (STRING): SMTape destination volume.
+*tapepath* (STRING): Current source device from which restore was performed.
+
+== smtape.rst.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an SMTape restore operation fails.
+*Corrective Action*::
+Check for error details in the log file at /mroot/etc/log/backup. Retry the command after resolving the error reported.
+*Syslog Message*::
+SMTape restore session %d to %s from %s failed with error %s.
+*Parameters*::
+*sessionid* (INT): Session ID of the SMTape operation.
+*dstvolpath* (STRING): SMTape destination volume.
+*tapepath* (STRING): Current source device from which restore was performed.
+*errorstring* (STRING): Error string returned by SMTape.
+
+== smtape.rst.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an SMTape restore operation from tape succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SMTape restore session %d from tape to %s was successful. %s.
+*Parameters*::
+*sessionid* (INT): Session ID of the SMTape operation.
+*dstvolpath* (STRING): SMTape destination volume.
+*stats* (STRING): Statistics for the SMTape restore.
+
+== smtape.rst.tape.change
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a CLI-based SMTape restore operation from tape reaches end of tape.
+*Corrective Action*::
+Load the next tape media onto a drive and position it correctly, and then issue the 'system smtape continue -session-id [session-id] -tape [tapepath]' command with the new tape path.
+*Syslog Message*::
+SMTape restore session %d from %s to %s is waiting for a tape change.
+*Parameters*::
+*sessionid* (INT): Session ID of the SMTape operation.
+*tapepath* (STRING): Current source tape device from which restore was performed.
+*dstvolpath* (STRING): SMTape destination volume.

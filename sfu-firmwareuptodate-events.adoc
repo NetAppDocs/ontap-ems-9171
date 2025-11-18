@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sfu-firmwareuptodate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfu.firmwareuptodate events
+---
+
+= sfu.firmwareuptodate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfu.firmwareUpToDate
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a disk shelf firmware update is requested but all shelves are determined to be updated already to the latest version of firmware available on the system. Before updating the disk shelf firmware, always check the NetApp Support Site for the latest disk shelf firmware available: http://support.netapp.com/NOW/download/tools/diskshelf/.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Firmware is up-to-date on all disk shelves.
+*Parameters*::
+(None).

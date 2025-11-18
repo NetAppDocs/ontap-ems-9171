@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-oneswitch-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.oneswitch events
+---
+
+= config.oneswitch events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.OneSwitch
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the disk is only connected to one switch.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s and other disks on this loop are only connected to one switch. For availability reasons, it should be connected to two separate switches.
+*Parameters*::
+*disk* (STRING): name of the disk

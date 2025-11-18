@@ -1,0 +1,70 @@
+---
+sidebar: sidebar
+permalink: availability-zone-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: availability.zone events
+---
+
+= availability.zone events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== availability.zone.full
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the storage availability zone space usage has exceeded the full threshold value. If physical space usage surpasses 100%, the storage availability zone will be overallocated.
+*Corrective Action*::
+Create space by increasing the storage availability zone size, by deleting data or by deleting Snapshot copies.
+*Syslog Message*::
+Physical space used (%s%%) by storage availability zone (%s) exceeds the full threshold (%d%%).
+*Parameters*::
+*percent_full* (STRING): Physical used space of the storage availability zone, as a percent.
+*pod_uuid* (STRING): UUID of the storage availability zone.
+*percent_threshold* (INT): Threshold percentage of physical used space which triggers the storage full condition.
+
+== availability.zone.nearlyFull
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the storage availability zone space usage has exceed the nearly full threshold value.
+*Corrective Action*::
+Create space by increasing the storage availability zone size, by deleting data or by deleting Snapshot copies.
+*Syslog Message*::
+Physical space used (%s%%) by storage availability zone (%s) exceeds the nearly full threshold (%d%%).
+*Parameters*::
+*percent_full* (STRING): Physical used space of the storage availability zone, as a percent.
+*pod_uuid* (STRING): UUID of the storage availability zone.
+*percent_threshold* (INT): Threshold percentage of physical used space which triggers the storage nearly full condition.
+
+== availability.zone.ok
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the storage availability zone space usage level is below the nearly full threshold value.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Physical space used (%s%%) by storage availability zone (%s) is below nearly full threshold (%d%%).
+*Parameters*::
+*percent_full* (STRING): Physical used space of the storage availability zone, as a percent.
+*pod_uuid* (STRING): UUID of the storage availability zone.
+*percent_threshold* (INT): Threshold percentage of physical used space which triggers the storage nearly full condition.
+
+== availability.zone.overalloc
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the storage availability zone space usage has exceeded the storage availability zone size. Once the physical use is beyond 100%, it may cause the availability zone to be taken offline.
+*Corrective Action*::
+Create space by increasing the storage availability zone size, by deleting data or by deleting Snapshot copies.
+*Syslog Message*::
+Physical space used (%s%%) by the storage availability zone (%s) exceeds maximum space in the storage availability zone.
+*Parameters*::
+*percent_full* (STRING): Physical used space of the storage availability zone, as a percent.
+*pod_uuid* (STRING): UUID of the storage availability zone.

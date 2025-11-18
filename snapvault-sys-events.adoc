@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: snapvault-sys-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapvault.sys events
+---
+
+= snapvault.sys events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapvault.sys.internal
+*Severity*::
+ERROR
+*Description*::
+This message occurs when SnapVault(R) encounters an internal error.
+*Corrective Action*::
+Turn off SnapVault and restart it.
+*Syslog Message*::
+An internal error occurred in SnapVault(R): %s.
+*Parameters*::
+*reason* (STRING): Reason for the internal error.
+
+== snapvault.sys.upgrade
+*Severity*::
+ERROR
+*Description*::
+During initialization, SnapVault will attempt to update all the qtree metadata flags if necessary. This message is generated if there is insufficient memory to perform this operation.
+*Corrective Action*::
+Convert the qtrees manually or contact NetApp technical support to help.
+*Syslog Message*::
+Low on memory. Can't automatically convert snapvault qtrees right now, so backups will fail. Convert the qtrees manually or contact NetApp technical support to help.
+*Parameters*::
+(None).
+
+== snapvault.sys.vfilerOn
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when SnapVault(R) is enabled on a vfiler during shutdown, where it is expected to be disabled.
+*Corrective Action*::
+None needed. This is for information only.
+*Syslog Message*::
+(None).
+*Parameters*::
+*vfiler* (STRING): Name of the vfiler.

@@ -1,0 +1,56 @@
+---
+sidebar: sidebar
+permalink: sas-device-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sas.device events
+---
+
+= sas.device events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sas.device.bad.vmdisk.header
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk's vmdisk header is bad. The disk is unusable by the system.
+*Corrective Action*::
+Remove the disk from the system and either write a new vmdisk header to the disk or zero the disk.
+*Syslog Message*::
+SAS adapter %s reports the device at port identifier %d has an invalid vmdisk header: %s.
+*Parameters*::
+*adapterName* (STRING): Name of the associated SAS host bus adapter.
+*devicePortId* (INT): Identifier of the SAS port device.
+*errorString* (STRING): Identifies what is wrong with the vmdisk header.
+
+== sas.device.invalid.wwn
+*Severity*::
+ERROR
+*Description*::
+The SAS device responded with an invalid World-Wide Name.
+*Corrective Action*::
+Power-cycling the device may allow it to recover from this problem.
+*Syslog Message*::
+SAS adapter %s reports the device at port identifier 0x%x has an invalid World-Wide Name.
+*Parameters*::
+*adapterName* (STRING): The name of the associated SAS host bus adapter.
+*devicePortId* (INTHEX): The SAS port identifier of the device.
+
+== sas.device.timeout
+*Severity*::
+ERROR
+*Description*::
+All outstanding commands to the specified device have not completed within the allotted time. As part of the standard error handling sequence managed by the Data ONTAP SAS driver, all commands to the device will be aborted and reissued.
+*Corrective Action*::
+Device level timeouts are a common indication of a SAS link stability problem. In some cases the link is operating normally and the specified device is having trouble processing I/O requests in a timely manner. In such cases the specified device should be evaluated for possible replacement. Quite often the problem results from the partial failure of a component involved in the SAS transport. Common things to check include complete seating of drive carriers in enclosure bays, properly secured cable connections, IOM seating, and crimped or otherwise damaged cables.
+*Syslog Message*::
+Adapter %s encountered a device timeout on %s device %s.
+*Parameters*::
+*adapterName* (STRING): The name of the associated SAS host bus adapter.
+*deviceType* (STRING): The device type.
+*deviceName* (STRING): The name of the SAS device.

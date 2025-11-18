@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: wafl-nfsv4-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.nfsv4 events
+---
+
+= wafl.nfsv4 events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.nfsv4.acl.not.mapped
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot map an ID stored in the Access Control Entry (ACE) to a valid UNIX(R) User ID/Group ID (UID/GID) pair. This failure makes this ACE an invalid one, resulting in a possible loss of access to the file or directory for which this ACE was set.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+ID in NFS Access Control Entry (ACE) on inode number %x, file system ID %x could not be mapped to a user or group. Possible loss of access can result.
+*Parameters*::
+*inum* (INT): Inode number.
+*fsid* (INT): File system ID.

@@ -1,0 +1,330 @@
+---
+sidebar: sidebar
+permalink: ndo-cr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ndo.cr events
+---
+
+= ndo.cr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ndo.cr.canceled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a controller replacement operation is canceled by the operator.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Controller replacement operation on node "%s" is canceled by the operator.
+*Parameters*::
+*nodeName* (STRING): Name of the node that was being replaced when the operation was canceled.
+
+== ndo.cr.completed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a controller replacement operation has been completed successfully in the HA group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Controller replacement operation completed. New node "%s" (model: %s), HA partner node "%s" (model: %s)
+*Parameters*::
+*newNodeName* (STRING): Node name of the first new controller.
+*newModelName* (STRING): Model name of the first new controller.
+*haNodeName* (STRING): Node name of the new HA partner controller.
+*haModelName* (STRING): Model name of the new HA partner controller.
+
+== ndo.cr.completed.firstNode
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a controller replacement operation has been completed on the first node of the HA group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Controller replacement operation completed on the first controller of the HA group. New node: %s (model: %s).
+*Parameters*::
+*nodeName* (STRING): Node name of the new controller.
+*modelName* (STRING): Model name of the new controller.
+
+== ndo.cr.nso.canceled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a controller replacement operation using negotiated switchover (NSO) in a MetroCluster FC configuration has been canceled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NSO-based controller replacement operation was canceled from node: %s. Remote cluster node: %s, remote cluster HA partner node: %s.
+*Parameters*::
+*initiatingClusterNodeName* (STRING): Name of the node from where controller replacement operation was canceled.
+*targetClusterNodeName* (STRING): Node name of the controller that will be replaced.
+*targetClusterHApartnerNodeName* (STRING): Node name of the HA partner controller that will be replaced.
+
+== ndo.cr.nso.completed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a controller replacement operation using negotiated switchover (NSO) in a MetroCluster FC configuration has completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NSO-based controller replacement operation completed. Initiating cluster node: %s, remote cluster node: %s (model: %s), remote cluster HA partner node: %s (model: %s).
+*Parameters*::
+*initiatingClusterNodeName* (STRING): Node name of the controller that has initiated the upgrade.
+*newTargetClusterNodeName* (STRING): Node name of the new controller.
+*newTargetClusterModelName* (STRING): Model name of the new controller.
+*newTargetClusterHApartnerNodeName* (STRING): Node name of the new HA partner controller.
+*newTargetClusterHApartnerModelName* (STRING): Model name of the new HA partner controller.
+
+== ndo.cr.nso.mccip.canceled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a controller replacement operation using negotiated switchover (NSO) in a MetroCluster IP configuration has been canceled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+An NSO-based controller replacement operation was canceled in a MetroCluster IP configuration from node "%s". The remote cluster node is "%s", and the remote cluster HA partner node is "%s".
+*Parameters*::
+*initiatingClusterNodeName* (STRING): Name of the node where the controller replacement operation was canceled.
+*targetClusterNodeName* (STRING): Node name of the controller that was to be replaced.
+*targetClusterHApartnerNodeName* (STRING): Node name of the HA partner controller that was to be replaced.
+
+== ndo.cr.nso.mccip.completed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a controller replacement operation using negotiated switchover (NSO) in a MetroCluster IP configuration has completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+An NSO-based controller replacement operation completed in a MetroCluster IP configuration. The initiating cluster node is "%s", remote cluster node is "%s" (model "%s"), and the remote cluster HA partner node is "%s" (model "%s").
+*Parameters*::
+*initiatingClusterNodeName* (STRING): Node name of the controller that initiated the controller replacement operation.
+*newTargetClusterNodeName* (STRING): Node name of the new controller.
+*newTargetClusterModelName* (STRING): Model name of the new controller.
+*newTargetClusterHApartnerNodeName* (STRING): Node name of the new HA partner controller.
+*newTargetClusterHApartnerModelName* (STRING): Model name of the new HA partner controller.
+
+== ndo.cr.nso.mccip.paused
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a controller replacement operation using negotiated switchover (NSO) in a MetroCluster IP configuration has been paused.
+*Corrective Action*::
+Use the "system controller replace show-details" command to check the status of the operation. Then, use the "system controller replace resume" command to resume the replacement operation.
+*Syslog Message*::
+An NSO-based controller replacement operation was paused in a MetroCluster IP configuration from node "%s". The remote cluster node is "%s", and the remote cluster HA partner node is "%s".
+*Parameters*::
+*initiatingClusterNodeName* (STRING): Name of the node from where the controller replacement operation was paused.
+*targetClusterNodeName* (STRING): Node name of the controller that is being replaced.
+*targetClusterHApartnerNodeName* (STRING): Node name of the HA partner controller that is being replaced.
+
+== ndo.cr.nso.mccip.paused.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a controller replacement operation using negotiated switchover (NSO) in a MetroCluster IP configuration was paused due to an error.
+*Corrective Action*::
+Use the "system controller replace show-details" command to check the status of the operation. Resolve the error. Then, use the "system controller replace resume" command to resume the replacement operation.
+*Syslog Message*::
+An NSO-based controller replacement operation has been paused in a MetroCluster IP configuration on node "%s" during a task "%s" due to the following error: %s.
+*Parameters*::
+*nodeName* (STRING): Name of the node where the controller replacement operation was paused due to an error.
+*taskName* (STRING): Name of the task.
+*taskReport* (STRING): Detailed error report.
+
+== ndo.cr.nso.mccip.paused.userInput
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a controller replacement operation using negotiated switchover (NSO) in a MetroCluster IP configuration has been paused for operator intervention.
+*Corrective Action*::
+Use the "system controller replace show-details" command to check the status of the operation. Collect the requested information or perform the steps as mentioned in the "system controller replace show-details" command output. Then, use the "system controller replace resume" command to resume the replacement operation.
+*Syslog Message*::
+An NSO-based controller replacement operation from initiating node "%s" has been paused in a MetroCluster IP configuration. The remote cluster node "%s" and remote cluster HA partner node "%s" have been paused for operator interventio while performing a "%s" task during the "%s" phase.
+*Parameters*::
+*initiatingClusterNodeName* (STRING): Name of the node where the controller replacement operation was initiated.
+*targetClusterNodeName* (STRING): Node name of the controller that is being replaced.
+*targetClusterHApartnerNodeName* (STRING): Node name of the HA partner controller that is being replaced.
+*taskName* (STRING): Name of the task where the controller replacement operation has been paused for operator intervention.
+*phaseInfo* (STRING): Name of the phase where the controller replacement operation has been paused for operator intervention.
+
+== ndo.cr.nso.mccip.resumed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a controller replacement operation using negotiated switchover (NSO) in a MetroCluster IP configuration has been resumed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+An NSO-based controller replacement operation has been resumed in a MetroCluster IP configuration from node "%s". The remote cluster node is "%s", and the remote cluster HA partner node is "%s".
+*Parameters*::
+*initiatingClusterNodeName* (STRING): Name of the node from where the controller replacement operation has been resumed.
+*targetClusterNodeName* (STRING): Node name of the controller that is being replaced.
+*targetClusterHApartnerNodeName* (STRING): Node name of the HA partner controller that is being replaced.
+
+== ndo.cr.nso.mccip.started
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a controller replacement operation using negotiated switchover (NSO) in a MetroCluster IP configuration has been started.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+An NSO-based controller replacement operation has been started in a MetroCluster IP configuration. The local cluster node is "%s", the remote cluster node is "%s" (model "%s"), and the remote cluster HA partner node is "%s" (model "%s").
+*Parameters*::
+*initiatingClusterNodeName* (STRING): Node name of the controller that initiated the controller replacement operation.
+*targetClusterNodeName* (STRING): Node name of the controller that will be replaced.
+*targetClusterModelName* (STRING): Model name of the controller that will be replaced.
+*targetClusterHApartnerNodeName* (STRING): Node name of the HA partner controller that will be replaced.
+*targetClusterHApartnerModelName* (STRING): Model name of the HA partner controller that will be replaced.
+
+== ndo.cr.nso.paused
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a controller replacement operation using negotiated switchover (NSO) in a MetroCluster FC configuration has been paused.
+*Corrective Action*::
+Use the "system controller replace show-details" command to check the status of the operation. Then, use the "system controller replace resume" command to resume the replacement operation.
+*Syslog Message*::
+NSO-based controller replacement operation was paused from node: %s. Remote cluster node: %s, remote cluster HA partner node: %s.
+*Parameters*::
+*initiatingClusterNodeName* (STRING): Name of the node from where the controller replacement operation was paused.
+*targetClusterNodeName* (STRING): Node name of the controller that will be replaced.
+*targetClusterHApartnerNodeName* (STRING): Node name of the HA partner controller that will be replaced.
+
+== ndo.cr.nso.paused.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a controller replacement operation using negotiated switchover (NSO) in a MetroCluster FC configuration has been paused due to an error.
+*Corrective Action*::
+Use the "system controller replace show-details" command to check the status of the operation. Resolve the error. Then, use the "system controller replace resume" command to resume the replacement operation.
+*Syslog Message*::
+NSO-based controller replacement operation has been paused on node "%s" during %s task due to an error: %s.
+*Parameters*::
+*nodeName* (STRING): Name of the node where the controller replacement operation has been paused due to an error.
+*taskName* (STRING): Name of the task.
+*taskReport* (STRING): Detailed error report.
+
+== ndo.cr.nso.paused.userInput
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a controller replacement operation using negotiated switchover (NSO) in a MetroCluster FC configuration has been paused for operator intervention.
+*Corrective Action*::
+Use the "system controller replace show-details" command to check the status of the operation. Collect the requested information or perform the steps as mentioned in the "system controller replace show-details" command. Then, use the "system controller replace resume" command to resume the replacement operation.
+*Syslog Message*::
+NSO-based controller replacement operation from initiating node "%s" has been paused. Remote cluster node %s and remote cluster HA partner node %s are paused in %s task during %s phase for operator intervention.
+*Parameters*::
+*initiatingClusterNodeName* (STRING): Name of the node where the controller replacement operation was initiated.
+*targetClusterNodeName* (STRING): Node name of the controller that will be replaced.
+*targetClusterHApartnerNodeName* (STRING): Node name of the HA partner controller that will be replaced.
+*taskName* (STRING): NSO-based controller replacement operation from initiating node "%s" has been paused. Remote cluster node %s and remote cluster HA partner node %s are paused in %s task during %s phase for operator intervention
+*phaseInfo* (STRING): Name of the phase where the controller replacement operation has been paused for operator intervention.
+
+== ndo.cr.nso.resumed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a controller replacement operation using negotiated switchover (NSO) in a MetroCluster FC configuration has been resumed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NSO-based controller replacement operation has been resumed from node %s. Remote cluster node: %s, remote cluster HA partner node: %s.
+*Parameters*::
+*initiatingClusterNodeName* (STRING): Name of the node from where the controller replacement operation has been resumed.
+*targetClusterNodeName* (STRING): Node name of the controller that will be replaced.
+*targetClusterHApartnerNodeName* (STRING): Node name of the HA partner controller that will be replaced.
+
+== ndo.cr.nso.started
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a controller replacement operation using negotiated switchover (NSO) in a MetroCluster FC configuration has been started.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NSO-based controller replacement operation has been started. Local cluster node: %s, remote cluster node: %s (model: %s), remote cluster HA partner node: %s (model: %s).
+*Parameters*::
+*initiatingClusterNodeName* (STRING): Node name of the controller that has initiated the upgrade.
+*targetClusterNodeName* (STRING): Node name of the controller that will be replaced.
+*targetClusterModelName* (STRING): Model name of the controller that will be replaced.
+*targetClusterHApartnerNodeName* (STRING): Node name of the HA partner controller that will be replaced.
+*targetClusterHApartnerModelName* (STRING): Model name of the HA partner controller that will be replaced.
+
+== ndo.cr.paused
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a controller replacement operation has been paused by the operator.
+*Corrective Action*::
+Use the "system controller replace show-details" command to check the status of the operation. Then, use the "system controller replace resume" command to resume the replacement operation.
+*Syslog Message*::
+Controller replacement operation on node "%s" is paused by the operator.
+*Parameters*::
+*nodeName* (STRING): Name of the node where the replacement was in progress when the operation was paused.
+
+== ndo.cr.paused.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the controller replacement operation has been paused due to an error.
+*Corrective Action*::
+Use the "system controller replace show-details" command to check the status of the operation. Resolve the error. Then, use the "system controller replace resume" command to resume the replacement operation.
+*Syslog Message*::
+Controller replacement operation has been paused on node "%s" during %s task due to an error: %s.
+*Parameters*::
+*nodeName* (STRING): Name of the node where the controller replacement operation has been paused due to an error.
+*taskName* (STRING): Name of the task.
+*taskReport* (STRING): Detailed error report.
+
+== ndo.cr.paused.userInput
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a controller replacement operation has been paused for operator intervention.
+*Corrective Action*::
+Use the "system controller replace show-details" command to check the status of the operation. Collect the requested information or perform the steps as mentioned in the "system controller replace show-details" command. Then, use the "system controller replace resume" command to resume the replacement operation.
+*Syslog Message*::
+Controller replacement operation has been paused on node "%s" in "%s" task during "%s" phase for operator intervention.
+*Parameters*::
+*nodeName* (STRING): Name of the node where the controller replacement operation has been paused for operator intervention.
+*taskName* (STRING): Name of the task where the controller replacement operation has been paused for operator intervention.
+*phaseInfo* (STRING): Name of the phase where the controller replacement operation has been paused for operator intervention.
+
+== ndo.cr.resumed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a controller replacement operation has been resumed by the operator.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Controller replacement operation has been resumed on node "%s" by the operator.
+*Parameters*::
+*nodeName* (STRING): Name of the node where the controller replacement operation has been resumed.
+
+== ndo.cr.started
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a controller replacement operation has been started in the HA group by the operator.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Controller replacement operation has been started. Node "%s" (model: %s), HA partner node "%s" (model: %s).
+*Parameters*::
+*nodeName* (STRING): Node name of the controller that will be replaced.
+*modelName* (STRING): Model name of the controller that will be replaced.
+*haNodeName* (STRING): Node name of the HA partner controller that will be replaced.
+*haModelName* (STRING): Model name of the HA partner controller that will be replaced.

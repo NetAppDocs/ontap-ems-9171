@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: lic-lm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lic.lm events
+---
+
+= lic.lm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lic.lm.server.not.configured
+*Severity*::
+ALERT
+*Description*::
+This message occurs when ONTAP(R) software is running in the capacity pools licensing model and there is no License Manager configuration available. Without the License Manager configuration, the system cannot create or expand an aggregate.
+*Corrective Action*::
+Find the IP address of the ONTAP Select Deploy instance from which this ONTAP system was created. Use that IP address to manually configure the License Manager by using the "system license license-manager modify -host ip_address_of_license_manager" command. Verify that the correct License Manager is configured by using the "system license license-manger show" command. Use the "system license license-manager check" command to determine whether the License Manager is accessible. These commands are accessible through diagnostic privileges.
+*Syslog Message*::
+"License Manager has not been configured for capacity pools."
+*Parameters*::
+(None).

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: disk-min-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.min events
+---
+
+= disk.min events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.min.OS.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk is detected that is not supported in this version of Data ONTAP(R).
+*Corrective Action*::
+Remove the disk and replace it with a disk that is supported, or upgrade the kernel to the required version.
+*Syslog Message*::
+%s is not supported because it requires a minimum kernel version of %s. Current version is %s.
+*Parameters*::
+*disk_information* (STRING): Disk information.
+*min_OS_version* (STRING): Disk's minimum supported Data ONTAP version.
+*cur_OS_version* (STRING): Current version of the Data ONTAP.

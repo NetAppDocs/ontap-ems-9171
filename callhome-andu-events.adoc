@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: callhome-andu-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.andu events
+---
+
+= callhome.andu events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.andu.completed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the automated update of the cluster has been completed. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.andu.pausederr
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the automated update of the cluster has been paused due to an error. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+The automated update of the cluster has been paused due to an error. Determine the cause of the error by using the "cluster image show-update-progress" command. Correct the cause of the error, and then issue the "cluster image resume-update" command to continue the automated update of the cluster.
+*Syslog Message*::
+(None).
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multinode AutoSupport.

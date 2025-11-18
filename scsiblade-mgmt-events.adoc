@@ -1,0 +1,63 @@
+---
+sidebar: sidebar
+permalink: scsiblade-mgmt-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsiblade.mgmt events
+---
+
+= scsiblade.mgmt events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsiblade.mgmt.evt.lost.mem
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SAN management event is lost because the system could not allocate enough free memory. Access to LUNs within the Vserver might be affected. The corresponding Vserver might not be available to process any other management changes and events until the node is rebooted to clear this error condition.
+*Corrective Action*::
+Perform a planned takeover and giveback.
+*Syslog Message*::
+A SAN management event was lost because of lack of available memory. Vserver %s might not be available to process additional SAN management commands and events. Access to LUNs within the Vserver might be affected.
+*Parameters*::
+*vserver* (STRING): Name or UUID of the Vserver.
+
+== scsiblade.mgmt.locked
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when there is a connectivity loss within the cluster. The SAN configuration is locked and commands to change the SAN configuration are rejected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+One or more cluster nodes have lost connectivity. The SAN configuration will remain locked and reject any commands to change the configuration until connectivity is restored.
+*Parameters*::
+(None).
+
+== scsiblade.mgmt.unlocked
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when connectivity to all cluster nodes is established. The SAN configuration is unlocked and commands to change the SAN configuration are allowed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Connectivity to all cluster nodes is available. The SAN configuration is unlocked and can be modified.
+*Parameters*::
+(None).
+
+== scsiblade.mgmt.wedged
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the SAN management plane encounters an error that prevents further SAN management commands from being processed.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+SAN management has encountered an error and SAN configuration changes on this node and other nodes in the cluster will fail with timeout errors until corrected.
+*Parameters*::
+(None).

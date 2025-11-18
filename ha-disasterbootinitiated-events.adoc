@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ha-disasterbootinitiated-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.disasterbootinitiated events
+---
+
+= ha.disasterbootinitiated events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.disasterBootInitiated
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an HA disaster recovery boot is initiated. Such a boot occurs when the HA partner of a failing node also experiences a failure, and one from which it cannot recover.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+HA disaster recovery boot initiated.
+*Parameters*::
+(None).

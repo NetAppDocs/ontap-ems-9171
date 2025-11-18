@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nv-fake-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nv.fake events
+---
+
+= nv.fake events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nv.fake
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the nonvolatile (NV) driver detects that system memory is being used to simulate NVRAM.
+*Corrective Action*::
+Reset the 'fake-nvram?' boot environment variable from the boot loader: 'unsetenv fake-nvram?'.
+*Syslog Message*::
+%u MB system memory being used to simulate NVRAM.
+*Parameters*::
+*memory_size* (INT): Memory size (in MB) being used to simulate NVRAM.

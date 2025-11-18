@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: netgroupbyname-cache-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netgroupbyname.cache events
+---
+
+= netgroupbyname.cache events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netgroupbyname.cache.skip
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a host is checked for its membership in a netgroup that contains a large number of members. In such cases, the netgroup.byname method produces an extended response and cannot be cached. Consequently, every lookup for hosts in that netgroup accesses the LDAP server.
+*Corrective Action*::
+Consider configuring the netgroup.byhost database on the LDAP server and enabling netgroup.byhost on the LDAP client configuration of the storage system by using the "ldap client modify" command.
+*Syslog Message*::
+netgroup.byname result for netgroup "%s" on SVM "%s" won't be cached since it's long.
+*Parameters*::
+*netgroupName* (STRING): Name of the netgroup for which the result is longer.
+*SVM* (STRING): SVM name associated with this operation.

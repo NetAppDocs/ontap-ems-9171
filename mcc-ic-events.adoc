@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: mcc-ic-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mcc.ic events
+---
+
+= mcc.ic events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mcc.ic.process.node.adv
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the MetroCluster(tm) config module receives a node advertisement from any of its partners.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*sys_id* (LONGINT): System id of the node sending the advertisements.
+*is_local_node_assigned* (INT): Boolean specifying whether the local node has joined the cluster.
+*is_partner_assigned* (INT): Boolean specifying whether the node sending advertisements has joined the cluster.

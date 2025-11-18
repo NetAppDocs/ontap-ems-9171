@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: wafl-mirror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.mirror events
+---
+
+= wafl.mirror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.mirror.access.denied
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system rejects client access to a primordial volume. A primordial volume is a volume that has been configured as the destination of a SnapMirror(R) relationship but has not yet been initialized through that relationship.
+*Corrective Action*::
+You can avoid this event by using the 'volume unmount' command to unmount the volume from the namespace, or by using the 'snapmirror initialize' command to initialize the SnapMirror relationship to the volume.
+*Syslog Message*::
+Access to SnapMirror volume '%s' was denied because SnapMirror initialization was not complete (exported snapshot identifier '%d' is invalid).
+*Parameters*::
+*vol* (STRING): Volume name.
+*snapid* (INT): Exported snapshot identifier.
+
+== wafl.mirror.upgrade.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when WAFL(R) unexpectedly encounters a Data ONTAP(R) 10.0.x mirrored volume during an upgrade. This mirrored volume should have been deleted or broken off from its mirroring relationship prior to the upgrade.
+*Corrective Action*::
+Avoid this event by destroying all Data ONTAP 10.0.x mirrored volumes prior to the upgrade. This event resulted in the volume being marked offline, corrupt, and unrecoverable. Because the current version of Data ONTAP does not recognize this mirrored volume, the volume cannot be recovered by file system repair mechanisms such as wafliron and cannot be brought online.
+*Syslog Message*::
+Data ONTAP 10.0.x mirror (type %d) cannot be upgraded by the current version of Data ONTAP. Mirrored volume '%s' was marked offline, corrupt, and unrecoverable. Read the upgrade notes for this release. Such mirrored volumes should be deleted or broken off from their mirroring relationships prior to the upgrade.
+*Parameters*::
+*type* (INT): Mirror type in Data ONTAP 10.0.x.
+*vol* (STRING): Volume name.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: sm-cg-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sm.cg events
+---
+
+= sm.cg events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sm.cg.tag.replicate.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is a failure to replicate tag information to a SnapMirror destination consistency group as part of a SnapMirror operation. This results in a mismatch of consistency group tags data found in source and destination consistency groups.
+*Corrective Action*::
+A subsequent SnapMirror (SM) auto-update or user-triggered manual SM update will replicate the tags. Make sure that this event is no longer seen after the latest SM update. Command to update manually: snapmirror update -destination-path 'SVM-name':/cg/'cg-name' Command to check the last update: snapmirror show -destination-path 'SVM-name':/cg/'cg-name' -instance
+*Syslog Message*::
+SnapMirror operation failed to replicate tag information from primary consistency group (CG) to secondary CG. SnapMirror relationship ID: "%s", Error: "%s"
+*Parameters*::
+*relID* (STRING): SnapMirror relationship ID for which tag replication fails.
+*reason* (STRING): Reason for the tag replication failure.

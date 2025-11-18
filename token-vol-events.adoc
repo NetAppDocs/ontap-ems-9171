@@ -1,0 +1,63 @@
+---
+sidebar: sidebar
+permalink: token-vol-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: token.vol events
+---
+
+= token.vol events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== token.vol.cache.cleared
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a 'volume offline' operation results in clearing the token cache for that volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Token cache for volume %s was cleared because the volume went offline.
+*Parameters*::
+*volume_name* (STRING): Name of the volume whose token cache was cleared.
+
+== token.vol.is.compressed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a 'token create' request fails because the container is a compressed volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A 'token create' request in volume %s failed because the volume is compressed.
+*Parameters*::
+*volume_name* (STRING): Name of the volume for which the 'token create' request failed.
+
+== token.vol.is.sparse
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a 'token create' request fails because the container is a sparse volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A 'token create' request in volume %s failed because the volume is sparse.
+*Parameters*::
+*volume_name* (STRING): Name of the volume for which the 'token create' request failed.
+
+== token.vol.max.count.reached
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the maximum number of tokens per volume is reached. Tokens cannot be created in the volume unless some existing tokens expire.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Tokens cannot be created in volume %s because the maximum number of tokens per volume has been reached.
+*Parameters*::
+*volume_name* (STRING): Name of the volume in which the maximum number of tokens has been reached.

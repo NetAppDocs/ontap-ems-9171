@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: diskown-isbeingenabled-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.isbeingenabled events
+---
+
+= diskown.isbeingenabled events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.isBeingEnabled
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when the system is being converted from non-software based disk ownership to software based disk ownership
+*Corrective Action*::
+(None).
+*Syslog Message*::
+System is being changed to use software based disk ownership
+*Parameters*::
+(None).

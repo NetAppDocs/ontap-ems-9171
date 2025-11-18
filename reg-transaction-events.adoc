@@ -1,0 +1,53 @@
+---
+sidebar: sidebar
+permalink: reg-transaction-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: reg.transaction events
+---
+
+= reg.transaction events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== reg.transaction.commitFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) cannot commit a registry transaction. A system registry transaction is used to update a group of registry keys simultaneously.
+*Corrective Action*::
+Check to see whether the system is running low on memory. Contact NetApp technical support.
+*Syslog Message*::
+registry: Cannot commit transaction in '%s'. %s
+*Parameters*::
+*location* (STRING): Location where the failure occurred.
+*errormsg* (STRING): Internal error message explaining why the transaction commit failed.
+
+== reg.transaction.createFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) software cannot create a registry transaction. A system registry transaction is used to update a group of registry keys simultaneously.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+registry: Cannot create transaction. Operation: %s.
+*Parameters*::
+*operation* (STRING): Registry operation involved in the failure.
+
+== reg.transaction.setkeyFail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when ONTAP(R) cannot set a registry key to a value within a registry transaction.
+*Corrective Action*::
+Because the transaction failed, modify the registry key manually. Follow the steps in KB article https://kb.netapp.com/support/index?page=content&actp=LIST&id=S:1015964.
+*Syslog Message*::
+registry: Transaction cannot set "%s" to "%s".
+*Parameters*::
+*key* (STRING): Registry key that should have been changed.
+*value* (STRING): Value that the key should have been changed to.

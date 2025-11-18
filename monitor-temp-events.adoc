@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: monitor-temp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.temp events
+---
+
+= monitor.temp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.temp.unreadable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the controller module temperature is not readable. In this condition, the system does not automatically shut down if it becomes too hot for reliable operation.
+*Corrective Action*::
+Shut down the system and power-cycle the controller module. If the temperature is still not readable, replace the controller module.
+*Syslog Message*::
+The controller temperature (%s) is not readable.
+*Parameters*::
+*sensor_name* (STRING): Sensor name.

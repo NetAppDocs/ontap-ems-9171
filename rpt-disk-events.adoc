@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: rpt-disk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rpt.disk events
+---
+
+= rpt.disk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rpt.disk.uuid.gen.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the generation of a disk UUID fails.
+*Corrective Action*::
+Investigate the Directed Attached (DA) disk to fix the error, and then reboot the device.
+*Syslog Message*::
+Disk name %s and disk unit number %d of RAID passthru with error message %s.
+*Parameters*::
+*d_name* (STRING): Disk name.
+*d_unit* (INT): Unit number.
+*errmsg* (STRING): Whether the device failed or is misconfigured.

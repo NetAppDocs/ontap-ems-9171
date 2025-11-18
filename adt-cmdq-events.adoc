@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: adt-cmdq-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: adt.cmdq events
+---
+
+= adt.cmdq events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== adt.cmdq.init.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an internal audit command queue fails to initialize.
+*Corrective Action*::
+Available system resources are required for this feature to function. The audit subsystem might not function, or might function with reduced performance. The best way to accomplish that is through a system reboot. For HA configurations, operational disruption can be minimized by initiating a partner takeover followed by a reboot of this partner. After the reboot is complete, issue a "giveback" command to return services to this partner.
+*Syslog Message*::
+Audit subsystem internal error: Audit command queue failed to initialize, system reboot might be required.
+*Parameters*::
+(None).

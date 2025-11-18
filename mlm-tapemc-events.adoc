@@ -1,0 +1,114 @@
+---
+sidebar: sidebar
+permalink: mlm-tapemc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mlm.tapemc events
+---
+
+= mlm.tapemc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mlm.tapemc.lun.discovery
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system discovers a new tape or media changer logical unit (Tape/MC LUN) reported by a tape library.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+New %s LUN %s (S/N: %s) was discovered on initiator port %s at tape library target port WWNN: %s, WWPN: %s.
+*Parameters*::
+*deviceType* (STRING): Type of LUN device.
+*deviceName* (STRING): Name of the Tape/MC LUN.
+*serialno* (STRING): Serial number of the LUN.
+*adapterName* (STRING): Name of the initiator port discovering the LUN.
+*wwnn* (STRING): World Wide Node Name(WWNN) of the library target port exporting the new LUN.
+*wwpn* (STRING): World Wide Port Name(WWPN) of the library target port exporting the new LUN.
+
+== mlm.tapemc.lun.noInit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the initialization sequence for a tape or media changer logical unit (LUN) fails.
+*Corrective Action*::
+An expected LUN might be missing from the configuration. Information about the path to the LUN might be unknown but the product information in the log may help identify the missing LUN. Check the device LUN configuration settings.
+*Syslog Message*::
+%s device %sL%d failed LUN initialization sequence at phase %s.
+*Parameters*::
+*deviceType* (STRING): Type of LUN device.
+*deviceName* (STRING): Name of the device on which the LUN initialization fails.
+*lunid* (INT): LUN ID of the device on which LUN initialization fails.
+*lunInitPhase* (STRING): Failing LUN initialization phase.
+
+== mlm.tapemc.lun.PathAdded
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a new path is added for a tape or media changer logical unit (Tape/MC LUN).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s LUN '%s' (S/N: %s) is now connected on initiator port %s through %s's target port: WWNN: %s, WWPN: %s at LUN ID: %d.
+*Parameters*::
+*deviceType* (STRING): Type of LUN device.
+*deviceName* (STRING): Name of the Tape/MC LUN.
+*serialno* (STRING): Serial number of the LUN.
+*adapterName* (STRING): Name of the adapter used to access the LUN.
+*libraryName* (STRING): Name of the library.
+*wwnn* (STRING): World Wide Node Name(WWNN) of the library target port.
+*wwpn* (STRING): World Wide Port Name(WWPN) of the library target port.
+*LUNID* (INT): LUN ID to which a path was added.
+
+== mlm.tapemc.lun.PathRemoved
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a path to this tape or media changer logical unit (Tape/MC LUN) is removed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The %s LUN '%s' (S/N: %s) is no longer available on initiator port %s through %s's target port: WWNN: %s, WWPN: %s.
+*Parameters*::
+*deviceType* (STRING): Type of LUN device.
+*deviceName* (STRING): Name of the Tape/MC LUN.
+*serialno* (STRING): Serial number of the LUN.
+*adapterName* (STRING): Name of the adapter used to access the LUN.
+*libraryName* (STRING): Name of the library.
+*wwnn* (STRING): World Wide Node Name(WWNN) of the library target port.
+*wwpn* (STRING): World Wide Port Name(WWPN) of the library target port.
+
+== mlm.tapemc.lun.removed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the last path to a tape or media changer logical unit (Tape/MC LUN) is removed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The %s LUN '%s' (S/N: %s) is no longer visible to this node.
+*Parameters*::
+*deviceType* (STRING): Type of LUN device.
+*deviceName* (STRING): Name of the Tape/MC LUN.
+*serialno* (STRING): Serial number of the LUN.
+
+== mlm.tapemc.path.discovery
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system discovers a new tape or media changer logical unit (Tape/MC LUN) path.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A new Tape/MC path was discovered: initiator port %s is now connected to tape library %s's target port: WWNN: %s, WWPN: %s. There are %d LUNs visible on this target port.
+*Parameters*::
+*adapterName* (STRING): Name of the initiator port discovering the Tape/MC LUN.
+*libraryName* (STRING): Name of the tape library.
+*wwnn* (STRING): World Wide Node Name(WWNN) of the library target port exporting the new LUN.
+*wwpn* (STRING): World Wide Port Name(WWPN) of the library target port exporting the new LUN.
+*count* (INT): Number of LUNs visible on this port.

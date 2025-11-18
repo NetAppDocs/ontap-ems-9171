@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: nvram-excessive-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvram.excessive events
+---
+
+= nvram.excessive events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvram.excessive.cecc.errs
+*Severity*::
+ALERT
+*Description*::
+This message occurs when excessive correctable error-correcting code (ECC) memory errors are reported by the NVRAM complex.
+*Corrective Action*::
+Use the "system environment sensors show -hidden true" cluster shell command to view the current "NV Correctable ECC count" and "NV Correctable ECC rate" values. Contact NetApp technical support for further assistance.
+*Syslog Message*::
+Excessive correctable ECC errors in the NVRAM card.
+*Parameters*::
+(None).
+
+== nvram.excessive.sbit.ecc.errs
+*Deprecated*::
+Deprecated as of version 9.2.0 to address the EMS ID length violation.
+*Severity*::
+ALERT
+*Description*::
+This event is issued to report excessive singlebit ECC errors.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Excessive singlebit ECC errors in the NVRAM card
+*Parameters*::
+(None).

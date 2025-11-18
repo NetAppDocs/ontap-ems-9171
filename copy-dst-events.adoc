@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: copy-dst-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: copy.dst events
+---
+
+= copy.dst events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== copy.dst.raid.convert.fail
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a SnapMirror or aggregate copy operation attempts to update a flexible volume RAID block on the destination but is unable to do so.
+*Corrective Action*::
+Verify the source and destination have flexible volumes with compatible versions.
+*Syslog Message*::
+Unable to convert volume RAID block %llu during copy transfer.
+*Parameters*::
+*block* (LONGINT): Block with the error

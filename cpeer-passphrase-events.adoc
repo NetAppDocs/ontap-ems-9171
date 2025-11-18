@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cpeer-passphrase-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cpeer.passphrase events
+---
+
+= cpeer.passphrase events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cpeer.passphrase.expired
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the cluster peer offer for anonymous cluster with system-generated passphrase expired and deleted.
+*Corrective Action*::
+If required, use the "cluster peer create" command with "generate-passphrase" option to generate the additional cluster peer offers.
+*Syslog Message*::
+The cluster peer offer with system-generated passphrase (%s) expired and deleted.
+*Parameters*::
+*passphase_details* (STRING): Cluster peer passphrase details.

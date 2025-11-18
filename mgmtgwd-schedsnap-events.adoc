@@ -1,0 +1,48 @@
+---
+sidebar: sidebar
+permalink: mgmtgwd-schedsnap-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmtgwd.schedsnap events
+---
+
+= mgmtgwd.schedsnap events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmtgwd.schedSnap.createFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system fails to create a Snapshot(tm) copy for the given volume.
+*Corrective Action*::
+Correct the problem based on the reason specified. If the error persists, contact NetApp technical support.
+*Syslog Message*::
+Skipping creation of scheduled Snapshot copy '%s' on volume '%s' on vserver '%s' for schedule '%s' prefix '%s' (reason: %s)
+*Parameters*::
+*snapshotName* (STRING): Name of the Snapshot copy.
+*volumeName* (STRING): Name of the volume.
+*vserverName* (STRING): Name of the virtual server.
+*scheduleName* (STRING): Name of the Snapshot policy schedule.
+*prefixName* (STRING): Name of the prefix associated with the Snapshot policy schedule.
+*reason* (STRING): Reason for the failure.
+
+== mgmtgwd.schedSnap.createSkip
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a scheduled Snapshot(tm) copy for a volume is skipped because there is a conflicting operation being performed on the volume.
+*Corrective Action*::
+Correct the problem based on the reason specified. If the error persists, contact NetApp technical support.
+*Syslog Message*::
+Skipping creation of scheduled Snapshot copy for volume "%s" on Vserver "%s" using policy "%s". Reason: %s.
+*Parameters*::
+*volumeName* (STRING): Name of the volume.
+*vserverName* (STRING): Name of the Vserver.
+*snapshotPolicy* (STRING): Name of the Snapshot policy.
+*reason* (STRING): Reason that the scheduled Snapshot copy was skipped.
+*appUuid* (STRING): UUID of the Application.

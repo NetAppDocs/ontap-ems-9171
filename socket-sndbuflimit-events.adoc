@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: socket-sndbuflimit-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: socket.sndbuflimit events
+---
+
+= socket.sndbuflimit events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== socket.sndbuflimit.exceeded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an overflow is detected in the TCP socket send buffer. The TCP socket send buffer can hold a maximum of INT_MAX (2147483647) bytes.
+*Corrective Action*::
+Excessive unacknowledged data in the socket send buffer is commonly due to an overloaded client that is extremely slow to send TCP acknowledgments or completely stops doing so. Examine the client and take actions to address the client behavior.
+*Syslog Message*::
+The system (%s:%d) could not send data to client %s due to an overflow in the TCP socket send buffer. The buffer can hold a maximum of %d bytes.
+*Parameters*::
+*server_address* (STRING): IP address of the server.
+*port* (INT): Local port bound to the socket.
+*client_address* (STRING): IP address of the client.
+*socket_buffer_limit* (INT): Maximum allowed number of bytes in socket buffer.

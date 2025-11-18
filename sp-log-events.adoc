@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: sp-log-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sp.log events
+---
+
+= sp.log events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sp.log.partition.full
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the available memory of the log partition in the Service Processor (SP) or the Baseboard Management Controller (BMC) is low. If the log partition is full, it might lead to unexpected configuration issues.
+*Corrective Action*::
+1. Run the "system autosupport invoke -node <node-name> -type all" command from the ONTAP CLI to collect the SP or BMC logs before they can be cleared. Verify from the command output that the logs were transferred. 2. During the next maintenance cycle, execute the following commands from the SP or BMC CLI to clear the log partition: a. "priv set diag" b. "bmc wipeclean" for BMC or "sp wipeclean" for SP c. "bmc reboot" for BMC or "sp reboot" for SP The SP or BMC "wipeclean" command clears all the configuration and logs from the SP or BMC. After you reboot, wait for 10 minutes to allow ONTAP to resync the configuration before performing any action.
+*Syslog Message*::
+%s Log partition is almost full.
+*Parameters*::
+*sp_type* (STRING): Service processor type (SP or BMC)
+
+== sp.log.partition.readonly
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the node's Service Processor (SP) or Baseboard Management Controller (BMC) log partition is mounted as read-only. Recovery steps already have been tried automatically by the firmware, but the recovery efforts were not successful. If the log partition is mounted as read-only, the BMC or SP will not be able to record logs, configuration updates from ONTAP will fail, and ONTAP might not display the current BMC or SP status.
+*Corrective Action*::
+Search the support site knowledgebase for this event ID.
+*Syslog Message*::
+Log partition "%s" could not be recovered and is mounted as read-only.
+*Parameters*::
+*sp_type* (STRING): Service processor type (SP or BMC)
+
+== sp.log.partition.readwrite
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the node's Service Processor (SP) or Baseboard Management Controller (BMC) log partition is remounted as read-write after a SP or BMC reboot to recover from a log partition in a read-only state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Log partition "%s" has been remounted as read-write after recovery from a read-only state.
+*Parameters*::
+*sp_type* (STRING): Service processor type (SP or BMC)

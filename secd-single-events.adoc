@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: secd-single-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: secd.single events
+---
+
+= secd.single events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== secd.single.label.domain
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the trusted domains for the CIFS home domain of a Vserver contains a single-label domain (SLD). An SLD configuration is not supported because it can cause CIFS access issues.
+*Corrective Action*::
+Examine and remove any SLDs configured for the CIFS domain associated with the corresponding Vserver on your domain controller. Additionally, examine and revoke any account's access to the CIFS server where the account is from the trusted SLD.
+*Syslog Message*::
+Single-label domain (SLD) "%s" was found in the CIFS trusted domains for Vserver %s.
+*Parameters*::
+*domainName* (STRING): Trusted SLD.
+*vserverName* (STRING): Vserver associated with this operation.

@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: dfu-clustericdown-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dfu.clustericdown events
+---
+
+= dfu.clustericdown events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dfu.clusterIcDown
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the high-availability (HA) interconnect is not available.
+*Corrective Action*::
+The HA interconnect was not functional. Make sure that controller failover is enabled. Check that the HA interconnect cables are connected properly, and if applicable (based on the HA interconnect type), that the SFPs (Small Form-Factor Pluggables) are seated properly on both controllers.
+*Syslog Message*::
+HA interconnect not available (cf disabled?). Unable to download firmware to disk %s [%s %s %s] S/N [%s].
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*vendorName* (STRING): Vendor name of the disk.
+*productId* (STRING): Product ID of the disk.
+*fwVersion* (STRING): Firmware version of the disk.
+*serialno* (STRING): Serial number of the disk.

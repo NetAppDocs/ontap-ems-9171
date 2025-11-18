@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: hwaccel-reset-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: hwaccel.reset events
+---
+
+= hwaccel.reset events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== hwaccel.reset
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a hardware accelerator is reset using software.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Hardware accelerator %s reset by %s.
+*Parameters*::
+*devName* (STRING): Name of the acceleration device; for example, "qat0".
+*module* (STRING): Name of the software module or driver.

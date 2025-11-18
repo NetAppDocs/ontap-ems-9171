@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: disk-fence-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.fence events
+---
+
+= disk.fence events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.fence.BridgeIOBlocked
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a node's access to a disk is blocked due to a high-availability (HA) takeover event. The disk should still be accessible via other nodes in the system.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk "%s" reported fence blocked status on shelf "%s". Fence set by node: "%s", Fence Time: "%s."
+*Parameters*::
+*diskName* (STRING): Name of the disk reporting the BRIDGE_IO_BLOCKED status.
+*shelf_id* (STRING): Shelf ID and NSM ID that returned the BRIDGE_IO_BLOCKED status.
+*fence_setter_uid* (STRING): UUID of the node that sent the fence request to the bridge.
+*fence_time* (STRING): Exact timestamp indicating when the node sent the fence request to the bridge.

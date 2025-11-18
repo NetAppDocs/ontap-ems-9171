@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: snmp-authentication-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snmp.authentication events
+---
+
+= snmp.authentication events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snmp.authentication.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is an authentication failure during an SNMP query. This trap is generated for all SNMP versions.
+*Corrective Action*::
+In case of SNMPv1/v2c check whether the SNMP community string is configured. In case of SNMPv3, check whether SNMPv3 authentication credentials are correctly configured. The SNMPv3 credentials include username, password, authentication protocol, authentication protocol password, privacy protocol and privacy protocol password.
+*Syslog Message*::
+Authentication failure for SNMP query from port: %d.
+*Parameters*::
+*interface* (INT): Port on which the SNMP authentication failed.

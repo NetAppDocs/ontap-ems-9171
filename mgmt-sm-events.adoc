@@ -1,0 +1,362 @@
+---
+sidebar: sidebar
+permalink: mgmt-sm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmt.sm events
+---
+
+= mgmt.sm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmt.sm.cant.clear.autoInit
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a SnapMirror(R) protect operation fails because the source volume is already protected with a SnapMirror relationship in the specified destination Vserver with the same policy, schedule, relationship type, destination volume prefix, and destination volume suffix and auto-initialize parameter set to true. The auto-initialize parameter cannot be cleared on a SnapMirror relationship once it is set to true.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Job ID %lld failed to disable auto-initialize for SnapMirror relationship on volume %s, destination vserver %s. This operation is not permitted.
+*Parameters*::
+*jobID* (LONGINT): Job ID.
+*srcpath* (STRING): Path name of the source volume to be protected.
+*dstvserver* (STRING): Destination Vserver name.
+
+== mgmt.sm.cg.force.delete
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a sync granular consistency group relationship is deleted with the force option. Consistency Group relationship will be the deleted, however the items of the Consistency Group might not be made read-write or deletable after the operation.
+*Corrective Action*::
+For ASA r2 systems, contact NetApp technical support for assistance to resolve this internal error. For all other systems: Perform a volume offline and online on the destination volume to trigger the cleanup of any remaining relationship information on the volume.
+*Syslog Message*::
+Sync granular consistency group relationship with source path %s. Destination path %s has been force deleted and items of the consistency group on the destination volume might not be read-write or deletable.
+*Parameters*::
+*src_path* (STRING): Source path of the sync granular consistency group relationship that was force deleted.
+*dst_path* (STRING): Destination path of the sync granular consistency group relationship that was force deleted.
+
+== mgmt.sm.cgRel.limit
+*Severity*::
+ALERT
+*Description*::
+This message occurs when either Consistency Group relationships or FlexGroups relationships exceeds the cluster-wide limit.
+*Corrective Action*::
+To delete the excess relationships. Alternatively, not to create any more additional relationship in the cluster.
+*Syslog Message*::
+Number of Consistency Group SnapMirror and/or FlexGroup relationships exceeds supported limit. Number of relationships supported on this cluster "%d". Current Number of relationships "%lu"
+*Parameters*::
+*max_count* (INT): Maximum number of relationships supported on cluster.
+*cur_count* (LONGINT): Current count of relationships on cluster.
+
+== mgmt.sm.cgVolRel.limit
+*Severity*::
+ALERT
+*Description*::
+This message occurs when either Consistency Group item relationships or FlexGroups item relationships exceeds the cluster-wide limit.
+*Corrective Action*::
+To delete the excess item relationships. Alternatively, not to create any more additional relationship in the cluster.
+*Syslog Message*::
+Number of Consistency Group item SnapMirror and/or FlexGroup item relationships exceeds supported limit. Number of item relationships supported on this cluster "%d". Current Number of relationships "%lu"
+*Parameters*::
+*max_count* (INT): Maximum number of item relationships supported on cluster.
+*cur_count* (LONGINT): Current count of item relationships on cluster.
+
+== mgmt.sm.dp.depr.msg
+*Severity*::
+NOTICE
+*Description*::
+SnapMirror relationships of type DP are deprecated. From the previous release, users were no longer able to initialize new relationships of type DP. From this release, relationships of type DP will no longer function.
+*Corrective Action*::
+Use SnapMirror relationships of type XDP instead of type DP.
+*Syslog Message*::
+SnapMirror relationships of type DP are deprecated in this ONTAP release.
+*Parameters*::
+(None).
+
+== mgmt.sm.ep.cant.clr.autoInit
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a SnapMirror(R) protect operation fails because the source is already protected with a SnapMirror relationship that has the specified destination endpoint type and the same "-destination-volume-prefix" and "-destination-volume-suffix" parameter values, with the "-auto-initialize" parameter set to "true". The "-auto-initialize" parameter cannot be cleared on a SnapMirror relationship after it is set to "true".
+*Corrective Action*::
+To change the auto-initialize behavior, delete and release the existing SnapMirror relationship by using the "snapmirror delete" command and the "snapmirror release" command, and then establish another relationship without auto-initialize.
+*Syslog Message*::
+Job ID %lld: Failed to disable auto-initialize for SnapMirror relationship from source %s to destination endpoint type %s. This operation is not permitted.
+*Parameters*::
+*jobID* (LONGINT): Job ID.
+*srcpath* (STRING): Path name of the source to be protected.
+*dsteptype* (STRING): Destination endpoint type.
+
+== mgmt.sm.expand.overprovision
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a volume expand job starts for the source of a SnapMirror(R) relationship and the provisioning check finds that there isn't enough free space on the aggregates for destination volume. The source volume expand job is not impacted, but auto-expand will fail for the destination FlexGroup after the source FlexGroup is expanded.
+*Corrective Action*::
+Increase the size of the aggregates for the destination Flexgroup volume.
+*Syslog Message*::
+The aggregates on the cluster hosting destination FlexGroup volume '%s' do not have enough free space to be used for expanding the FlexGroup volume. Expansion of the destination will fail until the size of enough aggregates is increased to provide enough space.
+*Parameters*::
+*dstVolume* (STRING): Destination volume name of the SnapMirror(R) relationship.
+
+== mgmt.sm.keymgr.not.setup
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) protect operation on an encrypted source volume fails because the Key Manager is not set up on the destination node. A SnapMirror relationship with the destination in the specified destination Vserver to protect the source volume will not be created until this condition is corrected.
+*Corrective Action*::
+Set up the Key Manager by using the "security key-manager setup" command on the destination.
+*Syslog Message*::
+SnapMirror protect of source volume "%s" failed to destination Vserver "%s" because the Key Manager was not set up on the destination cluster. Job ID: %llu.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume to be protected.
+*dstvserver* (STRING): Destination Vserver name.
+*jobID* (LONGINT): Job ID.
+
+== mgmt.sm.license.near.limit
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the total cluster-wide virtual used size for object store relationships is near the license capacity limit but does not exceed the limit.
+*Corrective Action*::
+To increase the license capacity, install a new license on the cluster. Alternatively, remove some data you are managing.
+*Syslog Message*::
+%s.
+*Parameters*::
+*message* (STRING): Capacity warning message for users
+
+== mgmt.sm.license.not.found
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) protect operation of a source volume fails because a required license on the destination cluster is missing. The error message contains the information about the missing license. A SnapMirror relationship with the destination in the specified destination Vserver to protect the source volume will not be created until this condition is corrected.
+*Corrective Action*::
+Install the license that is missing on the destination cluster. The error message contains information about the missing license.
+*Syslog Message*::
+SnapMirror protect of source volume "%s" failed to destination Vserver "%s" because there was a license missing on the destination cluster. Error: %s, Job ID: %llu.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume to be protected.
+*dstvserver* (STRING): Destination Vserver name.
+*error* (STRING): Error message.
+*jobID* (LONGINT): Job ID.
+
+== mgmt.sm.license.over.limit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the total cluster-wide virtual used size for object store relationships is over the license capacity limit.
+*Corrective Action*::
+To increase the license capacity, install a new license on the cluster. Alternatively, remove some data you are managing.
+*Syslog Message*::
+%s.
+*Parameters*::
+*message* (STRING): Capacity warning message for users
+
+== mgmt.sm.obj.fanout.unsupp
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) protect operation fails because the source is already protected with a SnapMirror relationship with an object store destination. Creation of multiple SnapMirror relationships from a source endpoint to object store destinations is unsupported.
+*Corrective Action*::
+View the existing SnapMirror relationship using the "snapmirror show" command, and correct as necessary.
+*Syslog Message*::
+Source endpoint "%s" is already protected in an object store. Job ID: %llu.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume to be protected.
+*jobID* (LONGINT): Job ID.
+
+== mgmt.sm.protect.internal.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) protect operation fails because of an unexpected internal error.
+*Corrective Action*::
+Retry the command after some time. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+SnapMirror protect failed because of an unexpected internal error. Error: %s, Job ID: %llu.
+*Parameters*::
+*error* (STRING): Error message.
+*jobID* (LONGINT): Job ID.
+
+== mgmt.sm.rel.exists
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) protect operation fails because the source volume is already protected with a SnapMirror relationship in the specified destination storage virtual machine (SVM) with the same policy, schedule, relationship type, destination volume prefix, and destination volume suffix.
+*Corrective Action*::
+For ASA r2 systems, contact NetApp technical support for assistance to resolve this internal error. For all other systems: Protect the volume again by carrying out the following three steps: 1. Use a different destination volume suffix or destination volume prefix. 2. Use a different schedule or policy. 3. Use the "volume create" command to create a destination volume with a user defined name and then the "snapmirror create" command to create another SnapMirror relationship for the same source volume.
+*Syslog Message*::
+SnapMirror protect operation of source volume "%s" fails to destination SVM "%s" because the source volume is already protected with a SnapMirror relationship in the specified destination SVM with the same policy, schedule, relationship type, destination volume prefix, and destination volume suffix. Error: %s, Job ID: %llu.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume to be protected.
+*dstvserver* (STRING): Destination SVM name.
+*error* (STRING): Error message.
+*jobID* (LONGINT): Job ID.
+
+== mgmt.sm.rename.ndu.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the renaming of a SnapMirror(R) volume in another cluster fails, due to the lack of support for this operation in that cluster's effective version of ONTAP(R) software.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Failed to update Volume name "%s" in remote cluster "%s".
+*Parameters*::
+*volume* (STRING): Volume for which the rename operation failed.
+*clusName* (STRING): Remote cluster name.
+
+== mgmt.sm.restore.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the SnapMirror(R) 'restore' command fails.
+*Corrective Action*::
+To retry the restore, reissue the command. Alternatively, force a cleanup of the failed operation without starting another restore by including the parameter 'clean-up-failure' when reissuing the 'restore' command.
+*Syslog Message*::
+SnapMirror restore from source volume '%s' to destination volume '%s' failed with error: %s.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume for restore.
+*dstpath* (STRING): Path name of the destination volume for restore.
+*error* (STRING): Error message.
+
+== mgmt.sm.schd.invalid
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the SnapMirror(R) protect operation fails to find the specified schedule name or the schedule has not been specified. A SnapMirror relationship with the destination will be created and initialized, if auto-initialize is enabled, but subsequent periodic backup operations will not be initiated.
+*Corrective Action*::
+Add a valid schedule.
+*Syslog Message*::
+The schedule "%s" is not valid or has not been specified.
+*Parameters*::
+*schd_name* (STRING): Name of the schedule that is invalid.
+
+== mgmt.sm.schd.unavailable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a schedule is not available on the secondary site for configuration replication of a SnapMirror(R) relationship of -type Load Sharing (LS) in a MetroCluster(tm) configuration.
+*Corrective Action*::
+Create a job schedule on the secondary site that is identical to that on the primary site by using the 'job schedule cron create' command.
+*Syslog Message*::
+Configuration replication of SnapMirror relationship of -type Load Sharing for destination path "%s" has failed because the schedule "%s" is not available.
+*Parameters*::
+*dstpath* (STRING): Destination path name of the SnapMirror relationship.
+*schd_name* (STRING): Name of the schedule that is unavailable on the secondary site.
+
+== mgmt.sm.snap.create.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a SnapMirror(R) "snapshot create" command fails on the destination volume, after successfully converting a FlexVol(R) volume to a FlexGroup volume. Future SnapMirror transfers will be unsuccessful.
+*Corrective Action*::
+For ASA r2 systems, contact NetApp technical support for assistance to resolve this internal error. For all other systems: Create the baseline Snapshot copy on destination volume "%s" using the "volume conversion create-destination-snapshot" command, and then re-create the SnapMirror relationship using the "snapmirror create -destination-path %s -source-path %s -policy %s -throttle %d -schedule %s" command.
+*Syslog Message*::
+Create the baseline Snapshot copy on destination volume "%s" using the "volume conversion create-destination-snapshot" command, and then re-create the SnapMirror relationship using the "snapmirror create -destination-path %s -source-path %s -policy %s -throttle %s -schedule %s" command.
+*Parameters*::
+*volume* (STRING): Volume converted to a FlexGroup volume.
+*dstPath* (STRING): Destination path for SnapMirror create.
+*srcPath* (STRING): Source path for SnapMirror create.
+*policy* (STRING): Policy for SnapMirror create.
+*throttle* (STRING): Throttle for SnapMirror create.
+*schedule* (STRING): Schedule for SnapMirror create.
+
+== mgmt.sm.src.policy.creat
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a reverse resync operation was performed from System Manager and the SnapMirror policy associated with an intercluster SnapMirror relationship was replicated to the source from the destination, but the retention period in the policy was not replicated. This will happen only if the source cluster ONTAP(R) version is earlier than ONTAP 9.13.1. Because the retention period was not associated with the Snapshot copies, the Snapshot copies are prone to deletion, which might lead to data protection issues.
+*Corrective Action*::
+Add the retention period to the appropriate rules of the SnapMirror policy in the source cluster using the command "snapmirror policy modify-rule -vserver <storage_VM_name> -policy <policy_name> -snapmirror-label <snapmirror_label_name> -retention-period <retention_period>".
+*Syslog Message*::
+The retention period setting in the destination SnapMirror policy "%s" has not been replicated to the source during a reverse resync, and it might need to be updated manually.
+*Parameters*::
+*policyName* (STRING): Name of the policy associated with the SnapMirror relationship that was replicated from the destination to source.
+
+== mgmt.sm.src.vol.not.found
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) protect operation fails because the source volume was not found.
+*Corrective Action*::
+Check whether the source path is correct, and then retry the operation with the correct path.
+*Syslog Message*::
+SnapMirror protect of source volume "%s" failed to destination Vserver "%s" because the source volume was not found. Job ID: %llu.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume to be protected.
+*dstvserver* (STRING): Destination Vserver name.
+*jobID* (LONGINT): Job ID.
+
+== mgmt.sm.sync.break.dp.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) break operation fails on a synchronous SnapMirror destination volume, because the destination is either in the "broken-off" state, or another state that is inconsistent with the operation.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+SnapMirror break operation failed for sync SnapMirror relationship with destination volume "%s" because the destination volume is either in the broken-off state or the volume state is inconsistent.
+*Parameters*::
+*dstpath* (STRING): Path name of the destination volume.
+
+== mgmt.sm.v2.upgrade.chk
+*Severity*::
+ERROR
+*Description*::
+This message occurs after booting, when there is a Data Protection relationship created in a Data ONTAP(R) release prior to 8.2.
+*Corrective Action*::
+Establish Vserver peering so that the system can convert the pre-8.2 relationships to 8.2 and later relationships. Vserver peering can only be established if both endpoints are running Data ONTAP 8.2 or later on all nodes in the cluster. To check whether the source cluster supports Data ONTAP 8.2 SnapMirror(R) relationships, run the "capability show -node * -capability volume.snapmirror_v2" command. If the capability is "true" on all nodes, create a Vserver peer relationship between the source and destination endpoint Vservers by by issuing the "vserver peer create" command. If the capability is "false" on any node in the source cluster, upgrade and configure the source cluster by following instructions in the Upgrade and Revert/Downgrade Guide.
+*Syslog Message*::
+SnapMirror relationships from a pre-8.2 installation are present on this cluster but no Vserver peer relationships were found between the source and destination Vservers.
+*Parameters*::
+(None).
+
+== mgmt.sm.vol.place.create.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) protect operation fails to find an aggregate with sufficient free space for a destination volume or fails to create the volume. A SnapMirror relationship with the destination in the specified destination storage virtual machine (SVM) to protect the source volume will not be created until this condition is corrected.
+*Corrective Action*::
+For ASA r2 systems, contact NetApp technical support for assistance to resolve this internal error. For all other systems: Use the "vserver show -vserver <vserver-name> -fields aggr-list" command to check whether there is a list of aggregates assigned to the destination SVM. If there are aggregates listed, check the status of and the space left in the storage aggregates belonging to that SVM. If there are no aggregates listed, then check the status of and the space left in all of the non-root, non-taken-over and non-SnapLock aggregates. To check whether storage aggregates are non-root, non-taken-over and non-SnapLock, run the "storage aggregate show -fields root, is-home, snaplock-type" command. To check the status of and the space left in a storage aggregate, run the "storage aggregate show -aggregate <aggr-name>" command for a particular aggregate or the "storage aggregate show" command for all storage aggregates on the cluster. If storage aggregates are offline, use "storage aggregate online -aggregate <aggr-name>" command to bring the storage aggregates online. If there is no space in the storage aggregates: 1) Use the "vserver add-aggregates -vserver <vserver-name> -aggregates <aggr-name>" command to add more storage aggregates to the destination SVM. 2) If needed, use the "storage aggregate create -aggregate <aggr-name> -diskcount <number-of-disks> -node <node-name>" command to create new storage aggregates on available nodes. 3) Use the "storage aggregate add-disks -aggregate <aggr-name> -diskcount <number-of-disks>" command to add space to the storage aggregate. Even if there is free space on storage aggregates, it is possible that the maximum number of volumes already exist on a node. If so, additional volumes cannot be created on that node. If this is the case, add more aggregate space on other nodes. You can determine the number of volumes on a node by using the "volume show -node <node-name>" command. Note the entry count at the end of the show output. To check the overall status of the SnapMirror protect operation, use the "job show <jobID> -instance" or "job history show -id <jobID> -instance" commands. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+SnapMirror protect of source volume "%s" failed on destination SVM "%s". Error: %s, Job ID: %llu.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume to be protected.
+*dstvserver* (STRING): Destination SVM name.
+*error* (STRING): Error message.
+*jobID* (LONGINT): Job ID.
+
+== mgmt.sm.vol.style.unsupp
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) protect operation fails because the source volume style is unsupported. The "SnapMirror" protect command only supports FlexVol(R) volumes. FlexGroup volumes, FlexGroup constituents, Infinite Volumes, and Infinite Volume constituents are unsupported. Temporary volumes are also not unsupported.
+*Corrective Action*::
+For ASA r2 systems, contact NetApp technical support for assistance to resolve this internal error. For all other systems: If you want to protect Infinite Volumes or FlexGroup volumes, use the individual commands: 1. "volume create" for the destination volume 2. "snapmirror create" for the relationship 3. "snapmirror initialize" for the relationship Creating individual SnapMirror relationships on FlexGroup volumes or Infinite Volume constituents is unsupported.
+*Syslog Message*::
+SnapMirror protect of source volume "%s" fails because the volume is not a FlexVol volume. Job ID: %llu.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume to be protected.
+*jobID* (LONGINT): Job ID.
+
+== mgmt.sm.vsrs.not.peered
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) protect operation fails because either the source or destination Vservers do not exist or the source and destination Vservers are not peered. A SnapMirror relationship with the specified destination Vserver will not be created, and the source volume will not be protected, until this condition is corrected.
+*Corrective Action*::
+Use the 'vserver show' and 'vserver peer' commands to verify that the source and destination Vservers exist and are named uniquely. Also make sure that the 'snapmirror protect' operation targets the intended Vservers. See the man pages of these commands for further information.
+*Syslog Message*::
+SnapMirror protect operation of source volume "%s" failed because destination Vserver "%s" and source Vserver %s are not peered. Job ID: %llu.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume to be protected.
+*srcvserver* (STRING): Source Vserver name.
+*dstvserver* (STRING): Destination Vserver name.
+*jobID* (LONGINT): Job ID.

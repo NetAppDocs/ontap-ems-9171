@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: netif-fwupdatestatus-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.fwupdatestatus events
+---
+
+= netif.fwupdatestatus events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.fwUpdateStatus
+*Severity*::
+NOTICE
+*Description*::
+This message occurs to indicate the status of a network interface firmware update.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Firmware update of network interface %s to version %s %s.
+*Parameters*::
+*ifName* (STRING): Name of the network interface.
+*version* (STRING): Version of firmware update.
+*status* (STRING): Status of firmware update process (started or completed)

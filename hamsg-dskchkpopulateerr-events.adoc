@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: hamsg-dskchkpopulateerr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: hamsg.dskchkpopulateerr events
+---
+
+= hamsg.dskchkpopulateerr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== hamsg.dskChkPopulateErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk inventory check cannot be sent to the local node's high-availability (HA) partner because the disk check request could not be correctly constructed.
+*Corrective Action*::
+Retry the operation. If the problem persists, use the "storage failover show -fields local-missing-disks, partner-missing-disks" command to rescan the disks and to determine the latest ownership. If the disk inventory mismatch is not resolved, check the cabling for either loose connections or for a bad cable on the partner node.
+*Syslog Message*::
+A disk inventory check cannot be sent to the local node's HA partner. Failure reason: %s.
+*Parameters*::
+*failure_reason* (STRING): The reason that the disk inventory check request could not be properly constructed.

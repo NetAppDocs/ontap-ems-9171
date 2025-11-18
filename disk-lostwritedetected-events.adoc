@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: disk-lostwritedetected-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.lostwritedetected events
+---
+
+= disk.lostwritedetected events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.lostwriteDetected
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects a lost write.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk level lost write detected on WRITE VERIFY: Disk %s, Block #%llu: Volume %s, FileId %d, Block #%llu: Expected 0x%x, Recomputed as 0x%x.
+*Parameters*::
+*diskName* (STRING): Name of the device.
+*bno* (LONGINT): Block ID.
+*vol* (STRING): Volume name.
+*fileid* (INT): File ID.
+*block* (LONGINT): File block ID.
+*cksum* (INTHEX): Expected checksum.
+*cksum2* (INTHEX): Computed checksum.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-partner-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.partner events
+---
+
+= callhome.partner events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.partner.down
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the storage failover partner is down and takeover cannot begin. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Call home for PARTNER DOWN, TAKEOVER IMPOSSIBLE
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

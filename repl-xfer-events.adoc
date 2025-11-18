@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: repl-xfer-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.xfer events
+---
+
+= repl.xfer events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.xfer.term.timed.out
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a replication transfer component (sender or receiver) has taken more than an hour to terminate. Any future manual or scheduled replication transfer for this relationship cannot begin until this condition is corrected.
+*Corrective Action*::
+Please generate a core file on the node, submit it to NetApp technical support and reboot the node.
+*Syslog Message*::
+A component of a replication transfer with destination volume DSID '%llu' or SnapMirror(R) tape ndmp session '%s' is taking a long time to terminate since it is busy performing some operation.
+*Parameters*::
+*dstVolDsid* (LONGINT): Data set identifier (DSID) of the destination volume.
+*smTapeNDMPSession* (STRING): NDMP session identifier for SnapMirror(R) tape transfers.

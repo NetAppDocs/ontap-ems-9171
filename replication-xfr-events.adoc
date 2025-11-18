@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: replication-xfr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: replication.xfr events
+---
+
+= replication.xfr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== replication.xfr.checksum.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R)/SnapVault(tm) operation is not completed because a block received from the source system failed checksum verification. This might be caused by corruption in the network stream that went undetected by the TCP checksum.
+*Corrective Action*::
+Scheduled SnapMirror/SnapVault update operations are automatically retried and should succeed. However, if the problem persists, use the 'netstat -s' command to review the network statistics for TCP packets "discarded for bad checksums". If you find large numbers of such discards, diagnose the network between the source and destination systems for any problems. If TCP does not report any checksum errors and this problem still persists, contact NetApp technical support technical support.
+*Syslog Message*::
+%s transfer from %s:%s to %s:%s : %s.
+*Parameters*::
+*rtype* (STRING): Replication type (SnapMirror, SnapVault, and so on).
+*srcfiler* (STRING): Replication source system.
+*srcpath* (STRING): Replication source path.
+*dstfiler* (STRING): Replication destination system.
+*dstpath* (STRING): Replication destination path.
+*rplerror* (STRING): Replication error message.
+*waflerror* (STRING): WAFL(R) error.
+
+== replication.xfr.nonExistSnap
+*Severity*::
+NOTICE
+*Description*::
+A SnapMirror(R) or SnapVault(tm) operation was not completed because the specified snapshot could not be found. Any of the following scenarios can cause this event to occur: (1) The SnapVault schedules are configured incorrectly at the destination. (2) The 'snapmirror initialize' or 'snapmirror update' command was issued with the '-s' option, and the transfer cannot start. (3) The SnapVault or SnapMirror transfer cannot restart from a checkpoint.
+*Corrective Action*::
+For scheduled SnapVault updates, ensure that the snapshot name on the destination volume and source volume is the same. For 'snapmirror initialize' or 'update' commands from a named snapshot, ensure that the requested snapshot exists on the source volume. For restarted SnapVault or SnapMirror transfers, run the 'snapmirror abort' or 'snapvault abort' command with the '-h' option before retrying the transfer.
+*Syslog Message*::
+%s transfer from %s:%s to %s:%s : %s.
+*Parameters*::
+*rtype* (STRING): Replication type (SnapMirror, SnapVault, and so on).
+*srcfiler* (STRING): Replication source appliance.
+*srcpath* (STRING): Replication source path.
+*dstfiler* (STRING): Replication destination appliance.
+*dstpath* (STRING): Replication destination path.
+*rplerror* (STRING): Replication error message.
+*waflerror* (STRING): WAFL(R) error.

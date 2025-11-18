@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-stackmon-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.stackmon events
+---
+
+= callhome.stackmon events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.stackmon.recon.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system fails to assign the correct stack-id to one or more disk shelves. The shelf and disk names might not correctly reflect the storage topology. Shelf and disk operations might fail if multiple disks share the same name. If your system is configured to do so, it generates and transmits an AutoSupport(tm) (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Verify that the storage topology is correct. The (privilege: advanced) "storage stackmon repair" command can be used to diagnose and repair the issue. If you need further assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

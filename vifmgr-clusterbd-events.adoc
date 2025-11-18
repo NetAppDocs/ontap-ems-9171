@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: vifmgr-clusterbd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.clusterbd events
+---
+
+= vifmgr.clusterbd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.clusterBD.Partition
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP detects that the cluster broadcast domain is partitioned; some local ports in the cluster broadcast domain do not have layer-2 connectivity to one another. Cluster LIFs could be at risk of connectivity issues.
+*Corrective Action*::
+Check the network cabling of the ports in this broadcast domain to the network switch. Check the broadcast domain configuration on the storage system and the network port configuration on the switch for any misconfigurations. Run the "network port reachability show -detail" command to view which ports are unreachable. To view information about broadcast domains and ports on the cluster, run the "network port broadcast-domain show -instance" and "network port show -instance" commands.
+*Syslog Message*::
+The cluster broadcast domain is partitioned on node "%s". LIFs hosted on the ports in this broadcast domain might be at risk of seeing connectivity issues.
+*Parameters*::
+*nodeName* (STRING): Name of the node for which the local ports in the given broadcast domain are partitioned.

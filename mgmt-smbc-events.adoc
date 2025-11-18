@@ -1,0 +1,44 @@
+---
+sidebar: sidebar
+permalink: mgmt-smbc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmt.smbc events
+---
+
+= mgmt.smbc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmt.smbc.config.not.repl
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system fails to replicate the configuration of Report Target Group Port(RTPG) and Inter-Cluster(IC) LIF information.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failure in configuration replication of RTPG, IC LIF information with relationship UUID "%s".
+*Parameters*::
+*srcpath* (STRING): Path name of the source group of the SnapMirror(R) active sync relationship.
+*dstpath* (STRING): Path name of the destination group of the SnapMirror(R) active sync relationship.
+*relationship_id* (STRING): Relationship UUID.
+
+== mgmt.smbc.proxy.create.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is a failure to create proxy I/O path channel between the SnapMirror(R) active sync peer clusters.
+*Corrective Action*::
+Check the network connection between the source and destination volumes by using the "net interface show -role intercluster -status-admin up" command.
+*Syslog Message*::
+Failure in proxy initiator %s and target %s creation.
+*Parameters*::
+*proxy_initiator* (STRING): Path name of the proxy initiator.
+*proxy_target* (STRING): Path name of the proxy target.
+*relationship_id* (STRING): Relationship UUID.
+*error_msg* (STRING): Description of the failure.

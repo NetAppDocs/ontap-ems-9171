@@ -1,0 +1,89 @@
+---
+sidebar: sidebar
+permalink: license-fpool-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: license.fpool events
+---
+
+= license.fpool events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== license.fpool.changed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the maximum storage capacity limit for FabricPool is changed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"FabricPool entitlement: maximum capacity limit now allows %u TB."
+*Parameters*::
+*max_capacity* (LONGINT): Current maximum limit supported under the current entitlement, in TB.
+
+== license.fpool.denied
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an attempt to alter the maximum storage capacity limit for FabricPool is denied by FabricPool.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"FabricPool entitlement: maximum capacity limit not changed to %u from %u TB."
+*Parameters*::
+*requested_max_capacity* (LONGINT): Requested maximum capacity supported, in TB.
+*current_max_capacity* (LONGINT): Current maximum capacity limit supported under the current entitlement, in TB.
+
+== license.fpool.no.cloud
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an attempt to alter the maximum storage capacity limit for FabricPool is denied, because there is no support for licensing FabricPool directly on instances of Cloud ONTAP(tm).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"FabricPool entitlement: maximum capacity limit not changed to %u TB - licensing FabricPool directly on instances of Cloud ONTAP not supported."
+*Parameters*::
+*requested_max_capacity* (LONGINT): Requested maximum capacity supported, in TB.
+
+== license.fpool.removed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the license for FabricPool usage is deleted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"FabricPool entitlement deleted."
+*Parameters*::
+(None).
+
+== license.fpool.unsupported
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an attempt to alter the maximum storage capacity limit for FabricPool is denied, because FabricPool is not supported on this instance of ONTAP(tm).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"FabricPool entitlement: maximum capacity limit not changed to %u TB - feature is not supported."
+*Parameters*::
+*requested_max_capacity* (LONGINT): Requested maximum capacity supported, in TB.
+
+== license.fpool.wrong.cluster
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an attempt to alter the maximum storage capacity limit for FabricPool is rejected. The license used in the attempt contains an incompatible cluster ID.
+*Corrective Action*::
+Determine the ID of the cluster by using the "cluster identity show" command. Within the license itself, determine the value of the "HostID" field. If the field exists, compare its value to the cluster ID. Confirm that these values match. If not, then the cluster is not the intended target of this license. Apply the license to the correct cluster if possible. For all other scenarios, contact NetApp technical support.
+*Syslog Message*::
+"FabricPool entitlement: maximum capacity limit not changed to %u TB; license applies to cluster with ID %s."
+*Parameters*::
+*requested_max_capacity* (LONGINT): Requested maximum capacity supported, in TB.
+*cluster_ID* (STRING): Cluster ID as specified in license.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: rdmalib-multichan-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rdmalib.multichan events
+---
+
+= rdmalib.multichan events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rdmalib.multichan.count
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when this node's high-availability (HA) partner reports an update on the number of interconnect channels (multichan count) in use.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Multichan count "(%u)" in use on HA partner is notified via path "%s".
+*Parameters*::
+*count* (INT): Multichan count in use on HA partner.
+*notify_path* (STRING): Path where this event is generated.

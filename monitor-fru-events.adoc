@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: monitor-fru-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.fru events
+---
+
+= monitor.fru events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.fru.info.readable
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the inventory information about a field-replaceable unit (FRU) that was previously unreadable becomes readable.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The inventory information of FRU %s is readable.
+*Parameters*::
+*fru_name* (STRING): FRU name.
+
+== monitor.fru.info.unreadable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the inventory information of a field-replaceable unit (FRU) is not readable.
+*Corrective Action*::
+See the system hardware guide for the replacement of the FRU. At the earliest convenient time, remove and reinsert the FRU to reseat it, and then resume normal system operation. If the error persists, replace the FRU according to the hardware guide directions.
+*Syslog Message*::
+The inventory information of FRU %s is not readable.
+*Parameters*::
+*fru_name* (STRING): FRU name.

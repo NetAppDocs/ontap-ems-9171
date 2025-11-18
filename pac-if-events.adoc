@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: pac-if-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: pac.if events
+---
+
+= pac.if events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== pac.if.getName
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the protocol access control fails to get the interface name with the address.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: getifnamewithaddr() failed with address %s in protocol access control.
+*Parameters*::
+*protocol* (STRING): Protocol.
+*ifAddr* (STRING): Interface IP address in internet standard dotted notation.

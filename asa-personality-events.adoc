@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: asa-personality-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: asa.personality events
+---
+
+= asa.personality events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== asa.personality.enable.end
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the cluster personality has been changed to an All SAN Array.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The cluster personality is now an All SAN Array.
+*Parameters*::
+*job_id* (LONGINT): ID of the conversion job.
+
+== asa.personality.enable.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the job to change the cluster personality to an All SAN Array has failed.
+*Corrective Action*::
+Attempt the failed command again. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+The cluster personality was not changed to an All SAN Array. For more information, use the command "job show -id %llu" to see the job details.
+*Parameters*::
+*job_id* (LONGINT): ID of the conversion job.
+
+== asa.personality.enable.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the cluster personality is being changed to All SAN Array.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The cluster personality is changing to All SAN Array.
+*Parameters*::
+*job_id* (LONGINT): ID of the conversion job.

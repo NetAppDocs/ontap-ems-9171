@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: netif-cprmaxeventsreached-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.cprmaxeventsreached events
+---
+
+= netif.cprmaxeventsreached events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.cprMaxEventsReached
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the maximum number of CPR Events (core PCI resiliency) has occurred since boot.
+*Corrective Action*::
+Replace the failing hardware.
+*Syslog Message*::
+Replace hardware -- maximum number of CPR Events (core PCI resiliency) since boot has occurred on network interface %s.
+*Parameters*::
+*ifname* (STRING): Name of network interface.

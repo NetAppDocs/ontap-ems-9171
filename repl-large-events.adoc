@@ -1,0 +1,71 @@
+---
+sidebar: sidebar
+permalink: repl-large-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.large events
+---
+
+= repl.large events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.large.vol.600tb.limits.unsup
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the replication engine encounters a destination that cannot handle large 600TB volume limits.
+*Corrective Action*::
+Take one of the following actions: - Select a destination with version ONTAP 9.14.0 or later. - On the source volume, reduce the volume size "volume modify -vserver vserver_name> -volume vol_name -max-size 300TB".
+*Syslog Message*::
+Large volume limits not supported on the destination node %s for destination volume with MSID %llu of relationship %s.
+*Parameters*::
+*dstNode* (STRING): UUID of the node where the SnapMirror(R) destination is present.
+*dstVolMsid* (LONGINT): MSID of the SnapMirror(R) destination volume.
+*transferId* (STRING): UUID of the failed SnapMirror(R) transfer.
+
+== repl.large.vol.limits.unsup
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the replication engine encounters a destination that cannot handle large volume limits.
+*Corrective Action*::
+Take one of the following actions: - Select a destination with version ONTAP 9.12.1 or later. - On the source volume, reduce the volume size "volume modify -vserver vserver_name> -volume vol_name -large-volume-file-limits disable". Now disable large volume limits by using the "volume modify -vserver vserver_name -volume vol_name -large-volume-file-limits disable" command.
+*Syslog Message*::
+Large volume limits not supported on the destination node %s for destination volume with MSID %llu of relationship %s.
+*Parameters*::
+*dstNode* (STRING): UUID of the node where the SnapMirror(R) destination is present.
+*dstVolMsid* (LONGINT): MSID of the SnapMirror(R) destination volume.
+*transferId* (STRING): UUID of the failed SnapMirror(R) transfer.
+
+== repl.large.vol.unsup.maxvvbn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the replication engine encounters a destination that cannot handle large volumes.
+*Corrective Action*::
+Select a destination that supports a volume size greater than 100 TB.
+*Syslog Message*::
+Large volumes not supported on the destination node %s for destination volume with MSID %llu of relationship %s.
+*Parameters*::
+*dstNode* (STRING): UUID of the node where the SnapMirror(R) destination is present.
+*dstVolMsid* (LONGINT): MSID of the SnapMirror(R) destination volume.
+*transferId* (STRING): UUID of the SnapMirror(R) transfer that has the destination that cannot handle large volumes.
+
+== repl.large.vol.unsup.nomsize
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the replication engine encounters a destination that cannot handle large volumes.
+*Corrective Action*::
+Take one of the following actions: - On the source volume, disable autosize if it is enabled by using the "volume modify vol_name -autosize-mode" command. Then reduce the size of the volume by using the "volume modify vol_name -size" command. - On the source volume, set the "max autosize" parameter to below 100 TB by using the "volume modify vol_name -max-autosize" command. - On the source volume, reduce the size of the volume to below 100 TB by using the "volume modify vol_name -size" command. - Select a destination that supports a volume size greater than 100 TB.
+*Syslog Message*::
+Large volume not supported on the destination node %s for destination volume with MSID %llu of relationship %s.
+*Parameters*::
+*dstNode* (STRING): UUID of the node where the SnapMirror(R) destination is present.
+*dstVolMsid* (LONGINT): MSID of the SnapMirror(R) destination volume.
+*transferId* (STRING): UUID of the failed SnapMirror(R) transfer.

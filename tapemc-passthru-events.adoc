@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: tapemc-passthru-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: tapemc.passthru events
+---
+
+= tapemc.passthru events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== tapemc.passthru.negUnderrun
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a data underrun (less data is transferred than requested) happens on a read operation to the device, and the number of data bytes reported as not transferred is unexpectedly larger than the number of bytes requested. Any data involved in the transfer might not be correct. Underruns themselves can be normal if the amount of date available to transfer can be smaller than the requested amount.
+*Corrective Action*::
+Retry the operation. If the command was expected to fail, or if the failure is inconsequential, then you can ignore this condition. Otherwise, ensure that the cables and terminators (if any) are fully seated and tightened snugly. If the error persists, consider replacing the cable/terminator, host adapter or device.
+*Syslog Message*::
+%s %s inbound data transfer ended with an underrun, but the reported residue %d (bytes not transferred) exceeds the request size %d.
+*Parameters*::
+*deviceType* (STRING): Type of device.
+*deviceName* (STRING): Path name of the device.
+*resideBytes* (INT): Number of bytes reported as not transferred.
+*requestedBytes* (INT): Number of bytes requested.

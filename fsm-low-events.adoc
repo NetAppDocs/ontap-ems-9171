@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: fsm-low-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fsm.low events
+---
+
+= fsm.low events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fsm.low.memory
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Fpolicy Service Manager (FSM) fails to send outage, alert, handshake, cancel or volume operation notification to the FPolicy server due to memory allocation error.
+*Corrective Action*::
+Check the connection between ONTAP and FPolicy server. Slow connection may result in accumulation of notifications in FSM. Make sure that the FPolicy is monitoring file operation which are recommended by FPolicy server vendor. Also use vendor recommended filter for operation like close, read, write and open.
+*Syslog Message*::
+Failed to allocate memory for %s notification.
+*Parameters*::
+*reqType* (STRING): Type of the message.

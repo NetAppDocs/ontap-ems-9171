@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: diskown-ownerreservationmismatch-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.ownerreservationmismatch events
+---
+
+= diskown.ownerreservationmismatch events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.ownerReservationMismatch
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system discovers a disk that is supposed to be owned by one node, but the persistent reservation is owned by another node.
+*Corrective Action*::
+1) Find the disk causing the conflict from EMS messages. 2) If the disk is in the spare pool, go to step 5. 3) Run the "storage aggr status -r" command to find the aggregate containing the disk. 4) If the aggregate is online, bring it offline by using the "storage aggr modify -aggr aggr_name -state offline" command. 5) Run the "storage disk show -fields owner-id,reserver-id" command to identify the reservation owner of the disk. 6) Run the "storage disk assign disk_name -s partner_sys_id -f" command to perform the disk assignment change from the node that owns the reservation for the disk.
+*Syslog Message*::
+disk %s (S/N %s) is supposed to be owned by this node but has a persistent reservation placed by node %s (ID %u).
+*Parameters*::
+*diskname* (STRING): Name of the disk.
+*serialno* (STRING): Serial number of the disk.
+*resvownername* (STRING): Name of the system owning the reservation.
+*resvowner* (INT): System ID of the node owning the reservation.

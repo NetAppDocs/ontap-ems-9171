@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: bsdsocket-queuelimit-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: bsdsocket.queuelimit events
+---
+
+= bsdsocket.queuelimit events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== bsdsocket.queueLimit.reached
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the number of connection requests for a socket reaches the maximum number. These connection requests include partially completed connections and connections that are ready to be accepted. Network misconfigurations can cause ONTAP servers to slow down on a given TCP port and can be the cause of this message. This event can also be caused by a denial-of-service attack or an overloaded system.
+*Corrective Action*::
+Try turning off and back on the LIF on which the last connection was received. If the issue remains after correcting any network misconfigurations, contact NetApp technical support.
+*Syslog Message*::
+Number of connection requests for the socket bound to port %d having the IP address %s has reached the limit of %d connections. The last connection was received on IP address %s. The socket uses %s protocol. This event has occurred %llu times since the last warning.
+*Parameters*::
+*port* (INT): Local port bound to the socket.
+*ipAddress* (STRING): IP address of the socket.
+*limit* (INT): Maximum number of connection requests per socket.
+*childRecvIpAddress* (STRING): IP address on which the last connection request was received.
+*protocol* (STRING): Protocol used by the socket.
+*count* (LONGINT): Number of occurrences for this event since the last warning.

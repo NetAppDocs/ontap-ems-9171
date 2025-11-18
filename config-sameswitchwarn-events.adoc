@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: config-sameswitchwarn-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.sameswitchwarn events
+---
+
+= config.sameswitchwarn events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.SameSwitchWarn
+*Severity*::
+ALERT
+*Description*::
+This message occurs when both ports of a disk are found to be attached to the same switch. Higher availability is achieved by cabling disk ports to different switches.
+*Corrective Action*::
+Recable one of the indicated ports to a different switch.
+*Syslog Message*::
+Disks on port %s:%d are also connected to the same switch at port %s:%d. For availability reasons, they should be connected to two separate switches.
+*Parameters*::
+*switch1* (STRING): Name of the switch.
+*port1* (INT): Port number of first connection.
+*switch2* (STRING): (None).
+*port2* (INT): Port number of second connection.

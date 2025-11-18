@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: snaplock-trans-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snaplock.trans events
+---
+
+= snaplock.trans events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snaplock.trans.autocommit
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when autocommit period is adjusted on a Snaplock volume upon transition. When a 7 mode SnapLock volume is transitioned to Data ONTAP(R) 9.4 and later, if we find the autocommit period to be greater than 10 years, we change it to 10 years, which is the maximum supported value for autocommit period in Data ONTAP(R) 9.4.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Autocommit period on SnapLock volume %s%s on the Vserver with ID %s is changed from %s to 10 years upon transition.
+*Parameters*::
+*volume* (STRING): Name of the SnapLock volume on which autocommit period was adjusted upon transition.
+*app* (STRING): Application Name.
+*volident* (STRING): Unique identifier the volume in cases where the volume name itself is insufficient.
+*old_autocommit_period* (STRING): Autocommit period of the SnapLock volume in 7 mode.

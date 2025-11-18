@@ -1,0 +1,59 @@
+---
+sidebar: sidebar
+permalink: scsiblade-pport-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsiblade.pport events
+---
+
+= scsiblade.pport events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsiblade.pport.bsh.cancel.timeout
+*Severity*::
+NOTICE
+*Description*::
+PPorts LIF migration started before BSH cancel completed.
+*Corrective Action*::
+No corrective action
+*Syslog Message*::
+PPorts LIF migration started before BSH cancel API completed.
+*Parameters*::
+(None).
+
+== scsiblade.pport.fcp.dbo.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs during a nondisruptive operation such as takeover or giveback, when the persistent port feature is not functioning due to configuration errors.
+*Corrective Action*::
+Collect the system logs, and then contact NetApp technical support. Support needs to see the system logs to determine the appropriate corrective action.
+*Syslog Message*::
+FCP LIF "%s" persistence in Vserver "%s" could not be enabled. Error %u/%u: %s.
+*Parameters*::
+*lif* (STRING): Name of the network interface (LIF).
+*vserver* (STRING): Name of the Vserver.
+*errortype* (INT): Error type.
+*error* (INT): Error code.
+*errorDecString* (STRING): Error description string.
+
+== scsiblade.pport.fcp.init.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the persistent port object for a SAN FCP network interface (LIF) fails to be configured during a LIF create operation. LIF persistence will not function during nondisruptive operations like takeover and giveback until the issue is resolved.
+*Corrective Action*::
+Collect the system logs, and then contact NetApp technical support. Support needs to see the system logs to determine the appropriate corrective action.
+*Syslog Message*::
+FCP LIF "%s" persistence in Vserver "%s" failed to initialize. Error %u/%u: %s.
+*Parameters*::
+*lif* (STRING): Name of the FCP network interface (LIF).
+*vserver* (STRING): Name of the Vserver.
+*errortype* (INT): Error type.
+*error* (INT): Error code.
+*errorDecString* (STRING): Error description string.

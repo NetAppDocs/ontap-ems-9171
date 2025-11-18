@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: backup-fail-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: backup.fail events
+---
+
+= backup.fail events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== backup.fail.giveback
+*Severity*::
+ERROR
+*Description*::
+This message occurs during a giveback operation, when there are active dump or restore processes running on root aggregates of the partner node.
+*Corrective Action*::
+Wait for backup operations like dump or restore running on root aggregates of the partner node to finish before retrying the giveback operation. To kill the active backup operations and proceed, retry the giveback operation with the -override-vetoes option set to true.
+*Syslog Message*::
+Backup/restore services: There are active backup/restore sessions on the partner.
+*Parameters*::
+(None).
+
+== backup.fail.logopen
+*Severity*::
+ERROR
+*Description*::
+This event is generated when we tried to open up the log file and it failed while opening the file
+*Corrective Action*::
+Make sure that the log file exists with proper permission and the file is not corrupted.
+*Syslog Message*::
+Failed to open backup log file: %s
+*Parameters*::
+*log_file_open_err* (STRING): The error encountered during log file open
+
+== backup.fail.logwrite
+*Severity*::
+ERROR
+*Description*::
+This event is generated when we tried to write a log event to the log file and it failed while writing it to the file.
+*Corrective Action*::
+Make sure that the log file exists with proper permission and the file is not corrupted.
+*Syslog Message*::
+Failed to write to backup log file: %s
+*Parameters*::
+*log_file_write_err* (STRING): The error encountered during log file write

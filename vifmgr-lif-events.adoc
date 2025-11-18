@@ -1,0 +1,171 @@
+---
+sidebar: sidebar
+permalink: vifmgr-lif-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.lif events
+---
+
+= vifmgr.lif events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.lif.foPolicyMod
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a LIF's failover policy has been modified.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LIF %s on Vserver %s (numeric ID: %d, IP address: %s) has been updated to use failover policy %s."
+*Parameters*::
+*lif_name* (STRING): Name of the affected LIF.
+*vserver_name* (STRING): Vserver associated with the affected LIF.
+*lif_id* (INT): Numeric identifier for the affected LIF.
+*lif_address* (STRING): IP address for the affected LIF.
+*new_policy* (STRING): Failover policy that is now associated with this LIF.
+*old_policy* (STRING): Failover policy that was previously associated with this LIF.
+
+== vifmgr.lif.fwpolicy.update
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a LIF (logical interface) firewall policy value is deprecated and automatically assigned a new value based on its role.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LIF %s (on virtual server %s), firewall policy "%s" is deprecated and updated to a new value "%s" based on the LIF's role.
+*Parameters*::
+*vifname* (STRING): Name of the LIF whose firewall policy value is updated.
+*vsrvid* (STRING): Identifier of the Vserver on which this LIF resides.
+*oldpolicy* (STRING): LIF firewall policy value before change.
+*newpolicy* (STRING): LIF firewall policy value after change.
+
+== vifmgr.lif.invalidPort
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a LIF's current or home port are not present in RDB.
+*Corrective Action*::
+Use the command in advanced mode "network interface show" making sure to specify the parameter -numeric-id with the identifier specified in the message. With the LIF name and vserver from the output of the previous command, use the "network interface modify" command to set the home port and current port to ports that are displayed by the "network ports show" command.
+*Syslog Message*::
+LIF %d has a home port identifer or current port identifier that is not present in RDB.
+*Parameters*::
+*lif* (INT): Identifier of LIF with invalid port.
+
+== vifmgr.lif.invalidSubnet
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a LIF's configuration conflicts with that of its subnet. It is caused by an inconsistency in the configuration of the LIF.
+*Corrective Action*::
+To identify the LIF, use the advanced mode command "network interface show" setting the numeric-id parameter to that of the LIF in the message. If the subnet is not set correctly, assign the subnet with the "network interface modify" command specifying an existing subnet that contains the ranges for the LIF's address. If the subnet does not include a range with the address of the LIF, add a range with the "network modify subnet" command making sure to specify the LIF and the force-update-lif-associations parameters.
+*Syslog Message*::
+LIF %d has a configuration that does not match its subnet.
+*Parameters*::
+*lif* (INT): Identifier of LIF with invalid subnet.
+
+== vifmgr.lif.invFailoverGroup
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a LIF has a failover group with the wrong virtual server or ipspace. If an event occurs where the LIF needs to fail off the current port the LIF might not be hosted.
+*Corrective Action*::
+To identify the LIF, use the advanced mode command "network interface show" setting the numeric-id parameter to that of the LIF in the message. Next, use the "network interface modify" command to associate the LIF with an existing failover group or a new failover group consisting of the desired ports.
+*Syslog Message*::
+The failover group %s for LIF %d is invalid.
+*Parameters*::
+*failovergroup* (STRING): Invalid failover group name.
+*lif* (INT): Identifier of the LIF with an invalid failover group.
+
+== vifmgr.lif.invPortIPs
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a port and a LIF currently on that port are in different IPspaces. It is caused by an inconsistency in the configuration of the LIF.
+*Corrective Action*::
+Use the command in advanced mode "network interface show" making sure to specify the paramter -numeric-id with the identifier specified in the message. If the ipspace assigned to the port is correct, modify the LIF to use a home port in the same ipspace as its containing virtual server. If the ipspace of the port is incorrect, change it to match the LIF. If both are correct the LIF's home port, current port, and failover group have to be reassigned to ones sharing the LIF's ipspace.
+*Syslog Message*::
+LIF %d and Port %s:%s are in different IPspaces.
+*Parameters*::
+*lif* (INT): Identifier of LIF with mismatched Ipspace.
+*node* (STRING): Name of node that port resides on.
+*port* (STRING): Name of port with mismatched Ipspace.
+
+== vifmgr.lif.orphanedFwPolicy
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the virtual server for a firewall policy does not exist.
+*Corrective Action*::
+Use the command in advanced mode "network interface show" making sure to specify the paramter -numeric-id with the identifier specified in the message. Then use the command "network interface modify" to assign a new firewall policy with the information from the show command.
+*Syslog Message*::
+The firewall policy %s assigned to LIF %d does not exist or has a different virtual server identifier than the LIF.
+*Parameters*::
+*policy* (STRING): Firewall policy identifier which has an invalid virtual server.
+*lif* (INT): Firewall policy identifier which has an invalid virtual server.
+
+== vifmgr.lif.protocolMod
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a logical interface (LIF) is temporarily brought offline to add or remove data protocols. Data service will be briefly interrupted while this change is applied, and any existing network connection will be reset.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LIF %s on Vserver %s (numeric ID: %d, IP address: %s) is being temporarily brought offline to add or remove data protocols.
+*Parameters*::
+*lif_name* (STRING): Name of the affected LIF.
+*vserver_name* (STRING): Vserver associated with the affected LIF.
+*lif_id* (INT): Numeric identifier for the affected LIF.
+*lif_address* (STRING): IP address for the affected LIF.
+
+== vifmgr.lif.sp.conflict
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a logical interface (LIF) in the default IPspace is configured with an address that conflicts with the Service Processor (SP) or the Baseboard Management Controller (BMC).
+*Corrective Action*::
+Use the "network interface modify" command to assign a different IP address to the affected logical network interface (LIF). Be sure to assign a new address that does not conflict with other hosts in the default IPspace.
+*Syslog Message*::
+LIF "%s" on Vserver "%s" with IP address "%s" in the default IPspace is in use by the SP/BMC.
+*Parameters*::
+*vifName* (STRING): Name of the LIF that is being moved.
+*vsrvName* (STRING): ID of the virtual server on which the LIF resides.
+*vifip* (STRING): IP address of the affected LIF.
+
+== vifmgr.lif.subnetMisconfig
+*Severity*::
+ERROR
+*Description*::
+This message occurs when LIFs in the same subnet are configured on ports in multiple broadcast domains. This can cause routing issues due to reachability to and beyond the gateway.
+*Corrective Action*::
+To identify the misconfigured LIFs use the command "network interface show -address -netmask -fields broadcast-domain". LIFs in the same subnet should be configured on ports that are in the same broadcast domain.
+*Syslog Message*::
+LIFs in subnet %s of IPspace "%s" are configured on ports in multiple broadcast domains: %s
+*Parameters*::
+*subnetname* (STRING): Subnet name.
+*ipspacename* (STRING): IPspace name.
+*bdname* (STRING): List of broadcast domains.
+
+== vifmgr.lif.svcPolicyMod
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a LIF's service policy has been modified.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LIF %s on Vserver %s (numeric ID: %d, IP address: %s) has been updated to use service policy %s."
+*Parameters*::
+*lif_name* (STRING): Name of the affected LIF.
+*vserver_name* (STRING): Vserver associated with the affected LIF.
+*lif_id* (INT): Numeric identifier for the affected LIF.
+*lif_address* (STRING): IP address for the affected LIF.
+*new_policy* (STRING): Service policy that is now associated with this LIF.
+*old_policy* (STRING): Service policy that was previously associated with this LIF.

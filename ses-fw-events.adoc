@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: ses-fw-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ses.fw events
+---
+
+= ses.fw events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ses.fw.emptyFile
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a firmware file is found to be empty during a disk shelf firmware update.
+*Corrective Action*::
+Obtain the correct firmware file from NetApp and place it in the /etc/shelf_fw directory. You can download the firmware file from the NetApp Support Site at http://support.netapp.com.
+*Syslog Message*::
+Shelf firmware file %s was empty.
+*Parameters*::
+*fileName* (STRING): Name of the empty file.
+
+== ses.fw.resourceNotAvailable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is not enough contiguous memory available to download disk shelf firmware.
+*Corrective Action*::
+Reduce the amount of system activities before performing a manual disk shelf firmware update. If this does not resolve the issue, reboot the system.
+*Syslog Message*::
+Not enough memory available to download disk shelf firmware %s.
+*Parameters*::
+*fileName* (STRING): Name of the firmware file.

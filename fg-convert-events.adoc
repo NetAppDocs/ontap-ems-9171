@@ -1,0 +1,84 @@
+---
+sidebar: sidebar
+permalink: fg-convert-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fg.convert events
+---
+
+= fg.convert events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fg.convert.critical.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the conversion of a FlexVol(R) volume into a FlexGroup fails. The FlexVol volume is inoperable, and can no longer serve data.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+Conversion of FlexVol volume %s to FlexGroup with MSID %llu failed. Reason: %s.The FlexVol can no longer serve data. Reason: %s.
+*Parameters*::
+*volumeName* (STRING): Name of the volume being converted to a FlexGroup.
+*flexgroupMsid* (LONGINTHEX): MSID of the new FlexGroup.
+*reason* (STRING): Reason the conversion failed.
+*rollbackFailedReason* (STRING): Reason the conversion could not roll back after failing to convert.
+
+== fg.convert.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the conversion of a FlexVol(R) volume into a FlexGroup fails. The FlexVol volume is still operable.
+*Corrective Action*::
+Ensure that the FlexVol volume is a valid candidate for the convert operation, and then retry the command. If the error persists, contact NetApp technical support.
+*Syslog Message*::
+Conversion of FlexVol volume %s to FlexGroup with MSID %llu failed. Reason: %s
+*Parameters*::
+*volumeName* (STRING): Name of volume being converted to a FlexGroup.
+*flexgroupMsid* (LONGINTHEX): MSID of the new FlexGroup.
+*reason* (STRING): Reason why the conversion failed.
+
+== fg.convert.ksmf.timeout
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the operation to convert a FlexVol(R) volume into a FlexGroup times out when updating the volume's RAID label. The system retries the conversion automatically.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Conversion of FlexVol volume %s to FlexGroup with MSID %llu has timed out while updating the volume's RAID label.
+*Parameters*::
+*volumeName* (STRING): Name of the volume being converted to a FlexGroup.
+*flexgroupMsid* (LONGINTHEX): MSID of the new FlexGroup.
+
+== fg.convert.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the conversion of a FlexVol(R) volume to a FlexGroup begins.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Starting conversion of FlexVol volume %s to new FlexGroup with MSID %llu, UUID %s.
+*Parameters*::
+*volumeName* (STRING): Name of volume being converted to a FlexGroup.
+*flexgroupMsid* (LONGINTHEX): MSID of the new FlexGroup.
+*flexgroupUuid* (STRING): UUID of the new FlexGroup.
+
+== fg.convert.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the conversion of a FlexVol(R) volume into a FlexGroup succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Conversion of FlexVol volume %s to FlexGroup with MSID %llu successful.
+*Parameters*::
+*volumeName* (STRING): Name of volume being converted to a FlexGroup.
+*flexgroupMsid* (LONGINTHEX): MSID of the new FlexGroup.

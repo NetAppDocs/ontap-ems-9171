@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sk-panic-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sk.panic events
+---
+
+= sk.panic events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sk.panic
+*Severity*::
+ALERT
+*Description*::
+This event is issued when a panic occurs.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Panic String: %s
+*Parameters*::
+*reason* (STRING): (None).

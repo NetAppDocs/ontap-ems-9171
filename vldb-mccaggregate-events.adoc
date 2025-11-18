@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: vldb-mccaggregate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vldb.mccaggregate events
+---
+
+= vldb.mccaggregate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vldb.mccaggregate.rename
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during MetroCluster(tm) configuration setup, when the aggregate at the destination site is renamed to handle a name collision. This can happen when an aggregate is renamed at the source site, which causes its mirror to be renamed at the destination site. It can also happen when an aggregate is created at the source site, which causes its mirror to be created at the destination site. In both cases, the issue is that an aggregate of the same name already exists on the destination site, resulting in a name collision. The aggregate at the destination is renamed to resolve the name collision.
+*Corrective Action*::
+If desired, rename the aggregate at the source site to a name that does not collide with an existing name at the destination site. You can choose any new name that does not cause a name collision; the new name will be propagated to the destination site. If the old name is used in any scripts, you should also change those to the new name. If you choose not to rename the aggregate at the source site, the aggregate will have different names at the source and destination sites, but functionality is not affected.
+*Syslog Message*::
+The aggregate with UUID '%s' and name '%s' is renamed at the MetroCluster configuration destination site as '%s'.
+*Parameters*::
+*uuid* (STRING): Universally Unique Identifier (UUID) of the aggregate.
+*aggrNameStr* (STRING): Name of the aggregate at the source site.
+*aggrRenameStr* (STRING): Name of the aggregate at the destination site.

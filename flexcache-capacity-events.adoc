@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: flexcache-capacity-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: flexcache.capacity events
+---
+
+= flexcache.capacity events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== flexcache.capacity.exceeded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the total cluster-wide FlexCache provisioned space has exceeded the licensed limit.
+*Corrective Action*::
+To increase the licensed capacity, install a new license in the cluster.
+*Syslog Message*::
+The total cluster-wide FlexCache provisioned space has exceeded the licensed limit. Cluster id: %s, Current usage: %s, Licensed capacity: %s.
+*Parameters*::
+*cluster_uuid* (STRING): UUID of the Cluster.
+*used_capacity* (STRING): Total FlexCache provisioned space in the cluster.
+*licensed_capacity* (STRING): FlexCache licensed capacity.

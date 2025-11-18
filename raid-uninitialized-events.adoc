@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: raid-uninitialized-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.uninitialized events
+---
+
+= raid.uninitialized events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.uninitialized.parity.vol
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs periodically to warn the user that the aggregate has no RAID protection and that data loss can occur if a disk fails. Do not fail disks in this aggregate. The state of the aggregate is the result of a special boot mode. If the aggregate requires RAID protection, you should stop writing to it and then restrict it from further writing. Also, avoid creating new aggregates or extending the capacity of existing aggregates. Copy data from existing aggregates to other system and reinitialize the system.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+*** WARNING *** %s %s%s was created with no parity; don't fail its data disks!!
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.

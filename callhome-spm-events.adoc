@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-spm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.spm events
+---
+
+= callhome.spm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.spm.process.maxexit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a subsystem is not fully operational after one or more restarts and a restart threshold has been reached by the Service Process Manager (SPM). The inconsistency might be caused by external events such network data, previous configuration changes, software changes, firmware changes, or hardware changes. The message should not occur more then once per day. The underlying subsystem might be related to one or more operational systems such as management, authentication, network access, and so on. Performance issues and operational difficulties might have been exhibited before this event. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+If necessary, undo recent changes to the system and to external services that the system uses to stabilize operations, and then contact NetApp technical support. They will help to identify the underlying issue and whether a software upgrade has been made available to resolve the issue. You might need to isolate the system from any suspect network traffic.
+*Syslog Message*::
+Call home for MAXIMUM EXITS THRESHOLD OF A PROCESS MANAGED BY SPM IS REACHED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

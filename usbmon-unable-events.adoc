@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: usbmon-unable-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: usbmon.unable events
+---
+
+= usbmon.unable events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== usbmon.unable.to.monitor
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Data ONTAP(R) module that is responsible for monitoring the health of the Universal Serial Bus (USB) boot devices cannot extract health information from the monitored device.
+*Corrective Action*::
+Replace the device. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Data ONTAP could not monitor device %s.
+*Parameters*::
+*device* (STRING): Name of the device.

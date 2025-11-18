@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: wafl-needs-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.needs events
+---
+
+= wafl.needs events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.needs.blog
+*Severity*::
+ERROR
+*Description*::
+This message occurs when batched_free_log needs to be turned on to allow performing one of the requested actions, such as "Dense Undo", "Dense Revert", and "Clone Split".
+*Corrective Action*::
+Contact NetApp technical support..
+*Syslog Message*::
+batched_free_log needs to be turned on.
+*Parameters*::
+(None).

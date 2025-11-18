@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: kmip2-invalid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: kmip2.invalid events
+---
+
+= kmip2.invalid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== kmip2.invalid.key.length
+*Severity*::
+ALERT
+*Description*::
+This message occurs when ONTAP cannot push a key to a KMIP key server because the key has an invalid length.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ONTAP failed to push an %s key to a KMIP key server due to invalid key length. Vserver Name: %s, Key ID: %s.
+*Parameters*::
+*keyType* (STRING): Key type (NSE, AES, XTS) that has invalid length.
+*vserverName* (STRING): Vserver name.
+*keyID* (STRING): Key ID of key being pushed to key server.

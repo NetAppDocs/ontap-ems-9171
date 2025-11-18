@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: app-cg-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: app.cg events
+---
+
+= app.cg events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== app.cg.snap.smbc.lookup.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a consistency group on either side of a SnapMirror(R) active sync relationship cannot be resolved to the remote consistency group for correctly replicating consistency group snapshots.
+*Corrective Action*::
+Use the "volume snapshot show" command on the destination cluster to view the consistency group snapshot and "volume snapshot restore" (In ASA r2, available at privilege:diagnostic) for restoring each individual volume instead of the consistency group REST interface.
+*Syslog Message*::
+Failed to resolve snapshot "%s" in consistency group "%s" on SVM "%s" to the remote consistency group. Error: "%s".
+*Parameters*::
+*snapshot_name* (STRING): Name of the consistency group's snapshot.
+*consistency_group* (STRING): Name of the consistency group.
+*vserver* (STRING): Name of the storage virtual machine (SVM).
+*error* (STRING): Error that was encountered while resolving the local consistency group to its corresponding remote consistency group.

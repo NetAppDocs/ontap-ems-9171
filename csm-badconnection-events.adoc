@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: csm-badconnection-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: csm.badconnection events
+---
+
+= csm.badconnection events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== csm.badConnection
+*Severity*::
+ALERT
+*Description*::
+This message occurs when ONTAP(R) software receives a Cluster Session Manager (CSM) connection with unrecognizable content. This might indicate that the system is under attack. As a precaution, the connection used to receive that data has been closed.
+*Corrective Action*::
+Carefully inspect the networking configuration, event messages, and logs of both the local and remote nodes. If any evidence exists of an intrusion attempt, configure site networking equipment to avoid forwarding data to the local address and port, and if necessary, from forwarding data from the remote address and port. Check external site security tools for unauthorized access attempts. Audit site security logs.
+*Syslog Message*::
+ONTAP received a CSM connection with unrecognizable content at local address %s local port %d, from remote address %s remote port %d, via IPspace %d.
+*Parameters*::
+*localAddr* (STRING): Full internet address of the local end of the connection.
+*localPort* (INT): Local port number.
+*remoteAddr* (STRING): Full internet address of the remote end of the connection.
+*remotePort* (INT): Remote port number.
+*IPspace* (INT): Identifier of the IPspace within which the remote address was reached.

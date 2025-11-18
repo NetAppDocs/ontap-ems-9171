@@ -1,0 +1,121 @@
+---
+sidebar: sidebar
+permalink: raid-fdr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.fdr events
+---
+
+= raid.fdr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.fdr.failed.ok
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when we detect an entry in the failed disk registry, and have forcibly failed the disk.
+*Corrective Action*::
+Please make sure that the event message raid.disk.unload.done or raid.carrier.remove has been seen in the log. And then replace the carrier containing the failed disk. If the disk is contained in a single-disk carrier, raid.disk.unload.done will be issued immediately. Otherwise, wait for raid.carrier.remove which indicates the carrier has been fully prepared for removal.
+*Syslog Message*::
+%s successfully deleted from spare pool
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk object
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.fdr.full
+*Severity*::
+ERROR
+*Description*::
+This message occurs when we determine that the failed disk registry is full and we must eliminate an existing disk entry.
+*Corrective Action*::
+Please make sure that the event message raid.disk.unload.done or raid.carrier.remove has been seen in the log. And then replace the carrier containing the failed disk. If the disk is contained in a single-disk carrier, raid.disk.unload.done will be issued immediately. Otherwise, wait for raid.carrier.remove which indicates the carrier has been fully prepared for removal.
+*Syslog Message*::
+Failed disk registry full! Recycling entry for %s model %s (S/N %s)
+*Parameters*::
+*vendor* (STRING): The name of the vendor
+*model* (STRING): The model number
+*serialno* (STRING): The serial number
+
+== raid.fdr.inservice
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an entry in the failed disk registry, but the disk appears to be incorporated into an aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WARNING: %s previously failed, but is currently in service (%s %s).
+*Parameters*::
+*disk_info* (STRING): Formatted information about the disk object.
+*vol_type* (STRING): Volume type, which is always aggregate.
+*vol* (STRING): Name of the aggregate.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.fdr.reminder
+*Severity*::
+ERROR
+*Description*::
+This message occurs as a reminder that a previously detected failed disk is still present in the system and needs to be removed.
+*Corrective Action*::
+The failed disk carrier is fully prepared for removal. Remove and replace the failed disk carrier.
+*Syslog Message*::
+Failed %s is still present in the system and should be removed.
+*Parameters*::
+*disk_info* (STRING): Formatted information about the disk.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.fdr.update.error
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when RAID fails to add an entry for a failed disk into the failed disk registry. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Unable to %s to %s (error %d).
+*Parameters*::
+*op* (STRING): Type of add operation that failed.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, carrier serial number, and site.
+*errorCode* (INT): Error code.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model name of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.

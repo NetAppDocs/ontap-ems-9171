@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: configbr-snapshotdelfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: configbr.snapshotdelfailed events
+---
+
+= configbr.snapshotdelfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== configbr.snapshotDelFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Snapshot(tm) copy on the root volume cannot be deleted. The Snapshot copy was created during a configuration backup.
+*Corrective Action*::
+Ensure that the root volume file system is available with the "volume show" command.
+*Syslog Message*::
+Snapshot copy %s on the root volume cannot be deleted on node %s. Error: '%s'.
+*Parameters*::
+*name* (STRING): Name of the Snapshot copy.
+*node* (STRING): Node on which the Snapshot copy was created.
+*reason* (STRING): Reason for the error.

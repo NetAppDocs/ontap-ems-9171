@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: vldb-vldbaggr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vldb.vldbaggr events
+---
+
+= vldb.vldbaggr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vldb.vldbAggr.missing
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an aggregate is identified that does not exist in the Volume Location Database. This could happen if a disk shelf that constitutes an aggregate is plugged in or when an aggregate is created in Maintenance mode.
+*Corrective Action*::
+If this is a new aggregate that must be added to the Volume Location Database, then use the (privilege: diag) "debug vreport" command to resolve the inconsistency in the VLDB: 1. Run "debug vreport show" to show the object name. 2. Run "debug vreport fix -type aggregate -object object-name". If this is a stale aggregate that must be removed, then contact support personnel.
+*Syslog Message*::
+The aggregate "%s" with UUID "%s" on node "%s" does not exist in the Volume Location Database.
+*Parameters*::
+*aggregate* (STRING): Name of the aggregate.
+*uuid* (STRING): Universally Unique Identifier (UUID) of the aggregate.
+*node* (STRING): Name of the node.

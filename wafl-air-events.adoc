@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: wafl-air-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.air events
+---
+
+= wafl.air events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.air.info
+*Severity*::
+ERROR
+*Description*::
+Generic wafl air message
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s
+*Parameters*::
+*msg* (STRING): The message from AIR module

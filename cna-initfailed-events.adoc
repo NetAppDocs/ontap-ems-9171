@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: cna-initfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cna.initfailed events
+---
+
+= cna.initfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cna.initFailed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the converged network adapter (CNA) fails to initialize.
+*Corrective Action*::
+Take corrective action based on the reason indicated for the failure.
+*Syslog Message*::
+Initialization of adapter %s failed, reason: %s.
+*Parameters*::
+*adapter* (STRING): Name of the Adapter.
+*reason* (STRING): Reason for the failure.

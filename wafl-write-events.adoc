@@ -1,0 +1,57 @@
+---
+sidebar: sidebar
+permalink: wafl-write-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.write events
+---
+
+= wafl.write events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.write.fail.cifsSpace
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a write to a file with CIFS-style space reservations fails due to a lack of space in the volume or aggregate.
+*Corrective Action*::
+If the volume is a Flexvol(R) volume, and the volume guarantee is disabled, increase the amount of space available in the aggregate. Otherwise, increase the amount of space available in the volume.
+*Syslog Message*::
+Write failed to file with CIFS space reservations due to lack of disk space in %s %s%s%s%s (%s%s, inode %u, offset %llu, len %u).
+*Parameters*::
+*type* (STRING): Type of object (volume/aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.
+*space_info* (STRING): Text string specifying whether there is a guarantee.
+*guarantee_state* (STRING): Text string describing the state of the guarantee on the volume (disabled, volume, file, and so on).
+*ino* (INT): Inode number.
+*offset* (LONGINT): Block offset.
+*len* (INT): Length value.
+
+== wafl.write.fail.spcres
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a write to a space-reserved file fails due to a lack of space in the volume or aggregate. This is possible when the fractional reserve is not 100% or the space guarantee of the containing flexible volume is not guaranteed.
+*Corrective Action*::
+If the volume is a Flexvol(R) volume, and the volume guarantee is disabled, increase the amount of space available in the aggregate. Otherwise, increase the amount of space available in the volume.
+*Syslog Message*::
+Write failed to file with space reservations due to lack of disk space in %s %s%s%s%s (%s%s, inode %u, offset %llu, len %u).
+*Parameters*::
+*type* (STRING): Type of object (volume/aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.
+*space_info* (STRING): Text string specifying whether there is a guarantee.
+*guarantee_state* (STRING): Text string describing the state of the guarantee on the volume (disabled, volume, file, and so on).
+*ino* (INT): Inode number.
+*offset* (LONGINT): Block offset.
+*len* (INT): Length value.

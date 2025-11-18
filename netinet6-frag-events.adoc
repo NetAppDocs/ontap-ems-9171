@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: netinet6-frag-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netinet6.frag events
+---
+
+= netinet6.frag events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netinet6.frag.bytes.overlap
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the incoming fragment overlaps some of the existing previous fragment in the reassembly queue.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%d bytes of a fragment from %s overlapped the %s fragment
+*Parameters*::
+*bytes* (INT): Number of bytes.
+*ipAddress* (STRING): Printable that is loggable representation of IP address.
+*message* (STRING): String passed as "previous" or "succeeding".

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: nblade-fpolpsvolnotfound-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.fpolpsvolnotfound events
+---
+
+= nblade.fpolpsvolnotfound events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.fpolPsVolNotFound
+*Severity*::
+ERROR
+*Description*::
+This message occurs when volume corresponding to persistent store is not found. This causes disruption in FPolicy where persistent store is enabled.
+*Corrective Action*::
+Check the volume corresponding to the persistent store. Either recreate the volume with same name or delete the persistent store.
+*Syslog Message*::
+FPolicy persistent store volume "%s" belonging to SVM "%s" was not found.
+*Parameters*::
+*volName* (STRING): Persistent store volume.
+*vserverName* (STRING): Name of the SVM.

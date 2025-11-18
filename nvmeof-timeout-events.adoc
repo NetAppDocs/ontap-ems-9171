@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: nvmeof-timeout-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvmeof.timeout events
+---
+
+= nvmeof.timeout events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvmeof.timeout
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NVMeoF driver detects a timeout on a request. There might be a decrease in performance while retrying.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Timeout on subnqn %s, controller ID %d, qpair ID %d, sequence number %d.
+*Parameters*::
+*subnqn* (STRING): Subsytem NVMe qualified name.
+*ctrlr_id* (INT): Controller ID.
+*qpair* (INT): Qpair ID.
+*cid* (INT): NVMe-oF CID.

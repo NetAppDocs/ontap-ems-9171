@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sp-authlog-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sp.authlog events
+---
+
+= sp.authlog events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sp.authlog.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Service Processor (SP) or baseboard management controller (BMC) fails to log an authentication event in the system event log (SEL).
+*Corrective Action*::
+1. Use the "system service-processor reboot-sp" command to reboot the SP or BMC. 2. If the failure persists, contact NetApp technical support
+*Syslog Message*::
+BMC or SP failed to log an authentication event in the SEL.
+*Parameters*::
+(None).

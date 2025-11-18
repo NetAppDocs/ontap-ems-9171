@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: cf-cdo-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.cdo events
+---
+
+= cf.cdo events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.cdo.badMsg
+*Severity*::
+ERROR
+*Description*::
+This event is issued when the filer receives a disk operation message over the High Availability (HA) interconnect that it does not recognize. This is likely due to a change in the message protocol that the down-revision partner does not recognize. Fix this problem by upgrading the partner to a compatible version of Data ONTAP(R). This message is not emitted for every message received to avoid spamming the console.
+*Corrective Action*::
+Upgrade both nodes to the same release.
+*Syslog Message*::
+unknown message %d received from partner (%d unknown messages since boot).
+*Parameters*::
+*msg* (INT): Message which was not known.
+*count* (INT): Number of unknown messages.
+
+== cf.cdo.reportOp
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the filer bypasses or unbypasses a disk after being requested to do so by its partner. The bypassing of a drive on a particular port may only be done by the host which is attached to that port; the High Availability (HA) software ensures that both ports of the drive are bypassed by communicating bypass requests to the partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s disk %s on behalf of the partner.
+*Parameters*::
+*op* (STRING): Operation description
+*driveName* (STRING): Drive name

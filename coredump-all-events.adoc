@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: coredump-all-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: coredump.all events
+---
+
+= coredump.all events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== coredump.all.disks.used
+*Severity*::
+ERROR
+*Description*::
+All disks available to coredump already contain unsaved cores.
+*Corrective Action*::
+There are three choices. First, add more disks to the system. Second, delete any unsaved cores by running "savecore -k". Third, save any unsaved cores by running "savecore". It may be necessary to run "savecore -f" to save the cores, if previous attempts to save these cores have failed.
+*Syslog Message*::
+No disks available for dumpcore
+*Parameters*::
+(None).

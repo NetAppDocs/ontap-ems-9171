@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: air-corrected-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: air.corrected events
+---
+
+= air.corrected events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== air.corrected.qtree.tid
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Automated Incremental Repair (AIR) subsystem repairs an inode having a corrupted qtree ID.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Qtree entry certification failed at %s. AIR repaired qtree inode %d: old TID %d, new TID %d, fgindex %d.
+*Parameters*::
+*source* (STRING): Location where qtree entry certification failed.
+*inode* (INT): Inode number.
+*old_tid* (INT): Old TID.
+*new_tid* (INT): New TID.
+*fgindex* (INT): Fgindex of the qtree root.

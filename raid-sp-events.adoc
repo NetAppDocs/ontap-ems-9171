@@ -1,0 +1,203 @@
+---
+sidebar: sidebar
+permalink: raid-sp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.sp events
+---
+
+= raid.sp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.sp.add.aggr.grow.noDone
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when one or more aggregate's capacity is not increased as part of the storage pool add job.
+*Corrective Action*::
+Use the (privilege: diagnostic) "storage pool add -storage-pool <storage pool name> -auto-grow-aggregates" command to retry the operation. If the condition persists, contact NetApp technical support.
+*Syslog Message*::
+Could not grow one or more aggregates provisioned from storage pool %s.
+*Parameters*::
+*name* (STRING): Name of the storage pool.
+*uuid* (STRING): UUID of the storage pool.
+*jobid* (LONGINT): ID of the job.
+
+== raid.sp.add.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when disks are added to the storage pool and all the aggregates provisioned from the storage pool have been grown to take capacity from new disks.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disks %s added to storage pool %s.
+*Parameters*::
+*disks* (STRING): List of disks added to the storage pool.
+*name* (STRING): Name of the storage pool.
+*uuid* (STRING): UUID of the storage pool.
+*jobid* (LONGINT): ID of the job.
+
+== raid.sp.aggr.add.rollback
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when available capacity is reassigned to a storage pool because adding storage pool capacity to an aggregate failed. This can happen if the node owning the aggregate is rebooted while additional storage pool capacity is zeroing. Other events provide additional failure information.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Aggregate add job for aggregate %s successfully rolled back available capacity to storage pool %s.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate to which capacity is being added.
+*name* (STRING): Name of the storage pool.
+*uuid* (STRING): UUID of the storage pool.
+*aggrUuid* (STRING): UUID of the aggregate.
+*owner* (STRING): Owning node of the aggregate.
+*curUnit* (INT): Current available allocation unit.
+*prevUnit* (INT): Allocation unit available before the job started.
+*jobid* (LONGINT): ID of the job.
+
+== raid.sp.aggr.add.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when capacity from a storage pool is added to an aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Added %d allocation units from storage pool %s to aggregate %s.
+*Parameters*::
+*allocationUnits* (INT): Number of allocation units added.
+*name* (STRING): Name of the storage pool.
+*aggr* (STRING): Name of the aggregate to which capacity is added.
+*uuid* (STRING): UUID of the storage pool.
+*aggrUuid* (STRING): UUID of the aggregate.
+*jobid* (LONGINT): ID of the job.
+
+== raid.sp.aggr.grow.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an aggregate capacity is successfully increased to span all disks belonging to a storage pool.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s added to aggregate %s from storage pool %s.
+*Parameters*::
+*capacity* (STRING): Amount of capacity added to the aggregate.
+*aggr* (STRING): Name of the aggregate whose capacity is increased.
+*name* (STRING): Name of the storage pool.
+*uuid* (STRING): UUID of the storage pool.
+*aggrUuid* (STRING): UUID of the aggregate.
+*jobid* (LONGINT): ID of the job.
+
+== raid.sp.create.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a storage pool creation operation fails.
+*Corrective Action*::
+Use the "storage pool delete -storage-pool <storage pool name>" command to delete the partially created storage pool and then retry the create operation. If the condition persists, contact NetApp technical support.
+*Syslog Message*::
+Storage pool %s was not successfully created. Reason: %s
+*Parameters*::
+*name* (STRING): Name of the storage pool.
+*reason* (STRING): Reason for failure.
+*uuid* (STRING): UUID of the storage pool.
+*nodes* (STRING): List of nodes sharing the storage pool.
+*disks* (STRING): List of disks used to create the storage pool.
+*jobid* (LONGINT): ID of the job.
+
+== raid.sp.create.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a storage pool is created successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Storage pool %s was created.
+*Parameters*::
+*name* (STRING): Name of the storage pool.
+*uuid* (STRING): UUID of the storage pool.
+*nodes* (STRING): List of nodes sharing the storage pool.
+*disks* (STRING): List of disks used to create the storage pool.
+*jobid* (LONGINT): ID of the job.
+
+== raid.sp.delete.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a storage pool is deleted successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Storage pool %s deleted.
+*Parameters*::
+*name* (STRING): Name of the storage pool.
+*uuid* (STRING): UUID of the storage pool.
+*jobid* (LONGINT): ID of the job.
+
+== raid.sp.healthy
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Data ONTAP(R) detects that a storage pool that was unhealthy earlier has become healthy again.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Storage pool %s is now healthy.
+*Parameters*::
+*name* (STRING): Name of the storage pool.
+*uuid* (STRING): UUID of the storage pool.
+
+== raid.sp.reassign.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when available capacity is reassigned successfully from one node to another node in a storage pool.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Reassigned %d allocation units from node %s to node %s for storage pool %s.
+*Parameters*::
+*allocationUnits* (INT): Number of allocation units reassigned.
+*source* (STRING): Node that owns the available capacity to be reassigned.
+*destination* (STRING): Node to which the available capacity is reassigned.
+*name* (STRING): Name of the storage pool.
+*uuid* (STRING): UUID of the storage pool.
+*jobid* (LONGINT): ID of the job.
+
+== raid.sp.unhealthy
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Data ONTAP(R) detects that a storage pool has become unhealthy.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Storage pool %s is unhealthy. Reason: %s
+*Parameters*::
+*name* (STRING): Name of the storage pool.
+*reason* (STRING): Reason for the storage pool being unhealthy.
+*uuid* (STRING): UUID of the storage pool.
+
+== raid.sp.unlock.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the storage pool cannot be unlocked after the storage pool operation has finished.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Failed to unlock the storage pool %s. Reason: %s
+*Parameters*::
+*name* (STRING): Name of the storage pool.
+*reason* (STRING): Reason for failure.
+*uuid* (STRING): UUID of the storage pool.
+*jobid* (LONGINT): ID of the job.

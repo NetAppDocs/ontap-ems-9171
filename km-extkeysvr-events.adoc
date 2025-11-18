@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: km-extkeysvr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: km.extkeysvr events
+---
+
+= km.extkeysvr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== km.extkeysvr.details
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a key is retrieved or restored from an external KMIP server. This is an informational message that describes the external KMIP server where the key is stored.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Key ID "%s" restored/retrieved from external key server "%s".
+*Parameters*::
+*keyId* (STRING): Key ID of the key being restored or retrieved.
+*hostPort* (STRING): Host port details of the external KMIP server.

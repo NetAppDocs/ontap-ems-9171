@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: spm-secd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: spm.secd events
+---
+
+= spm.secd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== spm.secd.process.exit
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the Security daemon (secd) involuntarily terminates. This can be due to one or more causes and might be related to some recent or previous operations. This subsystem is responsible for client authentication and failure of this subsystem can affect client access.
+*Corrective Action*::
+While this problem persists, consider migrating the Logical Interfaces (LIFs) hosted on the current node to another node in the cluster and ensure that the auto-revert and DNS load-balancing features do not migrate the LIFs back to the current node. The system attempts to recover by restarting the subsystem. If the subsystem does not recover within the threshold number of retries, then an AutoSupport message is sent. If your system is not configured to send AutoSupport messages and the issue persists, contact NetApp technical support.
+*Syslog Message*::
+Security daemon with ID %d exited as a result of signal %s. The service will attempt to restart.
+*Parameters*::
+*id* (INT): Process identifier.
+*cause* (STRING): Plain text description of why the process exited.

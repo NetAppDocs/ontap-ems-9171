@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: wafl-ntfsunixsecurityops-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.ntfsunixsecurityops events
+---
+
+= wafl.ntfsunixsecurityops events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.ntfsUnixSecurityOps
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a UNIX-type permissions or ownership change is attempted by an NFS client on an NTFS (Windows) volume, but changes of this type are prohibited by an export policy rule.
+*Corrective Action*::
+Use the "vserver show -fields uuid" command to find the Vserver name corresponding to the Vserver's UUID. Use the "volume file show-inode" command with the file ID and volume name information to find the file or directory path and consider using Windows client to set file or directory attributes.
+*Syslog Message*::
+NFS client attempted prohibited change of UNIX permissions for file ID: %d, on NTFS volume : %s%s%s
+*Parameters*::
+*fileid* (INT): File ID of the entry in the directory.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Vserver's Universal Unique Identifier (UUID).

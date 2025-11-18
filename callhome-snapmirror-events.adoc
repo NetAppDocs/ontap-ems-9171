@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: callhome-snapmirror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.snapmirror events
+---
+
+= callhome.snapmirror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.snapmirror.oos
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a sync-granular consistency group (CG) transitions from in-sync status to out-of-sync status. If your system is configured to do so, it generates and transmits an AutoSupport (or "call home") message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Look for the sm.syncmirror.out.of.sync event concerning this relationship in the EMS log file. The event provides the reason why the relationship has been transitioned to out-of-sync and an appropriate corrective action, if applicable.
+*Syslog Message*::
+Call home for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.snapmirror.oos.pers
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a sync-granular consistency group (CG) relationship transitions from in-sync status to out-of-sync status and remains out-of-sync for longer than expected. If your system is configured to do so, it generates and transmits an AutoSupport (or "call home") message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Look for the sm.syncmirror.out.of.sync event concerning this relationship in the EMS log file on source node of SnapMirror relationship. The event provides the reason why the relationship has been transitioned to out-of-sync. Verify network connections between the primary cluster and the secondary cluster. Check for error information in the "snapmirror show" command output for the relationship. Quiesce the relationship if the condition cannot be addressed immediately.
+*Syslog Message*::
+Call home for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

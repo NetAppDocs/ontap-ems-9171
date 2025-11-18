@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: vsdr-missing-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsdr.missing events
+---
+
+= vsdr.missing events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsdr.missing.clone.parent.volume
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the clone parent volume does not exist during the Vserver SnapMirror(R)/MetroCluster(tm) baseline replication on the secondary site. Vserver SnapMirror/MetroCluster replication will be blocked until this problem is resolved, and delaying action on this problem will lead to inconsistent data on the primary and secondary sites.
+*Corrective Action*::
+Use the (privilege: diag) "debug vreport show -type volume" command on the primary site to show the list of inconsistent volumes. For each of these inconsistent volumes, use the (privilege: diag) "debug vreport fix -type volume" command to resolve all of the issues on the Vserver SnapMirror/MetroCluster primary site. After the above problem is resolved, run the "snapmirror resync/metrocluster vserver resync" command.
+*Syslog Message*::
+Parent volume for clone volume %s:%s is missing.
+*Parameters*::
+*vserver* (STRING): Name of the Vserver.
+*volume* (STRING): Name of the clone volume for which the corresponding parent volume is missing.

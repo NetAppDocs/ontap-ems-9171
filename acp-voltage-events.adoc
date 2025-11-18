@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: acp-voltage-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: acp.voltage events
+---
+
+= acp.voltage events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== acp.voltage.status.failed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a 'voltage status' request that was sent to the Alternate Controller Path Processor fails.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A voltage status request sent to %s (%s) failed with status (%s), (disk shelf serial number: %s).
+*Parameters*::
+*inband_id* (STRING): In-band ID of the module.
+*ip* (STRING): IP address of the module.
+*status* (STRING): Reason for the 'voltage status' failure.
+*shelf_sno* (STRING): Disk shelf serial number of the shelf where this I/O module is seated.

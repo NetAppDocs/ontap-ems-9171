@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: monitor-nvmembattery-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.nvmembattery events
+---
+
+= monitor.nvmembattery events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.nvmembattery.warninglow
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the nonvolatile memory (NVMEM) battery charge is low.
+*Corrective Action*::
+Replace the NVMEM battery as soon as possible.
+*Syslog Message*::
+NVMEM battery is low on power and should be replaced as soon as possible.
+*Parameters*::
+(None).

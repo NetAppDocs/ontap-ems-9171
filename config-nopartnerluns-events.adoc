@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-nopartnerluns-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.nopartnerluns events
+---
+
+= config.nopartnerluns events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.noPartnerLUNs
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs in a High-Availablity (HA) configuration with array LUNS when there is no attachment to both local and partner LUNs.
+*Corrective Action*::
+Ensure that both nodes of the HA pair are cabled so they have access to all of the LUNs. Check that the adapter interface to the array is up by using the "storage adapter show" command. Ensure that any switches are correctly zoned for LUN visibility by the nodes. Verify that the array or bridge is correctly exporting its LUNs on the proper interface.
+*Syslog Message*::
+No LUNs were detected for the partner; this node cannot perform takeover correctly.
+*Parameters*::
+(None).

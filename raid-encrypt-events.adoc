@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: raid-encrypt-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.encrypt events
+---
+
+= raid.encrypt events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.encrypt.disabled
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a node is enabled for encryption by RAID, but the system is not FIPS compliant. Volume encryption and decryption will not be available because the system is not considered secure. Encrypted volumes will not be accessible until this problem is solved.
+*Corrective Action*::
+Reboot the system. If the issue persists after a reboot contact NetApp technical support for assistance.
+*Syslog Message*::
+RAID encryption is not available because the system is not FIPS compliant. Error: %d.
+*Parameters*::
+*error_code* (INT): Reason for non FIPS compliance.
+
+== raid.encrypt.no.key
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an encrypted volume is being mounted and the encryption key can not be found. The volume is inaccessible until this problem is solved.
+*Corrective Action*::
+Verify that the network is accessible. Verify that the key manager server is available by using the "security key-manager external show-status" command.
+*Syslog Message*::
+No encryption key is available for volume '%s' because of error '%d'.
+*Parameters*::
+*volume* (STRING): Volume involved.
+*error* (INT): Reason code for the failure to find a key.

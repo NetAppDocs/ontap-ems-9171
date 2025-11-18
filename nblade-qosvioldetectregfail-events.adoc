@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nblade-qosvioldetectregfail-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.qosvioldetectregfail events
+---
+
+= nblade.qosvioldetectregfail events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.QoSViolDetectRegFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Quality-of-Service (QoS) subsystem fails to register for updates during initialization due to an internal error (e.g. there is not enough system memory available). As a result, workloads might not meet their minimum throughput or their service-level objectives (SLOs).
+*Corrective Action*::
+The registration will continue to be retried. If this message continues to occur, perform a planned takeover/giveback sequence to reset the reporting node nondisruptively by using the "takeover -ofnode (reporting_node)" and "giveback -ofnode (reporting_node)" commands. If the problem persists, contact Contact NetApp technical support.
+*Syslog Message*::
+Failed to register for violation detection updates. QoS min-throughput might operate in a limited capacity.
+*Parameters*::
+*errorCode* (INT): Error code that was returned during registration.

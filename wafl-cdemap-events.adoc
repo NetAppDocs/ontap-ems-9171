@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: wafl-cdemap-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.cdemap events
+---
+
+= wafl.cdemap events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.cdemap.repaired.metafile
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an inconsistency is discovered in one of the metafile blocks. The inconsistency is automatically repaired upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Inconsistent block (%s) found in %s metafile on aggregate (%s). Repaired.
+*Parameters*::
+*state* (STRING): A description of the metafile block that was found to be inconsistent.
+*metafile_name* (STRING): Name of the metafile.
+*aggr* (STRING): Name of the aggregate.

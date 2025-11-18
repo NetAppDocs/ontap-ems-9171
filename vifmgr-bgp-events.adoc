@@ -1,0 +1,103 @@
+---
+sidebar: sidebar
+permalink: vifmgr-bgp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.bgp events
+---
+
+= vifmgr.bgp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.bgp.connected
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Logical Interface Manager (VifMgr) connects to BGP daemon.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+VifMgr connected to BGP daemon on the node.
+*Parameters*::
+(None).
+
+== vifmgr.bgp.defaults.upgrade
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Autonomous System Number (ASN) in "bgp defaults" changes from the reserved number to the default number (65501).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Autonomous System Number (ASN) in "bgp defaults" was changed from the reserved number (%d) to the default number (65501).
+*Parameters*::
+*old_asn* (INT): Reserved Autonomous System Number (ASN) in "bgp defaults" before it is changed.
+
+== vifmgr.bgp.disconnected
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the connection between the Logical Interface Manager (VifMgr) and the BGP daemon is broken. The connection is automatically reestablished. In case the connection is not reestablished, any Virtual IP LIFs might fail over to another node.
+*Corrective Action*::
+Verify that the BGP daemon restarted by looking for the "vifmgr.bgp.connected" event. If the BGP daemon fails to restart, or if the condition persists, contact NetApp technical support.
+*Syslog Message*::
+The connection between VifMgr and the BGP daemon on the node is broken.
+*Parameters*::
+(None).
+
+== vifmgr.bgp.peerGroupDown
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a Border Gateway Protocol (BGP) peer group goes down on a given IPspace. If this is the last active BGP session on this IPspace, vifmgr.bgp.vserverDown message gets generated and any virtual IP (VIP) LIF or LIFs in the data Vserver or data Vservers of this IPspace cannot be hosted on this node without an active BGP session.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The BGP peer group %s on IPspace %s is down.
+*Parameters*::
+*peer_group* (STRING): Name of the BGP peer group.
+*peer_ipspace* (STRING): IPspace of the BGP peer group.
+
+== vifmgr.bgp.peerGroupUp
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a BGP peer group goes up on a given IPspace. If this is the first active BGP session on this IPspace, vifmgr.bgp.vserverUp message gets generated and any VIP LIF or LIFs in the data Vserver or data Vservers of this IPspace can now be hosted on this node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The BGP peer group %s on IPspace %s is up.
+*Parameters*::
+*peer_group* (STRING): Name of the BGP peer group.
+*peer_ipspace* (STRING): IPspace of the BGP peer group.
+
+== vifmgr.bgp.vserverDown
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a BGP down event is received for a system Vserver. Any VIP LIFs in the associated data Vservers can no longer handle network traffic.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+VifMgr received a Vserver BGP down event for Vserver %s in IPspace %s.
+*Parameters*::
+*vserver* (STRING): Name of the Vserver.
+*ipspace* (STRING): Name of the IPspace where the Vserver resides.
+
+== vifmgr.bgp.vserverUp
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a BGP up event is received for a system Vserver. Any VIP LIFs in the associated data Vservers can now handle network traffic.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+VifMgr received a Vserver BGP up event for Vserver %s in IPspace %s.
+*Parameters*::
+*vserver* (STRING): Name of the Vserver.
+*ipspace* (STRING): Name of the IPspace where the Vserver resides.

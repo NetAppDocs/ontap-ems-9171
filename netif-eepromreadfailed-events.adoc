@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: netif-eepromreadfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.eepromreadfailed events
+---
+
+= netif.eepromreadfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.eepromReadFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is a failure in reading the electronically erasable programmable read-only memory (EEPROM) for a network interface. The interface is not initialized.
+*Corrective Action*::
+Rebooting the system might clear the problem. The problem might be caused by a software bug and should be reported to NetApp technical support.
+*Syslog Message*::
+Failure in reading EEPROM for network interface %s.
+*Parameters*::
+*ifName* (STRING): Name of the network interface; for example, "e8a".

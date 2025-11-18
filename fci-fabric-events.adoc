@@ -1,0 +1,44 @@
+---
+sidebar: sidebar
+permalink: fci-fabric-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fci.fabric events
+---
+
+= fci.fabric events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fci.fabric.max.ports
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a switch in the fabric attached to the Fibre Channel adapter exceeds the maximum number of ports allowed on a switch. Any devices on this switch will not be seen by the Fibre Channel adapter.
+*Corrective Action*::
+Any devices on this switch will not be seen by the Fibre Channel adapter. If that is okay then this error can be ignored. If the devices need to be seen by the Fibre Channel adapter then they need to be connected to a switch that does not exceed the maximum number of ports supported per switch.
+*Syslog Message*::
+Switch with WWN %s on Fibre Channel adapter %s exceeded the maximum number of ports supported: Maximum ports supported is %d and this switch has %d ports.
+*Parameters*::
+*switchWWN* (STRING): World-Wide Name (WWN) of the switch that has exceeded the maximum number of supported ports.
+*adapterName* (STRING): Name of the associated Fibre Channel host bus adapter.
+*numMaxSwitches* (INT): Maximum number of ports supported per switch.
+*numFabricSwitches* (INT): Number of ports on this switch.
+
+== fci.fabric.max.switches
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the fabric attached to the Fibre Channel adapter exceeds the maximum number of allowed switches. This configuration is not supported and will not work.
+*Corrective Action*::
+Reduce the number of switches in the fabric.
+*Syslog Message*::
+Invalid Fabric configuration detected on Fibre Channel adapter %s: Maximum switches supported is %d and this fabric contains %d switches.
+*Parameters*::
+*adapterName* (STRING): Name of the associated Fibre Channel host bus adapter.
+*numMaxSwitches* (INT): Maximum number of switches supported in a fabric.
+*numFabricSwitches* (INT): Number of switches in the fabric.

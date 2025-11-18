@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: mlm-arraylun-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mlm.arraylun events
+---
+
+= mlm.arraylun events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mlm.arrayLUN.limit.exceeded
+*Severity*::
+ALERT
+*Description*::
+This message occurs when Data ONTAP(R) cannot install one or more discovered array LUNs since the disk device count is at full capacity.
+*Corrective Action*::
+If possible, remove an existing disk or array LUN so that array LUN installation can proceed. If the failure persists, contact NetApp technical support.
+*Syslog Message*::
+Unable to install one or more array LUNs [ vendor '%s' product '%s' ] discovered on initiator port %s, array target port WWNN: %s, WWPN: %s. The disk device limit (%d) has been reached.
+*Parameters*::
+*vendor* (STRING): Vendor ID of the storage array.
+*product* (STRING): Product ID of the storage array.
+*adapter* (STRING): Name of the initiator port discovering the array LUN(s).
+*wwnn* (STRING): World Wide Node Name of the array target port exporting the array LUN(s).
+*wwpn* (STRING): World Wide Port Name of the array target port exporting the array LUN(s).
+*limit* (INT): Disk device maximum count.

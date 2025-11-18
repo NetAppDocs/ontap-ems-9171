@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: arl-aggronlinetimeout-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: arl.aggronlinetimeout events
+---
+
+= arl.aggronlinetimeout events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== arl.aggrOnlineTimeout
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a node fails to bring online the aggregate and its containing volumes within the specified time after relocation.
+*Corrective Action*::
+Use the "storage aggregate show" command to verify that the aggregate and its volumes are online.
+*Syslog Message*::
+Node did not bring online the aggregate %s and its volumes after relocation for %llu milliseconds.
+*Parameters*::
+*aggrUUID* (STRING): UUID of the aggregate that was relocated.
+*time* (LONGINT): Timeout, in milliseconds, to bring online the aggregate and its volumes after relocation.

@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: shelf-identify-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: shelf.identify events
+---
+
+= shelf.identify events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== shelf.identify.start
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the user turns on the disk shelf's Identify mode.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk shelf %s has entered Identify mode (Shelf Attention Code: %s)
+*Parameters*::
+*shelfName* (STRING): Disk shelf name.
+*panelCode* (STRING): Code displayed on the disk shelf's 7-segment LED OPS panel.
+
+== shelf.identify.stop
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the user turns off a disk shelf's Identify mode.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk shelf %s has exited Identify mode.
+*Parameters*::
+*shelfName* (STRING): Disk shelf name.

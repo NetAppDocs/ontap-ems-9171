@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: kern-timezone-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: kern.timezone events
+---
+
+= kern.timezone events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== kern.timezone.change
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the configured time zone changes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*old_tz* (STRING): Previous time zone.
+*old_tz_offset* (INT): Seconds east of UTC of the previous time zone.
+*new_tz* (STRING): New time zone.
+*new_tz_offset* (INT): Seconds east of UTC of the new time zone.

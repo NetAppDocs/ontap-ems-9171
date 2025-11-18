@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: diskown-shlf-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.shlf events
+---
+
+= diskown.shlf events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.Shlf.assignStatus
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when shelf granular-based drive assignment is enabled or disabled. This is currently applicable for an MetroCluster(tm) IP configurations.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Shelf-based automatic drive assignment for shelf "%d" is "%s".
+*Parameters*::
+*shelf_id* (INT): Shelf identifier.
+*state* (STRING): Shelf-based automatic drive assignment state.
+
+== diskown.Shlf.MultiOwners
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot automatically assign disks because some of the disks are assigned to multiple nodes in a conflicting manner. Until the disk assignments are corrected, the specified shelf will be excluded during auto assignment, and unowned disks on the shelf will be skipped.
+*Corrective Action*::
+1) Find all of the disks belonging to the specified shelf by using the "storage disk show -fields owner,shelf" command. 2) Ensure that the disks on the shelf are assigned to a single system by manually assigning disks in the shelf to a single owner.
+*Syslog Message*::
+The system cannot automatically assign disks because the disks in shelf %d are assigned to multiple nodes in a conflicting manner.
+*Parameters*::
+*shelf_id* (INT): Shelf identifier.

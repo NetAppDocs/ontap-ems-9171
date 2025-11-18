@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: mcc-switchover-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mcc.switchover events
+---
+
+= mcc.switchover events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mcc.switchover.mdvInNvfailedState
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a MetroCluster switchover operation finds a system metadata volume, used by config replication applications, in the nvfailed state.
+*Corrective Action*::
+Verify the configuration.
+*Syslog Message*::
+The 'in-nvfailed-state' was cleared on MetroCluster system metadata volume '%s'. The system will attempt to replicate all recent configuration updates (if any) to the local cluster. After the process completes, verify the configuration.
+*Parameters*::
+*Volume* (STRING): Volume

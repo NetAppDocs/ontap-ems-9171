@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: lldp-receive-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lldp.receive events
+---
+
+= lldp.receive events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lldp.receive.maximum.entries
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the LLDP (Link Layer Discovery Protocol) daemon running on the storage controller receives more unique neighbor advertisements than it can cache. The storage controller can cache 64 unique entries and accommodates new entries after that by removing the oldest entries first. This event is typically observed when connected to Ethernet networks that do not support LLDP broadcasts.
+*Corrective Action*::
+If the storage system is connected to an Ethernet network that is forwarding LLDP advertisements, disable LLDP on the storage system or disable forwarding LLDP advertisements on the switch.
+*Syslog Message*::
+LLDP maximum entries exceeded, oldest record replaced by new record received on port %s.
+*Parameters*::
+*port_name* (STRING): The network port that received the LLDP advertisement.

@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: ha-tkover-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.tkover events
+---
+
+= ha.tkover events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.tkover.waitARLabort
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a pending takeover is waiting for an in-progress aggregate relocation (ARL) operation to complete or abort before proceeding with the takeover.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Node %s has been waiting for an ongoing ARL for %d seconds. It will proceed with takeover when the ARL operation has been completed or aborted.
+*Parameters*::
+*node_name* (STRING): Name of the node doing the takeover.
+*wait_time* (LONGINT): Amount of time spent waiting for the ongoing ARL operation to be completed or aborted.
+
+== ha.tkover.waitGBabort
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a pending takeover is waiting for an in-progress SFO giveback operation to complete or abort before proceeding with the takeover.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Node %s has been waiting for an ongoing SFO giveback for %d seconds. It will proceed with takeover when the SFO giveback operation has been completed or aborted.
+*Parameters*::
+*node_name* (STRING): Name of the node doing the takeover.
+*wait_time* (LONGINT): Amount of time spent waiting for the ongoing SFO giveback operation to be completed or aborted.

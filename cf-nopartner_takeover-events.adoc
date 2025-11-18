@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cf-nopartner_takeover-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.nopartner_takeover events
+---
+
+= cf.nopartner_takeover events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.noPartner_takeover
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the partner node fails but requested not to be taken over to prevent multiple, simultaneous RAID reconstructs from starting.
+*Corrective Action*::
+Check the partner node for multiple disk or disk shelf failures, and then correct that situation. If you want takeover to occur, use the "storage failover takeover" command. If you want takeover to occur when disk or shelf failures occur, change the setting of the "raid.panic.missing.disks" option to '0' from the nodeshell.
+*Syslog Message*::
+Failover monitor: Partner node is down, but requested not to be taken over.
+*Parameters*::
+(None).

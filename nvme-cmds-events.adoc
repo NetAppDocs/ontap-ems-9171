@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: nvme-cmds-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvme.cmds events
+---
+
+= nvme.cmds events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvme.cmds.timedout
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an NVMe controller detects one or more commands that did not have a command completion response in the allotted time frame.
+*Corrective Action*::
+There might be occasional occurrences of this message. However, if the frequency is more than twice a day corrective action might be needed. Contact your hypervisor provider if this issue persists. This might indicate undersized storage in terms of allowed operations per second.
+*Syslog Message*::
+The NVMe controller of "%s" has detected %d commands that have timed out. Command recovery action: %s.
+*Parameters*::
+*controller_name* (STRING): Name of the NVMe controller that the event is detected on.
+*commands* (INT): The number of commands that have not completed in the allotted time for this event.
+*action_taken* (STRING): The action taken to recover and retry the commands.

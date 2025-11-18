@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: diskown-delayed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.delayed events
+---
+
+= diskown.delayed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.delayed.completionEvent
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the software disk ownership module completes the process of updating its view of the disks attached to the system but delays notifying other layers of the completion of this process. Typically, this happens when an SFO aggregate giveback is in progress on the HA partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Software disk ownership module temporarily delayed notification that it has completed updating its view of the disks.
+*Parameters*::
+(None).

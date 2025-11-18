@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: fal_nvme-online-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fal_nvme.online events
+---
+
+= fal_nvme.online events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fal_nvme.online.succ
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Flash Adaptation Layer (FAL) NVMe subsystem successfully brings online all resources in a caching module.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Successfully brought online %lu GB of the caching module.
+*Parameters*::
+*capacity* (LONGINT): Total capacity.

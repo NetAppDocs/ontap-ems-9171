@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: azurearc-agent-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: azurearc.agent events
+---
+
+= azurearc.agent events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== azurearc.agent.connection.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Microsoft Connected Machine Agent failed to connect to Azure Arc. This message is only applicable to Azure NetApp Files systems.
+*Corrective Action*::
+Look at the error code given in the reason for the error. Search on "troubleshoot azure connected machine agent connection issues" for the Microsoft Azure Arc Troubleshooting page for suggested remediations. If this does not resolve the issue, contact NetApp technical support.
+*Syslog Message*::
+The Azure Connected Machine Agent failed to connect to Azure Arc. Reason: %s.
+*Parameters*::
+*reason* (STRING): Reason for the error.
+
+== azurearc.agent.connection.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Azure Connected Machine Agent has successfully connected to Azure Arc, and is ready to accept token issuance requests. This message is only applicable to Azure NetApp Files systems.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The Azure Connected Machine Agent has successfully connected to Azure Arc, and is ready to accept token issuance requests.
+*Parameters*::
+(None).
+
+== azurearc.agent.token.gen.failed
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the Microsoft Connected Machine Agent failed to generate Azure OAuth 2.0 tokens. Prompt action should be taken to resolve this issue to avoid failure of critical Azure NetApp Files services such as FabricPool and SnapMirror Cloud. This message is only applicable to Azure NetApp Files systems.
+*Corrective Action*::
+Look for the reason for the error in /var/opt/azcmagent/log/azcmagent.log. The most likely cause for this error is the Azure Connected Machine agent is disconnected from Microsoft Azure Arc and the fallback MI token is either not available or has expired.
+*Syslog Message*::
+Azure Arc token generation failed.
+*Parameters*::
+(None).

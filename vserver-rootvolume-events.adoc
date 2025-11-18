@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: vserver-rootvolume-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vserver.rootvolume events
+---
+
+= vserver.rootvolume events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vserver.rootVolume.full
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is no space left on Vserver root Volume.
+*Corrective Action*::
+Increase the size of the root volume. To increase the size of the volume, run the 'volume modify' command.
+*Syslog Message*::
+Vserver %s has its root volume full.
+*Parameters*::
+*vserver_name* (STRING): Name of the vserver with root volume full.
+
+== vserver.rootVolume.noInodes
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there are no inodes are available on Vserver root volume.
+*Corrective Action*::
+Increase the size of the root volume. To increase the size of the volume, run the 'volume modify' command.
+*Syslog Message*::
+Vserver %s has no inodes in its root volume.
+*Parameters*::
+*vserver_name* (STRING): Name of the vserver with no inodes left in root volume.
+
+== vserver.rootVolume.offline
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Vserver root Volume is offline or not accessible for read/write operations.
+*Corrective Action*::
+Make the vserver root volume online.
+*Syslog Message*::
+Vserver %s has its root volume offline.
+*Parameters*::
+*vserver_name* (STRING): Name of the vserver for which the root volume is not accessible.

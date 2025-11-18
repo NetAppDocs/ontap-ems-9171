@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: mpt-path-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mpt.path events
+---
+
+= mpt.path events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mpt.path.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot allocate a path in the message processing technology (MPT) adapter driver.
+*Corrective Action*::
+Check whether the device is connected correctly.
+*Syslog Message*::
+%s : Unable to allocate path.
+*Parameters*::
+*mpt* (STRING): MPT device name on the path that failed.

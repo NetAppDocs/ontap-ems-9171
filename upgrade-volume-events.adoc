@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: upgrade-volume-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: upgrade.volume events
+---
+
+= upgrade.volume events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== upgrade.volume.not.online
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a volume is offline during a non-disruptive upgrade operation.
+*Corrective Action*::
+Bring the volume online prior to next nondisruptive upgrade operation.
+*Syslog Message*::
+Volume "%s" in SVM "%s" not online during a nondisruptive upgrade operation. For upgrades of this cluster to a version more than "%d" releases later than "%s", the nondisruptive upgrade operation will be blocked if the volume continues to be offline.
+*Parameters*::
+*volumeName* (STRING): Name of the volume.
+*svmName* (STRING): Name of the storage virtual machine (SVM).
+*upgradeLimit* (INT): Upgrade limit.
+*fsVersion* (STRING): File system version.

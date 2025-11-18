@@ -1,0 +1,61 @@
+---
+sidebar: sidebar
+permalink: raid-unpartition-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.unpartition events
+---
+
+= raid.unpartition events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.unpartition.disk
+*Severity*::
+NOTICE
+*Description*::
+This message indicates a disk was successfully unpartitioned.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk unpartition successful on %s.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk. This includes the disk's containing volume name and other attributes, such as shelf, bay, vendor, model, firmware revision, serial number, and type.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the disk vendor.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Disk firmware revision number.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.unpartition.disk.fail
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an attempt to unpartition a disk fails. The error and error_info fields indicate the reason why the attempt failed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk unpartition failed on %s, error %s, additional error info (%s).
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk. This includes the disk's containing volume name and other attributes, such as shelf, bay, vendor, model, firmware revision, serial number, and type.
+*error* (STRING): String name for the error.
+*error_info* (STRING): Additional error information.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the disk vendor.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Disk firmware revision number.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: csm-badplainaccess-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: csm.badplainaccess events
+---
+
+= csm.badplainaccess events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== csm.badPlainAccess
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a blade attempts to access the local cluster without encrypting its communication channel, and Cluster Session Manager (CSM), which establishes and manages SpinNP sessions between blades in the cluster, denies access of the unencrypted communication channel. This could indicate that an interloper is attempting to gain access to the cluster.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Access as peer cluster %s was claimed from network address %s, but has not been granted because it was not using TLS.
+*Parameters*::
+*clusterUuid* (STRING): UUID of the cluster to which the blade claimed to belong.
+*addrstr* (STRING): Remote network address of the blade.

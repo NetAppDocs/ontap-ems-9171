@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ha-dataaggregate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.dataaggregate events
+---
+
+= ha.dataaggregate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.dataAggregate.offline.warning
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when an aggregate ownership change has failed after offlining the aggregate.
+*Corrective Action*::
+Verify that the VLDB ring is online by using the 'cluster ring show' command. Then retry the giveback by using the 'storage failover giveback' command.
+*Syslog Message*::
+The local node has failed to change the ownership of the partner node's data aggregates after offlining the aggregate.
+*Parameters*::
+(None).

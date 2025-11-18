@@ -1,0 +1,45 @@
+---
+sidebar: sidebar
+permalink: mcc-auso-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mcc.auso events
+---
+
+= mcc.auso events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mcc.auso.trigFailed
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a trigger for automatic unplanned switchover fails to issue the operation.
+*Corrective Action*::
+Verify the health of each node and that automatic unplanned switchover is enabled on both by using the "metrocluster node show" command. Use the "metrocluster switchover -forced-on-disaster true" command to switch over the DR-site storage manually.
+*Syslog Message*::
+A trigger for Automatic Unplanned Switchover failed to issue the operation. Reason: %s.
+*Parameters*::
+*probableCauseDescription* (STRING): Further description of the probable cause.
+*alertId* (STRING): Identifier for this condition.
+*alertingResource* (STRING): Unique name of the resource responsible for this condition.
+*alertingResourceName* (STRING): Name of the resource responsible for this condition.
+*possibleEffect* (STRING): Possible effect of the failure.
+*probableCause* (STRING): Probable cause of the failure.
+*additionalInfo* (STRING): Additional information about this failure.
+
+== mcc.auso.triggered
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the node triggers an automatic unplanned switchover on detection of a failure of the DR partner node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The node has triggered an Automatic Unplanned Switchover of the DR partner. Reason: %s. If Automatic Unplanned Switchover was triggered because of heartbeat loss, any ongoing dump on the partner may be aborted.
+*Parameters*::
+*cause* (STRING): Cause for triggering automatic unplanned switchover.

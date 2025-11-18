@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: diskown-mcc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.mcc events
+---
+
+= diskown.mcc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.mcc.AssignExceeded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the number of drives assigned in the MetroCluster(tm) configuration exceeds the supported limit.
+*Corrective Action*::
+Review the system capacity limits and the assigned drives on this system. If possible, unassign the unused array LUNs. If you need further assistance, contact NetApp technical support.
+*Syslog Message*::
+The maximum number of drives that can be assigned in the configuration has exceeded. Total physical drive count: %d, maximum supported: %d.
+*Parameters*::
+*total_disk_count* (INT): Total number of drives assigned in the configuration.
+*supported* (INT): Number of drives supported.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: clam-invalid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: clam.invalid events
+---
+
+= clam.invalid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== clam.invalid.config
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Kernel Cluster Services (KCS) Connectivity, Liveliness, Availability Monitor (CLAM) determines that the local node is in an invalid configuration for providing CLAM functionality.
+*Corrective Action*::
+Take one or more of the following actions, as appropriate: - Enable failover on the node by running the 'storage failover modify -node node_name -enabled true' command. - If there is a version incompatibility between the local node and the other nodes in the cluster, upgrade the nodes as needed.
+*Syslog Message*::
+Local node (name=%s, id=%llu) is in an invalid configuration for providing CLAM functionality. CLAM cannot determine the identity of the HA partner.
+*Parameters*::
+*localhostname* (STRING): Host name of the local node.
+*localnodeid* (LONGINT): Node ID of the local node.

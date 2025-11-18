@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: snmp-snmpv3-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snmp.snmpv3 events
+---
+
+= snmp.snmpv3 events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snmp.snmpv3.enable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when SNMPv3 is disabled due to a cluster in FIPS mode being upgraded to a version of ONTAP(R) software supporting the SNMPv3 FIPS feature. FIPS compliance adds more stringent limitations on SNMP users and SNMP traphosts, so SNMPv3 access has been disabled to allow the current SNMP users and SNMP traphosts to be reevaluated. If SNMPv3 functionality is required, you can reenable it; if cluster is still in FIPS mode at that time, any existing SNMP users and SNMP traphosts that are noncompliant to FIPS will be deleted. Until SNMPv3 is reenabled, SNMPv3 users cannot be created, SNMPv3 traphosts cannot be added and SNMPv3 packets will not be processed.
+*Corrective Action*::
+Enable SNMPv3 in the cluster by using the 'system snmp enable-snmpv3' command.
+*Syslog Message*::
+SNMPv3 is disabled due to a cluster in FIPS mode being upgraded to a version of ONTAP(R) software supporting the SNMPv3 FIPS feature.
+*Parameters*::
+(None).

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: set-cluster-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: set.cluster events
+---
+
+= set.cluster events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== set.cluster.fsa.default
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during an ONTAP upgrade to 9.17.1 or a later release, when the existing auto-enable-analytics configuration parameter is changed from "false" to "-" (not set). "-" is the default state starting with ONTAP 9.17.1.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The auto-enable-analytics parameter in the cluster configuration has been changed from "false" to "-" during an ONTAP upgrade.
+*Parameters*::
+(None).

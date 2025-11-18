@@ -1,0 +1,104 @@
+---
+sidebar: sidebar
+permalink: mhost-ca-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mhost.ca events
+---
+
+= mhost.ca events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mhost.ca.connect.cert.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the client connection has failed due to certificate error.
+*Corrective Action*::
+Ensure that a valid certificate is loaded onto the remote service to which ONTAP(R) is attempting to connect and the corresponding CA certificate is loaded in ONTAP Use "security certificate show" CLI command to ensure a valid CA certificate is installed for the destination service. Use "security certificate install" CLI command to install a valid CA certificate.
+*Syslog Message*::
+Cluster agent connection: %s has failed due to certificate error. Error: %s.
+*Parameters*::
+*client_name* (STRING): Name of the client connection whose connection has an error.
+*error_msg* (STRING): Error that has been reported for client connection.
+
+== mhost.ca.connect.delete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the cluster agent connection is deleted upon user request.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cluster agent connection to the client: %s is deleted upon user request.
+*Parameters*::
+*client_name* (STRING): Name of the client connection whose connection is deleted.
+
+== mhost.ca.connect.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the cluster agent connection is not in a connected state. Reconnect attempt to establish a connection will be initiated automatically.
+*Corrective Action*::
+Verify that the connection path to the destination is in healthy state and network security polices are configured as needed to permit connectivity. If this behavior persists, contact NetApp technical support.
+*Syslog Message*::
+Cluster agent connection of the client: %s is not healthy. Attempting to reconnect. Error: %s.
+*Parameters*::
+*client_name* (STRING): Name of the client connection whose connection has failed and reconnection is being attempted.
+*error_msg* (STRING): Error that has been reported for client connection.
+
+== mhost.ca.connect.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the cluster agent connection is successfully established.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cluster agent connection succeeded to the client: %s.
+*Parameters*::
+*client_name* (STRING): Name of the client connection to which connection is established.
+
+== mhost.ca.msg.delivery.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the client is not able to deliver the message even when the client connection is in a connected state.
+*Corrective Action*::
+For further information about correcting the problem, search the knowledgebase of the NetApp technical support support web site for the "mhost.ca.msg.delivery.fail" keyword. If issue is not resolved, contact Contact NetApp technical support. for assistance.
+*Syslog Message*::
+Cluster agent connection: %s is not able to send messages to remote service. Error: %s.
+*Parameters*::
+*client_name* (STRING): Name of the client connection whose message delivery failed.
+*error_case* (STRING): Use case which caused this error.
+
+== mhost.ca.node.offline
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the node that is hosting the cluster agent connection is offline. ONTAP(R) will automatically attempt to migrate the connection to an available healthy node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Node "%s" hosting cluster agent connection "%s", is offline. ONTAP is attempting to migrate the connection to an available healthy node.
+*Parameters*::
+*node* (STRING): Name of the node which is offline.
+*client_name* (STRING): Name of the client connection whose connection will be rehosted.
+
+== mhost.ca.rehost.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the cluster agent connection of the client is rehosted successfully on a healthy node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cluster agent connection "%s" has migrated to node "%s".
+*Parameters*::
+*client_name* (STRING): Name of the client connection that will be rehosted.
+*node* (STRING): Name of the node to which the connection has migrated.

@@ -1,0 +1,36 @@
+---
+sidebar: sidebar
+permalink: snapdiff-spinnp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapdiff.spinnp events
+---
+
+= snapdiff.spinnp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapdiff.spinnp.abort.mgwd
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system encounters an unexpected condition while computing differences between snapshots using the SnapDiff v2 API.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Encountered unexpected Data ONTAP error while computing differences between snapshots using the SnapDiff v2 API. SnapDiff session ID %s, FlexGroup %s, in vserver %s, with MSID %lu, diff snapshot %s, diff snapshot ID %lu, base snapshot %s, base snapshot ID %lu, current constituent DSID %lu. Error: %s
+*Parameters*::
+*sessionId* (STRING): SnapDiff v2 session ID.
+*fgName* (STRING): FlexGroup name.
+*vsName* (STRING): Vserver name.
+*fgMsid* (LONGINT): FlexGroup MSID.
+*diffSnapName* (STRING): Diff snapshot name.
+*diffSnapId* (LONGINT): Diff snapshot logical ID.
+*baseSnapName* (STRING): Base snapshot name.
+*baseSnapId* (LONGINT): Base snapshot logical ID.
+*curDsid* (LONGINT): Current constituent DSID.
+*error* (STRING): Error message.

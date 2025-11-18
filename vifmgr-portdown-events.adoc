@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: vifmgr-portdown-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.portdown events
+---
+
+= vifmgr.portdown events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.portdown
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a link down event was received on a network port. Data access through this physical port is down.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A link down event was received on node %s, port %s.
+*Parameters*::
+*nodename* (STRING): Name of the node on which the affected port resides.
+*portname* (STRING): Name of the affected port.

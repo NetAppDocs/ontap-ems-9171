@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nfs-client-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nfs.client events
+---
+
+= nfs.client events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nfs.client.cache.modify.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an NFS connected client's cache settings are changed using the REST API "/api/protocol/nfs/connected-client-settings", but the value is not updated in the network component. This might lead to the cache refresh behavior not working as expected.
+*Corrective Action*::
+Use the REST API PATCH "/api/protocol/nfs/connected-client-settings" to update the value.
+*Syslog Message*::
+Connected-clients cache settings could not be updated. Error: %s.
+*Parameters*::
+*reason* (STRING): Reason for the failure.

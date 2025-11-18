@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: qos-mintp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: qos.mintp events
+---
+
+= qos.mintp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== qos.mintp.high.intrconct.lat
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Quality of Service (QoS) subsystem notices high latency in the cluster interconnect for workloads associated with minimum-throughput policy groups. As a result, workloads might not be able to meet their minimum-throughput values.
+*Corrective Action*::
+Consider using the "qos statistics" CLI command to monitor the workloads and policy groups that have high cluster interconnect latency and also do not meet their minimum-throughput Service Level Objectives (SLOs). Either avoid the interconnect by moving workloads or LIFs, or reduce contention for the interconnect by applying QoS maximum throughput constraints on interfering workloads.
+*Syslog Message*::
+QoS has noticed high cluster interconnect latency. Some workloads and policy groups might not meet their specified minimum-throughput.
+*Parameters*::
+(None).

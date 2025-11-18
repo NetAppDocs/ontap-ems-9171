@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: nfs-krb-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nfs.krb events
+---
+
+= nfs.krb events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nfs.krb.lif.disabled
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a Kerberos-enabled LIF in a Vserver shares NFS Kerberos credentials with a LIF in another Vserver. NFS Kerberos is automatically disabled by Data ONTAP(R) on LIFs that share Kerberos credentials across Vservers, because of the security violation this causes. Disabling Kerberos on a LIF can cause service disruption to NFS clients that use these LIFs, mounted using the '-sec=krb5' option.
+*Corrective Action*::
+NFS Kerberos has been automatically disabled by Data ONTAP on the LIF because it shared Kerberos credentials with another Vserver, causing a security violation. NFS Kerberos can be reenabled using the command: "vserver nfs kerberos interface enable". During the reenable process, Kerberos credential sharing across Vservers is disallowed.
+*Syslog Message*::
+NFS Kerberos disabled on LIF "%s" with SPN "%s" for Vserver "%s" due to a security conflict with another Vserver. NFS Kerberos can be reenabled using the command: "vserver nfs kerberos interface enable".
+*Parameters*::
+*lif* (STRING): Name of the LIF on which NFS Kerberos is disabled.
+*spn* (STRING): The service principal name associated with the LIF.
+*vserver* (STRING): Name of the Vserver that owns the LIF.

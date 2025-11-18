@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: qos-min-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: qos.min events
+---
+
+= qos.min events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== qos.min.tput.not.honoured.for.sync
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when minimum throughput value is not honoured if adaptive QoS is set on a SnapMirror Synchronous protected storage object.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Adaptive QoS policy "%s" set on SnapMirror Synchronous volume "%s" or any of it's storage object has a min-throughput value set. SnapMirror Synchronous does not support min-throughput hence min-throughput setting will not be honoured from the policy, only max-throughput setting will be honoured.
+*Parameters*::
+*policy* (STRING): Policy group name.
+*volume* (STRING): Volume name.

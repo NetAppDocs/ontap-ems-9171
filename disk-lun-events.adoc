@@ -1,0 +1,86 @@
+---
+sidebar: sidebar
+permalink: disk-lun-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.lun events
+---
+
+= disk.lun events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.lun.allMemoryAvailable
+*Severity*::
+NOTICE
+*Description*::
+This message occurs to confirm that enough memory is present to successfully allocate command blocks for all of the disks in the system and for additional LUNS.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+disk_init :Allocated all memory required for array LUNs.
+*Parameters*::
+(None).
+
+== disk.lun.outOfMemory
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system cannot allocate the additional memory for LUNs.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+disk_init: Unable to allocate memory for array LUN commands on %s.
+*Parameters*::
+*diskName* (STRING): Name of the device that could not allocate memory.
+
+== disk.lun.sizeTooLarge
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an array LUN on an external RAID storage subsystem or a virtual disk is too large to be used as storage by the controller.
+*Corrective Action*::
+Reduce this array LUN size, or re-create the virtual disk within the parameter limit.
+*Syslog Message*::
+Array LUN or virtual disk %s is too large (%s bytes) and cannot be used. The maximum permissible array LUN or virtual disk size is %s. Reduce this array LUN size by %lld bytes, or re-create the virtual disk within the parameter limit (%lld %d byte blocks).
+*Parameters*::
+*diskName* (STRING): Name of the array LUN or virtual disk that is too large.
+*lunSize* (STRING): Size, expressed in bytes, of the array LUN or virtual disk that is too large.
+*maxSize* (STRING): Maximum permissible array LUN or virtual disk size, expressed in bytes.
+*byteDiff* (LONGINT): Difference, expressed in bytes, between the array LUN or virtual disk size and the maximum size Data ONTAP(R) supports.
+*blockDiff* (LONGINT): Difference, expressed in blocks, between the array LUN or virtual disk size and the maximum size Data ONTAP supports.
+*blockSize* (INT): Block size of the array LUN or virtual disk.
+
+== disk.lun.sizeTooSmall
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an array LUN on an external RAID storage subsystem or a virtual disk is too small to be used as storage by the controller.
+*Corrective Action*::
+Delete the array LUN or virtual disk and re-create it within the parameter limit.
+*Syslog Message*::
+LUN or virtual disk %s is too small (%s bytes) and cannot be used. The minimum permissible LUN or virtual disk size is %s. Increase this LUN or virtual disk size by %lld bytes (%lld %d byte blocks).
+*Parameters*::
+*diskName* (STRING): Name of the LUN or virtual disk that is too small.
+*lunSize* (STRING): Size, in bytes, of the LUN or virtual disk that is too small.
+*minSize* (STRING): Minimum permissible LUN or virtual disk size, expressed in bytes.
+*byteDiff* (LONGINT): Difference, in bytes, between the LUN or virtual disk size and the minimum size Data ONTAP(R) supports.
+*blockDiff* (LONGINT): Difference, in blocks, between the LUN or virtual disk size and the minimum size Data ONTAP supports.
+*blockSize* (INT): Block size of the LUN or virtual disk.
+
+== disk.lun.unsupportedBlkSize
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an array logical unit (LUN) on the external RAID storage subsystem reports an unsupported block size.
+*Corrective Action*::
+Reformat the array LUN with a supported block size.
+*Syslog Message*::
+disk_init: Array LUN %s reports a block size of %u bytes and it cannot be used. Reformat the array LUN with a supported block size.
+*Parameters*::
+*diskName* (STRING): Name of the array LUN with the unsupported block size.
+*sector_size* (INT): Unsupported block size.

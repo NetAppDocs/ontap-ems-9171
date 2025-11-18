@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: nblade-fpolpsvolofflined-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.fpolpsvolofflined events
+---
+
+= nblade.fpolpsvolofflined events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.fpolPsVolOfflined
+*Severity*::
+ERROR
+*Description*::
+This message occurs when persistent store volume is offline. This causes disruption in FPolicy where persistent store is enabled.
+*Corrective Action*::
+Check the volume corresponding to the persistent store. Either online the volume for use or delete the corresponding persistent store.
+*Syslog Message*::
+FPolicy persistent store volume "%s" belonging to SVM "%s" is offline.
+*Parameters*::
+*volName* (STRING): Persistent store volume.
+*vserverName* (STRING): Name of the SVM.

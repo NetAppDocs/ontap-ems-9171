@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: pac-access-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: pac.access events
+---
+
+= pac.access events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== pac.access
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the access is denied or unsuccessful for the specified source host, destination host, and network interface combination.
+*Corrective Action*::
+If you want to provide access, then modify 'options.(protocol).access' to allow access.
+*Syslog Message*::
+%s: %s from if = %s, source IP = %s, destination IP = %s. Check options %s.access, if desired.
+*Parameters*::
+*protocol1* (STRING): Protocol.
+*status* (STRING): Access status.
+*ifIpAdr* (STRING): Interface address.
+*srcIpAdr* (STRING): Source IP address.
+*dstIpAdr* (STRING): Destination IP address.
+*protocol2* (STRING): Protocol.

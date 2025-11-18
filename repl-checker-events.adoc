@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: repl-checker-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.checker events
+---
+
+= repl.checker events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.checker.block.missing
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a SnapMirror(R) check command detects a missing block on a SnapMirror(R) destination volume and the volume might be in an inconsistent state that should be fixed as soon as possible.
+*Corrective Action*::
+Run WAFL check or wafliron as soon as possible to clear this inconsistency and rebuild from the source or resynchronize. If the block is found to be in a snapshot by running 'vol vbncheck' command, deleting the snapshot should remove the inconsistency. Please contact NetApp technical support for more options.
+*Syslog Message*::
+Snapmirror check on volume %s has detected a missing block at volume block number %llu. It is strongly recommended that you run WAFL check or wafliron to clear this inconsistency. Failure to do so might lead to node panic at any time.
+*Parameters*::
+*volname* (STRING): Volume name
+*vvbn* (LONGINT): Virtual volume block number of the missing block.

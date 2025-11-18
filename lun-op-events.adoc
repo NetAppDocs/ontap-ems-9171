@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: lun-op-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lun.op events
+---
+
+= lun.op events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== LUN.op.nvfail.offline
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a LUN is restored or a LUN clone is created in a volume that is currently in the nvfailed state. It can also occur if the source LUN for the operation is in the nvfailed state.
+*Corrective Action*::
+If the containing volume is in the nvfailed state, clear the nvfailed state and bring the LUN online. Host side recovery actions might be required to check the consistency of the data in the LUN before the LUN is brought online. Note that the actual recovery steps vary based on the application and the host.
+*Syslog Message*::
+LUN %s in volume %s (DSID %llu) is offline and in the nvfailed state.
+*Parameters*::
+*lun_path* (STRING): Path for the LUN.
+*volume_name* (STRING): Name of the containing volume.
+*volume_dsid* (LONGINT): Data set ID (DSID) of the containing volume.

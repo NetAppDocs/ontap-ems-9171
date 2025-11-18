@@ -1,0 +1,76 @@
+---
+sidebar: sidebar
+permalink: vifmgr-portdeg-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.portdeg events
+---
+
+= vifmgr.portdeg events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.portDeg.ifgrpAdded
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an administrative action adds a port with a degraded health status to an interface group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Port %s, node %s whose health-status is degraded has been added to ifgrp %s.
+*Parameters*::
+*portName* (STRING): Name of the degraded port that was added to an interface group.
+*nodeName* (STRING): Name of the node on which the degraded port resides.
+*ifgrpName* (STRING): Name of the interface group to which the degraded port was added.
+
+== vifmgr.portDeg.lifHosted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an administrative action hosts a logical interface (LIF) on a port with a degraded health status.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LIF %s (on virtual server %s) is hosted on a degraded port %s, node %s.
+*Parameters*::
+*vifName* (STRING): Name of the hosted LIF.
+*vsrvid* (STRING): Name of the virtual server identifier that uses the LIF.
+*portName* (STRING): Name of the degraded port that hosts the LIF.
+*nodeName* (STRING): Name of the node on which the degraded port resides.
+
+== vifmgr.portDeg.lifMoved
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a logical interface (LIF) is moved from a port with degraded health status to a healthy port.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LIF %s (on virtual server %s), IP address %s, is being moved to node %s, port %s from node %s, port %s because the port's health status is in a degraded state.
+*Parameters*::
+*vifName* (STRING): Name of the LIF that is being moved.
+*vsrvId* (STRING): ID of the virtual server on which the LIF resides.
+*vifIp* (STRING): The IP address of the LIF that is being moved.
+*toNode* (STRING): Name of the node to which the LIF is moving.
+*toPort* (STRING): Name of the port to which the LIF is moving.
+*fromNode* (STRING): Name of the node on which the LIF is currently hosted.
+*fromPort* (STRING): Name of the port on which the LIF is currently hosted.
+
+== vifmgr.portDeg.vlanCreated
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an administrative action creates a VLAN on a port with a degraded health status.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Vlan %s is created on a degraded port %s, node %s.
+*Parameters*::
+*vlanName* (STRING): Name of the VLAN created on the degraded port.
+*portName* (STRING): Name of the degraded port on which the VLAN was created.
+*nodeName* (STRING): Name of the node on which the degraded port resides.

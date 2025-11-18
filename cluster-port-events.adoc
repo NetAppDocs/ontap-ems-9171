@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: cluster-port-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cluster.port events
+---
+
+= cluster.port events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cluster.port.unsupport.speed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the cluster ports are operating at an unsupported speed.
+*Corrective Action*::
+Ensure that the cluster port has a supported network interface card installed, and that it is operating at the supported speed.
+*Syslog Message*::
+%s node %s cluster ports are not operating at a supported speed. Ensure that ports %s have supported network interface card installed, and are operating at a supported speed: %s.
+*Parameters*::
+*model_name* (STRING): Model on which the misconfigured ports reside.
+*node* (STRING): Node on which the misconfigured ports reside.
+*portlist* (STRING): List of misconfigured ports.
+*supported_speed* (STRING): Speed at which the port is supported.

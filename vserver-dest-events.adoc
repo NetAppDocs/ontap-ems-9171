@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: vserver-dest-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vserver.dest events
+---
+
+= vserver.dest events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vserver.dest.volume.modify.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs after you have modified either the size or maximum autosize of a source volume in a SnapMirror sync relationship and the maximum autosize at the destination DP volume (which is in a storage limit enabled SVM) fails to modify automatically. The failure occurs because the destination cluster is unreachable.
+*Corrective Action*::
+Verify network connectivity between the local cluster and the peer cluster. Check the cluster peer EMS messages for more information.
+*Syslog Message*::
+Maximum-autosize of destination volume "%s" which is in a storage-limit enabled SVM "%s" was not modified.
+*Parameters*::
+*vserver_name* (STRING): Name of the storage virtual machine (SVM).
+*volume_name* (STRING): Name of the volume.

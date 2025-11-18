@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: nblade-scannerconnected-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.scannerconnected events
+---
+
+= nblade.scannerconnected events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.scannerConnected
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a Vserver connects successfully to a Vscan server.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Vserver "%s" connected to Vscan server (IP: %s).
+*Parameters*::
+*vserverName* (STRING): Name of the connecting Vserver.
+*scannerIp* (STRING): IP address of the Vscan server.

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: callhome-ses-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.ses events
+---
+
+= callhome.ses events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.ses.drive.missing
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the storage adapter detects a disk on the Fibre Channel loop or the SCSI bus, but enclosure services in the disk shelf does not report a disk with that address. This error indicates that the disk took an address other than what the disk shelf should have provided, or that enclosure services in the disk shelf cannot be contacted for address information. (Note: If the message "ses.drive.possShelfAddr" subsequently appears, follow the corrective actions in that message.) In this condition, the SCSI Enclosure Services (SES) process in the system might be unable to perform certain operations on the disk, such as setting failure LEDs or detecting disk swaps. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+If the disk is not part of an active aggregate or volume, pull out the disk and push it back into the slot to ensure that the disk is in place. If the problem persists, insert a spare disk into the slot. If the problem is then gone, replace the original disk with the spare one. If the problem occurs to multiple disks on the same loop, check the I/O modules at the back of the disk shelves on that loop for errors.
+*Syslog Message*::
+Call home for SES: DRIVE MISSING
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*ChannelName* (STRING): Channel the disk shelf is on.
+*LoopIds* (STRING): Loop or SCSI IDs of the missing disks.

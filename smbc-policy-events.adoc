@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: smbc-policy-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: smbc.policy events
+---
+
+= smbc.policy events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== smbc.policy.reassign
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects during a flip on a SnapMirror(R) Sync relationship that the custom policy has been deleted from the source cluster and automatically falls back to the system policy of type "automated-failover".
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The custom policy has been deleted from the source cluster so the SnapMirror Sync relationship with destination path: %s has been assigned "AutomatedFailover" policy.
+*Parameters*::
+*dstpath* (STRING): Path name of the destination group of the SnapMirror(R) active sync relationship.

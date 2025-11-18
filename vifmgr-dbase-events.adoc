@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: vifmgr-dbase-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.dbase events
+---
+
+= vifmgr.dbase events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.dbase.checkerror
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the logical interface manager (VIFMgr) experiences an error while verifying cluster database consistency. Some configured objects, such as logical interfaces (LIFs) might not be hosted properly as a result.
+*Corrective Action*::
+Contact NetApp technical support and reference the "vifmgr.dbase.checkerror" error.
+*Syslog Message*::
+VIFMgr experienced an error verifying cluster database consistency. Some LIFs might not be hosted properly as a result.
+*Parameters*::
+(None).

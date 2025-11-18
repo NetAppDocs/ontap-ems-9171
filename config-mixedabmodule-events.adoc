@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-mixedabmodule-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.mixedabmodule events
+---
+
+= config.mixedabmodule events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.mixedABmodule
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the disk shelf stack is miscabled so that one disk shelf's module A is connected to the next disk shelf's module B, or vice versa.
+*Corrective Action*::
+Identify the miscabled disk shelf, and then recable it. For fibre channel shelves, ensure that each disk shelf's module A is connected Output to Input to the next disk shelf's module A, and that the disk shelf's module B is connected Output to Input to the next disk shelf's module B. For SAS shelves, connect the port identified with a circle on disk shelf module A to the port identified with a square on the next disk shelf's module A, and the "circle" port on module B to the next disk shelf's "square" port on disk shelf module B.
+*Syslog Message*::
+Host adapter %s has miscabled disk shelves; one disk shelf's module A is connected to the next disk shelf's module B, or vice versa. This is not a recommended configuration.
+*Parameters*::
+*adapter* (STRING): Name of the adapter on the miscabled disk shelf stack.

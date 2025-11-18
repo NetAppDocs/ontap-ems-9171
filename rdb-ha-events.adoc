@@ -1,0 +1,63 @@
+---
+sidebar: sidebar
+permalink: rdb-ha-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rdb.ha events
+---
+
+= rdb.ha events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rdb.ha.active
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the management process goes online as the master under two-node 'cluster HA' failover. Any changes to replicated data are synchronized with the peer node after it becomes available.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Entering HA-Active: Going online as active master in a high-availability (HA) configuration.
+*Parameters*::
+(None).
+
+== rdb.ha.mbox.noAccess
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system cannot access the on-disk mailboxes. Bidirectional failover is not possible without mailbox access. This is an expected event at system startup that automatically resolves after a few minutes during giveback.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The on-disk HA mailboxes are currently not accessible.
+*Parameters*::
+(None).
+
+== rdb.ha.mboxError
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects a problem with the 'cluster HA' on-disk mailboxes, resulting in failover being currently disabled. No data is at risk, but the situation should be addressed. Note: The 'cluster HA' configuration provides a bidirectional failover mechanism for the management processes in a two-node cluster.
+*Corrective Action*::
+First ensure that both nodes are booted and operational. Then verify that all the cluster management processes are running on both nodes using the diagnostic command 'cluster ring show'. If there are any problems with this, contact NetApp technical support for guidance. Take the following actions: - Use the 'cluster ha modify -configure false' command to unconfigure high availability (HA). - Use the 'cluster ha modify -configure true' command to reconfigure HA. - Use the 'cluster ha show' diagnostic command to verify that the system is fully configured (both the front-end and on-disk mailboxes should both be 'true').
+*Syslog Message*::
+Bidirectional failover under the 'cluster HA' configuration is not currently functional due to problem with the on-disk mailboxes.
+*Parameters*::
+(None).
+
+== rdb.ha.synchronized
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the management process synchronizes its replicated data with its peer node. Bidirectional failover has been reestablished in a 'cluster HA' configuration.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Entering HA-Normal: Synchronized with peer in a high-availability (HA) configuration.
+*Parameters*::
+(None).

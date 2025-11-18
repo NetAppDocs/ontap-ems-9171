@@ -1,0 +1,56 @@
+---
+sidebar: sidebar
+permalink: vol-language-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vol.language events
+---
+
+= vol.language events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vol.language.changed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when the language of an aggregate or a volume is changed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Language on %s %s changed to %s
+*Parameters*::
+*vol_type* (STRING): Whether this event is generated for an aggregate or a flexible volume.
+*vol* (STRING): The name of the volume or aggregate
+*lang* (STRING): The name of the changed language of the volume or aggregate.
+
+== vol.language.openFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an attempt to open the language file fails.
+*Corrective Action*::
+Check whether the language file exists. Retry the command based on the reason for failure.
+*Syslog Message*::
+Failed to open the language file %s, error message: %s
+*Parameters*::
+*file_name_location* (STRING): Language file name and location.
+*error_str* (STRING): Reason for the error.
+
+== vol.language.unspecified
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when ONTAP detects that there is no language specified for the volume or aggregate. The referenced volume or aggregate language will default to "C" (POSIX). See the na_vol.1 man page for the list of supported languages.
+*Corrective Action*::
+If the volume is not read-only, use the 'vol lang' command to correct the language of the volume. See the na_vol.1 man page for details about using the 'vol lang' command.
+*Syslog Message*::
+Language not set on %s %s. Using language config "C". %s
+*Parameters*::
+*vol_type* (STRING): Whether this error occurred for an aggregate or a flexible volume
+*vol* (STRING): The name of the volume or aggregate
+*lang_command* (STRING): If the volume is not read-only, this parameter contains an explanation of what you can do to set the language for the volume.

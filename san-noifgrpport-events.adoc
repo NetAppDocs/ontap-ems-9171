@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: san-noifgrpport-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.noifgrpport events
+---
+
+= san.noifgrpport events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.NoIfGrpPort
+*Severity*::
+ERROR
+*Description*::
+This message occurs in MetroCluster(TM) configurations on clustered ONTAP(R) systems, when ONTAP places a LIF on a physical port because an ifgrp port cannot be found on the destination cluster node (DR partner) to host an IP LIF.
+*Corrective Action*::
+Ensure that ifgrp port exists; otherwise create an ifgrp port on the DR partner by taking the following steps. Run the "network port show" command to view the available ports on the DR partner. Use the "network port ifgrp create" command to create ifgrp port and "network port ifgrp add-port" command to populate an ifgrp port. After ifgrp port is available on the DR partner, run the "metrocluster check lif repair-placement" command in the source cluster with the SVM name and LIF name as inputs . After running this command, use the "metrocluster check lif show" command to see whether LIF placement succeeded or not.
+*Syslog Message*::
+There are no ifgrp ports on node "%s" in IPspace "%s" to host the %s LIF "%s" for SVM "%s".
+*Parameters*::
+*node* (STRING): Name of the DR partner that does not have an ifgrp port.
+*ipspace_name* (STRING): Name of the IPspace.
+*data_protocol* (STRING): Data protocol of the LIF.
+*lif* (STRING): Name of the IP LIF.
+*vserver* (STRING): Name of the SVM for which the IP LIF was incorrectly placed.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: secd-asidtrans-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: secd.asidtrans events
+---
+
+= secd.asidtrans events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== secd.asidTrans.invalidAsid
+*Severity*::
+ALERT
+*Description*::
+This message occurs when ONTAP(R) software cannot translate an abbreviated SID to a Windows SID. An abbreviated SID is an internal ID maintained by ONTAP. This failure can cause CIFS share access issues.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+For Vserver "%s", ONTAP could not translate an abbreviated SID to a Windows SID.
+*Parameters*::
+*vserverName* (STRING): Vserver associated with this operation.

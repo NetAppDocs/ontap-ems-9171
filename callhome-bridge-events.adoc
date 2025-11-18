@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: callhome-bridge-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.bridge events
+---
+
+= callhome.bridge events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.bridge.reboot.unexp
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a bridge reboots unexpectedly. If your system is configured to do so, it generates and transmits an AutoSupport(tm) (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Analyze the bridge event log to determine the cause of the reboot. If you need further assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*bridgeName* (STRING): Name of the bridge.
+*bridgeVendor* (STRING): Vendor name of the bridge.
+*bridgeModel* (STRING): Model name of the bridge.
+*bridgeRevision* (STRING): Firmware revision of the bridge.
+*bridgeSerialNum* (STRING): Serial number of the bridge.
+*rebootReason* (STRING): Reason for the bridge reboot.

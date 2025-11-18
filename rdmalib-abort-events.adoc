@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: rdmalib-abort-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rdmalib.abort events
+---
+
+= rdmalib.abort events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rdmalib.abort.nv.reconnect
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a remote NVLOG operation is aborted due to an error, which is logged here.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Interconnect channel (%s) encountered error (%s), causing the remote NVLOG to be aborted.
+*Parameters*::
+*channel* (STRING): Interconnect channel.
+*err* (STRING): Error that caused the abort.

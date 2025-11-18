@@ -1,0 +1,34 @@
+---
+sidebar: sidebar
+permalink: nblade-nfsrcchecksummismatch-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.nfsrcchecksummismatch events
+---
+
+= nblade.nfsrcchecksummismatch events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.nfsRCChecksumMismatch
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the server detects a retransmitted request from the client with a modified payload. Modified requests from the client could cause corruption and pose a security threat to the server. Please use the information in the event to identify and monitor the bad client connection.
+*Corrective Action*::
+1. Use the IP address from the log to identify the client machine and connection that retransmitted the invalid modified request. 2. Monitor the client connection and if invalid modified requests are persistent, take steps to ensure the security of the connection has not been compromised. 3. If there are no security concerns with the client connection, then the application driving traffic on that connection and the client OS NFS implementation should be examined to identify potential software defects.
+*Syslog Message*::
+Replay cache checksum mismatch detected in retransmitted NFS request from client. Vserver ID is %d; service protocol:version is %s:%d, Rpc Xid 0x%x; client IP address:port is %s:%d. local IP address is %s; NFS procedure number is %d.
+*Parameters*::
+*vserverId* (INT): Identifier for the vserver associated with this operation.
+*serviceProtocol* (STRING): Network data protocol used in the connection.
+*programVersion* (INT): RPC Program Version.
+*rpcXid* (INT): Remote procedure call XID.
+*remoteAddr* (STRING): IP address of the client machine.
+*remotePort* (INT): Remote port number that sent the data.
+*localAddr* (STRING): IP address of the local interface serving the protocol operation.
+*procedureNum* (INT): RPC Procedure Number for the requested operation.

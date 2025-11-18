@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: nvme-boot-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvme.boot events
+---
+
+= nvme.boot events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvme.boot.fw.update.complete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NVMe boot device firmware has been updated.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVMe boot device has completed the firmware update from %s to %s.
+*Parameters*::
+*old_ver* (STRING): Previous firmware version.
+*new_ver* (STRING): New firmware version.
+
+== nvme.boot.fw.update.failure
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the NVMe boot device firmware has failed to update.
+*Corrective Action*::
+Contact NetApp technical support for assistance.
+*Syslog Message*::
+The NVMe boot device has failed a firmware update from %s to %s.
+*Parameters*::
+*old_ver* (STRING): Previous firmware version.
+*new_ver* (STRING): New firmware version.

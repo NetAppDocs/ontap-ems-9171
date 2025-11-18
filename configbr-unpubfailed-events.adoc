@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: configbr-unpubfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: configbr.unpubfailed events
+---
+
+= configbr.unpubfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== configbr.unpubFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the configuration backup and restore feature fails to unpublish a package by using the file replication service. The configuration backup process creates file packages and registers them with the file replication service, which stores the package in the root file system. When the configuration backup process is complete, it cleans up these files by unpublishing the package by using the file replication service. When unpublishing fails, these files are not be cleaned up and remain in the root file system. This message does not indicate a failure in the configuration backup process, which continues despite the event. You can monitor the status of an ongoing configuration backup process by using the "job show" command. The completed configuration backup files are visible when you run the "system configuration backup show" command.
+*Corrective Action*::
+Obtain diagnostic privilege and view the file replication packages by using the "system services replication show" command. Unpublish the file replication packages by issuing the "system services replication unpublish" command, for which you also need diagnostic privilege. Check the "cluster ring show" command to ensure that the node is in quorum; management quorum is required for the unpublish command to succeed. Do not take these actions while an active configuration backup process is running.
+*Syslog Message*::
+Configuration backup and restore failed to unpublish package %s; Error: '%s'.
+*Parameters*::
+*package_name* (STRING): Name of the package.
+*reason* (STRING): Reason for the unpublishing failure.

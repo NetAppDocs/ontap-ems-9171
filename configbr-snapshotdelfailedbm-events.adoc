@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: configbr-snapshotdelfailedbm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: configbr.snapshotdelfailedbm events
+---
+
+= configbr.snapshotdelfailedbm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== configbr.snapshotDelFailedBM
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Snapshot(tm) copy on the boot media cannot be deleted. The Snapshot copy was created during a configuration backup.
+*Corrective Action*::
+Ensure that the boot media file system is available. From the systemshell, run the "df /droot/etc" command to check its availability.
+*Syslog Message*::
+Snapshot copy %s on the boot media cannot be deleted on node %s. Error: '%s'.
+*Parameters*::
+*name* (STRING): Name of the Snapshot copy.
+*node* (STRING): Node on which the Snapshot copy was created.
+*reason* (STRING): Reason for the error.

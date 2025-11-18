@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: nvmens-repl-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvmens.repl events
+---
+
+= nvmens.repl events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== NVMeNS.repl.unsupp.ver
+*Severity*::
+ERROR
+*Description*::
+This message occurs when replication of a volume containing NVMe namespaces has failed because the destination does not support NVMe namespaces.
+*Corrective Action*::
+Replicate volumes with NVMe namespaces only to destinations that support NVMe namespaces.
+*Syslog Message*::
+Logical replication failed for volume %s (DSID %llu): No NVMe namespace support on the destination.
+*Parameters*::
+*volume_name* (STRING): Name of the source volume.
+*volume_dsid* (LONGINT): Data set ID (DSID) of the source volume.

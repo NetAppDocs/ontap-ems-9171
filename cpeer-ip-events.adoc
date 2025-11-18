@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: cpeer-ip-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cpeer.ip events
+---
+
+= cpeer.ip events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cpeer.ip.family.mismatch
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an attempt is made to insert an IP address whose address family does not match the family style specified for the cluster peer relationship. This is indicative of incorrect addresses being provided by the administrator. Stable addresses are typically provided by the administrator during cluster peer creation and can be modified by modifying the peer relationship.
+*Corrective Action*::
+Correct the stable IP address by using the 'cluster peer modify' command. Ensure that the LIFs of the appropriate address family exist on both the local cluster and the remote peer. If you need further assistance, contact NetApp technical support.
+*Syslog Message*::
+Failed to insert address %s of peer cluster %s, reason: %s
+*Parameters*::
+*addr* (STRING): Peer cluster address that is being inserted.
+*peer* (STRING): Name of the peer cluster for which an address family mismatch was seen.
+*reason* (STRING): Reason that the EMS message was sent.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: lsm-pal-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lsm.pal events
+---
+
+= lsm.pal events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lsm.pal.problem
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a block store PAL operation encounters an error. Normally these PAL operations should recover, but it is important to keep track of exactly when and where the problem happened to help with performance tuning and recovery options.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Block store PAL has encountered the following error while processing operation "%s": "%u"
+*Parameters*::
+*pal_op* (STRING): PAL operation being done.
+*error_code* (INT): WAFL error code.

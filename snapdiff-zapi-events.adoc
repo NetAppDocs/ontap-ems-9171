@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: snapdiff-zapi-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapdiff.zapi events
+---
+
+= snapdiff.zapi events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapdiff.zapi.filenameUnavailable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the snapshot differencing engine, SnapDiff, fails to obtain an appropriate file name for the requested file access protocol. The SnapDiff session is aborted and future attempts will fail until the problem is resolved.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+Failed to get an appropriate file name for the requested file access protocol for directory entry with inode %u in directory with inode %u in snapshot %u of volume %u.
+*Parameters*::
+*inode_num* (INT): Identifier of the directory entry.
+*parent_inode_num* (INT): Identifier of the directory.
+*incr_snap_id* (INT): Identifier of the incremental snapshot.
+*fsid* (INT): Identifier of the volume.
+*base_snap_id* (INT): Identifier of the base snapshot.

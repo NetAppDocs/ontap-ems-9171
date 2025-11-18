@@ -1,0 +1,574 @@
+---
+sidebar: sidebar
+permalink: nvram-battery-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvram.battery events
+---
+
+= nvram.battery events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvram.battery.capacity.low.critical
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVRAM battery capacity is critically low. To prevent data loss, the system will shut down.
+*Corrective Action*::
+Correct any environmental problems, such as chassis over- temperature. The battery charges automatically. If the capacity is not restored automatically within 30 minutes after system power is on, replace the NVRAM battery. If the problem persists, replace the FRU (field-replaceable unit) NVRAM card or PCM, where the battery is located.
+*Syslog Message*::
+The NVRAM battery capacity is critically low (%s). To prevent data loss, the system will shut down in %d minutes.
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+*num_minutes* (INT): Number of minutes until the system shuts down.
+
+== nvram.battery.capacity.low.warn
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NVRAM battery capacity is below normal.
+*Corrective Action*::
+Correct any environmental problems, such as chassis over- temperature. The battery charges automatically. If the capacity is not restored automatically within 30 minutes after system power is on, replace the NVRAM battery within three months. If the problem persists, replace the FRU (field-replaceable unit) NVRAM card or PCM, where the battery is located.
+*Syslog Message*::
+The NVRAM battery capacity is below normal (%s).
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+
+== nvram.battery.capacity.normal
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the NVRAM battery capacity is normal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVRAM battery capacity is normal.
+*Parameters*::
+(None).
+
+== nvram.battery.capacityLow
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the NVRAM battery capacity is low. To prevent data loss, the system will schedule a clean chassis shutdown if the problem is not corrected.
+*Corrective Action*::
+Correct any environmental problems, such as chassis over- temperature. The battery charges automatically. If the capacity is not restored automatically within 30 minutes after system power is on, replace the NVRAM battery. If the problem persists, replace the FRU (field-replaceable unit) NVRAM card or PCM, where the battery is located.
+*Syslog Message*::
+The NVRAM battery capacity is low (%s).
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+
+== nvram.battery.chargeFET.normal
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the NVRAM battery charge FET is on.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVRAM battery charge FET is on.
+*Parameters*::
+(None).
+
+== nvram.battery.chargeFET.off
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the NVRAM battery charge FET is off. To prevent data loss, the system will initiate a clean chassis shutdown if the problem is not corrected within 24 hours of first detection.
+*Corrective Action*::
+Shut down the system and power-cycle the controller. If the charge FET remains off, replace the NVRAM battery. If the problem persists, replace the FRU (field-replaceable unit) NVRAM card or PCM, where the battery is located.
+*Syslog Message*::
+The NVRAM battery charge FET is off. To prevent data loss, the system will shut down %s.
+*Parameters*::
+*countdown* (STRING): Remaining time before chassis shutdown.
+
+== nvram.battery.charging.nocharge
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVRAM battery is requesting to be charged but the charger is not charging the battery. To prevent data loss, the system will shut down.
+*Corrective Action*::
+Reseat the NVRAM battery connector. If the problem occurs again, replace the NVRAM battery. If the problem persists, replace the FRU (field-replaceable unit) NVRAM card or PCM, where the battery is located.
+*Syslog Message*::
+The NVRAM battery is requesting to be charged but the charger is not charging the battery. To prevent data loss, the system will shut down in %d minutes.
+*Parameters*::
+*num_minutes* (INT): Number of minutes until the system shuts down.
+
+== nvram.battery.charging.normal
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the NVRAM battery charging status is normal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVRAM battery charging status is normal.
+*Parameters*::
+(None).
+
+== nvram.battery.charging.wrongcharge
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the NVRAM battery charger is charging the battery even though the battery is not requesting to be charged. To prevent data loss, the system will initiate a clean chassis shutdown if the problem is not corrected within 24 hours of first detection.
+*Corrective Action*::
+Replace the NVRAM battery. If the problem persists, replace the FRU (field-replaceable unit) NVRAM card or PCM, where the battery is located.
+*Syslog Message*::
+The NVRAM battery charger is charging the battery even though the battery is not requesting to be charged. To prevent data loss, the system will shut down %s.
+*Parameters*::
+*countdown* (STRING): Remaining time before chassis shutdown.
+
+== nvram.battery.current.high
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVRAM battery charging current is critically high. To prevent data loss, the system will shut down.
+*Corrective Action*::
+Replace the NVRAM battery. If the problem persists, replace the FRU (field-replaceable unit) NVRAM card or PCM, where the battery is located.
+*Syslog Message*::
+The NVRAM battery current is critically high (%s). To prevent data loss, the system will shut down in %d minutes.
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+*num_minutes* (INT): Number of minutes until the system shuts down.
+
+== nvram.battery.current.high.warn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the NVRAM battery charging current is above normal. To prevent data loss, the system will initiate a clean chassis shutdown if the problem is not corrected within 24 hours of first detection.
+*Corrective Action*::
+Replace the NVRAM battery. If the problem persists, replace the FRU (field-replaceable unit) NVRAM card or PCM, where the battery is located.
+*Syslog Message*::
+The NVRAM battery current is above normal (%s). To prevent data loss, the system will shut down %s.
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+*countdown* (STRING): Remaining time before chassis shutdown.
+
+== nvram.battery.current.low
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVRAM battery detects a short circuit. To prevent data loss, the system will shut down.
+*Corrective Action*::
+Contact NetApp technical support for assistance with identification and replacement of the appropriate component.
+*Syslog Message*::
+The NVRAM battery has a short circuit (%s). To prevent data loss, the system will shut down in %d minutes.
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+*num_minutes* (INT): Number of minutes until the system shuts down.
+
+== nvram.battery.current.low.warn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the NVRAM battery is discharging when it should not. To prevent data loss, the system will initiate a clean chassis shutdown if the problem is not corrected within 24 hours of first detection.
+*Corrective Action*::
+Replace the NVRAM battery. If the problem persists, replace the FRU (field-replaceable unit) NVRAM card or PCM, where the battery is located.
+*Syslog Message*::
+The NVRAM battery current is below normal (%s). To prevent data loss, the system will shut down %s.
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+*countdown* (STRING): Remaining time before chassis shutdown.
+
+== nvram.battery.current.normal
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the NVRAM battery current is normal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVRAM battery current is normal.
+*Parameters*::
+(None).
+
+== nvram.battery.dischargeFET.normal
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the NVRAM battery discharge FET is on.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVRAM battery discharge FET is on.
+*Parameters*::
+(None).
+
+== nvram.battery.dischargeFET.off
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVRAM battery discharge FET is off. To prevent data loss, the system will shut down.
+*Corrective Action*::
+Shut down the system and power-cycle the controller. If the discharge FET remains off, replace the NVRAM battery. If the problem persists, replace the FRU (field-replaceable unit) NVRAM card or PCM, where the battery is located.
+*Syslog Message*::
+The NVRAM battery discharge FET is off. To prevent data loss, the system will shut down in %d minutes.
+*Parameters*::
+*num_minutes* (INT): Number of minutes until the system shuts down.
+
+== nvram.battery.endOfLife.high
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the NVRAM battery-cycle count indicates that the battery has reached its anticipated life expectancy.
+*Corrective Action*::
+Replace the NVRAM battery in the next three months.
+*Syslog Message*::
+The NVRAM battery has reached its anticipated life expectancy.
+*Parameters*::
+(None).
+
+== nvram.battery.endOfLife.normal
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the NVRAM battery-cycle count indicates that the battery is well below its anticipated life expectancy.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVRAM battery is well below its anticipated life expectancy.
+*Parameters*::
+(None).
+
+== nvram.battery.fault
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVRAM battery is reporting a fatal fault condition. To prevent data loss, the system will shut down.
+*Corrective Action*::
+Correct any environmental problems, such as chassis over-temperature. If the battery still reports a fatal fault, replace the NVRAM battery. If the problem persists, replace the FRU (field-replaceable unit) NVRAM card or PCM, where the battery is located.
+*Syslog Message*::
+The NVRAM battery is reporting a fatal fault condition. To prevent data loss, the system will shut down in %d minutes.
+*Parameters*::
+*num_minutes* (INT): Number of minutes until the system shuts down.
+
+== nvram.battery.fault.cleared
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the NVRAM battery internal fault condition has been cleared.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVRAM battery internal fault condition has been cleared.
+*Parameters*::
+(None).
+
+== nvram.battery.fault.warn
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NVRAM battery is reporting a non-fatal fault condition.
+*Corrective Action*::
+Correct any environmental problems, such as chassis over- temperature. If the condition persists, replace the NVRAM battery in the next three months.
+*Syslog Message*::
+The NVRAM battery is reporting a non-fatal fault condition.
+*Parameters*::
+(None).
+
+== nvram.battery.fcc.low
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the NVRAM battery full-charge capacity is low. To prevent data loss, the system will initiate a clean chassis shutdown if the problem is not corrected within 24 hours of first detection.
+*Corrective Action*::
+Use the "sysconfig -M" command in 7-Mode or the "run local sysconfig -M" command in clustered Data ONTAP(R) to get the battery manufacturer date. If the battery is newer than three years old, correct any chronic environmental problems, such as chassis over-temperature. Replace the NVRAM battery. If the problem persists, replace the FRU (field-replaceable unit) NVRAM card or PCM, where the battery is located.
+*Syslog Message*::
+The NVRAM battery full-charge capacity is low (%s). To prevent data loss, the system will shut down %s.
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+*countdown* (STRING): Remaining time before chassis shutdown.
+
+== nvram.battery.fcc.low.critical
+*Deprecated*::
+Deprecated as of version 9.2.0 to address the EMS ID length violation.
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVRAM battery full-charge capacity is critically low. To prevent data loss, the system will shut down.
+*Corrective Action*::
+Use the "sysconfig -M" command in 7-Mode or the "run local sysconfig -M" command in clustered Data ONTAP(R) to get the battery manufacturer date. If the battery is newer than three years old, correct any chronic environmental problems, such as chassis over-temperature. Replace the NVRAM battery. If the problem persists, replace the FRU (field-replaceable unit) NVRAM card or PCM, where the battery is located.
+*Syslog Message*::
+The NVRAM battery full-charge capacity is critically low (%s). To prevent data loss, the system will shut down in %d minutes.
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+*num_minutes* (INT): Number of minutes until the system shuts down.
+
+== nvram.battery.fcc.low.warn
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NVRAM battery full-charge capacity is below normal.
+*Corrective Action*::
+Replace the NVRAM battery in the next three months. Use the "sysconfig -M" command in 7-Mode or the "run local sysconfig -M" command in clustered Data ONTAP(R) to get the battery manufacturer date. If the battery is newer than three years old, correct any chronic environmental problems, such as chassis over-temperature.
+*Syslog Message*::
+The NVRAM battery full-charge capacity is below normal (%s).
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+
+== nvram.battery.fcc.normal
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the NVRAM battery full-charge capacity is normal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVRAM battery full-charge capacity is normal.
+*Parameters*::
+(None).
+
+== nvram.battery.fccLowCrit
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVRAM battery full-charge capacity is critically low. To prevent data loss, the system will shut down.
+*Corrective Action*::
+Use the "system node run -node local sysconfig -M" command to obtain the battery manufacturing date. If the battery is over three years old, replacement might be necessary. Contact NetApp technical support for troubleshooting assistance.
+*Syslog Message*::
+The NVRAM battery full-charge capacity is critically low (%s). To prevent data loss, the system will shut down in %d minutes.
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+*num_minutes* (INT): Number of minutes until the system shuts down.
+
+== nvram.battery.fcmto.warn
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NVRAM battery fast-charge timeout expires. The battery will not be charged until this condition is corrected.
+*Corrective Action*::
+Shut down the controller and power cycle it from the Service Processor (SP) command line interface (CLI) with the "system power cycle" command. The fast-charge timeout will be reset after the power cycle.
+*Syslog Message*::
+The NVRAM battery has reached a charging timeout fault. The battery charger will not turn on again until the contoller has been power cycled. Low capacity warning messages begin in %s weeks.
+*Parameters*::
+*num_weeks* (STRING): Number of weeks before low capacity warning messages begin.
+
+== nvram.battery.not.present
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the presence of the NVRAM battery cannot be detected. To prevent data loss, the system will shut down.
+*Corrective Action*::
+While the system is shut down, ensure that the NVRAM battery is present. If the NVRAM battery is already present, ensure that the connector is seated properly. Power on the system. If this does not correct the problem, replace the NVRAM battery. If the system still does not detect the battery, contact NetApp technical support.
+*Syslog Message*::
+The presence of NVRAM battery cannot be detected. To prevent data loss, the system will shut down in %d minutes.
+*Parameters*::
+*num_minutes* (INT): Number of minutes until the system shuts down.
+
+== nvram.battery.pack.invalid
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an unsupported NVRAM battery pack is installed in the system. To prevent data loss, the system initiates a clean chassis shutdown if the problem is not corrected within 24 hours of first detection.
+*Corrective Action*::
+Shut down the system and replace the NVRAM battery with a correct battery pack.
+*Syslog Message*::
+The incorrect NVRAM battery is installed. Expected part number is %s. To prevent data loss, the system will shut down in %d minutes.
+*Parameters*::
+*partnum* (STRING): Valid battery part number.
+*num_minutes* (INT): Number of minutes until the system shuts down.
+
+== nvram.battery.pack.valid
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a valid NVRAM battery pack is now present and readable.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A valid NVRAM battery pack is present.
+*Parameters*::
+(None).
+
+== nvram.battery.packInvalidHrs
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when an unsupported NVRAM battery pack is installed in the system. To prevent data loss, the system initiates a clean shutdown if the problem is not corrected.
+*Corrective Action*::
+Shut down the system and replace the NVRAM battery with the correct battery pack.
+*Syslog Message*::
+The incorrect NVRAM battery is installed. Expected part number is "%s". To prevent data loss, the system shuts down %s.
+*Parameters*::
+*partnum* (STRING): Valid battery part number.
+*remaining_time* (STRING): Number of hours until the system shuts down.
+
+== nvram.battery.power.fault
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVRAM battery is not receiving power. To prevent data loss, the system will shut down.
+*Corrective Action*::
+Ensure that the NVRAM battery connector is seated properly. Boot up the system. If the NVRAM battery is still not receiving power, replace the NVRAM battery. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+The NVRAM battery is not receiving power. To prevent data loss, the system will shut down in %d minutes.
+*Parameters*::
+*num_minutes* (INT): Number of minutes until the system shuts down.
+
+== nvram.battery.power.normal
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the NVRAM battery power is normal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVRAM battery power is normal.
+*Parameters*::
+(None).
+
+== nvram.battery.sensor.unreadable
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVRAM battery state cannot be determined because the sensor cannot be read. To prevent data loss, the system will shut down.
+*Corrective Action*::
+Ensure that the NVRAM battery connector is seated properly. Power on the system. If the problem is not corrected, replace the NVRAM battery. If the sensor still cannot be read, contact NetApp technical support.
+*Syslog Message*::
+The NVRAM battery state cannot be determined because the "%s" sensor cannot be read. To prevent data loss, the system will shut down in %d minutes.
+*Parameters*::
+*sensor_name* (STRING): Sensor name.
+*num_minutes* (INT): Number of minutes until the system shuts down.
+
+== nvram.battery.temp.high
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVRAM battery temperature is critically high. To prevent data loss, the system will shut down.
+*Corrective Action*::
+Correct any environmental issues, such as a high ambient temperature. If the NVRAM battery temperature is still above normal, replace the NVRAM battery. If the problem persists, replace the FRU (field-replaceable unit) NVRAM card or PCM, where the battery is located.
+*Syslog Message*::
+The NVRAM battery temperature is critically high (%s). To prevent data loss, the system will shut down in %d minutes.
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+*num_minutes* (INT): Number of minutes until the system shuts down.
+
+== nvram.battery.temp.high.warn
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NVRAM battery temperature is above normal. Battery life will be severely compromised.
+*Corrective Action*::
+Correct any environmental issues, such as a high ambient temperature. If the NVRAM battery temperature is still above normal, replace the NVRAM battery. If the problem persists, replace the FRU (field-replaceable unit) NVRAM card or PCM, where the battery is located.
+*Syslog Message*::
+The NVRAM battery temperature is above normal (%s).
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+
+== nvram.battery.temp.low
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the NVRAM battery is too cold. To prevent data loss, the system will initiate a clean chassis shutdown if the problem is not corrected within 24 hours of first detection.
+*Corrective Action*::
+If the system is excessively cold, allow it to warm gradually. If the NVRAM battery temperature is still too low, replace the NVRAM battery. If the problem persists, replace the FRU (field-replaceable unit) NVRAM card or PCM, where the battery is located.
+*Syslog Message*::
+The NVRAM battery is too cold (%s). To prevent data loss, the system will shut down %s.
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+*countdown* (STRING): Remaining time before chassis shutdown.
+
+== nvram.battery.temp.low.warn
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NVRAM battery temperature is below normal.
+*Corrective Action*::
+Allow the system to warm gradually. If the NVRAM battery temperature is still low, replace the NVRAM battery. If the problem persists, replace the FRU (field-replaceable unit) NVRAM card or PCM, where the battery is located.
+*Syslog Message*::
+The NVRAM battery temperature is below normal (%s).
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+
+== nvram.battery.temp.normal
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the NVRAM battery temperature is normal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVRAM battery temperature is normal.
+*Parameters*::
+(None).
+
+== nvram.battery.unreadHrs
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVRAM battery state cannot be determined because the sensor is unreadable. If this issue is not resolved within the specified time, the system shuts down to prevent data loss.
+*Corrective Action*::
+Ensure that the NVRAM battery connector is seated properly. If the problem is not corrected, replace the NVRAM battery. If the sensor is still not readable, replace the FRU (field-replaceable unit) NVRAM card or PCM, where the battery is located.
+*Syslog Message*::
+The NVRAM battery state cannot be determined because the "%s" sensor is unreadable. To prevent data loss, the system shuts down %s.
+*Parameters*::
+*sensor_name* (STRING): Sensor name.
+*remaining_time* (STRING): Remaining time before chassis shutdown.
+
+== nvram.battery.voltage.high
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVRAM battery voltage is critically high. To prevent data loss, the system will shut down.
+*Corrective Action*::
+Replace the NVRAM battery. If the problem persists, replace the FRU (field-replaceable unit) NVRAM card or PCM, where the battery is located.
+*Syslog Message*::
+The NVRAM battery voltage is critically high (%s). To prevent data loss, the system will shut down in %d minutes.
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+*num_minutes* (INT): Number of minutes until the system shuts down.
+
+== nvram.battery.voltage.high.warn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the NVRAM battery voltage is above normal. To prevent data loss, the system will initiate a clean chassis shutdown if the problem is not corrected within 24 hours of first detection.
+*Corrective Action*::
+Correct any environmental problems, such as chassis over- temperature. If the NVRAM battery voltage is still above normal, replace the NVRAM battery. If the problem returns or persists, replace the FRU (field-replaceable unit) NVRAM card or PCM, where the battery is located.
+*Syslog Message*::
+The NVRAM battery voltage is above normal (%s). To prevent data loss, the system will shut down %s.
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+*countdown* (STRING): Remaining time before chassis shutdown.
+
+== nvram.battery.voltage.low
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVRAM battery voltage is critically low. To prevent data loss, the system will shut down.
+*Corrective Action*::
+Correct any environmental problems, such as chassis over- temperature. If the NVRAM battery voltage is still critically low, replace the NVRAM battery. If the problem persists, replace the FRU (field-replaceable unit) NVRAM card or PCM, where the battery is located.
+*Syslog Message*::
+The NVRAM battery voltage is critically low (%s). To prevent data loss, the system will shut down in %d minutes.
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.
+*num_minutes* (INT): Number of minutes until the system shuts down.
+
+== nvram.battery.voltage.normal
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the NVRAM battery voltage is normal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The NVRAM battery voltage is normal.
+*Parameters*::
+(None).
+
+== nvram.battery.voltageLowWarn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the NVRAM battery voltage is below normal. To prevent data loss, the system will schedule a clean chassis shutdown if the problem is not corrected.
+*Corrective Action*::
+Correct any environmental problems, such as chassis over- temperature. If the NVRAM battery voltage is still below normal 30 minutes after environmental problems have been corrected, replace the NVRAM battery. If the problem persists, replace the FRU (field-replaceable unit) NVRAM card or PCM, where the battery is located.
+*Syslog Message*::
+The NVRAM battery voltage is below normal (%s).
+*Parameters*::
+*reading* (STRING): Reading that triggered this message.

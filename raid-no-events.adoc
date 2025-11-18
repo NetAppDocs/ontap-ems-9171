@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: raid-no-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.no events
+---
+
+= raid.no events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.no.parity.aggr
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs periodically to warn the user that the aggregate has no RAID protection and is not safe for storing data.
+*Corrective Action*::
+Use the "aggregate delete" command to delete the aggregate, if possible.
+*Syslog Message*::
+Aggregate "%s" does not use any RAID-level data protection; any data is unprotected.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate.

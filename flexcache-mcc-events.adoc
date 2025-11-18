@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: flexcache-mcc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: flexcache.mcc events
+---
+
+= flexcache.mcc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== flexcache.mcc.refresh.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a FlexCache(R) configuration refresh operation fails during MetroCluster(tm) switchover and switchback. Data access through FlexCache volumes might be impacted as a result.
+*Corrective Action*::
+First, verify that the two Vservers in question are peered by using the "vserver peer show" command. Next, enter the "flexcache config-refresh -peer-server <peer-vserver> -peer-volume <peer-volume> -peer-endpoint-type <peer-endpoint-type>" command on a node within the cluster that directly manages the peer endpoint.
+*Syslog Message*::
+FlexCache configuration refresh failed on peer Vserver %s for peer volume %s and peer endpoint %s on cluster %s.
+*Parameters*::
+*peeredVserverUuid* (STRING): UUID of the peered Vserver.
+*peerVolumeName* (STRING): Name of the peer volume.
+*peerEndPointType* (STRING): Peer endpoint type.
+*clusterUuid* (STRING): UUID of the cluster with the peer endpoint.
+*localVserverUuid* (STRING): UUID of the local Vserver.

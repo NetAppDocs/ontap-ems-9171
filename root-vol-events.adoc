@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: root-vol-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: root.vol events
+---
+
+= root.vol events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== root.vol.cluster.autocreate
+*Severity*::
+ERROR
+*Description*::
+This message occurs when system creates a root volume automatically, after a cluster reboot occurred before root volume creation.
+*Corrective Action*::
+Rename AUTOROOT volume to vol0 by running "vol rename -vserver vserver_name -volume AUTOROOT -newname vol0" command.
+*Syslog Message*::
+No online root volume found on root aggregate %s. Automatically creating one.
+*Parameters*::
+*aggr* (STRING): Root aggregate name.
+
+== root.vol.corrupt.autocreate
+*Severity*::
+ALERT
+*Description*::
+This message occurs when system creates a root volume because the original root volume is corrupted.
+*Corrective Action*::
+Contact NetApp technical support to recover vol0.
+*Syslog Message*::
+Root volume found corrupted on root aggregate %s. Automatically creating AUTOROOT volume.
+*Parameters*::
+*aggr* (STRING): Root aggregate name.

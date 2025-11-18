@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: moveagent-commitdst-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: moveagent.commitdst events
+---
+
+= moveagent.commitdst events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== moveagent.commitdst.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a 'volume move' operation finishes moving the volume to the destination but fails to update the appropriate information on the destination. The system continues to retry the operation until it is successful. In the time between the failure and a successful retry, there might be disruption to client traffic associated with the volume being moved.
+*Corrective Action*::
+Monitor the volume move job. If the problem persists, contact NetApp technical support
+*Syslog Message*::
+Unable to finish the volume move operation for DSID %llu. Failed to commit the destination volume.
+*Parameters*::
+*volume_dsid* (LONGINT): Destination volume Data Set ID (DSID).

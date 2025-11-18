@@ -1,0 +1,210 @@
+---
+sidebar: sidebar
+permalink: raid-mcc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.mcc events
+---
+
+= raid.mcc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.mcc.disasterSummary
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message reports the summary information for the MetroCluster(tm) switchover operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RAID switchover summary: number of DR aggregates=%d number of mirrored aggregates=%d number of unmirrored aggregates=%d number of out-of-date aggregates=%d number of mirrored aggregates with both plexes online=%d number of offline aggregates switched over=%d
+*Parameters*::
+*nTotalAggrs* (INT): Number of DR aggregates switched over.
+*nMirAggrs* (INT): Number of mirrored aggregates switched over.
+*nUnmirAggrs* (INT): Number of unmirrored aggregates switched over.
+*nOodPlexes* (INT): Number of mirrored aggregates with out-of-date plexes.
+*nMirComplete* (INT): Number of mirrored aggregates with both the plexes online during switchover.
+*nOfflineAggrs* (INT): Number of offline aggregates switched over.
+
+== raid.mcc.heal.aggrs.canceled
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a 'metrocluster heal -phase aggregates' operation is canceled due to the presence of left-behind high-availability (HA) aggregates.
+*Corrective Action*::
+Giveback still in progress can cause this condition. To see if this is the case, execute 'storage failover show-giveback'. If it is in progress, wait until it completes and retry the 'metrocluster heal -phase aggregates' command. If giveback is not in progress then execute a 'storage failover giveback -ofnode' from the node currently hosting the left-behind aggregate. After this is complete, retry the 'metrocluster heal -phase aggregates' command.
+*Syslog Message*::
+Aggregate %s homed on %s is a %s, canceling heal aggregates operation.
+*Parameters*::
+*aggregate* (STRING): Name of the aggregate
+*home_owner_name* (STRING): Name of the node home to the left behind aggregate.
+*reason* (STRING): Activity that is preventing heal aggregates operation.
+
+== raid.mcc.heal.roots.canceled
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a 'metrocluster heal -phase root-aggregates' operation is canceled because a switched over root aggregate is busy with another configuration operation. An ongoing configuration operation can cause this condition.
+*Corrective Action*::
+Wait a few minutes, then retry the 'metrocluster heal -phase root-aggregates' command.
+*Syslog Message*::
+Aggregate %s is busy with another configuration operation. Canceling heal root-aggregates operation.
+*Parameters*::
+*aggregate* (STRING): Name of the aggregate.
+*reason* (STRING): Activity that is preventing the heal root-aggregates operation.
+
+== raid.mcc.ISL.down
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a MetroCluster(tm) DR operation other than disaster switchover is canceled because remote site storage is not visible; this can happen if the Inter-Switch Links are down.
+*Corrective Action*::
+1. Verify remote cluster connectivity. Use the "storage switch add -switch-ipaddress <switch-ip-address>" command to start monitoring the switches if not already so. Then use the "storage switch show -port" and "storage switch show -san-config" commands to verify FC connectivity to the remote site. 2. Retry the operation. If the error persists, contact technical support for assistance.
+*Syslog Message*::
+%s was canceled because remote site storage is not visible; Inter-Switch Links might be down.
+*Parameters*::
+*operation* (STRING): The DR operation which was canceled.
+
+== raid.mcc.leftBehindAggr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an aggregate is not returned to its original owner in a switchback operation.
+*Corrective Action*::
+Run the 'metrocluster switchback' command to return the aggregate to its original owner. If the condition persists, contact NetApp technical support.
+*Syslog Message*::
+Aggregate %s was left behind during switchback.
+*Parameters*::
+*aggregate* (STRING): Name of the aggregate that was left behind.
+*aggregate_uuid* (STRING): Universal Unique Identifier(UUID) of the aggregate.
+*home_owner_id* (LONGINT): NVRAM system ID of the aggregate's home owner.
+*current_owner_id* (LONGINT): NVRAM system ID of the aggregate's current owner.
+*dr_home_owner_id* (LONGINT): NVRAM system ID of the aggregate's disaster recovery(DR) home owner.
+
+== raid.mcc.leftBehindSpare
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a spare disk is not returned to its original owner in a switchback operation.
+*Corrective Action*::
+Run the 'metrocluster switchback' command to return the disk to its original owner.
+*Syslog Message*::
+Disk %s was left behind during switchback.
+*Parameters*::
+*disk* (STRING): Name of the disk that was left behind.
+*disk_uuid* (STRING): Universal Unique Identifier(UUID) of the disk.
+*home_owner_id* (LONGINT): NVRAM system ID of the disk's home owner.
+*current_owner_id* (LONGINT): NVRAM system ID of the disk's current owner.
+*dr_home_owner_id* (LONGINT): NVRAM system ID of the disk's disaster recovery(DR) home owner.
+
+== raid.mcc.nso.canceled
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a MetroCluster negotiated switchover is canceled due to activity in RAID on a volume or aggregate.
+*Corrective Action*::
+Reissue the 'metrocluster switchover' command after the pending or in-progress operation on the aggregate is complete. The 'override-vetoes' option may be used to proceed without waiting for the pending or in-progress operation to complete.
+*Syslog Message*::
+Aggregate %s is %s, canceling negotiated switchover.
+*Parameters*::
+*aggregate* (STRING): Name of the aggregate.
+*reason* (STRING): Activity that is preventing negotiated switchover.
+
+== raid.mcc.nso.dr.leftbehind
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a MetroCluster switchover is canceled due to the presence of left behind aggregates from a switchback operation.
+*Corrective Action*::
+If the aggregate is not in a "failed" or "limbo" state, issue the 'metrocluster switchback' command to return the aggregate to its original owner. Reissue the 'metrocluster switchover' command.
+*Syslog Message*::
+Aggregate %s was left behind from a switchback operation, canceling negotiated switchover.
+*Parameters*::
+*aggregate* (STRING): Name of the aggregate that was left behind.
+*aggregate_uuid* (STRING): Universal Unique Identifier of the aggregate.
+*home_owner_id* (LONGINT): NVRAM system ID of the aggregate's home owner.
+*current_owner_id* (LONGINT): NVRAM system ID of the aggregate's current owner.
+*dr_home_owner_id* (LONGINT): NVRAM system ID of the aggregate's disaster recovery home owner.
+
+== raid.mcc.nso.ha.leftbehind
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a MetroCluster switchover is canceled due to the presence of left behind aggregates from a giveback operation.
+*Corrective Action*::
+If the aggregate is not in a "failed" or "limbo" state, issue the 'storage failover giveback' command to return the aggregate to its original owner. Reissue the 'metrocluster switchover' command.
+*Syslog Message*::
+Aggregate %s was left behind from a giveback operation, canceling negotiated switchover.
+*Parameters*::
+*aggregate* (STRING): Name of the aggregate that was left behind.
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+*home_owner_id* (LONGINT): NVRAM system ID of the aggregate's home owner.
+*current_owner_id* (LONGINT): NVRAM system ID of the aggregate's current owner.
+
+== raid.mcc.remote.storage.down
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a MetroCluster(tm) DR operation other than disaster switchover is canceled because remote site storage is not visible; this can happen if the FC or SAS links to the remote storage are down.
+*Corrective Action*::
+1. Verify remote cluster connectivity. Use the "fcp interface show" command to verify FC connectivity to the remote site. 2. Retry the operation. If the error persists, contact technical support for assistance.
+*Syslog Message*::
+%s was canceled because remote site storage is not visible; FC or SAS links might be down.
+*Parameters*::
+*operation* (STRING): The DR operation which was canceled.
+
+== raid.mcc.root.configError
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects a configuration error on the root aggregate in a MetroCluster(tm) configuration. Remote disks and local disks are not being used in the proper configuration. One plex should comprise only disks from the local pool, Pool0, and the other plex should comprise only disks from the remote pool, Pool1. If the inter-site communication fails between the MetroCluster sites, access to remote disks will be lost. This creates an elevated risk of local site downtime.
+*Corrective Action*::
+Replace all remote (Pool1) disks in the local plex with local (Pool0) spares. In the remote plex, replace all local (Pool0) disks with remote (Pool1) spares. Use the 'storage disk replace' command to initiate disk replacements.
+*Syslog Message*::
+In the root aggregate, %s
+*Parameters*::
+*error_message* (STRING): Description of which plexes have disks from the wrong pool.
+
+== raid.mcc.root.unmirrored
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the root aggregate is not mirrored in a MetroCluster(tm) configuration.
+*Corrective Action*::
+Mirror the root aggregate by using the 'storage aggregate mirror' command.
+*Syslog Message*::
+The root aggregate is not mirrored. This aggregate must be mirrored in a MetroCluster configuration or a switchover of this site might not be possible in case of a disaster.
+*Parameters*::
+(None).
+
+== raid.mcc.switchbackCanceled
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a MetroCluster switchback is canceled due to activity in RAID on a disaster partner volume or aggregate.
+*Corrective Action*::
+Reissue the 'metrocluster switchback' command after the pending or in-progress operation on the DR partner aggregate is complete. The override-vetoes option may be used to proceed without waiting for the pending or in-progress operation to complete.
+*Syslog Message*::
+DR aggregate %s is %s, canceling switchback.
+*Parameters*::
+*vol* (STRING): Name of the aggregate
+*reason* (STRING): Activity that is preventing DR switchback
+
+== raid.mcc.switchbackSummary
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a node has finished releasing switched over aggregates and spare disks during switchback.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RAID switchback summary: switched back aggregates: %d, left behind aggregates: %d, switched back spares: %d
+*Parameters*::
+*switched_back_aggr_count* (INT): Count of aggregates that were switched back.
+*left_behind_aggr_count* (INT): Count of switched over aggregates that remain after switchback.
+*switched_back_spare_count* (INT): Count of spare disks that were switched back.

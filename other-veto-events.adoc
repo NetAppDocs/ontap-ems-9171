@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: other-veto-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: other.veto events
+---
+
+= other.veto events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== other.veto.kmgr.keysmissing
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a giveback or aggregate relocation operation fails but ONTAP(R) software cannot determine the specific operation type. The specific operation failed due to the unavailability of volume encryption keys for the encrypted volumes of the aggregate on the partner or destination node.
+*Corrective Action*::
+Wait a few minutes, and then try the failed operation again. If the problem persists, run the "security key-manager external restore" command for external key manager, or the "security key-manager onboard sync" command for Onboard Key Manager. Then try failed operation again. The commands retrieve the encryption keys for the encrypted volumes of the aggregate from the key manager.
+*Syslog Message*::
+Relocation or giveback of aggregate %s has failed due to the unavailability of volume encryption keys for the encrypted volumes of the aggregate on the destination (if a relocation operation) or partner node %s (if a giveback operation). Operation code: %d. Details: %s.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate that was not relocated or given back.
+*dest_node* (STRING): Name of the destination node that is missing encryption keys.
+*op_code* (INT): Code of the failed operation
+*details* (STRING): Detailed reason for failure.
+
+== other.veto.query.timeout
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a query operation on the VEK table times out. The specific operation failed because either a network connection issue occured or the query could not be completed within the time limit .
+*Corrective Action*::
+Verify that there are no network connectivity issue, and then, if the query still times out, consider overriding the veto.
+*Syslog Message*::
+Relocation or giveback of aggregate "%s" has failed because the restoration status of all of the encryption keys on the destination (if a relocation operation) or partner node (if a giveback operation) "%s" could not be verified within the allotted time.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate that was being queried when the timeout occurred.
+*dest_node* (STRING): Name of the destination node.

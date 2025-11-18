@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: aggr-relocation-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: aggr.relocation events
+---
+
+= aggr.relocation events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== aggr.relocation.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when relocation of an aggregate fails.
+*Corrective Action*::
+Refer to other generated error messages to identify the exact cause of failure and the corrective action.
+*Syslog Message*::
+Relocation of aggregate %s failed by node %s because %s.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate that was not relocated.
+*node* (STRING): Name of the node that failed the relocation.
+*msg* (STRING): Error that prevented relocation.

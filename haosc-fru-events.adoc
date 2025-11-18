@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: haosc-fru-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: haosc.fru events
+---
+
+= haosc.fru events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== haosc.fru.op.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the chassis or controller field-replaceable unit programmable read-only memory (FRU PROM) read/write fails.
+*Corrective Action*::
+Replace the system chassis or controller, and contact NetApp technical support for assistance.
+*Syslog Message*::
+%s FRU PROM %s operation failed.
+*Parameters*::
+*fru* (STRING): Chassis/controller string.
+*op* (STRING): Read/write operation string.

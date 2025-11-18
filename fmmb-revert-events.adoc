@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: fmmb-revert-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fmmb.revert events
+---
+
+= fmmb.revert events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fmmb.revert.opaque
+*Severity*::
+ERROR
+*Description*::
+This event is issued when the HA Mailbox opaque recieves a write request for the opaque area and a revert_to command is in progress. The write request is rejected. The opaque area in the HA Mailbox is used by non HA mailbox clients, like RAID, to store persistent information.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+HA Mailbox RAID write request rejected during revert.
+*Parameters*::
+(None).

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: pac-sock-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: pac.sock events
+---
+
+= pac.sock events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== pac.sock.getName
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the protocol access control fails to get the socket name.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: getsockname() failed in protocol access control with %s.
+*Parameters*::
+*protocol* (STRING): Protocol.
+*errMessage* (STRING): Internal error message indicating why the socket name could not be obtained.

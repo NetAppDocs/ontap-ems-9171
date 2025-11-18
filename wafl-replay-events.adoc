@@ -1,0 +1,123 @@
+---
+sidebar: sidebar
+permalink: wafl-replay-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.replay events
+---
+
+= wafl.replay events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.replay.aggr.early.mt
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a partner aggregate is mounted early before replay.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Partner aggregate %s is mounted early before WAFL NV log replay.
+*Parameters*::
+*aggrname* (STRING): Name of the aggregate.
+
+== wafl.replay.completed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when WAFL(R) replay is complete following an abrupt failure, such as a panic. This event logs the time spent in the various phases of WAFL replay.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*log* (STRING): Entry count, bytes used, and duration of operation replay.
+*catalog* (STRING): Catalog statistics for WAFL replay.
+*swarm* (STRING): Information about the cost of operations during WAFL replay.
+*nvce* (STRING): Information about number of nvce hits, skips and misses during WAFL replay.
+
+== wafl.replay.early.mounted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when partner aggregates are mounted early before replay.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%d of %d partner aggregates are mounted early before WAFL NV log replay.
+*Parameters*::
+*early_aggrs* (INT): Number of aggregates mounted early.
+*total_aggrs* (INT): Total number of data aggregates being replayed.
+
+== wafl.replay.nvlog.ignore.entries
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when entries are being ignored during replay.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s Ignoring entries in %s log %d for %s %s%s%s%s FSID 0x%x. Volume CP count:%d, Log count: %d.
+*Parameters*::
+*reason* (STRING): Reason for ignoring entries.
+*log_host* (STRING): Host in replay.
+*log* (INT): Log section identifier.
+*voltype* (STRING): Volume type: volume or aggregate.
+*volowner* (STRING): Owner of the volume: local or partner.
+*app* (STRING): Application UUID.
+*volname* (STRING): Name of the volume or aggregate.
+*server_uuid* (STRING): Vserver's Universal Unique Identifier (UUID), if any.
+*FSID* (INT): File system identifier.
+*vol_cp_count* (INT): Consistency Point (CP) count on the volume.
+*log_cp_count* (INT): CP count found in the nvlog.
+
+== wafl.replay.nvlog.not.needed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when all entries in a log were ignored, so no replay was performed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+No replay was required for %s log %d.
+*Parameters*::
+*log_host* (STRING): Host in replay.
+*log* (INT): Log section identifier.
+
+== wafl.replay.resource.limited
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the WAFL replay admin cannot obtain all of the system resources required to allocate the optimal number of replay messages.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*log_no* (INT): The NVLOG log number.
+*host* (INT): The host in replay.
+*msgs_wanted* (INT): The number of replay messages requested.
+*msgs_allocated* (INT): The number of replay messages allocated.
+
+== wafl.replay.swizzle.fsid
+*Severity*::
+INFORMATIONAL
+*Description*::
+The volume was using the old FSID at the time the operations were recorded in the NVLog. Now that the filer is about to replay logged operations, the filer will use the new FSID for the volume. No corrective action is required.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FSID collision mapping created during replay for %s %s%s%s old fsid:%x, new fsid:%x, uuid:%s.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Owner of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique Identifier of the volume in cases where the volume name itself is insufficient.
+*old_fsid* (INTHEX): Old filesystem identifier
+*new_fsid* (INTHEX): New filesystem identifier
+*uuid* (STRING): UUID of the volume

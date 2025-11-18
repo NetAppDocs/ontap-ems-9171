@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: sfo-ignoretakeover-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfo.ignoretakeover events
+---
+
+= sfo.ignoretakeover events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfo.ignoretakeover.envVarClearFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the environment indicating that mailbox takeover state should be rewritten could not be removed.
+*Corrective Action*::
+Boot into the firmware monitor and remove the ign-tkover environment variable.
+*Syslog Message*::
+Mailbox takeover state rewritten due to previous bringhome operation.
+*Parameters*::
+(None).
+
+== sfo.ignoretakeover.rewritingMailbox
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when mailbox takeover state is rewritten due to a previous bringhome operation.
+*Corrective Action*::
+None.
+*Syslog Message*::
+Mailbox takeover state rewritten due to previous bringhome operation.
+*Parameters*::
+(None).

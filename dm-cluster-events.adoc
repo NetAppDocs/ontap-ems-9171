@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: dm-cluster-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dm.cluster events
+---
+
+= dm.cluster events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dm.cluster.rebaselinefailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when resynchronization of the cluster configuration failed in a MetroCluster(tm) configuration.
+*Corrective Action*::
+Use the "metrocluster check config-cluster resync" command to resynchronize the cluster configuration.
+*Syslog Message*::
+Cluster configuration resynchronization failed for cluster %s.
+*Parameters*::
+*cluster* (STRING): Name of the cluster whose configuration is being replicated.

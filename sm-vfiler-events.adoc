@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: sm-vfiler-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sm.vfiler events
+---
+
+= sm.vfiler events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== SM.vfiler.config.move.warn
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when movement of the SnapMirror(R) status configuration from 'from' vFiler to 'to' vFiler fails. The SnapMirror or SnapVault(R) status might show the wrong status entries because the status entries are not copied.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Movement of SnapMirror status configuration failed while moving volumes between vFiler %s to vFiler %s. SnapMirror or SnapVault status might show the wrong status entries.
+*Parameters*::
+*from_vfiler* (STRING): vFiler(tm) from which resources are being moved.
+*to_vfiler* (STRING): vFiler to which resources are being moved.

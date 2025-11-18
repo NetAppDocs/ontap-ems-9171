@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: rpl-src-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rpl.src events
+---
+
+= rpl.src events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rpl.src.lun.old_clone
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the replication source finds a LUN clone in a snapshot that was created on a ONTAP version earlier than 7.3 and was attempting to transfer as a LUN clone instead of a LUN. Transferring a LUN clone in a snapshot that was created on ONTAP version earlier than 7.3 as a LUN clone might lead to divergence on the replication destination.
+*Corrective Action*::
+Only SnapVault(R) transfers that are managed using Ontapi can get into this situation. If SnapVault(R) restore is using a named snapshot transfer, then choose a different named snapshot. If SnapVault(R) is not using named snapshot transfer, then delete the snapshot and try again.
+*Syslog Message*::
+%s transfer from %s:%s to %s:%s is attempting to transfer a LUN clone from a pre ONTAP 7.3 snapshot %s to the destination as a LUN clone.
+*Parameters*::
+*transfer_type* (STRING): Type of the transfer.
+*source_filer* (STRING): System name of the replication source.
+*source_path* (STRING): Path of the qtree where the clones reside.
+*dest_filer* (STRING): System name of the replication destination.
+*dest_path* (STRING): Replication destination path.
+*snapname* (STRING): Name of the backup snapshot of the LUN clone.

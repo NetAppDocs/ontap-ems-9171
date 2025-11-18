@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: nblade-nfsv4writetoolarge-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.nfsv4writetoolarge events
+---
+
+= nblade.nfsv4writetoolarge events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.Nfsv4WriteTooLarge
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a client attempts to write over NFSv4 with an amount of data that is greater than the maximum allowed TCP transfer size. This is an invalid request from the client and the data is not written.
+*Corrective Action*::
+Try the operation again with the number of bytes of data that is less than or equal to the maximum allowed TCP transfer size configured in the server. You can set the write size option in the 'mount' command to the TCP transfer size.
+*Syslog Message*::
+%d bytes of data to be written is greater than the maximum allowed TCP transfer size, which is %d. Data is not written. Associated object type is %s with UUID: %s.
+*Parameters*::
+*opaqueLen* (INT): Number of bytes of data that were to be written.
+*maxtcpxferSize* (INT): Maximum allowed TCP transfer size configured in the server.
+*object_type* (STRING): Type of the resource object under notification.
+*object_uuid* (STRING): UUID of the resource object.

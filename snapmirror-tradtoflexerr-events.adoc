@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: snapmirror-tradtoflexerr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapmirror.tradtoflexerr events
+---
+
+= snapmirror.tradtoflexerr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapmirror.tradToFlexErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the user tries to copy a traditional volume into a flexible volume using SnapMirror(R).
+*Corrective Action*::
+Retry the operation with a traditional volume as the destination.
+*Syslog Message*::
+snapmirror : A traditional volume cannot be copied into a flexible volume.
+*Parameters*::
+(None).

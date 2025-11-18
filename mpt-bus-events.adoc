@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: mpt-bus-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mpt.bus events
+---
+
+= mpt.bus events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mpt.bus.reg
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the message processing technology (MPT) adapter driver registration fails.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s : Bus registration failed.
+*Parameters*::
+*mpt* (STRING): MPT device name for which registration failed.

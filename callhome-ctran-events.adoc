@@ -1,0 +1,54 @@
+---
+sidebar: sidebar
+permalink: callhome-ctran-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.ctran events
+---
+
+= callhome.ctran events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.ctran.gcror.timeout
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Kernel Cluster Services (KCS) / Cluster Transaction Manager (CTRAN) detects that one or more newly selected Group Coordinators (GCs) are taking too long to successfully complete the GC Ready on Reselect procedure. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Call NetApp technical support immediately for further assistance.
+*Syslog Message*::
+Call home for GROUP COORDINATOR ROR TIMEOUT.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multi node ASUP.
+
+== callhome.ctran.jpc.splitbrain
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Kernel Cluster Services (KCS) / Cluster Transaction Manager (CTRAN) detects that there is a disagreement in the cluster - a split brain - about which node has the Join Proposal Coordinator (JPC). If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Call NetApp technical support immediately for further assistance.
+*Syslog Message*::
+Call home for CTRAN JPC SPLIT BRAIN DETECTED.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multi node ASUP.
+
+== callhome.ctran.proposal.stuck
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Kernel Cluster Services (KCS) / Cluster Transaction Manager (CTRAN) detects that the proposal is stuck. Proposal is the transaction between nodes in a cluster. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Call NetApp technical support immediately for further assistance.
+*Syslog Message*::
+Call home for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multi-node ASUP.

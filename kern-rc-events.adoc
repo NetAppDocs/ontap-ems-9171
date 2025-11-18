@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: kern-rc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: kern.rc events
+---
+
+= kern.rc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== kern.rc.errorMsg
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when an error printf is issued by the kernel in the context of executing the /etc/rc file.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s
+*Parameters*::
+*msg* (STRING): The text of the message
+
+== kern.rc.msg
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a printf is issued by the kernel in the context of executing the /etc/rc file.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s
+*Parameters*::
+*msg* (STRING): The text of the message

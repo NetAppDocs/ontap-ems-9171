@@ -1,0 +1,94 @@
+---
+sidebar: sidebar
+permalink: fci-device-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fci.device events
+---
+
+= fci.device events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fci.device.general.reject
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Fibre Channel port transmits a frame that is rejected. The reject frame contains a reason code that can help diagnose the problem. In some cases, this might lead to a solution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The frame transmitted by port %s was rejected by port_id 0x%x with reason code 0x%x '%s', explanation code 0x%x '%s'.
+*Parameters*::
+*port* (STRING): Name of the adapter port that transmitted the rejected frame.
+*identifier* (INTHEX): Destination port identifier of the rejected frame.
+*reasonCode* (INTHEX): Reason code byte provided for the exchange failure.
+*reasonString* (STRING): Reason code string provided for the exchange failure.
+*explanationCode* (INTHEX): Explanation code byte provided for the exchange failure.
+*explanationString* (STRING): Explanation code string provided for the exchange failure.
+
+== fci.device.invalidate.soft.address
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Fibre Channel disk drive takes a soft-assigned address and is being invalidated because soft-assigned addresses are not allowed.
+*Corrective Action*::
+Disk drives can take a soft-assigned address if the shelf IDs conflict. Make sure that all of the shelves in the loop have unique shelf IDs, and if different shelf types are being mixed, be sure to follow the documentation guidelines for mixing shelves on the same loop. After setting the shelves correctly, power-cycle the shelves so that the drives acquire the correct hard-assigned address.
+*Syslog Message*::
+Fibre Channel adapter %s is invalidating disk drive %s, which appears to have taken a soft address. Expected hard address %d (0x%x), assigned soft address %d (0x%x).
+*Parameters*::
+*adapterName* (STRING): Name of the associated Fibre Channel host bus adapter.
+*deviceName* (STRING): Name of the associated Fibre Channel device.
+*hardLoopId* (INT): Hard loop ID that the device attempted to acquire.
+*hardALPA* (INTHEX): Hard AL_PA that the device attempted to acquire.
+*softLoopId* (INT): Soft loop ID that the device acquired.
+*softALPA* (INTHEX): Soft AL_PA that the device acquired.
+
+== fci.device.login.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Fibre Channel port login fails during the PLOGI or PRLI frame exchange. This can happen due to the reception of a Reject or Logout frame coming from the target, or due to a timeout.
+*Corrective Action*::
+Power-cycling the device might allow it to recover from this problem.
+*Syslog Message*::
+A login failure has occurred between Fibre Channel adapter %s and %s device %s, with error subcode %s.
+*Parameters*::
+*adapterName* (STRING): Name of the associated Fibre Channel host bus adapter.
+*deviceType* (STRING): Type of device.
+*deviceName* (STRING): Name of the device.
+*code* (STRING): Error subcode provided by the firmware for the login failure, "N/A" if not provided.
+
+== fci.device.login.reject
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Fibre Channel port transmits a PLOGI frame that is rejected. The reject frame contains a reason code that can help diagnose the problem. In some cases, this might lead to a solution.
+*Corrective Action*::
+None.
+*Syslog Message*::
+The PLOGI transmitted by port %s was rejected by port_id 0x%x with reason code 0x%x '%s', explanation code 0x%x '%s'.
+*Parameters*::
+*port* (STRING): Name of the adapter port that transmitted the PLOGI frame.
+*identifier* (INTHEX): Destination port identifier of the PLOGI frame.
+*reasonCode* (INTHEX): Reason code byte provided for the login failure.
+*reasonString* (STRING): Reason code string provided for the login failure.
+*explanationCode* (INTHEX): Explanation code byte provided for the login failure.
+*explanationString* (STRING): Explanation code string provided for the login failure.
+
+== fci.device.loop.recovery
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a device reports a break in the Fibre Channel loop, which could be due to a bad or unstable connection.
+*Corrective Action*::
+Check the cabling and verify that the disk drives and the shelf Fibre Channel modules on the loop are fully inserted. The problem is being caused by a connection in the loop upstream from the device.
+*Syslog Message*::
+Loop recovery event caused by the device upstream from %s device %s.
+*Parameters*::
+*deviceType* (STRING): Type of device.
+*deviceName* (STRING): Name of the device.

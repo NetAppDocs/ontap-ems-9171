@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: lmgr-sendhome-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lmgr.sendhome events
+---
+
+= lmgr.sendhome events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lmgr.sendhome.veto.bootarg.override
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during an SFO aggregate giveback or relocation. It implies that the automated nondisruptive update procedure will override any veto by the lock-manager, due to the presence of a bootarg.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Because bootarg.gb.override.lmgr.veto is set to true, the ANDU procedure will override any lock-manager veto regarding the giveback of the "%s" aggregate.
+*Parameters*::
+*aggregate* (STRING): Name of the aggregate.

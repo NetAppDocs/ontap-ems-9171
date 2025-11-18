@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: vifmgr-lifdown-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.lifdown events
+---
+
+= vifmgr.lifdown events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.lifdown.noports
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a logical interface (LIF) IP address cannot serve data because there are no eligible ports on which to host the LIF. Thus, this LIF is being marked as down. This means that data access through this LIF will be down until the system can rehost this LIF on an eligible port that becomes available.
+*Corrective Action*::
+This LIF IP address is down because there are no eligible ports capable of serving data for this LIF. To bring this LIF up so that it can serve data, enable one or more eligible ports that can host this LIF. To find the list of eligible ports for this LIF, examine the failover rules for this LIF. In addition to the ports found there, you could add a new port to the failover rule for that LIF.
+*Syslog Message*::
+LIF %s (on virtual server %s), IP address %s, currently cannot be hosted on node %s, port %s, or any of its failover targets, and is being marked as down.
+*Parameters*::
+*vifname* (STRING): Name of the LIF that is marked as down.
+*vsrvid* (STRING): Name of the virtual server identifier on which this LIF resides.
+*vifip* (STRING): The logical interface's IP address that is marked as down.
+*tonode* (STRING): Name of the node to which the LIF currently cannot be hosted.
+*toport* (STRING): Name of the port to which the LIF currently cannot be hosted.

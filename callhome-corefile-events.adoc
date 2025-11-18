@@ -1,0 +1,34 @@
+---
+sidebar: sidebar
+permalink: callhome-corefile-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.corefile events
+---
+
+= callhome.corefile events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.corefile.upload
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when you invoke an AutoSupport for corefile upload. This Autosupport collects and sends only the corefile specified as part of the payload. This autosupport is sent only when the transport is set to http or https. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+corefile upload callhome for %s
+*Parameters*::
+*subject* (STRING): AutoSupport message subject or title for this event.
+*URI* (STRING): Alternate destination for this AutoSupport message. If this is set, this AutoSupport message is delivered to this alternate destination.
+*force* (INT): This flag indicates this AutoSupport message should be generated and delivered even if the AutoSupport configuration is disabled. If "0" then obey the normal "state" and "support" flags. If this is "1", then ignore the "state" and "support" configuration and deliver as if both "state" and "support" are enabled.
+*case_number* (STRING): Case number to be associated with this coredump AutoSupport message.
+*core_filename* (STRING): Coredump filename to be included in the coredump AutoSupport message.
+*aod_initiated* (INT): This flag indicates that NetApp technical support has remotely requested for this AutoSupport message via AutoSupport OnDemand.
+*sequence* (LONGINT): Sequence number to use to generate this Autosupport. Use value zero to auto-generate or a value higher than last used ASUP sequence number.
+*aod_req_id* (STRING): AOD request ID

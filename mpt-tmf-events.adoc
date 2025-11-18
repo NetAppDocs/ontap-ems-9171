@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: mpt-tmf-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mpt.tmf events
+---
+
+= mpt.tmf events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mpt.tmf.req
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system cannot allocate a SCSI Task Management Function (TMF) request in the message processing technology (MPT)adapter driver.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Unable to allocate dedicated TMF request for device %s.
+*Parameters*::
+*mpt* (STRING): MPT device name.

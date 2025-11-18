@@ -1,0 +1,52 @@
+---
+sidebar: sidebar
+permalink: fmmb-mediator-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fmmb.mediator events
+---
+
+= fmmb.mediator events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fmmb.mediator.lckdiskSuggest
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a mailbox disk from the mediator site is selected to be included in the mailbox disk list.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*side* (INT): The mailbox instance side. The value of 0 for local mailbox and the value of 1 for partner mailbox.
+*uuid* (STRING): Disk unique ID of the mailbox disk on mediator site.
+
+== fmmb.mediator.noLckdisk
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when there is no mediator mailbox detected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*side* (INT): The mailbox instance side. The value of 0 for local mailbox and the value of 1 for partner mailbox.
+
+== fmmb.mediator.nullLckdiskSuggest
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when there is null mediator mailbox detected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*side* (INT): The mailbox instance side. The value of 0 for local mailbox and the value of 1 for partner mailbox.

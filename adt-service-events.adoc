@@ -1,0 +1,57 @@
+---
+sidebar: sidebar
+permalink: adt-service-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: adt.service events
+---
+
+= adt.service events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== adt.service.block
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the volume that hosts the destination path where the final audit logs are stored is not accessible or does not have sufficient space and the audit consolidation service is not able to write to the volume. This prevents the audit service from working properly. File access and file audit logging is blocked.
+*Corrective Action*::
+Use the "vserver audit show" command to get the name of the volume that hosts the destination path. Use the "volume show" command to check whether the volume exists, is online, and has sufficient free space. Use the "volume modify" command to increase volume size. Use the "vserver audit modify" command to modify the destination path.
+*Syslog Message*::
+Audit destination directory "%s" of Vserver "%s" is either not accessible or full for the consolidation job type "%s". File-Operations which need to be audited will be denied. File Audit Logging will also fail.
+*Parameters*::
+*destinationPath* (STRING): Destination path.
+*vserverName* (STRING): Name of the Storage Virtual Machine (SVM, formerly Vserver).
+*descriptor* (STRING): Type of consolidation job - CIFS/S3.
+
+== adt.service.ro.filesystem
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the volume that hosts the destination path where the final audit logs are stored is of type Data protection (DP) or Load sharing (LS). These volume types are read-only for the purposes of audit logging and logging will fail.
+*Corrective Action*::
+Use the "vserver audit modify" command to modify the destination volume.
+*Syslog Message*::
+Auditing and file-ops failing on SVM %s, the volume containing %s for consolidation job of type %s is read only filesystem.
+*Parameters*::
+*vserverName* (STRING): Name of the Storage Virtual Machine (SVM, formerly Vserver).
+*destinationPath* (STRING): Destination path.
+*descriptor* (STRING): Type of consolidation job - CIFS/S3.
+
+== adt.service.unblock
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the volume that hosts the destination path where the final audit logs are stored was resized or cleaned up and the audit consolidation service is able to write to the volume thereby unblocking the audit service. File access and file audit logging is unblocked.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Audit destination directory "%s" of Vserver "%s" for consolidation job of type "%s" is now accessible and File-Operations which need to be audited will be unblocked. File Audit Logging will also be unblocked.
+*Parameters*::
+*destinationPath* (STRING): Destination path.
+*vserverName* (STRING): Name of the Storage Virtual Machine (SVM, formerly Vserver).
+*descriptor* (STRING): Type of consolidation job - CIFS/S3.

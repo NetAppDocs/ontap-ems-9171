@@ -1,0 +1,61 @@
+---
+sidebar: sidebar
+permalink: raid-unsupported-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.unsupported events
+---
+
+= raid.unsupported events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.unsupported.bitformat
+*Severity*::
+ERROR
+*Description*::
+This message occurs when configuration management detects that the disk belongs to a 32-bit aggregate, the use of which has been deprecated. The disk is removed from service.
+*Corrective Action*::
+Install a version of Data ONTAP(R) that supports the 32-bit aggregate, or remove the 32-bit aggregate disks.
+*Syslog Message*::
+The label on %s indicates that the disk belongs to a 32-bit aggregate, the use of which has been deprecated.
+*Parameters*::
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*failure_reason* (STRING): Text description of the storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is Local.
+
+== raid.unsupported.cksumtype
+*Severity*::
+ERROR
+*Description*::
+This message occurs when configuration management detects that the disk belongs to a ZCS aggregate, the use of which has been deprecated. The disk is removed from service.
+*Corrective Action*::
+Install a version of Data ONTAP(R) that supports the ZCS aggregate, or remove the ZCS aggregate disks.
+*Syslog Message*::
+The label on %s indicates that the disk belongs to a ZCS aggregate, the use of which has been deprecated.
+*Parameters*::
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*failure_reason* (STRING): Text description of the storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is Local.

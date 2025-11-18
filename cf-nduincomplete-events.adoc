@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: cf-nduincomplete-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.nduincomplete events
+---
+
+= cf.nduincomplete events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.nduIncomplete
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a nondisruptive upgrade fails.
+*Corrective Action*::
+Resolve the reason for the failure and retry the nondisruptive upgrade from the failed step.
+*Syslog Message*::
+(None).
+*Parameters*::
+*token* (STRING): Unique token that identifies an instance of a nondisruptive upgrade.
+*host* (STRING): Name of the node that failed the nondisruptive upgrade.
+*reason* (STRING): Reason for the upgrade failure.

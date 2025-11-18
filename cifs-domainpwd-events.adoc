@@ -1,0 +1,55 @@
+---
+sidebar: sidebar
+permalink: cifs-domainpwd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cifs.domainpwd events
+---
+
+= cifs.domainpwd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cifs.domainpwd.job.deletion
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when disabling of CIFS domain password change schedule fails to delete the job for a Vserver.
+*Corrective Action*::
+Delete the job on the owning node using 'job delete -id ' command.
+*Syslog Message*::
+An attempt to delete the CIFS domain password change job with ID %d for Vserver %s failed. Reason %s.
+*Parameters*::
+*jobid* (LONGINT): CIFS password change job ID that failed to delete.
+*vserver* (STRING): Name of the Vserver for which the password change job failed to delete.
+*reason* (STRING): Reason for the failure to delete the job.
+
+== cifs.domainpwd.job.not.sched
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the scheduled job for a CIFS domain password change fails for a Vserver.
+*Corrective Action*::
+Disable and enable the feature for the Vserver by using the 'vserver cifs domain password schedule modify -is-schedule-enabled false' and 'vserver cifs domain password schedule modify -is-schedule-enabled true' commands. If the error persists, do the following: 1. Disable the scheduling feature for the password change on the Vserver by using the command specified above. 2. Change password manually by using the 'vserver cifs domain password change' command. 3. Contact NetApp technical support.
+*Syslog Message*::
+An attempt to schedule a job to update the domain account password for Vserver %s failed.
+*Parameters*::
+*vserver* (STRING): Name of the Vserver for which the password change job failed.
+
+== cifs.domainpwd.not.updated
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the CIFS domain password update for a Vserver fails.
+*Corrective Action*::
+Try updating the password manually by using the 'vserver cifs domain password change' command. Review recent event logs for additional information. If the error persists, contact NetApp technical support.
+*Syslog Message*::
+An attempt to update the domain account password for Vserver %s failed during %s with the following error: %s
+*Parameters*::
+*vserver* (STRING): Name of the Vserver for which the password update failed.
+*method* (STRING): Method used to update the password.
+*reason* (STRING): Reason for the failure.

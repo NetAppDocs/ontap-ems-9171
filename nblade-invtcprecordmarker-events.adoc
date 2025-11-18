@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: nblade-invtcprecordmarker-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.invtcprecordmarker events
+---
+
+= nblade.invtcprecordmarker events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.invTcpRecordMarker
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a TCP connection is reset due to an invalid TCP record marker in an Open Network Computing/Remote Procedure Call request.
+*Corrective Action*::
+1. Use the IP address from the log to identify the client machine that sent the invalid TCP record marker. 2. Use the TCP port number to determine which service was being requested by the client. 3. Contact the OS vendor for the client machine for a software patch.
+*Syslog Message*::
+Invalid TCP record marker received from remote IP address %s on local port %d. Vserver ID associated with this operation is %d. Invalid reason is %s, invalid record marker is %d.
+*Parameters*::
+*remoteIpAddress* (STRING): IP address of the client machine.
+*localPort* (INT): Local TCP port number that received the data.
+*VirtualServer* (INT): Identifier for the Vserver associated with this operation.
+*reason* (STRING): Reason the record marker was invalid: - "TCP_FRAGMENT" indicates that RPC TCP fragments that are not supported at this time. - "TCP_DATA_LENGTH_OVERFLOW" indicates an oversized record marker; that is, the record marker value was greater than the maximum supported size, currently 1MB. - "TCP_DATA_LENGTH_UNDERFLOW" indicates an undersized record marker; that is, the record marker value was below the minimum supported size, currently 40 bytes.
+*recordMarker* (INT): Actual 32-bit record marker that was received and marked as invalid.

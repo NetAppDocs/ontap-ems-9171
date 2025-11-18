@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sp-servprocd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sp.servprocd events
+---
+
+= sp.servprocd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sp.servprocd.upd.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs in the following cases: 1. Scheduling of Service Processor (SP) firmware update failed. 2. SP firmware update failed after it has been scheduled. 3. Post-update checks have failed.
+*Corrective Action*::
+1. Perform a manual SP firmware update. 2. If the failures persist, contact NetApp technical support.
+*Syslog Message*::
+SP update error: %s.
+*Parameters*::
+*reason* (STRING): SP update error: %s.

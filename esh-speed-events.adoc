@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: esh-speed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: esh.speed events
+---
+
+= esh.speed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== esh.speed.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is an error in the link speed of the disk shelves that are attached to the node. Major causes of this include: 1) Last disk shelf in the loop has the termination switch set improperly. 2) Communication is lost to some number of disk shelves in the loop due to an incorrect speed setting for DS14mk2 disk shelves, a bad cable connection, or unavailable power.
+*Corrective Action*::
+Use the 'fcstat device_map' command to verify that all disk shelves in the loop are still accessible. Check the speed, power, and cabling of all disk shelves in the loop after the disk shelf reporting the autotermination.
+*Syslog Message*::
+Disk shelf previously connected to the OUT port of ESH %s on channels %s disk shelf ID %d is now inaccessible. (Check cables, speed selection.)
+*Parameters*::
+*element* (STRING): ESH module designator (A is the upper module, B is the lower module).
+*channels* (STRING): Channels that have the error if local, PARTNER for high-availability partner, UNUSED if unconnected.
+*shelfID* (INT): Disk shelf ID (1-7) of the disk shelf reporting the error.

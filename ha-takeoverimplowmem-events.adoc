@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ha-takeoverimplowmem-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.takeoverimplowmem events
+---
+
+= ha.takeoverimplowmem events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.takeoverImpLowMem
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the partner node is down; however, due to this node being low on memory, it is currently impossible to perform a takeover.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Takeover of the partner node is impossible due to a low memory situation.
+*Parameters*::
+(None).

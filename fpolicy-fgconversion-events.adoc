@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: fpolicy-fgconversion-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fpolicy.fgconversion events
+---
+
+= fpolicy.fgconversion events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fpolicy.fgconversion.warning
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a FlexVol(R) unmount notification is not sent to the FPolicy(tm) server during a FlexGroup conversion.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failed to send FPolicy unmount notification for FlexVol %s of Vserver %s. FlexGroup MSID: %llu.
+*Parameters*::
+*vserverName* (STRING): Name of the Vserver.
+*volumeName* (STRING): Name of the volume being converted to a FlexGroup.
+*flexgroupMsid* (LONGINTHEX): MSID of the new FlexGroup.

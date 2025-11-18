@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: raid-enable-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.enable events
+---
+
+= raid.enable events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.enable.remote.nvlog
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when RAID sub system enables recording in the partner's NVRAM entries for the log based file system.
+*Corrective Action*::
+Need to replace NVRAM if observed repeatedly during different boot-ups.
+*Syslog Message*::
+Enabled Remote NVRAM logging; status: %d.
+*Parameters*::
+*status* (INT): Remote NVRAM log enable status

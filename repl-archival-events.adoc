@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: repl-archival-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.archival events
+---
+
+= repl.archival events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.archival.ts.failure
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when archival tier scan fails for a cloud snapshot. The cloud snapshot will not be scanned for tiering.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Archival tier scan failure for cloud snapshot "%s" on endpoint %s of volume dsid %llu.
+*Parameters*::
+*snapshot_id* (STRING): Snapshot UUID.
+*ep_uuid* (STRING): Endpoint UUID.
+*volume_dsid* (LONGINT): Volume dsid.

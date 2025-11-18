@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: config-move-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.move events
+---
+
+= config.move events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.move.fail.lost.lif.address
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a logical interface (LIF) migration fails in such a way that there might have been a resulting internal loss of the LIF IP address.
+*Corrective Action*::
+Use the "network interface modify" command to toggle the LIF's "-status-admin" parameter down and then up. This reinstalls the LIF address in the network stack.
+*Syslog Message*::
+LIF migration for IP address %s from port %s to port %s failed because of an internal error: %s.
+*Parameters*::
+*address* (STRING): LIF IPv4 or IPv6 address being moved.
+*migrateFromPort* (STRING): Name of the migrate-from port.
+*migrateToPort* (STRING): Name of the migrate-to port.
+*internalError* (STRING): Internal error message.

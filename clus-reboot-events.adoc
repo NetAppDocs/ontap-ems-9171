@@ -1,0 +1,65 @@
+---
+sidebar: sidebar
+permalink: clus-reboot-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: clus.reboot events
+---
+
+= clus.reboot events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== clus.reboot.internalError
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the cluster reboot detection feature detects an internal software error due to insufficient system resources.
+*Corrective Action*::
+Reboot the node by using the "system node reboot -node <nodename>" command. Contact NetApp technical support if further assistance is needed.
+*Syslog Message*::
+Cluster reboot detection feature detected an internal software error. Error: '%s'.
+*Parameters*::
+*error* (STRING): Internal software error.
+
+== clus.reboot.noBootSequence
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the cluster reboot detection feature fails to obtain the node boot sequence from the /var/BOOT_SEQ file.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Cluster reboot detection feature failed to obtain the node boot sequence from /var/BOOT_SEQ file.
+*Parameters*::
+(None).
+
+== clus.reboot.persistencyError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the cluster reboot detection feature fails to save the node reboot information persistently.
+*Corrective Action*::
+Reboot the node by using the "system node reboot -node nodename" command. Contact NetApp technical support if further assistance is needed.
+*Syslog Message*::
+Cluster reboot detection feature failed to save the node reboot information persistently. Error: '%s'.
+*Parameters*::
+*error* (STRING): Error returned by the save operation.
+
+== clus.reboot.rebootDetected
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a cluster reboot is detected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cluster reboot was detected at %s. Sequence number for the cluster reboot was %d. Estimated beginning time of the cluster reboot was %s.
+*Parameters*::
+*endtime* (STRING): End time of the cluster reboot.
+*sequence* (LONGINT): Sequence number of the detected cluster reboot.
+*begintime* (STRING): Estimated beginning time of the cluster reboot based on the last known time the cluster was operational.

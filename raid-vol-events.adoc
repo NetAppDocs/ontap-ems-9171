@@ -1,0 +1,499 @@
+---
+sidebar: sidebar
+permalink: raid-vol-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.vol events
+---
+
+= raid.vol events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.vol.disk.add.done
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a disk is added to a aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Addition of %s to %s %s%s has completed successfully
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk that has been added to the aggregate.
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate to which the disk is added.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.vol.disk.grow.done
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a drive is grown and is consumed by the owning aggregate by increasing its storage space.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s of %s %s%s has been grown successfully.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the drive that was grown.
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate to which the drive belongs.
+*shelf* (STRING): Shelf identifier where the drive is located.
+*bay* (STRING): Bay within the shelf where the drive is located.
+*vendor* (STRING): Name of the vendor of the drive.
+*model* (STRING): Model string of the drive.
+*firmware_revision* (STRING): Firmware revision number of the drive.
+*serialno* (STRING): Serial number of the drive.
+*disk_type* (INT): Type of drive.
+*disk_rpm* (STRING): Rotational speed of the drive in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the drive is installed.
+*site* (STRING): For a MetroCluster(R) configuration, indicates the site {Local|Remote} where the drive is located. For other configurations, the site is 'Local'.
+
+== raid.vol.failed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system marks an aggregate as "failed". This results from multiple disks missing or failing in the aggregate. This aggregate is already offline or not serving data.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s: Failed due to multi-disk error.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.vol.giveback
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system marks an aggregate as "failed" in preparation for sending the aggregate back to its home (owner) node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Aggregate %s%s: Prepared for giveback operation.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.vol.hybrid
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when Solid State Disks (SSDs) are requested to be added for the first time to a hybrid_enabled aggregate. Addition can be delayed if SSDs need to be zeroed before the addition. If the system reboots or if any of the added SSDs fails before the SSD zeroing is complete, the aggregate will not be converted to a hybrid aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s will become a hybrid %s when the SSDs are added to the aggregate.
+*Parameters*::
+*vol_owner* (STRING): Owner of the hybrid volume.
+*vol_name* (STRING): Name of the hybrid volume.
+*vol_type* (STRING): Volume type.
+
+== raid.vol.inconsist.unmount
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system unmounts an aggregate because of file system inconsistency.
+*Corrective Action*::
+Run wafliron to clear file system inconsistency. Contact NetApp technical support for assistance.
+*Syslog Message*::
+Inconsistent %s %s%s is unmounted.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.vol.mirror.degraded
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a mirror goes into degraded state as a result of the failure of a plex.
+*Corrective Action*::
+To resolve this problem, complete the following steps: 1. Identify the problem volume and failed plex from the system logs. 2. Determine the reason for the plex failure, such as disk drive, disk shelf, or loop failure. 3. Replace any faulty components that you discover. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+%s %s%s is mirrored and one plex has failed. It is no longer protected by mirroring.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.vol.mirror.normal
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a mirror that was degraded as a result of a plex failure is no longer degraded. It is also displayed in the following scenarios: 1. When an unmirrored aggregate is mirrored 2. After a resynchronization.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s is mirrored and plex is in normal state.
+*Parameters*::
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.vol.mixed.raid.type
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an aggregate is converted into a mixed RAID type aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s is now a mixed RAID type aggregate.
+*Parameters*::
+*vol_owner* (STRING): Owner of the volume.
+*vol_name* (STRING): Name of the volume.
+
+== raid.vol.noMirrorSupport
+*Severity*::
+ERROR
+*Description*::
+This event occurs when a mirrored aggregate is detected, but SyncMirror(R) is not supported.
+*Corrective Action*::
+Unmirror the aggregate.
+*Syslog Message*::
+Mirrored %s %s%s is restricted, the system does not support SyncMirror.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.vol.online.req.giveback
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volume could not be brought online because it is being given back to the partner node.
+*Corrective Action*::
+Bring the volume or aggregate online after giveback is complete.
+*Syslog Message*::
+Bringing '%s %s' online failed because giveback is in progress.
+*Parameters*::
+*vol_type* (STRING): Whether it is a volume or aggregate that could not be brought online.
+*vol* (STRING): Name of the volume or aggregate.
+
+== raid.vol.online.req.nso
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volume cannot be brought online because the aggregate containing the volume is part of an ongoing MetroCluster(tm) negotiated switchover source operation.
+*Corrective Action*::
+Wait until the switchover is complete, and then bring the volume online by using the "volume online" command. If the "volume online" command fails with a "snapmirror" or "vol move" error, abort the SnapMirror(R) or volume move operation, and then restart that operation to bring the volume online.
+*Syslog Message*::
+Could not bring volume '%s' online because a MetroCluster negotiated switchover source operation is in progress.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+
+== raid.vol.online.req.relocate
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volume cannot be brought online because the aggregate containing the volume is being relocated to another node.
+*Corrective Action*::
+Bring the volume online after a 'storage aggregate relocation' operation is complete.
+*Syslog Message*::
+Bringing flexible volume '%s' online failed because 'storage aggregate relocation' operation is in progress.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+
+== raid.vol.online.req.sb
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volume cannot be brought online because the aggregate containing the volume is part of an ongoing MetroCluster(tm) switchback operation.
+*Corrective Action*::
+Wait until the switchback is complete, and then bring the volume online by using the "volume online" command. If the "volume online" command fails with a "snapmirror" or "vol move" error, abort the SnapMirror(R) or volume move operation, and then restart that operation to bring the volume online.
+*Syslog Message*::
+Could not bring volume '%s' online because a MetroCluster switchback operation is in progress.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+
+== raid.vol.read.latency.high
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the time taken for the completion of a WAFL(R) disk read operation is more than the specified time limit. This message is logged only on the debug kernel and is used for diagnostic purposes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s, vbn #%llu read latency is higher than the specified time limit of %d seconds.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*vol_owner* (STRING): Owner of the aggregate.
+*vol_name* (STRING): Name of the aggregate.
+*read_vbn* (LONGINT): Volume Block Number of the first block in the read block range that encountered high latency.
+*time_limit* (INT): Time limit, in seconds, that was specified for completion of the read operation.
+
+== raid.vol.reparity.issue
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an aggregate has a reparity issue involving NVRAM. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s has %s.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*issue* (STRING): Type of issue.
+
+== raid.vol.replay.nvram
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when one or more volume needs nvram replay
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Performing raid replay on volume(s)
+*Parameters*::
+(None).
+
+== raid.vol.root.noMirrorSupport
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a mirrored root aggregate is detected, but the system does not support SyncMirror(R).
+*Corrective Action*::
+Unmirror the aggregate.
+*Syslog Message*::
+%s aggregate is mirrored, but the system does not support SyncMirror.
+*Parameters*::
+*owner* (STRING): Owner of the aggregate.
+
+== raid.vol.rootConflictRestrict
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system forcibly restricts a conflicting root volume, based on a comparison of the name and creation times. This situation could occur if the high-availability (HA) mailbox mirror voting information is lost, following recovery from an HA disaster.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume %s%s is being restricted due to a root volume conflict with %s%s.
+*Parameters*::
+*vol_owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*rootvol_owner* (STRING): Owner of the root aggregate.
+*rootvol* (STRING): Name of the root volume.
+
+== raid.vol.rootRestrictLessRecent
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects multiple root volumes at boot time. Only one root volume should exist per system. A root volume with a less recent creation time is restricted by default. This situation could occur in an upgrade/revert scenario whereby stale/old volumes created on the same system are detected.
+*Corrective Action*::
+If the system default is not the intended root volume, you can switch to the intended root volume.
+*Syslog Message*::
+Volume %s%s is being restricted based on its less recent creation time.
+*Parameters*::
+*rootvol_owner* (STRING): Owner of the restricted volume.
+*rootvol* (STRING): Name of the restricted root volume.
+
+== raid.vol.rootSelectMostRecent
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects multiple root volumes at boot time. Only one root volume should exist per system and the system selects the one with the most recent creation time by default. This situation could occur in an upgrade/revert scenario whereby stale/old volumes created on the same system are detected.
+*Corrective Action*::
+If the system default is not the intended root volume, you can switch to the intended root volume.
+*Syslog Message*::
+Volume %s%s is being selected as the default root volume based on its most recent creation time.
+*Parameters*::
+*rootvol_owner* (STRING): Owner of the (default) selected volume
+*rootvol* (STRING): Name of the (default) selected root volume
+
+== raid.vol.state.changed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs the when system detects that the RAID state of an aggregate is changed to either offline or restricted state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*vol_uuid* (STRING): UUID of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*state* (STRING): Aggregate state (offline or restricted).
+
+== raid.vol.state.online
+*Severity*::
+NOTICE
+*Description*::
+This event occurs when the RAID state of an aggregate is moved to the online state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*vol_uuid* (STRING): UUID of the aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.vol.tooBig.allp.reminder
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the total size of all aggregate plexes is too large.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+The sum of all aggregate plex sizes is %s, exceeding the %s maximum. Contact NetApp technical support.
+*Parameters*::
+*volsizes* (STRING): Total size of volumes, excluding the size of all mirrored plexes.
+*limit* (STRING): Maximum capacity, excluding total size of mirrored plexes.
+
+== raid.vol.tooBig.allv.reminder
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the sum of all volume sizes is too large for mirroring.
+*Corrective Action*::
+Physically migrate this aggregate to a node with a larger size limit. If you need assistance, contact technical support.
+*Syslog Message*::
+The sum of all aggregate sizes is %s, exceeding the %s maximum. Contact NetApp technical support.
+*Parameters*::
+*volsizes* (STRING): Total of mirrored volume sizes.
+*limit* (STRING): Maximum total of mirrored volume sizes.
+
+== raid.vol.tooBig.ha.reminder
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the sum of all aggregate sizes is larger than half of the size allowed in a high availability (HA) pair. If the sum of the sizes for this node and its partner exceeds the limit, takeover might fail.
+*Corrective Action*::
+Ensure that the sum of all aggregate sizes on this node and its partner does not exceed the limit. Be careful when creating new aggregates and when adding disks to existing volumes and aggregates not to exceed the limit for both nodes in the HA pair. You might need to remove or destroy some aggregates if the limit is exceeded. Disable HA failover using the 'cf disable' command if you cannot bring the sum of all sizes on both nodes below the limit.
+*Syslog Message*::
+The sum of all aggregate sizes is %s, exceeding %s (half of the maximum in an HA pair). If the sum of all aggregate sizes on this node and its partner exceeds the %s maximum, takeover might fail.
+*Parameters*::
+*volsizes* (STRING): Total of mirrored aggregate sizes.
+*halfpoint* (STRING): Maximum total of mirrored sizes allocated to one node in the HA pair.
+*limit* (STRING): Maximum limit of mirrored aggregate sizes.
+
+== raid.vol.tooBig.offline
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the aggregate cannot be brought online because it is too large.
+*Corrective Action*::
+Physically migrate this aggregate to a node with a larger size limit. If you need assistance, contact technical support.
+*Syslog Message*::
+%s %s%s cannot be brought online because its size, %s, is larger than the maximum allowed. Contact NetApp technical support.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*volsize* (STRING): Actual volume size.
+*limit* (STRING): Maximum volume size.
+
+== raid.vol.tooBig.reminder
+*Severity*::
+ERROR
+*Description*::
+This event is issued as a reminder that the aggregate size is too large.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+%s size for %s%s %s exceeds limit %s
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*volsize* (STRING): The actual volume size
+*limit* (STRING): The maximum volume size
+
+== raid.vol.undestroy.info.missing
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is generated when undestroy info raidarea object is missing from one or more disk of a volume or an aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*disk_info* (STRING): The formatted information of the disk
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.vol.unprotected.remotesyncmirror
+*Severity*::
+ALERT
+*Description*::
+This event is issued when we detect a mirrored aggregate with a plex that is not online. In a remotesyncmirror configuration the aggregate won't be available if the plex is not accessible.
+*Corrective Action*::
+Bring online the plex that is now offline.
+*Syslog Message*::
+%s %s%s is mirrored and one plex is not online. The volume will not be available if a takeover occurs and the online plex is not accessible to the partner node.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.vol.volinfo.mismatch
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a mismatch is detected for both copies of the volinfo block during an attempt to mount a SyncMirror aggregate. Data corruption is suspected. The aggregate cannot be mounted. The volinfo block is the superblock in the WAFL(R) file system. Two copies of the volinfo block are stored in blocks 1 and 2 of the file system. The two copies are the same except when there is an unclean shutdown of the file system, for example, after a panic. In a SyncMirror aggregate, all used blocks are mirrored in two plexes. Volinfo blocks are written so that either both copies of block 1 are the same in two plexes, or both copies of block 2 are the same in two plexes at any point in time. In an unexpected case when that is not true, it is not possible to determine which copy of the volinfo block points to a consistent state of the file system. The message describes a mismatch for only one copy of the volinfo block. A pair of messages is always issued to describe the mismatch for both copies of the volinfo block, because a mismatch for only one copy is not an unusual event.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+%s %s%s: volinfo blocks (VBN %llu) do not match in two plexes. %s: disk %s, magic 0x%x, CP count %d, checksum %u; %s: disk %s, magic 0x%x, CP count %d, checksum %u.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*vbn* (LONGINT): Volume block number of the volinfo block (1 or 2).
+*plex1* (STRING): First plex name.
+*disk1* (STRING): Name of the disk in the first plex.
+*magic1* (INT): Identifier of the block type in the first plex. It should be 0xdab8fbab for the volinfo block.
+*CP_count1* (INT): Consistency point count in the first plex.
+*checksum1* (INT): Block checksum in the first plex.
+*plex2* (STRING): Second plex name.
+*disk2* (STRING): Name of the disk in the second plex.
+*magic2* (INT): Identifier of the block type in the second plex. It should be 0xdab8fbab for the volinfo block.
+*CP_count2* (INT): Consistency point count in the second plex.
+*checksum2* (INT): Block checksum in the second plex.
+
+== raid.vol.write.latency.high
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the time taken for the completion of a WAFL(R) tetris write operation is more than the specified time limit. This message is logged only on the debug kernel and is used for diagnostic purposes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s, vbn #%llu write latency is higher than the specified time limit of %d seconds.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*vol_owner* (STRING): Owner of the aggregate.
+*vol_name* (STRING): Name of the aggregate.
+*write_vbn* (LONGINT): Volume Block Number of the first block in the write block range that encountered high latency.
+*time_limit* (INT): Time limit, in seconds, that was specified for completion of the write operation.

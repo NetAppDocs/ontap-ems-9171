@@ -1,0 +1,63 @@
+---
+sidebar: sidebar
+permalink: snapmirror-status-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapmirror.status events
+---
+
+= snapmirror.status events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapmirror.status.dstUpdateSnapErr
+*Severity*::
+ERROR
+*Description*::
+This event is generated when ONTAP cannot update the latest base snapshot for the replication destination. Insufficient disk space on the root volume is the most common reason for this failure.
+*Corrective Action*::
+Check if the root volume is out of disk space.
+*Syslog Message*::
+ONTAP could not update the registry with latest snapshot for the destination %s.
+*Parameters*::
+*dstPath* (STRING): The destination path
+
+== snapmirror.status.illegalSrcPath
+*Severity*::
+ERROR
+*Description*::
+This message occurs on a replication source appliance, when ONTAP encounters invalid source path specification while collecting replication statistics.
+*Corrective Action*::
+Check snapmirror.conf file for any typing mistakes. Typically path names are specified as "filer:volume" or "filer:/vol/volume/qtree". Check snapmirror.conf man page for discussion of path specifications.
+*Syslog Message*::
+Illegal source path: %s.
+*Parameters*::
+*srcPath* (STRING): The Source path.
+
+== snapmirror.status.noBaseSnapshot
+*Severity*::
+ERROR
+*Description*::
+This message occurs on replication destination appliance when ONTAP can not find the base snapshot used by a replication relation. ONTAP may run into this situation while updating replication statistics at the end of a successful transfer.
+*Corrective Action*::
+This is most likely a temporary error. Please try the operation again. Check status of the destination volume.
+*Syslog Message*::
+Can not find base snapshot for %s.
+*Parameters*::
+*dstPath* (STRING): The destination path.
+
+== snapmirror.status.updateStatusErr
+*Severity*::
+ERROR
+*Description*::
+This event is generated when ONTAP cannot update the ONTAP system registry with upgraded snapmirror status information. Insufficient disk space on the root volume is the most common reason for this failure.
+*Corrective Action*::
+Check if the root volume is out of disk space by issuing the 'df' command from the appliance CLI. If the root volume is full, either free up space or add more disks on the volume.
+*Syslog Message*::
+ONTAP could not update the ONTAP system registry with upgraded snapmirror status keys.
+*Parameters*::
+(None).

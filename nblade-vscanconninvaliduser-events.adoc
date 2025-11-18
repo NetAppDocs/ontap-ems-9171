@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: nblade-vscanconninvaliduser-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.vscanconninvaliduser events
+---
+
+= nblade.vscanconninvaliduser events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.vscanConnInvalidUser
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during a client attempt to establish a vscan connection, when the logged-in user of that client is not found in the list of allowed users.
+*Corrective Action*::
+Ensure that the mentioned user name is configured in one of the active vscan scanner pools. Use the "vserver vscan scanner pool show-active" command to view the currently active scanner pool configuration.
+*Syslog Message*::
+For Vserver "%s", the vscan connection request coming from client "%s" is rejected because the logged-in user "%s" is not configured in any of the Vserver active scanner pools.
+*Parameters*::
+*vserverName* (STRING): Vserver associated with this operation.
+*scannerIp* (STRING): IP address of the client attempting to establish a vscan connection.
+*userName* (STRING): User name of the client attempting to establish a vscan connection.

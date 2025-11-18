@@ -1,0 +1,80 @@
+---
+sidebar: sidebar
+permalink: rdma-rlib-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rdma.rlib events
+---
+
+= rdma.rlib events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rdma.rlib.adv.failed
+*Deprecated*::
+Deprecated as of ONTAP 9.1 because this platform is no longer supported.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system fails to start the advertisement service for the high-availability (HA) interconnect.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Failed to start the advertisement service on HA interface %s.
+*Parameters*::
+*if_name* (STRING): Name.
+
+== rdma.rlib.config.if.failed
+*Deprecated*::
+Deprecated as of ONTAP 9.1 because this platform is no longer supported.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when configuration for the high-availability (HA) interface fails.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Failed to configure the HA interface %s.
+*Parameters*::
+*if_name* (STRING): Interface name.
+
+== rdma.rlib.get.if.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot find high availability (HA) capable interface.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+No HA Interconnect capable interface was found.
+*Parameters*::
+(None).
+
+== rdma.rlib.listen.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system fails to start the listener for the HA interface.
+*Corrective Action*::
+Verify that link status is up by running the "metrocluster interconnect adapter show" command. Also check the FC-VI connectivity between DR partners. If the issue persists, contact NetApp technical support.
+*Syslog Message*::
+Failed to start listener for the HA interconnect on interface %s.
+*Parameters*::
+*if_name* (STRING): Name.
+
+== rdma.rlib.queue.full
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the send or receive queue of a Queue Pair (QP) is full.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s queue of QP %s is full.
+*Parameters*::
+*send_or_recv* (STRING): Send or receive queue of a QP.
+*qp_name* (STRING): QP name.

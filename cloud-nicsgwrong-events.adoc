@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cloud-nicsgwrong-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cloud.nicsgwrong events
+---
+
+= cloud.nicsgwrong events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cloud.NicSGWrong
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the network interface card(NIC) port e0d doesn't have the correct security group to talk to the cloud database endpoint.
+*Corrective Action*::
+Verify that the NIC port e0d has the correct external security group to talk to the cloud database endpoint. Once the issue is addressed, take over and give back the node.
+*Syslog Message*::
+NIC port e0d doesn't have the correct external security group to talk to the cloud database endpoint "%s" on this ONTAP Cloud instance.
+*Parameters*::
+*db_endpoint* (STRING): Name of the cloud database endpoint associated with this ONTAP Cloud instance.

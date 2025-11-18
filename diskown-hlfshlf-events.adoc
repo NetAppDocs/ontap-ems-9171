@@ -1,0 +1,52 @@
+---
+sidebar: sidebar
+permalink: diskown-hlfshlf-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.hlfshlf events
+---
+
+= diskown.hlfshlf events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.hlfShlf.assignStatus
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when half-shelf based drive assignment is enabled or disabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Half-shelf based automatic drive assignment for shelf "%d" is "%s".
+*Parameters*::
+*shelf_id* (INT): Shelf identifier.
+*state* (STRING): Half-shelf based automatic drive assignment state.
+
+== diskown.hlfShlf.invalidShlf
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the controller cannot automatically assign disks to a shelf using half shelf-based disk assignment, either because the shelf is offline, or is temporarily unavailable and therefore cannot be queried for the information required to properly divide the disks for assignment to the controller. This can also occur when multiple shelves in a cluster have the same shelf ID. Automatic half shelf-based disk assignment is bypassed for disks in this shelf until the shelf is back online or any shelf ID conflicts within a cluster are resolved.
+*Corrective Action*::
+Use the "storage shelf show" command to ensure that the specified shelf is online and to ensure connectivity from the controller to all paths to the shelf. If there are multiple shelves in a cluster with the same same shelf ID, resolve that and ensure that shelves in that cluster have different shelf IDs.
+*Syslog Message*::
+Half shelf based disk assignment will be skipped for shelf "%d" because the shelf is in invalid state.
+*Parameters*::
+*shelf_id* (INT): Shelf identifier.
+
+== diskown.hlfShlf.MultiOwners
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the controller cannot automatically assign disks using half shelf based disk assignment because disks in a shelf are assigned to multiple systems in a conflicting manner.
+*Corrective Action*::
+1) Find all of the disks belonging to the shelf specified by using the "storage disk show" command. 2) View the list of systems by using the "run local disk show -v" command. 3) Ensure that disks assigned on lower half bays of the shelf are owned by a single owner. Similarly, ensure that disks assigned on higher half bays of that shelf are owned by a single owner. Ensure that disks assigned on lower half bays have a different owner than disks assigned on higher half bays.
+*Syslog Message*::
+The controller cannot automatically assign disks using half shelf based disk assignment because disks in shelf "%d" are assigned to multiple systems in a conflicting manner.
+*Parameters*::
+*shelf_id* (INT): Shelf identifier.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: zapi-sf-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: zapi.sf events
+---
+
+= zapi.sf events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== zapi.sf.up.ready
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the M-host layer is operational and has notified the high-availability (HA) subsystem, which can then proceed with certain storage failover operations, such as giveback.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ZAPI: system node stable after startup.
+*Parameters*::
+(None).

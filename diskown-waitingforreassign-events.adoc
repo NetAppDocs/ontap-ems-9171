@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: diskown-waitingforreassign-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.waitingforreassign events
+---
+
+= diskown.waitingforreassign events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.WaitingForReassign
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a giveback is occurring and the "storage disk reassign" is in progress. The giveback must wait until the reassign operation is complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Waiting for ownership of the partner disks to be updated as a result of a "storage disk reassign" command.
+*Parameters*::
+(None).

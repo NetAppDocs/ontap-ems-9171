@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: securepurge-aborted-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: securepurge.aborted events
+---
+
+= securepurge.aborted events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== securepurge.aborted
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a secure purge operation is aborted in a flexible volume.
+*Corrective Action*::
+Correct the cause of the error, and then retry the operation.
+*Syslog Message*::
+Secure purge operation is aborted on the volume '%s' in Vserver '%s'. Error: '%s'.
+*Parameters*::
+*volumename* (STRING): Name of the volume.
+*vservername* (STRING): Name of the Vserver.
+*desc* (STRING): Reason for the failure.

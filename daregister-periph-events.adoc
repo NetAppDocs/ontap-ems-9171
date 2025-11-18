@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: daregister-periph-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: daregister.periph events
+---
+
+= daregister.periph events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== daregister.periph.lost
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a peripheral device is lost during registration.
+*Corrective Action*::
+Check whether the device is connected correctly.
+*Syslog Message*::
+Lost peripheral device during registration in path %s with respect to target address %s.
+*Parameters*::
+*path* (STRING): Device path.
+*targ_addr* (STRING): Target address.

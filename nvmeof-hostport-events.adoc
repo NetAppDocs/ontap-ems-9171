@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: nvmeof-hostport-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvmeof.hostport events
+---
+
+= nvmeof.hostport events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvmeof.hostport.clear
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a node shelf is no longer cabled incorrectly from a port that is not a storage port. Indicates condition has cleared.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Shelf on node %s with SN %s is no longer cabled incorrectly from a port that is not a storage port.
+*Parameters*::
+*node_name* (STRING): Host name connected to the cable.
+*shelf_sn* (STRING): Serial number of the shelf connected to the cable.
+
+== nvmeof.hostport.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the host port is incorrectly cabled to the shelf.
+*Corrective Action*::
+Reconnect the host port to a Storage Ethernet port.
+*Syslog Message*::
+Port %s is not configured as a Storage Ethernet port on node %s. It is incorrectly cabled to Shelf with SN %s.
+*Parameters*::
+*host_port* (STRING): Host port connected to the cable.
+*node_name* (STRING): Host name connected to the cable.
+*shelf_sn* (STRING): Serial number of the shelf connected to the cable.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: disk-unabletorewritedata-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.unabletorewritedata events
+---
+
+= disk.unabletorewritedata events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.unableToRewriteData
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when Data ONTAP(R) receives too many errors reading from a particular location on an ATA disk drive, but its attempt to rewrite the data to the disk drive fails.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Difficulty reading disk drive %s with the command %s; could not rewrite the data.
+*Parameters*::
+*diskName* (STRING): Name of the disk drive with the problem.
+*command* (STRING): SCSI command that reported a problem.

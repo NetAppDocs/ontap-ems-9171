@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: nfs-tlscreateatnbladefailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nfs.tlscreateatnbladefailed events
+---
+
+= nfs.tlscreateatnbladefailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nfs.TLSCreateAtNbladeFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the creation of TLS (Transport Layer Security) configuration fails at network component for NFS.
+*Corrective Action*::
+Disable TLS and enable again with the help of command "nfs tls interface".
+*Syslog Message*::
+Failed to replicate TLS (Transport Layer Security) configuration at network component for SVM:"%s", LIF:"%s", Certificate UUID:"%s".
+*Parameters*::
+*vsName* (STRING): Storage virtual machine (SVM name.
+*lifIpaddress* (STRING): LIF IP.
+*certificateUuid* (STRING): Universal unique identifier (UUID) of TLS certificate.

@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: dcs-framework-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dcs.framework events
+---
+
+= dcs.framework events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dcs.framework.disabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the DCS framework has been disabled on this node. This node will not allow any updates to any counters stored in the DCS framework on this node. However, the values for existing counters may be retrieved for display purposes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The DCS framework is disabled on this node.
+*Parameters*::
+(None).
+
+== dcs.framework.enabled
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the DCS framework has been enabled on this node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The DCS framework is enabled on this node.
+*Parameters*::
+(None).

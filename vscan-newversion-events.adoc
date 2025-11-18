@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: vscan-newversion-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vscan.newversion events
+---
+
+= vscan.newversion events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vscan.newVersion.allocated
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Vscan version mechanism allocates a new version-ID corresponding to the Vscan server version.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Vscan version mechanism added new version-ID for Vserver '%s' corresponding to vendor '%s', version '%s'.
+*Parameters*::
+*vserverName* (STRING): Name of the Vserver.
+*vendor* (STRING): Vscan server vendor name.
+*version* (STRING): Vscan server version.

@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: flexcache-softevict-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: flexcache.softevict events
+---
+
+= flexcache.softevict events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== flexcache.softEvict.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when soft evicting a cache volume fails. The cache volume might therefore present stale data to its clients.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Soft eviction of constituent DSID %lu failed.
+*Parameters*::
+*constituentDsid* (LONGINT): Constituent's DSID.
+
+== flexcache.softEvict.success
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs on successfully soft evicting the cache volume.
+*Corrective Action*::
+No Action Required.
+*Syslog Message*::
+Constituent DSID %lu is successfully soft evicted.
+*Parameters*::
+*constituentDsid* (LONGINT): Constituent's DSID.

@@ -1,0 +1,63 @@
+---
+sidebar: sidebar
+permalink: adt-stgvol-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: adt.stgvol events
+---
+
+= adt.stgvol events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== adt.stgvol.info.notavailable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when retreiving staging volume information fails. This might be due to an internal system problem or the staging volume creation failed.
+*Corrective Action*::
+Contact Cserver admin to check if staging volume has been created.
+*Syslog Message*::
+Audit subsystem internal error: Either staging volume %s is not created or unable to retrieve staging volume information.
+*Parameters*::
+*volName* (STRING): The Name of the staging volume.
+
+== adt.stgvol.missing
+*Severity*::
+ALERT
+*Description*::
+This message occurs when retrieving staging volume information fails. Either the staging volume was not created or information cannot be retrieved due to some internal error. As a result, auditing is not performed for operations on the corresponding volume.
+*Corrective Action*::
+Use the command "vserver audit repair" in diagnostic mode to correct the problem.
+*Syslog Message*::
+Audit subsystem internal error: Staging volume "%s" is either not created or not available.
+*Parameters*::
+*volName* (STRING): Name of the volume that is missing.
+
+== adt.stgvol.nospace
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a staging volume does not have enough space and the audit service tries to create a new staging file or directory for writing audit logs.
+*Corrective Action*::
+Check the volume for older staging files that are no longer required and remove those files. Then retry the operation.
+*Syslog Message*::
+Audit subsystem internal error: Staging volume %s is full.
+*Parameters*::
+*volName* (STRING): Name of the volume that is full.
+
+== adt.stgvol.offline
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a staging volume is offline and the audit service tries to write an audit log into the staging volume.
+*Corrective Action*::
+Contact the Cserver administrator to set the staging volume status to online.
+*Syslog Message*::
+Audit subsystem internal error: Staging volume %s is offline.
+*Parameters*::
+*volName* (STRING): The Name of the volume which is offline.

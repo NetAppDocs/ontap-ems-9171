@@ -1,0 +1,99 @@
+---
+sidebar: sidebar
+permalink: hotplug-insert-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: hotplug.insert events
+---
+
+= hotplug.insert events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== hotplug.insert.badCard.type
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the module type does not match the system's record for this slot.
+*Corrective Action*::
+Use a replacement module of the same type.
+*Syslog Message*::
+%s module insertion failed in slot %s of node %s because the module type does not match the system's record for this slot.
+*Parameters*::
+*card* (STRING): Name of the module.
+*slot* (STRING): Number of the slot.
+*node* (STRING): Name of the node.
+
+== hotplug.insert.badCard.ver
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the module revision does not match the system's record for this slot.
+*Corrective Action*::
+Use a replacement module of the same board revision.
+*Syslog Message*::
+%s module insertion failed in slot %s of node %s because the module revision does not match the system's record for this slot.
+*Parameters*::
+*card* (STRING): Name of the module.
+*slot* (STRING): Number of the slot.
+*node* (STRING): Name of the node.
+
+== hotplug.insert.illegal_card
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the module inserted is not supported.
+*Corrective Action*::
+Use vendor-approved modules.
+*Syslog Message*::
+%s module insertion failed in slot %s of node %s because the module is not supported.
+*Parameters*::
+*card* (STRING): Name of the module.
+*slot* (STRING): Number of the slot.
+*node* (STRING): Name of the node.
+
+== hotplug.insert.link_not_up
+*Severity*::
+ALERT
+*Description*::
+This message occurs when link on module fails to initialize after module is powered on.
+*Corrective Action*::
+Reinsert the module and try command again. If problem persists, contact NetApp technical support for assistance.
+*Syslog Message*::
+%s module insertion failed in slot %s of node %s because the link on module failed to initialize.
+*Parameters*::
+*card* (STRING): Name of the module.
+*slot* (STRING): Number of the slot.
+*node* (STRING): Name of the node.
+
+== hotplug.insert.no_power_up
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a module does not initialize after it is powered on.
+*Corrective Action*::
+Reinsert the module and try the command again. If the problem persists, contact NetApp technical support for assistance.
+*Syslog Message*::
+%s module insertion failed in slot %s of node %s because module failed to initialize.
+*Parameters*::
+*card* (STRING): Name of the module.
+*slot* (STRING): Number of the slot.
+*node* (STRING): Name of the node.
+
+== hotplug.insert.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when module insertion is successful.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s module insertion is successful in slot %s of node %s.
+*Parameters*::
+*card* (STRING): Name of the module.
+*slot* (STRING): Number of the slot.
+*node* (STRING): Name of the node.

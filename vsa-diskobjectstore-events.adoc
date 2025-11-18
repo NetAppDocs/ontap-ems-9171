@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: vsa-diskobjectstore-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsa.diskobjectstore events
+---
+
+= vsa.diskobjectstore events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsa.diskObjectStore.cfg.sync
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects that a disk object store configuration is not synchronized between both nodes in a shared-storage High-Availability (HA) pair.
+*Corrective Action*::
+Use the "system node virtual-machine disk-object-store" commands to synchronize the object store configuration.
+*Syslog Message*::
+Object store configuration %s synchronization issue. Object store "%s" on node "%s" is not synchronized. Details: %s.
+*Parameters*::
+*detail* (STRING): The disk object store configuration for shared disks must be identical on both nodes in an HA pair. The system attempts to keep them synchronized when the object store configuration is created, deleted, or modified. However, under unusual circumstances, the synchronization may be unsuccessful. Manual intervention is required to synchronize the configuration.
+*object_store_name* (STRING): Object store name.
+*partner* (STRING): Partner node name.
+*synchronization_details* (STRING): Synchronization state details. For example, the configuration that is missing on the partner, or a list of fields that do not have the same value.

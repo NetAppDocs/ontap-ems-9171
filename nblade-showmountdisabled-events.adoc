@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nblade-showmountdisabled-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.showmountdisabled events
+---
+
+= nblade.showmountdisabled events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nblade.showmountdisabled
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the "showmount" command is triggered by client, but the command is disabled on the NFS server. The "showmount" command enables NFS clients to see the Vserver's NFS exports list.
+*Corrective Action*::
+Use the "nfs modify -showmount enabled" command to enable the feature. Use the "nfs show -fields showmount" command to verify that, if the showmount feature was enabled successfully on the NFS server.
+*Syslog Message*::
+Showmount is disabled on Vserver %d.
+*Parameters*::
+*vserverid* (INT): Identifier for the Vserver associated with this operation.

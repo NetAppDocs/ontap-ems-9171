@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: revertto-start-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: revertto.start events
+---
+
+= revertto.start events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== revertTo.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a revert to process is started.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Starting revert to %s.
+*Parameters*::
+*target_release* (STRING): Target release name to which the revert process was started.

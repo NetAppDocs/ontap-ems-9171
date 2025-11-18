@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: hotplug-generic-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: hotplug.generic events
+---
+
+= hotplug.generic events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== hotplug.generic.busy_not_ready
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a module replacement or removal command fails because the driver or system is busy. Hot plug functionality is not available at this time.
+*Corrective Action*::
+Try the command again after a few minutes. If the system remains busy, it is an internal error. Contact NetApp technical support for assistance.
+*Syslog Message*::
+%s command failed for module %s in slot %s of node %s because the driver or system is busy.
+*Parameters*::
+*command* (STRING): Name of the command.
+*card* (STRING): Name of the module.
+*slot* (STRING): Number of the slot.
+*node* (STRING): Name of the node.

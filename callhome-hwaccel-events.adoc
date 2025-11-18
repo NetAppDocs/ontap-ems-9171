@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: callhome-hwaccel-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.hwaccel events
+---
+
+= callhome.hwaccel events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.hwaccel.qat.dump
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the hardware accelerator gets certain threshold number of errors and collects related diagnostic data concerning the device. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.hwaccel.reset
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the hardware accelerator is being reset and collects related diagnostic data concerning the device. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

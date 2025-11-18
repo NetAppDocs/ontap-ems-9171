@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: token-node-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: token.node events
+---
+
+= token.node events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== token.node.max.count.reached
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the maximum number of tokens per node is reached. Tokens cannot be created in the node unless some existing tokens expire.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Tokens cannot be created on this node because the maximum number of tokens per node has been reached.
+*Parameters*::
+(None).
+
+== token.node.out.of.quorum
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a node goes out of quorum. Any references on a token by that node will be dropped.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+All token references from node (ID - %s) are dropped because the node went out of quorum.
+*Parameters*::
+*blade_id* (STRING): Blade ID of the node that went out of quorum.

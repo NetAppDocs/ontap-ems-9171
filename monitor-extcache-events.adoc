@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: monitor-extcache-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.extcache events
+---
+
+= monitor.extcache events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.extCache.failed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the monitor detects the WAFL(R) external cache subsystem (FlexScale) has failed and is no longer available for use.
+*Corrective Action*::
+Consult the system logs to determine the original cause of the error.
+*Syslog Message*::
+FlexScale WAFL external cache is unavailable due to an earlier fatal error.
+*Parameters*::
+(None).

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: dump-max-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dump.max events
+---
+
+= dump.max events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dump.max.limit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when new dump or restore sessions cannot be started because the limit for this platform has been reached.
+*Corrective Action*::
+Dump/restore operation limit has been reached for this platform.
+*Syslog Message*::
+Maximum limit of dump/restore sessions (%d) has been reached.
+*Parameters*::
+*max_limit* (INT): Maximum dump and restore session limits.

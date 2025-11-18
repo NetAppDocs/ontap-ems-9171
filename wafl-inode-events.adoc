@@ -1,0 +1,63 @@
+---
+sidebar: sidebar
+permalink: wafl-inode-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.inode events
+---
+
+= wafl.inode events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.inode.cache.highLoad
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the in-memory inode cache is under high load and fully utilized. The system will likely experience high cache miss rates and some file system operations might experience delays due to increased disk activity, but that is the extent of the problem.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).
+
+== wafl.inode.fileAttr.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system discover that an inode to file attribute translation is unsuccessful due to an unexpected file type. The fh parameters represent the filehandle.
+*Corrective Action*::
+The filesystem being accessed is inconsistent. If the filesystem is read-write and if the system is booted in read-only mode then reboot in normal (read-write) mode and run wafliron as soon as possible to clear this inconsistency. For all other cases contact NetApp technical support.
+*Syslog Message*::
+wafl_inode_to_file_attr: unexpected file type 0%o in %s {x%x %d %d %d %d}.
+*Parameters*::
+*type* (INT): The unexpected type
+*ino_type* (STRING): The inode type
+*fh0* (INT): fh[0]
+*fh1* (INT): fh[1]
+*fh2* (INT): fh[2]
+*fh3* (INT): fh[3]
+*fh4* (INT): fh[4]
+
+== wafl.inode.fill.noDisblRsvFO
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system cannot disable the fill reservation for a file or LUN. This happens when the file or LUN is the destination of an ongoing file operation that is currently in the Allocation_Map phase.
+*Corrective Action*::
+Verify that the indicated file operation has completed the Allocation_Map phase and rerun the original command.
+*Syslog Message*::
+Cannot disable fill reservation for inode %u in volume %s%s%s due to %s job %s-%u.
+*Parameters*::
+*ino* (INT): Inode number.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*type* (STRING): Operation type: file copy, file move, LUN copy, or LUN move.
+*job_uuid* (STRING): Job UUID of the file operation.
+*file_index* (INT): File index of the file operation.

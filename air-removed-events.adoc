@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: air-removed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: air.removed events
+---
+
+= air.removed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== air.removed.remote.lck.entry
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when there is an inconsistency in the remote lock entry metafile. The inconsistent entry is removed upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Remote lock entry %s certification failed: expression %s, source %s, state (%s).
+*Parameters*::
+*entry* (STRING): Lock entry type and origin file ID pair describing the entry.
+*rlem* (STRING): Describes the metafile to which this lock entry belongs to.
+*condition* (STRING): Initial metadata validation test that failed.
+*source* (STRING): Location of the failing metadata validation test.
+*state* (STRING): Description of the remote lock entry metafile metadata state that was found to be inconsistent.

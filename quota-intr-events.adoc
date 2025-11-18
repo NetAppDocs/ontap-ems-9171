@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: quota-intr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: quota.intr events
+---
+
+= quota.intr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== quota.intr.boot.fschk
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when previous quota initialization was interrupted due to a system reboot or file system consistency checking.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL: Reboot or file system consistency checking interrupted quota initialization on %s %s%s%s%s.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*name* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume in cases in which the volume name alone is insufficient.

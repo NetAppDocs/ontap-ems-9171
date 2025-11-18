@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: san-nosamenamediscsiport-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.nosamenamediscsiport events
+---
+
+= san.nosamenamediscsiport events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.NoSameNamedIscsiPort
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a MetroCluster(TM) configuration cannot be implemented, because the destination cluster for an IP logical interface (LIF) does not appear to contain a port with the same name as the one used within the source cluster.
+*Corrective Action*::
+Check whether the broadcast domain of the destination cluster network port belongs to the IPspace configured for the destination SVM by using the "network ipspace show -vservers <vserver_name> -ports < same_named_network_port_name>" command. Verify that the destination cluster network port is up by using the "network port show -fields link" command. After the destination cluster network port is up, initiate the LIF placement at the destination cluster by using the "metrocluster check lif repair-placement -vserver <vserver_name> -lif <lif_name>" command in the source cluster. Verify that the LIF placement succeeded by using the "metrocluster check lif show -vserver <vserver_name> -lif <lif_name>" command.
+*Syslog Message*::
+Destination cluster does not contain a port with the same name as network port %s in the source cluster that is hosting %s LIF %s on primary SVM %s.
+*Parameters*::
+*home_port* (STRING): Name of the source cluster network port.
+*data_protocol* (STRING): Data protocol of the LIF.
+*lif* (STRING): Name of the IP LIF.
+*vserver* (STRING): Name of the primary SVM.

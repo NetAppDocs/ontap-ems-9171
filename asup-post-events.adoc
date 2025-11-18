@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: asup-post-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: asup.post events
+---
+
+= asup.post events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== asup.post.drop
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the AutoSupport(R) mechanism quits trying to post to the NetApp URL after having retried for the specified number of times.
+*Corrective Action*::
+Use the "system node autosupport check show-details" command to check for connectivity or certificate errors. If the connectivity check shows no errors and if the problem persists, contact NetApp technical support for further assistance.
+*Syslog Message*::
+AutoSupport message (%s) was not posted to NetApp. The system will drop the message.
+*Parameters*::
+*subject* (STRING): AutoSupport message title.

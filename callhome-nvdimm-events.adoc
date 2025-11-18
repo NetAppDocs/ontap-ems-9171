@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: callhome-nvdimm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.nvdimm events
+---
+
+= callhome.nvdimm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.nvdimm.cecc
+*Severity*::
+ERROR
+*Description*::
+This event occurs when excessive correctable error-correcting code (ECC) memory errors are reported by the NVDIMM. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Use the "system environment sensors show -hidden true" clustershell command to view the NVDIMM sensors values. Contact NetApp technical support for further assistance.
+*Syslog Message*::
+Call home for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.nvdimm.failure
+*Severity*::
+EMERGENCY
+*Description*::
+This event occurs when the NVDIMM card has experienced a critical hardware failure. The system may shut down to avoid potential data loss. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Use the following clustershell commands to get more information about the failure: 1. "event log show -node localhost -event nvdimm*" 2. "system fru-check show -node localhost -ftype nvdimm -instance" Contact NetApp technical support to replace the NVDIMM module.
+*Syslog Message*::
+Call home for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

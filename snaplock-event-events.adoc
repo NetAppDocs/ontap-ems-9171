@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: snaplock-event-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snaplock.event events
+---
+
+= snaplock.event events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snaplock.event.based.retention.op.status
+*Severity*::
+NOTICE
+*Description*::
+This message occurs on completion of a event based retention apply operation on a SnapLock(R) volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+An %s operation with ID %lu ended for policy "%s" and retention period "%s" on path %s in volume %s:%s with status: "%s", details: "%s". The operation passed on %lu files, failed on %lu files, skipped %lu files and ignored %lu inodes.
+*Parameters*::
+*operation_type* (STRING): Type of the event based retention operation.
+*operation_id* (LONGINT): Operation ID of the event based retention operation.
+*policy_name* (STRING): Name of the event based retention policy.
+*retention_period* (STRING): Retention period of the event based retention policy.
+*path* (STRING): Path of the form '/(directory path)' relative to volume root.
+*vserver* (STRING): Name of the vserver.
+*volume* (STRING): Name of the SnapLock volume, on which event based retention operation is running.
+*operation_status* (STRING): Status of the event based retention operation.
+*status_details* (STRING): Completion string of the event based retention operation.
+*num_files_processed* (LONGINT): Total count of files for which event based retention operation was performed.
+*num_files_failed* (LONGINT): Total count of files for which event based retention operation failed.
+*num_files_skipped* (LONGINT): Total count of files for which event based retention operation was skipped.
+*num_inodes_ignored* (LONGINT): Total count of inodes which were ignored by event based retention operation because they are not regular files.

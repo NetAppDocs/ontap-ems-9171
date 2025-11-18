@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nblade-nfs4opnotsupported-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.nfs4opnotsupported events
+---
+
+= nblade.nfs4opnotsupported events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.Nfs4OpNotSupported
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a NFSv4 client presents an unsupported operation to the server.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NFSv4 operation '%d' is not supported.
+*Parameters*::
+*opcode* (INT): ID of unssupported operation.

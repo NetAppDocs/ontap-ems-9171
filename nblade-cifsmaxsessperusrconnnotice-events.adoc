@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: nblade-cifsmaxsessperusrconnnotice-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.cifsmaxsessperusrconnnotice events
+---
+
+= nblade.cifsmaxsessperusrconnnotice events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.cifsMaxSessPerUsrConnNotice
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the number of sessions allowed per user over a TCP connection nears the configured limit. Upon reaching this limit, any further session establishment requests are denied until some sessions are released. This is typically caused by a faulty client or application.
+*Corrective Action*::
+Inspect all applications running on the client, and terminate any that are not operating properly. Rebooting the client might also be helpful. In some cases, clients are operating as expected but require a higher threshold, which you can set by using the (privilege: advanced) "cifs option modify -max-same-user-sessions-per-connection" command.
+*Syslog Message*::
+Received %d session requests, nearing the configured limit of %d, from the same user on one TCP connection: clientIP:port %s:%d, user: "%s", vserver: "%s".
+*Parameters*::
+*currentCount* (INT): Current count of the sessions.
+*maxValue* (INT): Maximum allowed sessions per user over a TCP connection.
+*IpAddress* (STRING): IP address of the client requesting a session.
+*port* (INT): Port number of the client from which the TCP connection has been established.
+*userName* (STRING): User that is nearing the session requests limit.
+*vserverName* (STRING): Vserver associated with this operation.

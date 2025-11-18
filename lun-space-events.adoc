@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: lun-space-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lun.space events
+---
+
+= lun.space events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== LUN.space.resv.not.honored
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the space reservation settings for the named volume are not honored in its containing aggregate.
+*Corrective Action*::
+Make sure that the space guarantee settings for the volume are set to 'file' or 'volume'. If the volume guarantee is disabled, make sure that there is enough free space in the aggregate to enable the volume guarantee.
+*Syslog Message*::
+Space reservations in volume %s (DSID %llu) are not honored, either because the volume space guarantee is set to 'none' or it is disabled due to lack of space in its containing aggregate.
+*Parameters*::
+*volume_name* (STRING): Name of the volume for which reservations are not honored.
+*volume_dsid* (LONGINT): Data Set ID (DSID) of the volume for which reservations are not honored.

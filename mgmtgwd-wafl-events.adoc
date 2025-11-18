@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: mgmtgwd-wafl-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmtgwd.wafl events
+---
+
+= mgmtgwd.wafl events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmtgwd.wafl.rdb.autorecover
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system will automatically enter RDB recovery because the system has detected that a root volume might have changed, possibly causing the local management databases to be out of sync with the replicated databases . This occurred due to corruption of the Non-Volatile RAM log (NVLOG) during takeover. The node is not fully operational. Data logical interfaces (LIFs) might have failed over within the cluster, so NFS and CIFS access is limited on this node. There also might have been a loss of stored data. Administrative capability is limited to local recovery procedures for this node.
+*Corrective Action*::
+Use the command 'event log show' to monitor for RDB recovery completion. On successful RDB recovery completion, the event 'rdb.recovery.succeeded' will be generated. Should RDB recovery fail, the event 'rdb.recovery.failed' will be generated. Failure will also generate a 'callhome.root.vol.recovery.reqd' event.
+*Syslog Message*::
+The system will automatically enter RDB recovery because the system has detected that a root volume might have changed, possibly causing the local management databases to be out of sync with the replicated databases.
+*Parameters*::
+(None).

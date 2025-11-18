@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nand-predict-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nand.predict events
+---
+
+= nand.predict events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nand.predict.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when Data ONTAP(R) determines that failure is forthcoming for the associated flash device on the NVRAM module.
+*Corrective Action*::
+Replace the device to prevent future failures. Contact technical support for assistance.
+*Syslog Message*::
+NVRAM destage Failure predicted for device: %s.
+*Parameters*::
+*device* (STRING): Name of the device.

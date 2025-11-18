@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: accesscache-cfg-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: accesscache.cfg events
+---
+
+= accesscache.cfg events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== accessCache.cfg.updateFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when exports access cache configuration is modified but the new configuration could not be updated in the Nblade. The access cache is therefore operating with the older configuration.
+*Corrective Action*::
+Retry the exports access cache configuration modification. If it continuosly fails, restart management gateway. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Access cache configuration change for Vserver "%s" on node "%s" could not be updated. Failure reason is "%s".
+*Parameters*::
+*vserver* (STRING): Name of the Vserver on which the problem is occurring.
+*node* (STRING): Name of the Node on which the problem is occurring.
+*reason* (STRING): The reason for the failure.

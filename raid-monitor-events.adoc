@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: raid-monitor-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.monitor events
+---
+
+= raid.monitor events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.monitor.maxVols
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the hourly monitor indicates that the current aggregate or volume number exceeded the maximum number of supported volumes on the host.
+*Corrective Action*::
+Check the number of volumes on the host. Destroy the newly created volume if the maximum for the total number of volumes on this host is exceeded.
+*Syslog Message*::
+WARNING: There are too many (%d) volumes on the host. The limit is %d in %s configuration.
+*Parameters*::
+*numVols* (INT): Current number of volumes on the host.
+*maxVols* (INT): Maximum number of volumes supported.
+*configType* (STRING): Current configuration.

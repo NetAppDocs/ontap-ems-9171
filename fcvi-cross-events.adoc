@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: fcvi-cross-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fcvi.cross events
+---
+
+= fcvi.cross events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fcvi.cross.connect.detected
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the fcvi driver detects a cross connection
+*Corrective Action*::
+Check the FCVI interconnect cabling at the local and remote nodes. FCVI adapter ports fcvi_device_0s and fcvi_device_1s should not be connected to the same fabric. Contact NetApp technical support if the problem persists.
+*Syslog Message*::
+FC-VI adapter: Cross Connection detected between local port %s and remote port %s. Local System ID = %llu, Remote System ID = %llu.
+*Parameters*::
+*lname* (STRING): Local node's port name.
+*rname* (STRING): Remote node's port name.
+*lsid* (LONGINT): Local node's system id.
+*rsid* (LONGINT): Remote node's system id.

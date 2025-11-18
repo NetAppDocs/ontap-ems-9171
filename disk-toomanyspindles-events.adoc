@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: disk-toomanyspindles-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.toomanyspindles events
+---
+
+= disk.toomanyspindles events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.tooManySpindles
+*Severity*::
+ALERT
+*Description*::
+This message occurs when Data ONTAP(R) finds more disks present on a platform than the platform actually supports. Additional disks above the support number are ignored. Correct this issue before rebooting the system.
+*Corrective Action*::
+Too many disks have been installed. Reconfigure the system to the maximum number of disks supported.
+*Syslog Message*::
+Found %d disks, but maximum of %d disks are supported on this system. All additional disks will be ignored. This problem must be resolved before the system is rebooted.
+*Parameters*::
+*actualSpindle* (INT): Actual number of disks configured.
+*maxSpindle* (INT): Maximum number of disks supported on this platform.

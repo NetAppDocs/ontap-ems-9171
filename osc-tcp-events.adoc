@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: osc-tcp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: osc.tcp events
+---
+
+= osc.tcp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== osc.tcp.connectFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP is unable to connect to the IP address that the object store server hostname resolves to.
+*Corrective Action*::
+Check if the object store server is listening on this IP address. Check network configuration.
+*Syslog Message*::
+TCP connection to object store server hostname "%s" fails over IP address "%s" on node "%s".
+*Parameters*::
+*hostname* (STRING): Hostname of the object store server.
+*ipAddress* (STRING): IP address over which the TCP connection fails.
+*nodeUuid* (STRING): Universal unique identifier (UUID) of the node.

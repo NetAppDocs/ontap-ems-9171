@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: snapvault-reg-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapvault.reg events
+---
+
+= snapvault.reg events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapvault.reg.unknownOpt
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when you downgrade from a kernel with newer version to one with an older version and the system attempts to read a registry entry that is supported only in the newer version of the kernel.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Unsupported registry entry: (%s).
+*Parameters*::
+*regopt* (STRING): Unrecognized registry entry for the older version of the kernel.

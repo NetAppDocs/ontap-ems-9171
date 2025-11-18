@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: config-differentswitchport-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.differentswitchport events
+---
+
+= config.differentswitchport events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.DifferentSwitchPort
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the two ports of the disk are connected to different switch ports.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disks on port %s:%d are also connected to port %s:%d. They need to be connected via the same port on different switches. This is an illegal configuration.
+*Parameters*::
+*switch1* (STRING): (None).
+*port1* (INT): (None).
+*switch2* (STRING): (None).
+*port2* (INT): (None).

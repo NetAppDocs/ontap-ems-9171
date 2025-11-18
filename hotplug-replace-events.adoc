@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: hotplug-replace-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: hotplug.replace events
+---
+
+= hotplug.replace events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== hotplug.replace.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when module replacement is successful.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s module replacement is successful in slot %s of node %s.
+*Parameters*::
+*card* (STRING): Name of the module.
+*slot* (STRING): Number of the slot.
+*node* (STRING): Name of the node.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: snmp-raid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snmp.raid events
+---
+
+= snmp.raid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snmp.raid.iterator.failure
+*Severity*::
+ERROR
+*Description*::
+This event is generated when a RAID group iterator was not able to be created.
+*Corrective Action*::
+Check for other resource related issues.
+*Syslog Message*::
+SNMP failed to create RAID group iterator
+*Parameters*::
+(None).

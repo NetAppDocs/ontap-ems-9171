@@ -1,0 +1,72 @@
+---
+sidebar: sidebar
+permalink: mcc-drdom-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mcc.drdom events
+---
+
+= mcc.drdom events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mcc.drdom.diskOwnerChange
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when disk ownership changes are made by the disaster recovery disk ownership manager (DRDOM).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(%d) disks belonging to DR partner (%ld) underwent ownership change due to (%s).
+*Parameters*::
+*disk_count* (INT): Number of disks that underwent ownership change.
+*dr_partner_system_id* (LONGINT): System ID of the DR partner whose disks underwent ownership change.
+*reason* (STRING): Reason for the disk ownership change.
+
+== mcc.drdom.diskReserveFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when one or more disks fails a disk reservation request from the disaster recovery disk ownership manager (DRDOM).
+*Corrective Action*::
+Make sure that none of the available DR partner disks are not in a failed or inconsistent state. Contact NetApp technical support if failed or misbehaving disks cannot be identified.
+*Syslog Message*::
+%d/%d DR disks failed disk reservation request from DRDOM, %d local disks.
+*Parameters*::
+*error_count* (INT): Number of disks that failed disk reservation.
+*disk_num* (INT): Number of disks that have DR ownership.
+*local_disks* (INT): Number of disks that have local ownership.
+
+== mcc.drdom.disksAssignFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the disaster recovery disk ownership manager (DRDOM) fails to assign the ownership of one or more disks in the disk list enrolled in this operation to be reassigned.
+*Corrective Action*::
+Contact NetApp technical support for assistance.
+*Syslog Message*::
+DRDOM failed to assign the ownership of one or more disks in the disk list involved in disk ownership reassign request message during %s.
+*Parameters*::
+*operation* (STRING): The MetroCluster(tm) DR operation that issued the "assign disks" request.
+*disks_in_request* (INT): Total number of disks for which the disk ownership change is requested.
+*disks_failed_request* (INT): Total number of disks for which the disk ownership change request failed.
+*error_code* (INT): Internal error code for the failure.
+
+== mcc.drdom.hsAssignFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the node fails to change disk ownership for disaster recovery (DR) partner disks after a headswap. This can occur if the node is in switchover or it has disks that are left behind from previous DR operations.
+*Corrective Action*::
+Make sure that the DR partner disks with current-owner as local node are online and not in failed state or inconsistent state. Contact NetApp technical support if the failed or misbehaving disks cannot be identified.
+*Syslog Message*::
+Node failed to change disk ownership for DR partner disks after a headswap.
+*Parameters*::
+*disks_in_request* (INT): Total number of disks for which the disk ownership change is requested.
+*disks_failed_request* (INT): Total number of disks for which the disk ownership change request failed.
+*error_code* (INT): Internal error code for the failure.

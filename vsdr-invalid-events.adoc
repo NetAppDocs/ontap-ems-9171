@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: vsdr-invalid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsdr.invalid events
+---
+
+= vsdr.invalid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsdr.invalid.license
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a package is licensed at the primary site but not licensed at the secondary site in a MetroCluster(tm) configuration or Vserver DR setup.
+*Corrective Action*::
+Install at the secondary site a license that is valid for the package. If this is a SnapMirror(R) or MetroCluster(tm) environment, run the "snapmirror resync" command or the "metrocluster vserver resync" command respectively to resynchronize the Vserver configuration.
+*Syslog Message*::
+Configuration replication on vserver %s failed due to an invalid license for package %s.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*package_name* (STRING): Name of the package for which the license is to be added.

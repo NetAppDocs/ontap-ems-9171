@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: vserver-vsdr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vserver.vsdr events
+---
+
+= vserver.vsdr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vserver.vsdr.adt.romode
+*Severity*::
+ERROR
+*Description*::
+This message occurs in Async Vserver-DR setup, when an auditing-configured Vserver is starting up in Read-Only (RO) mode.
+*Corrective Action*::
+None.
+*Syslog Message*::
+The Vserver %s is in Async Vserver-DR (RO) mode. Therefore, auditing cannot happen on this Vserver.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver that is in Async Vserver-DR (RO) mode.
+
+== vserver.vsdr.adt.supported
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during asynchronous Vserver disaster recovery setup, when the status of Vserver-Disaster Recovery Read-Only mode of a Vserver configured for auditing is set to false when a SnapMirror(R) relationship breaks.
+*Corrective Action*::
+None.
+*Syslog Message*::
+Vserver %s is configured with auditing support in Async Vserver-Disaster Recovery setup.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver that is in Async Vserver-Disaster Recovery Read only mode.

@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: nblade-cifsmaxsessperusrconn-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.cifsmaxsessperusrconn events
+---
+
+= nblade.cifsmaxsessperusrconn events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.cifsMaxSessPerUsrConn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the number of sessions allowed per user over a TCP connection is exceeded. This request and any further session establishment requests are denied until some sessions are released. This is typically caused by a faulty client or application.
+*Corrective Action*::
+Inspect all applications running on the client, and terminate any that are not operating properly. Rebooting the client might also be helpful. In some cases, clients are operating as expected but require a higher threshold, which you can set using the (privilege: advanced) "cifs option modify -max-same-user-sessions-per-connection" command.
+*Syslog Message*::
+Received too many session requests from the same user on one TCP connection: clientIP:port %s:%d, user "%s", vserver: "%s". Object type is: %s with UUID: %s.
+*Parameters*::
+*IpAddress* (STRING): IP address of the client requesting a session.
+*port* (INT): Port number of the client from which the TCP connection has been established.
+*userName* (STRING): User that has exceeded session requests.
+*vserverName* (STRING): Vserver associated with this operation.
+*object_type* (STRING): Type of resource object.
+*object_uuid* (STRING): UUID of the resource object.

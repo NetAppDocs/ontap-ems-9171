@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: secd-netlogon-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: secd.netlogon events
+---
+
+= secd.netlogon events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== secd.netlogon.noServers
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when none of the configured Netlogon servers are accepting connections.
+*Corrective Action*::
+Ensure that all configured Netlogon servers are responding to requests. Ensure that there are no networking issues stopping the cluster from communicating with the configured Netlogon servers.
+*Syslog Message*::
+None of the Netlogon servers configured for Vserver (%s) are currently accessible via the network.
+*Parameters*::
+*vserverName* (STRING): vserver associated with this operation.

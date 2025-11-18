@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: fmmb-blobwritten-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fmmb.blobwritten events
+---
+
+= fmmb.blobwritten events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fmmb.BlobWritten
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a mailbox 'blob' write to the on-disk mailbox data structure succeeds. A 'blob' is a piece of data that has been stored for a non-high availability (HA) Data ONTAP(R) subsystem in the HA mailbox.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Blob %d: bytes written %d: data: %llx.
+*Parameters*::
+*blob_id* (INT): 'blob' ID.
+*blob_data_len* (INT): Total number of bytes of data written.
+*data* (LONGINTHEX): First eight bytes of the data written.

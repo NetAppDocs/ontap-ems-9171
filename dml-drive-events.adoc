@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: dml-drive-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dml.drive events
+---
+
+= dml.drive events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dml.drive.offline.status
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when drive offline completes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Drive offline request for drive %s %s, (%d).
+*Parameters*::
+*drive_name* (STRING): Drive name.
+*status_str* (STRING): Drive offline status string.
+*status_code* (INT): Drive offline status code.
+
+== dml.drive.online.status
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when drive online completes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Drive online request %s %s, (%d).
+*Parameters*::
+*drive_name* (STRING): Drive name.
+*status_str* (STRING): Drive online status string.
+*status_code* (INT): Drive online status code.

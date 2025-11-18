@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: qos-violation-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: qos.violation events
+---
+
+= qos.violation events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== qos.violation.report
+*Deprecated*::
+Deprecated as of version 9.4.0 since the QoS violation detection functionality has been deprecated.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs every hour to provide a snapshot of violation detection status for the Quality of Service (QoS) policy groups. The snapshot shows the states of those policy groups that either cannot meet their service-level objectives (SLOs), or are impacted by (deactivation) actions taken by QoS to remedy the situations. Possible violation states include LOW_OFFERED, which means the offered load for a policy group is too low, or INSUFFICIENT_RESOURCES, which means the system can not support the specified targets in the SLO. The deactivation states include ACTIVATED, which means this policy group is not impacted by deactivation, or DEACTIVATED, which means this policy group is deactivated to support other violated policy group.
+*Corrective Action*::
+After observing a violation, one should collect ONTAP statistics counters and use 'qos statistics' CLI command to monitor the violated policy group. Increase the client load if a low offered violation is present and the policy group client does not generate sufficient load. For other violations, identify the critical resources (cpu, memory, network, disk, etc.) that could lead to the violation, or identify the hot spot in a clustered system. The solution to the former is to add more resources; while the latter is to move workloads around to avoid the hot spot.
+*Syslog Message*::
+QoS violation state for policy group %s is (pgid= %u violation= %s deactivation= %s).
+*Parameters*::
+*name* (STRING): The QoS policy group name.
+*id* (INT): The QoS policy group identifier.
+*vdstate* (STRING): The violation state for a QoS policy group.
+*dastate* (STRING): The deactivation state for a QoS policy group.

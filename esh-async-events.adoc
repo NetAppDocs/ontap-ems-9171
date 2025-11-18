@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: esh-async-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: esh.async events
+---
+
+= esh.async events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== esh.async.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is an error allocating memory for an asynchronous message during disk shelf discovery processing.
+*Corrective Action*::
+If the error occurs upon addition of a disk shelf to a running system, disconnect the shelf and reattach it. If the error occurs during boot, reboot the controller.
+*Syslog Message*::
+Could not allocate memory for an asynchronous message.
+*Parameters*::
+(None).

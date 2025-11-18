@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: cpeer-access-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cpeer.access events
+---
+
+= cpeer.access events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cpeer.access.restricted
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an access request from a peer cluster is rejected, either because the request is made to a restricted Vserver or to a restricted table.
+*Corrective Action*::
+Check the Vserver peering relationships with the peer cluster. If additional Vserver access is required, use the "vserver peer create" command to initiate the peering relationship with the peer cluster.
+*Syslog Message*::
+An access request from peer cluster %s (IP: %s) was denied. Reason: %s.
+*Parameters*::
+*peer* (STRING): Name of the peer cluster making the request to the local cluster.
+*address* (STRING): Source IP address of the incoming request.
+*reason* (STRING): Reason for the access restriction.

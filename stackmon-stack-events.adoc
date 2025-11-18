@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: stackmon-stack-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: stackmon.stack events
+---
+
+= stackmon.stack events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== stackmon.stack.id.conflict
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot determine the stack ID for a disk shelf. The system has exceeded the maximum number of times it can change the stack ID of the shelf. The cause of this issue is a misconfiguration in the system.
+*Corrective Action*::
+Run the 'system health alert show' command and resolve all of the issues reported by following the corrective actions provided.
+*Syslog Message*::
+Stack ID of the Shelf %d (S/N %s) on channel %s cannot be agreed on by all the nodes in the cluster.
+*Parameters*::
+*shelfIdent* (INT): ID number displayed on the disk shelf OPS panel.
+*serialNumber* (STRING): Serial number of disk shelf.
+*channelName* (STRING): Channel connected to the disk shelf.

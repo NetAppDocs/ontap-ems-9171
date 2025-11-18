@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: callhome-nvmem-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.nvmem events
+---
+
+= callhome.nvmem events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.nvmem.volt.hi
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the sensor for the Non-Volatile memory (NVMEM) card lithium battery has an excessively high voltage. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+First, correct any environmental or battery problems. If the problem continues, replace the controller module. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for NVMEM VOLTAGE HIGH
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.nvmem.volt.lo
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the sensor for the Non-Volatile memory (NVMEM) card lithium battery has an excessively low voltage. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+First, correct any environmental or battery problems. If the problem continues, replace the controller module. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for NVMEM VOLTAGE LOW
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

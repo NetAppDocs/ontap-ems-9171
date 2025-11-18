@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: vsdr-ruleaddedtosmpolicy-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsdr.ruleaddedtosmpolicy events
+---
+
+= vsdr.ruleaddedtosmpolicy events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsdr.RuleAddedToSmPolicy
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a MAX Data(R) schedule update adds a new rule to a SnapMirror(R) policy with the "mirror-vault" type. The update is part of an SVM disaster recovery (SVMDR) relationship.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+New rule with SnapMirror label "%s" is added to SnapMirror policy "%s" of Vserver "%s" used by the Vserver DR relationship.
+*Parameters*::
+*snapmirror_label* (STRING): Name of the SnapMirror label.
+*sm_policy_name* (STRING): Name of the SnapMirror policy.
+*vserver_name* (STRING): Name of the Vserver of Vserver DR relationship.

@@ -1,0 +1,45 @@
+---
+sidebar: sidebar
+permalink: vscan-odreport-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vscan.odreport events
+---
+
+= vscan.odreport events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vscan.odReport.create.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the On-Demand job fails to create report file.
+*Corrective Action*::
+Ensure that the report directory exists and is accessible.
+*Syslog Message*::
+On-Demand job for the task "%s" on Vserver "%s" could not create report file in the directory "%s". Reason: "%s".
+*Parameters*::
+*taskName* (STRING): Vscan On-Demand task name.
+*vserverName* (STRING): Name of the Vserver.
+*reportDirectory* (STRING): Report directory.
+*failureReason* (STRING): Reason for the failure.
+
+== vscan.odReport.write.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the On-Demand job fails to write to a report file.
+*Corrective Action*::
+Ensure that the report file is accessible and the volume on which it resides has space.
+*Syslog Message*::
+On-Demand job for the task "%s" on Vserver "%s" could not write to the report file "%s". Reason: "%s".
+*Parameters*::
+*taskName* (STRING): Vscan On-Demand task name.
+*vserverName* (STRING): Name of the Vserver.
+*reportFile* (STRING): Path of the report file.
+*failureReason* (STRING): Reason for the failure.

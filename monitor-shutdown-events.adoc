@@ -1,0 +1,206 @@
+---
+sidebar: sidebar
+permalink: monitor-shutdown-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.shutdown events
+---
+
+= monitor.shutdown events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.shutdown.brokenDisk
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when an automatic shutdown sequence is initiated due to a degraded RAID group that cannot be reconstructed because there are insufficient appropriate spare disks. The timeout period is specified by the "raid.timeout" option, which must be set by user to a nonzero value in order for the system to shutdown on expiry of the timeout period. If the option is not set or is set to zero, then system will not shut down due to a degraded RAID group.
+*Corrective Action*::
+To recover from the shutdown, boot the system. Ensure that there are sufficient spare disks of the appropriate type so that the degraded RAID group can be reconstructed.
+*Syslog Message*::
+%s in RAID group "%s" %s broken. Halting system now.
+*Parameters*::
+*type* (STRING): Type of disk.
+*rgname* (STRING): RAID group name.
+*verb* (STRING): Description of the broken state.
+
+== monitor.shutdown.brokenDisk.pending
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an automatic shutdown sequence has been postponed due to RAID reconstruction.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s in RAID group "%s" %s broken. Halting system in %d hour%s.
+*Parameters*::
+*type* (STRING): Type of disk.
+*rgname* (STRING): RAID group name.
+*verb* (STRING): Description of the broken state.
+*countdown* (INT): Number of hours remaining to shutdown.
+*plural* (STRING): Plural character.
+
+== monitor.shutdown.cancel
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an automatic shutdown sequence is canceled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Automatic shutdown sequence canceled.
+*Parameters*::
+(None).
+
+== monitor.shutdown.cancel.brokenDisk
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an automatic shutdown sequence has been postponed due to RAID reconstruction
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s in RAID group "%s" %s broken. Halt delayed until %s finishes.
+*Parameters*::
+*type* (STRING): Type of disk.
+*rgname* (STRING): RAID group name.
+*verb* (STRING): Description of the broken state.
+*reason* (STRING): Reason that the shutdown was postponed. Possible reasons are "RAID reconstruction" and "parity recomputation".
+
+== monitor.shutdown.cancel.nvramLowBatteries
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an automatic shutdown sequence has been postponed due to RAID reconstruction.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NVRAM batteries are dangerously low. Halt delayed until %s finishes.
+*Parameters*::
+*reason* (STRING): Reason that the shutdown was postponed. Possible reasons are "RAID reconstruct" and "parity recomputation".
+
+== monitor.shutdown.cancel.nvramLowBattery
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an automatic shutdown sequence has been postponed due to RAID reconstruction
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NVRAM battery is dangerously low. Halt delayed until %s finishes.
+*Parameters*::
+*reason* (STRING): Reason that the shutdown was postponed. Possible reasons are "RAID reconstruct" and "parity recomputation".
+
+== monitor.shutdown.chassisOverTemp
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the chassis temperature is too hot. This is sent just before shutdown.
+*Corrective Action*::
+Ensure that sufficient cooling air is being supplied to the chassis and that the air inlets and outlets of the unit are not blocked.
+*Syslog Message*::
+Chassis temperature is too hot: %s
+*Parameters*::
+*describe_toohot* (STRING): Description of the condition.
+
+== monitor.shutdown.chassisUnderTemp
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system is shutting down because chassis temperature is too cold.
+*Corrective Action*::
+The appliance is in an environment that is too cold. Find a way to warm the environment around the appliance.
+*Syslog Message*::
+Chassis temperature is too cold: %s
+*Parameters*::
+*describe_toocold* (STRING): Description of the condition.
+
+== monitor.shutdown.emergency
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when ONTAP(R) initiates an emergency shutdown.
+*Corrective Action*::
+Correct the condition noted in the reason field.
+*Syslog Message*::
+Emergency shutdown: %s
+*Parameters*::
+*reason* (STRING): Reason for the shutdown.
+
+== monitor.shutdown.ioexpansionOverTemp
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the I/O expansion module is too hot. This message is sent just before shutdown.
+*Corrective Action*::
+The system environment is too hot; cool the environment.
+*Syslog Message*::
+I/O expansion module is too hot: %s
+*Parameters*::
+*describe_toohot* (STRING): Reading and state of the temperature sensors on the I/O expansion module.
+
+== monitor.shutdown.ioexpansionUnderTemp
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the I/O expansion module is too cold. This message is sent just before shutdown.
+*Corrective Action*::
+The system environment is too cold; warm the environment.
+*Syslog Message*::
+I/O expansion module is too cold: %s
+*Parameters*::
+*describe_toocold* (STRING): Reading and state of the temperature sensors on the I/O expansion module.
+
+== monitor.shutdown.nvramLowBatteries
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVRAM power in a controller with multiple NVRAM batteries is dangerously low, and ONTAP(R) initiates a shutdown to protect user data.
+*Corrective Action*::
+Replace the controller NVRAM batteries.
+*Syslog Message*::
+Emergency shutdown: NVRAM batteries dangerously low in degraded mode. Replace the batteries immediately!
+*Parameters*::
+(None).
+
+== monitor.shutdown.nvramLowBatteries.pending
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an automatic shutdown sequence is pending because of low NVRAM batteries voltage.
+*Corrective Action*::
+Replace the controller NVRAM batteries.
+*Syslog Message*::
+NVRAM batteries are dangerously low. Halting system in %d hour%s. Replace the batteries immediately!
+*Parameters*::
+*countdown* (INT): Hours remaining until shutdown.
+*plural* (STRING): Grammatical number.
+
+== monitor.shutdown.nvramLowBattery
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the controller NVRAM voltage is dangerously low, and ONTAP(R) initiates a shutdown to protect user data.
+*Corrective Action*::
+Replace the controller NVRAM battery.
+*Syslog Message*::
+Emergency shutdown: NVRAM battery dangerously low in degraded mode. Replace the battery immediately!
+*Parameters*::
+(None).
+
+== monitor.shutdown.nvramLowBattery.pending
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an automatic shutdown sequence is pending because of low NVRAM battery voltage.
+*Corrective Action*::
+Replace the controller NVRAM battery.
+*Syslog Message*::
+NVRAM battery is dangerously low. Halting system in %d hour%s. Replace the battery immediately!
+*Parameters*::
+*countdown* (INT): Hours remaining until shutdown.
+*plural* (STRING): Grammatical number.

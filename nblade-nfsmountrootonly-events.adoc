@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: nblade-nfsmountrootonly-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.nfsmountrootonly events
+---
+
+= nblade.nfsmountrootonly events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.NfsMountRootOnly
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a non-root user performs MOUNT or NFS operation when the respective options '-mount-rootonly' or 'nfs-rootonly' are enabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s operation by non-root user failed. Vserver ID is %d; ProgramNumber is %d; client IP address:port is %s:%d; local IP address is %s; Procedure number is %d.
+*Parameters*::
+*serviceProtocol* (STRING): Network data protocol used in the connection.
+*vserverId* (INT): Identifier for the vserver associated with this operation.
+*programNumber* (INT): RPC Program Number.
+*remoteAddr* (STRING): IP address of the client machine.
+*remotePort* (INT): Remote port number that sent the data.
+*localAddr* (STRING): IP address of the local interface serving the protocol operation.
+*procedureNum* (INT): RPC Procedure Number for the requested operation.

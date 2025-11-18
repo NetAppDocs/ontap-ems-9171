@@ -1,0 +1,74 @@
+---
+sidebar: sidebar
+permalink: vifmgr-staticroute-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.staticroute events
+---
+
+= vifmgr.staticroute events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.staticRoute.add
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a static route is added to a Vserver.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Static route created on Vserver %s: dest %s, gw %s, metric %u.
+*Parameters*::
+*vserverName* (STRING): Name of the Vserver on which the static route was added.
+*destination* (STRING): The IP subnet to which the route applies.
+*gateway* (STRING): The IP address of the gateway.
+*metric* (INT): The metric of the route, used to determine its priority relative to other routes for the Vserver.
+
+== vifmgr.staticRoute.del
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a static route is deleted from a Vserver.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Static route deleted from Vserver %s: dest %s, gw %s, metric %u.
+*Parameters*::
+*vserverName* (STRING): Name of the Vserver from which the static route was deleted.
+*destination* (STRING): The IP subnet to which the route applies.
+*gateway* (STRING): The IP address of the gateway.
+*metric* (INT): The metric of the route, used to determine its priority relative to other routes for the Vserver.
+
+== vifmgr.staticRoute.netadd
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a static route is added to the network routing table of a storage virtual machine (SVM).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Static route added to the network routing table for SVM %u: dest %s, gw %s, metric %u.
+*Parameters*::
+*SVM* (INT): ID of the SVM on which the static route was added.
+*destination* (STRING): IP subnet to which the route applies.
+*gateway* (STRING): IP address of the gateway.
+*metric* (INT): Metric of the route, used to determine its priority relative to other routes for the SVM.
+
+== vifmgr.staticRoute.netremove
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a static route is removed from the network routing table of a storage virtual machine (SVM).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Static route removed from the routing table for SVM %u: dest %s, gw %s.
+*Parameters*::
+*SVM* (INT): ID of the SVM from which the static route was deleted.
+*destination* (STRING): IP subnet to which the route applies.
+*gateway* (STRING): The IP address of the gateway.

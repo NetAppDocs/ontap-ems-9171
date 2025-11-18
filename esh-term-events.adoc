@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: esh-term-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: esh.term events
+---
+
+= esh.term events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== esh.term.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is an error related to loop termination.
+*Corrective Action*::
+Set the termination switch to the OFF position on the ESH module that is reporting the error.
+*Syslog Message*::
+FORCED TERMINATION ERROR: TERM switch set improperly on ESH %s on channels %s disk shelf ID %d. The disk shelf connected to the OUT port of this ESH module is inaccessible.
+*Parameters*::
+*element* (STRING): ESH module designator (A is the upper module, B is the lower module).
+*channels* (STRING): Channels that have the error if local, PARTNER for high-availability partner, UNUSED if unconnected.
+*shelfID* (INT): Disk shelf ID (1-7) of the disk shelf reporting the error.

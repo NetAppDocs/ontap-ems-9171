@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: csm-unmarshallerror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: csm.unmarshallerror events
+---
+
+= csm.unmarshallerror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== csm.unmarshallError
+*Severity*::
+ERROR
+*Description*::
+The message occurs when the Cluster Session Manager (CSM) fails to unmarshal a packet.
+*Corrective Action*::
+Unmarshal errors reported in CSM indicate corrupted packet(s) were delivered to CSM. Often this can be attributed to network layer problems. TCP checksum errors should be checked for if unmarshal errors continue to increment.
+*Syslog Message*::
+Cluster Session Manager (CSM) failed to unmarshall packet for session %s.
+*Parameters*::
+*sessionId* (STRING): Full session ID of this session.

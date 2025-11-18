@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: coredump-job-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: coredump.job events
+---
+
+= coredump.job events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== coredump.job.notstarted
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot automatically save a core.
+*Corrective Action*::
+Use the 'system node coredump save' command to save the core.
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).
+
+== coredump.job.notswitchedback
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot automatically save cores because a MetroCluster(tm) switchback was not performed.
+*Corrective Action*::
+Return storage to the MetroCluster member by using the "metrocluster switchback" command, and then use the "coredump save-all" command to save any unsaved cores.
+*Syslog Message*::
+System cannot automatically save cores because a MetroCluster switchback was not performed.
+*Parameters*::
+(None).

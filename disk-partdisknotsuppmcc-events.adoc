@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: disk-partdisknotsuppmcc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.partdisknotsuppmcc events
+---
+
+= disk.partdisknotsuppmcc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.partDiskNotSuppMCC
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a partitioned disk is found in a MetroCluster(TM) configuration.
+*Corrective Action*::
+Remove the partitioned disk, because it is not supported in a MetroCluster configuration.
+*Syslog Message*::
+Ignoring disk %s because partitioned disks are not supported in a MetroCluster(TM) configuration.
+*Parameters*::
+*diskName* (STRING): Name of the disk.

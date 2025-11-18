@@ -1,0 +1,53 @@
+---
+sidebar: sidebar
+permalink: snapvault-qtree-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapvault.qtree events
+---
+
+= snapvault.qtree events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapvault.qtree.initiate
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when SnapVault(R) cannot start a volume-wide snapshot target to complete a manually invoked baseline transfer or resynchronizing transfer. As a result, the changes to the qtree in that operation will not yet be made visible. SnapVault attempts to repair this condition.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Could not coalesce %s: %s.
+*Parameters*::
+*qtpath* (STRING): Path of the qtree in the operation.
+*reason* (STRING): Reason why SnapVault could not start the snapshot target.
+
+== snapvault.qtree.notCoalesced
+*Severity*::
+ERROR
+*Description*::
+This message occurs when SnapVault(R) fails to initiate a qtree into a SnapVault coalescing cycle.
+*Corrective Action*::
+If the error is transient, the next SnapVault coalescing cycle tries to initiate the qtree into the coalescing cycle. Otherwise, see the error message for details.
+*Syslog Message*::
+Could not initiate %s into SnapVault coalescing cycle: %s.
+*Parameters*::
+*qtpath* (STRING): Path of the qtree in the operation.
+*errstr* (STRING): Error string.
+
+== snapvault.qtree.upgradeStatus
+*Severity*::
+NOTICE
+*Description*::
+During initialization, SnapVault will attempt to update the qtree metadata flag if necessary. This message is generated if the qtree has been converted but an error occurs in updating the status entry.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Could not update the status entry for %s. Entry will be updated during the next transfer.
+*Parameters*::
+*srcpath* (STRING): The pathname for the qtree.

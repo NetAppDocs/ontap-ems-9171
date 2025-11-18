@@ -1,0 +1,56 @@
+---
+sidebar: sidebar
+permalink: sis-op-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.op events
+---
+
+= sis.op events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.op.aborted
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a SIS volume operation is aborted due to unexpected conditions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SIS operation for %s%s has aborted: %s
+*Parameters*::
+*path* (STRING): Path to a SIS volume
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*err* (STRING): Error message
+
+== sis.op.idle
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when deduplication is enabled on the volume and deduplication process has not been run for more than configured idle threshold time set(default 7 days).
+*Corrective Action*::
+Run the "sis start" command.
+*Syslog Message*::
+SIS operation is idle on volume "%s" since %d weeks %d days.
+*Parameters*::
+*volpath* (STRING): Volume name.
+*last_dedup_time* (INT): Last Successful Deduplication operation on volume in weeks.
+*last_dedup_time_days* (INT): Last Successful Deduplication operation on volume in days.
+
+== sis.op.stopped
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when a SIS volume operation is stopped by user.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SIS operation for %s%s has stopped
+*Parameters*::
+*path* (STRING): Path to a SIS volume
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.

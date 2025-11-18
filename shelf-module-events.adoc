@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: shelf-module-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: shelf.module events
+---
+
+= shelf.module events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== shelf.module.configuration.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot complete the configuration of a disk shelf module with the desired parameters.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Could not complete the configuration of disk shelf module %s on channels %s, disk shelf ID %d.
+*Parameters*::
+*element* (STRING): Disk shelf module designator (A is the upper module, B is the lower module).
+*channels* (STRING): Channels that have the error if local, PARTNER for high-availibility partner, UNUSED if unconnected.
+*shelfID* (INT): Disk shelf ID of the disk shelf.
+
+== shelf.module.element.missing
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an element is missing, unused, or disconnected.
+*Corrective Action*::
+Verify that both disk shelf modules are fully seated and locked in place. Also make sure that they are of the same product family.
+*Syslog Message*::
+Disk shelf module %s is MISSING on channels %s disk shelf ID %d.
+*Parameters*::
+*element* (STRING): Disk shelf module designator (A is the upper module, B is the lower module).
+*channels* (STRING): Channels that have the error if local, PARTNER for high-availability partner, UNUSED if unconnected.
+*shelfID* (INT): Disk shelf ID of the disk shelf reporting the error.

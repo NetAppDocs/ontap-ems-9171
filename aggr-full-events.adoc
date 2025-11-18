@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: aggr-full-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: aggr.full events
+---
+
+= aggr.full events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== aggr.full
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an aggregate is full.
+*Corrective Action*::
+Ensure that all containers in the pod are online and healthy. Check if the REST server is up and responding.
+*Syslog Message*::
+Aggregate "%s" is full.
+*Parameters*::
+*aggr_name* (STRING): Name of the aggregate.

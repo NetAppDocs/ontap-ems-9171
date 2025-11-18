@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: repl-unable-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.unable events
+---
+
+= repl.unable events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.unable.to.create.css
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the workflow is unable to create a common snapshot due to timeout. This operation is retried automatically.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Unable to create CSS "%s" for relationship with UUID %s.
+*Parameters*::
+*snapshot_name* (STRING): Common snapshot name
+*relationship_id* (STRING): SnapMirror relationship universal unique identifier (UUID).

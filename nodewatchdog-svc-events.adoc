@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: nodewatchdog-svc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nodewatchdog.svc events
+---
+
+= nodewatchdog.svc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nodewatchdog.svc.rpc.noresp
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a service critical to data access fails to respond to service monitoring and is restarted. Data ONTAP(R) might have experienced a serious error and might operate in a degraded mode.
+*Corrective Action*::
+If the message reports that the service has "restarted" then no action is required. If the status is "not restarted" or "unsuccessfully restarted," then reboot the node using the "system node reboot" command with the "-dump true" option, and then contact NetApp technical support.
+*Syslog Message*::
+The %s service internal to Data ONTAP that is required for continuing data service was unavailable. The service failed, but was %s.
+*Parameters*::
+*service* (STRING): Service that failed.
+*restarted* (STRING): Whether the service was restarted. Possible values are "restarted," "not restarted," and "unsuccessfully restarted."
+*diagnosis* (STRING): List of system diagnoses that could cause node watchdog issues.

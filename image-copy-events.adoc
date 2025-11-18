@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: image-copy-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: image.copy events
+---
+
+= image.copy events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== image.copy.bypass.ds.chk
+*Severity*::
+ALERT
+*Description*::
+This message occurs when ONTAP software installation was performed via the boot menu, which does not verify the digital signature of the software image.
+*Corrective Action*::
+Corrective action is not required if the software was installed by authorized personnel. Corrective action might be required if the software was installed by unauthorized personnel because the specified image might not be authorized or digitally signed.
+*Syslog Message*::
+ONTAP software image %s was installed without digital signature verification.
+*Parameters*::
+*cfcard_image* (STRING): Software image name that was installed.

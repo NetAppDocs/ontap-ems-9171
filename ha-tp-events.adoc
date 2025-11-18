@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: ha-tp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.tp events
+---
+
+= ha.tp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.tp.testPointHit
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the testpoint is encountered or hit.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Testpoint hit: '%s' [%s, %s], [%s:%d], count %d => '%s'.
+*Parameters*::
+*message* (STRING): Test message.
+*tpModuleName* (STRING): Testpoint module name.
+*tpId* (STRING): ID of the testpoint within the module.
+*fileName* (STRING): File name.
+*lineNo* (INT): Line number.
+*tpCount* (INT): Number of times the testpoint triggers before being disabled.
+*tpType* (STRING): Type of testpoint.

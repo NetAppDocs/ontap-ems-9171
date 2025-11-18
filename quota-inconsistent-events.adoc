@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: quota-inconsistent-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: quota.inconsistent events
+---
+
+= quota.inconsistent events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== quota.inconsistent
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the quota database is corrupted.
+*Corrective Action*::
+Use the 'quota off' command followed by the 'quota on' command to clear the corruption and reenable quotas on the volume.
+*Syslog Message*::
+Quota database on %s%s%s is corrupted. Disabling quotas until the corruption is fixed.
+*Parameters*::
+*vol_name* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique dentifier for the volume in cases in which the volume name alone is insufficient.

@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: vdom-aggr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vdom.aggr events
+---
+
+= vdom.aggr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vdom.aggr.bulkmount.timeout
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an internal timeout has been reached while processing volumes for an aggregate coming online during a takeover, giveback, or aggregate relocation event.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Bulk mount timed out for aggregate fsid %llu (start_time %llu, current_time %llu, volumes online %d, volumes expected %d).
+*Parameters*::
+*fsid* (LONGINT): Fsid of the aggregate.
+*start_time* (LONGINT): Time in milliseconds when the bulk mount timer started for the aggregate.
+*current_time* (LONGINT): Time in milliseconds when the bulk mount timeout was reached.
+*vols_online* (INT): Number of volume mounts that have been received for the aggregate.
+*vols_expected* (INT): Number of volume mounts expected for the aggregate.
+
+== vdom.aggr.move.internal
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an individual mounted volume becomes unavailable through the source node after an aggregate relocation or giveback event.
+*Corrective Action*::
+The destination node receives a notification that the volume has been mounted locally and updates the cluster accordingly.
+*Syslog Message*::
+Availability of a volume in aggregate %s has been lost to the source node temporarily following aggregate relocation or giveback.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate that contains the volume.

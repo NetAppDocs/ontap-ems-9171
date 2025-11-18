@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: lmgr-badstructure-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lmgr.badstructure events
+---
+
+= lmgr.badstructure events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lmgr.badStructure.found
+*Severity*::
+ERROR
+*Description*::
+This event is issued whenever the multi-protocol lock manager finds a bad file pointer and turns off the logging of lock manipulation to preserve trace information. This information can be of use during core analysis.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+bad file pointer found, preserving trace information
+*Parameters*::
+(None).

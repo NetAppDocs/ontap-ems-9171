@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: disk-sizeshrank-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.sizeshrank events
+---
+
+= disk.sizeshrank events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.sizeShrank
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the controller detects a decrease in the capacity of a virtual disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Size of virtual disk %s has changed from %s to %s, a decrease of %lld bytes (%lld %d-byte blocks).
+*Parameters*::
+*diskName* (STRING): Name of the virtual disk that has a decreased capacity.
+*Size* (STRING): Orignal size of the virtual disk in bytes.
+*NewSize* (STRING): Current size of the virtual disk in bytes.
+*byteDiff* (LONGINT): Difference in bytes between the original size and the current size of the virtual disk.
+*blockDiff* (LONGINT): Difference in blocks between the original size and the current size of the virtual disk.
+*blockSize* (INT): Block size in bytes of the virtual disk.

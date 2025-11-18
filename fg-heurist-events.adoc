@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: fg-heurist-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fg.heurist events
+---
+
+= fg.heurist events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fg.heurist.squelch.changed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a FlexGroup volume enables or disables squelch optimization. Squelch optimization ensures better performance by preventing remote file placement of new files. Desirability and undesirability are measures of the system's calculation of whether it is advantageous to disallow remote placement to increase performance, based on system activity.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FlexGroup volume "%s" has turned squelch optimization %s. Reason: %s, desirability: %s, undesirability: %s.
+*Parameters*::
+*flexgroup_name* (STRING): Name of the FlexGroup volume with the squelch change.
+*squelch_state* (STRING): New squelch state.
+*squelch_reason* (STRING): Reason for the squelch change.
+*desirability* (STRING): Current desirability of squelch. This value is calculated from the workload of the system.
+*undesirability* (STRING): Current undesirability of squelch. This value is calculated from the idle proportion of the system.

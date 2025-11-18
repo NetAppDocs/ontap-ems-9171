@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: ha-toafterrcvpanicinfo-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.toafterrcvpanicinfo events
+---
+
+= ha.toafterrcvpanicinfo events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.toAfterRcvPanicInfo
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the local node initiates a takeover of its high-availability (HA) partner after detecting a panic of the HA partner node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Local node initiated takeover after receiving a panic information message from its HA partner. Partner name: %s. Partner system ID: %llu.
+*Parameters*::
+*hostname* (STRING): Host name of the node being taken over.
+*systemid* (LONGINT): System ID of the node being taken over.

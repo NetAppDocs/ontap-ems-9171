@@ -1,0 +1,53 @@
+---
+sidebar: sidebar
+permalink: upgrademgr-node-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: upgrademgr.node events
+---
+
+= upgrademgr.node events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== upgrademgr.node.slowboot
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a cluster node takes more than 30 minutes to reach giveback ready state during automated nondisruptive upgrade.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Slow boot observed for node "%s" (duration: %d minutes).
+*Parameters*::
+*node* (STRING): Name of node for which slow boot is observed.
+*duration* (INT): Duration in minutes taken by the node to reach giveback ready state.
+
+== upgrademgr.node.slowWFG
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a cluster node has not reached "waiting for giveback" state within 30 minutes after a takeover during automated nondisruptive upgrade (ANDU).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Node "%s" is taking a long time to boot (elapsed time: %d minutes).
+*Parameters*::
+*node* (STRING): Name of the node for which a slow boot operation is observed.
+*duration* (INT): Duration in minutes waiting for the node to reach "waiting for giveback" state.
+
+== upgrademgr.node.updateDone
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an update of node is completed successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*node* (STRING): Node that successfully completed the update.

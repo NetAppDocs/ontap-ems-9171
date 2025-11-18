@@ -1,0 +1,208 @@
+---
+sidebar: sidebar
+permalink: cf-misc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.misc events
+---
+
+= cf.misc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.misc.givebackPartnerNotReady
+*Severity*::
+NOTICE
+*Description*::
+The message occurs when a giveback is initiated before the partner has reached waiting-for-giveback state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Giveback is being initiated before the partner is in the waiting-for-giveback state. The partner is in the %s state.
+*Parameters*::
+*state* (STRING): Current state of the partner.
+
+== cf.misc.icNicFailureTakeover
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a takeover is initiated because InterConnect NIC failed on the partner node.
+*Corrective Action*::
+Replace the network interface card of InterConnect which went down on the partner node.
+*Syslog Message*::
+Failover monitor: takeover initiated because of InterConnect NIC failure on the partner node.
+*Parameters*::
+(None).
+
+== cf.misc.operatorDisable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the operator disables the high-availability (HA) pair.
+*Corrective Action*::
+Use the "storage failover modify -enabled true" command to reenable failover.
+*Syslog Message*::
+Failover monitor: operator initiated disabling of takeover.
+*Parameters*::
+(None).
+
+== cf.misc.operatorDisableOption
+*Severity*::
+ERROR
+*Description*::
+This event is issued when the operator disables a High Availability (HA) option.
+*Corrective Action*::
+Re-enable the option
+*Syslog Message*::
+(None).
+*Parameters*::
+*option* (STRING): Name of the option
+
+== cf.misc.operatorEnable
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the operator enables failover between the 2 nodes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: operator initiated enabling of failover.
+*Parameters*::
+(None).
+
+== cf.misc.operatorEnableOption
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the operator enables a controller failover option.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*option* (STRING): Name of the option
+
+== cf.misc.operatorForcedTakeover
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a forced takeover is initiated by the operator.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: forced takeover initiated by operator
+*Parameters*::
+(None).
+
+== cf.misc.operatorGiveback
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when a giveback is initiated by the operator.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: %s initiated by operator
+*Parameters*::
+*strengthString* (STRING): External string
+*strengthCode* (INT): Internal code for strength
+
+== cf.misc.operatorTakeover
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a takeover is initiated by the operator.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: takeover initiated by operator
+*Parameters*::
+(None).
+
+== cf.misc.ProgTakeover
+*Severity*::
+NOTICE
+*Description*::
+This message is issued when a takeover is initiated programmatically by Data ONTAP(R).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: takeover initiated.
+*Parameters*::
+(None).
+
+== cf.misc.ProgTakeoverFail
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a takeover is initiated programmatically by Data ONTAP(R) and the takeover request fails.
+*Corrective Action*::
+Check the reason string and repair the problem reported.
+*Syslog Message*::
+Failover monitor: Programmatic takeover failed (%s)
+*Parameters*::
+*errorstr* (STRING): Error string returned by the failover monitor.
+
+== cf.misc.ProgTakeoverFailInit
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a takeover is initiated programmatically by Data ONTAP(R) and the takeover request fails because the controller is set to "non_ha" mode or is not initialized.
+*Corrective Action*::
+Set the HA mode to "ha" by using the "storage failover modify -mode ha" command, and then reboot the node.
+*Syslog Message*::
+Failover monitor: Programmatic takeover failed due to initialization issues.
+*Parameters*::
+(None).
+
+== cf.misc.ProgTakeoverFailInTO
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a takeover is initiated programmatically by Data ONTAP(R) and the node is already in takeover mode.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: Programmatic takeover failed due to previous takeover.
+*Parameters*::
+(None).
+
+== cf.misc.ProgTakeoverFailNotUp
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a negotiated takeover is initiated programmatically by Data ONTAP(R) and the partner node is not up.
+*Corrective Action*::
+Bring up the partner node.
+*Syslog Message*::
+Failover monitor: Programmatic takeover failed because the partner node is not up.
+*Parameters*::
+(None).
+
+== cf.misc.ProgTakeoverFailPartnerDeny
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a takeover is initiated programmatically by Data ONTAP(R) and the partner node denies the takeover request.
+*Corrective Action*::
+Check previous EMS messages to determine why takeover was denied.
+*Syslog Message*::
+Failover monitor: Programmatic takeover failed because the partner node denied the takeover request.
+*Parameters*::
+(None).
+
+== cf.misc.ProgTakeoverFailShutdown
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a takeover is initiated programmatically by Data ONTAP(R) and a shutdown is in progress.
+*Corrective Action*::
+Verify that both nodes are booted.
+*Syslog Message*::
+Failover monitor: Programmatic takeover failed because shutdown was in progress.
+*Parameters*::
+(None).

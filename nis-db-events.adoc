@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nis-db-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nis.db events
+---
+
+= nis.db events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nis.db.job.queue.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the NIS group database job queue fails.
+*Corrective Action*::
+Use the "vserver services name-service nis-domain group-database build" command to queue the NIS database job.
+*Syslog Message*::
+NIS group database job queue failed for Vserver %s.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.

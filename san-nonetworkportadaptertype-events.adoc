@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: san-nonetworkportadaptertype-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.nonetworkportadaptertype events
+---
+
+= san.nonetworkportadaptertype events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.NoNetworkPortAdapterType
+*Severity*::
+ERROR
+*Description*::
+This message occurs in MetroCluster(TM) configurations on clustered ONTAP(R) systems, when ONTAP cannot find a port on the disaster recovery (DR) node that is of the same adapter type (converged network adapter (CNA)/network interface card (NIC)) as the home port of the primary storage virtual machine (SVM) data LIF.
+*Corrective Action*::
+Ensure that there are ports in the destination cluster node (DR partner) that have the same adapter type as the source cluster port that hosts the primary SVM IP LIF. Use the "net port show" and "run -node <node-name> sysconfig -ca" commands to view the network port adapter type information. After ensuring same adapter type port is available on the DR partner, run the "metrocluster check lif repair-placement" command in the source cluster with the SVM name and LIF name as inputs after ensuring that there are ports in the destination cluster node (DR partner) that have the same adapter type. After running the repair placement command, run the "metrocluster check lif show" command to see whether LIF placement succeeded or not.
+*Syslog Message*::
+There are no ports on node "%s" in the destination cluster that have the adapter type "%s" in IPspace "%s" required to host the secondary SVM "%s" %s LIF "%s".
+*Parameters*::
+*node* (STRING): Name of the destination cluster node (DR partner) that does not have a port of the same adapter type as the port in the source cluster.
+*adapter_type* (STRING): Adapter type of the source cluster port.
+*ipspace_name* (STRING): Name of the IPspace.
+*vserver_name* (STRING): storage virtual machine (SVM) that owns the LIF.
+*data_protocol* (STRING): Data protocol of the LIF.
+*lif* (STRING): Name of the IP LIF.

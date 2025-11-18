@@ -1,0 +1,46 @@
+---
+sidebar: sidebar
+permalink: vserver-rbac-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vserver.rbac events
+---
+
+= vserver.rbac events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vserver.rbac.alias.command
+*Deprecated*::
+ONTAP now directly creates a role entry on the target of the alias.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a custom role associated with a Storage Virtual Machine (SVM) has an aliased command directory associated with it. SVM custom roles must be associated with actual command directories and commands, not aliases to them. The aliased commands associated with SVM custom roles will not be available under SVM context.
+*Corrective Action*::
+Delete the role on the SVM, and then re-create it using the actual command.
+*Syslog Message*::
+The custom role %s is associated with alias command - %s on SVM %s. Create role with actual command - %s.
+*Parameters*::
+*role_name* (STRING): Name of the role for which creation failed.
+*alias_name* (STRING): Name of the alias that is associated with the role.
+*vserver_name* (STRING): Name of the SVM.
+*non_alias_name* (STRING): Name of the actual command.
+
+== vserver.rbac.replicateRole
+*Severity*::
+ERROR
+*Description*::
+This message occurs when replication of a role is failed on a Vserver because the command directory associated with it is an alias.
+*Corrective Action*::
+Delete the role on the source Vserver, and then re-create it using the non-alias target. Then retry the operation again.
+*Syslog Message*::
+Failed to replicate the role %s associated with the alias %s on Vserver %s.
+*Parameters*::
+*role_name* (STRING): Name of the role for which creation failed.
+*alias_name* (STRING): Name of the alias that is associated with the role.
+*vserver_name* (STRING): Name of the Vserver.

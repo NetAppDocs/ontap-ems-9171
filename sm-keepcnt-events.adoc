@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: sm-keepcnt-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sm.keepcnt events
+---
+
+= sm.keepcnt events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sm.keepcnt.reached
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when new snapshots on the source volume cannot be transferred because the snapshot retention count (keep count) for snapshots with a given snapmirror-label has been reached on the destination volume and the 'preserve' flag is set to 'true'.
+*Corrective Action*::
+See "Working with FlexVol volume SnapVault backups" in the Clustered Data ONTAP Data Protection Guide for details about managing SnapVault relationships.
+*Syslog Message*::
+No new snapshots with snapmirror-label(s) %s can be transferred to destination volume %s because the keep count has been reached and the preserve value is set to 'true'.
+*Parameters*::
+*snap_label* (STRING): Comma-separated list of snapmirror-labels for the snapshots that cannot be transferred.
+*dst_path* (STRING): Destination volume of the SnapMirror(R) relationship.

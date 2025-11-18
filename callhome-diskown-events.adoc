@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-diskown-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.diskown events
+---
+
+= callhome.diskown events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.diskown.AssignExceeded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when too many disks have been installed. An attempt is made to assign more disks than the maximum that can be supported on this node. This problem must be resolved before the system is rebooted. If your system is configured to do so, it generates and transmits an AutoSupport(tm) (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Review the system capacity limits and the assigned disks on this system. If possible, unassign the unused array LUNs. If you need further assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for ATTEMPTED TO ASSIGN MORE DISKS THAN MAXIMUM SUPPORTED.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

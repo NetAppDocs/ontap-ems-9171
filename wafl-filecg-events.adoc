@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: wafl-filecg-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.filecg events
+---
+
+= wafl.filecg events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.fileCG.vvol.size.exceeded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a volume with file-based compression(either secondary compression or 8k/16K/32K adaptive compression) have nominal size greater than 300TB.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Nominal size of the "%s" volume exceeded the 300TB limit.
+*Parameters*::
+*vvolname* (STRING): Name of the volume.

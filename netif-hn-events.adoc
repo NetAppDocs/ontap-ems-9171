@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: netif-hn-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.hn events
+---
+
+= netif.hn events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.hn.setDataPathFailure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Hyper-V virtual NIC fails to switch the data path from a Physical Function (PF) vPort to a Virtual Function (VF) vPort or vice-versa when accelerated networking is enabled on the virtual NIC. When the data path switch fails, the traffic might or might not continue to flow through existing path. If no traffic flows, then it can result in a complete outage on the LIFs hosted by the virtual NIC.
+*Corrective Action*::
+Redeploy the CVO instance on another host machine. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+%s: Failed to set data path to %s. Error: %d.
+*Parameters*::
+*ifName* (STRING): Name of the network interface.
+*path* (STRING): Data path: synthetic (via PF) or virtual (via VF).
+*error* (INT): Failure to set data path.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: vifmgr-lifcapacity-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.lifcapacity events
+---
+
+= vifmgr.lifcapacity events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.lifCapacity
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system informs the administrator of the number of Logical Interfaces (LIFs) supported by the node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Node %s is capable of hosting %s data LIFs.
+*Parameters*::
+*nodeName* (STRING): Name of the node.
+*numLifs* (STRING): Number of data LIFs that can be configured on the node.

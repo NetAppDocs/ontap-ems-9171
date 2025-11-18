@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: adt-aucb-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: adt.aucb events
+---
+
+= adt.aucb events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== adt.aucb.overwrite
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs in the auditing subsytem, when the subsystem overwrite an existing audit control block during audit control block creation. The overwriting of the audit control block is because of a failure in audit control block deletion.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Overwriting of audit control block occured.
+*Parameters*::
+(None).

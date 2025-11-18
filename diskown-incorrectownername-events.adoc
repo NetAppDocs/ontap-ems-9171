@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: diskown-incorrectownername-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.incorrectownername events
+---
+
+= diskown.incorrectownername events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.IncorrectOwnerName
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when we find a system finds a disk that it owns, but which has a different owner name than the system name.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s has incorrect owner name information (%s). It will be changed to match the system name (%s).
+*Parameters*::
+*diskname* (STRING): The name of the disk for which this was observed
+*wrong_ownername* (STRING): The owner name, which is incorrect, that the disk currently has
+*system_name* (STRING): The system name that should be the owner name for the disk

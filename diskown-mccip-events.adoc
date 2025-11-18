@@ -1,0 +1,52 @@
+---
+sidebar: sidebar
+permalink: diskown-mccip-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.mccip events
+---
+
+= diskown.mccip events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.mccip.assignStatus
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when MetroCluster(tm) quarter-shelf based drive assignment is enabled or disabled. It is enabled when the system is a member of an AFF HA pair in a 4-node MetroCluster IP configuration.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+MetroCluster quarter-shelf based automatic drive assignment for shelf "%d" is "%s".
+*Parameters*::
+*shelf_id* (INT): Shelf identifier.
+*state* (STRING): MetroCluster quarter-shelf based automatic drive assignment state.
+
+== diskown.mccip.invalidShlf
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the controller cannot automatically assign disks because the shelf is either offline, or temporarily unavailable and therefore cannot be queried for the information that is required to properly assign the disks to the controller. This can also occur when multiple shelves in a cluster have the same shelf ID. Automatic disk assignment fails for the disks in this shelf until the shelf is back online or any shelf ID conflicts within a cluster are resolved.
+*Corrective Action*::
+Use the "storage shelf show" command to verify that the specified shelf is online and to verify connectivity from the controller to all of the paths to the shelf. If multiple shelves in a cluster have the same shelf ID, resolve that and ensure that shelves in that cluster have different shelf IDs.
+*Syslog Message*::
+The system cannot automatically assign disks for shelf "%d" because the shelf is in an invalid state.
+*Parameters*::
+*shelf_id* (INT): Shelf identifier.
+
+== diskown.mccip.MultiOwners
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot automatically assign disks because some of the disks are assigned to multiple systems in a conflicting manner.
+*Corrective Action*::
+1) Find all of the disks belonging to the specified shelf by using the "storage disk show" command. 2) View the list of systems by using the "disk show -v" command. 3) Ensure that the disks on each shelf are assigned such that lower half bays are assigned to the local high-availability (HA) pair and the higher half bays are assigned to the remote HA pair. Additionally within each half shelf, ensure that the disks are assigned equally to the HA pair such that the lower quarter bays are assigned to one node and the higher quarter bays are assigned to the node's HA partner.
+*Syslog Message*::
+The system cannot automatically assign disks because the disks in shelf "%d" are assigned to multiple systems in a conflicting manner.
+*Parameters*::
+*shelf_id* (INT): Shelf identifier.

@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: dfu-clusterdisknotready-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dfu.clusterdisknotready events
+---
+
+= dfu.clusterdisknotready events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dfu.clusterDiskNotReady
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the controller failover partner reports that a disk selected for download is in the NOT READY state.
+*Corrective Action*::
+Only disks in the READY state can be downloaded to. If a disk is in the NOT READY state, it indicates that the disk has probably failed for some reason and should be returned for RMA.
+*Syslog Message*::
+Controller failover partner reports disk as NOT READY. Unable to download firmware to disk %s [%s %s %s] S/N [%s].
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*vendorName* (STRING): Vendor name of the disk.
+*productId* (STRING): Product ID of the disk.
+*fwVersion* (STRING): Firmware version of the disk.
+*serialno* (STRING): Serial number of the disk.

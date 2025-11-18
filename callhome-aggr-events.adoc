@@ -1,0 +1,63 @@
+---
+sidebar: sidebar
+permalink: callhome-aggr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.aggr events
+---
+
+= callhome.aggr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.aggr.meta.repair
+*Severity*::
+ERROR
+*Description*::
+This message occurs after WAFL(R) Iron (wafliron) detects and repairs corruption in an aggregate metafile. Wafliron is a detection and repair process. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Wafliron might need to be run on other volumes in aggregate or complete aggregate. Check for wafl.iron.cont.corrupt messages in the node's event log to find other corrupt volumes. Run wafliron on all corrupt volumes. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for WAFLIRON AGGREGATE METAFILE REPAIRED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.aggr.offline
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an aggregate is inconsistent and is taken offline. The inconsistency might stem from one or more sources and might be related to previous operations or to current operations. Disabling access is a protective measure to ensure that further inconsistencies are avoided. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+If the operating environment for the system, storage, or associated cabling has changed in terms of temperature, humidity, vibration, unstable electrical power, or other physical factors, gracefully shut down and power off the system until the environment is restored to normal operations. If the operating environment has not changed, identify the source of the inconsistency by checking for previous errors and warnings. Also check for hardware statistics from Fibre Channel, SCSI, disk drives, other communications mechanisms, and previous administrative activities. Another approach is to consult with NetApp technical support (it is recommended that you do so before attempting this step), and then run WAFL(R) Iron (wafliron) on the aggregate to identify and optionally repair the inconsistency. If you need further assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for AGGREGATE INCONSISTENT AND TAKEN OFFLINE
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.aggr.restricted
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a medium error is encountered during a reconstruction. Medium errors during reconstruction automatically invoke wafliron if your system's 'raid.reconstruct.wafliron.enable' option is set to "on". If the option is set to "off", the aggregate is moved offline. In this case, the option was set to "off" and the aggregate was moved offline. The failed disk drive's reconstruction continues and the aggregate stays offline until you repair it. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Run wafliron manually to bring this aggregate online. It is recommended that you contact NetApp technical support before attempting this. If you need further assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for MEDIUM ERROR DURING RECONSTRUCTION (aggregate restricted)
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.aggr.wafliron
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a medium error is encountered during a reconstruction. Medium errors during reconstruction automatically invoke wafliron if your system's 'raid.reconstruct.wafliron.enable' option is set to "on". If the option is set to "off", the aggregate is moved offline. In this case, the option was set to "on" and the aggregate remains online. The failed disk drive's reconstruction continues and wafliron begins repairing the aggregate. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+The corrective process of running wafliron has already begun. Wait until you see a message indicating that the wafliron process is complete and the inconsistency status of the aggregate is cleared. If this doesn't happen, or if you see subsequent error messages, contact NetApp technical support. If you need assistance in bringing the aggregate online, contact NetApp technical support.
+*Syslog Message*::
+Call home for MEDIUM ERROR DURING RECONSTRUCTION (wafliron started)
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

@@ -1,0 +1,169 @@
+---
+sidebar: sidebar
+permalink: raid-fm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.fm events
+---
+
+= raid.fm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.fm.disasterSummary
+*Severity*::
+ERROR
+*Description*::
+This event contains summary information for the disaster takeover. It is only generated if a disaster takeover occurs.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RAID disaster takeover summary: number of partner volumes and aggregates=%d, number of rewrite-fsid partner volumes and aggregates=%d, number of out-of-date partner volumes and aggregates=%d, number of ignored partner volumes and aggregates=%d, number of local volumes and aggregates=%d, number of out-of-date local volumes and aggregates=%d
+*Parameters*::
+*nPvols* (INT): The number of partner volumes involved in the takeover
+*nRwPvols* (INT): The number of rewrite-fsid partner volumes
+*nOodPvols* (INT): The number of out-of-date partner volumes
+*nIgnPvols* (INT): The number of ignored partner volumes
+*nLvols* (INT): The number of local volumes involved in the takeover
+*nOodLvols* (INT): The number of out-of-date local volumes
+
+== raid.fm.fixedMixedOwnership
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when assimilation detects that an aggregate contains disks with multiple current owner IDs and fixes the ownership issue.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Aggregate %s was detected to have disks with mixed current owner IDs and the ownership has been fixed.
+*Parameters*::
+*aggregate* (STRING): Name of the aggregate that contained disks with mixed owner IDs.
+*disk_count* (INT): Number of disks that had their current owner ID fixed.
+*current_owner_id* (INT): NVRAM system ID of the aggregate's current owner.
+
+== raid.fm.leftBehindAggr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an aggregate is not returned to its original owner in a giveback operation.
+*Corrective Action*::
+Run the 'storage failover giveback' command to return the aggregate to its original owner.
+*Syslog Message*::
+Aggregate %s was left behind during giveback.
+*Parameters*::
+*aggregate* (STRING): Name of the aggregate that was left behind.
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+*home_owner_id* (LONGINT): NVRAM system ID of the aggregate's home owner.
+*current_owner_id* (LONGINT): NVRAM system ID of the aggregate's current owner.
+
+== raid.fm.replayFail
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when RAID replay fails for partner aggregates during takeover. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RAID takeover: RAID replay failed. Status: %d.
+*Parameters*::
+*status* (INT): Replay failure status code.
+
+== raid.fm.takeoverFail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a high-availability (HA) takeover attempt fails due to an assimilation error.
+*Corrective Action*::
+If partner aggregates are failing to assimilate on the surviving node of the HA pair, contact technical support for assistance with bringing these aggregates online.
+*Syslog Message*::
+RAID takeover failed: %s.
+*Parameters*::
+*reason* (STRING): Reason the takeover failed.
+
+== raid.fm.volDisasterBadState
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot split an out-of-date volume due to a bad volume state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Partner volume %s identity unaltered during HA disaster takeover: bad state %s. Clients might see stale data.
+*Parameters*::
+*vol* (STRING): Name of the aggregate.
+*state* (STRING): Aggregate state.
+
+== raid.fm.volDisasterFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system encounters an error during a high availability (HA) disaster takeover.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Partner volume %s HA disaster takeover error (%s): %s. Clients will not be able to access this volume.
+*Parameters*::
+*vol* (STRING): Name of the aggregate.
+*type* (STRING): Type of error
+*reason* (STRING): Internal reason code
+
+== raid.fm.volDisasterIgnore
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system ignores a volume during a high availability (HA) disaster takeover.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Partner volume %s identity unaltered during HA takeover: %s. Clients might see stale data.
+*Parameters*::
+*vol* (STRING): Name of the aggregate.
+*reason* (STRING): Reason for ignoring the volume
+*code* (INT): Internal code
+
+== raid.fm.volDisasterWarn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system encounters a nonfatal error during a high availability (HA) disaster takeover
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Partner volume %s HA disaster takeover warning (%s): %s Volume takeover might be incomplete and clients might see stale data.
+*Parameters*::
+*vol* (STRING): Name of the aggregate.
+*type* (STRING): Type of error
+*reason* (STRING): Internal reason code
+
+== raid.fm.volFsidRewrite
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system rewrites a volume's or aggregate's canceling giveback high availability (HA) disaster takeover.
+*Corrective Action*::
+Remount the clients of the volume.
+*Syslog Message*::
+Partner %s %s FSID was rewritten during HA disaster takeover. Clients must be remounted.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*vol* (STRING): Name of the aggregate.
+*oldFsid* (INT): Old fsid
+*newFsid* (INT): New fsid
+
+== raid.fm.volFsidRewriteOod
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system rewrites a volume's File System ID (FSID) during a high availability (HA) disaster takeover with an out-of-date volume.
+*Corrective Action*::
+Remount the clients of the volume.
+*Syslog Message*::
+Partner volume %s FSID was rewritten during HA disaster takeover. Clients must be remounted.
+*Parameters*::
+*vol* (STRING): Name of the aggregate.
+*oldFsid* (INT): Old fsid
+*newFsid* (INT): New fsid

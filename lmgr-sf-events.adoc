@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: lmgr-sf-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lmgr.sf events
+---
+
+= lmgr.sf events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lmgr.sf.up.ready
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the lock manager non-disruption subsystem for CIFS continuously available (CA) shares notifies the high-availability (HA) module that transition into the up state is allowed. After the lock manager has sent this notification, the HA module will allow certain failover options to proceed such as aggregate relocation and giveback.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Lock manager allowed high availability module to transition to the up state for the following reason: %s.
+*Parameters*::
+*reason* (STRING): Reason for allowing transition to occur. Valid reasons include: 1. Lock-sync complete 2. Lock-sync timed out 3. CSM Invalid 4. Partner down 5. Mirroring disabled from bootarg 6. SMB3 disabled

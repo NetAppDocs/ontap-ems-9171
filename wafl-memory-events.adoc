@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: wafl-memory-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.memory events
+---
+
+= wafl.memory events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.memory.status
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs periodically to inform the administrator about the amount of WAFL memory that is currently available.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%dMB of memory is currently available for the WAFL file system.
+*Parameters*::
+*mem* (INT): Available WAFL memory, in megabytes (MB).
+
+== wafl.memory.statusLowMemory
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when WAFL is low on memory.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL is running low on memory, with %dMB remaining.
+*Parameters*::
+*mem* (INT): Available WAFL memory, in megabytes (MB).
+
+== wafl.memory.statusVeryLowMemory
+*Severity*::
+ALERT
+*Description*::
+This message occurs when WAFL is very low on memory.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL is running very low on memory, with %dMB remaining.
+*Parameters*::
+*mem* (INT): Available WAFL memory, in megabytes (MB).

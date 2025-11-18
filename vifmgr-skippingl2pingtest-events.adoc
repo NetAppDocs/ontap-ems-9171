@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: vifmgr-skippingl2pingtest-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.skippingl2pingtest events
+---
+
+= vifmgr.skippingl2pingtest events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.skippingL2PingTest
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the number of local ports in the given broadcast domain exceeds the threshold for a node and, as a result, the l2_reachability health monitor has omitted checking ports in that broadcast domain. If any local ports in this broadcast domain experience Layer 2 connectivity problems, they are not marked as degraded and no EMS messages related to the Layer 2 connectivity health of those ports is generated. LIFs hosted on those port are not automatically migrated to healthy ports because of Layer 2 connectivity issues.
+*Corrective Action*::
+This is not a misconfiguration; however, including fewer than the specified threshold ports in the broadcast domain enables the l2_reachability health monitor to check the health of the ports in that broadcast domain.
+*Syslog Message*::
+Skipping l2_reachability health monitor check for ports belonging to broadcast domain %s on node %s as the number of local ports (%u) belonging to this broadcast domain exceeds the threshold (%u) for which l2_reachability health monitor check can efficiently run.
+*Parameters*::
+*bcDomainName* (STRING): Name of the broadcast domain for which the l2_reachability health monitor check is being skipped.
+*nodeName* (STRING): Name of the node for which the number of local ports in the given broadcast domain exceeds the threshhold.
+*numLocalPorts* (INT): Number of local ports in the specified broadcast domain.
+*maxLocalPorts* (INT): Threshold value for the maximum number of local ports in a broadcast domain for which the l2_reachability health monitor check can run.

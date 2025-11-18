@@ -1,0 +1,59 @@
+---
+sidebar: sidebar
+permalink: qtree-delete-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: qtree.delete events
+---
+
+= qtree.delete events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== qtree.delete.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the delete operation on a qtree fails.
+*Corrective Action*::
+Check and resolve the failure reason and attempt the qtree deletion again.
+*Syslog Message*::
+Failed to delete qtree "%s" in volume "%s" on Vserver "%s". Error: "%s" (%d).
+*Parameters*::
+*qtree* (STRING): Name of the qtree.
+*volume* (STRING): Name of the volume on which the qtree resides.
+*vserver* (STRING): Name of the Vserver on which the volume resides.
+*reason* (STRING): Reason for the failure.
+*errorCode* (INT): Error number of the failure.
+
+== qtree.delete.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a qtree is being deleted. A subsequent event will indicate the success or failure of the operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Deleting qtree "%s" in volume "%s" on Vserver "%s".
+*Parameters*::
+*qtree* (STRING): Name of the qtree.
+*volume* (STRING): Name of the volume on which the qtree resides.
+*vserver* (STRING): Name of the Vserver on which the volume resides.
+
+== qtree.delete.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the delete operation on a qtree succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Successfully deleted qtree "%s" in volume "%s" on Vserver "%s".
+*Parameters*::
+*qtree* (STRING): Name of the qtree.
+*volume* (STRING): Name of the volume on which the qtree resides.
+*vserver* (STRING): Name of the Vserver on which the volume resides.

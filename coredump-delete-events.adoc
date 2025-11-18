@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: coredump-delete-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: coredump.delete events
+---
+
+= coredump.delete events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== coredump.delete.denied
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a requested coredump delete cannot occur because an aggregate relocation or a takeover is in progress. The system cannot delete a core while either an aggregate relocation or a takeover is in progress.
+*Corrective Action*::
+Retry the coredump delete after aggregate relocation or takeover completes.
+*Syslog Message*::
+Coredump delete disallowed because an aggregate relocation or a takeover in progress.
+*Parameters*::
+(None).

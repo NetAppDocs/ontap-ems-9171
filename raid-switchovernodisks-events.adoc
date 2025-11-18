@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: raid-switchovernodisks-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.switchovernodisks events
+---
+
+= raid.switchovernodisks events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.switchoverNoDisks
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a MetroCluster(tm) switchover finds no disks during RAID assimilation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+MetroCluster switchover assimilation found no disks.
+*Parameters*::
+(None).

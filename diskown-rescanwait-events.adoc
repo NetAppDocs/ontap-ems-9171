@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: diskown-rescanwait-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.rescanwait events
+---
+
+= diskown.rescanwait events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.rescanWait
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the disk ownership rescan code waits.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*status* (STRING): Description on the type of wait.

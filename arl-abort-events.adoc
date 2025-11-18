@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: arl-abort-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: arl.abort events
+---
+
+= arl.abort events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== arl.abort.raid
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a relocation of an aggregate is canceled due to activity in RAID.
+*Corrective Action*::
+Reissue the "storage aggregate relocation start" command to initiate relocation of an aggregate to the specified destination node after the pending or in-progress operation on the aggregate is complete.
+*Syslog Message*::
+Aggregate %s%s is %s; canceling 'storage aggregate relocation start' operation.
+*Parameters*::
+*owner* (STRING): String indicating the owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*reason* (STRING): Activity that is preventing the aggregate relocation operation.

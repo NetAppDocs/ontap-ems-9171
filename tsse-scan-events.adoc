@@ -1,0 +1,64 @@
+---
+sidebar: sidebar
+permalink: tsse-scan-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: tsse.scan events
+---
+
+= tsse.scan events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== tsse.scan.catalog.failed
+*Deprecated*::
+Deprecated as of version 9.13.1.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when inactive data compression scan related information failed to be updated on the catalog file.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cold Data Scan catalog update failed on '%s' - %s.
+*Parameters*::
+*vol* (STRING): Volume name.
+*fail_message* (STRING): Update failure reason.
+
+== tsse.scan.catalog.updated
+*Deprecated*::
+Deprecated as of version 9.13.1.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when inactive data compression scan related information updated on the catalog file.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cold Data Scan catalog updated on '%s' (SE ratio local: %s, SE ratio migrate: %s, Incompressible: %llu%%, Hot data: %llu%%, Mode: %d, SE ratio cold migrate: %s).
+*Parameters*::
+*vol* (STRING): Volume name.
+*se_ratio_local* (STRING): SE Ratio for local reporting.
+*se_ratio_migrate* (STRING): SE Ratio for migrate reporting.
+*incomp_data_pct* (LONGINT): Incompressible data percentage.
+*hot_data_pct* (LONGINT): Hot data percentage.
+*scan_mode* (INT): Scan mode.
+*se_ratio_cold_migrate* (STRING): SE Ratio for Cold migrate reporting.
+
+== tsse.scan.start.failed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when either inactive data compression or garbage collect or garbage collect reclamation Scan fails to start.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+'%s' failed to start on '%s' - %s.
+*Parameters*::
+*scan_type* (STRING): Scan type.
+*vol* (STRING): Volume or aggregate name.
+*fail_message* (STRING): Scan failure reason.

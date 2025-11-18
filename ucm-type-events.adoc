@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: ucm-type-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ucm.type events
+---
+
+= ucm.type events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ucm.type.changed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the user changes the FC-4 type on a configurable adapter. The new type will take effect on the next controller reboot.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-4 type has changed to %s on adapter %s. Reboot the controller for the changes to take effect.
+*Parameters*::
+*type* (STRING): Current adapter type.
+*adapter* (STRING): Name of the associated adapter.

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: adt-max-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: adt.max events
+---
+
+= adt.max events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== adt.max.record.size.exceeded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a management command or file operation tries to generate an audit record, that is greater than the max_audit_record_size value. The File Services Auditing subsystem might fail the operation or truncate the record.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+File Services Auditing subsystem failed the operation or truncated an audit record because it was greater than max_audit_record_size value. Vserver UUID=%s, event_id=%u, size=%u
+*Parameters*::
+*VserverUuid* (STRING): UUID of then Vserver.
+*eventId* (INT): Event ID for internal use.
+*size* (INT): Record size.

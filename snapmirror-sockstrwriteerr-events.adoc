@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: snapmirror-sockstrwriteerr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapmirror.sockstrwriteerr events
+---
+
+= snapmirror.sockstrwriteerr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapmirror.sockStrWriteErr
+*Severity*::
+ERROR
+*Description*::
+This event is issued when SnapMirror tries to write a large string to the socket.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Write string too large %d.
+*Parameters*::
+*len* (INT): String length SnapMirror tried to write to socket.

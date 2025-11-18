@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: nvd-biodone-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvd.biodone events
+---
+
+= nvd.biodone events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvd.biodone.bio.flush.error
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when there is an error during a block I/O flush operation.
+*Corrective Action*::
+Check the host logs for any drive errors related to the device reported in this event.
+*Syslog Message*::
+Block I/O flush operation (bio_flush) for opcode: 0x%x failed for device: %s.
+*Parameters*::
+*opcode* (INTHEX): SCSI opcode.
+*dev_path* (STRING): Device path.
+
+== nvd.biodone.error.code
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when there is an error during an I/O operation.
+*Corrective Action*::
+Check the host logs for any drive errors related to the device reported in this event.
+*Syslog Message*::
+I/O for opcode: 0x%x returned with error code: %d for device: %s.
+*Parameters*::
+*opcode* (INTHEX): SCSI opcode.
+*bio_error* (INT): Error code.
+*dev_path* (STRING): Device path.

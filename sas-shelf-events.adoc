@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sas-shelf-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sas.shelf events
+---
+
+= sas.shelf events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sas.shelf.conflict
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects that two or more SAS (serial attached SCSI) disk shelves have the same shelf ID. The SAS domain is functional, but references to disk shelves will be based on disk shelf serial numbers, not disk shelf IDs.
+*Corrective Action*::
+Reassign disk shelf IDs so that no conflict exists.
+*Syslog Message*::
+At least two SAS disk shelves have the same disk shelf ID.
+*Parameters*::
+(None).

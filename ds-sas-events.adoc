@@ -1,0 +1,209 @@
+---
+sidebar: sidebar
+permalink: ds-sas-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ds.sas events
+---
+
+= ds.sas events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ds.sas.config.warning
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects a configuration problem on the shelf I/O module.
+*Corrective Action*::
+Reseat the disk shelf I/O module. If that does not fix the problem, replace the disk shelf I/O module.
+*Syslog Message*::
+Configuration error on Serial Attached SCSI (SAS) I/O module %s channel %s shelf ID %lld - %s of %d expected %d
+*Parameters*::
+*module_id* (STRING): Module (A or B) that is experiencing the problem.
+*channel* (STRING): Channel of the shelf that is experiencing the problem.
+*shelfId* (LONGINT): Shelf ID of the shelf that is experiencing the problem.
+*desc* (STRING): Description of the parameter that is misconfigured.
+*actual* (INT): Actual value for this configuration parameter on the shelf I/O module.
+*expected* (INT): Expected value for this configuration parameter on the disk shelf I/O module.
+
+== ds.sas.drivephy.disableErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a drive physical layer device (phy) on a Serial Attached SCSI (SAS) I/O module is disabled due to one of the following reasons: manually bypassed; exceeded loss of double word synchronization threshold; exceeded running disparity threshold Transmitter fault; exceeded CRC error threshold; exceeded invalid double word threshold; exceeded phy reset problem threshold; exceeded broadcast change threshold; or mirroring disabled on the other I/O module.
+*Corrective Action*::
+Replace the disabled disk drive.
+*Syslog Message*::
+Disk %s%s on channels %s shelf ID %lld %s bay %s %s.
+*Parameters*::
+*phy* (STRING): Physical layer device (phy) that is being disabled.
+*disk_data* (STRING): Disk data includes vendor name, model, firmware revision and the serial number of the disabled disk. If unable to access the disk then, this field is blank.
+*channels* (STRING): Channels that have the error if local, PARTNER for high-availability partner, UNUSED if unconnected.
+*shelfID* (LONGINT): Shelf ID of the disk shelf reporting the error.
+*element* (STRING): IOM (I/O module) designator (A or B).
+*bay* (STRING): Bay in which the disk is installed.
+*reason* (STRING): Reason the disk phy was disabled.
+
+== ds.sas.element.fault
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Serial Attached SCSI (SAS) module in a disk shelf reports an error.
+*Corrective Action*::
+Check cabling to the shelf. Check the status LED on the shelf, making sure that the fault LEDs are not on. Clear any fault condition, if possible.
+*Syslog Message*::
+State of shelf module %s is %s on channels %s shelf ID %d
+*Parameters*::
+*element* (STRING): Shelf module designator (A or B).
+*state* (STRING): Current state of IOM.
+*channels* (STRING): Channels that have the error if local, PARTNER for high-availability partner, UNUSED if unconnected.
+*shelfID* (INT): Shelf ID (0-99) of the shelf reporting the error.
+
+== ds.sas.element.xport.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Serial Attached SCSI (SAS) disk shelf module reports a transport error.
+*Corrective Action*::
+Check cabling to the shelf. Check the status LED on the shelf, making sure that the fault LEDs are not on. Clear any fault condition, if possible.
+*Syslog Message*::
+Shelf module %s XPORT ERROR on channels %s shelf ID %d
+*Parameters*::
+*element* (STRING): Shelf module designator (A or B).
+*channels* (STRING): Channels that have the error if local, PARTNER for high-availability partner, UNUSED if unconnected.
+*shelfID* (INT): Shelf ID (0-99) of the shelf reporting the error.
+
+== ds.sas.hostphy.disableErr
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a host physical layer device (phy) on a Serial Attached SCSI (SAS) I/O module is disabled due to one of the following reasons: Invalid SAS2-SAS3 Transition; manually bypassed; exceeded loss of double word synchronization threshold; exceeded running disparity threshold; transmitter fault; exceeded CRC error threshold; exceeded invalid double word threshold; exceeded phy reset problem threshold; exceeded broadcast change threshold; or mirroring disabled on the other I/O module.
+*Corrective Action*::
+If the Host phys were disabled because of an invalid transition, remove the SAS cable on the disabled phys completely from both IOMs and then recable correctly. Removing the cable completely allows both IOMs to reset. For other disabled host phy conditions, replace the shelf module to which the affected host phy belongs.
+*Syslog Message*::
+Port %s on channels %s shelf ID %lld %s %s.
+*Parameters*::
+*phy* (STRING): Host port that is being disabled.
+*channels* (STRING): Channels that have the error if local, PARTNER for high-availability partner, UNUSED if unconnected.
+*shelfID* (LONGINT): Shelf ID of the shelf reporting the error.
+*element* (STRING): I/O module designator (A or B).
+*reason* (STRING): Reason the host phy was disabled.
+
+== ds.sas.id.conflict.cleared
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a shelf ID conflict on a channel reported earlier is resolved.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Shelf ID conflict on channel %s (shelf ID: %lld, S/N: %s) was cleared.
+*Parameters*::
+*channel* (STRING): Channel that the shelf is attached to.
+*shelfId* (LONGINT): Shelf ID.
+*SerialNumber* (STRING): Shelf serial number.
+
+== ds.sas.id.conflict.detected
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SAS shelf ID conflict is detected on a channel.
+*Corrective Action*::
+Ensure that all of the disk shelves in a high-availability pair have a unique shelf ID. For instructions, see "Changing the disk shelf ID" in the Disk Shelf Installation and Service Guide for the shelf model.
+*Syslog Message*::
+SAS shelf on channel %s (shelf ID: %lld, S/N: %s) reported a shelf ID conflict.
+*Parameters*::
+*channel* (STRING): Channel that the shelf is attached to.
+*shelfId* (LONGINT): Shelf ID.
+*SerialNumber* (STRING): Shelf serial number.
+
+== ds.sas.multPhys.disableErr
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects that multiple Physical Layer Devices (PHYs) are disabled on a SAS disk shelf.
+*Corrective Action*::
+Check whether the problems on the PHYs are valid by looking for PHY errors in nearby events. If multiple PHYs are disabled at the same time in a particular disk shelf module, replace the disk shelf module.
+*Syslog Message*::
+Multiple phys have been disabled on the disk shelf %d on Channels %s, %s.
+*Parameters*::
+*shelfID* (INT): ID of the disk shelf reporting the error.
+*channels* (STRING): Channels that have the error. "Channel" can be an adapter port, (for example, 0c), or PARTNER for high-availability partner, or UNUSED if unconnected.
+*element* (STRING): Disk shelf module designator (A or B).
+
+== ds.sas.ses.disableErr
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a virtual (SES) physical layer device (phy) on a Serial Attached SCSI (SAS) I/O module is disabled due to to one of the following reasons: manually bypassed; exceeded loss of double word synchronization threshold; exceeded running disparity threshold Transmitter fault; exceeded CRC error threshold; exceeded invalid double word threshold; exceeded phy reset problem threshold; or exceeded broadcast change threshold.
+*Corrective Action*::
+Replace the shelf module.
+*Syslog Message*::
+SES phy on channel %s shelf ID %lld module %s is disabled.
+*Parameters*::
+*channel* (STRING): Channel that has the error if local, PARTNER for high-availability partner, UNUSED if unconnected.
+*shelfID* (LONGINT): Shelf ID of the shelf reporting the error.
+*element* (STRING): I/O module designator (A or B).
+
+== ds.sas.xfer.element.fault
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an element had a fault during an I/O request. It might be due to a transient condition in link connectivity.
+*Corrective Action*::
+Check cabling to the shelf. Check the status LED on the shelf, making sure that the fault LEDs are not on. Clear any fault condition, if possible.
+*Syslog Message*::
+I/O failure on shelf module %s on channels %s shelf id %d, status is %s.
+*Parameters*::
+*element* (STRING): Shelf module designator (A or B).
+*channels* (STRING): Channels that have the error if local, PARTNER for high-availability partner, UNUSED if unconnected.
+*shelfID* (INT): Shelf ID (0-99) of the shelf reporting the error.
+*state* (STRING): Current state of IOM.
+
+== ds.sas.xfer.not.sent
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an I/O transfer could not be sent. It might be due to a transient condition in link connectivity.
+*Corrective Action*::
+Check cabling to the shelf. Check the status LED on the shelf, making sure that the fault LEDs are not on. Clear any fault condition, if possible.
+*Syslog Message*::
+Shelf module %s I/O failure NOT_SENT channels %s shelf ID %d
+*Parameters*::
+*element* (STRING): Shelf module designator (A or B).
+*channels* (STRING): Channels that have the error if local, PARTNER for high-availability partner, UNUSED if unconnected.
+*shelfID* (INT): Shelf ID (0-99) of the shelf reporting the error.
+
+== ds.sas.xfer.unknown.error
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when an unknown error occurs during an I/O request.
+*Corrective Action*::
+Ensure that the shelf module firmware and ONTAP(R) software are compatible versions. Find firmware versions at the NetApp technical support web site.
+*Syslog Message*::
+Shelf module %s I/O failure UNKNOWN: %d channels %s shelf id %d
+*Parameters*::
+*element* (STRING): Shelf module designator (A or B).
+*status* (INT): Error status code.
+*channels* (STRING): Channels that have the error if local, PARTNER for high-availability partner, UNUSED if unconnected.
+*shelfID* (INT): Shelf ID (0-99) of the shelf reporting the error.
+
+== ds.sas.xfer.xport.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a transport error occurs during an I/O request. It might be due to a transient condition in link connectivity.
+*Corrective Action*::
+Check cabling to the shelf. Check the status LED on the shelf, making sure that the fault LEDs are not on. Clear any fault condition, if possible.
+*Syslog Message*::
+Shelf module %s I/O failure TRANSPORT_ERROR channels %s shelf ID %d.
+*Parameters*::
+*element* (STRING): Shelf module designator (A or B).
+*channels* (STRING): Channels that have the error if local, PARTNER for high-availability partner, UNUSED if unconnected.
+*shelfID* (INT): Shelf ID (0-99) of the shelf reporting the error.

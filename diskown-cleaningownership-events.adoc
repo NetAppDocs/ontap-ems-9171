@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: diskown-cleaningownership-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.cleaningownership events
+---
+
+= diskown.cleaningownership events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.cleaningOwnership
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a "storage disk assign -f" command is run for an SES drive and the system discovers that the newly assigned owner already owns an SES drive on the same loop and shelf as the supplied drive. The assign is completed because it is a forced assign, but the error message is generated as an alert.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s (S/N %s) contains software-based disk ownership information that indicates it was previously in use by system ID %u. The ownership information is being cleared.
+*Parameters*::
+*diskname* (STRING): Name of the disk.
+*serialno* (STRING): Serial number of the disk.
+*ownerid* (INT): System ID of the system that owned the disk.

@@ -1,0 +1,54 @@
+---
+sidebar: sidebar
+permalink: wafl-playlist-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.playlist events
+---
+
+= wafl.playlist events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.playlist.bad_fh
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event indicates bad playlist file handle
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*aggr_name* (STRING): Aggregate name
+*vol_name* (STRING): Volume name
+
+== wafl.playlist.create.failure
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event indicates that playlist creation failed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*aggr_name* (STRING): Aggregate name
+*vol_name* (STRING): Volume name
+
+== wafl.playlist.no_playlist
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event indicates no playlist was found for a volume
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*aggr_name* (STRING): Aggregate name
+*vol_name* (STRING): Volume name

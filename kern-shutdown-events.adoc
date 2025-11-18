@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: kern-shutdown-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: kern.shutdown events
+---
+
+= kern.shutdown events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== kern.shutdown
+*Severity*::
+NOTICE
+*Description*::
+This event is issued to indicate a pending shutdown is underway.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+System shut down because : "%s".
+*Parameters*::
+*type* (STRING): The type of shutdown (halt or reboot) that is underway.
+
+== kern.shutdown.cantDeleteEntry
+*Severity*::
+ERROR
+*Description*::
+This event is issued when we detect that a halt or reboot is about to occur but a registry entry cannot be deleted
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*key* (STRING): The registry key

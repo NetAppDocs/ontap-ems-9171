@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: showmount-update-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: showmount.update events
+---
+
+= showmount.update events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== showmount.update.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the showmount job fails to update the "exports.data" file. This file provides a list of exported volumes and qtrees on the NFS server to any clients running the "showmount -e" command.
+*Corrective Action*::
+Verify that the root volume of the Vserver is online and not full. After the Vserver is online and space is available, run the following command: "export-policy cache flush -vserver <vserver-name> -cache showmount".
+*Syslog Message*::
+Flushing to exports.data file failed on Vserver "%s".
+*Parameters*::
+*vserver* (STRING): Name of the Vserver where the problem is occurring.

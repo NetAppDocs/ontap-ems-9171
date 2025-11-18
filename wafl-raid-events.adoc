@@ -1,0 +1,253 @@
+---
+sidebar: sidebar
+permalink: wafl-raid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.raid events
+---
+
+= wafl.raid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.raid.cft.aggr.snapshot.missing
+*Severity*::
+ERROR
+*Description*::
+This message occurs during an aggregate transition workflow when an aggregate snapshot created in a 7-Mode environment is missing.
+*Corrective Action*::
+Return the disks to the 7-Mode environment, create the snapshot for the aggregate, and then repeat the transition workflow.
+*Syslog Message*::
+Aggregate transition failed for aggregate %s due to unavailability of the 7-Mode aggregate snapshot.
+*Parameters*::
+*aggrname* (STRING): Name of the aggregate.
+
+== wafl.raid.incons.buf
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the WAFL(R) kernel detects an inconsistent block on a disk. Access to the block is disabled until corrective action is taken.
+*Corrective Action*::
+Use the "volume file show-inode" command with the file ID and volume name information to find the file path. If the volume is inconsistent, run wafliron as soon as possible to clear the inconsistency. For a SnapMirror(R) target, rebuild from the source or resynchronize. If the block is in a snapshot, delete the snapshot. If the problem persists, contact NetApp technical support for more options.
+*Syslog Message*::
+WAFL inconsistent: bad block at VBN %llu (vvbn:%llu fbn:%llu level:%u) in %s inode (fileid:%s snapid:%u fixable:%d file_type:%d disk_flags:0x%x error:%u raid_set:%d) in volume %s%s%s%s.
+*Parameters*::
+*vbn* (LONGINT): Volume block number.
+*vvbn* (LONGINT): Virtual block number.
+*fbn* (LONGINT): File block number.
+*level* (INT): Buffer level.
+*file_space* (STRING): File space.
+*fileid* (STRING): Identifying number for the suspect inode.
+*snapid* (INT): Snapshot identifier: (0) - active file system (non-zero) - refers to snapshot
+*fixable* (INT): Boolean value indicating whether iron can repair this block.
+*type* (INT): File type.
+*flags* (LONGINT): Inode disk flags.
+*error* (INT): Error on the block.
+*raid_set* (INT): Boolean indicating whether RAID set the error.
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Uniquely identifies the volume in cases where the volume name itself is insufficient.
+
+== wafl.raid.incons.clear.error
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Data ONTAP(R) resets the error on a data block.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Resetting error (%u) on data block in %s inode (fileid:%u snapid:%u fbn:%llu level:%u) in volume %s%s%s%s
+*Parameters*::
+*error* (INT): Error number that was reset.
+*inotype* (STRING): Inode space (public or private).
+*fileid* (INT): Identifying number for the inode.
+*snapid* (INT): Snapshot identifier: (0) - active file system (non-zero) - refers to snapshot
+*fbn* (LONGINT): File block number.
+*level* (INT): Buffer level.
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Uniquely identifies the volume when the volume name itself is insufficient.
+
+== wafl.raid.incons.dir.block
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the WAFL(R) kernel detects an inconsistent directory block on disk, causing some entries on the directory not to appear. The message indicates the fileid and snapshot of the block being accessed.
+*Corrective Action*::
+The volume has a bad directory block. Use the "volume file show-inode" command with the file ID and volume name information to find the file path. Recover the directory from a backup. For a SnapMirror(R) target, rebuild from the source or resynchronize. If the block is in a snapshot, delete the snapshot. Then contact NetApp technical support.
+*Syslog Message*::
+WAFL inconsistent: bad directory block in inode (fileid:%u snapid:%u) in volume %s%s%s%s.
+*Parameters*::
+*fileid* (INT): Identifying number for the suspect inode
+*snapid* (INT): Snapshot identifier. (0) - active file system. (non-zero) - refers to snapshot.
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Uniquely identifies the volume in cases where the volume name itself is insufficient.
+
+== wafl.raid.incons.set.err.obj
+*Severity*::
+ALERT
+*Description*::
+This message occurs when Data ONTAP(R) marks a block in a capacity tier object with an error. This is useful for tracking movement of pseudobad and unverified blocks.
+*Corrective Action*::
+Contact Contact NetApp technical support..
+*Syslog Message*::
+Data block at VBN %llu tiered to capacity tier (objid %llu, slot %u, btuuid %s, seqno %llu) and marked with error (%u). Block previously had error (%u).
+*Parameters*::
+*vbn* (LONGINT): Volume block number.
+*object_id* (LONGINT): Object identifier.
+*slot* (INT): Slot number.
+*btuuid* (STRING): Buftree UUID.
+*seqno* (LONGINT): Sequence number.
+*error* (INT): Error on the block.
+*prev_error* (INT): Previous error on the block.
+
+== wafl.raid.incons.set.error
+*Severity*::
+ALERT
+*Description*::
+This message occurs when Data ONTAP(R) marks an on-disk data block with an error. This is useful for tracking pseudo bad and unverified blocks.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Data block in %s inode (fileid: %u snapid: %u fbn: %llu level: %u) in volume %s%s%s%s marked with error (%u) by %s. Block previously had error (%u).
+*Parameters*::
+*inotype* (STRING): Inode space (public or private).
+*fileid* (INT): Identifying number for the inode.
+*snapid* (INT): Snapshot identifier: (0) - active file system (non-zero) - refers to snapshot
+*fbn* (LONGINT): File block number.
+*level* (INT): Buffer level.
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Uniquely identifies the volume when the volume name itself is insufficient.
+*error* (INT): Error on the block.
+*module* (STRING): Module that is marking the block with the error.
+*prev_error* (INT): Previous error on the block.
+
+== wafl.raid.incons.snapmap
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when WAFL detects a RAID inconsistency error in a snapmap block. The message recommends to delete the snapshot in which inconsistent snapmap resides.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Snapshot(snapid %u) block accounting metadata is corrupted. To avoid trapping unnecessary blocks in the snapshot, please delete the snapshot.
+*Parameters*::
+*snapid* (INT): Snapshot identifier: (0) - active file system (non-zero) - refers to snapshot
+
+== wafl.raid.incons.snapmap.chk
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the WAFL(R) kernel detects a RAID inconsistency error in a snapshot active map block, even though the block content passes a metadata check.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+(None).
+*Parameters*::
+*fbn* (LONGINT): File block number.
+*level* (INT): Buffer level.
+*snapid* (INT): Snapshot identifier: (0) - active file system (non-zero) - refers to snapshot
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Uniquely identifies the volume when the volume name itself is insufficient.
+
+== wafl.raid.incons.snapshot
+*Severity*::
+ERROR
+*Description*::
+This message occurs when WAFL(R) detects a RAID inconsistency error in a snapshot. The message indicates what snapshots have the inconsistent block, and how to recover from the inconsistency.
+*Corrective Action*::
+Delete the specified snapshot(s) during the next reboot, either by using the boot menu command 'boot_snap_delete' or by using the CLI command 'vol online -r'.
+*Syslog Message*::
+VBN %llu has RAID inconsistency errors on volume %s. This block is in use by one or more snapshots. These snapshots should be deleted in the next boot. The affected snapshot IDs are: %s.
+*Parameters*::
+*vbn* (LONGINT): Virtual block number.
+*volname* (STRING): Name of the volume.
+*snapstring* (STRING): The string containing the list of snapid(s) of the snapshots that have the inconsistent blocks.
+
+== wafl.raid.incons.ssd.cached.buf
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the WAFL(R) kernel detects an inconsistent cached block on a ssd disk in a hybrid aggregate. Any access to this block will result in the io getting redirected to the source location on hdd disk.
+*Corrective Action*::
+An error on a cached ssd block will not result in bad data being served to the reader: the io will be redirected to hdd and the correct data will be served. So, no corrective action is necessary for this case. But, if there are many errors on data cached on ssd disks, then the ssd disks may be verified for disk consistency.
+*Syslog Message*::
+WAFL inconsistent: bad cached ssd block %llu (vvbn:%llu fbn:%llu level:%u) in %s inode (fileid:%s snapid:%u file_type:%d disk_flags:0x%x error:%u) in volume %s%s%s%s. IO will be redirected to the source hdd block %llu.
+*Parameters*::
+*vbn* (LONGINT): Volume SSD block number.
+*vvbn* (LONGINT): Virtual block number.
+*fbn* (LONGINT): File block number.
+*level* (INT): Buffer level.
+*file_space* (STRING): File space: private or public.
+*fileid* (STRING): Identifying number for the inode.
+*snapid* (INT): Snapshot identifier: (0) - active file system (non-zero) - refers to snapshot
+*type* (INT): File type.
+*flags* (LONGINT): Inode disk flags.
+*error* (INT): Error on the block.
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Uniquely identifies the volume in cases where the volume name itself is insufficient.
+*hdd_vbn* (LONGINT): Volume HDD block number.
+
+== wafl.raid.incons.userdata
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the WAFL(R) kernel detects an inconsistent user data block on a disk. Access to this block is disabled until you recover it from a backup.
+*Corrective Action*::
+The volume has an inconsistent user data block. Use the "volume file show-inode" command with the file ID and volume name information to find the file path. Recover the file from a backup. For a SnapMirror(R) target, rebuild from the source or resynchronize. If the block is in a snapshot, delete the snapshot. Contact NetApp technical support for more options.
+*Syslog Message*::
+WAFL inconsistent: inconsistent user data block at VBN %llu (vvbn:%llu fbn:%llu level:%u) in %s inode (fileid:%s snapid:%u file_type:%d disk_flags:0x%x error:%u raid_set:%d) in volume %s%s%s%s.
+*Parameters*::
+*vbn* (LONGINT): Volume block number.
+*vvbn* (LONGINT): Virtual block number.
+*fbn* (LONGINT): File block number.
+*level* (INT): Buffer level.
+*file_space* (STRING): File space.
+*fileid* (STRING): Identifying number for the suspect inode.
+*snapid* (INT): Snapshot identifier: (0) - active file system (non-zero) - refers to snapshot
+*type* (INT): File type.
+*flags* (LONGINT): Inode disk flags.
+*error* (INT): Error on the block.
+*raid_set* (INT): Boolean indicating whether RAID set the error.
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Uniquely identifies the volume in cases where the volume name itself is insufficient.
+
+== wafl.raid.incons.xidata
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the WAFL(R) kernel detects an inconsistent extended inode data block on disk.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+WAFL inconsistent: bad extended inode data block at VBN %llu (vvbn:%llu fbn:%llu) in inode (fileid:%u snapid:%u disk_flags:0x%x error:%u raid_set:%d) in volume %s%s%s%s.
+*Parameters*::
+*vbn* (LONGINT): Volume block number.
+*vvbn* (LONGINT): Virtual block number.
+*fbn* (LONGINT): File block number.
+*fileid* (INT): Identifying number for the suspect inode.
+*snapid* (INT): Snapshot identifier: (0) - active file system (non-zero) - refers to snapshot
+*flags* (LONGINT): Inode disk flags.
+*error* (INT): Error on the block.
+*raid_set* (INT): Boolean indicating whether RAID set the error.
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Uniquely identifies the volume in cases where the volume name itself is insufficient.
+*inotype* (STRING): Inode space (public or private).

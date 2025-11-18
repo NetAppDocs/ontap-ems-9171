@@ -1,0 +1,73 @@
+---
+sidebar: sidebar
+permalink: tapemc-alias-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: tapemc.alias events
+---
+
+= tapemc.alias events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== tapemc.alias.addFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the automatic addition of a tape or medium changer alias fails. Data ONTAP(R) might attempt to add aliases automatically at boot or when devices are added, if it determines that the devices have no existing aliases.
+*Corrective Action*::
+Check the tape and medium changer aliases to ensure that they specify the desired devices. You can view, add, or delete aliases using the "storage alias/unalias" (7-Mode or Cluster-Mode nodeshell) commands.
+*Syslog Message*::
+Unable to retrieve and add alias for %s device %s.
+*Parameters*::
+*deviceType* (STRING): Type of device for which an alias addition failed.
+*deviceAddr* (STRING): Address of the device for which an alias addition failed.
+
+== tapemc.alias.addOK
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a tape or medium changer alias is added successfully. Data ONTAP(R) might add aliases automatically at boot or when devices are added, if it determines that devices have no existing aliases.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Alias %s automatically added for %s device %s.
+*Parameters*::
+*alias* (STRING): New alias of the device.
+*deviceType* (STRING): Type of device.
+*deviceAddr* (STRING): Address of the device.
+
+== tapemc.alias.max
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) automatically adds a tape or media changer alias, and the new number of aliases exceeds the maximum number of aliases allowed. Automatic alias addition can occur when new devices are discovered, or when device connections are changed.
+*Corrective Action*::
+Delete any unused aliases with 'storage tape alias clear'.
+*Syslog Message*::
+Could not add alias for %s device %s. The alias count exceeds the maximum of %d aliases.
+*Parameters*::
+*deviceType* (STRING): Type of device.
+*deviceAddr* (STRING): Address of the device.
+*max* (INT): Maximum number of tape and media changer aliases allowed.
+
+== tapemc.alias.threshold
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) automatically adds a tape or media changer alias, and the new number of aliases exceeds an internal threshold. The alias is added, but additional aliases might not be added until other aliases are deleted. Automatic alias addition can occur when new devices are discovered, or when device connections are changed.
+*Corrective Action*::
+Delete any unused aliases with 'storage tape alias clear'.
+*Syslog Message*::
+Addition of alias %s for %s device %s totals %d aliases which exceeds threshold of %d tape/media changer aliases. The maximum number of aliases allowed is %d.
+*Parameters*::
+*alias* (STRING): New alias of the device.
+*deviceType* (STRING): Type of device.
+*deviceAddr* (STRING): Address of the device.
+*count* (INT): Current count of tape and media changer aliases.
+*threshold* (INT): Internal threshold for number of tape and media changer aliases.
+*max* (INT): Maximum number of tape and media changer aliases allowed.

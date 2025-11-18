@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: callhome-flash-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.flash events
+---
+
+= callhome.flash events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.flash.cache.degraded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Flash Management Module (FMM) detects that a percentage of a Flash Cache is offline that is above a warning threshold. FMM monitors all flash devices in the system that attach with it. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+A Flash Cache has degraded. This is an indication or the cause of a performance degradation. Exact impact cannot be estimated. This Flash Cache needs to be repaired or replaced. Contact customer support for more details.
+*Syslog Message*::
+Call home for Flash Cache DEGRADED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.flash.cache.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when Flash Management Module (FMM) detects that a Flash Cache has suffered a failure. Typically, this is the result of a hardware failure on the Flash Cache itself. FMM monitors all flash devices in the system that attach with it. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+The Flash Cache can fail due to many reasons. If you see "iomem.dma.internal" in EMS log, reboot the system. If the state of the Flash Cache in system configuration shows 'Failed firmware', update the device (follow the corrective action of the "iomem.card.fail.fpga.rev" EMS message). For all other reasons, replace the Flash Cache. For further assistance, contact technical support.
+*Syslog Message*::
+Call home for Flash Cache FAILED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.flash.cache.offlined
+*Severity*::
+ALERT
+*Description*::
+This message occurs when Flash Management Module (FMM) detects that a critical percentage of a Flash Cache is offline, beyond which the device cannot operate. FMM turned off this device. FMM monitors all flash devices in the system that attach with it. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+A Flash Cache was offlined. This is an indication or the cause of a performance degradation. Exact impact cannot be estimated. This Flash Cache needs to be repaired or replaced. Contact customer support for more details.
+*Syslog Message*::
+Call home for Flash Cache OFFLINED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

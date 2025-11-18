@@ -1,0 +1,254 @@
+---
+sidebar: sidebar
+permalink: wafl-inconsistent-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.inconsistent events
+---
+
+= wafl.inconsistent events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.inconsistent.acl
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the ONTAP(R) kernel detects an inconsistent WAFL(R) Access Control List (ACL) on disk. Access to this ACL is disabled until you repair it by running wafliron.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+WAFL inconsistent: bad ACL (xfileid:%u snapid:%u) for inode (fileid:%u) in volume %s%s%s%s.
+*Parameters*::
+*xfileid* (INT): Identifying number for the suspect ACL.
+*snapid* (INT): Snapshot identifier (0) - active file system (non-zero) - refers to snapshot.
+*fileid* (INT): Identifying number for the inode.
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+
+== wafl.inconsistent.acl.data
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP detects inconsistent Access Control List (ACL) data on disk.
+*Corrective Action*::
+The volume has inconsistent Access Control List (ACL) data. Use the "volume file show-inode" command with the file ID and volume name information to find the file path. .Rebuild ACL for the file.
+*Syslog Message*::
+WAFL inconsistent: bad ACL data (acl_fileid:%u acl_snapid:%u) for inode (fileid:%u snapid:%u file_type:%d disk_flags:0x%x) in volume %s%s%s%s%s.
+*Parameters*::
+*acl_fileid* (INT): Identifying number for the ACL inode
+*acl_snapid* (INT): Snapshot identifier for ACL inode: (0) - active file system (non-zero) - refers to snapshot
+*fileid* (INT): Identifying number for the inode that owns the ACL.
+*snapid* (INT): Snapshot identifier: (0) - active file system (non-zero) - refers to snapshot
+*type* (INT): File type.
+*flags* (LONGINT): Inode disk flags.
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Uniquely identifies the volume when the volume name itself is insufficient.
+*inotype* (STRING): The inode space (public or private)
+
+== wafl.inconsistent.compacted.block
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is detected in a compacted block.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Inconsistent compacted block %llu in %s "%s". %s
+*Parameters*::
+*pvbn* (LONGINT): Volume block number.
+*volume_identifier* (STRING): Volume identifier.
+*volume* (STRING): Volume name.
+*message* (STRING): Type of inconsistency in compacted block.
+
+== wafl.inconsistent.container
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the WAFL(R) kernel detects a block in a FlexVol(R) volume that is inaccessible. Access to this block is disabled until you repair it by running wafliron.
+*Corrective Action*::
+The volume is inconsistent. Run wafliron as soon as possible to clear this inconsistency. For a SnapMirror(R) target, rebuild from the source or resynchronize. If the inode is in a snapshot, delete the snapshot, then contact NetApp technical support.
+*Syslog Message*::
+WAFL inconsistent: Volume %s%s%s%s has unreachable block at vvbn %llu (pvbn %llu).
+*Parameters*::
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Uniquely identifies the volume in cases where the volume name itself is insufficient.
+*vvbn* (LONGINT): Virtual block number.
+*pvbn* (LONGINT): Physical block number.
+
+== wafl.inconsistent.dir
+*Severity*::
+ALERT
+*Description*::
+This event occurs when the WAFL(R) kernel detects an inconsistent directory on disk. Access to this directory is disabled until you repair it by running wafliron.
+*Corrective Action*::
+The volume is inconsistent. Run wafliron as soon as possible to clear this inconsistency; for a snapmirror target, rebuild from source or resync or if inode is in a snapshot, delete the snapshot. Then contact NetApp technical support.
+*Syslog Message*::
+WAFL inconsistent: %s: bad directory ( %s fileid:%u, snapid: %u, type:%u, size:%u) in volume %s%s%s%s.
+*Parameters*::
+*func* (STRING): The internal function name
+*ino_type* (STRING): The inode type
+*fileid* (INT): The identifying number for the suspect inode
+*snapid* (INT): Snapshot identifier (0) - active file system (non-zero) - refers to snapshot
+*type* (INT): The type of inode that's supposed to be a directory of some type
+*size* (INT): The possibly corrupt size of the suspect inode.
+*owner* (STRING): The owner of the volume
+*vol* (STRING): The name of the volume
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== wafl.inconsistent.dirent
+*Severity*::
+EMERGENCY
+*Description*::
+This event occurs when an inconsistent directory entry has been detected. Access to this directory entry is disabled.
+*Corrective Action*::
+If this error condition occurs, contact NetApp technical support for further assistance.
+*Syslog Message*::
+WAFL inconsistent: %s: bad entry {x%x %d snapid: %d %d %d} <%.*s> in %s directory {x%x %d snapid: %d %d %d} in volume %s%s%s%s.
+*Parameters*::
+*func* (STRING): The internal function name
+*fh0* (INT): fh[0]
+*fh1* (INT): fh[1] - snapid (0) - active file system (non-zero) - refers to snapshot
+*fh2* (INT): fh[2]
+*fh3* (INT): fh[3]
+*fh4* (INT): fh[4]
+*name* (STRINGARRAY): The name of the directory entry
+*ino_type* (STRING): The inode type
+*dfh0* (INT): dfh[0]
+*dfh1* (INT): dfh[1] - snapid in filehandle (0) - active file system (non-zero) - refers to snapshot
+*dfh2* (INT): dfh[2]
+*dfh3* (INT): dfh[3]
+*dfh4* (INT): dfh[4]
+*owner* (STRING): The owner of the volume
+*vol* (STRING): The name of the volume
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== wafl.inconsistent.ino
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the ONTAP(R) kernel detects an inconsistent inode on disk. Access to this inode is disabled until you repair it by running wafliron.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+WAFL inconsistent: %s: bad inode (%s fileid: %u snapid: %u) in volume %s%s%s%s.
+*Parameters*::
+*func* (STRING): Internal function name.
+*ino_type* (STRING): Inode type.
+*fileid* (INT): Identifying number for the suspect inode.
+*snapid* (INT): Snapshot identifier (0) - active file system (non-zero) - refers to snapshot.
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Uniquely identifies the volume when the volume name itself is insufficient.
+
+== wafl.inconsistent.ino.tid
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the WAFL(R) kernel detects an inconsistent inode on a disk with a bad qtree ID.
+*Corrective Action*::
+Use the "volume file show-inode" command with the file ID and volume name information to find the file path. The volume is inconsistent. Run wafliron as soon as possible to clear this inconsistency. For a SnapMirror target, rebuild from the source or resynchronize. If the inode is in a snapshot, delete the snapshot. Then contact technical support.
+*Syslog Message*::
+WAFL inconsistent: bad qtree ID in inode (fileid:%u snapid:%u) in volume %s%s. Turning quotas off on the volume.
+*Parameters*::
+*fileid* (INT): Identifying number for the suspect inode
+*snapid* (INT): Snapshot identifier (0) - active file system (non-zero) - refers to snapshot
+*owner* (STRING): Owner of the volume
+*vol* (STRING): Name of the volume
+
+== wafl.inconsistent.snapshot
+*Severity*::
+ERROR
+*Description*::
+This event occurs when the WAFL kernel discovers that a snapshot has either an invalid inofile, fsinfo, or snapmap file, or the snapshot vbn stored is invalid.
+*Corrective Action*::
+Delete the snapshot. For a snapmirror target, rebuild from source or resync.
+*Syslog Message*::
+WAFL inconsistent: deleting bad snapshot in volume %s%s%s%s, snapid %d, reason: %s
+*Parameters*::
+*owner* (STRING): The owner of the volume
+*vol* (STRING): The name of the volume
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*snapid* (INT): The snapshot identifier
+*reason* (STRING): The reason the snapshot is bad
+
+== wafl.inconsistent.stream
+*Severity*::
+ERROR
+*Description*::
+This event occurs when the WAFL(R) kernel detects an inconsistent stream information on disk. Access to the stream is disabled until you repair it by running wafliron.
+*Corrective Action*::
+Use the "volume file show-inode" command with the file ID and volume name information to find the file path. The volume is inconsistent. Run wafliron as soon as possible to clear this inconsistency; for a snapmirror target, rebuild from source or resync or if the inode is in a snapshot, delete the snapshot. Then contact NetApp technical support.
+*Syslog Message*::
+WAFL inconsistent: bad stream (sfileid:%u snapid: %u) for inode (fileid:%u) in volume %s%s%s%s.
+*Parameters*::
+*sfileid* (INT): The identifying number for the suspect stream
+*snapid* (INT): Snapshot identifier (0) - active file system (non-zero) - refers to snapshot
+*fileid* (INT): The identifying number for the inode
+*owner* (STRING): The owner of the volume
+*vol* (STRING): The name of the volume
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== wafl.inconsistent.threshold.reached
+*Severity*::
+EMERGENCY
+*Description*::
+This event occurs when the number of inconsistencies the WAFL(R) kernel detected and avoided reached the threshold.
+*Corrective Action*::
+The volume is inconsistent. Run wafliron as soon as possible to clear this inconsistency; for a snapmirror target, rebuild from source or resync or if the inode is in a snapshot, delete the snapshot. Then contact NetApp technical support.
+*Syslog Message*::
+WAFL inconsistent: The threshold for number of %s inconsistencies was reached. Volume %s %s%s%s%s will be taken offline. Contact NetApp technical support.
+*Parameters*::
+*reason* (STRING): Reason : snapshot/inode/block
+*type* (STRING): The container type (volume / aggregate)
+*owner* (STRING): The volume owner
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*vendor* (STRING): The vendor name
+
+== wafl.inconsistent.vol
+*Severity*::
+ERROR
+*Description*::
+This event occurs when the WAFL(R) kernel discovers an inconsistent volume.
+*Corrective Action*::
+The volume is inconsistent. Run wafliron as soon as possible to clear this inconsistency; For a SnapMirror(R) target, rebuild from source or resynchronize. If the inode is in a snapshot, delete the snapshot. Then contact NetApp technical support.
+*Syslog Message*::
+WAFL inconsistent: %s %s%s%s%s is inconsistent. Note: Any new snapshots might contain this inconsistency.
+*Parameters*::
+*type* (STRING): The container type (volume / aggregate)
+*owner* (STRING): The volume owner
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*vendor* (STRING): The vendor
+
+== wafl.inconsistent.vol.nomnt
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the ONTAP(R) kernel discovers an inconsistent volume and determines that the volume should not be mounted.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+%s %s%s is not mounted.
+*Parameters*::
+*type* (STRING): Container type (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: lmgr-pruning-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lmgr.pruning events
+---
+
+= lmgr.pruning events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lmgr.pruning.delayed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when there is a delay in pruning and removing unused entries in the volume lock manager hosts file. The current hosts file contents remain; unused entries were not removed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Pruning lock manager on volume %s for file %s delayed due to error: %s.
+*Parameters*::
+*volume* (STRING): Name of the volume.
+*file_name* (STRING): Name of the host file being pruned.
+*error* (STRING): Error description.

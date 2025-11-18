@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: scsiblade-dpa-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsiblade.dpa events
+---
+
+= scsiblade.dpa events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsiblade.dpa.disabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the node loses connectivity with the majority of the cluster and the Data Plane Availability feature has been explicitly disabled by the user. When this occurs, both FCP and iSCSI traffic are disabled on this node until connectivity is restored.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+This node lost connectivity with the majority of the cluster. The option "san.dpa.enable" is "off", so both FCP and iSCSI traffic are disabled on this node until connectivity is restored.
+*Parameters*::
+(None).

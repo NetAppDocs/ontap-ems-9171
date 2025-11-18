@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: sp-wdog-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sp.wdog events
+---
+
+= sp.wdog events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sp.wdog.set.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) software fails to disable or enable the service-processor' (SP or BMC) watchdog timer. This might occur due to an intermittent SP or BMC firmware failure.
+*Corrective Action*::
+If the system continues to run normally, you can ignore this message. If a system disruption occurs after this failure, reboot the SP or BMC or power-cycle the system before starting ONTAP or performing a giveback. If system disruptions continue to occur, contact NetApp technical support for assistance.
+*Syslog Message*::
+Unable to %s service-processor's watchdog timer. Error code: 0x%x.
+*Parameters*::
+*op* (STRING): Whether the failure was to enable or disable the timer.
+*errcode* (INT): Error code for debugging.

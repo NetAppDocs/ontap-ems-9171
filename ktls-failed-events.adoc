@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: ktls-failed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ktls.failed events
+---
+
+= ktls.failed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ktls.failed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when several successive Transport Layer Security (TLS) connections with a remote system have failed.
+*Corrective Action*::
+Corrective actions will necessarily depend on what condition is being reported.
+*Syslog Message*::
+"The TLS connections have failed several times with remote host '%s' in IPspace '%s', for which the latest reason given is: %s."
+*Parameters*::
+*peer* (STRING): Network address of the remote peer.
+*ipsname* (STRING): IPspace within which the network address is defined.
+*reason* (STRING): Reason for failure.

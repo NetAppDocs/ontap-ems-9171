@@ -1,0 +1,64 @@
+---
+sidebar: sidebar
+permalink: openssh-unsupported-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: openssh.unsupported events
+---
+
+= openssh.unsupported events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== openssh.unsupported.cipher
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an unsupported cipher is used while attempting an SSH connection.
+*Corrective Action*::
+Attempt to connect with SSH by using a supported cipher.
+*Syslog Message*::
+Attempted an SSH connection using unsupported cipher %s.
+*Parameters*::
+*ciphername* (STRING): Cipher used for the SSH connection.
+
+== openssh.unsupported.hostalgo
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an unsupported host key algorithm is used while attempting an SSH connection.
+*Corrective Action*::
+Attempt to connect with SSH by using a supported host key algorithm.
+*Syslog Message*::
+SSH connection from %s was attempted using an unsupported host key algorithm %s.
+*Parameters*::
+*ipaddress* (STRING): IP address of the remote host that was trying to establish an SSH connection.
+*hostkeyalgorithm* (STRING): Host key algorithm used for the SSH connection attempt.
+
+== openssh.unsupported.kexalgo
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an unsupported key exchange algorithm is used while attempting an SSH connection.
+*Corrective Action*::
+Attempt to connect with SSH by using a supported key exchange algorithm.
+*Syslog Message*::
+Attempted an SSH connection using unsupported key exchange algorithm %s.
+*Parameters*::
+*kexalgorithm* (STRING): Key exchange algorithm used for the SSH connection.
+
+== openssh.unsupported.MAC
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an unsupported Message Authentication Code (MAC) is used while attempting an SSH connection.
+*Corrective Action*::
+Attempt to connect with SSH by using a supported MAC.
+*Syslog Message*::
+Attempted an SSH connection using unsupported MAC %s.
+*Parameters*::
+*macname* (STRING): MAC used for the SSH connection.

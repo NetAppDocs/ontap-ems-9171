@@ -1,0 +1,46 @@
+---
+sidebar: sidebar
+permalink: ctran-gc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ctran.gc events
+---
+
+= ctran.gc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ctran.gc.proposal.stuck
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the Cluster Transaction Manager (CTRAN) Group Coordinator (GC) of a group runs a prop-done probe for a proposal longer than anticipated.
+*Corrective Action*::
+KCS CTRAN logs need to be collected for further analysis. Trigger an ALL AutoSupport(R) message by using the "autosupport invoke -node * -message "ctran.gc.proposal.stuck" -type all" command. Also trigger a diagnostic AutoSupport by using the "autosupport invoke-diagnostic -node * -message "ctran.gc.proposal.stuck" -subsystem kcs" command. Then contact NetApp technical support support.
+*Syslog Message*::
+CTRAN group %s has attempted a prop_done probe %d times against gm_id %ld on node %s with UUID %s for txn %ld with opcode %d.
+*Parameters*::
+*group_name* (STRING): Name of the group being polled.
+*attempts* (LONGINT): Number of attempts.
+*gm_id* (LONGINT): Group member (GM) ID.
+*node_name* (STRING): Name of the node the GM resides on.
+*node_uuid* (STRING): UUID of the node the GM resides on.
+*trans_id* (LONGINT): ID of the stuck transaction.
+*opcode* (INT): Operation type of the stuck transaction.
+
+== ctran.gc.reselection.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when some Kernel Cluster Services (KCS) Cluster Transaction Manager (CTRAN) groups lose their Group co-ordinator (GC) and a subsequent GC reselection process fails to complete.
+*Corrective Action*::
+Reboot the node, and if the node is waiting for giveback then perform a giveback.
+*Syslog Message*::
+CTRAN GC Reselection failed on local node (name=%s, id=%llu).
+*Parameters*::
+*localhostname* (STRING): The host name of the local node.
+*localnodeid* (LONGINT): The node ID of the local node.

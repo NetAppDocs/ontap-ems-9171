@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: fcp-service-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fcp.service events
+---
+
+= fcp.service events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fcp.service.shutdown
+*Severity*::
+INFORMATIONAL
+*Description*::
+The Fibre Channel Protocol (FCP) service has been shutdown.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FCP service shutdown
+*Parameters*::
+(None).
+
+== fcp.service.startup
+*Severity*::
+INFORMATIONAL
+*Description*::
+The Fibre Channel Protocol (FCP) service has been started.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FCP service startup
+*Parameters*::
+(None).

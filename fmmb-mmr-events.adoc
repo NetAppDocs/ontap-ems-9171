@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: fmmb-mmr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fmmb.mmr events
+---
+
+= fmmb.mmr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fmmb.MMR.payload.bad
+*Severity*::
+ALERT
+*Description*::
+This event is issued when the outbound FM payload area is found to be corrupted and the master mailbox record is missing.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s outbound FM payload area is invalid and the master mailbox record is missing.
+*Parameters*::
+*host* (STRING): The node which owns the HA mailbox disk. The node can be either local or partner.

@@ -1,0 +1,80 @@
+---
+sidebar: sidebar
+permalink: lmgr-locks-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lmgr.locks events
+---
+
+= lmgr.locks events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lmgr.locks.limit.hit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a lock manager lock object cannot be allocated due to reaching the limit for lock objects in the associated pool. It is possible that the system is overloaded. Clients will have problems accessing files through NAS protocols while at or above the lock object limit.
+*Corrective Action*::
+Move volumes to a node with a lower utilization of lock manager resources. Lock manager statistics can be displayed from the diagnostic privilege level. Use the "statistics show -raw true -object lmgr_ng" command for displaying all lock manager resource counters. Use the "statistics show -raw true -object lmgr_ng -instance <node-name>" command for displaying the lock manager statistics for a node's limit pool. Use the "statistics show -raw true -object lmgr_ng -node <node-name>" command for displaying all lock manager statistics on the specified node.
+*Syslog Message*::
+The number of lock objects %u has reached the limit %u for the pool %s. The current number/limit of other lock manager objects are: files %u/%u hosts %u/%u owners %u/%u.
+*Parameters*::
+*locks_total* (INT): Number of allocated locks in the pool.
+*locks_limit* (INT): Allocated locks limit for the pool.
+*pool_name* (STRING): Name of the limit pool.
+*files_total* (INT): Number of allocated files in the pool.
+*files_limit* (INT): Allocated files limit for the pool.
+*hosts_total* (INT): Number of allocated hosts in the pool.
+*hosts_limit* (INT): Allocated hosts limit for the pool.
+*owners_total* (INT): Number of allocated owners in the pool.
+*owners_limit* (INT): Allocated owners limit for the pool.
+
+== lmgr.locks.sync.complete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when synchronization of client file locks ("locks sync") with the partner node completes over the aggregates noted in the previous "lmgr.locks.sync.start" message. Lock sync occurs for locks that were established using CIFS continuously available (CA) shares.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Lock sync completed on %s.
+*Parameters*::
+*aggr* (STRING): Lock sync occurs in two cases: 1. Aggregate relocation 2. Giveback In the case of aggregate relocation, the aggregate name is provided. In the case of giveback, "aggr" indicates that lock sync is occuring over all aggregates on the node.
+
+== lmgr.locks.sync.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when synchronization of client file locks ("locks sync") with the partner node starts over one or more aggregates. Lock sync occurs for locks that were established using CIFS continuously available (CA) shares.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Lock sync started on %s.
+*Parameters*::
+*aggr* (STRING): Lock sync occurs in two cases: 1. Aggregate relocation 2. Giveback In the case of aggregate relocation, the aggregate name is provided. In the case of giveback, "aggr" indicates that lock sync is occuring over all aggregates on the node.
+
+== lmgr.locks.threshold.hit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when lock manager lock object has reached the threshold limit for lock objects in the associated pool. The system might become overloaded. Clients will have problems accessing files through NAS protocols while at or above the lock object limit.
+*Corrective Action*::
+Move volumes to a node with a lower utilization of lock manager resources. Lock manager statistics can be displayed from the diagnostic privilege level. Use the "statistics show -raw true -object lmgr_ng" command for displaying all lock manager resource counters. Use the "statistics show -raw true -object lmgr_ng -instance <node-name>" command for displaying the lock manager statistics for a node's limit pool. Use the "statistics show -raw true -object lmgr_ng -node <node-name>" command for displaying all lock manager statistics on the specified node.
+*Syslog Message*::
+The current number of lock objects %u, with maximum limit of %u has reached the threshold limit percentage of %u for pool "%s". The current number/limit of other lock manager objects are: files %u/%u, hosts %u/%u and owners %u/%u.
+*Parameters*::
+*locks_total* (INT): Number of allocated locks in the pool.
+*locks_limit* (INT): Allocated locks limit for the pool.
+*threshold_percentage* (INT): Threshold locks limit for the pool.
+*pool_name* (STRING): Name of the limit pool.
+*files_total* (INT): Number of allocated files in the pool.
+*files_limit* (INT): Allocated files limit for the pool.
+*hosts_total* (INT): Number of allocated hosts in the pool.
+*hosts_limit* (INT): Allocated hosts limit for the pool.
+*owners_total* (INT): Number of allocated owners in the pool.
+*owners_limit* (INT): Allocated owners limit for the pool.

@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: air-repair-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: air.repair events
+---
+
+= air.repair events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== air.repair.prsist.lock.entry
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when there is an inconsistency in the persistent lock entry metafile. The inconsistent entry is repaired upon detection if there is a corresponding in-core record.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Persistent lock entry %s certification failed: Condition: %s, source: %s, state: %s.
+*Parameters*::
+*entry* (STRING): Lock entry type and origin file ID pair describing the entry.
+*condition* (STRING): Initial validation test that fails.
+*source* (STRING): Location of the failing metadata validation test.
+*state* (STRING): Description of the remote lock entry metafile metadata state that is found to be inconsistent.

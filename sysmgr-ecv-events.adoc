@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: sysmgr-ecv-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sysmgr.ecv events
+---
+
+= sysmgr.ecv events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sysmgr.ecv.fetch
+*Severity*::
+ERROR
+*Description*::
+This message occurs when acquiring the desired Effective Cluster Version (ECV) of System Manager was not accomplished within the time limit. This node will provide the last version of System Manager instead of the desired ECV. Any operations being blocked are unblocked, such as storage giveback and cluster management logical interface (LIF) migration.
+*Corrective Action*::
+Use the diagnostic level "system manager version show" command to see the status of the node. If this behavior persists, contact NetApp technical support.
+*Syslog Message*::
+ECV version %s of System Manager was not acquired within %d seconds.
+*Parameters*::
+*ecv* (STRING): Current ECV determined by the capability management (CAPM) system.
+*timeout* (INT): Timeout in seconds.

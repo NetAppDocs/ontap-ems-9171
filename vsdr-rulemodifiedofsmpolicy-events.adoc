@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: vsdr-rulemodifiedofsmpolicy-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsdr.rulemodifiedofsmpolicy events
+---
+
+= vsdr.rulemodifiedofsmpolicy events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsdr.RuleModifiedOfSmPolicy
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a rule attached to a SnapMirror(R) policy with "mirror-vault" type must be modified, so that L2 scheduled snapshots can be reused during a MAX Data schedule update.
+*Corrective Action*::
+Modify the SnapMirror policy rule by using the "snapmirror policy modify-rule -vserver <vserver-name> -policy <policy-name> -snapmirror-label<snapmirror-label-name> -preserve false" command.
+*Syslog Message*::
+Rule with SnapMirror label "%s" present in SnapMirror policy "%s" on Vserver "%s" used by the Vserver DR relationship needs to be modified.
+*Parameters*::
+*snapmirror_label* (STRING): Name of the SnapMirror label.
+*sm_policy_name* (STRING): Name of the SnapMirror policy.
+*vserver_name* (STRING): Name of the Vserver of Vserver DR relationship.

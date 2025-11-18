@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cloud-azurecredsinvalid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cloud.azurecredsinvalid events
+---
+
+= cloud.azurecredsinvalid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cloud.azureCredsInvalid
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system acquires Azure Managed Service Identity (MSI) credentials that are not valid.
+*Corrective Action*::
+In the Azure Portal, find and check the health of the instance pertaining to this Cloud Volumes ONTAP(R) deployment. Also, verify that the MSI associated with the instance is enabled and grants proper privileges to the instance.
+*Syslog Message*::
+Azure MSI credentials that were acquired by ONTAP are not valid. Node UUID: %s.
+*Parameters*::
+*nodeUuid* (STRING): UUID of the node.

@@ -1,0 +1,56 @@
+---
+sidebar: sidebar
+permalink: disk-fli-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.fli events
+---
+
+= disk.fli events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.fli.abort.ioSent
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an I/O operation below the SCSI layer is aborted because a Foreign LUN Import (FLI) abort message was issued.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+An I/O with the opcode %s has been aborted on disk %s.
+*Parameters*::
+*opcode* (STRING): Opcode that specifies the operation that was aborted.
+*diskName* (STRING): Name of the disk.
+
+== disk.fli.abort.ioUnSent
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an I/O operation in the disk class layer is aborted because a Foreign LUN Import (FLI) abort message was issued.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+An I/O with the block count %llu starting at offset %llu has been aborted on disk %s.
+*Parameters*::
+*blockCount* (LONGINT): Number of blocks that this I/O operation spans.
+*offset* (LONGINT): Start of the I/O operation.
+*diskName* (STRING): Name of the disk.
+
+== disk.fli.tmf.complete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a Foreign LUN Import (FLI) message (abort or LUN reset) is completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Foreign LUN Import (FLI) message: %s completed on disk %s with status %d.
+*Parameters*::
+*msgType* (STRING): Specifies which type of FLI message: either abort or LUN reset.
+*diskName* (STRING): Name of the disk to which this FLI message was sent.
+*returnStatus* (INT): Completion status of the FLI message.

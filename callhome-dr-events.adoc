@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: callhome-dr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.dr events
+---
+
+= callhome.dr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.dr.apply.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when all attempts to replicate the configuration fails. If your system is configured to do so, it generates and transmits an AutoSupport(tm) (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+To troubleshoot further, search the event management system (EMS) logs on the destination cluster for events starting with "vsdr". Perform any provided corrective actions. For further assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for DR CONFIG REPLICATION FAILED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*DestinationVserver* (STRING): Destination Vserver of the DR relationship.
+*FailedReason* (STRING): Failed reason.

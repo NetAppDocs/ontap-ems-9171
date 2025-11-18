@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: sis-fingerprint-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.fingerprint events
+---
+
+= sis.fingerprint events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.fingerprint.notify.lost
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a bad block is encountered while reading SIS metafiles. As a result, some of the fingerprint records used to identify blocks for use in deduplication might have been lost. The only impact from this is lower efficiency in deduplication.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Bad block found while reading SIS metafiles for volume %s%s. As a result some fingerprint data might have been lost and could result in lower space savings.
+*Parameters*::
+*volume* (STRING): Volume name.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.

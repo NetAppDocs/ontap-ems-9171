@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: bcomd-igroup-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: bcomd.igroup events
+---
+
+= bcomd.igroup events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== bcomd.igroup.auto.delete.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an initiator group marked with the delete-on-unmap flag is not automatically deleted when it is no longer part of a LUN mapping relationship.
+*Corrective Action*::
+Use the "lun igroup delete" command to delete the initiator group manually.
+*Syslog Message*::
+Failed to delete initiator group %s on Vserver %s: %s
+*Parameters*::
+*igroup* (STRING): Name of the initiator group.
+*vserver* (STRING): Name of the Vserver.
+*error* (STRING): The error encountered when deleting the initiator group.

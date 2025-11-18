@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: mw-hir-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mw.hir events
+---
+
+= mw.hir events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mw.HiR.maxref.notify
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when extent reference has reached a pre-determined threshold value. This is a temporary notification till we support OVERFLOW file - where we can support infinite reference.
+*Corrective Action*::
+Limit the # of clone/snapshot operation.
+*Syslog Message*::
+This message occurs when extent reference has reached a pre-determined threshold value. Limit the # of clone/snapshot operation till we support OVERFLOW file in metawafl. Aggr: %s%s%s EID: 0x%llx
+*Parameters*::
+*name* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Uniquely identifies the volume in cases where the volume name itself is insufficient.
+*eid* (LONGINT): EID on which maxref is reached.

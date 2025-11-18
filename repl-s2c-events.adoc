@@ -1,0 +1,131 @@
+---
+sidebar: sidebar
+permalink: repl-s2c-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.s2c events
+---
+
+= repl.s2c events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.s2c.checksum.mismatch
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the checksum of an object's contents does not match with the expected checksum.
+*Corrective Action*::
+Please contact NetApp technical support for more options.
+*Syslog Message*::
+Checksum mismatch in cloud object contents. Endpoint UUID = %s. Relationship UUID = %s. Object Name = %s. Slot ID = %d.
+*Parameters*::
+*epUuid* (STRING): Endpoint UUID.
+*relnUuid* (STRING): Relationship UUID.
+*objName* (STRING): Cloud object name.
+*slotId* (INT): Slot ID.
+
+== repl.s2c.rel.state.inconsistent
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the replication source engine encounters a disk error in the relationship state metafile. Replication transfer will abort. Current relationship cannot be resumed.
+*Corrective Action*::
+Current relationship cannot be resumed. Please create a new relationship.
+*Syslog Message*::
+relationship state metafile inconsistent in volume '%s%s%s' due to disk errors. Aborting transfer.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name itself is insufficient.
+
+== repl.s2c.restore.unsupported.config
+*Severity*::
+ERROR
+*Description*::
+This message occurs when we encounter unsupported configuration during SnapMirror(R) restore.
+*Corrective Action*::
+Cannot continue with restore.
+*Syslog Message*::
+Cannot restore to volume '%s%s%s' because %s.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name itself is insufficient.
+*reason* (STRING): Specific reason for failure.
+
+== repl.s2c.restore.unsupported.snapshot
+*Severity*::
+ERROR
+*Description*::
+This message occurs when we encounter unsupported source snapshot copy during SnapMirror(R) restore.
+*Corrective Action*::
+Cannot use the source snapshot copy for SnapMirror(R) restore.
+*Syslog Message*::
+Cannot restore from source snapshot copy to volume '%s%s%s' because %s.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name itself is insufficient.
+*reason* (STRING): Specific reason for failure.
+
+== repl.s2c.rst.archv.data.fnd
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when SnapMirror® restore encounters data present in the cloud archive tier. SnapMirror restore cannot proceed until archival tier data processing has completed.
+*Corrective Action*::
+Use the "snapmirror show" command to view the status of the processing of the archival tier of the cloud. When the relationship status becomes "Idle", then reissue the SnapMirror restore request.
+*Syslog Message*::
+SnapMirror restore with transfer UUID "%s", cloud source endpoint UUID "%s", destination volume DSID "%llu", encountered data in the archival tier.
+*Parameters*::
+*transferId* (STRING): SnapMirror transfer universal unique identifier (UUID).
+*srcEpUuid* (STRING): Cloud source endpoint UUID.
+*dstVolDsid* (LONGINT): Restore destination volume data set ID (DSID).
+
+== repl.s2c.src.inconsistent
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the replication source engine encounters a disk error in the file system metadata. Replication transfer will abort.
+*Corrective Action*::
+Run wafliron to fix the active file system. To continue replication transfer, run snapmirror abort -h command on the relationship, delete the current transfer snapshot copy and resume replication transfer from a new clean snapshot copy.
+*Syslog Message*::
+WAFL metadata inconsistent in volume '%s%s%s' due to disk errors. Aborting transfer.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name itself is insufficient.
+
+== repl.s2c.unsupported.config
+*Severity*::
+ERROR
+*Description*::
+This message occurs when we encounter unsupported configuration during SnapMirror(R) backup.
+*Corrective Action*::
+Cannot continue with backup.
+*Syslog Message*::
+Cannot backup from volume '%s%s%s' because %s.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name itself is insufficient.
+*reason* (STRING): Specific reason for failure.
+
+== repl.s2c.vmap.inconsistent
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the replication source engine encounters a disk error in the replication specifc metadata. Replication transfer will abort.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Replication specific metadata inconsistency in volume '%s%s%s'. Aborting transfer. Transfer will attempt baseline to recover from this condition.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name itself is insufficient.

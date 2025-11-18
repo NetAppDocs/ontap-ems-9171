@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: snapmirror-lrs-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapmirror.lrs events
+---
+
+= snapmirror.lrs events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapmirror.lrs.FiletypeMod
+*Severity*::
+ALERT
+*Description*::
+This message occurs when SnapMirror encounters mismatched file types between two snapshots that it is comparing. The transfer is aborted and future attempts fail until the problem is resolved.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+SnapMirror encountered mismatched file types for inode %u in volume %u. It has file type %u in snapshot %u and a file type %u in snapshot %u.
+*Parameters*::
+*inode_num* (INT): Identifier of the affected file.
+*fsid* (INT): FSID of the volume.
+*base_filetype* (INT): File type of the file in the base snapshot.
+*base_snap_id* (INT): Identifier of the base snapshot.
+*incr_filetype* (INT): File type of the file in the incremental snapshot.
+*incr_snap_id* (INT): Identifier of the incremental snapshot.

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: secd-krb-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: secd.krb events
+---
+
+= secd.krb events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== secd.krb.s4u2self.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Kerberos S4U2self (Service for User to Self) operation fails. ONTAP uses S4U2self extension to fetch the Windows group membership for authorization information. This failure can cause NFS/SMB access issues or domain admin authentication failures.
+*Corrective Action*::
+Examine the failure details to determine corrective action. Common failures include non-existent users, clock skew issues, or the inability to communicate with domain controllers due to connectivity or configuration problems.
+*Syslog Message*::
+A Kerberos S4U2self failure occurred for SVM "%s" and user "%s". Error: %s.
+*Parameters*::
+*vserverName* (STRING): Storage Virtual Machine (SVM) associated with this operation.
+*userName* (STRING): User associated with this operation.
+*errReason* (STRING): Reason for the S4U2self operation error.

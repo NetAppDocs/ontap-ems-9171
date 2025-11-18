@@ -1,0 +1,44 @@
+---
+sidebar: sidebar
+permalink: sfu-adaptersuspendio-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfu.adaptersuspendio events
+---
+
+= sfu.adaptersuspendio events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfu.adapterSuspendIO
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during a disk shelf firmware update on a disk shelf that cannot perform I/O while updating firmware. Typically, the shelves involved are bridge-based.
+*Corrective Action*::
+I/O resumes automatically after the firmware update is complete.
+*Syslog Message*::
+Suspending I/O to %s adapter %s for %d seconds while shelf firmware is updated.
+*Parameters*::
+*adapterType* (STRING): Type of adapter that is updating firmware.
+*channelName* (STRING): Name of the adapter on which shelves will be updating firmware.
+*minutes* (INT): Amount of time that I/O will be suspended on the adapter.
+
+== sfu.adapterSuspendIO.ndu
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during a disk shelf firmware update on a disk shelf that can perform I/O, but might have to suspend management requests while updating firmware. Typically, the shelves involved are DS12-ESAS, DS20-ESAS, DS4243.
+*Corrective Action*::
+Suspended data traffic resumes automatically after the firmware update is complete.
+*Syslog Message*::
+Suspending %s to %s adapter %s for %d seconds while shelf firmware is updated.
+*Parameters*::
+*dataTrafficType* (STRING): Type of data traffic: SMP.
+*adapterType* (STRING): Type of adapter that is updating firmware.
+*channelName* (STRING): Name of the adapter on which shelves will be updating firmware.
+*minutes* (INT): Amount of time that specified data traffic will be suspended on the adapter.

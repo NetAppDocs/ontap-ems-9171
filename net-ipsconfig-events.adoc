@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: net-ipsconfig-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: net.ipsconfig events
+---
+
+= net.ipsconfig events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== net.ipsconfig.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when creation of an IPspace fails. This failure leaves the system with an unusable IPspace.
+*Corrective Action*::
+Delete the IPspace reporting the failure by using the "ipspace delete" command. Use the (privilege: diag) "debug smdb table ipspaces_byname show" command to find the mapping from the ID reported in the event to the IPspace name required to delete this IPspace.
+*Syslog Message*::
+IPspace (%d) needs to be deleted because configuration (%s) failed with error (%s).
+*Parameters*::
+*ipsid* (INT): IPspace ID.
+*configuration* (STRING): Configuration attempted.
+*error* (STRING): Error returned.

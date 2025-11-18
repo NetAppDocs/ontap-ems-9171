@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: bcomd-fcnvmelifmovefail-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: bcomd.fcnvmelifmovefail events
+---
+
+= bcomd.fcnvmelifmovefail events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== bcomd.fcNvmeLifMoveFail
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a LIF move failed and the recovery action to restore the LIF has also failed. Namespaces are no longer accessible through this LIF. The LIF must be recovered manually.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Moving FC-NVMe LIF %s of vserver %s from %s:%s to %s:%s failed. Manual recovery required.
+*Parameters*::
+*lif_name* (STRING): LIF name.
+*vserver_uuid* (STRING): Vserver Uuid.
+*src_node* (STRING): LIF was moving from this node.
+*src_port* (STRING): LIF was moving from this port.
+*dest_node* (STRING): LIF was moving to this node.
+*dest_port* (STRING): LIF was moving to this port.

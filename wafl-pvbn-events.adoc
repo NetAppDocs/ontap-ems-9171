@@ -1,0 +1,83 @@
+---
+sidebar: sidebar
+permalink: wafl-pvbn-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.pvbn events
+---
+
+= wafl.pvbn events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.pvbn.check.done
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued to inform the user that the pvbn check has completed. It lists detailed information on what work was performed.
+*Corrective Action*::
+This message may be disabled by passing -s to wafl scan pvbn_check when starting the scanner.
+*Syslog Message*::
+PVBN check has completed on %s, snapid %d. inos: %d, pvbns: %llu, unks: %llu, errs: %llu.
+*Parameters*::
+*vol* (STRING): The volume name
+*snapid* (INT): ID of the snapshot that has been completely scanned
+*inos* (INT): How many inodes were checked
+*pvbns* (LONGINT): How many block pointers were checked
+*unks* (LONGINT): How many pvbn unknowns were encountered
+*errs* (LONGINT): How many pvbn mismatches were encountered
+
+== wafl.pvbn.check.found.mismatch
+*Severity*::
+EMERGENCY
+*Description*::
+This event is issued to inform the user that the pvbn check has found a pvbn mismatch.
+*Corrective Action*::
+This message may be disabled by passing -s to wafl scan pvbn_check when starting the scanner.
+*Syslog Message*::
+PVBN check has found a pvbn mismatch on %s, snapid=%d, %s ino=%d, level=%d, fbn=%llu, index=%d, pvbn=%llu, pvbn2=%llu.
+*Parameters*::
+*vol* (STRING): The volume name
+*snapid* (INT): ID of the snapshot being scanned
+*ino_type* (STRING): The inode type
+*inum* (INT): Inum being scanned
+*level* (INT): Level of the buftree being scanned
+*fbn* (LONGINT): Block number containing unknown
+*index* (INT): Index in block that is unknown
+*pvbn* (LONGINT): PVBN as found in the buftree
+*pvbn2* (LONGINT): PVBN as found in the container indirect
+
+== wafl.pvbn.check.found.unknown
+*Severity*::
+NOTICE
+*Description*::
+This event is issued to inform the user that the pvbn check has found a pvbn unknown.
+*Corrective Action*::
+This message may be disabled by passing -s to wafl scan pvbn_check when starting the scanner.
+*Syslog Message*::
+PVBN check has found a pvbn unknown on %s, snapid=%d, %s ino=%d, level=%d, fbn=%llu, index=%d.
+*Parameters*::
+*vol* (STRING): The volume name
+*snapid* (INT): ID of the snapshot being scanned
+*ino_type* (STRING): The inode type
+*inum* (INT): Inum being scanned
+*level* (INT): Level of the buftree being scanned
+*fbn* (LONGINT): Block number containing unknown
+*index* (INT): Index in block that is unknown
+
+== wafl.pvbn.check.no.snapshot
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued to inform the user that the snapshot being scanned by the pvbn checker no longer exists.
+*Corrective Action*::
+This message may be disabled by passing -s to wafl scan pvbn_check when starting the scanner.
+*Syslog Message*::
+PVBN check on %s aborted, snapshot with snapid %d is gone.
+*Parameters*::
+*vol* (STRING): The volume name
+*snapid* (INT): ID of the snapshot that no longer exists

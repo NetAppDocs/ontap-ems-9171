@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: boot-verify-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: boot.verify events
+---
+
+= boot.verify events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== boot.verify.kmods.disabled
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the verification of digitally signed kernel modules has been disabled.
+*Corrective Action*::
+Contact NetApp technical support immediately.
+*Syslog Message*::
+The verification of digitally signed kernel modules has been disabled.
+*Parameters*::
+(None).
+
+== boot.verify.kmods.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the verification of digitally signed kernel modules succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The verification of digitally signed kernel modules has completed.
+*Parameters*::
+(None).

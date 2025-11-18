@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: spm-httpd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: spm.httpd events
+---
+
+= spm.httpd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== spm.httpd.process.exit
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the web server (httpd) involuntarily terminates. The termination of this server will impact all HTTP/HTTPs services provided by the node.
+*Corrective Action*::
+The system attempts to recover by restarting the node connectivity process. server. If the process does not restart within the threshold number of retries, then an AutoSupport message is sent. If your system is not configured to send AutoSupport messages and the issue persists, contact technical support.
+*Syslog Message*::
+The web server (httpd) with ID %d exited as a result of %s. This server will attempt to restart.
+*Parameters*::
+*id* (INT): Process identifier.
+*cause* (STRING): Plain text description of why the process exited.

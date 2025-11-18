@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: http-cfg-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: http.cfg events
+---
+
+= http.cfg events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== http.cfg.csrf.max.tokens
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the maximum number of Cross-Site Request Forgery (CSRF) tokens has been reached. Web applications served from ONTAP(R), such as ONTAP System Manager, use CSRF tokens to prevent unauthorized modifications to the cluster. When the token limit has been reached, new connections to these applications will not be able to make changes to the cluster configuration.
+*Corrective Action*::
+You can fix the issue in a few different ways. You can disable CSRF protection by using the "system services web modify -csrf-protection-enabled false" command. You can increase the maximum number of tokens by using the "system services web modify -csrf-token-concurrent-limit <number>" command. You can wait until existing CSRF tokens expire. You can view and modify CSRF token settings by using the "system services web show" command.
+*Syslog Message*::
+Maximum number of CSRF tokens (%d) has been reached.
+*Parameters*::
+*limit* (INT): Maximum number of CSRF tokens that can exist at any given time.

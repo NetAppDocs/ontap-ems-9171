@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: fmmb-destroy-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fmmb.destroy events
+---
+
+= fmmb.destroy events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fmmb.destroy.mbx
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when the high-availability (HA) Mailbox contents are cleared, typically by the 'mailbox destroy' command.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*disk_name* (STRING): Disk name on which the mailbox was cleared.
+
+== fmmb.destroy.mbx.fail
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when an attempt is made to destroy the mailbox contents on the disk and this fails. Data ONTAP to a 7.0 or later version.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failed to clear mailbox on disk:%s, error:%s.
+*Parameters*::
+*disk_name* (STRING): disk name on which we are trying to clear the mailbox.
+*error* (STRING): The reason why mailbox clear failed.

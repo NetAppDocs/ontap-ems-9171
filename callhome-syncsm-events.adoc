@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: callhome-syncsm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.syncsm events
+---
+
+= callhome.syncsm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.syncsm.exception
+*Severity*::
+ERROR
+*Description*::
+This message occurs when critical thresholds are breached for a SnapMirror(R) Synchronous relationship. If your system is configured to do so, it generates and transmits an AutoSupport (or "call home") message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Use the "snapmirror show" command to check for current status. Contact support personnel if this problem occurs repeatedly and prevents the relationship from moving to the InSync status.
+*Syslog Message*::
+Call home for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.syncsm.oos.fatal
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a resynchronize operation between the source volume and destination volume fails for a SnapMirror(R) Sync relationship. If your system is configured to do so, it generates and transmits an AutoSupport (or "call home") message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Look for the sms.resync.attempt.failed event concerning this relationship in the EMS log file. The event provides the reason why the relationship has been transitioned to out-of-sync and an appropriate corrective action, if applicable.
+*Syslog Message*::
+Call home for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

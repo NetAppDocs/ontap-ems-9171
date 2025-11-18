@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: lun-outplace-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lun.outplace events
+---
+
+= lun.outplace events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== LUN.outplace.dumpRestoreFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an out-of-place restore of a LUN from dump fails because the source LUN is of a higher version than this Data ONTAP(R) release supports.
+*Corrective Action*::
+Restore creates a regular file at the destination path, with the same data as in the source LUN. To recover the source LUN's data from the dump, you can create a new and unmapped LUN from this file using the 'lun create -f' command.
+*Syslog Message*::
+An out-of-place restore of a LUN from dump for the destination path %s in volume %s (DSID %llu) failed.
+*Parameters*::
+*lun_path* (STRING): Destination path for the failed LUN restore.
+*volume_name* (STRING): Name of the destination volume.
+*volume_dsid* (LONGINT): Data set ID (DSID) of the destination volume.

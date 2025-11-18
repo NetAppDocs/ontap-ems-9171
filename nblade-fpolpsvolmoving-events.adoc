@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: nblade-fpolpsvolmoving-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.fpolpsvolmoving events
+---
+
+= nblade.fpolpsvolmoving events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.fpolPsVolMoving
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the FPolicy persistent store volume is being moved. This causes disruption in FPolicy where persistent store is enabled.
+*Corrective Action*::
+Disable the FPolicy with a persistent store until volume move is completed.
+*Syslog Message*::
+FPolicy persistent store volume "%s" belonging to SVM "%s" is being moved.
+*Parameters*::
+*volName* (STRING): Persistent store volume.
+*vserverName* (STRING): Name of the SVM.

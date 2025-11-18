@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: sas-8072-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sas.8072 events
+---
+
+= sas.8072 events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sas.8072.firmware.fault
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the PM8072 serial-att (SAS) host bus adapter reports an adapter firmware error.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Detected firmware error on serial-attached SCSI (SAS) adapter %s. Scratchpad register: 0x%x.
+*Parameters*::
+*adapterName* (STRING): Name of the associated serial-attached SCSI (SAS) host bus adapter.
+*sctratchpad1* (INTHEX): Contents of the host bus adapter scratchpad register.

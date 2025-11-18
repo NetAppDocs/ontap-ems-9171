@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: cf-giveback-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.giveback events
+---
+
+= cf.giveback events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.giveback.delayed.cleanup
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when giveback of a partner node is delayed due to the cleanup of a previous giveback event.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: giveback process was delayed because of a previous giveback event.
+*Parameters*::
+(None).
+
+== cf.giveback.disk.check.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the giveback failed due to a disk inventory check failure.
+*Corrective Action*::
+If the giveback failed or is disabled because the node did not receive the disk inventory information from the partner, then retry giveback after a few minutes. If the giveback failed or is disabled because the partner is missing its disks, make sure that the partner has connectivity to all of its disks. To check the list of disks that the partner can see, boot the partner in Maintenance mode and use the "disk show" command or "storage show disk" command to list its disks. To check for missing disks, use the "storage failover show -instance" command. If you want to override the disk inventory check, use the "cf disable diskInventory" command from the advanced privilege level of the nodeshell on the takeover node. However, disabling the disk inventory check can lead to client outage if the partner cannot see all of its disks.
+*Syslog Message*::
+cf giveback failed: %s.
+*Parameters*::
+*reason* (STRING): Reason for the disk inventory failure.
+
+== cf.giveback.keepingPartnerAggr
+*Severity*::
+ERROR
+*Description*::
+This message occurs during the giveback process following a failed takeover attempt, when an aggregate belonging to the partner node is not given back to the partner node. The reason is that the aggregate was already under the control of the node performing the takeover before the takeover attempt. Only aggregates that are acquired during the failed takeover attempt are given back.
+*Corrective Action*::
+Give back the aggregate to the partner node by using the "storage failover giveback" command.
+*Syslog Message*::
+Not giving back aggregate '%s' because it was under the control of this node prior to the failed takeover attempt.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate that was not given back.

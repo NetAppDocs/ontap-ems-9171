@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: nvmf-tcp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvmf.tcp events
+---
+
+= nvmf.tcp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvmf.tcp.lif.create.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is an internal error while creating a NVMe-over-TCP (NVMe/TCP) logical network interface (LIF).
+*Corrective Action*::
+To recover from this condition, use the "network interface modify" command to change the state of "status-admin" of the LIF to "down" and then back to "up" again.
+*Syslog Message*::
+NVMe/TCP LIF "%s" create operation failed because of the following internal error: "%d".
+*Parameters*::
+*lifname* (STRING): Name of the NVMe/TCP LIF that encountered the failure.
+*errorCode* (INT): Error code returned during the creation of the LIF.
+
+== nvmf.tcp.trans.init.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is an internal error during the NVMe-over-TCP (NVMe/TCP) transport initialization.
+*Corrective Action*::
+NVMe-oF logs at "/mroot/etc/log/rastrace" need to be collected for further analysis. Trigger an ALL AutoSupport(R) message by using the following command: "autosupport invoke -node * -message "nvmf.tcp.transport.init.failed" -type all". Also trigger the diagnostic AutoSupport function by using the following command "autosupport invoke-diagnostic -node * -message "nvmf.tcp.transport.init.failed" -subsystems nvmf". Then contact NetApp technical support support.
+*Syslog Message*::
+NVMe/TCP transport initialization failed because of the following internal error: "%d".
+*Parameters*::
+*errorCode* (INT): Error code returned during transport initialization.

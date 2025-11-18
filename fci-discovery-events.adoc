@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: fci-discovery-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fci.discovery events
+---
+
+= fci.discovery events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fci.discovery.timeout
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Fibre Channel adapter driver cannot complete device discovery within the specified time. The driver allows ONTAP(R) software to continue booting and continues the discovery process in the background.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Device discovery timeout after %d seconds on adapter %s.
+*Parameters*::
+*time* (INT): Amount of time, in seconds, spent waiting for device discovery to be completed.
+*adapterName* (STRING): Name of the associated Fibre Channel host bus adapter.

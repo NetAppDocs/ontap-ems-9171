@@ -1,0 +1,129 @@
+---
+sidebar: sidebar
+permalink: fli-lun-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fli.lun events
+---
+
+= fli.lun events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fli.lun.import.checkpoint
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a checkpoint record delete fails. Checkpoint is metadata information stored with the NetApp LUN attribute stream for tracking import progress. An attempt is made to delete this metadata during import stop or delete operations.
+*Corrective Action*::
+This record can remain in the LUN attribute stream without any harm. It could occupy ~100-200 bytes of space in the LUN attribute stream. If that is an issue, a support personnel could be contacted to delete this record.
+*Syslog Message*::
+Import checkpoint record could not be deleted for LUN %s - Reason:%s
+*Parameters*::
+*LUNSerialNumber* (STRING): Serial number of the LUN.
+*FailureReason* (STRING): Internal error reason.
+
+== fli.lun.import.complete
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a foreign LUN import is complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Import of foreign LUN %s of size %lld bytes from array model %s belonging to vendor %s is successfully completed. Destination NetApp LUN is %s.
+*Parameters*::
+*DiskSerialNumber* (STRING): Foreign disk serial number.
+*Size* (LONGINT): Size of the foreign LUN.
+*ForeignArrayModelID* (STRING): Foreign array model ID.
+*ForeignArrayVendor* (STRING): Foreign array vendor name.
+*LUNSerialNumber* (STRING): Serial number of the LUN.
+
+== fli.lun.import.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a foreign LUN import goes into failed state. 1. Data could not be read from the source(foreign LUN). 2. Data could not be written to the destination(NetApp LUN). 3. This is an Internal/metadata related error.
+*Corrective Action*::
+1. Verify the connectivity to the foreign disk. 2. Verify that the destination volume is online and has enough space by using "volume show" command. 3. Run the "lun import pause" command followed by a "lun import resume" command. In certain cases, the import might need to be restarted ( Use "lun import stop" command followed by "lun import start" command). The ultimate recovery is to delete this relationship (with -force option) and create it again.
+*Syslog Message*::
+Import of foreign LUN %s to LUN %s failed - Reason:%s
+*Parameters*::
+*DiskSerialNumber* (STRING): Foreign disk serial number.
+*LUNSerialNumber* (STRING): Serial number of the LUN.
+*FailureReason* (STRING): Internal error reason.
+
+== fli.lun.import.failed.r2
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a foreign LUN import goes into a failed state due to one of the following reasons: 1. Data could not be read from the source foreign LUN. 2. Data could not be written to the destination LUN. 3. This is an internal error or a metadata related error.
+*Corrective Action*::
+1. Verify the connectivity to the foreign disk. 2. Verify that the destination LUN has enough space by using the "lun show -fields physical-used, physical-used-by-snapshots, se-ratio" command. 3. Run the "lun import pause" command followed by the "lun import resume" command. In certain cases, the import might need to be restarted. ( Use "lun import stop" command followed by "lun import start" command). The ultimate solution is to delete this relationship (with -force option) and create it again. 4. If the problem persists, contact NetApp technical support for assistance.
+*Syslog Message*::
+Import of foreign LUN %s to LUN %s failed - Reason:%s
+*Parameters*::
+*DiskSerialNumber* (STRING): Foreign disk serial number.
+*LUNSerialNumber* (STRING): Serial number of the LUN.
+*FailureReason* (STRING): Internal error reason.
+
+== fli.lun.import.inconsistent
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the import inconsistent flag cannot be unset. The import inconsistent flag is a system attribute for the NetApp LUN that is set during import progress, to indicate inconsistent data in the destination LUN. This is to discourage restore operations on LUN Snapshot(tm) copies created during import. A best effort is done to unset this flag after the import is complete, and also during import stop and delete operations. It is safe to perform restore operations if data in the destination LUN is known to be successfully verified.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Import inconsistent flag could not be unset for LUN %s - Reason:%s
+*Parameters*::
+*LUNSerialNumber* (STRING): Serial number of the LUN.
+*FailureReason* (STRING): Internal error reason.
+
+== fli.lun.verify.complete
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a foreign LUN import verify is complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Import verify of foreign LUN %s of size %lld bytes from array model %s belonging to vendor %s with NetApp LUN %s is successfully completed.
+*Parameters*::
+*DiskSerialNumber* (STRING): Foreign disk serial number.
+*Size* (LONGINT): Size of the foreign LUN.
+*ForeignArrayModelID* (STRING): Foreign array model ID.
+*ForeignArrayVendor* (STRING): Foreign array name.
+*LUNSerialNumber* (STRING): Serial number of the LUN.
+
+== fli.lun.verify.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a foreign LUN import verify fails. 1. Data could not be read from the source(foreign LUN). 2. Data could not be written to the destination(NetApp LUN). 3. There was a data mismatch during the verify operation. 4. There was an internal error.
+*Corrective Action*::
+1. For a data mismatch, start the import operation again. 2. Verify the connectivity to the foreign disk. 3. Verify that destination volume is in a healthy state. In certain cases, the verify operation might need to be restarted (Use "lun import verify stop" command followed by "lun import verify start" command). The ultimate recovery is to delete this relationship (with -force option) and create it again.
+*Syslog Message*::
+Import verify of foreign LUN %s and NetApp LUN %s failed - Reason:%s
+*Parameters*::
+*DiskSerialNumber* (STRING): Foreign disk serial number.
+*LUNSerialNumber* (STRING): Serial number of the LUN.
+*FailureReason* (STRING): Internal error reason.
+
+== fli.lun.verify.failed.r2
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a foreign LUN import verify fails. 1. Data could not be read from the source foreign LUN. 2. Data could not be written to the destination LUN. 3. There was a data mismatch during the verify operation. 4. There was an internal error.
+*Corrective Action*::
+1. For a data mismatch, start the import operation again. 2. Verify the connectivity to the foreign disk. 3. In certain cases, the verify operation might need to be restarted. (Use "lun import verify stop" command followed by "lun import verify start" command). If necessary, delete this relationship (with -force option) and create it again.
+*Syslog Message*::
+Import verify of foreign LUN %s and destination LUN %s failed - Reason:%s.
+*Parameters*::
+*DiskSerialNumber* (STRING): Foreign disk serial number.
+*LUNSerialNumber* (STRING): Serial number of the LUN.
+*FailureReason* (STRING): Internal error reason.

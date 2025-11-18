@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ic-viif-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ic.viif events
+---
+
+= ic.viif events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ic.viif.initFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the driver fails to create a virtual interface.
+*Corrective Action*::
+Reboot the controller. Contact NetApp technical support if the problem persists.
+*Syslog Message*::
+HA interconnect: Virtual interface initialization failure.
+*Parameters*::
+(None).

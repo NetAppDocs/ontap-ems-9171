@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: ha-fenceaddedhalt-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.fenceaddedhalt events
+---
+
+= ha.fenceaddedhalt events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.fenceAddedHalt
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the node halts itself after it finds that another node has fenced this node. This fencing is due to this node being taken over by its partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+At %-18s, Node %s detected that it was fenced while using disk %s. Ordinarily, this will only occur if the node has been taken over.
+*Parameters*::
+*time* (STRING): Time when the disk fence was detected.
+*local_node_uuid* (STRING): Local node uuid.
+*disk_name* (STRING): Name of the disk.
+*last_update* (INT): Time passed since last rescan, in milliseconds.

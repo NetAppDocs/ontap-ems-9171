@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: mc-channel-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mc.channel events
+---
+
+= mc.channel events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mc.channel.create.failed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs on failure in new channel creation in Mirror Cache.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failure in Mirror Cache on new channel -- Name: %s
+*Parameters*::
+*channel* (STRING): Channel name

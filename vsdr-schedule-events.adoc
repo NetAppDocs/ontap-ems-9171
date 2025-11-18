@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: vsdr-schedule-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsdr.schedule events
+---
+
+= vsdr.schedule events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsdr.schedule.unavailable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a schedule is not available on the secondary site for replication of policies for a Vserver in a MetroCluster(tm) configuration or Vserver DR setup.
+*Corrective Action*::
+Create a new job schedule on the remote site that is identical to that on the source site by using the 'job schedule cron create' command. If this is a SnapMirror(R) or MetroCluster(tm) environment, run the "snapmirror resync" command or the "metrocluster vserver resync" command respectively to resynchronize the Vserver configuration.
+*Syslog Message*::
+Configuration replication for policy "%s" in Vserver "%s" has failed because the schedule mentioned in the policy is not available.
+*Parameters*::
+*policy_name* (STRING): Name of the policy that has a schedule that is unavailable on the secondary site.
+*vserver_name* (STRING): Vserver name on which the policy was associated.

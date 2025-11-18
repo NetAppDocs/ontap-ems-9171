@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: net-asymmetric-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: net.asymmetric events
+---
+
+= net.asymmetric events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== net.asymmetric.routing.e0m
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP(R) detects asymmetric routing on the e0M port. Sending non-management traffic over the e0M port is unsupported and will cause performance degradation.
+*Corrective Action*::
+Use the "network route show" command to check the routes configured on the system storage virtual machine (SVM). Use the "network route create" command to add missing routes with a gateway in the subnet of the LIFs that are not hosted on the e0M port.
+*Syslog Message*::
+Traffic destined for %s from source LIF %s, which is not hosted on e0M, is being routed through e0M.
+*Parameters*::
+*Dst* (STRING): IP address of the destination.
+*Src* (STRING): IP address of the source.

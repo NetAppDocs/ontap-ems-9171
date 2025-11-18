@@ -1,0 +1,53 @@
+---
+sidebar: sidebar
+permalink: coredump-host-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: coredump.host events
+---
+
+= coredump.host events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== coredump.host.spare.none
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when no sparecore disk is found at boot/takeover time.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+No sparecore disk was found for host %d.
+*Parameters*::
+*host* (INT): Host for which no sparecore disk was found.
+
+== coredump.host.spare.save
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs to tell you which disk was identified as the sparecore disk at boot/takeover time.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s was identified as the sparecore disk at boot/takeover time for host %d.
+*Parameters*::
+*diskname* (STRING): Name of the sparecore disk.
+*host* (INT): Host that the sparecore disk belongs to.
+
+== coredump.host.spare.set
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a disk is identified as a sparecore disk and the host's sparecoreinfo is updated during assimilation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*disk* (STRING): Name of the sparecore disk
+*host* (INT): Host whose sparecoreinfo was updated.

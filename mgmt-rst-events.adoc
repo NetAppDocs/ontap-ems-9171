@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: mgmt-rst-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmt.rst events
+---
+
+= mgmt.rst events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmt.rst.fail.dst.compressed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the SnapMirror(R) 'restore' command fails because compression is enabled on the destination volume.
+*Corrective Action*::
+Force a cleanup of the failed operation by reissuing the 'restore' command with the parameter 'clean-up-failure', disable compression on the destination volume, create a Snapshot(tm) copy, and then reissue the 'restore' command.
+*Syslog Message*::
+SnapMirror restore from source volume '%s' to destination volume '%s' failed with error: %s.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume for restore.
+*dstpath* (STRING): Path name of the destination volume for restore.
+*error* (STRING): Error message.

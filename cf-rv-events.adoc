@@ -1,0 +1,87 @@
+---
+sidebar: sidebar
+permalink: cf-rv-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.rv events
+---
+
+= cf.rv events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.rv.connected
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an HA connection agent connects on an HA interconnect device.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+HA interconnect: Connection for '%s' succeeded.
+*Parameters*::
+*rv_name* (STRING): Logical name of the successful HA connection.
+
+== cf.rv.flush.handleExchange
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when HA interconnect exchanges flushing information with the partner.
+*Corrective Action*::
+If the flush handle exchange reports "inactive", the remote controller might be running a version of Data ONTAP(R) that does not support flushing. Make sure that the controller and its partner are running compatible versions of the software.
+*Syslog Message*::
+HA interconnect: Flushing is %s.
+*Parameters*::
+*s* (STRING): Flushing status.
+
+== cf.rv.localNoConn
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the local controller votes not to connect to the HA partner. This can be caused by incompatibility between the software versions running on the two controllers.
+*Corrective Action*::
+Install compatible versions of software on both controllers.
+*Syslog Message*::
+HA interconnect: Local controller voted not to connect.
+*Parameters*::
+(None).
+
+== cf.rv.nicReset
+*Severity*::
+ERROR
+*Description*::
+This message occurs when HA interconnects are reset due to NVRAM log being unsynchronized for longier time than 15seconds.
+*Corrective Action*::
+Contact NetApp technical support if the problem persists.
+*Syslog Message*::
+HA interconnect: Reset due to unsynchronized log.
+*Parameters*::
+(None).
+
+== cf.rv.notConnected
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an HA connection agent fails to connect on an HA interconnect device.
+*Corrective Action*::
+Verify that both controllers in the HA pair are operational. If this message persists, disable and reenable the link by using the (privilege: advanced) "system ha interconnect link off" and "system ha interconnect link on" commands.
+*Syslog Message*::
+HA interconnect: Connection for '%s' failed.
+*Parameters*::
+*rv_name* (STRING): Logical name of the failing HA connection.
+
+== cf.rv.partnerNoConn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the HA partner votes not to connect to this controller. This can happen if the HA partner detects an incompatibility between the software versions running on the two controllers.
+*Corrective Action*::
+Install compatible versions of software on both controllers.
+*Syslog Message*::
+HA interconnect: Partner voted not to connect.
+*Parameters*::
+(None).

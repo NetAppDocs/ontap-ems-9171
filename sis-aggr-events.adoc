@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: sis-aggr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.aggr events
+---
+
+= sis.aggr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.aggr.cvs.undo.abort
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when undo of cross volume savings on aggregate has to abort due to some error conditions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Undo of cross volume savings on aggregate %s aborted. Volume %s encountered error: %s
+*Parameters*::
+*aggr_name* (STRING): Aggregate name.
+*vvol_name* (STRING): Flex volume name.
+*error* (STRING): Error code for the abort.
+
+== sis.aggr.metadir.create.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the creation of SIS metafiles in the aggregate containing the SIS volume fails. Change logging will be turned off on the volume.
+*Corrective Action*::
+Ensure that space is available in the aggregate containing the volume. Use the 'sis on' command to turn on change logging on the volume, which attempts to re-create SIS metafiles in the aggregate. If enough space is available, start wafliron on the aggregate containing the indicated flexible volume.
+*Syslog Message*::
+Creation of aggregate metadir failed for SIS volume %s%s. Change logging will be turned off on the volume: %s.
+*Parameters*::
+*volname* (STRING): SIS volume name.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*reason* (STRING): Reason for the failure.

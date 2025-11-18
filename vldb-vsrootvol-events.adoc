@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: vldb-vsrootvol-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vldb.vsrootvol events
+---
+
+= vldb.vsrootvol events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vldb.vsRootVol.del
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Vserver root volume is force deleted while non-root volumes for the Vserver still exist in the cluster. Under normal circumstances, the Vserver root volume cannot be deleted until all the other volumes for the Vserver are deleted. Although deleting the Vserver root volume does not change the operational state for the Vserver, volume operations that refer to the Vserver root volume for information will fail if the corrective action is not taken.
+*Corrective Action*::
+Assign an already existing data volume as the new root volume for the Vserver whose root volume was deleted by using the 'volume make-vsroot -vserver vserver_name -volume new_root_volume_name' command.
+*Syslog Message*::
+The root volume '%s' for the Vserver with Vserver ID '%d' was force deleted while non-root volumes for the Vserver still exist in the cluster.
+*Parameters*::
+*volume* (STRING): Root volume name that was deleted.
+*vserverid* (INT): ID for the Vserver that owned the deleted root volume.

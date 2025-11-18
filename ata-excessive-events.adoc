@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ata-excessive-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ata.excessive events
+---
+
+= ata.excessive events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ata.excessive.latency
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an I/O request to the ATA driver in ONTAP(R) Select takes longer than five seconds. This might be an indication of an overloaded or misconfigured back-end storage subsystem.
+*Corrective Action*::
+If possible, reduce the I/O load on the system. Verify that the device is configured correctly and is functioning correctly.
+*Syslog Message*::
+Excessive latency on ATA device %s
+*Parameters*::
+*ata_latency_message* (STRING): ATA high latency message

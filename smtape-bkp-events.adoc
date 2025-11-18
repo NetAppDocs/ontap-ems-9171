@@ -1,0 +1,87 @@
+---
+sidebar: sidebar
+permalink: smtape-bkp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: smtape.bkp events
+---
+
+= smtape.bkp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== smtape.bkp.abort.write.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an SMTape backup operation is aborted because a write to tape device fails.
+*Corrective Action*::
+Make sure that the tape device does not have media errors and is writable. Check for error details in the log file at /mroot/etc/log/backup.
+*Syslog Message*::
+SMTape backup session %d from %s to %s was aborted because write to output failed.
+*Parameters*::
+*sessionid* (INT): Session ID of the SMTape operation.
+*srcvolpath* (STRING): SMTape source volume.
+*tapepath* (STRING): Current destination device to which backup was performed.
+
+== smtape.bkp.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an SMTape backup operation to tape fails.
+*Corrective Action*::
+Check for error details in the log file at /mroot/etc/log/backup. Retry the command after resolving the error reported.
+*Syslog Message*::
+SMTape backup session %d from %s to %s failed with error %s.
+*Parameters*::
+*sessionid* (INT): Session ID of the SMTape operation.
+*srcvolpath* (STRING): SMTape source volume.
+*tapepath* (STRING): Current destination device to which backup was performed.
+*errorstring* (STRING): Error string returned by SMTape.
+
+== smtape.bkp.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an SMTape backup operation to tape succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SMTape backup session %d from %s to tape was successful. %s, %d tape(s) written.
+*Parameters*::
+*sessionid* (INT): Session ID of the SMTape operation.
+*srcvolpath* (STRING): SMTape source volume.
+*stats* (STRING): Statistics for the SMTape backup.
+*numtapes* (INT): Number of tapes used.
+
+== smtape.bkp.tape.busy
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an SMTape backup to tape fails because the tape device is busy.
+*Corrective Action*::
+Make sure that the tape device is not being used by another application and retry the operation when it is free. Otherwise, issue the command using a tape device that is not currently in use.
+*Syslog Message*::
+Tape device is busy, aborting SMTape backup session %d from %s to %s.
+*Parameters*::
+*sessionid* (INT): Session ID of the SMTape operation.
+*srcvolpath* (STRING): SMTape source volume.
+*tapepath* (STRING): SMTape destination tape device.
+
+== smtape.bkp.tape.change
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a CLI-based SMTape backup operation to tape reaches end of tape.
+*Corrective Action*::
+Load the next tape media onto a drive and position it correctly, and then issue the 'system smtape continue -session-id [session-id] -tape [tapepath]' command with the new tape path.
+*Syslog Message*::
+SMTape backup session %d from %s to %s is waiting for a tape change.
+*Parameters*::
+*sessionid* (INT): Session ID of the SMTape operation.
+*srcvolpath* (STRING): SMTape source volume.
+*tapepath* (STRING): Current destination tape device to which backup was performed.

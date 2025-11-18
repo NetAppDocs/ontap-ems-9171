@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: esh-auto-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: esh.auto events
+---
+
+= esh.auto events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== esh.auto.term.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is an error in autotermination. Major causes of this include: 1) Last disk shelf in the loop has the termination switch set improperly. 2) Communication is lost to some number of disk shelves in the loop due to an incorrect speed setting for DS14mk2 disk shelves, a bad cable connection, or unavailable power.
+*Corrective Action*::
+Use the 'fcstat device_map' command to verify that all disk shelves in the loop are still accessible. If the disk shelf reporting the autotermination event is not the last disk shelf in the loop, a problem exists with some number of disk shelves in the loop. Check the speed, power, and cabling of all disk shelves in the loop after the disk shelf reporting the autotermination.
+*Syslog Message*::
+AUTO TERMINATION ERROR: TERM switch set improperly on ESH %s on channels %s disk shelf ID %d.
+*Parameters*::
+*element* (STRING): ESH module designator (A is the upper module, B is the lower module).
+*channels* (STRING): Channels that have the error if local, PARTNER for high-availability partner, UNUSED if unconnected.
+*shelfID* (INT): Disk shelf ID (1-7) of the disk shelf reporting the error.

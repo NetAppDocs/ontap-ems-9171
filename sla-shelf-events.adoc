@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: sla-shelf-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sla.shelf events
+---
+
+= sla.shelf events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sla.shelf.mod.reboot
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a shelf firmware module is rebooted administratively, or when a reboot occurs normally when the system powers up, the firmware is updated, or the alternate control path (ACP) is reset.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Reboot event reported by module %s in shelf: %s, log: %s
+*Parameters*::
+*module* (STRING): Module designator (A or B).
+*shelf* (STRING): Shelf identifier.
+*log* (STRING): Reboot event log from the shelf module.
+
+== sla.shelf.mod.reboot.unexp
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a shelf firmware module reboots unexpectedly (not due to powering up, a firmware update, an alternate control path (ACP) reset, nor an administrative reboot).
+*Corrective Action*::
+Check the cabling to the shelf. Check the status LED on the shelf, making sure that the fault LEDs are not on. Clear any fault condition, if possible.
+*Syslog Message*::
+Unexpected reboot event reported by module %s in shelf: %s, log: %s
+*Parameters*::
+*module* (STRING): Module designator (A or B).
+*shelf* (STRING): Shelf identifier.
+*log* (STRING): Reboot event log from the shelf module.

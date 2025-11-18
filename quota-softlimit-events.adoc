@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: quota-softlimit-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: quota.softlimit events
+---
+
+= quota.softlimit events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== quota.softlimit.exceeded
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a user exceeds the soft quota limit (file and/or block limit).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s for %s on volume %s%s%s%s
+*Parameters*::
+*ltype* (STRING): Type of soft limit (file or block).
+*verb* (STRING): Error condition (exceeded).
+*whom* (STRING): Entity for whom this event is generated.
+*volname* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume in cases in which the volume name alone is insufficient.
+*vfname* (STRING): vFiler(tm) name.
+
+== quota.softlimit.normal
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a user's soft quota limit (file and/or block limit) returns to normal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s for %s on volume %s%s%s%s
+*Parameters*::
+*ltype* (STRING): Type of soft limit (file or block).
+*verb* (STRING): Status "normal" to indicate that the previously violated condition is now fixed.
+*whom* (STRING): Entity for whom this event is generated.
+*volname* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume in cases in which the volume name alone is insufficient.
+*vfname* (STRING): vFiler(tm) name.

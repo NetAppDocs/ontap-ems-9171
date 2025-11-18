@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cpeer-unavailable-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cpeer.unavailable events
+---
+
+= cpeer.unavailable events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cpeer.unavailable
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a peer cluster becomes unavailable.
+*Corrective Action*::
+Verify network connectivity between the local cluster and the peer cluster. It might be necessary to manually correct the peer configuration using the 'cluster peer modify' command if peer addresses have changed recently. Verify that the peer cluster is up.
+*Syslog Message*::
+Peer cluster %s is no longer available.
+*Parameters*::
+*peer* (STRING): Peer cluster that became unavailable.

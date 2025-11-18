@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: vol-phy-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vol.phy events
+---
+
+= vol.phy events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vol.phy.overalloc.inc.sav
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the volume is running dangerously low on free blocks to write to. Free blocks are estimated based on the space saved by the storage efficiency features as well as with physically used blocks.
+*Corrective Action*::
+Create space by increasing the volume size, deleting data, or deleting snapshots. To increase volume size, use the "volume size" command. To delete snapshots, use the "volume snapshot delete" command.
+*Syslog Message*::
+%s %s%s%s (UUID %s) is physically overallocated using %s%% space, which considers space saved by storage efficiency features as well as physically used blocks.
+*Parameters*::
+*object_type* (STRING): Identifier for the type of object to which this event applies. This event should be applicable only to volumes with logical space enforcement turned on.
+*name* (STRING): Name of this object.
+*app* (STRING): Application Universally Unique ID (UUID).
+*vserver_uuid* (STRING): UUID of the object's or volume's Vserver.
+*object_uuid* (STRING): UUID of the object or volume.
+*percent_full* (STRING): Used capacity of the physical space of the object, along with space saved by the storage efficiency features, as a percentage. This value can be greater than 100 due to efficiency features and space reserved for metadata. The percentage is computed for the entire object, including snapshot space.

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: raid-mgvio-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.mgvio events
+---
+
+= raid.mgvio events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.mgvio.lw.id.inconsist
+*Severity*::
+NOTICE
+*Description*::
+This message is generated after detecting an inconsistent RAID write signature on a RAID stripe, during SyncMirror verify operation. This inconsistent RAID write signature may be due to a write operation on disk was not committed successfully. Data ONTAP will attempt to recover such bad block automatically. It automatically fails this device safely if the device exceeds the allowed number of inconsistent RAID write signature errors on the disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Inconsistent RAID write signature on RAID group %s%s, stripe #%llu, during a SyncMirror verify operation.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*rg* (STRING): Name of the RAID group.
+*stripe* (LONGINT): Stripe number.

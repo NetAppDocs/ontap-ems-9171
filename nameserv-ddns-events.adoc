@@ -1,0 +1,100 @@
+---
+sidebar: sidebar
+permalink: nameserv-ddns-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nameserv.ddns events
+---
+
+= nameserv.ddns events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nameserv.ddns.bulk.delete
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a request to delete the fully qualified domain name (FQDN) of all or some of the logical interfaces of a Vserver from the DNS server fails, resulting in stale records on the DNS server. This can lead to DNS lookup failures, resulting in mount problems.
+*Corrective Action*::
+Use the (privilege: advanced) "vserver services name-service dns dynamic-update record delete" command to attempt a manual update of the record for the LIF. If this fails, check documentation for dynamic DNS updates to correct the failure or update the record directly on the DNS server.
+*Syslog Message*::
+DDNS delete operation has failed for all or some of the logical interfaces having FQDN "%s" for Vserver "%s".
+*Parameters*::
+*FQDN* (STRING): FQDN for which the operation failed.
+*vserver_name* (STRING): Name of the Vserver.
+
+== nameserv.ddns.bulk.failure
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a dynamic request to update the fully qualified domain name (FQDN) of all or some of the logical interfaces of a Vserver in the DNS server fails after repeated retries, resulting in stale records on the DNS server. This can lead to DNS lookup failures, resulting in mount problems.
+*Corrective Action*::
+Use the (privilege: advanced) "vserver services name-service dns dynamic-update record" command to attempt a manual update of the record for the LIF. If this fails, check documentation for dynamic DNS updates to correct the failure or update the record directly on the DNS server.
+*Syslog Message*::
+DDNS %s operation has failed for all or some of the logical interfaces having FQDN "%s" for Vserver "%s".
+*Parameters*::
+*Operation* (STRING): Type of operation.
+*FQDN* (STRING): FQDN for which the operation failed.
+*vserver_name* (STRING): Name of the Vserver.
+
+== nameserv.ddns.bulk.warning
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a dynamic request to update the fully qualified domain name (FQDN) of all or some of the logical interfaces of a Vserver on the DNS server fails, resulting in stale records on the DNS server. This can lead to DNS lookup failures, resulting in mount problems.
+*Corrective Action*::
+Data ONTAP(R) retries the failed dynamic DNS update operation. Check the DNS record to ensure that it is up to date. Use the (privilege: advanced) "vserver services name-service dns dynamic-update record" command to attempt a manual update of the record for the LIF. If this fails, check documentation for dynamic DNS updates to correct the failure or update the record directly on the DNS server.
+*Syslog Message*::
+DDNS %s operation has failed for all or some of the logical interfaces having FQDN "%s" for Vserver "%s".
+*Parameters*::
+*Operation* (STRING): Type of operation.
+*FQDN* (STRING): FQDN for which the operation failed.
+*vserver_name* (STRING): Name of the Vserver.
+
+== nameserv.ddns.lif.delete
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an attempt to delete a fully qualified domain name (FQDN) from the DNS server fails, resulting in a stale record on the server. The FQDN belongs to the logical interface (LIF) of the given Vserver. Retaining the stale record can lead to DNS lookup failures, resulting in mount problems.
+*Corrective Action*::
+Use the (privilege: advanced) "vserver services name-service dns dynamic-update record delete" command to attempt a manual update of the record for the LIF. If this fails, check documentation for dynamic DNS updates to correct the failure or update the record directly on the DNS server.
+*Syslog Message*::
+DDNS delete operation of FQDN "%s" failed for LIF with IP %s on Vserver "%s".
+*Parameters*::
+*FQDN* (STRING): FQDN for which the operation failed.
+*IP* (STRING): IP address for which the operation failed.
+*vserver_name* (STRING): Name of the Vserver.
+
+== nameserv.ddns.lif.failure
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an attempt to update a fully qualified domain name (FQDN) on the DNS server fails after repeated retries, resulting in a stale record on the server. The FQDN belongs to the logical interface (LIF) of the given Vserver. Retaining the stale record can lead to DNS lookup failures, resulting in mount problems.
+*Corrective Action*::
+Use the (privilege: advanced) "vserver services name-service dns dynamic-update record" command to attempt a manual update of the record for the LIF. If this fails, check documentation for dynamic DNS updates to correct the failure or update the record directly on the DNS server.
+*Syslog Message*::
+DDNS %s operation of FQDN "%s" failed for LIF with IP %s on Vserver "%s".
+*Parameters*::
+*Operation* (STRING): Type of operation.
+*FQDN* (STRING): FQDN for which the operation failed.
+*IP* (STRING): IP address for which the operation failed.
+*vserver_name* (STRING): Name of the Vserver.
+
+== nameserv.ddns.lif.warning
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an attempt to update a fully qualified domain name (FQDN) on the DNS server fails, resulting in a stale record on the server. The FQDN belongs to the logical interface (LIF) of the given Vserver. Retaining the stale record can lead to DNS lookup failures, resulting in mount problems.
+*Corrective Action*::
+Data ONTAP(R) retries the failed dynamic DNS update operation. Check the DNS record to ensure that it is up to date. Use the (privilege: advanced) "vserver services name-service dns dynamic-update record" command to attempt a manual update of the record for the LIF. If this fails, check documentation for dynamic DNS updates to correct the failure or update the record directly on the DNS server.
+*Syslog Message*::
+DDNS %s operation of FQDN "%s" failed for LIF with IP %s on Vserver "%s".
+*Parameters*::
+*Operation* (STRING): Type of operation.
+*FQDN* (STRING): FQDN for which the operation failed.
+*IP* (STRING): IP address for which the operation failed.
+*vserver_name* (STRING): Name of the Vserver.

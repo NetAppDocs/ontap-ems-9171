@@ -1,0 +1,38 @@
+---
+sidebar: sidebar
+permalink: scsi-sim-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsi.sim events
+---
+
+= scsi.sim events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsi.sim.checkCondition
+*Severity*::
+ERROR
+*Description*::
+A Check Condition is the mechanism whereby a target device reports an informational condition or error status to the requesting host. Either the condition that generated this event is an error that occurred during execution of the command and was not cleared by retrying the request or an informational condition reporting status of the present operation or media state.
+*Corrective Action*::
+A target status of Check Condition normally indicates an error at the device during execution of the requested command. Such cases are often the result of an intermittent device hardware or firmware problem that is automatically handled by the Data ONTAP drivers through command retries. In cases of repeated events, the specified device should be evaluated for proper operation and possible repair or replacement. A Check Condition with a SenseKey of "no sense" indicates an informational condition that is automatically handled by the Data ONTAP driver associated with the target device. These are normally not reported as error events. However, on occasion an unexpected informational condition may be reported by a target device. These cases should not be interpreted as a failure of the target device.
+*Syslog Message*::
+%s device %s: Check Condition: CDB %s: Sense Data %s - %s (0x%x - 0x%x 0x%x 0x%x) Retry: %d/%d (%d).
+*Parameters*::
+*deviceType* (STRING): Device type.
+*deviceName* (STRING): Electrical path name of the device on which the command failed.
+*cdb* (STRING): String containing the opcode byte of the Command block which encountered the error. For opcodes of READ (0x28) or WRITE (0x2a), the logical block address and the transfer length are also included.
+*sSenseKey* (STRING): String containing a description of the sense key for the failed command.
+*sSenseCode* (STRING): String containing a description of the sense code for the failed command. If no description is available, this is a null string.
+*iSenseKey* (INTHEX): Integer value of the sense key for the failed command.
+*iASC* (INTHEX): Integer value of the sense code for the failed command.
+*iASCQ* (INTHEX): Integer value of the sense code qualifier for the failed command.
+*iFRU* (INTHEX): Integer value of the fru for the failed command.
+*retryCount* (INT): Number of times the command was retried
+*freeRetryCount* (INT): Number of free retries the command was given before it was successful.
+*DTime* (INT): Delta time from first issued to sense logged.

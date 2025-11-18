@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: mdb-exit-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mdb.exit events
+---
+
+= mdb.exit events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mdb.exit
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the management process exits to recover from a database error.
+*Corrective Action*::
+If the problem persists, contact NetApp technical support for assistance.
+*Syslog Message*::
+MDB %s process exit due to "%s". Error code: %d (%s).
+*Parameters*::
+*name* (STRING): Name of the M-Host process using the management database.
+*table_or_operation* (STRING): Database table name or operation that encountered the error.
+*error_code* (INT): Numeric error code reported by the management database.
+*error_msg* (STRING): Error message reported by the management database.

@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: fal_nvme-partition-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fal_nvme.partition events
+---
+
+= fal_nvme.partition events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fal_nvme.partition.status
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a partition status in the Flash Adaptation Layer (FAL) changes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Partition %lx-%lu with capacity %lu GiB status: %s.
+*Parameters*::
+*id* (LONGINTHEX): Unique identifier for the partition.
+*ns* (LONGINTHEX): Index of the namespace.
+*capacity* (LONGINT): Partition capacity.
+*state* (STRING): Partition state.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: exports-anon-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: exports.anon events
+---
+
+= exports.anon events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== exports.anon.noCredForId
+*Severity*::
+ERROR
+*Description*::
+This message occurs when we cannot get UNIX credentials for a user id when evaluating the "-anon" portion of an export-policy rule.
+*Corrective Action*::
+If "-anon" is a UID, ensure that a valid UID exists on the configured name servers. If "-anon" is a username, ensure that a mapping exists between the username and the UID on the configured name servers and the resulting UID is also present.
+*Syslog Message*::
+Cannot retrieve credentials for UID "%u" present in the "-anon" entry for the export-policy rule for Vserver "%d".
+*Parameters*::
+*anonId* (INT): UNIX UID for which we cannot acquire credentials.
+*vserver* (INT): Identifier of the Vserver owning the export-policy.

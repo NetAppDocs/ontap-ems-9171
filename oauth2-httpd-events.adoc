@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: oauth2-httpd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: oauth2.httpd events
+---
+
+= oauth2.httpd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== oauth2.httpd.restart.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the httpd process fails to restart when the OAuth 2.0 status changes.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+When the OAuth 2.0 status changed, the httpd process failed to restart for the following reason: %s.
+*Parameters*::
+*reason* (STRING): Reason why the httpd process failed to restart when there was a change in the OAuth 2.0 status of the cluster.

@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: vifmgr-startup-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.startup events
+---
+
+= vifmgr.startup events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.startup.failover.err
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the logical interface manager (VIFMgr) encounters an error while initializing the structures required for logical interface (LIF) failover. As a result of this error, the node is now running in a degraded state.
+*Corrective Action*::
+Contact NetApp technical support and reference the "vifmgr.startup.failover.err" error.
+*Syslog Message*::
+VIFMgr encountered errors during startup.
+*Parameters*::
+(None).
+
+== vifmgr.startup.merge.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs to notify you that the Logical Interface Manager (VIFMgr) encountered an error while merging the local node's network configuration with the configuration stored in the cluster database. As a result of this error, the node is now running in a degraded state.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+The Logical Interface Manager (VIFMgr) encountered errors during startup.
+*Parameters*::
+(None).

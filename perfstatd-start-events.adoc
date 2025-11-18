@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: perfstatd-start-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: perfstatd.start events
+---
+
+= perfstatd.start events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== perfstatd.start.unsuccessful
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the perfstat daemon (perfstatd) startup fails. This failure impacts the continuous archiving of performance data that technical support uses to troubleshoot performance issues.
+*Corrective Action*::
+The startup failure might be due to improper permissions for the '/mroot/etc/log' directory or a full disk. Verify that the permissions of the '/mroot/etc/log' directory are 'rwxr-xr-x' by executing the 'fsecurity show /vol/vol0/etc/log' command from the nodeshell. Verify that the '/mroot' file system is not full. After fixing the cause of the failure, restart perfstatd by executing the 'spmctl -e -h perfstatd' command from the freebsd shell.
+*Syslog Message*::
+The perfstat daemon startup failed.
+*Parameters*::
+(None).

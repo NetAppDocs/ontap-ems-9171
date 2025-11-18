@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: dyn-auth-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dyn.auth events
+---
+
+= dyn.auth events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dyn.auth.custom.comp.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the custom trust score component of the Dynamic Authorization feature encounters an error. When an error occurs, the minimum score is assigned from the component for trust score calculations.
+*Corrective Action*::
+Verify that the configured custom trust score component has a reachable uniform resource identifier (URI) provider, valid score field and returns a score between configured minimum and maximum values.
+*Syslog Message*::
+Error encountered in the custom trust score component of the Dynamic Authorization feature. Reason: %s.
+*Parameters*::
+*reason* (STRING): Reason for the error.
+
+== dyn.auth.history.comp.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the authentication history trust score component of the Dynamic Authorization feature encounters an error with the data present in the authentication statistics table. When an error occurs, the minimum score is assigned from the component for trust score calculations.
+*Corrective Action*::
+Use the "security dynamic-authorization user-trust-score reset" command to reset the trust score of the user for the Authentication History trust score component in a storage virtual machine (SVM).
+*Syslog Message*::
+Error encountered in the authentication history trust score component of the Dynamic Authorization feature. Reason: %s.
+*Parameters*::
+*reason* (STRING): Reason for the error.

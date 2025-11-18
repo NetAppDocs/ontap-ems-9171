@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: wafl-volref-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.volref events
+---
+
+= wafl.volref events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.volref.subsystem.string
+*Severity*::
+ERROR
+*Description*::
+This message occurs when wafliron is started on aggregate containing volumes, which are in-use by other subsystems.
+*Corrective Action*::
+Stop the subsystem which is using this volume/aggregate So that wafliron can be run.
+*Syslog Message*::
+wafliron: %s %s is being used by '%s'
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*vol* (STRING): Name of the volume or aggregate.
+*volref* (STRING): volume reference string of the subsystem using this volume/aggregate.

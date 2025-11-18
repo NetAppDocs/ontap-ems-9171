@@ -1,0 +1,80 @@
+---
+sidebar: sidebar
+permalink: callhome-nvram-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.nvram events
+---
+
+= callhome.nvram events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.nvram.cecc
+*Severity*::
+ERROR
+*Description*::
+This message occurs when excessive correctable error-correcting code (ECC) memory errors are reported by the NVRAM complex. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Use the "system environment sensors show -hidden true" cluster shell command to view the current "NV Correctable ECC count" and "NV Correctable ECC rate" values. Contact NetApp technical support for further assistance.
+*Syslog Message*::
+Call home for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.nvram.failure
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the NVRAM card has experienced a critical hardware failure. The system will shut down to avoid potential data loss. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Contact NetApp technical support to replace the NVRAM card.
+*Syslog Message*::
+Call home for NVRAM FAILURE
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.nvram.iofs.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs in a FireStorm instance when a read or write to its nonvolatile memory (NVRAM) device fails. The instance will panic. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Restart the FireStorm instance. If the issue persists, contact NetApp technical support.
+*Syslog Message*::
+Call home for NVRAM failure at %s, I/O type %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*io_type* (STRING): Type of failed operation (read or write).
+*tag* (STRING): Supplemental event identifier.
+*error* (LONGINT): I/O error code.
+
+== callhome.nvram.openfs.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a FireStorm instance is unable to open its nonvolatile memory (NVRAM) device. The instance will panic.
+*Corrective Action*::
+Restart the instance. If the issue persists, contact NetApp technical support.
+*Syslog Message*::
+Call home for open failure at %s on NVRAM file %s, error %d.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*nvram_backing* (STRING): Name of the NVRAM backing file.
+*fileio_error* (LONGINT): Open error code.
+
+== callhome.nvram.parityErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when excessive internal parity errors are reported by the NVRAM complex. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Use the "system environment sensors show -hidden true" command to view the current "NVRAM12 Parity Count" and "NVRAM12 Parity Delta" values. Your system is at risk of data loss in the event of a power failure. Contact NetApp technical support to assist with possible hardware replacement of the NVRAM module.
+*Syslog Message*::
+Call home for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

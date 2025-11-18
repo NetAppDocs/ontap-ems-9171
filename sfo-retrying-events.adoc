@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sfo-retrying-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfo.retrying events
+---
+
+= sfo.retrying events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfo.retrying.autoGiveback
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when automatic giveback of SFO aggregates is retried.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Automatic giveback of SFO aggregates is being retried.
+*Parameters*::
+(None).

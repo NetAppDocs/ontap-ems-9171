@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: fabriclink-retry-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fabriclink.retry events
+---
+
+= fabriclink.retry events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fabriclink.retry.delay
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when object replication encounters an error when attempting to contact a remote object store. The attempt will be retried after a short delay.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Link L%u (%s) encountered OSC error %s; will retry in %u seconds.
+*Parameters*::
+*linkid* (INT): Link ID that encountered an error.
+*objstore* (STRING): Object store UUID that encountered an error.
+*error* (STRING): Error that was encountered.
+*delay* (INT): Delay (seconds) before the attempt will be retried.

@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: adminapi-xml-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: adminapi.xml events
+---
+
+= adminapi.xml events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== adminapi.xml.encoding
+*Severity*::
+ERROR
+*Description*::
+This event is generated in case of a mismatched XML encoding received by ONTAP server.
+*Corrective Action*::
+Correct the mismatched encoding and retry the API.
+*Syslog Message*::
+ONTAP server got unexpected encoding (expected %s, got %s
+*Parameters*::
+*expEnco* (STRING): The expected xml encoding.
+*recvEnco* (STRING): The actual received encoding.
+
+== adminapi.xml.namespace
+*Severity*::
+ERROR
+*Description*::
+This event is generated in case of a mismatched xml namespace received by ONTAP server.
+*Corrective Action*::
+Correct the XML namespace and retry the API.
+*Syslog Message*::
+ONTAP server namespace (expected %s, got %s
+*Parameters*::
+*expNamesp* (STRING): The expected xml namespace.
+*uri* (STRING): The received uri

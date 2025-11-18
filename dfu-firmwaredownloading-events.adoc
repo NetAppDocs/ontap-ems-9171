@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: dfu-firmwaredownloading-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dfu.firmwaredownloading events
+---
+
+= dfu.firmwaredownloading events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dfu.firmwareDownloading
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when firmware is being downloaded for a specific product ID of disks on the system.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Now downloading firmware file %s on %d disk(s) of plex [%s]...
+*Parameters*::
+*file* (STRING): Firmware file which is being downloaded.
+*diskcount* (INT): Number of disks being downloaded to.
+*plex* (STRING): Plex name being downloaded to.

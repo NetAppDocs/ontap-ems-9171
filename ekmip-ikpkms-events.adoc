@@ -1,0 +1,114 @@
+---
+sidebar: sidebar
+permalink: ekmip-ikpkms-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ekmip.ikpkms events
+---
+
+= ekmip.ikpkms events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ekmip.ikpkms.200.missingField
+*Severity*::
+ALERT
+*Description*::
+This message occurs when trying to access the key owned by the IBM Key Protect (IKP) Key Management Service (KMS) and an "OK" response (code 200) is received but one field of the response is not populated. Reasons for IKP KMS key access errors include a disabled key, a destroyed key, key not found, or a user not having sufficient privileges to access the key. ONTAP polls the IKP KMS to verify key accessibility. The missing field is integral in determining the status of the key.
+*Corrective Action*::
+The IKP KMS provided a response with a status of 200 (OK) that did not contain all of the expected fields. Contact technical support to resolve this issue.
+*Syslog Message*::
+A 200 OK response was received from IKP KMS but the field "%s" was missing for Vserver "%s" with Keymanager Name "%s" associated with key "%s" owned by IKP KMS region "%s" with instance ID "%s".
+*Parameters*::
+*missingField* (STRING): Name of the field that is not populated.
+*vserver* (STRING): Name of the Vserver where the IKP KMS is configured.
+*kmName* (STRING): The name of the IKP KMS.
+*keyId* (STRING): The Key ID associated with this IKP KMS instance.
+*region* (STRING): The region associated with this IKP KMS instance.
+*instanceId* (STRING): IKP KMS Instance ID.
+
+== ekmip.ikpkms.available
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a configured IBM Key Protect (IKP) Key Management Service (KMS) that was unavailable for key operations is now available.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The IKP KMS with region: "%s", instance ID: "%s", and key ID: "%s" configured for Vserver "%s" with Keymanager Name "%s" is now available.
+*Parameters*::
+*region* (STRING): The region associated with this IKP KMS instance.
+*instanceId* (STRING): IKP KMS Instance ID.
+*keyId* (STRING): The Key ID associated with this IKP KMS instance.
+*vserver* (STRING): Name of the Vserver where the IKP KMS is configured.
+*kmName* (STRING): The name of the IKP KMS.
+
+== ekmip.ikpkms.keyVersionChg
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the key version associated with the key ID of the configured IBM Key Protect (IKP) Key Management Service (KMS) changes. The key version might have been auto-rotated or manually changed at the IKP KMS. Additionally, as a result of updated key version, the top-level internal key-protection key has been successfully rewrapped with the current key version of the IKP KMS key ID.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The version of the key "%s" owned by IKP KMS region "%s" and instance ID "%s", configured for Vserver "%s" with Keymanager Name "%s", has been changed from "%s" to "%s".
+*Parameters*::
+*keyId* (STRING): The Key ID associated with this IKP KMS instance.
+*region* (STRING): The region associated with this IKP KMS instance.
+*instanceId* (STRING): IKP KMS Instance ID.
+*vserver* (STRING): Name of the Vserver where the IKP KMS is configured.
+*kmName* (STRING): The name of the IKP KMS.
+*oldKeyVersion* (STRING): Prior key version.
+*newKeyVersion* (STRING): New key version.
+
+== ekmip.ikpkms.notAvailable
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a check for the availability of the configured IBM Key Protect (IKP) Key Management Service (KMS) fails. The IKP KMS might be down or there might be a network-related problem preventing communication. Without access to the IKP KMS, the node might be unable to restore authentication keys needed to unlock NetApp Storage Encryption (NSE) drives or encryption keys needed to mount encrypted volumes. If the IKP KMS is unavailable, then the next time this node boots, the failure to restore the keys might prevent the node from booting successfully or the encrypted volumes hosted on this node from coming online.
+*Corrective Action*::
+Verify that the IKP KMS configuration is correct by using the "security key-manager external ikp show -vserver <vserver_name>" command, and verify that the IKP KMS cluster state is available. If the cluster state is unavailable, run the "security key-manager external ikp restore" command to bring the cluster state to available. If the issue still persists, contact NetApp technical support.
+*Syslog Message*::
+The IKP KMS with region: "%s", instance ID: "%s", and key ID: "%s" configured for Vserver "%s" with Keymanager Name "%s" is not available.
+*Parameters*::
+*region* (STRING): The region associated with this IKP KMS instance.
+*instanceId* (STRING): IKP KMS Instance ID.
+*keyId* (STRING): The Key ID associated with this IKP KMS instance.
+*vserver* (STRING): Name of the Vserver where the IKP KMS is configured.
+*kmName* (STRING): The name of the IKP KMS.
+
+== ekmip.ikpkms.volOffline
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the volumes belonging to the Vserver are taken offline due to errors received when trying to access the key owned by the IBM Key Protect (IKP) Key Management Service (KMS). Reasons for IKP KMS key access errors include a disabled key, a destroyed key, key not found, or a user not having sufficient privileges to access the key. ONTAP polls the IKP KMS to verify key accessibility. If, after 60 minutes, ONTAP has not received a successful response to a poll, volumes are taken offline and remain offline until the key access issues are resolved at the IKP KMS. Subsequently, if ONTAP does receive a successful response, the volumes will be brought back online automatically.
+*Corrective Action*::
+Resolve the key access issues at the IKP KMS portal. Ensure that the key is active and the user has the required privileges to access the key.
+*Syslog Message*::
+Encrypted volumes belonging to Vserver "%s" with Keymanager Name "%s" were taken offline due to key access errors associated with key "%s" owned by IKP KMS region "%s" and instance ID "%s".
+*Parameters*::
+*vserver* (STRING): Name of the Vserver where the IKP KMS is configured.
+*kmName* (STRING): The name of the IKP KMS.
+*keyId* (STRING): The Key ID associated with this IKP KMS instance.
+*region* (STRING): The region associated with this IKP KMS instance.
+*instanceId* (STRING): IKP KMS Instance ID.
+
+== ekmip.ikpkms.volOnline
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the volumes configured on the IBM Key Protect (IKP) Key Management Service (KMS) that were unavailable due to key access issues are now back online.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Encrypted volumes belonging to Vserver "%s" with keymanager name "%s" associated with key-id "%s" owned by IBM Key Protect (IKP) KMS region "%s" and instance ID "%s" are now back online.
+*Parameters*::
+*vserver* (STRING): Name of the Vserver where the IKP KMS is configured.
+*kmName* (STRING): Name of the IKP KMS.
+*keyId* (STRING): Key ID associated with this IKP KMS instance.
+*region* (STRING): Region associated with this IKP KMS instance.
+*instanceId* (STRING): IKP KMS Instance ID.

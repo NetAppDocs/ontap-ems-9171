@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: dump-snapshot-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dump.snapshot events
+---
+
+= dump.snapshot events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dump.snapshot.fail
+*Severity*::
+ERROR
+*Description*::
+This event is generated during dump restarting and looking for the snapshot that was created by the dump while it was terminating last time and we are unable to locate the snapshot
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Unable to locate snapshot needed by dump context ID (%d).
+*Parameters*::
+*dump_id* (INT): Dump ID

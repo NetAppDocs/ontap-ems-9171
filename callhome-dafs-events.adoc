@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-dafs-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.dafs events
+---
+
+= callhome.dafs events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.dafs.nic.stop
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the DAFS (Direct Acess File System) NIC (Network Interface Controller) has stopped while DAFS was running. This is caused by a failure of the NIC processor firmware during heavy and complex workloads. DAFS can usually recover and continue. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Reboot the system to recover the NIC. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for DAFS VI NIC HALTED - DAFS SERVICE MAY BE INACCESSIBLE
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

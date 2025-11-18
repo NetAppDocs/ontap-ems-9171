@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: arw-vserver-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: arw.vserver events
+---
+
+= arw.vserver events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== arw.vserver.state
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the anti-ransomware state of a Vserver is changed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Anti-ransomware was changed to "%s" on Vserver "%s" (UUID: "%s").
+*Parameters*::
+*op* (STRING): Anti-ransomware state (enabled, disabled,or dry-run).
+*vserverName* (STRING): Name of the Vserver.
+*vserverUuid* (STRING): UUID of the Vserver.

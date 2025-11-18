@@ -1,0 +1,68 @@
+---
+sidebar: sidebar
+permalink: lmgr-persistent-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lmgr.persistent events
+---
+
+= lmgr.persistent events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lmgr.persistent.file.open.limit.hit
+*Severity*::
+NOTICE
+*Description*::
+This message is triggered when the persistent open lock count for a single file reaches its maximum supported limit.
+*Corrective Action*::
+Use the "volume file show-inode" command with the file ID and volume name information to find the file path. From the diagnostic privilege level, execute "lmgr test show_ca_locks_count <file_path>" to inspect the persistent open lock count for the file. If necessary, close unused opens to reduce the count to the maximum limit of persistent open locks per file.
+*Syslog Message*::
+The file with id %u on volume '%s' (DSID %llu) has hit its maximum persistent open lock count, fully utilizing the supported limit of %u.
+*Parameters*::
+*file_id* (INT): File inode number.
+*vol_name* (STRING): Name of the volume.
+*vol_dsid* (LONGINT): Data set identifier (DSID) of the volume.
+*locks_limit* (INT): Maximum supported persistent open locks count for a file.
+
+== lmgr.persistent.file.open.limit.warn
+*Severity*::
+NOTICE
+*Description*::
+This message is triggered when the persistent open lock count for a single file reaches 80% its maximum supported limit.
+*Corrective Action*::
+Use the "volume file show-inode" command with the file ID and volume name information to find the file path. From the diagnostic privilege level, execute "lmgr test show_ca_locks_count <file_path>" to inspect the persistent open lock count for the file. If necessary, close unused opens to reduce the count to the maximum limit of persistent open locks per file.
+*Syslog Message*::
+The persistent open lock count for file with id %u on volume '%s' (DSID %llu) has reached %u, constituting 80 percent of its maximum supported limit of %u.
+*Parameters*::
+*file_id* (INT): File inode number.
+*vol_name* (STRING): Name of the volume.
+*vol_dsid* (LONGINT): Data set identifier (DSID) of the volume.
+*locks_total* (INT): Number of persistent open lock count for file.
+*locks_limit* (INT): Maximum supported persistent open locks count for a file.
+
+== lmgr.persistent.open.limit.hit
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the number of persistent open lock count reaches the maximum supported limit.
+*Corrective Action*::
+Run the "vserver locks show-mirrored-open-count -detailed" command to check the persisted open lock count and try closing the unused files to bring this count down to the currently supported maximum persistent open locks.
+*Syslog Message*::
+The number of persisted open locks count %u has reached the limit %u for pool %s. The current number/limit of other lock manager objects are: files %u/%u hosts %u/%u locks %u/%u owners %u/%u.
+*Parameters*::
+*pl_locks_total* (INT): Number of persisted open locks.
+*pl_locks_limit* (INT): Maximum supported persisted open locks.
+*pool_name* (STRING): Name of the limit pool.
+*files_total* (INT): Number of allocated files in the pool.
+*files_limit* (INT): Allocated files limit for the pool.
+*hosts_total* (INT): Number of allocated hosts in the pool.
+*hosts_limit* (INT): Allocated hosts limit for the pool.
+*locks_total* (INT): Number of allocated locks in the pool.
+*locks_limit* (INT): Allocated locks limit for the pool.
+*owners_total* (INT): Number of allocated owners in the pool.
+*owners_limit* (INT): Allocated owners limit for the pool.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: vf-cleanup-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vf.cleanup events
+---
+
+= vf.cleanup events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vf.cleanup.error
+*Severity*::
+ERROR
+*Description*::
+This event occurs when some subsystems are unable to cleanup properly when a local host vfiler is destroyed or when a partner vfiler is being shutdown during giveback.
+*Corrective Action*::
+Log a support case with NetApp technical support. Try starting the vfiler, stopping and destroying it again.
+*Syslog Message*::
+vfiler %s: %s subsystem could not cleanup properly.
+*Parameters*::
+*vfName* (STRING): The vfiler being shutdown or destroyed.
+*module* (STRING): The module which could not cleanup vfiler specific information properly.

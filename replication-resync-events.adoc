@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: replication-resync-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: replication.resync events
+---
+
+= replication.resync events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== replication.resync.cmnSnpCnt
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during a SnapMirror(R) or SnapVault(R) resync operation to inform the user of the number of common snapshots detected between the source and destination.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Resynchronization of %s:%s to %s:%s found %d matching snapshots; using the most recent one.
+*Parameters*::
+*dstfiler* (STRING): Replication destination system.
+*dstpath* (STRING): Replication destination volume or qtree.
+*srcfiler* (STRING): Replication source system.
+*srcpath* (STRING): Replication source volume or qtree.
+*cmnsnapcnt* (INT): Number of common snapshots detected between the source and destination.

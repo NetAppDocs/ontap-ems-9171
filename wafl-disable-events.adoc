@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: wafl-disable-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.disable events
+---
+
+= wafl.disable events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.disable.vol.guarantee
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the volume guarantee of a flexible volume is disabled due to aggregate space being physically overallocated.
+*Corrective Action*::
+Remount the aggregate after creating space by increasing the aggregate size or by deleting/moving some volumes to the other aggregates. Use the "storage aggregate show-space" command to view the current space usage of the aggregate. To increase an aggregate's size, add disks by using the "storage aggregate add-disks" command. Aggregate snapshots are deleted automatically to make some space when the aggregate is full.
+*Syslog Message*::
+Volume guarantee on volume "%s" is disabled after the aggregate "%s" becomes physically overallocated.
+*Parameters*::
+*vol* (STRING): Volume name whose guarantee is getting disabled.
+*aggr* (STRING): The aggregate name on which the volume whose guarantee is getting disabled resides.

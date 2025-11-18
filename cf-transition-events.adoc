@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: cf-transition-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.transition events
+---
+
+= cf.transition events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.transition.info
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a failover event is completed successfully. It displays the protocol transition information for the event.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s.
+*Parameters*::
+*eventType* (STRING): Takeover, aggregate relocation, SFO phase of takeover, or SFO giveback event type.
+*eventSummary* (STRING): Transition duration for protocols during the event.

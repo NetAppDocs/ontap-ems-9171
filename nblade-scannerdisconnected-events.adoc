@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: nblade-scannerdisconnected-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.scannerdisconnected events
+---
+
+= nblade.scannerdisconnected events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.scannerDisconnected
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when any Vserver disconnects from a Vscan server.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Vserver "%s" disconnected from Vscan server (IP: %s).
+*Parameters*::
+*vserverName* (STRING): Name of the disconnected Vserver.
+*scannerIp* (STRING): IP address of the Vscan server.

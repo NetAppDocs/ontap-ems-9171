@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: isns-portal-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: isns.portal events
+---
+
+= isns.portal events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== isns.portal.info.unavailable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Internet Storage Name Service (iSNS) is not able to retrieve the portal information required for iSNS registration.
+*Corrective Action*::
+Ensure that at least one node hosting a IP data LIF for SAN is successfully loaded and operating correctly.
+*Syslog Message*::
+The iSNS cannot retrieve the portal information for %s: %s.
+*Parameters*::
+*vserver* (STRING): Name of the Vserver
+*err_msg* (STRING): Reported error.

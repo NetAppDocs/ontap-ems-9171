@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: smc-tot-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: smc.tot events
+---
+
+= smc.tot events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== smc.tot.bytes.write.fail
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when SnapMirror is unable to update the latest total transfer bytes value of the SnapMirror relationship. The total transfer bytes for the relationship might be incorrect.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror is unable to update the latest total transfer bytes value for the relationship with relationship UUID "%s" and destination "%s".
+*Parameters*::
+*relationshipID* (STRING): Relationship UUID.
+*dstPath* (STRING): Path name of the destination endpoint of the SnapMirror relationship.

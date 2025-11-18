@@ -1,0 +1,53 @@
+---
+sidebar: sidebar
+permalink: mgmt-fsecurity-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmt.fsecurity events
+---
+
+= mgmt.fsecurity events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmt.fsecurity.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when applying configuration of fsecurity fails.
+*Corrective Action*::
+Wait for a while and reapply using the "vserver security file-directory apply" command. See the "vserver security file-directory" man pages for information, or if the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Failed to apply file security policy. Error: %s.
+*Parameters*::
+*reason* (STRING): Reason for the failure.
+*vservername* (STRING): Name of the vserver.
+
+== mgmt.fsecurity.policy.EACCES
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when file-directory policy apply fails due to EACCES error. When this happens, the policy will be skipped for the volume or directory.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Command "file-directory policy apply" failed due to EACCES error on SVM: %s. Policy will be skipped for paths: %s.
+*Parameters*::
+*SVM* (STRING): Name of the SVM on which file-directory policy applied.
+*ErrorPath* (STRING): Volume or directory path on which file-directory policy applied.
+
+== mgmt.fsecurity.success
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a file security policy was applied successfully after a previous failure.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*vservername* (STRING): Name of the Vserver.

@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: aps-aggr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: aps.aggr events
+---
+
+= aps.aggr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== aps.aggr.full.advisory
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the space rebalancing service detects that a flexaggr is at risk of running out of space over the next space exhaustion window.
+*Corrective Action*::
+Use the "volume move start -vserver vsname -volume volname -destination-aggregate aggrname" command to manually move the volumes and free up space in the flexaggr. The command will be available in diag level. For further assistance, contact NetApp technical support.
+*Syslog Message*::
+The flexaggr "%s" will run out of space over the next space exhaustion window of "%s". "%s".
+*Parameters*::
+*flexaggr* (STRING): Name of the flexaggr.
+*space_exhaustion_window* (STRING): Space exhaustion window duration.
+*message* (STRING): Message describes which volumes should be moved to another flexaggr to free up space. The system picks sufficient number of volumes with low load to be moved to flexaggrs that have enough space.
+
+== aps.aggr.full.automatic
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the space rebalancing service detects that a flexaggr is at risk of running out of space over the next space exhaustion window. This service will automatically move volumes to another flexaggr to make space.
+*Corrective Action*::
+The volumes will be automatically moved from the flexaggr to free up space. Use the "volume move show" command to monitor the status of volume moves. For further assistance, contact NetApp technical support.
+*Syslog Message*::
+The flexaggr "%s" will run out of space over the next space exhaustion window of "%s". The volumes will be automatically moved from the flexaggr to free up space. "%s".
+*Parameters*::
+*flexaggr* (STRING): Name of the flexaggr.
+*space_exhaustion_window* (STRING): Space exhaustion window duration.
+*message* (STRING): Message describes which volumes will be moved to another flexaggr to free up space. The system picks sufficient number of volumes with low load that will be moved to flexaggrs that have enough space.

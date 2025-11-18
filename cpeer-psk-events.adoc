@@ -1,0 +1,69 @@
+---
+sidebar: sidebar
+permalink: cpeer-psk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cpeer.psk events
+---
+
+= cpeer.psk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cpeer.psk.cluster.revoked
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system receives an authentication request for a remote cluster whose peer authentication has been revoked by the local cluster administrator. It might indicate that this system is under attack.
+*Corrective Action*::
+ONTAP(R) software automatically closes the connection from which this incorrect authentication information was received. If this message is repeatedly generated from the same internet address, it might indicate that this system is under attack.
+*Syslog Message*::
+ONTAP received a TLS request to authenticate with the pre-shared key of remote cluster %s, but the relationship with the remote cluster has been revoked by the administrator of this cluster. The request was sent from address %s in IPspace %s.
+*Parameters*::
+*clustername* (STRING): Name of the remote cluster being probed.
+*sourceIP* (STRING): IP address that is the source of the probe.
+*sourceIPspace* (STRING): IPspace in which the probe arrived.
+
+== cpeer.psk.cluster.unauth
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system receives an authentication request for a remote cluster whose peer relationship is unauthenticated. It might indicate that this system is under attack. The request was sent from address %s in IPspace %s.
+*Corrective Action*::
+ONTAP(R) software automatically closes the connection from which this incorrect authentication information was received. If this message is repeatedly generated from the same internet address, it might indicate that this system is under attack.
+*Syslog Message*::
+ONTAP received a TLS request to authenticate with a cluster's pre-shared key, but there is no authenticated relationship with this remote cluster. Instead, the relationship is unauthenticated and has no keying information associated with it.
+*Parameters*::
+*clustername* (STRING): Name of the remote cluster being probed.
+*sourceIP* (STRING): IP address that is the source of the probe.
+*sourceIPspace* (STRING): IPspace in which the probe arrived.
+
+== cpeer.psk.disabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system is unable to find a suitable pre-shared key (PSK) cipher suite required for cluster peering. This is likely because the PSK cipher suites are disabled in the ONTAP security configuration. Cluster peering connections and associated applications may fail as a result.
+*Corrective Action*::
+View the enabled cipher suites with the "security config show" command. Enable the PSK cipher suites with the "security config modify" command.
+*Syslog Message*::
+The system was unable to find a suitable pre-shared key (PSK) cipher suite required for cluster peering. This is likely because the PSK cipher suites are disabled in the ONTAP security configuration. Cluster peering connections and associated applications may fail as a result.
+*Parameters*::
+(None).
+
+== cpeer.psk.unknown.cluster
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system receives an authentication request from an unknown cluster. It might indicate that this system is under attack.
+*Corrective Action*::
+ONTAP(R) software automatically closes the connection from which this incorrect authentication information was received. If this message is repeatedly generated from the same internet address, it might indicate that this system is under attack.
+*Syslog Message*::
+ONTAP received a TLS request to authenticate with a remote cluster's pre-shared key, but the remote cluster UUID (%s) is unrecognized. The probe arrived from address %s in IPspace %s.
+*Parameters*::
+*clusterUUID* (STRING): Cluster UUID being probed.
+*sourceIP* (STRING): IP address that is the source of the probe.
+*sourceIPspace* (STRING): IPspace in which the probe arrived.

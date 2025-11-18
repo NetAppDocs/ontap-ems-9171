@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-no-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.no events
+---
+
+= callhome.no events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.no.inodes
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a volume is out of inodes, which refer to individual files, other types of files, and directories. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Modify the volume's maxfiles (maximum number of files) to increase the inodes on the affected volume. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for OUT OF INODES
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: wackiron-near-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wackiron.near events
+---
+
+= wackiron.near events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wackiron.near.hour.limit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the number of hours since wafliron was last run on the specified volume is approaching its limit. If the limit is passed and the bootarg 'wackiron_enforce_panic' is true, the system will panic on the next boot.
+*Corrective Action*::
+Run wafliron on the affected volume. From the boot menu, run 'wafliron'. From the dblade CLI, run 'aggr wafliron start [aggr-name]'.
+*Syslog Message*::
+%s: Hours since wafliron was last run is approaching its limit. Hours remaining: %d.
+*Parameters*::
+*volname* (STRING): Name of the aggregate.
+*remaining* (INT): Number of hours remaining.
+
+== wackiron.near.kernel.limit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the number of different Data ONTAP(R) kernel versions used since wafliron was last run on the specified volume is approaching its limit. If the limit is passed and the bootarg 'wackiron_enforce_panic' is true, the system will panic on the next boot.
+*Corrective Action*::
+Run wafliron on the affected volume. From the boot menu, run 'wafliron'. From the dblade CLI, run 'aggr wafliron start [aggr-name]'.
+*Syslog Message*::
+%s: Number of different Data ONTAP kernel versions used since wafliron was last run is approaching its limit. Data ONTAP kernel version changes remaining: %d.
+*Parameters*::
+*volname* (STRING): Name of the aggregate.
+*remaining* (INT): Number of Data ONTAP kernel version changes remaining.

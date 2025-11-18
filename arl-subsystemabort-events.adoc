@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: arl-subsystemabort-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: arl.subsystemabort events
+---
+
+= arl.subsystemabort events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== arl.subsystemAbort
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the specified subsystem aborts relocation of the aggregate.
+*Corrective Action*::
+Check the syslog/EMS output for a subsystem-specific reason for aborting the relocation operation. The corrective action is subsystem-specific and is detailed in the corrective action portion of the message. Follow the corrective action specified by the subsystem and then reissue the 'relocation' command. If you cannot perform the corrective action, then use the 'override-vetoes' option in the 'relocation' command to force the relocation.
+*Syslog Message*::
+The relocation operation of '%s' was aborted by '%s'.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate on which the subsystem attempted the relocation operation.
+*subsystem* (STRING): Name of the subsystem that aborted the relocation operation.

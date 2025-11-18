@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: vldb-aggrbladeid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vldb.aggrbladeid events
+---
+
+= vldb.aggrbladeid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vldb.aggrBladeID.missing
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system discovers an inconsistency in the volume location database (VLDB). The VLDB contains information about volumes that are owned by a node with an unknown unique universal ID (UUID). This condition might arise if an aggregate is not owned by any of the nodes in the cluster, as in the case of aggregates at a MetroCluster(R) destination site.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The volume '%s' is located on the aggregate with UUID '%s' whose owning dblade UUID '%s' does not exist in the Volume Location Database.
+*Parameters*::
+*volume* (STRING): Name of the volume.
+*aggregateUUID* (STRING): UUID of the aggregate.
+*bladeUUID* (STRING): UUID of the owning node.

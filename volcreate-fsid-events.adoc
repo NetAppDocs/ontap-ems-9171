@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: volcreate-fsid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: volcreate.fsid events
+---
+
+= volcreate.fsid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== volcreate.fsid.dup
+*Severity*::
+ERROR
+*Description*::
+Flexible volumes were created with file system identifiers (FSIDs) which conflict with existing volumes. This can happen when aggregates are forced offline.
+*Corrective Action*::
+1. run 'aggr online' on all offlined aggregates. some of the old vvols will be forced offline due to the FSID conflict. 2. run 'vol restrict' and 'vol rewrite_fsid' on the new vvol 3. run 'vol online' on each flexible volume that was forced offline in step 1 above.
+*Syslog Message*::
+Volume %s's fsid 0x%x conflicts with a volume owned by vfiler %s.
+*Parameters*::
+*volName* (STRING): Name of the volume created
+*FSID* (INT): FSID of the volume
+*vfiler_name* (STRING): The vfiler which owns the existing offlined volume with the same FSID.

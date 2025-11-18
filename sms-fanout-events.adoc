@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: sms-fanout-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sms.fanout events
+---
+
+= sms.fanout events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sms.fanout.comm.snap.deleted
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an older snapshot is deleted as part of a SnapMirror(R) Synchronous resynchronize or update (common snapshot) operation, which could lead to a "no common snapshot scenario" between the synchronous and asynchronous disaster recovery (DR) copies that share the same source volume. If there is no common snapshot between the synchronous and asynchronous DR copies, then a re-baseline will need to be performed during a disaster recovery.
+*Corrective Action*::
+You can ignore this message if there is no asynchronous relationship configured for the synchronous source volume. If there is an asynchronous relationship configured, then update the asynchronous relationship by using the "snapmirror update" command. The SnapMirror update operation will transfer the snapshots that will act as common snapshots between the synchronous and asynchronous destinations.
+*Syslog Message*::
+SnapMirror Synchronous operation '%s' for relationship '%s' has cleaned up some of the old base snapshots between the synchronous source and synchronous destination, which could result in no common snapshot existing between the synchronous and asynchronous destinations.
+*Parameters*::
+*sm_operation* (STRING): SnapMirror Synchronous operation.
+*relationship_id* (STRING): Relationship UUID.

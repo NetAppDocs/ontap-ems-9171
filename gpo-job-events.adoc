@@ -1,0 +1,81 @@
+---
+sidebar: sidebar
+permalink: gpo-job-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: gpo.job events
+---
+
+= gpo.job events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== gpo.job.mainUpdateFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Group Policy Object (GPO) Main Update job run fails. Consequently, the policies won't be applied to the CIFS server, requiring a rerun of the update job.
+*Corrective Action*::
+Make sure Group Policy Object is enabled by running the "vserver cifs group-policy show -vserver <vserver-name>" command, CIFS admin state is up by running the "vserver cifs show -vserver <vserver-name>" and there are no connectivity issues with Active Directory by running "vserver cifs check -vserver <vserver-name>" command, and then run the job again by running the "vserver cifs group-policy update -force-reapply-all-settings true -vserver <vserver-name>" command.
+*Syslog Message*::
+GPO Main Update job (%s) run failed for Vserver %s, reason: %s.
+*Parameters*::
+*jobid* (STRING): GPO job ID.
+*vserver* (STRING): Vserver name.
+*reason* (STRING): Reason for the failure.
+
+== gpo.job.mainUpdateSuccess
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the GPO Main Update job run succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Successfully completed a GPO Main Update job (%s) run for Vserver %s.
+*Parameters*::
+*jobid* (STRING): GPO job ID.
+*vserver* (STRING): Vserver name.
+
+== gpo.job.outOfMemory
+*Severity*::
+ERROR
+*Description*::
+This event occurs when the system has not enough memory to perform the GPO (Group Policy Object) job.
+*Corrective Action*::
+Ensure there is enough memory available to perform the GPO job.
+*Syslog Message*::
+GPO job %s failure: Out of memory.
+*Parameters*::
+*jobid* (STRING): The GPO job ID.
+
+== gpo.job.securityApplyFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Group Policy Object (GPO) Security Apply job run fails. Consequently, the security policies are not applied to the CIFS server, requiring a rerun of the apply job.
+*Corrective Action*::
+Make sure we are able to check the CIFS configuration by running the "vserver cifs show -vserver <vserver-name>" command and the "vserver cifs check -vserver <vserver-name>" command. Run the job again using the "vserver cifs group-policy update -force-reapply-all-settings true -vserver <vserver-name>" command.
+*Syslog Message*::
+GPO Security Apply job (%s) run failed for Vserver %s, reason: %s.
+*Parameters*::
+*jobid* (STRING): GPO job ID.
+*vserver* (STRING): Storage virtual machine (SVM) name.
+*reason* (STRING): Reason for the failure.
+
+== gpo.job.securityApplySuccess
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the GPO Security Apply job run succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Successfully completed a GPO Security Apply job (%s) run for Vserver %s.
+*Parameters*::
+*jobid* (STRING): GPO job ID.
+*vserver* (STRING): Vserver name.

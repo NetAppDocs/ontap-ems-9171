@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: nblade-cifssametreepersess-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.cifssametreepersess events
+---
+
+= nblade.cifssametreepersess events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.cifsSameTreePerSess
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the number of connections to the same share allowed per session is exceeded. This request and any further requests to establish another connection to that share are denied until some connections to the share are released. This typically indicates abnormal client behavior.
+*Corrective Action*::
+Inspect the application using the connection and also monitor the other applications on the client. The client might be operating incorrectly due to a faulty application running on it. Rebooting the client might also be helpful. In some cases, clients are operating as expected but require a higher threshold, which you can set using (privilege: advanced) "cifs option modify -max-same-tree-connect-per-session" command.
+*Syslog Message*::
+Received too many connection requests to the same share from one session: clientIP:port %s:%d, share "%s", user "%s", vserver "%s".
+*Parameters*::
+*IpAddress* (STRING): IP address of the client from which multiple share connections have been attempted.
+*port* (INT): Port number of the client from which the TCP connection has been established.
+*shareName* (STRING): Name of the share to which the client is attempting connection.
+*userName* (STRING): User that is attempting to connect to the share.
+*vserverName* (STRING): Vserver associated with this operation.

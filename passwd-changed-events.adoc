@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: passwd-changed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: passwd.changed events
+---
+
+= passwd.changed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== passwd.changed
+*Severity*::
+NOTICE
+*Description*::
+The password for a user has been changed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+passwd for user '%s' changed.
+*Parameters*::
+*username* (STRING): The name of the user whose password has just been changed.

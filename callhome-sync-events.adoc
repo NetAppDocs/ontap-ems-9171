@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-sync-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.sync events
+---
+
+= callhome.sync events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.sync.mirror.nospc
+*Severity*::
+ALERT
+*Description*::
+This message occurs when ONTAP(R) cannot create a new base snapshot in a SyncMirror aggregate after multiple attempts. Systems using RAID SyncMirror require aggregate snapshots for normal operation. Periodically, ONTAP creates a new base snapshot with a name similar to "mirror_resync.1201023128(filer_name)." Once created, ONTAP deletes the old base snapshot. The base snapshot is used to optimize resynchronization when one plex goes offline. Short-lived circumstances when a new aggregate snapshot cannot be created are not unusual. ONTAP initiates background processes to reclaim space and allow creation of new aggregate snapshots. This message is issued when ONTAP cannot create a new base snapshot after waiting a reasonable time. If the aggregate lacks an existing SyncMirror base snapshot, then if one plex goes offline, subsequent resynchronization must copy all data in the aggregate - this can be a very long process. ONTAP issues this message when there is no SyncMirror base snapshot and a new one cannot be created in repeated attempts in the last ten minutes (by default). If an old base snapshot is present, this condition is less urgent. However, since space reclamation is likely to be slower, ONTAP waits up to two hours (by default) before issuing this message. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+ONTAP continually retries to create a new SyncMirror Snapshot copy. This condition might autocorrect, even after issuing this message. If it does not, contact NetApp technical support.
+*Syslog Message*::
+Call home for SYNCMIRROR SNAPSHOTS NOT ROTATING PROPERLY
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

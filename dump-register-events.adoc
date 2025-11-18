@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: dump-register-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dump.register events
+---
+
+= dump.register events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dump.register.commit
+*Severity*::
+ERROR
+*Description*::
+This event is generated when a registry transaction failed to commit
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failed to flush backup table entry upgrade to registry: %s
+*Parameters*::
+*subject* (STRING): Error description
+
+== dump.register.create
+*Severity*::
+ERROR
+*Description*::
+This event is generated when a registry creation is failed. Memory allocation failure
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failed to create a registry transaction for dump(%d).
+*Parameters*::
+*dump_id* (INT): Dump ID
+
+== dump.register.set
+*Severity*::
+ERROR
+*Description*::
+This event is generated when a registry is tried to set and failed because a freed transaction is being tried to set
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failed to write context update information to registry.
+*Parameters*::
+(None).

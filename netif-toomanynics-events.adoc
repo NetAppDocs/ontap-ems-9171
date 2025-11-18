@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: netif-toomanynics-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.toomanynics events
+---
+
+= netif.toomanynics events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.tooManyNics
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a network interface was not initialized because the number of interfaces of this type exceeds the maximum supported.
+*Corrective Action*::
+Remove a network interface card (NIC).
+*Syslog Message*::
+Network interface %s was not initialized because the number of interfaces of this type exceeds the maximum (%d) supported.
+*Parameters*::
+*ifName* (STRING): Name of the network interface; for example, "e8a".
+*maxIf* (INT): Maximum number of interfaces of this type that is supported.

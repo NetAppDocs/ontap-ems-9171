@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: callhome-sp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.sp events
+---
+
+= callhome.sp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.sp.hbt.missed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP(R) does not receive an expected "heartbeat" signal from the Service Processor (SP). Along with this message, log files from SP will be sent out for debugging. ONTAP will reset the SP to attempt to restore communication. The SP will be unavailable for up to two minutes while it reboots.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Call home for SP HBT MISSED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.sp.hbt.stopped
+*Severity*::
+ALERT
+*Description*::
+This message occurs when ONTAP(R) is no longer receiving heartbeats from the Service Processor (SP). Depending on the hardware design, the system may continue to serve data or may determine to shut down to prevent data loss or hardware damage. The system continues to serve data, but because the SP might not be working, the system cannot send notifications of down appliances, boot errors, or Open Firmware (OFW) Power-On Self-Test (POST) errors. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+If the system has shut down, attempt a hard power cycle: Pull the controller out from the chassis, push it back in then power on the system. Contact NetApp technical support if the problem persists after the power cycle, or for any other condition that may warrant attention.
+*Syslog Message*::
+Call home for SP HBT STOPPED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: acp-downrev-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: acp.downrev events
+---
+
+= acp.downrev events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== acp.downrev.acpp
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Alternate Control Path Administrator cannot successfully download up-to-date firmware to an Alternate Control Path Processor (ACPP) or when the most up-to-date firmware image is not present in the /etc/acpp_fw/ directory.
+*Corrective Action*::
+Verify that the latest ACPP firmware is available in the firmware directory. If the firmware update continually fails to download up-to-date firmware, then replace the ACPP I/O module.
+*Syslog Message*::
+ACPP module %s (%s) has downrev firmware.
+*Parameters*::
+*inband_id* (STRING): In-band ID of the ACPP module.
+*ip* (STRING): IP address of the ACPP module.

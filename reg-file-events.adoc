@@ -1,0 +1,122 @@
+---
+sidebar: sidebar
+permalink: reg-file-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: reg.file events
+---
+
+= reg.file events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== reg.file.createFail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system registry file could not be created.
+*Corrective Action*::
+Use the 'df' nodeshell command to check available space on the root volume. If the root volume is full, free some space on the root volume and retry the operation. If the root volume is not full, the system might be running low on memory. Contact NetApp technical support for further assistance.
+*Syslog Message*::
+registry: Cannot create %s file. %s. e.g. Cannot create /etc/registry.local.0 file.
+*Parameters*::
+*file* (STRING): Name of the file.
+*errormsg* (STRING): Internal error message explaining why the file could not be created.
+
+== reg.file.linkFail
+*Severity*::
+ERROR
+*Description*::
+Could not create a hard link between system registry files.
+*Corrective Action*::
+Check whether the source file exists. If the file doesn't exist, contact NetApp technical support.
+*Syslog Message*::
+registry: Cannot link %s to %s. %s.
+*Parameters*::
+*sourcefile* (STRING): Name of the source file.
+*destfile* (STRING): Name of the destination file.
+*errormsg* (STRING): Internal error message explaining why the hard link could not be created.
+
+== reg.file.openFail
+*Severity*::
+ERROR
+*Description*::
+Could not open a system registry file.
+*Corrective Action*::
+Check whether the file exists. If it exists, check the file permissions. Make sure it has read and write permissions.
+*Syslog Message*::
+registry: Cannot open the %s file. %s.
+*Parameters*::
+*file* (STRING): Name of the file.
+*errormsg* (STRING): Internal error message explaining why the file could not be opened.
+
+== reg.file.renameFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system registry file failed to update. The temporary copy of the registry could not be renamed to the active registry file name.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+registry: Cannot rename %s to %s. %s. e.g. An error occurred trying to rename /etc /registry.bck.new2 to /etc/registry.bck
+*Parameters*::
+*sourcefile* (STRING): Name of the source file.
+*destfile* (STRING): Name of the destination file.
+*errormsg* (STRING): Internal error message explaining why the rename could not be completed.
+
+== reg.file.statsFail
+*Severity*::
+ERROR
+*Description*::
+Could not get file statistics of the system registry file.
+*Corrective Action*::
+Check whether the file exists. If it exists, check the file permissions. Make sure that it has read and write permissions.
+*Syslog Message*::
+registry: Cannot get file statistics of %s file. %s.
+*Parameters*::
+*file* (STRING): Name of the file.
+*errormsg* (STRING): Internal error message explaining why the file statistics could not be obtained.
+
+== reg.file.updateFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the ONTAP(R)software could not update the system registry file. Updates are made to the registry files to save the changes to the configuration information. Low disk space and low memory can cause this issue.
+*Corrective Action*::
+Use the 'df' nodeshell command to check available space on the root volume. If the root volume is full, free some space on the root volume and retry the operation. If the root volume is not full, the system might be running low on memory. Contact NetApp technical support for further assistance.
+*Syslog Message*::
+registry: Cannot update %s file.
+*Parameters*::
+*file* (STRING): Name of the file.
+
+== reg.file.writeFail
+*Severity*::
+ERROR
+*Description*::
+Could not write to a system registry file.
+*Corrective Action*::
+Use the 'df' command to check available space on the the root volume. If the root volume is full, free some space on the root volume. If the root volume is not full, the system might be running low on memory. Contact NetApp technical support.
+*Syslog Message*::
+registry: Cannot write to %s file. %s.
+*Parameters*::
+*file* (STRING): Name of the file.
+*errormsg* (STRING): Internal error message explaining why data could not be written to the file.
+
+== reg.file.writeMismatch
+*Severity*::
+ERROR
+*Description*::
+Could not write completely to a system registry file.
+*Corrective Action*::
+Use the 'df' command to check available space on the the root volume. If the root volume is full, free some space on the root volume. If the root volume is not full, the system might be running low on memory. Contact NetApp technical support.
+*Syslog Message*::
+registry: Cannot write completely to to %s file; expected %d, but wrote %d. %s.
+*Parameters*::
+*file* (STRING): Name of the file.
+*actualbytes* (INT): Number of bytes that were supposed to be written.
+*written* (INT): Number of bytes that were actually written.
+*errormsg* (STRING): Internal error message explaining why data could not be written completely to the file.

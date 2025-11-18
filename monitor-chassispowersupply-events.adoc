@@ -1,0 +1,64 @@
+---
+sidebar: sidebar
+permalink: monitor-chassispowersupply-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.chassispowersupply events
+---
+
+= monitor.chassispowersupply events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.chassisPowerSupply.degraded
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a power supply is degraded.
+*Corrective Action*::
+A replacement power supply might be required. Contact NetApp technical support for further direction.
+*Syslog Message*::
+Chassis power supply %d is degraded: %s
+*Parameters*::
+*ps_number* (INT): Power supply number.
+*reasonText* (STRING): Description of the degradation.
+
+== monitor.chassisPowerSupply.notPresent
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an expected a power supply is not present.
+*Corrective Action*::
+Add a power supply to the controller chassis.
+*Syslog Message*::
+Chassis power supply %d is not present.
+*Parameters*::
+*ps_number* (INT): Power supply number.
+
+== monitor.chassisPowerSupply.off
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a power supply is off.
+*Corrective Action*::
+Turn on the power supply.
+*Syslog Message*::
+Chassis power supply %d off.
+*Parameters*::
+*ps_number* (INT): Power supply number.
+
+== monitor.chassisPowerSupply.ok
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the power supply is OK.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Chassis power supply %d is OK.
+*Parameters*::
+*ps_number* (INT): Power supply number.

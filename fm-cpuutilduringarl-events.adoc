@@ -1,0 +1,36 @@
+---
+sidebar: sidebar
+permalink: fm-cpuutilduringarl-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fm.cpuutilduringarl events
+---
+
+= fm.cpuutilduringarl events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fm.cpuUtilDuringARL
+*Deprecated*::
+Deprecated as of version 9.0.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs at the start of an aggregate relocation (ARL) and at the completion of an ARL. It records the maximum, minimum, and average CPU and disk utilization on the node executing the ARL.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+CPU and disk utilization during the %d seconds %s: cpu_util_high: %lld; cpu_util_low: %lld; cpu_util_avg: %lld; disk_util_high: %lld; disk_util_low: %lld; disk_util_avg: %lld
+*Parameters*::
+*window_sz* (INT): Duration, in seconds, over which CPU and disk utilization are tracked.
+*when* (STRING): Event during which CPU and disk utilization are tracked.
+*cpu_util_high* (LONGINT): Maximum CPU utilization.
+*cpu_util_low* (LONGINT): Minimum CPU utilization.
+*cpu_util_avg* (LONGINT): Average CPU utilization.
+*disk_util_high* (LONGINT): Maximum disk utilization.
+*disk_util_low* (LONGINT): Minimum disk utilization.
+*disk_util_avg* (LONGINT): Average disk utilization.

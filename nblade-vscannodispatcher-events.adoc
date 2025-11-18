@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: nblade-vscannodispatcher-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.vscannodispatcher events
+---
+
+= nblade.vscannodispatcher events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.vscanNoDispatcher
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the vscan-dispatcher component cannot be created. This might be due to internal errors on the system, such as nonavailability of memory. This might cause data unavailability if the scan-mandatory option is enabled.
+*Corrective Action*::
+Disable Vscan and enable it again by using the "vserver vscan disable/enable" command. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Vscan dispatcher component for Vserver "%s" could not be created. Error: %d.
+*Parameters*::
+*vserverName* (STRING): Vserver associated with this operation.
+*errorCode* (INT): Error code that describes the reason for the failure.

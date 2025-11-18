@@ -1,0 +1,99 @@
+---
+sidebar: sidebar
+permalink: monitor-shelf-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.shelf events
+---
+
+= monitor.shelf events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.shelf.accessError
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the monitor detects that a disk shelf access error has occurred. The message is also an hourly reminder that the error has not been corrected. Enclosure Services is unable to monitor or control one or more disk shelves on a particular Fibre Channel loop or Serial SCSI Attach (SAS) domain because it cannot communicate with the enclosure services processes in those shelves.
+*Corrective Action*::
+Check the corrective actions of enclosure services error messages that might precede this error in the log. Ensure that all loop or domain connections are latched and secured properly. Correct any error conditions indicated by LEDs on any of the shelves or shelf I/O modules. This might require power-cycling of shelves or replacement of modules, as is appropriate to the particular shelf type.
+*Syslog Message*::
+Enclosure services has detected an error in access to shelves on channel %s.
+*Parameters*::
+*channel* (STRING): Adapter slot or switch port that has detected the fault; for example, "7a" or "myswitch:5".
+
+== monitor.shelf.accessError.ok
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the monitor detects that a previously detected shelf access error has been corrected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Enclosure services-detected shelf access error has been corrected on channel %s.
+*Parameters*::
+*channel* (STRING): Adapter slot or switch port where the error was corrected.
+
+== monitor.shelf.configError
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Enclosure Services process notifes the monitor of a disk shelf configuration error. The message is also an houly reminder that the error has not been corrected. Configuration errors might cause Enclosure Services to be unable to monitor a disk shelf, or might indicate shelf configuration or interconnect problems; for example, too few power supplies in a disk shelf, or improper mixing of modules in a shelf or on a loop.
+*Corrective Action*::
+See the EMS message concerning disk shelf configuration errors that preceded the first instance of this message, and follow the corrective actions therein.
+*Syslog Message*::
+Enclosure services has detected an error in access to shelves or shelf configuration on channel %s.
+*Parameters*::
+*channel* (STRING): Adapter slot or switch port that has detected the fault; for example, "7a" or "myswitch:5".
+
+== monitor.shelf.configError.ok
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the monitor detects that a previously detected shelf configuration error has been corrected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Enclosure services-detected configuration error has been corrected on channel %s.
+*Parameters*::
+*channel* (STRING): Adapter slot or switch port where the fault existed.
+
+== monitor.shelf.fault
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects a critical disk shelf fault. It is also an hourly reminder that the condition has not been corrected.
+*Corrective Action*::
+Check the event log for more specific shelf error messages, and follow the corrective actions there. Use the "storage shelf show" and "storage shelf show -errors" commands to display the current shelf status.
+*Syslog Message*::
+Critical fault reported on disk storage shelf attached to channel %s. Check fans, power supplies, disks, and temperature sensors.
+*Parameters*::
+*channel* (STRING): Adapter slot or switch port that has detected the fault; for example, "7a" or "myswitch:5".
+
+== monitor.shelf.fault.ok
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the monitor detects that a previously detected shelf fault has been corrected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Fault previously reported on disk storage shelf attached to channel %s has been corrected.
+*Parameters*::
+*channel* (STRING): Adapter slot or switch port where the error has been corrected; for example,"7a" or "myswitch:5".
+
+== monitor.shelf.warning
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects a disk shelf warning. It is also an hourly reminder that the condition has not been corrected.
+*Corrective Action*::
+Check the messages log for more specific shelf error messages, and follow the corrective actions there.
+*Syslog Message*::
+Fault reported on disk storage shelf attached to channel %s. Check fans, power supplies, disks, and temperature sensors.
+*Parameters*::
+*channel* (STRING): Adapter slot or switch port that has detected the fault; for example, "7a" or "myswitch:5".

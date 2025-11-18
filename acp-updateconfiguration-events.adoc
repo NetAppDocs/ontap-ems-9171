@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: acp-updateconfiguration-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: acp.updateconfiguration events
+---
+
+= acp.updateconfiguration events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== acp.updateConfiguration
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Alternate Control Path (ACP) Administrator determines that the SAS shelf I/O module (IOM) supports only the in-band ACP configuration.
+*Corrective Action*::
+> Use the "storage shelf acp configure -channel in-band -is-enabled true" command to enable in-band ACP.
+*Syslog Message*::
+IOM %s in shelf S/N: %s does not support out-of-band ACP.
+*Parameters*::
+*inband_id* (STRING): Inband ID of the module.
+*shelf_sno* (STRING): Storage shelf serial number of the shelf where the IOM is seated.

@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: callhome-management-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.management events
+---
+
+= callhome.management events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.management.log
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the MANAGEMENT_LOG AutoSupport or 'call home' event is sent. This message occurs on a daily basis and is sent from from clustered nodes only. Information is sent to NetApp technical support to ensure that subsequent communications work and to enable operations analysis. Some results of these analysis might include recommendations on upgrades, firmware changes, and configuration changes to improve the reliability and performance of the node. If your node is configured to do so it generates and transmits an AutoSupport (or 'call home') to NetApp technical support and to the configured destinations on a daily basis. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for MANAGEMENT_LOG
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.management.log.rotate
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the (MANAGEMENT_LOG ROTATE) AutoSupport or 'call home' event is sent. This callhome message is a supplement to the daily callhome.management.log message. The callhome.management.log.rotate message occurs whenever a log file rotates due to size. This message avoids log information gaps when log files rotate. Information is sent to NetApp technical support to ensure that subsequent communications work and to enable operations analysis. Some results of these analysis might include recommendations on upgrades, firmware changes, and configuration changes to improve the reliability and performance of the node. If your node is configured to do so it generates and transmits an AutoSupport (or 'call home') to NetApp technical support and to the configured destinations on a daily basis. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home %s for filename: %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*filename* (STRING): The name of the log file that rotated.

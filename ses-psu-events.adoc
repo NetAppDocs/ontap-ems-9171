@@ -1,0 +1,60 @@
+---
+sidebar: sidebar
+permalink: ses-psu-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ses.psu events
+---
+
+= ses.psu events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ses.psu.comboError
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the power supplies that are installed in a disk shelf are not compatible with each other. Prolonged use of incompatible power supplies can result in failures of power supply units (PSUs).
+*Corrective Action*::
+Replace one PSU immediately with a compatible model. Use the "storage shelf show -psu-part-number" command to locate all power supplies on the disk shelf, using the part numbers provided in the message as the required command parameter. Consult the NetApp Hardware Universe for compatible part number information.
+*Syslog Message*::
+Incompatible power supplies were found on disk shelf "%d", serial number: %s, product ID: %s, PSU part numbers: %s, %s.
+*Parameters*::
+*ShelfId* (INT): ID of the disk shelf.
+*serialNumber* (STRING): Serial number of the storage shelf enclosure.
+*ProdId* (STRING): Product identification of the shelf.
+*partNumber1* (STRING): Part number of PSU 1 on the shelf.
+*partNumber2* (STRING): Part number of PSU 2 on the shelf.
+
+== ses.psu.coolingReqError
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the installed power supplies are placed so that air flow requirements of the disk shelf are not met. Placement of power supplies and their integrated fans is part of the disk shelf cooling and air flow design.
+*Corrective Action*::
+Install power supplies in the indicated slots, cable to a power source, and turn them on. If the ses.psu.powerReqError is not presently posted for the system, an existing supply in the shelf can be moved to fill the required slot. A new instance of the error can be ignored while the supply is moved, but it should clear within a few minutes. If it does not, the condition must be corrected.
+*Syslog Message*::
+Improper power supply placement in channel %s disk shelf %d. Power supplies must be present in power supply bays %s to satisfy air flow requirements.
+*Parameters*::
+*ChannelName* (STRING): Name of the affected adapter port or switch port.
+*ShelfID* (INT): ID of the disk shelf.
+*CoolBays* (STRING): PSU bays where PSUs must be installed.
+
+== ses.psu.powerReqError
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when too few power supplies are installed to redundantly satisfy the current-draw requirements of the shelf modules and disk drives in the shelf configuration. The number and type of disk modules and disk drives installed affect the requirements.
+*Corrective Action*::
+Install the required number of power supplies in the disk shelf. Ensure that they are fully inserted, cabled to a power source, and turned on.
+*Syslog Message*::
+Not enough power supplies are present in channel %s disk shelf %d to satisfy disk drive and shelf power requirements. The shelf requires %d supplies, but only %d are present.
+*Parameters*::
+*ChannelName* (STRING): Name of the affected adapter port or switch port.
+*ShelfID* (INT): ID of the disk shelf.
+*NumReqd* (INT): Number of power supplies required.
+*NumPresent* (INT): Number of PSUs present.

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: disk-stalledtoolong-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.stalledtoolong events
+---
+
+= disk.stalledtoolong events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.stalledTooLong
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk has been stalled too long.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+I/O for disk %s has been suspended %d times for %d seconds.
+*Parameters*::
+*diskName* (STRING): Name of the device.
+*count* (INT): Count of times suspended.
+*error* (INT): Time suspended.

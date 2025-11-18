@@ -1,0 +1,671 @@
+---
+sidebar: sidebar
+permalink: scsi-cmd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsi.cmd events
+---
+
+= scsi.cmd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsi.cmd.aborted
+*Deprecated*::
+This event has been removed as it does not provide any useful information for a customer.
+*Severity*::
+ERROR
+*Description*::
+The aborted event is issued if an I/O request is aborted by a class driver.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s device %s: Command aborted: cdb %s (%d).
+*Parameters*::
+*deviceType* (STRING): The device type.
+*deviceName* (STRING): The electrical path name of the device on which the command was aborted.
+*cdb* (STRING): A string containing the opcode byte of the CDB which was sent to the device. If the opcode was for a READ(10) or a WRITE(10), the logical block address and the transfer length are included as well.
+*dTime* (INT): The delta time from when the command was first issued.
+
+== scsi.cmd.abortedByHost
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the host adapter aborts an I/O request, either because it was a victim or because of an HA timeout.
+*Corrective Action*::
+This condition does not necessarily mean that the target device is problematic. High workloads can cause loop saturation, leading to device contention for the bus. Transport issues can also cause loop throughput to decrease, thereby causing I/Os to take longer than normal. Seen occasionally, no action is required; the system handles the condition automatically by retrying the I/O that was aborted. Seen in association with a persistent error condition, such as device resets or transport errors, it is likely the symptom of a loop stability problem.
+*Syslog Message*::
+%s device %s: Command aborted by host adapter: HA status 0x%x: cdb %s. %s
+*Parameters*::
+*deviceType* (STRING): Device type.
+*deviceName* (STRING): Electrical path name of the device on which the command failed.
+*ha_status* (INTHEX): Value returned by the host adapter driver describing the completion status of the I/O request execution at the transport or physical link layer.
+*cdb* (STRING): String containing the opcode byte of the CDB that was sent to the device. If the opcode was for a READ (0x28) or a WRITE (0x2a), the logical block address and the transfer length are included as well.
+*disk_information* (STRING): Formatted information about the disk, including the disk's vendor, model, firmware revision, and serial number.
+
+== scsi.cmd.adapterFatal
+*Severity*::
+ERROR
+*Description*::
+The adapter fatal event is issued when the host adapter has detected a problem with either the buffer list or has exceeded the DMA size.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s device %s: Adapter fatal error: HA status 0x%x: cdb %s.
+*Parameters*::
+*deviceType* (STRING): The device type.
+*deviceName* (STRING): The electrical path name of the device on which the command failed.
+*haStatus* (INTHEX): The value of the HA status field for the failed command.
+*cdb* (STRING): A string containing the opcode byte of the CDB which was sent to the device. If the opcode was for a READ (0x28) or a WRITE (0x2a), the logical block address and the transfer length are included as well.
+
+== scsi.cmd.adapterHardwareError
+*Severity*::
+ERROR
+*Description*::
+The adapter hardware error is issued when the host adapter has detected a loop is down, the scsi bus transport had an error or a problem with the adapter hardware itself.
+*Corrective Action*::
+Evaluate for partial component failure the following loop hardware involved in the Fibre Channel transport: cables, transceivers, and I/O modules (LRC, ESH/ESH2, AT-FC, AT-FC2, and AT-FCX). If this error occurs in conjunction with transport errors on the same loop, ensure that all drive carriers are seated firmly in their enclosure bays, and verify that all cables are properly connected and undamaged. Also check the backplane connectors--if they are bent or broken, you must replace them. If the error persists for a specific device or I/O module from multiple adapters, you should replace that hardware module.
+*Syslog Message*::
+%s device %s: Adapter detected hardware error: HA status 0x%x: cdb %s.
+*Parameters*::
+*deviceType* (STRING): The device type.
+*deviceName* (STRING): The electrical path name of the device on which the command failed.
+*haStatus* (INTHEX): The value of the HA status field for the failed command.
+*cdb* (STRING): A string containing the opcode byte of the CDB which was sent to the device. If the opcode was for a READ (0x28) or a WRITE (0x2a), the logical block address and the transfer length are included as well.
+
+== scsi.cmd.adapterHardwareErrorEMSOnly
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the host adapter detects that a loop is down, the scsi bus transport has an error, or the adapter hardware itself has a problem, such as with a disk drive, cable, and so on.
+*Corrective Action*::
+Evaluate for partial component failure the following loop hardware involved in the Fibre Channel transport: cables, transceivers, and I/O modules (LRC, ESH/ESH2, AT-FC, AT-FC2, and AT-FCX). If this error occurs in conjunction with transport errors on the same loop, ensure that all drive carriers are seated firmly in their enclosure bays, and verify that all cables are properly connected and undamaged. Also check the backplane connectors--if they are bent or broken, you must replace them. If the error persists for a specific device or I/O module from multiple adapters, you should replace that hardware module.
+*Syslog Message*::
+%s device %s: Adapter detected hardware error: HA status 0x%x: cdb %s. %s
+*Parameters*::
+*deviceType* (STRING): The device type.
+*deviceName* (STRING): Physical path name of the device on which the command failed. It is in the format "path_id. device_id", where "path_id := switch:port | adapter". For example, switch1:5:40 or 8b.40.
+*haStatus* (INTHEX): Value of the HA status field for the failed command. For this error message, the value is 6.
+*cdb* (STRING): String containing the opcode byte of the command descriptor block (CDB) that was sent to the device. If the opcode was for a READ (0x28) or a WRITE (0x2a), the logical block address and the transfer length are also included. For example, a hardware error during READ is in the format "0x28:logical_block_address:transfer_length".
+*disk_information* (STRING): Formatted information about the disk, including the disk's vendor, model, firmware revision, and serial number.
+
+== scsi.cmd.adapterResources
+*Severity*::
+ERROR
+*Description*::
+The adapter resource event is issued when the host adapter has run out of resources.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s device %s: Adapter detected resource issue: HA status 0x%x: cdb %s.
+*Parameters*::
+*deviceType* (STRING): The device type.
+*deviceName* (STRING): The electrical path name of the device on which the command failed.
+*haStatus* (INTHEX): The value of the HA status field for the failed command.
+*cdb* (STRING): A string containing the opcode byte of the CDB which was sent to the device. If the opcode was for a READ (0x28) or a WRITE (0x2a), the logical block address and the transfer length are included as well.
+
+== scsi.cmd.checkCondition
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system receives a "check condition" status from a device. "Check condition" status is the mechanism whereby a target device reports an informational condition or error status to the requesting host. Either the condition that generated this event is an error that occurred during execution of the command and was not cleared by retrying the request or an informational condition reporting status of the present operation or media state.
+*Corrective Action*::
+A target status of check condition normally indicates an error at the device during execution of the requested command. Such cases are often the result of an intermittent device hardware or firmware problem that is automatically handled by the Data ONTAP drivers through command retries. Check condition statuses can also be seen during shelf firmware update operations. In cases of repeated events, the specified device should be evaluated for proper operation and possible repair or replacement. A check condition with a SenseKey of "no sense" indicates an informational condition that is automatically handled by the Data ONTAP driver associated with the target device. These are normally not reported as error events. However, on occasion an unexpected informational condition may be reported by a target device. These cases should not be interpreted as a failure of the target device.
+*Syslog Message*::
+%s device %s: Check Condition: CDB %s: Sense Data %s - %s (0x%x - 0x%x 0x%x 0x%x)(%d). %s
+*Parameters*::
+*deviceType* (STRING): Device type.
+*deviceName* (STRING): Electrical path name of the device on which the command failed.
+*cdb* (STRING): String containing the opcode byte of the Command block which encountered the error. For opcodes of READ (0x28) or WRITE (0x2a), the logical block address and the transfer length are also included.
+*sSenseKey* (STRING): String containing a description of the sense key for the failed command.
+*sSenseCode* (STRING): String containing a description of the sense code for the failed command. If no description is available, this is a null string.
+*iSenseKey* (INTHEX): Integer value of the sense key for the failed command.
+*iASC* (INTHEX): Integer value of the sense code for the failed command.
+*iASCQ* (INTHEX): Integer value of the sense code qualifier for the failed command.
+*iFRU* (INTHEX): Integer value of the fru for the failed command.
+*DTime* (INT): Delta time from first issued to sense logged.
+*disk_information* (STRING): Formatted information about the disk, including the disk's vendor, model, firmware revision, and serial number.
+
+== scsi.cmd.checkCondition.ATATimeout
+*Severity*::
+ERROR
+*Description*::
+An ATATimeout error typically indicates a problem in communicating with a disk in an ATFCX-bridged shelf.
+*Corrective Action*::
+An initial ATA I/O Timeout will result in a SOFT RESET being issued to the disk in question. Subsequent ATA I/O Timeouts will result in a HARD RESET being performed to the disk followed by a POWER CYCLE of the disk. When any of these errors are encountered, ATFCX shelflog information is also updated. Check shelflog dynamic and persistent log information for controller details on the event. Check environment shelf_stats output for additional error statistics from the disk in question. Check disk shm_stats and disk shm_stats ha.disk_id for SMART log information from the disk in question. Collating this information will help determine if this is an isolated disk problem or a controller related problem. If the environment shelf_stats are clean along with the shelflog entries, then the error is probably a misbehaving disk. If the problem continues, RMA of the disk is recommended. However, if shelf_stats are not clean and/or shelflog errors are present, RMA of the ATFCX module is recommended.
+*Syslog Message*::
+%s device %s: Check Condition: ATA I/O Timeout CDB %s: Sense Data %s - %s (0x%x - 0x%x 0x%x 0x%x)(%d).
+*Parameters*::
+*deviceType* (STRING): The device type.
+*deviceName* (STRING): The electrical path name of the device on which the command failed.
+*cdb* (STRING): A string containing the opcode byte of the Command block which encountered the error. For opcodes of READ (0x28) or WRITE (0x2a), the logical block address and the transfer length are also included.
+*sSenseKey* (STRING): A string containing a description of the sense key for the failed command.
+*sSenseCode* (STRING): A string containing a description of the sense code for the failed command. If no description is available, this is a null string.
+*iSenseKey* (INTHEX): The integer value of the sense key for the failed command.
+*iASC* (INTHEX): The integer value of the sense code for the failed command.
+*iASCQ* (INTHEX): The integer value of the sense code qualifier for the failed command.
+*iFRU* (INTHEX): The integer value of the fru for the failed command.
+*DTime* (INT): Delta time from first issued to sense logged.
+
+== scsi.cmd.checkCondition.ATATimeout.Failure
+*Severity*::
+ERROR
+*Description*::
+An ATATimeout error typically indicates a problem in communicating with a disk in an ATFCX-bridged shelf. A Failure message indicates that error recovery was unable to recover access to the drive and hence it is being actively failed.
+*Corrective Action*::
+An initial ATA I/O Timeout will result in a SOFT RESET being issued to the disk in question. Subsequent ATA I/O Timeouts will result in a HARD RESET being performed to the disk followed by a POWER CYCLE of the disk. When any of these errors are encountered, ATFCX shelflog information is also updated. Check shelflog dynamic and persistent log information for controller details on the event. Check environment shelf_stats output for additional error statistics from the disk in question. Check disk shm_stats and disk shm_stats ha.disk_id for SMART log information from the disk in question. Collating this information will help determine if this is an isolated disk problem or a controller related problem. If the environment shelf_stats are clean along with the shelflog entries, then the error is probably a misbehaving disk. If the problem continues, RMA of the disk is recommended. However, if shelf_stats are not clean and/or shelflog errors are present, RMA of the ATFCX module is recommended.
+*Syslog Message*::
+%s device %s: Check Condition: ATA I/O Timeout - Failure CDB %s: Sense Data %s - %s (0x%x - 0x%x 0x%x 0x%x)(%d).
+*Parameters*::
+*deviceType* (STRING): The device type.
+*deviceName* (STRING): The electrical path name of the device on which the command failed.
+*cdb* (STRING): A string containing the opcode byte of the Command block which encountered the error. For opcodes of READ (0x28) or WRITE (0x2a), the logical block address and the transfer length are also included.
+*sSenseKey* (STRING): A string containing a description of the sense key for the failed command.
+*sSenseCode* (STRING): A string containing a description of the sense code for the failed command. If no description is available, this is a null string.
+*iSenseKey* (INTHEX): The integer value of the sense key for the failed command.
+*iASC* (INTHEX): The integer value of the sense code for the failed command.
+*iASCQ* (INTHEX): The integer value of the sense code qualifier for the failed command.
+*iFRU* (INTHEX): The integer value of the fru for the failed command.
+*DTime* (INT): Delta time from first issued to sense logged.
+
+== scsi.cmd.checkCondition.ATATimeout.HardReset
+*Severity*::
+ERROR
+*Description*::
+An ATATimeout error typically indicates a problem in communicating with a disk in an ATFCX-bridged shelf. A Hard Reset will be performed to the drive to attempt to clear the problem.
+*Corrective Action*::
+An initial ATA I/O Timeout will result in a SOFT RESET being issued to the disk in question. Subsequent ATA I/O Timeouts will result in a HARD RESET being performed to the disk followed by a POWER CYCLE of the disk. When any of these errors are encountered, ATFCX shelflog information is also updated. Check shelflog dynamic and persistent log information for controller details on the event. Check environment shelf_stats output for additional error statistics from the disk in question. Check disk shm_stats and disk shm_stats ha.disk_id for SMART log information from the disk in question. Collating this information will help determine if this is an isolated disk problem or a controller related problem. If the environment shelf_stats are clean along with the shelflog entries, then the error is probably a misbehaving disk. If the problem continues, RMA of the disk is recommended. However, if shelf_stats are not clean and/or shelflog errors are present, RMA of the ATFCX module is recommended.
+*Syslog Message*::
+%s device %s: Check Condition: ATA I/O Timeout - Hard Reset CDB %s: Sense Data %s - %s (0x%x - 0x%x 0x%x 0x%x)(%d).
+*Parameters*::
+*deviceType* (STRING): The device type.
+*deviceName* (STRING): The electrical path name of the device on which the command failed.
+*cdb* (STRING): A string containing the opcode byte of the Command block which encountered the error. For opcodes of READ (0x28) or WRITE (0x2a), the logical block address and the transfer length are also included.
+*sSenseKey* (STRING): A string containing a description of the sense key for the failed command.
+*sSenseCode* (STRING): A string containing a description of the sense code for the failed command. If no description is available, this is a null string.
+*iSenseKey* (INTHEX): The integer value of the sense key for the failed command.
+*iASC* (INTHEX): The integer value of the sense code for the failed command.
+*iASCQ* (INTHEX): The integer value of the sense code qualifier for the failed command.
+*iFRU* (INTHEX): The integer value of the fru for the failed command.
+*DTime* (INT): Delta time from first issued to sense logged.
+
+== scsi.cmd.checkCondition.ATATimeout.InternalReset
+*Severity*::
+ERROR
+*Description*::
+An ATATimeout error typically indicates a problem in communicating with a disk in an ATFCX-bridged shelf. An internal reset (aka power cycle) will be performed to the drive to attempt to clear the problem.
+*Corrective Action*::
+An initial ATA I/O Timeout will result in a SOFT RESET being issued to the disk in question. Subsequent ATA I/O Timeouts will result in a HARD RESET being performed to the disk followed by a POWER CYCLE of the disk. When any of these errors are encountered, ATFCX shelflog information is also updated. Check shelflog dynamic and persistent log information for controller details on the event. Check environment shelf_stats output for additional error statistics from the disk in question. Check disk shm_stats and disk shm_stats ha.disk_id for SMART log information from the disk in question. Collating this information will help determine if this is an isolated disk problem or a controller related problem. If the environment shelf_stats are clean along with the shelflog entries, then the error is probably a misbehaving disk. If the problem continues, RMA of the disk is recommended. However, if shelf_stats are not clean and/or shelflog errors are present, RMA of the ATFCX module is recommended.
+*Syslog Message*::
+%s device %s: Check Condition: ATA I/O Timeout - Internal Reset CDB %s: Sense Data %s - %s (0x%x - 0x%x 0x%x 0x%x)(%d).
+*Parameters*::
+*deviceType* (STRING): The device type.
+*deviceName* (STRING): The electrical path name of the device on which the command failed.
+*cdb* (STRING): A string containing the opcode byte of the Command block which encountered the error. For opcodes of READ (0x28) or WRITE (0x2a), the logical block address and the transfer length are also included.
+*sSenseKey* (STRING): A string containing a description of the sense key for the failed command.
+*sSenseCode* (STRING): A string containing a description of the sense code for the failed command. If no description is available, this is a null string.
+*iSenseKey* (INTHEX): The integer value of the sense key for the failed command.
+*iASC* (INTHEX): The integer value of the sense code for the failed command.
+*iASCQ* (INTHEX): The integer value of the sense code qualifier for the failed command.
+*iFRU* (INTHEX): The integer value of the fru for the failed command.
+*DTime* (INT): Delta time from first issued to sense logged.
+
+== scsi.cmd.checkCondition.ATATimeout.SoftReset
+*Severity*::
+ERROR
+*Description*::
+An ATATimeout error typically indicates a problem in communicating with a disk in an ATFCX-bridged shelf. A Soft Reset will be performed to the drive to attempt to clear the problem.
+*Corrective Action*::
+An initial ATA I/O Timeout will result in a SOFT RESET being issued to the disk in question. Subsequent ATA I/O Timeouts will result in a HARD RESET being performed to the disk followed by a POWER CYCLE of the disk. When any of these errors are encountered, ATFCX shelflog information is also updated. Check shelflog dynamic and persistent log information for controller details on the event. Check environment shelf_stats output for additional error statistics from the disk in question. Check disk shm_stats and disk shm_stats ha.disk_id for SMART log information from the disk in question. Collating this information will help determine if this is an isolated disk problem or a controller-related problem. If the environment shelf_stats are clean along with the shelflog entries, then the error is probably a misbehaving disk. If the problem continues, RMA of the disk is recommended. However, if shelf_stats are not clean and/or shelflog errors are present, RMA of the ATFCX module is recommended.
+*Syslog Message*::
+%s device %s: Check Condition: ATA I/O Timeout - Soft Reset CDB %s: Sense Data %s - %s (0x%x - 0x%x 0x%x 0x%x)(%d).
+*Parameters*::
+*deviceType* (STRING): The device type.
+*deviceName* (STRING): The electrical path name of the device on which the command failed.
+*cdb* (STRING): A string containing the opcode byte of the Command block which encountered the error. For opcodes of READ (0x28) or WRITE (0x2a), the logical block address and the transfer length are also included.
+*sSenseKey* (STRING): A string containing a description of the sense key for the failed command.
+*sSenseCode* (STRING): A string containing a description of the sense code for the failed command. If no description is available, this is a null string.
+*iSenseKey* (INTHEX): The integer value of the sense key for the failed command.
+*iASC* (INTHEX): The integer value of the sense code for the failed command.
+*iASCQ* (INTHEX): The integer value of the sense code qualifier for the failed command.
+*iFRU* (INTHEX): The integer value of the fru for the failed command.
+*DTime* (INT): Delta time from first issued to sense logged.
+
+== scsi.cmd.checkCondition.SATA.DriveDown
+*Severity*::
+ERROR
+*Description*::
+An SATA.DriveDown error typically indicates a problem in communicating with a disk behind a SAS to SATA bridge. A power cycle will be performed on the drive to attempt to clear the problem.
+*Corrective Action*::
+A SATA Drive Down condition should clear after a drive power cycle. If the problem persists, the drive will be failed at which point RMA of the disk is recommended.
+*Syslog Message*::
+device %s: Check Condition: SATA Drive Down CDB %s: Sense Data %s - %s (0x%x - 0x%x 0x%x 0x%x)(%d).
+*Parameters*::
+*deviceName* (STRING): The electrical path name of the device on which the command failed.
+*cdb* (STRING): A string containing the opcode byte of the Command block which encountered the error. For opcodes of READ (0x28) or WRITE (0x2a), the logical block address and the transfer length are also included.
+*sSenseKey* (STRING): A string containing a description of the sense key for the failed command.
+*sSenseCode* (STRING): A string containing a description of the sense code for the failed command. If no description is available, this is a null string.
+*iSenseKey* (INTHEX): The integer value of the sense key for the failed command.
+*iASC* (INTHEX): The integer value of the sense code for the failed command.
+*iASCQ* (INTHEX): The integer value of the sense code qualifier for the failed command.
+*iFRU* (INTHEX): The integer value of the fru for the failed command.
+*DTime* (INT): Delta time from first issued to sense logged.
+
+== scsi.cmd.checkCondition.SATA.Timeout
+*Severity*::
+ERROR
+*Description*::
+An SATA.Timeout error typically indicates a problem in communicating with a disk behind a SAS to SATA bridge. A hard reset will be performed on the drive to attempt to clear the problem.
+*Corrective Action*::
+A SATA Timeout condition should clear after a drive reset. If the problem persists, the drive report a drive down condition at which point it will be power cycle.
+*Syslog Message*::
+device %s: Check Condition: SATA Drive Timeout CDB %s: Sense Data %s - %s (0x%x - 0x%x 0x%x 0x%x)(%d).
+*Parameters*::
+*deviceName* (STRING): The electrical path name of the device on which the command failed.
+*cdb* (STRING): A string containing the opcode byte of the Command block which encountered the error. For opcodes of READ (0x28) or WRITE (0x2a), the logical block address and the transfer length are also included.
+*sSenseKey* (STRING): A string containing a description of the sense key for the failed command.
+*sSenseCode* (STRING): A string containing a description of the sense code for the failed command. If no description is available, this is a null string.
+*iSenseKey* (INTHEX): The integer value of the sense key for the failed command.
+*iASC* (INTHEX): The integer value of the sense code for the failed command.
+*iASCQ* (INTHEX): The integer value of the sense code qualifier for the failed command.
+*iFRU* (INTHEX): The integer value of the fru for the failed command.
+*DTime* (INT): Delta time from first issued to sense logged.
+
+== scsi.cmd.contingentAllegiance
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an I/O request receives a check condition, but there is no sense data.
+*Corrective Action*::
+If there are command check conditions with no associated sense data with the device specified in this event and there are no other devices on the same bus/loop experiencing similar problems, the device should be evaluated for proper operation and possible repair/replacement.
+*Syslog Message*::
+%s device %s: Contingent allegiance: cdb %s. %s
+*Parameters*::
+*deviceType* (STRING): The device type.
+*deviceName* (STRING): The electrical path name of the device on which the command received the contingent allegiance condition.
+*cdb* (STRING): A string containing the opcode byte of the CDB which was sent to the device. If the opcode was for a READ (0x28) or a WRITE (0x2a), the logical block address and the transfer length are included as well.
+*disk_information* (STRING): Formatted information about the disk, including the disk's vendor, model, firmware revision, and serial number.
+
+== scsi.cmd.driveFailureError
+*Severity*::
+ERROR
+*Description*::
+The drive reports failure after startup. Some i/o operation has failed on it and it should be removed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s device %s has failed during operation. Device %s is now unusable as a data or parity disk. It should be removed.
+*Parameters*::
+*deviceType* (STRING): The device type.
+*deviceName* (STRING): The pathname to the device that has failed the operation.
+*slotName* (STRING): The name of the slot in which the event occurred.
+
+== scsi.cmd.excessiveVictim
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Storage Area Network (SAN) target or fabric continually aborts I/O operations. An initial victim abort results in the retry of the I/O operation without logging any messages. Subsequent victim aborts result in the logging of messages and additional retries. These messages are logged if there are continual aborts from the fabric or the target.
+*Corrective Action*::
+Check the fabric ports and the target ports for problems in any of the components, and if necessary, take corrective actions. Check the fabric and the target logs for any event that caused the fabric or the target to abort the I/O operations. If the problem persists, troubleshoot the fabric or target.
+*Syslog Message*::
+device %s: excessive victim abort: delta time %d: retry CDB %s: victim retry count %d: retry count %d: timeout retry count %d: path retry count %d: adapter status 0x%0x: target status 0x%0x: sense data %s - %s (0x%x - 0x%x 0x%x ). %s
+*Parameters*::
+*deviceName* (STRING): Path name of the device on which the command failed.
+*DTime* (INT): Time, in milliseconds, from when the command was first issued until this message was logged.
+*cdb* (STRING): String containing the opcode byte of the Command Descriptor Block (CDB) that was sent to the device. If the opcode was for a READ (0x28) or a WRITE (0x2a), the logical block address and the transfer length are also included.
+*victimRetryCount* (INT): Number of retries due to I/O failure not related to this I/O operation.
+*retryCount* (INT): Number of retries from the SCSI layer.
+*timeoutRetryCount* (INT): Number of times the I/O opeartion was timed out and retried.
+*pathRetryCount* (INT): Number of retries for the path.
+*adapterStatus* (INTHEX): Host adapter status.
+*targetStatus* (INTHEX): Target status.
+*sSenseKey* (STRING): String containing a description of the sense key for the failed command.
+*sSenseCode* (STRING): String containing a description of the sense code for the failed command. If no description is available, this is an empty string.
+*iSenseKey* (INTHEX): Integer value of the sense key for the failed command.
+*iASC* (INTHEX): Integer value of the sense code for the failed command.
+*iASCQ* (INTHEX): Integer value of the sense code qualifier for the failed command.
+*disk_information* (STRING): Formatted information about the disk, including the disk's vendor, model, firmware revision, and serial number.
+
+== scsi.cmd.failDevice
+*Severity*::
+ERROR
+*Description*::
+The failed device event is issued when a device emits a vendor specific sense key.
+*Corrective Action*::
+The failed device should be replaced immediately.
+*Syslog Message*::
+** ALERT! ** %s device %s has failed! Replace device at once!
+*Parameters*::
+*deviceType* (STRING): The type of device which has failed.
+*deviceName* (STRING): The electrical path name of the device which failed.
+
+== scsi.cmd.floatTimeout
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an Azure page blob I/O operation fails due to a timeout. ONTAP retries the I/O command for a maximum of five retries, until the command succeeds or fails. Successive retries increase the timeout period.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"%s" device "%s": The page blob I/O operation timeout increased to "%d" seconds: HA status "0x%x": OSC Error "%d": retry count "%d": elapsed time "%d" milliseconds: cdb %s. %s
+*Parameters*::
+*deviceType* (STRING): Device type.
+*deviceName* (STRING): Electrical path name of the device on which the command failed.
+*basicTimeout* (INT): Basic timeout, in seconds, set for the I/O operation.
+*haStatus* (INTHEX): Value of the high-availability (HA) status field for the failed command.
+*oscError* (INT): Value of the Object Store Client (OSC) error for the failed command.
+*retryCount* (INT): Number of retries from the SCSI layer.
+*ETime* (INT): Time, in milliseconds, from when the command was first issued until this I/O operation failed.
+*cdb* (STRING): String containing the opcode byte of the Command Descriptor Block (CDB) that was sent to the device. If the opcode was for a READ (0x28) or a WRITE (0x2a), the logical block address and the transfer length are included as well.
+*diskInformation* (STRING): Formatted information about the disk, including the disk's vendor, model, firmware revision, and serial number.
+
+== scsi.cmd.fw.download.failed.butReverted
+*Severity*::
+ERROR
+*Description*::
+This event indicates that the download process was unsuccessful and thus the original running firmware is, again, the current running version.
+*Corrective Action*::
+If this error continues to be encountered, replace the FC-AT module in the shelf.
+*Syslog Message*::
+Firmware download failed, but successfully reverted to the previous running version on %s%d
+*Parameters*::
+*shelfName* (STRING): The name of the shelf in which the firmware download status is being provided.
+*shelf_num* (INT): The value of the shelf number.
+
+== scsi.cmd.fw.download.failed.notRecoverable
+*Severity*::
+ERROR
+*Description*::
+This event indicates that the download process failed and the previous running version of the firmware was not recoverable.
+*Corrective Action*::
+Replace the FC-AT module in the shelf.
+*Syslog Message*::
+Firmware download was unsuccessful and the previous running shelf firmware was not recoverable on %s%d. Once the shelf is power cycled, the FC-AT module may not be operational.
+*Parameters*::
+*shelfName* (STRING): The name of the shelf in which the firmware download status is being provided.
+*shelf_num* (INT): The value of the shelf number.
+
+== scsi.cmd.fw.download.successful
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event indicates that the firmware download process completed successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Firmware download was successful on %s%d
+*Parameters*::
+*shelfName* (STRING): The name of the shelf in which the firmware download status is being provided.
+*shelf_num* (INT): The value of the shelf number.
+
+== scsi.cmd.fw.download.successful.onRetry
+*Severity*::
+NOTICE
+*Description*::
+This event indicates that the download process was successful after being retried.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Firmware download was successful after being retried on %s%d
+*Parameters*::
+*shelfName* (STRING): The name of the shelf in which the firmware download status is being provided.
+*shelf_num* (INT): The value of the shelf number.
+
+== scsi.cmd.noMorePaths
+*Severity*::
+ERROR
+*Description*::
+The no more paths event is issued when all paths to a device have been tried without success.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s device %s: No more paths to device: cdb %s. All retries have failed.
+*Parameters*::
+*deviceType* (STRING): The device type.
+*deviceName* (STRING): The electrical path name of the device on which the command failed.
+*cdb* (STRING): A string containing the opcode byte of the CDB which was sent to the device. If the opcode was for a READ (0x28) or a WRITE (0x2a), the logical block address and the transfer length are included as well.
+
+== scsi.cmd.notReadyCondition
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an I/O request receives a check condition where the device reports that it is not ready to process the I/O request. The I/O request is delayed to wait for the device to become ready, and then it is tried again.
+*Corrective Action*::
+If command not ready check conditions associated with the device specified in this event persist, the device should be evaluated for proper operation and possible repair/replacement.
+*Syslog Message*::
+%s device %s: Device returns not yet ready: CDB %s: Sense Data %s - %s (0x%x - 0x%x 0x%x 0x%x)(%d). %s
+*Parameters*::
+*deviceType* (STRING): The device type.
+*deviceName* (STRING): The electrical path name of the device on which the command failed.
+*cdb* (STRING): A string containing the opcode byte of the CDB which was sent to the device. If the opcode was for a READ (0x28) or a WRITE (0x2a), the logical block address and the transfer length are included as well.
+*sSenseKey* (STRING): A string containing a description of the sense key for the failed command.
+*sSenseCode* (STRING): A string containing a description of the sense code for the failed command. If no description is available, this is a null string.
+*iSenseKey* (INTHEX): The integer value of the sense key for the failed command.
+*iASC* (INTHEX): The integer value of the sense code for the failed command.
+*iASCQ* (INTHEX): The integer value of the sense code qualifier for the failed command.
+*iFRU* (INTHEX): The integer value of the fru for the failed command.
+*dTime* (INT): The delta time from when the command was first issued.
+*disk_information* (STRING): Formatted information about the disk, including the disk's vendor, model, firmware revision, and serial number.
+
+== scsi.cmd.overrun
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an I/O request receives an overrun error. Too much data was received. I/O will be retried.
+*Corrective Action*::
+If there are command overruns associated with the device specified in this event and there are no other devices on the same bus/loop experiencing similar problems, the device should be evaluated for proper operation and possible repair/replacement.
+*Syslog Message*::
+%s device %s: Received a data overrun: cdb %s. Too much data was received. Possible transmission error. I/O will be retried. %s
+*Parameters*::
+*deviceType* (STRING): The device type.
+*deviceName* (STRING): The electrical path name of the device on which the command failed.
+*cdb* (STRING): A string containing the opcode byte of the CDB which was sent to the device. If the opcode was for a READ (0x28) or a WRITE (0x2a), the logical block address and the transfer length are included as well.
+*disk_information* (STRING): Formatted information about the disk, including the disk's vendor, model, firmware revision, and serial number.
+
+== scsi.cmd.pastTimeToLive
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an I/O request is not completed in the maximum time allowed. It is possible that the target device is attempting an error recovery operation that is impeding the progress of other I/O requests. Often these conditions are not permanent and can be cleared by retrying the request. However, the system must limit the maximum time it waits for a device to successfully complete a request. Similarly, the number of retries is also limited. If the number of retries is not exhausted before the maximum time allowed is exceeded, this event is generated.
+*Corrective Action*::
+If there are command timeouts associated with the device specified in this event and there are no other devices on the same bus/loop experiencing similar problems, the device should be evaluated for proper operation and possible repair/replacement.
+*Syslog Message*::
+%s device %s: request failed after try #%d: cdb %s. %s
+*Parameters*::
+*deviceType* (STRING): The device type.
+*deviceName* (STRING): The electrical path name of the device on which the command failed.
+*retryCount* (INT): The number of times the command was retried before its timer expired.
+*cdb* (STRING): A string containing the opcode byte of the CDB which was sent to the device. If the opcode was for a READ (0x28) or a WRITE (0x2a), the logical block address and the transfer length are included as well.
+*disk_information* (STRING): Formatted information about the disk, including the disk's vendor, model, firmware revision, and serial number.
+
+== scsi.cmd.requestSenseFailed
+*Severity*::
+ERROR
+*Description*::
+The request sense failed event is issued when the HA can not the auto request sense for a command which has failed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s device %s: Request sense failed: out status 0x%x: cdb %s.
+*Parameters*::
+*deviceType* (STRING): The device type.
+*deviceName* (STRING): The electrical path name of the device on which the command failed.
+*cmdStatus* (INTHEX): The error flags which were set for the command which failed.
+*cdb* (STRING): A string containing the opcode byte of the CDB which was sent to the device. If the opcode was for a READ (0x28) or a WRITE (0x2a), the logical block address and the transfer length are included as well.
+
+== scsi.cmd.selectionTimeout
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the host adapter returns either a selection time out error (SCSI) or an invalid target error (FC). In effect, the specified device failed to acknowledge a request.
+*Corrective Action*::
+Either the targeted device failed to respond or the address of the targeted device is no longer valid. If an alternate path to the device exists, the I/O will be automatically retried on the alternate path. If seen in conjunction with other timeouts on the same bus/loop, there may be a problem with the bus/loop, not the specific device. If this event is not seen in conjunction with any other error recovery activity on the same bus/loop, the specified device should be evaluated for proper operation and possible replacement.
+*Syslog Message*::
+%s device %s: Adapter/target error: HA status 0x%x: cdb %s. Targeted device did not respond to requested I/O. I/O will be retried. %s
+*Parameters*::
+*deviceType* (STRING): The device type.
+*deviceName* (STRING): The electrical path name of the device on which the command failed.
+*haStatus* (INTHEX): The value of the HA status field for the failed command.
+*cdb* (STRING): A string containing the opcode byte of the CDB which was sent to the device. If the opcode was for a READ (0x28) or a WRITE (0x2a), the logical block address and the transfer length are included as well.
+*disk_information* (STRING): Formatted information about the disk, including the disk's vendor, model, firmware revision, and serial number.
+
+== scsi.cmd.senseDataDump
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a device emits a vendor-specific sense key. The returned sense data is dumped to provide the vendor with enough information to track down the problem.
+*Corrective Action*::
+Because the sense key is vendor-specific, the vendor of the device should be contacted for any corrective actions.
+*Syslog Message*::
+class 0x%x segment 0x%x sense_key 0x%x info 0x%x 0x%x 0x%x 0x%x length 0x%x resv_1 0x%x sense_code 0x%x sense_code_qualifier 0x%x fru_failed 0x%x flags 0x%x field_pointer 0x%x. %s
+*Parameters*::
+*class* (INTHEX): The response code byte of the request sense data.
+*segment* (INTHEX): The segment number byte of the request sense data.
+*senseKey* (INTHEX): The Sense key byte of the request sense data.
+*info0* (INTHEX): The most significant byte of the information field of the request sense data.
+*info1* (INTHEX): The second most significant byte of the information field of the request sense data.
+*info2* (INTHEX): The third most significant byte of the information field of the request sense data.
+*info3* (INTHEX): The least significant byte of the information field of the request sense data.
+*length* (INTHEX): The additional sense length field of the request sense data.
+*resv_1* (INTHEX): The command specific information field of the request sense data.
+*senseCode* (INTHEX): The additional sense code field of the request sense data.
+*senseCodeQualifier* (INTHEX): The additional sense code qualifier field of the request sense data.
+*fruFailed* (INTHEX): The field replaceable unit code field of the request sense data.
+*flags* (INTHEX): The flags byte of the sense key specific field of the request sense data.
+*fieldPointer* (INTHEX): The field pointer bytes of the sense key specific field of the request sense data.
+*disk_information* (STRING): Formatted information about the disk, including the disk's vendor, model, firmware revision, and serial number.
+
+== scsi.cmd.SFRPCrestartError
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when an SFRPC I/O request failure is being retried and the request exceeds the maximum time allowed for the request ("Max Time to Live"). The system will restart to attempt recovery.
+*Corrective Action*::
+No additional action is required.
+*Syslog Message*::
+%s device %s: Transport error exceeded "Max Time to Live" limit during the execution of the command. The system will attempt to restart to clear the requests: HA status 0x%x: ffm_status: %s:%d CDB %s (%d). %s
+*Parameters*::
+*deviceType* (STRING): Device type.
+*deviceName* (STRING): Electrical path name of the device on which the command failed.
+*ha_status* (INTHEX): Value returned by the host adapter driver describing completion status of I/O request execution at the transport or physical link layer.
+*ffm_statusName* (STRING): Name of the status returned by the FFM services describing the completion status of the I/O request at the FFM layer.
+*ffm_status* (INTHEX): Value returned by the FFM services describing the completion status of the I/O request at the FFM layer.
+*cdb* (STRING): String containing the opcode byte of the CDB which was sent to the device. If the opcode was for a READ (0x28) or a WRITE (0x2a) command, the logical block address and the transfer length are also included.
+*dTime* (INT): Delta time from when the command was first issued.
+*disk_information* (STRING): Formatted information about the disk, including the disk's vendor, model, firmware revision, serial number and slice ID.
+
+== scsi.cmd.SFRPCtransportError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an SFRPC I/O request encounters a transport error during command execution. Transport errors are typically the result of the SFRPC layer's inability to complete a request successfully.
+*Corrective Action*::
+Transport errors are typically unexpected events. System software takes appropriate recovery actions by retrying the I/O. No additional action is required.
+*Syslog Message*::
+%s device %s: Transport error during execution of command: HA status 0x%x: ffm_status: %s:%d CDB %s (%d). %s
+*Parameters*::
+*deviceType* (STRING): Device type.
+*deviceName* (STRING): Electrical path name of the device on which the command failed.
+*ha_status* (INTHEX): Value returned by the host adapter driver describing completion status of I/O request execution at the transport or physical link layer.
+*ffm_statusName* (STRING): Name of status returned by the FFM services describing the completion status of the I/O request at the FFM layer.
+*ffm_status* (INTHEX): Value returned by the FFM services describing the completion status of the I/O reqeust at the FFM layer.
+*cdb* (STRING): String containing the opcode byte of the CDB which was sent to the device. If the opcode was for a READ (0x28) or a WRITE (x02a) command, the logical block address and the transfer length are included as well.
+*dTime* (INT): Delta time from when the command was first issued.
+*disk_information* (STRING): Formatted information about the disk, including the disk's vendor, model, firmware revision, serial number and slice ID.
+
+== scsi.cmd.slotfailureError
+*Severity*::
+ERROR
+*Description*::
+The slot failure error event is issued if an I/O request got (0x02, 0x04, 0x05) returned from the sense information.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s device %s has detected a slot failure. Device %s is now inaccessible. Shelf must be replaced to resolve problem.
+*Parameters*::
+*deviceType* (STRING): The device type.
+*deviceName* (STRING): The electrical path name of the device on which the command failed.
+*slotName* (STRING): The name of the slot in which the event occurred.
+
+== scsi.cmd.targetStatus
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an I/O request receives a status that is neither a reservation conflict nor a check condition, and represents an error that can not be retried.
+*Corrective Action*::
+If the command target status associated with the device specified in this event persists and/or the device is failed, the device should be evaluated for proper operation and possible repair/replacement.
+*Syslog Message*::
+%s device %s: Target Status %s: cdb %s. %s
+*Parameters*::
+*deviceType* (STRING): The device type.
+*deviceName* (STRING): The electrical path name of the device on which the command failed.
+*targetStatus* (STRING): A string containing the target status received from the command.
+*cdb* (STRING): A string containing the opcode byte of the CDB which was sent to the device. If the opcode was for a READ (0x28) or a WRITE (0x2a), the logical block address and the transfer length are included as well.
+*disk_information* (STRING): Formatted information about the disk, including the disk's vendor, model, firmware revision, and serial number.
+
+== scsi.cmd.transportError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an I/O request encounters a transport error during command execution. Transport errors are typically the result of an incomplete data transfer (e.g., device expected more data than was received from the host adapter, or the adapter expected more data than was received from the device), a data overrun meaning that more data was transferred than was expected, a physical link transmission (parity or CRC) error, or a bus protocol error (phase error or an unexpected bus state transition.)
+*Corrective Action*::
+Transport errors are typically unexpected events. The exception is when drives are physically added or removed from the bus or drive enclosure. However, transport protocols do account for detection and recovery of transmission errors through CRC or Parity mechanisms. When such an error is reported to the adapter driver, the associated request is retried. For example, on a Fibre Channel link, an occasional transmission error is consistent with the expected Bit Error Rate specifications of the link. Output from the fcadmin link_stats command can be used to obtain error counts for CRC and transport errors. If they exceed observed values from normally operating loops, loop hardware should be evaluated for partial failure of a component involved in the Fibre Channel transport. Common things to check include complete seating of drive carriers in enclosure bays, properly secured cable connections, LRC/ESH seating, and crimped or otherwise damaged cables.
+*Syslog Message*::
+%s device %s: Transport error during execution of command: HA status 0x%x: cdb %s.
+*Parameters*::
+*deviceType* (STRING): The device type.
+*deviceName* (STRING): The electrical path name of the device on which the command failed.
+*ha_status* (INTHEX): Value returned by the host adapter driver describing completion status of I/O request execution at the transport or physical link layer.
+*cdb* (STRING): A string containing the opcode byte of the CDB which was sent to the device. If the opcode was for a READ (0x28) or a WRITE (x02a) command, the logical block address and the transfer length are included as well.
+*disk_information* (STRING): Formatted information about the disk, including the disk's vendor, model, firmware revision, and serial number.
+
+== scsi.cmd.transportErrorEMSOnly
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an I/O request encounters a transport error during command execution. Transport errors are typically unexpected events, unless you added or removed disk drives from the bus or drive enclosure. Unexpected transport errors are typically the result of the following conditions: An incomplete data transfer where the device expected more data from the host adapter than it received (or the adapter expected more data from the device than it received); A data overrun where more data than expected was transferred; A physical link transmission (parity or CRC [cyclic redundancy check]) error; Or a bus protocol error (phase error or unexpected bus state transition).
+*Corrective Action*::
+Transport protocols do account for detection and recovery of transmission errors through CRC or parity mechanisms. When this error is reported to the adapter driver, the associated request is retried. For example, on a Fibre Channel link, an occasional transmission error is consistent with the expected Bit Error Rate specifications of the link. Therefore, use output from the "fcadmin link_stats" command to obtain error counts for CRC and transport errors. If the error counts exceed observed values from normally operating loops, evaluate for partial component failure the loop hardware involved in the Fibre Channel transport. Common things to check include complete seating of drive carriers in enclosure bays, properly secured cable connections, complete LRC/ESH module seating, and crimped or otherwise damaged cables.
+*Syslog Message*::
+%s device %s: Transport error during execution of command: HA status 0x%x: cdb %s. %s
+*Parameters*::
+*deviceType* (STRING): The device type.
+*deviceName* (STRING): Physical path name of the device on which the command failed. It is in the format "path_id.device_id", where "path_id := switch:port | adapter". For example, switch1:5:40 or 8b.40.
+*ha_status* (INTHEX): Value returned by the host adapter driver describing completion status of the I/O request execution at the transport layer or physical link layer. For this error message, the value is 9.
+*cdb* (STRING): String containing the opcode byte of the command descriptor block (CDB) that was sent to the device. If the opcode was for a READ (0x28) or a WRITE (0x2a) command, the logical block address and the transfer length are also included. For example, 0x28:logical_block_address:transfer_length.
+*disk_information* (STRING): Formatted information about the disk, including the disk's vendor, model, firmware revision, and serial number.
+
+== scsi.cmd.underrun
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an I/O request receives an underrun error and has not specifically instructed the SCSI layer to ignore underrun errors.
+*Corrective Action*::
+If there are command underruns associated with the device specified in this event and there are no other devices on the same bus/loop experiencing similar problems, the device should be evaluated for proper operation and possible repair/replacement.
+*Syslog Message*::
+%s device %s: Received a data underrun: cdb %s. Not all the data was received. Possible transmission error. I/O will be retried. %s
+*Parameters*::
+*deviceType* (STRING): The device type.
+*deviceName* (STRING): The electrical path name of the device on which the command failed.
+*cdb* (STRING): A string containing the opcode byte of the CDB which was sent to the device. If the opcode was for a READ (0x28) or a WRITE (0x2a), the logical block address and the transfer length are included as well.
+*disk_information* (STRING): Formatted information about the disk, including the disk's vendor, model, firmware revision, and serial number.
+
+== scsi.cmd.unexpectedAdapterError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a hardware adapter returns an error that is unknown to the SCSI layer.
+*Corrective Action*::
+The associated hardware adapter should be evaluated for proper operation and possible repair/replacement.
+*Syslog Message*::
+%s device %s: Unexpected adapter error: HA status 0x%x: cdb %s. %s
+*Parameters*::
+*deviceType* (STRING): The device type.
+*deviceName* (STRING): The electrical path name of the device on which the command failed.
+*haStatus* (INTHEX): The value of the HA status field for the failed command.
+*cdb* (STRING): A string containing the opcode byte of the CDB which was sent to the device. If the opcode was for a READ (0x28) or a WRITE (0x2a), the logical block address and the transfer length are included as well.
+*disk_information* (STRING): Formatted information about the disk, including the disk's vendor, model, firmware revision, and serial number.

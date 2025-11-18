@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: ha-partner-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.partner events
+---
+
+= ha.partner events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.partner.discovered
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a controller in an High Availability Configuration discovers its HA partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Discovered HA partner with system ID %d, port %d.
+*Parameters*::
+*sysid* (INT): System ID of the HA partner.
+*port* (INT): Port number of the HA partner.

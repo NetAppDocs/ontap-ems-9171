@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: aggr-grow-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: aggr.grow events
+---
+
+= aggr.grow events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== aggr.grow.completed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when request to grow an aggregate is completed successfully. The request to grow the aggregate could be DMAP-triggered or SDE-triggered.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Request to grow aggregate "%s" is complete. Old size: %lu, new size: %lu, old state: %d, new state: %d.
+*Parameters*::
+*aggr_name* (STRING): Name of the aggregate.
+*old_size* (LONGINT): Size of the aggregate before it is grown.
+*new_size* (LONGINT): Size of the aggregate after it is grown.
+*previous_state* (INT): State of the aggregate before it is grown.
+*current_state* (INT): State of the aggregate after it is grown.

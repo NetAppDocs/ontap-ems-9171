@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: nblade-nfsconnresetandclose-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.nfsconnresetandclose events
+---
+
+= nblade.nfsconnresetandclose events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.nfsConnResetAndClose
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the server aborts the connection with the client by sending one or more RST segments, immediately resulting in the connection state being discarded.
+*Corrective Action*::
+If this message occurs more than three times for a particular client in 30-60 minutes, make note of the IP address of the affected client. Verify that the network between the client and the storage system is functioning normally. After verifying the health of the network, verify that there are no issues related to networking on the client side. Check IP connectivity over the cluster interfaces between the two nodes. If the problem persists after addressing issues on the network or the client, contact NetApp technical support.
+*Syslog Message*::
+Shutting down connection with the client. Vserver ID is %d; network data protocol is %s, Rpc Xid 0x%x; client IP address:port is %s:%d. local IP address is %s; reason is %s.
+*Parameters*::
+*vserverId* (INT): Identifier for the Vserver associated with this operation.
+*serviceProtocol* (STRING): Network data protocol used in the connection.
+*rpcXid* (INT): Remote procedure call XID.
+*remoteAddr* (STRING): IP address of the client machine.
+*remotePort* (INT): TCP or UDP port number used by the remote client to send the data.
+*localAddr* (STRING): IP address of the local interface serving the protocol operation.
+*reason* (STRING): Reason for the disconnection.

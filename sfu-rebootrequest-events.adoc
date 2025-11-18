@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: sfu-rebootrequest-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfu.rebootrequest events
+---
+
+= sfu.rebootrequest events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfu.rebootRequest
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the disk shelf firmware update is complete and the disk shelf will be rebooted to run the new code.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Issuing a request to reboot disk shelf %s.shelf%d module %s.
+*Parameters*::
+*channelName* (STRING): Name of the adapter port or switch port of the disk shelf to be rebooted.
+*shelfId* (INT): ID of the disk shelf to be rebooted.
+*module* (STRING): Module to be rebooted.

@@ -1,0 +1,34 @@
+---
+sidebar: sidebar
+permalink: repl-send-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.send events
+---
+
+= repl.send events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.send.mgr.forcedLogical
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a SnapMirror(R) transfer uses logical mode without even attempting raw directory negotiation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*srcVolMsid* (LONGINT): Source volume Master Data Set ID (MSID).
+*srcVolDsid* (LONGINT): Source volume Data Set ID (DSID).
+*srcVolClusterId* (STRING): Source volume cluster Universally Unique ID (UUID).
+*srcVolVserverId* (INT): Source volume Vserver ID.
+*srcInstanceImageUuid* (STRING): Source transfer instance snapshot UUID.
+*srcVersionImageUuid* (STRING): Source transfer version snapshot UUID.
+*srcInstanceRefImageUuid* (STRING): Source reference instance snapshot UUID.
+*srcVersionRefImageUuid* (STRING): Source reference version snapshot UUID.

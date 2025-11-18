@@ -1,0 +1,52 @@
+---
+sidebar: sidebar
+permalink: cmds-software-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cmds.software events
+---
+
+= cmds.software events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cmds.software.dirErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs because the system cannot create the directory at the designated path.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Could not create directory %s: %s
+*Parameters*::
+*path* (STRING): Path where directory was supposed to be created.
+*errorMsg* (STRING): Error message.
+
+== cmds.software.installDone
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during software update and installation to inform you that the installation is complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Software: Installation of %s was completed.
+*Parameters*::
+*fileName* (STRING): Name of the file to be updated/installed.
+
+== cmds.software.installNotDone
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during software update and installation to inform you that installation failed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Software: Installation of %s failed.
+*Parameters*::
+*fileName* (STRING): Name of the file to be updated/installed.

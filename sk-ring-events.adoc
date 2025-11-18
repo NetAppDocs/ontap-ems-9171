@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: sk-ring-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sk.ring events
+---
+
+= sk.ring events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sk.ring.buffer.saved
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message indicates that a module detected a condition that warranted dumping the internal tracing buffer to a file.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*module* (STRING): Module requesting the dump.
+*filename* (STRING): Filename-extension of the dump file created. The filename-base is accessible by running the 'sysctl ntap.sktrace.filename' command at a shell prompt.
+*description* (STRING): Description of the state that caused the dump and when the dumped file should be examined. For example, if the buffers are dumped during replication and the system is experiencing replication errors, then the dumped file might hold information important for debugging.

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: callhome-sm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.sm events
+---
+
+= callhome.sm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.sm.vsdr.break.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a break operation on a SnapMirror(R) relationship that is a part of VserverDR fails. If your system is configured to do so, it generates and transmits an AutoSupport (or "call home") message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Contact NetApp technical support for additional information.
+*Syslog Message*::
+Call home for SNAPMIRROR BREAK FAILURE.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*SourceVserver* (STRING): Source Vserver of the SnapMirror relationship.
+*DestVserver* (STRING): Destination Vserver of the SnapMirror relationship.

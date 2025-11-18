@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: wafl-vvclock-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.vvclock events
+---
+
+= wafl.vvclock events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.vvclock.string
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an operation is run on an aggregate while the flexible volume level admin (vvc) lock of one of volumes of the aggregate is held by another subsystem. The message prints the name the subsystem that is holding the lock and the type of lock.
+*Corrective Action*::
+Stop the subsystem that is using this volume/aggregate so that the operation can be run.
+*Syslog Message*::
+%s: aggregate %s is busy. Reason: vvc lock of the volume %s is held by subsystem %s. %s.
+*Parameters*::
+*operation* (STRING): Name of the operation.
+*aggrname* (STRING): Name of the aggregate, one of the volumes of which is holding the vvc lock.
+*vvolname* (STRING): Name of the volume that is holding the vvc lock.
+*lockerstring* (STRING): Name of the subsystem that is holding the vvc lock.
+*locktype* (STRING): vvc lock type:WAFL(R) or SnapMirror(R).

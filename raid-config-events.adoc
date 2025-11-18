@@ -1,0 +1,977 @@
+---
+sidebar: sidebar
+permalink: raid-config-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.config events
+---
+
+= raid.config events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.config.check.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs during a mirror check, when the system discovers that all plexes have failed in an aggregate.
+*Corrective Action*::
+To resolve this problem, complete the following steps: 1. Identify the problem volume from the system logs. 2. Determine the reason for the plex failures, such as disk drive, disk shelf, or loop failure. 3. Replace any faulty components that you discover. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+%s %s%s: All plexes have failed.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.config.check.failedPlex
+*Severity*::
+ERROR
+*Description*::
+This message occurs during a mirror check, when the system discovers that an aggregate has a failed plex.
+*Corrective Action*::
+To resolve this problem, complete the following steps: 1. Identify the problem volume and failed plex from the system logs. 2. Determine the reason for the plex failure, such as disk drive, disk shelf, or loop failure. 3. Replace any faulty components that you discover. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Plex %s%s has failed.
+*Parameters*::
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.config.check.offlinePlex
+*Severity*::
+ERROR
+*Description*::
+This message occurs during a mirror relationship check when the system discovers that an aggregate has become mirror-degraded due to an offline plex.
+*Corrective Action*::
+Bring the plex back online with the "storage aggregate plex online" command.
+*Syslog Message*::
+Plex %s%s is offline.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate.
+*plex* (STRING): Name of the plex.
+
+== raid.config.disk.bad.label
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when configuration management detects that an unassimilated disk has a label with unexpected or missing data, and temporarily removes that disk from service. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s has bad or missing data on label.
+*Parameters*::
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*failure_reason* (STRING): Text description of the storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.disk.bad.label.version
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when configuration management detects that an unassimilated disk has a label with an unsupported version, and temporarily removes that disk from service. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s has an unsupported label version.
+*Parameters*::
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*failure_reason* (STRING): Text description of the storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.disk.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when configuration management has detected that an unassimilated disk has failed, and has permanently removed that disk from service.
+*Corrective Action*::
+Wait for the event message raid.disk.unload.done or raid.carrier.remove to be issued and then replace the carrier containing the failed disk. If the disk is contained in a single-disk carrier, raid.disk.unload.done will be issued immediately. Otherwise, wait for raid.carrier.remove which indicates the carrier has been fully prepared for removal.
+*Syslog Message*::
+%s failed.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*failure_reason* (STRING): A text description of storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.disk.init.failed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when configuration management detects that a disk has failed its device initialization sequence, and temporarily removes that disk from service. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s initialization failed.
+*Parameters*::
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*failure_reason* (STRING): Text description of the storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.disk.labeled.broken
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when configuration management detects that a filesystem disk was failed under a previous release of Data ONTAP(R), and has permanently removed that disk from service. Data ONTAP takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s was labeled "broken" in a previous release.
+*Parameters*::
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*failure_reason* (STRING): Text description of the storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.disk.missing
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when configuration management has detected that an unassimilated disk has gone missing from the filer, and has removed that disk from the configuration.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s is missing.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*failure_reason* (STRING): A text description of storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.disk.multipleFail
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is generated when we detect additional disk failures during the processing of a failed disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+While processing failed disks, %d additional disks suffered a failure
+*Parameters*::
+*ndisks* (INT): The number of additional disks that have failed
+
+== raid.config.disk.not.responding
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when configuration management detects that an unassimilated disk is temporarily not responding to requests, and temporarily removes that disk from service. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s is not responding.
+*Parameters*::
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*failure_reason* (STRING): Text description of the storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.disk.rawsize.shrank
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when configuration management detects that an unassimilated disk's stored rawsize is greater than the physical size of the disk, and temporarily removes that disk from service. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s shrank.
+*Parameters*::
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*failure_reason* (STRING): Text description of the storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.disk.recovering
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when configuration management detects an unassimilated disk that has failed to respond to requests. The disk is temporarily removed from service. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Attempting to bring %s back into service.
+*Parameters*::
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*failure_reason* (STRING): Text description of the storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.disk.tradvol
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when configuration management detects that the disk belongs to a traditional volume which is not supported on clustered Data ONTAP(R) systems. The disk is removed from service.
+*Corrective Action*::
+Install a version of Data ONTAP(R) that supports the traditional volume, or remove the traditional volume disks.
+*Syslog Message*::
+The label on %s indicates that the disk belongs to a traditional volume which is not supported on clustered Data ONTAP(R) systems.
+*Parameters*::
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM and carrier serial number.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*failure_reason* (STRING): Text description of the storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.filesystem.disk.admin.failed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued after the "disk fail -i" command is used to administratively fail a filesystem disk, and configuration management has permanently removed that disk from service.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+File system %s is being failed by administrator.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*failure_reason* (STRING): A text description of storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.filesystem.disk.admin.failed.after.copy
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the "disk fail" command is used to administratively fail a filesystem disk. The disk was copied to a replacement and configuration management has permanently removed that disk from service.
+*Corrective Action*::
+Wait for the event message raid.disk.unload.done or raid.carrier.remove to be issued and then replace the carrier containing the failed disk. If the disk is contained in a single-disk carrier, raid.disk.unload.done will be issued immediately. Otherwise, wait for raid.carrier.remove which indicates the carrier has been fully prepared for removal.
+*Syslog Message*::
+File system %s is being failed after it was successfully copied to a replacement.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*failure_reason* (STRING): A text description of storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.filesystem.disk.bad.label
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when configuration management detects that a filesystem disk has a label with unexpected or missing data, and temporarily removes that disk from service. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+File system %s has bad or missing data on label.
+*Parameters*::
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*failure_reason* (STRING): Text description of the storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.filesystem.disk.bad.label.version
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when configuration management detects that a filesystem disk has a label with an unsupported version, and temporarily removes that disk from service. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+File system %s has an unsupported label version.
+*Parameters*::
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*failure_reason* (STRING): Text description of the storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.filesystem.disk.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when configuration management has detected that a filesystem disk has failed, and has permanently removed that disk from service.
+*Corrective Action*::
+Wait for the event message raid.disk.unload.done or raid.carrier.remove to be issued and then replace the carrier containing the failed disk. If the disk is contained in a single-disk carrier, raid.disk.unload.done will be issued immediately. Otherwise, wait for raid.carrier.remove which indicates the carrier has been fully prepared for removal.
+*Syslog Message*::
+File system %s failed.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*failure_reason* (STRING): A text description of storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.filesystem.disk.failed.after.copy
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk reported a predictive failure. Data ONTAP used Rapid RAID Recovery to copy the disk to a replacement. Copying was successful and now the disk is permanently removed from service.
+*Corrective Action*::
+Wait for the event message raid.disk.unload.done or raid.carrier.remove to be issued and then replace the carrier containing the failed disk. If the disk is contained in a single-disk carrier, raid.disk.unload.done will be issued immediately. Otherwise, wait for raid.carrier.remove which indicates the carrier has been fully prepared for removal.
+*Syslog Message*::
+File system %s is being failed after it was successfully copied to a replacement.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*failure_reason* (STRING): A text description of storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.filesystem.disk.missing
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when configuration management has detected that a filesystem disk has gone missing from the filer, and has removed that disk from the configuration.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+File system %s is missing.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*failure_reason* (STRING): A text description of storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.filesystem.disk.not.responding
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when configuration management detects that a filesystem disk is temporarily not responding to requests, and temporarily removes that disk from service. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+File system %s is not responding.
+*Parameters*::
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*failure_reason* (STRING): Text description of the storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.filesystem.disk.rawsize.shrank
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when configuration management detects that a filesystem disk's stored rawsize is greater than the physical size of the disk, and temporarily removes that disk from service. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+File system %s shrank.
+*Parameters*::
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*failure_reason* (STRING): Text description of the storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.filesystem.disk.recovering
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when configuration management detects a filesystem disk that has failed to respond to requests. The disk is temporarily removed from service. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Attempting to bring file system %s back into service.
+*Parameters*::
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*failure_reason* (STRING): Text description of the storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.filesystem.lun.resized
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when configuration management detects that a filesystem gateway LUN's stored rawsize does not match the physical size of the LUN. Resizing of a filesystem gateway LUN is not supported. Only gateway LUNs that are spare can be resized. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+File system %s resized.
+*Parameters*::
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*failure_reason* (STRING): Text description of the storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.online.notComp
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a volume or aggregate cannot be brought online because SnapLock(R) is not supported on this version of Data ONTAP(R).
+*Corrective Action*::
+Install a version of Data ONTAP that is supported with SnapLock, available from your vendor.
+*Syslog Message*::
+%s %s%s is being taken offline. SnapLock is not supported on this version of Data ONTAP.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.config.online.notCompressComp
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a compressed virtual volume cannot be brought online because compressed volumes have adaptive storage efficiency which is not supported in this release of Data ONTAP(R).
+*Corrective Action*::
+Install a version of Data ONTAP that supports adaptive storage efficiency.
+*Syslog Message*::
+Volume '%s%s' is being taken offline because it is compressed and the container uses adaptive storage efficiency which is not supported in this version of Data ONTAP.
+*Parameters*::
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+
+== raid.config.online.req.bad.fsid
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a aggregate cannot be mounted because it has an invalid file system identifier (FSID) or the same FSID as another aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s has a duplicate or invalid FSID.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.config.online.req.badvers
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an aggregate that appeared to be mountable could not be mounted because the WAFL(R) version is invalid.
+*Corrective Action*::
+Install a new version of Data ONTAP(R) because the aggregate is from a later version of software.
+*Syslog Message*::
+This version of Data ONTAP does not recognize the filesystem of %s %s%s. The %s is probably from a later version of the software and is being left unmounted.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate object that could not be mounted.
+*vol_type2* (STRING): Repeat volume type for the syslog message.
+
+== raid.config.online.req.corrupt4
+*Severity*::
+ERROR
+*Description*::
+This event occurs when dynamic assimilation produced a writable aggregate which could not be mounted because it has been marked as having an inconsistent file system.
+*Corrective Action*::
+Run wafliron for the aggregate.
+*Syslog Message*::
+%s %s%s is inconsistent. Mounting it prior to running wafliron raises the risk of further file system inconsistencies and data corruption.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate object that could not be mounted.
+
+== raid.config.online.req.failed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an attempt to mount an aggregate fails, even though it appeared to be mountable.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Unable to mount %s %s%s.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate object that could not be mounted.
+
+== raid.config.online.req.inconsist
+*Severity*::
+ERROR
+*Description*::
+This event occurs when dynamic assimilation produced an aggregate which appeared to be mountable, but it could not be mounted because the WAFL magic number in the volume information block was incorrect. This is caused by an incomplete aggregate copy or snapmirror initialization.
+*Corrective Action*::
+Repeat aggr copy or snapmirror initialize that was not completed.
+*Syslog Message*::
+%s %s%s was left in an inconsistent state by an aborted vol copy or aggr copy copy or an aborted snapmirror initial (level 0) transfer. In order to bring it online, you must either destroy and re-create it, or complete an initial snapmirror transfer or vol copy or aggr copy.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate object that could not be mounted.
+
+== raid.config.online.req.invalid
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an aggregate that appeared to be mountable could not be mounted because neither volume info block was valid.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Neither volume information block of %s %s%s is valid.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate object that could not be mounted.
+
+== raid.config.online.req.mt.iv
+*Severity*::
+ERROR
+*Description*::
+This message occurs when WAFL(R) attempts to take over a mirror volume that does not have a valid mirror type. This might be caused by upgrading to the current version of Data ONTAP(R), which requires the mirror-type attribute, from a previous version that does not.
+*Corrective Action*::
+You cannot fix this condition by file system repair mechanisms such as wafliron. The data is not lost, but it is inaccessible as a mirror volume with invalid mirror information, and it cannot be brought online or taken offline. To reclaim the space you can destroy the mirror volume, but this results in the loss of all data on the mirror volume. If you choose to destroy the mirror volume anyway, the command to do so is as follows: 'volume delete -vserver vserver_name -volume vol_name'.
+*Syslog Message*::
+The mirror type associated with the mirror volume %s %s%s is invalid.
+*Parameters*::
+*vol_type* (STRING): Type of object (volume/aggregate).
+*owner* (STRING): Owner of the affected volume.
+*vol* (STRING): Name of the volume.
+
+== raid.config.online.req.nospace
+*Severity*::
+ERROR
+*Description*::
+This event occurs when there is insufficient free space in the containing aggregate to online a flexible volume and apply the flexible volumes space guarantees.
+*Corrective Action*::
+This error can be corrected by making more space available in the aggregate.
+*Syslog Message*::
+Containing aggregate does not have enough space to allow %s to be onlined.
+*Parameters*::
+*vol* (STRING): The name of the flexible volume which could not be onlined.
+
+== raid.config.online.req.ok
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when dynamic assimilation produced an aggregate which was successfully mounted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s is mounted. Time taken to mount the aggregate was %llu milliseconds.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate object that was mounted.
+*time* (LONGINT): Time taken to mount the aggregate.
+
+== raid.config.online.req.unsup
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the system determines that the deployment in which this aggregate was created does not match the current (clustered or nonclustered) deployment of Data ONTAP(R).
+*Corrective Action*::
+Bring the aggregate online on a node that matches the clustered or nonclustered deployment in which it was created.
+*Syslog Message*::
+This deployment of Data ONTAP does not support the file system of '%s %s'. It is being taken offline.
+*Parameters*::
+*type* (STRING): Volume type.
+*vol* (STRING): Name of the aggregate.
+
+== raid.config.raidsize.change
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a change to the raidsize parameter is made to match the change made to the raidtype parameter for a given volume or aggregate.
+*Corrective Action*::
+If the new raidsize is not appropriate, change it with the "storage aggregate modify -aggregate aggregate_name -maxraidsize new_size" command. For cache raidsize change, change it with the "storage aggregate modify -aggregate aggregate_name -cache_raid_group_size new_size" command.
+*Syslog Message*::
+%s %s%s:%sraidsize is adjusted from %d to %d after changing raidtype.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*host* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*cache_string* (STRING): String to indicate if its cache raidsize change. If this is a raidsize change for cache (SSD) RG then the string "cache" will be printed, it is empty otherwise.
+*old_size* (INT): Previous raidsize value.
+*new_size* (INT): New raidsize value.
+
+== raid.config.rg.size.reminder
+*Severity*::
+ERROR
+*Description*::
+Size limits for raid4 groups are significantly reduced in Data ONTAP(R) 6.5. Very large raid4 groups do not provide adequate protection from data loss and they are not supported any more. Volumes with large raidgroups should be converted to raid_dp. This message occurs daily as part of system check if some raid groups are too large for raid4 raidtype. That can happen after upgrade from an older version of Data ONTAP with more lax raidsize restrictions. It can also be the result of changing raidtype from raid_dp to raid4. That should be used only to revert to an older version of Data ONTAP. In all other cases, change raidtype of volumes with such large raid groups to raid_dp.
+*Corrective Action*::
+Change raidtype of the aggregate to raid_dp: "storage aggregate modify -aggregate aggregate_name -raidtype raid_dp"
+*Syslog Message*::
+Volume %s%s has a raid group larger than the limit for raid4 raidtype (max. raid group size: %d, limit is %d). Convert the volume to raid_dp.
+*Parameters*::
+*host* (STRING): Owner of the volume.
+*vol* (STRING): Volume name.
+*rg_size* (INT): Size of the largest raid group in the volume.
+*limit* (INT): Size limit for raid4 group.
+
+== raid.config.spare.disk.admin.removed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when the "disk remove" command is used to administratively fail a spare disk, and configuration management has temporarily removed that disk from service.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Spare %s is being removed by administrator.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*failure_reason* (STRING): A text description of storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.spare.disk.bad.label
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when configuration management detects that a spare disk has a label with unexpected or missing data, and has temporarily removed that disk from service.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Spare %s has bad label.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*failure_reason* (STRING): Text description of the storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.spare.disk.bad.label.version
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when configuration management detects that a spare disk has a label with an unsupported version, and has temporarily removed that disk from service.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Spare %s has an unsupported label version.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*failure_reason* (STRING): Text description of the storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.spare.disk.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when configuration management has detected that a spare disk has failed, and has permanently removed that disk from service.
+*Corrective Action*::
+Wait for the event message raid.disk.unload.done or raid.carrier.remove to be issued and then replace the carrier containing the failed disk. If the disk is contained in a single-disk carrier, raid.disk.unload.done will be issued immediately. Otherwise, wait for raid.carrier.remove which indicates the carrier has been fully prepared for removal.
+*Syslog Message*::
+Spare %s failed.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*failure_reason* (STRING): A text description of storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.spare.disk.missing
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when configuration management has detected that a spare disk has gone missing from the filer, and has removed that disk from the configuration.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Spare %s is missing.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*failure_reason* (STRING): A text description of storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.spare.disk.not.responding
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when configuration management detects that a spare disk is not responding to requests, and has temporarily removed that disk from service.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Spare %s is not responding.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*failure_reason* (STRING): Text description of the storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.spare.disk.rawsize.shrank
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when configuration management detects that a spare disk's stored rawsize is greater than the physical size of the disk, and has temporarily removed that disk from service.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Spare %s shrank.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*failure_reason* (STRING): Text description of the storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.spare.disk.recovering
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when configuration management detects a spare disk that has failed to respond to requests. The disk is temporarily removed from service. Attempts will be made to automatically bring this disk back into service. Unless the disk continues to exhibit the same problem, recovery should be complete within one hour. Otherwise, a follow-on notification will be sent within five hours to signal that the disk is being permanently removed from service.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Attempting to bring spare %s back into service.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*failure_reason* (STRING): Text description of the storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.config.vol.destroyed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when an aggregate is destroyed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s '%s%s' destroyed.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*volumeName* (STRING): Name of the aggregate object.
+
+== raid.config.vol.renamed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when an aggregate is renamed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s '%s%s' renamed to '%s%s'.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*oldOwner* (STRING): Owner of the aggregate.
+*oldVolumeName* (STRING): The original name of the object.
+*newOwner* (STRING): String indicating the owner of the affected object. This is exactly the same as the oldOwner parameter (or should be).
+*newVolumeName* (STRING): The new name of the object.
+
+== raid.config.vol.set.raid.cv
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when an aggregate with block checksums is changing its checksum verification flag value.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s: checksum verification %s.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*volumeName* (STRING): Name of the aggregate object.
+*status* (STRING): The status of the command.

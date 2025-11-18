@@ -1,0 +1,78 @@
+---
+sidebar: sidebar
+permalink: raid-mv-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.mv events
+---
+
+= raid.mv events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.mv.defVol.online
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when aggregates are brought online in a deferred way after mirror votes are retrieved automatically. Mirror votes are retrieved from the replicated database (RDB) in a deferred way when the RDB comes online.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RAID: Aggregate %s was brought online in a deferred way.
+*Parameters*::
+*aggregate_name* (STRING): Name of the aggregate that was brought online.
+
+== raid.mv.defVol.online.fail
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the system fails to bring an aggregate online because mirror vote could not be retrieved from RDB. The reason could be a missing or incorrect mirror vote record or if the previous attempt to retrieve mirror votes failed. Mirror vote retrieval is retried automatically.
+*Corrective Action*::
+The mirror vote retrieval is retried automatically. If that is not successful, aggregates that are kept offline due to the absence of mirror votes can be brought online by using the (privilege: diagnostic) ""storage aggregate online -forced"" command. Doing so, however, can cause data loss, and should only be attempted with help from NetApp Technical Support. Otherwise, wait until the other plex comes online for the aggregate to come online. For example, if one plex is missing due to disaster at that site, perform Disaster Recovery. Use the ""storage aggregate show"" command to see if plex is missing. If the condition persists, contact NetApp technical support.
+*Syslog Message*::
+RAID: Could not bring aggregate %s online because %s.
+*Parameters*::
+*aggregate_name* (STRING): Name of the aggregate that could not be brought online.
+*reason* (STRING): Reason the aggregate was not brought online.
+
+== raid.mv.defVol.online.skip
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system determines that the mirror vote should not be retrieved at this time, resulting in not bringing the aggregate online. The mirror vote retrieval process is retried automatically.
+*Corrective Action*::
+If the aggregate is a left-behind aggregate, use the "metrocluster switchback" command to return it to its original owner where it can be brought online. Otherwise, the system will automatically retry the mirror vote retrieval process.
+*Syslog Message*::
+RAID: Aggregate %s was not brought online because %s.
+*Parameters*::
+*aggregate_name* (STRING): Name of the aggregate that was skipped.
+*reason* (STRING): Reason the aggregate was skipped.
+
+== raid.mv.transfer.write
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when mirror votes are received via HA message and are written to the local mailbox. Extended mirror vote write times can potentially prevent or delay the partner's ability to change ownership of a mirrored aggregate to this node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The mailbox write for %d received records took %llu milliseconds.
+*Parameters*::
+*records* (INT): Number of new records written to the mailbox.
+*write_time* (LONGINT): Time it took to write to the mailbox in milliseconds.
+
+== raid.mv.unexpected.local
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when we pull mirror votes from the replicated database (RDB), and there is a stale vote present in the mailbox. The vote from the RDB is treated as the correct vote, and the stale vote is discarded. The stale vote was probably due to not having been cleaned or deleted in the past.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RAID: Found a stale vote for aggregate %s in the mailbox when the mirror vote was pulled from the RDB.
+*Parameters*::
+*aggregate* (STRING): Name of the aggregate.

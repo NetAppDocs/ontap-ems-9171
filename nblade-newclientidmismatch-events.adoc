@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: nblade-newclientidmismatch-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.newclientidmismatch events
+---
+
+= nblade.newclientidmismatch events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.NewClientIdMismatch
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a namestring collision occurs between NFS clients.
+*Corrective Action*::
+Ensure client has unique hostname and NFSv4 mount clientaddr to avoid this.
+*Syslog Message*::
+NFSv4 name string "%s" collision between clients %s and %s.
+*Parameters*::
+*clientNameStr* (STRING): Client identifier namestring during SETCLIENTID operation.
+*existingStr* (STRING): IP address of the existing client.
+*newStr* (STRING): IP address of the new client.

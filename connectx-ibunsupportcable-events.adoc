@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: connectx-ibunsupportcable-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: connectx.ibunsupportcable events
+---
+
+= connectx.ibunsupportcable events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== connectx.IbUnsupportCable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an unsupported InfiniBand cable is detected on the InfiniBand port.
+*Corrective Action*::
+Unplug the unsupported InfiniBand cable and plug in a supported cable. Search the support site "Hardware Universe" for information about supported InfiniBand cables.
+*Syslog Message*::
+Detected unsupported %s on InfiniBand port %s.
+*Parameters*::
+*cable_type* (STRING): InfiniBand cable type.
+*port_str* (STRING): InfiniBand port in which the cable is plugged.

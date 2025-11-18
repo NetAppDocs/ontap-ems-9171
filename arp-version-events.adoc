@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: arp-version-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: arp.version events
+---
+
+= arp.version events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== arp.version.updated
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an Autonomous Ransomware Protection (ARP) version is updated on a node, whether by the automated update process or by user action.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Autonomous Ransomware Protection (ARP) version updated to %s.
+*Parameters*::
+*op* (STRING): Autonomous Ransomware Protection (ARP) version.

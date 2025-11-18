@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: arl-connecttodestfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: arl.connecttodestfailed events
+---
+
+= arl.connecttodestfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== arl.connectToDestFailed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the local node cannot connect over the cluster network to the d-blade of the destination node while relocating an aggregate.
+*Corrective Action*::
+1. Verify that the destination node is up. 2. Use the "network interface show" command to verify that the cluster network interfaces on the local node and the destination node are both up. 3. Retry the aggregate relocation command.
+*Syslog Message*::
+Failed to connect with the destination node %s (d-blade ID: %s) over the cluster network while relocating aggregate %s.
+*Parameters*::
+*destName* (STRING): Name of the destination node.
+*destDbladeid* (STRING): D-blade ID of the destination node.
+*aggrName* (STRING): Name of the aggregate being relocated.

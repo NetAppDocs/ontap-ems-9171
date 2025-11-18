@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: block-giveback-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: block.giveback events
+---
+
+= block.giveback events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== block.giveback.during.aufo
+*Severity*::
+ALERT
+*Description*::
+This message occurs during a storage failover (SFO) aggregate giveback, when a SnapMirror(R) active sync automatic unplanned failover operation is in progress.
+*Corrective Action*::
+Wait for the operation to finish. If giveback is required immediately, use the "override-veto true" parameter with the giveback command, or retry the operation with the "override-vetoes true" parameter. Note: Using this option might cause an I/O disruption.
+*Syslog Message*::
+Storage Failover giveback cannot complete for aggregate "%s" because an SnapMirror(R) active sync automatic unplanned failover is in progress.
+*Parameters*::
+*aggrname* (STRING): Name of the aggregate.

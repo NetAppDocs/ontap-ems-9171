@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: perfstatd-disk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: perfstatd.disk events
+---
+
+= perfstatd.disk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== perfstatd.disk.full
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the perfstat daemon (perfstatd) startup fails due to a full disk.This failure impacts the continuous archiving of performance data that technical support uses to troubleshoot performance issues.
+*Corrective Action*::
+Verify that the '/mroot' file system is full by executing the 'df /mroot' command from the freebsd shell. After clearing some space, restart perfstatd by executing the 'spmctl -e -h perfstatd' command from the freebsd shell.
+*Syslog Message*::
+The perfstat daemon startup failed due to a full disk.
+*Parameters*::
+(None).

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: sms-transition-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sms.transition events
+---
+
+= sms.transition events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sms.transition.retry
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a SnapMirror(R) initialize or resynchronize operation takes a long time to bring the relationship "in-sync" due to intermittent failure. This is not an error yet so retry has triggered. If it fails on retry, the EMS "sms.resync.attempt.failed" will be raised.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Initialize/Resynchronize operation between source volume "%s" and destination volume "%s" with relationship UUID "%s" is taking a long time to bring the relationship InSync due to intermittent failure causing a retry.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume of the SnapMirror relationship.
+*dstpath* (STRING): Path name of the destination volume of the SnapMirror relationship.
+*relationship_id* (STRING): Relationship UUID.

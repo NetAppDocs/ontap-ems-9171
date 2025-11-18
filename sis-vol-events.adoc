@@ -1,0 +1,71 @@
+---
+sidebar: sidebar
+permalink: sis-vol-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.vol events
+---
+
+= sis.vol events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.vol.auto.promote
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when deprioritized volume gets auto promoted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume "%s" is auto promoted: Percentage of writes happened in this window (%d%%) and percentage of dedupe savings (%d%%).
+*Parameters*::
+*vvol_name* (STRING): Volume name.
+*inline_process_pct* (INT): Percentage of writes happened after one window.
+*inline_saving_pct* (INT): Percentage of inline dedupe savings in each window.
+
+== sis.vol.overwrite.depri
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when automatic deduplication deprioritizes a volume due to a large number of overwrites in the block fingerprint log file.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Automatic deduplication on volume "%s" is deprioritized: percentage of overwrites in the fingerprint log file is %d%%.
+*Parameters*::
+*vvol_name* (STRING): Volume name.
+*stale_pct* (INT): Percentage of cumulative stale fingerprints after the fifth iteration of automatic deduplication runs.
+
+== sis.vol.savings.depri
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when automatic deduplication deprioritizes a volume due to potentially low storage efficiency savings.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Automatic deduplication on volume "%s" is deprioritized: low background savings (%d%%), low cross volume deduplication savings (%d%%) and low inline savings (%d%%) when compared total with minimum required (%d%%) .
+*Parameters*::
+*vvol_name* (STRING): Volume name.
+*bkg_savings* (INT): Background deduplication savings realized after the fifth iteration of automatic deduplication runs.
+*cvbd_savings* (INT): Cross Volume deduplication savings realized on the volume.
+*inline_savings* (INT): Inline deduplication savings realized on the volume.
+*min_savings_req* (INT): Min Savings required
+
+== sis.vol.verify.depri
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when automatic deduplication deprioritizes a volume due to a large number of stale fingerprint removal operations on the volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Automatic deduplication on volume "%s" is deprioritized: significant percentage of stale fingerprint removal operations (%d%%).
+*Parameters*::
+*vvol_name* (STRING): Volume name.
+*high_verify_pct* (INT): Percentage of cumulative stale fingerprint removal operations after the fifth iteration of automatic deduplication runs.

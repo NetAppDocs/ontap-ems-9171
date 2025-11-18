@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: shm-failurebytes-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: shm.failurebytes events
+---
+
+= shm.failurebytes events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== shm.failureBytes.fullError
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when writing the failure byte area returns an error due to being full.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+shm: Disk %s failure area has reached capacity; to clear, reload drive firmware.
+*Parameters*::
+*diskName* (STRING): Name of the disk.

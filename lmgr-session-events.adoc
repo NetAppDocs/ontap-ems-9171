@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: lmgr-session-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lmgr.session events
+---
+
+= lmgr.session events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lmgr.session.failed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event occurs when a SpinNP session has failed, which causes session-scoped (e.g. CIFS) locks on the D-blade to be dropped. Only affects locks acquired using the failed session. This will cause clients to see a service disruption until they re-connect to the server.
+*Corrective Action*::
+None -- clients will automatically try to reconnect to the server, re-locking files as necessary.
+*Syslog Message*::
+Dropped session-scoped locks from session %s:%s:%s due to failed session.
+*Parameters*::
+*initiator* (STRING): The blade ID of the initiator.
+*uniquifier* (STRING): The session uniquifier.
+*target* (STRING): The blade ID of the target.

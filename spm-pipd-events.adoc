@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: spm-pipd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: spm.pipd events
+---
+
+= spm.pipd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== spm.pipd.process.exit
+*Deprecated*::
+Deprecated as of Data ONTAP 9.7 because the pipd process no longer exists.
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the post-ingest processing daemon (pipd) involuntarily terminates. The termination of this service prevents data policies and constituent balancing from being applied to Infinite Volume data owned by the node in question.
+*Corrective Action*::
+The system attempts to recover by restarting the pipd. If the process does not restart within the threshold number of retries, then an AutoSupport(tm) message is sent. If your system is not configured to send AutoSupport messages and the issue persists, contact technical support.
+*Syslog Message*::
+The pipd with ID %d exited as a result of %s. This server will attempt to restart.
+*Parameters*::
+*id* (INT): Process identifier.
+*cause* (STRING): Plain text description of why the process exited.

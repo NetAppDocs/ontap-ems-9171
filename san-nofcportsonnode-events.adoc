@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: san-nofcportsonnode-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.nofcportsonnode events
+---
+
+= san.nofcportsonnode events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.NoFCPortsOnNode
+*Severity*::
+ERROR
+*Description*::
+This message occurs in MetroCluster(TM) configurations on clustered Data ONTAP(R) systems when an attempt to place an FCP LIF on a particular node fails because the system cannot find any active ports on that node.
+*Corrective Action*::
+List the offline FC ports on the DR partner node by using the "fcp adapter show -node <node_name;> -state down" command. Modify the state of the offline FC ports with the following command: "fcp adapter modify -node <node_name;> -adapter <adapter_name;> -state up". Once the FC ports in question are online, resynchronize the Vserver configuration using the "metrocluster vserver resync" command. With the command "fcp adapter show -node <node_name;>" verify that FC ports are present. If the FC ports are absent in the destination cluster node (DR partner), contact customer support to provision the FC ports.
+*Syslog Message*::
+Cannot find online FC ports on Node "%s" for placing LIF "%s" in Vserver "%s".
+*Parameters*::
+*node_name* (STRING): Node name.
+*lif* (STRING): LIF name.
+*vserver_name* (STRING): Vserver name.

@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: air-vplus-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: air.vplus events
+---
+
+= air.vplus events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== air.vplus.certify.issue
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered inside an indexed storage tree. The inconsistency is automatically repaired immediately upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+AIR vplus certification of %s failed: %s, %s for subtype %d
+*Parameters*::
+*fh* (STRING): File handle of the storage tree.
+*condition* (STRING): Specific metadata validation test that failed.
+*source* (STRING): Location of the failing metadata validation test.
+*subtype* (INT): Subtype of the inode encountering the inconsistency.

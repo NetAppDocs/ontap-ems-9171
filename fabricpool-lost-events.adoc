@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: fabricpool-lost-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fabricpool.lost events
+---
+
+= fabricpool.lost events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fabricpool.lost.contact.scu
+*Severity*::
+ALERT
+*Description*::
+This message occurs when ONTAP has lost contact with the Service Control Unit used with cloud subscription licenses.
+*Corrective Action*::
+Ensure that the Service Control Unit is running and Ontap should have connectivity to it.
+*Syslog Message*::
+ONTAP has lost contact with the service control unit for the license of type %s. Cluster ID: %s.
+*Parameters*::
+*license_type* (STRING): The type of license which has lost contact with the Service Control Unit.
+*cluster_uuid* (STRING): UUID of the cluster.

@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: clam-disable-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: clam.disable events
+---
+
+= clam.disable events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== clam.disable
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Kernel Cluster Services (KCS) Connectivity, Liveliness, Availability Monitor (CLAM) is disabled by either turning off the KCS capability or by setting the 'clam sysctl/bootarg' variable.
+*Corrective Action*::
+If you want CLAM functionality disabled, no action is needed. Otherwise, reenable CLAM and reboot the node to make CLAM operational again.
+*Syslog Message*::
+CLAM functionality is disabled.
+*Parameters*::
+(None).
+
+== clam.disable.takeover
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Kernel Cluster Services (KCS) Connectivity, Liveliness, Availability Monitor (CLAM) is disabled from initiating storage failover requests. This capability is automatically disabled in a NAS-only configuration. To control the setting of CLAM takeover, additional interfaces, such as sysctl bootarg, are provided.
+*Corrective Action*::
+No action is needed.
+*Syslog Message*::
+CLAM is disabled from performing storage failover.
+*Parameters*::
+(None).

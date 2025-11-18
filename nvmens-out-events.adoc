@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: nvmens-out-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvmens.out events
+---
+
+= nvmens.out events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== NVMeNS.out.of.space
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when an NVMe namespace has been brought offline because of a write failure due to lack of space.
+*Corrective Action*::
+Add space to the volume, and then bring the NVMe namespace online using the "vserver nvme namespace modify" command.
+*Syslog Message*::
+NVMe namespace %s, vol %s (DSID %llu) is out of space (UUID: %s).
+*Parameters*::
+*path* (STRING): Path for the NVMe namespace that has been brought offline.
+*volume_name* (STRING): Name of the containing volume.
+*volume_dsid* (LONGINT): Data set ID (DSID) of the containing volume.
+*object_uuid* (STRING): UUID of the NVMe namespace.
+*object_type* (STRING): Type of object under notification.

@@ -1,0 +1,220 @@
+---
+sidebar: sidebar
+permalink: gb-cfo-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: gb.cfo events
+---
+
+= gb.cfo events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== gb.cfo.abort.raid.fm
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a high-availability (HA) controller failover (CFO) giveback is canceled due to RAID activity on a partner aggregate.
+*Corrective Action*::
+Reissue the "storage failover giveback" command to initiate giveback to the partner after the pending or in-progress operation on the partner volume or aggregate is complete. Use the "storage aggregate status -r" command to view the state of the aggregate. If a plex is offline, use the "storage aggregate plex online" command to bring the plex online. If unmirrored aggregates are not supported on this configuration, use the "storage aggregate mirror" command to mirror this aggregate.
+*Syslog Message*::
+%s %s%s is %s; canceling giveback.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Current owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*reason* (STRING): Activity that is preventing CFO giveback.
+
+== gb.cfo.veto.asup.generalNopart
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when AutoSupport vetoes a controller failover (CFO) giveback request because an AutoSupport message for the down partner node was not collected prior to the giveback request.
+*Corrective Action*::
+Typically, an AutoSupport message for the partner node is collected shortly after takeover is complete. If the CFO giveback was attempted and vetoed within 20 minutes of the takeover, retry the operation later. If time does not permit waiting, use the 'cf giveback -f' command to force a giveback.
+*Syslog Message*::
+AutoSupport vetoed giveback because an AutoSupport message for the down partner node was not yet collected.
+*Parameters*::
+(None).
+
+== gb.cfo.veto.coredump.pardump
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the partner node is still dumping core, and cannot yet resume serving data. The giveback attempt has been canceled.
+*Corrective Action*::
+Either let the dumpcore operation finish, or use the "-override-vetoes true" parameter to force a giveback.
+*Syslog Message*::
+Giveback canceled because partner is still dumping core
+*Parameters*::
+(None).
+
+== gb.cfo.veto.coredump.parsave
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when savecore is currently saving the partner coredump. This work will be lost if a giveback is done at this time, so the giveback has been canceled.
+*Corrective Action*::
+Either let the savecore operation finish, or use the "-override-vetoes true" parameter to force a giveback.
+*Syslog Message*::
+Giveback canceled because savecore is running. %d%% - %d of %d blocks saved
+*Parameters*::
+*percent* (INT): Percentage of core that has been saved
+*completed* (INT): Number of blocks that have been saved
+*total* (INT): Total number of blocks in the core
+
+== gb.cfo.veto.coredump.savinit
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when savecore is getting ready to start saving the partner coredump. The giveback attempt has been canceled.
+*Corrective Action*::
+Either let the savecore operation finish, or use the "-override-vetoes true" parameter to force a giveback.
+*Syslog Message*::
+Giveback canceled because savecore is initializing
+*Parameters*::
+(None).
+
+== gb.cfo.veto.lmgr.nonCA.broke
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a giveback is forced that causes non-continuously available (non-CA) locks on the volume to be dropped. CA locks are established by opens through CIFS CA shares for regular files on read-write volumes that reside in root aggregates. These locks are mirrored to the node's high-availability (HA) partner to support the nondisruptive property of CA shares. The rest of the locks are classified as non-CA locks and are not mirrored to the node's HA partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Dropped non-CA locks on volume %s%s%s%s on root aggregate %s due to forced giveback.
+*Parameters*::
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name alone is insufficient.
+*aggrname* (STRING): Aggregate name.
+
+== gb.cfo.veto.lmgr.nonCA.locks
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a giveback has started but cannot proceed because non-continuously available (non-CA) locks are present on the volume. CA locks are established by opens through CIFS CA shares for regular files on read-write volumes that reside in root aggregates. These locks are mirrored to the node's high-availability (HA) partner to support the nondisruptive property of CA shares. The rest of the locks are classified as non-CA locks and are not mirrored to the node's HA partner.
+*Corrective Action*::
+Based on how resilient they are to failures, applications must either gracefully close sessions over which non-CA locks are established or accept lock state disruption. To determine the open files that have these sessions established, run the 'vserver cifs session file show -hosting-aggregate "aggregate list" -continuously-available No' command. "aggregate list" is a list of aggregates that are sent home as a result of the giveback operation. If lock state disruption for all existing non-CA locks is acceptable, retry the giveback operation by using the '-override-vetoes true' option.
+*Syslog Message*::
+Could not complete giveback because of non-CA locks on volume %s%s%s%s root aggregate %s.
+*Parameters*::
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name alone is insufficient.
+*aggrname* (STRING): Aggregate name.
+
+== gb.cfo.veto.nvsave.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot perform a giveback due to WAFL(R) NVSave file replay activity, and must abort the giveback.
+*Corrective Action*::
+Retry the giveback operation after completion of NVSave files replay. Replay completion is indicated by the EMS message 'wafl.nvsave.replaying.pass' or 'wafl.nvsave.replaying.fail'.
+*Syslog Message*::
+%s %s%s%s%s has WAFL NVSave file replay activity underway; canceling giveback.
+*Parameters*::
+*type* (STRING): Object type (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+
+== gb.cfo.veto.repl
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a cluster failover(CFO) giveback is vetoed by a critical replication transfer (for example, volume move in the cutover phase).
+*Corrective Action*::
+Either abort the replication transfer that is preventing the giveback from being completed, retry the 'storage failover giveback' command with the '-override-vetoes true' option, or wait for the transfer to finish.
+*Syslog Message*::
+Could not complete giveback because a replication transfer with UUID %s is in progress.
+*Parameters*::
+*transferId* (STRING): UUID of the SnapMirror(R) replication transfer that vetoed the giveback.
+
+== gb.cfo.veto.sanown.ReassignInProgress
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a controller disallows a giveback attempt because the partner's disk ownership is being reassigned. Typically, ownership reassignment is done after a controller replacement.
+*Corrective Action*::
+Reissue the giveback request after disk ownership assignment is completed.
+*Syslog Message*::
+Giveback was vetoed because the disk ownership reassignment in progress on the partner cannot be interrupted.
+*Parameters*::
+(None).
+
+== gb.cfo.veto.snap.fail
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system cannot perform a giveback due to snapshot activity, and must abort the giveback.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s%s%s has snapshot activity underway; canceling giveback.
+*Parameters*::
+*type* (STRING): Object type (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the the volume name itself is insufficient.
+
+== gb.cfo.veto.snap.warning
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects snapshot activity during giveback.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s%s%s has snapshot activity underway.
+*Parameters*::
+*type* (STRING): Object type (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the the volume name itself is insufficient.
+
+== gb.cfo.veto.storageDiskBrkn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a giveback is aborted because a failed disk is present.
+*Corrective Action*::
+Remove all failed disks and retry the giveback.
+*Syslog Message*::
+Failed disk %s should be removed before the giveback command is invoked.
+*Parameters*::
+*diskName* (STRING): Name of the device.
+
+== gb.cfo.veto.storageDiskByp
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a giveback is aborted because one or more bypassed disks are present.
+*Corrective Action*::
+Remove all bypassed disks and retry the giveback.
+*Syslog Message*::
+All bypassed disks should be removed before a giveback command is entered.
+*Parameters*::
+(None).
+
+== gb.cfo.veto.storageDiskSanit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a giveback is aborted because disk sanitization is in progress.
+*Corrective Action*::
+Retry the giveback after sanitization is completed.
+*Syslog Message*::
+Disk sanitization is in the process of formatting a disk. This operation should not be interrupted by a giveback.
+*Parameters*::
+(None).

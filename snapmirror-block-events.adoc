@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: snapmirror-block-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapmirror.block events
+---
+
+= snapmirror.block events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapmirror.block.on.reconstruct
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a SnapMirror(R) operation needs to reconstruct the block type bits. The SnapMirror transfer is paused, resuming only after the block type bits for the data to be transferred have been reconstructed.
+*Corrective Action*::
+If you do not want the SnapMirror transfer to pause until the block type bit reconstuction is complete, abort the transfer, allow the reconstruction to finish, and then try the SnapMirror transfer again.
+*Syslog Message*::
+Starting reconstruction on %s. SnapMirror transfer from %s to %s:%s is blocked until the reconstruction is complete. If you do not want the SnapMirror transfer to be paused until the block type bit reconstuction is complete, abort the transfer, allow the reconstruction to finish, and then try the SnapMirror transfer again.
+*Parameters*::
+*volume* (STRING): SnapMirror volume.
+*srcpath* (STRING): Replication source path.
+*dstfiler* (STRING): Replication destination system.
+*dstpath* (STRING): Replication destination path.
+
+== snapmirror.block.reconstructErr
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a SnapMirror operation needs to reconstruct block type bits, but this operation cannot be started.
+*Corrective Action*::
+Please check for any other error message returned.
+*Syslog Message*::
+Unable to start block type bits reconstruction on %s, %s
+*Parameters*::
+*volume* (STRING): The snapmirror volume
+*error* (STRING): Description of the error.

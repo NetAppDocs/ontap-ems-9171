@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: cf-nm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.nm events
+---
+
+= cf.nm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.nm.nicReset
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the controller performs a soft reset of the HA interconnect card as part of automatic recovery from a timeout or link error.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+HA interconnect: Initiating soft reset on card %d due to %s.
+*Parameters*::
+*nic_num* (INT): Interconnect NIC number.
+*reason* (STRING): Describes why the soft reset was initiated. Possible reasons: rendezvous jammed rendezvous fm timeout rendezvous peer-connect timeout
+
+== cf.nm.nicViError
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when any error is detected in any virtual interface while handling a link transition.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+HA interconnect: NIC %d has an error on %s (virtual interface #%d): %s.
+*Parameters*::
+*nic_num* (INT): Interconnect NIC number.
+*vi_name* (STRING): Name of the virtual interface.
+*vinum* (INT): Virtual interface number.
+*origin* (STRING): Origin of the error.

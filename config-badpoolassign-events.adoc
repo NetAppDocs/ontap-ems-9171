@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: config-badpoolassign-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.badpoolassign events
+---
+
+= config.badpoolassign events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.BadPoolAssign
+*Severity*::
+ERROR
+*Description*::
+This message occurs when SyncMirror(R) is in use and disks are assigned to different pools on the same interface or loop. This affects the fault isolation of the plexes in mirrored aggregates such that if a single interface fails, both plexes in an aggregate might fail or become degraded. If both plexes of an aggregate fail, the system enters multidisk panic.
+*Corrective Action*::
+If the disk is a spare disk, use the "storage disk assign -pool [0|1]" command to change the pool assignment of the disks on the interface so that they are assigned to only one pool. If the disk is a file system disk, use the "storage disk replace" command to replace the disk from the incorrect pool with a spare disk from the correct pool.
+*Syslog Message*::
+Disk %s is in %s and other disks on this loop/domain are in %s. Disks/interfaces need to be in separate pools for SyncMirror.
+*Parameters*::
+*disk* (STRING): Name of the disk that fails.
+*disk_pool* (STRING): Name of the pool that the disk is in.
+*other_pool* (STRING): Name of the other pool.

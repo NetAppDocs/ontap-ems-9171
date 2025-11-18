@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: callhome-fc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.fc events
+---
+
+= callhome.fc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.fc.al.link
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a Fibre Channel arbitrated loop (FC-AL) has link failures. You need to resolve this issue promptly. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Check the FC-AL itself and the connections to the FC-AL for poor or broken connections and misconfigurations. Examine the event log for messages related to FC or disk I/O errors and take the corrective actions found there. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.fc.al.poor
+*Deprecated*::
+Deprecated as of ONTAP 9.2. Last used in DOT 7.1.0.
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects that a Fibre Channel arbitrated loop (FC-AL) is unreliable or is too poor in quality for data exchange. You need to resolve this issue promptly. The link errors are recoverable in the sense that the system is up and running. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Check the FC-AL itself and the connections to the FC-AL for poor or broken connections and misconfigurations. Examine the event log for messages related to FC or disk I/O errors and take the corrective actions found there. Restore normal, error-free communication for the FC-AL as quickly as possible. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for FC-AL RECOVERABLE ERRORS
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

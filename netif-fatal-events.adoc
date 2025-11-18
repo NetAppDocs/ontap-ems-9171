@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: netif-fatal-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.fatal events
+---
+
+= netif.fatal events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.fatal.err
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the network device's driver encounters an error from which it cannot recover.
+*Corrective Action*::
+Replace the network interface card.
+*Syslog Message*::
+The network device in slot %d encountered fatal error %s.
+*Parameters*::
+*slot* (INT): Slot number.
+*info* (STRING): Device specific information

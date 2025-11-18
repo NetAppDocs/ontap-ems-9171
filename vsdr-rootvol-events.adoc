@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: vsdr-rootvol-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsdr.rootvol events
+---
+
+= vsdr.rootvol events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsdr.rootvol.has.data
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects that there is data in the Server Virtual Machine root volume during a disaster recovery (DR) transfer phase. Vserver DR does not protect root volumes.
+*Corrective Action*::
+Move the data to a nonroot volume of the Vserver if it needs to be protected using DR.
+*Syslog Message*::
+Vserver %s has data in the root volume. Vserver DR does not protect data in the root volume.
+*Parameters*::
+*vserver* (STRING): Name of the Vserver.

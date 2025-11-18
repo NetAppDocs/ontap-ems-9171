@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: sasmon-adapter-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sasmon.adapter events
+---
+
+= sasmon.adapter events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sasmon.adapter.phy.disable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Serial Attached SCSI (SAS) transceiver (phy) attached to a SAS host bus adapter (HBA) is disabled due to one of the following reasons: exceeded loss of double word synchronization error threshold; exceeded running disparity error threshold; exceeded invalid double word error threshold; exceeded phy reset problem threshold; exceeded broadcast change threshold.
+*Corrective Action*::
+If the HBA is in use, check the cabling. If it is connected to the disk shelves, check the seating of the IOM (I/O module) cards. If that does not fix the problem, contact NetApp technical support.
+*Syslog Message*::
+Phy %d of HBA %s will be disabled due to %s errors.
+*Parameters*::
+*phyNum* (INT): Number of the phy being disabled.
+*adapterName* (STRING): Name of the associated SAS HBA.
+*errorType* (STRING): Type of error based on which the phy is being disabled.

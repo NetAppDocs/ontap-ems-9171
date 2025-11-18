@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-nobconnect-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.nobconnect events
+---
+
+= config.nobconnect events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.noBconnect
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the local node in an HA configuration has no access to its partner node's disk shelves because the partner node's shelves are not connected to the local node through the shelf's module B.
+*Corrective Action*::
+For an HA configuration that uses software disk ownership, verify that both the local and partner nodes can access the disks.
+*Syslog Message*::
+The local node cannot access the partner node's disk shelves because the partner node's shelves are not connected to the local node through their shelf module B.
+*Parameters*::
+(None).

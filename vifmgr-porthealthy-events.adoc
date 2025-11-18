@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: vifmgr-porthealthy-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.porthealthy events
+---
+
+= vifmgr.porthealthy events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.portHealthy
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when port health status changes from degraded to healthy.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The health status of port %s (node %s) has changed from degraded to healthy. This port can now be used for hosting LIFs.
+*Parameters*::
+*portName* (STRING): Name of the port whose health status changed from degraded to healthy.
+*nodeName* (STRING): Name of the node on which the port resides.

@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: san-noconnectediscsiport-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.noconnectediscsiport events
+---
+
+= san.noconnectediscsiport events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.NoConnectediSCSIPort
+*Severity*::
+ERROR
+*Description*::
+This message occurs in MetroCluster(TM) configurations on clustered ONTAP(R) systems, when ONTAP cannot replicate an IP logical interface (LIF) to a candidate port in the destination cluster. A candidate port is one that both resides on the disaster recovery (DR) partner node and is connected to the same subnet as the home port of the primary SVM IP LIF.
+*Corrective Action*::
+Check the wiring of the network ports and ensure that there are ports on the destination cluster node (DR partner) that are connected to the same subnet as the source cluster port hosting the primary SVM IP LIF. If the wiring is correct but this failure is still reported when you run the "metrocluster check lif show" command, ensure that the source LIF is operationally up. If the admin-status of the source LIF is down, bring it up using the "network interface modify" command. When the source LIF is up, run the "metrocluster check lif repair-placement" command from the source cluster, with the SVM name and the LIF name as inputs. Enter the "metrocluster check lif show" command again to check whether LIF placement succeeded or not.
+*Syslog Message*::
+Subnet discovery failed during LIF replication. There might not be any ports on the destination cluster node %s that are connected to subnet %s in IP space %s to place the %s LIF %s for SVM %s.
+*Parameters*::
+*node* (STRING): Name of the destination cluster node (DR partner) that does not have a port connected to the subnet.
+*subnet* (STRING): The subnet that the primary cluster port hosting the primary SVM IP LIF is connected to.
+*ipspace_name* (STRING): Name of the IP space that the primary cluster port hosting the primary SVM IP LIF is connected to.
+*data_protocol* (STRING): Data protocol of the LIF.
+*lif* (STRING): Name of the IP LIF.
+*vserver* (STRING): Name of the secondary SVM in the MetroCluster relationship.

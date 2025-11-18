@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nv-switchover-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nv.switchover events
+---
+
+= nv.switchover events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nv.switchover.continued
+*Severity*::
+ALERT
+*Description*::
+This message occurs when switchover proceeds even when nonvolatile RAM (NVRAM) inconsistencies are detected in the DR partner sections.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NVRAM validate: Error encountered (%s), but continuing switchover; some data might be lost.
+*Parameters*::
+*error* (STRING): Error string.

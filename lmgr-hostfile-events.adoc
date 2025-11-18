@@ -1,0 +1,57 @@
+---
+sidebar: sidebar
+permalink: lmgr-hostfile-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lmgr.hostfile events
+---
+
+= lmgr.hostfile events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lmgr.hostfile.cleared
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the volume lock manager hosts file is unusable. In such cases, the hosts files are cleared and reinitialized.
+*Corrective Action*::
+None.
+*Syslog Message*::
+Clearing lock manager file %s on volume %s due to error: %s.
+*Parameters*::
+*file_name* (STRING): Name of the file that is being cleared.
+*vol* (STRING): Name of the volume.
+*error* (STRING): Error code.
+
+== lmgr.hostfile.create.abort
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volume lock manager fails to create the hosts file.
+*Corrective Action*::
+None.
+*Syslog Message*::
+Creating lock manager file %s on volume %s failed due to error: %s.
+*Parameters*::
+*aggr* (STRING): The name of the volume.
+*file_name* (STRING): The name of the file that was being cleared.
+*error* (STRING): Error code.
+
+== lmgr.hostfile.init.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volume lock manager hosts file initialization fails.
+*Corrective Action*::
+None.
+*Syslog Message*::
+Initializing lock manager file %s on volume %s failed due to error: %s.
+*Parameters*::
+*aggr* (STRING): The name of the volume.
+*file_name* (STRING): The name of the file that is being initialized.
+*error* (STRING): Error code.

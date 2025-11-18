@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: disk-max-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.max events
+---
+
+= disk.max events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.max.partitions
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) software cannot partition a disk because the system already has the maximum number of partitioned disks.
+*Corrective Action*::
+Contact Contact NetApp technical support. for assistance.
+*Syslog Message*::
+Disk %s cannot be partitioned as the system already has %d partitioned disks.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*maxPartitionLimit* (INT): Maximum number of disks which can be partitioned.

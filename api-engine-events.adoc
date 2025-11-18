@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: api-engine-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: api.engine events
+---
+
+= api.engine events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== api.engine.killed
+*Severity*::
+EMERGENCY
+*Description*::
+This event is posted when the ONTAPI(R) engine is unexpectedly terminated. The ONTAPI APIs cannot be executed until the system is rebooted.
+*Corrective Action*::
+Reboot the controller. If the problem persists, contact Contact NetApp technical support.
+*Syslog Message*::
+Error in API Engine. Engine name: %s.
+*Parameters*::
+*engineName* (STRING): Name of the execution engine (e.g., "m" or "d").

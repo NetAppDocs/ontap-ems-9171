@@ -1,0 +1,175 @@
+---
+sidebar: sidebar
+permalink: secd-ldap-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: secd.ldap events
+---
+
+= secd.ldap events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== secd.ldap.bindDn.missing
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the -bind-dn user is not configured and the -bind-as-cifs-server option is set to false in the Lightweight Directory Access Protocol (LDAP) client configuration. This LDAP configuration is not recommended because it might result in CIFS credentials being used for authentication if CIFS configuration is present (even though -bind-as-cifs-server is not set). It might also result in anonymous authentication attempts.
+*Corrective Action*::
+Configure the bind distinguished name (user) and the bind user's password using the following commands: vserver services name-service ldap client modify -bind-dn vserver services name-service ldap client modify-bind-password
+*Syslog Message*::
+The LDAP bind DN user is not configured on Vserver %s.
+*Parameters*::
+*vserverName* (STRING): Vserver associated with this operation.
+
+== secd.ldap.conn.waitTimeout
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a connection could not be attempted to any of the configured Lightweight Directory Access Protocol (LDAP) servers. Usually, this issue is seen when the LDAP servers are slow to respond to previous connection requests and SecD has reached the maximum number of simultaneous connection requests. This issue can result in longer CIFS/NFS access times, potentially resulting in client failures or timeouts.
+*Corrective Action*::
+From an LDAP client workstation, ensure that all configured LDAP servers are responding to requests. Ensure that networking issues do not prevent the cluster from communicating with the servers.
+*Syslog Message*::
+Connection could not be attempted to the LDAP servers configured on SVM "%s" for LDAP service type (%s) because SecD has exceeded the maximum number of simultaneous connection requests.
+*Parameters*::
+*vserverName* (STRING): Storage virtual machine (SVM) associated with this operation.
+*ldapOperation* (STRING): LDAP operation and service for which the connection is required.
+
+== secd.ldap.connectFailure
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the server could not establish a TCP connection to a Lightweight Directory Access Protocol (LDAP) server.
+*Corrective Action*::
+From a LDAP client workstation, make sure that the LDAP server is responding to requests. Also make sure that the portmapper on the LDAP server is responding to requests. Make sure that there are no networking issues stopping the cluster from communicating with this LDAP server.
+*Syslog Message*::
+vserver (%s) could not make a connection over the network to LDAP server (%s) at address (%s) and received error (%s)
+*Parameters*::
+*vserverName* (STRING): vserver associated with this operation.
+*serverName* (STRING): Name of the LDAP server that was not responding.
+*serverAddress* (STRING): Address of the LDAP server that was not responding.
+*ldaperror* (STRING): Internal LDAP client library error.
+
+== secd.ldap.hostnames.not.resolved
+*Severity*::
+ERROR
+*Description*::
+This EMS is generated when none of the configured LDAP hostnames can be resolved.
+*Corrective Action*::
+Examine the DNS configuration for the corresponding Vserver.
+*Syslog Message*::
+None of the hostnames can be resolved for Vserver: %s.
+*Parameters*::
+*vserverName* (STRING): Vserver associated with this operation.
+
+== secd.ldap.hostnames.resolved.partially
+*Severity*::
+ERROR
+*Description*::
+This EMS is generated when some of the configured LDAP hostnames cannot be resolved.
+*Corrective Action*::
+Examine the DNS configuration for the corresponding Vserver.
+*Syslog Message*::
+Hostnames cannot be resolved for Vserver: %s, unresolvedHosts: %s.
+*Parameters*::
+*vserverName* (STRING): Vserver associated with this operation.
+*unresolvedHostnames* (STRING): Hostnames which cannot be resolved.
+
+== secd.ldap.noServers
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when none of the configured Lightweight Directory Access Protocol (LDAP) servers are accepting connections.
+*Corrective Action*::
+From an LDAP client workstation, make sure that all configured LDAP servers are responding to requests. Ensure that there are no networking issues stopping the cluster from communicating with the configured LDAP servers. Also, ensure that the portmapper running on the LDAP server is working correctly.
+*Syslog Message*::
+None of the LDAP servers configured for Vserver (%s) are currently accessible via the network for LDAP service type (%s).
+*Parameters*::
+*vserverName* (STRING): Vserver associated with this operation.
+*ldapOperation* (STRING): LDAP operation and service for which the connection is required.
+
+== secd.ldap.query.timed.out
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the LDAP server fails to respond to a query and timeout occurs.
+*Corrective Action*::
+Because LDAP server timeouts might be the result of connectivity issues between the storage controller and the external service or latency in LDAP server response time, ensure that external connectivity and external services have not been disrupted.
+*Syslog Message*::
+Vserver '%s': LDAP server %s did not respond to query within timeout (%d seconds) interval.
+*Parameters*::
+*vsName* (STRING): Name of the Vserver for which LDAP response timed out.
+*ipaddr* (STRING): IP address of the LDAP server.
+*timeout* (INT): Number of seconds before the LDAP query is timed out.
+
+== secd.ldap.referralError
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message indicates that the domain controller does not have a copy of the requested object (which exists) and it is providing a location that is more likely to hold the object.
+*Corrective Action*::
+Modify the environment to avoid LDAP referrals.
+*Syslog Message*::
+Server (%s) does not hold the target entry for ldap filter (%s) on vserver (%s).
+*Parameters*::
+*serverAddress* (STRING): Address of the LDAP server that responded with referral.
+*ldapSearchFilter* (STRING): The Ldap search filter associated with this operation.
+*vserverName* (STRING): Vserver associated with this operation.
+
+== secd.ldap.sasl.bind.delayed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Lightweight Directory Access Protocol (LDAP) server responds slowly to SASL bind requests. This might result in longer SMB/CIFS authentication times, potentially resulting in SMB/CIFS client timeouts. Also, this might affect other LDAP bind requests and Security Daemon (SecD) delays.
+*Corrective Action*::
+Ensure that there are no networking issues creating intermittent communication problems with the LDAP server. Make sure that the machine running LDAP is responsive and not overloaded.
+*Syslog Message*::
+LDAP SASL bind taking longer time on server "%s" for SVM "%s".
+*Parameters*::
+*serverAddress* (STRING): Address of the LDAP server that is not responding fast enough.
+*vserverName* (STRING): SVM associated with this operation.
+
+== secd.ldap.slowServer
+*Severity*::
+ERROR
+*Description*::
+This message indicates that the Lightweight Directory Access Protocol (LDAP) server is not responding to requests in the expected time frame.
+*Corrective Action*::
+Make sure that there are no networking issues creating intermittent communication problems with the LDAP server. Make sure that the machine running LDAP is responsive and not overloaded. From a LDAP client workstation, run LDAP commands to verify long response times.
+*Syslog Message*::
+from CIFS Server(%s) calls to LDAP server (%s) at address (%s) is executing slowly enough to adversely impact the performance of your server.
+*Parameters*::
+*vserverName* (STRING): vserver associated with this operation.
+*serverName* (STRING): Name of the LDAP server that was not responding fast enough.
+*serverAddress* (STRING): Address of the LDAP server that was not responding fast enough.
+
+== secd.ldap.starttls.delayed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Lightweight Directory Access Protocol (LDAP) server responses to STARTTLS requests take 5 or more seconds. This might result in longer SMB/CIFS authentication times, potentially resulting in SMB/CIFS client timeouts. Also, this might affect other LDAP bind requests and Security Daemon (SecD) delays.
+*Corrective Action*::
+Ensure that there are no networking issues creating intermittent communication problems with the LDAP server. Make sure that the machine running LDAP is responsive and not overloaded.
+*Syslog Message*::
+The STARTTLS operation is taking too long on LDAP server "%s" for SVM "%s".
+*Parameters*::
+*serverAddress* (STRING): Address of the LDAP server that is not responding fast enough.
+*vserverName* (STRING): SVM associated with this operation.
+
+== secd.ldap.trust.noServers
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Security Daemon (SecD) fails to connect to any of the configured Lightweight Directory Access Protocol (LDAP) servers belonging to a trusted domain. Usually, this issue is seen when the LDAP servers are either unreachable or slow to respond. This issue can result in longer CIFS access times, potentially resulting in client failures or timeouts.
+*Corrective Action*::
+From an LDAP client workstation, ensure that all configured LDAP servers in the trusted domain are responding to requests. Ensure that networking issues do not prevent the cluster from communicating with the servers. If domain controllers (DC's) in trusted domains should not be discovered, run the "vserver cifs options modify -is-trusted-domain-enum-search-enabled false" command.
+*Syslog Message*::
+None of the LDAP servers configured for SVM "%s" and trusted domain "%s" are currently accessible for LDAP service type "%s".
+*Parameters*::
+*vserverName* (STRING): Storage virtual machine (SVM) associated with this operation.
+*trustedDomain* (STRING): Trusted domain for which the LDAP connection is required.
+*ldapOperation* (STRING): LDAP operation and service for which the connection is required.

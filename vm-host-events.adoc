@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: vm-host-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vm.host events
+---
+
+= vm.host events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vm.host.error
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a VM is paused by the hypervisor. The backing datastore might have been filled or connectivity to the datastore might have been lost. Corrective actions should be performed as soon as possible.
+*Corrective Action*::
+Check the hypervisor logs to determine whether the backing datastore is full or connectivity to the datastore was lost, and then take the appropriate corrective action.
+*Syslog Message*::
+The VM is paused possibly due to a full datastore or connectivity to the datastore might have been lost. Check the hypervisor logs for errors, and then perform any necessary corrective actions as soon as possible.
+*Parameters*::
+(None).

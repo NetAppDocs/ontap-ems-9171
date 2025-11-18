@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: esh-init-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: esh.init events
+---
+
+= esh.init events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== esh.init.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot allocate memory for a required service. The controller might not have sufficient memory to run the operating system, or installed memory is not functioning properly.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Could not allocate memory for ESH globals.
+*Parameters*::
+(None).

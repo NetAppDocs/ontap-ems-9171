@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: pcie-link-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: pcie.link events
+---
+
+= pcie.link events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== pcie.link.errors
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when PCI Express link errors are detected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+PCI Express link error - %s
+*Parameters*::
+*pcie_link_errors* (STRING): String contains details about the PCI Express link error(s) and which device(s) was/were the source of error(s).

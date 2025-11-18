@@ -1,0 +1,73 @@
+---
+sidebar: sidebar
+permalink: net-ifgrp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: net.ifgrp events
+---
+
+= net.ifgrp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== net.ifgrp.addLimitExceeded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system fails to create a new interface group because the number of such groups already present on the node exceed either the number of physical ports on the node or the upper bound on number of interface groups supported.
+*Corrective Action*::
+Delete any existing unused interface groups and retry adding the new interface group. Use the "network port ifgrp delete" and "network port ifgrp create" commands, respectively, to do so.
+*Syslog Message*::
+ifgrp %s could not be created because the limit for logical interface groups on this node has been reached. The limit per node is equal to the number of physical ports present on the node with an upper bound of %d.
+*Parameters*::
+*vifName* (STRING): Name of the interface group that could not be created.
+*maxIfgrp* (INT): Upper bound on number of interface groups supported.
+
+== net.ifgrp.lacp.key.mismatch
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP receives differing system-ID or keys information from the Link Aggregation Control Protocol (LACP) peer, leading to one or more interfaces not being active in the port interface group (ifgrp). This can indicate a configuration error at the LACP peer.
+*Corrective Action*::
+Search the knowledgebase of the NetApp technical support support web site for the "LACP port down due to mismatched peer keys" phrase.
+*Syslog Message*::
+Partner mismatch occured on ifgrp "%s", port "%s". Expected by aggregate: system-priority "0x%02x", system-ID "%s", and key "0x%04x". Found at Port: system-priority "0x%02x", system-ID "%s", and key "0x%04x".
+*Parameters*::
+*ifgrpName* (STRING): Name of the ifgrp.
+*portName* (STRING): Name of the ifgrp member-port.
+*aggregateSysPriority* (INT): Ifgrp aggregate system priority.
+*aggregateSysMAC* (STRING): Ifgrp aggregate system MAC address.
+*aggregateKey* (INT): Ifgrp aggregate key.
+*portSysPriority* (INT): Ifgrp member-port system priority.
+*portSysMAC* (STRING): Ifgrp member-port system MAC address.
+*portKey* (INT): Ifgrp member-port key.
+
+== net.ifgrp.lacp.link.active
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a link in an Link Aggregation Control Protocol (LACP) aggregate becomes active.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ifgrp %s, port %s has transitioned to the active state.
+*Parameters*::
+*aggregateName* (STRING): Name of the interface group.
+*portName* (STRING): Name of the member port.
+
+== net.ifgrp.lacp.link.inactive
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a link is operationally up, but becomes inactive in the Link Aggregation Control Protocol (LACP) aggregate with which it has been associated. This can occur due to a configuration, software, or link error, or a hardware failure.
+*Corrective Action*::
+Search kb.netapp.com for "How to troubleshoot LACP port channel groups".
+*Syslog Message*::
+ifgrp %s, port %s has transitioned to an inactive state. The interface group is in a degraded state.
+*Parameters*::
+*aggregateName* (STRING): Name of the interface group.
+*portName* (STRING): Name of the member port.

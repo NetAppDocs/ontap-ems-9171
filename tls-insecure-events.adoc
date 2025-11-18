@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: tls-insecure-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: tls.insecure events
+---
+
+= tls.insecure events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== tls.insecure.cipher
+*Severity*::
+ERROR
+*Description*::
+This message occurs when during the TLS handshake a peer negotiates a cipher suite that is no longer considered sufficiently secure to be enabled in the default configuration. TLS connections with this peer should be be presumed insecure, and could be disrupted.
+*Corrective Action*::
+The issue primarily needs to be resolved on the peer side. Typically, the problem is that the SSL/TLS libraries on the peer are outdated and don't support more modern cipher suites. Once all peers identified by this event have been resolved and the event is no longer being observed, it is advised to disable the cipher suite in question on this system via the "security config modify" command.
+*Syslog Message*::
+A TLS peer with IP %s has been connected with using the insecure cipher suite %s.
+*Parameters*::
+*ip* (STRING): IP address of the offending peer.
+*cipher_suite* (STRING): Cipher suite used by the offending peer.
+
+== tls.insecure.protocol
+*Severity*::
+ERROR
+*Description*::
+This message occurs when during the TLS handshake a peer negotiates a protocol level that is no longer considered sufficiently secure to be enabled in the default configuration. TLS connections with this peer should be be presumed insecure, and could be disrupted.
+*Corrective Action*::
+The issue primarily needs to be resolved on the peer side. Typically, the problem is that the SSL/TLS libraries on the peer are outdated and don't support more modern protocol levels. Once all peers identified by this event have been resolved and the event is no longer being observed, it is advised to disable the protocol level in question on this system via the "security config modify" command.
+*Syslog Message*::
+A TLS peer with IP %s has been connected with using the insecure protocol level %s.
+*Parameters*::
+*ip* (STRING): IP address of the offending peer.
+*protocol_level* (STRING): Protocol level used by the offending peer.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: vnvram-dma-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vnvram.dma events
+---
+
+= vnvram.dma events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vnvram.dma.long.wait
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a vNVRAM flush operation on an ONTAP-v system is taking too much time. This can indicate back-end storage issues or an internal error. The system might also reboot.
+*Corrective Action*::
+If the problem persists, check for back-end storage issues with the system disk.
+*Syslog Message*::
+vNVRAM flush taking over %d seconds.
+*Parameters*::
+*vnvr_wait_sec* (INT): Time in seconds for the vNVRAM flush operation.

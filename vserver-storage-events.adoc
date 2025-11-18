@@ -1,0 +1,85 @@
+---
+sidebar: sidebar
+permalink: vserver-storage-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vserver.storage events
+---
+
+= vserver.storage events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vserver.storage.full
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Storage of Vserver is full.
+*Corrective Action*::
+Increase the available size of Vserver either by raising storage-limit or by downsizing or deleting volumes.
+*Syslog Message*::
+Vserver "%s" is full by consuming the storage limit "%s".
+*Parameters*::
+*vserver_name* (STRING): Vserver name for which the storage is full.
+*storage_limit* (STRING): The storage-limit for the Vserver.
+
+== vserver.storage.nearlyFull
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Vserver storage size exceeds 95% of the storage limit.
+*Corrective Action*::
+Increase the available size of Vserver either by raising storage-limit or by downsizing or deleting volumes.
+*Syslog Message*::
+Vserver "%s" with current storage size of "%s" has exceeded "95%%" of storage limit "%s".
+*Parameters*::
+*vserver_name* (STRING): Vserver name for which the storage size has exceeded 95% of the storage limit.
+*storage_size* (STRING): The storage used size of the Vserver.
+*storage_limit* (STRING): The storage-limit for the Vserver.
+
+== vserver.storage.size.breached
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when tenant has exceeded the capacity quota allotted to the Vserver. The checker automatically deselects this mismatch and attempts a fix. To see details including the updated size use "vserver show -fields storage-limit,storage-allocated,storage-reserved" command.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Vserver "%s" size "%s" has exceeded storage capacity quota of "%s".
+*Parameters*::
+*vserver_name* (STRING): The Vserver whose size exceeded the capacity quota alloted to the tenant.
+*vserver_size* (STRING): Vserver's size allotted up to a point to the tenant.
+*capacity_limit* (STRING): Capacity limit allotted to the Vserver.
+
+== vserver.storage.size.mismatch
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Vserver's size allotted to the tenant up to a point does not match sum of all the volume's provisioned size that can be used to enforce Vserver capacity quota. The checker automatically deselects this mismatch and attempts a fix. To see details including the updated size use "vserver show -fields storage-limit,storage-allocated,storage-reserved" command.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Vserver "%s" size allocated to the tenant up to a point "%s" does not match sum of all the volume's provisioned size "%s".
+*Parameters*::
+*vserver_name* (STRING): Vserver for which the size allotted to the tenant up to a point does not match sum of all the volume's provisioned size.
+*vserver_size* (STRING): Vserver's size allotted up to a point to the tenant.
+*provisioned_size* (STRING): Sum of all the volume's provisioned size in Vserver.
+
+== vserver.storage.threshold
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Vserver storage size exceeds the storage-limit-threshold-alert value.
+*Corrective Action*::
+Increase the available size of Vserver either by raising storage-limit or by downsizing or deleting volumes.
+*Syslog Message*::
+Vserver "%s" with current storage size of "%s" has exceeded "%s%%" of storage limit "%s".
+*Parameters*::
+*vserver_name* (STRING): Vserver name for which the storage size has exceeded the storage-limit-threshold-alert value.
+*storage_size* (STRING): The storage used size of the Vserver.
+*storage_limit_threshold* (STRING): The storage-limit-threshold-alert value of the Vserver.
+*storage_limit* (STRING): The storage-limit for the Vserver.

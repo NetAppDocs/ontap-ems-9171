@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: fmmb-inststat-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fmmb.inststat events
+---
+
+= fmmb.inststat events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fmmb.instStat.change
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs whenever the mailbox instance state changes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s on %s side.
+*Parameters*::
+*buff* (STRING): Instance state string.
+*host* (STRING): Host string, which is either local or partner.

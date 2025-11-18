@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: vserver-oper-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vserver.oper events
+---
+
+= vserver.oper events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vserver.oper.state.down
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects a cluster reboot on a Disaster Recovery Source (MetroCluster(tm) configuration or Vserver DR). All Vservers that are a source of the disaster-recovery relationship are brought down operationally if the destination is activated. This is done to prevent an identity clash in case the Secondary site is brought up.
+*Corrective Action*::
+If the destination Vservers or site are already brought up, nothing needs to be done. Otherwise, if the source is brought down, then unlock the Vservers by using the "vserver unlock" command, and then bring them up operationally by using the "vserver start" command.
+*Syslog Message*::
+The Vservers on cluster %s that are in a DR relationship have been operationally brought down.
+*Parameters*::
+*cluster_name* (STRING): Name of the source cluster.

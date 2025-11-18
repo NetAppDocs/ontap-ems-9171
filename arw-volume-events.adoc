@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: arw-volume-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: arw.volume events
+---
+
+= arw.volume events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== arw.volume.state
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the anti-ransomware state of a volume is changed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Anti-ransomware state was changed to "%s" on volume "%s" (UUID: "%s") in Vserver "%s" (UUID: "%s").
+*Parameters*::
+*op* (STRING): Monitoring state (enabled, disabled, dry-run).
+*volumeName* (STRING): Name of the volume.
+*volumeUuid* (STRING): UUID of the volume.
+*vserverName* (STRING): Name of the Vserver.
+*vserverUuid* (STRING): UUID of the Vserver.

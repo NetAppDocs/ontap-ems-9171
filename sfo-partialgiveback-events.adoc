@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sfo-partialgiveback-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfo.partialgiveback events
+---
+
+= sfo.partialgiveback events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfo.PartialGiveback
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a node is in partial giveback state because only some aggregates were given back during the giveback operation. There is no immediate impact as the HA partner is keeping those aggregates online, but a prolonged stay in this state can lead to imbalanced reosource utilization across the HA pair.
+*Corrective Action*::
+Use the "storage failover show-giveback" command to check the giveback status of the aggregates. This command displays the cause of giveback failure and suggests corrective actions. For ASA r2, use the "storage failover show" command instead of the "storage failover show-giveback" command. Then retry giveback by using the "storage failover giveback" command.
+*Syslog Message*::
+Node is in partial giveback state.
+*Parameters*::
+(None).

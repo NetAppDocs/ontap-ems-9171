@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: replication-givebackcancel-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: replication.givebackcancel events
+---
+
+= replication.givebackcancel events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== replication.givebackCancel
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a 'giveback' command is issued while a SnapMirror(R) or SnapVault(R) transfer is in progress.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s transfer in progress or in-sync; canceling giveback.
+*Parameters*::
+*rtype* (STRING): Replication type (SnapMirror, SnapVault, and so on.).

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ucore-limit-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ucore.limit events
+---
+
+= ucore.limit events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ucore.limit.exceeded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a userspace core is not dumped because the limit for the directory has been exceeded. This happens before the mroot is mounted, and the CompactFlash(R) card is used as a temporary dump location.
+*Corrective Action*::
+Move the core off the /cfcard directory if the system has not done so automatically.
+*Syslog Message*::
+'Exceeded limit for directory %s.'
+*Parameters*::
+*directory_name* (STRING): Current coredump directory.

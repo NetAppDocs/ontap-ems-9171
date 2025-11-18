@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: netif-phyread-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.phyread events
+---
+
+= netif.phyread events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.phyRead
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is a failure in reading the physical layer (PHY) of a network interface.
+*Corrective Action*::
+This might be caused by a software bug. If there are problems with the interface after seeing this message, contact NetApp technical support.
+*Syslog Message*::
+Failure in reading PHY for network interface %s.
+*Parameters*::
+*ifName* (STRING): Name of the network interface; for example, "e8a".

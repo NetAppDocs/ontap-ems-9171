@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: kern-version-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: kern.version events
+---
+
+= kern.version events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== kern.version.change
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when you reboot your system with a version of the Data ONTAP(R) kernel that is different from the one you ran previously.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Data ONTAP kernel version was changed from %s to %s.
+*Parameters*::
+*oldver* (STRING): Previous version of the Data ONTAP kernel.
+*newver* (STRING): Current version of the Data ONTAP kernel.

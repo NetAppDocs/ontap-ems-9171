@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: spm-upgrademgr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: spm.upgrademgr events
+---
+
+= spm.upgrademgr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== spm.upgrademgr.process.exit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the upgrade manager server (upgrademgr) involuntarily terminates.
+*Corrective Action*::
+The system attempts to recover by restarting the upgrademgr process server. If the process does not restart within the threshold number of retries, then an AutoSupport(R) message is sent. If your system is not configured to send AutoSupport messages and the issue persists, contact NetApp technical support.
+*Syslog Message*::
+The upgrade manager server (upgrademgr) with ID %d exited as a result of %s. This server will attempt to restart.
+*Parameters*::
+*id* (INT): Process identifier.
+*cause* (STRING): Plain text description of why the process exited.

@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: mgmt-cifssymlink-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmt.cifssymlink events
+---
+
+= mgmt.cifssymlink events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmt.cifssymlink.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when configuration of a CIFS symbolic link fails; the symbolic link might not be available through CIFS.
+*Corrective Action*::
+Check the reason for the error and take action accordingly.
+*Syslog Message*::
+Failed to configure CIFS symlink. Error: %s.
+*Parameters*::
+*reason* (STRING): Reason for the failure.
+*vservername* (STRING): Name of the vserver.
+*unix_path* (STRING): The UNIX path.
+
+== mgmt.cifssymlink.success
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a CIFS symbolic link is successfully configured after a failure.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*vservername* (STRING): Name of the vserver.
+*unix_path* (STRING): The UNIX path.

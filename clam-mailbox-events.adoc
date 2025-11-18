@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: clam-mailbox-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: clam.mailbox events
+---
+
+= clam.mailbox events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== clam.mailbox.initialized
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Kernel Cluster Services (KCS) Connectivity, Liveliness, Availability Monitor (CLAM) has written to the high availability (HA) mailboxes that it has initialized and is ready to participate in CLAM quorum.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+CLAM on local node has initialized its mailboxes and is ready to participate in quorum.
+*Parameters*::
+(None).

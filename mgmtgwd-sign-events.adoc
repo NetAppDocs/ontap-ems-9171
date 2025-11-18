@@ -1,0 +1,48 @@
+---
+sidebar: sidebar
+permalink: mgmtgwd-sign-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmtgwd.sign events
+---
+
+= mgmtgwd.sign events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmtgwd.sign.cert.expired
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a digital certificate for a Vserver expires. Client-server communication is not secure.
+*Corrective Action*::
+Sign a new digital certificate on the system using the 'security certificate sign' command.
+*Syslog Message*::
+A digital certificate with Fully Qualified Domain Name (FQDN) %s, Serial Number %s, Certificate Authority '%s' and Certificate Authority Serial Number %s for Vserver %s has expired.
+*Parameters*::
+*common_name* (STRING): Name of the Fully Qualified Domain Name(FQDN) whose digital certificate expired.
+*serial_number* (STRING): Serial Number of the digital certificate.
+*certificate_authority* (STRING): Name of the Certificate Authority.
+*ca_serial_number* (STRING): Serial Number of the Certificate Authority(CA) that signed the digital certificate.
+*vserver* (STRING): Name of the Vserver.
+
+== mgmtgwd.sign.cert.expiring
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a digital certificate for a Vserver is about to expire. Client-server communication will not be secure if the certificate expires.
+*Corrective Action*::
+Sign a new digital certificate on the system using the 'security certificate sign' command.
+*Syslog Message*::
+A digital certificate with Fully Qualified Domain Name (FQDN) %s, Serial Number %s, Certificate Authority '%s' and Certificate Authority Serial Number %s for Vserver %s will expire in %d day(s).
+*Parameters*::
+*common_name* (STRING): Name of the Fully Qualified Domain Name(FQDN) whose digital certificate is about to expire.
+*serial_number* (STRING): Serial Number of the digital certificate.
+*certificate_authority* (STRING): Name of the Certificate Authority whose digital certificate that is about to expire.
+*ca_serial_number* (STRING): Serial Number of Certificate Authority(CA) that signed the digital certificate.
+*vserver* (STRING): Name of the Vserver.
+*days* (INT): Number of days remaining until the certificate expires.

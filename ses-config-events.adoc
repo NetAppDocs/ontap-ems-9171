@@ -1,0 +1,81 @@
+---
+sidebar: sidebar
+permalink: ses-config-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ses.config events
+---
+
+= ses.config events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ses.config.diskStackMaxError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a stack of shelves contains more disk bays than the maximum number that are allowed.
+*Corrective Action*::
+Remove shelves from the storage stack until the the number of disk bays do not exceed the maximum number.
+*Syslog Message*::
+There are a total of %d disk bays on shelves attached to channel "%s", which exceeds the maximum number of disk bays (%d).
+*Parameters*::
+*numDiskBays* (INT): Number of disk bays on the storage stack.
+*channelName* (STRING): Name of the adapter port or switch port connected to the storage stack associated with the error (for example, "7a" or "myswitch:5").
+*maxDiskBays* (INT): Maximum number of disk bays that are allowed on the storage stack.
+
+== ses.config.drivePopError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the channel has more disk drives on it than are allowed. Systems using synchronous mirroring allow more disk drives per channel than other systems.
+*Corrective Action*::
+If synchronous mirroring is intended to be used, ensure that the license is installed. Otherwise, reduce the number of disk drives on the channel to no more than the maximum allowed.
+*Syslog Message*::
+Disk drive population is greater than %d in channel %s; this is an illegal configuration. Synchronous mirroring %s is enabled.
+*Parameters*::
+*fcalTenancy* (INT): Maximum number of disk drives allowed on this loop.
+*channelName* (STRING): Name of the adapter port or switch port associated with the error; for example, "7a" or "myswitch:5".
+*isIsNot* (STRING): Whether synchronous mirroring is enabled.
+
+== ses.config.IllegalEsh270
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when ONTAP(R) software detects one or more Embedded Switched Hub (ESH) disk shelf modules in a disk shelf that is attached to a FAS270. This is not a supported configuration.
+*Corrective Action*::
+Replace the ESH modules with ESH2 modules.
+*Syslog Message*::
+One or more ESH modules are attached to a FAS270. This is not a supported configuration. Replace the ESH modules with ESH2 modules.
+*Parameters*::
+(None).
+
+== ses.config.shelfMixError
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the channel has a mixture of ATA and Fibre Channel disk shelves; this is not a supported configuration.
+*Corrective Action*::
+Mixed-mode operation of ATA and Fibre Channel disks on the system is only supported on separate loops. Move all Fibre Channel-based disk shelves to one loop and place all Fibre Channel-to-ATA-based disk shelves on another loop.
+*Syslog Message*::
+Disk shelves present on channel %s are of different drive types; this is not a supported configuration.
+*Parameters*::
+*channelName* (STRING): Name of the adapter port or switch port associated with the error; for example, "7a" or "myswitch:5".
+
+== ses.config.shelfPopError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the channel has more disk shelves on it than are allowed.
+*Corrective Action*::
+Reduce the number of disk shelves on the channel to the number specified.
+*Syslog Message*::
+Disk shelf population on channel %s is %d. Reduce the number of disk shelves on this channel to %d or fewer.
+*Parameters*::
+*channelName* (STRING): Name of the adapter port or switch port associated with the error; for example, "7a" or "myswitch:5".
+*numShelves* (INT): Number of disk shelves on the port.
+*maxShelves* (INT): Maximum number of disk shelves on a port.

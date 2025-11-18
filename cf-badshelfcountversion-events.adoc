@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cf-badshelfcountversion-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.badshelfcountversion events
+---
+
+= cf.badshelfcountversion events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.badShelfCountVersion
+*Severity*::
+ERROR
+*Description*::
+This event occurs if we are sent a negotiated failover shelf count message with a version which we don't support. As a result, disk shelf count negotiated failover will not work. This is likely due to a kernel version mismatch.
+*Corrective Action*::
+Upgrade the down-rev node so both nodes are on the same version.
+*Syslog Message*::
+Disk shelf count message with unsupported version received from partner.
+*Parameters*::
+(None).

@@ -1,0 +1,78 @@
+---
+sidebar: sidebar
+permalink: tape-cmd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: tape.cmd events
+---
+
+= tape.cmd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== tape.cmd.chkCondErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Check Condition status from the tape drive reports an informational condition or status to the controller. The condition that generated this event is an error that occurred during execution of the command and was not cleared by retrying the request, if retries were attempted.
+*Corrective Action*::
+This Check Condition case is an error that might be caused by an intermittent error in device hardware or a flaw in the tape media. Media errors might also suggest that the tape drive head should be cleaned following the manufacturer's directions. In cases of repeated events, evaluate the device for proper operation and possible repair or replacement. Consult vendor documentation for additional information.
+*Syslog Message*::
+%s device %s: Check Condition: SCSI opcode %s (CDB %s): %s - %s (0x%x - 0x%x 0x%x 0x%x).
+*Parameters*::
+*deviceType* (STRING): Type of device on which the condition occurred.
+*deviceName* (STRING): Electrical path name of the device on which the command failed.
+*opcode* (STRING): Definition of the SCSI opcode (command) that encountered the check condition.
+*cdb* (STRING): Opcode byte of the command block that encountered the check condition.
+*sSenseKey* (STRING): String containing a description of the sense key returned by the device for the failed command.
+*sSenseCode* (STRING): String containing a description of the additional sense code and sense code qualifier key returned by the device for the failed command.
+*iSenseKey* (INTHEX): Integer value of the sense key for the failed command.
+*iASC* (INTHEX): Integer value of the sense code for the failed command.
+*iASCQ* (INTHEX): Integer value of the sense code qualifier for the failed command.
+*iFRU* (INTHEX): Integer value of the field-replaceable unit(FRU) for the failed command.
+
+== tape.cmd.chkCondNullSenseDbg
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the command to the tape device fails with a status of Check Condition, but the adapter received no sense bytes containing details about the failure. Sense bytes typically accompany command failure reports, unless bus or loop stability problems, or target device or adapter errors have interfered with the sense byte transfer. This is a diagnostic message. See the "mt diag" command (from the nodeshell in clustered environments) for the control of tape diagnostic messages.
+*Corrective Action*::
+Ensure that the cables are securely attached, and perform other maintenance typically required for SCSI or FC stability. If the error persists, contact NetApp technical support for assistance.
+*Syslog Message*::
+%s device %s reports Check Condition status on command opcode 0x%x. No sense bytes accompany the status.
+*Parameters*::
+*deviceType* (STRING): Device type.
+*deviceName* (STRING): Electrical path name of the device on which the command failed.
+*opcode* (INTHEX): Opcode of the failed SCSI command.
+
+== tape.cmd.cmdFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a tape command fails with an error detected by the adapter. This is not an error reported by the tape drive. The adapter status values reported under this message indicate that the adapter suffered an internal error, or that the bus or loop is unstable, or that the adapter has no path to the requested device.
+*Corrective Action*::
+Verify that the loop or bus cabling is correctly installed. If the error occurs only on this device and not on others on the same interface, ensure that the external and internal cabling, if any, of this device are securely connected. If the error occurs on more than one device, then a more general debug of the cabling infrastructure might be required.
+*Syslog Message*::
+Tape device %s: command failed, ha_status 0x%x.
+*Parameters*::
+*deviceName* (STRING): Electrical path name of the device on which the command failed.
+*adapterError* (INTHEX): Internal adapter error that was detected.
+
+== tape.cmd.scsiErrNullSense
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the device reports that the command failed, but the adapter received no sense bytes containing detail about the failure. Sense bytes typically accompany command failure reports, unless bus or loop stability problems, or target device or adapter errors have interfered with the sense byte transfer.
+*Corrective Action*::
+Ensure that the cables are securely attached, and perform other maintenance typically required for SCSI or FC stability. If the error persists, contact NetApp technical support for assistance.
+*Syslog Message*::
+%s device %s reports %s status on command opcode 0x%x. No sense bytes accompany the status.
+*Parameters*::
+*deviceType* (STRING): Device type.
+*deviceName* (STRING): Electrical path name of the device on which the command failed.
+*scsiStatus* (STRING): Status returned by the device.
+*opcode* (INTHEX): Opcode of the failed SCSI command.

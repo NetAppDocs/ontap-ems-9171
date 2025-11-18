@@ -1,0 +1,54 @@
+---
+sidebar: sidebar
+permalink: callhome-kernel-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.kernel events
+---
+
+= callhome.kernel events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.kernel.core
+*Deprecated*::
+Deprecated as of ONTAP 9.3. This event is replaced by the callhome.kernel.coreinfo event.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when you invoke an AutoSupport for kernel coredump files. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Kernel coredump callhome for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*URI* (STRING): Alternate destination for this AutoSupport message. If this is set, this AutoSupport message is delivered to this alternate destination.
+*force* (INT): This flag indicates this AutoSupport should be generated and delivered even if the AutoSupport configuration is disabled. If "0" then obey the normal "state" and "support" flags. If this is "1", then ignore the "state" and "support" configuration and deliver as if both "state" and "support" are enabled.
+*case_number* (STRING): Case number to be associated with this coredump AutoSupport message.
+*core_filename* (STRING): Coredump filename to be included in the coredump AutoSupport message.
+*aod_initiated* (INT): This flag indicates that NetApp technical support has remotely requested for this AutoSupport via AutoSupport OnDemand.
+*sequence* (LONGINT): Sequence number to use to generate this Autosupport. Use value zero to auto-generate or a value higher than last used ASUP sequence number.
+
+== callhome.kernel.coreinfo
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when you invoke an AutoSupport for kernel coredump files. It contains content relevant to userspace cores. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Kernel coredump callhome for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*URI* (STRING): Alternate destination for this AutoSupport message. If this is set, this AutoSupport message is delivered to this alternate destination.
+*force* (INT): This flag indicates this AutoSupport should be generated and delivered even if the AutoSupport configuration is disabled. If "0" then obey the normal "state" and "support" flags. If this is "1", then ignore the "state" and "support" configuration and deliver as if both "state" and "support" are enabled.
+*case_number* (STRING): Case number to be associated with this coredump AutoSupport message.
+*core_filename* (STRING): Coredump filename to be included in the coredump AutoSupport message.
+*aod_initiated* (INT): This flag indicates that NetApp technical support has remotely requested for this AutoSupport via AutoSupport OnDemand.
+*sequence* (LONGINT): Sequence number to use to generate this Autosupport. Use value zero to auto-generate or a value higher than last used ASUP sequence number.
+*aod_req_id* (STRING): AOD request ID

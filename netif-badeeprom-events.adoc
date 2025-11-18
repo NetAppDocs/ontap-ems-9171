@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: netif-badeeprom-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.badeeprom events
+---
+
+= netif.badeeprom events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.badEeprom
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the network interface has an electronically erasable programmable read-only memory (EEPROM) with a bad cyclic redundancy check (CRC) or media access control (MAC) address.
+*Corrective Action*::
+Replace the component associated with the network interface (PCIe card or controller motherboard).
+*Syslog Message*::
+Network interface %s has an EEPROM with a bad CRC or MAC address.
+*Parameters*::
+*ifName* (STRING): Name of the network interface; for example, "e8a".

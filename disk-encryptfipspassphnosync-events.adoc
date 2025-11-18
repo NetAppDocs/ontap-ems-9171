@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: disk-encryptfipspassphnosync-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.encryptfipspassphnosync events
+---
+
+= disk.encryptfipspassphnosync events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.encryptFIPSPassphNoSync
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a system with NetApp(R) Storage Encryption (NSE) enabled detects that the authentication keys (AKs, or passphrases) for the internal FIPS-compliance authorities in a FIPS-certified drive are inconsistent. This can occur when a previous attempt to modify the FIPS-compliance passphrases failed.
+*Corrective Action*::
+Use the "security key-manager" commands to display the available AKs from external KMIP key-management servers or onboard key management (OKM). Use the "storage encryption disk modify -fips-key-id" command to assign the desired AK to the FIPS-compliance authorities in the drive. If the condition persists, either replace the drive, or use the "storage encryption disk revert-to-original-state" command to reset the drive to its original condition. Warning: This command also removes all user data from the drive.
+*Syslog Message*::
+The FIPS-compliance authorities for NSE drive %s have inconsistent authentication keys (AKs).
+*Parameters*::
+*diskName* (STRING): Name of the drive.

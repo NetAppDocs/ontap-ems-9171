@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: clam-heartbeat-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: clam.heartbeat events
+---
+
+= clam.heartbeat events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== clam.heartbeat.state.change
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Kernel Cluster Services Connectivity, Liveliness, Availability Monitor (CLAM) detects that the state of the heartbeats to a node changed(that is, either the heartbeats started succeeding or they started failing).
+*Corrective Action*::
+Take one or more of the following actions: - A repeated toggling of the heartbeat state indicates intermittent network issues. Check the connectivity of the node to the cluster interconnect and fix any problems. - In all the other cases, the heartbeat failure will eventually result in the node going out of quorum. If that happens, take the actions prescribed for "EMS_clam_node_ooq event".
+*Syslog Message*::
+Heartbeats to node (name=%s, ID=%llu) are %s.
+*Parameters*::
+*hostname* (STRING): Host name of the node.
+*nodeid* (LONGINT): Node ID of the node.
+*state* (STRING): New state of the heartbeats to this node.

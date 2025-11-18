@@ -1,0 +1,71 @@
+---
+sidebar: sidebar
+permalink: lun-inplace-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lun.inplace events
+---
+
+= lun.inplace events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== LUN.inplace.dmpRstrLUNonNS
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an in-place restore from a dump fails and creates a metadata inconsistency because the source object type does not match the existing destination object. A LUN has been restored over an existing NVMe namespace at the same path.
+*Corrective Action*::
+Unmap the NVMe namespace for which the mismatched restore has created a metadata inconsistency by using the "subsystem map remove" command. Remove the NVMe namespace for which the mismatched restore has created a metadata inconsistency by using the "force-fenced" option for the "lun delete" command. Retry the dump restore. If the original restore location was chosen in error, recover that deleted NVMe namespace.
+*Syslog Message*::
+An in-place restore from dump to an existing destination at path %s in volume %s (DSID %llu) failed due to a vdisk type mismatch.
+*Parameters*::
+*lun_path* (STRING): Path of the existing destination for which the restore failed.
+*volume_name* (STRING): Name of the destination volume.
+*volume_dsid* (LONGINT): Data set ID (DSID) of the destination volume.
+
+== LUN.inplace.dmpRstrNSonLUN
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an in-place restore from a dump fails and creates a metadata inconsistency because the source object type does not match the existing destination object. An NVMe namespace has been restored over an existing LUN at the same path.
+*Corrective Action*::
+Unmap the LUN for which the mismatched restore has created a metadata inconsistency by using the "lun unmap" command. Remove the object for which the mismatched restore has created a metadata inconsistency by using the "force-fenced" option for the "lun delete" command. Retry the dump restore. If the original restore location was chosen in error, recover that deleted LUN.
+*Syslog Message*::
+An in-place restore from dump to an existing destination at path %s in volume %s (DSID %llu) failed due to a vdisk type mismatch.
+*Parameters*::
+*lun_path* (STRING): Path of the existing destination for which restore failed.
+*volume_name* (STRING): Name of the destination volume.
+*volume_dsid* (LONGINT): Data set ID (DSID) of the destination volume.
+
+== LUN.inplace.dumpRestoreFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an in-place restore of a LUN from a dump fails because the source LUN is of a higher version than this Data ONTAP(R) release supports.
+*Corrective Action*::
+To recover the source LUN's data from the dump, first restore the LUN to a new path on the destination volume where it will be restored as a regular file with the entire source data intact. Then create a new and unmapped LUN from this file using the 'lun create -f' command. The original destination LUN is inaccessible for I/O or management operations and can be deleted using the 'force-fenced' option for the command 'lun destroy'.
+*Syslog Message*::
+An in-place restore from dump to an existing destination LUN at path %s in volume %s (DSID %llu) failed.
+*Parameters*::
+*lun_path* (STRING): Path of the existing destination LUN for which restore failed.
+*volume_name* (STRING): Name of the destination volume.
+*volume_dsid* (LONGINT): Data set ID (DSID) of the destination volume.
+
+== LUN.inplace.restore.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an in-place SFSR (Single File SnapRestore(R)) operation fails and might have left a LUN or NVMe namespace in an inconsistent state.
+*Corrective Action*::
+To recover the LUN, restore it to a new path. After the LUN is restored it needs to be mapped and hosts need to discover the new device. The LUN in the original path can be deleted.
+*Syslog Message*::
+An in-place SFSR (Single File SnapRestore(R)) failed at path %s in volume %s (DSID %llu) and might have left the LUN in an inconsistent state.
+*Parameters*::
+*lun_path* (STRING): Path of the LUN or NVMe namespace for which the restore operation failed.
+*volume_name* (STRING): Name of the containing volume.
+*volume_dsid* (LONGINT): Data Set ID (DSID) of the containing volume.

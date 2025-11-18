@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: ha-panicinfosent-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.panicinfosent events
+---
+
+= ha.panicinfosent events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.panicInfoSent
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a node successfully sends panic information to its high-availability (HA) partner over the HA interconnect.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Node successfully sent a panic information message to its HA partner. Partner name: %s. Partner system ID: %llu.
+*Parameters*::
+*local_hostname* (STRING): Name of the node that panicked and sent panic information over the HA interconnect.
+*local_systemid* (LONGINT): System ID of the node that panicked and sent panic information over the HA interconnect.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: netif-cpreventdetected-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.cpreventdetected events
+---
+
+= netif.cpreventdetected events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.cprEventDetected
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a CPR Event (core PCI resiliency) is detected.
+*Corrective Action*::
+PCI reset will occur automatically to correct.
+*Syslog Message*::
+CPR Event (core PCI resiliency) detected on network interface %s and the count since boot is %d.
+*Parameters*::
+*ifname* (STRING): Name of network interface.
+*count* (INT): Number of times CPR Event (core PCI resiliency) has occurred since boot.

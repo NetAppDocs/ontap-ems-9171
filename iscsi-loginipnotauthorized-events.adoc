@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: iscsi-loginipnotauthorized-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: iscsi.loginipnotauthorized events
+---
+
+= iscsi.loginipnotauthorized events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== iscsi.loginIpNotAuthorized
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system rejects an iSCSI login attempt because it originates from an unauthorized IP address.
+*Corrective Action*::
+Run 'iscsi security show -address-ranges' to see if the initiator IP address has been added to the list of permitted IP addresses from where iSCSI logins are allowed.
+*Syslog Message*::
+iSCSI login authorization failure. Initiator %s attempted to log in on Vserver %s, LIF %s from IP address %s
+*Parameters*::
+*initiator_name* (STRING): Name of the initiator that attempted to login.
+*vserver* (STRING): Name of the vserver to which the unauthorized login attempt is made.
+*lif* (STRING): Name of the LIF where the login was attempted.
+*initiator_ip_address* (STRING): Source IP address of the initiator that attempted to login.

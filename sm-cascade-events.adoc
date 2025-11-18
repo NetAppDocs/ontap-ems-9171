@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: sm-cascade-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sm.cascade events
+---
+
+= sm.cascade events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== SM.cascade.concurrency.unsupported
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when concurrent SnapMirror(R) transfers are attempted while in a cascaded scenario, which is not supported. For example, in a relationship A->B->C, when an A->B SnapMirror update is occurring, a B->C SnapMirror update/initialize or a B->C SMTape backup cannot happen at the same time..
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s cascade concurrency is not supported for volume %s until the current transfer has ended.
+*Parameters*::
+*product* (STRING): Either VSM-SMTape cascade or VSM-VSM/SMTape cascade
+*dstpath* (STRING): Replication destination system.

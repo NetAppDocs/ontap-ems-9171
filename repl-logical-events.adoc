@@ -1,0 +1,78 @@
+---
+sidebar: sidebar
+permalink: repl-logical-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.logical events
+---
+
+= repl.logical events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.logical.dw.rebuild
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a data warehouse is rebuilt as part of a SnapMirror(R) restore or resync operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A data warehouse rebuild was performed on volume with name %s, MSID %llu, DSID %llu, and Vserver ID %u.
+*Parameters*::
+*volName* (STRING): Volume name.
+*volMsid* (LONGINT): Volume master data set ID (MSID).
+*volDsid* (LONGINT): Volume data set ID (DSID).
+*volVserverId* (INT): Volume Vserver ID.
+
+== repl.logical.lreTolrse
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when previously enabled compression is disabled on the destination volume of a SnapMirror(R) relationship with the type XDP, and when it is followed by the "snapmirror update" command with the "enable-storage-efficiency" parameter set to "true". All future transfers to this destination volume from the current source will preserve storage efficiency as long as compression is disabled on it.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+All future transfers from the current source to destination volume %s%s with MSID %llu, DSID %llu, from the current source will preserve storage efficiency as long as compression is disabled on the destination volume.
+*Parameters*::
+*dstVolName* (STRING): Destination volume name.
+*dstVolVserverUuid* (STRING): Destination volume Vserver ID.
+*dstVolMsid* (LONGINT): Destination volume Master data set ID (MSID).
+*dstVolDsid* (LONGINT): Destination volume data set ID (DSID).
+
+== repl.logical.lrseTolre
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when compression is enabled on the destination volume of a SnapMirror(R) relationship that has type XDP. All future transfers to this destination volume from the current source will not preserve storage efficiency.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+All future transfers to destination volume with MSID %llu, DSID %llu, and Vserver ID %u, from the current source will not preserve storage efficiency.
+*Parameters*::
+*dstVolMsid* (LONGINT): Destination volume Master Data Set ID (MSID).
+*dstVolDsid* (LONGINT): Destination volume Data Set ID (DSID).
+*dstVolVserverId* (INT): Destination volume Vserver ID.
+
+== repl.logical.rawDirToLogicalDir
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a SnapMirror(R) transfer uses logical mode after a previous transfer to the same destination used raw directory mode. This most frequently occurs when the source node of the transfer was upgraded to a newer version of Data ONTAP(R) than the destination node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*dstVolMsid* (LONGINT): Destination volume Master Data Set ID (MSID).
+*dstVolDsid* (LONGINT): Destination volume Data Set ID (DSID).
+*dstVolClusterId* (STRING): Destination volume cluster Universally Unique ID (UUID).
+*dstVolVserverId* (INT): Destination volume Vserver ID.
+*srcInstanceImageUuid* (STRING): Source transfer instance snapshot UUID.
+*srcVersionImageUuid* (STRING): Source transfer version snapshot UUID.
+*rawDirsSupported* (INT): Indicates whether the destination believes raw directory transfer is supported.
+*rawDirsRequired* (INT): Indicates whether the destination believes raw directory transfer is required.

@@ -1,0 +1,73 @@
+---
+sidebar: sidebar
+permalink: fg-unconvert-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fg.unconvert events
+---
+
+= fg.unconvert events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fg.unconvert.critical.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a member of a FlexGroup fails to be converted into an independent FlexVol(R) volume. The original state of this member could not be restored, so the FlexGroup itself is inoperable, and requires repair.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+FlexGroup member #%u of %u in FlexGroup %s failed to be converted into an independent FlexVol volume. The FlexGroup is inoperable. Reason: %s
+*Parameters*::
+*fgindex* (INT): FlexGroup index of the volume being converted to a FlexVol volume.
+*fgmembers* (INT): Total number of members in this FlexGroup.
+*fgname* (STRING): Name of the FlexGroup containing the member being converted to a FlexVol volume.
+*reason* (STRING): Reason why the conversion failed.
+
+== fg.unconvert.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a member of a FlexGroup has fails to be converted into an independent FlexVol(R) volume. The FlexGroup is still functional.
+*Corrective Action*::
+Ensure that the FlexGroup is a valid candidate for the unconvert operation, and then retry the command. If the error persists, contact NetApp technical support.
+*Syslog Message*::
+FlexGroup member #%u of %u in FlexGroup %s failed to be converted into an independent FlexVol volume. Reason: %s
+*Parameters*::
+*fgindex* (INT): FlexGroup index of the volume being converted to a FlexVol volume.
+*fgmembers* (INT): Total number of members in this FlexGroup.
+*fgname* (STRING): Name of the FlexGroup containing the member being converted to a FlexVol volume.
+*reason* (STRING): Reason why the conversion failed.
+
+== fg.unconvert.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a member of a FlexGroup, usually the root constituent, is being converted to an independent FlexVol(R) volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Starting conversion of FlexGroup member #%u of %u in FlexGroup %s into an independent FlexVol volume.
+*Parameters*::
+*fgindex* (INT): FlexGroup index of the volume being converted to a FlexVol volume.
+*fgmembers* (INT): Total number of members in this FlexGroup.
+*fgname* (STRING): Name of the FlexGroup containing the member being converted to a FlexVol volume.
+
+== fg.unconvert.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a member of a FlexGroup is successfully converted to an independent FlexVol(R) volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FlexGroup member #%u of %u in FlexGroup %s was successfully converted into an independent FlexVol volume.
+*Parameters*::
+*fgindex* (INT): FlexGroup index of the volume being converted to a FlexVol volume.
+*fgmembers* (INT): Total number of members in this FlexGroup.
+*fgname* (STRING): Name of the FlexGroup containing the member being converted to a FlexVol volume.

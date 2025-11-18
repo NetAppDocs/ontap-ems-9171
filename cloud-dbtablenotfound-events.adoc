@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: cloud-dbtablenotfound-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cloud.dbtablenotfound events
+---
+
+= cloud.dbtablenotfound events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cloud.DBTableNotFound
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a cloud database table is not found in this cloud database service.
+*Corrective Action*::
+Verify that the cloud database endpoint and table are valid. Once the issue is addressed, take over and give back the node.
+*Syslog Message*::
+Cloud database endpoint "%s" and/or table "%s" are not valid for this ONTAP Cloud instance.
+*Parameters*::
+*db_endpoint* (STRING): Name of the cloud database endpoint associated with this ONTAP Cloud instance.
+*db_table* (STRING): Name of the cloud database table associated with this ONTAP Cloud instance.

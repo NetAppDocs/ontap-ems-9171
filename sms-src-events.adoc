@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: sms-src-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sms.src events
+---
+
+= sms.src events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sms.src.clear.fence.complete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a SnapMirror(R) Synchronous operation has successfully cleared the persistent fence (read/write I/O has resumed) on the source volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cleared persistent fence (read/write I/O has resumed) on the source volume for relationship UUID "%s" with source volume "%s" and destination volume "%s".
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume of the SnapMirror relationship.
+*dstpath* (STRING): Path name of the destination volume of the SnapMirror relationship.
+*relationship_id* (STRING): Relationship UUID.
+
+== sms.src.set.fence.complete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a SnapMirror(R) Synchronous operation has successfully set the persistent fence (prevent read/write I/O) on the source volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Set persistent fence (prevent read/write I/O) on the source volume for relationship UUID "%s" with source volume "%s" and destination volume "%s".
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume of the SnapMirror relationship.
+*dstpath* (STRING): Path name of the destination volume of the SnapMirror relationship.
+*relationship_id* (STRING): Relationship UUID.

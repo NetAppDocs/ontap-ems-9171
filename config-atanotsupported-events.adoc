@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-atanotsupported-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.atanotsupported events
+---
+
+= config.atanotsupported events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.ATAnotSupported
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an ATA disk is found, but the appliance does not support it.
+*Corrective Action*::
+Remove the ATA disks or upgrade your appliance to a model that supports ATA disks. Check your support provider's web site or knowledgebase for more information about appliance models that support ATA disks.
+*Syslog Message*::
+ATA disks are not supported on this appliance. Disk %s is an ATA disk and should be removed.
+*Parameters*::
+*disk* (STRING): Name of the disk.

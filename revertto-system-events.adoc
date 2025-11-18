@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: revertto-system-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: revertto.system events
+---
+
+= revertto.system events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== revertTo.system.reboot
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system is rebooting to complete the revert process. During reboot, the RAID subsystem will be reverted. After the RAID subsystem reverts and the system reboots, the revert process is complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+System reverting to work with Data ONTAP %s.
+*Parameters*::
+*target_release* (STRING): Target release name to which the revert process was started.

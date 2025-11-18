@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nblade-fileopenlimitexceeded-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.fileopenlimitexceeded events
+---
+
+= nblade.fileopenlimitexceeded events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.fileOpenLimitExceeded
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the number of open files on a single SMB connection or session exceeds the system limit.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Number of open files has reached the maximum limit of (%d).
+*Parameters*::
+*filesopen* (INT): Number of files that are open.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: repl-extended-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.extended events
+---
+
+= repl.extended events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.extended.time.format.unsupported
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the replication engine encounters a destination that does not support extended time format.
+*Corrective Action*::
+Select a destination that supports extended time format.
+*Syslog Message*::
+Extended time format not supported on the destination of relationship %s.
+*Parameters*::
+*transferId* (STRING): UUID of the SnapMirror(R) transfer that has the destination that cannot handle extended time.

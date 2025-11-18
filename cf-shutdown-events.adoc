@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: cf-shutdown-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.shutdown events
+---
+
+= cf.shutdown events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.shutdown.info
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the controller receives a message from its partner over the HA interconnect that indicates a condition related to the partner's attempted graceful shutdown.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*eventType* (STRING): Event type, such as "Long shutdown".
+*eventSummary* (STRING): Last task executed and its duration.
+*shutdownSummary* (STRING): Shutdown phase summary for the event.

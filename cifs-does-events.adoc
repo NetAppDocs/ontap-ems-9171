@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cifs-does-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cifs.does events
+---
+
+= cifs.does events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cifs.does.not.exist
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Vserver or Cluster administrator tries to initialize Snapmirror on Async VserverDR ID Discard setup without creating a CIFS server at destination. Snapmirror initialize will not complete successfully and will remain uninitialized.
+*Corrective Action*::
+Create CIFS server at destination(DP-destination) vserver. Reissue snapmirror initialize.
+*Syslog Message*::
+CIFS server does not exist on Vserver '%s'.
+*Parameters*::
+*vserverName* (STRING): Name of the DP-destination Vserver on which CIFS server does not exist.

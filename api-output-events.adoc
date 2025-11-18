@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: api-output-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: api.output events
+---
+
+= api.output events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== api.output.invalid
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when An invalid character was detected while checking the output for a Data ONTAP(R) API. All Data ONTAP API output must be valid UTF-8 characters. From time to time invalid output is detected. Most often this is due to hardware errors, for example, a disk-list-info API might query a disk drive for its serial number but receive invalid data from a malfunctioning drive.
+*Corrective Action*::
+Examine the information in detailInfo to see if it pinpoints defective hardware. If an API name is provided, that API can be executed to determine which field in the API output is being given invalid data.
+*Syslog Message*::
+(None).
+*Parameters*::
+*detailInfo* (STRING): Information regarding the circumstances in which the error was detected, for example, the API name and/or the piece of hardware that provided invalid data.
+*invalidValue* (INTHEX): The character in the string that was invalid, printed as a hexadecimal number.
+
+== api.output.invalidSchema
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an ONTAPI(tm) API generates output that violates the declared schema of the API. Most often this is due to a bug in the API handler.
+*Corrective Action*::
+The error is due to strict schema validation. You can turn off the output schema validation by using the following CLI commands: $priv set advanced $registry set state.api.schema_output_validate.enable off
+*Syslog Message*::
+Error in API output schema validation. API name: %s. Detailed error: %s.
+*Parameters*::
+*apiName* (STRING): Name of the ONTAPI API in which something invalid was detected.
+*detailInfo* (STRING): Description of the error in the API output, such as an extra output value or a missing output value.

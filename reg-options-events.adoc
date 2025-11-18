@@ -1,0 +1,65 @@
+---
+sidebar: sidebar
+permalink: reg-options-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: reg.options events
+---
+
+= reg.options events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== reg.options.cf.change
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an option is changed on one cluster node but applies to both the local and partner when the cluster is in takeover mode. The result is that the partner's setting will be overridden during takeover.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Option %s changed on one cluster node.
+*Parameters*::
+*name* (STRING): Name of the option
+
+== reg.options.cf.mismatch
+*Severity*::
+ERROR
+*Description*::
+This message occurs during takeover processing when Data ONTAP(tm) discovers that a mismatch exists between the value of an option on the local node and an option on the partner node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Option %s is not the same as on the partner node
+*Parameters*::
+*name* (STRING): Name of the option
+
+== reg.options.nullCookie
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an internal error occurs during the processing of the options portion of the registry.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+registry: Unable to find the option in skiplist datastructure, but the option code is present in ONTAP. Error is %s.
+*Parameters*::
+*error* (STRING): Internal error code.
+
+== reg.options.overrideRc
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(tm) (or an administrator) sets an option to be a value different than the value in /etc/rc. At the next reboot, the line in /etc/rc will override this setting and a reg.options.overrideRegistry message will be sent.
+*Corrective Action*::
+If you want the new option to be persistent, check the /etc/rc file for this key and remove it.
+*Syslog Message*::
+Setting option %s to '%s' conflicts with /etc/rc that sets it to '%s'.
+*Parameters*::
+*name* (STRING): Name of the option
+*newValue* (STRING): New value for the option
+*oldValue* (STRING): Existing value in /etc/rc

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: spm-shmd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: spm.shmd events
+---
+
+= spm.shmd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== spm.shmd.process.exit
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the System Health Monitor process (shmd) involuntarily terminates. The termination of this process can affect the system health management and diagnosis feature.
+*Corrective Action*::
+The system attempts to recover by restarting the shmd process. If the server does not restart within the threshold number of retries, then an AutoSupport(tm) message is sent. If your system is not configured to send AutoSupport messages and the issue persists, contact NetApp technical support.
+*Syslog Message*::
+System Health Monitor process (shmd) with ID %d exited as a result of %s. This server will attempt to restart.
+*Parameters*::
+*id* (INT): Process identifier.
+*cause* (STRING): Plain text description of why the process exited.

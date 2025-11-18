@@ -1,0 +1,49 @@
+---
+sidebar: sidebar
+permalink: cifs-shadowcopy-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cifs.shadowcopy events
+---
+
+= cifs.shadowcopy events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cifs.shadowcopy.abort
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a shadow copy set is automatically aborted when no activity has been detected for a certain period of time. This condition could be caused by improper operation of the backup application and/or the Volume Shadow Copy Service (VSS) client, or the loss of network connection to the host.
+*Corrective Action*::
+Check the backup application and VSS client. Verify the network connection between the file server and the client.
+*Syslog Message*::
+The shadow copy set ( Client Shadow Copy Set ID : %s , Filer Shadow Copy Set ID : %s ) has been automatically aborted. No activity has been seen for at least %d minutes.
+*Parameters*::
+*clientShadowCopySetId* (STRING): Client Shadow Copy Set ID.
+*filerShadowCopySetId* (STRING): File Server Shadow Copy Set ID.
+*timeout* (INT): No activity timeout in minutes.
+
+== cifs.shadowcopy.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a shadow copy operation has failed.
+*Corrective Action*::
+Using the information provided in the event message, here are some things to check on your system: Shadow copy configuration; Is the feature enabled? Are the appropriate licenses installed? Share(s) on which the shadow copy operation is performed; Is the share name correct? Does the share path exist? State of the shadow copy set and its shadow copies.
+*Syslog Message*::
+A shadow copy operation has failed: %s. ( Operation : %s , Client Shadow Copy Set ID : %s , Filer Shadow Copy Set ID : %s , Client Shadow Copy ID : %s , Filer Shadow Copy ID : %s , Share Name : %s, Object type is: %s with UUID: %s )
+*Parameters*::
+*errMsg* (STRING): Reason the Shadow Copy operation failed.
+*operation* (STRING): Shadow Copy operation that failed.
+*clientShadowCopySetId* (STRING): Client Shadow Copy Set ID.
+*filerShadowCopySetId* (STRING): File Server Shadow Copy Set ID.
+*clientShadowCopyId* (STRING): Client Shadow Copy ID.
+*filerShadowCopyId* (STRING): File Server Shadow Copy ID.
+*shareName* (STRING): Share Name.
+*object_type* (STRING): Type of resource object.
+*object_uuid* (STRING): UUID of the resource object.

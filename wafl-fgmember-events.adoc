@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: wafl-fgmember-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.fgmember events
+---
+
+= wafl.fgmember events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.fgmember.rollback
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a member of a FlexGroup experiences an unexpected rollback in its state due to a loss of the NVRAM log for the member. This indicates that the volume might have inconsistencies between members.
+*Corrective Action*::
+Run the fgiron tool against the FlexGroup to ensure consistency.
+*Syslog Message*::
+FlexGroup %u member %u/%u detected a rollback.
+*Parameters*::
+*FlexGroupMSID* (LONGINTHEX): Volume master data set identifier (MSID) of the FlexGroup that experienced a rollback due to NVRAM loss.
+*FlexGroupMemberMSID* (LONGINTHEX): Volume master data set identifier (MSID) of the FlexGroup member that experienced a rollback due to NVRAM loss.
+*FlexGroupMemberDSID* (LONGINTHEX): Volume data set identifier (DSID) of the FlexGroup member that experienced a rollback due to NVRAM loss.

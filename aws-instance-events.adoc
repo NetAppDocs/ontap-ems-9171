@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: aws-instance-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: aws.instance events
+---
+
+= aws.instance events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== aws.instance.metadata.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when instance metadata retrieval fails on a hypervisor hosting an Amazon Web Services (AWS) ONTAP instance. The Instance Metadata Service (IMDS) is not reachable at this time. Failure to retrieve the instance metadata indicates issues with the hypervisor.
+*Corrective Action*::
+This error indicates an issue with the AWS environment. Contact AWS technical support for further assistance. Stopping and starting the instance can also resolve the issue because the instance will typically be relaunched on a different host.
+*Syslog Message*::
+IMDS%s request fails to retrieve AWS instance metadata: %s.
+*Parameters*::
+*IMDS_Version* (STRING): Metadata request version that generates this event.
+*metadataType* (STRING): Metadata request type that generates this event.

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: callhome-vdom-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.vdom events
+---
+
+= callhome.vdom events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.vdom.reconcile
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the virtual disk infrastructure (vdom) unsuccessfully reconciles the Out Of Volume Container (OOVC) and the Vdisk Table Of Contents (VTOC). The Out Of Volume Container or OOVC is an area of storage that resides in a per-vvol aggregate metadir and provides storage for LUN configuration (override) and metadata (PR, mode page, log page). OOVC will have a LUN inventory that is identical to the LUN inventory in the AFS. Therefore the VTOC and OOVC must contain the same set of LUNs. As a result of data management operations like volume snaprestore, the LUN inventory can differ between VTOC and OOVC. For these operations that affect LUN inventory, VDOM will need to reconcile the OOVC with the VTOC as part of the operation. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for %s Could not reconcile vtoc and oovc for volume associated with DSID: %llu, due to VDOM error: %u.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*volume_dsid* (LONGINT): Data set ID (DSID) of the containing volume.
+*vdom_error* (INT): The vdom error code associated with the reconcile.

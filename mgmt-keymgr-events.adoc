@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: mgmt-keymgr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmt.keymgr events
+---
+
+= mgmt.keymgr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmt.keymgr.keyid.noDelete
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot delete the key ID associated with the encrypted aggregate from the key management server.
+*Corrective Action*::
+Manually delete the key ID associated with the encrypted aggregate from the key management server.
+*Syslog Message*::
+Encrypted aggregate "%s" with UUID "%s" has been deleted. The key ID "%s" was associated with this aggregate and must be manually deleted from the key management server.
+*Parameters*::
+*name* (STRING): Aggregate name.
+*uuid* (STRING): Unique identifier of the aggregate when the aggregate name by itself is insufficient.
+*key_id* (STRING): Unique key ID used by the encrypted aggregate.

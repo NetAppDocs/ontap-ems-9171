@@ -1,0 +1,75 @@
+---
+sidebar: sidebar
+permalink: callhome-raid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.raid events
+---
+
+= callhome.raid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.raid.adp.disabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when auto-partitioning for root aggregate creation is disabled on a system. When auto-partitioning is disabled, the root aggregate is created on whole disks. Systems with a root aggregate on partitioned disks can devote more space to non-root aggregates than systems with a root aggregate on whole disks. If this message occurs after root aggregate creation, then further partitioning of the disks is disabled.
+*Corrective Action*::
+If the system is already initialized with root aggregate on partitioned disks, ONTAP will try to re-enable auto-partitioning after the system boots up and the root aggregate is online. The event raid.autoPart.enabled will be logged when auto-partitioning is re-enabled. To create a root aggregate on partitioned disks: 1. Halt the controller. 2. Replace any failed internal disks (see the "reason" field in the EMS message). 3. Reboot the controller. 4. Re-initialize the system. If this message is seen after the system initialization and the root aggregate is already created on partitioned disks, then the system will continue to function, as follows: 1. Expansion of existing aggregates created from partitioned disks may not work. 2. If a disk fails in a RAID group created out of partitioned disks, then a spare will fail to be partitioned and disk reconstruction will not start. 3. If a disk is marked for predictive failure in a RAID group created out of partition disks, then a spare will fail to be partitioned and the sick disk copy will not start. 4. If disks are available, then manually partition the disks and keep them as spares. 5. If you were previously directed to disable ADP by NetApp technical support, reach out to NetApp technical support to re-enable ADP.
+*Syslog Message*::
+Disk auto-partitioning is disabled on this system: %s.
+*Parameters*::
+*subject* (STRING): Reason that auto-partitioning was disabled.
+
+== callhome.raid.bg.ops.stalled
+*Severity*::
+ALERT
+*Description*::
+This message occurs when RAID group background long running I/O is not making progress due to missing ownership metadata. This has high impact on I/O and can lead to I/O request timeouts if the background I/O type is "reconstruction". In contrast, I/O impact is low if the background I/O type is "scrub". If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+NetApp technical support
+*Syslog Message*::
+Call home for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.raid.mdp.detected
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects that it has encountered a multi-disk error prior to this boot. If your system is configured to do so, it generates and transmits an AutoSupport(tm) (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.raid.no.recover
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when too many errors have been detected by the RAID (Redundant Array of Inexpensive Disks) software protection and recovery is not possible. The detected errors could be related to checksum calculations, lost write detection and on disk medium errors in combinations with disk and NVRAM failures. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Immediately contact NetApp technical support for assistance to help diagnose the failures. If the diagnosis points to malfunctioning hardware components, these should be replaced.
+*Syslog Message*::
+Call home for RAID DETECTED UNRECOVERABLE ERRORS
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.raid.over.max
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the maximum raw capacity of the file system (aggregate or RAID file system) is reached for this software release. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Call home for Exceeded maximum raw capacity
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

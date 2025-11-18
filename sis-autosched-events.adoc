@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: sis-autosched-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.autosched events
+---
+
+= sis.autosched events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.autoSched.failed
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a SIS volume operation could not be auto scheduled due to unexpected conditions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SIS operation for %s%s could not be auto scheduled: %s
+*Parameters*::
+*vol* (STRING): Path to a SIS volume
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*err* (STRING): Error message

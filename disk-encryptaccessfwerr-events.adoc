@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: disk-encryptaccessfwerr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.encryptaccessfwerr events
+---
+
+= disk.encryptaccessfwerr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.encryptAccessFWErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk reports a SCSI data protection error on an attempt to download firmware and ONTAP(R) cannot restore permission to access the firmware through storage encryption methods.
+*Corrective Action*::
+If the disk is known to be an encrypting disk, then ONTAP might not have the correct storage encryption passphrase for this device. If possible, import the proper passphrase. If the passphrase cannot be recovered, or if the disk is not an encrypting disk, then the firmware cannot be downloaded. If the device cannot be recovered, then it must be removed from the system.
+*Syslog Message*::
+Unable to restore firmware download access on encrypting disk %s; status %s (0x%x).
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*status_string* (STRING): Status code description from the SCSI driver.
+*status* (INT): Status code from the SCSI driver.

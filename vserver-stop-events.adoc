@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: vserver-stop-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vserver.stop events
+---
+
+= vserver.stop events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vserver.stop.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a 'vserver stop' operation fails due to failure to stop either a logical interface (LIF) or a protocol for the Vserver specified.
+*Corrective Action*::
+Ensure that the network configuration, LIF details, and protocol configurations are correct, then try to stop the Vserver again.
+*Syslog Message*::
+Failed in Vserver stop due to failure to stop either a LIF or a protocol for the Vserver %s (UUID: %s).
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*vserver_uuid* (STRING): UUID of the Vserver.
+
+== vserver.stop.succeeded
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a 'vserver stop' operation succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Vserver %s (UUID: %s) stopped successfully.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*vserver_uuid* (STRING): UUID of the Vserver.

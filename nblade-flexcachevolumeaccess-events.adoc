@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: nblade-flexcachevolumeaccess-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.flexcachevolumeaccess events
+---
+
+= nblade.flexcachevolumeaccess events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.flexCacheVolumeAccess
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a client tries to access a FlexCache volume through an unsupported protocol. Currently only NFSv3,NFSv4,NFSv4.1 and SMB clients are supported by FlexCache.
+*Corrective Action*::
+Make sure a FlexCache-supported protocol is specified for all client mount operations through which a FlexCache volume can be accessed. If using FlexCache, specify 'nfsvers=3' or 'nfsvers=4' or 'nfsvers=4.1' as an option for the 'mount' command on all clients accessing a FlexCache volume.
+*Syslog Message*::
+Attempt to access FlexCache volume %s in SVM %s via %s denied for client %s.
+*Parameters*::
+*volName* (STRING): Name of the FlexCache volume being accessed.
+*vserverName* (STRING): Name of the vserver associated with this operation.
+*protocol* (STRING): Client protocol.
+*clientIpAddress* (STRING): IP address of the client machine.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: clam-reenable-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: clam.reenable events
+---
+
+= clam.reenable events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== clam.reenable
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Kernel Cluster Services (KCS) Connectivity, Liveliness, Availability Monitor (CLAM) is reenabled to operate on this node after being intentionally disabled. The intentional disabling could have been through turning off KCS capability or setting the 'clam bootarg/sysctl' variable. Reenabling CLAM functionality warrants a reboot, upon which CLAM will be functional.
+*Corrective Action*::
+Reboot the node to make CLAM operational.
+*Syslog Message*::
+CLAM functionality is reenabled. Reboot the node to make CLAM operational.
+*Parameters*::
+(None).

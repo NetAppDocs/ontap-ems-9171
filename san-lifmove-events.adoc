@@ -1,0 +1,34 @@
+---
+sidebar: sidebar
+permalink: san-lifmove-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.lifmove events
+---
+
+= san.lifmove events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.lifmove.fail
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a LIF move failed and the recovery action to restore the LIF has also failed. LUNs are no longer accessible through this LIF. The LIF must be recovered manually.
+*Corrective Action*::
+Restore the LIF using the 'network interface create' command. Also, restore any iscsi access list settings and FQDN settings using 'iscsi interface' commands. Specific recovery commands are listed in the 'recover_commands' parameter. For more information or assistance, contact NetApp technical support.
+*Syslog Message*::
+Moving LIF %s of vserver %s from %s:%s to %s:%s failed. Manual recovery required.
+*Parameters*::
+*lif_name* (STRING): LIF name.
+*vserver* (STRING): Vserver name.
+*src_node* (STRING): LIF was moving from this node.
+*src_port* (STRING): LIF was moving from this port.
+*dest_node* (STRING): LIF was moving to this node.
+*dest_port* (STRING): LIF was moving to this port.
+*address* (STRING): LIF address.
+*recovery_commands* (STRING): Commands to recover the LIF and associated settings.

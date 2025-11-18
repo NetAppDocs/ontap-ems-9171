@@ -1,0 +1,44 @@
+---
+sidebar: sidebar
+permalink: shm-fab-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: shm.fab events
+---
+
+= shm.fab events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== shm.fab.writeError
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an error is received while writing the failure bytes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+shm: Unable to write failure bytes to disk %s due to error %x.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*error_code* (INTHEX): Error code returned.
+
+== shm.fab.writeSenseError
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an error is received while writing the failure bytes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+shm: Unable to write failure bytes to disk %s due to error %x/%x/%x/%x.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*sense_key* (INTHEX): Actual sense key.
+*sense_code* (INTHEX): Actual sense code.
+*qualifier* (INTHEX): Actual sense code qualifier.
+*fru_failed* (INTHEX): Actual FRU code.

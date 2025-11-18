@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: dfu-fwdownloadfailedmultfiles-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dfu.fwdownloadfailedmultfiles events
+---
+
+= dfu.fwdownloadfailedmultfiles events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dfu.fwDownloadFailedMultFiles
+*Severity*::
+ERROR
+*Description*::
+This message occurs when more than one file is found for downloading to an ATA drive. Because there is no version string control, only one file at a time is allowed on the system.
+*Corrective Action*::
+Two or more firmware files were found for download. Delete all except the one that should be downloaded to the drive. Background firmware update should download on the next check cycle.
+*Syslog Message*::
+Download failed due to multiple firmware files found for Disk type [%s %s].
+*Parameters*::
+*vendorName* (STRING): Vendor name of the disk.
+*productId* (STRING): Product ID of the disk.

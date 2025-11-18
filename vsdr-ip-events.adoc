@@ -1,0 +1,47 @@
+---
+sidebar: sidebar
+permalink: vsdr-ip-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsdr.ip events
+---
+
+= vsdr.ip events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsdr.ip.lif.auto.created
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a logical interface (LIF) is automatically created through configuration replication in a MetroCluster(TM) configuration.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LIF %s in Vserver %s was created on port %s on node %s.
+*Parameters*::
+*lif* (STRING): LIF name.
+*vserver_name* (STRING): Vserver name.
+*port_name* (STRING): Name of the home port of the LIF.
+*node_name* (STRING): Name of the home node of the LIF.
+
+== vsdr.ip.lif.home.changed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the home port or node of an existing IP logical interface (LIF) is modified during LIF placement in a MetroCluster(TM) configuration.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Home port and node changed from %s, %s to %s, %s while placing LIF %s in Vserver %s.
+*Parameters*::
+*old_port_name* (STRING): Name of the previous home port of the existing IP LIF.
+*old_node_name* (STRING): Name of the previous home node of the existing IP LIF.
+*port_name* (STRING): Name of the current home port of the existing IP LIF.
+*node_name* (STRING): Name of the current home node of the existing IP LIF.
+*lif* (STRING): LIF name.
+*vserver_name* (STRING): Vserver name.

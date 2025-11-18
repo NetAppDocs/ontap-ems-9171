@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: ic-hainterconnectlinkdown-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ic.hainterconnectlinkdown events
+---
+
+= ic.hainterconnectlinkdown events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ic.HAInterconnectLinkDown
+*Severity*::
+ERROR
+*Description*::
+This message occurs every hour when one of the high-availability (HA) interconnect links is down.
+*Corrective Action*::
+Verify that both controllers in the HA pair are operational. For externally connected links, make sure that the interconnect cables are connected properly and that small form-factor pluggable (SFP) modules, if applicable, are seated properly on both controllers. For internally connected links, disable and reenable the links one at a time by using the (privilege: advanced) "system ha interconnect link off" and "system ha interconnect link on" commands. When one link is down on platforms with two available links, HA link redundancy is lost. However, HA services are still working and enabled on the secondary link.
+*Syslog Message*::
+HA interconnect: %s link #%d has been down for %d minutes.
+*Parameters*::
+*link_type* (STRING): Type of link that is down. Possible values are external and backplane.
+*link_num* (INT): Number that identifies which link is down.
+*link_downtime* (INT): Amount of time (in minutes) the link has been down.

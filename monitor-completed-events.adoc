@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: monitor-completed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.completed events
+---
+
+= monitor.completed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.completed.iron
+*Severity*::
+ERROR
+*Description*::
+This message occurs when wafliron in the optional commit mode has finished on the aggregate but changes have not been committed or rejected. Either commit or reject the changes.
+*Corrective Action*::
+Run the "aggr waflrion commit VOL" command to commit the changes or the "aggr wafliron reject VOL" command to reject the changes.
+*Syslog Message*::
+Wafliron in the optional commit mode has completed on aggregate '%s' but the changes have not been committed or rejected. Either commit or reject the changes.
+*Parameters*::
+*volname* (STRING): Volume name

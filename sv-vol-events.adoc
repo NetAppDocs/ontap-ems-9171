@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sv-vol-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sv.vol events
+---
+
+= sv.vol events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== SV.vol.snapshot.rename.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the renaming operation of SnapVault(R) snapshots belonging to a certain volume fails, even though the "vFiler rename" or "vFiler move" operation was successful. The problem might be that the volume was offline during the "vFiler rename" or "vFiler move" operation, and it might cause SnapVault to have an extra snapshot on the destination. To avoid this scenario, volumes need to be online during a "vFiler rename" or "vFiler move".
+*Corrective Action*::
+If necessary, delete the extra snapshot manually after the next SnapVault update.
+*Syslog Message*::
+Rename of SnapVault snapshots for volume %s failed. This might cause SnapVault to have an extra snapshot on destination. If necessary, delete the extra snapshot manually after the next SnapVault update.
+*Parameters*::
+*vol_name* (STRING): Volume whose snapshots created by SnapVault(R) could not be renamed.

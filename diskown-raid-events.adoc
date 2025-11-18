@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: diskown-raid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.raid events
+---
+
+= diskown.raid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.RAID.Ownershipchange
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk assign or disk remove ownership request is rejected at the RAID layer.
+*Corrective Action*::
+Review the error message and verify that the request was not for a file system disk.
+*Syslog Message*::
+%s
+*Parameters*::
+*err_msg* (STRING): Reason the request failed.

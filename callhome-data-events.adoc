@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-data-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.data events
+---
+
+= callhome.data events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.data.outage.detected
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects that it has encountered an outage prior to this boot. If your system is configured to do so, it generates and transmits an AutoSupport(tm) (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

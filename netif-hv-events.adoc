@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: netif-hv-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.hv events
+---
+
+= netif.hv events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.hv.heartbeatFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the heartbeat between hypervisor and the guest virtual machine (VM) fails. There is no functional impact but the resource health in the Azure portal for this VM shows as unavailable. The heartbeat is restored after reboot of the VM or detach and attach of heartbeat device.
+*Corrective Action*::
+Reboot the Cloud Volumes ONTAP (CVO) instance or run the following two commands from BSD systemshell using diagnostic privilege: sudo devctl disable hvheartbeat0 sudo devctl enable hvheartbeat0 If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Failed to respond to heartbeat message from the hypervisor.
+*Parameters*::
+(None).

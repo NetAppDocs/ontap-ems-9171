@@ -1,0 +1,147 @@
+---
+sidebar: sidebar
+permalink: callhome-chassis-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.chassis events
+---
+
+= callhome.chassis events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.chassis.hitemp
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the chassis temperature is too warm and might cause an environmental problem, or when there is faulty hardware in the system, such as a fan failure or a malfunctioning temperature sensor. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Evaluate the environment in which your system is operating and identify whether the problem is environmental or hardware-related. Your system should be in a room with an operating temperature of 18C to 24C (65F to 75F). If faulty hardware caused the error, such as a bad temperature sensor or a broken fan, replace the faulty part as soon as possible. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for CHASSIS OVER TEMPERATURE
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.chassis.overtemp
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the chassis temperature is too hot. It is sent just before system shutdown and indicates a potential environmental problem or faulty hardware in the system, such as a fan failure or a malfunctioning temperature sensor. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Evaluate the environment in which your system is operating and identify whether the problem is environmental or hardware-related. Your system should be in a room with an operating temperature of 18C to 24C (65F to 75F). If the environment is too hot, shut down and power off your system until the environmental conditions are restored to the normal operating temperature range. If faulty hardware caused the error, such as a bad temperature sensor or a broken fan, replace the faulty part as soon as possible. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for CHASSIS OVER TEMPERATURE SHUTDOWN
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.chassis.power
+*Severity*::
+ERROR
+*Description*::
+This message occurs when power is in a degraded state because of bad power supply units (PSUs), bad wall power, or bad components on the motherboard. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+If spare PSUs are available, try exchanging them to see whether that alleviates the problem. If not, you might need to replace motherboard components or the motherboard. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.chassis.power.down
+*Severity*::
+ERROR
+*Description*::
+This message occurs when voltage and other power sensors for the system power show critical values. A power supply unit (PSU) might have failed or the sensors might be malfunctioning. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Replace the faulty hardware. Most likely, you need to replace a PSU. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.chassis.ps.degraded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a degraded chassis power supply unit (PSU) state exists. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+You might need to replace a chassis PSU. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.chassis.ps.fault
+*Severity*::
+ERROR
+*Description*::
+This message occurs when one chassis power supply unit (PSU) fails. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+You might need to replace a chassis PSU. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.chassis.ps.off
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects that a chassis power supply unit (PSU) is turned off. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Turn on the chassis PSU to restore normal operations. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.chassis.ps.ok
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects that a chassis power supply unit (PSU) was restored to normal operations. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.chassis.ps.replace
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a chassis power supply unit (PSU) fails. The PSU's DC power output was abnormal although the AC input power was within acceptable limits. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Replace the affected chassis PSU. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.chassis.ps.rm
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects that a chassis power supply unit (PSU) was removed. You have two minutes to install a replacement chassis PSU or the system shuts down automatically to avoid overheating. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Install a replacement chassis PSU within two minutes of removing the original to complete the hot-swap. Otherwise, install the replacement chassis PSU when you are ready. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.chassis.undertemp
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the chassis temperature is too cold. It is sent just before system shutdown and indicates a potential environmental problem or faulty hardware in the system, such as a fan failure or a malfunctioning temperature sensor. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Evaluate the environment in which your system is operating and identify whether the problem is environmental or hardware-related. Your system should be in a room with an operating temperature of 18C to 24C (65F to 75F). If the environment is too cold, shut down and power off your system until the environmental conditions are restored to the normal operating temperature range. If faulty hardware caused the error, such as a bad temperature sensor or a broken fan, replace the faulty part as soon as possible. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for CHASSIS UNDER TEMPERATURE SHUTDOWN
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

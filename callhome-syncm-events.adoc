@@ -1,0 +1,63 @@
+---
+sidebar: sidebar
+permalink: callhome-syncm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.syncm events
+---
+
+= callhome.syncm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.syncm.isolation
+*Severity*::
+ALERT
+*Description*::
+This message occurs when both plexes of a SyncMirror(R) configuration have disk drives in the same hardware-based disk pool; that is, the plexes are not hardware-fault isolated. Therefore, a single hardware failure can cause both plexes to fail. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+To resolve this issue, complete the following steps: 1. Identify the problem aggregate from the system logs. 2. Determine which mirror plexes have disk drives in mixed pools. 3. Determine how this occurred: possible causes include a wiring problem, a reconstruction forced mixed pools, or the mirror was created explicitly so that the plexes have disk drives in mixed pools. 4. Based on the information you gather, determine how to correct the issue. For example, recable the disk drives to restore hardware-fault isolation. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for SYNCMIRROR FAULT ISOLATION
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.syncm.plex
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a SyncMirror(R) plex fails. Therefore, the SyncMirror plex is in a degraded mode. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+To resolve this problem, complete the following steps: 1. Identify the problem aggregate and failed plex from the system logs. 2. Determine the reason for the plex failure, such as disk drive, disk shelf, or loop failure. 3. Replace any faulty components that you discover. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for SYNCMIRROR PLEX FAILED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.syncm.plex.offlined
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a SyncMirror(R) plex is offlined. Therefore, the Syncmirror aggregate is in a degraded mode. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+To resolve this problem, complete the following steps: 1. Identify the problem aggregate and offlined plex from the system logs. 2. Determine the reason for the plex being offlined: a. Issue with backend array or adapter b. IO timeout errors on multiple disks c. SCSI errors 3. Replace any faulty components that you discover. 4. Online the plex manually. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for SYNCMIRROR PLEX OFFLINED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.syncm.verify
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system finds one or more block inconsistencies between plexes of a SyncMirror(R) configuration. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+To resolve this issue, complete the following steps: 1. Determine the problem aggregate and failed plex from the system logs. 2. Take the aggregate offline. 3. Split the plexes into two aggregates. 4. Contact NetApp technical support for assistance, and then run WAFL(R) Iron (wafliron) on both aggregates. 5. Determine which is the 'good' aggregate by inspection. 6. Take offline and then destroy the 'bad' aggregate. 7. Re-mirror the 'good' aggregate. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for SYNCMIRROR VERIFY FAILED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

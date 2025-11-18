@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: diskown-stealingdiskprevented-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.stealingdiskprevented events
+---
+
+= diskown.stealingdiskprevented events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.StealingDiskPrevented
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a "storage disk assign" operation is performed on a disk that is owned and has a reservation from another system. The reservation prevents the disk ownership change from being completed.
+*Corrective Action*::
+Perform the "storage disk assign" operation on the system that currently owns the disk.
+*Syslog Message*::
+Ownership for disk %s (S/N %s) cannot be changed because node "%s" (System ID: %u) currently owns the persistent reservation.
+*Parameters*::
+*diskname* (STRING): Name of the disk whose ownership is being assigned.
+*serialno* (STRING): Serial number of the disk.
+*hostname* (STRING): Name of the host that currently owns the disk.
+*systemid* (INT): System ID of the host that currently owns the disk.
+*thread* (STRING): Name of the thread that issued the ownership change request.
+*APIname* (STRING): Name of the API that issued the ownership change request.

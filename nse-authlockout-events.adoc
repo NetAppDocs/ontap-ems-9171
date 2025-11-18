@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: nse-authlockout-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nse.authlockout events
+---
+
+= nse.authlockout events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nse.authLockOut
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a NetApp(R) Storage Encryption (NSE) self-encrypting drive (SED) reports excessive sequential failed authentication attempts with an incorrect Authentication Key (AK) on the indicated SED authority. To prevent brute-force AK attacks, the SED will no longer accept even the correct AK. Access and control of the SED are affected. This condition applies to drives that implement the Trusted Computing Group (TCG) "Enterprise" and "Opal" specifications. Enterprise BandMaster1 authority lockout and Opal User1 authority lockout affect protection controls on user data. User data on the drive is permanently irretrievable for lockouts on these authorities. For other lockouts, some aspect of compliance with Federal Information Processing Standard (FIPS) PUB 140-2 is compromised. Enterprise "Erase Master" and Opal "Owner" authority lockouts disable cryptographic sanitize and destroy ONTAP(R) operations.
+*Corrective Action*::
+The data cannot be recovered from the drive, but it might be possible to return the drive to service. To prevent lockouts, ensure that all cluster NSE nodes have all SED AKs. Display SED key IDs by using the "storage encryption disk show [-fips]" command. Verify them against those retrieved from the AK storage method: KMIP servers: Use the "security key-manager restore" command. Onboard key management: Use the "security key-manager key show" command. If the FIPS key on the drive remains at the default MSID value, for BandMaster1 or User1 authority lockout, reset the AK to its default value and simultaneously erase user data by using the "storage encryption disk sanitize" command or the (advanced privilege) "disk encrypt sanitize" command in node shell/maintenance mode. Power-cycle clears Physical Ownership lockout in some SEDs. Ensure that the SED AKs are are available as above, and power-cycle the drive to see if it clears the lockout. For other lockouts, reset the SED to its as-manufactured state and erase user data by using the "storage encryption disk revert-to-original-state" command or the (advanced privilege) "disk encrypt revert_original" command in node shell/maintenance mode with the PSID value from the device label. If the PSID is not available, replace the drive. After clearing the lockout, make the drive a spare by using the "storage disk assign" command and (advanced privilege) "storage disk unfail [-spare]" command as needed.
+*Syslog Message*::
+Lockout on self-encrypting drive %s; security provider: %s, authority: %s, during operation "%s".
+*Parameters*::
+*deviceName* (STRING): Name of the device.
+*securityProvider* (STRING): Name of the TCG security provider process.
+*authority* (STRING): Name of the TCG authority.
+*operation* (STRING): Description of the operation that attempted authentication.

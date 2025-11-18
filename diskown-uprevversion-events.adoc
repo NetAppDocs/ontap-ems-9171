@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: diskown-uprevversion-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.uprevversion events
+---
+
+= diskown.uprevversion events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.UpRevVersion
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when disk ownership information has been read and found to be from a version that is higher (newer) than what the current version of Data ONTAP understands. New fields in the ownership information will be ignored.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*diskname* (STRING): The name of the disk with the newer version.
+*serialno* (STRING): The serial number of the disk.
+*foundversion* (INT): The version of the disk ownership information found on the disk.
+*curversion* (INT): The version of the disk ownership information that the current Data ONTAP uses.

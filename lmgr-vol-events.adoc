@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: lmgr-vol-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lmgr.vol events
+---
+
+= lmgr.vol events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lmgr.vol.lock.reclaim.partial
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a volume cannot reclaim certain file locks when the system attempts to bring it online. This can occur after a reboot, a takeover, a giveback or an MCC event.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Lock reclaims for volume %s are partial due to the following error: %s.
+*Parameters*::
+*vol* (STRING): The name of the volume.
+*error* (STRING): Error code.

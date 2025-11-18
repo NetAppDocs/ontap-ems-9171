@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: nonha-resvconflicthalt-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nonha.resvconflicthalt events
+---
+
+= nonha.resvconflicthalt events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nonha.resvConflictHalt
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the controller halts itself after it finds disk with reservation conflicts.
+*Corrective Action*::
+Contact NetApp technical support for recovery assistance.
+*Syslog Message*::
+A disk reservation conflict was detected on disk %s at %-20s.
+*Parameters*::
+*disk_name* (STRING): Name of the disk.
+*time* (STRING): Time when the disk reservation conflict was detected.
+*last_update* (INT): Time passed since last rescan, in milliseconds.

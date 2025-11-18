@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: diskown-assignexceeded-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.assignexceeded events
+---
+
+= diskown.assignexceeded events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.AssignExceeded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an attempt is made to assign more disks than are supported by this node.
+*Corrective Action*::
+Review the system capacity limits and the assigned disks on this system.
+*Syslog Message*::
+The maximum number of disks that can be assigned to this node has been exceeded. Attempted to assign %d, maximum supported: %d.
+*Parameters*::
+*attempted* (INT): Number of disks attempted to assign.
+*supported* (INT): Number of disks supported.

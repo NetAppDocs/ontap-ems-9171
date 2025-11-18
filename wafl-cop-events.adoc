@@ -1,0 +1,57 @@
+---
+sidebar: sidebar
+permalink: wafl-cop-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.cop events
+---
+
+= wafl.cop events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.cop.flowcontrol.end
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system is out of the flow control mode which was earlier initiated as a high number of volumes were receiving modify operations concurrently beyond a certain threshold.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The node is out of the flow control mode which was earlier initiated as a high number volumes were receiving modify operations concurrently beyond a certain threshold (%lu).
+*Parameters*::
+*high_concurrency_flowcontrol_thres* (LONGINT): System defined threshold beyond which high-concurrency flow control mode is triggered.
+
+== wafl.cop.flowcontrol.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system is in a very high concurrency mode; i.e., when a high number of volumes receive modify operations concurrently beyond a certain threshold. The system is automatically getting into a flow control mode, where it may hold ops on certain volumes for longer time in order to reduce high-concurrency related impacts.
+*Corrective Action*::
+If the flow control situation is long-lived, and the delays are not acceptable, the concurrency level among the volumes need to be brought down by moving the volumes (preferably the ones encountering delays) out of this node.
+*Syslog Message*::
+Very high number of volumes (%lu) are receiving modify operations concurrently. The node is in a flow control mode (threshold: %lu). As a result few volumes may experience higher delay in latency.
+*Parameters*::
+*concurrent_vvols_cnt* (LONGINT): Number of volumes actively receiving modify operations.
+*high_concurrency_flowcontrol_thres* (LONGINT): System defined threshold beyond which high-concurrency flow control mode is triggered.
+
+== wafl.cop.high.concurrency
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system is in high-concurrency mode; i.e., when a high number of FlexVol(R) volumes receive modify operations concurrently during a monitoring interval. High concurrency might cause degradation in performance.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A high number of FlexVol volumes are receiving modify operations concurrently. Interval (ms): %lu, Aggregate: %s, Frequency: %lu out of %lu times, Threshold criteria: more than %u FlexVol volumes were concurrently receiving modify operations, Distribution: %s.
+*Parameters*::
+*monitoring_interval* (LONGINT): Duration of monitoring interval in milliseconds.
+*aggr* (STRING): Name of the aggregate.
+*cp_above_vvol* (LONGINT): Number of Consistency Points (CPs) with FlexVol volumes participating above the vvol_threshold value in this monitoring interval.
+*total_cp_in_interval* (LONGINT): Number of CPs that happened in the monitoring interval.
+*vvol_threshold* (INT): Minimum number of FlexVol volumes in a CP to call it a "highly concurrent CP".
+*histogram* (STRING): A histogram [b1 : v1, b2 : v2, ..., b8 : v8], where "b" represents bin ID and "v" represents count of the corresponding bin ID.

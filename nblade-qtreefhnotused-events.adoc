@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: nblade-qtreefhnotused-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.qtreefhnotused events
+---
+
+= nblade.qtreefhnotused events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.qtreeFhNotUsed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when newly-configured Qtree export policies, QoS policies or latency statistics are not available for an NFSv4 client that has existing mounts to the NFSv4 server.
+*Corrective Action*::
+Use the "nfs connected clients show" command to review existing mounts. Then, remount the clients.
+*Syslog Message*::
+Newly-configured Qtree export policies, QoS policies or latency statistics will not be available for NFSv4 client %s because it has existing mounts to NFSv4.1 server %s on SVM "%s".
+*Parameters*::
+*remoteIpAddress* (STRING): Client IP address.
+*lifIpAddress* (STRING): LIF IP address of NFS server.
+*vsName* (STRING): Storage virtual machine (SVM) name.

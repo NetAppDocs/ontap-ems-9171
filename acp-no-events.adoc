@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: acp-no-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: acp.no events
+---
+
+= acp.no events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== acp.no.ip
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the node cannot find a free IP address for the Alternate Control Path (ACP) Management port. ACP functionality is disabled.
+*Corrective Action*::
+Check the connection to the disk shelf ACP port and verify that it is not connected to a public network. Try plugging it into another Ethernet port with no devices, to see whether it is changed.
+*Syslog Message*::
+Could not assign a free IP address to the ACP Management Ethernet port, disabling ACP functionality.
+*Parameters*::
+(None).

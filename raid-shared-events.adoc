@@ -1,0 +1,79 @@
+---
+sidebar: sidebar
+permalink: raid-shared-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.shared events
+---
+
+= raid.shared events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.shared.disk.awaiting.done
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a node receives an indication from its HA partner node that a shared disk is undergoing a change in state and the partner is waiting for the local node to complete a shared state transition.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Received shared disk awaiting done %s, state %s, substate 0x%lX, partner state %s, partner substate 0x%lX, partner dblade ID %s host type %d add details %s
+*Parameters*::
+*disk_info* (STRING): Formatted information of the shared disk.
+*local_state* (STRING): State of the shared disk on the local node.
+*local_substate* (LONGINTHEX): Sub-state of the shared disk on the local node.
+*partner_state* (STRING): State of the shared disk on the partner node.
+*partner_substate* (LONGINTHEX): Sub-state of the shared disk on the partner node.
+*received_ack* (STRING): Dblade ID of node sending await done ack.
+*host_type* (INT): Type of host node sending await done ack.
+*add_details* (STRING): Additional details of the awaiting done event.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the disk vendor.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Disk firmware revision number.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.shared.disk.exchange
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a node receives an indication from its HA partner node that a shared disk is undergoing a change in state (e.g., disk is failing, going offline, or is getting unfailed). Accompanying EMS messages will indicate if any corrective action is required.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Received shared disk state exchange %s, event %s, state %s, substate 0x%lX, partner state %s, partner substate 0x%lX, failure reason %s, sick reason %s, offline reason %s, online reason %s, partner dblade ID %s, host %d %s
+*Parameters*::
+*disk_info* (STRING): Formatted information of the shared disk.
+*event* (STRING): Describes the event which caused the partner to send this state exchange message. If this is a periodic exchange instead of an event triggered exchange, event is NONE.
+*local_state* (STRING): State of the shared disk on the local node.
+*local_substate* (LONGINTHEX): Sub-state of the shared disk on the local node.
+*partner_state* (STRING): State of the shared disk on the partner node.
+*partner_substate* (LONGINTHEX): Sub-state of the shared disk on the partner node.
+*failure_reason* (STRING): Describes the error leading to the partner node failing the shared disk.
+*sick_reason* (STRING): Describes the error leading to the partner node prefailing the shared disk.
+*offline_reason* (STRING): Describes the reason the partner node is offlining the shared disk.
+*online_reason* (STRING): Describes the reason the partner node is onlining the shared disk.
+*recv_reply* (STRING): Describes the dblade ID of a partner node that sent a reply.
+*host_type* (INT): Type of host sending the reply.
+*add_details* (STRING): Additional partner node details of the shared disk state exchange.
+*timestamp* (INT): Timestamp of the last on-disk state change.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the disk vendor.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Disk firmware revision number.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.

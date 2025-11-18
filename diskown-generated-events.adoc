@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: diskown-generated-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.generated events
+---
+
+= diskown.generated events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.generated.completionEvent
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the software disk ownership module notifies other layers that it has completed the process of updating its view of the disks attached to the system. These notifications were previously disabled for a short time.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Software disk ownership module notified other layers that it has completed updating its view of the disks.
+*Parameters*::
+(None).

@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: air-disable-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: air.disable events
+---
+
+= air.disable events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== air.disable.async.delete.cli
+*Severity*::
+ALERT
+*Description*::
+This message occurs when any inconsistency is found with the async delete trashbin directory of a volume.
+*Corrective Action*::
+The "asynchronous directory delete from the client" feature has been disabled on this volume. To re-enable the feature, use the (privilege: advanced) "volume file async-delete client enable" command
+*Syslog Message*::
+The "async directory delete from the client" feature was disabled in volume %s, after an inconsistency was detected with the trashbin directory.
+*Parameters*::
+*volume* (STRING): Name of the volume.
+*source* (STRING): Location of the failing metadata validation.
+
+== air.disable.preserve.unlink
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when any inconsistency is found with the trash directory that is used for the preserve unlink option of a volume. Then, the preserve unlink option is disabled for that volume. The trash directory that is used for the preserve unlink option is used to preserve deleted files for NFSv41 when they have existing share locks.
+*Corrective Action*::
+None. The system reverts to the behavior it used before the preserve unlink option was enabled; that is, it will not preserve deleted files with share locks.
+*Syslog Message*::
+The preserve unlink option of volume "%s", was disabled after an inconsistency with the trash directory was detected.
+*Parameters*::
+*volume* (STRING): Name of the volume.
+*source* (STRING): Location of the failing metadata validation.

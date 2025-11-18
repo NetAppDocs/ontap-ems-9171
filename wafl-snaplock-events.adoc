@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: wafl-snaplock-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.snaplock events
+---
+
+= wafl.snaplock events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.snaplock.scan.complete
+*Severity*::
+NOTICE
+*Description*::
+This event indicates that the snaplock scan has completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s%s%s SnapLock scan determined upgraded volume expiry date: %s
+*Parameters*::
+*typestr_cap* (STRING): wafl_Volume type, capitalized
+*owner* (STRING): owner string (foreign, partner, et al)
+*vol_name* (STRING): Volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*timebuf* (STRING): Text string describing expiration time/date.

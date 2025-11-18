@@ -1,0 +1,111 @@
+---
+sidebar: sidebar
+permalink: revert-ufmt-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: revert.ufmt events
+---
+
+= revert.ufmt events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== revert.ufmt.cap.tier.full
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the revert operation to convert the unified object format is paused because the FabricPool aggregate has reached the maximum supported size of the capacity tier. The revert scan will resume when additional space is available in the capacity tier.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Revert operation to the convert the object format from "unified" to "native" is paused on aggregate "%s" because the capacity tier usage has reached its maximum allowed size.
+*Parameters*::
+*aggregate_name* (STRING): Aggregate name.
+
+== revert.ufmt.config.invalid
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the revert operation to convert the unified object format from "unified" to "native" is paused because the object store configuration associated with the FabricPool aggregate is not ready.
+*Corrective Action*::
+This condition might be transient and the revert operation should resume automatically. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Revert operation to convert the object format from "unified" to "native" is paused on FabricPool aggregate "%s" because the associated object store configuration is not ready.
+*Parameters*::
+*aggregate_name* (STRING): Aggregate name.
+
+== revert.ufmt.mirror.not.sync
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the revert operation to convert the unified object format from "unified" to "native" is paused because the FabricPool mirror is not in sync with the primary object store attached to the FabricPool aggregate.
+*Corrective Action*::
+This condition might be transient, and the revert operation should resume automatically when the FabricPool mirror is synced with the attached primary object store. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Revert operation to convert the object format from "unified" to "native" is paused on FabricPool aggregate "%s" because the FabricPool mirror is not in sync with the attached primary object store.
+*Parameters*::
+*aggregate_name* (STRING): Aggregate name.
+
+== revert.ufmt.objstore.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the revert operation to convert the unified object format is paused because it is unable to read objects from an unresponsive object store. Object format revert operation will resume when the object store is responsive.
+*Corrective Action*::
+Verify that your intercluster LIF is online and functional by using the "network interface show" command. Also, check network connectivity to the object store server by using the "ping" command over the destination node intercluster LIF. Additionally, ensure that the configuration of your object store has not changed, and that login and connectivity information is still accurate. If the condition persists, contact NetApp technical support.
+*Syslog Message*::
+Revert operation to convert the object format from "unified" to "native" is paused on aggregate "%s" because the object store is unavailable.
+*Parameters*::
+*aggregate_name* (STRING): Aggregate name.
+
+== revert.ufmt.perf.tier.full
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the revert operation to convert the unified object format is paused because the FabricPool aggregate does not have enough free space to tier cold data. The revert scan will resume when additional space is available in the performance tier.
+*Corrective Action*::
+Either free space in the performance tier of the aggregate by moving volumes, removing volumes, or deleting data, or add space to the performance tier of the aggregate by adding disks.If the problem persists, Contact NetApp technical support.
+*Syslog Message*::
+Revert operation to the convert the object format from "unified" to "native" is paused on aggregate "%s" because the current available space in the performance tier is below the minimum allowed size.
+*Parameters*::
+*aggregate_name* (STRING): Aggregate name.
+
+== revert.ufmt.tlog.disabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the revert operation to convert the unified object format is paused because FabricPool tiering is temporarily disabled on a MetroCluster setup. The object format revert will resume when FabricPool tiering is enabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Revert operation to convert the object format from "unified" to "native" is paused on aggregate "%s" because FabricPool tiering is disabled.
+*Parameters*::
+*aggregate_name* (STRING): Aggregate name.
+
+== revert.ufmt.tlog.full
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the revert operation to convert the unified object format is paused because FabricPool tiering is temporarily suspended due to insufficient space to stage new objects. Tiering will resume when space is available after writing existing objects to the object store. The revert scan will resume when FabricPool tiering is enabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Revert operation to convert the object format from "unified" to "native" is paused on aggregate "%s" because FabricPool tiering is temporarily suspended on the aggregate.
+*Parameters*::
+*aggregate_name* (STRING): Aggregate name.
+
+== revert.ufmt.tlog.punch.pause
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the revert operation to convert unified object format is paused because the FabricPool aggregate has complete unified format objects waiting to be tiered to the object store. The revert operation will resume when FabricPool tiering has completed tiering all waiting "unified format" objects to the object store.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The operation to revert the object format to the native format paused on aggregate "%s" because the tiering of unified format objects to the object store is pending.
+*Parameters*::
+*aggregate_name* (STRING): Aggregate name.

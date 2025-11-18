@@ -1,0 +1,114 @@
+---
+sidebar: sidebar
+permalink: acp-shelf-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: acp.shelf events
+---
+
+= acp.shelf events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== acp.shelf.power.cycle.failed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Alternate Control Path (ACP) Processor fails to complete a power cycle of the disk shelf.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk shelf power cycle request issued to %s failed because %s.
+*Parameters*::
+*shelf_id* (STRING): In-band ID or Shelf Serial Number of the module.
+*status* (STRING): Reason for failure.
+
+== acp.shelf.power.cycle.success
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Alternate Control Path (ACP) Processor successfully completes a power cycle of the disk shelf.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk shelf power cycle request issued to %s is successful.
+*Parameters*::
+*shelf_id* (STRING): In-band ID or Shelf Serial Number of the module.
+
+== acp.shelf.power.off
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Alternate Control Path (ACP) Processor receives a command to power off the disk shelf.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk shelf power off request issued to %s
+*Parameters*::
+*shelf_id* (STRING): In-band ID of the module or Shelf Serial Number.
+
+== acp.shelf.power.off.failed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Alternate Controller Path Administrator fails in its attempt to power-off the SAS disk shelf.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk shelf power off request sent to %s failed with status %s
+*Parameters*::
+*shelf_id* (STRING): In-band ID of the module.
+*status* (STRING): Reason for the power-off failure.
+
+== acp.shelf.power.off.success
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a 'shelf power off' command sent to the Alternate Controller Path (ACP) Processor succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk shelf power off command sent to %s was successful
+*Parameters*::
+*shelf_id* (STRING): In-band ID of the module or Shelf Serial Number.
+
+== acp.shelf.power.on
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Alternate Control Path (ACP) Processor receives a command to power on a disk shelf.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk shelf power up request issued to %s
+*Parameters*::
+*shelf_id* (STRING): In-band ID of the module or Shelf Serial Number.
+
+== acp.shelf.power.on.failed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Alternate Controller Path Administrator fails in its attempt to power on the SAS disk shelf.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk shelf power on request sent to %s failed with status %s
+*Parameters*::
+*shelf_id* (STRING): In-band ID or Shelf Serial Number of the module.
+*status* (STRING): Reason for the 'power-on' failure.
+
+== acp.shelf.power.on.success
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a 'shelf power on' command sent to the Alternate Controller Path (ACP) Processor succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk shelf power on command sent to %s was successful
+*Parameters*::
+*shelf_id* (STRING): In-band ID of the module or Shelf Serial Number.

@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: tls-unused-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: tls.unused events
+---
+
+= tls.unused events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== tls.unused.cipher
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a cipher suite that is enabled in the configuration has not been used in any TLS handshakes for a user-specified duration of time.
+*Corrective Action*::
+Confirm that all known TLS peers have connected to the system within the specified duration of time. If this is not the case, consider increasing the used-age-threshold parameter of the "security config modify" command. Otherwise, consider disabling the unused cipher suite using the supported-cipher-suites parameter of the same command, as this will increase the security of the system with respect to TLS.
+*Syslog Message*::
+The TLS cipher suite %s has not been used for at least %s.
+*Parameters*::
+*cipher_suite* (STRING): Cipher suite that is unused.
+*duration* (STRING): Length of time (D/H/M/S) that the cipher suite has been unused.
+
+== tls.unused.protocol
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a protocol level that is enabled in the configuration has not been used in any TLS handshakes for a user-specified duration of time.
+*Corrective Action*::
+Confirm that all known TLS peers have connected to the system within the specified duration of time. If this is not the case, consider increasing the used-age-threshold parameter of the "security config modify" command. Otherwise, consider disabling the unused protocol level using the supported-protocols parameter of the same command, as this will increase the security of the system with respect to TLS. For example, if only TLSv1.2 is in use, disabling TLSv1.1 (and lower) is advised.
+*Syslog Message*::
+The TLS protocol level %s has not been used for at least %s.
+*Parameters*::
+*protocol_level* (STRING): Protocol level that is unused.
+*duration* (STRING): Length of time (D/H/M/S) that the protocol level has been unused.

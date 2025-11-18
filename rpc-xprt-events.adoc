@@ -1,0 +1,45 @@
+---
+sidebar: sidebar
+permalink: rpc-xprt-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rpc.xprt events
+---
+
+= rpc.xprt events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rpc.xprt.limit
+*Deprecated*::
+Deprecated as of version 9.2 where this RPC mechanism was withdrawn.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the number of active connections to a side band Remote Procedure Call (RPC) reaches the limit. This limit is not configurable.
+*Corrective Action*::
+To check for stale client connections, use the output from the CLI "netstat" command.
+*Syslog Message*::
+Active TCP connections to side band RPC service with program number %u has reached a limit of %d connections.
+*Parameters*::
+*prog* (INT): TCP program number of RPC service to which the connection request arrived.
+*max_conn* (INT): Maximum number of active connections to RPC service.
+
+== rpc.xprt.vfiler.limit
+*Deprecated*::
+Deprecated as of version 9.2 where this RPC mechanism was withdrawn.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the number of active connections to side band Remote Procedure Call (RPC) services of a vFiler unit reaches the limit. This limit is not configurable.
+*Corrective Action*::
+To check for stale client connections, use the output from the CLI "netstat" command.
+*Syslog Message*::
+Active TCP connections to side band RPC services of vFiler %s has reached a limit of %d connections.
+*Parameters*::
+*vfiler* (STRING): Name of the vFiler unit to which the connection request arrived.
+*vf_max_conn* (INT): Maximum number of active connections to sideband RPC services of this vFiler unit.

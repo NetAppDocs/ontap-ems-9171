@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cifs-replay-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cifs.replay events
+---
+
+= cifs.replay events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cifs.replay.failure
+*Severity*::
+ALERT
+*Description*::
+This message occurs when configuration is not synchronized. This might cause the node experiencing the problem to become unresponsive to data access.
+*Corrective Action*::
+Contact NetApp technical support. Be prepared to provide log files to technical support, particularly the "mgwd.log" and "sktrace.log" files.
+*Syslog Message*::
+Failed to replay configuration for %s module.
+*Parameters*::
+*module* (STRING): Name of the module for which configuration is not synchronized.

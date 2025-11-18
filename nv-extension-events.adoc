@@ -1,0 +1,54 @@
+---
+sidebar: sidebar
+permalink: nv-extension-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nv.extension events
+---
+
+= nv.extension events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nv.extension.disabled
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when NVRAM segments of a nvlog client are disabled in a NVRAM section.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s segments have been disabled in %s NVRAM section.
+*Parameters*::
+*cid* (STRING): Nvlog client ID.
+*nv_section* (STRING): The NVRAM section in which the nvlog client segments are disabled.
+
+== nv.extension.enabled
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when NVRAM segments of a nvlog client are enabled in a NVRAM section.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s segments have been enabled in %s NVRAM section.
+*Parameters*::
+*cid* (STRING): Nvlog client ID.
+*nv_section* (STRING): The NVRAM section in which nvlog client segments are enabled.
+
+== nv.extension.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when nvlog client segments cannot be enabled in a partner NVRAM section following a controller failover. When this event occurs, the system continues to operate, but with diminished performance due to the increased failover load coupled with decreased NVRAM capacity for logging.
+*Corrective Action*::
+For a System ID-related failure message, verify that each member node in this configuration is assigned a valid and unique system ID by using the "system show -fields systemid" command. Do not physically move a controller or NVRAM card in an HA or MetroCluster(tm) configuration. A failure message of "Configuration Recovery Needed" means that a reboot is needed to recover persistent MetroCluster configuration at a switchover site.
+*Syslog Message*::
+Client segments cannot be enabled in the %s NVRAM section, because of %s.
+*Parameters*::
+*nv_section* (STRING): NVRAM section in which nvlog client segments cannot be enabled.
+*failure_reason* (STRING): Reason client segments cannot be enabled in this partner NVRAM section.

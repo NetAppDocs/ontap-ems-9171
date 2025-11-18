@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ems-snmp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ems.snmp events
+---
+
+= ems.snmp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ems.snmp.parse.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when SNMP parsing of an input packet fails. It could fail for various reasons. The most common failures are due to invalid values for the integer and string fields in the Protocol Data Unit (PDU) and message overflows.
+*Corrective Action*::
+An agent is incorrectly communicating with the system using SNMP. Find and disable or correct this agent. An Ethernet "sniffer" might be required to identify the client source that is sending the unsupported or incorrect SNMP request.
+*Syslog Message*::
+%s
+*Parameters*::
+*errorMsg* (STRING): Returned error message from the parsing of the input packet.

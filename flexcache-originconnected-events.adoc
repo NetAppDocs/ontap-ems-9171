@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: flexcache-originconnected-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: flexcache.originconnected events
+---
+
+= flexcache.originconnected events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== flexcache.originConnected
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a FlexCache(R) volume establishes communication with its origin volume.
+*Corrective Action*::
+No action required.
+*Syslog Message*::
+FlexCache volume with Name %s MSID %lu on Vserver Name %s UUID %s is connected with its origin volume with Vserver UUID %s and MSID %lu.
+*Parameters*::
+*cacheVolumeName* (STRING): Volume Name of the FlexCache volume.
+*cacheMsid* (LONGINT): MSID of the FlexCache volume.
+*cacheVserverName* (STRING): Vserver Name of the FlexCache volume.
+*cacheVserverUuid* (STRING): Vserver UUID of the FlexCache volume.
+*originVserverUuid* (STRING): Vserver UUID of the origin volume.
+*originMsid* (LONGINT): Master data set identifier (MSID) of the origin volume.

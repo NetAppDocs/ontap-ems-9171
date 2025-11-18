@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: user-group-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: user.group events
+---
+
+= user.group events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== user.group.limit.reached
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the number of UNIX users or groups in the cluster reaches or exceeds system limits. After the limit is reached, it will not be possible to add any new users, groups, or group members.
+*Corrective Action*::
+Reduce the number of local users and groups stored in the cluster. Consider using directory services, such as NIS and LDAP. Alternatively, use the "vserver services limits modify" command to increase the system-wide limit.
+*Syslog Message*::
+Total number of %s exceeds the system limit: %d.
+*Parameters*::
+*configuration* (STRING): Name of the configuration table that is at the system limit.
+*maxAllowableEntries* (INT): Maximum allowable number of local users or local group and group-members.
+
+== user.group.reaching.limit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the number of UNIX users or groups in the cluster reaches various percentage thresholds of the system limit.
+*Corrective Action*::
+Reduce the number of local users and groups stored in the cluster. Consider using directory services, such as NIS and LDAP.
+*Syslog Message*::
+Total number of %s has reached %s of the system limit: %d.
+*Parameters*::
+*configuration* (STRING): Name of the configuration table with the system limit.
+*pct_of_limit* (STRING): Percentage of the configuration table's system limit reached.
+*maxAllowableEntries* (INT): Maximum allowable number of local users or local group and group-members.

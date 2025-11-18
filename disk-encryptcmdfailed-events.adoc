@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: disk-encryptcmdfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.encryptcmdfailed events
+---
+
+= disk.encryptcmdfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.encryptCmdFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the indicated "storage encryption disk" command fails on an encrypting disk that supports storage encryption methods.
+*Corrective Action*::
+Verify that storage encryption key servers, if required, are available and functioning, or that expected on-board keys are present.
+*Syslog Message*::
+Encrypting disk %s failed disk encrypt %s command with error status %s (0x%x).
+*Parameters*::
+*disk* (STRING): Name of the disk.
+*command* (STRING): Storage encryption disk command.
+*error_string* (STRING): Error status code description.
+*error* (INT): Error status code.

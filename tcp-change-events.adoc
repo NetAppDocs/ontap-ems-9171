@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: tcp-change-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: tcp.change events
+---
+
+= tcp.change events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== tcp.change.cc.algorithm
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an attempt to change the TCP congestion control algorithm fails.
+*Corrective Action*::
+Check the node health, address any issues found, and then try the command again.
+*Syslog Message*::
+An error (out of memory) occurred while changing the TCP congestion control algorithm of existing connection(s) to %s. The NewReno (RFC6582) will be used as the congestion control algorithm for those connections.
+*Parameters*::
+*cc_algo* (STRING): Name of the congestion control algorithm to which the change was attempted.

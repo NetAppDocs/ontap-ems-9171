@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: disk-checksum-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.checksum events
+---
+
+= disk.checksum events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.checksum.offlineAdapter
+*Severity*::
+ALERT
+*Description*::
+This message occurs when multiple errors are detected during checksum verification. The adapter is taken offline.
+*Corrective Action*::
+Replace the adapter. Contact Contact NetApp technical support. for assistance with a Return Material Authorization.
+*Syslog Message*::
+Adapter %s taken offline due to checksum verification failure on multiple disks. Keep the adapter offline and contact Contact NetApp technical support. for assistance.
+*Parameters*::
+*adapterName* (STRING): Name of the adapter.
+
+== disk.checksum.verifyFailed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when disk checksum verify fails.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk level checksum verification failed on WRITE VERIFY: Disk %s, Block #%llu: Volume %s, FileId %d, Block #%llu
+*Parameters*::
+*diskName* (STRING): Name of the device.
+*bno* (LONGINT): block id
+*vol* (STRING): Volume name.
+*fileid* (INT): File ID.
+*block* (LONGINT): File block ID.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: secd-unexpectedfailure-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: secd.unexpectedfailure events
+---
+
+= secd.unexpectedfailure events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== secd.unexpectedFailure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the security daemon captures an unexpected failure.
+*Corrective Action*::
+Examine the failure details to determine corrective action.
+*Syslog Message*::
+Unexpected SecD failure in Vserver "%s". Details: %s
+*Parameters*::
+*vserverName* (STRING): Vserver associated with this operation.
+*failureDetail* (STRING): The error journal documents the events leading up to the failure. This failure is likely to impact many (if not all) users, and it might indicate a misconfiguration or environmental problem.

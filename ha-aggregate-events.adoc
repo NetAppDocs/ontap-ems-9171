@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ha-aggregate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.aggregate events
+---
+
+= ha.aggregate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.aggregate.ownershipChangeFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an aggregate ownership change has failed. This can occur during takeover or giveback.
+*Corrective Action*::
+Use the "storage failover show" command to view the corrective action.
+*Syslog Message*::
+The local node has failed to change the ownership of an aggregate.
+*Parameters*::
+*errorCode* (INT): Ownership change failure error code.

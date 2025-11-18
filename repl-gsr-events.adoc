@@ -1,0 +1,62 @@
+---
+sidebar: sidebar
+permalink: repl-gsr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.gsr events
+---
+
+= repl.gsr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.gsr.cache.modify.gs.enfrc.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when SnapMirror faces internal error while going Out-Of-Sync or source volume comes online.
+*Corrective Action*::
+Resynchronize SnapmMirror sync relation. Please contact NetApp technical support for more options.
+*Syslog Message*::
+Unable to modify enforcement for the sync granset relation.
+*Parameters*::
+*transferId* (STRING): UUID of the SnapMirror(R) transfer.
+*srcCgUUID* (STRING): Source CG UUID.
+*Code* (INT): Error code.
+
+== repl.gsr.clone.replication
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when replication of a clone request fails or cannot be serviced. The clone request completed successfully on the sync mirror primary, but was not completed on the sync mirror secondary. The clone will not be available on the sync mirror secondary.
+*Corrective Action*::
+Wait for the relationship to automatically resynchronize.
+*Syslog Message*::
+Failed to replicate clone of /vol/%s/%s to sync mirror secondary.
+*Parameters*::
+*volname* (STRING): Volume name.
+*filename* (STRING): Source filename.
+*reason* (STRING): Descriptive reason for the notice.
+
+== repl.gsr.snap.replication.failed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a snapshot replication request fails or cannot be served.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failed to replicate snapshot operation to the destination.
+*Parameters*::
+*transferId* (STRING): UUID of the SnapMirror(R) transfer.
+*srcVolumeDsid* (LONGINT): Source volume data set ID (DSID).
+*srcCgUUID* (STRING): Source CG UUID.
+*snapshotName* (STRING): Name of the snapshot to be replicated.
+*failureReason* (STRING): Reason for the failure.
+*replStatus* (INT): Replication Status.
+*replFailureMsg* (INT): Replication failure message.
+*replFailureMsgDetail* (INT): Replication failure message detail.

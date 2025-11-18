@@ -1,0 +1,160 @@
+---
+sidebar: sidebar
+permalink: raid-spares-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.spares events
+---
+
+= raid.spares events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.spares.media_scrub.media.err
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a media_scrub i/o detects a medium error on a spare disk
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Read error on %s%s, block #%llu during media_scrub
+*Parameters*::
+*owner* (STRING): String indicating the owner of the affected spare drive.
+*disk_info* (STRING): The name of the disk object that contains the error.
+*blockNum* (LONGINT): The physical block number containing the error.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.spares.media_scrub.media.recommend.reassign.err
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a background media scrub i/o detects a recommend reassign error on a spare drive
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Block recommended for reassignment on %s%s, block #%llu during media_scrub
+*Parameters*::
+*owner* (STRING): String indicating the owner of the affected spare drive.
+*disk_info* (STRING): Formatted information of the disk object that contains the error.
+*blockNum* (LONGINT): The physical block number containing the error.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.spares.media_scrub.rewrite.chunk
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when background media scrub rewrites a chunk of blocks for a spare ATA drive.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+media_scrub rewriting chunk on %s%s, start block #%llu, count #%d.
+*Parameters*::
+*owner* (STRING): Owner of the affected spare disk.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*blockNum* (LONGINT): Physical block number at which the chunk starts.
+*count* (INT): Number of blocks being rewritten.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model name of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.spares.media_scrub.start
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when media_scrub is initiated on a spare drive.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*owner* (STRING): String indicating the owner of the affected spare drive.
+*disk_info* (STRING): The name of the disk object that contains the error.
+*blockNum* (LONGINT): Disk block number at which media scrub started.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.spares.media_scrub.stopped
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when media_scrub stops on a spare drive.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*owner* (STRING): String indicating the owner of the affected spare drive.
+*disk_info* (STRING): The name of the disk object that contains the error.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.spares.media_scrub.suspend
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when media_scrub suspends on a spare drive.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*owner* (STRING): String indicating the owner of the affected spare drive.
+*disk_info* (STRING): The name of the disk object that contains the error.
+*blockNum* (LONGINT): Disk block number at which media scrub suspended
+*percentage* (INT): Percentage scan completed.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.

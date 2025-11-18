@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: repl-cg-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.cg events
+---
+
+= repl.cg events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.cg.item.limit.exceeded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the number of Consistency Group Items involved in a SnapMirror(R) Granular Sync relationship exceeds its limit in the system.
+*Corrective Action*::
+Load balance the system to have fewer Consistency Group Items.
+*Syslog Message*::
+The number of CG Items involved in a SnapMirror Granular Sync relationship exceeded.
+*Parameters*::
+(None).
+
+== repl.cg.limit.exceeded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the number of Consistency Groups(CG) involved in a SnapMirror(R) Granular Sync relationship exceeds its limit in the system.
+*Corrective Action*::
+Load balance the system to have fewer Consistency Groups.
+*Syslog Message*::
+The number of CGs involved in a SnapMirror Granular Sync relationship exceeded.
+*Parameters*::
+(None).

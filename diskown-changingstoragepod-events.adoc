@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: diskown-changingstoragepod-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.changingstoragepod events
+---
+
+= diskown.changingstoragepod events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.changingStoragePod
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ASA r2 updates the ownership of a disk to a different storage pod.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Storage pod ownership of disk %s (S/N %s) was changed. Old storage pod UUID: %s. New UUID: %s.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*serialNo* (STRING): Serial number of the disk.
+*oldPodUuid* (STRING): Universal unique identifier (UUID) of the previous storage pod.
+*newPodUuid* (STRING): UUID of the new storage pod.
+*thread* (STRING): Name of the thread that issues the ownership change request.
+*apiName* (STRING): Name of the API that issues the ownership change request.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: rshd-failure-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rshd.failure events
+---
+
+= rshd.failure events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rshd.failure
+*Severity*::
+ERROR
+*Description*::
+This event is generated after rshd failed to start.
+*Corrective Action*::
+Restart the rsh daemon for the affected vfiler by using the vfiler run command to set the rsh.enable option to off and then to on for that vfiler.
+*Syslog Message*::
+rshd failed to start for vfiler %s
+*Parameters*::
+*vfilername* (STRING): The name of the vfiler that attempted to start rshd

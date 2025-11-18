@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: nblade-cvo-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.cvo events
+---
+
+= nblade.cvo events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nblade.cvo.remote.access
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a remote volume has been accessed in the Cloud Volumes ONTAP(R) environment.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Detected remote volume access (Vserver: %s) from client IP %s to LIF IP %s. Volume: %s.
+*Parameters*::
+*vserver* (STRING): Vserver name.
+*client_ipaddr* (STRING): IP address of the client.
+*lif_ipaddr* (STRING): IP address of the LIF.
+*volume* (STRING): Name of the volume.

@@ -1,0 +1,148 @@
+---
+sidebar: sidebar
+permalink: wafl-online-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.online events
+---
+
+= wafl.online events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.online.admin.vol
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a cluster admin volume comes online during MetroCluster(TM) switchover.
+*Corrective Action*::
+None.
+*Syslog Message*::
+Cluster admin volume %s DSID (%08x) in aggregate %s is online.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*dsid* (LONGINT): Unique identifier (DSID) of the volume.
+*aggr* (STRING): Name of the containing aggregate.
+
+== wafl.online.fail.vmalign
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a virtual volume cannot be brought online because it has the 'vm-align' option set, which is not supported in this release of Data ONTAP(R).
+*Corrective Action*::
+Install a version of Data ONTAP that supports the 'vm-align' option, available from your vendor.
+*Syslog Message*::
+Volume '%s%s%s%s' is being taken offline because it has the 'vm-align' option set, which is not supported in this version of Data ONTAP.
+*Parameters*::
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+
+== wafl.online.infoError
+*Severity*::
+ALERT
+*Description*::
+This message occurs when there is a problem reading the volinfo or fsinfo data while trying to mount an online volume.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+Neither volinfo block of %s %s%s%s%s is valid OR the fsinfo block is invalid.
+*Parameters*::
+*type* (STRING): Type of object (volume/aggregate).
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases in which the volume name itself is insufficient.
+
+== wafl.online.mode.corrupted
+*Severity*::
+ALERT
+*Description*::
+This event is issued when there is an inconsistency in the mode bits that indicate whether this volume is in a clustered or nonclustered environment.
+*Corrective Action*::
+Run wafliron on the containing aggregate to fix up the mode bits.
+*Syslog Message*::
+The mode bits that indicate whether the %s '%s' volume is in a clustered or nonclustered environment are inconsistent.
+*Parameters*::
+*type* (STRING): Type of object (flexible volume).
+*vol* (STRING): Name of the flexible volume.
+
+== wafl.online.notCompatibleVer
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a volume or aggregate cannot be brought online because SnapLock(R) is not supported on this version of Data ONTAP(R).
+*Corrective Action*::
+Install a version of Data ONTAP that is supported with SnapLock, available from your vendor.
+*Syslog Message*::
+%s %s%s%s%s is being taken offline. SnapLock is not supported on this version of Data ONTAP.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name itself is insufficient.
+
+== wafl.online.toomany
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an attempt to bring a volume online fails because the maximum number of volumes are already online for this node.
+*Corrective Action*::
+Take a currently mounted volume on this node offline so that you can bring the new volume online.
+*Syslog Message*::
+%s %s%s cannot be brought online because the maximum online count has been reached.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+
+== wafl.online.unknownVersion
+*Severity*::
+ALERT
+*Description*::
+This message occurs when mounting an online volume reveals that the volume version is not recognized by the current version of Data ONTAP(R).
+*Corrective Action*::
+Confirm that the correct Data ONTAP version is in use; if not, reboot or upgrade to the correct version as necessary. For more information or assistance, contact NetApp technical support.
+*Syslog Message*::
+This version of Data ONTAP does not recognize the filesystem of %s %s%s%s%s. The volume is being taken offline.
+*Parameters*::
+*type* (STRING): Type of object (volume/aggregate).
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases in which the volume name itself is insufficient.
+
+== wafl.online.unsup.deployment
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system determines that the deployment in which this aggregate was created does not match the current (clustered or nonclustered) deployment of Data ONTAP(R).
+*Corrective Action*::
+Bring the aggregate online on a node that matches the clustered or nonclustered deployment in which it was created.
+*Syslog Message*::
+This deployment of Data ONTAP does not support the file system of '%s %s'. It is being taken offline.
+*Parameters*::
+*type* (STRING): Type of object (aggregate).
+*vol* (STRING): Name of the aggregate.
+
+== wafl.online.vbnMismatch
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when there is an error in the block number data associated with a volume, for example, if WAFL(R)and RAID have different values for the size of the volume.
+*Corrective Action*::
+Run wafliron on the volume. For more information or assistance, contact NetApp technical support.
+*Syslog Message*::
+There is a block number error in either the fsinfo block or disk labels on %s %s%s%s%s. The volume is being taken offline.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases in which the volume name itself is insufficient.

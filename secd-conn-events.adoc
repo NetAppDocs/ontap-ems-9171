@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: secd-conn-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: secd.conn events
+---
+
+= secd.conn events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== secd.conn.auth.failure
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Vserver cannot establish a TCP/UDP connection to or be authenticated by an outside server such as NIS, LSA, LDAP and KDC. Subsequently, some features of the storage system relying on this connection might not function correctly.
+*Corrective Action*::
+Ensure that the server being accessed is up and responding to requests. Ensure that there are no networking issues stopping the Vserver from communicating with this server. If the error reported is related to an authentication attempt, ensure that any related configurable user credentials are set correctly.
+*Syslog Message*::
+Vserver (%s) could not %s over the network to server (%s)%s. Error: %s (%s).
+*Parameters*::
+*vserverName* (STRING): Vserver associated with this operation.
+*connAuthAttempt* (STRING): Connection or authentication attempt.
+*serverInfo* (STRING): Name or IP:Port of the server that was related to the failure.
+*sourceInfo* (STRING): Information about the source that was making the connection or authentication.
+*ErrnoMessage* (STRING): Errno message from the connection or authentication failure.
+*operation* (STRING): Operation being performed.

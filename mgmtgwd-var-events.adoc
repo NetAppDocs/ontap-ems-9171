@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: mgmtgwd-var-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmtgwd.var events
+---
+
+= mgmtgwd.var events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmtgwd.var.recovery
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the system detects a missing or corrupted /var root directory. The node is not fully operational. Data LIFs might have failed over within the cluster, so NFS and CIFS access is limited on this node. There also might be a loss of stored data. Administrative capability is limited to local recovery procedures for this node.
+*Corrective Action*::
+Contact NetApp technical support to obtain the recovery procedures.
+*Syslog Message*::
+Part of the /var boot directory is missing. This node is not fully operational. Contact technical support to obtain the recovery procedures.
+*Parameters*::
+(None).

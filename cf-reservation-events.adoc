@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cf-reservation-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.reservation events
+---
+
+= cf.reservation events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.reservation.disk.notFound
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system does not halt on a disk reservation conflict and the reservation is not found on the disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Reservation found on disk %s; not halting due to sanown_pr_test_mode.
+*Parameters*::
+*diskName* (STRING): Disk name.

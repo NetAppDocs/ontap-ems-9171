@@ -1,0 +1,255 @@
+---
+sidebar: sidebar
+permalink: fci-adapter-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fci.adapter events
+---
+
+= fci.adapter events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fci.adapter.bootarg.option
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the the Fibre Channel adapter driver is setting an option based on the setting of a bootarg variable.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Bootarg option "%s" configured for Fibre Channel adapter %s.
+*Parameters*::
+*option* (STRING): Option being modified.
+*adapterName* (STRING): Name of the associated Fibre Channel host bus adapter (HBA).
+
+== fci.adapter.dump.saved
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an unexpected event or invalid condition is detected by the Fibre Channel(FC) initiator driver and the contents of the FC initiator memory is saved. Dump files are stored in a directory on the system's root volume at /etc/log, with the following directory name format: slifc_[adapterName]_[YYYYMMDD]_[HHMMSS]
+*Corrective Action*::
+Send the dump file to technical support for analysis.
+*Syslog Message*::
+A dump for adapter %s was stored in %s.
+*Parameters*::
+*adapterName* (STRING): Name of the associated FC host bus adapter.
+*filename* (STRING): Name of the file containing the dump.
+
+== fci.adapter.error
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Fibre Channel adapter driver encounters an error with the adapter. The adapter will be reset to recover.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Fibre Channel adapter driver encountered error "%s" on adapter %s.
+*Parameters*::
+*error* (STRING): Type of error that occurred.
+*adapterName* (STRING): Name of the associated Fibre Channel host bus adapter.
+
+== fci.adapter.fabric.login.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Fibre Channel adapter cannot log in with the fabric management server.
+*Corrective Action*::
+The driver will attempt to recover from this error, but if this error keeps occurring, make sure that the switch is configured correctly and then try disconnecting and then reconnecting the adapter to the switch.
+*Syslog Message*::
+Fibre Channel adapter %s cannot log in with the fabric management server for reason 0x%x.
+*Parameters*::
+*adapterName* (STRING): Name of the associated Fibre Channel host bus adapter.
+*status* (INTHEX): Status returned from the adapter.
+
+== fci.adapter.fabric.ns.login.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Fibre Channel adapter cannot log in with the fabric name server.
+*Corrective Action*::
+The driver will attempt to recover from this error but if this error keeps occurring make sure that the switch is configured correctly, and then try disconnecting and then reconnecting the adapter to the switch.
+*Syslog Message*::
+Fibre Channel adapter %s was unable to log in with the fabric name server for reason 0x%x.
+*Parameters*::
+*adapterName* (STRING): Name of the associated Fibre Channel host bus adapter.
+*status* (INTHEX): Status returned from the adapter.
+
+== fci.adapter.fabric.request.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Fibre Channel adapter returns an unexpected status for a fabric query.
+*Corrective Action*::
+The driver will attempt to recoverf rom this error but if this error keeps occurring make sure that the switch is configured correctly, and then try disconnecting and then reconnecting the adapter to the switch.
+*Syslog Message*::
+Fibre Channel adapter %s returned unexpected status 0x%x for a fabric query.
+*Parameters*::
+*adapterName* (STRING): Name of the associated Fibre Channel host bus adapter.
+*status* (INTHEX): Status returned from the adapter.
+
+== fci.adapter.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Fibre Channel adapter driver cannot recover the adapter after resetting it multiple times. The adapter will be put offline.
+*Corrective Action*::
+If the adapter is in use check the cabling, and if it is connected to disk shelves check the seating of the LRC/ESH cards and disks. If the problem keeps occurring try replacing the adapter. If the issue is still not resolved, contact NetApp technical support for assistance in diagnosing a Fibre Channel issue.
+*Syslog Message*::
+Failed to recover Fibre Channel HBA %s after multiple resets. Taking the adapter offline.
+*Parameters*::
+*adapterName* (STRING): Name of the associated Fibre Channel host bus adapter.
+*reason* (STRING): Diagnostic information.
+
+== fci.adapter.firmware.fault
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a firmware fault is detected on the Fibre Channel adapter and it is being reset to recover.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Detected firmware fault 0x%x on Fibre Channel adapter %s.
+*Parameters*::
+*faultCode* (INTHEX): Firmware fault code.
+*adapterName* (STRING): Name of the associated Fibre Channel host bus adapter.
+
+== fci.adapter.firmware.pause
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a firmware fault is detected on the Fibre Channel adapter and it is being reset to recover.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Detected firmware fault 0x%x on Fibre Channel adapter %s.
+*Parameters*::
+*faultCode* (INTHEX): Firmware fault code.
+*adapterName* (STRING): Name of the associated Fibre Channel host bus adapter.
+
+== fci.adapter.link.online
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a Fibre Channel adapter reports online link status, usually after the adapter is reset successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Fibre Channel adapter %s link online.
+*Parameters*::
+*adapterName* (STRING): Name of the associated Fibre Channel host bus adapter.
+
+== fci.adapter.notification
+*Severity*::
+NOTICE
+*Description*::
+This message occurs following a management request from the Fibre Channel(FC) driver to the host bus adapter.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Fibre Channel adapter driver notification: "%s" on adapter %s.
+*Parameters*::
+*info* (STRING): Description of the outcome.
+*adapterName* (STRING): Name of the associated FC host bus adapter.
+
+== fci.adapter.nvram.invalid
+*Severity*::
+ALERT
+*Description*::
+This message occurs when ONTAP(R) software cannot read the NVRAM content of a Fibre Channel adapter. This might cause ONTAP to load an incorrect driver, which could cause the adapter not to work as intended. In addition, the World Wide Node Name (WWNN) and the World Wide Port Name (WWPN) will be incorrect and temporary ones will be assigned. This might cause fabric zoning not to work correctly and might cause problems with anything that depends on consistent WWNNs and WWPNs.
+*Corrective Action*::
+Reboot the appliance. If the problem still exists, replace the adapter.
+*Syslog Message*::
+Cannot read NVRAM content of Fibre Channel adapter %s.
+*Parameters*::
+*adapterName* (STRING): Name of the associated Fibre Channel host bus adapter.
+
+== fci.adapter.offline
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system takes a Fibre Channel adapter offline.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Fibre Channel adapter %s is now offline.
+*Parameters*::
+*adapterName* (STRING): Name of the associated Fibre Channel host bus adapter.
+
+== fci.adapter.offlining
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system takes a Fibre Channel adapter offline after all outstanding I/O requests have finished.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Taking Fibre Channel adapter %s offline.
+*Parameters*::
+*adapterName* (STRING): Name of the associated Fibre Channel host bus adapter.
+
+== fci.adapter.online
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system brings a Fibre Channel adapter online.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Fibre Channel adapter %s is now online.
+*Parameters*::
+*adapterName* (STRING): Name of the associated Fibre Channel host bus adapter.
+
+== fci.adapter.online.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Fibre Channel adapter fails to come online.
+*Corrective Action*::
+If the adapter is in use check the cabling, and if it connected to disk shelves check the seating of the LRC/ESH cards.
+*Syslog Message*::
+Fibre Channel adapter %s failed to come online.
+*Parameters*::
+*adapterName* (STRING): Name of the associated Fibre Channel host bus adapter.
+
+== fci.adapter.onlining
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Fibre Channel adapter begins the process of going online.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Onlining Fibre Channel adapter %s.
+*Parameters*::
+*adapterName* (STRING): Name of the associated Fibre Channel host bus adapter.
+
+== fci.adapter.speed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when speed auto- negotiation for the Fibre Channel port is disabled because the administrator used either the 'ispfc-force-XG-only?' or the 'mptfc-force-XG-only?' boot argument in conjunction with the 'fc-force-XG-ports' boot argument to force a particular speed. For example, setting 'ispfc-force-2G-only?' to 'true' and setting 'fc-force-2G-ports' to '0a,0c' would force ports 0a and 0c to operate at a rate of 2 Gigabits per second.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The speed of Fibre Channel adapter port %s was forced to %u Gbps by link speed related boot arguments.
+*Parameters*::
+*port* (STRING): Name of the adapter port.
+*speed* (INT): Speed the adapter port was assigned.
+
+== fci.adapter.topology
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when topology auto- negotiation for the Fibre Channel port is disabled because the administrator used either the 'fc-force-ptp-ports' or the 'fc-force-loop-ports' boot argument to force a particular topology.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Fibre Channel adapter port %s was forced to negotiate its topology as %s by topology-related boot arguments.
+*Parameters*::
+*port* (STRING): Name of the adapter port.
+*topo* (STRING): Topology the adapter port was assigned.

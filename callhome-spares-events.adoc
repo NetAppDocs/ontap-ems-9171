@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: callhome-spares-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.spares events
+---
+
+= callhome.spares events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.spares.low
+*Severity*::
+ERROR
+*Description*::
+This message occurs when one or more RAID groups do not have an eligible spare disk drive available in case of a disk drive failure. An eligible spare disk drive must be the correct size and capacity, and must be in the appropriate pool. If a disk drive fails without a spare to reconstruct on, the system enters degraded mode. The system halts automatically to prevent a double disk drive failure, and possible loss of data, if it runs in degraded mode for the time interval given by the following command: "storage raid-options show -name raid.timeout -node local" The default timeout is usually 24 hours. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Add suitable spare disk drives for all RAID groups to ensure that you have at least one spare disk drive. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s: %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*rg* (STRING): RAID groups on which spares low is identified.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: tapemc-iopending-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: tapemc.iopending events
+---
+
+= tapemc.iopending events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== tapemc.iopending.exceeded
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when Data ONTAP(R) detects that multiple I/Os were sent to a device that supports only one I/O at a time.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s device %s has more than one I/O pending, but the device supports only one I/O at a time.
+*Parameters*::
+*deviceType* (STRING): Type of device that multiple I/Os were sent to.
+*deviceName* (STRING): Name of the device.

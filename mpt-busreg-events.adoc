@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: mpt-busreg-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mpt.busreg events
+---
+
+= mpt.busreg events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mpt.busreg.phydisk.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when physical disk bus registration fails in the message processing technology (MPT) adapter driver.
+*Corrective Action*::
+Check whether the device is connected correctly.
+*Syslog Message*::
+%s : Physical disk bus registration failed.
+*Parameters*::
+*mpt* (STRING): MPT device name on the path that failed.

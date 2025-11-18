@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: netinet6-mld6-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netinet6.mld6 events
+---
+
+= netinet6.mld6 events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netinet6.mld6.illegal.type
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system discovers an illegal Internet Control Message Protocol (ICMP) type field in a multicast listener discovery structure.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+mld6_input: Illegal ICMP type field (%d).
+*Parameters*::
+*type* (INT): ICMP type field.
+
+== netinet6.mld6.srcAdr.invld
+*Severity*::
+ERROR
+*Description*::
+This message occurs during validation of the source address, when the system finds that the source address is a non-linked local address.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+mld6_input: Source address %s is not link-local.
+*Parameters*::
+*srcAddr* (STRING): Source IP6 address.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: clam-peer-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: clam.peer events
+---
+
+= clam.peer events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== clam.peer.halting
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Kernel Cluster Services (KCS) Connectivity, Liveness, and Availability Monitor (CLAM) is notified that its high-availability (HA) partner node is undergoing a planned shutdown.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+CLAM is notified that node %s (ID=%llu) is undergoing a planned shutdown.
+*Parameters*::
+*hostnode* (STRING): Name of node beginning the halt process.
+*nodeid* (LONGINT): ID of node beginning the halt process.

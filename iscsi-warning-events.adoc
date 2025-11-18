@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: iscsi-warning-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: iscsi.warning events
+---
+
+= iscsi.warning events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== iscsi.warning
+*Severity*::
+NOTICE
+*Description*::
+This event is issued if the iSCSI subsystem detects an abnormal state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ISCSI: %s
+*Parameters*::
+*m* (STRING): A more specific message describing the state.

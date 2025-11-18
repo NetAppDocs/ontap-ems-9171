@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: am-dest-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: am.dest events
+---
+
+= am.dest events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== am.dest.check.failed
+*Severity*::
+NOTICE
+*Description*::
+Relocation of aggregates fails at the destination as we no longer accept aggregates from versions 8.2.0 or lower.
+*Corrective Action*::
+User needs to upgrade to 8.2.1 before attempting ARL to 8.3.0 or higher. `
+*Syslog Message*::
+Relocation of aggregates failed from node %s to current node as ARL is no longer supported from releases 8.2.0 or lower to 8.3.0 or higher.
+*Parameters*::
+*partner_node* (STRING): Source of the aggregate migration

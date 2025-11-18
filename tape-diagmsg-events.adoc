@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: tape-diagmsg-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: tape.diagmsg events
+---
+
+= tape.diagmsg events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== tape.diagMsg
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when there is a new state of the tape diagnostic message flag. Data ONTAP(R) is more or less verbose in reporting SCSI check conditions depending on the flag. Using a valid tape drive address [tape], diagnostic messages can be enabled using the "mt -f [tape] diag 1" (7-Mode or Cluster-Mode nodeshell) command. You can disable the extra message using the "mt -f [tape] diag 0" command. The default value is 0.
+*Corrective Action*::
+There is no corrective action for this message. However, enabling diagnostic messages might cause other error messages to be generated that are usually suppressed by Data ONTAP, particularly reports of tape position. No corrective action is needed if the reports are normal. Normal reports include check conditions at the beginning or end of tape, and filemarks. It is important to understand the format of the tape data to determine whether the additional messages indicate an error.
+*Syslog Message*::
+Tape driver diagnostic messages %s.
+*Parameters*::
+*diagState* (STRING): New condition of "diag" message enable.

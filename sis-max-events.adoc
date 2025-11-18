@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: sis-max-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.max events
+---
+
+= sis.max events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.max.saving.near
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Single Instance Storage (SIS) savings on the volume is nearing its maximum limit. No further savings can be realized on the volume after the limit is reached.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Maximum savings limit nearly reached on volume %s%s.
+*Parameters*::
+*volume* (STRING): Volume name.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== sis.max.saving.reached
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Single Instance Storage (SIS) savings on the volume reaches its maximum limit. No further savings can be realized on the volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Maximum savings limit reached on volume %s%s.
+*Parameters*::
+*volume* (STRING): Volume name.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.

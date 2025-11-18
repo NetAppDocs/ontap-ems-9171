@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: wafl-no-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.no events
+---
+
+= wafl.no events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.no.large.vvol.size.set
+*Severity*::
+ERROR
+*Description*::
+This message occur when a volume don't have 'large_size_enabled' flag set even when the nominal size crosses the 100TB limit.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Nominal size of the "%s" volume exceeded either 100TB limit.
+*Parameters*::
+*vvolname* (STRING): Name of the volume.

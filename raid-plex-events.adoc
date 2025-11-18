@@ -1,0 +1,44 @@
+---
+sidebar: sidebar
+permalink: raid-plex-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.plex events
+---
+
+= raid.plex events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.plex.faultIsolation.reminder
+*Severity*::
+ERROR
+*Description*::
+This message occurs when disks in a plex do not have the same hardware-based pool.
+*Corrective Action*::
+a) Identify the problem aggregate from the system logs. b) Determine how this occurred: possible cause is a wiring problem. c) Based on the information you gather, determine how to correct the issue. For example, use the "storage disk replace" command to copy the disk belonging to the wrong pool to a disk belonging to the right pool. d) If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Plex %s has disks from mixed pools: %s
+*Parameters*::
+*plex* (STRING): Name of the plex.
+*num_disks* (STRING): Number of disks of the plex in other pools.
+
+== raid.plex.vbn.error
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system attempts to start up a plex and discovers that part of its Virtual Block Number(VBN) range is missing.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s: Plex object %d is missing a VBN segment starting at %llu.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*plexId* (INT): Identifier of the plex.
+*vbn* (LONGINT): Starting VBN that is missing.

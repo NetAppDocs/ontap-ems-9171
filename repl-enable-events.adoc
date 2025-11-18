@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: repl-enable-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.enable events
+---
+
+= repl.enable events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.enable.seq.split
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when sequential splitting mode is enabled for a SnapMirror Synchronous relationship. This mode is unsuitable for large file workloads like LUNs, databases, virtualized workloads and video surveillance.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Enabling sequential splitting mode for relationship with UUID "%s".
+*Parameters*::
+*relationship_id* (STRING): Relationship UUID.

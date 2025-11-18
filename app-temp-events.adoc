@@ -1,0 +1,99 @@
+---
+sidebar: sidebar
+permalink: app-temp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: app.temp events
+---
+
+= app.temp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== app.temp.delete.s3bucket.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a S3 Bucket cannot be deleted as a part of an application destroy operation.
+*Corrective Action*::
+Use the "object-store-server bucket delete" command to delete the S3 bucket manually. Retry the "application destroy" command on the specified application.
+*Syslog Message*::
+Failed to delete S3 Bucket %s of application %s on Vserver %s. Error %s.
+*Parameters*::
+*s3bucket* (STRING): Name of the S3 Bucket.
+*application_name* (STRING): Name of the application that contains this S3 bucket.
+*vserver* (STRING): Name of the Vserver.
+*error* (STRING): The error that the application destroy service encountered while destroying the S3 bucket.
+
+== app.temp.destroy.flexcache.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a flexcache cannot be destroyed as a part of an application destroy operation.
+*Corrective Action*::
+Use the "volume offline" command to take the flexcache offline, and then use the "flexcache delete" command to delete the flexcache manually. Retry the "application destroy" command on the specified application.
+*Syslog Message*::
+Failed to destroy flexcache %s of application %s on Vserver %s. Error %s.
+*Parameters*::
+*flexcache* (STRING): Name of the flexcache.
+*application_name* (STRING): Name of the application that contains this volume.
+*vserver* (STRING): Name of the Vserver.
+*error* (STRING): The error that the application destroy service encountered while destroying the flexcache.
+
+== app.temp.destroy.volume.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a volume cannot be destroyed as a part of an application destroy operation.
+*Corrective Action*::
+Use the "volume offline" command to take the volume offline, and then use the "volume delete" command to delete the volume manually. Retry the "application destroy" command on the specified application.
+*Syslog Message*::
+Failed to destroy volume %s of application %s on Vserver %s. Error %s.
+*Parameters*::
+*volume* (STRING): Name of the volume.
+*application_name* (STRING): Name of the application that contains this volume.
+*vserver* (STRING): Name of the Vserver.
+*error* (STRING): The error that the application destroy service encountered while destroying the volume.
+
+== app.temp.mcc.sb.modify.abort
+*Severity*::
+ERROR
+*Description*::
+This message occurs on MetroCluster(tm) systems, as part of a failed "application modify" command. For this to happen, the primary site must be in the midst of modifying application provisioning when an unplanned MetroCluster switchover occurs. The secondary site must then successfully modify the same application. During MetroCluster switchback, the state of the original application provisioning job is checked before allowing the originally issued "application modify" command from the primary site to continue. If the state of the application has changed due to it being modified by the secondary site during switchover, the original "application modify" command is canceled during switchback. This is to prevent possible corruption to the application provisioning modifications from the secondary site.
+*Corrective Action*::
+Verify that the changes made by the MetroCluster secondary site are acceptable by using the "application show" command. If the changes are acceptable, no further action is required. Otherwise, rerun the "application modify" command as necessary.
+*Syslog Message*::
+Failed to modify application %s on Vserver %s.
+*Parameters*::
+*app_name* (STRING): Name of the application being modified.
+*vserver* (STRING): Name of the Vserver.
+
+== app.temp.mcc.veto.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a metrocluster switchover or switchback command fails due to unfinished application jobs running on the node.
+*Corrective Action*::
+Run the "job show -category APS" command to first verify that there are no application provisioning jobs running. Then Retry the metrocluster switchover or switchback command.
+*Syslog Message*::
+A metrocluster switchover or switchback command was vetoed due to application provisioning jobs still in progress: %s.
+*Parameters*::
+*error* (STRING): Error returned by Metrocluster application provisioning.
+
+== app.temp.remove.app.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an application cannot be removed from the persistent database during an "application destroy" operation.
+*Corrective Action*::
+Retry the "application destroy" command. Contact NetApp technical support if the failure persists.
+*Syslog Message*::
+Failed to remove application %s on Vserver %s from the persistent database. Error %s.
+*Parameters*::
+*application_name* (STRING): Name of the application.
+*vserver_name* (STRING): Name of the Vserver.
+*error* (STRING): The error that the application destroy service encountered while removing the application from the persistent database.

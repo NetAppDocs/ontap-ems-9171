@@ -1,0 +1,193 @@
+---
+sidebar: sidebar
+permalink: wafl-snap-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.snap events
+---
+
+= wafl.snap events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.snap.autoDel.policyChg
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a possible change in the autodelete or autosize policy of the volume. This can happen when a version of Data ONTAP(R) is loaded that might not support the reclaim policy currently set in the active filesystem.
+*Corrective Action*::
+Unrecognized reclaim policy settings are cleared in the active file system. If you subsequently load a version of Data ONTAP(R) that recognizes the reclaim policy settings, you need to reestablish the policy settings using 'snap autodelete' or 'vol autosize' commands.
+*Syslog Message*::
+Reclaim policy might have changed in %s %s%s%s%s. Check the 'snap autodelete' or 'vol autosize' command settings.
+*Parameters*::
+*type* (STRING): Container type, either volume or aggregate.
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name itself is insufficient.
+
+== wafl.snap.autoDelete
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the aggregate snapshot reserve is full and snapshots are being deleted to free space.
+*Corrective Action*::
+If aggregate snapshots are being deleted too frequently or while they are still being used, then consider the following options: o Increase the snapshot reserve percentage for the aggregate. o Alter the aggregate snapshot schedule to create less frequent snapshots.
+*Syslog Message*::
+Deleting snapshot '%s' in aggregate '%s' to free up space.
+*Parameters*::
+*name* (STRING): Snapshot name.
+*aggr* (STRING): Aggregate name.
+
+== wafl.snap.autoDelete.createStateSnap.fail
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event indicates that after auto-deletion of all aggregate snapshots, we have failed to take a state snapshot.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Unable to create snapshot '%s' in aggregate '%s': %s
+*Parameters*::
+*name* (STRING): The snapshot name
+*vol* (STRING): The volume name
+*err* (STRING): Reason why the operation failed.
+
+== wafl.snap.autoDelete.fail
+*Severity*::
+NOTICE
+*Description*::
+This event indicates that the automatic deletion of a snapshot in an aggregate has failed. An appliance may automatically delete an aggregate snapshot if the aggregate snap reserve fills.
+*Corrective Action*::
+The appliance will automatically retry the snapshot deletion shortly after the failure occurs. If the deletion succeeds then no corrective action is necessary. If deletion repeatedly fails then the aggregate could potentially become full. To address this please contact customer support.
+*Syslog Message*::
+Unable to delete snapshot '%s' in aggregate '%s' to recover space: %s
+*Parameters*::
+*name* (STRING): The snapshot name
+*aggr* (STRING): The aggregate name
+*err* (STRING): The reason why the deletion failed.
+
+== wafl.snap.create
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a snapshot is created successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Snapshot %s was created successfully for volume %s%s%s in %ld milliseconds.
+*Parameters*::
+*name* (STRING): Snapshot name.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.
+*time* (LONGINT): Time taken to create the snapshot, in milliseconds.
+
+== wafl.snap.create.skip.reason
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the creation of a snapshot is skipped.
+*Corrective Action*::
+Address the issue identified by the "reason" parameter. For example, if the reason is "Volume is too full", increase the volume size or free up disk space on the target volume.
+*Syslog Message*::
+%s %s %s: Skipping creation of %s snapshot (%s).
+*Parameters*::
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique volume identifier.
+*snapname* (STRING): Name of the snapshot being created.
+*reason* (STRING): Reason for skipping the snapshot.
+
+== wafl.snap.delete
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a snapshot is deleted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Snapshot %s on %s %s%s%s%s %s was deleted by the Data ONTAP function %s. The unique ID for this snapshot is (%d, %d).
+*Parameters*::
+*snap_name* (STRING): Name of the deleted snapshot.
+*type* (STRING): Container type (volume or aggregate).
+*owner* (STRING): Volume or aggregate owner.
+*vol* (STRING): Volume or aggregate name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume or aggregate when the volume or aggregate name by itself is insufficient.
+*vendor* (STRING): Vendor name.
+*caller_func* (STRING): Function in Data ONTAP(R) that invokes the deletion process.
+*snapid* (INT): Numerical ID of the snapshot. The (snapid, cp_count) pair uniquely identifies a snapshot.
+*cp_count* (INT): The CP (consistency point) count. The (snapid, cp_count) pair uniquely identifies a snapshot.
+
+== wafl.snap.delete.32bit
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a snapshot on an aggregate or volume is deleted because it has an unsupported 32-bit or mixed format file system.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A snapshot on %s %s%s%s%s was deleted because it has an unsupported 32-bit or mixed format file system. The unique ID for this snapshot is (%d, %d).
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name itself is insufficient.
+*snapid* (INT): Numerical ID of the snapshot. As a pair, the values of the "snapid" and "cp_count" parameters uniquely identify a snapshot.
+*cp_count* (INT): CP (consistency point) count. As a pair, the values of the "snapid" and "cp_count" parameters uniquely identify a snapshot.
+
+== wafl.snap.delete.pending
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the deletion of a snapshot is pending.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Pending snapshot (ID %u) deletion in %s %s%s%s%s.
+*Parameters*::
+*snapid* (INT): Snapshot ID.
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== wafl.snap.deleteError
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when attempts to delete a snapshot fail.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Unable to remove old snapshot "%s" on %s %s%s%s. Error: %s.
+*Parameters*::
+*name* (STRING): Name of the snapshot.
+*type* (STRING): Type of object (volume or aggregate).
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): UUID of the volume, to uniquely identify the volume when the volume name alone is insufficient.
+*err* (STRING): Error description
+
+== wafl.snap.sched.notok
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the creation of a snapshot is skipped:
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s%s%s: %s
+*Parameters*::
+*message* (STRING): Generic scheduled snapshot failure indication.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Uniquely identifies the volume in cases where the volume name itself is insufficient.
+*reason* (STRING): Specific reason for the snapshot failure.

@@ -1,0 +1,38 @@
+---
+sidebar: sidebar
+permalink: disk-reserveerror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.reserveerror events
+---
+
+= disk.reserveerror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.reserveError
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a SCSI reservation is requested for a disk or LUN that is no longer seen.
+*Corrective Action*::
+A disk or LUN might have been removed from the storage subsystem or the path to a disk or LUN has been lost. Verify that all paths to the disk or LUN are visible to the appliance using the storage show disk -p command.
+*Syslog Message*::
+disk_reserve: %s was not found: CDB %s - %s (%x %x %x)
+*Parameters*::
+*diskName* (STRING): Name of the device.
+*cdb* (STRING): CDB (Command Descriptor Block) containing the I/O operation being performed.
+*sSenseKey* (STRING): Sense key string.
+*iSenseKey* (INTHEX): Sense key value.
+*iASC* (INTHEX): SCSI Additional Sense Code.
+*iASCQ* (INTHEX): SCSI Additional Sense Code Qualifier.
+*sm* (STRING): SCSI Persistent Reservation state machine.
+*state* (INT): SCSI Persistent Reservation state machine step.
+*out_status_flags* (INTHEX): Status flag containing bits describing which of the following status values are valid.
+*ha_status* (INTHEX): Value returned by the host adapter driver describing completion status of I/O request execution at the transport or physical link layer.
+*target_status* (INTHEX): Value returned by the target describing completion status of I/O request.
+*target_rsp_code* (INTHEX): Target response code.

@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: ktls-badauth-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ktls.badauth events
+---
+
+= ktls.badauth events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ktls.badAuth
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system receives a TLS message with bad 'authentication' data. The connection is closed. It might indicate that this system is under attack.
+*Corrective Action*::
+ONTAP software automatically closes the connection from which this incorrect authentication information was received. If this message is repeatedly generated from the same internet address, it might indicate that this system is under attack.
+*Syslog Message*::
+ONTAP received a TLS message with incorrect authentication at local address %s local port %d from remote address %s remote port %d via IPspace %d.
+*Parameters*::
+*localAddr* (STRING): Full internet address of the local end of this session.
+*localPort* (INT): Local port number that was being reached.
+*remoteAddr* (STRING): Full internet address of the remote end of this session.
+*remotePort* (INT): Remote port number that sent the erroneous data.
+*IPspace* (INT): IPspace in which the remote address was reached.

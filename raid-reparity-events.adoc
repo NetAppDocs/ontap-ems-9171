@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: raid-reparity-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.reparity events
+---
+
+= raid.reparity events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.reparity.lw.id.inconsist
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system detects an inconsistent RAID write signature on a RAID stripe, during a RAID reparity operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*rg* (STRING): Name of the RAID group.
+*stripe* (LONGINT): Stripe number.

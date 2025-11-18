@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sp-userlist-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sp.userlist events
+---
+
+= sp.userlist events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sp.userlist.update.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is an error updating user information for the Service Processor (SP). When user information is updated on Data ONTAP(R), the SP is also updated with the new changes. This enables users to log in to the SP. User information update for the SP might have failed due to a communication error with the SP or the SP might not be operational.
+*Corrective Action*::
+1. Run the 'system service-processor show' command at the Data ONTAP prompt to check whether the SP is operational. 2. If the SP is operational and this message persists, run the 'system service-processor reboot-sp' command at the Data ONTAP prompt to reboot the SP. 3. Retry the operation that caused the error message. 4. If this message persists after the SP has been rebooted, contact NetApp technical support.
+*Syslog Message*::
+Error updating SP user information, %s.
+*Parameters*::
+*reason* (STRING): Reason for the failure.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: csm-ctfallbackswitchless-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: csm.ctfallbackswitchless events
+---
+
+= csm.ctfallbackswitchless events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== csm.ctFallbackSwitchless
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Cluster Session Manager (CSM) defaults to use CT (TCP transport) when creating LIF pairs because remote device ID information is not available on switchless clusters running CSM over remote direct memory access (RDMA).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cluster Session Manager (CSM) could not determine the cluster ports that are directly connected between the switchless cluster nodes to create the RDMA connections for session "%s". CSM will use TCP connections as defaults.
+*Parameters*::
+*uniquifier* (STRING): Unique identifier for this session.

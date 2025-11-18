@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: callhome-multi-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.multi events
+---
+
+= callhome.multi events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.multi.dsk.cksum.err
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when checksum verification errors are seen on two or more disks connected to the same HBA port, and the port is not taken offline or the "disk.offline_adapter.enable" option is disabled. This AutoSupport(R) message and associated EMS messages are issued once for a given port. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Contact NetApp technical support for assistance with troubleshooting the reason for the write verification errors. Hardware components might need to be replaced.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*adapterName* (STRING): Name of the adapter.

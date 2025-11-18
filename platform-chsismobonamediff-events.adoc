@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: platform-chsismobonamediff-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: platform.chsismobonamediff events
+---
+
+= platform.chsismobonamediff events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== platform.ChsisMoboNameDiff
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the product name on the chassis is different from the one on the controller.
+*Corrective Action*::
+Place the controller in a compatible chassis.
+*Syslog Message*::
+The product names on the chassis (%s) and the controller (%s) are different. Contact NetApp technical support to resolve this.
+*Parameters*::
+*prodNameChsis* (STRING): Product name on the chassis.
+*prodNameCtrlr* (STRING): Product name on the controller.

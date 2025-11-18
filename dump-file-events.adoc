@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: dump-file-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dump.file events
+---
+
+= dump.file events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dump.file.has.security.label
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the dump engine encounters an NFS security label during any type of dump operation. The dump engine does not back up any NFS security labels but skips them and continues.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The dump engine encountered one or more inodes with NFS security labels. The dump engine will back up the inodes but will not back up the associated security labels.
+*Parameters*::
+*src_path* (STRING): Path being backed up.

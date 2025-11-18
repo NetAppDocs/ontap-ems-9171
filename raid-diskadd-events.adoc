@@ -1,0 +1,80 @@
+---
+sidebar: sidebar
+permalink: raid-diskadd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.diskadd events
+---
+
+= raid.diskadd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.diskadd.abort
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system aborts the addition of disks to an aggregate.
+*Corrective Action*::
+Use the reason provided to determine an action from the following list: - Change in raidgroup size: Retry adding disks to the volume. - One of the target plexes has failed: Delete the failed plex. Use the "storage aggregate plex delete" command. When the failed plex is removed and the aggregate state appears as "unmirrored", retry adding disks to the volume. - For further information or assistance, contact NetApp technical support.
+*Syslog Message*::
+Addition of disks to %s %s%s aborted %s.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*reason* (STRING): Reason the disk addition was aborted.
+
+== raid.diskadd.add.abort
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the addition of disks to an aggregate is aborted due to a detected disk failure.
+*Corrective Action*::
+Retry adding disks to the aggregate. If disk list was specified for addition, replace the failed disk with a good disk in the list.
+*Syslog Message*::
+Addition of disks to %s %s%s aborted due to failure of %s.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*shelf* (STRING): Identifier of the disk shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): String representing the name of the model of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.diskadd.create.abort
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the creation of a an aggregate is aborted due to a detected disk failure.
+*Corrective Action*::
+Retry the aggregate creation. If disk list was specified for creation, replace the failed disk with a good disk in the list.
+*Syslog Message*::
+Creation of %s %s%s aborted due to failure of %s.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier serial number.
+*shelf* (STRING): Identifier of the disk shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): String representing the name of the model of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.

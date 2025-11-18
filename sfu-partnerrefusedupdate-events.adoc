@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sfu-partnerrefusedupdate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfu.partnerrefusedupdate events
+---
+
+= sfu.partnerrefusedupdate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfu.partnerRefusedUpdate
+*Severity*::
+ALERT
+*Description*::
+This message occurs in a high-availability (HA) configuration in which one node refuses firmware download requests from its partner node, in which case the partner node cannot download disk shelf firmware.
+*Corrective Action*::
+Make certain that the HA partners are both running the same version of ONTAP(R) software and that the HA interconnect is up and running. Attempt the (advanced privilege) "storage shelf firmware update" command again.
+*Syslog Message*::
+Partner node refused permission to update shelf firmware.
+*Parameters*::
+(None).

@@ -1,0 +1,864 @@
+---
+sidebar: sidebar
+permalink: mgmt-vopl-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmt.vopl events
+---
+
+= mgmt.vopl events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmt.vopl.cleanup.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system encounters an error trying to clean up after a failed 'volume move' operation.
+*Corrective Action*::
+Contact NetApp technical support..
+*Syslog Message*::
+'volume move' cleanup operation with job ID '%jd' failed in step (%s) with the error (%s) for volume '%s' in Vserver '%s'.
+*Parameters*::
+*jobID* (LONGINT): Job ID of the 'volume move' operation.
+*step* (STRING): Phase during cleanup where the error occurred.
+*error* (STRING): Error recorded during the cleanup phase.
+*volName* (STRING): Name of the source volume.
+*vserverName* (STRING): Name of the source Vserver.
+
+== mgmt.vopl.del.staleLunMaps
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a 'volume delete' operation cannot delete LUN initiator group maps for the LUNs in the volume, resulting in stale LUN initiator group maps. Any attempt to delete these initiator groups that are mapped to nonexistent LUNs (provided that they are not mapped to any other LUNs) fails. 'lun mapped show -igroup <igroup name>' does not list any maps, but 'igroup delete -igroup <igroup name>' fails with an error, suggesting that the initiator group cannot be deleted because it is mapped to LUNs.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Could not delete LUN initiator group maps for the volume with MSID '%llu' on Vserver '%s'. Error: %s.
+*Parameters*::
+*voldMsid* (LONGINT): Master data set ID of the volume being deleted.
+*vserver* (STRING): Vserver hosting the volume.
+*error* (STRING): Internal software error.
+
+== mgmt.vopl.fail.rstart.nosvol
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a 'volume move' operation fails in the restart phase because the source volume is not found. The system repeatedly attempts the phase until the restart can be completed. In the time between the first failure and when the restart can be completed, there might be disruption to client traffic for the volume being moved.
+*Corrective Action*::
+Verify that the job restart is completed by running the "volume move show -vserver <vservername> -volume <volName%gt;" command. If the restart phase continues to fail, contact NetApp technical support.
+*Syslog Message*::
+'volume move' operation with job ID '%jd' for volume '%s' in Vserver '%s' failed in the restart phase when attempting to retrieve the source volume.
+*Parameters*::
+*jobID* (LONGINT): Job ID of the 'volume move' operation.
+*volName* (STRING): Name of the source volume.
+*vserverName* (STRING): Name of the source Vserver.
+
+== mgmt.vopl.fail.status.entry
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a 'volume move' operation fails to make an entry in the VLDB table for the 'volume move show' command. The system repeatedly attempts this operation until it exhausts the number of retries. Until an entry is made, the 'volume move show' command might return stale entries use 'job show -id' to show the status of the current volume move operation.
+*Corrective Action*::
+Use the 'job show -id' command to show the status of the current 'volume move' operation. Retry the 'volume move' operation. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+The 'volume move' operation with ID '%jd' for volume name '%s' in Vserver '%s' failed while attempting to make an entry in the VLDB table for the 'volume move show' command. Use 'job show -id' command to show the current status of the job.
+*Parameters*::
+*jobID* (LONGINT): Job ID of the 'volume move' operation.
+*volName* (STRING): Name of the source volume.
+*vserverName* (STRING): Name of the source Vserver.
+
+== mgmt.vopl.fail.status.modify
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a 'volume move' operation fails to modify the VLDB table for the 'volume move show' command. The system repeatedly attempts this phase. Until the modification succeeds, the 'volume move show' command might return stale information about the current 'volume move' operation.
+*Corrective Action*::
+If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+The 'volume move' operation for volume '%s' with job ID '%jd' in Vserver '%s' cannot modify an entry in the VLDB table.
+*Parameters*::
+*volName* (STRING): Name of the source volume.
+*jobId* (LONGINT): Job ID of the 'volume move' operation.
+*vserverName* (STRING): Name of the source Vserver.
+
+== mgmt.vopl.made.status.entry
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a 'volume move' operation makes an entry for the 'volume move show' command because the entry did not exist in the VLDB table.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Use the 'volume move show -vserver %s -volume %s' command to show the status of this 'volume move' operation.
+*Parameters*::
+*volName* (STRING): Name of the source volume.
+*vserverName* (STRING): Name of the source Vserver.
+
+== mgmt.vopl.move.badDstVol
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a 'volume move' operation cannot access the specified destination volume.
+*Corrective Action*::
+Verify that the destination volume exists and is online.
+*Syslog Message*::
+The move operation could not access the specified destination volume '%s'.
+*Parameters*::
+*dstVol* (STRING): Name of the temporary destination volume for move operation.
+
+== mgmt.vopl.move.badSourceVol
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a 'volume move' operation cannot access the specified source volume.
+*Corrective Action*::
+Verify that the source volume exists and is online.
+*Syslog Message*::
+The move operation could not access the specified source volume '%s' in Vserver '%s' for job ID '%jd'.
+*Parameters*::
+*srcVol* (STRING): Name of the volume to be moved.
+*vserverName* (STRING): Name of the Vserver.
+*jobID* (LONGINT): Job ID of the volume move operation.
+
+== mgmt.vopl.move.bytesLeft
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a 'volume move' operation is in data copy phase and we want to know the bytes left.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The 'volume move' operation for volume '%s' in Vserver '%s' and job ID '%jd' is in data copy phase. We want to know the number of bytes left to transfer.
+*Parameters*::
+*volpath* (STRING): Name of the source volume of the move job.
+*vserverName* (STRING): Name of the source Vserver.
+*jobID* (LONGINT): Job ID of the 'volume move' operation.
+
+== mgmt.vopl.move.cantCrtDstVol
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volume move job cannot be completed because the destination volume cannot be created.
+*Corrective Action*::
+Check for space on the destination aggregate. Execute the "volume move" command with the "-perform-validation-only" parameter. If it succeeds, contact NetApp technical support. If it does not succeed, increase space on the destination aggregate, then try the "volume move" command again.
+*Syslog Message*::
+Volume move job failed because destination volume "%s" could not be created.
+*Parameters*::
+*volpath* (STRING): Name of the destination volume of the move.
+
+== mgmt.vopl.move.cantCrtSrcSnp
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volume move job cannot be completed because creation of a snapshot on the source volume failed.
+*Corrective Action*::
+Use the "volume show" to check if the volume has enough space for the snapshot. Use the "snapshot show" command to check if the number of snapshots have reached the maximum count. If the issue persists, contact Contact NetApp technical support..
+*Syslog Message*::
+Volume move job failed because creation of a snapshot on source volume "%s" failed.
+*Parameters*::
+*volpath* (STRING): Name of the source volume of the move job.
+
+== mgmt.vopl.move.cantDstCncld
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the 'volume move' job cannot conclude a transfer on the destination volume.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+'volume move' job could not conclude a transfer on the destination volume '%s'.
+*Parameters*::
+*volpath* (STRING): Name of the destination volume of the move job.
+
+== mgmt.vopl.move.cantReadCfg
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the 'volume move' job cannot read the configuration information.
+*Corrective Action*::
+Check whether the replicated database is online.
+*Syslog Message*::
+The job configuration information for 'volume move' operation with job ID '%jd' could not be read.
+*Parameters*::
+*jobID* (LONGINT): Job ID of the 'volume move' operation.
+
+== mgmt.vopl.move.cantSaveToRdb
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the 'volume move' job cannot save information to the replicated database. The 'volume move' job attempts to retry the operation.
+*Corrective Action*::
+The "volume move" job is retried automatically. Check the satus of database with "cluster ring show" advanced command. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+The volume move job '%jd' for volume '%s' in Vserver '%s' could not save the information to the replicated database.
+*Parameters*::
+*jobId* (LONGINT): ID of the 'volume move' job.
+*volName* (STRING): Name of the source volume.
+*vserverName* (STRING): Name of the Vserver.
+
+== mgmt.vopl.move.cantSrcCncld
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the 'volume move' job cannot conclude a transfer on the source volume.
+*Corrective Action*::
+Verify that the source volume exists, is readable, and is not currently locked exclusively by another process. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+'volume move' job could not conclude the transfer on the source volume '%s'.
+*Parameters*::
+*volpath* (STRING): Name of the source volume of the move job.
+
+== mgmt.vopl.move.ClnupFldDlVol
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a cleanup operation cannot delete the destination volume after a 'volume move' job fails.
+*Corrective Action*::
+Delete the destination volume by using the 'volume delete' command.
+*Syslog Message*::
+Could not delete destination volume '%s' following a failed 'volume move'.
+*Parameters*::
+*volpath* (STRING): Name of the destination volume that could not be deleted.
+
+== mgmt.vopl.move.cntRdDstDAttr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the 'volume move' job cannot read the attributes of the destination volume from disk. The 'volume move' job attempts to retry the operation.
+*Corrective Action*::
+Use the 'volume move show' command to get the status of the current move operation. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+The 'volume move' job could not fetch attributes of destination volume '%s' from the disk.
+*Parameters*::
+*volpath* (STRING): Name of the destination volume involved in the move operation.
+
+== mgmt.vopl.move.cntRdPostCutoverSrcDAttr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a 'volume move' operation cannot access the specified source volume after cutover to propagate final volume attributes. The attributes were set to values that were either obtained immediately before the cutover occurred, or were set to default values.
+*Corrective Action*::
+Verify that the attributes on the destination volume are correct. Specifically, check the value for the attribute "filesys-size-fixed".
+*Syslog Message*::
+The move operation could not read post-cutover attributes from the specified temporary source volume '%s' in Vserver '%s' for job ID '%jd'.
+*Parameters*::
+*dstVol* (STRING): Name of the temporary source volume for the move operation.
+*vserverName* (STRING): Name of the Vserver.
+*jobID* (LONGINT): Job ID of the volume move operation.
+
+== mgmt.vopl.move.cntRdSrcDAttr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the volume move operation cannot read the attributes of the source volume from disk. The volume move operation will attempt to retry the operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The volume move operation could not fetch the attributes of source volume '%s' from the disk.
+*Parameters*::
+*volpath* (STRING): Name of the source volume involved in the move operation.
+
+== mgmt.vopl.move.cut.entryFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volume move operation cannot enter the cutover phase. The original source volume is functional. After a short delay, the volume move operation will reattempt cutover entry.
+*Corrective Action*::
+If the problem persists, reduce client traffic on the volume being moved and reduce the general load on the destination node.
+*Syslog Message*::
+The volume move operation of volume '%s' in Vserver '%s' to destination aggregate '%s' did not enter the cutover phase. The system provided the additional explanation: '%s'. After a short delay, the volume move operation will reattempt cutover entry. The job ID for the volume move job is '%jd'.
+*Parameters*::
+*volName* (STRING): Name of the volume.
+*vserverName* (STRING): Name of the Vserver.
+*aggrName* (STRING): Name of the destination aggregate.
+*reasonforFailure* (STRING): Reason for the failure.
+*jobID* (LONGINT): Job ID of the volume move operation.
+
+== mgmt.vopl.move.cutover.deferred
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the volume move job cannot be completed because the cutover phase has been deferred.
+*Corrective Action*::
+Address the reason for the cutover deferral, and then use the 'volume move trigger-cutover' command to reattempt the cutover phase for this volume move operation.
+*Syslog Message*::
+Cutover phase has been deferred for the volume move operation with ID '%jd' on volume '%s' on Vserver '%s' to destination aggregate '%s', because of '%s'. Space savings from efficiency could be lost.
+*Parameters*::
+*jobID* (LONGINT): Job ID of the volume move operation.
+*volName* (STRING): Name of the volume.
+*vserverName* (STRING): Name of the Vserver.
+*aggrName* (STRING): Name of the destination aggregate.
+*reasonforDefer* (STRING): Reason for deferred cutover.
+
+== mgmt.vopl.move.cutover.deferred.wait
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the volume move job cannot be completed because the cutover phase has been deferred due to the user specifying the cutover action as 'wait'.
+*Corrective Action*::
+Use the 'volume move trigger-cutover' command to attempt the cutover phase for this volume move operation.
+*Syslog Message*::
+Cutover phase has been deferred for the volume move operation with ID '%jd' on volume '%s' on Vserver '%s' to destination aggregate '%s', because of '%s'. Space savings from efficiency could be lost.
+*Parameters*::
+*jobID* (LONGINT): Job ID of the volume move operation.
+*volName* (STRING): Name of the volume.
+*vserverName* (STRING): Name of the Vserver.
+*aggrName* (STRING): Name of the destination aggregate.
+*reasonforDefer* (STRING): Reason for the deferred cutover.
+
+== mgmt.vopl.move.cutover.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volume move job attempts to cut over and is unsuccessful. The system continues to retry the operation until it exhausts the number of cutover attempts allowed.
+*Corrective Action*::
+Reduce client traffic on the volume, that is scheduled to be moved.
+*Syslog Message*::
+The volume move operation with ID '%jd' on volume '%s' on Vserver '%s' to destination aggregate '%s' did not cut over because: '%s'. The volume move operation has tried to cut over '%d' out of '%d' times, %d forced.
+*Parameters*::
+*jobID* (LONGINT): Job ID of the volume move operation.
+*volName* (STRING): Name of the volume.
+*vserverName* (STRING): Name of the Vserver.
+*aggrName* (STRING): Name of the aggregate.
+*reasonforFailure* (STRING): Reason for cutover failure.
+*actualcutoverAttempt* (INT): Number of actual cutover attempts made.
+*cutoverAttempt* (INT): Number of cutover attempts.
+*forcedCutoverAttempt* (INT): Number of forced cutover attempts.
+
+== mgmt.vopl.move.cutoverMod
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a 'volume move' operation is in cutover and one of the modifiable parameters used by the 'move' job has been modified with the 'volume move modify' command. These modified values will be used for next cutover attempt.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The 'volume move' operation with job ID '%jd' for volume '%s' in Vserver '%s' is performing a cutover. Values modified with the 'volume move modify' command will not be used until the next cutover attempt.
+*Parameters*::
+*jobId* (LONGINT): Job ID of the 'volume move' operation.
+*volName* (STRING): Name of the source volume.
+*vserverName* (STRING): Name of the source Vserver.
+
+== mgmt.vopl.move.done
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the volume move job succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The volume move job with ID '%jd' on volume '%s' on Vserver '%s' to destination aggregate '%s' succeeded.
+*Parameters*::
+*jobID* (LONGINT): Job ID of the volume move operation.
+*volName* (STRING): Name of the volume.
+*vserverName* (STRING): Name of the Vserver.
+*aggrName* (STRING): Name of the destination aggregate.
+
+== mgmt.vopl.move.dstPrepareFld
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volume move job cannot be completed because the destination volume cannot be prepared for a transfer.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Volume move job failed because the destination volume '%s' could not be prepared for a transfer.
+*Parameters*::
+*volpath* (STRING): Name of the destination volume of the move job.
+
+== mgmt.vopl.move.findSnpDltFld
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volume move job cannot be completed because the call to calculate the delta between a snapshot and the active file system failed.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Volume move job failed because the call to calculate the delta between a snapshot and the active file system on the source volume '%s' failed.
+*Parameters*::
+*volpath* (STRING): Name of the source volume of the move job.
+
+== mgmt.vopl.move.getNxtSnapFld
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the 'volume move' job cannot look up the snapshot next in age to the currently referenced snapshot. The 'volume move' job attempts to retry the operation.
+*Corrective Action*::
+Use the 'volume move show' command to get the status of the current move operation. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+The 'volume move' job could not to look up the snapshot next in age to the currently referenced snapshot on the source volume '%s'.
+*Parameters*::
+*volpath* (STRING): Name of the source volume involved in the move operation.
+
+== mgmt.vopl.move.gtDstSSLstFld
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volume move job cannot be completed because a snapshot list cannot be obtained from the destination volume.
+*Corrective Action*::
+Check whether the destination volume is online. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Volume move job failed because a snapshot list could not be obtained from the destination volume '%s'.
+*Parameters*::
+*volpath* (STRING): Name of the destination volume of the move job.
+
+== mgmt.vopl.move.gtSnpTgSrcFld
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volume move job cannot be completed because a snapshot tag cannot be read from the source volume.
+*Corrective Action*::
+Check whether the source volume is online. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Volume move job failed because a snapshot tag could not be read from the source volume '%s'.
+*Parameters*::
+*volpath* (STRING): Name of the source volume of the move job.
+
+== mgmt.vopl.move.gtSrcSSLstFld
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volume move job cannot be completed because a snapshot list cannot be obtained from the source volume.
+*Corrective Action*::
+Check whether the source volume is online. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Volume move job failed because a snapshot list could not be obtained from the source volume '%s'.
+*Parameters*::
+*volpath* (STRING): Name of the source volume of the move job.
+
+== mgmt.vopl.move.gtSSTgsDstFld
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volume move job cannot be completed because the snapshot tags on the destination volume cannot be read.
+*Corrective Action*::
+Retry the volume move job. If the problem persists, this indicates a system level problem. Contact NetApp technical support.
+*Syslog Message*::
+Volume move job failed because snapshot tags on the destination volume '%s' in vserver '%s' for the volume move of source volume '%s' in vserver '%s' could not be read.
+*Parameters*::
+*dstVol* (STRING): Name of the destination volume of the move job.
+*srcVol* (STRING): Name of the source volume of the move job.
+*dstVserverName* (STRING): Name of destination vserver.
+*srcVserverName* (STRING): Name of source vserver.
+
+== mgmt.vopl.move.has.clones
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a 'volume move' operation finishes moving the volume to the destination aggregate but cannot delete the original volume instance on the source aggregate. This is because the original volume instance has volume clones.
+*Corrective Action*::
+The system usually reaps these types of volume after all clones have been deleted or split automatically. If space occupied by source needs to be freed immediately, then delete the original volume instance using the 'volume delete' command after all the volume clones have been deleted or split.
+*Syslog Message*::
+The 'volume move' operation with ID '%jd' could not delete the original volume %s in Vserver %s on %s aggregate following a successful volume move because the original volume instance has volume clones.
+*Parameters*::
+*jobId* (LONGINT): Job ID of the volume move operation.
+*volName* (STRING): Name of the volume instance that could not be deleted.
+*vserverName* (STRING): Name of the volume's Vserver.
+*aggrName* (STRING): Name of the source aggregate.
+
+== mgmt.vopl.move.invldXfrState
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volume move job cannot be completed because a transfer is in an invalid state.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Volume move job with job ID '%jd' for volume '%s' in Vserver '%s' failed because a transfer was in an invalid state.
+*Parameters*::
+*jobID* (LONGINT): ID of the 'volume move' job.
+*volName* (STRING): Name of the volume.
+*vserverName* (STRING): Name of the Vserver.
+
+== mgmt.vopl.move.jobIgnoreQuit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a volume move job fails to stop when you issue a 'volume move abort' or 'job stop' command. If the command is not repeated, the volume move job might continue to run to completion.
+*Corrective Action*::
+Retry the 'volume move abort' or 'job stop' command before the volume move job is complete.
+*Syslog Message*::
+Volume move job '%jd' for volume '%s' in Vserver '%s' could not be stopped at this time. Retry the 'volume move abort' or 'job stop' command.
+*Parameters*::
+*jobID* (LONGINT): ID of the volume move job.
+*volName* (STRING): Name of the volume.
+*vserverName* (STRING): Name of the Vserver.
+
+== mgmt.vopl.move.jobQuit
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a 'volume move' job is not completed because a 'volume move abort' or 'job stop' command was issued.
+*Corrective Action*::
+Verify the status of the move job through the 'volume move show' command.
+*Syslog Message*::
+'volume move' job with ID '%jd' for volume '%s' in Vserver '%s' was not completed because a 'volume move abort' or 'job stop' command was issued.
+*Parameters*::
+*jobID* (LONGINT): Job ID of the 'volume move' operation.
+*volName* (STRING): Name of the volume.
+*vserverName* (STRING): Name of the Vserver.
+
+== mgmt.vopl.move.last.upd.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a 'volume move' operation fails to update attributes on the destination volume after the cutover has been completed.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+'volume move' operation with job ID '%jd' for volume '%s' in Vserver '%s' failed to update the attributes on the destination volume after the cutover has been completed.
+*Parameters*::
+*jobID* (LONGINT): Job ID of the 'volume move' operation.
+*volName* (STRING): Name of the source volume.
+*vserverName* (STRING): Name of the source Vserver.
+
+== mgmt.vopl.move.mark.source.reapable.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a 'volume move' operation finishes moving the volume to the destination aggregate but cannot mark the original volume instance on the source aggregate for deletion. The original volume instance cannot be deleted immediately because it has volume clones.
+*Corrective Action*::
+Delete the original volume instance using the 'volume delete' command after all the volume clones have been deleted or split.
+*Syslog Message*::
+The 'volume move' operation with ID '%jd' could not mark the Volume %s containing volume clones in Vserver %s on %s aggregate for later deletion after a successful volume move.
+*Parameters*::
+*jobId* (LONGINT): Job ID of the volume move operation.
+*volName* (STRING): Name of the volume instance that could not be marked for later deletion.
+*vserverName* (STRING): Name of the volume's Vserver.
+*aggrName* (STRING): Name of the destination aggregate.
+
+== mgmt.vopl.move.memAllocFld
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the 'volume move' job cannot allocate memory. The 'volume move' job attempts to retry the operation.
+*Corrective Action*::
+Use the 'volume move show' command to get the status of the current move operation. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+The 'volume move' job ID '%jd' for volume '%s' in Vserver '%s' could not allocate memory.
+*Parameters*::
+*jobId* (LONGINT): ID of the 'volume move' job.
+*volName* (STRING): Name of the volume.
+*vserverName* (STRING): Name of the Vserver.
+
+== mgmt.vopl.move.moveModIgr
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when modifiable parameters of the 'move' job have been modified by 'volume move modify' command, but the 'volume move' operation finished with older values and did not use the newly modified values.
+*Corrective Action*::
+Use 'volume move show' command to verify the parameters used during cutover phase and the final state of the volume move operation.
+*Syslog Message*::
+The 'volume move' operation with job ID '%jd' for volume '%s' in Vserver '%s' has completed. Parameters modified during last cutover attempt through 'volume move modify' command have been ignored or 'volume move' operation failed on job restart before refreshing parameters from the VLDB.
+*Parameters*::
+*jobId* (LONGINT): Job ID of the 'volume move' operation.
+*volName* (STRING): Name of the source volume.
+*vserverName* (STRING): Name of the source Vserver.
+
+== mgmt.vopl.move.nosnapspace
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a 'volume move' operation fails to create a snapshot on source volume because the number of snapshots in the volume exceeds the maximum limit or there is insufficient disk space in the volume.
+*Corrective Action*::
+Make sure that the snapshot limit is not reached for the volume. The current Data ONTAP version allows a maximum of 255 snapshots per volume. If required, delete old snapshots of the volumes on the aggregate by running the 'volume snapshot delete' command.
+*Syslog Message*::
+The 'volume move' operation with job ID '%jd' for volume '%s' present on Vserver '%s' cannot proceed (Reason: Cannot create a snapshot on the volume).
+*Parameters*::
+*jobId* (LONGINT): Job ID of the 'volume move' operation.
+*volName* (STRING): Name of the volume.
+*vserverName* (STRING): Name of the Vserver.
+
+== mgmt.vopl.move.nospace
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is not enough space on the volume or aggregate for a 'volume move' operation to proceed. It could be on the source or the destination node.
+*Corrective Action*::
+Reduce the amount of used space on the volume or aggregate, or increase the size of the volume or aggregate. To increase the size of the volume, run the 'volume modify' command. To create space on an aggregate, take one of the following actions: a. To free up more space on a volume, delete old snapshots of the volumes on the aggregate by running the 'volume snapshot delete' command. b. To increase the size of a volume or an aggregate, add disks to the aggregate by running the 'storage aggregate add-disks' command.
+*Syslog Message*::
+The 'volume move' operation with ID '%jd' for volume '%s' present on Vserver '%s' cannot proceed (Reason: Not enough space in the volume or aggregate).
+*Parameters*::
+*jobId* (LONGINT): Job ID of the 'volume move' operation.
+*volName* (STRING): Name of the volume.
+*vserverName* (STRING): Name of the Vserver.
+
+== mgmt.vopl.move.parent.online
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a "volume move" operation fails to take offline the quiesced volume remaining after moving a clone parent, because wafliron is running.
+*Corrective Action*::
+No action is required, because the system removes the quiesced clone parent automatically. To free some of the resources used by the volume, you can manually take it offline by using the "volume offline" command after the wafliron operation has completed.
+*Syslog Message*::
+The "volume move" operation for the volume %s on vserver %s with job-id %jd could not offline the quiesced clone parent volume left behind.
+*Parameters*::
+*volName* (STRING): Name of the volume.
+*vserverName* (STRING): Name of the Vserver.
+*jobId* (LONGINT): Job ID of the "volume move" operation.
+
+== mgmt.vopl.move.queryDstFld
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volume move job cannot be completed because a query of the destination for transfer status failed.
+*Corrective Action*::
+Its a system level problem. Contact Contact NetApp technical support. for further investigation.
+*Syslog Message*::
+Volume move job failed because a query for transfer status of the destination volume '%s' in vserver '%s' failed.
+*Parameters*::
+*volpath* (STRING): Name of the destination volume of the move job.
+*vserverName* (STRING): Name of destination vserver.
+
+== mgmt.vopl.move.querySrcFld
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the 'volume move' job cannot be completed because a query of the source for transfer status failed. The 'volume move' job attempts to retry the operation.
+*Corrective Action*::
+Use the 'volume move show' command to get the status of the move operation. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+The 'volume move' job could not query the source '%s' for transfer status.
+*Parameters*::
+*volpath* (STRING): Name of the source volume involved in the move operation.
+
+== mgmt.vopl.move.refVldbFld
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a 'volume move' operation fails to refresh modifiable parameters used by the 'move' job from the Volume Location Database (VLDB). Volume move operation will use current parameters until a refresh attempt succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The 'volume move' operation with job ID '%jd' for volume '%s' in Vserver '%s' could not refresh the modifiable parameters used by the 'move' job from the VLDB. Volume move operation will use current parameters until a refresh attempt succeeds.
+*Parameters*::
+*jobId* (LONGINT): Job ID of the 'volume move' operation.
+*volName* (STRING): Name of the source volume.
+*vserverName* (STRING): Name of the source Vserver.
+
+== mgmt.vopl.move.restart.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a volume move job encounters conditions that prevent it from restarting; for example, required snapshots have been deleted. This might result in loss of client access to the volume, stale temporary volumes and stale metadata.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Volume move job ID '%jd' could not restart correctly and might have left a stale temporary volume and stale persistent volume move data. Client access to the data stored on the source volume might be blocked. Reason: %s, error %d. Move job was started for volume '%s' in Vserver '%s'.
+*Parameters*::
+*jobID* (LONGINT): Job ID of the volume move job.
+*reason* (STRING): Reason for restart failure.
+*error* (INT): Error code for the restart failure.
+*volName* (STRING): Name of the volume.
+*vserverName* (STRING): Name of the Vserver.
+
+== mgmt.vopl.move.snpNtDeletd
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a 'volume move' operation cannot delete a reference snapshot created by the move job.
+*Corrective Action*::
+Use the 'snapshot show' command to verify that the snapshot exists and is not locked by another process. Use the 'snapshot delete' command to delete the snapshot manually.
+*Syslog Message*::
+snapshot for 'volume move' job ID %jd could not be deleted: name: %s; Vserver ID: %d; volume name: %s.
+*Parameters*::
+*jobId* (LONGINT): ID of the volume move job.
+*snapName* (STRING): Name of the snapshot.
+*vserverId* (INT): Destination Vserver ID.
+*volName* (STRING): Name of the parent volume of the snapshot.
+
+== mgmt.vopl.move.source.cleanup.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a 'volume move' operation finishes moving the volume to the destination aggregate but cannot delete the original volume instance on the source aggregate.
+*Corrective Action*::
+Delete the original volume instance using the 'volume delete' command after offlining the volume.
+*Syslog Message*::
+The 'volume move' operation with ID '%jd' could not delete the Volume %s in Vserver %s on %s aggregate after a successful volume move.
+*Parameters*::
+*jobId* (LONGINT): Job ID of the volume move operation.
+*volName* (STRING): Name of the volume instance that could not be deleted
+*vserverName* (STRING): Name of the volume's Vserver.
+*aggrName* (STRING): Name of the destination aggregate.
+
+== mgmt.vopl.move.srcVAttrGtFld
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volume move job cannot be completed because the Volume Location Database (VLDB) attributes for the source volume cannot be read.
+*Corrective Action*::
+To check whether the VLDB process is up and running, run the (privilege: advanced) "cluster ring show -unitname vldb" command. Contact NetApp technical support.
+*Syslog Message*::
+Volume move job failed because the VLDB attributes for source volume "%s" could not be read.
+*Parameters*::
+*volpath* (STRING): Name of the source volume of the move job.
+
+== mgmt.vopl.move.srcVolInconst
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volume move job cannot be completed because the source volume is inconsistent.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Volume move job failed because the source volume '%s' is inconsistent.
+*Parameters*::
+*volpath* (STRING): Name of the source volume of the move job.
+
+== mgmt.vopl.move.srcVolOffln
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volume move job cannot be completed because the source volume is offline.
+*Corrective Action*::
+Bring the source volume online and retry the move job.
+*Syslog Message*::
+Volume move job failed because the source volume '%s' is offline.
+*Parameters*::
+*volpath* (STRING): Name of the source volume of the move.
+
+== mgmt.vopl.move.srcVolRstrctd
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volume move job cannot be completed because the source volume is restricted.
+*Corrective Action*::
+If the source volume is of type DP and a "snapmirror initialize" operation is running on it, wait for the operation to finish, then retry "volume move" operation. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Volume move job failed because the source volume "%s" is restricted.
+*Parameters*::
+*volpath* (STRING): Name of the source volume of the move job.
+
+== mgmt.vopl.move.srcVolTemp
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a 'volume move' operation cannot start because the source volume is marked as temporary.
+*Corrective Action*::
+Verify that the source volume exists.
+*Syslog Message*::
+'volume move' operation with job ID '%jd' for source volume name '%s' and Vserver name '%s' failed because the source volume is marked as temporary.
+*Parameters*::
+*jobID* (LONGINT): Job ID of the 'volume move' operation.
+*volName* (STRING): Name of the source volume.
+*vserverName* (STRING): Name of the source Vserver.
+
+== mgmt.vopl.move.stSnpTgDstFld
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volume move job cannot be completed because a snapshot tag cannot be written to the destination volume.
+*Corrective Action*::
+Check whether the destination volume is online. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Volume move job failed because a snapshot tag could not be written to the destination volume '%s'.
+*Parameters*::
+*volpath* (STRING): Name of the destination volume of the move job.
+
+== mgmt.vopl.move.voplIntrnlErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volume move job cannot be completed because of an internal error in the Volume Operations Library used by the job management code.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Volume move job ID '%jd' for volume '%s' in Vserver '%s' failed because of an internal error in Volume Operations Library used by the job management code.
+*Parameters*::
+*jobID* (LONGINT): Job ID of the 'volume move' operation.
+*volName* (STRING): Name of the volume.
+*vserverName* (STRING): Name of the Vserver.
+
+== mgmt.vopl.move.XferNotFound
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the 'volume move' job cannot find the specified transfer.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Transfer not found for 'volume move' job with '%jd' for volume '%s' in Vserver '%s'.
+*Parameters*::
+*jobId* (LONGINT): ID of the 'volume move' job.
+*volName* (STRING): Name of the volume.
+*vserverName* (STRING): Name of the Vserver.
+
+== mgmt.vopl.rehost.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a volume rehost job attempts to rehost a volume from one Vserver to another and is unsuccessful. This might happen if the target volume is being accessed by some other Data ONTAP(R) operations (for example, volume move); if the target volume is in a relationship, such as a SnapMirror DP relationship; or if the aggregate hosting the volume is undergoing a wafliron process. The system makes its best effort to revert the rehost procedure and make the volume available under the source Vserver. Subsequent attempts to rehost this volume might be successful; if the volume rehost revert procedure still fails, use the command "debug vreport" to fix volume discrepancies.
+*Corrective Action*::
+Follow the instructions provided as part of the volume rehost error and retry the operation after some time. If the volume rehost revert procedure fails and there are volume discrepancies, use command "debug vreport" in diagnostic mode to fix volume discrepancies.
+*Syslog Message*::
+The volume rehost operation on volume '%s [%s]' on Vserver '%s' to destination Vserver '%s' by administrator '%s' failed with reason: '%s'. The volume rehost operation can be retried after sometime.
+*Parameters*::
+*volName* (STRING): Name of the target volume.
+*volUuid* (STRING): Target volume UUID.
+*vserverName* (STRING): Name of the source Vserver.
+*destinationVserverName* (STRING): Name of the destination Vserver.
+*adminName* (STRING): Name of the administrator attemting the volume rehost operation.
+*reasonforFailure* (STRING): Reason for volume rehost failure.
+
+== mgmt.vopl.rehost.succeeded
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a volume rehost job is successful in rehosting a volume from one Vserver to another.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The volume rehost operation on volume '%s [%s]' on Vserver '%s' to destination Vserver '%s' by administrator '%s' is successful.
+*Parameters*::
+*volName* (STRING): Name of the target volume.
+*volUuid* (STRING): Target volume UUID.
+*vserverName* (STRING): Name of the source Vserver.
+*destinationVserverName* (STRING): Name of the destination Vserver.
+*adminName* (STRING): Name of the administrator attemting the volume rehost operation.
+
+== mgmt.vopl.rstart.fail.jstate
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a volume move operation encounters an error during the restart phase because it cannot retrieve the state information from the job manager. The system repeatedly attempts the restart process until it can be completed.
+*Corrective Action*::
+Verify that the restart phase is completed by running the "volume move show -vserver <vservername> -volume <volName%gt;" command. If the restart phase continues to fail, contact NetApp technical support.
+*Syslog Message*::
+volume move operation with job ID '%jd' for volume '%s' in Vserver '%s' encountered an error in the restart phase when attempting to retrieve the job state information.
+*Parameters*::
+*jobID* (LONGINT): Job ID of the volume move operation.
+*volName* (STRING): Name of the source volume.
+*vserverName* (STRING): Name of the source Vserver.
+
+== mgmt.vopl.rstart.retry.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an attempt to restart an interrupted 'volume move' operation repeatedly encounters an error and cannot proceed any further. The 'volume move' job will transition to a failed state without cleanup being attempted.
+*Corrective Action*::
+Check the job status for the ID listed in the event message, and look for errors involving the source and destination nodes and aggregates, and then contact NetApp technical support.
+*Syslog Message*::
+The attempt to restart the 'volume move' operation with job ID '%jd' for volume '%s' in Vserver '%s' failed.
+*Parameters*::
+*jobID* (LONGINT): Job ID of the 'volume move' operation.
+*volName* (STRING): Name of the source volume.
+*vserverName* (STRING): Name of the source Vserver.
+
+== mgmt.vopl.vmsi.fail.no.entry
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a "volume move" operation cannot update the VLDB table, because the system cannot find any record of the operation within the table. This failure prevents the operation from being displayed in by the "volume move show" command.
+*Corrective Action*::
+Use the "job show -id" command to display the current status of the "volume move" operation.
+*Syslog Message*::
+The "volume move" operation for the volume %s with job-id %jd could not modify the entry in the VLDB table for the "volume move show" command. Use the "job show -id" command to track the status of this move operation.
+*Parameters*::
+*volName* (STRING): Name of the volume.
+*jobId* (LONGINT): Job ID of the "volume move" operation.

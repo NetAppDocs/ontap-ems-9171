@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: spm-ypbind-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: spm.ypbind events
+---
+
+= spm.ypbind events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== spm.ypbind.process.exit
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the NIS client binding daemon 'ypbind' involuntarily exits. This error can have one or more causes and might be related to some recent or previous operations. The termination of this daemon will affect all NIS-based services provided by the controller. In particular, it will no longer be possible to use NIS as a name service source for name lookups.
+*Corrective Action*::
+While this problem persists, unconfigure NIS as a name service source in the name service switch database. For passwd, group, or netgroup lookups, use an alternative name service source, such as LDAP or files. The system attempts to recover by restarting the subsystem. If the subsystem does not recover within the threshold number of retries, then an AutoSupport(tm) message is sent. If your system is not configured to send AutoSupport messages and the issue persists, contact NetApp technical support.
+*Syslog Message*::
+NIS client binding daemon 'ypbind' with ID %d exited as a result of signal %s. The service will attempt to restart.
+*Parameters*::
+*id* (INT): Process identifier.
+*cause* (STRING): Reason the process exited.

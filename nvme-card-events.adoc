@@ -1,0 +1,44 @@
+---
+sidebar: sidebar
+permalink: nvme-card-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvme.card events
+---
+
+= nvme.card events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvme.card.degraded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the NVMe caching module has gone into a degraded state due to a warning reported by the drive. Performance, integrity, or reliability may be compromised.
+*Corrective Action*::
+Replace the NVMe caching module.
+*Syslog Message*::
+NVMe caching module in slot %s with serial number %s, and model number %s is degraded with status 0x%llx.
+*Parameters*::
+*slot_subslot* (STRING): PCI slot of the NVMe device.
+*serial* (STRING): Serial number of the controller.
+*model* (STRING): Model number of the controller.
+*reason* (LONGINTHEX): Internal reason why the card is degraded.
+
+== nvme.card.removed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an NVMe drive has been "hot-removed" from the system (while the system was powered on). The caching module is unavailable and system performance will be degraded.
+*Corrective Action*::
+Insert an NVMe caching module into the system.
+*Syslog Message*::
+NVMe caching module in slot %s with serial number %s, and model number %s was removed from the system.
+*Parameters*::
+*slot_subslot* (STRING): PCI slot of the NVMe device.
+*serial* (STRING): Serial number of the controller.
+*model* (STRING): Model number of the controller.

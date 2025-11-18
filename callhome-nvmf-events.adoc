@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-nvmf-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.nvmf events
+---
+
+= callhome.nvmf events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.nvmf.subsys.hidden
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a NVMe-oF target subsystem is hidden due to a SnapMirror(R) Active Synchronous relationship going out of sync. The NVMe-oF target subsystem is no longer accessible from the host. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Restore NVMe-oF target subsystem access to the host by using the "snapmirror resync" command to bring the out-of-sync relationship back in sync. If "snapmirror resync" does not fix the issue, contact NetApp technical support
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

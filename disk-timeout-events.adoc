@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: disk-timeout-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.timeout events
+---
+
+= disk.timeout events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.timeout.flush.end
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the disk driver stops flushing aggressive timeout I/Os.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Aggressive timeout flush ended on disk %s S/N %s.
+*Parameters*::
+*disk_name* (STRING): Name of the disk.
+*serial_num* (STRING): Serial number of the disk.
+
+== disk.timeout.flush.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an I/O operation is taking longer than expected and aggressive timeout I/Os are flushed from the disk driver.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Aggressive timeout flush started on disk %s S/N %s. Details: %s.
+*Parameters*::
+*disk_name* (STRING): Name of the disk.
+*serial_num* (STRING): Serial number of the disk.
+*details* (STRING): Additional information.

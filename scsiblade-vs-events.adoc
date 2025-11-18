@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: scsiblade-vs-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsiblade.vs events
+---
+
+= scsiblade.vs events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsiblade.vs.purge.fail
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the local node fails to purge the SAN configuration cache for a Vserver. Manual intervention is required to allow reinitialization of the specified Vserver.
+*Corrective Action*::
+Reboot the node, and if the node is waiting for giveback, perform a giveback operation.
+*Syslog Message*::
+The local node failed to purge the SAN configuration cache for Vserver %s.
+*Parameters*::
+*vserver* (STRING): Name or UUID of the Vserver.

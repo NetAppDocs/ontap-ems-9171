@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: wafl-ap-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.ap events
+---
+
+= wafl.ap events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.ap.info
+*Severity*::
+NOTICE
+*Description*::
+adaptive playlist message
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s
+*Parameters*::
+*msg* (STRING): The message from wafl adaptive playlist

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sfo-retry-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfo.retry events
+---
+
+= sfo.retry events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfo.retry.autoGiveback
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when automatic giveback of one or more SFO aggregates fails. Giveback of these SFO aggregates will be retried after the specified time.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Automatic giveback of SFO aggregates will be retried after %d minutes.
+*Parameters*::
+*minutes* (INT): Time until giveback is retried, in minutes.

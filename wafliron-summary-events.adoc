@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: wafliron-summary-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafliron.summary events
+---
+
+= wafliron.summary events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== waflIron.summary.scanStatus
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs periodically when wafliron is running and its state is "starting" or "scanning". It reports wafliron summary scanning status.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Wafliron summary scan (%d%% done).
+*Parameters*::
+*percentage* (INT): Wafliron summary scan completion percentage.

@@ -1,0 +1,46 @@
+---
+sidebar: sidebar
+permalink: vsa-azure-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsa.azure events
+---
+
+= vsa.azure events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsa.azure.nlb.probeActive
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP(R) Cloud on Microsoft(R) Azure(R) receives a probe, indicating that a transition to the expected normal state has occurred. The port has gone to active state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Received Load Balancer probe (%s) for %d ports (port range: %d to %d).
+*Parameters*::
+*detail* (STRING): Azure Load Balancer probes were received on the ONTAP Network Load Balancer listener port.
+*activated_ports* (INT): Number of ports that received the probe.
+*first_activated_port* (INT): First (lowest) port that received a probe.
+*last_activated_port* (INT): Last (highest) port that received a probe.
+
+== vsa.azure.nlb.probeInactive
+*Severity*::
+ALERT
+*Description*::
+This message occurs when ONTAP(R) Cloud on Microsoft(R) Azure(R) does not receive expected health probes from the Network Load Balancer service within the expected time limit. This might cause Azure to fail over traffic from the corresponding address. If Azure Load Balancer does not have an active address, all traffic might be blocked from reaching the configured address.
+*Corrective Action*::
+Verify the configuration of the Azure Load Balancer and the ONTAP Network Load Balancer, as well as the status of the node management LIF. To show the state of the ONTAP Network Load Balancer, use the (privilege: diagnostic) "virtual-machine show-network-load-balancer" command. To show the inactive probes of the ONTAP Network Load Balancer, use the (privilege: diagnostic) "virtual-machine show-network-load-balancer -active false" command. In the above command check if the "Last Probe Time" is being regularly updated(approximately every 5 seconds) and the Cloud Load Balancer probe port matches the "Probe Port".
+*Syslog Message*::
+Failed to receive Load Balancer probe (%s) for %d ports (port range: %d to %d), within %d seconds.
+*Parameters*::
+*detail* (STRING): Azure Load Balancer Probes were not received in the expected timeframe on the ONTAP Network Load Balancer listener port.
+*missed_ports* (INT): Number of ports that did not receive a probe.
+*first_missed_port* (INT): First (lowest) port that did not receive a probe.
+*last_missed_port* (INT): Last (highest) port that did not receive a probe.
+*timeout_in_seconds* (LONGINT): Seconds before timeout occurs.

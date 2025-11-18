@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: disk-ioreassignsuccess-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.ioreassignsuccess events
+---
+
+= disk.ioreassignsuccess events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.ioReassignSuccess
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a medium error is detected on a disk and the sector reassignment succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+disk %s: sector %llu was reassigned (%d). %s
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*sector* (LONGINT): Sector where the error was detected.
+*CTime* (INT): Time, in milliseconds, from when the command was first issued until this I/O operation completed.
+*disk_information* (STRING): Formatted information about the disk. This includes the disk's vendor, model, firmware revision, and serial number.

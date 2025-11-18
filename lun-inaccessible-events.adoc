@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: lun-inaccessible-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lun.inaccessible events
+---
+
+= lun.inaccessible events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== LUN.inaccessible.restore
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a LUN or NVMe namespace that is inaccessible due to restore is found in a volume. Such an object can contain inconsistent data and will not be accessible for I/O or management operations.
+*Corrective Action*::
+The object can be destroyed using the option force-fenced for the command 'lun destroy'. It can also be restored from a snapshot or backup.
+*Syslog Message*::
+The LUN or NVMe namespace %s in volume %s (DSID %llu) is inaccessible due to restore.
+*Parameters*::
+*lun_path* (STRING): Path for the LUN or NVMe namespace.
+*volume_name* (STRING): Name of the containing volume.
+*volume_dsid* (LONGINT): Data Set ID (DSID) of the containing volume.

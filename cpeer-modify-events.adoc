@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: cpeer-modify-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cpeer.modify events
+---
+
+= cpeer.modify events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cpeer.modify.address.family
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the address family for a peering relationship is modified. The same configuration change should be made at the peered cluster in a timely manner. Peering services are maintained while intercluster LIFs of both address families are configured on each cluster.
+*Corrective Action*::
+This is a notification of a configuration change. No corrective action applies.
+*Syslog Message*::
+Address family change for peer cluster %s to address family %s.
+*Parameters*::
+*peer* (STRING): Name of the peer cluster affected by the address family change.
+*family* (STRING): The new address family of the peering relationship.

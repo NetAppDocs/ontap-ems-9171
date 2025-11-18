@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: nblade-vldb-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.vldb events
+---
+
+= nblade.vldb events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.vldb.LeakedBladeList
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a protocol requests a list of blades but one cannot be generated due to one or more references to a previous request or requests still outstanding.
+*Corrective Action*::
+If this condition is not cleared by a subsequent free message within 30 minutes, a reboot of the node might be required. Rebooting the node with the "system node reboot -dump true" command saves a core dump that allows diagnosis of this issue by NetApp technical support. For more information or assistance, contact NetApp technical support.
+*Syslog Message*::
+"%s" operation issued by "%s" on cached volume location database (VLDB) blade list with references pending beyond expiry time.
+*Parameters*::
+*operation* (STRING): Type of operation the caller is attempting.
+*caller* (STRING): Caller that is trying to perform the operation.
+
+== Nblade.vldb.Timeout
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a request from the network module to the volume location database (VLDB) times out. The VLDB is used to identify the node that currently controls a volume. This might be a transient condition. If the condition persists, some volumes might be inaccessible.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Request from the network module to the volume location database (VLDB) timed out.
+*Parameters*::
+(None).

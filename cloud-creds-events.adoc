@@ -1,0 +1,54 @@
+---
+sidebar: sidebar
+permalink: cloud-creds-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cloud.creds events
+---
+
+= cloud.creds events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cloud.creds.metadataConnFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot establish a communication link with the cloud provider's metadata server, in order to acquire the necessary temporary credentials used in signing API requests to the cloud object store server.
+*Corrective Action*::
+Log in to the cloud provider's management console to examine the current set of running instances. Find the instance pertaining to this deployment of Cloud Volumes ONTAP(R) deployment, and then check its health from the console.
+*Syslog Message*::
+ONTAP cannot communicate with the cloud provider's metadata server needed to acquire the temporary credentials used to access an object store server. Command: %s Error returned: %s Node: %s
+*Parameters*::
+*command* (STRING): Command used to contact the metadata server.
+*error* (STRING): Error text received as response to the metadata server command.
+*nodeUuid* (STRING): UUID of the node.
+
+== cloud.creds.notFound
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot acquire the temporary credentials from the cloud provider's metadata server that are necessary for signing API requests to the object storage server.
+*Corrective Action*::
+Log in to the management console of the cloud provider to examine the current set of running instances. Find and check the health of the instance pertaining to this Cloud Volumes ONTAP deployment. Also verify that the role associated with the instance exists and grants the proper privileges.
+*Syslog Message*::
+ONTAP cannot acquire credentials associated with the instance named '%s' on the metadata server. Node %s.
+*Parameters*::
+*role* (STRING): Name of the AWS IAM role or GCP Service Account or Azure Managed Service Identity associated with this Cloud Volumes ONTAP(R) instance.
+*nodeUuid* (STRING): UUID of the node.
+
+== cloud.creds.notInitialized
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system attempts to access credentials before initialization is complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Module on node %s attempted to access credential information before initialization was complete
+*Parameters*::
+*nodeUuid* (STRING): UUID of the node.

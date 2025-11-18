@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: socket-limit-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: socket.limit events
+---
+
+= socket.limit events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== socket.limit.exceeded
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the operating system is unable to allocate a new socket because that would exceed the maximum open sockets.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The operating system was unable to allocate a socket. The number of open sockets is %d and the limit is %d.
+*Parameters*::
+*num_open_sockets* (INT): The number of open sockets.
+*max_sockets* (INT): The maximum allowed number of open sockets.

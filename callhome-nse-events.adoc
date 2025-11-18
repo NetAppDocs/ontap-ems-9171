@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: callhome-nse-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.nse events
+---
+
+= callhome.nse events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.nse.ak.check.failed
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the node's key-management database lacks authentication keys (AKs) needed by self-encrypting drives that are owned by the node. The affected drives can be FIPS-certified drives (variously called FIPS drives, NetApp Storage Encryption drives, and NSE drives) or non-FIPS-certified self-encrypting drives (SEDs). A FIPS drive or SED is at risk of permanent data loss if authentication fails repeatedly after it is power-cycled. When FIPS keys are missing, operations such as encrypting sanitize and firmware download might also not succeed. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Display the available keyIDs for encrypting drives using the "security key-manager key query -key-type NSE-AK" command; ONTAP uses these values for all its encrypting drives, whether FIPS/NSE drives or SEDs. Display keyIDs that the drives need using the command "storage encryption disk show", and for FIPS drives, "storage encryption disk show -fips". Each keyID in the disk lists must be present in the key-manager output, except for the default "0x0" (MSID) and "" (null) keyIDs that are not maintained by the key management system. Contact NetApp technical support for assistance. Avoid drive power-cycles and AK modifications until the issue is corrected.
+*Syslog Message*::
+Call home for %s, disk "%s".
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*disk* (STRING): Name of the first affected drive detected.

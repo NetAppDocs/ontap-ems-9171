@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: monitor-raiddp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.raiddp events
+---
+
+= monitor.raiddp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.raiddp.vol.singleDegraded
+*Severity*::
+ERROR
+*Description*::
+This message occurs as part of an hourly system check when a double parity volume is in single degraded mode. This happens when there is a disk failure in the double parity volume and the RAID subsystem cannot find a suitable replacement disk to start reconstruction.
+*Corrective Action*::
+Add a spare disk suitable to reconstruction.
+*Syslog Message*::
+%s in RAID group "%s" is broken.
+*Parameters*::
+*type* (STRING): Type of disk: data, parity or dparity disk.
+*rgname* (STRING): RAID group name.

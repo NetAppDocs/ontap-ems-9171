@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: repl-hole-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.hole events
+---
+
+= repl.hole events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.hole.raid.error
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a SnapMirror(R) transfer encounters an unrecoverable RAID error.
+*Corrective Action*::
+Contact NetApp technical support for further assistance.
+*Syslog Message*::
+SnapMirror transfer with transfer ID %s encountered an unrecoverable RAID error for %s with ID %d in destination volume %d.
+*Parameters*::
+*transferId* (STRING): UUID of the SnapMirror transfer that encountered a RAID error.
+*fileSpace* (STRING): File space (metafile or user file).
+*fileId* (INT): File ID of the inode involved if it is a user file space, and metafile name if it is a metafile space.
+*dstVolDsid* (LONGINT): Data set identifier (DSID) of the destination volume.

@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: wafl-metafile-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.metafile events
+---
+
+= wafl.metafile events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.metafile.reg.unknown
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a metafile to be created is not documented, has information about it missing, or has not been identified and associated with an entry from the wiki page: MetafileRegistration. METAFILE_UNKNOWN is used as a placeholder in these cases.
+*Corrective Action*::
+If you are familiar with this metafile, its purpose, or others who have worked with this file, please contact dl-replication-developer.
+*Syslog Message*::
+%s is declared as METAFILE_UNKNOWN. If you are familiar with this metafile, its purpose, or others who have worked with this file, please contact dl-replication-developer.
+*Parameters*::
+*path* (STRING): Filepath of the metafile
+
+== wafl.metafile.reg.unused
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a metafile believed to be unused or obsolete is about to be created.
+*Corrective Action*::
+The information in the wiki page: MetafileRegistration and metafiles.h needs to be corrected. Please contact dl-replication-developer.
+*Syslog Message*::
+%s is declared as METAFILE_UNUSED. The information in the wiki page: MetafileRegistration and metafiles.h needs to be corrected. Please contact dl-replication-developer.
+*Parameters*::
+*path* (STRING): Filepath of the metafile

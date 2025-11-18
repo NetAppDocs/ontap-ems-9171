@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: sfu-downloaderror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfu.downloaderror events
+---
+
+= sfu.downloaderror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfu.downloadError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk shelf firmware update fails to successfully download firmware to a disk shelf or shelves in the system.
+*Corrective Action*::
+Redownload the latest disk shelf firmware from the NetApp Support Site at http://support.netapp.com/NOW/download/tools/diskshelf/ and attempt to download disk shelf firmware again, using the (advanced privilege) "storage shelf firmware update" command.
+*Syslog Message*::
+%s: Error downloading firmware file %s on %s.shelf%d.%s
+*Parameters*::
+*cmdName* (STRING): Name of the command issued, such as "storage shelf firmware update".
+*fileName* (STRING): Name of the file in /etc/shelf_fw that was being downloaded.
+*channelName* (STRING): Name of the adapter port or switch port on which the disk shelf firmware download error occurred.
+*shelfId* (INT): ID of the disk shelf on which the disk shelf firmware download. error occurred.
+*ErrorReason* (STRING): More information about the reason for download error.

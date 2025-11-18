@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: nblade-junctionrootlookup2-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.junctionrootlookup2 events
+---
+
+= nblade.junctionrootlookup2 events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.JunctionRootLookup2
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot obtain the root file handle of the volume mounted on a junction path. The cause of the problem might be that the target node is down or the target volume or aggregate is offline. The typical client operation that triggers a junction root lookup is a directory list operation where one of the directory entries is a junction. As long as the root of the volume at the junction cannot be looked up, the NFS client that is listing the directory appears to hang.
+*Corrective Action*::
+Check whether the volume or aggregate or node that matches the given MSID is offline. If it is, bring it online if possible.
+*Syslog Message*::
+Junction root lookup failed for a volume (Name: %s, MSID: %llu) in Vserver (Name: %s, ID: %llu) with reason: %s.
+*Parameters*::
+*volName* (STRING): Name of the volume mounted at the junction being looked up.
+*msid* (LONGINT): Master Data Set ID (MSID) of the volume mounted at the junction being looked up.
+*vserverName* (STRING): Vserver name for this MSID.
+*vserverId* (LONGINT): Vserver for this MSID.
+*reason* (STRING): Additional information about why the operation failed.

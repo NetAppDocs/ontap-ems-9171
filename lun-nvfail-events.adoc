@@ -1,0 +1,67 @@
+---
+sidebar: sidebar
+permalink: lun-nvfail-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lun.nvfail events
+---
+
+= lun.nvfail events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== LUN.nvfail.option.on
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the nvfail option for the named volume is turned on. The volume contains LUNs or NVMe namespaces and it is recommended that you keep this option on for such volumes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The nvfail option for the volume %s (DSID %llu) has been turned on. The volume contains LUNs or NVMe namespaces and it is recommended that this option be kept on for such volumes.
+*Parameters*::
+*volume_name* (STRING): Name of the volume for which the nvfail option was turned on.
+*volume_dsid* (LONGINT): Data Set ID (DSID) of the volume for which the nvfail option has been turned on.
+
+== LUN.nvfail.vol.proc.complete
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an inconsistency is detected in the nvlog during boot or takeover, resulting in the initiation of nvfail processing and the LUNs in the volume being brought offline. This behavior is expected and is intended to prevent any FC/iSCSI data access to LUNs in a volume that might have lost the last few updates to the nvlog. Platform specifics: ASA r2: In addition to LUNs, NVMe namespaces will be brought offline when an inconsistency is detected in the nvlog during boot or takeover. This behavior is expected and is intended to prevent any NVMf data access to NVMe namespaces in a volume that might have lost the last few updates to the nvlog.
+*Corrective Action*::
+Verify that the LUN maps are valid. After the LUNs are mapped properly, use the 'lun online' command to bring the LUNs online to make then available to hosts. Host side recovery actions may be required to check the consistency of the data in the LUNs. Platform specifics: ASA r2: Use the 'nvme namespace modify -state online' command to bring the NVMe namespace online. Host side recovery actions may be required to check to consistency of the data in the NVMe namespace.
+*Syslog Message*::
+LUNs or NVMe namespaces in volume %s (DSID %llu) have been brought offline because an inconsistency was detected in the nvlog during boot or takeover.
+*Parameters*::
+*volume_name* (STRING): Name of the volume for which nvfail processing was completed.
+*volume_dsid* (LONGINT): Data Set ID (DSID) of the volume for which nvfail processing was completed.
+
+== LUN.nvfail.vol.proc.failed
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when nvfail processing for LUNs in a volume fails to complete. Some of the LUNs in the volume might not be offline. FC/iSCSI data access to the LUNs in the volume is prevented until the nvfail state of the volume is cleared. Platform specifics: ASA r2: In addition to LUNs, Some NVMe namespaces might not be offline when nvfail processing fails to complete. NVMf data access to NVMe namespaces is prevented until the nvfail state of the volume is cleared.
+*Corrective Action*::
+For any LUNs that are offline, use the 'lun online' command to bring them online and make them available to hosts. Host side recovery actions might be required to check the consistency of the data in the LUNs. Platform specifics: ASA r2: For any NVMe namespaces that are offline, use the 'nvme namespace modify -state online' command to bring them online and make them available to hosts. Host side recovery actions might be required to check the consistency of the data in the NVMe namespaces.
+*Syslog Message*::
+An inconsistency was detected in the nvlog during boot or takeover, and some or all LUNs or NVMe namespaces in volume %s (DSID %llu) might not have been brought offline.
+*Parameters*::
+*volume_name* (STRING): Name of the volume for which nvfail processing failed.
+*volume_dsid* (LONGINT): Data Set ID (DSID) of the volume for which nvfail processing failed.
+
+== LUN.nvfail.vol.proc.started
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an inconsistency is detected in the nvlog during boot or takeover, resulting in the initiation of nvfail processing and the LUNs in the volume being brought offline. This behavior is expected and is intended to prevent any FC/iSCSI data access to LUNs in a volume that might have lost the last few updates to the nvlog. Platform specifics: ASA r2: In addition to LUNs, NVMe namespaces will be brought offline when an inconsistency is detected in the nvlog during boot or takeover. This behavior is expected and is intended to prevent any NVMf data access to NVMe namespaces in a volume that might have lost the last few updates to the nvlog.
+*Corrective Action*::
+Verify that the LUN maps are valid. After the LUNs are mapped properly, use the 'lun online' command to bring the LUNs online to make then available to hosts. Host side recovery actions may be required to check the consistency of the data in the LUNs. Platform specifics: ASA r2: Use the 'nvme namespace modify -state online' command to bring the NVMe namespace online. Host side recovery actions may be required to check to consistency of the data in the NVMe namespace.
+*Syslog Message*::
+LUNs or NVMe namespaces in volume %s (DSID %llu) have been brought offline because an inconsistency was detected in the nvlog during boot or takeover.
+*Parameters*::
+*volume_name* (STRING): Name of the volume for which nvfail processing was initiated.
+*volume_dsid* (LONGINT): Data Set ID (DSID) of the volume for which nvfail processing was initiated.

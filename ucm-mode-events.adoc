@@ -1,0 +1,52 @@
+---
+sidebar: sidebar
+permalink: ucm-mode-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ucm.mode events
+---
+
+= ucm.mode events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ucm.mode.autoReboot
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the FC adapter or converged networking adapter is reconfigured from a backup. The reconfiguration requires a reboot to enable correct adapter operation. The reboot occurs automatically.
+*Corrective Action*::
+A change in the FC adapter or converged networking adapter mode configuration has occurred. The system is being rebooted to enable the new adapter configuration.
+*Syslog Message*::
+Rebooting for adapters %s to become available.
+*Parameters*::
+*adapters* (STRING): Affected adapters.
+
+== ucm.mode.changed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the user changes the personality mode on a configurable adapter. The new mode will take effect on the next controller reboot.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Personality mode has changed to %s on adapter %s. Reboot the controller for the changes to take effect.
+*Parameters*::
+*mode* (STRING): Current adapter mode.
+*adapter* (STRING): Name of the associated adapter.
+
+== ucm.mode.needsReboot
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the FC adapter or converged networking adapter is unable to automatically initiate a reboot after it reconfigures from a backup. The reconfiguration requires a reboot to enable correct adapter operation.
+*Corrective Action*::
+Perform a planned takeover and giveback on this controller node to enable the new adapter configuration.
+*Syslog Message*::
+The adapter %s was unable to automatically initiate a reboot after reconfiguration from the backup.
+*Parameters*::
+*adapters* (STRING): Affected adapter or adapters.

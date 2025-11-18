@@ -1,0 +1,53 @@
+---
+sidebar: sidebar
+permalink: isns-reg-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: isns.reg events
+---
+
+= isns.reg events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== isns.reg.info.unavailable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Internet Storage Name Service (iSNS) registration information is not valid or not available.
+*Corrective Action*::
+Check the Data ONTAP(R) iSNS configuration to ensure that all configuration information is present. Also check the cluster health for the impacted node to ensure that it is online.
+*Syslog Message*::
+The iSNS registration information for %s was not valid or not available: %s.
+*Parameters*::
+*vserver* (STRING): Name of the Vserver
+*err_msg* (STRING): Reported error.
+
+== isns.reg.pdu.oversized
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the the Internet Storage Name Service (iSNS) registration query packet data unit (PDU) length is larger than the supported maximum value. iSNS will not function properly until the problem is resolved.
+*Corrective Action*::
+Reconfigure the networking interfaces to reduce the portals until the iSNS registration query PDU is within its maximum value.
+*Syslog Message*::
+The iSNS registration query for %s failed due to the oversized iSNS query PDU length. Reduce the networking interface portals.
+*Parameters*::
+*vserver* (STRING): Name of the Vserver
+
+== isns.reg.period.too_small
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Internet Storage Name Service (iSNS) requests a registration period that is too small. When this happens, the iSNS client service will be automatically disabled.
+*Corrective Action*::
+Reconfigure the server to increase the registration period.
+*Syslog Message*::
+The iSNS registration period for %s was too small (%d); increase the registration period.
+*Parameters*::
+*vserver* (STRING): Name of the Vserver
+*period* (INT): Registration period received from the iSNS server

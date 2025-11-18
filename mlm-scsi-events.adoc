@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: mlm-scsi-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mlm.scsi events
+---
+
+= mlm.scsi events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mlm.SCSI.supportLvl.bad
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an array target port contains SCSI INQUIRY data with an incorrect support level. To prevent a possible data corruption scenario, the target port is not used.
+*Corrective Action*::
+Verify that the SPC-2 bit in the array's host group is set.
+*Syslog Message*::
+The target port containing SCSI INQUIRY DATA %s:%s with a (WWPN) of %s, has an incorrect SCSI support level; it will not be available.
+*Parameters*::
+*vendorId* (STRING): Vendor ID from the SCSI INQUIRY data.
+*productId* (STRING): Product ID from the SCSI INQUIRY data.
+*wwpn* (STRING): World Wide Port Name (WWPN) of the target port that has the incorrect SCSI support level.
+
+== mlm.SCSI.supportLvl.good
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an array target port that previously contained SCSI INQUIRY data with an incorrect support level has been corrected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The target port containing SCSI INQUIRY DATA %s:%s with a (WWPN) of %s, now has a correct SCSI support level.
+*Parameters*::
+*vendorId* (STRING): Vendor ID from the SCSI INQUIRY data.
+*productId* (STRING): Product ID from the SCSI INQUIRY data.
+*wwpn* (STRING): World Wide Port Name (WWPN) of the target port that now has the correct SCSI support level.

@@ -1,0 +1,52 @@
+---
+sidebar: sidebar
+permalink: rdb-recovery-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rdb.recovery events
+---
+
+= rdb.recovery events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rdb.recovery.failed
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the cluster management Data Replication Module could not automatically repair its local replicas.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+Error: %s. Unable to recover the local database of Data Replication Module: %s.
+*Parameters*::
+*message* (STRING): Error message.
+*unit* (STRING): The unit that failed recovery.
+
+== rdb.recovery.started
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the cluster management Data Replication Module starts automatic recovery attempts.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Automatic recovery of Data Replication Module %s started.
+*Parameters*::
+*unit* (STRING): The unit that is going to start recovery.
+
+== rdb.recovery.succeeded
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the cluster management Data Replication Module determines that an automatic recovery was successful.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Successful recovery of the local database of Data Replication Module %s.
+*Parameters*::
+*unit* (STRING): The unit that finished recovery.

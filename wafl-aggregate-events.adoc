@@ -1,0 +1,60 @@
+---
+sidebar: sidebar
+permalink: wafl-aggregate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.aggregate events
+---
+
+= wafl.aggregate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.aggregate.busy
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an operation is run on an aggregate while the aggregate or any volume of the aggregate is busy. The message prints the reason for aggregate or volume being busy.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: %s '%s' is busy. Reason: %s.
+*Parameters*::
+*operation* (STRING): Name of the operation.
+*voltype* (STRING): Aggregate or volume.
+*aggrname* (STRING): Aggregate or volume name.
+*reason* (STRING): Reason for the aggregate or volume being busy.
+
+== wafl.aggregate.online.phases
+*Severity*::
+INFORMATIONAL
+*Description*::
+Issued upon successful completion of aggregate online to record the sub-phase times for different phases of online.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*aggrName* (STRING): The name of the Aggregate.
+*uuid* (STRING): The UUID of the Aggregate.
+*phase1* (LONGINT): Total time taken for aggregate online phase1.
+*phase2* (LONGINT): Total time taken for aggregate online phase2.
+*phase3* (LONGINT): Total time taken for aggregate online phase3.
+
+== wafl.aggregate.online.replay
+*Severity*::
+INFORMATIONAL
+*Description*::
+Issued upon aggr online nvlog replay completion.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*aggrName* (STRING): The name of the Aggregate.
+*uuid* (STRING): The UUID of the Aggregate.
+*time* (LONGINT): Total time taken for nvlog replay.

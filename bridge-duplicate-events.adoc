@@ -1,0 +1,48 @@
+---
+sidebar: sidebar
+permalink: bridge-duplicate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: bridge.duplicate events
+---
+
+= bridge.duplicate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== bridge.duplicate.ip.address
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system discovers an ATTO FibreBridge using the same IP address as some other device in the network.
+*Corrective Action*::
+Using the IP and MAC addresses from the alert, attempt to locate the other device in the network, and change one of the IP addresses. If unsuccessful, contact NetApp support for assistance with this issue.
+*Syslog Message*::
+FC-to-SAS bridge %s [%s] %s %s %s.
+*Parameters*::
+*bridgeName* (STRING): Name of the bridge that detected the duplicate IP address.
+*bridgeSerialNum* (STRING): Serial number of the bridge that detected the duplicate address.
+*duplicateIPAddress* (STRING): Duplicate IP address detection message from the bridge log.
+*duplicateMAC* (STRING): Duplicate MAC address detection message from the bridge log.
+*addlInfo* (STRING): Additional information about the alert being generated, if available.
+
+== bridge.duplicate.wwn
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system discovers two FC-to-SAS bridges reporting the same WWN.
+*Corrective Action*::
+Contact NetApp support for assistance with this issue.
+*Syslog Message*::
+FC-to-SAS bridge %s [%s] and bridge %s [%s] are presenting a duplicate WWN [%s] %s.
+*Parameters*::
+*bridgeName1* (STRING): Name of the first bridge.
+*bridgeSerialNum1* (STRING): Serial number of the first bridge.
+*bridgeName2* (STRING): Name of the second bridge.
+*bridgeSerialNum2* (STRING): Serial number of the secondbridge.
+*bridgeWWN* (STRING): World wide name of the bridges.
+*addlInfo* (STRING): Additional information about the alert being generated, if available.

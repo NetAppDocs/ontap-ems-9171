@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: wafl-fa-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.fa events
+---
+
+= wafl.fa events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.fa.mark.inconsistent
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an aggregate is being marked inconsistent.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Flexaggr with ID: "%d" is marked inconsistent due to "%s". Call support for assistance.
+*Parameters*::
+*flexaggr_id* (INT): ID of the flexaggregate.
+*reason* (STRING): Reason for EMS being triggered.

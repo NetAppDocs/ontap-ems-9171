@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: flexcache-autogrow-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: flexcache.autogrow events
+---
+
+= flexcache.autogrow events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== flexcache.autogrow.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when automatically growing a FlexCache volume fails because the total cluster-wide FlexCache provisioned space has exceeded the licensed limit.
+*Corrective Action*::
+To increase the licensed capacity, install a new license in the cluster.
+*Syslog Message*::
+Autosize of FlexCache volume '%s%s%s' failed because the total cluster-wide FlexCache provisioned space has exceeded the licensed limit in the cluster %s.
+*Parameters*::
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.
+*cluster_uuid* (STRING): UUID of the Cluster.

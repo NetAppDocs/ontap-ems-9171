@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: host-error-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: host.error events
+---
+
+= host.error events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== host.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the host software encounters an error.
+*Corrective Action*::
+For more information or assistance, contact NetApp technical support.
+*Syslog Message*::
+Host %s running %s reported error %d: %s.
+*Parameters*::
+*host_name* (STRING): Fully qualified domain name (FQDN) of the host.
+*software_product* (STRING): Name of the software product running on the host.
+*host_error_num* (INT): Number of the error on the host.
+*host_error_string* (STRING): Description of the error on the host.

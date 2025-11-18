@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: san-volrehostlunmapfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.volrehostlunmapfailed events
+---
+
+= san.volrehostlunmapfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.volRehostLunMapFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs on clustered Data ONTAP(R) systems, during Volume Rehost operation when Data ONTAP fails to create LUN map the destination Vserver.
+*Corrective Action*::
+Use "lun map create" command to create the LUN map.
+*Syslog Message*::
+Failed to map LUN "%s" with igroup "%s" for Vserver "%s". Reason: "%s".
+*Parameters*::
+*lun_path* (STRING): LUN path.
+*igroup_name* (STRING): Igroup name.
+*vserver_name* (STRING): Vserver name.
+*reason* (STRING): Reason for failure.

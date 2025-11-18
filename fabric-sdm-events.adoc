@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: fabric-sdm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fabric.sdm events
+---
+
+= fabric.sdm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fabric.sdm.mem.alloc
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system fails to allocate a message for storage device monitor (SDM) notification.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failed to allocate a message for SDM notification to fabric_man.
+*Parameters*::
+(None).

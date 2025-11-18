@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: splog-running-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: splog.running events
+---
+
+= splog.running events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== splog.running.normally
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Data ONTAP(R) process (splogd) that monitors the Service Processor (SP) for available SP logs starts successfully or when it returns to normal operation from degraded mode.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Process splogd is operating normally.
+*Parameters*::
+(None).

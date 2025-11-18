@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: cr-sync-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cr.sync events
+---
+
+= cr.sync events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== CR.Sync.ACL.Fail
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an attempt to synchronize the ACL from data to redirector fails.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ACL synchronizing failed for file [%s] on volume [%s] in Vserver [%s].
+*Parameters*::
+*path* (STRING): Stream path.
+*volume* (STRING): Name of the constituent volume where the file resides.
+*vserver* (STRING): Vserver hosting the volume.

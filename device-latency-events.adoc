@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: device-latency-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: device.latency events
+---
+
+= device.latency events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== device.latency.threshold
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a device exceeds the latency threshold for the 30- second monitoring period. The event provides the name of the device, the target device (if applicable), the current threshold value, the average execution latency, and total latency for this period. The event also displays the number of I/O operations for the period, which is used to calculate latency.
+*Corrective Action*::
+Contact your hypervisor provider if this issue persists. This usually indicates undersized storage in terms of allowed operations per second.
+*Syslog Message*::
+The device latency in microseconds exceeded the threshold value for device "%s%d" and the associated target device "%s". The threshold is "%d", execution latency is "%d", total latency is "%d", and the number of operations for this period is "%d".
+*Parameters*::
+*devname* (STRING): Name of the device. The device name can be "isl" (local to this node), "isp" (local to the partner node) or "ism" (the mediator with no associated target device), which represents the ISCSI name. Any other device name will be the name of the actual target device. If the device name is not "isl", or "isp", or the target device name, the name will always be "n/a".
+*unit* (INT): Unit number of the device.
+*target_dev* (STRING): Name of the target device. The name will be the target (end point) device name if the device name is either "isl" or "isp". Otherwise it is the actual underlying device on this node.
+*threshold* (INT): Monitoring threshold in microseconds.
+*exec_lat* (INT): Execution latency in microseconds for this period.
+*total_lat* (INT): Total latency in microseconds for this period.
+*num_operations* (INT): Number of I/O operations for this period.

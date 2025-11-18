@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: vsa-nodesernum-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsa.nodesernum events
+---
+
+= vsa.nodesernum events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsa.nodeSerNum.change.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a node serial number change operation fails. The serial number might need to be reverted to the previous value, and the node might need to be rebooted.
+*Corrective Action*::
+Check the node serial number and state of the node licensing. The serial number might need to be reverted to the previous value. If the reversion does not work, or if there are licensing issues reported by the system, reboot the node. After the node is online, check the serial number and licensing for any issues.
+*Syslog Message*::
+Node serial number change operation failed. Error detail: %s. Previous value: "%s". New value: "%s".
+*Parameters*::
+*error_detail* (STRING): Error details, if available.
+*previous_value* (STRING): Previous value of the serial number.
+*new_value* (STRING): New value of the serial number.
+
+== vsa.nodeSerNum.changed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a node serial number change operation is completed successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Node serial number change operation was completed successfully. Previous value: "%s". New value: "%s".
+*Parameters*::
+*previous_value* (STRING): Previous value of the serial number.
+*new_value* (STRING): New value of the serial number.

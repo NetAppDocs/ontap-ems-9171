@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: raid-flexvol-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.flexvol events
+---
+
+= raid.flexvol events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.flexvol.lock.conflict
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a configuration operation on an aggregate (for example, adding disks, relocating aggregate disks, etc.), fails to get exclusive lock access because of one or more indirect conflict volume locks held by child volumes within the aggregate.
+*Corrective Action*::
+Retry the failed operation after the current operation has completed.
+*Syslog Message*::
+Exclusive access on the aggregate %s by operation %s failed because of an indirect conflict flexvol lock with current operation %s.
+*Parameters*::
+*aggregate* (STRING): Name of the aggregate.
+*attempted_op_name* (STRING): Name of the operation that tried to get exclusive access.
+*current_op_name* (STRING): Name of the operation that is currently holding exclusive access.

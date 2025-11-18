@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: wafl-err-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.err events
+---
+
+= wafl.err events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.err.L1.compacted.block
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a level 1 indirect block with given block number is not found in a compacted block.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Block number 0x%llx is not found in the compacted block.
+*Parameters*::
+*vvbn* (LONGINT): Volume block number.

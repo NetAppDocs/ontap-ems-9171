@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: fabricpool-cloud-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fabricpool.cloud events
+---
+
+= fabricpool.cloud events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fabricpool.cloud.subscription.added
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a cloud subscription license for FabricPools has been added.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A cloud subscription license for FabricPools has been added for license type %s. Cluster id: %s.
+*Parameters*::
+*license_type* (STRING): The type of license that the subscription is added for.
+*cluster_uuid* (STRING): UUID of the cluster.
+
+== fabricpool.cloud.subscription.removed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a cloud subscription license for FabricPools has been removed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A cloud subscription license for FabricPools has been removed for license type %s. Cluster id: %s.
+*Parameters*::
+*license_type* (STRING): The type of license that the subscription was removed for.
+*cluster_uuid* (STRING): UUID of the cluster.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: vifmgr-ipspace-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.ipspace events
+---
+
+= vifmgr.ipspace events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.ipspace.tooMany
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the system is over-provisioned with IPspaces, exceeding the maximum number allowed.The over-provisioned IPspaces might not be configured successfully in the stack. Any ports assigned to the unconfigured IPspace will fail to host IP addresses and support traffic. This limitation is checked whenever the node comes into quorum.
+*Corrective Action*::
+Use the "network ipspace delete" command to remove unused IPspaces.
+*Syslog Message*::
+There are %d custom IPspaces configured on the cluster, exceeding the maximum limit of %d.
+*Parameters*::
+*configNum* (INT): Number of custom IPspaces configured.
+*maxNum* (INT): Maximum number of custom IPspaces supported.

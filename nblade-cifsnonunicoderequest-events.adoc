@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: nblade-cifsnonunicoderequest-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.cifsnonunicoderequest events
+---
+
+= nblade.cifsnonunicoderequest events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.cifsNonUnicodeRequest
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a client attempts to send a non-unicode request to a Vserver. The request is rejected.
+*Corrective Action*::
+Check the client to verify that it supports unicode characters and negotiates unicode support with the Vserver.
+*Syslog Message*::
+Vserver ID %u rejected non-unicode request from client IP: %s.
+*Parameters*::
+*vserverId* (INT): Identifier for the Vserver that received the non-unicode request.
+*clientIp* (STRING): IP address of the client sending the non-unicode request.

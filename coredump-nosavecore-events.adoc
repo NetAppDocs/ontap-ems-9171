@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: coredump-nosavecore-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: coredump.nosavecore events
+---
+
+= coredump.nosavecore events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== coredump.nosavecore.noflush
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the process that saves a coredump is not able to flush to the boot device at the end of coredump.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Coredump was not able to flush the remaining data to the boot device. Error: %llu.
+*Parameters*::
+*dumpcore_error* (LONGINTHEX): Coredump error code.

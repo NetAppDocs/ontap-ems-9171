@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nblade-didnotinitialize-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.didnotinitialize events
+---
+
+= nblade.didnotinitialize events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.DidNotInitialize
+*Severity*::
+EMERGENCY
+*Description*::
+The appliance's network process failed during initialization due to an internal error (likely there is not enough system memory available to start the necessary kernel threads). Because the network process is not running, file access to volumes on local aggregates is not currently available, and cluster and management virtual interfaces for this appliance are also not currently available.
+*Corrective Action*::
+Initiate a storage failover (takeover) of any aggregates on this appliance, and perform a "sendhome" operation on these aggregates after this appliance is operational again. Also, verify that data virtual interfaces have properly migrated to another appliance. It is possible that a reboot or a reversion to a known compatible software version could also correct this problem.
+*Syslog Message*::
+The Network Blade kernel module has failed during initialization.
+*Parameters*::
+(None).

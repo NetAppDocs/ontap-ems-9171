@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: diskown-statusreadownership-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.statusreadownership events
+---
+
+= diskown.statusreadownership events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.statusReadOwnership
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an event is logged to track that an error was encountered while reading all data ownership blocks at once. Data ONTAP(R) will attempt to recover by reading each disk ownership block individually.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*errorno* (INT): Error that occurred.
+*errortext* (STRING): Error description as text.
+*diskname* (STRING): Name of the disk.
+*serialno* (STRING): Serial number of the disk.

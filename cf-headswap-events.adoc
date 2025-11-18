@@ -1,0 +1,91 @@
+---
+sidebar: sidebar
+permalink: cf-headswap-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.headswap events
+---
+
+= cf.headswap events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.headswap.abort
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the headswap on the partner node is aborted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*partner_sysid* (LONGINT): Value of the partner system ID after aborting the headswap.
+
+== cf.headswap.clear.partner
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the disks are manually reassigned to a new partner. The head swap information has been cleared.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).
+
+== cf.headswap.complete
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the headswap of a node is completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*old_sysid* (LONGINT): Value of the partner system ID before completion of the headswap.
+*new_sysid* (LONGINT): Value of the partner system ID after completion of the headswap.
+
+== cf.headswap.detected.local
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a headswap on the local node is detected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*old_local_sysid* (LONGINT): System ID of the node that is being replaced.
+*new_local_sysid* (LONGINT): System ID of the new node that is replacing the old node.
+
+== cf.headswap.detected.partner
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a headswap on the partner node is detected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*old_partner_sysid* (LONGINT): System ID of the partner that is being replaced.
+*new_partner_sysid* (LONGINT): System ID of the new partner that is replacing the old partner.
+
+== cf.headswap.state.change
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the headswap state changes. The headswap state is written to the primary mailbox. The possible values are HEADSWAP_NONE, HEADSWAP_START, HEADSWAP_CFO_START, HEADSWAP_CFO_END, and HEADSWAP_SFO_START.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*old_state_string* (STRING): Old value of the headswap state.
+*new_state_string* (STRING): New value of the headswap state.

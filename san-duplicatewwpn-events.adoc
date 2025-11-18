@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: san-duplicatewwpn-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.duplicatewwpn events
+---
+
+= san.duplicatewwpn events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.DuplicateWWPN
+*Severity*::
+ERROR
+*Description*::
+This message occurs in MetroCluster(tm) configurations of clustered Data ONTAP(R), when an FC LIF is created in the source cluster, but one of the Vservers in the destination cluster is already configured with an FC LIF having the same WWPN.
+*Corrective Action*::
+Provide a unique WWPN for the primary Vserver FC LIF when creating or modifying the LIF in the source cluster.
+*Syslog Message*::
+One of the Vservers in the destination cluster is configured with an FC LIF with the same WWPN %s. Provide a different unique WWPN for the primary Vserver FC LIF %s when creating or modifying the LIF in the source cluster.
+*Parameters*::
+*wwpn* (STRING): WWPN existing in the destination cluster.
+*lif* (STRING): Name of the primary Vserver FC LIF.

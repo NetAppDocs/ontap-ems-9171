@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-disknoswitch-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.disknoswitch events
+---
+
+= config.disknoswitch events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.DiskNoSwitch
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a disk is found to be attached to a switch, but it's not supported for a switch configuration.
+*Corrective Action*::
+Ensure that the Disk Qualification Package (DQP) is up-to-date. Visit the NetApp technical support site for information on DQP files and installation. If the error persists for more than 10 minutes after installing an updated DQP file, remove the drive.
+*Syslog Message*::
+Disk %s is not supported in a switch configuration.
+*Parameters*::
+*disk* (STRING): Name of the disk.

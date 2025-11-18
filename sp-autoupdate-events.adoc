@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sp-autoupdate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sp.autoupdate events
+---
+
+= sp.autoupdate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sp.autoupdate.toggle
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Service Processor (SP) AutoUpdate option is enabled or disabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s.
+*Parameters*::
+*reason* (STRING): SP AutoUpdate feature has changed state.

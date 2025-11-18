@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: wafl-gran-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.gran events
+---
+
+= wafl.gran events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.gran.data.adv.not.on
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror transfer fails because a snapshot that contains multipart inodes is transferred to a destination volume that does not support advanced granular data. Multipart inodes are created on volumes with granular data enabled.
+*Corrective Action*::
+Enable granular data on the destination volume using the command <granular-data advanced>".
+*Syslog Message*::
+SnapMirror transfer failed because the transfer snapshot contains multipart inodes and the destination volume, "%s", does not support advanced granular data.
+*Parameters*::
+*volName* (STRING): Volume name.
+
+== wafl.gran.data.basic.not.on
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror transfer fails because a snapshot that contains multipart inodes is transferred to a destination volume that does not support basic granular data. Multipart inodes are created on volumes with granular data enabled.
+*Corrective Action*::
+Enable granular data on the destination volume using the command <granular-data basic>.
+*Syslog Message*::
+SnapMirror transfer failed because the transfer snapshot contains multipart inodes and the destination volume, "%s", does not support them.
+*Parameters*::
+*volName* (STRING): Volume name.

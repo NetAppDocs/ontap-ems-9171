@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: ha-fm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.fm events
+---
+
+= ha.fm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.fm.platformTypeChanged
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Failover Monitor (FM) platform type changes in response to changes in the cluster configuration.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FM platform type changed from %s to %s.
+*Parameters*::
+*from* (STRING): Previous FM platform type.
+*to* (STRING): New FM platform type.

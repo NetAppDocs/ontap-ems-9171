@@ -1,0 +1,55 @@
+---
+sidebar: sidebar
+permalink: haosc-config-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: haosc.config events
+---
+
+= haosc.config events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== haosc.config.unknown.cf
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the chassis and controller field-replaceable unit programmable read-only memories (FRU PROMs) have inconsistent data.
+*Corrective Action*::
+Boot into Maintenance mode and run the 'ha-config modify' command to set the controller and chassis configuration to stand-alone or HA, as appropriate. Exercise extreme caution. Setting the wrong configuration might lead to data loss. For ASA r2, set the configuration to HA.
+*Syslog Message*::
+Cannot determine whether configuration should be stand-alone or HA. Chassis is in %s configuration, and controller is in %s configuration.
+*Parameters*::
+*cha_config* (STRING): Chassis FRU PROM HA configuration string.
+*cont_config* (STRING): Controller FRU PROM HA configuration string.
+
+== haosc.config.unknown.ls
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the chassis and controller field-replaceable unit programmable read-only memory (FRU PROM) configurations conflict with the HA mode.
+*Corrective Action*::
+Boot into Maintenance mode and run the 'ha-config modify' command to set the controller and chassis configuration to stand-alone or HA, as appropriate. Setting the wrong configuration might lead to data loss. For ASA r2, set the configuration to HA. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Cannot determine whether the configuration should be stand-alone or HA. Chassis is in %s configuration, controller is in %s configuration, and the HA mode is %s.
+*Parameters*::
+*cha_config* (STRING): Chassis FRU PROM HA configuration string.
+*cont_config* (STRING): Controller FRU PROM HA configuration string.
+*mode* (STRING): HA mode string.
+
+== haosc.config.unknown.nv
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the chassis and controller field-replaceable unit programmable read-only memories (FRU PROMs) have factory default configurations and the nonvolatile memory is dirty.
+*Corrective Action*::
+Boot into Maintenance mode and run the 'ha-config modify' command to set the controller and chassis configuration to stand-alone or HA, as appropriate. Setting the wrong configuration might lead to data loss. For ASA r2, set the configuration to HA. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Cannot determine whether configuration should be stand-alone or HA. Chassis is in %s configuration, controller is in %s configuration, and the nonvolatile memory is dirty.
+*Parameters*::
+*cha_config* (STRING): Chassis FRU PROM HA configuration string.
+*cont_config* (STRING): Controller FRU PROM HA configuration string.

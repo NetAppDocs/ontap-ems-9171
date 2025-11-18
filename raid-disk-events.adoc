@@ -1,0 +1,1102 @@
+---
+sidebar: sidebar
+permalink: raid-disk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.disk events
+---
+
+= raid.disk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.disk.capacity.info
+*Severity*::
+NOTICE
+*Description*::
+This event is issued to inform what the sum of all disk sizes is as well as what system capacity limit is.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+System capacity visible is %s of the %s maximum.
+*Parameters*::
+*actual* (STRING): Actual capacity of system
+*limit* (STRING): Capacity limit of system
+
+== raid.disk.cksum.type.changed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a disk's checksum type changes from either block to zoned, or zoned to block. It might occur, for example, due to a disk firmware update or a user request.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s checksum type was changed from %s to %s.
+*Parameters*::
+*disk_info* (STRING): Formatted disk information
+*old_type* (STRING): Old checksum type. "block" or "zoned".
+*new_type* (STRING): New checksum type. "block" or "zoned".
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.failed.unknownPool
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when a disk is failed but is not in an aggregate or a known disk pool.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failed %s without a tree but with a unknown pool as a parent.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.fast.zero.done
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a fast zeroing operation is completed on a disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s : disk zeroing complete (0x%llx).
+*Parameters*::
+*disk_info* (STRING): Formatted information about the disk which has completed its zeroing operation.
+*fz_signature* (LONGINTHEX): Random generated unique fast zero signature.
+*fz_signature_old* (LONGINTHEX): Random generated unique fast zero signature, previous one.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of disk in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.home.id.changed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when a change in a disk's home id is detected, independent of any disk change notification event.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*disk_info* (STRING): Formatted disk information
+*old_home_id* (STRING): Previous home host.
+*new_home_id* (STRING): New home host.
+*old_home_sysid* (LONGINT): Previous home sysid.
+*new_home_sysid* (LONGINT): New home sysid.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.illegalAttach
+*Severity*::
+ALERT
+*Description*::
+This message occurs when ONTAP detects that a disk has been incorrectly attached to the system.
+*Corrective Action*::
+Check disk shelf cabling and verify it meets SyncMirror requirements and wiring rules for this system.
+*Syslog Message*::
+%s is illegally attached. %s
+*Parameters*::
+*disk_info* (STRING): Name of the disk.
+*err_string* (STRING): Illegal Attach error.
+*instanceId* (INT): Instance identifier.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of disk in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.inserted
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when a disk is inserted into the system.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s has been inserted into the system
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk object
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.io.bypass
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when a read error is detected but ignored because the aggregate is in media error bypass mode.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+media error bypass enabled, ignoring read error on disk block %llu of %s
+*Parameters*::
+*blockNum* (LONGINT): The disk block number
+*disk_info* (STRING): The formatted information of the disk
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.io.toFailedDisk
+*Severity*::
+ERROR
+*Description*::
+This event is issued when an attempt is made to I/O a failed disk.
+*Corrective Action*::
+In maintenance mode, remove ownership of this disk and assign the correct ownership
+*Syslog Message*::
+DBG: %s is attempting I/O to failed %s
+*Parameters*::
+*who* (STRING): Module attempting I/O
+*disk_info* (STRING): Formatted information of the disk
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.maint.abort
+*Severity*::
+NOTICE
+*Description*::
+This event occurs when the administrator aborts maintenance testing of a disk or when an error that is unrelated to the disk occurs. The disk is failed because testing could not be completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s tests were aborted.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk
+*start_code* (STRING): Start code for internal support use
+*end_code* (STRING): End code for internal support use
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk
+*disk_rpm* (STRING): Rotational speed of disk, in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.maint.admin.abort
+*Severity*::
+NOTICE
+*Description*::
+This event occurs when administrator-initiated maintenance testing of a disk is aborted by the administrator or when an error that is unrelated to the disk occurs. The disk is made available as a spare.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s tests were aborted.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk
+*end_code* (STRING): End code for internal support use
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where the disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk
+*disk_rpm* (STRING): Rotational speed of disk, in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.maint.admin.done
+*Severity*::
+NOTICE
+*Description*::
+This event occurs when administrator- initiated maintenance testing of a disk is completed successfully. The disk is made available as a spare.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s tests were completed successfully.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where the disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk
+*disk_rpm* (STRING): Rotational speed of disk, in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.maint.admin.failed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a disk fails one or more maintenance tests. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s tests failed.
+*Parameters*::
+*disk_info* (STRING): Formatted information about the disk.
+*end_code* (STRING): End code for internal support use.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.maint.admin.start
+*Severity*::
+NOTICE
+*Description*::
+This event occurs when the administrator starts maintenance testing on a disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s will be tested.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk
+*disk_rpm* (STRING): Rotational speed of disk, in RPM
+*start_reason* (STRING): This states that the administrator started maintenance testing on a disk.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.maint.bypassed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a disk that has an error bypasses maintenance testing, even though the error typically would cause the disk to enter the maintenance center. The reason might be that the maintenance center is disabled, that there are not enough spare disks available in the system, or that there are already the maximum number of disks in the maintenance center.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of the disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*bypass_reason* (STRING): Reason for bypassing maintenance testing on the disk.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.maint.done
+*Severity*::
+NOTICE
+*Description*::
+This event occurs when maintenance testing of a disk is completed successfully. The disk is made available as a spare.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s tests were completed successfully.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk
+*start_code* (STRING): Start code for internal support use
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where the disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk
+*disk_rpm* (STRING): Rotational speed of disk, in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.maint.exceed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a disk exceeds the number of times it is allowed to be tested. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s exceeded the number of allowed entries to maintenance testing.
+*Parameters*::
+*disk_info* (STRING): Formatted information about the disk.
+*start_code* (STRING): Start code for internal support use.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.maint.failed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a disk fails one or more maintenance tests. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s tests failed.
+*Parameters*::
+*disk_info* (STRING): Formatted information about the disk.
+*start_code* (STRING): Start code for internal support use.
+*end_code* (STRING): End code for internal support use.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.maint.start
+*Severity*::
+NOTICE
+*Description*::
+This event occurs when a disk begins maintenance testing.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s will be tested.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where the disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk
+*disk_rpm* (STRING): Rotational speed of disk, in RPM
+*start_reason* (STRING): The reason for starting maintenance testing on the disk.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.mcc.mismatch
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk with a non-zero disaster recovery (DR) home ID is illegally attached to a system that is not configured for MetroCluster(tm) operation.
+*Corrective Action*::
+To reuse this disk on a non MetroCluster enabled system, use the "storage disk removeowner" command, followed by the "storage disk assign" command.
+*Syslog Message*::
+The disk %s was previously owned by a MetroCluster enabled system. This system is not configured for MetroCluster operations.
+*Parameters*::
+*disk_info* (STRING): Name of the disk.
+*instanceId* (INT): Instance identifier.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+*dr_home_owner_id* (LONGINT): NVRAM system ID of the disk's DR home owner.
+
+== raid.disk.missing
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued either when a disk is pulled from the system or when all paths to it have disappeared.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s is missing from the system
+*Parameters*::
+*disk_info* (STRING): Formatted disk information
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.offline
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when offlining a drive
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Marking %s%s offline.
+*Parameters*::
+*owner* (STRING): The owner of the drive
+*disk_info* (STRING): Formatted information of the disk
+
+== raid.disk.online
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when onlining an offline drive.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Onlining %s%s.
+*Parameters*::
+*owner* (STRING): The owner of the drive
+*disk_info* (STRING): Formatted information of the disk
+
+== raid.disk.online.fail
+*Severity*::
+NOTICE
+*Description*::
+This event is issued if the drive failed while it was offline. The drive will be moved to broken pool as part of the online process.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failing %s%s during online.
+*Parameters*::
+*owner* (STRING): The owner of the drive
+*disk_info* (STRING): Formatted information of the disk
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.owner.change.fail
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when an ownership change request initiated by RAID, for either spare disks or the disks of an aggregate, fails due to an error from SANOWN.
+*Corrective Action*::
+The system automatically retries changing ownership of the disks. If the condition persists, contact NetApp technical support.
+*Syslog Message*::
+RAID initiated ownership change request failed (aggregate: %s error: %s). This request will be retried.
+*Parameters*::
+*aggregate* (STRING): Empty string for spare disks, or name of the aggregate for filesystem disks.
+*reason* (STRING): Reason for failure.
+*retry_count* (INT): Number of retry attempts.
+*disk_count* (INT): Number of disks in the ownership change request.
+
+== raid.disk.owner.changed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when change in a disk's owner is detected, independent of any disk change notification event.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*disk_info* (STRING): Formatted disk information
+*old_owner* (STRING): Previous disk owner.
+*new_owner* (STRING): New disk owner.
+*old_owner_id* (LONGINT): Old disk owner ID.
+*new_owner_id* (LONGINT): New disk owner ID.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.ownership.change
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a non-filesystem disk is prepared for ownership change by administrator forcibly.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Ownership of %s, is being changed by administator forcibly.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk.
+*shelf* (STRING): Disk shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.pool.changed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a change in a disk's current pool is detected, independent of any disk change notification event.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*disk_info* (STRING): Formatted disk information.
+*old_pool* (STRING): Previous pool for this disk.
+*new_pool* (STRING): New pool for this disk.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.predictiveFailure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when some condition of the disk indicates that it may fail soon. It is first marked as prefailed. If an appropriate spare is available, it will be selected for Rapid RAID Recovery. In that process, the prefailed disk will be copied to the spare. The filer will stop using the prefailed disk when copying is done. At that time, the disk may be removed and replaced.
+*Corrective Action*::
+The raid.rg.diskcopy.done event is issued when the disk copy is complete. After that wait for the event message raid.disk.unload.done or raid.carrier.remove to be issued and then replace the carrier containing the failed disk. If the disk is contained in a single-disk carrier, raid.disk.unload.done will be issued immediately. Otherwise, wait for raid.carrier.remove which indicates the carrier has been fully prepared for removal.
+*Syslog Message*::
+%s reported a predictive failure and it is prefailed; it will be copied to a spare and failed
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.read.abort.detect
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a disk encounters an abort error during a read operation. The system retries the disk read request and gradually takes the disk out of service by copying the content to a replacement disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Read abort error encountered on %s, disk rebuild assist mode %s, block #%llu, length = %u; I/O will be retried.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk. This includes the disk's containing volume name and other attributes, such as shelf, bay, vendor, model, firmware revision, serial number, and type.
+*disk_ra_mode* (STRING): Disk rebuild assist mode indicating whether mode is enabled.
+*blockNum* (LONGINT): Physical disk block number of the first block in this I/O chain.
+*length* (INT): Number of disk blocks in this I/O chain.
+*error_code* (INT): Error code returned by the disk driver.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the disk vendor.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Disk firmware revision number.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.read.abort.recons
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a disk encounters an abort error during a read operation, and a subsequent attempt to retry the read request fails. The system services the read request by reconstructing the data from parity data. The system gradually takes the disk out of service by copying the content to a replacement disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Read retry failed on %s, block #%llu.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk. This includes the disk's containing volume name and other attributes, such as shelf, bay, vendor, model, firmware revision, serial number, and type.
+*blockNum* (LONGINT): Physical disk block number on which the read operation failed.
+*error_code* (INT): Error code returned by the disk driver.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the disk vendor.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Disk firmware revision number.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.replace.job.done
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a disk replace job finishes successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s replaced with disk %s.
+*Parameters*::
+*srcName* (STRING): Name of the source disk.
+*dstName* (STRING): Name of the destination disk.
+
+== raid.disk.replace.job.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk replace job fails.
+*Corrective Action*::
+Take any corrective action indicated by the specific reason for the failure and then retry the disk replace operation. If the condition persists, contact NetApp technical support.
+*Syslog Message*::
+Failed to replace disk %s with disk %s. Reason: %s.
+*Parameters*::
+*srcName* (STRING): Name of the source disk.
+*dstName* (STRING): Name of the destination disk.
+*reason* (STRING): Reason for failure.
+
+== raid.disk.replace.job.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a job to replace a shared disk with a spare disk begins. The operation can be triggered either by an administrator or automatically by Data ONTAP(R). A couple of such scenarios follows: a) There is a mix of drives from different SyncMirror(R) pools in the same plex of a mirrored aggregate. b) An aggregate is using a partitioned disk on an external shelf when there is a spare disk available on an internal shelf.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Starting disk replacement of disk %s with disk %s.
+*Parameters*::
+*srcName* (STRING): Name of the source disk.
+*dstName* (STRING): Name of the destination disk.
+
+== raid.disk.replace.job.stop
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a disk replace job is stopped by an administrator.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Stopping disk replacement of disk %s with disk %s.
+*Parameters*::
+*srcName* (STRING): Name of the source disk.
+*dstName* (STRING): Name of the destination disk.
+
+== raid.disk.sanitization.aborted
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when disk sanitization is aborted using the "disk sanitize" abort" command.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Sanitization aborted for %s
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk object
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'
+
+== raid.disk.sanitization.failed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued if disk sanitization fails due to a fatal error.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Sanitization failed for %s
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk object
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, the site is 'Local'.
+
+== raid.disk.timeout.force.recovery
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a disk continues to exhibit symptoms of long response times (timeouts) while it is in the process of being replaced via a copy. In this case, a forced recovery is initiated by removed the disk from the raid group. A complete rewrite of the disk is expected to help recover bad media patches.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Forcing recovery of %s%s as a result of exceeding timeout recovery threshold of %d.
+*Parameters*::
+*owner* (STRING): String indicating the owner of the affected volume.
+*disk_info* (STRING): The name of the disk.
+*threshold* (INT): Threshold for the maximum number of timeouts which can be tolerated while a disk is in the process of being replaced.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.timeout.recommend.recovery
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a disk repeatedly exhibits symptoms of long response times (timeouts) due to bad media patches. The disk is recommended for a full recovery as a result of crossing timeout recovery thresholds. The contents of the disk will be copied to a replacement. A complete rewrite of the disk is expected to help recover bad media patches.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s recommended for recovery as a result of exceeding timeout recovery threshold of %d.
+*Parameters*::
+*owner* (STRING): String indicating the owner of the affected volume.
+*disk_info* (STRING): The name of the disk.
+*threshold* (INT): Threshold for the maximum number of timeout recovery operations above which the disk is recommended for recovery.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.timeout.recovery.invalid.range
+*Severity*::
+NOTICE
+*Description*::
+This event is issued if an invalid blockNum range was reported during disk timeout recovery
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Invalid block range reported for %s during disk timeout recovery : start %llu, end %llu
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk for which the invalid blockNum range was reported.
+*start* (LONGINT): Starting disk block number for the recovery range
+*end* (LONGINT): Ending disk block number for the recovery range
+
+== raid.disk.timeout.recovery.read.err
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when timeout recovery io detects a read error
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Read error on %s%s, block #%llu during aggressive timeout recovery
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Formatted information of the disk object that contains the error.
+*blockNum* (LONGINT): The physical block number containing the error.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.tooBig.all.reminder
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the sum of disk sizes of all disks connected in the system exceed the maximum capacity supported for this platform.
+*Corrective Action*::
+Contact NetApp technical support. For information about correcting the problem, search for the "raid.disk.tooBig.all.reminder" keyword on the Knowledgebase of the NetApp Support Site.
+*Syslog Message*::
+System capacity %s exceeds the %s maximum supported disk capacity.
+*Parameters*::
+*actual* (STRING): Actual total capacity of disks currently connected to the system.
+*limit* (STRING): Maximum supported disk capacity limit of the system.
+
+== raid.disk.unfail.done
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when a failed disk has been unfailed using the "disk unfail" command, and returned to service as a spare.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s unfailed, and is now a spare
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk object
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.unfail.error
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when an error is encountered while attempting to unfail a disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s could not be unfailed
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk object
+*error_str* (STRING): A raid error string, describing the error encountered during disk unfail.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.unfail.reassim
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event occurs when a failed disk was unfailed using the "disk unfail" command, and is in process of being reassimilated.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s was unfailed, and is now being reassimilated
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk object
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.unload.done
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when a failed or removed disk has been spun down by the driver.
+*Corrective Action*::
+It is safe to pull the disk from the shelf.
+*Syslog Message*::
+Unload of %s has completed successfully
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk object
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.verify.abort.detec
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a disk encounters an abort error during a background media verify operation. The system gradually takes the disk out of service by copying the content to a replacement disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Media verify abort error encountered on %s, block #%llu, length = %llu.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk. This includes the disk's containing volume name and other attributes, such as shelf, bay, vendor, model, firmware revision, serial number, and type.
+*blockNum* (LONGINT): Physical disk block number of the first block in this I/O chain.
+*length* (LONGINT): Number of disk blocks in this I/O chain.
+*error_code* (INT): Error code returned by the disk driver.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the disk vendor.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Disk firmware revision number.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.zero.aborted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when disk zeroing has been aborted. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s : disk zeroing aborted (%s).
+*Parameters*::
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, carrier serial number, and site.
+*reason* (STRING): Reason for abort.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model name of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.zero.done
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a disk zeroing operation completes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s : disk zeroing complete
+*Parameters*::
+*disk_info* (STRING): Formatted information of disk object that has completed its zeroing operation
+*duration* (INT): The amount of time the zeroing operation required, in seconds
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.zero.done.failed.die
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a disk zeroing operation completes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s : disk zeroing for failed die complete
+*Parameters*::
+*disk_info* (STRING): Formatted information of disk object that has completed its zeroing operation
+*duration* (INT): The amount of time the zeroing operation required, in seconds
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.disk.zero.fake
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when disk zeroing has been faked on a disk.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+%s: fake disk zeroing complete
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk on which zeroing has been faked
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.

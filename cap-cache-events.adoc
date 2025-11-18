@@ -1,0 +1,52 @@
+---
+sidebar: sidebar
+permalink: cap-cache-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cap.cache events
+---
+
+= cap.cache events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cap.cache.corrupt
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a corrupt Central Access Policy (CAP) is encountered during access checks.
+*Corrective Action*::
+Fix the CAP definitions on the Active Directory, and use the 'vserver cifs group-policy update' command to refresh the cache on the cluster.
+*Syslog Message*::
+Encountered a corrupt CAP for Vserver %s.
+*Parameters*::
+*vserverUuidStr* (STRING): UUID of the Vserver.
+
+== cap.cache.not.ready
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system attempts to access a Central Access Policy (CAP) for evaluation during access checks and finds the CAP cache database (DB) is not ready for access.
+*Corrective Action*::
+Make sure that group-policy is enabled for the given Vserver and the Central Access Policies (CAPs) from the Active Directory (AD) can be applied to file system objects.
+*Syslog Message*::
+CAP Cache DB not ready for Vserver %s.
+*Parameters*::
+*vserverUuidStr* (STRING): UUID of the Vserver.
+
+== cap.cache.update.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when refresh of the Central Access Policy (CAP) Cache database (DB) fails.
+*Corrective Action*::
+Use the "vserver cifs group-policy update" command with the "force" flag to retry the operation manually.
+*Syslog Message*::
+Failed to update the CAP cache DB for Vserver %s. (Reason: %s.)
+*Parameters*::
+*vserverUuidStr* (STRING): UUID of the Vserver.
+*errString* (STRING): Error string.

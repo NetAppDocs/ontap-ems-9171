@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: nblade-fastrecoveryend-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.fastrecoveryend events
+---
+
+= nblade.fastrecoveryend events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.fastRecoveryEnd
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NFSv4.x server finishes the recovery and is ready to serve data from NFSv4.x clients.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NFS server fast recovery has ended for SVM "%s", LIF ID "%d", LIF IP address "%s".
+*Parameters*::
+*vserverName* (STRING): SVM Name.
+*lifId* (INT): LIF ID
+*lifIpAddress* (STRING): LIF IP address for the NFS server.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sp-snmp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sp.snmp events
+---
+
+= sp.snmp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sp.snmp.traps.off
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs each time a system boots, if the advanced privilege level in Data ONTAP(R) was used to disable the SNMP Trap feature of the Service Processor (SP). This message also occurs when the SNMP Trap capability is disabled and a user invokes a Data ONTAP command to use the SP to send an SNMP trap.
+*Corrective Action*::
+SP SNMP Trap support is currently disabled. To enable this feature, set the 'sp.snmp.traps' option to On.
+*Syslog Message*::
+SP's SNMP Trap support is currently disabled. Set option 'sp.snmp.traps' to 'On' to enable this feature.
+*Parameters*::
+(None).

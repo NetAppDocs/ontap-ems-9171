@@ -1,0 +1,44 @@
+---
+sidebar: sidebar
+permalink: nodewatchdog-resrc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nodewatchdog.resrc events
+---
+
+= nodewatchdog.resrc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nodewatchdog.resrc.alloc.failure
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a critical system resource required for Data ONTAP(R) to continue serving data cannot be allocated for an extended period of time. Data ONTAP might operate in a degraded mode.
+*Corrective Action*::
+If Data ONTAP operates in a degraded mode, reboot the node using the "-dump true" option. Contact NetApp technical support. When Node Watchdog is configured to "node_restart", Data ONTAP will detect and recover from this condition automatically.
+*Syslog Message*::
+Resource allocation failures detected for %s. The percentage of %d allocation failure attempts were met or exceeded for %d seconds.
+*Parameters*::
+*resource* (STRING): Type of resource that cannot be allocated.
+*percentage* (INT): Failure percentage threshold.
+*duration* (INT): Duration of the resource allocation failure.
+*diagnosis* (STRING): List of system diagnoses that could cause node watchdog issues.
+
+== nodewatchdog.resrc.lng.running.crit
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the count of certain critical resources internal to Data ONTAP(R) are consumed with long running operations. When this happens, Data ONTAP might operate in a degraded mode.
+*Corrective Action*::
+If Data ONTAP operates in a degraded mode, reboot the node using the "-dump true" option. Contact NetApp technical support. When Node Watchdog is configured to "node_restart", Data ONTAP will detect and recover from this condition automatically.
+*Syslog Message*::
+Long running %s detected. Exceeded threshold of %d%% for %d seconds.
+*Parameters*::
+*resource* (STRING): Resource that is consumed with long running operations.
+*percentage* (INT): Percentage of the long running resource.
+*duration* (INT): Duration for which the resources were long running.

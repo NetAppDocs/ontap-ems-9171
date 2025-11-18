@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: san-changedhomenode-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.changedhomenode events
+---
+
+= san.changedhomenode events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.ChangedHomeNode
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the home node of an existing SAN LIF is modified during LIF placement.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Home node changed from %s to %s while placing LIF %s in Vserver %s.
+*Parameters*::
+*old_node_name* (STRING): Name of the old home node of the existing SAN LIF.
+*node_name* (STRING): Name of the new home node of the existing SAN LIF.
+*lif* (STRING): LIF name.
+*vserver_name* (STRING): Vserver name.

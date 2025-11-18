@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: net-vserverupdatesuccess-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: net.vserverupdatesuccess events
+---
+
+= net.vserverupdatesuccess events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== net.vServerUpdateSuccess
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Vserver configuration on a node is successfully updated after a previous failure.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Vserver configuration is successfully updated on node %s.
+*Parameters*::
+*remote_node* (STRING): Node that was updated.

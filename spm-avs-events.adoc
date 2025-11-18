@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: spm-avs-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: spm.avs events
+---
+
+= spm.avs events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== spm.avs.process.exit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the antivirus service stops running due to repeated failures. This can be the result of a bad or corrupted update in the scan engine library or virus definition files, or due to an internal failure. The failure of this subsystem can affect client access if mandatory scanning is enabled. It could also result in files not being scanned.
+*Corrective Action*::
+Disable and then reenable the antivirus engine. If the issue persists, contact NetApp technical support.
+*Syslog Message*::
+Antivirus server with ID %d exited as a result of signal %s. The service will attempt to restart.
+*Parameters*::
+*id* (INT): Process identifier.
+*cause* (STRING): Plain text description of why the process exited.

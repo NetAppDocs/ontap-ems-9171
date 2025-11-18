@@ -1,0 +1,47 @@
+---
+sidebar: sidebar
+permalink: disk-spindleerror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.spindleerror events
+---
+
+= disk.spindleerror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.spindleError.detect
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk returns a spindle detect error. The disk will be recommended for failure.
+*Corrective Action*::
+Disk firmware has detected spindle motor problems. The disk will be recommended for failure. If the disk is a member of a RAID volume,it will be failed by RAID when this error occurs on a RAID I/O and the raid group is not in degraded mode.
+*Syslog Message*::
+Disk %s has reported a spindle detect error: (%x %x %x %x)
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*sense_key* (INTHEX): Actual sense key
+*sense_code* (INTHEX): Actual sense code.
+*qualifier* (INTHEX): Actual sense code qualifier.
+*fru_failed* (INTHEX): Actual FRU code.
+
+== disk.spindleError.notice
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a disk returns a spindle detect error.
+*Corrective Action*::
+Disk firmware has detected spindle motor problems. The option to recommend the drive for failure is not set, so the disk will not be automatically recommended for failure.
+*Syslog Message*::
+(None).
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*sense_key* (INT): Actual sense key.
+*sense_code* (INT): Actual sense code.
+*qualifier* (INT): Actual sense code qualifier.
+*fru_failed* (INT): Actual FRU code.

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: nodewatchdog-gfc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nodewatchdog.gfc events
+---
+
+= nodewatchdog.gfc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nodewatchdog.gfc.too.long
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the storage system is low in networking buffers (mbuf) for longer than the duration threshold, which indicates abnormal circumstances. When this happens, CLI commands might hang, and clients could experience timeouts.
+*Corrective Action*::
+If CLI commands are responding slowly or clients are timing out, reboot the node using the "reboot -node [node] -dump true" option. Also call the support team to investigate further, because this is an abnormal circumstance that might recur if not addressed. Contact NetApp technical support.
+*Syslog Message*::
+Networking buffer depletion detected. Consumption exceeded %d%% in use and did not recede to %d%% for %d seconds.
+*Parameters*::
+*enter_percentage* (INT): Percentage of in-use mbufs necessary to enter the flow control state.
+*exit_percentage* (INT): Percentage of in-use mbufs necessary to exit the flow control state.
+*duration* (INT): Duration for which there is a scarcity of available mbufs.

@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: monitor-brokendisk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.brokendisk events
+---
+
+= monitor.brokendisk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.brokenDisk.notice
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a node is in a degraded state because of a broken disk. The timeout values indicate how long the system will run after each boot before shutting down because of this condition. Shutdown is to encourage you to replace broken disks. * The timeout[123] values are duplicated as a convenience for the Syslog message, which prints out the value three times.
+*Corrective Action*::
+Consult other logged messages to determine the identity of broken disks, or use the "storage disk show -broken" command. Replace any broken disks. The %d hour timeout can be increased by altering the "raid.timeout" value using the "storage raid-options modify" command.
+*Syslog Message*::
+%s, the system shuts down automatically every %d hours to encourage you to replace the disk. If you reboot the system, it will run for another %d hours before shutting down.
+*Parameters*::
+*type* (STRING): Type of degradation.
+*timeout1* (INT): Timeout value.
+*timeout2* (INT): Timeout value.
+*timeout3* (INT): Timeout value.

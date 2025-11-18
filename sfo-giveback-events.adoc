@@ -1,0 +1,132 @@
+---
+sidebar: sidebar
+permalink: sfo-giveback-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfo.giveback events
+---
+
+= sfo.giveback events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfo.giveback.aborted.bdfu
+*Severity*::
+ERROR
+*Description*::
+This message occurs when giveback of storage failover (SFO) aggregates is aborted because the background disk firmware update either on the source node or destination node took more than 120 seconds to finish.
+*Corrective Action*::
+Rerun the "storage failover giveback" command.
+*Syslog Message*::
+Giveback is aborted: %s took more than 120 seconds to finish the background disk firmware update.
+*Parameters*::
+*nodename* (STRING): Node where the background firmware update took more than 120 seconds to finish.
+
+== sfo.giveback.aggregatesAbort
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a giveback of non-root aggregates is aborted by either another takeover or other conflicting operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Giveback of non-root aggregates to node %s was aborted due to another takeover or other conflicting operation. "override-vetoes" was set to %s, and "only_newly_acquired" was set to %s.
+*Parameters*::
+*partnerName* (STRING): Partner name.
+*override_vetoes* (STRING): Flag that indicates whether the system overrides veto checks during a giveback operation. This flag corresponds to the "-override-vetoes" parameter of the "storage failover giveback" command. When set to true, it might result in some veto checks made by subsystems on the source node getting overridden.
+*only_newly_acquired* (STRING): Flag that indicates whether, during a giveback, only aggregates acquired during the last takeover will be given back.
+*require_partner_waiting* (STRING): Flag that indicates whether, during a giveback, the storage is given back regardless of whether the partner node is available to take back the storage. This flag corresponds to the "-require-partner-waiting" parameter of the "storage failover giveback" command. When set to true, it might result in the giveback proceeding even if the destination node is not ready to receive the aggregate being migrated.
+
+== sfo.giveback.attemptExceeded
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the number of attempts for automatic giveback of storage failover (SFO) aggregates exceeds the maximum allowed.
+*Corrective Action*::
+Use the "storage failover show-giveback" command to identify the subsystems that failed the giveback. Follow the corrective action specified in the EMS message displayed by those subsystems. For ASA r2, use the "storage failover show" command instead of the "storage failover show-giveback" command. Then retry giveback by using the "storage failover giveback" command.
+*Syslog Message*::
+Attempts for automatic giveback of SFO aggregates exceeded the maximum number (%d) of allowed attempts.
+*Parameters*::
+*attempts* (INT): Maximum number of automatic giveback attempts allowed.
+
+== sfo.giveback.complete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a giveback of storage failover (SFO) aggregates to the SFO partner controller finishes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Giveback of SFO aggregates to partner (%s) is complete. override-vetoes: %s, and only_newly_acquired: %s.
+*Parameters*::
+*partnerName* (STRING): Partner's name.
+*override_vetoes* (STRING): Flag that indicates whether the system overrides vetoes during a giveback operation. This flag corresponds to the "-override-vetoes" parameter of the "storage failover giveback" command. When set to true, it might result in some veto checks made by subsystems on the source node getting overridden.
+*only_newly_acquired* (STRING): Flag that indicates whether, during a giveback, only aggregates acquired during the last takeover will be given back.
+*require_partner_waiting* (STRING): Flag that indicates whether, during a giveback, the storage is given back regardless of whether the partner node is available to take back the storage or not. This flag corresponds to the "-require-partner-waiting" parameter of the "storage failover giveback" command. When set to true, it might result in the giveback proceeding even if the destination node is not ready to receive the aggregate being migrated.
+
+== sfo.giveback.delayed.bdfu
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when giveback of storage failover (SFO) aggregates is delayed because a background disk firmware update is in progress either on the source node or destination node. If the update does not finish within 120 seconds, giveback will be aborted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*nodename* (STRING): Node where the background firmware update is in progress.
+
+== sfo.giveback.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when giveback of the partner's Storage Failover (SFO) aggregate fails.
+*Corrective Action*::
+Other error messages indicate the exact cause of failure along with the corrective action.
+*Syslog Message*::
+Giveback of aggregate %s failed due to %s.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate that was not given back.
+*msg* (STRING): Error that prevented giveback.
+
+== sfo.giveback.OpFailed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Storage Failover (SFO) phase of giveback fails.
+*Corrective Action*::
+Refer to other generated error messages to identify the exact cause of failure and the corrective action.
+*Syslog Message*::
+SFO phase of giveback failed by node %s because %s.
+*Parameters*::
+*node* (STRING): Name of the node that failed giveback.
+*msg* (STRING): Error that prevented giveback.
+
+== sfo.giveback.postMigrNotOk
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the specified subsystem encounters an error during the post-migration phase of the giveback operation.
+*Corrective Action*::
+Check the event log for a subsystem-specific reason as to why the subsystem failed the post-migration phase of the giveback operation. The corrective action is subsystem-specific and is detailed in the corrective action portion of the message. Follow the corrective action specified by that message.
+*Syslog Message*::
+The giveback operation of '%s' encountered an error during post-migration processing. The error was encountered by the subsystem '%s'.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate on which the subsystem attempted the giveback operation.
+*subsystem* (STRING): Name of the subsystem that failed the post-migration phase of the giveback operation.
+
+== sfo.giveback.spares.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when giveback of the partner's storage failover (SFO) spares fails.
+*Corrective Action*::
+Try the SFO giveback again.
+*Syslog Message*::
+Giveback of spares failed due to %s.
+*Parameters*::
+*msg* (STRING): Error that prevented giveback of SFO spares.

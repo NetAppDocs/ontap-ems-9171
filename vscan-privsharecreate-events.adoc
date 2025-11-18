@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: vscan-privsharecreate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vscan.privsharecreate events
+---
+
+= vscan.privsharecreate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vscan.privShareCreate.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the creation of privileged share ONTAP_ADMIN$ fails. Attempted connections to ONTAP_ADMIN$ share by the Vscan servers will fail.
+*Corrective Action*::
+Check the reason for failure and take action accordingly. If the problem persists, contact NetApp technical support for assistance.
+*Syslog Message*::
+Failed to create privileged share ONTAP_ADMIN$ for Vserver "%s". Reason: "%s".
+*Parameters*::
+*vserverName* (STRING): Name of the Vserver.
+*reason* (STRING): Reason for failure.

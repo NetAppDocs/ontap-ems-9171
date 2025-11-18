@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: extcache-offline-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: extcache.offline events
+---
+
+= extcache.offline events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== extCache.offline
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the external cache is automatically taken offline. This can happen after an I/O error on the external cache and may result in degraded performance until the problem is corrected.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+External cache has been taken offline on error (rc=%d). Check the EMS log for earlier errors.
+*Parameters*::
+*code* (INT): A unique error code for this event.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sms-clone-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sms.clone events
+---
+
+= sms.clone events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sms.clone.request.disallow
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when SnapMirror(R) Synchronous fails a clone request because the relation is temporarily in a state that does not permit clone replication.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Clone replication not permitted while in transitioning state.
+*Parameters*::
+(None).

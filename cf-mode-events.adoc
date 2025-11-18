@@ -1,0 +1,87 @@
+---
+sidebar: sidebar
+permalink: cf-mode-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.mode events
+---
+
+= cf.mode events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.mode.auto.HA
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the controller is automatically set to High Availability(HA) mode because of the configuration values in the Field Replaceable Unit(FRU) or the slot of the interconnect/NVRAM card (depending on the hardware type of the controller).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).
+
+== cf.mode.auto.non.HA
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the controller is automatically set to non-High Availability (non-HA) mode because of the configuration values in the Field Replaceable Unit (FRU) or the slot of the interconnect/NVRAM card (depending on the hardware type of the controller).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).
+
+== cf.mode.HA
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the user sets the controller to High Availability(HA) mode through the command-line interface.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).
+
+== cf.mode.HA.onboot
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the controller is set to High Availability (HA) mode according to options detected at boot.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).
+
+== cf.mode.non.HA
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the user sets the controller to non-High Availability (non-HA) mode through the command-line interface.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).
+
+== cf.mode.non.HA.onboot
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the controller is set to non-High Availability (non-HA) mode according to options detected at boot.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).

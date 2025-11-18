@@ -1,0 +1,67 @@
+---
+sidebar: sidebar
+permalink: nvmf-mgmt-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvmf.mgmt events
+---
+
+= nvmf.mgmt events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvmf.mgmt.op.failed
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a management operation fails in an NVMe-oF subsystem. The NVMe-oF subsystem on this node will be out of sync with the subsystems on the other nodes in the cluster. This can result in the failure of administrative commands and IO.
+*Corrective Action*::
+To recover from this condition in HA pair configurations, take over the node with the problem by using the "storage failover takeover" command, and then give back the node by using the "storage failover giveback" command. To recover from this condition in non-HA configurations, reboot the nodes having this condition by using the "system node reboot" command.
+*Syslog Message*::
+NVMe-oF operation "%s" failed (reason=%s).
+*Parameters*::
+*operation* (STRING): Management operation that failed.
+*reason* (STRING): Reason for the failure.
+
+== nvmf.mgmt.port.cmd.full
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the NVMe-oF command fan-in on a physical port exceeds the port's capabilities. At this point, NVMe-oF I/O throughput and latency could severely degrade.
+*Corrective Action*::
+To recover from this condition, evaluate the host fan-in on the port, and then take one of the following actions: - Reduce the number of hosts that are logging in to this port. - Reduce the number of NVMe-oF subsystems that are being accessed by the hosts. - Reduce the queue depths and number of queues for hosts connecting to this port. After completing the appropriate mitigation step, you can see the number of command slots currently being used via the fcp_port CM object. Example: statistics show -object fcp_port -counter nvmf_command_slots -instance port.portname -raw
+*Syslog Message*::
+NVMe-oF port name "%s" command slots full (current number provisioned = %d).
+*Parameters*::
+*portname* (STRING): Port name on which the command slots are full.
+*command_slots* (INT): Current number of command slots provisioned on the port.
+
+== nvmf.mgmt.port.cmd.threshold
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NVMe-oF command fan-in on a physical port starts approaching levels close to the port's capabilities.
+*Corrective Action*::
+Consider adding more NVMe-oF ports or access the NVMe-oF subsystems via other ports instead of using this port. You can see the number of command slots currently being used via the fcp_port CM object. Example: statistics show -object fcp_port -counter nvmf_command_slots -instance port.portname -raw
+*Syslog Message*::
+NVMe-oF port name "%s" command slots high threshold reached (current number provisioned = %d).
+*Parameters*::
+*portname* (STRING): Port name on which the command slots are being filled up.
+*command_slots* (INT): Current number of command slots provisioned on the port.
+
+== nvmf.mgmt.roce.port.cq.full
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the NVMe/RoCE completion queue entry utilization exceeds the port's capabilities. At this point, NVMe/RoCE I/O throughput and latency could severely degrade.
+*Corrective Action*::
+To recover from this condition, evaluate the host fan-in on the port, and then take one of the following actions: - Reduce the number of hosts that are logging in to this port. - Reduce the number of NVMe-oF subsystems that are being accessed by the hosts. - Reduce the queue depths and number of queues for hosts connecting to this port.
+*Syslog Message*::
+Completion queue entries on NVMe/RoCE port "%s" are exhausted (current number used is %d).
+*Parameters*::
+*portname* (STRING): Port name on which the completion queue entries are exhausted.
+*cq_entries* (INT): Current number of completion queue entries used on the port.

@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: nblade-cifs-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.cifs events
+---
+
+= nblade.cifs events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.cifs.budgetAllocFailure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is a budget allocation failure for a CIFS subsystem because other CIFS subsystems are consuming too much memory. The three displayed CIFS subsystem have consumed most of the memory.
+*Corrective Action*::
+Consider distributing the CIFS load by moving data LIFs, adding data LIFs, and redirecting workloads, or by shutting down nonessential workloads to alleviate the memory pressure. If the problem persists after addressing issues on the network or the client, contact NetApp technical support.
+*Syslog Message*::
+Memory Allocation failed for %s. The CIFS subsystem on this node has exceeded its allotment of %llu bytes of node memory. CIFS subsystems that have consumed the most memory are %s.
+*Parameters*::
+*budgetname* (STRING): Name of the CIFS subsystem for which memory allocation failed.
+*TotalCifsBudget* (LONGINT): Amount of memory available to the CIFS subsystem.
+*topConsumers* (STRING): CIFS subsystem that have consumed the most memory, and the amount of memory consumed.
+
+== Nblade.cifs.logon.audit.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a CIFS logon fails when guaranteed audit is enabled and audit log generation fails due to no space remaining in either destination volumes or staging volumes.
+*Corrective Action*::
+Use the command "event log show -messagename adt.service.block" to check for destination volume space unavailability. If the message entry exists, use the command "event log show -messagename adt.service.block -fields action" and follow the corrective action. If the message entry does not exist, then staging volumes are full and no corrective action is necessary. The audit process self-heals and normal auditing continues in 10 seconds after audit logging cleanup occurs.
+*Syslog Message*::
+CIFS logon failed due to audit log generation failure for the vserver %u.
+*Parameters*::
+*vsId* (INT): Id of the vserver, on which this event occurred.

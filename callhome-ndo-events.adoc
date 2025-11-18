@@ -1,0 +1,171 @@
+---
+sidebar: sidebar
+permalink: callhome-ndo-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.ndo events
+---
+
+= callhome.ndo events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.ndo.cr.canceled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the controller replacement operation has been canceled by the administrator. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+The controller replacement operation on the cluster has been canceled. Issue the commands "system controller replace show" and "system controller replace show-details" to see the status of the operation."
+*Syslog Message*::
+(None).
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.ndo.cr.complete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the controller replacement operation has been completed successfully in the HA group. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for CONTROLLER REPLACEMENT COMPLETE
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.ndo.cr.dryrun.done
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the dry run of the controller replacement operation has completed for the HA pair. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for CONTROLLER REPLACEMENT DRY RUN COMPLETE
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.ndo.cr.nso.canceled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a controller replacement operation using negotiated switchover (NSO) in a MetroCluster FC configuration has been canceled. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+The controller replacement NSO operation on the cluster has been canceled. Issue the commands "system controller replace show" and "system controller replace show-details" to see the status of the operation."
+*Syslog Message*::
+(None).
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.ndo.cr.nso.complete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a controller replacement operation using negotiated switchover (NSO) in a MetroCluster FC configuration has been completed successfully. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for CONTROLLER REPLACEMENT NSO COMPLETE
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.ndo.cr.nso.mccip.canceled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a controller replacement operation using negotiated switchover (NSO) in a MetroCluster IP configuration has been canceled. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+The controller replacement NSO-MCCIP operation on the cluster has been canceled. Issue the commands "system controller replace show" and "system controller replace show-details" to see the status of the operation."
+*Syslog Message*::
+(None).
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.ndo.cr.nso.mccip.complete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a controller replacement operation using negotiated switchover (NSO) in a MetroCluster IP configuration has been completed successfully. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for CONTROLLER REPLACEMENT NSO-MCCIP COMPLETE
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.ndo.cr.nso.mccip.paused.err
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a controller replacement operation using negotiated switchover (NSO) in a MetroCluster IP configuration has been paused due to an error. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+The controller replacement (NSO-MCCIP) operation of the cluster has been paused due to an error. Determine the cause of the error by using the "system controller replace show" command. Correct the cause of the error, and then issue the "system controller replace resume" command to continue the controller replacement of the cluster.
+*Syslog Message*::
+(None).
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.ndo.cr.nso.mccip.started
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a controller replacement operation using negotiated switchover (NSO) in a MetroCluster IP configuration has been started. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+The controller replacement NSO-MCCIP operation of the cluster has started. Issue the commands "system controller replace show" and "system controller replace show-details" to see the status of the operation."
+*Syslog Message*::
+(None).
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.ndo.cr.nso.paused.err
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a controller replacement operation using negotiated switchover (NSO) in a MetroCluster FC configuration has been paused due to an error. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+The controller replacement (NSO) operation of the cluster has been paused due to an error. Determine the cause of the error by using the "system controller replace show" command. Correct the cause of the error, and then issue the "system controller replace resume" command to continue the controller replacement of the cluster.
+*Syslog Message*::
+(None).
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.ndo.cr.nso.started
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a controller replacement operation using negotiated switchover (NSO) in a MetroCluster FC configuration has been started. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+The controller replacement NSO operation of the cluster has started. Issue the commands "system controller replace show" and "system controller replace show-details" to see the status of the operation."
+*Syslog Message*::
+(None).
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.ndo.cr.paused.err
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the controller replacement operation has been paused due to an error in the HA group. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+The controller replacement operation of the cluster has been paused due to an error. Determine the cause of the error by using the "system controller replace show" command. Correct the cause of the error, and then issue the "system controller replace resume" command to continue the controller replacement of the cluster.
+*Syslog Message*::
+(None).
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.ndo.cr.started
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the controller replacement operation has started in the HA group. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+The controller replacement operation of the cluster has started. Issue the commands "system controller replace show" and "system controller replace show-details" to see the status of the operation."
+*Syslog Message*::
+(None).
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

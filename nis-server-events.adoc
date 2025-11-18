@@ -1,0 +1,66 @@
+---
+sidebar: sidebar
+permalink: nis-server-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nis.server events
+---
+
+= nis.server events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nis.server.active
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Storage Virtual Machine (SVM, formerly Vserver) binds to any of the configured NIS servers.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SVM '%s' has successfully bound to the %s NIS server.
+*Parameters*::
+*vserver_name* (STRING): Name of the SVM.
+*nis_server* (STRING): Configured NIS server.
+
+== nis.server.inactive
+*Severity*::
+ERROR
+*Description*::
+This message occurs when one of the NIS servers configured for a Storage Virtual Machine (SVM, formerly Vserver) cannot be contacted.
+*Corrective Action*::
+From a UNIX (R) workstation, make sure that the NIS server is responding to requests. Also make sure that the portmapper on the NIS server is responding to requests. Make sure that there are no networking issues stopping the cluster from communicating with this NIS server.
+*Syslog Message*::
+%s NIS server configured for SVM '%s' cannot be contacted.
+*Parameters*::
+*nis_server* (STRING): Configured NIS server.
+*vserver_name* (STRING): Name of the SVM.
+
+== nis.server.invalid.domain
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Network Information Service (NIS) servers configured for a storage virtual machine (SVM, formerly Vserver) cannot be contacted due to "Invalid Domain" error.
+*Corrective Action*::
+Make sure that the NIS server with the correct domain is configured.
+*Syslog Message*::
+%s NIS server configured for SVM '%s' cannot be contacted due to "Invalid Domain" error.
+*Parameters*::
+*nis_server* (STRING): Configured NIS server.
+*vserver_name* (STRING): Name of the SVM.
+
+== nis.server.not.available
+*Severity*::
+ERROR
+*Description*::
+This message occurs when none of the NIS servers configured for a Storage Virtual Machine (SVM, formerly Vserver) can be contacted.
+*Corrective Action*::
+From a UNIX (R) workstation, make sure that the NIS server is responding to requests. Also make sure that the portmapper on the NIS server is responding to requests. Make sure that there are no networking issues stopping the cluster from communicating with this NIS server.
+*Syslog Message*::
+None of the NIS servers configured for SVM '%s' can be contacted.
+*Parameters*::
+*vserver_name* (STRING): Name of the SVM.

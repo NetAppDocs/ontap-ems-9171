@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: nblade-exportaccessindeterm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.exportaccessindeterm events
+---
+
+= nblade.exportaccessindeterm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.exportAccessIndeterm
+*Severity*::
+ERROR
+*Description*::
+This message occurs when client access cannot be evaluated because of an error while matching the client against export rules. Client access might be disrupted due to unresponsive or misconfigured external servers, problems with external server configuration on Data ONTAP(R), or internal errors while processing the rules.
+*Corrective Action*::
+Verify that external name services (such as DNS, NIS, LDAP, Kerberos, or AD) are responsive to queries from Data ONTAP(R). Use the "vserver show -fields id" command to get the Vserver name corresponding to Vserver ID, and use the "vol show -fields msid" command to get the volume name corresponding to the volume MSID. Use the "vserver export-policy check-access" command to troubleshoot it further, or contact NetApp technical support for further assistance in reviewing the name services logs.
+*Syslog Message*::
+Access to volume with MSID %llu in Vserver %u could not be evaluated for client "%s" as per export ruleset %llu.
+*Parameters*::
+*msid* (LONGINT): MSID of the volume on which access was attempted.
+*vserverId* (INT): Identifier for the Vserver associated with this access.
+*clientAddr* (STRING): IP address of the client attempting access.
+*rulesetID* (LONGINT): Export rule set ID.

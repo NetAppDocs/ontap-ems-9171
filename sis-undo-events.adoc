@@ -1,0 +1,109 @@
+---
+sidebar: sidebar
+permalink: sis-undo-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.undo events
+---
+
+= sis.undo events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.undo.aborted
+*Severity*::
+ERROR
+*Description*::
+This messages occurs when a SIS volume 'undo' operation is aborted due to unexpected conditions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SIS undo operation for '%s%s' has aborted: '%s'.
+*Parameters*::
+*path* (STRING): Path to a SIS volume.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*err* (STRING): Error message.
+
+== sis.undo.aborted.inconsistent
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a SIS volume 'undo' operation is aborted due to volume inconsistency.
+*Corrective Action*::
+Run wafliron to remove inconsistencies in the volume, then retry the operation.
+*Syslog Message*::
+SIS 'undo' operation for '%s%s' has aborted due to volume inconsistencies.
+*Parameters*::
+*path* (STRING): Path to a SIS volume.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== sis.undo.done
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when 'sis undo -t wrong' command removes the sharing on improperly shared inodes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The 'sis undo -t wrong' command removed sharings on improperly shared inodes in the volume '%s%s'. Details about cleaned inodes are available at '%s'.
+*Parameters*::
+*volume* (STRING): Volume name.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*log_location* (STRING): SIS undo log location.
+
+== sis.undo.nospace
+*Severity*::
+ERROR
+*Description*::
+This event is issued to indicate that there is not enough free space to undo the shared blocks on a SIS volume. The undo operation will be aborted. Data blocks that were still shared at the time the undo operation stopped will remain shared. Blocks already processed by the undo operation are no longer shared.
+*Corrective Action*::
+Free disk space in the volume, or increase the size of the volume, then retry the operation.
+*Syslog Message*::
+Undoing shared blocks on volume %s%s has aborted because there is insufficient free space. Data blocks that were still shared at the time the undo operation stopped will remain shared. Blocks already processed by the undo operation are no longer shared.
+*Parameters*::
+*vol* (STRING): Path to a SIS volume
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== sis.undo.required
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when 'sis undo -t wrong -d' command finds improperly shared inodes.
+*Corrective Action*::
+Run the 'sis undo -t wrong' or 'sis undo -i' command to remove improperly shared inodes.
+*Syslog Message*::
+The 'sis undo -t wrong -d' command detected improperly shared inodes in the volume '%s%s'. Run the 'sis undo -t wrong' or 'sis undo -i' command to remove improperly shared inodes. Details about improperly shared inodes are available at '%s'.
+*Parameters*::
+*volume* (STRING): Volume name.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*log_location* (STRING): SIS undo log location.
+
+== sis.undo.started
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a SIS undo operation is started.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SIS undo operation for %s%s has started.
+*Parameters*::
+*path* (STRING): Path to a SIS volume.
+*volident* (STRING): Uniquely identifies the volume when the volume name alone is insufficient.
+
+== sis.undo.stopped
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a SIS volume undo operation is stopped by user.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SIS undo operation for %s%s has stopped.
+*Parameters*::
+*path* (STRING): Path to a SIS volume
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.

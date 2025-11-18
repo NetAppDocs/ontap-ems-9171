@@ -1,0 +1,87 @@
+---
+sidebar: sidebar
+permalink: callhome-shlf-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.shlf events
+---
+
+= callhome.shlf events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.shlf.fan
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the system detects faulty hardware on the disk shelf, such as a fan, power supply unit (PSU), or failing temperature sensor. The problem might be environmental (temperature or faulty power) or hardware-related. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Evaluate the environment in which your system is operating and identify whether the problem is environmental or hardware-related. Your system should be in a room with an operating temperature of 18C to 24C (65F to 75F). If faulty hardware caused the error, such as a bad temperature sensor or a broken fan, replace the faulty part as soon as possible. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for SHELF COOLING UNIT FAILED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.shlf.fan.warn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects faulty hardware on the disk shelf, such as a fan, power supply unit (PSU), or failing temperature sensor. The problem might be environmental (temperature or faulty power) or hardware-related. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Evaluate the environment in which your system is operating and identify whether the problem is environmental or hardware-related. Your system should be in a room with an operating temperature of 18C to 24C (65F to 75F). If faulty hardware caused the error, such as a bad temperature sensor or a broken fan, replace the faulty part as soon as possible. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for SHELF COOLING UNIT FAILED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.shlf.fault
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects faulty hardware on the disk shelf, such as a fan, power supply, or failing temperature sensor. The problem might be environmental (temperature or faulty power) or hardware-related. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Evaluate the environment in which your system is operating and identify whether the problem is environmental or hardware-related. Your system should be in a room with an operating temperature of 18C to 24C (65F to 75F). If faulty hardware caused the error, such as a bad temperature sensor or a broken fan, replace the faulty part as soon as possible. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for SHELF_FAULT
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.shlf.overtemp
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects a disk shelf problem. The problem might be due to environmental issues, such as temperature or faulty power, or by faulty hardware, such as a fan, power supply, or failing temperature sensor. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Evaluate the environment in which your system is operating and identify whether the problem is environmental or hardware-related. Your system should be in a room with an operating temperature of 18C to 24C (65F to 75F). If faulty hardware caused the error, such as a bad temperature sensor or a broken fan, replace the faulty part as soon as possible. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.shlf.power.intr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when your system detects that a disk shelf power supply reported either a sustained loss of DC voltage output for about 20 seconds or a failure condition. This issue can occur for a number of reasons: 1. The power supply was turned off or unplugged. 2. The power to the server room failed or fluctuated. 3. The disk shelf power supply malfunctioned and should be replaced. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+If necessary, replace the disk shelf power supply. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for SHELF POWER INTERRUPTED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.shlf.ps.fault
+*Severity*::
+ERROR
+*Description*::
+This message occurs when your system detects that a disk shelf power supply reported a loss of DC voltage. This might be a transient issue. This issue can occur for a number of reasons: 1. The power supply was turned off or unplugged. 2. The power to the server room failed or fluctuated. 3. The shelf power supply malfunctioned and should be replaced. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+If necessary, replace the shelf power supply. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for SHELF POWER SUPPLY WARNING
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

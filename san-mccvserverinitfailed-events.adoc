@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: san-mccvserverinitfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.mccvserverinitfailed events
+---
+
+= san.mccvserverinitfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.MCCVserverInitFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs in MetroCluster(TM) configurations on clustered Data ONTAP(R) systems when SAN Vserver failed to initialize during a switchover or switchback operation.
+*Corrective Action*::
+Contact NetApp technical support for assistance in initialization of the SAN Vserver.
+*Syslog Message*::
+The Vserver %s failed to initialize. Reason: %s. Contact NetApp technical support for assistance in initialization of the Vserver.
+*Parameters*::
+*vserver* (STRING): The SAN Vserver that failed to initialize.
+*reason* (STRING): The reason for failure.

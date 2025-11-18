@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: callhome-appdm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.appdm events
+---
+
+= callhome.appdm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.appdm.snaprest.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Application Data Management feature encounters an error while attempting to restore an application from a snapshot. If your system is configured to do so, it generates and transmits an AutoSupport (or "call home") message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Use the "application snapshot show -vserver <vserver> -application <app> -protection-group <pg>" command to determine if the snapshot exists. If it does, retry the operation. Contact NetApp technical support for assistance with reviewing the event log to determine the cause of the application snapshot restore failure.
+*Syslog Message*::
+Call home for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*vserver_name* (STRING): Vserver name related to this event.
+*application_name* (STRING): Application name related to this event.
+*protection_group_name* (STRING): Protection group name related to this event.
+*snapshot_name* (STRING): Snapshot name related to this event.

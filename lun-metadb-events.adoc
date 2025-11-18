@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: lun-metadb-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lun.metadb events
+---
+
+= lun.metadb events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== LUN.metadb.version.mismatch
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a version mismatch is detected for the metafile containing LUN metadata.
+*Corrective Action*::
+Rebuild the LUN metadata metafile for the volume by running the 'lun rescan -build-oovc' command.
+*Syslog Message*::
+A version mismatch was detected for the metafile containing LUN metadata metafile in volume %s (DSID %llu).
+*Parameters*::
+*volume_name* (STRING): Name of the volume for which a version mismatch of the metafile containing LUN metadata was detected.
+*volume_dsid* (LONGINT): Data Set ID (DSID) of the volume for which a version mismatch of the metafile containing LUN metadata was detected.

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: fg-writeback-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fg.writeback events
+---
+
+= fg.writeback events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fg.writeback.delta.checker
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an inconsistency is discovered during a writeback. The writeback is ignored, so that the inconsistency does not get transferred to the cache origin.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Writeback operation failed for %s at line %d (%s).
+*Parameters*::
+*fh* (STRING): File handle of the affected inode.
+*source* (INT): Location of the failing writeback validation test.
+*state* (STRING): Description of the inconsistency.

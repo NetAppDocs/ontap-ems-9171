@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: mcc-sb-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mcc.sb events
+---
+
+= mcc.sb events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mcc.sb.abort.dump
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when dump/restore is aborted during a MetroCluster switchback operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Dump/restore operations were aborted because %s is in progress.
+*Parameters*::
+*sb* (STRING): Describes whether a MetroCluster switchback operation is progress.
+
+== mcc.sb.veto.repl
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an MetroCluster(tm) switchback is vetoed by a critical replication transfer (for example, volume move in the cutover phase).
+*Corrective Action*::
+Either abort the replication transfer that is preventing the MetroCluster switchback from being completed, retry the MetroCluster switchback operation with the '-override-vetoes true' option, or wait for the transfer to finish.
+*Syslog Message*::
+Could not complete switchback because a replication transfer with UUID %s is in progress.
+*Parameters*::
+*transferId* (STRING): UUID of the SnapMirror(R) replication transfer that vetoed the MetroCluster switchback.

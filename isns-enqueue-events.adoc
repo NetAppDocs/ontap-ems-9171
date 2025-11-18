@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: isns-enqueue-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: isns.enqueue events
+---
+
+= isns.enqueue events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== isns.enqueue.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Internet Storage Name Service (iSNS) is not able to enqueue a new operation to the iSNS subsystem.
+*Corrective Action*::
+The iSNS failed to enqueue an action into the work queue. This may be due to an overloaded system. Please consider moving the Vserver's Management LIF to another node for that Vserver in the cluster with a lighter work-load.
+*Syslog Message*::
+The iSNS cannot enqueue an operation %s for Vserver %s.
+*Parameters*::
+*event* (STRING): Event/Operation that was no enqueued.
+*vserver* (STRING): Name of the Vserver

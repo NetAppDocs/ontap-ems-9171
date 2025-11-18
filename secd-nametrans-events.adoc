@@ -1,0 +1,93 @@
+---
+sidebar: sidebar
+permalink: secd-nametrans-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: secd.nametrans events
+---
+
+= secd.nametrans events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== secd.nameTrans.groupNotFound
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the group name cannot be resolved by any of the entities in the ns-switch for the virtual server.
+*Corrective Action*::
+If this is a Windows(R) name, make sure that the name exists in Active Directory. If this is a UNIX(R) name, make sure that it is in one of the configured ns-switch entities for the virtual server. Make sure that it was entered locally as a unix-group, in the Network Information Service (NIS) maps, or in the Lightweight Directory Access Protocol (LDAP) server.
+*Syslog Message*::
+vserver (%s) could not resolve the group name (%s) by any of the entities in the ns-switch for the virtual server.
+*Parameters*::
+*vserverName* (STRING): vserver associated with this operation.
+*groupName* (STRING): Name of the group that could not be converted to an ID.
+
+== secd.nameTrans.invalidConfig
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the name resolution configuration for the virtual server is not set up correctly.
+*Corrective Action*::
+Consult the documentation and correct the ns-switch entry for the virtual server.
+*Syslog Message*::
+vserver (%s) has an incorrectly configured ns-switch. Check all of the virtual servers to ensure that the ns-switch has been configured correctly.
+*Parameters*::
+*vserverName* (STRING): vserver associated with this operation.
+
+== secd.nameTrans.invalidUser
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the user name cannot be resolved by any of the entities in the ns-switch for the virtual server.
+*Corrective Action*::
+If this is a Windows(R) name, make sure the name exists in Active Directory. If this is a UNIX(R) name, make sure it is in one of the configured ns-switch entities for the virtual server. Make sure that the name was entered locally as a unix-user, in the Network Infomration Service (NIS) maps, or in the Lightweight Directory Access Protocol (LDAP) server.
+*Syslog Message*::
+vserver (%s) could not resovle user name (%s).
+*Parameters*::
+*vserverName* (STRING): vserver associated with this operation.
+*userName* (STRING): Name of the user that could not be converted to an ID.
+
+== secd.nameTrans.noNameMapping
+*Severity*::
+ERROR
+*Description*::
+This message occurs when no name mappings or default-users are defined to convert a Windows(R) name to a UNIX(R) name or a UNIX name to a Windows name.
+*Corrective Action*::
+Make sure that a default Windows user is defined for the Network File System (NFS) configuration. Make sure that a default UNIX user is defined for the CIFS configuration. Decide to either to create one of the previously mentioned items, or create a mapping rule that maps the user or group in the correct direction.
+*Syslog Message*::
+vserver (%s) could not map name (%s). Reason: %s.
+*Parameters*::
+*vserverName* (STRING): vserver associated with this operation.
+*userName* (STRING): Name of the user that could not be converted to an ID.
+*attemptedMapping* (STRING): Description of the specific error condition.
+
+== secd.nameTrans.unknownUser
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the user name cannot be resolved by any of the entities in the ns-switch for the virtual server.
+*Corrective Action*::
+If this is a Windows(R) name, make sure that the name exists in Active Directory. If this is a UNIX(R) name, make sure that it is in one of the configured ns-switch entities for the virtual server. Make sure that it was entered locally as a unix-user, in the Network Information Service (NIS) maps, or in the Lightweight Directory Access Protocool (LDAP) server.
+*Syslog Message*::
+vserver (%s) could not resolve the user name (%s) by any of the entities in the ns-switch for the virtual server
+*Parameters*::
+*vserverName* (STRING): vserver associated with this operation.
+*userName* (STRING): Name of the user that could not be converted to an ID.
+
+== secd.nameTrans.userNotFound
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the user name cannot be resolved by any of the entities in the ns-switch for the virtual server.
+*Corrective Action*::
+If this is a Windows(R) name, make sure that the name exists in Active Directory. If this is a UNIX(R) name, make sure it is in one of the configured ns-switch entities for the virtual server. Make sure that it was entered locally as a unix-user, in the Network Information Service (NIS) maps, or in the Lightweight Directory Access Protocol (LDAP) server.
+*Syslog Message*::
+vserver (%s) could not resolve the user name (%s) by any of the entities in the ns-switch for the virtual server.
+*Parameters*::
+*vserverName* (STRING): vserver associated with this operation.
+*userName* (STRING): Name of the user that could not be converted to an ID.

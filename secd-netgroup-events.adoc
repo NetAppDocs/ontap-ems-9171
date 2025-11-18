@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: secd-netgroup-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: secd.netgroup events
+---
+
+= secd.netgroup events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== secd.netgroup.ldap.badFilter
+*Severity*::
+ERROR
+*Description*::
+This message occurs if the filter for searching the Lightweight Directory Access Protocol (LDAP) server is found to be invalid. The typical reason for this issue is incorrect LDAP client configuration or a bad netgroup name. Searching for the current netgroup is skipped, so all hosts in the netgroup might not be authorized.
+*Corrective Action*::
+Use the "vserver services name-service ldap client schema show" command to ensure that the Object Class and Attribute in the LDAP client schema are correct. Check the LDAP configuration on the server side to ensure that the attribute value (such as nisNetgroup) is correct.
+*Syslog Message*::
+LDAP search on vserver (%s) failed on invalid filter: %s.
+*Parameters*::
+*vserverName* (STRING): The name of the Vserver associated with this operation.
+*filter* (STRING): The invalid filter that caused the LDAP search to fail.

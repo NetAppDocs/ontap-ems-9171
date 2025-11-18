@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: ipfw-reachedmaxstates-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ipfw.reachedmaxstates events
+---
+
+= ipfw.reachedmaxstates events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ipfw.ReachedMaxStates
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the ipfw firewall fails to create a new dynamic state entry for a "keep-state" rule because the number of dynamic state entries has reached the maximum allowed value of 32768. The "keep-state" rule is used by the firewall to keep track of whether a connection is established. States are maintained by firewall for TCP, UDP, BGP, and ESP packets. This message occurs at most once every 60 seconds; it lists the most recent connections to reach the limit.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The ipfw firewall failed to create dynamic "keep-state" entry. Reason: %s, current # of entries: %d. Recent connections reaching this limit: %s
+*Parameters*::
+*message* (STRING): Information about the failed ipfw dynamic state creation.
+*current_states_held* (INT): Current total number of ipfw dynamic "keep state" entries held.
+*cnn_message* (STRING): Information about recent connections that reached the limit.

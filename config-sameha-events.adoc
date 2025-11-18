@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-sameha-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.sameha events
+---
+
+= config.sameha events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.sameHA
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk is multipathed to the same host adapter. The second disk interface should be attached to a different host adapter.
+*Corrective Action*::
+Move one of the connections attaching the disk shelf to a different host adapter.
+*Syslog Message*::
+Disk %s and other disks attached to the same port are dual-attached to the same adapter. For improved availability you should dual-attach them to separate adapters.
+*Parameters*::
+*disk* (STRING): Name of the disk.

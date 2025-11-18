@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: flexcache-conf-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: flexcache.conf events
+---
+
+= flexcache.conf events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== flexcache.conf.refreshFailed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when FlexCache configuration refresh fails. If this event happens, FlexCache will not be able to reach to its origin which will cause FlexCache to serve only cached data. This message occurs at most once every 30 minutes.
+*Corrective Action*::
+Use the "volume flexcache config-refresh" command on the cluster hosting the FlexCache volume to refresh the origin volume configuration on FlexCache volume.
+*Syslog Message*::
+Failed to refresh FlexCache configuration for peer vserver UUID %s and peer volume MSID %lu. isPeerOrigin : %u.
+*Parameters*::
+*peerVserverUuid* (STRING): Peer vserver UUID in string format for which refresh failed.
+*peerVolMsid* (LONGINT): Peer volume MSID for which refresh failed.
+*isPeerOrigin* (INT): Origin peer volume or cache peer volume for which refresh failed.

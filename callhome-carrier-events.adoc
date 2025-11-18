@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-carrier-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.carrier events
+---
+
+= callhome.carrier events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.carrier.fault
+*Severity*::
+ERROR
+*Description*::
+This message occurs when all the disks in the carrier, that contains more than one disk in it, have failed. The carrier should be replaced. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Locate the carrier with the failed disks by looking for the carrier whose amber LED is on and the green LED does not indicate any disk activity. Replace the carrier with the failed disks. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: license-term-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: license.term events
+---
+
+= license.term events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== license.term.enforcement
+*Severity*::
+ALERT
+*Description*::
+This message occurs when your feature license has expired. The feature might no longer function.
+*Corrective Action*::
+Contact your sales representative to have your feature license reactivated.
+*Syslog Message*::
+%s
+*Parameters*::
+*enforcement_msg* (STRING): Enforcement message.
+
+== license.term.reminder
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when your feature license is going to expire soon.
+*Corrective Action*::
+Contact your sales representative to renew your feature license as soon as possible.
+*Syslog Message*::
+%s
+*Parameters*::
+*reminder_msg* (STRING): Reminder message.
+
+== license.term.warning
+*Severity*::
+ERROR
+*Description*::
+This message occurs when your feature license has expired. The feature might stop working soon.
+*Corrective Action*::
+Contact your sales representative to renew your feature license immediately to avoid any disruption.
+*Syslog Message*::
+%s
+*Parameters*::
+*warning_msg* (STRING): Warning message.

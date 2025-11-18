@@ -1,0 +1,65 @@
+---
+sidebar: sidebar
+permalink: ha-gb-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.gb events
+---
+
+= ha.gb events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.gb.mbxAccessErr
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a mailbox disk cannot be accessed prior to a giveback.
+*Corrective Action*::
+Verify the mailbox disk physical locations and mailbox disk counts by using the "storage failover mailbox-disk show -node node-id" advanced command. If all mailbox disks are present for the indicated physical location, retry the "storage failover giveback" command or sf-send-home-initiate ZAPI. If none of the mailbox disks for the indicated physical location are shown, wait a few minutes, and then retry the show command to see whether all mailbox disks are present. If all mailbox disks are present, retry the "storage failover giveback" command or sf-send-home-initiate ZAPI. If some but not all mailbox disks are present for the indicated physical location, then set the "-override-vetoes" field to "true" for either the "storage failover giveback" command or sf-send-home-initiate ZAPI, and then retry the giveback.
+*Syslog Message*::
+Problem accessing %s mailbox disks prior to giveback. Found %d disks, expected %d disks. Override vetoes option: %s; Internal error code: %d status: %d.
+*Parameters*::
+*physical_location* (STRING): Identifies the physical location of the mailbox disks. Values are Local Node, Partner Node, Mediator, or a node name.
+*mailbox_disk_count* (INT): Current count of mailbox disks having the physical location specified by the physical_location parameter.
+*expected_count* (INT): Expected count of mailbox disks having the physical location specified by the physical_location parameter.
+*override_vetoes* (STRING): Value of the "-override-vetoes" field in the "storage failover giveback" command or sf-send-home-initiate ZAPI.
+*error_code* (INT): Disk I/O or other error code.
+*error_status* (INT): Additional internal status related to the error code.
+
+== ha.gb.mbxCountMismatch
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a mailbox disk cannot be accessed prior to a giveback, but giveback is allowed to proceed because the "override-vetoes" field is set to "true" for the "storage failover giveback" command or the sf-send-home-initiate ZAPI.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Problem accessing %s mailbox disks during giveback. Found %d disks, expected %d disks. Override vetoes option: %s; Internal result code: %d status: %d"
+*Parameters*::
+*physical_location* (STRING): Identifies the physical location of the mailbox disks. Values are Local Node, Partner Node, Mediator, or a node name.
+*mailbox_disk_count* (INT): Current count of mailbox disks having the physical location specified by the physical_location parameter.
+*expected_count* (INT): Expected count of mailbox disks having the physical location specified by the physical_location parameter.
+*override_vetoes* (STRING): Value of the "-override-vetoes" field in the "storage failover giveback" command or sf-send-home-initiate ZAPI.
+*result_code* (INT): Disk I/O or other result code.
+*result_status* (INT): Additional internal status related to the result code.
+
+== ha.gb.mbxNotFound
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a mailbox disk cannot be accessed prior to a giveback.
+*Corrective Action*::
+Verify the mailbox disk physical locations and mailbox disk counts by using the "storage failover mailbox-disk show -node node-id" advanced command. If all mailbox disks are present, retry the "storage failover giveback" command or the sf-send-home-initiate ZAPI. If none of the mailbox disks for the indicated mailbox owner are shown, wait a few minutes, and then retry the show command to see whether all mailbox disks are present. If all mailbox disks are present, retry the "storage failover giveback" command or sf-send-home-initiate ZAPI. If some but not all mailbox disks are present for the indicated mailbox owner, verify whether all nodes in the cluster are healthy and accessible by using the "cluster show" command, and check whether disks are healthy by using the "disk show" command.
+*Syslog Message*::
+Problem accessing %s mailbox disks prior to giveback. Found %d disks. Override vetoes option: %s; Internal error code: %d status: %d.
+*Parameters*::
+*mailbox_owner* (STRING): Identifies the node in the high-availability (HA) pair that owns the missing mailbox disk.
+*mailbox_disk_count* (INT): Number of mailbox disks found. These disks are owned by the node specified by the mailbox_owner parameter.
+*override_vetoes* (STRING): Value of the "-override-vetoes" parameter passed to the "storage failover giveback" command or the sf-send-home-initiate ZAPI.
+*error_code* (INT): Disk I/O or other error code.
+*error_status* (INT): Additional internal status related to the error code.
