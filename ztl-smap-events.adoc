@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: ztl-smap-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ztl.smap events
+---
+
+= ztl.smap events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ztl.smap.online.status
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the specified partition on a SSD-ZNS drive could not be onlined due to internal S/W or device error.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s partition %d (first zone=%d, number of zones=%d) online operation failed. HBA status: %d, NVMe status (type: %d, code: %d).
+*Parameters*::
+*disk* (STRING): Disk name.
+*partition* (INT): SMap Partition number.
+*start_zone* (INT): SMAP start logical zone.
+*num_zones* (INT): Number of logical zones in the SMAP instance.
+*ha_err_status* (INT): Host Adapter error status.
+*nvme_err_code_type* (INT): NVME error code type.
+*nvme_err_code* (INT): NVME error for the specific NVME error code type.

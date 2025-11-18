@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: cf-fmns-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.fmns events
+---
+
+= cf.fmns events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.fmns.skipped.disk
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a node is in "Waiting For Giveback" state and the Failover Monitor Node State (fmns)module skips a local disk while releasing the reservations in that state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+While releasing the reservations in "Waiting For Giveback" state Failover Monitor Node State(fmns) module skipped the disk %s that is owned by %u and reserved by %u.
+*Parameters*::
+*uid_string* (STRING): Name of the disk which was skipped by fmns.
+*down_owner* (INT): The system ID of the node that owns this disk.
+*resvn_owner* (INT): The system ID of the node that has a reservation on this disk.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: vdisk-clonelogfull-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vdisk.clonelogfull events
+---
+
+= vdisk.clonelogfull events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vdisk.clonelogFull
+*Severity*::
+NOTICE
+*Description*::
+LUN clone creation has failed because the limit on the maximum supported entries(32705) has been exceeded.
+*Corrective Action*::
+Retry upon the completition of the pending clone operations for this volume.
+*Syslog Message*::
+Logging the LUN clone creation has failed because the limit on the maximum supported clone log entries in the volume %s has been exceeded.
+*Parameters*::
+*vol_name* (STRING): Name of the volume for which the LUN clone creation has failed.

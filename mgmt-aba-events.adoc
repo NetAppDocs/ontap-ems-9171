@@ -1,0 +1,119 @@
+---
+sidebar: sidebar
+permalink: mgmt-aba-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmt.aba events
+---
+
+= mgmt.aba events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmt.aba.abortCloneParent
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when Auto Balance Aggregate initiates a move of a volume that was then changed to a FlexClone(R) parent.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The Auto Balance Aggregate initiated move of volume %s from aggregate %s to aggregate %s was aborted when the move job detected that the volume was now a FlexClone parent.
+*Parameters*::
+*volume* (STRING): Name of the volume.
+*srcAggregate* (STRING): Name of the source aggregate.
+*dstAggregate* (STRING): Name of the destination aggregate.
+
+== mgmt.aba.abortMirrorMove
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when Auto Balance Aggregate initiates a move of a volume that was then changed to be part of a SnapMirror(R) relationship".
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The Auto Balance Aggregate initiated move of volume %s from aggregate %s to aggregate %s was aborted when the move job detected that the volume was now part of a SnapMirror relationship.
+*Parameters*::
+*volume* (STRING): Name of the volume.
+*srcAggregate* (STRING): Name of the source aggregate.
+*dstAggregate* (STRING): Name of the destination aggregate.
+
+== mgmt.aba.move.unbalanced
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when Auto Balance Aggregate is running in auto mode and identifies an aggregate in which the used space has exceeded the high-water mark. Auto Balance Aggregate attempts to trigger moves to lower the aggregate's usage below the threshold.
+*Corrective Action*::
+Use the "volume move show" command to monitor active moves.
+*Syslog Message*::
+Auto Balance Aggregate has detected that aggregate %s has exceeded the threshold of %jd. The aggregate currently shows a usage of %jd.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate.
+*usedSpace* (LONGINT): Aggregate's used space.
+*threshold* (LONGINT): Configured high-water mark.
+
+== mgmt.aba.moveVolume
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when Auto Balance Aggregate identifies a volume that can be moved to alleviate a low-space condition with an aggregate. The move will be initiated by Auto Balance Aggregate and can be monitored by using the "volume move show" command.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Auto Balance Aggregate is moving volume %s in Vserver %s from aggregate %s to aggregate %s. Upon completion of the move, the source aggregate is projected to be %d percent full and the destination aggregate is projected to be %d percent full.
+*Parameters*::
+*volume* (STRING): Volume that will be moved.
+*vserver* (STRING): Vserver hosting the volume.
+*srcAggr* (STRING): Aggregate the volume will be moved from.
+*dstAggr* (STRING): Aggregate the volume will be moved to.
+*afterSourceSpace* (INT): Projected percentage of used space in the source aggregate after the move is performed.
+*afterDestSpace* (INT): Projected percentage of used space in the destination aggregate after the move is performed.
+
+== mgmt.aba.noMovableVols
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Auto Balance Aggregate identifies an aggregate that is unbalanced but cannot identify a volume to move from that aggregate. Some of the more common reasons this can occur for an aggregate are that its volumes are being heavily accessed, its volumes have been recently moved, or Auto Balance Aggregate cannot identify an aggregate to move to.
+*Corrective Action*::
+Manually inspect the aggregate to determine whether any volumes can be moved.
+*Syslog Message*::
+Auto Balance Aggregate could not find any volumes to move from aggregate %s. The aggregate's calculated space is %jd and the threshold is %jd.
+*Parameters*::
+*aggregate* (STRING): Name of the aggregate.
+*usedSize* (LONGINT): Recorded used size.
+*threshold* (LONGINT): Configured threshold.
+
+== mgmt.aba.rcmd.unbalanced
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Auto Balance Aggregate is running in recommend mode and identifies an aggregate in which the used space has exceeded the high-water mark.
+*Corrective Action*::
+Use the "volume move recommend show" command to see the list of recommended actions.
+*Syslog Message*::
+Auto Balance Aggregate has detected that aggregate %s has exceeded the threshold of %jd. The aggregate currently shows a usage of %jd.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate.
+*usedSpace* (LONGINT): Aggregate's used space.
+*threshold* (LONGINT): Configured high-water mark.
+
+== mgmt.aba.recommendMove
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when Auto Balance Aggregate identifies a volume that can be moved to alleviate a low-space condition with an aggregate. The move will not be initiated, but will be listed with other recommendations listed by running the "volume move recommend show" command.
+*Corrective Action*::
+If desired, initiate the recommended move by using the "volume move start" command.
+*Syslog Message*::
+Auto Balance Aggregate is recommending that volume %s in Vserver %s be moved from aggregate %s to aggregate %s. Upon completion of the move, the source aggregate is projected to be %d percent full and the destination aggregate is projected to be %d percent full.
+*Parameters*::
+*volume* (STRING): Volume identified as a candidate to move.
+*vserver* (STRING): Vserver hosting the volume.
+*srcAggr* (STRING): Aggregate the volume should be moved from.
+*dstAggr* (STRING): Aggregate the volume should be moved to.
+*afterSourceSpace* (INT): Projected percentage of used space in the source aggregate if the move is performed.
+*afterDestSpace* (INT): Projected percentage of used space in the destination aggregate if the move is performed.

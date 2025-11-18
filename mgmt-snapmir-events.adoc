@@ -1,0 +1,220 @@
+---
+sidebar: sidebar
+permalink: mgmt-snapmir-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmt.snapmir events
+---
+
+= mgmt.snapmir events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmt.snapmir.dst.invalidType
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the destination volume of a SnapMirror(R) relationship is not a Data Protection (DP) or Load Sharing (LS) type, and a SnapMirror initialize operation is attempted. A volume must be a DP or LS type to accept a SnapMirror initialize operation.
+*Corrective Action*::
+For ASA r2 systems, contact NetApp technical support for assistance to resolve this internal error. For all other systems: Use a DP or LS type of volume, or use the "volume create" command to create a new volume with a DP or LS type to use as a destination of the SnapMirror relationship. You cannot modify the type of a volume using the "volume modify" command.
+*Syslog Message*::
+Destination volume "%s" of a SnapMirror relationship is not a DP or LS type. Job ID %llu.
+*Parameters*::
+*dstpath* (STRING): Path name of the destination volume of the SnapMirror relationship.
+*jobID* (LONGINT): Job ID.
+
+== mgmt.snapmir.fl.bkt.del.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a bucket could not be deleted during a cleanup of a SnapMirror restore or create operation. Because the operation did not complete successfully, the bucket might be left in an inconsistent state.
+*Corrective Action*::
+Use the "object-store-server bucket delete" command to delete the bucket.
+*Syslog Message*::
+Bucket "%s" could not be deleted as part of the clean up of a SnapMirror create or restore operation.
+*Parameters*::
+*bucket* (STRING): Name of the bucket in the SnapMirror relationship.
+
+== mgmt.snapmir.fl.crt.cleanup
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the cleanup of a link failed when it encountered an error during a SnapMirror create operation. Because the link could not be cleaned up properly, the bucket could be in an inconsistent state and might not be able to accept any traffic. Also, if the links are not cleaned up, a new SnapMirror relationship cannot be established with these two buckets.
+*Corrective Action*::
+1. Run the "snapmirror delete" command to delete the link.
+*Syslog Message*::
+Cleanup of the link between buckets "%s" and "%s" failed with error "%s".
+*Parameters*::
+*sourceBucket* (STRING): Name of the source bucket in the SnapMirror relationship.
+*destBucket* (STRING): Name of the destination bucket in the SnapMirror relationship.
+*error* (STRING): Error that was encountered.
+
+== mgmt.snapmir.fl.failover.rmt
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the remote bucket was not demoted during a failover operation. This could allow the remote bucket to still accept the traffic even though it is no longer permitted to so. Use the "demote bucket" command to avoid this situation.
+*Corrective Action*::
+Use the "fabriclink demote-bucket" command in the cluster where remote bucket "%s" is located.
+*Syslog Message*::
+Failover failed for remote bucket "%s".
+*Parameters*::
+*remoteBucket* (STRING): Name of the remote bucket for which the failover operation failed.
+
+== mgmt.snapmir.fl.mod.rmt.fail
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the links on a remote cluster could not be modified during the execution of the "snapmirror modify" command. Even though the SnapMirror policy was modified, some of the links on the remote cluster could not be updated with new rpo/ throttle values. There is no detectable impact until a failover is performed. Only when a failover is performed would the reverse link be used, and it would still be functional even if the links on the remote cluster were not updated previously. They would just be using old rpo/throttle values.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Links on remote cluster "%s" were not modified.
+*Parameters*::
+*clusterUuid* (STRING): Cluster UUID of the cluster where the links were not updated.
+
+== mgmt.snapmir.fl.rstr.bkt.cln
+*Severity*::
+ERROR
+*Description*::
+This message occurs when objects in a restore bucket were not deleted during the cleanup of a SnapMirror restore operation. The restore bucket has objects in it even though the restore relationship no longer exists.
+*Corrective Action*::
+Delete the objects in bucket "%s".
+*Syslog Message*::
+Objects in bucket "%s" were not deleted during a restore failure cleanup.
+*Parameters*::
+*restoreBucket* (STRING): Name of the restore bucket in the SnapMirror relationship.
+
+== mgmt.snapmir.fl.rstr.cln.all
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the deletion of objects and the cleanup of link failed when the operations encountered an error during a SnapMirror restore operation. Because the link could not be cleaned up properly, the bucket could be in an inconsistent state and might not be able to accept any traffic. Also, if the links are not cleaned up, a new SnapMirror relationship cannot be established with these two buckets.
+*Corrective Action*::
+1. Run the "snapmirror delete" command to delete the link. 2. Delete the objects in the restore bucket.
+*Syslog Message*::
+Cleanup of the link between buckets "%s" and "%s" failed with error "%s" and the objects in the restore bucket could not be deleted.
+*Parameters*::
+*sourceBucket* (STRING): Name of the source bucket in the SnapMirror relationship.
+*destBucket* (STRING): Name of the destination bucket in the SnapMirror relationship.
+*error* (STRING): Error that was encountered.
+
+== mgmt.snapmir.fl.rstr.lnk.cln
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the cleanup of a link failed when it encountered an error during a SnapMirror restore operation. Because the link could not be cleaned up properly, the bucket could be in an inconsistent state and might not be able to accept any traffic. Also, if the links are not cleaned up, a new SnapMirror relationship cannot be established with these two buckets.
+*Corrective Action*::
+Run the "snapmirror delete" command to delete the link.
+*Syslog Message*::
+Cleanup of the link between buckets "%s" and "%s" failed with error "%s".
+*Parameters*::
+*sourceBucket* (STRING): Name of the source bucket in the SnapMirror relationship.
+*destBucket* (STRING): Name of the destination bucket in the SnapMirror relationship.
+*error* (STRING): Error that was encountered.
+
+== mgmt.snapmir.init.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) 'initialize' or 'initialize-ls-set' command fails and no more retries will be attempted.
+*Corrective Action*::
+Check the reason for the error, take action accordingly, and issue the command again.
+*Syslog Message*::
+Initialize from source volume '%s' to destination volume(s) '%s' failed with error '%s'. Job ID %llu.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume of the SnapMirror relationship.
+*dstpaths* (STRING): Path names of the destination volumes to which the initialize failed.
+*error* (STRING): Error message.
+*jobID* (LONGINT): Job ID.
+
+== mgmt.snapmir.ls.catchup.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a catch-up update for a lagging member in a load-sharing set fails.
+*Corrective Action*::
+Check the reason for the error and take action accordingly.
+*Syslog Message*::
+Load-share catch-up update transfer from source volume '%s' to destination volume '%s' failed with error '%s'. Job ID %llu.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume of the SnapMirror(R) relationship.
+*dstpath* (STRING): Path name of the destination volume to which the catch-up update transfer failed.
+*error* (STRING): Error message.
+*jobID* (LONGINT): Job ID.
+
+== mgmt.snapmir.resync.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a SnapMirror(R) 'resync' command fails and no more retries will be attempted.
+*Corrective Action*::
+Check the reason for the error, take action accordingly, and issue the command again.
+*Syslog Message*::
+Resync from source volume '%s' to destination volume '%s' failed with error '%s'. Job ID %llu.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume of the SnapMirror relationship.
+*dstpath* (STRING): Path name of the destination volume to which the resync failed.
+*error* (STRING): Error message.
+*jobID* (LONGINT): Job ID.
+
+== mgmt.snapmir.schd.trans.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a scheduled SnapMirror(R) transfer fails and no automatic retry will be attempted until the next scheduled transfer.
+*Corrective Action*::
+Check the reason for the error and take action accordingly.
+*Syslog Message*::
+Scheduled transfer from source volume '%s' to destination volume(s) '%s' failed with error '%s'. Job ID %llu.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume of the SnapMirror relationship.
+*dstpaths* (STRING): Path names of the destination volumes to which the scheduled transfer failed.
+*error* (STRING): Error message.
+*jobID* (LONGINT): Job ID.
+
+== mgmt.snapmir.schd.trans.overrun
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a scheduled SnapMirror(R) transfer overruns the schedule window.
+*Corrective Action*::
+Check the reason for the schedule overrun and take action accordingly.
+*Syslog Message*::
+Scheduled transfer from source volume '%s' to destination volume(s) '%s' is taking longer than the schedule window. Job ID %llu.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume of the SnapMirror relationship.
+*dstpaths* (STRING): Path names of the destination volumes of the scheduled transfer.
+*jobID* (LONGINT): Job ID.
+
+== mgmt.snapmir.unexpected.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror operation encounters an unexpected error. JobID might be zero if the job ID could not be determined at the time the error was generated.
+*Corrective Action*::
+If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+SnapMirror unexpected error '%s'. Job ID %llu.
+*Parameters*::
+*error* (STRING): Error message.
+*jobID* (LONGINT): Job ID.
+
+== mgmt.snapmir.update.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a SnapMirror(R) 'update' or 'update-ls-set' command fails and no more retries will be attempted.
+*Corrective Action*::
+Check the reason for the error, take action accordingly, and issue the command again.
+*Syslog Message*::
+Update from source volume '%s' to destination volume(s) '%s' failed with error '%s'. Job ID %llu.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume of the SnapMirror relationship.
+*dstpaths* (STRING): Path names of the destination volumes to which the update failed.
+*error* (STRING): Error message.
+*jobID* (LONGINT): Job ID.

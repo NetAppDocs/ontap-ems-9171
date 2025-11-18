@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cecc_log-masked-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cecc_log.masked events
+---
+
+= cecc_log.masked events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cecc_log.masked
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the ECC error logger stops reporting the occurrence of correctable ECC errors because the frequency of their occurrence is too high. The ECC logger crossed the predefined threshold of ECC errors that can be dropped. Reporting is suppressed to control the log traffic, but the system sends out a periodic message as a reminder.
+*Corrective Action*::
+Use the "system controller memory dimm show" command to check system memory.
+*Syslog Message*::
+Error logging temporarily suspended due to excessive CECC errors.
+*Parameters*::
+(None).

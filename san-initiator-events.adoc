@@ -1,0 +1,60 @@
+---
+sidebar: sidebar
+permalink: san-initiator-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.initiator events
+---
+
+= san.initiator events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.initiator.login
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP detects that an initiator which was previously not logged on is now logged on.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Missing login for initiator "%s", Vserver "%s", portset "%s", has been logged on.
+*Parameters*::
+*initiator* (STRING): Initiator that was previously not logged on.
+*vserver* (STRING): Name of the Vserver.
+*portset* (STRING): Name of the portset that the initiator must be logged in to.
+*vserver_uuid* (STRING): UUID of the Vserver.
+
+== san.initiator.login.missing
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP detects that an initiator configured in one or more igroups is not logged in, which is required to ensure full SAN connectivity. Access to LUNs might be disrupted if a failover occurs.
+*Corrective Action*::
+Verify the host and fabric configuration to ensure connectivity to the node.
+*Syslog Message*::
+Initiator "%s" is not logged in to any LIFs on this node for Vserver "%s", portset "%s". Access to LUNs might be disrupted if a failover occurs.
+*Parameters*::
+*initiator* (STRING): Initiator that is not logged in.
+*vserver* (STRING): Name of the Vserver.
+*portset* (STRING): Name of the portset that the initiator must be logged in to.
+*vserver_uuid* (STRING): UUID of the Vserver.
+
+== san.initiator.login.not.req
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP detects that an initiator which was previously not logged on no longer needs to be logged on.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Missing login for initiator "%s", Vserver "%s", portset "%s" is no longer required.
+*Parameters*::
+*initiator* (STRING): The initiator that was previously not logged on.
+*vserver* (STRING): Name of the Vserver.
+*portset* (STRING): Name of the portset that the initiator was not logged on to.
+*vserver_uuid* (STRING): UUID of the Vserver.

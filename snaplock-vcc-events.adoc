@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: snaplock-vcc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snaplock.vcc events
+---
+
+= snaplock.vcc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snaplock.vcc.assoc.mismatch
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system detects mismatch in the SnapLock(R) volume compliance clock association with the system compliance clock. This can happen when the volume compliance clock's node ID is different from system's node ID or when volume compliance clock's scc ID is different from system compliance clock's ID or when both differ from each other.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume compliance clock association on volume %s does not match the system compliance clock at %s and its compliance clock is now reassociated with the system compliance clock.
+*Parameters*::
+*volume* (STRING): Name of the volume that had the compliance clock association mismatch.
+*date* (STRING): Human readable system compliance clock time at which the VCC-SCC association mismatch is detected.

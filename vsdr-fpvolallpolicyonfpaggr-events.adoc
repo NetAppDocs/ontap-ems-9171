@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: vsdr-fpvolallpolicyonfpaggr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsdr.fpvolallpolicyonfpaggr events
+---
+
+= vsdr.fpvolallpolicyonfpaggr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsdr.FPVolAllPolicyOnFPAggr
+*Severity*::
+ALERT
+*Description*::
+This message occurs when source volume of an SVM disaster recovery (SVMDR) relationship having a volume tiering policy of "all" residing on FabricPool aggregate on the primary cluster is placed on a FabricPool aggregate at the destination cluster. SnapMirror(R) transfer will be slow and might cause recovery point objective(RPO) to be missed.
+*Corrective Action*::
+Either move the source volume of the SVMDR relationship from the FabricPool aggregate to a non-FabricPool aggregate at the primary cluster or modify the volume tiering policy of the source volume. To move the source volume, use the "volume move start -vserver <vserver-name> -volume <volume-name> -destination-aggregate <aggregate> command." To modify the volume tiering policy, use the "volume modify -volume <volume-name> -vserver <vserver-name> -tiering-policy <snapshot-only|none|auto>" command.
+*Syslog Message*::
+Source volume "%s" of the SVMDR relationship residing on a FabricPool aggregate having a tiering policy of "all" on the primary cluster is placed on FabricPool aggregate "%s" at the destination cluster.
+*Parameters*::
+*source_volume_name* (STRING): Name of the source volume on the FabricPool aggregate of the SVMDR relationship.
+*dest_aggr_name* (STRING): Name of the destination FabricPool aggregate at the secondary cluster.

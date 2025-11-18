@@ -1,0 +1,35 @@
+---
+sidebar: sidebar
+permalink: aws-nic-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: aws.nic events
+---
+
+= aws.nic events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== aws.nic.noTxIntr
+*Severity*::
+ALERT
+*Description*::
+This message occurs when Data ONTAP(R) is running in Amazon Web Services (AWS) and a network interface stops processing packets at the beginning of system boot.
+*Corrective Action*::
+If the issue persists, reboot the node. If reboot does not help, contact NetApp technical support for troubleshooting assistance.
+*Syslog Message*::
+No TX interrupt on NIC '%s' for %u seconds.
+*Parameters*::
+*nicName* (STRING): Network interface or port name.
+*secElasped* (INT): Seconds elapsed since the last send interrupt.
+*sigCnt* (INT): Number of signals sent to the back-end host OS.
+*reqPending* (INT): Number of outstanding send requests.
+*reqTotal* (INT): Number of total send requests.
+*respPending* (INT): Number of outstanding responses.
+*respTotal* (INT): Number of total responses.
+*evtBackend* (INT): Number of back-end events.
+*evtFrontend* (INT): Number of front-end events.

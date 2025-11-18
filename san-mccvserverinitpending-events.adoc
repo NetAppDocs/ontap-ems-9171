@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: san-mccvserverinitpending-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.mccvserverinitpending events
+---
+
+= san.mccvserverinitpending events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.MCCVserverInitPending
+*Severity*::
+ALERT
+*Description*::
+This message occurs in MetroCluster(TM) configurations on clustered Data ONTAP(R) systems when SAN Vservers exceed the time allotted for initialization during a switchover or switchback operation. This is not a failure, but a delay in initialization.
+*Corrective Action*::
+Contact NetApp technical support for assistance in analyzing the reason for delay in Vserver initialization.
+*Syslog Message*::
+The following Vservers: %s exceeded the time allotted (%u seconds) for Vserver initialization. Contact NetApp technical support to analyze the reason for delay in Vserver initialization.
+*Parameters*::
+*pending_vservers* (STRING): List of the SAN Vservers pending Vserver initialization.
+*san_budget_in_msecs* (INT): Maximum time (in seconds) the system waits for the SAN Vservers to complete initialization during a switchover or switchback operation.

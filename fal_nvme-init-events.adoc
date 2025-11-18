@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: fal_nvme-init-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fal_nvme.init events
+---
+
+= fal_nvme.init events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fal_nvme.init.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Flash Adaptation Layer (FAL) NVMe subsystem fails to initialize.
+*Corrective Action*::
+Reboot the node. If the problem persists, contact technical support for assistance.
+*Syslog Message*::
+FAL NVMe subsystem initialization failed. Reason: %s.
+*Parameters*::
+*reason* (STRING): Reason for failure.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: cs-create-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cs.create events
+---
+
+= cs.create events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cs.create.inprogress
+*Severity*::
+ALERT
+*Description*::
+This message occurs when there is an attempt to release SnapMirror resources for a volume as a result of volume delete while a Cloud Snapshot create operation is in progress.
+*Corrective Action*::
+Ensure no Cloud Snapshot create opeartion is in-progress when the volume is deleted. Either abort the create operation or wait for the creation to complete before deleting the volume.
+*Syslog Message*::
+Failed to delete the volume "%s" as one or more Cloud Snapshot operations are in progress. Number of Cloud Snapshot operations in progress: "%d".
+*Parameters*::
+*volumeUUID* (STRING): UUID of the volume.
+*in_transfer_snap_count* (INT): Number of Cloud Snapshot create in-progress.

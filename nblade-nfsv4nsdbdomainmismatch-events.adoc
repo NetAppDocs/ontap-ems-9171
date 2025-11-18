@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: nblade-nfsv4nsdbdomainmismatch-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.nfsv4nsdbdomainmismatch events
+---
+
+= nblade.nfsv4nsdbdomainmismatch events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.Nfsv4NsdbDomainMismatch
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an NFSv4 client queries or updates the user or group attribute of a file object but the requested value does not match the '-v4-id-domain' option value of a virtual server's NFS service. In NFSv4, users and groups are represented as names of the form string@domain. The domain string must match on the client and server to ensure correct operation. The NFSv4 client request, on whose behalf this event message is issued, is rejected with an NFS4ERR_BADOWNER error.
+*Corrective Action*::
+Update the client or server NFSv4 domain string to ensure that they match. If a single client experiences the issue, you typically just need to modify that client. See the client vendor's documentation to change the NFSv4 domain name configuration. If multiple clients experience the issue, you typically need to update the value of the '-v4-id-domain' option in the NFS server configuration.
+*Syslog Message*::
+NFSv4 server %s received domain string %s from client %s, which does not match the '-v4-id-domain' value %s.
+*Parameters*::
+*serverIp* (STRING): IP address of the server processing the NFSv4 request.
+*clientDomain* (STRING): NFSv4 domain string received from the client
+*clientIp* (STRING): IP address of the client.
+*serverDomain* (STRING): Domain string that the NFSv4 server expected.

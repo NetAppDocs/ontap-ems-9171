@@ -1,0 +1,99 @@
+---
+sidebar: sidebar
+permalink: boot-varfs-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: boot.varfs events
+---
+
+= boot.varfs events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== boot.varfs.backup.issue
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when an error is detected while trying to back up the /var file system to the boot media or node root volume (mroot).
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Backup of the /var file system failed (%s)
+*Parameters*::
+*err_str* (STRING): Error string.
+
+== boot.varfs.backup.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a subsequent backup is successful following a failure.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Backup of the /var file system is successful after previous failures.
+*Parameters*::
+(None).
+
+== boot.varfs.forced.umount.issue
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an I/O error is detected causing the /var file system to be forced umounted.
+*Corrective Action*::
+The /var file system has been forced umounted due to I/O errors. Since /var is on the boot device, the forced umount of /var may cause errors on other components going forward. Please contact your hypervisor provider./>.
+*Syslog Message*::
+I/O error caused forced umount of the /var file system.
+*Parameters*::
+*err_str* (STRING): Error string.
+
+== boot.varfs.repair.partial
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system is unable to restore all missing files detected by a scan of the /var file system during boot.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Unable to restore all missing files in /var file system.
+*Parameters*::
+(None).
+
+== boot.varfs.repair.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when missing files are restored during a scan of the /var file system during boot.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+All missing files in /var are restored.
+*Parameters*::
+(None).
+
+== boot.varfs.restore.issue
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an error is detected while restoring the /var file system from a shutdown.
+*Corrective Action*::
+The file system is automatically restored from the boot media. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Failed to restore the /var file system. Error: %s
+*Parameters*::
+*err_str* (STRING): Error string.
+
+== boot.varfs.restore.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when, following a failure, a subsequent restore of the /var file system is successful.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Successfully restored the /var file system.
+*Parameters*::
+(None).

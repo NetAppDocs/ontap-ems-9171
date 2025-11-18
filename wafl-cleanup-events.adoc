@@ -1,0 +1,53 @@
+---
+sidebar: sidebar
+permalink: wafl-cleanup-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.cleanup events
+---
+
+= wafl.cleanup events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.cleanup.after.giveback
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs after WAFL(R) completes the post-giveback cleanup. The cleanup includes freeing memory resources allocated for the partner file system.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*delay* (LONGINT): Amount of time (in milliseconds) WAFL took to perform the post giveback cleanup. 1518 blocks
+
+== wafl.cleanup.after.relocate
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs after WAFL(R) completes the aggregate relocation cleanup. The cleanup includes freeing memory resources allocated for the partner file system.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*aggrName* (STRING): Name of the aggregate.
+*delay* (LONGINT): Amount of time (in milliseconds) WAFL took to perform the post aggregate relocation cleanup.
+
+== wafl.cleanup.after.sendhome
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs after WAFL(R) completes the aggregate post-giveback cleanup. The cleanup includes freeing memory resources allocated for the partner file system.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*aggrName* (STRING): Name of the aggregate.
+*delay* (LONGINT): Amount of time (in milliseconds) WAFL took to perform the aggregate post-giveback cleanup.

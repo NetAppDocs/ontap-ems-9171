@@ -1,0 +1,37 @@
+---
+sidebar: sidebar
+permalink: wafl-descend-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.descend events
+---
+
+= wafl.descend events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.descend.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is an error during descendency checking. This message can occur when accessing a directory in a snapshot that is being deleted.
+*Corrective Action*::
+This condition might be transient; try the operation again. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Descendency check failure: {x%x %d %d %d %d} parent of {x%x %d %d %d %d}. Contact NetApp technical support.
+*Parameters*::
+*pfh0* (INT): Parent file handle's flags.
+*pfh1* (INT): Parent file handle's snapid.
+*pfh2* (INT): Parent file handle's fileid.
+*pfh3* (INT): Parent file handle's generation.
+*pfh4* (INT): Parent file handle's FSID.
+*cfh0* (INT): Child file handle's flags.
+*cfh1* (INT): Child file handle's snapid.
+*cfh2* (INT): Child file handle's fileid.
+*cfh3* (INT): Child file handle's generation.
+*cfh4* (INT): Child file handle's FSID.
+*vendor* (STRING): Vendor contact information.

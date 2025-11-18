@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: sfu-nsmdownloadfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfu.nsmdownloadfailed events
+---
+
+= sfu.nsmdownloadfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfu.NSMDownloadFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk shelf firmware update fails to download disk shelf firmware to a disk shelf successfully.
+*Corrective Action*::
+Go to the NetApp Support Site at http://support.netapp.com/NOW/download/tools/diskshelf/ and try downloading the disk shelf firmware again by using the (advanced privilege) "storage shelf firmware update" command.
+*Syslog Message*::
+%s: Download failed on %s on disk shelf controller module %s on disk shelf %s.%d.
+*Parameters*::
+*cmdName* (STRING): Name of the command issued, such as "storage shelf firmware update".
+*fileName* (STRING): Name of the file in /etc/shelf_fw that was being downloaded.
+*module* (STRING): Module on which the disk shelf firmware download failed.
+*channelNameSES* (STRING): Name of the adapter port or switch port on the SCSI enclosure services (SES) device on which the disk shelf firmware download failed.
+*shelfId* (INT): ID of the disk shelf on which the disk shelf firmware download failed.

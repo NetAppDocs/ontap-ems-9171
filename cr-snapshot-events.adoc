@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: cr-snapshot-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cr.snapshot events
+---
+
+= cr.snapshot events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== CR.Snapshot.Not.Deleted
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a temporary Snapshot(tm) copy created by the 'volume check' command could not be deleted.
+*Corrective Action*::
+Delete the Snapshot copy by using the following command from "diag" mode: volume snapshot delete -vserver <vserver> -volume <volume> -snapshot <snapshot-name> -ignore-owners
+*Syslog Message*::
+The temporary Snapshot copy [%s] created by the 'volume check' command for volume [%s] in Vserver [%s] could not be deleted [error: %s].
+*Parameters*::
+*snapshot* (STRING): Name of the Snapshot copy.
+*volume* (STRING): Name of the constituent volume for which the Snapshot copy could not be deleted.
+*vserver* (STRING): Vserver hosting the volume.
+*reason* (STRING): Reason for the failure.

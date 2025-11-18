@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: repl-autol2l-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.autol2l events
+---
+
+= repl.autol2l events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.autol2l.unsupported.configuration
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the replication destination engine encounters an unsupported configuration during a transfer with storage efficiency.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Unsupported configuration for relationship '%s'.
+*Parameters*::
+*transferId* (STRING): UUID of the SnapMirror transfer that has the unsupported configuration.

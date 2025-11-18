@@ -1,0 +1,204 @@
+---
+sidebar: sidebar
+permalink: sas-adapter-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sas.adapter events
+---
+
+= sas.adapter events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sas.adapter.bad.WWN
+*Severity*::
+ERROR
+*Description*::
+The base WWN associated with the SAS adapter is of invalid format. A correct WWN will be synthesized. The adapter will continue to function but this error indicates a manufacturing problem.
+*Corrective Action*::
+The controller should be replaced with a correctly programmed one.
+*Syslog Message*::
+The SAS WWN "%s" associated with adapter %s is bad. A valid one will be synthesized.
+*Parameters*::
+*WWN* (STRING): The bad WWN.
+*adapterName* (STRING): The name of the associated SAS host bus adapter.
+
+== sas.adapter.debug
+*Severity*::
+INFORMATIONAL
+*Description*::
+The SAS adapter driver debug event.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*adapterName* (STRING): The name of the associated SAS host bus adapter.
+*debug_string* (STRING): The debug statement that occurred.
+
+== sas.adapter.failed
+*Severity*::
+ERROR
+*Description*::
+The SAS adapter driver could not recover the adapter after resetting it multiple times. The adapter will be put offline.
+*Corrective Action*::
+If the adapter is in use check cabling and if connected to disk shelves check the seating of IOM cards and disks. If the problem keeps occurring try replacing the adapter. Finally if the issue is still not resolved please contact NetApp technical support for assistance in diagnosing a SAS issue.
+*Syslog Message*::
+Failed to recover SAS %s after multiple resets. Offlining the adapter.
+*Parameters*::
+*adapterName* (STRING): The name of the associated SAS host bus adapter.
+
+== sas.adapter.firmware.download
+*Severity*::
+INFORMATIONAL
+*Description*::
+The firmware is being updated on the SAS adapter.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Updating firmware on SAS adapter %s from version %s to version %s.
+*Parameters*::
+*adapterName* (STRING): The name of the associated SAS host bus adapter.
+*oldFirmwareVersion* (STRING): The version of the firmware currently on the adapter.
+*newFirmwareVersion* (STRING): The version of the firmware being downloaded to the adapter.
+
+== sas.adapter.firmware.fault
+*Severity*::
+NOTICE
+*Description*::
+A firmware fault was detected on the SAS adapter and it is being reset to recover.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Detected firmware fault 0x%x on SAS adapter %s.
+*Parameters*::
+*faultCode* (INTHEX): The firmware fault code.
+*adapterName* (STRING): The name of the associated SAS host bus adapter.
+
+== sas.adapter.firmware.update.failed
+*Severity*::
+EMERGENCY
+*Description*::
+The firmware on the SAS adapter was unable to be updated.
+*Corrective Action*::
+The adapter should be replaced as soon as possible. The SAS adapter driver will attempt to continue using the adapter without updating the firmware image.
+*Syslog Message*::
+Unable to update firmware on SAS adapter %s.
+*Parameters*::
+*adapterName* (STRING): The name of the associated SAS host bus adapter.
+
+== sas.adapter.not.ready
+*Severity*::
+ERROR
+*Description*::
+The SAS adapter did not become ready after being reset.
+*Corrective Action*::
+The SAS adapter driver will automatically attempt to recover from this error. If the error keeps occurring the adapter may need to be replaced.
+*Syslog Message*::
+SAS adapter %s did not become ready.
+*Parameters*::
+*adapterName* (STRING): The name of the associated SAS host bus adapter.
+
+== sas.adapter.offline
+*Severity*::
+INFORMATIONAL
+*Description*::
+The SAS adapter is now offline.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SAS adapter %s is now offline.
+*Parameters*::
+*adapterName* (STRING): The name of the associated SAS host bus adapter.
+
+== sas.adapter.offlining
+*Severity*::
+INFORMATIONAL
+*Description*::
+The SAS adapter is going offline after all outstanding I/O requests have finished.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Offlining SAS adapter %s.
+*Parameters*::
+*adapterName* (STRING): The name of the associated SAS host bus adapter.
+
+== sas.adapter.online
+*Severity*::
+INFORMATIONAL
+*Description*::
+The SAS adapter is now online.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SAS adapter %s is now online.
+*Parameters*::
+*adapterName* (STRING): The name of the associated SAS host bus adapter.
+
+== sas.adapter.online.failed
+*Severity*::
+ERROR
+*Description*::
+The SAS adapter failed to come online.
+*Corrective Action*::
+If the adapter is in use check cabling and if connected to disk shelves check the seating of IOM cards.
+*Syslog Message*::
+SAS adapter %s failed to come online.
+*Parameters*::
+*adapterName* (STRING): The name of the associated SAS host bus adapter.
+
+== sas.adapter.onlining
+*Severity*::
+INFORMATIONAL
+*Description*::
+The SAS adapter is in the process of going online.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Onlining SAS adapter %s.
+*Parameters*::
+*adapterName* (STRING): The name of the associated SAS host bus adapter.
+
+== sas.adapter.unexpected.status
+*Severity*::
+NOTICE
+*Description*::
+The SAS adapter returned an unexpected status and will be reset to recover.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Unexpected status 0x%x received from SAS adapter %s.
+*Parameters*::
+*status* (INTHEX): The status returned from the adapter.
+*adapterName* (STRING): The name of the associated SAS host bus adapter.
+
+== sas.adapter.wwn.update.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the WWN, a unique world wide name that identifies the adapter, fails to update. This message only applies to internal lab systems.
+*Corrective Action*::
+Contact your administrator.
+*Syslog Message*::
+SAS adapter "%s" fails to update WWN "%s".
+*Parameters*::
+*adapterName* (STRING): Name of the associated SAS host bus adapter.
+*WWN* (STRING): WWN of the associated SAS host bus adapter.
+
+== sas.adapter.wwn.updated
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an SAS host bus adapter's worldwide name (WWN) is updated successfully. The WWN is a unique name that identifies the serial-attached SCSI (SAS) host bus adapter.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SAS adapter "%s" WWN updated from "%s" to "%s"
+*Parameters*::
+*adapterName* (STRING): Name of the associated SAS host bus adapter.
+*OldWWN* (STRING): Old WWN of the associated SAS host bus adapter.
+*WWN* (STRING): New WWN of the associated SAS host bus adapter.

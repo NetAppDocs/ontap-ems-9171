@@ -1,0 +1,35 @@
+---
+sidebar: sidebar
+permalink: nblade-cifslongrunpattmatch-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.cifslongrunpattmatch events
+---
+
+= nblade.cifslongrunpattmatch events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.CifsLongRunPattMatch
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a CIFS query directory command that includes wildcard characters exceeds the reporting time threshold for completion. Pattern-matching searches on strings including wildcard characters consume excessive CPU resources.
+*Corrective Action*::
+Check the Windows client that is requesting searches containing wildcard characters. For assistance, contact NetApp technical support.
+*Syslog Message*::
+Detected a long running CIFS pattern matching operation. SMB dialect: %s Allowed pattern matching threshold (ms): %llu Total pattern matching time taken(ms): %llu Client IP address: %s Target Vserver name: %s Target Vserver ID: %d Wildcard Pattern: %s Share name: %s Directory Path: %s
+*Parameters*::
+*dialect* (STRING): Negotiated SMB dialect.
+*allowedThresholdInMs* (LONGINT): Pattern-matching threshold value.
+*totalTimeTakenInMs* (LONGINT): Total time taken for pattern matching.
+*clientIpAddress* (STRING): IP address of the client machine.
+*vservername* (STRING): Identifier for the Vserver name associated with this operation.
+*vserverId* (INT): Identifier for the Vserver associated with this operation.
+*pattern* (STRING): Wildcard pattern sent.
+*shareName* (STRING): Target share name.
+*dirPath* (STRING): Target directory path.

@@ -1,0 +1,126 @@
+---
+sidebar: sidebar
+permalink: callhome-sblade-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.sblade events
+---
+
+= callhome.sblade events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.sblade.import.susp
+*Severity*::
+ERROR
+*Description*::
+This message occurs when LUN import cannot resume after takeover/giveback. All LUN import sessions have been suspended. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Call home for LUN IMPORT SESSIONS SUSPENDED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multinode AutoSupport.
+
+== callhome.sblade.lif.init
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during Vserver initialization when partially initialized volumes do not complete initialization within the specified maximum timeout value. On timer expiration the Vserver data LIFs are brought online regardless of the volume initialization status. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for SCSIBLADE LIF INIT TIMEOUT
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.sblade.lu.resync.to
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the SCSI target internal resynchronization of a LUN times out. This LUN is unavailable until one or more nodes that could not complete the internal resynchronization are taken over and given back or rebooted. If your system is configured to do so, it generates and transmits an AutoSupport(R) (or "call home") message. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Call NetApp technical support for further assistance.
+*Syslog Message*::
+Call home for SCSIBLADE LU RESYNC TIMEOUT
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.sblade.lu.rst.hung
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the SCSI target cannot complete an internal reset of a LUN. This LUN is unavailable until one or more nodes that could not complete the internal reset are taken over and given back or rebooted. If your system is configured to do so, it generates and transmits an AutoSupport(R) (or "call home") message. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Call NetApp technical support for further assistance.
+*Syslog Message*::
+Call home for SCSIBLADE LU INTERNAL RESET HUNG
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.sblade.mgmt.wedged
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the SAN management plane encounters an error that prevents further SAN management commands from being processed. This usually means that all the threads of one (or more) of the SAN management plane modules are stuck. SAN configuration changes on this node and other nodes in the cluster will fail with timeout errors until corrected. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Call NetApp technical support immediately for further assistance.
+*Syslog Message*::
+Call home for SCSIBLADE MGMT WEDGED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.sblade.prop.fail
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when an internal SAN management command fails. SAN management commands is not able to be completed for the Vserver which fails until the node is rebooted. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Refer to Knowledgebase article: 2017459 for recovery instructions.
+*Syslog Message*::
+Call home for SCSIBLADE PROPOSAL FAIL
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.sblade.unavailable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the node has lost connectivity with the majority of the cluster and is unable to recover automatically. When this occurs both FCP and iSCSI traffic have been disabled on this node. Manual recovery is required to come back into service. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Reboot the node, and if the node is waiting for giveback then perform a giveback.
+*Syslog Message*::
+Call home for SCSIBLADE SERVICE UNAVAILABLE
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.sblade.vol.ev.lost
+*Severity*::
+ERROR
+*Description*::
+This message occurs when LUNs (Logical Unit Numbers) in a volume are not accessible on all paths. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Call NetApp technical support for further assistance.
+*Syslog Message*::
+Call home for SCSIBLADE VOLUME EVENT LOST
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multi node ASUP.
+
+== callhome.sblade.vs.op.tt
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a mangement command or other internal operation takes too long for a LUN (Logical Unit Number). When this situation occurs, the corresponding Vserver cannot handle any other management changes for the LUN until this condition no longer persists. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Call NetApp technical support immediately for further assistance.
+*Syslog Message*::
+Call home for SCSIBLADE VSERVER OPERATION TIMEOUT
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multi node ASUP.

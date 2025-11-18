@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: replication-stats-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: replication.stats events
+---
+
+= replication.stats events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== replication.stats.notLoaded
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during system boot when SnapMirror(R) or SnapVault(R) cannot load the statistics (for example. the number of transfers completed) from the registry. The statistics from the previous run of the system are lost and SnapMirror or SnapVault will start collecting the statistics from scratch.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s could not load statistics from the registry.
+*Parameters*::
+*rtype* (STRING): Replication type (SnapMirror, SnapVault, and so on.).
+
+== replication.stats.notSaved
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when SnapMirror(R) or SnapVault(R) cannot save some statistics (for example. the number of transfers completed) in the registry at the end of a transfer. The operation is retried at the end of the next SnapMirror or SnapVault transfer.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s could not save statistics to the registry.
+*Parameters*::
+*rtype* (STRING): Replication type (SnapMirror, SnapVault, and so on.).

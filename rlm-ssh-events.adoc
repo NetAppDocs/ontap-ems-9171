@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: rlm-ssh-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rlm.ssh events
+---
+
+= rlm.ssh events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rlm.ssh.access.resetup
+*Severity*::
+ERROR
+*Description*::
+RLM SSH access list needs to be resetup.
+*Corrective Action*::
+Use 'system sp_ssh_access_list modify' CLI to resetup RLM SSH access list.
+*Syslog Message*::
+RLM SSH access list needs to be resetup.
+*Parameters*::
+(None).

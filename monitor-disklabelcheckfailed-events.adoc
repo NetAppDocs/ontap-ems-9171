@@ -1,0 +1,38 @@
+---
+sidebar: sidebar
+permalink: monitor-disklabelcheckfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.disklabelcheckfailed events
+---
+
+= monitor.disklabelcheckfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.diskLabelCheckFailed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects that a file system disk has an invalid or a missing RAID label. The system corrects the situation during the next label update.
+*Corrective Action*::
+No user action is required.
+*Syslog Message*::
+Periodic check of RAID %s has failed. The system will correct the problem.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk object.
+*label_block_num* (INT): Label block number code.
+*label_state* (INT): Label state code.
+*label_read_error* (INT): Label read error code.
+*shelf* (STRING): Disk shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk in RPM.

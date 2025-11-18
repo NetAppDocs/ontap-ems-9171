@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: bridge-sas-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: bridge.sas events
+---
+
+= bridge.sas events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== bridge.SAS.invalidTransition
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the SAS disk shelves behind an FC-to-SAS bridge are not cabled correctly, indicating an invalid SAS2 to SAS3 transition.
+*Corrective Action*::
+Follow the defined Fabric-attached or stretch MetroCluster cabling guide.
+*Syslog Message*::
+An invalid SAS2 to SAS3 transition exists on FC-to-SAS bridge %s S/N [%s]: %s
+*Parameters*::
+*bridgeName* (STRING): Name of the FC-to-SAS bridge.
+*bridgeSerialNum* (STRING): Serial number of the FC-to-SAS bridge.
+*bridgeError* (STRING): Error string from the FC-to-SAS bridge.

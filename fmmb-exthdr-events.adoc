@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: fmmb-exthdr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fmmb.exthdr events
+---
+
+= fmmb.exthdr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fmmb.exthdr.null
+*Severity*::
+ERROR
+*Description*::
+This event is issued when the HA Mailbox extension header is invalid. The extension header is an on-disk structure which describes the opaque client blocks and major reset structures.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+HA Mailbox extension header is null.
+*Parameters*::
+*host* (STRING): The node which owns the HA mailbox disk. The node can be either local or partner.

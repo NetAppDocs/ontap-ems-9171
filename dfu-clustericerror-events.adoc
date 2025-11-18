@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: dfu-clustericerror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dfu.clustericerror events
+---
+
+= dfu.clustericerror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dfu.clusterIcError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when communication with the controller failover partner cannot be established.
+*Corrective Action*::
+Typically, these errors are related to cable or transmission errors from the HA interconnect. Check that the HA interconnect cables are connected properly, and if applicable (based on the HA interconnect type), that the SFPs (Small Form-Factor Pluggables) are seated properly on both controllers.
+*Syslog Message*::
+HA interconnect error %d encountered. Unable to download firmware to disk %s [%s %s %s] S/N [%s].
+*Parameters*::
+*clusterError* (INT): High-availability (HA) interconnect error number.
+*diskName* (STRING): Name of the disk.
+*vendorName* (STRING): Vendor name of the disk.
+*productId* (STRING): Product ID of the disk.
+*fwVersion* (STRING): Firmware version of the disk.
+*serialno* (STRING): Serial number of the disk.

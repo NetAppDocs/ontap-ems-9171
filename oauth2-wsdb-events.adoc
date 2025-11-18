@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: oauth2-wsdb-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: oauth2.wsdb events
+---
+
+= oauth2.wsdb events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== oauth2.wsdb.set.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when setting the SSL trusted server CA path in web services database fails. Potential reason could be that the application is busy or unresponsive. This will impact OAuth2.0 user authentication.
+*Corrective Action*::
+Ensure all nodes in the cluster are online and healthy by running the "cluster show" command and verifying that the "Health" and "Eligibility" fields displayed as true. If true, retry the operation. If the issue persists, contact NetApp technical support.
+*Syslog Message*::
+Failed to set the SSL trusted server CA path in web services database.
+*Parameters*::
+(None).

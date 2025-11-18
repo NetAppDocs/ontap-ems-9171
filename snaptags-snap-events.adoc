@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: snaptags-snap-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snaptags.snap events
+---
+
+= snaptags.snap events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snaptags.snap.inconsist
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects inconsistency of snapshot-specific information in the snapshot tag's metafile on a volume. The tags for the snapshot are considered lost. The next tag update for the snapshot starts without any existing tag.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+An inconsistency of snapshot tags was detected for snapshot ID '%d' on volume '%s'. The tags for the snapshot are lost.
+*Parameters*::
+*snapid* (INT): Physical snapshot ID on the volume.
+*vol* (STRING): Name of the volume.

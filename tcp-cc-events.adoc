@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: tcp-cc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: tcp.cc events
+---
+
+= tcp.cc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== tcp.cc.NewRenoInUpgrade
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system is configured to use the TCP NewReno congestion control algorithm. The TCP CUBIC algorithm is the recommended algorithm.
+*Corrective Action*::
+The TCP NewReno congestion control algorithm is selected for the Default IPspace in 9.8 based on the system's previous configuration. Confirm that TCP NewReno is the desired algorithm. NetApp recommends the CUBIC TCP congestion control algorithm in most cases. Use the "network options congestion-control modify" command to change the congestion control algorithm.
+*Syslog Message*::
+The system is configured to use the NewReno congestion control algorithm, which is not recommended.
+*Parameters*::
+(None).

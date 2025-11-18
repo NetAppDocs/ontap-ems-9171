@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: splog-warnings-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: splog.warnings events
+---
+
+= splog.warnings events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== splog.warnings
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the ONTAP(R) splogd process has been unable to retrieve a log from the Service Processor (SP) or baseboard management controller (BMC) for at least 24 hours.
+*Corrective Action*::
+1. Use the "system service-processor show -node <node-name>" command to query the status of the SP or BMC. Contact NetApp technical support for further assistance if the SP or BMC is not operational. 2. If the status of the SP or BMC is "online," then attempt to restart log monitoring by using the "system node autosupport invoke-splog -remote-node <node-name>" command. Verify from the command output that the logs were transferred successfully. (This command might require up to three attempts.) 3. If every attempt has failed, then restart the SP or BMC with the "system service-processor reboot-sp -node <node-name>" command. 4. After the SP or BMC has finished rebooting, repeat Step 2. 5. If the SP or BMC is still not transferring logs properly, run the "sp status -d" command from the SP CLI prompt or the "bmc status -d" command from the BMC CLI prompt, and include the resulting output when contacting NetApp technical support for further assistance.
+*Syslog Message*::
+Could not retrieve logs from the %s for 24 hours: %s
+*Parameters*::
+*sp_type* (STRING): SP type
+*reason* (STRING): Reason for the warning.

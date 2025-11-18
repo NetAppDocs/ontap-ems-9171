@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: sfu-downloadingctrllerr1xx-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfu.downloadingctrllerr1xx events
+---
+
+= sfu.downloadingctrllerr1xx events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfu.downloadingCtrllerR1XX
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a disk shelf firmware download starts on a particular disk shelf.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: Downloading %s on ES controller on %s.shelf%d.
+*Parameters*::
+*cmdName* (STRING): Name of the command issued, such as "storage shelf firmware update".
+*fileName* (STRING): Name of the file in /etc/shelf_fw that was being downloaded.
+*channelName* (STRING): Name of the adapter port or switch port on which the disk shelf firmware download is occurring.
+*shelfId* (INT): ID of the disk shelf on which the disk shelf firmware download is occurring.

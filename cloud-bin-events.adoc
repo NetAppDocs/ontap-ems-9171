@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: cloud-bin-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cloud.bin events
+---
+
+= cloud.bin events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cloud.bin.objcopy.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the cloud bin object copy operation (which copies objects from a source object store to a destination object store) fails because it is unable to read source objects due to unauthorized access to the object store container.
+*Corrective Action*::
+Ensure that you have added the shared access signature token to the source object store configuration. The access token can be added to the configuration using the "storage aggregate object-store config modify" command. Additionally, ensure that the configuration of your object store has not changed, and that login and connectivity information are still accurate. If the condition persists, contact NetApp technical support.
+*Syslog Message*::
+Cloud bin object copy operation to copy objects from a source object store to destination object store failed for "%s" operation because of unauthorized access to the source object store container ("%s").
+*Parameters*::
+*op_name* (STRING): Operation context in which object copy is called. This can be either clone split or svm migrate.
+*container_name* (STRING): Source object store container name

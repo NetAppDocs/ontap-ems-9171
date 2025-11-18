@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: disk-toomanyreassignments-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.toomanyreassignments events
+---
+
+= disk.toomanyreassignments events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.tooManyReassignments
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a reassignment fails due to table overflow.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s: sector %llu was NOT reassigned, too many reassignments.
+*Parameters*::
+*diskName* (STRING): Name of the device.
+*error* (LONGINT): Bad sector.

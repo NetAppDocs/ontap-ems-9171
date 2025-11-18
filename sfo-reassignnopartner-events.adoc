@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sfo-reassignnopartner-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfo.reassignnopartner events
+---
+
+= sfo.reassignnopartner events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfo.reassignNoPartner
+*Severity*::
+ERROR
+*Description*::
+This message occurs during the Storage Failover takeover process, when the disks from the failed node cannot be reassigned because they are unaccessible to the surviving node. Access to the failed node's volumes will be unavailable until this situation is fixed.
+*Corrective Action*::
+Use the "storage disk show -owner" command to verify that the surviving node can access the failed node's disks. If the disks are still unavailable, check cabling and connectivity to the partner disks. If the disks are available, use the "storage failover takeover" command to reinitiate the takeover. Use the "storage disk show -owner" command to verify that the node can access the partner disks. When the node can access the partner disks, use the "storage failover takeover" command.
+*Syslog Message*::
+The takeover disk reassignment failed because the partner disks were not accessible.
+*Parameters*::
+(None).

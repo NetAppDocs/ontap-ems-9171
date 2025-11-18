@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: wafl-timer-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.timer events
+---
+
+= wafl.timer events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.timer.disk.io.stalled
+*Severity*::
+ERROR
+*Description*::
+This message occurs when disk I/O is stalled, possibly during a disk firmware download operation. If automatic firmware update is enabled, the download operation restarts automatically.
+*Corrective Action*::
+If disk firmware updates were in progress, verify that the update has automatically resumed by using the "storage download status" command. If the disk firmware updates have not resumed, restart the download by using the "storage download" command.
+*Syslog Message*::
+All disk I/O stalled.
+*Parameters*::
+(None).

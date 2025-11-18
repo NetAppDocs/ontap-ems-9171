@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: sk-hog-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sk.hog events
+---
+
+= sk.hog events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sk.hog.runtime
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a process runs too long.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Process %s ran for %d milliseconds
+*Parameters*::
+*procname* (STRING): The name of the process which ran too long
+*runtime* (INT): Number of milliseconds process ran

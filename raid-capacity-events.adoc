@@ -1,0 +1,74 @@
+---
+sidebar: sidebar
+permalink: raid-capacity-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.capacity events
+---
+
+= raid.capacity events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.capacity.license.alloc
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system creates a new aggregate, or registers a new capacity for an existing aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Registered licensed capacity (%llu%s) for %s aggregate %s UUID %s - operation: %s, simulated: %d.
+*Parameters*::
+*capacity* (LONGINT): Capacity registered for the aggregate against the license manager.
+*capacity_unit* (STRING): Capacity unit (MB, GB, TB) for registered capacity.
+*mirrored* (STRING): "mirrored" if the aggregate is mirrored; "unmirrored" otherwise.
+*aggregate_name* (STRING): Name of the aggregate.
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+*operation* (STRING): Aggregate operation triggering the license capacity update.
+*simulated* (INT): 1 if the operation is simulated; 0 if the operation is not simulated.
+*root* (INT): 1 if the aggregate is a root aggregate; 0 if it is a data aggregate.
+*status* (INT): Synchronous status returned by the license capacity alloc call.
+*callback* (INT): Indicates whether callback requested
+*sequence* (INT): Sequence number to prevent suppression of duplicate messages.
+
+== raid.capacity.license.free
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system destroys an aggregate, and thus frees its registered license capacity.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Freed licensed capacity of aggregate %s UUID %s operation: %s.
+*Parameters*::
+*aggregate_name* (STRING): Name of the aggregate.
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+*operation* (STRING): Aggregate operation triggering the license capacity free.
+*status* (INT): Synchronous status returned by the license capacity free call.
+*sequence* (INT): Sequence number to prevent suppression of duplicate messages.
+
+== raid.capacity.license.status
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system attempts to update the licensed capacity of the system due to an aggregate operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Status of licensing request %s, aggregate %s, licensed capacity %llu%s, capacity remaining %llu%s, additional capacity required %llu%s.
+*Parameters*::
+*status_string* (STRING): Status of the licensing request.
+*aggregate_name* (STRING): Name of the aggregate.
+*licensed_size* (LONGINT): Licensed capacity of the aggregate.
+*licensed_size_unit* (STRING): Capacity unit (MB, GB, TB) for licensed capacity.
+*capacity_left* (LONGINT): Capacity remaining in the license.
+*capacity_left_unit* (STRING): Capacity unit (MB, GB, TB) for capacity remaining.
+*capacity_required* (LONGINT): Additional licensed capacity required for this operation.
+*capacity_required_unit* (STRING): Capacity unit (MB, GB, TB) for additional capacity required.
+*status_code* (INT): Specific status code returned by the licensing request.
+*sequence* (INT): Sequence number to prevent suppression of duplicate messages.

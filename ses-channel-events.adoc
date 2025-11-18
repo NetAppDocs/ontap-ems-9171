@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ses-channel-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ses.channel events
+---
+
+= ses.channel events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ses.channel.rescanInitiated
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a rescan for enclosure services devices is initiated.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Initiating rescan on channel %s.
+*Parameters*::
+*channelName* (STRING): Name of the adapter port or switch port being rescanned; for example, "7a" or "myswitch:5".

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: lmgr-mismatch-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lmgr.mismatch events
+---
+
+= lmgr.mismatch events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lmgr.mismatch.file.objects
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the current file object of a lock does not match the file object found through the file handle. This might be caused by a SnapMirror(R) promote operation where the Master Data Set ID (MSID) is remapped.
+*Corrective Action*::
+None.
+*Syslog Message*::
+(None).
+*Parameters*::
+*volume* (STRING): Name of the volume, based on the file handle.
+*lockid* (STRING): Lock Universal Unique Identifier (UUID) of the sharelock.
+*caller* (STRING): WAFL(R) spinnp operation that encountered this event.

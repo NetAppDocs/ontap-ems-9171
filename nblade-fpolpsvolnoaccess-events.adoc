@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: nblade-fpolpsvolnoaccess-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.fpolpsvolnoaccess events
+---
+
+= nblade.fpolpsvolnoaccess events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.fpolPsVolNoAccess
+*Severity*::
+ERROR
+*Description*::
+This message occurs when events cannot be written into persistent store volume due to insufficient permissions. This causes disruption in FPolicy where persistent store is enabled.
+*Corrective Action*::
+Check the permissions of the persistent store volume and provide full access.
+*Syslog Message*::
+Events cannot be written into the persistent store volume "%s" in SVM "%s" due to insufficient permissions.
+*Parameters*::
+*volName* (STRING): Persistent store volume
+*vserverName* (STRING): Name of the SVM.

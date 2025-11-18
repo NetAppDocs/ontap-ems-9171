@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ldap-false-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ldap.false events
+---
+
+= ldap.false events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ldap.false.configs.removed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the last system to be upgraded in a cluster removes LDAP configurations that were marked as disabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+All LDAP configurations with the "-client-enabled" parameter set to "false" were removed.
+*Parameters*::
+(None).

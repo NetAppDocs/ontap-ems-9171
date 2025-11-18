@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sfu-partnerupdatetimeout-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfu.partnerupdatetimeout events
+---
+
+= sfu.partnerupdatetimeout events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfu.partnerUpdateTimeout
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs in a high-availability (HA) configuration in which an HA partner was downloading disk shelf firmware and the download has timed out. The system resumes enclosure services monitoring.
+*Corrective Action*::
+Verify that the HA interconnect is operational and then retry the (advanced privilege) "storage shelf firmware update" command.
+*Syslog Message*::
+Waited %d minutes for partner shelf firmware update. Resuming enclosure services.
+*Parameters*::
+*minutes* (INT): Duration of the partner update timeout, in minutes.

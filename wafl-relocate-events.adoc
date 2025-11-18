@@ -1,0 +1,48 @@
+---
+sidebar: sidebar
+permalink: wafl-relocate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.relocate events
+---
+
+= wafl.relocate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.relocate.statusvol.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot perform an aggregate relocation because one or more of its volumes are used by wafliron to host status files. The relocation is aborted.
+*Corrective Action*::
+Use "aggr wafliron show" command to monitor the status of wafliron and retry aggregate relocation after wafliron is complete.
+*Syslog Message*::
+%s %s%s%s%s is being used by wafliron to host status files. Canceling aggregate relocation.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique volume identity when the volume name itself is insufficient.
+
+== wafl.relocate.vetoedByNvsave
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an aggregate relocation is vetoed because there are NVSave files for an aggregate or a flexible volume that must be replayed before the aggregate or flexible volume can be relocated.
+*Corrective Action*::
+Retry the aggregate relocation after the NVSave files either are replayed (by bringing the aggregate or flexible volume online) or deleted from the root volume. Successful replay, for example, is indicated by the EMS message 'wafl.nvsave.replaying.pass'.
+*Syslog Message*::
+Aggregate relocation vetoed because NVSave files are present for %s FSID %d name %s%s%s. UUID is %s.
+*Parameters*::
+*vol_type* (STRING): Whether this message applies to an aggregate or a flexible volume.
+*fsid* (INT): File system identifier.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases in which the volume name itself is insufficient.
+*UUID* (STRING): UUID of the volume.

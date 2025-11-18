@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: pcp-linkstateinprogress-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: pcp.linkstateinprogress events
+---
+
+= pcp.linkstateinprogress events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== pcp.linkStateInProgress
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a change of network port state cannot be confirmed because another configuration task is in progress. The change of the network port state happens when the node is booting up or the administrator changes the network port state manually, via the "network port modify -up-admin [true|false]" command. The affected port might still be operating in the state before the attempted change. While this condition exists, any further configuration or status operations will not be possible.
+*Corrective Action*::
+The link state change request will be retried in the next 5 minutes. If it succeeds, a linkStateChangeSucceed event will be generated. If the issue persists for more than 5 minutes, and the linkStateChangeSucceed event is not generated, there is a configuration task that has not proceeded correctly. The system state will be automatically collected and and an AutoSupport(R) callhome event will be generated. The node from which this event was triggered needs to be rebooted to clear the issue.
+*Syslog Message*::
+Link state change cannot be confirmed on port %s.
+*Parameters*::
+*portname* (STRING): Port name.

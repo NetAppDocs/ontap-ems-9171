@@ -1,0 +1,47 @@
+---
+sidebar: sidebar
+permalink: bucket-soft-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: bucket.soft events
+---
+
+= bucket.soft events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== bucket.soft.limit.exceeded
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a bucket exceeds the soft quota limit (block).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Bucket "%s" on volume "%s%s%s" has exceeded the soft block limit and is at %s capacity.
+*Parameters*::
+*whom* (STRING): Entity for which this event is generated.
+*volname* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume in cases in which the volume name alone is insufficient.
+*capacity* (STRING): Capacity percentage.
+
+== bucket.soft.limit.normal
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a bucket's soft quota limit (block) returns to normal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Bucket "%s" on volume "%s%s%s" is below the soft block limit and is at %s capacity.
+*Parameters*::
+*whom* (STRING): Entity for which this event is generated.
+*volname* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume in cases in which the volume name alone is insufficient.
+*capacity* (STRING): Capacity percentage.

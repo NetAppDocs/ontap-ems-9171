@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: secd-authsys-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: secd.authsys events
+---
+
+= secd.authsys events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== secd.authsys.lookup.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the incoming UNIX user ID (UID) that tries to mount or access a mount point cannot be looked up in any of the name-services (NIS, LDAP, file).
+*Corrective Action*::
+Ensure that the UNIX UID that is trying to mount or access a mount point is part of a name-service, such as NIS, LDAP, or file.
+*Syslog Message*::
+Unable to retrieve credentials for UNIX user with UID (%u) on Vserver (%s) for client with IP address (%s).
+*Parameters*::
+*uid* (INT): UNIX UID.
+*vserverName* (STRING): Name of the Vserver.
+*clientIP* (STRING): IP Address of the client.

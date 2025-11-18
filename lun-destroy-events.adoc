@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: lun-destroy-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lun.destroy events
+---
+
+= lun.destroy events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== LUN.destroy
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a LUN is destroyed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LUN %s, vol %s (DSID %llu) destroyed (UUID: %s).
+*Parameters*::
+*lun_path* (STRING): Path for the LUN that was destroyed.
+*volume_name* (STRING): Name of the containing volume.
+*volume_dsid* (LONGINT): Data set ID (DSID) of the containing volume.
+*object_uuid* (STRING): UUID of the LUN or a hyphen (-) if the UUID cannot be determined.
+*object_type* (STRING): Type of object under notification.

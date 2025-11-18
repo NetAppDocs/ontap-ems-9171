@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: dfu-clustertakeover-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dfu.clustertakeover events
+---
+
+= dfu.clustertakeover events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dfu.clusterTakeover
+*Severity*::
+ERROR
+*Description*::
+This message occurs when firmware download is attempted while in takeover mode.
+*Corrective Action*::
+Firmware download is not allowed while in takeover mode. Exit takeover mode and attempt the "storage disk firmware update" command again. See the "storage disk firmware update" man page for details.
+*Syslog Message*::
+Unable to download firmware while in takeover mode to Disk %s [%s %s %s] S/N [%s].
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*vendorName* (STRING): Vendor name of the disk.
+*productId* (STRING): Product id of the disk.
+*fwVersion* (STRING): Firmware version of the disk.
+*serialno* (STRING): Serial number of the disk.

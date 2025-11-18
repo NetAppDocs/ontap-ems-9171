@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: storvsc-srb-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: storvsc.srb events
+---
+
+= storvsc.srb events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== storvsc.srb.status
+*Severity*::
+ALERT
+*Description*::
+This message occurs when ONTAP(R) software receives an unexpected hypervisor I/O adapter driver response code to an I/O request. The I/O request is retried.
+*Corrective Action*::
+If the condition persists, contact the hypervisor provider for the corrective action.
+*Syslog Message*::
+%s. The I/O request will be retried.
+*Parameters*::
+*Descriptor* (STRING): Hypervisor's I/O adapter driver received response code.

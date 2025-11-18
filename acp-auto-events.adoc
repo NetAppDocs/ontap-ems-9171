@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: acp-auto-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: acp.auto events
+---
+
+= acp.auto events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== acp.auto.upgrade
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Alternate Control Path (ACP) Administrator determines that the ACP Processor has an older firmware image compared to the file revision present in '/etc/acp/acpp_fw'. The ACP Administrator is performing an automatic firmware upgrade.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Performing automatic firmware upgrade (image: %s) on %s (%s).
+*Parameters*::
+*file* (STRING): Command issued.
+*inband_id* (STRING): Inband ID of the module.
+*ip* (STRING): IP address of the module.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: wafl-dirent-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.dirent events
+---
+
+= wafl.dirent events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.dirent.illegal.encoding
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a user attempts to use a directory entry name that is not supported by the virtual server's language setting.
+*Corrective Action*::
+Use directory entry name with encoding that matches the virtual server's language setting.
+*Syslog Message*::
+The encoding of directory entry name %s doesn't match the virtual server's language code %s.
+*Parameters*::
+*filename* (STRING): The filename
+*langcode* (STRING): Language code

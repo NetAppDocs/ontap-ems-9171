@@ -1,0 +1,55 @@
+---
+sidebar: sidebar
+permalink: coredump-segment-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: coredump.segment events
+---
+
+= coredump.segment events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== coredump.segment.auto.fail
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system enounters an error while trying to send a core segment request.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failed to start automatic segmenting for core file, %s , for host %d.
+*Parameters*::
+*file* (STRING): Name of the core file that would have been segmented.
+*host* (INT): Host that owns the core file.
+
+== coredump.segment.auto.pfail
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system cannot start the segmenting of a core file because the node is no longer in takeover mode.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cannot start segmenting a core file, %s. Node is no longer in takeover mode.
+*Parameters*::
+*file* (STRING): Name of core file that would have been segmented.
+
+== coredump.segment.completed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the segmenting of a full core file has been completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Saved core segment %s for node %s. Core size is %llu bytes and core data checksum is %s.
+*Parameters*::
+*file* (STRING): Name of the core file segmented.
+*node* (STRING): Name of the node whose core segment was saved.
+*size* (LONGINT): Size of core segment in bytes.
+*chksum* (STRING): Checksum of the core segment file's data.

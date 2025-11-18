@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: async-igroup-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: async.igroup events
+---
+
+= async.igroup events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== async.igroup.replication.error
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an error occurs asynchronously replicating an initiator group.
+*Corrective Action*::
+To get further details on initiator groups that have replication errors, use the command: "lun igroup show -replication-error !-".
+*Syslog Message*::
+Asynchronous replication of an initiator group between source Vserver "%s" and peer Vserver "%s" has failed with error "%s".
+*Parameters*::
+*vserver_name* (STRING): The name of the source Vserver.
+*peer_vserver_name* (STRING): The name of the replication peer Vserver.
+*error* (STRING): The error that occured.
+*vserver_uuid* (STRING): The UUID of the source Vserver.
+*peer_vserver_uuid* (STRING): The UUID of the replication peer Vserver.
+*peer_relationship_uuid* (STRING): The UUID of the relationship between the source and peer.

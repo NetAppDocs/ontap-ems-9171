@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: vsa-sriov-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsa.sriov events
+---
+
+= vsa.sriov events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsa.sriov.nic.detach
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP(R) software running in the guest virtual machine (VM) detects an SR-IOV NIC detach event. ONTAP will continue to use the Hyper-V netsvc driver without the SR-IOV functionality for a short time. On HA configurations, unsynchronized logs might appear during this time, which will be resolved if a subsequent SR-IOV attach event occurs. If the SR-IOV attach event does not occur quickly, a high-availability (HA) takeover might occur.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NIC SR-IOV driver detach event was detected. On HA configurations, unsynchronized logs might result, or an HA takeover might occur if SR-IOV remains detached.
+*Parameters*::
+(None).

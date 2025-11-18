@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: wafl-volinfo-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.volinfo events
+---
+
+= wafl.volinfo events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.volinfo.fsinfo.error
+*Severity*::
+ALERT
+*Description*::
+This message occurs when there is an error while reading the volinfo or fsinfo block of a volume.
+*Corrective Action*::
+Take appropriate action based on the reason for the error.
+*Syslog Message*::
+%s for %s '%s'
+*Parameters*::
+*reason* (STRING): Reason for the error
+*type* (STRING): The type of object (volume/aggregate)
+*vol* (STRING): The name of the volume

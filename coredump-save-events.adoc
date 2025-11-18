@@ -1,0 +1,189 @@
+---
+sidebar: sidebar
+permalink: coredump-save-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: coredump.save events
+---
+
+= coredump.save events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== coredump.save.aborted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the savecore operation is aborted while saving a kernel core. The core is preserved for a future iteration of savecore.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s processing savecore aborted%s%s.
+*Parameters*::
+*file* (STRING): Name of the kernel core file being created.
+*operation* (STRING): Type of operation that is being attempted when the abort occurs.
+*action* (STRING): Type of action being taken when the abort occurs.
+
+== coredump.save.attempts.count
+*Severity*::
+NOTICE
+*Description*::
+Previous attempts to save this core have failed, either due to reboots or panics. To prevent a panic loop, savecore is aborting this attempt.
+*Corrective Action*::
+Use either "savecore -f" to save the core, or "savecore -k" to erase the core.
+*Syslog Message*::
+Too many attempts to save this core
+*Parameters*::
+(None).
+
+== coredump.save.completed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when all the core segments belonging to a coredump have been saved.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Saved core %s for node %s in %llu seconds. Core size is %llu bytes.
+*Parameters*::
+*file* (STRING): Primary core segment file that was created.
+*node* (STRING): Name of the node whose core was saved.
+*seconds* (LONGINT): Number of seconds spent on saving all the core segments.
+*size* (LONGINT): Size of primary core segment in bytes.
+*chksum* (STRING): Checksum of primary core segment file's data.
+
+== coredump.save.denied
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the coredump subsystem cannot finish saving a core because an aggregate relocation or a takeover is in progress. The system cannot save a core while either an aggregate relocation or a takeover is in progress.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Coredump save disallowed because an aggregate relocation or a takeover in progress.
+*Parameters*::
+(None).
+
+== coredump.save.disk.missing
+*Severity*::
+INFORMATIONAL
+*Description*::
+A disk being used by coredump is now missing. This could be due to the ownership of the disk changing, the disk being removed, etc. Most savecore operations will proceed, but if further errors are encountered, or an expected core cannot be found, corrective action will be necessary.
+*Corrective Action*::
+If this disk has failed, no action is possible. If this message was seen while running a "savecore -s", "savecore -i", or "savecore -l" operation, replace the missing disk. This might be done by undoing the ownership change, or reinserting the missing disk. If this message was seen while saving the core, and no further errors were seen, no action is necessary. If more errors were seen, replace the missing disk as above, and run "savecore" again.
+*Syslog Message*::
+Disk %s being used by coredump is missing
+*Parameters*::
+*disk* (STRING): Name of the missing disk
+
+== coredump.save.diskio.zone
+*Severity*::
+ERROR
+*Description*::
+A disk IO operation was attempted outside of the allowed regions on the disk. This behavior indicates a corrupt core, and it will be deleted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+IO to %d block(s) starting at %llu on disk %s is not allowed
+*Parameters*::
+*count* (INT): Number of blocks in IO request
+*start* (LONGINT): Starting block number on the disk
+*disk* (STRING): Name of the disk causing trouble
+
+== coredump.save.error
+*Severity*::
+NOTICE
+*Description*::
+A correctable error was encountered while saving the core. Savecore will continue saving other cores.
+*Corrective Action*::
+Once savecore finishes, address errors that may have appeared, and restart savecore.
+*Syslog Message*::
+%s processing encountered error
+*Parameters*::
+*file* (STRING): The core file that savecore was attempting to create
+
+== coredump.save.failed
+*Severity*::
+NOTICE
+*Description*::
+An unrecoverable error was encountered while saving the core. This core will be deleted, and savecore will continue saving other cores.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s processing failed
+*Parameters*::
+*file* (STRING): The core file that savecore was attempting to create
+
+== coredump.save.internal.error
+*Severity*::
+ERROR
+*Description*::
+An internal coredump error was encountered. This indicates the dumped core is corrupt, and will be deleted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Internal coredump error
+*Parameters*::
+(None).
+
+== coredump.save.nospace
+*Severity*::
+ALERT
+*Description*::
+This message occurs when there is not enough space in the root volume to save the core. Savecore is making a worst-case estimate when determining how much space might be needed to save the core, and does not start unless that much space is available.
+*Corrective Action*::
+Try performing the following steps to make sufficient room in root volume: Delete old or unneeded core files by using the "coredump delete" command. Delete old or unneeded core file segments by using the "coredump segment delete" command. Delete any Snapshot(R) copies that include the deleted files. Adjust minimum free space on the root file system by using "coredump config modify" command. Once there is sufficient room, take the following steps to save the cores: To save all core files using "coredump save-all" command, run the "coredump status -instance" command and ensure that "Space Available On Internal Filesystem" is greater than "Space Needed to Save All Unsaved Cores" plus "Minimum Free Bytes on Root Filesystem". To save a specific core file, run the "coredump save" command, when available space of "Space Needed To Save Core" (from the "coredump show" command) plus "Minimum Free Bytes on Root Filesystem" is sufficient.
+*Syslog Message*::
+Available space (%llu %dKB blocks) is not enough to save the core image (requires up to %llu blocks) and maintain the minimum free space of %llu blocks.
+*Parameters*::
+*avail* (LONGINT): Number of blocks available for saving the core image.
+*blocksize* (INT): Block size in kilobytes.
+*needed* (LONGINT): Number of blocks needed for saving the core image.
+*minfree* (LONGINT): Number of blocks reserved for normal system operation.
+
+== coredump.save.partial.not.ok
+*Severity*::
+INFORMATIONAL
+*Description*::
+Can not save partial core that was dumped using disks with different sizes. Savecore can not determine the size of the missing disks. Attempting a save in this condition will most likely end up in an error.
+*Corrective Action*::
+Run "savecore -k" to delete all unsaved cores.
+*Syslog Message*::
+Cannot save partial core (%s) that used disks with different sizes, missing %llu of %llu disks
+*Parameters*::
+*panic* (STRING): Panic string of the partial core.
+*missing* (LONGINT): The number of disks that are missing
+*total* (LONGINT): Total number of disks used in this dump
+
+== coredump.save.read.header.failed
+*Severity*::
+NOTICE
+*Description*::
+An error was encountered while trying to read the core header block from disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Could not read core header block (%llu) from disk %s
+*Parameters*::
+*block* (LONGINT): Block number being searched for the core header
+*disk* (STRING): Name of the disk that could not be read
+
+== coredump.save.started
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the savecore operation starts saving a kernel core.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Saving %llu MB to %s via %s ("%s") for node %s.
+*Parameters*::
+*size* (LONGINT): Number of MB being saved.
+*file* (STRING): Name of the kernel core file to be created.
+*dumpcoretype* (STRING): Kernel coredump type.
+*panic* (STRING): Panic string of the kernel core being saved.
+*node* (STRING): Name of the node whose core is being saved.

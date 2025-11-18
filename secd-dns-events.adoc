@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: secd-dns-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: secd.dns events
+---
+
+= secd.dns events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== secd.dns.server.timed.out
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the DNS server fails to respond to a query and timeout occurs.
+*Corrective Action*::
+Make sure that the DNS server is up and running and that there are no networking issues preventing the Vserver from communicating with the DNS server.
+*Syslog Message*::
+DNS server %s did not respond to vserver = %s within timeout interval.
+*Parameters*::
+*ipaddr* (STRING): Ip address of the DNS server.
+*vsName* (STRING): Name of the Vserver for which DNS response timed out.
+
+== secd.dns.srv.lookup.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Domain Name Service (DNS) server fails to look up a service name.
+*Corrective Action*::
+Make sure that the service name is input correctly and that there are no networking issues preventing the Vserver from communicating with the DNS server.
+*Syslog Message*::
+DNS server failed to look up service (%s) for vserver (%s) with error (%s).
+*Parameters*::
+*serviceName* (STRING): Service name to look up.
+*vsName* (STRING): Name of the Vserver.
+*errorMsg* (STRING): Error message of the failure.

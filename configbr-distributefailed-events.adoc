@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: configbr-distributefailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: configbr.distributefailed events
+---
+
+= configbr.distributefailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== configbr.distributeFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a configuration backup cannot be distributed to another node in the cluster.
+*Corrective Action*::
+Ensure that the destination node is accessible and healthy. If necessary, upload the backup file to the remote URL to increase the availability of the backup file with the (privilege: advanced) "system configuration backup upload" command.
+*Syslog Message*::
+Configuration backup %s cannot be distributed to node %s. Error: '%s'.
+*Parameters*::
+*backup* (STRING): Backup file.
+*destination_node* (STRING): Destination node to which the backup file failed to be distributed.
+*reason* (STRING): Reason for the error.

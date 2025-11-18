@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: vifmgr-lifdeleted-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.lifdeleted events
+---
+
+= vifmgr.lifdeleted events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.lifdeleted.byadmin
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an administrator action causes a logical interface (LIF) IP address to be deleted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LIF %s with ID %s (on virtual server %s), IP address %s, was deleted.
+*Parameters*::
+*vifname* (STRING): Name of the LIF that was deleted.
+*vifid* (STRING): Unique ID assigned to the LIF.
+*vsrvid* (STRING): Name of the virtual server identifier on which the LIF resided.
+*vifip* (STRING): LIF IP address that was deleted.

@@ -1,0 +1,99 @@
+---
+sidebar: sidebar
+permalink: replication-qtree-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: replication.qtree events
+---
+
+= replication.qtree events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== replication.qtree.dst.disk.error
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the replication destination engine receives blocks with disk errors from the source for the first time in a transfer and continues with replication.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+SnapMirror: transfer from %s:%s to %s:%s: Source volume has disk errors. Continuing with replication. See /etc/log/snapmirror for inconsistency details.
+*Parameters*::
+*src_filer* (STRING): Source filer of this replication transfer.
+*src_path* (STRING): Source path of this replication transfer.
+*dst_filer* (STRING): Destination filer of this replication transfer.
+*dst_path* (STRING): Destination path of this replication transfer.
+
+== replication.qtree.dst.disk.error.abort
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the replication destination engine receives blocks with disk errors from the source and aborts because of user-set options.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+SnapMirror: transfer from %s:%s to %s:%s: Source volume has disk errors. (source fid:%u,source fbn:%u,source snapid:%u). Aborting transfer.
+*Parameters*::
+*src_filer* (STRING): Source filer of this replication transfer.
+*src_path* (STRING): Source path of this replication transfer.
+*dst_filer* (STRING): Destination filer of this replication transfer.
+*dst_path* (STRING): Destination path of this replication transfer.
+*sfileid* (INT): Identifying number for the suspect file
+*sfbn* (INT): File block number in which the disk error was found.
+*ssnapid* (INT): Incremental snapshot of the source from which this file came.
+
+== replication.qtree.dst.disk.error.summary
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the replication involving blocks with disk errors happens on the replication destination.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+SnapMirror: transfer from %s:%s to %s:%s: Source volume has disk errors. %u blocks out of %u blocks replicated are inconsistent. See /etc/log/snapmirror for inconsistency details.
+*Parameters*::
+*src_filer* (STRING): Source filer of this replication transfer.
+*src_path* (STRING): Source path of this replication transfer.
+*dst_filer* (STRING): Destination filer of this replication transfer.
+*dst_path* (STRING): Destination path of this replication transfer.
+*total_bad_blks* (INT): Total number of blocks with disk errors received.
+*total_blks* (INT): Total number of blocks received.
+
+== replication.qtree.dst.inconsistent.acl
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the replication destination engine receives an Access Control List (ACL) with disk errors from the source.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+SnapMirror: transfer from %s:%s to %s:%s: Source volume has disk errors. (source acl fid:%u,source snapid:%u). Aborting transfer.
+*Parameters*::
+*src_filer* (STRING): Source filer of this replication transfer.
+*src_path* (STRING): Source path of this replication transfer.
+*dst_filer* (STRING): Destination filer of this replication transfer.
+*dst_path* (STRING): Destination path of this replication transfer.
+*sfileid* (INT): Identifying number for the suspect ACL.
+*snapid* (INT): Incremental snapshot of the source from which this ACL came.
+
+== replication.qtree.dst.inconsistent.symlink
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the replication destination engine receives a symbolic link with disk errors from the source.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+SnapMirror: transfer from %s:%s to %s:%s: Source volume has disk errors. (source symlink fid:%u,source snapid:%u). Aborting transfer.
+*Parameters*::
+*src_filer* (STRING): Source filer of this replication transfer.
+*src_path* (STRING): Source path of this replication transfer.
+*dst_filer* (STRING): Destination filer of this replication transfer.
+*dst_path* (STRING): Destination path of this replication transfer.
+*sfileid* (INT): Identifying number for the suspect symbolic link.
+*snapid* (INT): Incremental snapshot of the source from which this symbolic link came.

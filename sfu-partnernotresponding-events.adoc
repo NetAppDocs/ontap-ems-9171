@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sfu-partnernotresponding-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfu.partnernotresponding events
+---
+
+= sfu.partnernotresponding events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfu.partnerNotResponding
+*Severity*::
+ALERT
+*Description*::
+This message occurs when one node in a high-availability (HA) configuration does not respond to firmware download requests from another node, in which case the other node cannot download disk shelf firmware.
+*Corrective Action*::
+Make certain that the HA interconnect is up and running on both nodes of the HA pair and then attempt to re-download disk shelf firmware, using the (advanced privilege) "storage shelf firmware update" command.
+*Syslog Message*::
+Partner either responded in the negative, or did not respond in %d seconds. Aborting shelf firmware update.
+*Parameters*::
+*timeout* (INT): Number of seconds the timeout is set for.

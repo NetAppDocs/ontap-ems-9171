@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: zrto-lif-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: zrto.lif events
+---
+
+= zrto.lif events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== zrto.lif.upgrade.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) fails to re-create a previously deleted LIF during an upgrade. The LIF must be re-created manually.
+*Corrective Action*::
+Attempt the failed command again. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Failed to re-create a LIF during upgrade. Command: "network interface create %s". Reason: %s.
+*Parameters*::
+*command_arguments* (STRING): Arguments of the command that failed.
+*error* (STRING): Error that LIF creation encountered.

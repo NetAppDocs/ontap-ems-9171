@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sp-ssh-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sp.ssh events
+---
+
+= sp.ssh events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sp.ssh.access.resetup
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the SSH access list of the service processor needs to be reconfigured.
+*Corrective Action*::
+Use the "system service-processor ssh add-allowed-addresses" command to reconfigure the service processor SSH access list.
+*Syslog Message*::
+Service Processor SSH access list needs to be reconfigured.
+*Parameters*::
+(None).

@@ -1,0 +1,219 @@
+---
+sidebar: sidebar
+permalink: callhome-reboot-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.reboot events
+---
+
+= callhome.reboot events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.reboot
+*Severity*::
+NOTICE
+*Description*::
+This message occurs after an appliance reboot--the appliance reports this event after the reboot is complete. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+If reboots continue to occur, contact NetApp technical support.
+*Syslog Message*::
+Call home for REBOOT
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.reboot.agentwatchdog
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system experiences an internal hardware watchdog timer reset. The system reports this event after the reboot is complete. If your system is configured to do so, it generates and transmits an AutoSupport(tm) (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+If you continue to experience watchdog timer resets, contact NetApp technical support.
+*Syslog Message*::
+Call home for REBOOT (agent watchdog reset).
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.reboot.fw
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the appliance reboots after loading firmware--the appliance reports this event after the reboot is complete. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for REBOOT (after entering firmware)
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.reboot.giveback
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the node boots to normal operations because of a successful storage giveback from the partner. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for REBOOT (after giveback)
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.reboot.glitch
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the appliance halts and reboots due to problems with inconsistent power. The appliance reports this event after the reboot is complete. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+If you continue to experience 'power glitch' reboots, contact NetApp technical support.
+*Syslog Message*::
+Call home for REBOOT (power glitch)
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.reboot.halt
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the appliance reboots after you use the 'halt' command to shut it down. The appliance reports this event after the reboot is complete. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for REBOOT (halt command)
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.reboot.ioxm.removal
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the appliance halts and reboots due to the removal of the IOXM without powering down the appliance first. The appliance reports this event after the reboot is complete. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Do not remove the IOXM without powering down the appliance first.
+*Syslog Message*::
+Call home for REBOOT (IOXM removal)
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.reboot.panic
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the appliance reboots after a panic (also known as a 'system crash'). The appliance reports this event after the reboot is complete. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Call home for REBOOT (panic)
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.reboot.poweron
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the appliance reboots when it is powered on. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+If you continue to experience 'power on' reboots, contact NetApp technical support.
+*Syslog Message*::
+Call home for REBOOT (power on)
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.reboot.reboot
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when you reboot the appliance with the 'reboot' command. The appliance reports this event after the reboot is complete. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for REBOOT (reboot command)
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.reboot.sk.halt
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system is halted automatically to prevent damage or possible loss of data. The system reports this event after the reboot is complete. An internal halt might be caused by one of the following reasons: 1. If a disk drive fails and there are no available spares, the system enters degraded mode. The appliance halts automatically to prevent a double disk drive failure, and possible loss of data, if it runs in degraded mode for the time interval given by the following command: "storage raid-options show -name raid.timeout -node local" The default timeout is usually 24 hours. If a spare disk drive becomes available while the system is running in degraded mode, the system immediately begins rebuilding the failed disk drive. 2. The system also halts automatically if the environmental conditions, such as temperature or power, are not within the safe operating limits or are inadequate to prevent possible damage. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+If you continue to experience 'internal halt' reboots, contact NetApp technical support.
+*Syslog Message*::
+Call home for REBOOT (internal halt)
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.reboot.sk.reboot
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when you halt, reset, or turn off power to the appliance without completing an orderly halt or shutdown sequence before rebooting. The appliance reports this event after the reboot is complete. To keep your data safe, always use the 'halt' command to halt the appliance, and then wait for an orderly halt or shutdown to be complete before you power down the appliance or perform any hardware maintenance. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+If you continue to experience 'internal reboot' reboots, contact NetApp technical support.
+*Syslog Message*::
+Call home for REBOOT (internal reboot)
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.reboot.sp.rst
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the appliance reboots when it has been reset through the Service Processor (SP) 'system reset' command. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for REBOOT (sp system reset)
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.reboot.takeover
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the partner appliance storage is taken over successfully by this appliance. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for PARTNER REBOOT (CONTROLLER TAKEOVER)
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.reboot.takeover.p
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the partner appliance storage is taken over successfully by this appliance. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for PARTNER REBOOT (CONTROLLER TAKEOVER ON PANIC)
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.reboot.unknown
+*Severity*::
+NOTICE
+*Description*::
+This message occurs after an appliance reboot--the appliance reports this event after the reboot is complete. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+If reboots continue to occur, contact NetApp technical support.
+*Syslog Message*::
+Call home for REBOOT
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.reboot.watchdog
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the appliance experiences an internal hardware watchdog timer reset. The appliance reports this event after the reboot is complete. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+If you continue to experience watchdog timer resets, contact NetApp technical support.
+*Syslog Message*::
+Call home for REBOOT (watchdog reset)
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

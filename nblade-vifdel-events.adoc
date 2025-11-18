@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: nblade-vifdel-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.vifdel events
+---
+
+= nblade.vifdel events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.vifdel.ipRemoveFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is a failure removing the IP address of a LIF that is being deleted. While this condition persists, most networking configuration or status operations can not be performed.
+*Corrective Action*::
+A system reboot may be required if the operation did not complete successfully after it was retried. For HA configurations, operational disruption can be minimized by initiating a partner takeover followed by a reboot of this partner. After the reboot is complete, issue a "giveback" command to return services to this partner.
+*Syslog Message*::
+Error deleting IP address from LIF %d, error %d.
+*Parameters*::
+*lif* (INT): LIF Id.
+*error* (INT): Operation error code.
+
+== Nblade.vifdel.longRunning
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is an excessive delay in removing connections before LIF deletion can be completed. While this condition persists, most networking configuration or status operations can not be performed.
+*Corrective Action*::
+A system reboot may be required if this message has occurred multiple times for the same LIF and the number of connections remaining has not decreased across these messages. In addition, network configuration and status commands are still not working. For HA configurations, operational disruption can be minimized by initiating a partner takeover followed by a reboot of this partner. Prior to reboot or takeover, a full autosupport must be generated for the affected node. This is done via the "autosupport invoke -type full" command. If possible, a sync core of the affected node should be provided to help find the root cause. A sync core can be generated via the "reboot -dump true" command for the affected node. After the reboot is complete, issue a "giveback" command to return services to this partner for HA configurations.
+*Syslog Message*::
+Excessive delay while deleting connections on LIF %d, %d connections remaining.
+*Parameters*::
+*lif* (INT): LIF Id.
+*remainingConns* (INT): Number of connections still remaining on this LIF.

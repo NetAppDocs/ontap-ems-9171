@@ -1,0 +1,62 @@
+---
+sidebar: sidebar
+permalink: secd-nis-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: secd.nis events
+---
+
+= secd.nis events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== secd.nis.connectFailure
+*Deprecated*::
+Deprecated as of version 9.5 since this EMS is no longer needed.
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the server could not establish a TCP connection to a Network Information Service (NIS) server.
+*Corrective Action*::
+From a UNIX (R) workstation, make sure that the NIS server is responding to requests. Also make sure that the portmapper on the NIS server is responding to requests. Make sure that there are no networking issues stopping the cluster from communicating with this NIS server.
+*Syslog Message*::
+vserver (%s) could not make a connection over the network to NIS server (%s) at address (%s) and received error (%s)
+*Parameters*::
+*vserverName* (STRING): vserver associated with this operation.
+*serverName* (STRING): Name of the NIS server that was not responding.
+*serverAddress* (STRING): Address of the NIS server that was not responding.
+*ErrnoMessage* (STRING): Errno message from the connect failure.
+
+== secd.nis.noServers
+*Deprecated*::
+Deprecated as of version 9.5 since this EMS is no longer needed.
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when none of the configured Network Information Service (NIS) servers are accepting connections.
+*Corrective Action*::
+From a UNIX(R) workstation, make sure that all configured NIS servers are responding to requests. Ensure that there are no networking issues stopping the cluster from communicating with the configured NIS servers. Also, ensure that the portmapper running on the NIS server is working correctly.
+*Syslog Message*::
+None of the NIS servers configured for Vserver (%s) are currently accessible via the network.
+*Parameters*::
+*vserverName* (STRING): vserver associated with this operation.
+
+== secd.nis.slowServer
+*Deprecated*::
+Deprecated as of version 9.5 since this EMS is no longer needed.
+*Severity*::
+ERROR
+*Description*::
+This message indicates that the Network Information Service (NIS) server is not responding to requests in the expected time frame.
+*Corrective Action*::
+Make sure that there are no networking issues creating intermittent communication problems with the NIS server. Make sure that the machine running NIS is responsive and not overloaded. From a UNIX (R) workstation, run YP commands to verify long response times.
+*Syslog Message*::
+From CIFS Server(%s) calls to NIS server (%s) at address (%s) is executing slowly enough to adversely impact the performance of your server.
+*Parameters*::
+*vserverName* (STRING): vserver associated with this operation.
+*serverName* (STRING): Name of the NIS server that was not responding fast enough.
+*serverAddress* (STRING): Address of the NIS server that was not responding fast enough.

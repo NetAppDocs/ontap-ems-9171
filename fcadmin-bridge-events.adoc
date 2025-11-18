@@ -1,0 +1,147 @@
+---
+sidebar: sidebar
+permalink: fcadmin-bridge-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fcadmin.bridge events
+---
+
+= fcadmin.bridge events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fcadmin.bridge.prog.disk
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event reports the WWN written to a device.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Programming Disk %s LUN=%d on Path=0x%0x with WWN %02x:%02x:%02x:%02x:%02x:%02x:%02x:%02x.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*LUNid* (INT): Logical Unit Number identifier.
+*pathAddress* (INTHEX): Device address.
+*WWNbyte0* (INTHEX): 0th byte of World Wide Name.
+*WWNbyte1* (INTHEX): 1st byte of World Wide Name.
+*WWNbyte2* (INTHEX): 2nd byte of World Wide Name.
+*WWNbyte3* (INTHEX): 3rd byte of World Wide Name.
+*WWNbyte4* (INTHEX): 4th byte of World Wide Name.
+*WWNbyte5* (INTHEX): 5th byte of World Wide Name.
+*WWNbyte6* (INTHEX): 6th byte of World Wide Name.
+*WWNbyte7* (INTHEX): 7th byte of World Wide Name.
+
+== fcadmin.bridge.prog.done
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message indicates that WWN programming has been successfully completed on a disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s LUN=%d on path=0x%0x successfully programmed. Reboot the drive to see the updated WWN.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*LUNid* (INT): Logical Unit Number identifier.
+*pathAddress* (INTHEX): Device address.
+
+== fcadmin.bridge.prog.fault
+*Severity*::
+ERROR
+*Description*::
+This message indicates that the attempt to write the WWN to the disk has failed.
+*Corrective Action*::
+Retry the command after sometime, error might be transient.
+*Syslog Message*::
+Error programming disk %s LUN=%d on path=0x%0x. Error status=0x%0x.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*LUNid* (INT): Logical Unit Number identifier.
+*pathAddress* (INTHEX): Device address.
+*commandStatus* (INTHEX): Returned SCSI error code.
+
+== fcadmin.bridge.progWWN
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message reports the statistics of the operation to write the World Wide Name (WWN) to the drives.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Total LUNs/drives reported = %d. Total LUNs/drives programmed = %d.
+*Parameters*::
+*reportedLUNs* (INT): Total number of LUN instances reported for entire session.
+*programmedLUNs* (INT): Total number of LUN instances programmed for entire session.
+
+== fcadmin.bridge.retrieve.fail
+*Severity*::
+ERROR
+*Description*::
+This event is generated when the drive is not qualified for DDB (Disk Drive Behavior) update while programming the WWNs.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Error retrieving DDB data for disk=%s on path=0x%0x. Drives on the current path could not be programmed with WWN.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*pathAddress* (INTHEX): Device address.
+
+== fcadmin.bridge.rprt.fault
+*Severity*::
+ERROR
+*Description*::
+This message is generated when the Report LUNs response completed with some error.
+*Corrective Action*::
+Retry the command after sometime, error might be transient.
+*Syslog Message*::
+Error reported for Report LUN command on disk %s on path 0x%0x, error=0x%0x.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*pathAddress* (INTHEX): Device address.
+*commandStatus* (INTHEX): Returned SCSI error code.
+
+== fcadmin.bridge.rprtcmd.fail
+*Severity*::
+ERROR
+*Description*::
+This event is generated when insufficient SCSI command blocks are available for Report LUN command.
+*Corrective Action*::
+Retry the command after sometime. As command blocks may have become available.
+*Syslog Message*::
+Memory allocation failed for Report LUN command. No LUN instances are programmed.
+*Parameters*::
+(None).
+
+== fcadmin.bridge.rprtdata.fail
+*Severity*::
+ERROR
+*Description*::
+This event is generated when insufficient SCSI command blocks are available for Report LUN command.
+*Corrective Action*::
+Retry the command after sometime. As command blocks may have become available.
+*Syslog Message*::
+Memory allocation failed for Report LUN data command, bytes Requested=%d Disk %s on Path=0x%0x.
+*Parameters*::
+*requestedMemory* (INT): Requested memory for Report LUN data command.
+*diskName* (STRING): Name of the disk
+*deviceAddress* (INTHEX): Device address.
+
+== fcadmin.bridge.WWN.prog.stat
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is generated when the programming of the WWNs into the reported LUNs is complete. An error in programming is indicated when the number of reported LUNs is different from the number programmed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WWN update completed on disk %s path 0x%0x, total %d LUNS reported, total %d LUNS programmed.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*pathAddress* (INTHEX): Device address.
+*LUNsReported* (INT): Number of LUNs reported.
+*LUNsProgrammed* (INT): Number of LUNs programmed.

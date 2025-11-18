@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: csm-homeportinfounexpected-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: csm.homeportinfounexpected events
+---
+
+= csm.homeportinfounexpected events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== csm.homePortInfoUnexpected
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Cluster Session Manager (CSM) establishes a connection between nodes over the cluster network interface of a switchless cluster and detects that the logical interface's (LIF's) home port and the corresponding remote device information are not the expected values.
+*Corrective Action*::
+This message can occasionally happen during normal operations on a system startup or a LIF migration event. If the message repeats every few minutes, it might indicate a problem in the cluster interface configuration or the physical cabling of the switchless cluster.
+*Syslog Message*::
+CSM reports unexpected information for cluster LIF ID "%d" (home port: "%s", remote device ID: "%s").
+*Parameters*::
+*vifId* (INT): ID of the local cluster LIF over which the connection gets established.
+*homePort* (STRING): Home port hosting the LIF.
+*remoteDeviceId* (STRING): Remote device associated with the home port.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ha-takeoverimpic-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.takeoverimpic events
+---
+
+= ha.takeoverimpic events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.takeoverImpIC
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the partner node is down and the local node cannot perform a takeover because of interconnect errors.
+*Corrective Action*::
+Verify that both controllers in the HA pair are operational. For externally connected links, make sure that the interconnect cables are connected properly and that small form-factor pluggable (SFP) modules, if applicable, are seated properly on both controllers. For internally connected links, disable and reenable the links one at a time by using the (privilege: advanced) "system ha interconnect link off" and "system ha interconnect link on" commands. When one link is down on platforms with two available links, HA link redundancy is lost. However, HA services are still working and enabled on the secondary link.
+*Syslog Message*::
+Takeover of the partner node is not possible due to interconnect errors.
+*Parameters*::
+(None).

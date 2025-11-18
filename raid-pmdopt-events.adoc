@@ -1,0 +1,66 @@
+---
+sidebar: sidebar
+permalink: raid-pmdopt-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.pmdopt events
+---
+
+= raid.pmdopt events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.pmdOpt.misconfigured
+*Severity*::
+ERROR
+*Description*::
+The option raid.panic.missing.disks was set to panic and halt the appliance when a hardware error prevents access to multiple file system disks. However, the regular value of that option is not accessible during boot. Therefore, the option value is stored in the firmware environment variable halt-missing-disks, if the appliance has such capability. This event occurs hourly as long as the two values are not equal. Here are some examples of possible undesirable behavior caused by inconsistency between the two values: If halt-missing-disks is 0 and option raid.panic.missing.disks is 2, and if a failure causes the appliance to lose access to two or more file system disks, the appliance panics but does not halt. Multiple reconstructions might start after reboot, and that is what would have been prevented by setting the option. If halt-missing-disks is 2 and option raid.panic.missing.disks is 0, the appliance does not panic if it loses access to multiple file system disks. However, it might halt if multiple filesystem disks are missing during boot. If one value is 2 and the other is 3, the appliance panics and halts as expected only if a failure prevents access to three or more file system disks.
+*Corrective Action*::
+Try resetting the option raid.panic.missing.disks to the desired value.
+*Syslog Message*::
+The option raid.panic.missing.disks is set to %d, but during boot it will have value %d. Reset the option.
+*Parameters*::
+*value* (INT): Value of the option raid.panic.missing.disks.
+*boot_value* (INT): Value of the option raid.panic.missing.disks during boot that is stored in the firmware environment variable halt-missing-disks.
+
+== raid.pmdOpt.nonpersistent
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an attempt is made to set the "raid.panic.missing.disks" option to panic and halt the system when a hardware error prevents access to multiple file system disks. However, the system cannot store the option persistently to be accessible during boot, and the option was not set to the new value. That happens on systems that do not have the capability to store environment variables in firmware. The "raid.panic.missing.disks" option cannot be used on such systems.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Setting the "raid.panic.missing.disks" option to %d failed because it could not be stored in the firmware environment variable.
+*Parameters*::
+*value* (INT): Value of the "raid.panic.missing.disks" option.
+
+== raid.pmdOpt.set
+*Severity*::
+ERROR
+*Description*::
+The option raid.panic.missing.disks has been set to panic and halt the appliance when a hardware error prevents access to multiple file system disks. This option might be useful to prevent multiple unnecessary reconstructions if such errors occur, especially on NearStore(R) appliances. It is not recommended that you use this option on filer appliances. This option is always disabled during takeover. When using this option, you must have a monitoring system that alerts an administrator if the appliance halts. The Remote LAN Module (RLM) can provide such alerts if it is present in the appliance and properly configured. Otherwise, you need an external monitoring system.
+*Corrective Action*::
+Verify that the setting is correct. Verify that RLM or an external monitoring system can alert the administrator when the appliance halts. To disable this behavior, set option raid.panic.missing.disks to 0.
+*Syslog Message*::
+The option raid.panic.missing.disks is set to panic and halt the appliance when an error affects %d or more file system disks. RLM %s present.
+*Parameters*::
+*value* (INT): Value of the option raid.panic.missing.disks.
+*rlm_present_string* (STRING): String to indicate whether RLM is present: "is" or "is not".
+*rlm_present* (INT): Indicates whether RLM is present in the system: 1 if RLM is present, 0 if it is not present.
+
+== raid.pmdOpt.singleDisk
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the option 'raid.panic.missing.disks' is set to 1, which causes the system to panic and halt on any disk failure. You should set that option to 1 only when directed by NetApp technical support for handling a specific condition, and you should change that value from 1 as soon as the condition is rectified. This event is issued periodically as a reminder to change the option as soon as possible.
+*Corrective Action*::
+Change the option 'raid.panic.missing.disks' to a more appropriate value (0, or 2 or higher) when conditions to keep it at 1 no longer apply.
+*Syslog Message*::
+The option 'raid.panic.missing.disks' is set to 1, which causes the system to panic and halt on any disk failure. Change the option as soon as possible.
+*Parameters*::
+(None).

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: dml-fae-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dml.fae events
+---
+
+= dml.fae events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dml.fae.key.import.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Device Management Layer fails to import key material.
+*Corrective Action*::
+Verify whether aggregate keys are required. Retry the key transport operation.
+*Syslog Message*::
+Key import failed. Reason: %s.
+*Parameters*::
+*reaon* (STRING): Failure reason.

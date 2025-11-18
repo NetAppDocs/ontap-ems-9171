@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: snmp-warmstart-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snmp.warmstart events
+---
+
+= snmp.warmstart events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snmp.warmstart.trap
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the SNMP daemon is reinitializing itself with a warmStart. A warmStart(1) trap signifies that no configuration changes are made to the agent or the protocol entity implementation during the reinitialization.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SNMP daemon was reinitialized with no configuration changes.
+*Parameters*::
+(None).

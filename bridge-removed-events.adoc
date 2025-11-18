@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: bridge-removed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: bridge.removed events
+---
+
+= bridge.removed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== bridge.removed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an FC-to-SAS bridge is removed from the system.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-to-SAS bridge %s [%s %s %s] S/N [%s] was removed.
+*Parameters*::
+*bridgeName* (STRING): Name of the bridge.
+*bridgeVendor* (STRING): Vendor name of the bridge.
+*bridgeModel* (STRING): Model name of the bridge.
+*bridgeRevision* (STRING): Firmware revision of the bridge.
+*bridgeSerialNum* (STRING): Serial number of the bridge.

@@ -1,0 +1,52 @@
+---
+sidebar: sidebar
+permalink: vsa-vsphere-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsa.vsphere events
+---
+
+= vsa.vsphere events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsa.vsphere.connected
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when Data ONTAP(R) on VMware(R) manages to reconnect and authenticate itself with the vSphere(tm) server.
+*Corrective Action*::
+None.
+*Syslog Message*::
+Authenticated connection (user %s) to vSphere server %s reestablished.
+*Parameters*::
+*user* (STRING): vSphere "read-only" user name.
+*server* (STRING): Host name of the vSphere server.
+
+== vsa.vsphere.noauth
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) on VMware(R) cannot authenticate itself to the vSphere(tm) server to gather host hardware information.
+*Corrective Action*::
+Correct the vSphere server authentication information with the command 'vsphere modify'.
+*Syslog Message*::
+Cannot authenticate with vSphere server: %s.
+*Parameters*::
+*detail* (STRING): Details of how authentication failed.
+
+== vsa.vsphere.unreachable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) on VMware(R) cannot connect to the vSphere(tm) server to gather host hardware information.
+*Corrective Action*::
+Verify that the vSphere server is up and reachable through https: If necessary, correct vSphere server information using the command 'vsphere modify'.
+*Syslog Message*::
+Cannot establish connection to vSphere server: %s.
+*Parameters*::
+*detail* (STRING): Details of how the connection failed.

@@ -1,0 +1,161 @@
+---
+sidebar: sidebar
+permalink: cf-rsrc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.rsrc events
+---
+
+= cf.rsrc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.rsrc.givebackFail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a failure is detected during giveback. The giveback operation will be cancelled.
+*Corrective Action*::
+Check the logs for other messages regarding the listed subsystem using the "event log show" CLI command. Resolve those problems and perform a planned giveback operation using "storage failover giveback" command.
+*Syslog Message*::
+Failover monitor: giveback during %s failed; giveback cancelled.
+*Parameters*::
+*op* (STRING): Name of the giveback subsystem that has suffered a fatal error.
+
+== cf.rsrc.givebackForceFail
+*Severity*::
+ERROR
+*Description*::
+This event occurs if a failure is forced during giveback. This event should only occur in debugging kernels.
+*Corrective Action*::
+Retry the takeover.
+*Syslog Message*::
+Failover monitor: giveback during %s forced fail
+*Parameters*::
+*op* (STRING): Name of the takeover operation
+
+== cf.rsrc.givebackForceVeto
+*Severity*::
+ERROR
+*Description*::
+This event occurs if a veto is forced during giveback. This event should only occur in debugging kernels.
+*Corrective Action*::
+Check the state of the subsystem listed in this message. Retry the giveback.
+*Syslog Message*::
+Giveback during %s forced veto
+*Parameters*::
+*op* (STRING): Name of the takeover operation
+
+== cf.rsrc.givebackOpFail
+*Severity*::
+ERROR
+*Description*::
+This event occurs if a failure is detected during giveback. This error is not fatal to the giveback process but indicates that the related service could not be shutdown cleanly.
+*Corrective Action*::
+Check the state of the subsystem listed in the message and validate it is working correctly. Validate that there are no configuration errors for the listed subsystem.
+*Syslog Message*::
+Failover monitor: giveback during %s failed; giveback continuing...
+*Parameters*::
+*op* (STRING): Name of the giveback operation that has suffered a non-fatal error.
+
+== cf.rsrc.givebackUnexpected
+*Severity*::
+ALERT
+*Description*::
+This event occurs if we detect an unexpected failover monitor state during a giveback operation. This indicates a software bug.
+*Corrective Action*::
+Retry the giveback.
+*Syslog Message*::
+(None).
+*Parameters*::
+*op* (STRING): Name of the giveback operation
+*state* (INT): Value of the failover monitor state
+
+== cf.rsrc.givebackVeto
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a veto is indicated during giveback. A veto occurs when the active partner state is detected during the giveback process. A veto can be overridden by using the "cf giveback -f" or "storage failover takeover -override-vetoes true" command.
+*Corrective Action*::
+Check the preceeding messages for reasons why the giveback was vetoed. Check the state of the subsystem listed in this message. Retry the giveback.
+*Syslog Message*::
+Failover monitor: %s: giveback canceled due to active state.
+*Parameters*::
+*op* (STRING): Name of the takeover operation.
+
+== cf.rsrc.raidReplayOnlyTODone
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event occurs when a node is booting after having panicked too soon after takeover or during takeover. In that event we want to replay the partner RAID logs, before we perform a giveback. This message indicates the point at which we have committed partner RAID logs to the disk and are now going to initiate a giveback.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: Raid replay-only takeover completed. Initiating giveback.
+*Parameters*::
+(None).
+
+== cf.rsrc.replayOnlyTakeoverDone
+*Severity*::
+NOTICE
+*Description*::
+This event occurs when a node is booting after having panicked too soon after takeover or during takeover. In that event we want to replay the partner logs, before we perform a giveback. This message indicates the point at which we have committed partner logs to the disk and are now going to initiate a giveback.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: replay-only takeover completed. Initiating giveback.
+*Parameters*::
+(None).
+
+== cf.rsrc.takeoverFail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a failure is detected during takeover. The takeover operation will be cancelled.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Failover monitor: takeover during %s failed; takeover cancelled.
+*Parameters*::
+*op* (STRING): Name of the takeover operation that has suffered a fatal error.
+
+== cf.rsrc.takeoverForceFail
+*Severity*::
+ERROR
+*Description*::
+This event occurs if a failure is forced during takeover. This event should only occur in debugging kernels.
+*Corrective Action*::
+Retry the takeover request.
+*Syslog Message*::
+Failover monitor: takeover during %s forced fail
+*Parameters*::
+*op* (STRING): Name of the takeover operation
+
+== cf.rsrc.takeoverOpFail
+*Severity*::
+ERROR
+*Description*::
+This event occurs if a failure is detected during takeover. This error is not fatal to the takeover process but indicates that the related service may be inaccessible during takeover of the partner.
+*Corrective Action*::
+After takeover completes, check the state of the subsystem listed in the message. Check that the configuration of the subsystem listed in the messsage is correct.
+*Syslog Message*::
+Failover monitor: takeover during %s failed; takeover continuing...
+*Parameters*::
+*op* (STRING): Name of the takeover operation that has suffered a non-fatal error.
+
+== cf.rsrc.takeoverUnexpected
+*Severity*::
+ERROR
+*Description*::
+This event occurs if we detect an unexpected failover monitor state during a takeover operation. This indicates a software bug.
+*Corrective Action*::
+Check the state of the subsystem listed in 'op' parameter. Retry the giveback.
+*Syslog Message*::
+(None).
+*Parameters*::
+*op* (STRING): Name of the giveback operation
+*state* (INT): Value of the failover monitor state

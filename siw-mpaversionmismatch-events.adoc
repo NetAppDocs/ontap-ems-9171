@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: siw-mpaversionmismatch-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: siw.mpaversionmismatch events
+---
+
+= siw.mpaversionmismatch events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== siw.mpaVersionMismatch
+*Severity*::
+ALERT
+*Description*::
+This message occurs when there is SW-iWARP Version mismatch between the HA nodes. SW-iWARP cannot start up and nodes are not connected.
+*Corrective Action*::
+Upgrade the ONTAP(R) release on the nodes to the same version of SW-iWARP to bring up the SW-iWARP and connect the nodes.
+*Syslog Message*::
+SW-iWARP version mismatch between the local node and the partner node.
+*Parameters*::
+(None).

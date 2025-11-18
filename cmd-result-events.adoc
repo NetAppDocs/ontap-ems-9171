@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cmd-result-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cmd.result events
+---
+
+= cmd.result events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cmd.result.reboot
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system reboots as a consequence of executing the specified command.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+System rebooted for ('%s').
+*Parameters*::
+*cmd* (STRING): Command for which the system rebooted.

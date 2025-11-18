@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: mgmtgwd-rootvolrec-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmtgwd.rootvolrec events
+---
+
+= mgmtgwd.rootvolrec events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmtgwd.rootvolrec.low.space
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the system detects that the root volume is dangerously low on space. The node is not fully operational. Data logical interfaces (LIFs) might have failed over within the cluster, so NFS and CIFS access is limited on this node. Administrative capability is limited to local recovery procedures for this node to make space available on the root volume.
+*Corrective Action*::
+Contact NetApp technical support for assistance to make space available on the root volume by deleting old Snapshot(R) copies, deleting unnecessary files, or expanding the root volume capacity. After space is available, controller needs to be rebooted.
+*Syslog Message*::
+The root volume on node "%s" is dangerously low on space. Less than %d MB of free space remaining.
+*Parameters*::
+*node* (STRING): Node on which the root volume is low on space.
+*threshold_in_mb* (INT): Threshold, in MB, that is being used to compare against the root volume's available space.

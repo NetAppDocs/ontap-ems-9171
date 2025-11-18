@@ -1,0 +1,81 @@
+---
+sidebar: sidebar
+permalink: wafl-failed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.failed events
+---
+
+= wafl.failed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.failed.mount
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the ONTAP(R) kernel cannot mount a volume because of file system inconsistency.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+WAFL inconsistent: Mount failed for volume %s%s%s%s.
+*Parameters*::
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+
+== wafl.failed.mount.bad.fsid
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when DATA ONTAP(R) cannot mount a volume because of a hardware failure in the disk subsystem. The failure invalidates and clears the unique identifier (FSID) that was assigned to the volume at the time of creation, resulting in an invalid FSID value of 0 and making the volume inaccessible for clients. The volume will be left in the offline state without any data loss.
+*Corrective Action*::
+Check for disk failures and replace any failed disks. A subsequent mount call for the volume, either from the boot path or an admin level online request, would be able to read a valid FSID now, thus solving this problem. For more information or assistance, contact NetApp technical support.
+*Syslog Message*::
+Invalid file system identifier (FSID): Mount failed for volume %s%s%s%s.
+*Parameters*::
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume when the volume name itself is insufficient.
+
+== wafl.failed.online.labelread
+*Severity*::
+ERROR
+*Description*::
+This message occurs if the system is unable to read a valid aggregate label from the disks which prevents onlining the aggregate.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Unable to read the label for aggregate ID ''%d'' and will not be online.
+*Parameters*::
+*fa_id* (INT): Aggregate ID for which the label read fails.
+
+== wafl.failed.online.vol.info
+*Severity*::
+ERROR
+*Description*::
+This message occurs if the system is unable to read valid aggregate volume information from the disks which prevents onlining the aggregate.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Unable to read the volume information for aggregate ID ''%d'' and will not be online.
+*Parameters*::
+*fa_id* (INT): Aggregate ID which fails to read the volume info.
+
+== wafl.failed.rootAggr.online
+*Severity*::
+ERROR
+*Description*::
+This message occurs if the system is unable to bring any of the aggregates online because the root aggregate cannot be onlined.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Failed to online the root aggregate.
+*Parameters*::
+(None).

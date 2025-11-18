@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: disk-lipstormdetect-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.lipstormdetect events
+---
+
+= disk.lipstormdetect events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.lipStormDetect
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a Fibre Channel disk detects a large number of Loop Initialization Procedure requests (a LIP storm) and has reset itself.
+*Corrective Action*::
+None required. If this happens a second time, the disk will be failed.
+*Syslog Message*::
+shm: disk %s reports a LIP storm reset. %s. Error %x/%x/%x/%x.
+*Parameters*::
+*diskName* (STRING): Name of the disk (host adapter, loop ID).
+*disk_info* (STRING): Static description of events on the disk.
+*sense_key* (INT): Actual sense key.
+*sense_code* (INT): Actual sense code.
+*qualifier* (INT): Actual sense code qualifier.
+*fru_failed* (INT): Actual FRU code.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-sameslot-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.sameslot events
+---
+
+= config.sameslot events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.sameSlot
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SAS disk is multipathed to host adapters in the same controller slot. The second disk interface should be attached to a host adapter in a different slot.
+*Corrective Action*::
+Move one of the connections attaching the disk shelf to a host adapter in a different slot.
+*Syslog Message*::
+Disk %s and other disks attached to the same port are dual-attached to adapters in the same slot . For improved availability you should dual-attach them to adapters in separate slots.
+*Parameters*::
+*disk* (STRING): Name of the disk.

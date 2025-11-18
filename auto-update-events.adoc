@@ -1,0 +1,121 @@
+---
+sidebar: sidebar
+permalink: auto-update-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: auto.update events
+---
+
+= auto.update events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== auto.update.action
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an action is applied to an automatic update request. This step requires input from the customer or a pre-configured default setting.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Automatic update: Applied the action "%s" to package: %s.
+*Parameters*::
+*action* (STRING): Action selected for the automatic update request. Possible actions are "install", "schedule", or "dismiss".
+*package_description* (STRING): Information about the package.
+*package_id* (STRING): Unique identifier for the package.
+
+== auto.update.eula.accepted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the customer has accepted the End User License Agreement (EULA). This is required before the Automatic update feature is enabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Automatic update: End User License Agreement accepted by "%s".
+*Parameters*::
+*user* (STRING): Name of the user account that accepted the EULA.
+
+== auto.update.eula.reset
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Automatic update feature is disabled and the End User License Agreement (EULA) is no longer considered accepted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Automatic update: Feature has been disabled by "%s".
+*Parameters*::
+*user* (STRING): Name of the user account that disabled the EULA.
+
+== auto.update.expired
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an automatic update request has not been acted upon before the request expiration date.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Automatic update: Request expired on %s for package: %s.
+*Parameters*::
+*expired_date_time* (STRING): Date and time when the request expired.
+*package_description* (STRING): Information about the package.
+*package_id* (STRING): Unique identifier for the package.
+
+== auto.update.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an automatic update has failed to complete.
+*Corrective Action*::
+Fix the issues causing the failure and retry the automatic update. If the issue persists, contact NetApp technical support.
+*Syslog Message*::
+Automatic update: Failed update for package: %s. Error: %s.
+*Parameters*::
+*package_description* (STRING): Information about the package.
+*error_msg* (STRING): String containing details regarding the cause of the failure.
+*package_id* (STRING): Unique identifier for the package.
+*stage* (STRING): Stage at which the update failed.
+
+== auto.update.received
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the automatic update information is received from the AutoSupport OnDemand server.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Automatic update: Received update for package: %s.
+*Parameters*::
+*package_description* (STRING): Information about the package.
+*package_id* (STRING): Unique identifier for the package.
+
+== auto.update.retracted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an automatic update request has been superseded, retracted or otherwise considered unnecessary.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Automatic update: Request retracted for package: %s.
+*Parameters*::
+*package_description* (STRING): Information about the package.
+*package_id* (STRING): Unique identifier for the package.
+
+== auto.update.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an automatic update has completed successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Automatic update: Successfully updated package: %s.
+*Parameters*::
+*package_description* (STRING): Information about the package.
+*package_id* (STRING): Unique identifier for the package.

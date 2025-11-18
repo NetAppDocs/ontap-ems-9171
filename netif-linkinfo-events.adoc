@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: netif-linkinfo-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.linkinfo events
+---
+
+= netif.linkinfo events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.linkInfo
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a network interface is reset by the software or is configured down by the administrator.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s: Link %s.
+*Parameters*::
+*lanType* (STRING): Local area network (LAN) type.
+*ifName* (STRING): Name of the network interface.
+*info* (STRING): Brief description of the event.

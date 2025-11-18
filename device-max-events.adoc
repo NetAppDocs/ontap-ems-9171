@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: device-max-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: device.max events
+---
+
+= device.max events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== device.max.count.exceeded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) cannot install one or more discovered devices since the device type count is at full capacity.
+*Corrective Action*::
+If possible, remove an existing device of the same type so that device installation can proceed. If the failure persists, contact NetApp technical support.
+*Syslog Message*::
+Unable to install one or more %s devices discovered on initiator port %s, target port WWNN: %s, WWPN: %s. The device limit (%d) has been reached.
+*Parameters*::
+*devtype* (STRING): SCSI device type.
+*adapter* (STRING): Name of the initiator port discovering the device(s).
+*wwnn* (STRING): World Wide Node Name of the target port exporting the device(s).
+*wwpn* (STRING): World Wide Port Name of the target port exporting the device(s).
+*limit* (INT): Device maximum count.

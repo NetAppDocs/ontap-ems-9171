@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: aggr-inconsistent-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: aggr.inconsistent events
+---
+
+= aggr.inconsistent events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== aggr.inconsistent.modify
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the 'aggr inconsistent' command is used to modify a state of an aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Aggregate %s: 'aggr inconsistent' command used to change inconsistent state to '%s'.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate.
+*state* (STRING): State of the action: "set" or "clear".

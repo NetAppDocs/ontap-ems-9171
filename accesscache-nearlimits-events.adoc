@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: accesscache-nearlimits-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: accesscache.nearlimits events
+---
+
+= accesscache.nearlimits events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== AccessCache.NearLimits
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the access cache module is near its limit for entries. Reaching these limits can prevent new clients from being able to mount and perform I/O on the storage system, and can also cause clients to be granted or denied access based on stale cached information.
+*Corrective Action*::
+Ensure that the number of clients accessing the storage system continues to be below the limits for access cache entries. If the set of clients accessing the storage system is constantly changing, consider using the "vserver export-policy access-cache config modify" command to reduce the harvest timeout parameter so that cache entries for clients that are no longer accessing the storage system can be evicted sooner.
+*Syslog Message*::
+The exports access cache module is near its limit for entries (current entries count : %u, warning threshold : %u, entries limit : %u and current rules count : %u).
+*Parameters*::
+*numEntriesCurrent* (INT): Current number of entries in the cache.
+*numEntriesWarningThreshold* (INT): Warning threshold for number of entries.
+*numEntriesLimit* (INT): Limit on the number of entries.
+*numRulesCurrent* (INT): Current number of export rules in the cache.

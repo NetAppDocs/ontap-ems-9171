@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: cpeer-receiver-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cpeer.receiver events
+---
+
+= cpeer.receiver events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cpeer.receiver.noindex
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an incoming cluster peer request using the system-generated passphrase. However, the cluster peer request failed because there is no matching outstanding cluster peer offers for the request in the system.
+*Corrective Action*::
+Verify the peer request with peer cluster admin. If required, use the "cluster peer create" command with "generate-passphrase" option to generate the additional cluster peer offers.
+*Syslog Message*::
+The cluster peer request from the remote cluster (%s) using the system-generated passphrase (Index: %d) has failed because cluster peer offer with system-generated passphrase is not available for this index.
+*Parameters*::
+*remote_cluster_details* (STRING): Remote cluster name.
+*ppindex* (INT): Cluster peer passphrase index.

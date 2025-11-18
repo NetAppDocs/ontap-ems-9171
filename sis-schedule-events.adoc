@@ -1,0 +1,54 @@
+---
+sidebar: sidebar
+permalink: sis-schedule-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.schedule events
+---
+
+= sis.schedule events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.schedule.notify.change
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Single Instance Storage (SIS) schedule of a volume is changed to the default schedule (sun-san@0) because the node's clusterid does not match with the SIS config clusterid. This can happen when a volume is replicated to a node belonging to another cluster.
+*Corrective Action*::
+Use the sis config command to set a SIS policy on the volume.
+*Syslog Message*::
+SIS policy for volume %s%s is no longer valid because of the clusterid mismatch. SIS schedule is set to the default schedule sun-sat@0.
+*Parameters*::
+*volume* (STRING): Volume name.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== sis.schedule.notify.change.compression
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a volume with background compression has an auto type policy. The policy is replaced with a default schedule (sun-sat@0). This can happen when a volume is being re-mounted during which efficiency policy type is changed to auto.
+*Corrective Action*::
+Use the volume efficiency modify command to set a efficiency policy on the volume. For example: volume efficiency modify -volume volume-name -policy policy-name
+*Syslog Message*::
+Efficiency policy for volume %s%s is auto type and is not supported with background compression. The schedule is set to the default schedule sun-sat@0.
+*Parameters*::
+*volume* (STRING): Volume name.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== sis.schedule.notify.change.snapmirror
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a SnapMirror(R) relationship spanning across Vservers breaks. In such cases, the efficiency policy on the destination is no longer valid; it is replaced with the default schedule (sun-sat@0).
+*Corrective Action*::
+Use the 'volume efficiency modify' command to set a efficiency policy on the volume. For example: volume efficiency modify -volume volume-name -policy policy-name
+*Syslog Message*::
+Efficiency policy for volume %s%s is not valid and has been replaced with default schedule (sun-sat@0).
+*Parameters*::
+*volume* (STRING): Volume name.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.

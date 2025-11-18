@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: httpd-api-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: httpd.api events
+---
+
+= httpd.api events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== httpd.api.expired.session.limit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Manage ONTAP(R) API request to an internal server expires due to configured session limits.
+*Corrective Action*::
+Inspect the last error contained in the message to determine why the API request exceeded the configured session limits. The "security session show -interface ontapi" command may be used to display all active and pending API requests across the cluster. Run "security session limit show -interface ontapi" to verify the currently configured session limits.
+*Syslog Message*::
+A Manage ONTAP(R) API request (%s) has expired after %lu seconds. Last error: %s
+*Parameters*::
+*api_name* (STRING): The name of the API.
+*elapsed_time* (LONGINT): The age of the API request (in seconds).
+*last_error* (STRING): Reason for the warning, indicating the limit category that was exceeded.
+*purge_time* (LONGINT): The purge time (in seconds) for outstanding API requests.
+*trace_tag* (LONGINTHEX): The generated trace tag associated with the API request.

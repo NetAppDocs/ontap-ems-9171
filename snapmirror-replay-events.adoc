@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: snapmirror-replay-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapmirror.replay events
+---
+
+= snapmirror.replay events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapmirror.replay.failed
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when metadata replay fails in the process of making a Synchronous SnapMirror(R) destination flexible volume writable. This will result in the destination volume coming online with the view of the last snapshot successfully transferred instead of the view of the active filesystem up until the last consistency point..
+*Corrective Action*::
+There is no way to recover from this data loss.
+*Syslog Message*::
+Synchronous SnapMirror failed to replay metadata up until the last consistency point during snapmirror break for volume '%s'.
+*Parameters*::
+*dst_volume* (STRING): The name of the Synchronous SnapMirror(R) destination volume

@@ -1,0 +1,2382 @@
+---
+sidebar: sidebar
+permalink: raid-rg-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.rg events
+---
+
+= raid.rg events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.rg.bigio.fatal
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a RAID group background long running I/O encounters an error that is fatal to the RAID group and the aggregate (cannot be fixed even by a mirror read from the other plex, if it exists).
+*Corrective Action*::
+Contact technical support to bring this aggregate online.
+*Syslog Message*::
+%s: long-running raid I/O operation experienced fatal multi-disk error.
+*Parameters*::
+*rg* (STRING): Name of the RAID group object that failed.
+
+== raid.rg.bigio.stalled
+*Severity*::
+ERROR
+*Description*::
+This message occurs when RAID group background long running I/O is not making progress due to missing ownership metadata. This has high impact on I/O and can lead to I/O requests timeout if the background I/O type is reconstruction whereas impact on I/O would be low if the background I/O type is scrub.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+RAID group background long running I/O (%s) is not progressing on storage availability-zone %s, raidgroup %s for %d minutes.
+*Parameters*::
+*bigio_type* (STRING): Type of RAID group background long running I/O i.e. reconstruction or scrub.
+*storage_availability_zone* (STRING): Name of the storage availability-zone.
+*rg* (STRING): Name of the RAID group object on which RAID group background long running I/O is not progressing.
+*duration* (INT): The amount of time in minutes for which RAID group background long running I/O is not progressing.
+
+== raid.rg.context.clear
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the context flag is cleared from the RAID group, and therefore from the parent aggregate, as part of context parity scrub testing. This event is only logged during internal testing; it is not seen on customer systems.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Scrub testing: %s%s: group parity context is now reset.
+*Parameters*::
+*owner* (STRING): Owner of the RAID group.
+*rg* (STRING): Name of the RAID group whose context flag is cleared.
+
+== raid.rg.degraded
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a RAID group becomes degraded, double degraded, or triple degraded.
+*Corrective Action*::
+Reconstruction will occur unless there is no matching spare disk or the number of failed disks is greater than the parity reconstruction level of the RAID group (1 for raid4, 2 for raid_dp and 3 for raid_tec). If reconstruction does not occur, then follow the following steps: 1. Identify the failed disk or disks from the system logs and determine the reason for the failure. 2. Replace the faulty disks.
+*Syslog Message*::
+%s: Raid group %s is degraded
+*Parameters*::
+*owner* (STRING): Owner of the RAID group.
+*name* (STRING): Relative path name of the RAID group.
+*aggr_UUID* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.rg.die_recons.aborted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when die reconstruction has been aborted on a specific raid group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: die reconstruction aborted at disk %s block %llu after %s
+*Parameters*::
+*owner* (STRING): Owner of the raid group.
+*rg* (STRING): Name of the raid group object that is aborted die reconstruction.
+*disk* (STRING): Name of the disk object for which die reconstruction aborted.
+*blockNum* (LONGINT): The physical block number die reconstruction stopped
+*duration* (STRING): The amount of time the die reconstruction required
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.rg.die_recons.cant.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the raid group has a disk with failed die but the die reconstruction cannot be started.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: unable to start die reconstruction for %s: %s.
+*Parameters*::
+*owner* (STRING): Owner of the raid group
+*rg* (STRING): Name of the raid group
+*disk* (STRING): Name of the disk which has a failed die
+*reason* (STRING): Reason the die reconstruction cannot start
+
+== raid.rg.die_recons.deferred
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when die reconstruction has been deferred on a specific raid group due to inadequate incore resources.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: die reconstruction deferred for %s (%s)
+*Parameters*::
+*owner* (STRING): Owner of the raid group
+*rg* (STRING): Name of the raid group object that is unable to reconstruct die
+*disk* (STRING): Name of the disk object for which die reconstruction aborted.
+*reason* (STRING): A text reason code
+
+== raid.rg.die_recons.done
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when die reconstruction has been completed on a specific raid group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: die reconstruction completed for %s in %s.
+*Parameters*::
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, carrier serial number, and site.
+*owner* (STRING): Owner of the raid group.
+*disk* (STRING): Name of the disk object for which die reconstruction completed.
+*duration* (STRING): The amount of time the die reconstruction required.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.rg.die_recons.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when die reconstruction has been initiated on a specific raid group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: starting die reconstruction on disk %s
+*Parameters*::
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, carrier serial number, and site.
+*owner* (STRING): Owner of the raid group.
+*disk* (STRING): Name of the disk object where die reconstruction happens
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.disk.reconstruction.failed
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a disk has failed reconstruction.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: reconstruction failed for a disk in the raidgroup
+*Parameters*::
+*owner* (STRING): The owner of the raid group
+*rg* (STRING): The name of the raid group object containing the reconstructing disk
+
+== raid.rg.diskcopy.aborted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when RAID disk copy is aborted. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: disk copy from %s to %s aborted at disk block %llu after %s. Reason: %s.
+*Parameters*::
+*owner* (STRING): Owner of the RAID group.
+*rg* (STRING): RAID group name.
+*source* (STRING): Name of the source disk.
+*target* (STRING): Name of the target disk.
+*blockNum* (LONGINT): Physical block number where the disk copy stopped.
+*duration* (STRING): Amount of time the disk copy lasted.
+*reason* (STRING): Reason for aborting the disk copy operation
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.rg.diskcopy.cant.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when RAID disk copy cannot be started. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: unable to start disk copy for %s: %s.
+*Parameters*::
+*owner* (STRING): Owner of the RAID group.
+*rg* (STRING): Name of the RAID group.
+*disk* (STRING): Name of the disk to be copied.
+*reason* (STRING): Reason the disk copy cannot start.
+
+== raid.rg.diskcopy.deferred
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a RAID disk copy is deferred due to inadequate incore resources. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: disk copy for %s deferred (%s).
+*Parameters*::
+*owner* (STRING): Owner of the RAID group.
+*rg* (STRING): Name of the RAID group.
+*disk* (STRING): Name of the disk to be copied.
+*reason* (STRING): Reason code.
+
+== raid.rg.diskcopy.deferred.ok
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a previously deferred RAID disk copy is now ready to proceed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: disk copy for %s previously deferred, now proceeding.
+*Parameters*::
+*owner* (STRING): Owner of the RAID group.
+*rg* (STRING): Name of the RAID group.
+*disk* (STRING): Name of the disk to be copied.
+
+== raid.rg.diskcopy.done
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when RAID disk copy is completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: disk copy from %s (S/N [%s]) to %s (S/N [%s]) was completed in %s.
+*Parameters*::
+*owner* (STRING): Owner of the RAID group.
+*rg* (STRING): RAID group name.
+*source* (STRING): Name of the source disk.
+*source_serialno* (STRING): Serial number of the source disk.
+*target* (STRING): Name of the target disk.
+*target_serialno* (STRING): Serial number of the target disk.
+*duration* (STRING): Amount of time it took to complete the disk copy operation.
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.rg.diskcopy.failed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when RAID disk copy to the intended target disk cannot be initiated. This type of disk copy is used after new firmware download, to return the disk to its place in a RAID group. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: unable to start disk copy from %s to %s: %s.
+*Parameters*::
+*owner* (STRING): Owner of the RAID group.
+*rg* (STRING): Name of the RAID group.
+*source* (STRING): Name of the disk to be copied.
+*target* (STRING): Name of the target disk.
+*reason* (STRING): Reason the disk copy cannot start.
+
+== raid.rg.diskcopy.mismatch
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is no disk for Rapid RAID Recovery that matches all parameters of an ideal replacement in the RAID group. Data ONTAP(R) selected a disk with a different interface speed or RPM, or from the opposite spare pool in a SyncMirror(R) configuration.
+*Corrective Action*::
+Wait for copying to finish. Install an appropriate spare disk. Fail the mismatched disk by using the 'disk fail' command. It will be copied to the new spare disk. After copying is done, use the 'disk unfail' command to unfail the mismatched disk and convert it to a spare.
+*Syslog Message*::
+%s%s: matching disk not available to copy disk %s; using disk %s %s.
+*Parameters*::
+*owner* (STRING): Owner of the RAID group.
+*rg* (STRING): Name of the RAID group.
+*source* (STRING): Name of the source disk.
+*target* (STRING): Name of the target disk.
+*detail* (STRING): Description of disk mismatch; one or more of: from the opposite spare pool, with different RPM.
+
+== raid.rg.diskcopy.recom.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an unhealthy disk drive being copied to a replacement disk cannot continue the copy, and must be recommended for failure before the copy is completed. The system will reconstruct the data from parity data.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s recommend failed after exceeding disk copy error threshold.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk. This includes the disk's containing volume name and other attributes, such as shelf, bay, vendor, model, firmware revision, serial number, and type.
+*error_pct* (INT): Number of bad blocks on the disk, described as percentage of the total size of the disk.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the disk vendor.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Disk firmware revision number.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.diskcopy.resume
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when RAID disk copy is resumed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: resuming disk copy from %s to %s (disk block %llu, %d%% complete)
+*Parameters*::
+*owner* (STRING): Owner of the RAID group.
+*rg* (STRING): RAID group name.
+*source* (STRING): Name of the source disk.
+*target* (STRING): Name of the target disk.
+*blockNum* (LONGINT): Physical block number from which disk copy is continuing.
+*percent* (INT): Percentage of disk copy already complete.
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.rg.diskcopy.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when RAID disk copy is initiated.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: starting disk copy from %s (S/N [%s]) to %s (S/N [%s]). Reason: %s.
+*Parameters*::
+*owner* (STRING): Owner of the RAID group.
+*rg* (STRING): RAID group name.
+*source* (STRING): Name of the source disk.
+*source_serialno* (STRING): Serial number of the source disk.
+*target* (STRING): Name of the target disk.
+*target_serialno* (STRING): Serial number of the target disk.
+*reason* (STRING): Reason for starting disk copy.
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.rg.drecons
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when double reconstruction is initiated after the failure of two disks in RAID-DP or RAID-TEC raid group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: starting double reconstruction, using disks %s and %s
+*Parameters*::
+*owner* (STRING): Owner of the raid group.
+*rg* (STRING): Name of the raid group object that is initiating double reconstruction.
+*disk* (STRING): Name of the disk object that is the first reconstruction target.
+*disk1* (STRING): Name of the disk object that is the second reconstruction target.
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.rg.intl.diskcopy.done
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when intelligent disk copy has been completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: intelligent disk copy completed for %s. Used DBN %llu copy done DBN %llu disk size %llu
+*Parameters*::
+*owner* (STRING): Owner of the raid group.
+*rg* (STRING): Name of the raid group object that is completed intelligent disk copy.
+*disk* (STRING): Name of the disk object for which intelligent reconstruction completed.
+*used_dbn* (LONGINT): Maximum used Disk block number.
+*copy_done_dbn* (LONGINT): Disk block number when intelligent disk copy was done.
+*disk_size* (LONGINT): Filesystem size of the disk.
+
+== raid.rg.intl.recons.done
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when intelligent reconstruction has been completed on a specific raid group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: intelligent reconstruction completed for %s. Used DBN %llu reconstruction done DBN %llu disk size %llu
+*Parameters*::
+*owner* (STRING): Owner of the raid group.
+*rg* (STRING): Name of the raid group object that is completed intelligent reconstruction.
+*disk* (STRING): Name of the disk object for which intelligent reconstruction completed.
+*used_dbn* (LONGINT): Maximum used Disk block number.
+*recons_done_dbn* (LONGINT): Disk block number when intelligent reconstruction was done.
+*disk_size* (LONGINT): Filesystem size of the disk.
+
+== raid.rg.lw.prot.disabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the lost-write protection for RAID I/O is disabled on the RAID group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: group lost-write protection for RAID I/O is now disabled (%s)
+*Parameters*::
+*owner* (STRING): Owner of the RAID group.
+*rg* (STRING): Name of the RAID group on which lost-write protection is disabled.
+*reason* (STRING): A character string indicating the reason for disabling the lost-write protection for RAID I/O.
+
+== raid.rg.media_scrub.cksum_blk.err.bypass
+*Severity*::
+NOTICE
+*Description*::
+For a zoned checksum aggregate this event is issued when background media scrub bypasses a media error on a checksum block.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Media error on checksum block bypassed for %s%s, block #%llu
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Formatted information of the disk object that contains the error.
+*blockNum* (LONGINT): The physical block number containing the error.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.media_scrub.done
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when media scrub has completed on a specific raid group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: media scrub completed in %s
+*Parameters*::
+*owner* (STRING): The owner of the raid group
+*rg* (STRING): The name of the raid group object that has completed media scrub
+*duration* (STRING): The amount of time the media scrub required
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.rg.media_scrub.media.err
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a media_scrub i/o detects a medium error
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Read error on %s%s, block #%llu during media_scrub
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): The name of the disk object that contains the error.
+*blockNum* (LONGINT): The physical block number containing the error.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.media_scrub.media.errs
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when background media scrubbing detects a multi-disk media error on a stripe. Data ONTAP(R) will take appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Multiple checksum block read error on %s%s for blocks [#%llu - #%llu] during media_scrub.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*rg* (STRING): Name of the RAID group object that contains the multi-disk media error.
+*blockNum* (LONGINT): First physical disk block number containing the error.
+*LblockNum* (LONGINT): Last physical disk block number containing the error.
+
+== raid.rg.media_scrub.media.recommend.reassign.err
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a background media scrub i/o detects a recommend reassign error
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Block recommended for reassignment on %s%s, block #%llu during media_scrub
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Formatted information of the disk object that contains the error.
+*blockNum* (LONGINT): The physical block number containing the error.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.media_scrub.resume
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when media_scrub resumes on a specific raid group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: resuming media scrub at stripe %llu (%d%% complete)
+*Parameters*::
+*owner* (STRING): The owner of the raid group
+*rg* (STRING): The name of the raid group object that is resuming media_scrub
+*stripe* (LONGINT): resuming at stripe.
+*percentage* (INT): (None).
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.rg.media_scrub.rewrite.chunk
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when background media scrub rewrites a chunk of blocks for ATA drives.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+media_scrub rewriting chunk on %s%s, start block #%llu, count #%u.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM , and carrier serial number.
+*blockNum* (LONGINT): Physical block number at which the chunk starts.
+*count* (INT): Number of blocks being rewritten.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model name of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.media_scrub.start
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when media_scrub has been initiated on a specific raid group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: start media scrub
+*Parameters*::
+*owner* (STRING): The owner of the raid group
+*rg* (STRING): The name of the raid group object that is initiating media_scrub
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.rg.media_scrub.stopped
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when media scrub is stopped on specified raid group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: media scrub stopped at stripe %llu after %s
+*Parameters*::
+*owner* (STRING): The owner of the raid group
+*rg* (STRING): The name of the raid group object for which media scrub was stopped
+*stripe* (LONGINT): stopped at stripe.
+*duration* (STRING): The amount of time the media scrub has taken.
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.rg.media_scrub.summary.media
+*Severity*::
+NOTICE
+*Description*::
+This event is generated as a summary report for errors found during a media scrub.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*errors* (INT): The total number of media errors found
+*rg* (STRING): The name of the raid group
+*current* (STRING): The current status
+
+== raid.rg.media_scrub.suspended
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when media scrub is suspended on specified raid group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: media scrub suspended at stripe %llu after %s
+*Parameters*::
+*owner* (STRING): The owner of the raid group
+*rg* (STRING): The name of the raid group object for which media scrub is suspended
+*stripe* (LONGINT): suspended at stripe.
+*duration* (STRING): The amount of time the media scrub has taken.
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.rg.mirrorreaderr.fatal
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the RAID mirror read error handling encounters an I/O error on the RAID group in the source plex. This is ultimately fatal error to the aggregate. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: RAID mirror read error handling experienced fatal multi-disk error; failing RAID group.
+*Parameters*::
+*rg* (STRING): Name of the RAIDgroup that failed.
+
+== raid.rg.mirrorreaderr.nonfatal
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the RAID mirror read error handling encounters an I/O error on a RAID group during a scrub, or lost write recovery operation. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: RAID mirror read error handling experienced multi-disk error; continuing.
+*Parameters*::
+*rg* (STRING): Name of the RAID group that has a double error.
+
+== raid.rg.normal
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a RAID group returns to normal after it was in one of the degraded states, after a resynchronization, or after it was in failed state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: raid group %s is in normal state.
+*Parameters*::
+*owner* (STRING): Owner of the raid group.
+*name* (STRING): Relative path name of the raid group.
+*aggr_UUID* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.rg.readerr.bad.file.block
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a reconstructed file block is found out to be marked bad because it could not be recovered correctly earlier.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Reading bad block on %s %s%s, %s inode number %d, snapid %d, file block %llu, level %d.
+*Parameters*::
+*vol_type* (STRING): String indicating whether the file is contained in a flexible volume or aggregate.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the volume or aggregate
+*ino_type* (STRING): The inode type
+*fileid* (INT): File identifier
+*snapid* (INT): Snapshot identifier
+*fileBlockNum* (LONGINT): Block number in the file
+*level* (INT): Inode indirect pointer level
+
+== raid.rg.readerr.block.fail
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a missing block could not be properly recovered because a read error that was detected on another disk in the group was bypassed.
+*Corrective Action*::
+Ensure wafliron successfully completes. Wafliron will preserve the filesystem consistency.
+*Syslog Message*::
+Block #%llu cannot be properly recovered on %s%s
+*Parameters*::
+*blockNum* (LONGINT): The physical block number that could not be recovered
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Formatted information of the disk to which the block belongs
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.readerr.recalc
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a previously detected bad block is recalculated.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Recalculated bad block on %s%s, block #%llu
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): The name of the disk
+*blockNum* (LONGINT): The disk block number
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.readerr.recommend.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a detected bad block is repeatly recalculated and written back to disk.
+*Corrective Action*::
+Wait for the event message raid.disk.unload.done or raid.carrier.remove to be issued and then replace the carrier containing the failed disk. If the disk is contained in a single-disk carrier, raid.disk.unload.done will be issued immediately. Otherwise, wait for raid.carrier.remove which indicates the carrier has been fully prepared for removal.
+*Syslog Message*::
+Disk failure due to repeated read errors on %s%s, block #%llu
+*Parameters*::
+*owner* (STRING): String indicating the owner of the affected volume.
+*disk_info* (STRING): The name of the disk.
+*blockNum* (LONGINT): The physical block number containing the error.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.readerr.repair.cksum.computed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a previously detected bad block is repaired and the checksum of that recalculated block matches the computed checksum.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Recalc %s%s, block #%llu matches computed checksum
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Formatted information of the disk
+*blockNum* (LONGINT): The disk block number
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.readerr.repair.cksum.error
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a previously detected bad block is repaired and the checksum of that recalculated block does not match the stored and computed checksums.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Data recalculated from parity on %s%s; block #%llu does not match the stored and computed checksums.
+*Parameters*::
+*owner* (STRING): String indicating the owner of the affected aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier ID.
+*blockNum* (LONGINT): Disk block number.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the disk vendor.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.readerr.repair.cksum.stored
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a previously detected bad block is repaired and the checksum of that recalculated block matches the stored checksum.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Recalc %s%s, block #%llu matches stored checksum
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Formatted information of the disk
+*blockNum* (LONGINT): The disk block number
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.readerr.repair.data
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when fixing a single-disk media or checksum error on a data disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Fixing bad data on %s%s, disk block (DBN) %llu, aggregate block (VBN) %llu.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, rpm, and carrier serial number containing the block being rewritten.
+*blockNum* (LONGINT): Disk block number.
+*vbn* (LONGINT): Volume block number.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.readerr.repair.data.dirty
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when fixing a single-disk media or checksum error on a data block that belongs to a dirty parity region.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, rpm, and carrier serial number containing the block being rewritten.
+*blockNum* (LONGINT): Disk block number.
+*vbn* (LONGINT): Volume block number.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.readerr.repair.filebno
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a previously detected bad block is repaired.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s, %s inode number %d, snapid %d, treeid %d, uid %u, gid %u, file block %llu level %d
+*Parameters*::
+*vol_type* (STRING): Whether this error occurred in an aggregate, or a flexible volume.
+*owner* (STRING): Owner of the affected volume or aggregate.
+*vol* (STRING): The name of the volume or aggregate
+*ino_type* (STRING): The inode type
+*fileid* (INT): The file identifier
+*snapid* (INT): The snapshot identifier
+*treeid* (INT): The qtree identifier
+*uid* (INT): The user id that owns the file
+*gid* (INT): The group id that owns the file
+*bno* (LONGINT): The block number in the file
+*level* (INT): The level of the block within the file
+
+== raid.rg.readerr.repair.parity
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when fixing a single-disk media or checksum error on a parity disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Fixing bad parity on %s%s, block #%llu
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Formatted information of the disk containing the block being rewritten.
+*blockNum* (LONGINT): The disk block number
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.readerr.repair.parity.dirty
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when fixing a single-disk media or checksum error on a parity block that belongs to a dirty parity region.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Formatted information of the disk containing the block being rewritten.
+*blockNum* (LONGINT): The disk block number
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.readerr.wc.blkErr
+*Severity*::
+EMERGENCY
+*Description*::
+This event occurs when a checksum error due to WAFL context mismatch is detected on a reconsructed block. This error indicates data loss and are caused by misbehaving disks.
+*Corrective Action*::
+Start wafliron on the indicated volume or aggregate.
+*Syslog Message*::
+Checksum error due to wafl context mismatch on %s %s%s, %s inode number %d, snapid %d, file block %llu, level %d, RBN %llu. Checksum context has FBN %llu, buftreeid %llu, CP count %u, encrypted flag %d, key index %d, PVBN %lld.
+*Parameters*::
+*vol_type* (STRING): String indicating whether the file is contained in a flexible volume or aggregate.
+*owner* (STRING): Owner of the affected volume or aggregate.
+*vol* (STRING): Name of the volume or aggregate
+*ino_type* (STRING): The inode type
+*fileid* (INT): File identifier
+*snapid* (INT): Snapshot identifier
+*fileBlockNum* (LONGINT): Block number in the file
+*level* (INT): Inode indirect pointer level
+*blockNum* (LONGINT): RAID Block Number (RBN) of the block
+*stored_fbn* (LONGINT): Stored file block number in the checksum entry.
+*stored_buftreeid* (LONGINT): Stored buftree identifier in the checksum entry.
+*stored_cpcount* (INT): Stored CP count in the checksum entry.
+*stored_encrypted_flag* (INT): Stored encrypted flag in the checksum entry.
+*stored_key_index* (INT): Stored encryption key index in the checksum entry.
+*pvbn* (LONGINT): Physical Volume Block Number (PVBN) of the block
+
+== raid.rg.recon.bad.cksum.embd
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an invalid checksum entry during reconstruction while the aggregate is in media error bypass mode. The embedded checksum computed over the checksum entry do not match, indicating the corruption of the checksum entry. The error is ignored.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Invalid checksum entry on %s%s, block #%llu during reconstruction while in media error bypass mode.
+*Parameters*::
+*owner* (STRING): Owner of the disk drive.
+*disk_info* (STRING): Formatted information of the disk object that contains the error.
+*blockNum* (LONGINT): Physical disk block number containing the error.
+*shelf* (STRING): Disk shelf identifier where the disk drive is located.
+*bay* (STRING): Disk bay within the disk shelf where disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.recon.bad.cksum.zero
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an empty checksum entry during reconstruction while the aggregate is in media error bypass mode. The checksum entry is zeroed, but the corresponding block is not zeroed. The error is ignored.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Empty checksum entry for non-zeroed block on %s%s, block #%llu, during reconstruction while in media error bypass mode.
+*Parameters*::
+*owner* (STRING): Owner of the disk drive.
+*disk_info* (STRING): Formatted information of the disk object that contains the error.
+*blockNum* (LONGINT): Physical disk block number containing the error.
+*shelf* (STRING): Disk shelf identifier where the disk drive is located.
+*bay* (STRING): Disk bay within the disk shelf where disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.recons.aborted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when reconstruction has been aborted on a specific raid group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: reconstruction aborted at disk block %llu after %s
+*Parameters*::
+*owner* (STRING): Owner of the raid group.
+*rg* (STRING): Name of the raid group object that is aborted reconstruction.
+*blockNum* (LONGINT): The physical block number reconstruction stopped
+*duration* (STRING): The amount of time the reconstruction required
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.rg.recons.bad.cksum
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when reconstruction detects a bad checksum on the stripe while the aggregate is in media error bypass mode.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Checksum mismatch on %s%s, block #%llu during reconstruction; assuming data is correct and fixing checksum
+*Parameters*::
+*owner* (STRING): Owner of the aggregate.
+*disk_info* (STRING): Formatted information of the disk object that contains the error.
+*blockNum* (LONGINT): The physical block number containing the error.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.recons.bad.cksum.blk
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when reconstruction corrects a checksum block media error in an advanced_zoned checksums (azcs) RAID group on a stripe while in media error bypass mode. Data ONTAP(R) takes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Checksum block read error on %s%s for blocks [#%llu - #%llu] during reconstruction; assuming data is correct and fixing checksum.
+*Parameters*::
+*owner* (STRING): Owner of the disk drive.
+*disk_info* (STRING): Formatted information about the disk object that contains the error.
+*blockNum* (LONGINT): First physical disk block number containing the error.
+*LblockNum* (LONGINT): Last physical disk block number containing the error.
+*shelf* (STRING): Disk Shelf identifier for the shelf on which the disk drive is located.
+*bay* (STRING): Disk bay within the disk shelf on which the disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): Model of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.recons.bad.cksum.bno
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a block number mismatch during reconstruction while the aggregate is in media error bypass mode. The expected Virtual Block Number (VBN)/Disk Block Number (DBN) is not the same as the stored VBN/DBN from the checksum entry, indicating that the block is read from the wrong location. The error is ignored.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Block number mismatch on %s%s: stored_dbn = %u, expected_dbn = %llu; stored_vbn = %llu, expected_vbn = %llu during reconstruction while in media error bypass mode.
+*Parameters*::
+*owner* (STRING): Owner of the disk drive.
+*disk_info* (STRING): Formatted information of the disk object that contains the error.
+*stored_dbn* (INT): Physical disk block number stored in the checksum entry.
+*expected_dbn* (LONGINT): Expected physical disk block number.
+*stored_vbn* (LONGINT): Volume block number stored in the checksum entry.
+*expected_vbn* (LONGINT): Expected volume block number.
+*shelf* (STRING): Disk Shelf identifier where the disk drive is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.recons.block.fail
+*Severity*::
+ERROR
+*Description*::
+A block on the reconstructing disk can not be reconstructed because of a media error on another disk in the group. The block is zeroed and written to disk. If the block is allocated, data in that block is corrupted.
+*Corrective Action*::
+Ensure wafliron successfully completes after this reconstruction is finished. Wafliron will preserve the filesystem consistency.
+*Syslog Message*::
+Block #%llu can not be properly reconstructed on %s%s - the block will be zeroed
+*Parameters*::
+*blockNum* (LONGINT): The physical block number that could not be reconstructed
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Formatted information of the disk being reconstructed
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.recons.cantStart
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a RAID group is missing a disk but the reconstruction cannot be started.
+*Corrective Action*::
+Usually, an appropriate spare disk should be installed. Sometimes, the quoted reason and presence of the appropriate spare disks can indicate a different problem.
+*Syslog Message*::
+The reconstruction cannot start in RAID group %s%s: %s
+*Parameters*::
+*owner* (STRING): The owner of the raid group
+*rg* (STRING): The name of the raid group
+*reason* (STRING): The reason the reconstruction cannot start
+
+== raid.rg.recons.cksum.bno
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a block number mismatch during the RAID reconstruction process. The expected Virtual Block Number (VBN)/Disk Block Number (DBN) is not the same as the stored VBN/DBN from the checksum entry. This indicates that the block is read from the wrong location. Data ONTAP(R) takes appropriate recovery actions, as described in other logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+There was a block number mismatch on %s%s: stored_dbn = %u, expected_dbn = %llu; stored_vbn = %llu, expected_vbn = %llu during reconstruction.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier ID.
+*stored_dbn* (INT): Physical disk block number stored in the checksum entry.
+*expected_dbn* (LONGINT): Expected physical disk block number.
+*stored_vbn* (LONGINT): Volume block number stored in the checksum entry.
+*expected_vbn* (LONGINT): Expected volume block number.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.recons.cksum.embed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an invalid checksum entry during the RAID reconstruction process. The embedded checksum computed over the checksum entry does not match the stored embedded checksum in the checksum entry, indicating the corruption of the checksum entry. Data ONTAP(R) takes appropriate recovery actions, as described in other logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Invalid checksum entry on %s%s, block #%llu, during reconstruction.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, carrier ID, and site.
+*blockNum* (LONGINT): Physical disk block number containing the error.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.recons.cksum.err
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a checksum error on the stripe during a RAID reconstruction operation. The checksum computed is not the same as the stored checksum. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Checksum error on %s%s, block #%llu during reconstruction.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, carrier ID, and site.
+*blockNum* (LONGINT): Physical block number containing the error.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.recons.cksum.rderr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a checksum block media error in an advanced_zoned checksum's (AZCS) RAID group during RAID reconstruction. Data ONTAP(R) takes appropriate recovery actions, as descibed in other logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Checksum block read error on %s%s for blocks [#%llu - #%llu] during reconstruction.
+*Parameters*::
+*owner* (STRING): Owner of the disk.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier ID.
+*blockNum* (LONGINT): First physical disk block number containing the error.
+*LblockNum* (LONGINT): Last physical disk block number containing the error.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.recons.cksum.zero
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an empty checksum entry during the RAID reconstruction process. The checksum entry is zeroed, but the corresponding block is not zeroed. Data ONTAP(R) takes appropriate recovery actions, as described in other logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Empty checksum entry for non-zeroed block on %s%s, block #%llu, during reconstruction.
+*Parameters*::
+*owner* (STRING): Owner of the disk.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, and carrier ID.
+*blockNum* (LONGINT): Physical disk block number containing the error.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.recons.deferred
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the a raid group reconstruction has been deferred due to inadequate incore resources.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: reconstruction deferred (%s)
+*Parameters*::
+*owner* (STRING): The owner of the raid group
+*rg* (STRING): The name of the raid group object that is unable to reconstruct
+*reason* (STRING): A text reason code
+
+== raid.rg.recons.deferred.ok
+*Severity*::
+NOTICE
+*Description*::
+A previously deferred reconstruction is now ready to proceed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: reconstruction previously deferred, now proceeding
+*Parameters*::
+*owner* (STRING): The owner of the raid group
+*rg* (STRING): The name of the raid group object that is now able to reconstruct
+
+== raid.rg.recons.disabled
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a RAID group needs to start reconstruction, but reconstruction is disabled for the RAID group.
+*Corrective Action*::
+Run the 'aggr recons enable' command for the RAID group.
+*Syslog Message*::
+Reconstruction needs to be performed on RAID group %s%s, but reconstruction is disabled.
+*Parameters*::
+*owner* (STRING): Owner of the RAID group.
+*rg* (STRING): RAID group name.
+
+== raid.rg.recons.done
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when reconstruction has been completed on a specific raid group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: reconstruction for %s completed in %s.
+*Parameters*::
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, carrier serial number, and site.
+*owner* (STRING): Owner of the raid group.
+*disk* (STRING): Name of the disk object for which reconstruction completed.
+*duration* (STRING): The amount of time the reconstruction required
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.rg.recons.info
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a disk is selected for RAID group reconstruction.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Spare disk %s will be used to reconstruct one missing disk in RAID group %s%s.
+*Parameters*::
+*disk* (STRING): Name of the spare disk object that will be used for reconstruction.
+*owner* (STRING): Owner of the RAID group.
+*rg* (STRING): Name of the RAID group.
+
+== raid.rg.recons.media.err.bypass
+*Severity*::
+ERROR
+*Description*::
+This event is issued when reconstruction detects a read error but the error is bypassed. The block with read error is then zeroed and written to disk.
+*Corrective Action*::
+Ensure wafliron successfully completes. Wafliron will preserve the filesystem consistency.
+*Syslog Message*::
+Media error bypass enabled, zeroing block %llu of Disk %s%s
+*Parameters*::
+*blockNum* (LONGINT): The physical block number that hit the read error
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Formatted information of the disk that hit the read error
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.recons.mismatch
+*Severity*::
+ERROR
+*Description*::
+There was no available disk for reconstruction matching all parameters of an ideal replacement in the RAID group. Data ONTAP selected a disk with different interface speed or rpm, or from the opposite spare pool in a sync-mirror configuration.
+*Corrective Action*::
+Wait for reconstruction to complete. Install an appropriate spare disk. Fail the mismatched disk using 'disk fail'. It will be copied to the new spare disk. After copying is done, use 'disk unfail' to unfail the mismatched disk and convert it to a spare.
+*Syslog Message*::
+%s%s: matching disk not available for reconstruction; using disk %s %s
+*Parameters*::
+*owner* (STRING): The owner of the raid group
+*rg* (STRING): The name of the raid group
+*disk* (STRING): The name of the disk used for reconstruction
+*detail* (STRING): Description of disk mismatch; one or more of: from the opposite spare pool, with different rpm.
+
+== raid.rg.recons.missing
+*Severity*::
+NOTICE
+*Description*::
+Information about disks missing from the RAID group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RAID group %s%s is missing %d disk(s).
+*Parameters*::
+*owner* (STRING): The owner of the RAID group
+*rg* (STRING): The name of the RAID group
+*missing* (INT): Number of disks missing (1 or 2)
+
+== raid.rg.recons.multidisk
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the reconstruction encounters an unrecoverable I/O error. We try to avoid panic in this case.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: reconstruction encountered a multi-disk error
+*Parameters*::
+*owner* (STRING): The owner of the raid group
+*rg* (STRING): The name of the reconstructing raid group object.
+
+== raid.rg.recons.multidisk.bypass
+*Severity*::
+NOTICE
+*Description*::
+Reconstruction can proceed and it will ignore media errors until completion.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: reconstruction will bypass media errors
+*Parameters*::
+*owner* (STRING): The owner of the raid group
+*rg* (STRING): The name of the reconstructing raid group object.
+
+== raid.rg.recons.multidisk.fail
+*Severity*::
+ALERT
+*Description*::
+The recovery procedure for a media error during reconstruction has failed. The filer will panic to allow recovery after reboot. After reboot, the affected volume will be restricted and marked wafl inconsistent.
+*Corrective Action*::
+Start wafliron to bring the affected volume online.
+*Syslog Message*::
+%s%s: failed to recover from a multi-disk error
+*Parameters*::
+*owner* (STRING): The owner of the raid group
+*rg* (STRING): The name of the reconstructing raid group object.
+
+== raid.rg.recons.resume
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when reconstruction has been resumed on a specific raid group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: resuming reconstruction, using disk %s (disk block %llu, %d%% complete)
+*Parameters*::
+*owner* (STRING): Owner of the raid group.
+*rg* (STRING): Name of the raid group object that is initiating reconstruction.
+*disk* (STRING): Name of the disk object that is the reconstruction target.
+*blockNum* (LONGINT): The physical block number on which reconstruction is resuming.
+*percent* (INT): The percentage of reconstruction already complete.
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.rg.recons.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when reconstruction has been initiated on a specific raid group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: starting reconstruction, using disk %s, disk block %llu.
+*Parameters*::
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM, carrier serial number, and site.
+*owner* (STRING): Owner of the raid group.
+*disk* (STRING): Name of the disk object that is the reconstruction target
+*startBlockNum* (LONGINT): The physical block number on which reconstruction is starting.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.rg.recons.suspended
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when reconstruction is suspended on a specific RAID group that is yielding to higher priority reconstruction.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: reconstruction suspended at disk block %llu after %s, yielding to higher priority reconstruction
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*rg* (STRING): Name of the RAID group object that suspended reconstruction.
+*blockNum* (LONGINT): Physical disk block number where reconstruction stopped.
+*duration* (STRING): Amount of time spent on reconstruction before it was suspended.
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.rg.recons.throttle
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when we start throttling the number of messages that reconstruction generates due to an overwhelming number of messages that are being generated.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Too many bad checksum messages; will emit message once every %d seconds, dropping others.
+*Parameters*::
+*interval* (INT): The interval at which we will generate messages
+
+== raid.rg.reparity.aborted
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when parity recomputation has been aborted on a specific raid group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: parity recomputation aborted after %s
+*Parameters*::
+*rg* (STRING): The name of the raid group object that is completed parity recomputation
+*duration* (STRING): The amount of time the reparity ran
+
+== raid.rg.reparity.bad.cksum
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the computed checksum of a block does not match the stored checksum during a reparity operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Checksum mismatch on %s%s, block #%llu during parity recomputation; data is assumed to be correct and fixing checksum.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Information about the disk object, including disk name, path, shelf, bay, serial number, vendor, model, RPM , and carrier serial number.
+*blockNum* (LONGINT): Physical block number containing the error.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.reparity.cksum.bno
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a block number mismatch during parity recomputation. The expected Virtual Block Number (VBN)/Disk Block Number (DBN) is not the same as the stored VBN/DBN from the checksum entry indicating that the block is read from the wrong location. Data ONTAP(R) makes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Block number mismatch on %s%s: stored_dbn = %u, expected_dbn = %llu; stored_vbn = %llu, expected_vbn = %llu during parity recomputation.
+*Parameters*::
+*owner* (STRING): Owner of the disk drive.
+*disk_info* (STRING): Formatted information of the disk object that contains the error.
+*stored_dbn* (INT): Physical disk block number stored in the checksum entry.
+*expected_dbn* (LONGINT): Expected physical disk block number.
+*stored_vbn* (LONGINT): Volume block number stored in the checksum entry.
+*expected_vbn* (LONGINT): Expected volume block number.
+*shelf* (STRING): Disk Shelf identifier where the disk drive is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.reparity.cksum.embed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an invalid checksum entry during parity recomputation. The embedded checksum computed over the checksum entry do not match, indicating the corruption of the checksum entry. Data ONTAP(R) makes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Invalid checksum entry on %s%s, block #%llu, during parity recomputation.
+*Parameters*::
+*owner* (STRING): Owner of the disk drive.
+*disk_info* (STRING): Formatted information of the disk object that contains the error.
+*blockNum* (LONGINT): Physical disk block number containing the error.
+*shelf* (STRING): Disk shelf identifier where the disk drive is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.reparity.cksum.rderr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when parity recomputation detects a checksum block media error in an advanced_zoned checksum's (azcs) RAID group. Data ONTAP(R) takes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Checksum block read error on %s%s for blocks [#%llu - #%llu] during parity recomputation.
+*Parameters*::
+*owner* (STRING): Owner of the disk drive.
+*disk_info* (STRING): Formatted information about the disk object that contains the error.
+*blockNum* (LONGINT): First physical disk block number containing the error.
+*LblockNum* (LONGINT): Last physical disk block number containing the error.
+*shelf* (STRING): Disk shelf identifier for the disk shelf on which the disk drive is located.
+*bay* (STRING): Disk bay within the disk shelf on which the disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): Model of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.reparity.cksum.zero
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an empty checksum entry during parity recomputation. The checksum entry is zeroed, but the corresponding block is not zeroed. Data ONTAP(R) makes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Empty checksum entry for non-zeroed block on %s%s, block #%llu, during parity recomputation.
+*Parameters*::
+*owner* (STRING): Owner of the disk drive.
+*disk_info* (STRING): Formatted information of the disk object that contains the error.
+*blockNum* (LONGINT): Physical disk block number containing the error.
+*shelf* (STRING): Disk Shelf identifier where the disk drive is located.
+*bay* (STRING): Disk bay within the shelf where disk is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.reparity.deferred
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the a raid group reparity has been deferred due to inadequate incore resources.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: parity recomputation deferred (%s)
+*Parameters*::
+*rg* (STRING): The name of the raid group object that is unable to reparity
+*reason* (STRING): A text reason code
+
+== raid.rg.reparity.deferred.ok
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a previously deferred reparity operation is now ready to proceed because of availability of incore resources.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: parity recomputation previously deferred is now proceeding
+*Parameters*::
+*rg* (STRING): Name of the RAID group object that can proceed with reparity operation.
+
+== raid.rg.reparity.done
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when parity recomputation has been completed on a specific raid group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: parity recomputation completed in %s
+*Parameters*::
+*rg* (STRING): The name of the raid group object that is completed parity recomputation
+*duration* (STRING): The amount of time the reparity required
+
+== raid.rg.reparity.media.err
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when reparity i/o detects a medium error
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Read error on %s%s, block #%llu during parity recomputation
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Formatted information of the disk object that contains the error.
+*blockNum* (LONGINT): The physical block number containing the error.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.reparity.rewrite
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when we rewrite parity on a stripe.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Rewriting parity on RAID group %s, stripe #%llu.
+*Parameters*::
+*rg* (STRING): The name of the RAID group
+*stripe* (LONGINT): The stripe number
+
+== raid.rg.reparity.start
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when parity recomputation has been initiated on a specific raid group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: starting parity recomputation
+*Parameters*::
+*rg* (STRING): The name of the raid group object that is initiating parity recomputation
+
+== raid.rg.reparity.throttle
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when we start throttling the number of messages that reparity generates due to an overwhelming number of messages that are being generated.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Too many parity/bad checksum messages; will emit message once every %d seconds, dropping others.
+*Parameters*::
+*interval* (INT): The interval at which we will generate messages
+
+== raid.rg.resync.aborted
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when resynchronization has been aborted on a specific raid group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: resynchronization aborted after %s
+*Parameters*::
+*owner* (STRING): The owner of the raid group
+*rg* (STRING): The name of the raid group object that is aborting resynchronization
+*duration* (STRING): The amount of time the resynchronization ran
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.rg.resync.done
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when resynchronization has been completed on a specific raid group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: resynchronization completed in %s
+*Parameters*::
+*owner* (STRING): The owner of the raid group
+*rg* (STRING): The name of the raid group object that is initiating resynchronization
+*duration* (STRING): The amount of time the resynchronization required
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.rg.resync.info
+*Severity*::
+NOTICE
+*Description*::
+This message occurs periodically at the end of RAID group resynchronization, providing information such as the number of reads and writes issued, and number of blocks copied.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"%s": number of reads:"%llu" number of writes:"%llu" number of parity blocks read:"%llu" number of blocks copied:"%llu" at throughput rate: %d MB/s.
+*Parameters*::
+*rg* (STRING): RAID group in the destination plex.
+*nreadio* (LONGINT): Number of disk reads issued.
+*nwriteio* (LONGINT): Number of tetris writes issued.
+*nparity_blocks_read* (LONGINT): Number of parity blocks read.
+*nblocks_copied* (LONGINT): Number of blocks copied.
+*throughput* (INT): Current throughput rate.
+
+== raid.rg.resync.snap.list
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs at the beginning and at the end of a resynchronization and it lists a bitmap of snapshots involved in the resynchronization.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s: resync snapshots %x %x %x %x %x %x %x %x
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*rg* (STRING): RAID group in the resynchronizing plex.
+*snapmap7* (INT): Bitmap for snapshots 255-224.
+*snapmap6* (INT): Bitmap for snapshots 223-192.
+*snapmap5* (INT): Bitmap for snapshots 191-160.
+*snapmap4* (INT): Bitmap for snapshots 159-128.
+*snapmap3* (INT): Bitmap for snapshots 127-96.
+*snapmap2* (INT): Bitmap for snapshots 95-64.
+*snapmap1* (INT): Bitmap for snapshots 63-32.
+*snapmap0* (INT): Bitmap for snapshots 31-0.
+
+== raid.rg.resync.start
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when resynchronization has been initiated on a specific raid group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: start resynchronization (level %d)
+*Parameters*::
+*owner* (STRING): The owner of the raid group
+*rg* (STRING): The name of the raid group object that is initiating resynchronization
+*level* (INT): (None).
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.rg.sameCarrier
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the disks selected during aggregate creation and mirroring, disk addition, disk replacement, or reconstruction results in two disks from the same disk carrier being part of a single RAID group. The carrier should not be removed; otherwise the RAID group is doubly degraded, which significantly reduces performance. This situation also increases the chance of data loss. Data loss could occur because of either the user forcing the command to make such a disk selection, or Data ONTAP(R) could not find more suitable disks. This event is generated for every pair of disks residing in a disk carrier that would become part of a single RAID group. Data ONTAP makes appropriate recovery actions. One or more disk copies are performed to correct the problem.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*disk1* (STRING): Name of the first disk in the disk carrier.
+*disk2* (STRING): Name of the second disk in the disk carrier.
+*owner* (STRING): Owner of the RAID group.
+*rg* (STRING): Name of the RAID group.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+
+== raid.rg.scrub.cksum.bno
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a block number mismatch during RAID parity scrub. The expected Virtual Block Number (VBN)/Disk Block Number (DBN) is not the same as the stored VBN/DBN from the checksum entry, indicating that the block is read from the wrong location. Data ONTAP(R) makes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Block number mismatch on %s%s: stored_dbn = %u, expected_dbn = %llu; stored_vbn = %llu, expected_vbn = %llu during RAID parity scrub.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Formatted information of the disk object that contains the error.
+*stored_dbn* (INT): Physical disk block number stored in the checksum entry.
+*expected_dbn* (LONGINT): Expected physical disk block number.
+*stored_vbn* (LONGINT): Volume block number stored in the checksum entry.
+*expected_vbn* (LONGINT): Expected volume block number.
+*shelf* (STRING): Disk shelf identifier where the disk drive is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.scrub.cksum.embed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an invalid checksum entry during RAID parity scrub. The embedded checksum computed over the checksum entry do not match, indicating the corruption of the checksum entry. Data ONTAP(R) makes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Invalid checksum entry on %s%s, block #%llu, during RAID parity scrub.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Formatted information of the disk object that contains the error.
+*blockNum* (LONGINT): Physical disk block number containing the error.
+*shelf* (STRING): Disk Shelf identifier where the disk drive is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.scrub.cksum.err
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when scrubbing detects a single-disk checksum error on a stripe.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Checksum error on %s%s, block #%llu during scrub
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Formatted information of the disk object that contains the error.
+*blockNum* (LONGINT): The physical block number containing the error.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.scrub.cksum.rderr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when background scrub detects a single-disk checksum block media error in an advanced_zoned checksum's (azcs) RAID group. Data ONTAP(R) takes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Checksum block read error on %s%s for blocks [#%llu - #%llu] during scrub.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Formatted information of the disk object that contains the error.
+*blockNum* (LONGINT): First physical disk block number containing the error.
+*LblockNum* (LONGINT): Last physical disk block number containing the error.
+*shelf* (STRING): Disk shelf identifier for the disk shelf on which the disk drive is located.
+*bay* (STRING): Disk bay within the disk shelf on which the disk drive is located.
+*vendor* (STRING): Name of the vendor of the disk drive.
+*model* (STRING): Model of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.scrub.cksum.zero
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an empty checksum entry during RAID parity scrub. The checksum entry is zeroed, but the corresponding block is not zeroed. Data ONTAP(R) makes appropriate recovery actions. Other events describe those actions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Empty checksum entry for non-zeroed block on %s%s, block #%llu, during RAID parity scrub.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Formatted information of the disk object that contains the error.
+*blockNum* (LONGINT): Physical disk block number containing the error.
+*shelf* (STRING): Disk Shelf identifier where the disk drive is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.scrub.context.valid
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when scrubbing is completed on a specific RAID group and its context now has parity protection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*owner* (STRING): Owner of the RAID group.
+*rg* (STRING): Name of the RAID group object that completed the scrub.
+*vol_context* (STRING): Status of context parity protection of the aggregate.
+
+== raid.rg.scrub.cxt.restart
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a suspended regular scrub is restarting as a context scrub from the beginning instead of resuming regular scrub at the last suspended point. It can happen when a RAID group requires parity updating for context parity protection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: restarting suspended scrub for WAFL context parity protection.
+*Parameters*::
+*owner* (STRING): Owner of the RAID group.
+*rg* (STRING): Name of the RAID group.
+
+== raid.rg.scrub.deferred
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the a raid group scrub has been deferred due to inadequate incore resources.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: scrub deferred (%s)
+*Parameters*::
+*owner* (STRING): The owner of the raid group
+*rg* (STRING): The name of the raid group object that is unable to scrub
+*reason* (STRING): A text reason code
+
+== raid.rg.scrub.deferred.ok
+*Severity*::
+NOTICE
+*Description*::
+A previously deferred scrub is now ready to proceed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: scrub previously deferred, now proceeding
+*Parameters*::
+*owner* (STRING): The owner of the raid group
+*rg* (STRING): The name of the raid group object that is now able to scrub
+
+== raid.rg.scrub.done
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when scrubbing has been completed on a specific raid group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: scrub completed in %s
+*Parameters*::
+*owner* (STRING): The owner of the raid group
+*rg* (STRING): The name of the raid group object that is completed scrub
+*duration* (STRING): The amount of time the scrubbing required
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.rg.scrub.lw.aborted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system aborts a special type of RAID scrub because it detected an inconsistent RAID write signature on the specified RAID group. The RAID scrub is required before lost-write protection for RAID I/O can be used on the RAID group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s stripe #%llu: scrub needed to enable lost-write protection for RAID I/O aborted after %s.
+*Parameters*::
+*owner* (STRING): Owner of the RAID group.
+*rg* (STRING): Name of the RAID group object for which the lost-write scrub was aborted.
+*stripe* (LONGINT): RAID stripe on which the inconsistent write signature was detected.
+*duration* (STRING): Amount of time the lost-write scrub has taken.
+
+== raid.rg.scrub.lw.restart
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a suspended regular scrub is restarting from the beginning to allow lost-write protection for RAID I/O instead of resuming regular scrub at the last suspended point. This happens when lost-write protection for RAID I/O is enabled on this RAID group while a regular scrub is suspended.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: restarting suspended scrub to enable lost-write protection for RAID I/O.
+*Parameters*::
+*owner* (STRING): Owner of the RAID group.
+*rg* (STRING): Name of the RAID group.
+
+== raid.rg.scrub.media.err
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when scrub I/O detects a medium error on a disk that is also called as an unrecoverable access error. This error is fixed immediately by reconstructing blocks from parity data.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Read error on %s%s, block #%llu, during scrub.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Name of the disk object that contains the error.
+*blockNum* (LONGINT): Physical block number containing the error.
+*shelf* (STRING): Disk shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.scrub.media.err.bypass
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when a read error is detected but ignored due to the presence of media bypass (ignore double errors).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Media error bypass enabled, zeroing disk block %llu of %s%s
+*Parameters*::
+*blockNum* (LONGINT): The physical block number containing the error.
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Formatted information of the disk.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.scrub.media.errs
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when scrubbing detects a multi-disk media error on a stripe.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Multiple bad blocks on %s%s, block #%llu during scrub
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*rg* (STRING): The name of the raid group object that contains the multi-disk error.
+*blockNum* (LONGINT): The physical block number containing the error.
+
+== raid.rg.scrub.media.recommend.reassign.err
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when scrub i/o detects a recommend reassign error
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Block recommended for reassignment on %s%s, block #%llu during scrub
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Formatted information of the disk object that contains the error.
+*blockNum* (LONGINT): The physical block number containing the error.
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision number of the disk
+*serialno* (STRING): Serial number of the disk
+*disk_type* (INT): Type of disk drive
+*disk_rpm* (STRING): Rotational speed of disk in RPM
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.scrub.pi
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when RAID scrub finds an inconsistent parity stripe. Data ONTAP(R) makes appropriate recovery actions, as described in other logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Inconsistent parity on RAID group %s, stripe #%llu.
+*Parameters*::
+*rg* (STRING): Name of the RAID group.
+*stripe* (LONGINT): Stripe number.
+
+== raid.rg.scrub.resume
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when scrubbing has been resumed on a specific raid group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: resuming scrub at stripe %llu (%d%% complete)
+*Parameters*::
+*owner* (STRING): The owner of the raid group
+*rg* (STRING): The name of the raid group object that is resuming scrubbing
+*stripe* (LONGINT): resuming at stripe.
+*percentage* (INT): (None).
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.rg.scrub.rewrite.data
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when scrub fixes a parity inconsistency error.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Scrub fixing bad data on disk %s%s, block #%llu.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Formatted information of the disk drive containing the block being rewritten.
+*blockNum* (LONGINT): Disk block number.
+*shelf* (STRING): Disk shelf identifier where the disk drive is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk drive is located.
+*vendor* (STRING): Name of the disk drive vendor.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.scrub.rewrite.parity
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when scrub fixes a parity inconsistency error.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Scrub fixing bad parity on disk %s%s, block #%llu.
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk_info* (STRING): Formatted information of the disk drive containing the block being rewritten.
+*blockNum* (LONGINT): Disk block number.
+*shelf* (STRING): Disk shelf identifier where the disk drive is located.
+*bay* (STRING): Disk bay within the disk shelf where disk drive is located.
+*vendor* (STRING): Name of the vendor of the disk drive.
+*model* (STRING): Model string of the disk drive.
+*firmware_revision* (STRING): Firmware revision number of the disk drive.
+*serialno* (STRING): Serial number of the disk drive.
+*disk_type* (INT): Type of disk drive.
+*disk_rpm* (STRING): Rotational speed of the disk drive, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.rg.scrub.start
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when scrubbing has been initiated on a specific raid group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: starting scrub
+*Parameters*::
+*owner* (STRING): The owner of the raid group
+*rg* (STRING): The name of the raid group object that is initiating scrubbing
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.rg.scrub.start.zone
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when scrubbing has been initiated on a specific raid group for a specific range.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: starting scrub at range [%llu - %llu]
+*Parameters*::
+*owner* (STRING): The owner of the raid group
+*rg* (STRING): The name of the raid group object that is initiating scrubbing
+*begin* (LONGINT): starting at stripe.
+*end* (LONGINT): ending at stripe.
+
+== raid.rg.scrub.stopped
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when scrub is stopped on specified raid group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: scrub stopped at stripe %llu after %s
+*Parameters*::
+*owner* (STRING): The owner of the raid group
+*rg* (STRING): The name of the raid group object that the scrub is stopped
+*stripe* (LONGINT): stopped at stripe.
+*duration* (STRING): The amount of time the scrub has taken.
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.rg.scrub.summary.cksum
+*Severity*::
+NOTICE
+*Description*::
+This event is generated as a summary report for checksum errors found during a scrub.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Scrub found %d checksum error%s in %s%s
+*Parameters*::
+*errors* (INT): The total number of checksum errors found
+*suffix* (STRING): The suffix used to report in syslog
+*rg* (STRING): The name of the raid group
+*current* (STRING): The current status
+
+== raid.rg.scrub.summary.lw
+*Severity*::
+NOTICE
+*Description*::
+This message occurs as a summary report for lost-write errors found during a scrub.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Scrub found %d RAID write signature inconsistenc%s in %s%s
+*Parameters*::
+*errors* (INT): Total number of RAID write signature inconsistencies found.
+*suffix* (STRING): Suffix used to report in syslog.
+*rg* (STRING): Name of the RAID group.
+*current* (STRING): Current status.
+
+== raid.rg.scrub.summary.media
+*Severity*::
+NOTICE
+*Description*::
+This event is generated as a summary report for media errors found during a scrub.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Scrub found %d media error%s in %s%s
+*Parameters*::
+*errors* (INT): The total number of media errors found
+*suffix* (STRING): The suffix used to report in syslog
+*rg* (STRING): The name of the raid group
+*current* (STRING): The current status
+
+== raid.rg.scrub.summary.pi
+*Severity*::
+NOTICE
+*Description*::
+This event is generated as a summary report for parity inconsistencies found during a scrub.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Scrub found %d parity inconsistenc%s in %s%s
+*Parameters*::
+*pis* (INT): The total number of parity inconsistencies found
+*suffix* (STRING): The suffix used to report in syslog
+*rg* (STRING): The name of the raid group
+*current* (STRING): The current status
+
+== raid.rg.scrub.suspended
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when scrub is suspended on specified raid group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: scrub suspended at stripe %llu after %s
+*Parameters*::
+*owner* (STRING): The owner of the raid group
+*rg* (STRING): The name of the raid group object that the scrub is suspended
+*stripe* (LONGINT): suspended at stripe.
+*duration* (STRING): The amount of time the scrub has taken.
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.rg.spares.low
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the number of available spares for a RAID group drops below the value specified in raid.min_spare_count. If a RAID reconstruct operation is required (for example, due to a future disk failure), the system might enter a degraded mode.
+*Corrective Action*::
+Assign unowned disks to this system. If there are no unowned disks, physically add more spare disks and assign them to this system.
+*Syslog Message*::
+%s
+*Parameters*::
+*msg* (STRING): Name of the RAID group.
+
+== raid.rg.trecons
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when triple reconstruction is initiated after the failure of three disks in RAID-TEC raid group.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: starting triple reconstruction, using disks %s and %s and %s
+*Parameters*::
+*owner* (STRING): Owner of the raid group.
+*rg* (STRING): Name of the raid group object that is initiating triple reconstruction.
+*disk* (STRING): Name of the disk object that is the first reconstruction target.
+*disk1* (STRING): Name of the disk object that is the second reconstruction target.
+*disk2* (STRING): Name of the disk object that is the third reconstruction target.
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.

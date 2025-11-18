@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: diskown-duplicatesoftentries-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.duplicatesoftentries events
+---
+
+= diskown.duplicatesoftentries events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.duplicateSoftEntries
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when we find duplicate entries in the sanown filer table.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s
+*Parameters*::
+*ems_txt* (STRING): The warning message

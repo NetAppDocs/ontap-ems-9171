@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: configbr-backupcompleted-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: configbr.backupcompleted events
+---
+
+= configbr.backupcompleted events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== configbr.backupCompleted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a scheduled configuration backup is successfully created.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Scheduled configuration backup %s was created successfully.
+*Parameters*::
+*backup* (STRING): Backup file.

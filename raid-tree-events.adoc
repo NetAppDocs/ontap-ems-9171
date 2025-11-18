@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: raid-tree-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.tree events
+---
+
+= raid.tree events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.tree.remove.activeIOs
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when RAID I/Os are active while removing a disk from the RAID tree. This event is logged in debug builds only.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Remove disk %s from vol %s: disk has %d active RAID I/Os.
+*Parameters*::
+*disk_name* (STRING): Name of the disk.
+*tree_name* (STRING): Name of the RAID tree.
+*active_ios* (INT): Number of active I/Os to the disk.

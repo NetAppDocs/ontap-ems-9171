@@ -1,0 +1,106 @@
+---
+sidebar: sidebar
+permalink: pha-dev-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: pha.dev events
+---
+
+= pha.dev events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== pha.dev.get.capacity.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R)software fails to get a drives's capacity after an extended wait. As a result, cannot add the drive.
+*Corrective Action*::
+Ensure that the hypervisor's device is still connected and accessible by ONTAP.
+*Syslog Message*::
+Failed to get drive capacity for device %s%d after %d seconds.
+*Parameters*::
+*devname* (STRING): Name of the device.
+*unit* (INT): Unit number of the device.
+*wait_time* (INT): Number of seconds waited for capacity information.
+
+== pha.dev.get.uuid.bioReadErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when block read operation for the passthrough host adapter (PHA) disk header returns an error. As a result, Data ONTAP(R) is unable to add or manage this device.
+*Corrective Action*::
+Ensure that the device is still connected to and accessible by Data ONTAP(R) and retry the operation.
+*Syslog Message*::
+Failed to get UUID for device %s%d. Reason: Block read operation returned an error: 0x%x.
+*Parameters*::
+*devname* (STRING): Name of the device.
+*unit* (INT): Unit number of the device.
+*bio_error* (INTHEX): Error code returned by block read operation.
+
+== pha.dev.get.uuid.devNotAdded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) fails to get disk header after multiple retries and finally give up. As a result, Data ONTAP(R) is unable to add the disk.
+*Corrective Action*::
+Ensure that the device is still connected to and accessible by Data ONTAP(R) and retry the operation.
+*Syslog Message*::
+Failed to get disk header for device %s%d. Number of bioerr %d Retries %d.
+*Parameters*::
+*devname* (STRING): Name of the device.
+*unit* (INT): Unit number of the device.
+*bioerr_cnt* (INT): Number of BIO errors.
+*retry_cnt* (INT): Number of retries.
+
+== pha.dev.get.uuid.devNotExist
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) fails to retrieve the the descriptor for the passthrough host adapter (PHA) device. As a result, Data ONTAP(R) fails to read the header on this device and is unable to add or manage it.
+*Corrective Action*::
+Ensure that the device is still connected to and accessible by Data ONTAP(R) and retry the operation.
+*Syslog Message*::
+Failed to retrieve the descriptor for device %s%d. Reason: %s.
+*Parameters*::
+*devname* (STRING): Name of the device.
+*unit* (INT): Unit number of the device.
+*error* (STRING): Error message.
+
+== pha.dev.header.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk header operation encounters a device error. As a result, ONTAP(R) might be unable to add or manage this device.
+*Corrective Action*::
+Ensure that the device is still connected to and accessible by ONTAP. If the device is reported as healthy by the hypervisor, contact NetApp technical support to open a support case to investigate the underlying cause.
+*Syslog Message*::
+Functional operation "%s" failed for device %s%d. Error number: 0x%x, CAM status: 0x%x, SCSI (status: 0x%x, sense key: x%x, sense code: 0x%x, additional sense code: 0x%x, additional sense code qualifier: 0x%x).
+*Parameters*::
+*operation* (STRING): Name of the functional operation.
+*devname* (STRING): Name of the device.
+*unit* (INT): Unit number of the device.
+*bio_error* (INTHEX): Error code returned by the device.
+*cam_status* (INTHEX): Common Access Method (CAM) status code returned by the device.
+*scsi_status* (INTHEX): SCSI status code returned by the device, if available.
+*error_code* (INTHEX): SCSI error code returned by the device, if available.
+*sense_key* (INTHEX): SCSI sense key returned by the device, if available.
+*asc* (INTHEX): SCSI additional sense code returned by the device, if available.
+*ascq* (INTHEX): SCSI additional sense code qualifier returned by the device, if available.
+
+== pha.dev.uuidWriteHeaderErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) fails to write the header to the passthrough host adapter (PHA) device. As a result, Data ONTAP(R) is unable to add or manage this device.
+*Corrective Action*::
+Ensure that the device is still connected to and accessible by Data ONTAP(R) and retry the operation.
+*Syslog Message*::
+Failed to write header to the device %s%d.
+*Parameters*::
+*devname* (STRING): Name of the device.
+*unit* (INT): Unit number of the device.

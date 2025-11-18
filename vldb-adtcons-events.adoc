@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: vldb-adtcons-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vldb.adtcons events
+---
+
+= vldb.adtcons events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vldb.adtcons.rpcfailure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Remote Procedure Call (RPC) from the Volume Location Database (VLDB) to the Management Gateway (MGWD) fails. This RPC updates the audit resource database when a volume belonging to a Vserver on a specific aggregate is deleted or moved from that aggregate and that volume is the last volume belonging to that Vserver residing on that aggregate.
+*Corrective Action*::
+Update the audit resource database by creating a temporary volume belonging to the applicable Vserver and aggregate. The temporary volume can take the defaults for the following commands and does not need to be exported to clients for data access: 'volume create -volume volume_name -aggregate aggr_name -vserver vserverid' After creating the temporary volume, delete it manually by using the following command: 'volume delete -volume volume_name -vserver vserverid' This process updates the audit resource database in the cluster and recovers from this error condition. If the problem persists, contact NetApp technical support for assistance.
+*Syslog Message*::
+RPC failure linked with the consolidation job for auditing on Vserver ID '%d', and aggregate '%s'.
+*Parameters*::
+*vserverid* (INT): ID of the Vserver that owned the last volume deleted or moved from the aggregate.
+*aggruuid* (STRING): UUID of the aggregate that owned the moved or deleted volume.

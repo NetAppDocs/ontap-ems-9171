@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: virtual-limits-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: virtual.limits events
+---
+
+= virtual.limits events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== virtual.limits.disabled
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the process virtual memory limit calculations are disabled on a given node. The virtual memory calculations are explicitly disabled by setting the boot argument "bootarg.engage_vss_limit=false".
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Virtual memory limit calculations are disabled on node %s.
+*Parameters*::
+*node* (STRING): Name of the node where the calculations are disabled.
+
+== virtual.limits.proc
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the process virtual limit is overridden by the /mroot/etc/cluster_config/vsz_override file. An entry in this file indicates that the default virtual size of a process needed to be overridden.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Virtual memory limit for process %s on node %s overridden to %llu.
+*Parameters*::
+*process* (STRING): Process that required the override
+*node* (STRING): Node name where the file was updated.
+*size* (LONGINT): New virtual size, in bytes.

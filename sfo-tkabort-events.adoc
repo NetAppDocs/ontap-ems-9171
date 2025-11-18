@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: sfo-tkabort-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfo.tkabort events
+---
+
+= sfo.tkabort events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfo.tkAbort.ca.check.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the destination node cannot contact the object stores during the planned takeover of a FabricPool aggregate.
+*Corrective Action*::
+Verify that the intercluster LIF is online and functional by using the "network interface show" command. Also, check network connectivity to the object store server by using the "ping" command over the destination node intercluster LIF. Additionally, verify that the configuration of the object store has not changed, and that login and connectivity information is still accurate by using the "aggregate object-store config show" command.
+*Syslog Message*::
+Planned SFO takeover of aggregate '%s' (uuid: %s) failed due to %s.
+*Parameters*::
+*vol* (STRING): Name of the aggregate.
+*aggr_uuid* (STRING): UUID of the aggregate.
+*reason* (STRING): Reason for the prevention of the planned takeover operation.

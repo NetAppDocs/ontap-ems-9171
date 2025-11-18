@@ -1,0 +1,63 @@
+---
+sidebar: sidebar
+permalink: mgmtgwd-rootvol-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmtgwd.rootvol events
+---
+
+= mgmtgwd.rootvol events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmtgwd.rootvol.recovery.changed
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the system detects that a root volume might have changed, causing the local management databases to be out of sync with the replicated databases. The node is not fully operational. Data lifs might have failed over within the cluster, so NFS and CIFS access is limited on this node. There also might have been a loss of stored data. Administrative capability is limited to local recovery procedures for this node.
+*Corrective Action*::
+Contact technical support to obtain the root volume recovery procedures.
+*Syslog Message*::
+The contents of the root volume might have changed and the local management databases might be out of sync with the replicated databases. This node is not fully operational. Contact technical support to obtain the root volume recovery procedures.
+*Parameters*::
+(None).
+
+== mgmtgwd.rootvol.recovery.different
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the system detects a different root volume than it has used previously. The node is not fully operational. Data lifs might have failed over within the cluster, so NFS and CIFS access is limited on this node. Administrative capability is limited to local recovery procedures for this node.
+*Corrective Action*::
+Contact technical support to obtain the root volume recovery procedures.
+*Syslog Message*::
+The root volume is different than the one previously used by this node. This node is not fully operational. Contact technical support to obtain the root volume recovery procedures.
+*Parameters*::
+(None).
+
+== mgmtgwd.rootvol.recovery.new
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the system detects a new root volume. The node is not fully operational. Data lifs might have failed over within the cluster, so NFS and CIFS access is limited on this node. There also might be a loss of stored data. Administrative capability is limited to local recovery procedures for this node.
+*Corrective Action*::
+Contact technical support to obtain the root volume recovery procedures.
+*Syslog Message*::
+A new root volume was detected. This node is not fully operational. Contact technical support to obtain the root volume recovery procedures.
+*Parameters*::
+(None).
+
+== mgmtgwd.rootvol.recovery.takeover.changed
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the system detects that a root volume might have changed, causing the local management databases to be out of sync with the replicated databases. This occurred due to corruption of the Non-Volatile RAM log (NVLOG) during takeover. The node is not fully operational. Data logical interfaces (LIFs) might have failed over within the cluster, so NFS and CIFS access is limited on this node. There also might have been a loss of stored data. Administrative capability is limited to local recovery procedures for this node.
+*Corrective Action*::
+Contact technical support to obtain the root volume recovery procedures.
+*Syslog Message*::
+The contents of the root volume might have changed and the local management databases might be out of sync with the replicated databases due to corruption of NVLOG data during takeover. This node is not fully operational. Contact technical support to obtain the root volume recovery procedures.
+*Parameters*::
+(None).

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: fips-post-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fips.post events
+---
+
+= fips.post events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fips.post.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an unrecoverable error prevents initialization of the cryptographic subsystem into FIPS mode. No SSL communication will be possible with the storage system in this state. Other ONTAP features may also be affected by the lack of cryptographic operations.
+*Corrective Action*::
+To operate in non FIPS cryptographic mode, turn off FIPS mode for the SSL interface using command "security config modify -interface SSL -is-fips-enabled false" and restart the system. For more information or assistance, contact NetApp technical support.
+*Syslog Message*::
+SSL interface disabled due to failure of FIPS mode cryptographic services.
+*Parameters*::
+(None).

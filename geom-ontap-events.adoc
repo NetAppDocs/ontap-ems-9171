@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: geom-ontap-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: geom.ontap events
+---
+
+= geom.ontap events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== geom.ontap.orphan.removing
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the geometry layer (geom) detects a device to be detached from the system.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Removing unit %d type %d.
+*Parameters*::
+*unit* (INT): Unit number.
+*disk_type* (INT): Disk type.

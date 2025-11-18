@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: scsiblade-mcc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsiblade.mcc events
+---
+
+= scsiblade.mcc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsiblade.mcc.vs.load.wm
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Vserver load during MCC switchover/switchback consumes majority of the 120 second MAX timeout. The LOW and HIGH watermark indicates the possibility of exceeding the 120 second MAX timeout, which could lead to All Paths Down condition on the host.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+MCC Vserver load hit %s watermark set to %d seconds.
+*Parameters*::
+*level* (STRING): watermark level.
+*time* (INT): time.

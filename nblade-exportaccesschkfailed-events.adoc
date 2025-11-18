@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: nblade-exportaccesschkfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.exportaccesschkfailed events
+---
+
+= nblade.exportaccesschkfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.exportAccessChkFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the network blade denies access to an exported share when a connection attempt violates an export policy.
+*Corrective Action*::
+Ensure that the export policy rule for this SVM is defined properly by using the "export-policy rule show" command. If necessary, add a new rule to the policy that allows access to the share using the "export-policy rule create" command.
+*Syslog Message*::
+Access denied due to a violation of an export policy. SVM ID: %d, error description: %s, share name: %s, client IP address: %s.
+*Parameters*::
+*vserverId* (INT): Identifier for the storage virtual machine (SVM) associated with this operation.
+*errorDescription* (STRING): Error that describes the export access check failure.
+*shareName* (STRING): Name of the share that the user attempted to access.
+*clientIp* (STRING): IP address of the client.

@@ -1,0 +1,53 @@
+---
+sidebar: sidebar
+permalink: lun-metafile-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lun.metafile events
+---
+
+= lun.metafile events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lun.metafile.dirCreateFailed
+*Severity*::
+ERROR
+*Description*::
+lun metafile directory creation failed
+*Corrective Action*::
+Check available space on the volume and make sure that the volume is not full or close to full.
+*Syslog Message*::
+Couldn't create vdisk metafile directory %s.
+*Parameters*::
+*path* (STRING): path for the metafile directory that Data ONTAP failed to create
+
+== lun.metafile.OOVC.corrupt
+*Severity*::
+ERROR
+*Description*::
+This message occurs when inconsistent blocks are read while reading or writing to the Out Of Volume Container (OOVC) metafile. The OOVC metafile contains certain LUN and NVMe namespace configuration and metadata for the objects in a given volume. SAN management operations might be impaired while the OOVC is in this state.
+*Corrective Action*::
+Use the 'lun rescan -build-oovc' command to rebuild the OOVC metafiles for the affected volume.
+*Syslog Message*::
+RAID error inconsistency was received for the OOVC metafile in volume %s (DSID %llu).
+*Parameters*::
+*volume_name* (STRING): Name of the volume for which the OOVC metafile was found to be inconsistent.
+*volume_dsid* (LONGINT): Data set ID (DSID) of the volume for which the OOVC metafile was found to be inconsistent.
+
+== lun.metafile.VTOC.corrupt
+*Severity*::
+ERROR
+*Description*::
+This message occurs when inconsistent blocks are read while reading or writing to the Vdisk Table of Contents (VTOC) metafile. The VTOC metafile contains the inventory of LUNs and NVMe namespaces in a given volume. SAN management operations might be impaired while the VTOC is in this state.
+*Corrective Action*::
+Use the 'lun rescan -build-vtoc' command to rebuild the VTOC metafile for the affected volume.
+*Syslog Message*::
+RAID error inconsistency was received for the VTOC metafile in volume %s (DSID %llu).
+*Parameters*::
+*volume_name* (STRING): Name of the volume for which the VTOC metafile was found to be inconsistent.
+*volume_dsid* (LONGINT): Data set ID (DSID) of the volume for which the VTOC metafile was found to be inconsistent.

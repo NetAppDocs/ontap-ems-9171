@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-device-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.device events
+---
+
+= callhome.device events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.device.qual
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detected a disk drive device that did not receive qualification from NetApp. Unqualified disk drives can cause serious damage to the system, and the system shuts down within 72 hours to prevent this potential damage. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+To correct this situation, complete one of the following steps: 1. Download and install the latest Drive Qualification Package (DPQ) from NetApp technical support. This automatically qualifies any disk drives that were provided by NetApp. Search the support site knowledge base for the "DQP" keyword for further information. 2. Remove the unqualified disk drives from the system. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for DEVICE_QUALIFICATION_FAILED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

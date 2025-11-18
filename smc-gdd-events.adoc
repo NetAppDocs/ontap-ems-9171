@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: smc-gdd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: smc.gdd events
+---
+
+= smc.gdd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== smc.gdd.restore.file.exists
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a file restore to a destination FlexGroup volume on which granular data distribution is enabled fails because the file already exists on the destination FlexGroup.
+*Corrective Action*::
+File restore to a FlexGroup on which granular data distribution is enabled should be performed only to a new empty directory.
+*Syslog Message*::
+Failed to restore to an existing file '%s' in volume '%s'. Relationship UUID "%s".
+*Parameters*::
+*filepath* (STRING): Path of the file on the destination.
+*dstPath* (STRING): Path name of the destination volume of the SnapMirror relationship.
+*relationshipID* (STRING): Relationship UUID.

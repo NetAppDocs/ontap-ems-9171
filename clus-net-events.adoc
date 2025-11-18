@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: clus-net-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: clus.net events
+---
+
+= clus.net events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== clus.net.noNeighbors
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the cluster network ports with "link" reported as "up" are neither receiving CDP nor LLDP neighbor announcements. This is not a supported configuration and can negatively impact the performance of the cluster.
+*Corrective Action*::
+Use the "network port show -ipspace Cluster -link up" command to list the ports expected to receive CDP and/or LLDP announcements. Verify that CDP and/or LLDP is enabled on the switch the cluster ports are wired to. Use the "network device-discovery show" command to view the announcements for each of the cluster ports.
+*Syslog Message*::
+The cluster ports with "link" reported as "up" are neither receiving CDP nor LLDP neighbor announcements.
+*Parameters*::
+(None).
+
+== clus.net.switchlessInv
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the "switchless-cluster" option is disabled, but one or more cluster ports are directly wired to a cluster port on another node. This could result in packet loss across the cluster network, causing file operations to fail as well as loss of quorum.
+*Corrective Action*::
+Use the "network options switchless-cluster modify" command to enable support for switchless clusters.
+*Syslog Message*::
+One or more cluster ports are directly wired to a cluster port on another node, but the "switchless-cluster" option is not enabled.
+*Parameters*::
+(None).
+
+== clus.net.switchlessMismatch
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the "switchless-cluster" option is enabled, but all of the cluster ports are wired to a switch. This configuration will negatively impact the performance of the cluster network.
+*Corrective Action*::
+Use the "network options switchless-cluster modify" command to disable support for switchless clusters.
+*Syslog Message*::
+All of the cluster ports are wired to a switch, but the "switchless-cluster" option is enabled.
+*Parameters*::
+(None).

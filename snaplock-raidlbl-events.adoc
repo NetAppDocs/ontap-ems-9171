@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: snaplock-raidlbl-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snaplock.raidlbl events
+---
+
+= snaplock.raidlbl events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snaplock.raidlbl.update.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the periodic SnapLock disk protection check fails to validate the RAID label on disks.
+*Corrective Action*::
+Run the "snaplock disk raidlabel check" command in the diagnostic privilege mode to manually trigger the SnapLock disk label check job.
+*Syslog Message*::
+SnapLock disk label check fails to update RAID label. Reason: %s
+*Parameters*::
+*reason* (STRING): Reason for the RAID label update failure.

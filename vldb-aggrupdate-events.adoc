@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: vldb-aggrupdate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vldb.aggrupdate events
+---
+
+= vldb.aggrupdate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vldb.aggrUpdate.noRepl
+*Severity*::
+ERROR
+*Description*::
+This message occurs in a MetroCluster(tm) configuration, when the blade UUID (Universal Unique Identifier) is updated on the local cluster, but a failure prevents the aggregate ownership update from being replicated to the remote cluster.
+*Corrective Action*::
+Contact NetApp technical support for assistance.
+*Syslog Message*::
+The ownership update of aggregates on blade UUID '%s' was not replicated to the remote cluster.
+*Parameters*::
+*bladeUUID* (STRING): UUID of the Dblade owning the aggregate.

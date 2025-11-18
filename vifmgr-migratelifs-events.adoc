@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: vifmgr-migratelifs-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.migratelifs events
+---
+
+= vifmgr.migratelifs events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.migrateLifs.nlbdDown
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the network load balancing listener is not responding to probes over a node management LIF, and cluster-scoped LIFs with the same current port have been migrated elsewhere.
+*Corrective Action*::
+Use the "network interface show" command to verify that the node managment LIF in question is operational. If the LIF is operational, contact NetApp technical support for specific instructions.
+*Syslog Message*::
+The network load balancing listener is not responding via LIF "%s" on Vserver "%s" with current port "%s". As a result, the load balancing LIFs have been migrated elsewhere.
+*Parameters*::
+*lif* (STRING): LIF name.
+*vserver_name* (STRING): Vserver name.
+*port* (STRING): Network port name
+
+== vifmgr.migrateLifs.nlbdUp
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the network load balancing listener starts responding to probes over a node management LIF. The network port where the node management LIF is located is now available for use by load-balanced LIFs.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The network load balancing listener has started responding via LIF "%s" on Vserver "%s" with current port "%s".
+*Parameters*::
+*lif* (STRING): LIF name.
+*vserver_name* (STRING): Vserver name.
+*port* (STRING): Network port name.

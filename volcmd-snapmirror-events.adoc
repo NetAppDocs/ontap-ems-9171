@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: volcmd-snapmirror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: volcmd.snapmirror events
+---
+
+= volcmd.snapmirror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== volcmd.snapmirror.removed
+*Severity*::
+ERROR
+*Description*::
+This mesage occurs to advise you that the 'vol snapmirror' set of commands has been removed.
+*Corrective Action*::
+Use the 'snapmirror' command instead.
+*Syslog Message*::
+The 'vol snapmirror' set of commands has been removed; use the 'snapmirror' command instead.
+*Parameters*::
+(None).

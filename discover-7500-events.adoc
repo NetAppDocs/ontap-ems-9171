@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: discover-7500-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: discover.7500 events
+---
+
+= discover.7500 events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== discover.7500.supported
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when discovery of a 7500N FC-to-SAS bridge is enabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-to-SAS bridge ATTO 7500N discovery is enabled.
+*Parameters*::
+(None).
+
+== discover.7500.unsupported
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when discovery of a 7500N FC-to-SAS bridge is disabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-to-SAS bridge ATTO 7500N discovery is disabled.
+*Parameters*::
+(None).

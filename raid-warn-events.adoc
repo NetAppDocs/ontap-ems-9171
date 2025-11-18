@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: raid-warn-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.warn events
+---
+
+= raid.warn events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.warn.no.sparecore.disk
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there are no suitable spare disks left on the node to use for a potential future coredump operation.
+*Corrective Action*::
+Assign unowned disks to this node by using the "storage disk assign" command. If there are no unowned disks, physically add more spare disks and assign them to this node.
+*Syslog Message*::
+No suitable spare disks available on the node for a potential future coredump operation.
+*Parameters*::
+(None).

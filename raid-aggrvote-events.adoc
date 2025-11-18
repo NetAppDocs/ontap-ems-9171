@@ -1,0 +1,59 @@
+---
+sidebar: sidebar
+permalink: raid-aggrvote-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.aggrvote events
+---
+
+= raid.aggrvote events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.aggrvote.pullNotOk
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the mirror vote pull from the replicated database (RDB) to the mailbox fails. SyncMirror(R) aggregates with only one plex will be kept offline. The mirror vote pull is retried automatically.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RAID: mirror vote pull from the RDB failed. SyncMirror aggregates with only one plex will be kept offline.
+*Parameters*::
+(None).
+
+== raid.aggrvote.updateNotOk
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the mirror vote update to a replicated database (RDB) fails.
+*Corrective Action*::
+The update is retried automatically. If the condition persists, contact NetApp technical support.
+*Syslog Message*::
+RAID: mirror vote update to the RDB failed with error %s for aggregate UUID %s (num of plexes %d; ids: %d, %d).
+*Parameters*::
+*reason* (STRING): Reason for the failure.
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+*num_plexes* (INT): Number of plexes recorded in the mirror vote.
+*plex0_id* (INT): ID of plex 0 in the mirror vote.
+*plex1_id* (INT): ID of plex 1 in the mirror vote.
+
+== raid.aggrvote.updateOk
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the mirror vote update to a replicated database (RDB) succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RAID: mirror vote update to the RDB succeeded for aggregate UUID %s (num of plexes %d; ids: %d, %d), action %s.
+*Parameters*::
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+*num_plexes* (INT): Number of plexes recorded in the mirror vote.
+*plex0_id* (INT): ID of plex 0 in the mirror vote.
+*plex1_id* (INT): ID of plex 1 in the mirror vote.
+*action_type* (STRING): Action performed on the RDB table entry. "CREATE" or "MODIFY".

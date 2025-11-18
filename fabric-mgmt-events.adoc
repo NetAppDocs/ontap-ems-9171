@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: fabric-mgmt-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fabric.mgmt events
+---
+
+= fabric.mgmt events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fabric.mgmt.interface
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system fails to establish a management interface on the fabric.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cannot establish a management (Status/Control/Maintenance) interface on fabric %s.
+*Parameters*::
+*fabName* (STRING): Fabric name.

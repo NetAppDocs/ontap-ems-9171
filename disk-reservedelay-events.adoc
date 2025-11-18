@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: disk-reservedelay-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.reservedelay events
+---
+
+= disk.reservedelay events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.reserveDelay
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a SCSI reservation command has a longer latency than expected during takeover. This delay could cause a system outage in which case the disk should be removed to prevent further problems. .
+*Corrective Action*::
+If you see this message before an outage on takeover, remove the specified disk.
+*Syslog Message*::
+The disk reservation command sent to %s has taken longer than expected: %d msecs during takeover.
+*Parameters*::
+*diskName* (STRING): Name of the device.
+*elapsed_time* (INT): Number of milliseconds for the command to complete.

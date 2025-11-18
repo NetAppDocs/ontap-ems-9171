@@ -1,0 +1,199 @@
+---
+sidebar: sidebar
+permalink: wafl-volume-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.volume events
+---
+
+= wafl.volume events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.volume.charmap.loadfail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a volume comes online with a corrupted or unavailable character mapping configuration.
+*Corrective Action*::
+Remove character mapping by using the "vserver cifs character-mapping delete" command. Then reapply it by using the "vserver cifs character-mapping create" command. For more information, see the "vserver cifs character-mapping" man page. For further assistance, contact NetApp technical support.
+*Syslog Message*::
+Failed to load character mapping configuration for volume %s. Reason: %s.
+*Parameters*::
+*volname* (STRING): Volume for which loading of the character mapping configuration failed.
+*reason* (STRING): Reason for failure.
+
+== wafl.volume.clone.created
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a clone of a flexible volume is created successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume clone %s of volume %s was created successfully.
+*Parameters*::
+*clonename* (STRING): Volume clone name
+*volname* (STRING): Volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name itself is insufficient.
+
+== wafl.volume.clone.fractional_rsrv.changed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the space reservation of a flexible volume clone is changed to 100 percent because guarantee of the clone is set to 'file'.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Fractional reservation for clone '%s:%d' was changed to 100 percent because guarantee is set to 'file'.
+*Parameters*::
+*clonename* (STRING): Volume clone name.
+*Ordinal* (INT): Volume Ordinal.
+
+== wafl.volume.clone.snap.cpcount.load.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a clone of a flexible volume fails to load the cp count of its or the parent volume's base snapshots.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume clone %s failed to load the cp count of its or the parent volume's base snapshot, with Snap ID %d.
+*Parameters*::
+*clonename* (STRING): Volume clone name.
+*snapid* (INT): Snapshot ID of the clone volume's base snapshot.
+
+== wafl.volume.clone.split.started
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an operation to split a flexible volume clone from its parent volume is started successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Clone split was started for volume %s%s%s
+*Parameters*::
+*volname* (STRING): Volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name itself is insufficient.
+
+== wafl.volume.clone.with.uid.gid
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a clone of a flexible volume is created with a volume-level UID and GID.
+*Corrective Action*::
+Split the clone volume before creating this as a source of an XDP-type SnapMirror relationship.
+*Syslog Message*::
+Volume clone %s%s%s was created with vol-level UID and GID. If this clone volume is used as a source of XDP type SnapMirror relationship, then UID and GID of all the transferred file at the destination will be unpredictable.
+*Parameters*::
+*clonename* (STRING): Volume clone name.
+*app* (STRING): Application UUID.
+*vserver_uuid* (STRING): Universal Unique ID (UUID) of the clone volume's Vserver.
+
+== wafl.volume.find.valid_base.snap.failure
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when an error occurs while finding the valid base snapshot for a clone volume.
+*Corrective Action*::
+None required.
+*Syslog Message*::
+Encountered error %u while finding the valid base snapshot having snapid %u for clone volume (clonename='%s', volident='%s').
+*Parameters*::
+*error_code* (INT): A numerical error code indicating the reason why finding valid base snapshot failed for clone volume.
+*snapid* (INT): Snapshot ID of the clone volume base snapshot.
+*clonename* (STRING): Volume clone name.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+
+== wafl.volume.inuse
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a volume operation fails because the volume is being used in another operation.
+*Corrective Action*::
+Check the status of the volume and aggregate using the "vol show" and "aggr show" commands. If there are no other operations running on either of them then retry your request. If problems persists, or you need further assistance, contact NetApp technical support.
+*Syslog Message*::
+%s %s %s operation failed as volume is busy in another operation.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*vol* (STRING): Name of the volume.
+*operation* (STRING): Operation.
+
+== wafl.volume.inuse.by
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a volume operation fails because the volume or parent aggregate is being used by another operation.
+*Corrective Action*::
+Check the status of the volume and aggregate. Wait for the current operation to finish, and then retry your request. If problems persist or you need further assistance, contact NetApp technical support.
+*Syslog Message*::
+%s %s %s operation failed because the volume or parent aggregate is locked by operation %s.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*vol* (STRING): Name of the volume.
+*operation* (STRING): Operation that failed.
+*locked_by* (STRING): Operation currently locking the volume or parent aggregate.
+
+== wafl.volume.sidl.enableErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an attempt to enable Single Instance Data Logging (SIDL) on a volume fails.
+*Corrective Action*::
+Use the "volume efficiency show" and "volume show" commands to check the volume for enabled features that are incompatible with SIDL, such as compaction or inline deduplication. After the incompatible features are disabled, wait 10 seconds and then enable SIDL again.
+*Syslog Message*::
+SIDL was not enabled on volume %s
+*Parameters*::
+*volume* (STRING): Volume name.
+
+== wafl.volume.sidl.offline
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a volume with single instance data logging enabled is taken offline due to the current version of Data ONTAP not supporting that feature. This situation can occur if a volume with the feature enabled is attempted to be onlined using a version of Data ONTAP that doesn't support it.
+*Corrective Action*::
+To bring the volume online, use a version of Data ONTAP that supports single instance data logging.
+*Syslog Message*::
+Volume "%s" was taken offline because the current version of Data ONTAP does not support single instance data logging, an enabled feature on this volume.
+*Parameters*::
+*volume* (STRING): Volume name.
+
+== wafl.volume.slag.loadfailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a loading or update of Storage-Level Access Guard(SLAG) fails because of an internal error. In this case, SLAG is not activated on the volume or qtree.
+*Corrective Action*::
+Remove SLAG by using the "vserver security file-directory remove-slag" command, and then reapply it by using the "vserver security file-directory apply" command.
+*Syslog Message*::
+Failed to load or update SLAG for SLAG level: %d on qtree ID: %d in volume "%s%s%s%s". Error:%d Reason: %s.
+*Parameters*::
+*loadflag* (INT): SLAG load flag.
+*qtree* (INT): Qtree identifier.
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Uniquely identifies the volume in cases where the volume name itself is insufficient.
+*waflerror* (INT): WAFL error which caused the failure.
+*reason* (STRING): Reason for the failure.
+
+== wafl.volume.snap.autoDelete
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a snapshot in the volume is being deleted to free space. Snapshots can be deleted automatically from a volume to enforce the corresponding automatic deletion policy.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Deleting snapshot '%s' in volume '%s%s%s' to recover storage.
+*Parameters*::
+*name* (STRING): Snapshot name.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.

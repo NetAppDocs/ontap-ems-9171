@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ipmultipath-session-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ipmultipath.session events
+---
+
+= ipmultipath.session events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ipmultipath.session.noMemory
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an IP Multipath session is dropped due to failure to allocate memory.
+*Corrective Action*::
+The system is out of memory. Try to reduce load on the system. When memory becomes available, IP Multipath automatically reestablishes the session.
+*Syslog Message*::
+IP Multipath aborting session due to failure to allocate memory.
+*Parameters*::
+(None).

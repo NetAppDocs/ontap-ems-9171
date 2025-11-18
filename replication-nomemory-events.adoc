@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: replication-nomemory-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: replication.nomemory events
+---
+
+= replication.nomemory events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== replication.noMemory
+*Severity*::
+ALERT
+*Description*::
+This message occurs when there is insufficient memory for the replication transfer to continue.
+*Corrective Action*::
+The system is out of memory. This could be a transient situation. Reduce the load on the system or defer the transfer.
+*Syslog Message*::
+Replication transfer failed to allocate memory.
+*Parameters*::
+*file* (STRING): File in which the software error occurred.
+*line* (INT): Line number in the file for the software error.

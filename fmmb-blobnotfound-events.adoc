@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: fmmb-blobnotfound-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fmmb.blobnotfound events
+---
+
+= fmmb.blobnotfound events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fmmb.BlobNotFound
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a mailbox 'blob' is not read from the on-disk mailbox data structure. A 'blob' is a piece of data which has been stored for a non-High Availability (HA) Data ONTAP(R) subsystem in the mailbox.
+*Corrective Action*::
+If the blob id is "3" and this is a 2-node cluster, use the 'cluster ha modify -configure' command to unconfigure ha and then reconfigure it.
+*Syslog Message*::
+(None).
+*Parameters*::
+*blob_id* (INT): 'blob' ID.
+*owner* (STRING): Owner of the blob, either PARTNER or LOCAL.
+*reason* (STRING): Reason for the problem.

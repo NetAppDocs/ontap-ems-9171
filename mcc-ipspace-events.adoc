@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: mcc-ipspace-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mcc.ipspace events
+---
+
+= mcc.ipspace events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mcc.ipspace.not.found
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the IPspace is not found in a MetroCluster(tm) configuration while replicating the object store configuration. Until this is resolved, some MetroCluster and FabricPool operations will fail.
+*Corrective Action*::
+Create the missing MetroCluster IPspace. The configuration replication task will be completed automatically.
+*Syslog Message*::
+Object store "%s" configuration replication failed because IPspace "%s" was not found in cluster "%s".
+*Parameters*::
+*object_store_name* (STRING): Name of the object store.
+*ipspace_name* (STRING): Name of the IPspace.
+*cluster_name* (STRING): Name of the cluster.

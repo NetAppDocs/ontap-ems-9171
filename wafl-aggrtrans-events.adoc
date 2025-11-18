@@ -1,0 +1,151 @@
+---
+sidebar: sidebar
+permalink: wafl-aggrtrans-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.aggrtrans events
+---
+
+= wafl.aggrtrans events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.aggrtrans.corrupted
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an aggregate transition operation encounters a corrupted aggregate.
+*Corrective Action*::
+Delete the corrupted aggregate in maintenance mode. Alternatively, return the disks to a 7-Mode environment to fix the corrupted aggregate.
+*Syslog Message*::
+Aggregate transition encountered a corrupted aggregate %s.
+*Parameters*::
+*aggrname* (STRING): Name of the aggregate.
+
+== wafl.aggrtrans.dirtyFS
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an aggregate transition operation fails because the aggregate was not cleanly shut down.
+*Corrective Action*::
+Retry the aggregate transition to bypass this specific error. Alternatively, return the disks to a 7-Mode environment, cleanly shut down the system, and then try the transition again.
+*Syslog Message*::
+Aggregate %s was not cleanly shut down and could not be transitioned.
+*Parameters*::
+*aggrname* (STRING): Name of the aggregate.
+
+== wafl.aggrtrans.dirtyFS.cont
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an aggregate transition continues to operate on an aggregate that was not cleanly shut down.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Aggregate %s was not cleanly shut down and is continuing transition.
+*Parameters*::
+*aggrname* (STRING): Name of the aggregate.
+
+== wafl.aggrtrans.outofspace.nodereboot
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a transitioned aggregate reaches a space limitation during the precommit phase and cannot be taken offline. The node is automatically rebooted to ensure that data integrity is preserved. After the reboot, the aggregate is online and its FlexVol(R) volumes are offline.
+*Corrective Action*::
+Add disks to the aggregate to ensure that enough free space is available. Alternatively, commit the current transition session.
+*Syslog Message*::
+Transitioned aggregate %s is critically low on available space, initiating node reboot.
+*Parameters*::
+*aggrname* (STRING): Name of the aggregate.
+
+== wafl.aggrtrans.outofspace.normal
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a previously full transitioned aggregate contains enough free space and is back to normal operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Transitioned aggregate %s now contains enough free space and is now back to normal.
+*Parameters*::
+*aggrname* (STRING): Name of the aggregate.
+
+== wafl.aggrtrans.outofspace.offline
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a transitioned aggregate reaches a space limitation during the precommit phase and is taken offline.
+*Corrective Action*::
+Add disks to the aggregate to ensure that enough free space is available. Alternatively, commit the current transition session.
+*Syslog Message*::
+Transitioned aggregate %s is critically low on available space, going offline.
+*Parameters*::
+*aggrname* (STRING): Name of the aggregate.
+
+== wafl.aggrtrans.outofspace.remount.needed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a previously full transitioned aggregate is online and must be remounted to bring its volumes back online.
+*Corrective Action*::
+Take offline the transitioned aggregate, and then bring online the aggregate again to bring its volumes back online.
+*Syslog Message*::
+Transitioned aggregate %s must be remounted (offline and online) to bring its volumes back online.
+*Parameters*::
+*aggrname* (STRING): Name of the aggregate.
+
+== wafl.aggrtrans.outofspace.warn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a transitioned aggregate is low on free space. The message is periodically displayed before the aggregate goes offline due to being out of space.
+*Corrective Action*::
+Add disks to the aggregate to resume normal operations. Alternatively, commit the current transition session.
+*Syslog Message*::
+Pre-commit transitioned aggregate %s is low on free space at about %d percent used.
+*Parameters*::
+*aggrname* (STRING): Name of the aggregate.
+*percent* (INT): Percentage of aggregate that is used.
+
+== wafl.aggrtrans.revert.to.snap
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an aggregate transition operation fails because the aggregate is set to revert to a snapshot.
+*Corrective Action*::
+Return the disks to a 7-Mode environment, bring the aggregate online to finish restoring to the snapshot, and then try the transition again.
+*Syslog Message*::
+Aggregate %s is reverting to a snapshot and cannot be transitioned.
+*Parameters*::
+*aggrname* (STRING): Name of the aggregate.
+
+== wafl.aggrtrans.snap.delErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an aggregate transition commit operation fails to delete the pinned snapshot.
+*Corrective Action*::
+Manually delete the pinned snapshot using the node scoped command "snap delete -A". If manual deletion fails, contact technical support.
+*Syslog Message*::
+Aggregate transition commit operation fails to delete the pinned snapshot "%s" on aggregate %s. Error: %s.
+*Parameters*::
+*name* (STRING): Name of the snapshot.
+*aggrname* (STRING): Name of the aggregate.
+*err* (STRING): Error description.
+
+== wafl.aggrtrans.snapshot.32b
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an aggregate transition fails due to detection of a 32-bit snapshot on the transition aggregate.
+*Corrective Action*::
+Retry aggregate transition using "-ignore-errors" parameter to automatically delete all the 32-bit snapshots as part of aggregate transition.
+*Syslog Message*::
+Aggregate transition failed due to unsupported 32-bit snapshots on aggregate %s uuid %s.
+*Parameters*::
+*aggrname* (STRING): Name of the aggregate.
+*aggruuid* (STRING): Unique identifier of the aggregate.

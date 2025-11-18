@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: netif-ratelimitthreshold-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.ratelimitthreshold events
+---
+
+= netif.ratelimitthreshold events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.rateLimitThreshold
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the protocol rate threshold is reached on a network interface.
+*Corrective Action*::
+Fix the faulty network configuration or incorrect setup that enables a sudden spike in broadcast packets to bring down the node. If you still want a high ARP rate threshold, use the "bootarg.arp.ratelimit.threshold" boot argument to set that threshold.
+*Syslog Message*::
+High rate limit on network interface %s for broadcast protocol %s being detected: %d pkts/sec.
+*Parameters*::
+*ifName* (STRING): Name of the network interface that reached the protocol rate threshold.
+*protocol* (STRING): Name of the broadcast protocol that overloaded the network.
+*packetRate* (INT): Observed incoming packet rate per second on the interface.

@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: snapmirror-unsupportedchksumtype-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapmirror.unsupportedchksumtype events
+---
+
+= snapmirror.unsupportedchksumtype events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapmirror.unsupportedChksumType
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when checksum type crc32c_header_only is configured for a SnapMirror(R) relationship and the source for the relationship is not compatible with this checksum type.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: destination transfer from %s:%s to %s : %s
+*Parameters*::
+*rtype* (STRING): Replication type (SnapMirror).
+*srcfiler* (STRING): Replication source system.
+*srcpath* (STRING): Replication source volume.
+*dstpath* (STRING): Replication destination volume.
+*message* (STRING): Specific message.

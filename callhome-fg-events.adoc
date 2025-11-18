@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-fg-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.fg events
+---
+
+= callhome.fg events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.fg.memb.bad.fgindex
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the system attempts to add or update a member in a FlexGroup using an internal FlexGroup index that is already in use or is invalid. This attempt is blocked by the FlexGroup SW, however a rogue member with a duplicate or invalid fgindex can potentially result in data integrity issues, because data intended for one member could be spread across different members. The rogue member with the duplicate or invalid fgindex needs to be audited as soon as possible. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+The rogue volume needs to be identified using its DSID, audited and possibly removed from the system as soon as possible. Refer to EMS event fg.member.invalid.fgindex for more information. Immediately contact NetApp technical support for assistance.
+*Syslog Message*::
+Call home for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

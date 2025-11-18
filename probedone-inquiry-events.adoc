@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: probedone-inquiry-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: probedone.inquiry events
+---
+
+= probedone.inquiry events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== probedone.inquiry.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the inquiry data fails the comparison at the domain validation (DV) step.
+*Corrective Action*::
+Check whether the device is connected correctly.
+*Syslog Message*::
+In path %s, inquiry data fails comparison at the domain validation DV%d step of protocol type %d.
+*Parameters*::
+*path* (STRING): Device path.
+*inquirydata* (INT): Comparison between the inquiry data failure and the domain validation, and whether the probe inquiry domain validation is type 1 or 2.
+*protocol_type* (INT): Protocol type.

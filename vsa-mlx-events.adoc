@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: vsa-mlx-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsa.mlx events
+---
+
+= vsa.mlx events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsa.mlx.nic.detach
+*Deprecated*::
+This event is replaced with vsa.sriov.nic.detach to rename the event and be generic.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP(R) software is running as an instance in Azure and a NIC SR-IOV Mellanox (MLX) driver detach event is detected. ONTAP will continue to use the Hyper-V netsvc driver without the SR-IOV functionality for a short time. On HA configurations, unsynchronized logs might appear during this time, which will be resolved if a subsequent SR-IOV attach event occurs. If the SR-IOV attach event does not occur quickly, high-availability (HA) takeover might occur.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NIC SR-IOV driver detach event detected. On HA configurations, unsynchronized logs might result or an HA takeover might occur if SR-IOV remains detached.
+*Parameters*::
+(None).

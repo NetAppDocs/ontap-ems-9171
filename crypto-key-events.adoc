@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: crypto-key-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: crypto.key events
+---
+
+= crypto.key events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== crypto.key.deleted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a cryptographic key is deleted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Deleted key with key ID %s. Reason %s.
+*Parameters*::
+*key_id* (STRING): Key ID for the cryptographic key.
+*reason* (STRING): Reason for deletion.
+
+== crypto.key.stored
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a cryptographic key is stored.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Stored key with key ID %s. Key digest: %s.
+*Parameters*::
+*key_id* (STRING): Key ID for the cryptographic key.
+*key_digest* (STRING): Key digest for the cryptographic key.

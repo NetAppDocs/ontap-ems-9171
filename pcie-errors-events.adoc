@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: pcie-errors-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: pcie.errors events
+---
+
+= pcie.errors events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== pcie.errors
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when correctable PCI Express errors are detected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+PCI Express correctable error - %s
+*Parameters*::
+*pcie_errors* (STRING): String contains details about the PCI Express correctable error(s) and which device(s) was/were the source of error(s).

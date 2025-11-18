@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: sfu-downloadsuccess-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfu.downloadsuccess events
+---
+
+= sfu.downloadsuccess events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfu.downloadSuccess
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when disk shelf firmware updates successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: Firmware file %s downloaded on %s.shelf%d.
+*Parameters*::
+*cmdName* (STRING): Name of the command issued, such as "storage shelf firmware update".
+*fileName* (STRING): Name of the file in /etc/shelf_fw that was being downloaded.
+*channelName* (STRING): Name of the adapter port or switch port on which the shelf firmware download occurred.
+*shelfId* (INT): ID of the disk shelf on which the disk shelf firmware download occurred.

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: osc-bucket-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: osc.bucket events
+---
+
+= osc.bucket events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== osc.bucket.notFound
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the object-store bucket or container is not found while trying to access an object.
+*Corrective Action*::
+Verify that the bucket or container has been created on the object-store server and the same name has been correctly configured in ONTAP before accessing the bucket.
+*Syslog Message*::
+Bucket or container "%s" not found on object-store server %s when performing %s operation.
+*Parameters*::
+*bucket* (STRING): Name of the bucket or container.
+*serverHostname* (STRING): Hostname of the object-store server.
+*operation* (STRING): Request name.

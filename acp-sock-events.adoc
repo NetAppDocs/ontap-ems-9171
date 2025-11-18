@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: acp-sock-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: acp.sock events
+---
+
+= acp.sock events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== acp.sock.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system encounters a socket error while setting up the Alternate Control Path (ACP) Management Ethernet port. ACP functionality is subsequently inactive.
+*Corrective Action*::
+Verify that the Ethernet cable is properly attached to the ACP port and that the green LED is on. Reenable the ACP using the "options acp.enabled on" command.
+*Syslog Message*::
+An error was encountered while configuring the ACP Management Ethernet Port: %s.
+*Parameters*::
+*ErrorString* (STRING): Error string.

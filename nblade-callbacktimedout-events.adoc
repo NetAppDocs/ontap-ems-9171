@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: nblade-callbacktimedout-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.callbacktimedout events
+---
+
+= nblade.callbacktimedout events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.CallbackTimedOut
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Nblade is unable to successfully complete a PORTMAP/SM call to the client within 1 seconds. The PORTMAP/SM calls are done as part of the per-aggregate lock reclaim process after a Dblade reboot. If a large number of such calls fail for a particular aggregate, then it delays the completion of the lock reclaim process for that aggregate. That delay prevents the aggregate from granting new locks to NFS clients.
+*Corrective Action*::
+Check if the RPC program number displayed above with the correct program version is running on the client and if not start it. You can use "rpcinfo -p" on the client to check that. It is also possible that the client is unreachable due to firewall/network connectivity issues.
+*Syslog Message*::
+SM NOTIFY: Vserver %d, Vif %d: %s program (Program number:%d Program version:%d) on client %s is not responding.
+*Parameters*::
+*virtualServer* (INT): Identifier for the Vserver associated with this operation.
+*lifId* (INT): Identifier for the logical interface associated with this operation.
+*program* (STRING): Client program not responding.
+*programNum* (INT): RPC Program Number.
+*programVersion* (INT): RPC Program Version.
+*remoteIpAddress* (STRING): IP address of the client machine.

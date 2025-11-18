@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: adminapi-input-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: adminapi.input events
+---
+
+= adminapi.input events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== adminapi.input.badXml
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Data ONTAP server receives a bad XML request that does not contain the API name to be executed.
+*Corrective Action*::
+Correct the input XML with the API name to be executed.
+*Syslog Message*::
+Input XML does not contain the API name to be executed.
+*Parameters*::
+(None).

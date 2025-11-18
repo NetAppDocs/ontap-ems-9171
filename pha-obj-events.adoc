@@ -1,0 +1,158 @@
+---
+sidebar: sidebar
+permalink: pha-obj-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: pha.obj events
+---
+
+= pha.obj events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== pha.obj.blobGone
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP(R) detects that a blob has been deleted from a container.
+*Corrective Action*::
+If the identified blob was not intentionally deleted, attempt to recover it with the object store provider.
+*Syslog Message*::
+Blob "%s" is no longer seen in object store, "%s".
+*Parameters*::
+*blob* (STRING): Object name.
+*configName* (STRING): Object store configuration name.
+
+== pha.obj.scanFailure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) cannot get a list of objects from the object store server.
+*Corrective Action*::
+If the error text indicates an authentication problem, verify that the stored credentials are correct by using the "system node virtual-machine disk-object-store modify" command. If the error text describes a connection problem, determine the IP address for the object store server. If the address reported in this event does not match, examine the DNS cache for errors by using the "system node virtual-machine disk-object-store dns-cache show" command. If the address does match, check the status of both the object store server and the network.
+*Syslog Message*::
+ONTAP could not get a list of objects from the object store, "%s", at "%s", using IP address "%s" with error: %s.
+*Parameters*::
+*configName* (STRING): Object store configuration name.
+*server* (STRING): Object store server name.
+*ipAddress* (STRING): Object store IP address.
+*error* (STRING): Error string.
+
+== pha.obj.scanSuccess
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP(R) succeeds at retrieving a list of objects from the object store server after reporting a failure.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ONTAP successfully retrieved a list of objects from the object store, "%s".
+*Parameters*::
+*configName* (STRING): Object store configuration name.
+
+== pha.obj.storeAvailable
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP(R) can communicate with the object store server.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ONTAP successfully communicated with the object store, "%s".
+*Parameters*::
+*configName* (STRING): Object store configuration name.
+
+== pha.obj.storeCreateFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) software cannot create the object store configuration.
+*Corrective Action*::
+Verify that the values provided for the create operation are correct. ONTAP supports either the HTTPS or HTTP protocol and not a mixed configuration. The value for the port should be the same as the first object store's (object_store0) port. Verify the first object store's port by using the "system node virtual-machine disk-object-store show -object-store-name object_store0 -node node_name" command, which will display the port as "Port Number of the Object Store".
+*Syslog Message*::
+ONTAP could not create the object store, "%s", due to reason: %s.
+*Parameters*::
+*configName* (STRING): Object store configuration name.
+*reason* (STRING): An object store create operation was attempted with a port value that wasn't equal to that of object_store0.
+
+== pha.obj.storeDeleted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP(R) finishes deleting the connection to the object store server.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ONTAP has removed the object store configuration, "%s".
+*Parameters*::
+*configName* (STRING): Object store configuration name.
+
+== pha.obj.storeDeleting
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP(R) begins to tear down the connection to the object store server.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ONTAP began removing the object store configuration, "%s".
+*Parameters*::
+*configName* (STRING): Object store configuration name.
+
+== pha.obj.storeUnavailable
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when ONTAP(R) cannot communicate with the object store server.
+*Corrective Action*::
+Verify that the configuration of the object store, including the login credentials, is still accurate by using the "system node virtual-machine disk-object-store show" command. Check the network status for connectivity errors.
+*Syslog Message*::
+ONTAP could not communicate with the object store, "%s".
+*Parameters*::
+*configName* (STRING): Object store configuration name.
+
+== pha.obj.storeUpdateFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) cannot update the object store configuration.
+*Corrective Action*::
+Verify that the updates are correct. Then create a new object store configuration with the updated fields. Delete the old configuration after ONTAP detects the new disk paths.
+*Syslog Message*::
+ONTAP could not update the object store configuration, "%s", due to reason: %s.
+*Parameters*::
+*configName* (STRING): Object store configuration name.
+*reason* (STRING): Reason for the failure.
+
+== pha.obj.throttle
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the passthrough host adapter object (PHA Obj) throttled on the disks due to receiving the OSC_CONNECTION_UNAVAILABLE, OSC_TIMEOUT or AZURE_SERVER_BUSY error from OSC.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+PHA Obj throttled %llu times on the blob %s in the container %s due to the "%s".
+*Parameters*::
+*counter* (LONGINT): The throttle counter.
+*blobName* (STRING): The throttling blob name.
+*containerName* (STRING): The throttling container name.
+*throttleReason* (STRING): The error which triggered throttling.
+
+== pha.obj.unknownTier
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) does not recognize the tier of a page blob.
+*Corrective Action*::
+Change the blob tier to one that ONTAP will recognize: P10, P15, P20, P30, P40, P50, or P60.
+*Syslog Message*::
+ONTAP did not recognize tier "%s" of blob "%s", on object store "%s". Assuming Standard Storage Tier.
+*Parameters*::
+*tier* (STRING): Blob tier.
+*blob* (STRING): Blob name.
+*configName* (STRING): Object store configuration name.

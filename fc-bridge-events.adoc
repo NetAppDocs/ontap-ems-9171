@@ -1,0 +1,236 @@
+---
+sidebar: sidebar
+permalink: fc-bridge-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fc.bridge events
+---
+
+= fc.bridge events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fc.bridge.fc.port.alert
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an FC port goes offline.
+*Corrective Action*::
+Check cables, SFPs, and connected devices. If the port is intentionally unused, use the Fibre Channel bridge CLI to disable it.
+*Syslog Message*::
+Fibre Channel %s Bridge %s S/N: %s WWN: %s FC Port FC_PORT%d offline. %s
+*Parameters*::
+*bridgeType* (STRING): Type of the FC-to-SAS bridge.
+*bridgeName* (STRING): Name of the FC-to-SAS bridge.
+*bridgeSerialNum* (STRING): Serial number of the FC-to-SAS bridge.
+*bridgeWWN* (STRING): World-Wide Name (WWN) of the FC-to-SAS bridge.
+*bridgePort* (INT): Port reported by the FC-to-SAS bridge.
+*addlInfo* (STRING): Additional information about the alert being generated, if available.
+
+== fc.bridge.fc.port.notice
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an FC port on the identified bridge comes online.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Fibre Channel %s Bridge %s S/N: %s WWN: %s FC Port FC_PORT%d connected. %s
+*Parameters*::
+*bridgeType* (STRING): Type of the FC-to-SAS bridge.
+*bridgeName* (STRING): Name of the FC-to-SAS bridge.
+*bridgeSerialNum* (STRING): Serial number of the FC-to-SAS bridge.
+*bridgeWWN* (STRING): World-Wide Name (WWN) of the FC-to-SAS bridge.
+*bridgePort* (INT): Port reported by the FC-to-SAS bridge.
+*addlInfo* (STRING): Additional information about the alert being generated, if available.
+
+== fc.bridge.power.alert
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an FC-to-SAS bridge power supply fails.
+*Corrective Action*::
+Check input power and cable. If the problem persists, replace the power supply.
+*Syslog Message*::
+Fibre Channel %s Bridge %s S/N: %s WWN: %s Power Supply %s has failed. %s
+*Parameters*::
+*bridgeType* (STRING): Type of the FC-to-SAS bridge.
+*bridgeName* (STRING): Name of the FC-to-SAS bridge.
+*bridgeSerialNum* (STRING): Serial number of the FC-to-SAS bridge.
+*bridgeWWN* (STRING): World-Wide Name (WWN) of the FC-to-SAS bridge.
+*bridgePowerSupply* (STRING): Power supply reported by the FC-to-SAS bridge.
+*addlInfo* (STRING): Additional information about the alert being generated, if available.
+
+== fc.bridge.power.notice
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an FC-to-SAS bridge power supply returns to normal operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Fibre Channel %s Bridge %s S/N: %s WWN: %s Power supply %s operating normally. %s
+*Parameters*::
+*bridgeType* (STRING): Type of the FC-to-SAS bridge.
+*bridgeName* (STRING): Name of the FC-to-SAS bridge.
+*bridgeSerialNum* (STRING): Serial number of the FC-to-SAS bridge.
+*bridgeWWN* (STRING): World-Wide Name (WWN) of the FC-to-SAS bridge.
+*bridgePowerSupply* (STRING): Port reported by the FC-to-SAS bridge.
+*addlInfo* (STRING): Additional information about the alert being generated, if available.
+
+== fc.bridge.sas.phy.alert
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a SAS port PHY goes offline.
+*Corrective Action*::
+Check Mini-SAS HD connector, cables, and connected equipment.
+*Syslog Message*::
+Fibre Channel %s Bridge %s S/N: %s WWN: %s SAS Port %d Phy %d offline. %s
+*Parameters*::
+*bridgeType* (STRING): Type of the FC-to-SAS bridge.
+*bridgeName* (STRING): Name of the FC-to-SAS bridge.
+*bridgeSerialNum* (STRING): Serial number of the FC-to-SAS bridge.
+*bridgeWWN* (STRING): World-Wide Name (WWN) of the FC-to-SAS bridge.
+*bridgePort* (INT): Port reported by the FC-to-SAS bridge.
+*bridgePhy* (INT): SAS port Phy reported by the FC-to-SAS bridge.
+*addlInfo* (STRING): Additional information about the alert being generated, if available.
+
+== fc.bridge.sas.phy.notice
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a SAS port PHY on a bridge comes online.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Fibre Channel %s Bridge %s S/N: %s WWN: %s SAS port %d Phy %d online. %s
+*Parameters*::
+*bridgeType* (STRING): Type of the FC-to-SAS bridge.
+*bridgeName* (STRING): Name of the FC-to-SAS bridge.
+*bridgeSerialNum* (STRING): Serial number of the FC-to-SAS bridge.
+*bridgeWWN* (STRING): World-Wide Name (WWN) of the FC-to-SAS bridge.
+*bridgePort* (INT): Port reported by the FC-to-SAS bridge.
+*bridgePhy* (INT): Phy reported by the FC--to-SAS bridge.
+*addlInfo* (STRING): Additional information about the alert being generated, if available.
+
+== fc.bridge.sas.port.alert
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an SAS port goes offline.
+*Corrective Action*::
+Check cables, SFPs, and connected devices. If the port is intentionally unused, use the Fibre Channel bridge CLI to disable it.
+*Syslog Message*::
+Fibre Channel %s Bridge %s S/N: %s WWN: %s SAS Port SAS_PORT%d offline. %s
+*Parameters*::
+*bridgeType* (STRING): Type of the FC-to-SAS bridge.
+*bridgeName* (STRING): Name of the FC-to-SAS bridge.
+*bridgeSerialNum* (STRING): Serial number of the FC-to-SAS bridge.
+*bridgeWWN* (STRING): World-Wide Name (WWN) of the FC-to-SAS bridge.
+*bridgePort* (INT): Port reported by the FC-to-SAS bridge.
+*addlInfo* (STRING): Additional information about the alert being generated, if available.
+
+== fc.bridge.sas.port.notice
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an SAS port on the identified bridge comes online.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Fibre Channel %s Bridge %s S/N: %s WWN: %s SAS Port SAS_PORT%d connected. %s
+*Parameters*::
+*bridgeType* (STRING): Type of the FC-to-SAS bridge.
+*bridgeName* (STRING): Name of the FC-to-SAS bridge.
+*bridgeSerialNum* (STRING): Serial number of the FC-to-SAS bridge.
+*bridgeWWN* (STRING): World-Wide Name (WWN) of the FC-to-SAS bridge.
+*bridgePort* (INT): Port reported by the FC-to-SAS bridge.
+*addlInfo* (STRING): Additional information about the alert being generated, if available.
+
+== fc.bridge.temp.alert
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an FC-to-SAS bridge reaches a elevated temperature threshold. The bridge will continue to operate, but action should be taken to reduce the temperature.
+*Corrective Action*::
+The bridge is experiencing an elevated temperature, which indicates a loss of cooling airflow. Check cooling airflow, fan operation, and ambient temperature, and take action to reduce the FC-to-SAS bridge operating temperature. If this is not done and the temperature continues to rise, the FC-to-SAS bridge will shut down when the critical temperature threshold is reached.
+*Syslog Message*::
+FC-to-SAS %s bridge with name: %s S/N: %s WWN: %s is operating at elevated temperature (%d C). %s
+*Parameters*::
+*bridgeType* (STRING): Type of the FC-to-SAS bridge.
+*bridgeName* (STRING): Name of the FC-to-SAS bridge.
+*bridgeSerialNum* (STRING): Serial number of the FC-to-SAS bridge.
+*bridgeWWN* (STRING): World-Wide Name (WWN) of the FC-to-SAS bridge.
+*bridgeTemp* (INT): Temperature reported by the FC-to-SAS bridge.
+*addlInfo* (STRING): Additional information about the alert being generated, if available.
+
+== fc.bridge.temp.emergency
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when an FC-to-SAS bridge reaches a critical temperature threshold. The bridge will shut down to protect the hardware.
+*Corrective Action*::
+Take immediate action to reduce the operating temperature of the FC-to-SAS bridge to avoid hardware damage. Check cooling airflow, fan operation, and ambient temperature. The FC-to-SAS bridge will shut down when this condition is reached, and will not operate until the temperature is reduced.
+*Syslog Message*::
+FC-to-SAS %s bridge with name: %s S/N: %s WWN:%s has reached critical temperature (%d C) and will soon shut down. %s
+*Parameters*::
+*bridgeType* (STRING): Type of the FC-to-SAS bridge.
+*bridgeName* (STRING): Name of the FC-to-SAS bridge.
+*bridgeSerialNum* (STRING): Serial number of the FC-to-SAS bridge.
+*bridgeWWN* (STRING): World-Wide Name (WWN) of the FC-to-SAS bridge.
+*bridgeTemp* (INT): Temperature reported by the FC-to-SAS bridge.
+*addlInfo* (STRING): Additional information about the alert being generated, if available.
+
+== fc.bridge.temp.notice
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an FC-to-SAS bridge returns to a normal operating temperature. No action needs to be taken, because the FC-to-SAS bridge temperature has returned to normal levels.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-to-SAS %s bridge %s S/N: %s WWN: %s temperature has returned to normal (%d C). %s
+*Parameters*::
+*bridgeType* (STRING): Type of the FC-to-SAS bridge.
+*bridgeName* (STRING): Name of the FC-to-SAS bridge.
+*bridgeSerialNum* (STRING): Serial number of the FC-to-SAS bridge.
+*bridgeWWN* (STRING): World-Wide Name (WWN) of the FC-to-SAS bridge.
+*bridgeTemp* (INT): Temperature reported by the FC-to-SAS bridge.
+*addlInfo* (STRING): Additional information about the alert being generated, if available.
+
+== fc.bridge.throughput.alert
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an FC-to-SAS bridge experiences degraded throughput.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Fibre Channel %s Bridge %s S/N: %s WWN: %s is experiencing degraded throughput. %s
+*Parameters*::
+*bridgeType* (STRING): Type of the FC-to-SAS bridge.
+*bridgeName* (STRING): Name of the FC-to-SAS bridge.
+*bridgeSerialNum* (STRING): Serial number of the FC-to-SAS bridge.
+*bridgeWWN* (STRING): World-Wide Name (WWN) of the FC-to-SAS bridge.
+*addlInfo* (STRING): Additional information about the alert being generated, if available.
+
+== fc.bridge.throughput.notice
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an FC-to-SAS bridge recovers from degraded throughput.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Fibre Channel %s Bridge %s S/N: %s WWN: %s throughput is normal. %s
+*Parameters*::
+*bridgeType* (STRING): Type of the FC-to-SAS bridge.
+*bridgeName* (STRING): Name of the FC-to-SAS bridge.
+*bridgeSerialNum* (STRING): Serial number of the FC-to-SAS bridge.
+*bridgeWWN* (STRING): World-Wide Name (WWN) of the FC-to-SAS bridge.
+*addlInfo* (STRING): Additional information about the alert being generated, if available.

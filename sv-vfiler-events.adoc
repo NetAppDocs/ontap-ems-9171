@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: sv-vfiler-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sv.vfiler events
+---
+
+= sv.vfiler events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== SV.vfiler.config.move.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when movement of SnapVault(R) configuration from 'from' vFiler to 'to' vFiler fails. Subsequent SnapVault transfer on the vFiler might fail.
+*Corrective Action*::
+Move the volume back to 'from' vFiler and then again perform a vFiler move from 'from' vFiler to 'to' vFiler. Please use 'vfiler move' command to move the volume between the vfilers.
+*Syslog Message*::
+Movement of SnapVault configuration failed while moving volumes between vFiler %s to vFiler %s. Move the volume back to %s vFiler and perform the vFiler move operation again.
+*Parameters*::
+*from_vfiler1* (STRING): vFiler(tm) from which resources are being moved.
+*to_vfiler* (STRING): vFiler to which resources are being moved.
+*from_vfiler2* (STRING): vFiler to which resources are being moved.

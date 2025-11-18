@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: kern-vm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: kern.vm events
+---
+
+= kern.vm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== kern.vm.mmap.return
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an attempt to create a new mapping in the virtual address space of a process has failed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+mmap(2) by %s (pid %d) for size %ld failed: %s, limit %ld, error %d.
+*Parameters*::
+*process_name* (STRING): Name of the process with the failed attempt.
+*process_id* (INT): ID of the process with the failed attempt.
+*size* (LONGINT): Size in bytes of the memory map attempt.
+*message* (STRING): Details about the failed memory map attempt.
+*limit* (LONGINT): Size in bytes of the process's virtual memory limit.
+*errno* (INT): The error code returned to the process.

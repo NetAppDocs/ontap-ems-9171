@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: snapmirror-sockreaderr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapmirror.sockreaderr events
+---
+
+= snapmirror.sockreaderr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapmirror.sockReadErr
+*Severity*::
+ERROR
+*Description*::
+This event is issued when SnapMirror tries to read a very large chunk from the network.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Attempted illegal network read of %d bytes.
+*Parameters*::
+*bytes* (INT): Bytes SnapMirror tried to read from socket.

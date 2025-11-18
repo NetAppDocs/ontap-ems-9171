@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: dump-bitmap-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dump.bitmap events
+---
+
+= dump.bitmap events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dump.bitmap.fail
+*Severity*::
+ERROR
+*Description*::
+This event is generated during dump restarting and looking for the bitmap file and it is unable to locate
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Missing bitmap files.
+*Parameters*::
+(None).

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: rlib-duplicate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rlib.duplicate events
+---
+
+= rlib.duplicate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rlib.duplicate.ip.detected
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an interconnect link IP address on this node has a conflict with an IP address on another node in the cluster.
+*Corrective Action*::
+Reboot either this node or the other node reported in this event, while making sure that all interconnect links on the two nodes are connected, up, and operational.
+*Syslog Message*::
+Interconnect link IP address %s on this node (System ID %d) is also in use by another node (System ID %d) in the cluster.
+*Parameters*::
+*dupIP* (STRING): Conflicting IP address.
+*localSysid* (LONGINT): System ID of the local node.
+*remoteSysid* (LONGINT): System ID of the remote node.

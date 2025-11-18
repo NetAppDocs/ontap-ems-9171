@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: sas-link-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sas.link events
+---
+
+= sas.link events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sas.link.error
+*Severity*::
+ERROR
+*Description*::
+The SAS adapter was unable to recover the link and is going offline.
+*Corrective Action*::
+If the adapter is in use check cabling and if connected to disk shelves check the seating of IOM cards and disks. If this does not resolve the issue please contact NetApp technical support for assistance in diagnosing a SAS issue.
+*Syslog Message*::
+Could not recover link on SAS adapter %s after %d seconds. Offlining the adapter.
+*Parameters*::
+*adapterName* (STRING): The name of the associated SAS host bus adapter.
+*downTime* (INT): The amount of time that the link was down.

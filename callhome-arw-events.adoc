@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: callhome-arw-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.arw events
+---
+
+= callhome.arw events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.arw.activity.seen
+*Severity*::
+ALERT
+*Description*::
+This message occurs when ransomware activity is detected. To protect the data, a snapshot has been created, which can be used to restore the original data. If your system is configured to do so, it generates and transmits an AutoSupport (or "call home") message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+For non-ASA r2 platforms, Use the "security anti-ransomware volume attack generate-report" command to generate the report file of the suspected attack on the volume. Search the knowledge base of the NetApp technical support web site for the "callhome.arw.activity.seen" keyword and refer to ONTAP anti-ransomware documentation to take remedial measures for ransomware activity. If you need further assistance, contact NetApp technical support. For ASA r2 platforms, Search the knowledge base of the NetApp technical support web site for the "callhome.arw.activity.seen" keyword and refer to ONTAP anti-ransomware documentation to take remedial measures for ransomware activity. If you need further assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home message for "%s", Volume: "%s" (UUID: "%s") in Vserver: "%s" (UUID: "%s")
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*volName* (STRING): Name of the volume.
+*volUuid* (STRING): Universal unique identifier (UUID) of the volume.
+*vserverName* (STRING): Name of the Vserver.
+*vserverUuid* (STRING): UUID of the Vserver.

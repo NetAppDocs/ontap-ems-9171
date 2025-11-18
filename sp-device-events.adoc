@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sp-device-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sp.device events
+---
+
+= sp.device events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sp.device.fw.mismatch
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the service processor (SP) detects a firmware version mismatch among the devices managed by the SP.
+*Corrective Action*::
+Contact NetApp technical support to update the firmware.
+*Syslog Message*::
+Device firmware version mismatch detected: %s
+*Parameters*::
+*mismatch* (STRING): Description of the device names, current device firmware versions, and expected versions.

@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: fg-admin-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fg.admin events
+---
+
+= fg.admin events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fg.admin.wait.long
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the data component takes longer than 15 seconds to update its view of the FlexGroup volume after an admin operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FlexGroup volume "%s" (MSID "%lu") in Vserver "%s" took %lu seconds to update the "%s" property during the "%s" operation.
+*Parameters*::
+*volumeName* (STRING): Name of the FlexGroup volume.
+*volumeMsid* (LONGINT): Master Data Set ID (MSID) of the FlexGroup volume.
+*vserverName* (STRING): Name of the Vserver on which the FlexGroup volume resides.
+*numSeconds* (LONGINT): Number of seconds that the data component took to update.
+*property* (STRING): Volume property being updated.
+*operation* (STRING): Admin operation performed before the data component update.

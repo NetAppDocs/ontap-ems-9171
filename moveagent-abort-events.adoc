@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: moveagent-abort-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: moveagent.abort events
+---
+
+= moveagent.abort events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== moveagent.abort.cutover
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued during volume move when cutover is aborted because the volume took too long to replicate. The volume is unquiesced.
+*Corrective Action*::
+The move job can be in process of retry. User can try '-force-cutover true' to force cutover.
+*Syslog Message*::
+Cutover abort due to volume quiesce timer expiration: volume dsid %llu.
+*Parameters*::
+*volume_dsid* (LONGINT): The source volume data set identifier (dsid)

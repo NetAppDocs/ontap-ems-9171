@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: upgrademgr-two-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: upgrademgr.two events
+---
+
+= upgrademgr.two events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== upgrademgr.two.stage.started
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a two-stage version update starts on the cluster where the target release is two versions later than the current version. The cluster is upgraded to intermediate version first, and then upgraded to the target version.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Started two-stage Data ONTAP upgrade to target version "%s". Intermediate version: "%s".
+*Parameters*::
+*targetversion* (STRING): Target Data ONTAP release version.
+*intermediateversion* (STRING): Intermediate Data ONTAP release version.

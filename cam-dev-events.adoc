@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: cam-dev-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cam.dev events
+---
+
+= cam.dev events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cam.dev.fuaNotSupported
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the disk does not support the Forced Unit Access (FUA) feature bit. Using this disk with the write cache enabled can lead to data corruption.
+*Corrective Action*::
+Use disks with the write cache disabled or disks where the FUA feature is supported.
+*Syslog Message*::
+FUA feature is not supported for disk %s%d with target address %s.
+*Parameters*::
+*periph_name* (STRING): Disk name.
+*unit* (INT): Unit number.
+*target_addr* (STRING): Disk target address.
+
+== cam.dev.fuaNotVerified
+*Severity*::
+ALERT
+*Description*::
+This message occurs when ONTAP(R) software fails to read the SCSI page containing the Forced Unit Access (FUA) feature bit. Using the disk with the write cache enabled and FUA not supported can lead to data corruption.
+*Corrective Action*::
+Because ONTAP cannot determine the state of the FUA feature bit, disable the disk write cache if it is enabled by default. If the write cache cannot be disabled, replace the disk to avoid corruption.
+*Syslog Message*::
+Unable to read the FUA settings for disk %s%d with target address %s.
+*Parameters*::
+*periph_name* (STRING): Disk name.
+*unit* (INT): Unit number.
+*target_addr* (STRING): Disk target address.

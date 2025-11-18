@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: net-fib-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: net.fib events
+---
+
+= net.fib events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== net.fib.createfailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Vserver resource allocation fails. This leaves the system with an unusable Vserver, and additional Vservers cannot be created. This might also lead to system performance degradation.
+*Corrective Action*::
+Delete the Vserver created by using the "vserver delete" command. Use the diagnostic privilege "debug smdb table vserver_by_name show" command to determine the Vserver name corresponding to the ID. You must delete the other associated entities, such as LIFs and volumes, before deleting a Vserver.
+*Syslog Message*::
+Resource allocation for Vserver (ID: %d) failed.
+*Parameters*::
+*vsid* (INT): Vserver ID.
+
+== net.fib.nearinglimit
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Vserver resources have reached 90% and will soon be exhausted. When the resources are exhausted, additional Vservers cannot be created. The system will function normally with respect to other Vservers.
+*Corrective Action*::
+Check for configured Vservers by using the "vserver show" command, and delete unused Vservers by using the "vserver delete" command. You must delete the the other associated entities, such as LIFs and volumes, before deleting a Vserver.
+*Syslog Message*::
+Vserver resource allocation is nearing the limit.
+*Parameters*::
+(None).

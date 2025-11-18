@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: diskown-disknotsup-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.disknotsup events
+---
+
+= diskown.disknotsup events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.diskNotSup
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when newly inserted disks are only supported with software disk ownership enabled, but it is not enabled.
+*Corrective Action*::
+Halt the system by using the "halt" command, and then turn on software disk ownership by using the "storage disk assign" command. After you assign the disks, the system can recognize them.
+*Syslog Message*::
+Newly added disk %s (and others) is only supported with software disk ownership enabled.
+*Parameters*::
+*disk* (STRING): Name of the disk.

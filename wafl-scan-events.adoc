@@ -1,0 +1,816 @@
+---
+sidebar: sidebar
+permalink: wafl-scan-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.scan events
+---
+
+= wafl.scan events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.scan.abort.nospace
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system is aborting the WORM clear scan because there is no space available in the volume.
+*Corrective Action*::
+For non-ASA r2 platforms, create space by increasing the volume or aggregate sizes, or by deleting data or by deleting Snapshot copies. To increase a volume's size, use the "volume size" command. To delete a volume's Snapshot copies, use the "volume snapshot delete" command. To increase an aggregate's size, add disks by using the "storage aggregate add-disks" command. Aggregate Snapshot copies are deleted automatically when the aggregate is full. For ASA r2 platforms, create space in the volume or aggregate. To create space in an aggregate, add more disks to the cluster. To create space in a volume, delete data or delete Snapshot copies. To delete a Snapshot copy, use the "vserver consistency-group snapshot delete" command.
+*Syslog Message*::
+Aborting WAFL %s scanner on volume %s because there is no space available in the volume.
+*Parameters*::
+*type* (STRING): String to indicate the scanner that is aborted.
+*vol* (STRING): Volume name.
+
+== wafl.scan.autocommit.disable
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued to inform the user that the system is aborting the autocommit scanner on a Snaplock volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Aborting autocommit scan on %s %s%s%s%s.
+*Parameters*::
+*type* (STRING): The type of object (volume/aggregate)
+*owner* (STRING): The volume owner of the snaplock volume where the autocommit scanner was aborted.
+*vol* (STRING): The name of the snaplock volume where the autocommit scanner was aborted.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the snaplock volume where the autocommit scanner was aborted in cases where volume name itself is insufficient.
+
+== wafl.scan.blkreclaim.activeDelta
+*Severity*::
+ERROR
+*Description*::
+This event indicates a flexible mirror volume is unable to relinquish free blocks to its containing aggregate. As a result, the containing aggregate may run out of space if this state persists beyond the following incremental transfer.
+*Corrective Action*::
+Monitor the state after the next incremental update for this volume and the space available in its containing aggregate
+*Syslog Message*::
+Flexible volume '%s%s' cannot release free blocks to its containing aggregate '%s'.
+*Parameters*::
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*aggr* (STRING): The aggregate name
+
+== wafl.scan.blockcheck.done
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the 'aggr block_check' tool finishes scanning an aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Writing WAFL aggr block_check log %s
+*Parameters*::
+*filename* (STRING): The name of the log file.
+
+== wafl.scan.br.realloc.done
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a block reallocation scan is complete on an aggregate. The block reallocation scan improves WAFL(R) write efficiency by reducing free space fragmentation. It runs automatically when aggregate reallocation is scheduled using the 'reallocate -A' command.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Block reallocation scan on aggregate %s is complete.
+*Parameters*::
+*aggr* (STRING): Aggregate name.
+
+== wafl.scan.br.redir.abort
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a redirect scan is aborted on a volume or aggregate. The redirect scan improves performance following block reallocation by updating metadata that was changed during reallocation. It runs automatically when aggregate reallocation is scheduled using the 'reallocate -A' command.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Redirect scan on %s %s%s%s%s has been aborted.
+*Parameters*::
+*type* (STRING): Type of object (volume/aggregate).
+*owner* (STRING): Volume or aggregate owner.
+*vol* (STRING): Volume or aggregate name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Uniquely identifies the volume in cases where the volume name itself is insufficient.
+
+== wafl.scan.br.redir.done
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a redirect scan is complete on a volume or aggregate. The redirect scan improves performance following block reallocation by updating metadata that was changed during reallocation. It runs automatically when aggregate reallocation is scheduled using the 'reallocate -A' command.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Redirect scan on %s %s%s%s%s is complete. The scanner took %ld ms.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume or aggregate owner.
+*vol* (STRING): Volume or aggregate name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Uniquely identifies the volume in cases where the volume name itself is insufficient.
+*run_time* (LONGINT): Total run time of the scanner.
+
+== wafl.scan.br.redir.noStart
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a redirect scan cannot be started on a volume or aggregate. The redirect scan improves performance following block reallocation by updating metadata that was changed during reallocation. It runs automatically when aggregate reallocation is scheduled using the 'reallocate -A' command.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Redirect scan on %s %s%s%s%s could not be started.
+*Parameters*::
+*type* (STRING): Type of object (volume/aggregate).
+*owner* (STRING): Volume or aggregate owner.
+*vol* (STRING): Volume or aggregate name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Uniquely identifies the volume in cases where the volume name itself is insufficient.
+
+== wafl.scan.cantStart
+*Severity*::
+INFORMATIONAL
+*Description*::
+The message occurs when the scan could not start because the maximum number of scans of the specified type are already running.
+*Corrective Action*::
+The maximum number of scan operations has been reached. Please wait until the current scan operations have completed before trying any new ones.
+*Syslog Message*::
+Cannot start scan %s on %s %s%s%s%s because maximum number of scans (%d) already running.
+*Parameters*::
+*scantype* (STRING): The type of scan
+*type* (STRING): The type of object (volume/aggregate)
+*owner* (STRING): The volume owner
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*max* (INT): The maximum number of scans that can run
+
+== wafl.scan.ckpt.init.failed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the creation of Scan Checkpoint Metafile fails.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+On %s %s%s%s%s, FSID 0x%x, Creation of Scan Checkpoint Metafile failed with error %d.
+*Parameters*::
+*type* (STRING): Type of object (volume/aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.
+*fsid* (INT): File system identifier of the volume.
+*error* (INT): Error number.
+
+== wafl.scan.ckpt.remove.failed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the removal of Scan Checkpoint in Metafile fails.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+On %s %s%s%s%s, FSID 0x%x, Removal of Scan Checkpoint failed with error %d.
+*Parameters*::
+*type* (STRING): Type of object (volume/aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.
+*fsid* (INT): File system identifier of the volume.
+*error* (INT): Error number.
+
+== wafl.scan.clone.split.abort
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued to indicate that an operation to split a clone flexible volume from its parent volume was aborted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s%s, clone split operation stopped.
+*Parameters*::
+*type* (STRING): The type of object (volume/aggregate)
+*owner* (STRING): The volume owner
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== wafl.scan.clone.split.cantLock
+*Severity*::
+ERROR
+*Description*::
+This event is issued when the system cannot create a volume reference to complete a clone split operation. Check the type to determine if the reference is for the volume or for its enclosing aggregate.
+*Corrective Action*::
+Determine why the volume reference failed, and retry the operation if necessary.
+*Syslog Message*::
+Unable to lock %s %s%s to complete clone split operation.
+*Parameters*::
+*type* (STRING): The type of object (volume/aggregate)
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== wafl.scan.clone.split.complete
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued to indicate that an operation to split a clone flexible volume from its parent volume completed successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Clone split complete for %s %s%s%s
+*Parameters*::
+*type* (STRING): The type of object (volume/aggregate)
+*owner* (STRING): The volume owner
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== wafl.scan.clone.split.fail
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued to indicate that an operation to split a clone flexible volume from its parent volume has failed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s%s, clone split operation failed.
+*Parameters*::
+*type* (STRING): The type of object (volume/aggregate)
+*owner* (STRING): The volume owner
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== wafl.scan.css.undo.complete
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued to indicate that an operation to undo sharing-by-split in a flexible volume has completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Clone sharing-by-split undo complete for %s %s%s
+*Parameters*::
+*type* (STRING): The type of object (volume/aggregate)
+*owner* (STRING): The volume owner
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== wafl.scan.deswizzle.aborted
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the deswizzler scanner encounters an error and aborts.
+*Corrective Action*::
+Correct the issue based on the reason the deswizzler scanner aborted.
+*Syslog Message*::
+The deswizzler scanner running on volume %s (snapshot ID %d) was aborted. Reason: "%s".
+*Parameters*::
+*vol* (STRING): Volume that was being deswizzled.
+*snapid* (INT): Snapshot identifier: (0) - active file system (non-zero) - refers to snapshot
+*reason* (STRING): Reason the deswizzler scanner aborted.
+
+== wafl.scan.deswizzle.check.referenced
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is triggered when deswizzling a block already pointed to by pvbn in an older snapshot. If snap1 is not 0 (i.e. not the active fs), there is a strong possibility this may lead to a corruption.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*vol* (STRING): The volume name
+*snap1* (INT): The snapshot of the block being deswizzled.
+*snap2* (INT): The next older snapshot.
+*cp1* (INT): CP count of snap1.
+*cp2* (INT): CP count of snap2.
+*ino_type* (STRING): The inode type
+*inum* (INT): Inode containing the block being deswizzled.
+*fbn* (LONGINT): FBN of the block in the inode.
+*level* (INT): Level of the block.
+*vvbn* (LONGINT): VVBN of the block in snap1.
+*pvbn1* (LONGINT): PVBN of the block in snap1.
+*pvbn2* (LONGINT): PVBN of the block in snap2.
+*parent* (LONGINT): VVBN of the parent block in snap2.
+
+== wafl.scan.deswizzle.exception
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the deswizzler scanner encounters an exception.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The deswizzler scanner running on volume %s (snapshot ID %d) was excepted. Error: "%d".
+*Parameters*::
+*vol* (STRING): Volume that was being deswizzled.
+*snapid* (INT): Snapshot identifier: (0) - active file system (non-zero) - refers to snapshot
+*error* (INT): Message status.
+
+== wafl.scan.deswizzle.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the deswizzler scanner has encounters a volume inconsistency and stops running.
+*Corrective Action*::
+An inconsistency was found in the specified snapshot. Delete the snapshot. To ensure that the active file system is intact, you might want to run wafliron.
+*Syslog Message*::
+The deswizzler scanner on flexvol %s, snapshot %s (ID %d) encountered a volume inconsistency and stopped running on the volume.
+*Parameters*::
+*vol* (STRING): Volume that was being deswizzled.
+*snapname* (STRING): Inconsistent snapshot name.
+*snapid* (INT): Inconsistent snapshot snapid.
+
+== wafl.scan.done
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a WAFL(R) scan is completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Completed %s on %s %s%s%s%s.
+*Parameters*::
+*scantype* (STRING): Type of scan.
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.
+
+== wafl.scan.filecheck.done
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the 'file check' diagnostic tool finishes scanning a file for corrupt data blocks.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Writing WAFL filecheck log %s
+*Parameters*::
+*filename* (STRING): The name of the log file.
+
+== wafl.scan.i2p.cantAbort
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during an attempt to abort the I2P scan by using the "wafl scan abort" command while running clustered Data ONTAP(R). The I2P scan cannot be interrupted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+You cannot abort an I2P scan on a cluster volume.
+*Parameters*::
+(None).
+
+== wafl.scan.iron.done
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message informs the user that the system has completed a wafliron scan.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s%s%s, wafliron %s.
+*Parameters*::
+*type* (STRING): Type of object (volume/aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.
+*status* (STRING): Status string.
+
+== wafl.scan.iron.snapshot
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message informs the user that the system has started wafliron scan on the snapshot.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s%s%s, wafliron started on snapshot %d.
+*Parameters*::
+*type* (STRING): Type of object (volume/aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.
+*snapid* (INT): The snapshot Identifier.
+
+== wafl.scan.iv.metatype.done
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system completes a WAFL_FLAG_IV_METATYPE inode flag scan on the Infinite Volume namespace constituent.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The WAFL_FLAG_IV_METATYPE inode flag scanner has completed the scan on %s %s%s%s%s. The scanner scanned %d inodes, tagged %d inodes with the inode flag, and took %ld msecs to complete the scan.
+*Parameters*::
+*type* (STRING): Type of object (volume).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name itself is insufficient.
+*inodes_visited* (INT): Total number of inodes visited by the scanner.
+*inodes_tagged* (INT): Total number of inodes tagged with the WAFL_FLAG_IV_METATYPE inode flag by the scanner.
+*run_time* (LONGINT): Total run time of the scanner in milliseconds.
+
+== wafl.scan.iv.metatype.dud
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system tries and fails to start the WAFL_FLAG_IV_METATYPE inode flag scan on the Infinite Volume namespace constituent. This might cause errors in file operations over NFS/CIFS in the Infinite Volume until the scanner is restarted and the scan is completed.
+*Corrective Action*::
+The scanner will restart automatically in cases where the failure to start occurs due to a storage failover event, an in-progress node revert operation, or a node reboot. In other cases, contact NetApp technical support for assistance.
+*Syslog Message*::
+Failed to launch the WAFL_FLAG_IV_METATYPE inode flag scanner on %s %s%s%s%s. The error code returned was %d (%s).
+*Parameters*::
+*type* (STRING): Type of object (volume).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name itself is insufficient.
+*err_code* (INT): Numerical error code indicating the reason the scan could not be launched.
+*err_string* (STRING): String interpreting the error code.
+
+== wafl.scan.iv.metatype.start
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system starts a WAFL_FLAG_IV_METATYPE inode flag scan on the Infinite Volume namespace constituent.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The WAFL_FLAG_IV_METATYPE inode flag scanner has started running on %s %s%s%s%s.
+*Parameters*::
+*type* (STRING): Type of object (volume).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name itself is insufficient.
+
+== wafl.scan.l1.uncompact.done
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the operation to uncompact indirect blocks in a FlexVol(R) volume is complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+L1 uncompact operation complete for %s (UUID: %s). %d indirect blocks were uncompacted.
+*Parameters*::
+*name* (STRING): Volume name.
+*vol_uuid* (STRING): Volume UUID.
+*count* (INT): Number of indirect blocks being uncompacted.
+
+== wafl.scan.l1.uncompact.nobt
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an indirect block uncompact operation is attempted on a volume before block type metadata initialization is complete.
+*Corrective Action*::
+Check whether the block type scan is still running on the volume. Try the indirect block uncompact operation on the volume after the block type scan is complete.
+*Syslog Message*::
+Indirect block uncompact scan can't be started on volume %s (UUID: %s) because block type initialization is not complete on the volume. Try again after block type scan is complete on the volume.
+*Parameters*::
+*name* (STRING): Volume name.
+*vol_uuid* (STRING): Volume UUID.
+
+== wafl.scan.l1.uncompact.nospc
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is not enough free space to uncompact the indirect blocks during the volume uncompact operation.
+*Corrective Action*::
+Create space by increasing the volume size, or by deleting data or deleting snapshots. To increase a volume's size, use the "volume size" command. To delete a volume's snapshots, use the "volume snapshot delete" command.
+*Syslog Message*::
+Indirect block uncompact scan for volume %s (UUID: %s) stopped because of insufficient free space.
+*Parameters*::
+*name* (STRING): Volume name.
+*vol_uuid* (STRING): Volume UUID.
+
+== wafl.scan.layout.advise
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued to advise the operator of optimal settings for their layout ratio.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL layout ratio for %s %s%s%s%s is %d.%02d. A ratio of 1 is optimal. Based on your free space, %d.%02d is expected.
+*Parameters*::
+*type* (STRING): The type of object (volume/aggregate)
+*owner* (STRING): The volume owner
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*ratio1* (INT): The ratio integer
+*ratio2* (INT): The ratio fraction of 100
+*eratio1* (INT): The expected ratio integer
+*eratio2* (INT): The expected ratio fraction of 100
+
+== wafl.scan.layout.advise.ino
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued to advise the operator of optimal settings for their layout ratio.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL layout ratio for %s %s%s%s%s, %s inode %u is %d.%02d. A ratio of 1 is optimal. Based on your free space, %d.%02d is expected.
+*Parameters*::
+*type* (STRING): The type of object (volume/aggregate)
+*owner* (STRING): The volume owner
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*inotype* (STRING): The inode space (public or private)
+*ino* (INT): The inode value
+*ratio1* (INT): The ratio integer
+*ratio2* (INT): The ratio fraction of 100
+*eratio1* (INT): The expected ratio integer
+*eratio2* (INT): The expected ration fraction of 100
+
+== wafl.scan.layout.cantWrite
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot write out the WAFL(R)scan layout log.
+*Corrective Action*::
+The most likely cause of a failure in writing the file is lack of space on the specified volume. Use the 'df' command to check available space. If the volume is full, free some space on the volume, and then restart the command.
+*Syslog Message*::
+Cannot write WAFL scan layout log %s.
+*Parameters*::
+*filename* (STRING): Name of the log file.
+
+== wafl.scan.layout.write
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the system initiate writing of the scan layout log.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Writing WAFL layout log %s
+*Parameters*::
+*filename* (STRING): The name of the log file
+
+== wafl.scan.log.cantWrite
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system cannot write out the scan report log.
+*Corrective Action*::
+If the error is due to lack of space, add more space or free space in the volume. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Cannot write WAFL vbntoino log %s: %d (%s).
+*Parameters*::
+*filename* (STRING): Name of the log file.
+*err_code* (INT): A numerical error code indicating the reason why the log was not written.
+*err_string* (STRING): A string interpreting the error code.
+
+== wafl.scan.lost.obj.recovery
+*Severity*::
+NOTICE
+*Description*::
+This message occurs after a lost object recovery scanner has been completed or aborted.
+*Corrective Action*::
+None.
+*Syslog Message*::
+Lost object recovery scanner on volume "%s%s%s" is %s. (num_lost=%llu, num_inserted=%llu, num_deleted=%llu, num_skipped=%llu, num_objs_in_namespace=%llu)
+*Parameters*::
+*volname* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*state* (STRING): State of the scan, either aborted or completed
+*num_lost* (LONGINT): Number of objects found that were not in the namespace.
+*num_inserted* (LONGINT): Number of objects fixed by adding them back into the namespace.
+*num_deleted* (LONGINT): Number of objects fixed by deletion.
+*num_skipped* (LONGINT): Number of inodes skipped during scanning due to some error.
+*num_objs_in_namespace* (LONGINT): Number of objects that were found to exist already in the namespace.
+
+== wafl.scan.ownblocks.done
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a scan operation to check owned blocks is complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Completed %s on %s %s%s%s%s. The scanner took %ld ms.
+*Parameters*::
+*op* (STRING): Name of the operation.
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*run_time* (LONGINT): Total run time of the scanner.
+
+== wafl.scan.quota.init.cantAbort
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during an attempt to abort the quota initialization scan by using the "wafl scan abort" command. The quota initialization scan cannot be interrupted.
+*Corrective Action*::
+Wait for the quota initialization to complete or use the "quota off" command.
+*Syslog Message*::
+User cannot abort quota initialization scan. Please use 'quota off' command.
+*Parameters*::
+(None).
+
+== wafl.scan.realloc.oldsnaps
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a block reallocation scanner cannot move blocks trapped in aggregate snapshots, because the snapshots are older than the value in 'wafl_blkr_max_snap_age' flag (default is 360 seconds). You can display the value of this flag by using 'printflag wafl_blkr_max_snap_age'.
+*Corrective Action*::
+Delete all aggregate snapshots or snapshot schedules before running a block reallocation scan. In the case of RaidSyncmirror aggregates, ensure that the resyncsnaptime option has a value that is less than in the 'age' parameter.
+*Syslog Message*::
+Block reallocation scan on aggregate %s found snapshots older than %d seconds.
+*Parameters*::
+*aggr* (STRING): Aggregate name.
+*age* (INT): Maximum allowed age of aggregate snapshots, (in seconds), for block reallocation scan.
+
+== wafl.scan.reallocDisallowed
+*Severity*::
+ERROR
+*Description*::
+This event is issued when an attempt is made to reallocate a file or LUN that cannot be reallocated. Examples of such files/LUNs include file in snapshots, or Qtree Snapmirror destinations.
+*Corrective Action*::
+File/LUN reallocation should be specified on files/LUNs in the active filesystem that are not part of a QSM destination.
+*Syslog Message*::
+Reallocation disallowed on %s inode %d in volume %s%s: readonly or snapshot.
+*Parameters*::
+*inotype* (STRING): The inode space (public or private)
+*inode* (INT): The inode that could not be reallocated.
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== wafl.scan.relocation.nocontiguousFree
+*Severity*::
+ERROR
+*Description*::
+This event is issued to indicate there is not enough contiguous free space to rewrite the blocks during file or volume reallocation.
+*Corrective Action*::
+Free space in the volume, or increase the size of the aggregate, then retry the operation.
+*Syslog Message*::
+Reallocate scan for volume %s%s has stopped because there is insufficient contiguous free space.
+*Parameters*::
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== wafl.scan.relocation.nospaceFree
+*Severity*::
+ERROR
+*Description*::
+This event is issued to indicate there is not enough free space to rewrite the blocks during file or volume reallocation.
+*Corrective Action*::
+Free space in the volume, or increase the size of a flexible volume, then retry the operation.
+*Syslog Message*::
+Reallocate scan for volume %s%s has stopped because there is insufficient free space.
+*Parameters*::
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== wafl.scan.relocation.nospaceSnap
+*Severity*::
+ERROR
+*Description*::
+This event is issued to indicate there is not enough snapshot free space to rewrite the blocks during file or volume reallocation.
+*Corrective Action*::
+Remove snapshots in the volume, or increase the size of a flexible volume, then retry the operation.
+*Syslog Message*::
+Reallocate scan for volume %s%s has stopped because there is insufficient snapshot free space.
+*Parameters*::
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== wafl.scan.snap.vbnOutOfRange
+*Severity*::
+ERROR
+*Description*::
+This messges occurs when scanners find an out-of-range block number in the snapshot.
+*Corrective Action*::
+Delete the specified snapshot.
+*Syslog Message*::
+Out of range block number error detected at %s %s%s%s%s in snapshot %d, during block type scan. Delete the specified snapshot.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*snapId* (INT): Identifier for the snapshot.
+
+== wafl.scan.split.inofile.cantAbort
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during an attempt to abort the split inofile scan by using the "wafl scan abort" command. The split inofile scan cannot be interrupted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+User cannot abort the split inofile scan.
+*Parameters*::
+(None).
+
+== wafl.scan.typebits.diffFail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the type bit scan encounters an unexpected error from the snapdiff APIs. This can imply that prev_snapid snapshot might be corrupt.
+*Corrective Action*::
+Contact NetApp technical support for corrective steps.
+*Syslog Message*::
+Aborting the type bit scan due to error %d on volume %s while running a diff operation on inode %u of %s space between snapshot ID %u and snapshot ID %u after fbn %llu.
+*Parameters*::
+*error* (INT): Error number.
+*volname* (STRING): Volume name.
+*inum* (INT): File ID under scan.
+*ino_type* (STRING): Inode type.
+*snapId* (INT): Identifier for the snapshot under scan.
+*prev_snapId* (INT): Identifier for the reference snapshot.
+*start_fbn* (LONGINT): Starting file block number (fbn) of the diff operation.
+*vendor* (STRING): Name of the vendor.
+
+== wafl.scan.typeBitsMismatch
+*Severity*::
+NOTICE
+*Description*::
+This messages occurs when scanners find a type bits mismatch for a block number. This might indicate a file system inconsistency in a file system or snapshot.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+Type bits mismatch found at %s %s%s%s%s in snapshot %d, vbn %llu, during block type scan. On-disk type bits %d, expected type bits %d.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Node that owns the object.
+*vol* (STRING): Name of the object.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the object in cases where the object name itself is insufficient.
+*snapId* (INT): Identifier for the snapshot.
+*vbn* (LONGINT): Block number of the block within the volume.
+*diskbits* (INT): On-disk type bits of the block.
+*expectedbits* (INT): Expected type bits of the block.
+
+== wafl.scan.uncompact.aborted
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the uncompaction scanner is aborted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s scanner aborted on %s %s%s%s%s with error: %s. %s was tried on %ld blocks before failure.
+*Parameters*::
+*opname* (STRING): Opname for the scanner.
+*voltype* (STRING): Volume type on which scanner was run.
+*aggr_owner* (STRING): Owner of the volume.
+*aggr_name* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*uuid* (STRING): Volume uuid.
+*abort_reason* (STRING): Reason for stoppping scan.
+*opname1* (STRING): Opname for the scanner.
+*val* (LONGINT): Number of vbns acted on.
+
+== wafl.scan.vbn.outOfRange
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when scanners find an out-of-range block number in the active file system.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Out-of-range block number error detected at %s %s%s%s%s, during block type scan.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+
+== wafl.scan.wafliron.cantAbort
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during an attempt to abort the wafliron scan by using the "wafl scan abort" command. The wafliron scan cannot be interrupted.
+*Corrective Action*::
+Wait for the wafliron scan to finish or use "aggr wafliron stop" to stop the scan.
+*Syslog Message*::
+User cannot abort wafliron scan. Please use 'vol wafliron stop' command.
+*Parameters*::
+(None).

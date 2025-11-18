@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: diskown-split-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.split events
+---
+
+= diskown.split events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.split.shelf.assignStatus
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when any type of split-shelf automatic drive assignment is disabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Split-shelf based automatic drive assignment is "%s".
+*Parameters*::
+*state* (STRING): All split-shelf based drive assignment states.

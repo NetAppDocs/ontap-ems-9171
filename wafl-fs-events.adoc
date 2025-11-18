@@ -1,0 +1,64 @@
+---
+sidebar: sidebar
+permalink: wafl-fs-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.fs events
+---
+
+= wafl.fs events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.fs.corrupt.fr.pct.changed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during volume mount, when the fractional reservation value for a volume is found to be corrupted. This is necessary because the storage system software only supports fractional reservation values of 0% and 100%. The guarantee type setting of a volume determines what the correct fractional reservation must be. For volumes with a guarantee type of VOLUME or NONE the value must be corrected to be 0%. For volumes with a guarantee type of FILE the value must be set to 100%.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The corrupted fractional reservation value for volume '%s%s%s' with guarantee type '%s' has been changed from %d%% to %d%%.
+*Parameters*::
+*vol* (STRING): Name of the volume whose fractional reservation value was changed.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*guarantee_type* (STRING): Guarantee type of the volume.
+*old_fr_pct* (INT): Old fractional reservation value of the volume.
+*new_fr_pct* (INT): New fractional reservation value of the volume.
+
+== wafl.fs.file.guarnt.upgraded
+*Severity*::
+ERROR
+*Description*::
+This message occurs during a volume upgrade, when the space guarantee style for a volume is changed to either "none" or "volume" (guarantee is disabled). This is necessary because Data ONTAP(R) no longer supports "file" space guarantee style for flexible volumes.
+*Corrective Action*::
+Use the "volume show -volume <volume-name> -fields space-guarantee" command to display the volume's new space guarantee style. To modify the style to "volume", ensure that there is enough space in the aggregate, and then enter the "volume modify -vserver <vserver-name> -space-guarantee volume <volume-name>" command. To modify the style to "none" enter the "volume modify -vserver <vserver-name> -space-guarantee none <volume-name>" command.
+*Syslog Message*::
+The space guarantee type for volume '%s%s%s' has been upgraded from file to %s.
+*Parameters*::
+*vol* (STRING): Name of the volume whose file guarantee was changed.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*new_guarantee_type* (STRING): New space guarantee type chosen for the volume.
+
+== wafl.fs.upgrade.fr.pct.changed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during a volume upgrade, when the fractional reservation value for a volume is checked and corrected. This is necessary because the storage system software only supports fractional reservation values of 0% and 100%. The guarantee type setting of a volume determines what the fractional reservation value must be. For volumes with a guarantee type of VOLUME or NONE the value must be set to 0%. For volumes with a guarantee type of FILE the value must be set to 100%.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The fractional reservation value for volume '%s%s%s' with guarantee type '%s' has been changed from %d%% to %d%%.
+*Parameters*::
+*vol* (STRING): Name of the volume whose fractional reservation value was changed.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*guarantee_type* (STRING): Guarantee type of the volume.
+*old_fr_pct* (INT): Old fractional reservation value of the volume.
+*new_fr_pct* (INT): New fractional reservation value of the volume.

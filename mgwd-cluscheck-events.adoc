@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: mgwd-cluscheck-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgwd.cluscheck events
+---
+
+= mgwd.cluscheck events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgwd.cluscheck.rmtDevRepair
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system changes the cluster LIFs used for internal replicated database (RDB) operations, ensuring they are connected to different cluster switches for optimal cluster resiliency.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cluster LIF "%s" with IP address %s connected to cluster switch "%s" is being replaced with cluster LIF "%s" with IP address %s connected to cluster switch "%s" in the RDB.
+*Parameters*::
+*existinglif* (STRING): Cluster LIF being replaced.
+*existingaddress* (STRING): IP address of the cluster LIF that is being replaced.
+*existingremotedevice* (STRING): Cluster switch connected to the home port of the IP address being replaced.
+*replacementlif* (STRING): Cluster LIF being added.
+*replacementaddress* (STRING): IP address of the cluster LIF that is being added.
+*replacementremotedevice* (STRING): Cluster switch connected to the home port of the IP address being added.

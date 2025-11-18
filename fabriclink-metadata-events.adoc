@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: fabriclink-metadata-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fabriclink.metadata events
+---
+
+= fabriclink.metadata events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fabriclink.metadata.too.long
+*Severity*::
+ERROR
+*Description*::
+This message occurs when object replication encounters metadata key-value pairs that are too long when replicating an object from a remote object store. The object will be replicated without the metadata key-value pairs that are too long.
+*Corrective Action*::
+Refer to the sktrace.log file for additional details about the objects that are replicated without some or all metadata. Reduce the size of individual metadata key-value pairs for objects if they should be replicated with the object.
+*Syslog Message*::
+There are objects with metadata key-value pairs that are too long to be replicated.
+*Parameters*::
+(None).

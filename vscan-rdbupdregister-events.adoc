@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: vscan-rdbupdregister-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vscan.rdbupdregister events
+---
+
+= vscan.rdbupdregister events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vscan.rdbUpdRegister.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Vscan configuration replication mechanism fails to register RDB update callback. Modifications made to the Vscan configuration might not be available to this node.
+*Corrective Action*::
+Perform a takeover and giveback of the node or reboot the node. For additional options, contact NetApp technical support.
+*Syslog Message*::
+Vscan configuration replication mechanism failed to register RDB update callback. Modifications made to the Vscan configuration might not be available to this node.
+*Parameters*::
+(None).

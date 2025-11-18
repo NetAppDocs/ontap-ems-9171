@@ -1,0 +1,69 @@
+---
+sidebar: sidebar
+permalink: monitor-fan-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.fan events
+---
+
+= monitor.fan events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.fan.critical
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when one or more main unit fans have failed. The system cannot continue to operate.
+*Corrective Action*::
+Replace the failed fans.
+*Syslog Message*::
+%s
+*Parameters*::
+*report* (STRING): Report indicating the critical state.
+*object_type* (STRING): Type of resource object under notification. For this EMS, the object_type will always be NODE.
+*object_uuid* (STRING): UUID of the resource object. For this EMS, the UUID will be of the node.
+
+== monitor.fan.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when one or more main unit fans have failed. The system remains operational. If the condition persists too long, an automatic shutdown for overtemperature might occur.
+*Corrective Action*::
+Reseat the failed fans. If the error persists, replace them.
+*Syslog Message*::
+%s
+*Parameters*::
+*report* (STRING): Report indicating the failed fans.
+*object_type* (STRING): Type of resource object under notification. For this EMS, the object_type will always be NODE.
+*object_uuid* (STRING): UUID of the resource object. For this EMS, the UUID will be of the node.
+
+== monitor.fan.ok
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a previously failed main unit fan has been restarted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s
+*Parameters*::
+*report* (STRING): Report indicating that the failed fans have restarted.
+
+== monitor.fan.warning
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when one or more fans are in a warning state.
+*Corrective Action*::
+Replace the indicated fans to avoid overheating.
+*Syslog Message*::
+%s
+*Parameters*::
+*report* (STRING): Report indicating the warning level.
+*object_type* (STRING): Type of resource object under notification. For this EMS, the object_type will always be NODE.
+*object_uuid* (STRING): UUID of the resource object. For this EMS, the UUID will be of the node.

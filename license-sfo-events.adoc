@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: license-sfo-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: license.sfo events
+---
+
+= license.sfo events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== license.sfo.gb.veto
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a storage failover giveback is vetoed because a select capacity license has not been installed and the license installation grace period has ended.
+*Corrective Action*::
+Install a valid select capacity license, and then reissue the "storage failover giveback" command. Use the "system license show-status" command to determine which node is missing the capacity license.
+*Syslog Message*::
+SFO giveback vetoed. Missing select capacity license.
+*Parameters*::
+(None).
+
+== license.sfo.gb.veto.eval
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a storage failover giveback is vetoed because the evaluation period for the ONTAP (R) instance has ended.
+*Corrective Action*::
+Contact your sales representative for further assistance.
+*Syslog Message*::
+SFO giveback vetoed. Evaluation period ended.
+*Parameters*::
+(None).

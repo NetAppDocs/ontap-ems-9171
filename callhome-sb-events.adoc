@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: callhome-sb-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.sb events
+---
+
+= callhome.sb events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.sb.pp.fcp.failo.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the persistent port feature is not working during non-disruptive operations (NDO) such as takeover or giveback due to configuration errors. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.sb.pp.fcp.init.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs when persistent port object for a SAN FCP LIF fails to be configured during a LIF create operation. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

@@ -1,0 +1,58 @@
+---
+sidebar: sidebar
+permalink: snapdiff-rebl-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapdiff.rebl events
+---
+
+= snapdiff.rebl events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapdiff.rebl.absent.allocated.block
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when SnapDiff(R), the snapshot copy differencing engine, encounters an absent allocated block. The absent allocated block is replicated to destination as raid error and Replication is unaffected by this issue.
+*Corrective Action*::
+None. Zombie count of 0 is expected even when zombie processing is ongoing.
+*Syslog Message*::
+Encountered an absent allocated block on inode %u in snapshot copy ID %u of volume %u Zombie processing: %u.
+*Parameters*::
+*inode_num* (INT): Identifier of the affected file.
+*snap_id* (INT): Identifier of the snapshot.
+*fsid* (INT): Identifier of the volume.
+*zombie_processing* (INT): Ongoing zombie processing.
+
+== snapdiff.rebl.BadAccessTime
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when SnapDiff(R), the snapshot copy differencing engine, encounters an invalid access time for an inode. Future accesses of the inode should not only succeed, but also reset its access time to a valid value. Replication is also unaffected by this issue.
+*Corrective Action*::
+Run the (privilege: advanced) "inodepath -v volume_name inode_number" command to find the path of the affected file from the inode number, and modify the file within the Active File System. Note that file attributes captured in a snapshot copy cannot be changed.
+*Syslog Message*::
+Encountered invalid access time on inode %u in snapshot ID %u of volume %u.
+*Parameters*::
+*inode_num* (INT): Identifier of the affected file.
+*snap_id* (INT): Identifier of the snapshot.
+*fsid* (INT): Identifier of the volume.
+
+== snapdiff.rebl.BadModifyTime
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when SnapDiff(R), the snapshot copy differencing engine, encounters an invalid modification time for an inode. Future accesses of the inode should not only succeed, but also reset its modification time to a valid value. Replication is also unaffected by this issue.
+*Corrective Action*::
+Run the (privilege: advanced) "inodepath -v volume_name inode_number" command to find the path of the affected file from the inode number, and modify the file within the Active File System. Note that file attributes captured in a snapshot copy cannot be changed.
+*Syslog Message*::
+Encountered invalid modify time on inode %u in snapshot ID %u of volume %u.
+*Parameters*::
+*inode_num* (INT): Identifier of the affected file.
+*snap_id* (INT): Identifier of the snapshot.
+*fsid* (INT): Identifier of the volume.

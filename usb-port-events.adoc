@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: usb-port-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: usb.port events
+---
+
+= usb.port events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== usb.port.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Data ONTAP(R) universal serial bus (USB) adapter driver detects an unrecoverable error on the associated port.
+*Corrective Action*::
+If a device is attached to the associated port, try reinserting the device. If that fails, try replacing the device. If the problem persists, contact NetApp technical support for assistance in diagnosing a USB issue.
+*Syslog Message*::
+In adapter %s, unrecoverable error detected for port %d. Ignoring attached device.
+*Parameters*::
+*adapterName* (STRING): Name of the associated USB adapter.
+*port* (INT): Associated port number.

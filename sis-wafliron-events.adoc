@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: sis-wafliron-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.wafliron events
+---
+
+= sis.wafliron events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.wafliron.required
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a requested SIS volume 'undo' operation fails to correct on-disk corruption and requires wafliron to be run.
+*Corrective Action*::
+Start wafliron (Command Line: 'aggr wafliron start'. See 'aggr help wafliron' for help) to correct on-disk corruptions after completion of current 'sis undo' operation on the volume.
+*Syslog Message*::
+SIS 'undo' command detected on-disk corruption while working on unshare request. Run wafliron for volume '%s%s' of aggregate '%s' after completion of current 'sis undo' operation on the volume. See 'aggr help wafliron' for options on running wafliron.
+*Parameters*::
+*volume* (STRING): Name of the affected volume.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*aggregate* (STRING): Aggregate name containing the affected volume.

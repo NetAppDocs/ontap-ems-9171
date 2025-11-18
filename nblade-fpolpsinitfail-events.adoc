@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nblade-fpolpsinitfail-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.fpolpsinitfail events
+---
+
+= nblade.fpolpsinitfail events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.fpolPsInitFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when initialization of any FPolicy persistent store resource fails. It includes free and active staging buffer pool, fname cache and dirty SVM cache.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Initialization of FPolicy resource the "%s" is unsuccessful.
+*Parameters*::
+*resource* (STRING): Uninitialized resource.

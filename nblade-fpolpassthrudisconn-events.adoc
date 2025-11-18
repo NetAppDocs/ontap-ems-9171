@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: nblade-fpolpassthrudisconn-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.fpolpassthrudisconn events
+---
+
+= nblade.fpolpassthrudisconn events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.fpolPassthruDisconn
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the pass-through read channel between the node and the FPolicy server is disconnected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Pass-through read channel with the FPolicy server is disconnected. Vserver ID [%d], FPolicy server IP address [%s], Disconnect reason [%s].
+*Parameters*::
+*vserverId* (INT): Identifier for the Vserver associated with this operation.
+*fpserverIp* (STRING): IP address of the FPolicy server.
+*disconnReason* (STRING): Reason for disconnection.

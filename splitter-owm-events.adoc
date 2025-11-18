@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: splitter-owm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: splitter.owm events
+---
+
+= splitter.owm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== splitter.owm.recycle.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when overlapping write manager recycling is activated as the allocation exceeds the threshold. This event is dependent on workload and resource management. It is resolved automatically internally.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Overlapping write manager recycling is activated as the allocation exceeds the threshold for relationship with UUID %s.
+*Parameters*::
+*relationship_id* (STRING): SnapMirror relationship universal unique identifier (UUID).

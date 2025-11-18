@@ -1,0 +1,54 @@
+---
+sidebar: sidebar
+permalink: sms-qr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sms.qr events
+---
+
+= sms.qr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sms.qr.mem.alloc.issue
+*Severity*::
+ERROR
+*Description*::
+This message occurs when wafl fails to allocate required memory for storing streams attributes information or asked buffer memory length is too less to hold all the streams attributes info, in both the cases the status of Snapmirror Synchronous relationship changes to "OutOfSync".
+*Corrective Action*::
+Monitor the SnapMirror(R) Synchronous relationship status using the "snapmirror show" command. If the relationship status is not "InSync", resynchronize the relationship using "snapmirror resync" command.
+*Syslog Message*::
+Wafl failed to allocate sufficient memory to hold all the streams attributes information for Snapmirror Synchronous relationship UUID: "%s" and File ID: "%s". The status of the Snapmirror Synchronous relationship will be changed to "OutOfSync".
+*Parameters*::
+*relationship_id* (STRING): Snapmirror Relationship UUID
+*file_id* (STRING): File id for which the wafl operation failed.
+
+== sms.qr.ops.limit.exceed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when SnapMirror(R) Synchronous detects that the number of write failures on the source volume of a SnapMirror(R) Synchronous relationship has exceeded the threshold. This can lead to change of the relationship status from "InSync" to "OutOfSync".
+*Corrective Action*::
+To recover from this situation, turn on sequential splitting in the Snapmirror(R) Synchronous relationship. For further information about correcting the problem, search the knowledgebase of the NetApp technical support web site for the "sms.qr.ops.limit.exceed" keyword.
+*Syslog Message*::
+The number of write failures on the source volume with Dsid: "%s" of the SnapMirror(R) Synchronous relationship UUID: "%s" has exceeded the threshold. This may lead to change of the relationship status from "InSync" to "OutOfSync".
+*Parameters*::
+*source_volume_dsid* (STRING): Source Volume DSID
+*relationship_id* (STRING): Snapmirror Relationship UUID
+
+== sms.qr.streams.limit.exceed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the number of streams associated with a file exceeds the maximum supported number of streams by SnapMirror(R) Synchronous. This will change the status of the Snapmirror Synchronous relationship to "OutOfSync".
+*Corrective Action*::
+Turn on sequential splitting in the SnapMirror Synchronous relationship. For further information about correcting the problem, search the knowledgebase of the NetApp technical support web site for the "sms.qr.streams.limit.exceed" keyword.
+*Syslog Message*::
+Maximum number of streams for a file supported by SnapMirror Synchronous relationship exceeded for relationship UUID: "%s" and file ID: "%s". Status of the relationship will be changed to "OutOfSync".
+*Parameters*::
+*relationship_id* (STRING): SnapMirror relationship UUID.
+*file_id* (STRING): File ID of the file for which the number of streams exceeded the maximum.

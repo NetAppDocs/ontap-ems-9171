@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: callhome-nve-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.nve events
+---
+
+= callhome.nve events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.nve.digest.mismatch
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the digest of an NetApp Volume Encryption (NVE) or NetApp Aggregate Encryption (NAE) key being restored does not match the expected key digest. Because the key being restored is not the same key expected by the system, the volume associated with the NVE or NAE key will not be able to be onlined, resulting in data loss. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Call home for %s. key ID: %s, Key Server: %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*keyId* (STRING): Key ID of the key being restored that had the digest mismatch.
+*keyServer* (STRING): Address or name of the key server from which the key is being restored.

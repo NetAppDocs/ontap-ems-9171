@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: ucm-disabled-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ucm.disabled events
+---
+
+= ucm.disabled events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ucm.disabled.slot
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Unified Target Adapter reads an invalid mode from flash memory. The valid supported modes are FC (0x1) or CNA (0x2). The adapter's flash memory has failed or has been corrupted. The adapter will be disabled.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Disabling adapter %s because invalid mode %d was read from nonvolatile memory.
+*Parameters*::
+*adapter* (STRING): Name of the affected adapter.
+*faultyMode* (INT): Value of the mode read from flash memory.

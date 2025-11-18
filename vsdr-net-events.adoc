@@ -1,0 +1,170 @@
+---
+sidebar: sidebar
+permalink: vsdr-net-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsdr.net events
+---
+
+= vsdr.net events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsdr.net.IPInDiffVserver
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system tries to automatically replicate a logical interface (LIF) in a MetroCluster(TM) configuration or Vserver DR setup and the IP address of the LIF that is being created already exists in another Vserver.
+*Corrective Action*::
+Change the IP address of the LIF in the other Vserver or remove the LIF so that creation of the LIF succeeds and configuration replication continues.
+*Syslog Message*::
+Cannot create LIF %s with IP address %s in Vserver %s because another LIF with the same IP exists in another Vserver.
+*Parameters*::
+*lif* (STRING): LIF name.
+*ipaddr* (STRING): IP address of the LIF.
+*vserver_name* (STRING): Vserver name.
+
+== vsdr.net.LifIpCollision
+*Severity*::
+ERROR
+*Description*::
+This message occurs in an ID-Preserve VserverDR configuration of clustered Data ONTAP(R), when a non-SAN LIF created on the source Storage Virtual Machine(SVM) has the same IP address as an iSCSI LIF on the destination SVM.
+*Corrective Action*::
+Assign a unique IP address for the iSCSI LIF on the destination SVM.
+*Syslog Message*::
+An iSCSI LIF is configured in the destination SVM %s with the same IP address (%s) as the source LIF (%s). Assign a unique IP address to the iSCSI LIF (%s) by modifying the LIF on the destination SVM.
+*Parameters*::
+*vserver_name* (STRING): SVM name.
+*ip_address* (STRING): IP address of the iSCSI LIF on the destination SVM.
+*source_lif_name* (STRING): Source LIF name.
+*destination_lif_name* (STRING): Destination LIF name.
+
+== vsdr.net.LifNameCollision
+*Severity*::
+ERROR
+*Description*::
+This message occurs in an ID-Preserve VserverDR configuration of clustered Data ONTAP(R), when a non-SAN LIF created on the source Storage Virtual Machine(SVM) has the same name as a SAN LIF on the destination SVM.
+*Corrective Action*::
+Assign a unique LIF name for the SAN LIF on the destination SVM.
+*Syslog Message*::
+A SAN LIF is configured in the destination SVM %s with the same name as the source LIF. Assign a unique name to the SAN LIF (%s) by modifying the LIF name on the destination SVM.
+*Parameters*::
+*vserver_name* (STRING): SVM name.
+*lif_name* (STRING): Source and Destination LIF name.
+
+== vsdr.net.LifNotReachable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a logical interface (LIF) modify operation is performed on the source cluster without changing the home node and home port, and the LIF placement fails when the configuration is being replicated.
+*Corrective Action*::
+Ensure that the destination cluster has ports that have connectivity to the LIF on the source cluster.
+*Syslog Message*::
+The LIF %s in DR partner Vserver of Vserver %s is not reachable from the local cluster.
+*Parameters*::
+*lif* (STRING): The LIF name.
+*vserver_name* (STRING): The Vserver name.
+
+== vsdr.net.NoPortsInBD
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system tries to automatically replicate a logical interface (LIF) in a MetroCluster(TM) configuration or Vserver DR setup, and it cannot find any ports in a broadcast domain in a cluster.
+*Corrective Action*::
+Add at least one port to the broadcast domain in the IPspace using the "network port broadcast-domain add-ports" command and then resynchronize the Vserver configuration using the "metrocluster vserver resync" command.
+*Syslog Message*::
+Cannot find ports in broadcast domain %s in IPspace %s for placing LIF %s in Vserver %s.
+*Parameters*::
+*broadcast_domain* (STRING): The Broadcast domain.
+*ipspace_name* (STRING): The IPspace name.
+*lif* (STRING): The LIF name.
+*vserver_name* (STRING): The Vserver name.
+
+== vsdr.net.NoPortsInIpsOnNode
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system tries to automatically replicate a logical interface (LIF) in a MetroCluster(TM) configuration or Vserver DR setup, and it cannot find any ports in an IPspace on a particular node.
+*Corrective Action*::
+Add at least one port belonging to the node to the IPspace by using the "network port broadcast-domain add-ports" command and then resynchronize the Vserver configuration using the "metrocluster vserver resync" command.
+*Syslog Message*::
+Cannot find ports in IPspace %s on node %s for placing LIF %s in Vserver %s.
+*Parameters*::
+*ipspace_name* (STRING): The IPspace name.
+*node_name* (STRING): Name of the node to which LIFs could not be replicated.
+*lif* (STRING): The LIF name.
+*vserver_name* (STRING): Vserver name.
+
+== vsdr.net.NoPortsInIpspace
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system tries to automatically replicate a logical interface (LIF) in a MetroCluster(TM) configuration or Vserver DR setup, and it cannot find any ports in an IPspace in a cluster.
+*Corrective Action*::
+Add at least one port to the IPspace by using the "network port broadcast-domain add-ports" command and then resynchronize the Vserver configuration using the "metrocluster vserver resync" command.
+*Syslog Message*::
+Cannot find ports in IPspace %s for placing LIF %s in Vserver %s.
+*Parameters*::
+*ipspace_name* (STRING): The IPspace name.
+*lif* (STRING): The LIF name.
+*vserver_name* (STRING): The Vserver name.
+
+== vsdr.net.NoVipPortInIpsNode
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system attempts to replicate a logical interface (LIF) associated with the Virtual IP (VIP) feature to a node where no BGP peer group is available in the target IPspace. This configuration replication functionality is exercised by systems in a MetroCluster(tm).
+*Corrective Action*::
+Use the "network bgp peer-group create" command to create a BGP peer group in the target IPspace on the affected node, and then use the "metrocluster vserver resync" command to recover from the failed replication.
+*Syslog Message*::
+Cannot find a VIP port in IPspace %s on node %s for placing VIP LIF %s in Vserver %s.
+*Parameters*::
+*ipspace_name* (STRING): IPspace name.
+*node_name* (STRING): Name of the node to which VIP LIFs could not be replicated.
+*lif* (STRING): VIP LIF name.
+*vserver_name* (STRING): Vserver name.
+
+== vsdr.net.NoVipPortInIpspace
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system attempts to replicate a logical interface (LIF) associated with the Virtual IP (VIP) feature in a MetroCluster(TM) configuration or Vserver DR setup, and the Border Gateway Protocol (BGP) is not configured in the target IPspace.
+*Corrective Action*::
+Use the "network bgp peer-group create" command to create a BGP peer group in the target IPspace, and then use the "metrocluster vserver resync" command to recover from the failed replication.
+*Syslog Message*::
+Cannot find a VIP port in IPspace %s for placing VIP LIF %s in Vserver %s.
+*Parameters*::
+*ipspace_name* (STRING): IPspace name.
+*lif* (STRING): VIP LIF name.
+*vserver_name* (STRING): Vserver name.
+
+== vsdr.net.v6optdisabled
+*Severity*::
+ERROR
+*Description*::
+This message occurs in a MetroCluster(TM) configuration when the system is trying to replicate an IPv6 LIF, but IPv6 is not enabled on the cluster.
+*Corrective Action*::
+Enable IPv6 by using the "network options ipv6 modify -enabled true" command, and then run the "metrocluster vserver resync" command on the source cluster.
+*Syslog Message*::
+Cannot create LIF %s in Vserver %s because IPv6 is not enabled in the cluster.
+*Parameters*::
+*lif* (STRING): LIF name.
+*vserver_name* (STRING): Vserver name.
+
+== vsdr.net.v6optdisabledroute
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system is trying to replicate an IPv6 route in a MetroCluster(TM) configuration, but IPv6 is not enabled on the cluster.
+*Corrective Action*::
+Enable IPv6 by using the "network options ipv6 modify -enabled true" command, and then run the "metrocluster vserver resync" command on the source cluster.
+*Syslog Message*::
+Cannot create route %s with gateway %s in Vserver %s because IPv6 is not enabled in the cluster.
+*Parameters*::
+*route* (STRING): Route destination and mask.
+*gateway* (STRING): Gateway of the route.
+*vserver_name* (STRING): Vserver name.

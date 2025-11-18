@@ -1,0 +1,53 @@
+---
+sidebar: sidebar
+permalink: coredump-dr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: coredump.dr events
+---
+
+= coredump.dr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== coredump.dr.dump.not.started
+*Severity*::
+ERROR
+*Description*::
+This message occurs when coredump subsystem detects that disaster recovery (DR) partner sparecore dump did not start.
+*Corrective Action*::
+Log in to service processor and power cycle the DR partner that may not have started dumping core.
+*Syslog Message*::
+DR partner sparecore dump failed to start.
+*Parameters*::
+(None).
+
+== coredump.dr.spare.abort
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when coredump subsystem attempts to abort any sparecore dump that might be in progress on disaster recovery (DR) partner. This process can take up to 60 seconds. During this time, other coredump operations are not serviced.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Pausing to abort DR partner sparecore dump on %s because %s.
+*Parameters*::
+*diskuid* (STRING): UID of DR partner sparecore dump disk.
+*reason* (STRING): Reason for aborting the DR partner sparecore dump.
+
+== coredump.dr.spare.noAbort
+*Severity*::
+ERROR
+*Description*::
+This message occurs when coredump subsystem is unable to abort any sparecore dump that might be in progress on disaster recovery (DR) partner.
+*Corrective Action*::
+Log in to service processor and power cycle the DR partner that is still dumping core.
+*Syslog Message*::
+DR partner sparecore dump could not be aborted on disk %s because %s.
+*Parameters*::
+*diskuid* (STRING): UID of DR partner sparecore dump disk.
+*reason* (STRING): Reason for abort failure.

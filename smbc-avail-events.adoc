@@ -1,0 +1,91 @@
+---
+sidebar: sidebar
+permalink: smbc-avail-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: smbc.avail events
+---
+
+= smbc.avail events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== smbc.avail.aufoDisabled
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the primary-bias state is set for the secondary endpoints of the SnapMirror(R) active sync relationships because both of the SnapMirror(R) active sync clusters lose connectivity to the ONTAP Mediator. It prevents an automatic unplanned failover operation on the secondary endpoints.
+*Corrective Action*::
+Check the network connection and restore the access to the ONTAP Mediator.
+*Syslog Message*::
+Primary-bias state is set for the secondary endpoints of the SnapMirror(R) active sync relationships. ONTAP Mediator IP: "%s", Peer cluster: "%s".
+*Parameters*::
+*ipAddress* (STRING): ONTAP Mediator IP address.
+*peerCluster* (STRING): Peer cluster name.
+
+== smbc.avail.aufoEnabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the primary-bias state is cleared for the secondary endpoints of the SnapMirror(R) active sync relationships. It resumes the ONTAP Mediator assisted automatic unplanned failover operation on secondary endpoints.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Primary-bias state is cleared for the secondary endpoints of the SnapMirror(R) active sync relationships. ONTAP Mediator IP: "%s", Peer cluster: "%s".
+*Parameters*::
+*ipAddress* (STRING): ONTAP Mediator IP address.
+*peerCluster* (STRING): Peer cluster name.
+
+== smbc.avail.primaryBias
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the primary-bias state is set for the primary endpoints of the SnapMirror(R) active sync relationships because both of the SnapMirror(R) active sync clusters lose connectivity to the ONTAP Mediator. It allows primary endpoints to drive the consensus locally without depending on the ONTAP Mediator.
+*Corrective Action*::
+Check the network connection and restore the access to the ONTAP Mediator.
+*Syslog Message*::
+Primary-bias state is set for the primary endpoints of the SnapMirror(R) active sync relationships. ONTAP Mediator IP: "%s", Peer cluster: "%s".
+*Parameters*::
+*ipAddress* (STRING): ONTAP Mediator IP address.
+*peerCluster* (STRING): Peer cluster name.
+
+== smbc.avail.primaryBiasNoMed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the primary-bias state is set for the endpoints of the SnapMirror active sync relationships because the ONTAP Mediator is not configured between the cluster pair. It allows the primary endpoints of the SnapMirror active sync relationships to drive the I/O serving consensus without depending on the peer cluster when there is a network partition between the cluster pair.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Primary-bias state is set for the endpoints of the SnapMirror active sync relationships. Peer cluster: %s.
+*Parameters*::
+*peerCluster* (STRING): Peer cluster name.
+
+== smbc.avail.primaryBiasRemove
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the primary-bias state is removed for the endpoints of the SnapMirror active sync relationships because the ONTAP Mediator is not configured between the cluster pair, and one or both of the clusters are running an ONTAP version older than 9.15.1. The primary endpoints are required to communicate to the peer cluster to establish the I/O serving consensus when there is a network partition between the cluster pair.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Primary-bias state is removed for the endpoints of the SnapMirror active sync relationships. Peer cluster: %s.
+*Parameters*::
+*peerCluster* (STRING): Peer cluster name.
+
+== smbc.avail.primaryBiasReset
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the primary-bias state is cleared for the primary endpoints of the SnapMirror(R) active sync relationships. It resumes the three-way quorum involving the ONTAP Mediator and peer cluster to derive consensus.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Primary-bias state is cleared for the primary endpoints of the SnapMirror(R) active sync relationships. ONTAP Mediator IP: "%s", Peer cluster: "%s".
+*Parameters*::
+*ipAddress* (STRING): ONTAP Mediator IP address.
+*peerCluster* (STRING): Peer cluster name.

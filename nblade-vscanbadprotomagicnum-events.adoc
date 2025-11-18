@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: nblade-vscanbadprotomagicnum-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.vscanbadprotomagicnum events
+---
+
+= nblade.vscanbadprotomagicnum events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.vscanBadProtoMagicNum
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an incorrectly formatted message is received from the AV Connector. This might result in delay or failure in AV scanning.
+*Corrective Action*::
+Ensure that the compatible version of AV Connector is running on the AV server, and that no other user or software is attempting to connect to the "\\PIPE\vscan" resource on the Vserver.
+*Syslog Message*::
+Data ONTAP(R) received incorrectly formatted message for Vserver "%s" from AV Connector running on the AV server "%s".
+*Parameters*::
+*vserverName* (STRING): Vserver associated with this operation.
+*scannerIp* (STRING): IP address of the AV server.

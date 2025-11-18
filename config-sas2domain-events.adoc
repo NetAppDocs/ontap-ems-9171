@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-sas2domain-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.sas2domain events
+---
+
+= config.sas2domain events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.SAS2Domain
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk is multipathed to one SAS domain; that is, both ports of the disk are visible from the same HBA port.
+*Corrective Action*::
+Recable the disk shelf containing the specified disk, so that the two disk ports are in different SAS domains.
+*Syslog Message*::
+Disk %s is multipathed to the same SAS domain. The two disk ports must be in different SAS domains.
+*Parameters*::
+*disk* (STRING): Name of the disk.

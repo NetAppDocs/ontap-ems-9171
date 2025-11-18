@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: nvpm-extend-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvpm.extend events
+---
+
+= nvpm.extend events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvpm.extend.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when nvlog client segments cannot be enabled in a partner NVRAM section following a controller failover or MetroCluster(R) switchover. When this event occurs, the system continues to operate, but with diminished performance due to the increased failover load coupled with decreased NVRAM capacity for logging.
+*Corrective Action*::
+Perform a storage system giveback operation or a metrocluster switchback operation to restore operating performance.
+*Syslog Message*::
+Client segments cannot be enabled due to a %s.
+*Parameters*::
+*event* (STRING): Event that triggered the extension.
+*current_state* (INT): (debug only) Current Non-volatile RAM Partition Manager (NVPM) state.
+*expected_state* (INT): (debug only) Expected NVPM state.
+*reason* (INT): (debug only) Reason for the extension failure.

@@ -1,0 +1,60 @@
+---
+sidebar: sidebar
+permalink: callhome-ondemand-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.ondemand events
+---
+
+= callhome.ondemand events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.ondemand.invoke
+*Severity*::
+NOTICE
+*Description*::
+This message normally occurs when NetApp technical support has remotely requested an AutoSupport or 'call home' message of type TEST. This request is accomplished by use of the AutoSupport OnDemand Server (AODS) service. The intent of this AutoSupport is to collect only the information necessary to understand the configuration of the system and quickly deliver it. For this reason, the data collection is bounded by time taken to collect data and quantity of data collected. With less data collected, delivery over the internet is expected to be faster. The overall process from remote activation to delivery should be measurable in minutes. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*URI* (STRING): Alternate destination for this AutoSupport. If set, this AutoSupport is delivered to this alternate destination.
+*sequence* (LONGINT): Sequence number to use to generate this Autosupport. Use value zero to auto-generate or a value higher than last used ASUP sequence number.
+*aod_req_id* (STRING): AOD request ID
+
+== callhome.ondemand.invoke.all
+*Severity*::
+NOTICE
+*Description*::
+This message normally occurs when NetApp technical support has remotely requested an AutoSupport or 'call home' message of type ALL. This request is accomplished by use of the AutoSupport OnDemand Server (AODS) service. The intent of this AutoSupport is to collect more data to aid in problem resolution. The collection is bounded by time and size limits but these are much larger as compared to most other AutoSupport messages. Collecting a larger amount of AutoSupport data can help support personnel diagnose difficult problems. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*URI* (STRING): Alternate destination for this AutoSupport. If set, this AutoSupport is delivered to this alternate destination.
+*sequence* (LONGINT): Sequence number to use to generate this Autosupport. Use value zero to auto-generate or a value higher than last used ASUP sequence number.
+*aod_req_id* (STRING): AOD request ID
+
+== callhome.ondemand.perf.snap
+*Severity*::
+NOTICE
+*Description*::
+This message normally occurs when NetApp technical support has remotely requested an AutoSupport or 'call home' message of type PERFORMANCE. This request is accomplished by use of the AutoSupport OnDemand Server (AODS) service. The intent of this AutoSupport is to collect statistics and other information to aid in understanding operations and other usage analysis related to networking, storage, memory and processor. This analysis might result in recommendations on upgrades, firmware changes, and configuration changes to improve the reliability and performance of the system. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*URI* (STRING): Alternate destination for this AutoSupport. If set, this AutoSupport is delivered to this alternate destination.
+*sequence* (LONGINT): Sequence number to use to generate this Autosupport. Use value zero to auto-generate or a value higher than last used ASUP sequence number.
+*aod_req_id* (STRING): AOD request ID

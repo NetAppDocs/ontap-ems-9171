@@ -1,0 +1,232 @@
+---
+sidebar: sidebar
+permalink: license-capac-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: license.capac events
+---
+
+= license.capac events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== license.capac.enforce
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the total storage capacity of all disks currently assigned to your system exceeds the limits of your capacity license. The system will shut down within the next 72 hours.
+*Corrective Action*::
+To avoid disruption, either contact your sales representative immediately to obtain a license with a larger maximum capacity, or reduce the storage capacity of the system.
+*Syslog Message*::
+"Storage capacity is at %llu GB, max allowed is %llu GB. Forced system shutdown is imminent."
+*Parameters*::
+*current_capacity* (LONGINT): Currently used storage capacity of the system, in gigabytes.
+*max_capacity* (LONGINT): Maximum storage capacity supported under the current license, in gigabytes.
+
+== license.capac.eval
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a capacity license intended only for evaluation purposes is approaching its end date. This expiration might result in the forced shutdown of the system.
+*Corrective Action*::
+To avoid any disruption, copy the contents of the volumes of this system to a new location. Contact your sales representative to purchase a version of the system.
+*Syslog Message*::
+"The system have %llu GB installed. Evaluation license ends on %s."
+*Parameters*::
+*current_capacity* (LONGINT): Current storage capacity of the system, in gigabytes.
+*end_date* (STRING): Evaluation period end date.
+
+== license.capac.eval.ending
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a capacity license intended only for evaluation purposes is approaching its end date. It will soon not be possible to either create data aggregates, expand them, mirror them, or bring them online.
+*Corrective Action*::
+To avoid any disruption, copy the contents of the volumes of this system to a new location. Contact your sales representative to purchase a version of the system.
+*Syslog Message*::
+"The system is using %llu GB. Evaluation license ends on %s."
+*Parameters*::
+*current_capacity* (LONGINT): Current storage capacity of the system, in gigabytes.
+*end_date* (STRING): Evaluation period end date.
+
+== license.capac.eval.enforce
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the evaluation period has expired. Creating aggregates, extending them, mirroring them, and bringing them online will be prohibited. However, if the effective version of the cluster precedes the version of ONTAP(R) software on this node, any node with this condition might shut down within the next 72 hours.
+*Corrective Action*::
+To avoid any disruption, move or copy volumes as needed from this system. Contact your sales representative immediately to purchase a version of this system.
+*Syslog Message*::
+"Evaluation version of capacity license expired. Capacity at %llu GB. Certain aggregate operations are not allowed after %s."
+*Parameters*::
+*current_capacity* (LONGINT): Current storage capacity of the system, in gigabytes.
+*end_date* (STRING): Evaluation period end date.
+
+== license.capac.eval.shutdown
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the evaluation period has expired. The system will be shut down within the next 10 minutes.
+*Corrective Action*::
+Contact your sales representative immediately to purchase a version of this system. Restart the system as needed to move or copy volumes.
+*Syslog Message*::
+"Storage capacity is at %llu GB. Evaluation license ends on %s. Forced system shutdown is imminent."
+*Parameters*::
+*current_capacity* (LONGINT): Current storage capacity of the system, in gigabytes.
+*end_date* (STRING): Evaluation period end date.
+
+== license.capac.invalidated
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system determines that its existing capacity license does not cover its current used capacity during an attempted upgrade. To allow the upgrade to proceed, the system has deleted the license.
+*Corrective Action*::
+Either delete enough data aggregates to bring the system into compliance with the existing capacity license, or contact your sales representative immediately to obtain a new license with a sufficient capacity value. In either case, apply the license after the upgrade is successfully completed.
+*Syslog Message*::
+"Storage capacity now %llu GB, max allowed is %llu GB. Capacity license removed for upgrade."
+*Parameters*::
+*current_capacity* (LONGINT): Current capacity of the system, in gigabytes.
+*max_capacity* (LONGINT): Maximum usable storage capacity supported under the current license, in gigabytes.
+
+== license.capac.promo.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an evaluation version of ONTAP(R) Select has failed to be promoted to production.
+*Corrective Action*::
+Remove the license used during promotion by using the "system license clean-up -unused true" command, and then retry promotion.
+*Syslog Message*::
+"ONTAP Select promotion from evaluation to production was unsuccessful. Failure reason: %s."
+*Parameters*::
+*reason* (STRING): Reason for promotion failure.
+
+== license.capac.promo.incomp
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an evaluation version of ONTAP(R) Select has fails to automatically reboot to complete promotion.
+*Corrective Action*::
+Manually reboot the node to complete the evaluation to production promotion process.
+*Syslog Message*::
+"ONTAP Select promotion from evaluation to production failed to automatically reboot node to complete promotion. Node will use license (serial number: %s) after the node is manually rebooted."
+*Parameters*::
+*license_serial_number* (STRING): License serial number of the license intended to be used by the node after promotion.
+
+== license.capac.promo.partial
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an evaluation version of ONTAP(R) Select has partially completed the promotion process.
+*Corrective Action*::
+Manually reboot the node to complete the evaluation to production promotion process.
+*Syslog Message*::
+"ONTAP Select promotion from evaluation to production is incomplete. Node will use license (serial number: %s) after the node reboots."
+*Parameters*::
+*license_serial_number* (STRING): License serial number of the license intended to be used by the node after promotion.
+
+== license.capac.promoted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an evaluation version of ONTAP(R) Select has been successfully promoted to production.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"ONTAP Select promotion from evaluation to production was successful with a license (serial number: %s)"
+*Parameters*::
+*license_serial_number* (STRING): License serial number being used by the promoted node.
+
+== license.capac.shutdown
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the total storage capacity of all disks currently assigned to your system has exceeded the limits of your capacity license. The system will shut down within the next 10 minutes.
+*Corrective Action*::
+Contact your sales representative immediately to obtain your capacity license. Restart the system as needed to complete the license installation.
+*Syslog Message*::
+"Storage capacity is at %llu GB, max allowed is %llu GB. Forced system shutdown is imminent."
+*Parameters*::
+*current_capacity* (LONGINT): Currently used storage capacity of the system, in gigabytes.
+*max_capacity* (LONGINT): Maximum storage capacity supported under the current license, in gigabytes.
+
+== license.capac.unl.ending
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a valid capacity license has not been installed. As a result, data aggregates cannot be created, expanded, mirrored, or brought online.
+*Corrective Action*::
+Contact your sales representative immediately to obtain your capacity license, to avoid any disruption.
+*Syslog Message*::
+"Now using %llu GB of storage capacity. Certain aggregate operations are prohibited after %s. The grace period for installing a valid capacity license is ending soon."
+*Parameters*::
+*current_capacity* (LONGINT): Currently used storage capacity of the system, in gigabytes.
+*end_date* (STRING): Date by which a valid license must be installed.
+
+== license.capac.unl.enforce
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a valid capacity license has not been installed. The system will not permit the creation, expansion, or mirroring of aggregates, or bringing aggregates online. However, if the effective version of the cluster precedes the version of ONTAP(R) on this node, any node with this condition may forcibly shut down.
+*Corrective Action*::
+Contact your sales representative immediately to obtain your capacity license, to avoid any disruption.
+*Syslog Message*::
+"The grace period for installing a valid capacity license has ended. Storage capacity is at %llu GB. Certain aggregate operations are prohibited as of %s."
+*Parameters*::
+*current_capacity* (LONGINT): Currently used storage capacity of the system, in gigabytes.
+*end_date* (STRING): Evaluation period end date.
+
+== license.capac.unl.shutdown
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a valid capacity license has not been installed. The system will shut down within the next 10 minutes.
+*Corrective Action*::
+Contact your sales representative immediately to obtain your capacity license. Restart the system as needed to complete the license installation.
+*Syslog Message*::
+"Storage capacity is at %llu GB. License ends on %s. Forced system shutdown is imminent."
+*Parameters*::
+*current_capacity* (LONGINT): Currently used storage capacity of the system, in gigabytes.
+*end_date* (STRING): Evaluation period end date.
+
+== license.capac.unlicensed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system first detects that a valid capacity license has not been installed. As a result, data aggregates can be created, expanded, mirrored, and brought online only during the initial grace period. However, if the effective version of the cluster precedes the version of ONTAP(R) on this node, any node with this condition may be forcibly shut down after this grace period.
+*Corrective Action*::
+To avoid any disruption, contact your sales representative immediately to obtain your capacity license.
+*Syslog Message*::
+"No capacity license for system with %llu GB used. Certain aggregate operations are prohibited after %s."
+*Parameters*::
+*current_capacity* (LONGINT): Current storage capacity of the system, in gigabytes.
+*end_date* (STRING): Unlicensed grace period end date.
+
+== license.capac.valid
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a valid capacity license has been installed on your system.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"Capacity license allows %llu GB, you have %llu GB installed."
+*Parameters*::
+*max_capacity* (LONGINT): Maximum storage capacity allowed under current license, in gigabytes.
+*current_capacity* (LONGINT): Currently used storage capacity of the system, in gigabytes.
+
+== license.capac.warning
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the total storage capacity of all disks currently assigned to your system is in danger of exceeding the limits of your current license. Exceeding this capacity limit might result in the forced shutdown of the system.
+*Corrective Action*::
+To avoid disruption, either contact your sales representative immediately to obtain a license with a larger maximum capacity, or reduce the storage capacity of the system.
+*Syslog Message*::
+"Storage capacity is at %llu GB, max allowed is %llu GB."
+*Parameters*::
+*current_capacity* (LONGINT): Currently used storage capacity of the system, in gigabytes.
+*max_capacity* (LONGINT): Maximum storage capacity supported under the current license, in gigabytes.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: shm-disk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: shm.disk events
+---
+
+= shm.disk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== shm.disk.lostWriteError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects a lost write error.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+shm: Disk %s has detected and recovered from a lost write error; the system will fail the disk if possible.
+*Parameters*::
+*diskName* (STRING): Name of the disk.

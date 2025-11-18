@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: wackiron-past-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wackiron.past events
+---
+
+= wackiron.past events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wackiron.past.hour.limit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the number of hours since wafliron was last run on the specified volume is past its limit. Because the limit was passed, if the bootarg 'wackiron_enforce_panic' is true, the system will panic on the next boot.
+*Corrective Action*::
+Run wafliron on the affected volume. From the boot menu, run 'wafliron'. From the dblade CLI, run 'aggr wafliron start [aggr-name]'.
+*Syslog Message*::
+%s: Number of hours since wafliron was last run on the specified volume is past its limit. Run 'wafliron' as soon as possible.
+*Parameters*::
+*volname* (STRING): Name of the aggregate.
+
+== wackiron.past.kernel.limit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the number of Data ONTAP(R) kernel versions used since wafliron was last run on the specified volume is past its limit. Because the limit was passed, if the bootarg 'wackiron_enforce_panic' is true, the system will panic on the next boot.
+*Corrective Action*::
+Run wafliron on the affected volume. From the boot menu, run 'wafliron'. From the dblade CLI, run 'aggr wafliron start [aggr-name]'.
+*Syslog Message*::
+%s: Number of Data ONTAP kernel versions used since wafliron was last run on the specified volume is past its limit. Run 'wafliron' as soon as possible.
+*Parameters*::
+*volname* (STRING): Name of the aggregate.

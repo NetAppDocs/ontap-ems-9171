@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: sis-reg-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.reg events
+---
+
+= sis.reg events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.reg.invalidEntry
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a SIS volume operation found an invalid registry entry.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SIS volume registry: found invalid SIS registry entry for %s%s: %s
+*Parameters*::
+*path* (STRING): Path to a SIS volume
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*regval* (STRING): Registry value

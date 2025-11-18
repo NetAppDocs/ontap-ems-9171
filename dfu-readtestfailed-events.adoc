@@ -1,0 +1,47 @@
+---
+sidebar: sidebar
+permalink: dfu-readtestfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dfu.readtestfailed events
+---
+
+= dfu.readtestfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dfu.readTestFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a read of the disk fails after downloading firmware to a disk.
+*Corrective Action*::
+Disk was unable to be read from after a firmware update occurred. I/O will be retried. If the retries are not successful, you should fail the disk and return it for RMA.
+*Syslog Message*::
+Media Access test failed on Disk %s [%s %s %s] S/N [%s].
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*vendorName* (STRING): Vendor name of the disk.
+*productId* (STRING): Product ID of the disk.
+*fwVersion* (STRING): Firmware version of the disk.
+*serialno* (STRING): Serial number of the disk.
+
+== dfu.readTestFailed.fatal
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a read of the disk fails after downloading firmware to a disk and all retries have been exhausted.
+*Corrective Action*::
+Disk was unable to be read from after a firmware update occurred. I/O will be retried. If the retries are not successful, you should fail the dise and return it for RMA.
+*Syslog Message*::
+Unable to access media after firmware update on Disk %s [%s %s %s] S/N [%s].
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*vendorName* (STRING): Vendor name of the disk.
+*productId* (STRING): Product ID of the disk.
+*fwVersion* (STRING): Firmware version of the disk.
+*serialno* (STRING): Serial number of the disk.

@@ -1,0 +1,75 @@
+---
+sidebar: sidebar
+permalink: callhome-c-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.c events
+---
+
+= callhome.c events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.c.fan
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is an unexpected decrease in a chassis fan's spin rate, possibly due to a slight decrease in revolutions or to a failed chassis fan. A failed chassis fan can lead to overheating and can cause damage to your equipment. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Check the chassis fan to determine whether it is spinning. Replace the chassis fan if it failed or is not operating correctly. You might need to replace the motherboard to replace the chassis fan. If a slight decrease in revolutions seems to have caused this event, and if this has not happened often, you do not need to replace the chassis fan. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.c.fan.fru.degraded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a chassis fan might be operating in a degraded state. This condition can lead to overheating and can cause damage to your equipment. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Check the chassis fan to determine whether it is spinning. Replace the chassis fan if it failed or is not operating correctly. You might need to replace the motherboard to replace the chassis fan. A slight decrease in revolutions might have caused this event. If this seems to be the case and has not happened often, you do not need to replace the chassis fan. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.c.fan.fru.fault
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a chassis fan might have failed. This failure can lead to overheating and can cause damage to your equipment. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Check the chassis fan to determine whether it is spinning. Replace the chassis fan if it failed or is not operating correctly. You might need to replace the motherboard to replace the chassis fan. A slight decrease in revolutions might have caused this event. If this seems to be the case and has not happened often, you do not need to replace the chassis fan. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.c.fan.fru.rm
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a chassis fan is removed. You have two minutes to install a replacement chassis fan or the system shuts down automatically to avoid overheating. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Install a replacement chassis fan within two minutes of removing the original to complete the hot-swap. Otherwise, install the replacement chassis fan when you are ready. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.c.fan.fru.shut
+*Severity*::
+ERROR
+*Description*::
+This message occurs when multiple chassis fans have failed. This failure can lead to overheating and can cause damage to your equipment. It is sent just before the system shutdown. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Check the chassis fans to determine whether they are spinning. Replace the chassis fans if any have failed or they are not operating correctly. You might need to replace the motherboard to replace the chassis fans. A slight decrease in revolutions might have caused this event. If this seems to be the case and has not happened often, you do not need to replace the chassis fan. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

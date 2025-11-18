@@ -1,0 +1,173 @@
+---
+sidebar: sidebar
+permalink: cf-disk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.disk events
+---
+
+= cf.disk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.disk.invent.mismatchalt
+*Severity*::
+ALERT
+*Description*::
+This message occurs when one of the nodes in a high-availability (HA) pair reports that multiple disks in the disk inventory do not match what the partner node reported. This only occurs when sufficient mismatches have occurred to throttle the specific disk inventory mismatch message. The issue might be due to one of following reasons: (1) One node can see disks that the other node cannot. (2) Ownership of multiple disks has changed. (3) Multiple disks have been failed or unfailed. (4) Multiple disks have been inserted or removed.
+*Corrective Action*::
+Rescan the disks on both nodes in the HA pair to determine the latest ownership by using the "storage disk refresh-ownership" command. If the inventory mismatch is not resolved, remove and replace any failed disks. If there are no failed disks, check the cabling for loose connections or a bad cable on the node where the disks are not included in the inventory.
+*Syslog Message*::
+Status of some of the disks has changed or the node (%s) is missing %u disks (detailed logs have been throttled).
+*Parameters*::
+*host* (STRING): Name of the node not reporting the disks in its disk inventory.
+*nummissing* (INT): Number of disks not reported in the disk inventory.
+
+== cf.disk.invent.mismatchOKalt
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when previously detected disk inventory mismatches have been resolved and the detailed match events have been throttled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%u disks now included in the inventory of node (%s) (detailed logs have been throttled).
+*Parameters*::
+*nummatches* (INT): Number of disks found to match the partner disk inventory so far.
+*host* (STRING): Name of the host where the disk is included in the inventory.
+
+== cf.disk.inventory.mismatch
+*Severity*::
+ERROR
+*Description*::
+This message occurs when one of the nodes in a high-availability (HA) pair has reported this disk in its disk inventory, but the HA partner node has not. This might be due to one of following reasons: (1) One node can see the disk, but the other node cannot. (2) Ownership of the disk has changed. (3) The disk has either been failed or unfailed. (4) The disk has been inserted or removed.
+*Corrective Action*::
+Use the "storage disk refresh-ownership" command on both nodes in the HA pair to rescan the disks and to determine the latest ownership. For ASA r2, Use the "storage disk show -fields storage-pod-uuid" instead of the "storage disk refresh-ownership" command. If the inventory mismatch is not resolved, remove and replace any failed disks. If there are no failed disks, check the cabling for loose connections or a bad cable on the node where the disk is not included in the inventory.
+*Syslog Message*::
+Status of the disk %s (%s) has recently changed or the node (%s) is missing the disk.
+*Parameters*::
+*diskname* (STRING): Name of the disk not reported in the inventory.
+*uid* (STRING): Unique identifier of the disk that was not included in the inventory.
+*host* (STRING): Name of the node not reporting the disk in its disk inventory.
+
+== cf.disk.inventory.mismatchOK
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a previously detected disk inventory mismatch is resolved.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The node (%s) included the disk %s (%s) in its inventory.
+*Parameters*::
+*host* (STRING): Name of the host where the disk is included in the inventory.
+*diskname* (STRING): Name of the disk included in the inventory.
+*uid* (STRING): Unique identifier of the disk.
+
+== cf.disk.inventory.ver.notok
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the local node does not support the partner's disk inventory message version.
+*Corrective Action*::
+Upgrade the partner to the same Data ONTAP(R) version.
+*Syslog Message*::
+cfdisk: The local node did not support the partner's disk inventory message version. The disk inventory check will not be performed during giveback.
+*Parameters*::
+(None).
+
+== cf.disk.inventoryChange
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when High Availability (HA) disk inventory is enabled/disabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: disk inventory %s
+*Parameters*::
+*state* (STRING): Parameter which describes if enabled or disabled.
+
+== cf.disk.releaseFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the release of reservation request on a disk fails. The error indicates that a disk is not ready, that it failed, or that it does not exist.
+*Corrective Action*::
+Use the "disk show -broken" CLI command to check whether the disk is reporting a "FAILED" state, or use the "disk show -disk diskname" command to check the status of the disk. Also check the syslog for other errors pertaining to the same disk. The disk might need to be reseated or replaced.
+*Syslog Message*::
+Disk reservation failed to release on disk %s because the error %d was encountered.
+*Parameters*::
+*diskname* (STRING): Disk that reported the failure when a release of reservation request was attempted on it.
+*force* (INT): Type of reservation release request. If non-zero, then the system was instructed to release reservations owned by the other systems. Otherwise, it only releases the reservation on the disks reserved by the local system.
+*error* (INT): Error encountered while attempting to release the reservation on disk.
+*errortext* (STRING): Error description as text.
+
+== cf.disk.reserveFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk reserve fails. The error indicates that a disk is not ready, that it failed, or that it does not exist.
+*Corrective Action*::
+Check the specified disk for failure. You might need to replace it or reseat it. Then check the syslog for other errors pertaining to the same disk.
+*Syslog Message*::
+(None).
+*Parameters*::
+*diskname* (STRING): Disk that reported the failure when a reserve was attempted on it.
+*preempt* (INT): Type of reservation request. If non-zero, then the system was instructed to preempt reservations from the other systems. Otherwise, it only reserves disks without existing reservations.
+*error* (INT): Error encountered while attempting to reserve the disk.
+*errortext* (STRING): Error description as text.
+
+== cf.disk.resumeDisks
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a node resumes partner disks after a takeover. If any disks fail to be resumed, the node makes another attempt to resume them after short delay.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Node attempted to resume %d disks, but failed with %d disks.
+*Parameters*::
+*fmdisk_count* (INT): Number of disks resumed.
+*fmdisk_error_count* (INT): Number of disks that had resume errors.
+
+== cf.disk.ResvFail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a node attempts to access a disk that has been reserved by the HA partner node. A node performing a takeover reserves the HA partner node's disks as part of a takeover operation. It is possible that the node being taken over can attempt to access a reserved disk before it has shut down as part of being taken over. The takeover node will automatically release the reservation prior to a giveback operation.
+*Corrective Action*::
+The takeover node will automatically release the disk reservation before a giveback operation.
+*Syslog Message*::
+Disk %s has been reserved by the High Availability (HA) partner as part of a takeover operation.
+*Parameters*::
+*DiskName* (STRING): Name of the disk.
+
+== cf.disk.ResvTakeOver
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when we find disks with reservation conflicts.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+This node will wait for giveback and the disk reservations to be released.
+*Parameters*::
+(None).
+
+== cf.disk.skipped
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the failover monitor skips an unresponsive disk.
+*Corrective Action*::
+Use the "storage disk show" command to check whether the disk failed. Replace the disk if needed.
+*Syslog Message*::
+The disk %s was skipped because it reported the status %s.
+*Parameters*::
+*diskname* (STRING): Name of the disk that was skipped.
+*status* (STRING): Status reported by the disk.

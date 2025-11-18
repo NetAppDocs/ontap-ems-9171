@@ -1,0 +1,48 @@
+---
+sidebar: sidebar
+permalink: disk-maint-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.maint events
+---
+
+= disk.maint events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.maint.test.end
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when maintenance testing has completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s Model [%s] S/N [%s] has completed maintenance testing with status %d (0x%x,0x%x,0x%x,0x%x).
+*Parameters*::
+*disk_name* (STRING): Name of the disk.
+*productID* (STRING): Product name of the disk.
+*serialno* (STRING): Serial number of the disk.
+*status* (INT): Maintenance test completion status where 0 represents successful completion of the test.
+*fa0* (INTHEX): Failure byte 0.
+*fa1* (INTHEX): Failure byte 1.
+*fa2* (INTHEX): Failure byte 2.
+*fa3* (INTHEX): Failure byte 3.
+
+== disk.maint.test.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when maintenance testing begins on a disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s Model [%s] S/N [%s] has started maintenance testing.
+*Parameters*::
+*disk_name* (STRING): Name of the disk.
+*productID* (STRING): Product name of the disk.
+*serialno* (STRING): Serial number of the disk.

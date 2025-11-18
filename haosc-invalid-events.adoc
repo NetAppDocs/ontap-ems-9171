@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: haosc-invalid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: haosc.invalid events
+---
+
+= haosc.invalid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== haosc.invalid.config
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the chassis or controller field-replaceable unit programmable read-only memory (FRU PROM) returns an invalid configuration.
+*Corrective Action*::
+Boot into Maintenance mode and run the 'ha-config modify' command to set the controller and chassis configuration to stand-alone or HA, as appropriate. Setting the wrong configuration might lead to data loss. For ASA r2, set the configuration to HA. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+%s FRU PROM returns an invalid configuration.
+*Parameters*::
+*fru* (STRING): Chassis/controller string.

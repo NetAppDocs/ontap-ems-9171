@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: ha-netra-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.netra events
+---
+
+= ha.netra events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.netra.dskChkNoContDsk
+*Severity*::
+ERROR
+*Description*::
+This message occurs during an aggregate migration, when the destination node either cannot determine whether at least one disk in the aggregate is a disk partition, or the associated container disk is not visible to the destination node. The aggregate migration operation is aborted.
+*Corrective Action*::
+Use the (privilege: advanced) "storage disk refresh-ownership" command to rescan the disks and update ownership information. After refreshing the disk ownership info, use the "storage show disk" command to view the ownership of all disks, and the "storage show disk -container-type shared" command to view container-disk ownership. If any disks are incorrectly owned, update the disk ownership information. If the problem persists, use the "storage failover show -fields local-missing-disks, partner-missing-disks" command to check whether there are any disks that are not visible to a subset of the nodes. Use the "storage failover show" command to check whether the high-availability (HA) partner's information is known. If HA partner information is missing, verify the HA Interconnect between both nodes is installed and functioning correctly. If not, fix the HA Interconnect cabling issues to resolve the connectivity problems. Use the "storage disk show" command to check whether there are any failed disks. If failed disks are present, remove or replace them. If there are no failed disks, check the cabling for loose connections or a bad cable on the node where the disk is not visible. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Disk with UUID %s is not visible to node %s, which is the destination of an aggregate migration operation. As a result, the aggregate migration was aborted. Check the event log of the destination node to determine the name of the aggregate whose migration was aborted.
+*Parameters*::
+*disk_uuid* (STRING): Universal unique identifier (UUID) of the disk that is not visible to the destination node.
+*node_name* (STRING): Name of the destination node.

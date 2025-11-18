@@ -1,0 +1,36 @@
+---
+sidebar: sidebar
+permalink: raidlm-cannotmakeprogress-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raidlm.cannotmakeprogress events
+---
+
+= raidlm.cannotmakeprogress events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raidlm.cannotMakeProgress
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a system does not contain enough spares to correct existing disk failures or misconfigurations. This message is only seen on systems containing disk carriers capable of holding more than one disk. When this message occurs, manual intervention is required because Data ONTAP(R) cannot automatically correct the existing issues with the system's disk configuration.
+*Corrective Action*::
+To correct this issue on systems that contain carriers with multiple disks, try the following (in the specified order): (1) Assign any unassigned disks that are contained within a multidisk carrier. (2) Add multidisk carriers. (3) If a replacement carrier is available, do the following: a) Fail ALL disks within the carrier. Do not remove a multidisk carrier that contains non-failed disks; doing so results in system degradation and might result in system failure. b) Wait until the disk's amber Attention LEDs stop flashing and are lit continuously. Do not remove a carrier while the shelf OPS panel is alternating between the shelf ID and the Attention Code H1, or while the disks within the carrier are flashing their amber Attention LEDs. c) Replace the carrier. (4) Reassign partner spare disks in the HA configuration. (5) If the problem persists, call NetApp technical support.
+*Syslog Message*::
+Disk %s cannot be evacuated or copied from a multidisk carrier. The system does not contain spares that are suitable for the copy operation.
+*Parameters*::
+*disk* (STRING): Name of the disk in the carrier.
+*shelf* (STRING): Disk shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.

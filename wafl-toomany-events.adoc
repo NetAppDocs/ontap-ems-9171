@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: wafl-toomany-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.toomany events
+---
+
+= wafl.toomany events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.toomany.inaccess.udata
+*Severity*::
+ERROR
+*Description*::
+This message occurs when too many access requests are received for inaccessible user data (area blocked by wafliron) in a short time span.
+*Corrective Action*::
+Use the (privilege: diagnostic) "vol vbncheck <volume> -inaccessible_only" nodeshell command for a detailed report of inaccessible data. For a SnapMirror(R) target, rebuild it from the source or resynchronize. If the block is in a Snapshot copy, delete the Snapshot copy. Contact NetApp technical support for more options.
+*Syslog Message*::
+Too many (%u) inaccessible user data requests have been made in a recent (%llu ms) period. Suppressing the notification for %llu ms.
+*Parameters*::
+*bad_count* (INT): The number of inaccessible data requests are encountered.
+*period* (LONGINT): The measured period when inaccessible data requests are encountered, in milliseconds.
+*quiettime* (LONGINT): The time period for which inaccessible data notifications are suppressed, in milliseconds.

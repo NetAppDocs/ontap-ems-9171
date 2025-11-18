@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: nvmeof-portiomb-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvmeof.portiomb events
+---
+
+= nvmeof.portiomb events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvmeof.portiomb.clear
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when there are no longer two ports cabled incorrectly from a node to bottom module (B) on a shelf.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Two ports are no longer cabled incorrectly from node %s to bottom module (B) on shelf with SN %s.
+*Parameters*::
+*node_name* (STRING): Host port connected to the cable.
+*shelf_sn* (STRING): Serial number of the shelf connected to the cable.
+
+== nvmeof.portiomb.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there are two ports cabled to the bottom module (B) on a shelf.
+*Corrective Action*::
+Connect two ports to different modules to provide redundancy.
+*Syslog Message*::
+There are two ports cabled from node %s to bottom module (B) on Shelf with SN %s. One of these cables should be removed.
+*Parameters*::
+*node_name* (STRING): Host port connected to the cable.
+*shelf_sn* (STRING): Serial number of the shelf connected to the cable.

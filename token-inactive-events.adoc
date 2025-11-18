@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: token-inactive-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: token.inactive events
+---
+
+= token.inactive events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== token.inactive.ref.deleted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a reference is deleted on a token that has existed for longer than the timeout window. The reference is deleted to clear stale entries in the cache.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Reference %s of token %d in volume %s was deleted.
+*Parameters*::
+*blade_id* (STRING): Blade ID of the token reference that was deleted.
+*index* (INT): Index of the token whose reference was deleted.
+*volume_name* (STRING): Name of the volume whose token's reference was deleted.

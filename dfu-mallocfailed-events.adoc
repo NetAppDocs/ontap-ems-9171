@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: dfu-mallocfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dfu.mallocfailed events
+---
+
+= dfu.mallocfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dfu.mallocFailed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when Data ONTAP(R) cannot allocate memory to read the disk firmware file and aborts the disk firmware update.
+*Corrective Action*::
+Inability to allocate memory for this action indicates a failure within Data ONTAP. Take a core for reference, and then open a support case to address the underlying issue. The reboot process when you take the core resolves the immediate problem.
+*Syslog Message*::
+Cannot allocate memory to read disk firmware file %s; disk firmware update aborted.
+*Parameters*::
+*filename* (STRING): Name of the disk firmware file.

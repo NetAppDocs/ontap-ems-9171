@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: rsh-socket-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rsh.socket events
+---
+
+= rsh.socket events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rsh.socket.failure
+*Severity*::
+ERROR
+*Description*::
+The rshd daemon could not create a socket.
+*Corrective Action*::
+Disable and enable rshd daemon using options rsh.enable.
+*Syslog Message*::
+RSH socket error: %s.
+*Parameters*::
+*reason* (STRING): The reason why the rshd daemon could not create a socket.

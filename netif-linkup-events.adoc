@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: netif-linkup-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.linkup events
+---
+
+= netif.linkup events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.linkUp
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the state of a network link changes to "up".
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s: Link %s.
+*Parameters*::
+*lanType* (STRING): Local area network (LAN) type.
+*ifName* (STRING): Name of the network interface.
+*status* (STRING): Status of the link, "up".

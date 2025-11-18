@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: rdmalib-rcm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rdmalib.rcm events
+---
+
+= rdmalib.rcm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rdmalib.rcm.configMissing
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the configuration of the high-availability (HA) interface cannot be completed due to a missing IP address.
+*Corrective Action*::
+Verify that the High Availability interconnect card is present on the system and is cabled correctly. If a capable interface is found and the issue persists, contact NetApp technical support.
+*Syslog Message*::
+HA configuration is missing, error %d.
+*Parameters*::
+*error* (INT): Error code of the missing configuration.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: hamsg-diskcheckresp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: hamsg.diskcheckresp events
+---
+
+= hamsg.diskcheckresp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== hamsg.diskCheckResp
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a node receives a disk inventory check response from its high-availability (HA) partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The local node has received a disk inventory check response (%d) from its HA partner.
+*Parameters*::
+*response* (INT): The disk inventory check response received from the HA partner.

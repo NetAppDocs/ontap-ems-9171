@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: raid-debug-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.debug events
+---
+
+= raid.debug events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.debug
+*Severity*::
+INFORMATIONAL
+*Description*::
+The SCSI debug event.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s
+*Parameters*::
+*debug_string* (STRING): The debug statement that occurred.

@@ -1,0 +1,257 @@
+---
+sidebar: sidebar
+permalink: replication-dst-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: replication.dst events
+---
+
+= replication.dst events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== replication.dst.attrsNotSaved
+*Severity*::
+ERROR
+*Description*::
+This message is issued at the end of a Qtree SnapMirror(R) or SnapVault(R) transfer or checker/fixer operation when the replication destination detects that the replication source has sent file attributes that the replication destination does not support, and the replication destination has not saved those attributes. This may happen when the replication source is running a newer version of ONTAP which supports file attributes that the replication destination does not support.
+*Corrective Action*::
+To store all of the attributes, upgrade your replication destination filer to a version of ONTAP which is at least as recent as the source. Alternatively, this message can be suppressed for all future transfers or checker/fixer operations for all Qtree SnapMirror and SnapVault relationships by setting the hidden replication option, suppress_attrs_not_saved_warnings.
+*Syslog Message*::
+The replication destination was unable to replicate all file attributes on %d file(s) or director(y/ies) in %s because it does not support one or more of the attributes sent by the source.
+*Parameters*::
+*attrs_not_saved* (INT): The number of files for which the replication destination could not replicate all file attributes.
+*dst_path* (STRING): Destination qtree path.
+
+== replication.dst.debugLog
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) or SnapVault(R) destination cannot log the replication protocol header for the data received.
+*Corrective Action*::
+The reasons for the error cited in the error message might indicate ways to address the problem.
+*Syslog Message*::
+Logical Replication header log: %s %s:%s.
+*Parameters*::
+*reason* (STRING): Reason for the failure.
+*file_name* (STRING): Logging file for which the error was encountered.
+*errstr* (STRING): Error encountered during logging operation.
+
+== replication.dst.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects an error on a SnapMirror(R) or SnapVault(R) destination volume or qtree.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: destination transfer from %s:%s to %s : %s.
+*Parameters*::
+*rtype* (STRING): Replication type (SnapMirror, SnapVault, and so on.).
+*srcfiler* (STRING): Replication source system.
+*srcpath* (STRING): Replication source volume or qtree.
+*dstpath* (STRING): Replication destination volume or qtree.
+*error* (STRING): Specific error message.
+
+== replication.dst.inodeMissing
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a file for which the replication source sent data is not present on the replication destination.
+*Corrective Action*::
+Check for WAFL(R) inconsistencies on the replication source.
+*Syslog Message*::
+The replication destination could not find the file corresponding to %d sent from the replication source. Check for WAFL inconsistencies on the replication source %s:%s.
+*Parameters*::
+*inode* (INT): Inode number of the source file for which the corresponding file is not present.
+*srcfiler* (STRING): Replication source system.
+*srcpath* (STRING): Replication source path.
+
+== replication.dst.langMismatch
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the user continues with the updates of the replication relationship after changing the language setting of the volume in which qtree replicas are configured or that contain replica primary.
+*Corrective Action*::
+Create a new baseline for the relationship.
+*Syslog Message*::
+Volume language was changed before this transfer or it was changed before some previous update transfer for the relationship of qtree %s. This might create some problems with further replication transfers of the relationship.
+*Parameters*::
+*qtpath* (STRING): Destination qtree path.
+
+== replication.dst.lostACL
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a replication update discovers that an inode that is supposed to have an ACL does not have one, causing the replication to fail.
+*Corrective Action*::
+If the replication destination is a SnapMirror(R) destination, run the 'snapmirror quiesce' command to quiesce the replication relation, then run the 'snapmirror check -F' command under the guidance of NetApp technical support. If the destination is a SnapVault(R) destination, run the 'snapvault check -F' command under the guidance of NetApp technical support.
+*Syslog Message*::
+Replication transfer from %s:%s to %s:%s: the destination could not find ACL %d for source inode %d.
+*Parameters*::
+*srcfiler* (STRING): Replication source system.
+*srcpath* (STRING): Replication source path.
+*dstfiler* (STRING): Replication destination system.
+*dstpath* (STRING): Replication destination path.
+*acl_inode* (INT): Inode number of source ACL.
+*file_inode* (INT): Inode number of the replication source file.
+
+== replication.dst.noCommonSnap
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapVault(R) or SnapMirror(R) relationship cannot be resynchronized because there is no usable snapshot that the source and destination have in common. In such situations, the 'snapvault start -r' and 'snapmirror resync' commands cannot be successfully completed.
+*Corrective Action*::
+The relationship cannot be resynchronized so it must be reinitialized. For SnapMirror, use the 'snapmirror initialize' command. For SnapVault, use the 'snapvault start' command. Either run the baseline transfer to a new qtree, or remove the existing qtree before starting the transfer. Refer to the Data Protection Guide for details.
+*Syslog Message*::
+%s: destination transfer from %s:%s to %s:%s : no common snapshot to use as the base for resynchronization.
+*Parameters*::
+*rtype* (STRING): Replication type (SnapMirror, SnapVault, and so on.).
+*srcfiler* (STRING): Replication source system.
+*srcpath* (STRING): Replication source path.
+*dstfiler* (STRING): Replication destination system.
+*dstpath* (STRING): Replication destination path.
+*rplerror* (STRING): Replication error message.
+*waflerror* (STRING): WAFL(R) error
+
+== replication.dst.noMemory
+*Severity*::
+ALERT
+*Description*::
+This message occurs when there is insufficient memory on the SnapMirror(R) or SnapVault(R) destination for the transfer to continue.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+System is low on memory; aborting %s destination transfer.
+*Parameters*::
+*rtype* (STRING): Replication type (SnapMirror, SnapVault, and so on.).
+
+== replication.dst.noSrcSnap
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapVault(R) or SnapMirror(R) destination discovers that the relationship's base snapshot no longer exists on the source. In such situations, 'snapvault update' and 'snapmirror update' commands cannot execute successfully.
+*Corrective Action*::
+For SnapMirror, issue the command 'snapmirror resync' to make SnapMirror attempt to resynchronize the relationship. If the resync operation cannot find a common snapshot, you must reestablish the relationship with the 'snapmirror initialize' command. For SnapVault, issue the command 'snapvault start -r' to make SnapVault attempt to resynchronize the relationship. If the 'snapvault start -r' command cannot find a common snapshot, you must reestablish the relationship with the 'snapvault start' command. If you must reestablish a relationship, either run the baseline transfer to a new qtree, or remove the existing qtree before starting the transfer. Refer to the Data Protection Guide for details.
+*Syslog Message*::
+%s: destination transfer from %s:%s to %s:%s : base snapshot for transfer no longer exists on the source.
+*Parameters*::
+*rtype* (STRING): Replication type (SnapMirror, SnapVault, and so on.).
+*srcfiler* (STRING): Replication source system.
+*srcpath* (STRING): Replication source path.
+*dstfiler* (STRING): Replication destination system.
+*dstpath* (STRING): Replication destination path.
+*rplerror* (STRING): Replication error message.
+*waflerror* (STRING): WAFL(R) error.
+
+== replication.dst.resync.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) or SnapVault(R) resync operation is not successful.
+*Corrective Action*::
+See error message.
+*Syslog Message*::
+%s resync of %s to %s:%s : %s.
+*Parameters*::
+*rtype* (STRING): Replication type (SnapMirror, SnapVault, and so on.).
+*dstpath* (STRING): Replication destination volume or qtree.
+*srcfiler* (STRING): Replication source system.
+*srcpath* (STRING): Replication source volume or qtree.
+*error* (STRING): Error message.
+
+== replication.dst.resync.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a SnapMirror(R) or SnapVault(R) resync operation is successful.
+*Corrective Action*::
+Operation successful; no corrective action required.
+*Syslog Message*::
+%s resync of %s to %s:%s was successful.
+*Parameters*::
+*rtype* (STRING): Replication type (SnapMirror, SnapVault, and so on.).
+*dstpath* (STRING): Replication destination volume or qtree.
+*srcfiler* (STRING): Replication source system.
+*srcpath* (STRING): Replication source volume or qtree.
+
+== replication.dst.setACLError
+*Severity*::
+ERROR
+*Description*::
+This event occurs when ONTAP encounters an illegal data stream during a logical backup operation. This is usually due to an OSSV primary software bug. Normally OSSV sets an ACL (Access Control List) on a regular file or directory. However, as a result of this bug, OSSV attempts to set an ACL on an Alternate Data Stream (ADS) of a file or directory. See bug 148879 for details.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*src_base_inum* (INT): The base inode number generated by the source. The source is trying to set an ACL on this inode, which happens to be a stream.
+*dst_base_inum* (INT): The corresponding base inode number on the destination.
+
+== replication.dst.setACLFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP encounters an error while setting an ACL (Access Control List) for an inode on a SnapVault(R) or SnapMirror(R) destination. The replication transfer is aborted upon encountering this error.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Replication transfer from %s:%s to %s:%s: The destination failed to set ACL %d for source inode %d on destination inode %d. The replication transfer is aborted.
+*Parameters*::
+*srcfiler* (STRING): Replication source system.
+*srcpath* (STRING): Replication source path.
+*dstfiler* (STRING): Replication destination system.
+*dstpath* (STRING): Replication destination path.
+*acl_inode* (INT): Inode number of the source ACL.
+*src_base_inum* (INT): Base inode number generated by the source. The destination is trying to set an ACL on this inode.
+*dst_base_inum* (INT): Corresponding base inode number on the destination.
+
+== replication.dst.throttleChange
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the replication source, receives a request from the destination to change the current throttle value.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Throttle value changed to %d Kbytes/s for destination %s:%s
+*Parameters*::
+*throttle* (INT): The new throttle value.
+*dstfiler* (STRING): The SnapMirror destination filer
+*dstpath* (STRING): The SnapMirror destination volume or qtree
+
+== replication.dst.throttleChange.err
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the replication source, receives a request from the destination to change the current throttle value, but failed to complete the operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failed to change throttle value to %d Kbytes/s for destination %s:%s : %s
+*Parameters*::
+*throttle* (INT): The new throttle value.
+*dstfiler* (STRING): The SnapMirror destination filer
+*dstpath* (STRING): The SnapMirror destination volume or qtree
+*error* (STRING): The error message
+
+== replication.dst.waflErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects an error on a SnapMirror(R) or SnapVault(R) destination volume or qtree due to WAFL(R).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: destination transfer from %s:%s to %s : %s:%s.
+*Parameters*::
+*rtype* (STRING): Replication type (SnapMirror, SnapVault, and so on.).
+*srcfiler* (STRING): Replication source system.
+*srcpath* (STRING): Replication source volume or qtree.
+*dstpath* (STRING): Replication destination volume or qtree.
+*rplerror* (STRING): Specific replication error message.
+*waflerror* (STRING): Specific WAFL error message.

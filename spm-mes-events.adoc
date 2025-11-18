@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: spm-mes-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: spm.mes events
+---
+
+= spm.mes events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== spm.mes.process.exit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the SPD MES daemon (spd) involuntarily terminates. This daemon is responsible for updating DIMM SPDs with correctable error statistics. This failure doesn't affect client access.
+*Corrective Action*::
+The system attempts to recover by restarting the subsystem. If the subsystem does not recover within the threshold number of retries, then an AutoSupport message is sent. If your system is not configured to send AutoSupport messages and the issue persists, call technical support.
+*Syslog Message*::
+SPD MES daemon (spd) with ID %d exited as a result of signal %s. The service will attempt to restart.
+*Parameters*::
+*id* (INT): Process identifier.
+*cause* (STRING): Plain text description of why the process exited.

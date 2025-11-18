@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: flexcache-config-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: flexcache.config events
+---
+
+= flexcache.config events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== flexcache.config.sync.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the FlexCache volume expand operation fails to synchronize the FlexCache configuration information between the newly created constituent volume and the origin cluster.
+*Corrective Action*::
+Use the "volume flexcache config-refresh" command on the origin cluster to update the FlexCache configuration.
+*Syslog Message*::
+Volume expand failed to create the cache configuration for FlexCache volume "%s" in Vserver "%s" on the origin of the FlexCache cluster. Error: %s.
+*Parameters*::
+*cacheVolName* (STRING): Name of the FlexCache volume.
+*cacheVserver* (STRING): Name of the Vserver hosting the FlexCache volume.
+*errorString* (STRING): Error string.

@@ -1,0 +1,280 @@
+---
+sidebar: sidebar
+permalink: gb-sfo-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: gb.sfo events
+---
+
+= gb.sfo events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== gb.sfo.abort.raid.fm
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a high-availability (HA) storage failover (SFO) giveback is canceled due to RAID activity on a partner aggregate.
+*Corrective Action*::
+Reissue the "storage failover giveback" command to initiate giveback to the partner after the pending or in-progress operation on the partner volume or aggregate is complete. Use the "storage aggregate status -r" command to view the state of the aggregate. If a plex is offline, use the "storage aggregate plex online" command to bring the plex online. If unmirrored aggregates are not supported on this configuration, use the "storage aggregate mirror" command to mirror this aggregate.
+*Syslog Message*::
+%s %s%s is %s; canceling giveback.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Current owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*reason* (STRING): Activity that is preventing SFO giveback.
+
+== gb.sfo.netra.ha.dskChkFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when giveback of the partner's storage failover (SFO) aggregate fails because the high-availability (HA) partner cannot see all disks belonging to the aggregate.
+*Corrective Action*::
+Use the "storage failover show -fields local-missing-disks, partner-missing-disks" command to rescan the disks and to determine the latest ownership. If the disk inventory mismatch is not resolved, check the cabling for loose connections or a bad cable on the partner node.
+*Syslog Message*::
+Giveback of aggregate %s failed because the partner cannot see all disks belonging to the aggregate.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate that was not given back.
+
+== gb.sfo.netra.raid.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs during migration of an aggregate as part of storage failover (SFO) giveback, when one of the aggregate checks on the destination node fails, including duplicate aggregate name or duplicate Universally Unique Identifier (UUID).
+*Corrective Action*::
+1. If checks fail due to duplicate aggregate name or UUID, delete the duplicate aggregate created from previous "storage failover giveback" or "storage aggregate relocation" operations. Contact NetApp technical support for assistance with deletion of the unwanted duplicate aggregate.
+*Syslog Message*::
+Aggregate '%s' (UUID = %s, type = %s, home_owner_id = %llu, dr_home_owner_id = %llu): RAID aggregate migration checks failed on destination node %s.
+*Parameters*::
+*vol* (STRING): Name of the aggregate.
+*aggregate_uuid* (STRING): UUID of the aggregate.
+*raid_type* (STRING): RAID type of the volume.
+*home_owner_id* (LONGINT): NVRAM system ID of the aggregate's home owner.
+*dr_home_owner_id* (LONGINT): NVRAM system ID of the aggregate's disaster recovery (DR) home owner.
+*reason* (STRING): Activity that is preventing the aggregate relocation or giveback operation.
+
+== gb.sfo.netra.wafl.mcc.veto
+*Severity*::
+ERROR
+*Description*::
+This message occurs during migration of an aggregate as part of storage failover (SFO) giveback, when one or more online left-behind disaster recovery(DR) aggregates are found on the destination node and the "node-object-limit" option is set to off.
+*Corrective Action*::
+Check whether there exists any online left-behind DR aggregates on the destination node from a previous switchover operation. If such an aggregate exists, then perform the corrective actions specified in the earlier EMS messages for the left-behind aggregate to return it to its original owner, and then retry the operation. If you cannot perform the corrective action, then use the "override-vetoes" option in the "giveback" command to force the giveback.
+*Syslog Message*::
+Aggregate '%s': One or more online left-behind DR aggregates were found on the destination node and the "node-object-limit" option is set to off.
+*Parameters*::
+*vol* (STRING): Name of the aggregate.
+
+== gb.sfo.precmt.lmgr.resynabrt
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during giveback, when automatic lock resynchronization with the node's high-availability (HA) partner for files on this aggregate was aborted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Automatic lock resynchronization was aborted for aggregate %s on forced giveback.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate for which resynchronization was aborted.
+
+== gb.sfo.precmt.lmgr.resyncing
+*Severity*::
+ERROR
+*Description*::
+This message occurs during giveback, when automatic lock resynchronization with the node's high-availability (HA) partner is in progress for files on this aggregate.
+*Corrective Action*::
+Retry the giveback after verifying that lock synchronization is complete using the 'debug locks auto-resync-status -aggregate <aggregate>' diagnostic privilege command. If lock state disruption for all CA locks on the aggregate is acceptable, retry the giveback with the '-override-vetoes true' option.
+*Syslog Message*::
+Could not give back aggregate %s because automatic lock resynchronization was in progress.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate with locks not yet in sync.
+
+== gb.sfo.precmt.repl
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when all replication transfers are aborted because of storage failover (SFO) giveback.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Replication transfers aborted due to SFO giveback.
+*Parameters*::
+(None).
+
+== gb.sfo.precmt.vdom.lowMem
+*Severity*::
+ERROR
+*Description*::
+This message occurs when giveback of the partner's storage failover (SFO) aggregate fails due to the unavailability of Data ONTAP(R) memory on the source node.
+*Corrective Action*::
+Free some memory and retry the giveback.
+*Syslog Message*::
+Giveback of aggregate %s failed due to unavailability of Data ONTAP(R) memory on the source node.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate that was not given back.
+
+== gb.sfo.precmt.wafl.volconversion
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an active volume conversion is running on one or more volumes on the source aggregate. Pre-commit is aborted.
+*Corrective Action*::
+When volume conversion is complete, re-run the 'storage failover giveback' command.
+*Syslog Message*::
+SFO giveback is blocked as Volume Conversion is in progress on one of the volumes on aggregate %s.
+*Parameters*::
+*aggregate_name* (STRING): The name of the aggregate containing the volume on which conversion is in progress.
+
+== gb.sfo.veto.asup.generalNopart
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when AutoSupport vetoes a storage failover (SFO) giveback (sendhome) request because an AutoSupport message for the down partner node was not collected prior to the giveback request.
+*Corrective Action*::
+Typically, an AutoSupport message for the partner node is collected shortly after takeover is complete. If an SFO giveback was attempted and vetoed within 20 minutes of the takeover, retry the operation later. If time does not permit waiting, use the 'storage failover giveback -override-vetoes true' command to force a giveback.
+*Syslog Message*::
+AutoSupport vetoed giveback because an AutoSupport message for the down partner node was not yet collected.
+*Parameters*::
+(None).
+
+== gb.sfo.veto.dump
+*Severity*::
+ERROR
+*Description*::
+This message occurs when dump/restore is aborted during storage failover/ aggregate relocation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Dump/restore operations were aborted because %s is in progress.
+*Parameters*::
+*arl_or_sendhome* (STRING): Describes whether ARL or SFO
+
+== gb.sfo.veto.kmgr.keysmissing
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a giveback of the partner's storage failover (SFO) aggregate fails due to the unavailability of volume encryption keys for the encrypted volumes of the aggregate on the partner node.
+*Corrective Action*::
+Wait a few minutes, and then try the giveback of the partner's SFO aggregate again. If the problem persists, run the "security key-manager external restore" command for an external key manager, the "security key-manager external azure restore" command for an AKV configuration, the "security key-manager external aws restore" command for an AWSKMS configuration, the "security key-manager external gcp restore" command for a GCPKMS configuration, the "security key-manager external ikp restore" command for an IKPKMS configuration, or the "security key-manager onboard sync" command for the Onboard Key Manager. These commands retrieve the encryption keys for the encrypted volumes of the aggregate from the key manager. After running the appropriate command, then try the giveback of the partner's SFO aggregate again.
+*Syslog Message*::
+Giveback of aggregate "%s" failed due to the unavailability of the volume encryption keys for the encrypted volumes of the aggregate on partner node "%s". Details: %s.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate that was not given back.
+*node* (STRING): Name of the node that is missing encryption keys.
+*details* (STRING): Detailed reason for failure.
+
+== gb.sfo.veto.lmgr.nonCA.broke
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a giveback is forced that causes non-continuously available (non-CA) locks on the volume to be dropped. CA locks are established by opens through CIFS CA shares for regular files on read-write volumes that reside in storage failover (SFO) aggregates. These locks are mirrored to the node's high-availability (HA) partner to support the nondisruptive property of CA shares. The rest of the locks are classified as non-CA locks and are not mirrored to the node's HA partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Dropped non-CA locks on volume %s%s%s%s on SFO aggregate %s due to forced giveback.
+*Parameters*::
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name alone is insufficient.
+*aggrname* (STRING): Aggregate name.
+
+== gb.sfo.veto.lmgr.nonCA.locks
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a giveback has started but cannot proceed because non-continuously available (non-CA) locks are present on the volume. CA locks are established by opens through CIFS CA shares for regular files on read-write volumes that reside in storage failover (SFO) aggregates. These locks are mirrored to the node's high-availability (HA) partner to support the nondisruptive property of CA shares. The rest of the locks are classified as non-CA locks and are not mirrored to the node's HA partner.
+*Corrective Action*::
+Based on how resilient they are to failures, applications must either gracefully close sessions over which non-CA locks are established or accept lock state disruption. To determine the open files that have these sessions established, run the 'vserver cifs session file show -hosting-aggregate "aggregate list" -continuously-available No' command. "aggregate list" is a list of aggregates that are sent home as a result of the giveback operation. If lock state disruption for all existing non-CA locks is acceptable, retry the giveback operation by using the '-override-vetoes true' option.
+*Syslog Message*::
+Could not complete giveback because of non-CA locks on volume %s%s%s%s SFO aggregate %s.
+*Parameters*::
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name alone is insufficient.
+*aggrname* (STRING): Aggregate name.
+
+== gb.sfo.veto.lmgr.recons.left
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a storage failover giveback has started, but cannot proceed because reconstruction of client file locks from mirrored lock information is not yet complete.
+*Corrective Action*::
+Retry the giveback after checking the status of reconstruction using the 'debug locks reconstruction show' diagnostic privilege command. If the locks reconstruction operation is not completed, restart the giveback and override the veto using the '-override-vetoes true' option.
+*Syslog Message*::
+Could not perform giveback because lock reconstruction on node %s is in progress.
+*Parameters*::
+*node* (STRING): Name of the node reconstructing locks.
+
+== gb.sfo.veto.lmgr.syncing
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a storage failover giveback has started but cannot proceed because synchronization of client file locks ("locks sync") with the partner is not yet complete.
+*Corrective Action*::
+Retry the giveback after verifying that lock synchronization is completed, by using the 'debug locks lock-sync show' diagnostic privilege command.
+*Syslog Message*::
+Could not perform giveback because locks sync from node %s to its partner node %s is in progress.
+*Parameters*::
+*node* (STRING): Name of the node performing locks sync with its partner.
+*partner* (STRING): Name of the partner node with which locks sync is being performed.
+
+== gb.sfo.veto.repl
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a storage failover(SFO) giveback is vetoed by a critical replication transfer (for example, volume move in the cutover phase).
+*Corrective Action*::
+Either abort the replication transfer that is preventing the giveback from being completed, retry the 'storage failover giveback' command with the '-override-vetoes true' option, or wait for the transfer to finish.
+*Syslog Message*::
+Could not complete giveback because a replication transfer with UUID %s involving the aggregate %s is in progress.
+*Parameters*::
+*transferId* (STRING): UUID of the SnapMirror(R) replication transfer that vetoed the giveback.
+*aggr* (STRING): Name of the aggregate.
+
+== gb.sfo.veto.snaprestore
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot perform a giveback because a volume snaprestore operation is active. The giveback is aborted.
+*Corrective Action*::
+Retry giveback after the snaprestore operation is finished.
+*Syslog Message*::
+%s %s%s%s%s is running snaprestore. Canceling giveback.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique volume identity when the volume name itself is insufficient.
+
+== gb.sfo.veto.volmove
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volume move operation vetoes a giveback because volume move can not be aborted during that time.
+*Corrective Action*::
+Reissue the 'storage failover giveback' command to initiate giveback to the partner when the volume move is completed. Or use the '-override-vetoes true' option to abort the volume move.
+*Syslog Message*::
+Volume move in progress for volume %s with DSID %llu prevents giveback.
+*Parameters*::
+*vol_name* (STRING): Name of the source or destination volume.
+*volume_dsid* (LONGINT): Source or destination volume data set identifier (DSID).
+
+== gb.sfo.veto.wafl.volconversion
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an active volume conversion against one or more of the volumes on the source aggregate vetoed giveback.
+*Corrective Action*::
+When volume conversion is complete, re-run the 'storage failover giveback' command.
+*Syslog Message*::
+SFO giveback is vetoed as Volume Conversion is in progress on one of the volumes on aggregate %s.
+*Parameters*::
+*aggregate_name* (STRING): The name of the aggregate containing the volume on which conversion is in progress.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: snaplock-nse-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snaplock.nse events
+---
+
+= snaplock.nse events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snaplock.NSE.conflict
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when any of the following commands could not be run against a SnapLock Compliance disk, since doing so could risk the destruction of compliance data: "storage encryption disk sanitize", "storage encryption disk destroy", "storage encryption disk revert-to-original-state".
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"storage encryption disk sanitize/destroy/revert-to-original-state" command could not be run on SnapLock Compliance disk '%s' as it could risk the destruction of compliance data.
+*Parameters*::
+*disk* (STRING): Name of the SnapLock Compliance disk.

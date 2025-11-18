@@ -1,0 +1,88 @@
+---
+sidebar: sidebar
+permalink: upgrademgr-update-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: upgrademgr.update events
+---
+
+= upgrademgr.update events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== upgrademgr.update.cancelled
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the automated update of the cluster is canceled by the operator.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The automated update of the cluster has been canceled by the operator.
+*Parameters*::
+(None).
+
+== upgrademgr.update.completed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the automated update of the cluster is complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The automated update of the cluster is complete.
+*Parameters*::
+(None).
+
+== upgrademgr.update.pausedErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the automated update of the cluster is paused as a result of an error.
+*Corrective Action*::
+Correct the cause of the error and then resume the update to continue the automated update of the cluster.
+*Syslog Message*::
+The automated update of the cluster has been paused due to the following reason: %s
+*Parameters*::
+*pausedSummary* (STRING): Summary of the event causing the paused update.
+
+== upgrademgr.update.pausedUser
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the automated update of the cluster is paused as a result of an operator request.
+*Corrective Action*::
+Issue the "cluster image resume-update" command to continue the automated update of the cluster.
+*Syslog Message*::
+The automated update of the cluster has been paused due to a request by the operator.
+*Parameters*::
+(None).
+
+== upgrademgr.update.resumed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the automated update of the cluster is resumed from the paused state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The automated update of the cluster has been resumed by the operator.
+*Parameters*::
+(None).
+
+== upgrademgr.update.started
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the upgrade manager begins an automated update of the cluster. By default, nodes that are already upgraded to the target version are skipped, except for MetroCluster configurations.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+An automated update of the cluster has been started on nodes:%s. Skipped nodes:%s.
+*Parameters*::
+*nodestoUpgrade* (STRING): Nodes that will be upgraded
+*nodesSkipped* (STRING): Nodes that will be skipped, or "none" if all nodes need an upgrade, or "disabled - MetroCluster" if the cluster is a MetroCluster configuration, or "disabled" if the "-skip-nodes-at-target-version" parameter is set to false.

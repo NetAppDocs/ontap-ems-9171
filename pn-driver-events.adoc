@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: pn-driver-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: pn.driver events
+---
+
+= pn.driver events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== pn.driver.send.latency.high
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the pass-through network layer detects driver send latencies that are too high, indicating a noisy neighbor issue in cloud providers that is causing an I/O latency spike.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Pass-through network layer is reporting an average driver send latency of %d microseconds, which might cause an I/O latency spike.
+*Parameters*::
+*latency* (INT): Average driver send latency in microseconds.

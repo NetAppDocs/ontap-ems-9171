@@ -1,0 +1,64 @@
+---
+sidebar: sidebar
+permalink: wafl-sidl-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.sidl events
+---
+
+= wafl.sidl events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.sidl.blkincons.recovery
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a volume or aggregate with single instance data logging enabled encounters a problem in a metafile required for the functioning of the single instance data logging feature. The system will attempt automatic recovery within the next couple of Consistency Points (CPs). During the period of recovery, write performance could be lower than usual.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s:%s encountered a problem in a metafile (sidl). The system will automatically repair the problem.
+*Parameters*::
+*object_type* (STRING): Identifier for the type of object to which this event applies (aggregate or volume).
+*object_name* (STRING): Name of the object.
+*fileid* (INT): File identifier of the metafile.
+*l0_blk_cnt* (LONGINT): Number of L0 blocks present.
+*exp_blk_cnt* (LONGINT): Number of L0 blocks expected.
+*cpcount* (INT): CP that performs automatic recovery.
+
+== wafl.sidl.l0incons.recovery
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a volume or aggregate with single instance data logging enabled encounters a problem in a metafile required for the functioning of the single instance data logging feature. The system will attempt automatic recovery within the next couple of Consistency Points (CPs). During the period of recovery, write performance could be lower than usual.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s:%s encountered a problem in a metafile (sidl). The system will automatically repair the problem.
+*Parameters*::
+*object_type* (STRING): Identifier for the type of object to which this event applies (aggregate or volume).
+*object_name* (STRING): Name of the object.
+*fbn* (LONGINT): File block number (fbn) where the problem was encountered.
+*fileid* (INT): File identifier of the metafile.
+*vbn* (LONGINT): Value of the volume block number (vbn) that had a problem.
+*where* (STRING): The module that generated the event (write or refill).
+*cpcount* (INT): CP that performs automatic recovery.
+
+== wafl.sidl.space.disable
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a volume or aggregate disables the single instance data logging feature because the volume or aggregate is too close to full. During the period when single instance data logging is disabled, write performance could be lower than usual.
+*Corrective Action*::
+Decrease the space utilization in the volume or aggregate either by deleting data or by growing the volume or aggregate.
+*Syslog Message*::
+%s:%s has disabled the single instance data logging feature. Write performance could be lower than usual.
+*Parameters*::
+*object_type* (STRING): Identifier for the type of object to which this event applies (aggregate or volume).
+*object_name* (STRING): Name of the object.
+*cpcount* (INT): Consistency Point (CP) at which the event is generated.

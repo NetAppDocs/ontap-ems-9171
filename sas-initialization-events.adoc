@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sas-initialization-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sas.initialization events
+---
+
+= sas.initialization events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sas.initialization.failed
+*Severity*::
+ERROR
+*Description*::
+The SAS adapter failed to initialize the link and appears to be unattached/disconnected.
+*Corrective Action*::
+If the adapter is in use check cabling and if connected to disk shelves check the seating of IOM cards.
+*Syslog Message*::
+Initialization failed on SAS adapter %s.
+*Parameters*::
+*adapterName* (STRING): The name of the associated SAS host bus adapter.

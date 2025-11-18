@@ -1,0 +1,66 @@
+---
+sidebar: sidebar
+permalink: netinet-ethr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netinet.ethr events
+---
+
+= netinet.ethr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netinet.ethr.arpstorm
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a high arrival rate of address resolution protocol (ARP) frames has been detected (possible ARP storm). This condition can indicate a possible network configuration issue.
+*Corrective Action*::
+If you are experiencing network issues, an ARP storm might be a concern. Confirm the ARP storm event is valid and check the network configuration.
+*Syslog Message*::
+The node detected a possible ARP storm on port %s. Detected rate: %d packets per second.
+*Parameters*::
+*port_name* (STRING): Port where the possible ARP storm was detected.
+*rate_count* (LONGINT): ARP arrival rate seen at the port where the possible ARP storm was detected.
+
+== netinet.ethr.broadcstAddr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system finds that the Ethernet address for the IP address is found to be a broadcast address.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ARP: Ethernet address is a broadcast address for IP address %s!
+*Parameters*::
+*ipAddress* (STRING): IP address in Standard Internet dotted notation.
+
+== netinet.ethr.dup.clustIP
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a new node that is trying to join the cluster is using the same IP address that is configured on this node's cluster interface. This can prevent data from being served to clients and potentially bring down the entire cluster.
+*Corrective Action*::
+Use the Ethernet (MAC) address with the "network port show -mac <mac>" command to find the network port. Use the "network interface show -curr-port <port>" command to identify the cluster interface that is configured with the duplciate IP address. Remove the LIF on the cluster interface of the new node in the cluster network by using the "net int delete -vserver <vserver_name> -lif <lif_name>" command. After removing the LIF, assign a new, unique IP address to the cluster interface.
+*Syslog Message*::
+Duplicate IP address %s (Ethernet MAC: %s) configured on the cluster network.
+*Parameters*::
+*ipaddr* (STRING): Duplicate IP address that was detected on the cluster network.
+*ethaddr* (STRING): Ethernet (MAC) address that uniquely identifies the node configured with the duplicate IP address.
+
+== netinet.ethr.duplct.ipAdrr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when another system is detected using an IP address configured on this system.
+*Corrective Action*::
+The Ethernet address uniquely identifies the other system that is using the IP address. If you are using static IP addresses, change the IP address configured on one of the systems. If DHCP is in use on the network, ensure that the static IP address is not in the range being used by the DHCP server.
+*Syslog Message*::
+Duplicate IP address %s!! sent from Ethernet address: %s.
+*Parameters*::
+*ipaddr* (STRING): IP address.
+*ethaddr* (STRING): Ethernet address.

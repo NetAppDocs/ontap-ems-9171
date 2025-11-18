@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: kern-log-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: kern.log events
+---
+
+= kern.log events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== kern.log.rotate
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the system messages log is rotated to a new name. This event will be the first event in the new message file. When in takeover mode, this event is also issued for the partner node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+System %s (ID %s) is running %s
+*Parameters*::
+*hostname* (STRING): The host name of the appliance.
+*serialno* (STRING): The serial number of the host.
+*short_version* (STRING): The short version string of the OnTap kernel, in the form 'NetApp Release NNNN'.

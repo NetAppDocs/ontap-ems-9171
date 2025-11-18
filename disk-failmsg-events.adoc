@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: disk-failmsg-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.failmsg events
+---
+
+= disk.failmsg events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.failmsg
+*Deprecated*::
+Deprecated as of ONTAP 9.5 - replaced by disk.outOfService.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a drive is marked failed, is being sanitized, or has entered Maintenance Center.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s (%s)%s. %d %s
+*Parameters*::
+*diskName* (STRING): Name of the drive.
+*serialno* (STRING): Serial number.
+*reason* (STRING): Reason for the failure.
+*powerOnTime* (INTHEX): Time, in minutes, that the drive was powered on when the failure occurred.
+*disk_information* (STRING): Formatted information about the disk. This includes the disk's vendor, model, firmware revision, and serial number.

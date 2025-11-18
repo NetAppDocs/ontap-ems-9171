@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: vol-duplicate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vol.duplicate events
+---
+
+= vol.duplicate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vol.duplicate.msid
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a duplicate master set ID (MSID) has been detected. This situation might cause ONTAP to incorrectly group together the constituents of separate FlexGroup volumes. This might result in inconsistencies, as ONTAP creates directories and files across separate FlexGroup volumes. This might lead ONTAP to mark FlexGroup volume constituents as inconsistent and take them offline. ONTAP might even mark the entire aggregate as inconsistent and take it offline.
+*Corrective Action*::
+Contact NetApp technical support immediately.
+*Syslog Message*::
+Duplicate MSID "%lu" has been detected in SVM "%s". The duplicate MSID is used for volumes "%s" and "%s".
+*Parameters*::
+*volumeMsid* (LONGINT): MSID of the volumes.
+*vserverName* (STRING): Name of the storage virtual machine (SVM) on which the volumes reside.
+*firstVolName* (STRING): Name of the first volume with the duplicate MSID.
+*secondVolName* (STRING): Name of the second volume with the duplicate MSID.

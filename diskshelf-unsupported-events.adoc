@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: diskshelf-unsupported-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskshelf.unsupported events
+---
+
+= diskshelf.unsupported events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskShelf.unsupported
+*Severity*::
+ALERT
+*Description*::
+This message occurs when ONTAP(R) software detects an unsupported disk shelf.
+*Corrective Action*::
+Verify that the disk shelf attached is supported by the version of ONTAP running on the storage controller. If the disk shelf is supported, replace the disk shelf module.
+*Syslog Message*::
+Disk shelf %s (%s) is unsupported.
+*Parameters*::
+*device* (STRING): Device address of the disk shelf.
+*product_id* (STRING): Product ID of the disk shelf.

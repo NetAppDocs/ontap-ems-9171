@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: raid-vldb-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.vldb events
+---
+
+= raid.vldb events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.vldb.notifyUnsuccessful
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when RAID fails to notify the M-host that the VLDB(volume location database) is online. The notification is retried automatically when RAID receives VLDB online notification later. To check whether the VLDB process and the mgwd process are up and running, run the "cluster ring show -unitname vldb/mgmt" advanced command.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+This message occurs when RAID fails to trigger the VLDB online notification in the M-host.
+*Parameters*::
+(None).

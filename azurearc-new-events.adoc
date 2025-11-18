@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: azurearc-new-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: azurearc.new events
+---
+
+= azurearc.new events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== azurearc.new.agent.created
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a new Microsoft Azure Connected Machine Agent has been onboarded to Azure Arc. A new Microsoft Azure Connected Machine Agent may be onboarded, for instance, when the original ONTAP cluster management server, also called an administrative SVM fails and a new node is designated as the cluster management server. This message is only applicable to Azure NetApp Files systems.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A new Microsoft Connected Machine Agent has been onboarded to Azure Arc. Node: %s
+*Parameters*::
+*node* (STRING): Node name of the cluster management server where the new Microsoft Connected Machine Agent was onboarded.

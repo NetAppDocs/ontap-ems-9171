@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cachemirror-offline-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cachemirror.offline events
+---
+
+= cachemirror.offline events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cacheMirror.offline
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Cache Mirror encounters an error and has to be taken offline. The system functions normally except that takeover and giveback operation times will be negatively affected.
+*Corrective Action*::
+Reboot the node by performing a planned takeover and giveback. Contact NetApp technical support if the problem persists.
+*Syslog Message*::
+Cache Mirror was taken offline because of an unrecoverable error. %s.
+*Parameters*::
+*error_reason* (STRING): String providing information about why Cache Mirror was taken offline.

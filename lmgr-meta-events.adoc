@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: lmgr-meta-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lmgr.meta events
+---
+
+= lmgr.meta events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lmgr.meta.corrupted
+*Severity*::
+ERROR
+*Description*::
+This event occurs when the system detects that the lock manager host metafile is corrupted.
+*Corrective Action*::
+It is possibile that the corruption affected other parts of the file system. Run wafliron on the volume to verify file system consistency.
+*Syslog Message*::
+Corrupted lock state file in volume %s: reinitializing.
+*Parameters*::
+*path* (STRING): Volume name.

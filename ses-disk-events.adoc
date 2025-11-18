@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: ses-disk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ses.disk events
+---
+
+= ses.disk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ses.disk.configOk
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when there are no longer any drives in a FAS2050 system's slots 20 through 23.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk configuration errors have been cleared.
+*Parameters*::
+(None).
+
+== ses.disk.illegalConfigWarn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when disk drives are inserted into the bottom row of a FAS2050 storage appliance. Disk drives are not supported in those slots.
+*Corrective Action*::
+Remove the disk drives.
+*Syslog Message*::
+Disk drives are inserted into unsupported drive slots in the bottom row of the storage appliance.
+*Parameters*::
+(None).

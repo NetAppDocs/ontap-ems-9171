@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: lmgr-lockstate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lmgr.lockstate events
+---
+
+= lmgr.lockstate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lmgr.lockstate.cleanup.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot clean up the lock state associated with the active file system. The stale lock state can lead to problems accessing files through NAS protocols.
+*Corrective Action*::
+Contact NetApp technical support for assistance.
+*Syslog Message*::
+Lock state cleanup failed for '%s' during '%s' on volume '%s%s%s' (DSID %llu) with error %d.
+*Parameters*::
+*lock_type* (STRING): Type of locks being cleaned up.
+*cleanup_reason* (STRING): Reason to clean up locks.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume.
+*volDsid* (LONGINT): Data set identifier (DSID) of the volume.
+*code* (INT): Error code returned while trying to clean up lock state.

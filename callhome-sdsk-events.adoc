@@ -1,0 +1,99 @@
+---
+sidebar: sidebar
+permalink: callhome-sdsk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.sdsk events
+---
+
+= callhome.sdsk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.sdsk.admin
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when you fail a hot spare disk drive.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for SPARE DISK ADMIN REMOVED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.sdsk.fault
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a spare disk drive fails. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Locate the failed disk drive by looking for a disk drive whose red and amber LED fault lights are NOT lit. Replace the failed disk drive. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.sdsk.label
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk drive fails due to unexpected RAID metadata. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Locate the failed disk drive by looking for a disk drive whose red and amber LED fault lights are NOT lit. Replace the failed disk drive. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for SPARE DISK BAD LABEL
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.sdsk.label.v
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk drive fails due to a version number in its RAID metadata that is inconsistent with the operating system version installed. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Locate the failed disk drive by looking for a disk drive whose red and amber LED fault lights are NOT lit. Replace the failed disk drive. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for SPARE DISK BAD LABEL VERSION
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.sdsk.missing
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects that a spare disk drive is not in a loop or is missing. This might also be due to a failed disk drive that is still in the chassis awaiting replacement. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Locate and replace the failed disk drive. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for SPARE DISK MISSING
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.sdsk.noio
+*Severity*::
+ERROR
+*Description*::
+This message occurs when disk drive device commands to a hot spare disk drive are failing with link errors, adapter errors, or timeouts. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Locate the failed disk drive by looking for a disk drive whose red and amber LED fault lights are NOT lit. Replace the failed disk drive. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for SPARE DISK NOT RESPONDING
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.sdsk.shrank
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a hot spare disk drive fails because its raw capacity was downsized due to a firmware change. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Locate the failed disk drive by looking for a disk drive whose red and amber LED fault lights are NOT lit. Replace the failed disk drive. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for SPARE DISK RAWSIZE SHRANK
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

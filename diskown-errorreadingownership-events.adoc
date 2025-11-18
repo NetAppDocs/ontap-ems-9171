@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: diskown-errorreadingownership-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.errorreadingownership events
+---
+
+= diskown.errorreadingownership events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.errorReadingOwnership
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when we get an error while reading all the DOWNs at once. The recovery is to read them individually.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+error %d (%s) while reading ownership on disk %s (S/N %s)
+*Parameters*::
+*errorno* (INT): The error that occurred
+*errortext* (STRING): The error description as text
+*diskname* (STRING): The name of the disk
+*serialno* (STRING): The serial number of the disk

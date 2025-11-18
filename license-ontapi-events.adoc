@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: license-ontapi-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: license.ontapi events
+---
+
+= license.ontapi events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== license.ontapi.eval
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAPI enablement evaluation license is installed successfully.
+*Corrective Action*::
+Contact your sales representative to get a license if you wish to continue using ONTAPI past this expiration date.
+*Syslog Message*::
+ONTAPI enablement evaluation license installed. Expiration: "%s".
+*Parameters*::
+*expiration_date* (STRING): Expiration date of ONTAPI enablement evaluation license.
+
+== license.ontapi.valid
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a valid ONTAPI enablement license has been installed on your system.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ONTAPI enablement license installed. Expiration: "%s".
+*Parameters*::
+*expiration_date* (STRING): Expiration date of ONTAPI enablement license.

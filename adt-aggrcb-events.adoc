@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: adt-aggrcb-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: adt.aggrcb events
+---
+
+= adt.aggrcb events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== adt.aggrcb.unlinkfail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the auditing subsystem cannot remove a stale aggregate control block entry from the Audit aggregate hash table. This could happen if the hash table rearrangement fails because of insufficient memory. In this condition, the auditing subsystem might not function or data access might be denied.
+*Corrective Action*::
+Reboot the node. For high-availability (HA) configurations, perform a takeover and giveback from the partner to reduce the impact on system availability
+*Syslog Message*::
+Auditing subsystem internal error: Aggregate Control Block: %s unlink failed for SVM with UUID: %s because of insufficient memory.
+*Parameters*::
+*AggregateUuid* (STRING): UUID of the aggregate with a stale file handle.
+*VserverUuid* (STRING): UUID of the Storage Virtual Machine(SVM, formerly Vserver).

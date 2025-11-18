@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: connectx-portdisabled-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: connectx.portdisabled events
+---
+
+= connectx.portdisabled events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== connectx.portDisabled
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the HA interconnect port experiences persistent node advertisement send timeouts. Port reinitialization does not correct the problem. The port is disabled.
+*Corrective Action*::
+Reboot the controller. Contact NetApp technical support if the problem persists.
+*Syslog Message*::
+Node advertisement send timed out for the ConnectX device in slot %d, port %d. The port is disabled. Device registers have been dumped to the /etc/mlxlog/ConnectX_regdump file.
+*Parameters*::
+*phys_slot* (INT): Physical slot in which ConnectX is present.
+*port_num* (INT): Port number that is disabled.

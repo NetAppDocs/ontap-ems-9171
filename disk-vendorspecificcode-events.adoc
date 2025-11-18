@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: disk-vendorspecificcode-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.vendorspecificcode events
+---
+
+= disk.vendorspecificcode events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.vendorSpecificCode
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk returns a vendor-specific error.
+*Corrective Action*::
+Replace the disk.
+*Syslog Message*::
+Drive %s has failed with a vendor specific error: class 0x%x segment 0x%x sense_key 0x%x info 0x%x 0x%x 0x%x 0x%x length 0x%x resv_1 0x%x sense_code %d sense_code_qualifier %d fru_failed 0x%x flags 0x%x field_pointer 0x%x.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*class* (INTHEX): Sense class.
+*segment* (INTHEX): Segment.
+*sense_key* (INTHEX): Actual sense key.
+*info0* (INTHEX): Vendor-specific information[0].
+*info1* (INTHEX): Vendor-specific information[1].
+*info2* (INTHEX): Vendor-specific information[2]
+*info3* (INTHEX): Vendor-specific information[3].
+*len* (INTHEX): Length.
+*resv* (INTHEX): Resv field.
+*sense_code* (INT): Actual sense code.
+*qualifier* (INT): Actual sense code qualifier.
+*fru_failed* (INTHEX): Actual FRU code.
+*flags* (INTHEX): Flags of the error.
+*field_ptr* (INTHEX): Sense field pointer.

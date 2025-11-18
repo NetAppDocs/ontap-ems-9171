@@ -1,0 +1,63 @@
+---
+sidebar: sidebar
+permalink: spmgmt-driver-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: spmgmt.driver events
+---
+
+= spmgmt.driver events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== spmgmt.driver.hourly.stats
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system encounters an error while trying to get hourly statistics from the Service Processor (SP). The error could be due a communication error with the SP or the SP might not be operational.
+*Corrective Action*::
+1. Run the 'system service-processor show' command at the Data ONTAP(R) prompt to check whether the SP is online. 2. If the SP is online and this message persists, run the 'system service-processor reboot-sp' command at the Data ONTAP prompt to reboot the SP.
+*Syslog Message*::
+The software driver for the Service Processor (SP) detected a problem: %s.
+*Parameters*::
+*reason* (STRING): Reason for this failure.
+
+== spmgmt.driver.mailhost
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Service Processor (SP) setup cannot connect to the mailhost specified in Data ONTAP(R).
+*Corrective Action*::
+1. Check the system AutoSupport configuration to verify that a valid mailhost is configured in Data ONTAP. 2. Ensure that Data ONTAP can successfully connect to the specified mailhost by running a test command to invoke AutoSupport.
+*Syslog Message*::
+SP setup could not access the mailhost specified in Data ONTAP.
+*Parameters*::
+(None).
+
+== spmgmt.driver.network.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system encounters a failure during network configuration of the Service Processor (SP). The system cannot assign the SP a DHCP (Dynamic Host Configuration Protocol) or fixed IP address.
+*Corrective Action*::
+1. Check whether the network cable is correctly plugged into the SP network port. 2. Check the link status LED on the SP. 3. Verify that the network that the SP is connected to has autonegotiation enabled.
+*Syslog Message*::
+The network configuration of the Service Processor (SP) failed due to cable or network errors.
+*Parameters*::
+(None).
+
+== spmgmt.driver.timeout
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is a failure during communication with the Service Processor (SP) firmware. The failure could be due to a communication error with the SP or the SP might not be operational.
+*Corrective Action*::
+1. Issue the 'system service-processor show' command at the Data ONTAP(R) prompt to check whether the SP is online. 2. If the SP is operational and this message persists, run the 'system service-processor reboot-sp' command at the Data ONTAP prompt to reboot the SP. After the reboot, this message should no longer occur. If the message occurs again, contact NetApp technical support and explain that you already performed the preceding steps.
+*Syslog Message*::
+The software driver for the Service Processor (SP) detected a problem: %s.
+*Parameters*::
+*reason* (STRING): Reason for the failure.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: snmp-server-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snmp.server events
+---
+
+= snmp.server events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snmp.server.busy
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the SNMP daemon is busy serving a high rate of incoming SNMP queries. This might be caused by multiple SNMP clients querying the cluster or a malicious client attempting a denial-of-service attack. SNMP clients might experience delays or timeouts.
+*Corrective Action*::
+Run "tcpdump" on cluster to determine: If multiple SNMP clients querying the cluster, then reduce the rate of SNMP queries to the cluster or stop them entirely for a period of time (~15 minutes). If a malicious SNMP client is trying a denial-of-service attack, then update the firewall policy to block the client from querying the cluster by using the "firewall policy modify -policy mgmt -service snmp -action deny -ip-list IP_address" command.
+*Syslog Message*::
+SNMP daemon is busy serving a high rate of incoming SNMP queries.
+*Parameters*::
+(None).

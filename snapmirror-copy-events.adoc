@@ -1,0 +1,76 @@
+---
+sidebar: sidebar
+permalink: snapmirror-copy-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapmirror.copy events
+---
+
+= snapmirror.copy events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapmirror.copy.baseLine.done
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the baseline transfer of a SnapMirror(R) copy for a volume is completed and the volume comes online.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Baseline transfer for volume %s completed.
+*Parameters*::
+*dstpath* (STRING): Destination volume.
+
+== snapmirror.copy.completed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the final update of a SnapMirror(R) copy for a volume is successfully completed and the volume is ready for transition.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume %s is now ready for transition.
+*Parameters*::
+*dstpath* (STRING): Destination volume.
+
+== snapmirror.copy.FailedErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) copy relation gets an error notitication from the SnapMirror engine.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror copy for volume %s failed. Reason for failure: %s.
+*Parameters*::
+*dstpath* (STRING): Destination volume.
+*reason* (STRING): Reason of failure.
+
+== snapmirror.copy.pause.srcNoNewData
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the source volume of a SnapMirror(R) copy relation is typed 'replica read only' and has no new data to transfer. Transfer to its destiantion is paused.
+*Corrective Action*::
+If new data has been populated on the source volume by a SnapMirror schedule or manual update, run the 'snapmirror copy resume' command to restart the paused transfer. If no new data is expected on source volume,run the 'snapmirror copy complete'command to complete the volume transition.
+*Syslog Message*::
+The source contains no new data; transfer to destination %s is paused.
+*Parameters*::
+*dstpath* (STRING): Destination volume.
+
+== snapmirror.copy.readyFinal
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the update time taken by the latest transfer is smaller than the delta time. The volume is now ready for final update.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Destination volume %s is ready for final update.
+*Parameters*::
+*dstpath* (STRING): Destination volume.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: perclientstorepoolthreshold-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: perclientstorepoolthreshold events
+---
+
+= perclientstorepoolthreshold events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== PerClientStorePoolThreshold
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when one of the NFSv4 clients is consuming more resources of a particular store pool type.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NFSv4 client %s has consumed more resources for store pool type %s.
+*Parameters*::
+*clientIpAddress* (STRING): IP address of the client machine.
+*poolName* (STRING): NFSv4 store pool type.

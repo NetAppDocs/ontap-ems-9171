@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: san-volrehostigroupcreatefailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.volrehostigroupcreatefailed events
+---
+
+= san.volrehostigroupcreatefailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.volRehostIgroupCreateFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs on clustered Data ONTAP(R) systems, during Volume Rehost operation when Data ONTAP fails to create igroup on the destination Vserver.
+*Corrective Action*::
+Please create the igroup using "igroup create".
+*Syslog Message*::
+Failed to create igroup "%s" for Vserver "%s". Reason: "%s".
+*Parameters*::
+*igroup_name* (STRING): Igroup name.
+*vserver_name* (STRING): Vserver name.
+*reason* (STRING): Reason for failure.

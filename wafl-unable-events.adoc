@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: wafl-unable-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.unable events
+---
+
+= wafl.unable events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.unable.markinconsistent
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the FlexVol(R) volume cannot be marked as inconsistent.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL: Unable to mark volume %s inconsistent as %s.
+*Parameters*::
+*vvolname* (STRING): Volume name.
+*reason* (STRING): Reason for the inability to mark the volume inconsistent.

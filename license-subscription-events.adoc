@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: license-subscription-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: license.subscription events
+---
+
+= license.subscription events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== license.subscription.enforcement
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when your Cloud ONTAP(R) license subscription has expired but may still be renewed.
+*Corrective Action*::
+Contact your sales representative to have your subscription reactivated.
+*Syslog Message*::
+%s
+*Parameters*::
+*expiration_msg* (STRING): Expiration message.
+
+== license.subscription.reminder
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when your Cloud ONTAP(R) license subscription is going to expire soon.
+*Corrective Action*::
+Contact your sales representative to renew your subscription as soon as possible.
+*Syslog Message*::
+%s
+*Parameters*::
+*reminder_msg* (STRING): Reminder message.
+
+== license.subscription.warning
+*Severity*::
+ALERT
+*Description*::
+This message occurs when your Cloud ONTAP(R) license subscription is nearly expired.
+*Corrective Action*::
+Contact your sales representative to renew your subscription immediately, to avoid any disruption.
+*Syslog Message*::
+%s
+*Parameters*::
+*warning_msg* (STRING): Warning message.

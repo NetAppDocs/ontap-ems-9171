@@ -1,0 +1,370 @@
+---
+sidebar: sidebar
+permalink: wafl-quota-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.quota events
+---
+
+= wafl.quota events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.quota.control.inconsistent
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the quota control file is inconsistent, or when it is consistent but the qtree metatdata file refers to a vFiler(tm) unit that no longer exists.
+*Corrective Action*::
+Reinitialize quotas for the volume.
+*Syslog Message*::
+Quota: /vol/%s%s%s or a quota tree on it referred to a nonexistent vFiler unit. Quota: Quotas have been turned off.
+*Parameters*::
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+
+== wafl.quota.control.invalid
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system discovers that an invalid quota control file exists.
+*Corrective Action*::
+Reinitialize quotas for the volume.
+*Syslog Message*::
+Quota: Invalid quota control file on %s %s%s%s%s. Quota: Quotas have been turned off.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+
+== wafl.quota.db.createFail
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system cannot create the quota database file.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Quota: Could not create the quota database on %s %s%s%s%s (volume might be full).
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+
+== wafl.quota.db.missing
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system is unable to locate a quota usage database.
+*Corrective Action*::
+Reinitialize quotas for the volume.
+*Syslog Message*::
+WAFL: No quota usage database on %s %s%s%s%s.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+
+== wafl.quota.db.noMemory
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot allocate the quota usage database during initialization.
+*Corrective Action*::
+Add more memory or upgrade the hardware.
+*Syslog Message*::
+WAFL: Could not obtain memory during load of quota usage database. The quota system was not started on %s %s%s%s%s.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+
+== wafl.quota.db.scanFailed
+*Severity*::
+ERROR
+*Description*::
+This event is issued when the system tries and fails to start the scanner necessary to complete a "quota on" command.
+*Corrective Action*::
+Quota initialization has failed due to lack of resources. Re-running a "quota on" after some time should solve the problem.
+*Syslog Message*::
+wafl: quota initialization could not be started on %s %s%s%s%s due to lack of resources. Please wait and re-run "quota on".
+*Parameters*::
+*type* (STRING): The type of object (volume/aggregate)
+*owner* (STRING): The volume owner
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== wafl.quota.group.exceeded
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a group quota has been exceeded on a volume. This event will not be repeated for this group for a set time for until a 'quota resize' is performed. The amount of time is set by the 'quota logmsg' command.
+*Corrective Action*::
+Reduce usage by members of this group on this volume or increase the quota and run 'quota resize'.
+*Syslog Message*::
+gid %d: disk quota exceeded on volume %s%s%s%s. Additional warnings will be suppressed for approximately %d minutes or until a 'quota resize' is performed.
+*Parameters*::
+*id* (INT): The group identifier
+*owner* (STRING): The volume owner
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*mins* (INT): Number of minutes warnings will be supressed
+
+== wafl.quota.groupQtree.correct
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a group quota has been corrected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*id* (INT): Group identifier.
+*tid* (INT): Qtree identifier.
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume in cases in which the volume name alone is insufficient.
+*vfwarn* (STRING): vFiler warning suffix.
+
+== wafl.quota.groupQtree.exceeded
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a group quota has been exceeded on a tree. This event will not be repeated for this group and tree for a set time or until a 'quota resize' is performed. The amount of time is set by the 'quota logmsg' command.
+*Corrective Action*::
+Reduce usage by members of this group in this tree or increase the quota and run 'quota resize'.
+*Syslog Message*::
+gid %d tid %d: disk quota exceeded on volume %s%s%s%s. Additional warnings will be suppressed for approximately %d minutes or until a 'quota resize' is performed.
+*Parameters*::
+*id* (INT): The group identifier
+*tid* (INT): The tree identifier
+*owner* (STRING): The volume owner
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*mins* (INT): Number of minutes warnings will be supressed
+
+== wafl.quota.names.createFail
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system cannot create the quota names file.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+quota: Could not create new quota names file on %s %s%s%s%s.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== wafl.quota.ntfs.defaultAclFail
+*Severity*::
+NOTICE
+*Description*::
+This message indicates that the system was unable to set the default ACL on an NTFS volume.
+*Corrective Action*::
+Set the security style to NTFS again or re-create the volume.
+*Syslog Message*::
+Unable to set default ACL on NTFS %s %s%s%s%s.
+*Parameters*::
+*type* (STRING): Type of object (volume/aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.
+
+== wafl.quota.off.vol.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system could not turn off quotas on the volume.
+*Corrective Action*::
+Use the 'quota off' command to turn off quotas on the volume.
+*Syslog Message*::
+Quotas could not be turned off on volume %s%s.
+*Parameters*::
+*owner* (STRING): Owner of the volume
+*vol* (STRING): Name of the volume
+
+== wafl.quota.qtree.correct
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a tree quota has been corrected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*tid* (INT): Qtree identifier.
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume in cases in which the volume name alone is insufficient.
+*vfwarn* (STRING): vFiler warning suffix.
+
+== wafl.quota.qtree.exceeded
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a tree quota has been exceeded on a volume. This event will not be repeated for this tree for a set amount of time or until a 'quota resize' is performed. The amount of time is set by the 'quota logmsg' command.
+*Corrective Action*::
+Reduce usage in this tree or increase the quota and run 'quota resize'.
+*Syslog Message*::
+tid %d: tree quota exceeded on %s %s%s%s%s. Additional warnings will be suppressed for approximately %d minutes or until a 'quota resize' is performed.
+*Parameters*::
+*tid* (INT): The tree identifier
+*type* (STRING): The type of object (volume/aggregate)
+*owner* (STRING): The volume owner
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*mins* (INT): Number of minutes warnings will be suppressed
+*object_uuid* (STRING): Volume instance UUID of the resource object.
+
+== wafl.quota.sec.change
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message indicates that the security style for a directory has been changed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+security style for /vol/%s%s%s/%s changed from %s to %s
+*Parameters*::
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.
+*dir* (STRING): Directory name.
+*ostyle* (STRING): Former security style.
+*nstyle* (STRING): New security style.
+
+== wafl.quota.user.exceeded
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a user quota has been exceeded on a volume. This event will not be repeated for this user and volume for a set time or until a 'quota resize' is performed. The amount of time is set by the 'quota logmsg' command.
+*Corrective Action*::
+Reduce usage by this user on this volume or increase the quota and run 'quota resize'.
+*Syslog Message*::
+uid %d: disk quota exceeded on volume %s%s%s%s. Additional warnings will be suppressed for approximately %d minutes or until a 'quota resize' is performed.
+*Parameters*::
+*id* (INT): The user identifier
+*owner* (STRING): The volume owner
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*mins* (INT): Number of minutes warnings will be supressed
+
+== wafl.quota.user.exceeded.win
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a user quota has been exceeded on a volume. This event will not be repeated for this user and volume for a set time or until a 'quota resize' is performed. The amount of time is set by the 'quota logmsg' command.
+*Corrective Action*::
+Reduce usage by this user on this volume or increase the quota and run 'quota resize'.
+*Syslog Message*::
+disk quota exceeded on volume %s%s%s%s for Windows user ID: %s. Additional warnings will be suppressed for approximately %d minutes or until a 'quota resize' is performed.
+*Parameters*::
+*owner* (STRING): The volume owner
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*id* (STRING): Windows user identifier
+*mins* (INT): Number of minutes warnings will be supressed
+
+== wafl.quota.userQtree.correct
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a user quota has been corrected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*id* (INT): User identifier.
+*tid* (INT): Qtree identifier.
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume in cases in which the volume name alone is insufficient.
+*vfwarn* (STRING): vFiler warning suffix.
+
+== wafl.quota.userQtree.correct.win
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a user quota has been corrected and the user ID is a SID.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*id* (STRING): Windows identifier value.
+*tid* (INT): Qtree identifier.
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume in cases in which the volume name alone is insufficient.
+*vfwarn* (STRING): vFiler warning suffix.
+
+== wafl.quota.userQtree.exceeded
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a user quota has been exceeded on a tree. This event will not be repeated for this user and tree for a set time or until a 'quota resize' is performed. The amount of time is set by the 'quota logmsg' command.
+*Corrective Action*::
+Reduce usage by this user in this tree or increase the quota and run 'quota resize'.
+*Syslog Message*::
+uid %d tid %d: disk quota exceeded on volume %s%s%s%s. Additional warnings will be suppressed for approximately %d minutes or until a 'quota resize' is performed.
+*Parameters*::
+*id* (INT): The user identifier
+*tid* (INT): The tree identifier
+*owner* (STRING): The volume owner
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*mins* (INT): Number of minutes warnings will be supressed
+
+== wafl.quota.userQtree.exceeded.win
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a user quota has been exceeded on a tree. This event will not be repeated for this user and tree for a set time or until a 'quota resize' is performed. The amount of time is set by the 'quota logmsg' command.
+*Corrective Action*::
+Reduce usage by this user in this tree or increase the quota and run 'quota resize'.
+*Syslog Message*::
+tid %d: disk quota exceeded on volume %s%s%s%s for Windows user ID: %s. Additional warnings will be suppressed for approximately %d minutes or until a 'quota resize' is performed.
+*Parameters*::
+*tid* (INT): The tree identifier
+*owner* (STRING): The volume owner
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*id* (STRING): Windows user identifier
+*mins* (INT): Number of minutes warnings will be supressed

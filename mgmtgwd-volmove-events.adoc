@@ -1,0 +1,46 @@
+---
+sidebar: sidebar
+permalink: mgmtgwd-volmove-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmtgwd.volmove events
+---
+
+= mgmtgwd.volmove events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmtgwd.volmove.notoptimized
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a volume move operation does not take the optimized path to avoid read requests from a cloud-based tier.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume move operation from source aggregate "%s" to destination aggregate "%s" of volume "%s" on Vserver "%s" might need to copy data from existing objects in the capacity tier. Reason: "%s".
+*Parameters*::
+*sourceAggregate* (STRING): Name of the source aggregate.
+*destinationAggregate* (STRING): Name of the destination aggregate.
+*volume* (STRING): Name of the volume.
+*Vserver* (STRING): Vserver that owns the volume.
+*errMsg* (STRING): Error reason why volume move operation did not avoid reads from the cloud.
+
+== mgmtgwd.volmove.optimized
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a volume move operation avoids a read request from a cloud-based tier.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume move operation from source aggregate "%s" to destination aggregate "%s" of volume "%s" on Vserver "%s" avoided copying data from existing objects in the capacity tier.
+*Parameters*::
+*sourceAggregate* (STRING): Name of the source aggregate.
+*destinationAggregate* (STRING): Name of the destination aggregate.
+*volume* (STRING): Name of the volume.
+*Vserver* (STRING): Vserver that owns the volume.

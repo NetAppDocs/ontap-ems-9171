@@ -1,0 +1,76 @@
+---
+sidebar: sidebar
+permalink: volcopy-dst-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: volcopy.dst events
+---
+
+= volcopy.dst events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== volcopy.dst.autoRestrictMsg
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a vol copy start is issued on a volume which is offline.
+*Corrective Action*::
+Vol copy start is issued on a restricted volume, use "vol restrict" to restrict the destination volume.
+*Syslog Message*::
+Vol copy automatically restricting destination volume %s (currently offline).
+*Parameters*::
+*dst* (STRING): The vol copy destination volume
+
+== volcopy.dst.metadataOnly
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a vol copy start operation is issued on a volume which is reverting its checksum state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Metadata only vol copy from %s to %s.
+*Parameters*::
+*src* (STRING): The vol copy source volume
+*dst* (STRING): The vol copy destination volume
+
+== volcopy.dst.noMemory
+*Severity*::
+ERROR
+*Description*::
+This event is issued when there is insufficient memory on the vol copy destination for the transfer to continue.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+System is low on memory, aborting vol copy destination transfer.
+*Parameters*::
+(None).
+
+== volcopy.dst.revert
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a vol copy start operation has to revert the checksum state of the destination volume because the source and destination volumes have differing checksum states.
+*Corrective Action*::
+No corrective action required.
+*Syslog Message*::
+A vol copy transfer to destination volume %s has found that the source and destination volumes have differing checksum states. Data ONTAP is aborting the transfer and reverting the checksum state for the destination volume. After ONTAP displays a message showing the revert is complete, you will need to retry the operation. You can use the "vol status -c" command to see the progress of the reversion.
+*Parameters*::
+*dst* (STRING): The vol copy destination volume
+
+== volcopy.dst.reverting
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a vol copy start operation is issued on a volume which is reverting its checksum state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Aborting vol copy transfer to volume %s because it is reverting its checksum state.
+*Parameters*::
+*dst* (STRING): The vol copy destination volume

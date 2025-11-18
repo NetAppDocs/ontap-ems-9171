@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: disk-rewritedatafailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.rewritedatafailed events
+---
+
+= disk.rewritedatafailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.rewriteDataFailed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system encounters an error and cannot rewrite data that was difficult to read on ATA drives.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Unable to rewrite %s on disk %s.
+*Parameters*::
+*command* (STRING): SCSI command that reported a problem.
+*diskName* (STRING): Name of the device.

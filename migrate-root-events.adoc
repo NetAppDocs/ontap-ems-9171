@@ -1,0 +1,52 @@
+---
+sidebar: sidebar
+permalink: migrate-root-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: migrate.root events
+---
+
+= migrate.root events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== migrate.root.completed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the migration of a root aggregate has completed successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Root aggregate migration completed successfully on node %s.
+*Parameters*::
+*node* (STRING): Name of the node that completed the migration.
+
+== migrate.root.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the migration of a root aggregate has failed.
+*Corrective Action*::
+Run the "system node run -node nodename -command aggr status" command to determine if the target aggregate named "new_root" has been created. If not, address the error condition and attempt the "system node migrate-root" command again. If the new aggregate exists, contact technical support to complete the operation.
+*Syslog Message*::
+Root aggregate migration failed on node %s. Reason: %s.
+*Parameters*::
+*node* (STRING): Name of the node that failed to complete the migration.
+*reason* (STRING): Reason that the migrate operation failed.
+
+== migrate.root.started
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the user initiates an attempt to move the root aggregate to a different set of disks on a node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Root aggregate migration started on node %s.
+*Parameters*::
+*node* (STRING): Name of the node.

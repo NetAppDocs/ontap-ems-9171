@@ -1,0 +1,350 @@
+---
+sidebar: sidebar
+permalink: vs-migrate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vs.migrate events
+---
+
+= vs.migrate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vs.migrate.cleanup.completed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the source Vserver cleanup operation has completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Migrate source Vserver cleanup completed for Vserver: %s.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*migration_uuid* (STRING): Migration UUID.
+
+== vs.migrate.complete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when migrate operation completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Migrate of Vserver:%s has completed.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*migration_uuid* (STRING): Migration UUID.
+
+== vs.migrate.cutover.commit.started
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when migrate cutover commit started successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Migrate cutover has started for Vserver:%s.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*migration_uuid* (STRING): Migration UUID.
+
+== vs.migrate.cutover.completed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when migrate cutover operation completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Migrate cutover has completed for Vserver:%s.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*migration_uuid* (STRING): Migration UUID.
+
+== vs.migrate.cutover.precommit.started
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the migrate operation has started the precommit for cutover.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*migration_uuid* (STRING): Migration UUID.
+
+== vs.migrate.cutover.triggered
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when cutover is triggered on a Vserver that is migrating.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cutover was triggered on a migrating Vserver:%s.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*migration_uuid* (STRING): Migration UUID.
+
+== vs.migrate.dst.ponr.updated
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the vserver migrate cutover workflow has reached and updated the point of no return (PONR) on the destination cluster.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Point of no return on destination Vserver %s has been updated successfully.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*migration_uuid* (STRING): Migration UUID.
+
+== vs.migrate.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Vserver migrate operation fails. This can occur before/during cutover or during post cutover activity. If the failure occurs before or during cutover then the source Vserver will still be operational. If the failure occurs during post cutover activity then the destination Vserver will be operational. Once the migrate issues are fixed, the migrate operation can be resumed from its prior state.
+*Corrective Action*::
+Run the "vserver migrate show -fields status-details" to view the error and follow the corrective action recommended.
+*Syslog Message*::
+Migration of Vserver "%s" Failed.
+*Parameters*::
+*vserver_name* (STRING): Vserver name.
+*err_status* (STRING): Reason for the migrate operation failure and the corrective action to fix the problem.
+*migration_uuid* (STRING): Migration UUID.
+
+== vs.migrate.pause.complete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the migrate operation for a Vserver is paused.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Migrate of Vserver:%s was paused.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*migration_uuid* (STRING): Migration UUID.
+
+== vs.migrate.precheck.completed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the migrate operation has completed the prechecks.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*sourceCluster* (STRING): Name of the source cluster.
+*destinationCluster* (STRING): Name of the destination cluster.
+
+== vs.migrate.precheck.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the migrate operation has failed the prechecks.
+*Corrective Action*::
+Run the "vserver migrate show" command to view the description of the error and the corrective action.
+*Syslog Message*::
+(None).
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*err_status* (STRING): Reason for the precheck operation failure and the corrective action to fix the problem.
+*sourceCluster* (STRING): Name of the source cluster.
+*destinationCluster* (STRING): Name of the destination cluster.
+
+== vs.migrate.precheck.started
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the migrate operation has started the prechecks.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*sourceCluster* (STRING): Name of the source cluster.
+*destinationCluster* (STRING): Name of the destination cluster.
+
+== vs.migrate.readyforcutover
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the migrate operation has reached the ready-for-cutover state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*migration_uuid* (STRING): Migration UUID.
+
+== vs.migrate.resume
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the migrate operation for a Vserver is resumed after an abort or a failure.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Migrate of Vserver:%s was resumed.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*migration_uuid* (STRING): Migration UUID.
+
+== vs.migrate.rolledback
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a Vserver migrate operation rolls back to the transferring state from the transferring, ready-for-cutover, cutover-triggered, or cutover-started state (assuming the point of no return has not been reached). A rollback can be caused by high transfer duration or some other failure while in one of these states.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Migrate state for Vserver %s was rolled back to transferring. Run "vserver migrate show -fields status-details" to see the reason for rollback. If the rollback was due to high transfer duration, reduce the I/O operations at the migrate source cluster to a lower rate.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*migration_uuid* (STRING): Migration UUID.
+
+== vs.migrate.src.abort.completed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Vserver migrate abort operation on the source cluster has completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*migration_uuid* (STRING): Migration UUID.
+
+== vs.migrate.src.abort.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Vserver abort operation on the source cluster has failed.
+*Corrective Action*::
+Run the "vserver migrate show -fields status-details" command to view the description of the error and the corrective action.
+*Syslog Message*::
+Vserver migrate abort operation failed for Vserver: %s. Error: %s
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*err_status* (STRING): Reason for the abort operation failure and the corrective action to fix the problem.
+*migration_uuid* (STRING): Migration UUID.
+
+== vs.migrate.src.cleanup.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the source Vserver cleanup operation fails.
+*Corrective Action*::
+Run the "vserver migrate show -fields status-details" command to view the description of the error and the corrective action.
+*Syslog Message*::
+Migrate source Vserver cleanup failed for Vserver: %s.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*err_status* (STRING): Reason for the source cleanup operation failure and the corrective action to fix the problem.
+*migration_uuid* (STRING): Migration UUID.
+
+== vs.migrate.src.cleanup.started
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the source Vserver cleanup operation starts. This operation starts only after the Vserver user data and configuration metadata have been replicated to the destination cluster, and the destination Vserver is serving data. This cleanup operation eventually deletes the source Vserver.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Migrate source Vserver cleanup started for Vserver: %s.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*migration_uuid* (STRING): Migration UUID.
+
+== vs.migrate.src.ponr.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the vserver migrate cutover workflow has failed to reach and update the point of no return (PONR).
+*Corrective Action*::
+Run "vserver migrate show -instance" at the source cluster. If the point of no return is set to true, run "vserver migrate restart" command at the migrate destination cluster to start the destination Vserver. If the point of no return is set to false and the source Vserver is in a stopped state, run "Vserver start" at the source cluster to start the Vserver.
+*Syslog Message*::
+Failed to update point of no return for Vserver %s.
+*Parameters*::
+*vserver_name* (STRING): Vserver Name.
+*err_status* (STRING): Reason for the ponr operation failure and the corrective action to fix the problem.
+*migration_uuid* (STRING): Migration UUID.
+
+== vs.migrate.src.ponr.updated
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the vserver migrate cutover workflow has reached and updated the point of no return (PONR) on the source cluster.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Point of no return on source Vserver %s has been updated successfully.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*migration_uuid* (STRING): Migration UUID.
+
+== vs.migrate.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the migrate operation for Vserver from source cluster to destination cluster starts.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Migrate of Vserver:%s started from source cluster:%s to destination cluster:%s.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*sourceCluster* (STRING): Name of the source cluster.
+*destinationCluster* (STRING): Name of the destination cluster.
+*migration_uuid* (STRING): Migration UUID.
+
+== vs.migrate.sync.reached
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the migrate operation has reached sync.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*migration_uuid* (STRING): Migration UUID.
+
+== vs.migrate.transferring.completed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the migrate operation has completed the transferring operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*migration_uuid* (STRING): Migration UUID.
+
+== vs.migrate.transferring.started
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the migrate operation has started transferring successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*migration_uuid* (STRING): Migration UUID.

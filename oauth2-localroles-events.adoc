@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: oauth2-localroles-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: oauth2.localroles events
+---
+
+= oauth2.localroles events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== oauth2.localroles.unauth
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an authentication fails when the "use-local-roles-if-present" setting is set to "true", but the user information does not exist in ONTAP, or the scope information within the access token does not grant sufficient access in ONTAP.
+*Corrective Action*::
+Add a local user entry using the "security login create" command, or include the relevant scope information in the access token.
+*Syslog Message*::
+Authentication of requested user "%s" in SVM "%s" failed because the "use-local-roles-if-present" setting is set to "true"; however, the user information does not exist in ONTAP, or the scope information within the access token does not grant sufficient access in ONTAP.
+*Parameters*::
+*user* (STRING): User for whom authentication failed.
+*vserver* (STRING): SVM to which the user belongs.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: mcc-scsipd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mcc.scsipd events
+---
+
+= mcc.scsipd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mcc.scsipd.iScsiSessionReconnectDestroySim
+*Severity*::
+NOTICE
+*Description*::
+iSCSI session maintenance thread was signaled to reconnect and destroy SIM paths.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*watchdogIdx* (INT): The watchdog thread index for the mcc_scsipd driver.
+*watchdogTimeLimit* (INT): The time limit in seconds that the watchdog thread waits before signaling the iSCSI session maintenace thread.

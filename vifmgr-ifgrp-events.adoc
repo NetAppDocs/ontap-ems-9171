@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: vifmgr-ifgrp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.ifgrp events
+---
+
+= vifmgr.ifgrp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.ifgrp.invalidname
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an interface group (ifgrp) is configured with an unsupported name. This ifgrp cannot be modified or destroyed using clustershell or Data ONTAP(R) management APIs.
+*Corrective Action*::
+Special corrective action is necessary to remove this ifgrp; contact NetApp technical support for assistance.
+*Syslog Message*::
+Ifgrp %s has an invalid name and cannot be modified or destroyed.
+*Parameters*::
+*ifgrp* (STRING): Invalid name of the ifgrp.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: san-missinglicense-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.missinglicense events
+---
+
+= san.missinglicense events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.MissingLicense
+*Severity*::
+ERROR
+*Description*::
+This message occurs during replication of the FC/iSCSI service configuration, when the required service is not licensed or has expired in the cluster.
+*Corrective Action*::
+Add the missing or expired license in the cluster by using the "license add" command.
+*Syslog Message*::
+%s license could be missing or expired in the cluster.
+*Parameters*::
+*license_name* (STRING): Name of the missing license.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cf-multidisk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.multidisk events
+---
+
+= cf.multidisk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.multidisk.fatalProblem
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the node is waiting for the partner to take over, after the node encounters a multidisk error or some other fatal error.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Node encountered a multidisk error or other fatal error while waiting to be taken over. %s.
+*Parameters*::
+*mdp_msg* (STRING): Multi Disk Panic (MDP) string.

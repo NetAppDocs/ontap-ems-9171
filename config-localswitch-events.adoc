@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-localswitch-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.localswitch events
+---
+
+= config.localswitch events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.localswitch
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a disk is found attached via both local connection and a switch. This is permitted in debug. The system will be halted in non-debug.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s is attached via a local connection and a switch. This is an illegal configuration.
+*Parameters*::
+*disk* (STRING): Name of the disk.

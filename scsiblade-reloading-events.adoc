@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: scsiblade-reloading-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsiblade.reloading events
+---
+
+= scsiblade.reloading events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsiblade.reloading
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the local node is recovering from a connectivity loss by purging and reloading the SAN configuration cache. When this occurs, both FCP and iSCSI traffic are temporarily disabled until the reload is complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+This node is reloading the SAN configuration cache to recover from a loss of connectivity. While reloading, both FCP and iSCSI services are disabled. When the reload is complete, both services are automatically re-enabled.
+*Parameters*::
+(None).

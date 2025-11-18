@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: repl-ser-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.ser events
+---
+
+= repl.ser events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.ser.ops.pardir.breach
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when number of operations serialized on parent directory exceed an internal limit. This does not harm the system/cluster in any way.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Number of operations serialized on parent directory exceed the internal limit for relationship with UUID %s.
+*Parameters*::
+*relationship_id* (STRING): SnapMirror relationship universal unique identifier (UUID).

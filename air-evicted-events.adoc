@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: air-evicted-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: air.evicted events
+---
+
+= air.evicted events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== air.evicted.qtm.entry
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Automated Incremental Repair (AIR) subsystem evicts an entry in the qtree metafile because of inconsistent data within that entry.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Qtree entry certification failed at %s. In the qtree metafile %d, AIR evicted an entry that corresponds to the TID %d in volume %s.
+*Parameters*::
+*source* (STRING): Location where qtree entry certification failed.
+*inode* (INT): Inode number of the qtree metafile.
+*tid* (INT): TID.
+*volume* (STRING): Name of the volume.

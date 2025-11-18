@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: nblade-nfspathresmaxlinks-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.nfspathresmaxlinks events
+---
+
+= nblade.nfspathresmaxlinks events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.nfsPathResMaxLinks
+*Severity*::
+ERROR
+*Description*::
+This message occurs while resolving an input path, when the server has reached the limit of maximum links it can follow and the corresponding RPC fails.
+*Corrective Action*::
+Use the client IP address included in this message to identify the client sending the request. An operation such as mount or rquota. failing on this client might be due to this error. Reduce the number of symlinks to be followed for the failing operation.
+*Syslog Message*::
+NFS maximum symbolic link limit reached when resolving path. Vserver ID: %d, service protocol:version is %s:%d, client IP address:port is %s:%d, local IP address: %s, RPC procedure number: %d.
+*Parameters*::
+*vserverId* (INT): Identifier for the Vserver associated with this operation.
+*serviceProtocol* (STRING): Network data protocol used in the connection.
+*programVersion* (INT): RPC program version.
+*remoteAddr* (STRING): IP address of the client machine.
+*remotePort* (INT): Remote port number that sent the data.
+*localAddr* (STRING): IP address of the local interface serving the protocol operation.
+*procedureNum* (INT): RPC procedure number for the requested operation.

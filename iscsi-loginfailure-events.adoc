@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: iscsi-loginfailure-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: iscsi.loginfailure events
+---
+
+= iscsi.loginfailure events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== iscsi.loginFailure
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when an initiator fails an iSCSI login attempt.
+*Corrective Action*::
+Attempt to configure the iSCSI text keys on the initiator such that the iSCSI login succeeds. If the event occurs occasionally but does not affect stability or performance, no corrective action is needed but the event should be monitored. If the event persists and/or iSCSI application performance degrades, starting and stopping the iSCSI service and restarting any iSCSI applications may help clear the condition. Contact NetApp technical support.
+*Syslog Message*::
+ISCSI: iSCSI login failure, '%s'
+*Parameters*::
+*m* (STRING): A more detailed message describing the iSCSI login failure.

@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: sfu-ctrllerelmntspershelf-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfu.ctrllerelmntspershelf events
+---
+
+= sfu.ctrllerelmntspershelf events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfu.ctrllerElmntsPerShelf
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a disk shelf firmware download determines the number of controller elements per shelf that can be downloaded.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: %d ES controller %s can be updated on %s.shelf%d.
+*Parameters*::
+*cmdName* (STRING): Name of the command issued, such as "storage shelf firmware update".
+*count* (INT): Number of ES controller elements on this shelf that can be downloaded.
+*pluralElement* (STRING): Element or Elements.
+*channelName* (STRING): Name of the adapter port or switch port on which the disk shelf firmware can be downloaded.
+*shelfId* (INT): ID of the disk shelf on which the disk shelf firmware can be downloaded.

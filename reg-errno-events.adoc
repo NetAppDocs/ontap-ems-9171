@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: reg-errno-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: reg.errno events
+---
+
+= reg.errno events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== reg.errno.addAfterReadable
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when Data ONTAP(tm) cannot add an errno-style error to the list of errors. The error must be added before the readable version is generated. No action by the system administrator is needed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+registry: ignoring attempt to add an error (%d) after errors_readable was called.
+*Parameters*::
+*errnoval* (INT): The numerical value of the error.
+
+== reg.errno.addInvalid
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when Data ONTAP(tm) cannot add an errno-style error to the list of errors. The error number must be non-zero or the error string must be non-NULL. No action by the system administrator is needed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+registry: in errors_add_real, errnoval must be non-zero or str must be non-NULL.
+*Parameters*::
+(None).

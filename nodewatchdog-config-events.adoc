@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: nodewatchdog-config-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nodewatchdog.config events
+---
+
+= nodewatchdog.config events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nodewatchdog.config.invalid
+*Severity*::
+ERROR
+*Description*::
+This message occurs when bootarg.nodewatchdog.level is set to an invalid value. This can only be done manually. When an invalid value is set, Node Watchdog reverts to the default behavior.
+*Corrective Action*::
+Set bootarg.nodewatchdog.level to a valid value at the LOADER> prompt, or modify the value by using the "system node watchdog modify" command.
+*Syslog Message*::
+The value of bootarg.nodewatchdog.level is set to an invalid value, "%s." Node Watchdog reverted to the default behavior (%s).
+*Parameters*::
+*bootarg* (STRING): Value of bootarg.nodewatchdog.level.
+*defaultVal* (STRING): Default value of bootarg.nodewatchdog.level.

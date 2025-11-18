@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: scsiblade-volume-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsiblade.volume events
+---
+
+= scsiblade.volume events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsiblade.volume.event.lost
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when LUNs in the specified Vserver and volume are not accessible on one or more SAN LIFs. Determine the volume name from an MSID by using the "volume show -vserver [vserver name] -msid [id]" command.
+*Corrective Action*::
+The corrective action for this error must be determined from system logs. For more information or assistance, contact NetApp technical support.
+*Syslog Message*::
+Access to LUNs in volume with MSID %llu on Vserver %s has been lost through one or more paths.
+*Parameters*::
+*volume* (LONGINTHEX): Volume identifier (MSID).
+*vserver* (STRING): Name or UUID of the Vserver.

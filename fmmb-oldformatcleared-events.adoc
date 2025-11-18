@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: fmmb-oldformatcleared-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fmmb.oldformatcleared events
+---
+
+= fmmb.oldformatcleared events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fmmb.oldFormatCleared
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when the older format HA mailboxes (special area of disk used for bookkeeping) are cleared on an upgrade from a pre 7.0 version of Data ONTAP to a 7.0 or later version.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Clearing content of %s old format HA mailboxes (special area of disk used for bookkeeping).
+*Parameters*::
+*whichone* (STRING): Either local or partner to indicate which set of HA mailboxes are being cleared.

@@ -1,0 +1,58 @@
+---
+sidebar: sidebar
+permalink: zsm-socket-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: zsm.socket events
+---
+
+= zsm.socket events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== zsm.socket.listener.create
+*Severity*::
+NOTICE
+*Description*::
+The event posted when the listener socket for the ZAPI Socket Manager (ZSM) service cannot be created.
+*Corrective Action*::
+No corrective action is possible. ZSM service is not available without a reboot.
+*Syslog Message*::
+%s initialization failure; cannot create listener socket; error code %d (%s). ZSM service is inaccessible.
+*Parameters*::
+*zsmstring* (STRING): The string describing the type of socket that was not created; currently ZSM.
+*errorcode* (INT): The error code (errno) returned from the failed ZSM listener socket create call.
+*errorstring* (STRING): The character string translation of the error code (errno) returned from the failed ZSM listener socket create call.
+
+== zsm.socket.listener.setoption
+*Severity*::
+NOTICE
+*Description*::
+This event is posted when the listener socket for the ZAPI Socket Manager (ZSM) service cannot be properly initialized.
+*Corrective Action*::
+No corrective action is possible. ZSM service is not available without a reboot.
+*Syslog Message*::
+ZSM initialization failure; cannot set listener socket option %s at level %s; error code %d (%s). ZSM service is inaccessible.
+*Parameters*::
+*socketoption* (STRING): The socket option value that failed.
+*socketlevel* (STRING): The socket option level that failed.
+*errorcode* (INT): The error code (errno) returned from the failed option set call.
+*errorstring* (STRING): The character string translation of the error code (errno) returned from the failed option set call.
+
+== zsm.socket.output.event
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event occurs when the socket for the ZAPI Socket Manager (ZSM) service cannot send output data.
+*Corrective Action*::
+This message usually means that a network error occurred or that the client closed its connection to the storage appliance. Typically, there is no corrective action that you can be take. However, if the destination is available check whether you can examine the storage appliance's and client's event logs to see if networking errors were reported.
+*Syslog Message*::
+(None).
+*Parameters*::
+*destination* (STRING): Client that was to receive the output. If the client is disconnected and its IP address is not available, the text "Not known" is printed.
+*errorcode* (INT): Error code (errno) returned from the failed write call.
+*errorstring* (STRING): The character string translation of the errno returned from the failed socket write call.

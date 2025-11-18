@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: pvif-badmtu-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: pvif.badmtu events
+---
+
+= pvif.badmtu events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== pvif.badMtu
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the interface group (ifgrp) driver fails to update the MTU size on a member port because it does not support the requested configuration.
+*Corrective Action*::
+Use the "ifgrp remove-port" command to remove the member port that does not support the requested MTU size, or use the "broadcast-domain remove-ports" and "broadcast-domain add-ports" commands to assign the ifgrp to a broadcast domain whose MTU are supported on all member ports.
+*Syslog Message*::
+ifgrp %s: unable to update MTU size to %d on %s.
+*Parameters*::
+*ifgrpName* (STRING): Name of the ifgrp.
+*mtuSize* (INT): Requested MTU size.
+*portName* (STRING): Name of the member port.

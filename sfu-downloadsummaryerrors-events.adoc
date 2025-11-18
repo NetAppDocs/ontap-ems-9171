@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: sfu-downloadsummaryerrors-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfu.downloadsummaryerrors events
+---
+
+= sfu.downloadsummaryerrors events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfu.downloadSummaryErrors
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk shelf firmware update completes without successfully downloading to all shelves it attempted.
+*Corrective Action*::
+Issue the (advanced privilege) "storage shelf firmware update" command again.
+*Syslog Message*::
+Shelf firmware updated on %d %s, failed to update on %d %s.
+*Parameters*::
+*successCount* (INT): Number of shelves successfully updated.
+*pluralShelf* (STRING): Shelf or Shelves.
+*failedCount* (INT): Number of shelves that failed to update.
+*pluralShelfFailed* (STRING): Shelf or Shelves.

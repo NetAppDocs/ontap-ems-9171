@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: wafl-volmove-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.volmove events
+---
+
+= wafl.volmove events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.volmove.dst.amd.corrupt
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the active map delta file for a volume move destination is corrupt.
+*Corrective Action*::
+Run wafliron on the volume after the "volume move" operation is complete. For further assistance, contact NetApp technical support.
+*Syslog Message*::
+Active map delta file for the "volume move" destination "%s" is corrupt.
+*Parameters*::
+*vol* (STRING): Volume name.

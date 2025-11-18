@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: wafl-data-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.data events
+---
+
+= wafl.data events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.data.compaction.event
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when data compaction functionality is enabled or disabled on a volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL volume data compaction state changed in %s "%s" to "%s".
+*Parameters*::
+*volume_identifier* (STRING): Volume identifier.
+*volume* (STRING): Volume name.
+*message* (STRING): Whether enable or disable.

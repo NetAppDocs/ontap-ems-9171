@@ -1,0 +1,56 @@
+---
+sidebar: sidebar
+permalink: disk-encrypt-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.encrypt events
+---
+
+= disk.encrypt events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.encrypt.destroy.complete
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the disk encrypt destroy operation is completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s [S/N %s] has completed encrypt destroy.
+*Parameters*::
+*diskName* (STRING): Name of the device.
+*serialno* (STRING): Serial number of the device.
+
+== disk.encrypt.range.check
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) software detects that the reported capacity of an encrypting drive is different from the protected range capacity of the drive.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Drive %s["%s"] - The protected range capacity (%llu) of this encrypting drive is different from its reported capacity (%llu).
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*productID* (STRING): Product name of the disk.
+*advertisedDriveCapacity* (LONGINT): Capacity reported by the drive(in bytes).
+*protectedDriveCapacity* (LONGINT): Protected capacity of the drive(in bytes), specifically the drive capacity that is protected using an authentication key.
+
+== disk.encrypt.revert.complete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the disk encrypt revert operation is completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s [S/N %s] has completed encrypt revert.
+*Parameters*::
+*diskName* (STRING): Name of the device.
+*serialno* (STRING): Serial number of the device.

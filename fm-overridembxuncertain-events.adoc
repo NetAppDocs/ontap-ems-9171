@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: fm-overridembxuncertain-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fm.overridembxuncertain events
+---
+
+= fm.overridembxuncertain events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fm.overrideMbxUncertain
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the user has chosen to override a mailbox uncertain state using the CTRL_O option. The node could have gotten into the mailbox uncertain state if, while booting up, it finds that one or more disks are missing and it does not have the requisite number of mailbox disks to boot up. If the override was successful, at least half of the online disks were also present in the mailbox hints bootarg and the node will boot up. If the override was unsuccessful, the node continues to remain in an uncertain mailbox state and will not boot up completely.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+HA mailbox uncertain state overridden.
+*Parameters*::
+(None).

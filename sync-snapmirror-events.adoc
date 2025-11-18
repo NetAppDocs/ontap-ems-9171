@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: sync-snapmirror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sync.snapmirror events
+---
+
+= sync.snapmirror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sync.snapmirror.arl.veto
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a storage failover (SFO) operation is vetoed because the aggregate is hosting volumes that are in a SnapMirror(R) Synchronous relationship with StrictSync policy.
+*Corrective Action*::
+Either convert all SnapMirror Synchronous relationships with StrictSync Policy to Sync Policy for the volumes in the aggregate and then retry the operation, or retry the operation with the "override-vetoes true" parameter. Note: Using this option can cause an I/O disruption.
+*Syslog Message*::
+SnapMirror vetoed storage failover operation because aggregate "%s" is hosting volumes that are in a SnapMirror Synchronous relationship with StrictSync policy.
+*Parameters*::
+*aggrname* (STRING): Name of the aggregate.
+
+== sync.snapmirror.oos.frequent
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) Sync relationship frequently changes status from "in-sync" to "out-of-sync". This behaviour impacts data protection. I/O restrictions are imposed on the source volume based on the mode of replication. For relationships with policy type "strict-sync-mirror", both client read AND write access are disallowed.
+*Corrective Action*::
+Check network connection between the source and destination volumes. Monitor the SnapMirror(R) Sync relationship status by using the "snapmirror show" command and observe field "last-transfer-error" to identify the reasons for frequent status change of the SnapMirror(R) Sync relationship to "out-of-sync".
+*Syslog Message*::
+Source volume "%s" and destination volume "%s" with relationship UUID "%s" is frequently undergoing change in status from "in-sync" to "out-of-sync".
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume of the SnapMirror relationship.
+*dstpath* (STRING): Path name of the destination volume of the SnapMirror relationship.
+*relationship_id* (STRING): Relationship UUID.

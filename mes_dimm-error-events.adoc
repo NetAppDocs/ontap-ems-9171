@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: mes_dimm-error-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mes_dimm.error events
+---
+
+= mes_dimm.error events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mes_dimm.error
+*Severity*::
+ALERT
+*Description*::
+This message appears when an error is encountered by MES (Memory Error Statistics).
+*Corrective Action*::
+DIMM error reported. Please contact NetApp technical support for further assistance.
+*Syslog Message*::
+DIMM error - %s.
+*Parameters*::
+*error* (STRING): Error message from Data ONTAP.

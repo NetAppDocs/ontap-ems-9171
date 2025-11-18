@@ -1,0 +1,65 @@
+---
+sidebar: sidebar
+permalink: monitor-power-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.power events
+---
+
+= monitor.power events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.power.degraded
+*Deprecated*::
+Deprecated as of version 9.2. Last used in 7.3.6 on Tin and Dell one-PSU systems. It is the last user of snmp trap 43.
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the main unit power supply is in a degraded mode.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+Power supply is in degraded mode: %s
+*Parameters*::
+*report* (STRING): Description of the problem.
+
+== monitor.power.normal
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system has sufficient power (220V) to power up both controllers.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The power provided to the system is sufficient.
+*Parameters*::
+(None).
+
+== monitor.power.not.sufficient
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a storage system in a low-line (110V) power configuration does not have sufficient power to support both controllers. The built-in hardware logic prevents the controller in the bottom slot from powering up.
+*Corrective Action*::
+A high-line (220V) power configuration is needed to power up both controllers. Power off the system, connect the power supply unit (PSU) with 220V power, and then power up the system.
+*Syslog Message*::
+The bottom controller is not powered up due to insufficient power.
+*Parameters*::
+(None).
+
+== monitor.power.unreadable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a power sensor in the controller module is not readable.
+*Corrective Action*::
+Shut down the system and power-cycle the controller module. If the sensor is still not readable, replace the controller module.
+*Syslog Message*::
+A power sensor %s in the controller module is not readable.
+*Parameters*::
+*sensor_name* (STRING): Sensor name.

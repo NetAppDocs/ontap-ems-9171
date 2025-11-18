@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: clam-update-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: clam.update events
+---
+
+= clam.update events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== clam.update.partner.state
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Kernel Cluster Services (KCS) Connectivity, Liveliness, Availability Monitor (CLAM) updates the failover state of the partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+CLAM on node (ID=%llu) updated failover state of partner (ID=%llu) to %s.
+*Parameters*::
+*localnodeid* (LONGINT): Node ID of the local node.
+*partnernodeid* (LONGINT): Node ID of the partner node.
+*partner_state* (STRING): Description of the partner state.

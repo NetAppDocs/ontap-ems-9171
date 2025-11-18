@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sfo-reassignfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfo.reassignfailed events
+---
+
+= sfo.reassignfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfo.reassignFailed
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs during the Storage Failover takeover process, when the disks from the failed node cannot be reassigned due to the failure listed. Access to the failed node's volumes will be unavailable until this situation is fixed.
+*Corrective Action*::
+Use the "storage disk show -owner" command to verify that the surviving node can access the failed node's disks. Use the "storage disk show -owner" command to verify that the node can access the partner disks. Investigate and remedy the error listed. Use the "storage failover takeover" command to retry the takeover.
+*Syslog Message*::
+The takeover disk reassignment failed due to %s.
+*Parameters*::
+*msg* (STRING): Information about the error that prevented the reassignment.

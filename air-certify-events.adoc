@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: air-certify-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: air.certify events
+---
+
+= air.certify events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== air.certify.cancel
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a metadata inconsistency is discovered inside a file system feature that is read-only and therefore cannot be immediately corrected. One or more processes in ONTAP(R) software might have been canceled when they encountered the inconsistency.
+*Corrective Action*::
+No immediate corrective action is necessary, because the ONTAP process that encountered the inconsistency has been automatically canceled. If the condition persists, contact NetApp technical support for assistance.
+*Syslog Message*::
+AIR certification of %s failed: %s, %s ; message %s canceled for subtype %d
+*Parameters*::
+*fh* (STRING): File handle of the object with an inconsistency.
+*condition* (STRING): Specific metadata validation test that failed.
+*source* (STRING): Location of the failing metadata validation test.
+*msg* (STRING): The ONTAP process that encountered the inconsistency.
+*subtype* (INT): Subtype of the inode encountering the inconsistency.

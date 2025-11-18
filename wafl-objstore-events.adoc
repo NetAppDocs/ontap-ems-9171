@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: wafl-objstore-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.objstore events
+---
+
+= wafl.objstore events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.objstore.ownership.conflict
+*Severity*::
+ALERT
+*Description*::
+This message occurs when FabricPool aggregate and SnapMirror(R) tries to share the same underlying objectstore connection pools in a platform where the sharing is not supported.
+*Corrective Action*::
+For more information or assistance, contact NetApp technical support.
+*Syslog Message*::
+FabricPool aggregate and SnapMirror(R) cannot share the underlying objectstore connection pool. Objectstore Config id: %u, current owner: %u.
+*Parameters*::
+*primary_config_id* (INT): Primary object store config id.
+*current_owner* (INT): Existing owner. FabricPool(1)/SnapMirror(2).

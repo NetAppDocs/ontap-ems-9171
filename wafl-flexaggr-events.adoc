@@ -1,0 +1,64 @@
+---
+sidebar: sidebar
+permalink: wafl-flexaggr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.flexaggr events
+---
+
+= wafl.flexaggr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.flexaggr.multi.root
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system found multiple local root flexaggregates from volume location database (VLDB) during the mount process. It might cause a boot problem or the system might exhibit unexpected behavior.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Found multiple local root flexaggregate from VLDB during mount.
+*Parameters*::
+(None).
+
+== wafl.flexaggr.no.root
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system is unable to find any local root flexaggregate from volume location database (VLDB) during the mount process. If there is no root flexaggregate, data aggregates may not come online.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Failed to find any local root flexaggregate from VLDB during mount.
+*Parameters*::
+(None).
+
+== wafl.flexaggr.rgadd.nonstatic.alloc.verify
+*Severity*::
+ALERT
+*Description*::
+A flexaggr has been reinitialized. We must verify the RG add upgrade to non-static allocation (if such an upgrade was required or already done) has been left in a consistent state between the two partner flexaggrs.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Flexaggr %s has been reinitialized. We must verify the RG add upgrade to non-static allocation (if such an upgrade was required or already done) has been left in a consistent state between the two partner flexaggrs.
+*Parameters*::
+*flexaggrname* (STRING): Flexaggregate name.
+
+== wafl.flexaggr.rgadd.upgrade.handshake.error
+*Severity*::
+ERROR
+*Description*::
+An error has occuring during the Raid Group Add non-static allocation upgrade handshake.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Flexaggr %s has encountered an error (%d) during Raid Group Add non-static allocation upgrade handshake.
+*Parameters*::
+*flexaggrname* (STRING): Flexaggregate name.
+*error* (INT): Error code.

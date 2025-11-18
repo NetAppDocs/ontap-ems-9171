@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: monitor-unknown-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.unknown events
+---
+
+= monitor.unknown events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.unknown.message
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the status monitor receives an unexpected message type. This is an internal error.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Internal error: status monitor received message type %d, expected type %d
+*Parameters*::
+*msgType* (INT): (None).
+*expectedType* (INT): (None).

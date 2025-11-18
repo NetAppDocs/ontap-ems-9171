@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: hashd-maxstore-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: hashd.maxstore events
+---
+
+= hashd.maxstore events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== hashd.maxstore.oversize
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the size of hashes in the hash store is greater than the maximum size configured.
+*Corrective Action*::
+If the hash files are not being retained for a long enough duration, consider resizing the maximum size of the hash store by issuing the 'vserver cifs branchcache modify -hash-store-max-size' command.
+*Syslog Message*::
+Size of the hashes in the hash store exceeded maximum size configured for Vserver %s.%s
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver where the problem is occuring.
+*oldestKept_timestamp* (STRING): Timestamp of the oldest kept hash file.

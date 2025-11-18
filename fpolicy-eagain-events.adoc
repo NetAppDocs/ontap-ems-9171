@@ -1,0 +1,44 @@
+---
+sidebar: sidebar
+permalink: fpolicy-eagain-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fpolicy.eagain events
+---
+
+= fpolicy.eagain events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fpolicy.eagain.disconnect
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the TCP connection to the FPolicy server is broken four times in a two minute interval due to EAGAIN error. ONTAP will not establish a new connection and FPolicy notifications will not be sent to the server.
+*Corrective Action*::
+Persistent EAGAIN errors indicate slow network or slow/unresponsive FPolicy server. Check the connection between the FPolicy server and the node or contact the FPolicy application's vendor support to address the slow/unresponsive server.
+*Syslog Message*::
+Connection to the FPolicy server "%s" of policy "%s" is broken for Vserver %s ( reason: "%s" ).
+*Parameters*::
+*fpserver* (STRING): IP address of the FPolicy server.
+*policy* (STRING): Name of the policy.
+*vserver* (STRING): Vserver Name.
+*reason* (STRING): Reason for disconnection.
+
+== fpolicy.eagain.on.write
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when there is no space in the send buffer for sending a message to the FPolicy server. The FPolicy server is apparently slow in reading notifications.
+*Corrective Action*::
+Occasional EAGAIN (resource temporarily unavailable) errors can occur for transient network issues. If this message occurs frequently, check the connection between the FPolicy server and the node. If the errors persist, contact the FPolicy application's vendor support.
+*Syslog Message*::
+Write returned EAGAIN while sending notification to the FPolicy server "%s" for Vserver %s with UUID %s.
+*Parameters*::
+*fpserver* (STRING): IP address of the FPolicy server.
+*vserver* (STRING): Vserver Name.
+*Vserver_UUID* (STRING): Vserver UUID.

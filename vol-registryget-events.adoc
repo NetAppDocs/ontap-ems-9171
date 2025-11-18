@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: vol-registryget-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vol.registryget events
+---
+
+= vol.registryget events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vol.registryGet.no512520BPS
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a registry request finds no 512 or 520 BPS (bytes per sector) disks.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+No disk has 512 or 520 BPS.
+*Parameters*::
+(None).
+
+== vol.registryGet.nonDefBPS
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a registry request finds disks whose BPS (bytes per sector) is other than the default 512 or 520.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk had %d BPS; system expected 512 or 520 BPS.
+*Parameters*::
+*cad_bps* (INT): Disk configuration attribute of bytes per sector.
+
+== vol.registryGet.noZoneCksum
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a registry request for zoned or block checksum volumes finds no such volumes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+No volume has zoned or block checksums.
+*Parameters*::
+(None).

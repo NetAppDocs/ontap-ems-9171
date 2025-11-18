@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: iscsi-session-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: iscsi.session events
+---
+
+= iscsi.session events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== iscsi.session.stateChanged
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when iSCSI session status is changed.
+*Corrective Action*::
+If the identified iSCSI session is experiencing unexpected events (disconnecting, reconnecting, or connected), examine the link for excessive errors or latency.
+*Syslog Message*::
+iSCSI session state is changed to %s for the target %s (type: %s, address: %s). %s
+*Parameters*::
+*iscsi_session_state* (STRING): New iSCSI session state.
+*iscsi_target* (STRING): iSCSI target name.
+*iscsi_target_type* (STRING): iSCSI target type.
+*iscsi_target_address* (STRING): iSCSI target address.
+*iscsi_session_state_change_reason* (STRING): Reason for the iSCSI session state change.
+*iscsi_timeout_value* (INT): iSCSI timeout value.

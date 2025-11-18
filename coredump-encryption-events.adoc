@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: coredump-encryption-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: coredump.encryption events
+---
+
+= coredump.encryption events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== coredump.encryption.disabled
+*Severity*::
+ERROR
+*Description*::
+This message occurs when encryption is configured on the controller, but the coredump subsystem cannot encrypt data. A system panic in this situation results in no core file being produced.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+Coredump encryption cannot encrypt data. Core file will not be saved in this state.
+*Parameters*::
+(None).
+
+== coredump.encryption.restored
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when encryption is configured on the controller, the coredump subsystem experienced a transient problem encrypting data, but has since recovered and will be able to save encrypted core dump files in the event of a system panic.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Coredump encryption experienced a failure in the past but has recovered. Core files can now be saved.
+*Parameters*::
+(None).

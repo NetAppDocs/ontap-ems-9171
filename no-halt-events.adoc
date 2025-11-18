@@ -1,0 +1,89 @@
+---
+sidebar: sidebar
+permalink: no-halt-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: no.halt events
+---
+
+= no.halt events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== no.halt.brokenDisk
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the option raid.timeout is set to 0 or if the option hasn't been set by the user, disabling automatic shutdown on a disk failure.
+*Corrective Action*::
+Add an appropriate spare disk.
+*Syslog Message*::
+%s in RAID group "%s" %s broken. Automatic system shutdown has been disabled.
+*Parameters*::
+*type* (STRING): Type of disk.
+*rgname* (STRING): RAID group name.
+*verb* (STRING): Failed disk verb.
+
+== no.halt.brokenDisk.notice
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a node is in a degraded state because of a broken disk, but the option raid.timeout is set to 0 or its value hasn't been modified by the user, disabling automatic shutdown on a disk failure. Shutdown is to encourage you to replace broken disks. This message occurs on a capacity-optimized platform with broken disks irrespective of the value of the option raid.timeout.
+*Corrective Action*::
+Consult other logged messages or use the "storage disk show -broken" command to determine the identity of broken disks. Remove any broken disks. Automatic system shutdown can be enabled by altering the "raid.timeout" value using the "storage raid-options modify" command. NOTE: The option "raid.timeout" will not affect the automatic shutdown on a capacity-optimized platform.
+*Syslog Message*::
+%s. automatic system shutdown is disabled. Replace the disk immediately.
+*Parameters*::
+*type* (STRING): Type of degradation.
+
+== no.halt.nvramLowBatt.info
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the option raid.timeout has been set to 0, disabling automatic shutdown on a low NVRAM Battery condition.
+*Corrective Action*::
+Replace the NVRAM battery. Automatic system shutdown can be enabled by altering the "raid.timeout" value using the "storage raid-options modify" command.
+*Syslog Message*::
+Automatic system shutdown is disabled. If the NVRAM battery is dangerously low, replace it immediately.
+*Parameters*::
+(None).
+
+== no.halt.nvramLowBatteries
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the option raid.timeout is set to 0, disabling automatic shutdown on a low NVRAM Batteries condition.
+*Corrective Action*::
+Replace the NVRAM batteries.
+*Syslog Message*::
+NVRAM batteries are dangerously low. Automatic system shutdown is disabled. Replace the batteries immediately!
+*Parameters*::
+(None).
+
+== no.halt.nvramLowBattery
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the option raid.timeout is set to 0, disabling automatic shutdown on a low NVRAM Battery condition.
+*Corrective Action*::
+Replace the NVRAM battery.
+*Syslog Message*::
+NVRAM battery is dangerously low. Automatic system shutdown is disabled. Replace the battery immediately!
+*Parameters*::
+(None).
+
+== no.halt.nvramLowBatts.info
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the option raid.timeout has been set to 0, disabling automatic shutdown on a low NVRAM Batteries condition.
+*Corrective Action*::
+Replace the NVRAM batteries. Automatic system shutdown can be enabled by altering the "raid.timeout" value using the "storage raid-options modify" command.
+*Syslog Message*::
+Automatic system shutdown is disabled. If the NVRAM batteries are dangerously low, we encourage you to replace it immediately.
+*Parameters*::
+(None).

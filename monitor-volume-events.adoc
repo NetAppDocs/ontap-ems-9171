@@ -1,0 +1,49 @@
+---
+sidebar: sidebar
+permalink: monitor-volume-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.volume events
+---
+
+= monitor.volume events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.volume.full
+*Severity*::
+ALERT
+*Description*::
+This message occurs when one or more file systems are full, typically indicating at least 98% full. The space usage is computed based on the active file system size and is computed by subtracting the value of the "Snapshot Reserve" field from the value of the "Used" field of the "volume show-space" command. Either a volume or an aggregate can be over 100% full due to space used or reserved by metadata. A value greater than 100% might cause Snapshot copy space to become unavailable or cause a volume to become logically overallocated. See the "vol.log.overalloc" EMS message for more information.
+*Corrective Action*::
+For non-ASA r2 platforms, create space by increasing the volume or aggregate size, or by deleting data or deleting Snapshot copies. To increase a volume's size, use the "volume size" command. To delete a volume's Snapshot copy, use the "volume snapshot delete" command. To increase an aggregate's size, add disks by using the "storage aggregate add-disks" command. Aggregate Snapshot copies are deleted automatically when the aggregate is full. For ASA r2 platforms, create space in the volume or aggregate. To create space in an aggregate, add more disks to the cluster. To create space in a volume, delete data or delete Snapshot copies. To delete a Snapshot copy, use the "vserver consistency-group snapshot delete" command.
+*Syslog Message*::
+%s "%s%s%s" is full (using or reserving %s%% of space and %s%% of inodes).
+*Parameters*::
+*object_type* (STRING): Identifier for the type of object to which this event applies (aggregate or volume).
+*name* (STRING): Name of this object.
+*app* (STRING): Application universal unique identifier (UUID)
+*vserver_uuid* (STRING): UUID of the object's storage virtual machine (SVM), if the object is a volume. Otherwise, this string is empty.
+*percent_full_blocks* (STRING): Used capacity of the space of the object, as a percentage.
+*percent_full_inodes* (STRING): Used capacity of inodes of the object, as a percentage.
+
+== monitor.volume.nearlyFull
+*Severity*::
+ERROR
+*Description*::
+This message occurs when one or more file systems are nearly full, typically indicating at least 95% full. The space usage is computed based on the active file system size and is computed by subtracting the value of the "Snapshot Reserve" field from the value of the "Used" field of the "volume show-space" command.
+*Corrective Action*::
+For non-ASA r2 platforms, create space by increasing the volume or aggregate sizes, or by deleting data or deleting Snapshot copies. To increase a volume's size, use the "volume size" command. To delete a volume's Snapshot copies, use the "volume snapshot delete" command. To increase an aggregate's size, add disks by using the "storage aggregate add-disks" command. Aggregate Snapshot copies are deleted automatically when the aggregate is full. For ASA r2 platforms, create space in the volume or aggregate. To create space in an aggregate, add more disks to the cluster. To create space in a volume, delete data or delete Snapshot copies. To delete a Snapshot copy, use the "vserver consistency-group snapshot delete" command.
+*Syslog Message*::
+%s %s%s%s is nearly full (using or reserving %s%% of space and %s%% of inodes).
+*Parameters*::
+*object_type* (STRING): Identifier for the type of object to which this event applies (aggregate or volume).
+*name* (STRING): Name of this object.
+*app* (STRING): Application universal unique identifier(UUID).
+*vserver_uuid* (STRING): UUID of the object's storage virtual machine (SVM), if the object is a volume. Otherwise, this string is empty.
+*percent_full_blocks* (STRING): Used capacity of the space of the object, as a percent.
+*percent_full_inodes* (STRING): Used capacity of inodes of the object, as a percent.

@@ -1,0 +1,62 @@
+---
+sidebar: sidebar
+permalink: s3-bucket-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: s3.bucket events
+---
+
+= s3.bucket events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== s3.bucket.invalid.accessKey
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the access key is invalid and it has been used to access the S3 bucket/object.
+*Corrective Action*::
+Verify that the access key is valid and it has been configured correctly before accessing the bucket/object.
+*Syslog Message*::
+S3 %s operation failed while accessing bucket "%s" on S3 server %s because access key "%s" is invalid.
+*Parameters*::
+*operation* (STRING): S3 request name.
+*bucket* (STRING): Name of the S3 bucket.
+*serverHostname* (STRING): Hostname of the S3 server.
+*accessKey* (STRING): Access key.
+
+== s3.bucket.notFound
+*Deprecated*::
+This event is renamed to "osc.bucket.notFound"
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the bucket is not found while trying to access an S3 object.
+*Corrective Action*::
+Verify that the bucket has been created on the S3 server and the bucket name has been correctly configured in ONTAP before accessing the bucket.
+*Syslog Message*::
+Bucket "%s" not found on S3 server %s when performing %s operation.
+*Parameters*::
+*bucket* (STRING): Name of the S3 bucket.
+*serverHostname* (STRING): Hostname of the S3 server.
+*operation* (STRING): S3 request name.
+
+== s3.bucket.signatureMismatch
+*Deprecated*::
+This event is renamed to "osc.signatureMismatch"
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the request signature sent to the S3 server does not match the signature calculated by the server. This could be due to either an incorrect secret key or an internal ONTAP software error in calculating the signature.
+*Corrective Action*::
+Verify that the secret access key is configured correctly. If it is correct, contact NetApp technical support for assistance.
+*Syslog Message*::
+S3 %s operation server-calculated request signature does not match the signature sent to S3 server %s for bucket "%s".
+*Parameters*::
+*operation* (STRING): S3 request name.
+*serverHostname* (STRING): Hostname of the S3 server.
+*bucket* (STRING): Name of the S3 bucket.

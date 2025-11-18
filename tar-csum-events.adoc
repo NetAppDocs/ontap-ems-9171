@@ -1,0 +1,78 @@
+---
+sidebar: sidebar
+permalink: tar-csum-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: tar.csum events
+---
+
+= tar.csum events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== tar.csum.csumUnsuccessful
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system accesses a TAR archive and compares the calculated checksum of this archive to a stored checksum, but the checksum calculation does not succeed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Checksum of %s could not be calculated.
+*Parameters*::
+*tgz_path* (STRING): Path to the archive for which the checksum calculation failed.
+
+== tar.csum.extractFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system accesses a TAR archive and compares the calculated checksum of the archive to a stored checksum, but the extraction of such an archive fails.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+TAR extraction of %s failed with rc=%d.
+*Parameters*::
+*tgz_path* (STRING): Path to the archive for which extraction failed.
+*rc* (INT): Error code clarifying why the extraction of the archive failed.
+
+== tar.csum.match
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system accesses a TAR archive and compares the calculated checksum of the archive to a stored checksum. In this case, the calculated and stored checksums for the archive match.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Stored checksum matches, not extracting %s.
+*Parameters*::
+*tgz_path* (STRING): Path to the archive for which the calculated and stored checksums match.
+
+== tar.csum.mismatch
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system accesses a TAR archive and compares the calculated checksum of the archive to a stored checksum. In this case, the calculated and stored checksums for the TAR archive do not match.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Stored checksum %u does not match calculated checksum %u, extracting %s.
+*Parameters*::
+*stored_csum* (INTHEX): Value of the stored checksum.
+*calculated_csum* (INTHEX): Value of the calculated checksum.
+*tgz_path* (STRING): Path to the archive for which the calculated and stored checksums do not match.
+
+== tar.csum.notFound
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system accesses a TAR archive and compares the calculated checksum of the archive to a stored checksum. In this case, the file containing the stored checksum does not exist, necessitating the extraction of the archive.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Stored checksum file does not exist, extracting %s.
+*Parameters*::
+*tgz_path* (STRING): Path to the archive for which a corresponding stored checksum file does not exist.

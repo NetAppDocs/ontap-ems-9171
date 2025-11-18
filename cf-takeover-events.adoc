@@ -1,0 +1,87 @@
+---
+sidebar: sidebar
+permalink: cf-takeover-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.takeover events
+---
+
+= cf.takeover events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.takeover.aborted.bdfu
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when negotiated takeover is aborted because the background disk firmware update took more than 120 seconds to finish.
+*Corrective Action*::
+Rerun the takeover command.
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).
+
+== cf.takeover.delayed.bdfu
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when negotiated takeover is initiated on a node while the background disk firmware update (BDFU) is in progress. If update is not completed within 120 seconds, takeover is aborted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).
+
+== cf.takeover.delayed.cleanup
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when takeover of a node by the node's high-availability (HA) partner was delayed due to the cleanup being performed after the previous giveback event.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*delay* (LONGINT): Amount of time (in milliseconds) the takeover was delayed.
+
+== cf.takeover.disabled
+*Severity*::
+ALERT
+*Description*::
+This message occurs when takeover of a node by the node's high-availability (HA) partner is disabled.
+*Corrective Action*::
+Resolve the issue, as identified by the message, for takeover being disabled. Use the "storage failover show -instance" command to determine whether the disks are accessible by both nodes in the HA pair, also check the HA interconnect between both nodes is installed and functioning correctly. If not, fix the cabling, disk, or adapter issues to resolve the connectivity issues.
+*Syslog Message*::
+%s.
+*Parameters*::
+*reason* (STRING): Reason for takeover being disabled.
+
+== cf.takeover.missing.ptnrDiskInventory
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a takeover request is denied because the node did not receive the partner disk inventory information.
+*Corrective Action*::
+Wait five minutes and then try takeover again. If you want to disable the disk inventory check instead, you can use the "cf disable diskInventory" command from the advanced privilege level of the nodeshell. However, disabling the disk inventory check might lead to a client outage when the local node cannot see the partner disks during takeover.
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).
+
+== cf.takeover.missingPtnrDisks
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a takeover request is denied because the node cannot see some of the partner's drives.
+*Corrective Action*::
+Make sure that the local node has connectivity to all file system drives owned by the partner. Use the "storage failover show -fields local-missing-disks, partner-missing-disks" command to rescan the drive and to determine latest ownership. Drives might not be visible if partner drives have failed or the node is having issues accessing the partner node's drives. Verify that the HA interconnect cabling is correct, replace any failed drives and then check whether the issue is resolved.
+*Syslog Message*::
+Failover monitor: Takeover failed because the node cannot see some of the partner node's drives.
+*Parameters*::
+(None).

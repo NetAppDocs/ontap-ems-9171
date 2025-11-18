@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nv-clam-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nv.clam events
+---
+
+= nv.clam events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nv.clam.dirty.shutdown
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a node's connectivity, liveness, availability monitor (CLAM) requests a graceful shutdown of its HA partner, but during the takeover it is determined that the partner volumes are unexpectedly dirty. The takeover occurred during an NVRAM sync, so the partner NVRAM is zeroed, resulting in potential data loss.
+*Corrective Action*::
+Check accompanying EMS messages wafl.vol.invalidate.fh or wafl.vol.setting.in.nvfailed.state for possible corrective actions. Call NetApp technical support for further assistance.
+*Syslog Message*::
+NVRAM validate: An unexpected dirty shutdown occurred during a CLAM takeover but continuing takeover; some data might be lost.
+*Parameters*::
+(None).

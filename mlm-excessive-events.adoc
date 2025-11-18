@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: mlm-excessive-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mlm.excessive events
+---
+
+= mlm.excessive events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mlm.excessive.TPlatency
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP(R) detects that the average SCSI I/O command latency on the target port of the array exceeds the set threshold. This message indicates a degradation of I/O throughput for the target port of the array.
+*Corrective Action*::
+Reduce the I/O load on the device, increase the number of array target ports available for I/O, and/or alleviate the cause for the excessive latency on the device.
+*Syslog Message*::
+Average latency of %dus on target port %s, has exceeded %dus
+*Parameters*::
+*avg_latency* (INT): Current average latency of commands for the array target port in microseconds.
+*wwpn* (STRING): World Wide Port Name of the array target port on which the excessive latency was detected.
+*threshold* (INT): Threshold value for excessive average latency in microseconds.

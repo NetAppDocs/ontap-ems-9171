@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: repository-snapshot-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repository.snapshot events
+---
+
+= repository.snapshot events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Repository.Snapshot.Access
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Infinite Volume namespace redirector restores access to the Infinite Volume Snapshot(tm) copies after it recovers from an internal communication problem that had previously shut down access.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Infinite Volume namespace redirector restored access to the Snapshot copies after it recovered from an internal communication problem.
+*Parameters*::
+(None).
+
+== Repository.Snapshot.NoAccess
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Infinite Volume namespace redirector cannot get access to Snapshot(tm) mapping updates due to an internal communication issue, so it prevents access to the Infinite Volume Snapshot copies. Several scenarios can cause this condition, including the following: 1. The cluster administrator has made the node ineligible for the cluster. 2. Intense system loading can cause this problem temporarily.
+*Corrective Action*::
+If the cluster administrator has made the node ineligible for the cluster (through "cluster modify"), make the node eligible again. If the condition persists or occurs repeatedly, other serious issues might be the cause and you should contact NetApp technical support.
+*Syslog Message*::
+Infinite Volume namespace redirector shut down access to the Snapshot copies due to an internal communication problem.
+*Parameters*::
+(None).

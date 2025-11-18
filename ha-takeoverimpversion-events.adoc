@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ha-takeoverimpversion-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.takeoverimpversion events
+---
+
+= ha.takeoverimpversion events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.takeoverImpVersion
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the partner node is down; however, due to a version mismatch, it is currently impossible to perform a takeover.
+*Corrective Action*::
+Upgrade the downrev node, so that both nodes are on the same release of Data ONTAP(R). If a revert is being performed, downgrade the uprev node to the same release as the partner node.
+*Syslog Message*::
+Takeover of the partner node is impossible due to version mismatch.
+*Parameters*::
+(None).

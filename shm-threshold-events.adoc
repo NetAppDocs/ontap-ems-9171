@@ -1,0 +1,267 @@
+---
+sidebar: sidebar
+permalink: shm-threshold-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: shm.threshold events
+---
+
+= shm.threshold events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== shm.threshold.agrsvIOCount
+*Deprecated*::
+This event is removed as it is a test message not intended for customers.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a disk that exceeds the threshold count of high aggressive IO latencies.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s has exceeded %d IOs which have latencies greater than the threshold.
+*Parameters*::
+*disk_name* (STRING): Name of the disk.
+*agrsv_IO_count* (INT): Count of aggressive timeout IOs.
+
+== shm.threshold.allMediaErrors
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detect more than 25 medium and/or recovered errors in a 10-minute window.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+shm: Disk %s has crossed the combination media error threshold in a 10 minute window.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+
+== shm.threshold.checksumErrors
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk exceeds the threshold of checksum errors on the same block.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+shm: Disk %s has exceeded the threshold for checksum errors on the same block; the system will fail the disk.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+
+== shm.threshold.consecutiveAborts
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk exceeds the threshold of consecutive abort errors on one drive.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+shm: Disk %s has exceeded the threshold of %d consecutive abort errors; the system will fail the disk if possible.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*count* (INT): Count of errors.
+
+== shm.threshold.consecutiveTimeouts
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk exceeds the threshold of consecutive timeouts on one drive.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+shm: Disk %s has exceeded the threshold of %d consecutive timeouts; the system will fail the disk if possible.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*count* (INT): Count of errors.
+
+== shm.threshold.disk.pcycle
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk exceeds the threshold of power-cycle error recovery tries.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+shm: Disk %s has exceeded the threshold for power-cycle error recovery events; the system will fail the disk if possible.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+
+== shm.threshold.disk.poh
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the storage system contains drives that exceed five years of cumulative power-on hours. This five-year period represents the expected reliable lifespan of the drive. The likelihood that a drive will fail increases significantly the longer the drive stays in use beyond its warranty period.
+*Corrective Action*::
+For additional guidance, search for Support Bulletin SU464 on the NetApp Support Site.
+*Syslog Message*::
+There are "%d" drives that have exceeded five years of life. To view them, use the "storage disk show -power-on-hours >=43800 -fields power-on-hours" command.
+*Parameters*::
+*count* (INT): Count of drives that have exceeded the five year threshold.
+
+== shm.threshold.highIOLatency
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects a disk that has an average IO latency during the current window that is significantly greater than all other drives of the same class.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s exceeds the average IO latency threshold and will be recommended for failure.
+*Parameters*::
+*disk_name* (STRING): Name of the disk.
+
+== shm.threshold.lipStormReset
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects more than one instance of a disk resetting itself because of a large number of Loop Initialization Procedure requests (a LIP storm). The disk will be failed.
+*Corrective Action*::
+Replace the disk.
+*Syslog Message*::
+shm: The system has detected more than one LIP storm reset on disk %s.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+
+== shm.threshold.mediaErrorsLba
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects more than three media (recovered or medium) errors on the same block.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+shm: Disk %s has had multiple media errors on sector %llu.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*block_num* (LONGINT): Block number.
+
+== shm.threshold.mediaErrorsReassign
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects more than three medium and/or recovered errors in a 10-minute window on the same disk sector. The bad sector will be reassigned.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+shm: Disk %s has had multiple media errors on the same sector in the last 10 minutes, and is reassigning the sector.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+
+== shm.threshold.mediumErrors
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects more than 25 medium errors in a 10-minute window.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+shm: Disk %s has crossed the medium error threshold in a 10 minute window.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+
+== shm.threshold.mediumErrors7days
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects more than 100 medium errors in a seven-day window.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+shm: Disk %s has crossed the medium error threshold in a seven-day window.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+
+== shm.threshold.ratedLife
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the rated life used by a solid state drive (SSD) exceeds 90%. When an SSD reaches 100% of rated life, it might not be able to retain data while powered off for long periods of time.
+*Corrective Action*::
+The number of weeks of rated life remaining indicated for each SSD is an estimate based on past usage. If the SSD is expected to remain in service beyond the estimated remaining time, initiate planning for SSD replacement when the rated life reaches 100%. Use the "storage disk show -ssd-wear" command to monitor the current rated life used by your SSDs.
+*Syslog Message*::
+shm: There are %d drives that have consumed at least 90 percent of their rated life: %s.
+*Parameters*::
+*count* (INT): Count of drives that have exceeded the threshold.
+*disk_names* (STRING): Name, percentage of rated life and estimated remaining time before reaching 100% rated life of each SSD that has exceeded the threshold.
+
+== shm.threshold.ratedLife2
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the rated life used by a solid state drive (SSD) exceeds 95%. When an SSD reaches 100% of rated life, it might not be able to retain data while powered off for long periods of time.
+*Corrective Action*::
+The number of weeks of rated life remaining indicated for each SSD is an estimate based on past usage. If the SSD is expected to remain in service beyond the estimated remaining time, initiate planning for SSD replacement when the rated life reaches 100%. Use the "storage disk show -ssd-wear" command to monitor the current rated life used by your SSDs.
+*Syslog Message*::
+shm: There are %d drives that have consumed at least 95 percent of their rated life: %s.
+*Parameters*::
+*count* (INT): Count of drives that have exceeded the threshold.
+*disk_names* (STRING): Name, percentage of rated life and estimated remaining time before reaching 100% rated life of each SSD that has exceeded the threshold.
+
+== shm.threshold.ratedLifeMax
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the rated life used value exceeds 100% on a solid state drive (SSD). When an SSD reaches 100% of rated life, it might not be able to retain data while powered off for long periods of time.
+*Corrective Action*::
+Replace the SSDs that have reached the end of their rated life.
+*Syslog Message*::
+shm: There are %d drives that have reached the end of their rated life: %s
+*Parameters*::
+*count* (INT): Count of drives that have exceeded the threshold.
+*disk_names* (STRING): Name and percentage of rated life of each SSD that has exceeded the threshold.
+
+== shm.threshold.recoveredErrors
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects more than 25 recovered errors in a 10-minute window.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+shm: Disk %s has crossed the recovered error threshold in a 10 minute window.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+
+== shm.threshold.sensekey
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk exceeds the threshold of a particular sense key error.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+shm: Disk %s has exceeded the threshold for sense key %d errors; the system will fail the disk if possible.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*senseKey* (INT): Sense key value.
+
+== shm.threshold.spareBlocksConsumed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the spare blocks consumed value exceeds the first threshold on an SSD drive.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+shm: There are %d disks that have consumed at least 60 percent of their use-based internal spare capacity. The affected disks are: %s.
+*Parameters*::
+*count* (INT): Count of disks which have exceeded the threshold.
+*disk_names* (STRING): Names of the disk drives.
+
+== shm.threshold.spareBlocksConsumedMax
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the spare blocks consumed value exceeds the second threshold on an SSD drive.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+shm: There are %d disks that have consumed at least 80 percent of their use-based internal spare capacity. The affected disks are: %s.
+*Parameters*::
+*count* (INT): Count of disks which have exceeded the second threshold.
+*disk_names* (STRING): Names of the disk drives.

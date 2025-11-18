@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: dump-terminate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dump.terminate events
+---
+
+= dump.terminate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dump.terminate
+*Severity*::
+NOTICE
+*Description*::
+This event is generated during dump termination, we see if we can retrieve the name of the dump. If we are unable to retrieve the name of the dump then dump id that is terminated is notified or else both dump id and name of the dump are notified
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Terminating dump(%d)%s
+*Parameters*::
+*dump_id* (INT): Dump ID
+*dump_name* (STRING): Dump Name
+
+== dump.terminate.reserved
+*Severity*::
+NOTICE
+*Description*::
+This event is generated when we tried to terminate dump and have checked if dump is in the reserved state. This is just a notification message for dump termination and it is also restartable.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Terminating restartable dump(%d)
+*Parameters*::
+*dump_id* (INT): Dump ID

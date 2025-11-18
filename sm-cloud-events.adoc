@@ -1,0 +1,251 @@
+---
+sidebar: sidebar
+permalink: sm-cloud-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sm.cloud events
+---
+
+= sm.cloud events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sm.cloud.med.added.high.lat
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the ONTAP cloud mediator is deployed in an environment where network latency between ONTAP and the BlueXP cloud server exceeds the acceptable threshold for operation. If subsequent API calls repeatedly experience high latencies, the mediator status will be marked as unhealthy.
+*Corrective Action*::
+Check the mediator connection status using the "snapmirror mediator show" command. If the status is not "connected", check the network between the ONTAP cluster and the BlueXP cloud server. If the network is good, check the BlueXP mediator service performance.
+*Syslog Message*::
+ONTAP cloud mediator is added between this cluster and peer cluster %s. The BlueXP cloud server ping latency is %d milliseconds which is greater than the threshold of %d milliseconds.
+*Parameters*::
+*peerCluster* (STRING): Peer cluster name.
+*latency* (INT): Latency observed in milliseconds when the ONTAP cloud mediator is added.
+*latency_threshold* (INT): Latency threshold in milliseconds which is considered a normal value during the configuration of ONTAP cloud mediator.
+
+== sm.cloud.med.attempt.high.lat
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an attempt is made to add the ONTAP cloud mediator, but the network latency between ONTAP and the BlueXP cloud server exceeds the acceptable operational threshold. This is a warning, and the mediator add operation may still proceed. If subsequent API calls repeatedly experience high latencies, the mediator status may be marked as unhealthy.
+*Corrective Action*::
+Check the mediator connection status using the "snapmirror mediator show" command as mediator add might still be successful. If the status is not "connected", check the network between the ONTAP cluster and the BlueXP cloud server. If the network is good, check the BlueXP mediator service performance.
+*Syslog Message*::
+ONTAP cloud mediator add is attempted between this cluster and peer cluster %s. The BlueXP cloud server ping latency is %d milliseconds which is greater than the threshold of %d milliseconds.
+*Parameters*::
+*peerCluster* (STRING): Peer cluster name.
+*latency* (INT): Latency observed in milliseconds when the ONTAP cloud mediator add is attempted.
+*latency_threshold* (INT): Latency threshold in milliseconds which is considered a normal value during the configuration of ONTAP cloud mediator.
+
+== sm.cloud.med.cacert.compl.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the ONTAP cloud mediator certificate authority (CA) certificate encryption compliance check fails. ONTAP cloud mediator will be set to unusable state.
+*Corrective Action*::
+Remove the configuration of the current ONTAP cloud mediator by using the "snapmirror mediator remove" command. Update the CA certificate on the ONTAP cloud mediator server. Reconfigure access to the ONTAP cloud mediator by using the "snapmirror mediator add" command with the new CA certificate.
+*Syslog Message*::
+Encryption compliance check for CA certificate failed.
+*Parameters*::
+(None).
+
+== sm.cloud.med.cacert.expired
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the ONTAP cloud mediator certificate authority (CA) certificate has expired. As a result, all further communication to the ONTAP cloud mediator will not be possible.
+*Corrective Action*::
+Remove the configuration of the current ONTAP cloud mediator by using the (advanced privilege) "snapmirror mediator remove -force true" command. Update the CA certificate on the ONTAP cloud mediator server. Reconfigure access to the ONTAP cloud mediator by using the "snapmirror mediator add" command with the new CA certificate.
+*Syslog Message*::
+CA certificate of the ONTAP cloud mediator expired on %s.
+*Parameters*::
+*expiryDate* (STRING): Expiry date of the ONTAP cloud mediator CA certificate.
+
+== sm.cloud.med.cacert.expiring
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the ONTAP cloud mediator certificate authority (CA) certificate is set to expire within the next 30 days.
+*Corrective Action*::
+Before this certificate expires, remove the configuration of the current ONTAP cloud mediator by using the "snapmirror mediator remove" command. Update the CA certificate on the ONTAP cloud mediator server. Reconfigure access to the ONTAP cloud mediator by using the "snapmirror mediator add" command with the new CA certificate.
+*Syslog Message*::
+CA certificate for the ONTAP cloud mediator will expire in %d days. Expiry: %s.
+*Parameters*::
+*daysToExpire* (INT): Number of days remaining until the certificate expires.
+*expiryDate* (STRING): Expiry date of the ONTAP cloud mediator CA certificate.
+
+== sm.cloud.med.cacert.invalid
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the ONTAP cloud mediator certificate authority (CA) certificate is not yet valid. ONTAP cloud mediator will be set to unusable state.
+*Corrective Action*::
+Remove the configuration of the current ONTAP cloud mediator by using the (advanced privilege) "snapmirror mediator remove -force true" command. Update the CA certificate on the ONTAP cloud mediator server. Reconfigure access to the ONTAP cloud mediator by using the "snapmirror mediator add" command with the new CA certificate.
+*Syslog Message*::
+CA certificate for the ONTAP cloud mediator is not yet valid.
+*Parameters*::
+(None).
+
+== sm.cloud.med.cacert.missing
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the ONTAP cloud mediator certificate authority (CA) certificate does not exist. ONTAP cloud mediator will be set to unusable state.
+*Corrective Action*::
+Remove the configuration of the current ONTAP cloud mediator by using the (advanced privilege) "snapmirror mediator remove -force true" command. Install a valid CA certificate in ONTAP. Reconfigure access to the ONTAP cloud mediator by using the "snapmirror mediator add" command.
+*Syslog Message*::
+CA certificate for the ONTAP cloud mediator does not exist.
+*Parameters*::
+(None).
+
+== sm.cloud.med.serc.compl.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the ONTAP cloud mediator server certificate encryption key is not ONTAP compliant. ONTAP cloud mediator will be set to unusable state.
+*Corrective Action*::
+Remove the configuration of the current ONTAP cloud mediator by using the "snapmirror mediator remove" command. Update the CA certificate on the ONTAP cloud mediator server. Reconfigure access to the ONTAP cloud mediator by using the "snapmirror mediator add" command with the new server certificate.
+*Syslog Message*::
+Server certificate encryption key is not ONTAP compliant.
+*Parameters*::
+(None).
+
+== sm.cloud.med.serverc.expired
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the ONTAP cloud mediator server certificate has expired. As a result, all further communication to the ONTAP cloud mediator will not be possible.
+*Corrective Action*::
+Remove the configuration of the current ONTAP cloud mediator by using the (advanced privilege) "snapmirror mediator remove -force true" command. Update the server certificate on the ONTAP cloud mediator server. Reconfigure access to the ONTAP cloud mediator by using the "snapmirror mediator add" command with the new server certificate.
+*Syslog Message*::
+Server certificate of the ONTAP cloud mediator expired on %s.
+*Parameters*::
+*expiryDate* (STRING): Expiry date of the ONTAP cloud mediator server certificate.
+
+== sm.cloud.med.serverc.expiring
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the ONTAP cloud mediator server certificate is set to expire within the next 30 days.
+*Corrective Action*::
+Before this certificate expires, remove the configuration of the current ONTAP cloud mediator by using the "snapmirror mediator remove" command. Update the server certificate on the ONTAP cloud mediator server. Reconfigure access to the ONTAP cloud mediator by using the "snapmirror mediator add" command with the new server certificate.
+*Syslog Message*::
+Server certificate for the ONTAP cloud mediator will expire in %d days. Expiry: %s.
+*Parameters*::
+*daysToExpire* (INT): Number of days remaining until the certificate expires.
+*expiryDate* (STRING): Expiry date of the ONTAP cloud mediator server certificate.
+
+== sm.cloud.med.serverc.invalid
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the ONTAP cloud mediator server certificate is not yet valid. ONTAP cloud mediator will be set to unusable state.
+*Corrective Action*::
+Remove the configuration of the current ONTAP cloud mediator by using the (advanced privilege) "snapmirror mediator remove -force true" command. Update the server certificate on the ONTAP cloud mediator server. Reconfigure access to the ONTAP cloud mediator by using the "snapmirror mediator add" command with the new server certificate.
+*Syslog Message*::
+Server certificate for the ONTAP cloud mediator is not yet valid.
+*Parameters*::
+(None).
+
+== sm.cloud.mediator.added
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP cloud mediator is added successfully on a cluster.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ONTAP cloud mediator is added between this cluster and peer cluster "%s".
+*Parameters*::
+*peerCluster* (STRING): Peer cluster name.
+
+== sm.cloud.mediator.in.quorum
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the ONTAP cloud mediator connectivity is reestablished, its records are resynchronized and it is ready to participate in SnapMirror(R) active sync quorum activities.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The ONTAP cloud mediator connectivity is reestablished, its records are resynchronized and it is ready to participate in SnapMirror(R) active sync quorum activities. Peer cluster: %s.
+*Parameters*::
+*peerCluster* (STRING): Peer cluster name.
+
+== sm.cloud.mediator.normal.lat
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the API call latencies between the ONTAP cluster and ONTAP cloud mediator running on BlueXP cloud server are back in the normal range.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+API call latencies between this cluster and ONTAP cloud mediator are now within the normal range of up to %d milliseconds.
+*Parameters*::
+*latency_threshold* (INT): API call latency threshold in milliseconds that is considered as a normal value.
+
+== sm.cloud.mediator.outage.lat
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the API call latencies between the ONTAP cluster and ONTAP cloud mediator running on BlueXP cloud server repeatedly exceed the defined threshold. The connection between the two is temporarily disabled until the latencies return to a normal range.
+*Corrective Action*::
+Check the network between the ONTAP cluster and the BlueXP cloud server and check the BlueXP mediator service performance.
+*Syslog Message*::
+The ONTAP cloud mediator is unreachable due to API call latencies exceeding %d milliseconds %d times consecutively.
+*Parameters*::
+*latency_threshold* (INT): API call latency threshold in milliseconds that is considered as an outage value.
+*consecutive_count_threshold* (INT): Number of consecutive occurrences of API latency falling in the outage range after which an action is taken.
+
+== sm.cloud.mediator.removed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP cloud mediator is removed successfully from a cluster.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The ONTAP cloud mediator configured between this cluster and peer cluster "%s" is removed.
+*Parameters*::
+*peerCluster* (STRING): Peer cluster name.
+
+== sm.cloud.mediator.removed.force
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the ONTAP cloud mediator is forcefully removed from the local cluster, potentially leaving the configuration on the peer cluster intact. Such a partial configuration can cause SnapMirror failover operations to fail.
+*Corrective Action*::
+Check whether the current ONTAP cloud mediator is configured on the peer cluster. If so, remove the ONTAP cloud mediator by using the (advanced privilege) "snapmirror mediator remove -force true" command.
+*Syslog Message*::
+ONTAP cloud mediator between this cluster and peer cluster "%s" was removed using the "force" option.
+*Parameters*::
+*peerCluster* (STRING): Peer cluster name.
+
+== sm.cloud.mediator.slow.lat
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the API call latencies between the ONTAP cluster and ONTAP cloud mediator running on BlueXP cloud server repeatedly exceed the defined threshold. As a result, SnapMirror active sync failover operations may fail or take longer to complete.
+*Corrective Action*::
+Check the network between the ONTAP cluster and the BlueXP cloud server and check the BlueXP mediator service performance.
+*Syslog Message*::
+The connection between this cluster and ONTAP cloud mediator is experiencing slow latencies due to API calls exceeding %d milliseconds %d times consecutively.
+*Parameters*::
+*latency_threshold* (INT): API call latency threshold in milliseconds that is considered as a slow value.
+*consecutive_count_threshold* (INT): Number of consecutive occurrences of API latency falling in the slow range after which an action is taken.
+
+== sm.cloud.mediator.unreachable
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the ONTAP cloud mediator is unreachable on a cluster. SnapMirror active sync failover functionality is not available from now on.
+*Corrective Action*::
+Verify that the BlueXP cloud service is up, running and reachable.
+*Syslog Message*::
+ONTAP cloud mediator is unreachable from the local cluster.
+*Parameters*::
+(None).

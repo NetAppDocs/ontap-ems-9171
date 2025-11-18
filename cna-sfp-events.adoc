@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cna-sfp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cna.sfp events
+---
+
+= cna.sfp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cna.sfp.notSupported
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the converged network adapter (CNA) detects an unsupported small form-factor Pluggable (SFP) in the adapter.
+*Corrective Action*::
+Replace the unsupported SFP with a supported SFP.
+*Syslog Message*::
+The SFP in adapter %s is not supported.
+*Parameters*::
+*adapter* (STRING): Name of the adapter.

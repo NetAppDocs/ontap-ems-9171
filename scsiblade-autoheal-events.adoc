@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: scsiblade-autoheal-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsiblade.autoheal events
+---
+
+= scsiblade.autoheal events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsiblade.autoheal.disabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the node loses connectivity with the majority of the cluster and autoheal has been explicitly disabled by the user. When this occurs, both FCP and iSCSI traffic are disabled on this node and require manual intervention to come back into service.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+This node lost connectivity with the majority of the cluster. The option "san.autoheal.enable" is "off", so the cluster's SAN configuration will not automatically recover. Both FCP and iSCSI traffic are disabled on this node.
+*Parameters*::
+(None).

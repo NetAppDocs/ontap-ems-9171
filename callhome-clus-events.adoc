@@ -1,0 +1,61 @@
+---
+sidebar: sidebar
+permalink: callhome-clus-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.clus events
+---
+
+= callhome.clus events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.clus.net.degraded
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the cluster network has experienced an issue that could potentially affect connectivity, reliability, redundancy, or performance, as observed from the local node. A degraded cluster network might cause a cluster-wide outage. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+See the EMS event log for additional information related to the issue. If the event_type is "Frequent Link Flapping", check the network cables that are connected to the specified port for any loose connections. If the event_type is "Large MTU Packet Loss", verify cluster switch MTU settings and ensure that all cluster network ports are configured with the same MTU. If the event_type is "Total Packet Loss", verify all cluster network connectivity and configuration and ensure that all cluster network ports are reachable from one another. If the event_type is "Cluster LIF Not Assigned to Any Port" and the cluster ports are link "down", check the network cables that are connected to the specified port for any loose connnections. Ensure that the cluster ports are administratively configured link "up". If the cluster ports are link "up", attempt to manually migrate the cluster LIF to another cluster port. If the event_type is "Cluster LIF Administratively Down", use the "network interface modify" command to change the status-admin state of the cluster LIF to "up". If the event_type is "Insufficient L2 Reachability", verify that the network topology is correct and the ports are correctly assigned to the right broadcast domain. If the problem persists after correcting any issues, call NetApp technical support.
+*Syslog Message*::
+Call home for %s: %s - %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*event_type* (STRING): The type of the event that signaled that the cluster network might be operating in a degraded state from the perspective of the local node.
+*event_details* (STRING): Details of the event that signaled that the cluster network might be operating in a degraded state from the perspective of the local node.
+
+== callhome.clus.vol.cre.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the active volume required to store the system data needed for cluster-wide storage cannot be created. This is typically due to not finding an aggregate with the specified size or mirrored attribute to create the volume. The specified feature cannot function without this volume. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Study the error message and take steps to rectify the problem. For example, if the error message indicates that the volume create failed because the aggregate is offline, use the 'aggr online -aggregate' command to bring it back online. If the error message does not indicate an obvious problem, run the 'aggregate show' command to find the state of the aggregate and 'metrocluster check config-replication show-aggregate-eligibility' command to find the eligibility of aggregates for configuration replication. If the aggregate is full, try to create space on it. Otherwise, if possible, create an aggregate with the specified mirror attribute and size by using the 'aggregate create -aggregate name -diskcount diskcount -disksize size -mirror mirrorattribute' command. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s. Could not create volume after %d attempts for feature %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*AttemptsMade* (INT): Count of failed attempts to create the volume.
+*Feature* (STRING): Feature using the cluster-wide storage.
+*ErrorMessage* (STRING): Error message on create failure at time of event generation
+*Size* (STRING): Size of the volume to be created.
+*Mirror* (STRING): Mirrored attribute of the aggregate.
+
+== callhome.clus.vol.del.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volumes that were used for cluster-wide storage cannot be deleted. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Study the error message and take steps to rectify the problem. For example, if the error message indicates that the volume delete failed because the aggregate is offline, use the 'aggr online -aggregate aggregate_name' command to bring it back online. If the error message does not indicate an obvious problem, contact NetApp technical support
+*Syslog Message*::
+Call home for %s. Could not delete volumes "%s" and "%s" for feature %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*ActiveVolume* (STRING): Active volume name.
+*StandbyVolume* (STRING): Standby volume name.
+*Feature* (STRING): Feature using the cluster-wide storage.

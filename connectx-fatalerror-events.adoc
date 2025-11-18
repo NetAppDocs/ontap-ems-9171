@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: connectx-fatalerror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: connectx.fatalerror events
+---
+
+= connectx.fatalerror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== connectx.fatalError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a fatal error is polled from the ConnectX(tm) InfiniBand(R) adapter. Controller failover will be disabled.
+*Corrective Action*::
+Contact NetApp technical support. ConnectX registers have been dumped to the /etc/mlxlog/ConnectX_regdump file.
+*Syslog Message*::
+HA interconnect HBA failure, ConnectX fatal error was polled.
+*Parameters*::
+(None).

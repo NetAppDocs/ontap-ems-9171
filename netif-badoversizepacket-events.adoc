@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: netif-badoversizepacket-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.badoversizepacket events
+---
+
+= netif.badoversizepacket events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.badOversizePacket
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the network interface card (NIC) receives a bad oversize packet.
+*Corrective Action*::
+Try a different switch port.
+*Syslog Message*::
+Bad oversize packet received on network interface %s. Check for NIC receive errors (CRC, runts, fragments). Might indicate a bad switch port.
+*Parameters*::
+*ifName* (STRING): Name of the network interface; for example, "e8a".

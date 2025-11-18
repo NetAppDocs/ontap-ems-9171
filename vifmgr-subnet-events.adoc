@@ -1,0 +1,57 @@
+---
+sidebar: sidebar
+permalink: vifmgr-subnet-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.subnet events
+---
+
+= vifmgr.subnet events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.subnet.addr.acquired
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an address is successfully acquired from a subnet's available-ranges list.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Address %s has been successfully acquired from subnet %s (ipspace %s).
+*Parameters*::
+*address* (STRING): Address acquired.
+*subnet* (STRING): Name of the subnet.
+*ipspace* (STRING): Name of the subnet's IPspace.
+
+== vifmgr.subnet.addr.released
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an address is successfully released back to a subnet's available-ranges list.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Address %s has been successfully released back to subnet %s (ipspace %s).
+*Parameters*::
+*address* (STRING): Address released.
+*subnet* (STRING): Name of the subnet.
+*ipspace* (STRING): Name of the subnet's IPspace.
+
+== vifmgr.subnet.usedAddr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a LIF's address conflicts with a subnet's list of used and available addresses due to an inconsistency in the configuration of the subnet or LIF.
+*Corrective Action*::
+Either the address of the LIF, the address ranges, or the available addresses in the subnet need to be adjusted. To identify the LIF, use the advanced-priviledge command "network interface show" setting the "numeric-id" parameter to that of the LIF in the message. To change the address of the LIF, use the "network interface modify" command, specifying the address and netmask. To remove the address from the subnet, use the "network subnet remove-ranges" command.
+*Syslog Message*::
+LIF %d has an address %s that is in Subnet's %s unused pool.
+*Parameters*::
+*lif* (INT): Identifier of the LIF with the address conflict.
+*address* (STRING): Address owned by both LIF and subnet.
+*subnet* (STRING): Name of the subnet.

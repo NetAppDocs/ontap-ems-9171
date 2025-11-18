@@ -1,0 +1,58 @@
+---
+sidebar: sidebar
+permalink: aggr-resize-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: aggr.resize events
+---
+
+= aggr.resize events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== aggr.resize.request.sent
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a request to resize an aggregate is sent to the REST server as part of the storage thin provisioning feature in Quark.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Triggering resizing of aggregate for %s. Current size: %lu, new size: %lu.
+*Parameters*::
+*aggr_name* (STRING): Name of the aggregate.
+*current_size* (LONGINT): Current size of the aggregate.
+*new_size* (LONGINT): New size of the aggregate after being resized.
+
+== aggr.resize.response.failure
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the REST server returns an error for a request to resize an aggregate.
+*Corrective Action*::
+Ensure that all containers in the pod are online and healthy. Check if the REST server is up and responding.
+*Syslog Message*::
+Server returned error: %d for the resizing request. Aggregate: %s, current size: %lu, new size: %lu".
+*Parameters*::
+*error* (INT): Error returned from REST server.
+*aggr_name* (STRING): Name of the aggregate.
+*current_size* (LONGINT): Current size of the aggregate.
+*new_size* (LONGINT): New size of the aggregate after being resized.
+
+== aggr.resize.response.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the REST server returns "success" as a response to the request to resize an aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Server returned "success" as a response to a resizing request. Aggregate: %s, current size: %lu, new size: %lu.
+*Parameters*::
+*aggr_name* (STRING): Name of the aggregate.
+*current_size* (LONGINT): Current size of the aggregate.
+*new_size* (LONGINT): New size of the aggregate after being resized.

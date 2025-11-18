@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-iscsi-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.iscsi events
+---
+
+= callhome.iscsi events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.iscsi.hba.crash
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the iSCSI host bus adapter (HBA crashes. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+If the HBA is in use, reboot your system to reset the HBA and retrieve the crash-dump file. Contact NetApp technical support and provide the crash-dump file for support purposes.
+*Syslog Message*::
+Call home for ISCSI HBA CRASH
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

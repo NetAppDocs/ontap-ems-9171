@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: wafl-cfvm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.cfvm events
+---
+
+= wafl.cfvm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.cfvm.cutover.unrecoverable.vol
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a copy free volume move operation is not able to perform successful cutover because the destination volume is not recoverable. This can typically happen after wafliron fixes an inofile corruption. The volume move will be stuck in cutover with data loss and service outage.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Volume Move to volume dsid "%d" in aggregate "%s" encountered unrecoverable errors in cutover. Volume is left offline.
+*Parameters*::
+*dsid* (INT): Destination volume dsid.
+*aggrname* (STRING): Destination aggregate name.

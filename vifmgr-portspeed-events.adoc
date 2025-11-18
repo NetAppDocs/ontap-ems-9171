@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: vifmgr-portspeed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.portspeed events
+---
+
+= vifmgr.portspeed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.portspeed.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a port is connected to a switch utilizing a link speed that is not qualified. This might lead to unexpected system behaviors.
+*Corrective Action*::
+Ensure that the affected network port is connected to a switch that uses a link speed supported by this node. If necessary, adjust the switch configuration to assign a lower speed.
+*Syslog Message*::
+Node %s port %s is reporting a speed %s that is not supported.
+*Parameters*::
+*nodename* (STRING): Name of the node on which the affected port resides.
+*portname* (STRING): Name of the affected port.
+*portspeed* (STRING): Operational speed of the affected port.

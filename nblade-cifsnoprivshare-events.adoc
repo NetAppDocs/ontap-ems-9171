@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: nblade-cifsnoprivshare-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.cifsnoprivshare events
+---
+
+= nblade.cifsnoprivshare events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.cifsNoPrivShare
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a client attempts to connect to a nonexistent ONTAP_ADMIN$ share.
+*Corrective Action*::
+Ensure that the vscan is enabled for the mentioned Vserver ID. Enabling vscan on a Vserver causes the ONTAP_ADMIN$ share to be created for the Vserver automatically.
+*Syslog Message*::
+Vserver ID: %d, user name: %s, client ip: %s, Object type is: %s with UUID: %s.
+*Parameters*::
+*vserverId* (INT): Identifier for the Vserver associated with this operation.
+*userName* (STRING): User name of the client attemping to access the nonexistent ONTAP_ADMIN$ share.
+*clientIp* (STRING): IP address of the client attemping to access the nonexistent ONTAP_ADMIN$ share.
+*object_type* (STRING): Type of resource object.
+*object_uuid* (STRING): UUID of the resource object.

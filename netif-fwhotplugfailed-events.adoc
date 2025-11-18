@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: netif-fwhotplugfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.fwhotplugfailed events
+---
+
+= netif.fwhotplugfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.fwHotplugFailed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when there is an error while performing a device hotplug after the network interface firmware update is completed. When this happens, the controller reboots to resolve the error.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Hotplug %s slot: %s at PCI: %s failed. The controller will reboot.
+*Parameters*::
+*action* (STRING): Insert or remove action of the device hotplug.
+*slot_num* (STRING): Slot number of the network interface card.
+*location* (STRING): PCI location of the network interface.

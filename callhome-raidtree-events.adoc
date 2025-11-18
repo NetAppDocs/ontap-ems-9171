@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-raidtree-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.raidtree events
+---
+
+= callhome.raidtree events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.raidtree.assim
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when an aggregate experiences a configuration corruption error during assimilation of aggregate structures. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Call home for RAIDTREE ASSIMILATION FAILED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

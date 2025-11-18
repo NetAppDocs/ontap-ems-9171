@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: dfu-badbridgeshelfconfig-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dfu.badbridgeshelfconfig events
+---
+
+= dfu.badbridgeshelfconfig events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dfu.badBridgeShelfConfig
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the disk firmware update aborts because it cannot contact the two peer FC-to-SAS bridges.
+*Corrective Action*::
+Make sure that the storage controller is correctly cabled to the two peer FC-to-SAS bridges and that the bridges are correctly cabled to the SAS disk shelves. Then retry the 'disk_fw_update' command.
+*Syslog Message*::
+Error contacting two peer FC-to-SAS bridges. Unable to download firmware to disk %s [%s %s %s] S/N [%s].
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*vendorName* (STRING): Vendor name of the disk.
+*productId* (STRING): Product ID of the disk.
+*fwVersion* (STRING): Firmware version of the disk.
+*serialno* (STRING): Serial number of the disk.

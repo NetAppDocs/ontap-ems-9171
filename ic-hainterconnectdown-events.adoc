@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: ic-hainterconnectdown-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ic.hainterconnectdown events
+---
+
+= ic.hainterconnectdown events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ic.HAInterconnectDown
+*Severity*::
+ERROR
+*Description*::
+This message occurs every hour when the high-availability (HA) interconnect is down.
+*Corrective Action*::
+Base the corrective action on the number and type of HA interconnect links supported by the platform and the reason for which the interconnect is down. If links are down: Verify that both controllers in the HA pair are operational. For externally connected links, make sure that the interconnect cables are connected properly and that small form-factor pluggable (SFP) modules, if applicable, are seated properly on both controllers. For internally connected links, disable and reenable the links one at a time by using the (privilege: advanced) "system ha interconnect link off" and "system ha interconnect link on" commands. If links are disabled: Enable the links by using the "system ha interconnect link on" command. If a peer is not connected: Disable and reenable the links one at a time by using the "system ha interconnect link off" and "system ha interconnect link on" commands. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+HA interconnect: Interconnect down for %d minutes: %s
+*Parameters*::
+*ic_downtime* (INT): Amount of time (in minutes) the connection has been down.
+*reason* (STRING): Reason that the HA interconnect is down, which might be due to links being down, links being disabled, or an unconnected peer.

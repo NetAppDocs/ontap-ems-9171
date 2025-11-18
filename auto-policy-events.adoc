@@ -1,0 +1,66 @@
+---
+sidebar: sidebar
+permalink: auto-policy-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: auto.policy events
+---
+
+= auto.policy events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== auto.policy.feature.enable
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during upgrade to Data ONTAP(R) 9.3 or later, when we start enabling the "auto" efficiency policy on the existing compatible volumes on All-Flash Optimized nodes in the background.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume efficiency features will be enabled on Volumes of All-Flash Optimized nodes in the Cluster.
+*Parameters*::
+(None).
+
+== auto.policy.feature.enable.done
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during upgrade to Data ONTAP(R) 9.3 or later, when we have completed enabling the "auto" efficiency policy on the existing compatible volumes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume efficiency features were enabled on Volumes of All-Flash Optimized nodes in the Cluster.
+*Parameters*::
+(None).
+
+== auto.policy.feature.enable.fail
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during upgrade to Data ONTAP(R) 9.3 or later, when we fail to enable the "auto" efficiency policy on the existing compatible volume on All-Flash Optimized nodes.
+*Corrective Action*::
+Manually try enabling the inline Volume Efficiency features on the volume using the "volume efficiency modify" command.
+*Syslog Message*::
+Could not enable Volume Efficiency features for Volume %s of vserver %s.%s
+*Parameters*::
+*volume* (STRING): Volume name.
+*vserver* (STRING): Vserver name.
+*reason* (STRING): Reason for failure.
+
+== auto.policy.feature.enabled
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during upgrade to Data ONTAP(R) 9.3 or later, when we enable the "auto" efficiency policy on the existing compatible volume on All-Flash Optimized nodes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume Efficiency features enabled on Volume %s of Vserver %s.
+*Parameters*::
+*volume* (STRING): Volume name.
+*vserver* (STRING): Vserver name.

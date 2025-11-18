@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: sfu-downloadctrllerbridge-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfu.downloadctrllerbridge events
+---
+
+= sfu.downloadctrllerbridge events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfu.downloadCtrllerBridge
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a disk shelf firmware download starts on a particular disk shelf.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: Downloading %s on ES controller module %s via SES device %s.%d on %s.shelf%d.
+*Parameters*::
+*cmdName* (STRING): Name of the command issued, such as "storage shelf firmware update".
+*fileName* (STRING): Name of the file in /etc/shelf_fw that was being downloaded.
+*module* (STRING): Either Module A or Module B, in which Module A is the upper module in the enclosure on the back side and Module B is the lower module in the enclosure on the back side.
+*channelNameSES* (STRING): Name of the adapter port or switch port on the SES services device on which the disk shelf firmware download is occurring.
+*scsiId* (INT): SCSI ID of the SES services device used to download disk shelf firmware.
+*channelNameShelf* (STRING): Name of the adapter port or switch port on which the disk shelf firmware download is occurring.
+*shelfId* (INT): ID of the disk disk shelf on which the disk shelf firmware download is occurring.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: upgrademgr-package-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: upgrademgr.package events
+---
+
+= upgrademgr.package events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== upgrademgr.package.imported
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a Data ONTAP(R) package is successfully imported into the cluster and processed by the upgrade manager's package handler.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A Data ONTAP package "%s" with version "%s" was successfully imported into the package repository.
+*Parameters*::
+*package* (STRING): Name of the imported package.
+*version* (STRING): Version of the imported package.

@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: dfu-fwdownloadfailedstatus-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dfu.fwdownloadfailedstatus events
+---
+
+= dfu.fwdownloadfailedstatus events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dfu.fwDownloadFailedStatus
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a firmware download failure occurs.
+*Corrective Action*::
+Decode sense codes based on drive supplier to determine the reason for the failure. Most situations can be recovered by attempting to download firmware again using the "disk_fw_update" command. See the disk_fw_update man page for complete details.
+*Syslog Message*::
+Status: (0x%x/0x%x/0x%x) (SCSI sense 0x%x/0x%x/0x%x/0x%x)
+*Parameters*::
+*OpStatus* (INTHEX): Status of the passthru I/O.
+*HostStatus* (INTHEX): Host Status of the passthru I/O.
+*TargetStatus* (INTHEX): Target Status of the passthru I/O.
+*sense_key* (INTHEX): SCSI Sense key.
+*sense_code* (INTHEX): SCSI Sense Code.
+*sense_code_qualifier* (INTHEX): SCSI Sense Code Qualifier.
+*fru* (INTHEX): SCSI Sense Code FRU identifier.

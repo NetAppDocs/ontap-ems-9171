@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: san-nosamenamedfcport-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.nosamenamedfcport events
+---
+
+= san.nosamenamedfcport events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.NoSameNamedFCport
+*Severity*::
+ERROR
+*Description*::
+This message occurs in MetroCluster(tm) configurations on clustered Data ONTAP(R) systems, when Data ONTAP cannot find the same named port to place an FC/FC-NVMe logical interface (LIF) in the destination cluster. A same named port is an FC port in the destination cluster that has the same name as that of the FC port in the source cluster hosting the FC/FC-NVMe logical interface (LIF).
+*Corrective Action*::
+Check the admin state of the destination cluster FC port to ensure that it is up. Use the "fcp adapter show -fields status-admin" command to view the admin state of the target FC ports. After ensuring the same named port is up, enter the "metrocluster check lif repair-placement -vserver <vserver_name> -lif <lif_name>" command in the source cluster to initiate the LIF placement at the secondary cluster. After LIF placement has been completed, enter the "metrocluster check lif show -vserver <vserver_name> -lif <lif_name>" to see whether LIF placement succeeded or not.
+*Syslog Message*::
+Same named FC port %s as the one in the source cluster that is hosting %s LIF %s on primary Vserver %s is not found in the destination cluster.
+*Parameters*::
+*home_port* (STRING): Name of the source cluster FC port.
+*data_protocol* (STRING): Data Protocol of the lif.
+*lif* (STRING): Name of the FC/FC-NVMe LIF.
+*vserver* (STRING): Name of the primary Vserver.

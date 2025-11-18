@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: vifmgr-rpc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.rpc events
+---
+
+= vifmgr.rpc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.rpc.nblade.timeouts
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the virtual interface manager (vifmgr) is having trouble communicating with the packet and connection processing module of the network component. If this problem persists, interface failover might not occur as intended, resulting in a disruption.
+*Corrective Action*::
+If the node is experiencing heavy load, the condition might clear up automatically after a few minutes. If the condition persists, contact NetApp technical support.
+*Syslog Message*::
+The virtual interface manager is not receiving responses from the node's networking component.
+*Parameters*::
+(None).

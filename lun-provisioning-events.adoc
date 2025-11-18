@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: lun-provisioning-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lun.provisioning events
+---
+
+= lun.provisioning events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== LUN.provisioning.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs during the creation of a LUN or NVME namespace when the provisioning for its metadata fails due to insufficient space in the aggregate. Attempts to map or bind the object will fail until the aggregate has sufficient free space for the metadata.
+*Corrective Action*::
+Add more space to the aggregate. Use the command 'lun map' or 'lun bind' to allow provisioning of the LUN's metadata to be completed.
+*Syslog Message*::
+LUN or NVMe namespace %s in volume %s (DSID %llu) was created, but provisioning of its metadata failed due to insufficient space in the aggregate.
+*Parameters*::
+*lun_path* (STRING): Path for the LUN or NVMe namespace for which metadata provisioning failed.
+*volume_name* (STRING): Name of the containing volume.
+*volume_dsid* (LONGINT): Data Set ID (DSID) of the containing volume.

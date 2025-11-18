@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: securepurge-started-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: securepurge.started events
+---
+
+= securepurge.started events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== securepurge.started
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a secure purge operation is started in a flexible volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Secure purge operation is started on the volume '%s' in Vserver '%s'.
+*Parameters*::
+*volumename* (STRING): Name of the volume.
+*vservername* (STRING): Name of the Vserver.

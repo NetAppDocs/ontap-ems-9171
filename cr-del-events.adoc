@@ -1,0 +1,79 @@
+---
+sidebar: sidebar
+permalink: cr-del-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cr.del events
+---
+
+= cr.del events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== CR.Del.CrptStreamData.Fail
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an attempt to delete corrupt stream data fails.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Deletion failed for corrupt stream data [%s] on volume [%s] in Vserver [%s].
+*Parameters*::
+*path* (STRING): Stream path.
+*volume* (STRING): Name of the constituent volume where the stream resides.
+*vserver* (STRING): Vserver hosting the volume.
+
+== CR.Del.CrptStreamRedir.Fail
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an attempt to delete corrupt stream redirector failed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Deletion failed for corrupt stream redirector [%s] on volume [%s] in Vserver [%s].
+*Parameters*::
+*path* (STRING): Stream path.
+*volume* (STRING): Name of the constituent volume where the stream resides.
+*vserver* (STRING): Vserver hosting the volume.
+
+== CR.Del.DangStreamData.Fail
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an attempt to delete dangling stream data fails. This stream was created when there was a failure in cleaning up stream data on the data constituent, which left dangling data that is unnecessarily consuming resources.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Deletion failed for dangling stream data [%s] on volume [%s] in Vserver [%s].
+*Parameters*::
+*path* (STRING): Stream path.
+*volume* (STRING): Name of the constituent volume where the stream data resides.
+*vserver* (STRING): Vserver hosting the volume.
+
+== CR.Del.DangStreamRedir.Fail
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an attempt to delete dangling stream redirector failed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Deletion failed for dangling stream redirector [%s] on volume [%s] in Vserver [%s].
+*Parameters*::
+*path* (STRING): Stream path.
+*volume* (STRING): Name of the constituent volume where the redirector resides.
+*vserver* (STRING): Vserver hosting the volume.

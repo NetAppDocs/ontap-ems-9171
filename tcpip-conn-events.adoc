@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: tcpip-conn-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: tcpip.conn events
+---
+
+= tcpip.conn events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== tcpip.conn.leaked
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a connection is leaked because it can't be closed.
+*Corrective Action*::
+Many leaked connections could lead to degraded system performance. A power cycle will fix this.
+*Syslog Message*::
+Connection %u to remote IP %s on vif %u using service %u over %s leaked because it could not be closed.
+*Parameters*::
+*CID* (INT): Connection ID that was leaked.
+*remoteIPAddr* (STRING): The remote IP to which the leaked connection was connected.
+*VIF* (INT): The VIF on which this connection was located.
+*serviceType* (INT): The service being used on the leaked connection.
+*protocol* (STRING): The protocol being used on the leaked connection.

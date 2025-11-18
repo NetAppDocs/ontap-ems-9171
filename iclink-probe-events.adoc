@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: iclink-probe-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: iclink.probe events
+---
+
+= iclink.probe events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== iclink.probe.error
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system cannot detect a High Availability (HA) interconnect card, making HA communication inoperable.
+*Corrective Action*::
+Verify that the High Availability interconnect card is present and operational on the system. If this message persists, disable and reenable the link by using the (privilege: advanced) "system ha interconnect link off" and "system ha interconnect link on" commands.
+*Syslog Message*::
+(None).
+*Parameters*::
+*errorCode* (INT): Internal error code.

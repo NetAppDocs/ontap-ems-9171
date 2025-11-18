@@ -1,0 +1,357 @@
+---
+sidebar: sidebar
+permalink: cf-hwassist-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.hwassist events
+---
+
+= cf.hwassist events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.hwassist.Default.NodemgmtAddr
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the hardware-assist module automatically picked a local IP address for the hardware-assisted takeover feature.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The system automatically chose %s as the local hardware-assist IP address.
+*Parameters*::
+*defaultip* (STRING): Default hardware-wassist IP address chosen to receive hardware assist alerts.
+
+== cf.hwassist.DefaultEnabled
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system automatically enables the hardware-assist takeover feature. With hardware-assisted takeover, certain failures, such as watchdog reset, POST error, and so on, trigger hardware-assisted takeover through hardware components such as Remote LAN Module (RLM) or Service Processor (SP).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Hardware-assisted takeover feature is enabled on this system. The partner can take over this node faster during certain failures.
+*Parameters*::
+(None).
+
+== cf.hwassist.DefaultPrtnrAddr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the hardware-assist partner address is not configured and the system automatically picked a partner IP address for the hardware-assisted takeover feature. If a partner node has multiple node management IP addresses, a different partner node management IP address can optionally be set by using the "storage failover modify -hwassist-partner-ip" command. Note: the automatically configured IP address cannot be modified on some platforms.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The system automatically chose %s as the hardware-assisted takeover partner address.
+*Parameters*::
+*defaultip* (STRING): Default hardware-assist partner IP address chosen to send hardware-assisted takeover alerts.
+
+== cf.hwassist.DefaultPrtnrPort
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the partner's port for the hardware-assisted takeover feature is not configured and the system sets the hardware-assist partner port to a default port number. A different partner port number can optionally be set by using the "storage failover modify -hwassist-partner-port" command. Note: the default port number cannot be modified on some platforms.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The system set the default hardware-assist partner port number to %d.
+*Parameters*::
+*defaultport* (INT): Default hardware-assist partner port number.
+
+== cf.hwassist.empty.MgmtAddr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the local hardware-assist module cannot find at least one node management IP address that has the same capabilities as the partner's hardware components, such as Remote LAN Module (RLM) or Service Processor (SP).
+*Corrective Action*::
+Complete or correct the setup of the Remote LAN Module (RLM) or Service Process (SP) for each node in your cluster.
+*Syslog Message*::
+Cannot find hardware-assist node management IP address for partner node.
+*Parameters*::
+(None).
+
+== cf.hwassist.empty.NodemgmtAddr
+*Deprecated*::
+Deprecated as of version 9.1.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the local hardware-assist module cannot find at least one node management IP address that has the same capabilities as the partner's hardware components, such as Remote LAN Module (RLM) or Service Processor (SP).
+*Corrective Action*::
+Complete or correct the setup of the Remote LAN Module (RLM) or Service Process (SP) for each node in your cluster.
+*Syslog Message*::
+Cannot find hardware-assist node management IP address for partner node.
+*Parameters*::
+(None).
+
+== cf.hwassist.FwUpgrade
+*Severity*::
+ERROR
+*Description*::
+This message occurs when hwassist thread detects that partner's hw_assist hardware firmware does not support hw_assist feature.
+*Corrective Action*::
+Upgrade the partner hw_assist hardware firmware to the latest version.
+*Syslog Message*::
+HA hw_assist: Partner(%s) %s firmware does not support the hw_assist feature.
+*Parameters*::
+*partnerName* (STRING): Partner's name.
+*hwassist_hrdwr* (STRING): Type of hw_assist hardware, for example, Remote LAN module(RLM) or Service Processor(SP).
+
+== cf.hwassist.hwasstActive
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when hw_assist successfully binds to a port to listen for alerts.
+*Corrective Action*::
+None.
+*Syslog Message*::
+hw_assist: hw_assist functionality is active on IP address: %s port: %d
+*Parameters*::
+*ipaddress* (STRING): IP address to which bind was attempted.
+*port* (INT): Port on which bind was attempted.
+
+== cf.hwassist.invalidConfig
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system encounters invalid hardware-assist configurations.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Invalid hardware-assist configurations. IPv4: %s IPv6: %s port: %d keep_alive_interval: %d
+*Parameters*::
+*ipv4* (STRING): Partner node IPv4 address.
+*ipv6* (STRING): Partner node IPv6 address.
+*port* (INT): Partner node hardware-assist port number.
+*keep_alive_interval* (INT): Hardware-assist keep-alive interval.
+
+== cf.hwassist.IpNotConfigured
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the hwassist thread detects that the partner's hw_assist hardware is not configured with an IPv4 or IPv6 address.
+*Corrective Action*::
+Configure a valid IPv4 or IPv6 address for the partner's hw_assist hardware by using the "storage failover modify -hwassist-partner-ip" command.
+*Syslog Message*::
+cf hw_assist: Partner(%s)'s %s is not configured with the right IP address family. Use the "storage failover hwassist show" command for details.
+*Parameters*::
+*partnerName* (STRING): Partner's name.
+*hwassist_hrdwr* (STRING): Type of hw_assist hardware, for example, RLM.
+
+== cf.hwassist.keyMismatch
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when hwassist receives a alert with wrong key. EMS displays both the expected and the received keys.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*expectedKey* (STRING): Expected key, generated by Failover Monitor(FM).
+*receivedKey* (STRING): Received key from hwassist hardware.
+*systemid* (STRING): Received systemid.
+
+== cf.hwassist.localMonitor
+*Severity*::
+ERROR
+*Description*::
+This message occurs when hwassist thread is inactive because of problems on local node.
+*Corrective Action*::
+check console log for cf.hwassist_socBindFailed message. If message exist, take corrective action for that message.
+*Syslog Message*::
+hw_assist: hw_assist functionality is inactive.
+*Parameters*::
+(None).
+
+== cf.hwassist.missedKeepAlive
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the HW-assisted takeover process on this node has not received keep-alive messages from its HA partner.
+*Corrective Action*::
+Use the "storage failover hwassist show" command to verify the status of the HW-assisted takeover feature. If the 'Keep Alive Status' field reports "healthy", it is functional. If the "storage failover hwassist show" command "Keep Alive Status" field reports "did not receive hwassist keep alive alerts from partner" and the "storage failover hwassist stats show" command shows the value of the "ID_mismatch" is incrementing, disable the service-processor (SP or BMC) IPv4 or IPv6 network interfaces and then reenable them, as stated below. Use the "system service-processor network show" command to display the current network configuration. Note whether the IPv4 or IPv6 address-family is enabled. You need this information in the next steps. Perform the following on each node that has an issue: Disable the interface for an address-family by using the "sp network modify -node {name} -address-family {IPv4|IPv6} -enable false" command. Then, reenable the interface for an address-family by setting "-enable true" via the above command.
+*Syslog Message*::
+HW-assisted takeover missing keep-alive messages from HA partner (%s).
+*Parameters*::
+*partnerName* (STRING): HA partner name.
+
+== cf.hwassist.noConfigRecv
+*Severity*::
+ERROR
+*Description*::
+This message occurs when hwassist thread has not received any config info from partner.
+*Corrective Action*::
+None.
+*Syslog Message*::
+hw_assist: hw_assist functionality inactive. No config received from partner(%s).
+*Parameters*::
+*partnerName* (STRING): Partner's name.
+
+== cf.hwassist.notCapable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the currently installed firmware version of the hardware module doesn't support the hardware-assisted takeover feature.
+*Corrective Action*::
+Upgrade the hardware module firmware to the latest version.
+*Syslog Message*::
+Currently installed version of %s's firmware doesn't support the hardware-assist takeover feature. Install a latest firmware for the hardware-assist takeover feature to work.
+*Parameters*::
+*hwtype* (STRING): Hardware module type.
+
+== cf.hwassist.notifyCfgFailed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when node fails to update the hardware-assist configuration with its HA partner node. This is most likely because the service processor (SP) component is not ready. This messages might also be seen during ONTAP upgrade when the node reboots. The node will automatically retry the hardware-assisted storage failover configuration update.
+*Corrective Action*::
+Use the "system node service-processor show" command to check whether the SP is online. Use the "storage failover hwassist show" command to check the status of hardware-assisted storage failover once the node is active. The SP must be online to update the hardware-assist storage failover configuration. If the SP is operational and online, use the "system node service-processor reboot-sp" command to reboot the SP.
+*Syslog Message*::
+Failed to update the hardware-assist configuration with hardware component (%s). Error: %s(%d).
+*Parameters*::
+*hwtype* (STRING): Hardware component type.
+*errorstr* (STRING): Error string returned by the hardware component.
+*error* (INT): Error number returned by the hardware component.
+
+== cf.hwassist.notifyEnableOff
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the hwassist thread detects that 'notify enable' is turned off on the partner node.
+*Corrective Action*::
+None.
+*Syslog Message*::
+HA hw_assist: hw_assist functionality on the partner node has been disabled by the user.
+*Parameters*::
+(None).
+
+== cf.hwassist.notifyEnableOn
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the user enables hw_assist functionality on the partner node. hw_assist will try to bind to the specified IP address and port.
+*Corrective Action*::
+None.
+*Syslog Message*::
+HA hw_assist: hw_assist functionality on the partner node has been enabled by the user.
+*Parameters*::
+(None).
+
+== cf.hwassist.ptnStartThrottle
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when partner has started throttling hw_assist alerts. UDP socket will be closed and no alerts will be received.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover Monitor hw_assist: Partner(%s) node has started throttling hw_assist alerts.
+*Parameters*::
+*partnerName* (STRING): Partner's name
+
+== cf.hwassist.ptnStopThrottle
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when partner has stopped throttling hw_assist alerts. hw_assist will bind to UDP socket and wait for alerts.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+hw_assist: Partner(%s) has stopped throttling hw_assist alerts.
+*Parameters*::
+*partnerName* (STRING): Partner's name
+
+== cf.hwassist.recvKeepAlive
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the hwassist thread receives a HW-assisted takeover keep-alive message after missing at least two consecutive keep-alive messages.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Received HW-assisted takeover keep-alive message again from HA partner (%s).
+*Parameters*::
+*partnerName* (STRING): HA partner's hostname.
+
+== cf.hwassist.socBindFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when hwassist thread fails to bind to a socket on a particular ipaddress. The error indicates why bind failed.
+*Corrective Action*::
+Check if specified port and IP address is valid. You may want to try with a different recommended port number.
+*Syslog Message*::
+hw_assist: bind failed to port %d on IP address %s. Error %d
+*Parameters*::
+*port* (INT): Port on which bind was attempted.
+*ipaddress* (STRING): IP address to which bind was attempted.
+*error* (INT): error returned by bind call
+
+== cf.hwassist.socInitFailed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when hwassist thread fails to create socket.
+*Corrective Action*::
+None.
+*Syslog Message*::
+hw_assist: Fail to create socket.
+*Parameters*::
+(None).
+
+== cf.hwassist.startThrottle
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the hardware assist subsystem thread detects that it is receiving hardware assist alerts at a rate higher than the maximum configurable rate and has temporarily stopped listening for hardware assist alerts. This can be an indication that another client is configured to send SNMP traps to the hardware assist trap IP address and port. If the partner node fails while listening for hardware assist alerts is disabled, detection of the partner failure can take slightly longer as loss of heartbeat from the partner or other non-hardware-assisted mechanism is instead needed to detect the failure. Subsequent receipt of the cf.hwassist.stopThrottle message indicates the hardware assist thread is again listening for hardware assist alerts.
+*Corrective Action*::
+Check whether some other client is configured to send SNMP alerts to the IP address and port on which hardware assist is configured. You can obtain the IP address using the ""storage failover hwassist show"" command. If this is the case, direct those SNMP alerts to the correct IP address and port. If not, contact NetApp technical support to further diagnose the issue.
+*Syslog Message*::
+hw_assist: Received %llu hw_assist alerts in %llu secs. Throttling alerts for %llu secs.
+*Parameters*::
+*num_of_traps* (LONGINT): Number of traps received.
+*time_interval* (LONGINT): Time window in which the traps were received.
+*throttle_time* (LONGINT): Time for which throttle will happen.
+
+== cf.hwassist.stopThrottle
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a node has stopped throttling hardware assist alerts from the partner. This indicates the hardware assist thread has restarted listening for hardware assist alerts subsequent to the receipt of the cf.hwassist.startThrottle event.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor hw_assist: Shutting off throttle for hw_assist alerts from partner(%s).
+*Parameters*::
+*partnerName* (STRING): Partner's name.
+
+== cf.hwassist.takeoverTrapRecv
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when hwassist thread receives a hw_assist alert which will result in partner takeover. EMS displays trap type as well as reason for the trap.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+hw_assist: Received takeover hw_assist alert from partner(%s), %s because %s.
+*Parameters*::
+*partnerName* (STRING): Partner's name
+*trap_type* (STRING): Type of trap received
+*trap_event* (STRING): Type of trap event
+
+== cf.hwassist.unknownSig
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when hwassist thread receives an unknown signal.
+*Corrective Action*::
+None.
+*Syslog Message*::
+hw_assist: Received unknown signal 0x%x.
+*Parameters*::
+*sigmask* (INT): Signal received by hwassist thread.

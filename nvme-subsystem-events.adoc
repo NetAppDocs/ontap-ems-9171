@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: nvme-subsystem-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvme.subsystem events
+---
+
+= nvme.subsystem events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvme.subsystem.repl.name.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the replication of an NVMe subsystem fails due to a name conflict. This can happen when the source SnapMirror Active Sync cluster creates or replicates an NVMe subsystem when the destination cluster is unreachable and later the NVMe subsystem replication encounters a scenario where the same name NVMe subsystem is pre-existing in the destination cluster. When this error occurs, host access will be restricted only to the primary cluster.
+*Corrective Action*::
+Administrator needs to choose a new name for the conflicting NVMe subsystem either on the source or destination cluster and reconfigure so that the NVMe subsystem replication can complete without name conflict.
+*Syslog Message*::
+Replication of the NVMe subsystem "%s" in SVM "%s" failed due to name conflict.
+*Parameters*::
+*vserver_uuid* (STRING): UUID of the SVM where conflicting NVMe subsystem was found.
+*nvme_subsystem_name* (STRING): Subsystem name.

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: spider-message-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: spider.message events
+---
+
+= spider.message events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== spider.message.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a directory traversal task cannot finish because of an unexpected error.
+*Corrective Action*::
+Ensure all nodes in the cluster are online and healthy, and that all volumes needed for the directory traversal are online. Then retry the operation.
+*Syslog Message*::
+Volume %llu failed to perform directory task %s because of %s.
+*Parameters*::
+*volume_dsid* (LONGINT): DSID of the volume that encountered the error.
+*task* (STRING): Description of the task that could not be performed.
+*error* (STRING): Description of the error that occurred.

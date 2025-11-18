@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nand-unable-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nand.unable events
+---
+
+= nand.unable events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nand.unable.to.monitor
+*Severity*::
+ALERT
+*Description*::
+This message occurs when Data ONTAP(R) module that is responsible for monitoring the health of the NVRAM device cannot extract health information. This failure might indicate the NVRAM device is not operating properly.
+*Corrective Action*::
+Use the "system environment sensors show" command to verify the device's status. If the failure still exists, contact technical support for assistance.
+*Syslog Message*::
+Unable to monitor NVRAM device: %s.
+*Parameters*::
+*device* (STRING): Name of the device.

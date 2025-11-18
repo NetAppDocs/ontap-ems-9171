@@ -1,0 +1,35 @@
+---
+sidebar: sidebar
+permalink: coredump-compression-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: coredump.compression events
+---
+
+= coredump.compression events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== coredump.compression.details
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a compressed kernel core is generated. Details about compression are reported.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s, compression time %llu msec, compression count %llu, bytes before compression %llu, bytes after compression %llu, compression ratio %llu%%, compression bandwidth %llu MB/s, total compression time %llu msec, all-zero chunk count %llu.
+*Parameters*::
+*type* (STRING): Type of dump. Possible types are compressed core, compressed spraycore, spraycore and sparecore.
+*compressTime* (LONGINT): Compression time, in milliseconds.
+*compressCount* (LONGINT): Number of compressions.
+*compressBytesIn* (LONGINT): Number of bytes before compression.
+*compressBytesOut* (LONGINT): Number of bytes after compression.
+*compressRatio* (LONGINT): Compression ratio expressed as a percentage.
+*compressBandwidth* (LONGINT): Compression bandwidth, in MBps.
+*totalCompressTime* (LONGINT): Total compression time, in milliseconds.
+*allZeroChunks* (LONGINT): Number of all-zero chunks.

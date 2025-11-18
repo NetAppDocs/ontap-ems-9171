@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: rdb-open-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rdb.open events
+---
+
+= rdb.open events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rdb.open.unit.error
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the cluster management data replication module encounters an error and fails to open the unit, causing the process to exit. The process should restart automatically with full service restored.
+*Corrective Action*::
+Verify that all the units are operational and using the "cluster ring show" diagnostic command. If the problem persists, contact NetApp technical support for assistance.
+*Syslog Message*::
+Module "rdb_module::module_init": failed to open unit "%s" -and is exiting the process to force a restart.
+*Parameters*::
+*unit* (STRING): Unit that failed to open.

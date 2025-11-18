@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: raid-verify-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.verify events
+---
+
+= raid.verify events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.verify.scrub.aborted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a media scrub is aborted due to a storage layer error. This event is logged in debug builds only.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Abort media scrub on %s because of storage layer error: %s.
+*Parameters*::
+*disk_name* (STRING): Name of the disk.
+*error* (STRING): Storage layer error.

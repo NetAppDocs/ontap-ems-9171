@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: rlib-mccip-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rlib.mccip events
+---
+
+= rlib.mccip events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rlib.mccip.config.failure
+*Severity*::
+ERROR
+*Description*::
+This event is generated if any error occurs while configuring MCC/IP.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Configuration error has occured in "%s", while setting up "%s ",with value: "%s", (error string='%s', error code=%d).
+*Parameters*::
+*objectOper* (STRING): Operation being executed.
+*objectType* (STRING): Type of Object - IP address/ Netmask/ Interface / Bootarg
+*objectValue* (STRING): Value of IP address/ Netmask/ Interface / Bootarg
+*errorString* (STRING): The error string
+*errNum* (INT): The internal error code
+
+== rlib.mccip.config.missing
+*Severity*::
+NOTICE
+*Description*::
+This event is generated if any of the environment data relating to the configuration of an MCC/IP DR port is missing on boot.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*objectOper* (STRING): Interface being configured.

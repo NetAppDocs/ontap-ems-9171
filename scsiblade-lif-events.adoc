@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: scsiblade-lif-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsiblade.lif events
+---
+
+= scsiblade.lif events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsiblade.lif.init.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the SAN LIF fails to be configured during Vserver initialization. The affected SAN LIF cannot serve data until the issue is resolved.
+*Corrective Action*::
+Delete and re-create the network interface by using the "network interface delete -vserver [vserver] -lif [lif-name]" command, and then the "network interface create -vserver [vserver] -lif [lif-name]" command. You can find the configuration information required to create the network interface (data-protocol, home-node, port, etc.) by using the "network interface show -vserver [vserver] -lif [lif-name]" command. If the problem persists, contact NetApp technical support for further assistance.
+*Syslog Message*::
+Vserver %s network interface %s type %s could not be initialized (error %u:%u).
+*Parameters*::
+*vserver* (STRING): Name of the Vserver.
+*lif* (STRING): Name of the network interface (LIF).
+*liftype* (STRING): Type of network interface (LIF).
+*errortype* (INT): Error type.
+*error* (INT): Error.
+
+== scsiblade.lif.init.timeout
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Vserver initialization finishes, and some volumes are partially initialized. This can happen when nodes are out of quorum. When the initialization timer expires, LIFs in the Vserver are brought online regardless of whether volume initialization is complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Delayed LIF initialization timer expired for Vserver "%s".
+*Parameters*::
+*vserver* (STRING): Name of the Vserver.

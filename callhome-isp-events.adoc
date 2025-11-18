@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: callhome-isp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.isp events
+---
+
+= callhome.isp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.isp.adapter.bad
+*Deprecated*::
+Deprecated as of ONTAP 9.2. Last used in R8.2.x.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects multiple Static Random Access Memory (SRAM) parity errors within a 30 day period. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Replace the Fibre Channel adapter that is exhibiting subsequent parity errors to insure continued operations. Look for the "fci.adapter.parity:info" EMS message in the event log to identify the adapter that is encountering the SRAM parity error and needs to be replaced. You can also check the output of the "FC-STATS" section in AutoSupport and look for the value of link state counter "adap_sram_parity_error_cnt" which will be more than one for the concerned adapter. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for SRAM PARITY ERRORS ON FIBRE CHANNEL ADAPTER - replace adapter
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

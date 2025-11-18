@@ -1,0 +1,44 @@
+---
+sidebar: sidebar
+permalink: nblade-dbladenoresponse-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.dbladenoresponse events
+---
+
+= nblade.dbladenoresponse events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.dBladeNoResponse.CIFS
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a CIFS network data protocol operation times out because the requesting node cannot communicate with the data-serving node to complete the file operation. If this condition persists, there is likely a problem with the communication between the node that generated the event and the node where the data is located in the cluster.
+*Corrective Action*::
+Identify the node where the data is located by using the (privilege: advanced) "system node show" command and the UUID of the node. Verify network connectivity between the node that generated the event and the node where the data is located by using the "cluster ping-cluster" and "network ping" commands.
+*Syslog Message*::
+File operation timed out because there was no response from the data-serving node. Node UUID: %s, file operation protocol: %s.
+*Parameters*::
+*DBladeUuid* (STRING): Universally Unique Identifier (UUID) of the node where this operation is trying to access.
+*protocol* (STRING): Network data protocol that timed out while attempting the file operation.
+
+== Nblade.dBladeNoResponse.NFS
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an NFS network data protocol operation times out because the requesting node cannot communicate with the data-serving node to complete the file operation. If this condition persists, there is likely to be a problem with the communication between the node that generated the event and the node where the data is located in the cluster.
+*Corrective Action*::
+Identify the node where the data is located by using the (privilege: advanced) "system node show" command and the UUID of the node. Verify network connectivity between the node that generated the event and the node where the data is located by using the "cluster ping-cluster" and the "network ping" commands.
+*Syslog Message*::
+File operation timed out because there was no response from the data-serving node. Node UUID: %s, file operation protocol: %s, client IP address: %s, Opcode/Procedure: %s(%d).
+*Parameters*::
+*DBladeUuid* (STRING): Universally unique identifier (UUID) of the node where this operation is trying to access.
+*protocol* (STRING): Network data protocol that timed out while attempting the file operation.
+*clientip* (STRING): IP address of client that attempted the file operation.
+*nfsOpcode* (STRING): Opcode corresponding to file operation.
+*fileoperation* (INT): File operation during which the timeout happened.

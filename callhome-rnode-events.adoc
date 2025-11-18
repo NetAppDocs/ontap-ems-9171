@@ -1,0 +1,37 @@
+---
+sidebar: sidebar
+permalink: callhome-rnode-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.rnode events
+---
+
+= callhome.rnode events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.rnode.splog
+*Severity*::
+NOTICE
+*Description*::
+This messages occurs when a new set of log files has been collected from a Service Processor (SP) of one or more non-operational nodes in the cluster. When an abnormal node reboot is detected by its SP, log files are created. When this node is operational again, the SP log files are collected and included in subsequent AutoSupport messages sent by the node. In cases where nodes cannot return to operation immediately, the SP's log files are collected by another node in the cluster and sent via this AutoSupport message. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for REMOTE NODE SP LOG %s %s %s %s %s %s %s %s %s %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*node1_down_fn* (STRING): Node-specific filename for the downfiler splog from the first node. If NULL is specified, this downfiler splog is not available.
+*node1_latest_fn* (STRING): Node-specific filename for the latest splog from the first node.
+*node2_down_fn* (STRING): Node-specific filename for the downfiler splog from the second node. If NULL is specified, this downfiler splog is not available.
+*node2_latest_fn* (STRING): Node-specific filename for the latest splog from the second node.
+*node3_down_fn* (STRING): Node-specific filename for the downfiler splog from the third node. If NULL is specified, this downfiler splog is not available.
+*node3_latest_fn* (STRING): Node-specific filename for the latest splog from the third node.
+*node4_down_fn* (STRING): Node-specific filename for the downfiler splog from the fourth node. If NULL is specified, this downfiler splog is not available.
+*node4_latest_fn* (STRING): Node-specific filename for the latest splog from the fourth node.
+*node5_down_fn* (STRING): Node-specific filename for the downfiler splog from the fifth node. If NULL is specified, this downfiler splog is not available.
+*node5_latest_fn* (STRING): Node-specific filename for the latest splog from the fifth node.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: dml-init-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dml.init events
+---
+
+= dml.init events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dml.init.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Device Management Layer (DML) fails initialization.
+*Corrective Action*::
+Retry the startup.
+*Syslog Message*::
+Firestorm initialization failed with error code (%d).
+*Parameters*::
+*error_code* (INT): Failure code.

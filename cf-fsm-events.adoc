@@ -1,0 +1,735 @@
+---
+sidebar: sidebar
+permalink: cf-fsm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.fsm events
+---
+
+= cf.fsm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.fsm.autoGBTkoverOnPanic
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a node initiates an automatic giveback to its partner following a takeover that was due to a panic on the partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: Automatic giveback was initiated following a takeover that was caused by a panic on the partner.
+*Parameters*::
+(None).
+
+== cf.fsm.autoGBTkoverOnReboot
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a node initiates an automatic giveback to its partner following a takeover that was due to a reboot of the partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: Automatic giveback was initiated following a takeover that was caused by the partner reboot.
+*Parameters*::
+(None).
+
+== cf.fsm.autoGivebackAttemptsExceeded
+*Severity*::
+EMERGENCY
+*Description*::
+This event is issued when auto giveback is disabled due to a ping-pong situation (autoGB followed by t/o followed by autoGB...)
+*Corrective Action*::
+Examine the logs and/or console output from the partner node. Resolve the issue which prevents the node from staying up.
+*Syslog Message*::
+Failover monitor: Automatic giveback is being disabled due to exceeding %d attempts in %d minutes.
+*Parameters*::
+*attempts* (INT): Number of automatic givebacks attempted
+*minutes* (INT): Time period where the automatic givebacks were attempted
+
+== cf.fsm.autoGivebackDelayed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an automatic giveback is delayed because 'Delay Before Auto Giveback' is set to a non-zero number. If you want to eliminate the delay before automatic giveback occurs, you can use the command "storage failover modify -delay-seconds" to set it to zero.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: Automatic giveback was delayed by %d seconds due to a non-zero value of 'Delay Before Auto Giveback'.
+*Parameters*::
+*seconds* (INT): Number of seconds by which automatic giveback was delayed.
+
+== cf.fsm.autoGivebackReleasingReservations
+*Severity*::
+NOTICE
+*Description*::
+This event is generated when we release the disk reservations in preparation for an automatic giveback.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: Releasing disk reservations in preparation for an automatic giveback
+*Parameters*::
+(None).
+
+== cf.fsm.autoGivebackStarted
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when an automatic giveback is initiated.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: Automatic giveback started
+*Parameters*::
+(None).
+
+== cf.fsm.autoGivebackVetoed
+*Severity*::
+ERROR
+*Description*::
+This event is issued when one or more subsystems have vetoed the automatic giveback.
+*Corrective Action*::
+Terminate the long-running jobs and auto giveback will be successful next time it is attempted.
+*Syslog Message*::
+Failover monitor: Automatic giveback has been deferred due to long running operations
+*Parameters*::
+(None).
+
+== cf.fsm.autoTakeoverCancelled
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the failover monitor cancels a pending takeover.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: pending takeover cancelled
+*Parameters*::
+(None).
+
+== cf.fsm.backupMailboxError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the failover monitor determines that an error was observed in the partner's mailbox.
+*Corrective Action*::
+Correct the issues preventing the node from accessing the partner's mailbox disks. Check for cabling, host bus adapter (HBA), storage controller or drive/LUN issues. You can also use Multipathing to provide a redundant connection to the mailbox disk.
+*Syslog Message*::
+Failover monitor: partner mailbox error detected.
+*Parameters*::
+(None).
+
+== cf.fsm.backupMailboxOk
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the failover monitor has determined that an error in the backup's mailbox has been fixed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: backup mailbox OK
+*Parameters*::
+(None).
+
+== cf.fsm.checkingForBigJobs
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is generated when we want to initiate an automatic giveback and we're checking for long running operations which might veto our plans.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: Checking for long running operations in preparation for an automatic giveback.
+*Parameters*::
+(None).
+
+== cf.fsm.clam.reqPartnerShtdwn
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a node's connectivity, liveness, availability monitor (CLAM) requests a graceful shutdown of its HA partner to trigger a takeover. This shutdown request is made because both HA and cluster connectivity is down.
+*Corrective Action*::
+Restore connectivity across the cluster and HA ports. If the cluster and HA ports are reporting the links are down, check the cabling and switch port configuration. If the connectivity cannot be repaired, contact NetApp technical support.
+*Syslog Message*::
+CLAM requests graceful shutdown of the HA partner to initiate a takeover while NVLOG is out of sync. Cluster and HA connectivity is down.
+*Parameters*::
+(None).
+
+== cf.fsm.clam.shtdwnThruMbx
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a node acknowledges a shutdown request from its HA partner. The node shuts down immediately.
+*Corrective Action*::
+Restore connectivity across the cluster and HA ports. If the cluster and HA ports are reporting the links are down, check the cabling and switch port configuration. If the connectivity cannot be repaired, contact NetApp technical support.
+*Syslog Message*::
+A connectivity, liveness, availability monitor (CLAM) shutdown request was acknowledged through mailbox.
+*Parameters*::
+(None).
+
+== cf.fsm.cliTakeoverCancelled
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the failover monitor cancels a pending takeover issued through a CLI.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: takeover cannot be performed because of reason (%s)
+*Parameters*::
+*reason* (STRING): Reason why takeover cannot occur
+
+== cf.fsm.firmwareStatus
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when we detect an altered firmware status update from the partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: partner %s
+*Parameters*::
+*reason* (STRING): Partner status
+
+== cf.fsm.givebackHung
+*Severity*::
+ALERT
+*Description*::
+This event occurs when the failover monitor detects that the giveback process is hung.
+*Corrective Action*::
+Collect the resulting core file and provide it to Customer Support.
+*Syslog Message*::
+Failover monitor: giveback process is hung ('%s')
+*Parameters*::
+*moduleName* (STRING): The name of the module that the hang occurred in.
+
+== cf.fsm.givebackMaxRetries
+*Severity*::
+ALERT
+*Description*::
+This event is called when the giveback retry count has been exceeded. This situation exists when the system is unable either to takeover or giveback. It may be due to either a hardware bug (e.g., the disk subsystem is hung) or a software bug.
+*Corrective Action*::
+Examine the logs and determine why the giveback is failing. Correct that problem and retry the giveback.
+*Syslog Message*::
+Failover monitor: giveback has exceeded max retry count
+*Parameters*::
+*retries* (INT): Number of retries attempted.
+
+== cf.fsm.nfo.acceptTakeoverReq
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system starts a negotiated takeover of its partner, and requests a graceful shutdown of the partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Negotiated failover: starting takeover and shutdown of partner (%s), will take over in at most %d secs. Reason: %s.
+*Parameters*::
+*partnerName* (STRING): Name of partner node.
+*maxTakeoverTime* (INT): Maximum amount of time to wait for the partner to shut down before starting takeover, in seconds.
+*partnerReason* (STRING): Reason for the initiation of the takeover.
+
+== cf.fsm.nfo.clearReqTakeover
+*Severity*::
+NOTICE
+*Description*::
+This event is called when the system clears a request for takeover by its partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Negotiated failover: clearing partner takeover request
+*Parameters*::
+(None).
+
+== cf.fsm.nfo.delayingGracefulShutdown
+*Severity*::
+ERROR
+*Description*::
+This event is called when the system has been asked to shutdown by its partner as the result of the negotiated failover mechanism, but the system can not shut down due to a specific reason.
+*Corrective Action*::
+Using the information provided in the message, determine why shutdown cannot be invoked. Resolve that problem and retry the takeover request.
+*Syslog Message*::
+Negotiated failover: delaying shutdown due to %s
+*Parameters*::
+*why* (STRING): Indicates the cause of the delay.
+
+== cf.fsm.nfo.disable
+*Severity*::
+ERROR
+*Description*::
+This event is called when negotiated failover is disabled for a particular module.
+*Corrective Action*::
+Examine previous messages for failures related to the type of NFO.
+*Syslog Message*::
+Negotiated failover: disabling negotiated failover for module %s
+*Parameters*::
+*mod* (STRING): Negotiated failover module or type.
+
+== cf.fsm.nfo.disable.shelfversion
+*Severity*::
+ERROR
+*Description*::
+This event is called when negotiated failover is disabled due to Shelf Count message version mismatch.
+*Corrective Action*::
+Upgrade both nodes to the same release.
+*Syslog Message*::
+Negotiated failover: disabling negotiated failover due to version mis-match.
+*Parameters*::
+(None).
+
+== cf.fsm.nfo.enable
+*Severity*::
+NOTICE
+*Description*::
+This event is called when negotiated failover is enabled for a particular module.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Negotiated failover: enabling negotiated failover for module %s
+*Parameters*::
+*mod* (STRING): NFO module (or type)
+
+== cf.fsm.nfo.gracefulShutdownTimerExpired
+*Severity*::
+NOTICE
+*Description*::
+This event is called when the maximum time the system will wait for the partner to shutdown gracefully has passed. At this point the system takes over by force.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Negotiated failover: partner graceful shutdown appears hung, taking over
+*Parameters*::
+(None).
+
+== cf.fsm.nfo.moduleImpairmentChange
+*Severity*::
+ERROR
+*Description*::
+This event is called when a module which is participating in negotiated failover changes from "unimpaired" to "impaired" or vice versa.
+*Corrective Action*::
+Check the state of the module listed in the message.
+*Syslog Message*::
+Negotiated failover: module %s is now %s
+*Parameters*::
+*mod* (STRING): Type of negotiated failover
+*impairment* (STRING): Either unimpared or impaired
+
+== cf.fsm.nfo.partnerShutdown
+*Severity*::
+NOTICE
+*Description*::
+This event is called when the system sees that the partner has finished shutting down gracefully during negotiated failover.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Negotiated failover: partner has shutdown
+*Parameters*::
+(None).
+
+== cf.fsm.nfo.rejectTakeoverReqDueToImpairment
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system rejects a request by its partner to take it over because the system is itself impaired.
+*Corrective Action*::
+Use the "storage failover show" command to determine why takeover is not possible. Resolve that problem and retry the takeover request.
+*Syslog Message*::
+Negotiated failover: rejecting takeover request by partner due to own impairment.
+*Parameters*::
+(None).
+
+== cf.fsm.nfo.rejectTakeoverReqDueToOwnReq
+*Severity*::
+ERROR
+*Description*::
+This event is called when the system rejects a request by its partner to take it over because the system has itself recently requested takeover by its partner. Rejecting this request prevents each system trying to takeover its partner simultaneously. If the partner persists and the system doesn't become impaired the request will soon be granted.
+*Corrective Action*::
+Resolve any impairment issues reported in previous messages that would cause takeover. If takeover is requested by the operator, it should only be requested on one node.
+*Syslog Message*::
+Negotiated failover: rejecting takeover request by partner due to own recent takeover request.
+*Parameters*::
+(None).
+
+== cf.fsm.nfo.startingGracefulShutdown
+*Severity*::
+NOTICE
+*Description*::
+This event is called when the system has been asked to shutdown by its partner as the result of the negotiated failover mechanism. The system responds by shutting down gracefully, shutting down services in an orderly manner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Negotiated failover: starting graceful shutdown.
+*Parameters*::
+(None).
+
+== cf.fsm.nfo.takeoverPendingCancel
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system is waiting for the partner to shutdown gracefully and failover is disabled, canceling the pending takeover.
+*Corrective Action*::
+Use the "storage failover modify -enabled true" command to reenable failover.
+*Syslog Message*::
+Negotiated failover: pending takeover canceled.
+*Parameters*::
+(None).
+
+== cf.fsm.partnerNotResponding
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when we detect that the partner node is not responsive.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: partner not responding
+*Parameters*::
+(None).
+
+== cf.fsm.partnerOk
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when we detect that the partner node, which was previously not responsive, is now OK.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: partner ok
+*Parameters*::
+(None).
+
+== cf.fsm.releasingReservations
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is generated when we release the disk reservations in preparation for a manual giveback.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: Releasing disk reservations in preparation for giveback
+*Parameters*::
+(None).
+
+== cf.fsm.shelfCount.fewerShelves
+*Severity*::
+ALERT
+*Description*::
+This event is emitted when we detect that the partner sees more of our disk shelves than we do. In other words, it sees more shelves on its FCAL B loop than we see on our A loop. This is probably due to a cabling problem or a broken FCAL host adaptor. If "disk_shelf" negotiated failover is enabled, this condition should lead to a takeover by the partner if the partner is otherwise able to take us over.
+*Corrective Action*::
+Resolve cabling issues which are preventing both nodes from seeing the same disks.
+*Syslog Message*::
+Disk shelf count mismatch: partner sees more of our A shelves on its B loop (%d) than we do (%d).
+*Parameters*::
+*bShelves* (INT): Number of our shelves which the partner can see
+*aShelves* (INT): Number of shelves which we can see
+
+== cf.fsm.stateTransit
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when a state transition is detected. Typically, this indication means that the failover monitor is about to either takeover its partner or giveback to its partner. This can happen as the result of timers going of, operator command, or an indication from the partner that a fault has been detected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: %s --> %s
+*Parameters*::
+*oldState* (STRING): The old failover monitor state.
+*newState* (STRING): The new failover monitor state.
+*elem* (STRING): The name of the FSM element that has caused the state transition to occur. This value is dependent upon the FSM implementation.
+
+== cf.fsm.takeover.bootingExp
+*Severity*::
+ALERT
+*Description*::
+This event is issued when an automatic takeover is initiated after detecting that the partner boot process is hung trying to load the kernel.
+*Corrective Action*::
+Please capture console log of partner filer and contact Customer Support
+*Syslog Message*::
+Failover monitor: automatic takeover attempted after detecting that partner is hung loading kernel while booting
+*Parameters*::
+(None).
+
+== cf.fsm.takeover.disaster
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an operator-requested disaster recovery (DR) takeover is initiated.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: takeover attempted after "cf forcetakeover -d" command.
+*Parameters*::
+(None).
+
+== cf.fsm.takeover.early
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when a filer takes over its partner while booting up in takeover mode.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: takeover resumption attempted after reboot
+*Parameters*::
+(None).
+
+== cf.fsm.takeover.forced
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an operator-requested forced takeover is initiated.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: takeover attempted after "cf forcetakeover" or "storage failover takeover -option force" in advanced privilege.
+*Parameters*::
+(None).
+
+== cf.fsm.takeover.mdp
+*Severity*::
+ALERT
+*Description*::
+This event is issued when an automatic takeover is initiated after detecting that the partner has panicked due to a multi-disk failure
+*Corrective Action*::
+Please check the connectivity of the partner to it's disks and shelves and contact customer support.
+*Syslog Message*::
+Failover monitor: takeover attempted after multi-disk failure on partner
+*Parameters*::
+(None).
+
+== cf.fsm.takeover.ndu
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an operator-requested takeover is initiated with the "cf takeover -n" or "storage failover takeover -option allow-version-mismatch" command.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: takeover attempted after "cf takeover -n" or "storage failover takeover -option allow-version-mismatch" command.
+*Parameters*::
+(None).
+
+== cf.fsm.takeover.nfo
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an operator-requested takeover is initiated with the "storage failover takeover" command.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: takeover attempted after "storage failover takeover" command.
+*Parameters*::
+(None).
+
+== cf.fsm.takeover.noHeartbeat
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a node detects no heartbeat from the partner, indicating that the partner is not functioning. The node will attempt an automatic takeover.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Failover monitor: Takeover initiated after no heartbeat was detected from the partner node.
+*Parameters*::
+(None).
+
+== cf.fsm.takeover.normal
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an operator-requested takeover is initiated with the "storage failover takeover -option immediate" command, or when Kernel Cluster Services Connectivity, Liveness and Availability Monitor (CLAM) triggers a takeover after determining that the partner node is out of "CLAM quorom".
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: %s attempted
+*Parameters*::
+*reason* (STRING): Reason a takeover of the partner was triggered. Possible values are "Operator initiated immediate takeover" and "CLAM initiated takeover".
+
+== cf.fsm.takeover.on.halt
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when one node in a high-availability (HA) pair initiates an automatic takeover after detecting that its partner node has halted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: Node initiated automatic takeover after detecting that its partner node has halted.
+*Parameters*::
+(None).
+
+== cf.fsm.takeover.on.reboot
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when one node in a High Availability (HA) pair initiates an automatic takeover after detecting that its partner node is rebooting.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: One node initiated automatic takeover after detecting that its partner node is rebooting.
+*Parameters*::
+(None).
+
+== cf.fsm.takeover.operatorExp
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when an automatic takeover is initiated after detecting that the operator timer has expired. This may happen when the operator has failed to respond to a question or not entered a required command during boot.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: takeover attempted after operator timeout expired on partner
+*Parameters*::
+(None).
+
+== cf.fsm.takeover.panic
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an automatic takeover is initiated after detecting that the partner has panicked.
+*Corrective Action*::
+Attempt to find the panic string in the event logs by using the "event log show" command from the CLI, and then look up the string by using the Panic Message Analyzer tool on the NetApp support site: http://mysupport.netapp.com/NOW/cgi-bin/pmsg/. Contact NetApp technical support to confirm the analysis.
+*Syslog Message*::
+Failover monitor: takeover attempted after partner panic.
+*Parameters*::
+(None).
+
+== cf.fsm.takeover.postFailed
+*Severity*::
+ALERT
+*Description*::
+This event is issued when an automatic takeover is initiated after detecting that the partner's power-on self-test has failed.
+*Corrective Action*::
+Please run hardware diagnostics on partner filer and contact Customer Support
+*Syslog Message*::
+Failover monitor: takeover attempted after partner POST failed
+*Parameters*::
+(None).
+
+== cf.fsm.takeover.rebootExp
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an automatic takeover is initiated after detecting that the partner boot process is hung.
+*Corrective Action*::
+Capture console log of partner node and contact NetApp technical support.
+*Syslog Message*::
+Failover monitor: automatic takeover attempted after detecting that partner is hung in boot.
+*Parameters*::
+(None).
+
+== cf.fsm.takeover.shortUptime
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an automatic takeover is initiated after detecting that the partner died very shortly after booting up.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Failover monitor: takeover attempted after partner went down shortly after booting up
+*Parameters*::
+(None).
+
+== cf.fsm.takeover.sparecoreExp
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an automatic takeover is initiated by the local node after it detects that the partner node has panicked, and that the partner has not initiated a main memory core dump to disk in a reasonable amount of time.
+*Corrective Action*::
+Capture the console log of the partner node, and then contact NetApp technical support.
+*Syslog Message*::
+A takeover was attempted by the local node after sparecore timeout expired on the partner node.
+*Parameters*::
+(None).
+
+== cf.fsm.takeoverByPartnerDisabled
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the failover monitor determines that takeover by the partner is disabled.
+*Corrective Action*::
+Based on the reason takeover is disabled, the corrective action is one of the following: -allowed: Takeover is allowed; you do not need to take any action. -Controller failover (CFO) is not initialized: Make sure that the high-availability (HA) pair is set up correctly. Contact NetApp technical support if you need assistance. -Controller is in non-HA mode: Set the HA mode to "ha" by using the "storage failover modify -mode ha" command to activate HA functionality. This corrective action applies to Unified ONTAP only. -Takeover disabled: Use the "storage failover modify -enabled true" command to reenable HA functionality. -partner mailbox disks not accessible or invalid: Check connectivity to all disks by running the "run local storage show" command on each node, and then comparing the results. Resolve the differences in disks visible to both systems. Verify that the interconnect cables are properly cabled. Failover monitor version mismatch: Make sure that both the local and partner node are running the same version of Data ONTAP(R). -Takeover disabled by partner: Use the "storage failover modify -enabled true" command to reenable HA functionality. -Takeover disabled by operator: Use the "storage failover modify -enabled true" command to reenable HA functionality. -NVRAM size mismatch: Make sure that the local NVRAM (nonvolatile random-access memory) size matches the partner node. -version mismatch: Make sure that both the local and partner nodes are running the same version of Data ONTAP. -interconnect error: Make sure that the interconnect link is connected and functioning. -partner booting: Wait for the partner node to complete its booting process, and then try takeover. -shelf too hot: Make sure that the disk shelf temperature is properly regulated. -partner is performing revert: Wait for the partner node to complete the revert process, and then try takeover. -revert is in progress: Wait for the local node to complete the revert process, and then try takeover. -partner is attempting takeover: Cannot perform a takeover operation while the partner node is attempting a takeover. -takeover is in progress: The local node is already taken over or is trying to take over the partner node. -partner halted in notakeover mode: The partner node was most likely halted using the "halt -f" command; reboot the partner node, and then try again. -unsynchronized log: Make sure that the interconnect link is connected and functioning. -unknown notakeover reasons: Contact NetApp technical support. -waiting for partner to recover: The partner has not booted completely after giveback; wait for the partner to come back up completely. -low memory: Contact NetApp technical support to upgrade. -local halt in progress: The local node is about to halt; try again after the reboot. -status of backup mailbox is uncertain: Check connectivity to all disks by running the "run local storage show" command on each node, and then comparing the results. Resolve the differences in disks visible to both systems. Verify that the interconnect cables are properly cabled. -automatic takeover disabled: Use the "storage failover takeover" command manually. -metrocluster disaster recovery operation is in progress: The local node is performing a MetroCluster(tm) disaster recovery operation; wait for it to finish, and then try again. -This node or partner node is in switchover state and the MetroCluster configuration option "node-object-limit" is off in the disaster recovery(DR) group of this node: Retry takeover after doing a switchback.
+*Syslog Message*::
+Failover monitor: Takeover of %s by %s disabled. Reason: %s.
+*Parameters*::
+*local* (STRING): Name of the local node.
+*partner* (STRING): Name of the partner node.
+*reason* (STRING): Reason takeover is disabled.
+
+== cf.fsm.takeoverByPartnerEnabled
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the failover monitor determines that takeover by the partner has been enabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: takeover of %s by %s enabled
+*Parameters*::
+*local* (STRING): Name of local node
+*partner* (STRING): Name of partner node
+
+== cf.fsm.takeoverCountdown
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued as part of the takeover countdown processing in the FSM.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: takeover scheduled in %d seconds
+*Parameters*::
+*secsTillTakeover* (INT): Number of seconds until takeover occurs
+
+== cf.fsm.takeoverDelayed
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when we are delaying takeover due to status indications received from the partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: takeover delayed, partner %s
+*Parameters*::
+*reason* (STRING): Description of why takeover is being delayed
+*secsTillTakeover* (INT): Number of seconds until takeover will be started
+
+== cf.fsm.takeoverHung
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the failover monitor detects that the takeover process is hung. Subsequent to this event, the takeover node will panic.
+*Corrective Action*::
+Attempt to find the panic string in the event logs by using the "event log show" command from the CLI, and then look up the string by using the Panic Message Analyzer tool on the NetApp support site: http://mysupport.netapp.com/NOW/cgi-bin/pmsg/. Contact NetApp technical support to confirm the analysis.
+*Syslog Message*::
+Failover monitor: takeover process is hung ('%s').
+*Parameters*::
+*moduleName* (STRING): Name of the module that the hang occurred in.
+
+== cf.fsm.takeoverOfPartnerDisabled
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the failover monitor determines that takeover of the partner is disabled.
+*Corrective Action*::
+Find the reason for the error message (it is surrounded by parentheses). Based on that reason, the corrective action is one of the following: -allowed: Takeover is allowed; you do not need to take any action. -Controller failover (CFO) is not initialized: Make sure that the high-availability (HA) pair is set up correctly. Contact NetApp technical support for assistance. -Controller is in non-HA mode: Set HA mode to "ha" by using the "storage failover modify -mode ha" command to activate HA functionality. This corrective action does not apply for ASA r2. -HA takeover disabled: Use the "storage failover modify -enabled true" command to reenable HA functionality. -partner mailbox disks not accessible or invalid: Check connectivity to all disks by running the "storage show" nodeshell command on each node and comparing the results. Resolve the differences in disks visible to both systems. Verify that the interconnect cables are properly cabled. -failover monitor version mismatch: Make sure that both the local and partner node are running the same version of Data ONTAP(R). -Takeover disabled by partner: Use the "storage failover modify -enabled true" command to reenable HA functionality. -Takeover disabled by operator: Use the "storage failover modify -enabled true" command to reenable HA functionality. -NVRAM size mismatch: Make sure that the local NVRAM (nonvolatile random-access memory) size matches the partner node. -version mismatch: Make sure that both the local and partner nodes are running the same version of Data ONTAP. -interconnect error: Make sure that the interconnect link is connected and functioning. -partner booting: Wait for the partner node to complete its booting process, and then try takeover. -shelf too hot: Make sure that the disk shelf temperature is properly regulated. -partner is performing revert: Wait for the partner node to complete the revert process, and then try takeover. -revert is in progress: Wait for the local node to complete the revert process, and then try takeover. -partner is attempting takeover: Cannot perform a takeover operation while the partner node is attempting a takeover. -takeover is in progress: The local node is already taken over or is trying to take over the partner node. -partner halted in notakeover mode: The partner node was most likely halted using the "halt -f" or "system node halt -inhibit-takeover" command; reboot the partner node, and then try again. -unsynchronized log: Make sure that the interconnect link is connected and functioning. -unknown notakeover reasons: Contact NetApp technical support. -waiting for partner to recover: The partner has not booted completely after giveback; wait for the partner to come back up completely. -low memory: Contact NetApp technical support to upgrade. -local halt in progress: The local node is about to halt; try again after the reboot. -status of backup mailbox is uncertain: Check connectivity to all disks by running the "run local storage show" command on each node, and then comparing the results. Resolve the differences in disks visible to both systems. Verify that the interconnect cables are properly cabled. -automatic takeover disabled: Use the "storage failover takeover" command manually. -metrocluster disaster recovery operation is in progress: The local node is performing a MetroCluster(tm) disaster recovery operation; wait for it to finish, and then try again. This corrective action does not apply for ASA r2. -This node or the partner node is in switchover state and the MetroCluster configuration option "node-object-limit" is off in the disaster recovery(DR) group of this node: Retry takeover after doing a switchback. This corrective action does not apply for ASA r2.
+*Syslog Message*::
+Failover monitor: takeover of %s disabled (%s).
+*Parameters*::
+*partner* (STRING): Name of the partner node.
+*reason* (STRING): Description of why takeover cannot occur.
+
+== cf.fsm.takeoverOfPartnerEnabled
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the failover monitor determines that takeover of the partner has been enabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: takeover of %s enabled
+*Parameters*::
+*partner* (STRING): Name of partner node

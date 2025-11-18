@@ -1,0 +1,38 @@
+---
+sidebar: sidebar
+permalink: disk-reservefailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.reservefailed events
+---
+
+= disk.reservefailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.reserveFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SCSI reservation fails.
+*Corrective Action*::
+This is not a problem if seen occasionally. If this message is seen repeatedly, or is blocking access to a LUN for longer than 10 minutes, contact NetApp technical support to open a support case to investigate the underlying cause.
+*Syslog Message*::
+Disk reservation failed on %s CDB %s - %s (%x %x %x)
+*Parameters*::
+*diskName* (STRING): Name of the device.
+*cdb* (STRING): CDB (Command Descriptor Block) containing the I/O operation being performed.
+*sSenseKey* (STRING): Sense key string.
+*iSenseKey* (INTHEX): Actual sense key.
+*iASC* (INTHEX): SCSI Additional Sense Code.
+*iASCQ* (INTHEX): SCSI Additional Sense Code Qualifier.
+*sm* (STRING): SCSI Persistent Reservation state machine.
+*state* (INT): SCSI Persistent Reservation state machine step.
+*out_status_flags* (INTHEX): Status flag containing bits describing which of the following status values are valid.
+*ha_status* (INTHEX): Value returned by the host adapter driver describing completion status of I/O request execution at the transport or physical link layer.
+*target_status* (INTHEX): Value returned by the target describing completion status of I/O request.
+*target_rsp_code* (INTHEX): This is the target response code

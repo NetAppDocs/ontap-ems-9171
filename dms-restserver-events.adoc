@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: dms-restserver-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dms.restserver events
+---
+
+= dms.restserver events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dms.restserver.ssl.disabled
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system hits an error in enabling SSL authentication in the rest server.
+*Corrective Action*::
+Check that the SSL certificates and keys given to the rest server are accessible and valid.
+*Syslog Message*::
+Failed to set SSL authentication in DMAP rest server due to %s
+*Parameters*::
+*error* (STRING): Text describing the error.

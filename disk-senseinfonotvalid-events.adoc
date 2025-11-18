@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: disk-senseinfonotvalid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.senseinfonotvalid events
+---
+
+= disk.senseinfonotvalid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.senseInfoNotValid
+*Severity*::
+ERROR
+*Description*::
+This message occurs when invalid sense information is returned.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s: sense data information field is not valid.
+*Parameters*::
+*diskName* (STRING): Name of the device.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: diskown-disk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.disk events
+---
+
+= diskown.disk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.disk.already.deleted
+*Severity*::
+ERROR
+*Description*::
+This message occurs during an attempt to assign a disk that is being deleted. This can happen if the disk is deleted at the storage layer while disk assignment is in progress.
+*Corrective Action*::
+Run the "run local disk show -v" command to see the list of available disks, and then retry the operation using one of the listed disks.
+*Syslog Message*::
+Assign request failed for disk %s because it is being deleted.
+*Parameters*::
+*disk_name* (STRING): Name of the disk that is being deleted.

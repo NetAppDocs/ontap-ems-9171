@@ -1,0 +1,44 @@
+---
+sidebar: sidebar
+permalink: rlib-remote-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rlib.remote events
+---
+
+= rlib.remote events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rlib.remote.node.event
+*Severity*::
+NOTICE
+*Description*::
+This event is generated to print information about remote node such as IP address and sysid along with the event that occurred
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*peerIP* (STRING): IP address of remote node
+*peerSysid* (LONGINT): Sysid of remote node
+*localIP* (STRING): IP address of local node
+*localPort* (STRING): Local rdma port name
+*eventDesc* (STRING): Information about the event (Optional)
+
+== rlib.remote.node.update
+*Severity*::
+NOTICE
+*Description*::
+This event is generated when remote node sysid has changed as a part of headswap
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*oldSysid* (LONGINT): Old sysid of remote node
+*sysid* (LONGINT): New sysid of remote node

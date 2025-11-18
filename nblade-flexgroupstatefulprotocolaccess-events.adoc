@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: nblade-flexgroupstatefulprotocolaccess-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.flexgroupstatefulprotocolaccess events
+---
+
+= nblade.flexgroupstatefulprotocolaccess events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.flexgroupStatefulProtocolAccess
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects an attempt to use Network Lock Manager (NLM) shared locks on a FlexGroup volume. FlexGroup volumes do not support NLM shared locks.
+*Corrective Action*::
+FlexGroup volumes do not support shared locks. Consider using FlexGroup volumes that support stateful protocols such as NFSv4.0,NFSv4.1,SMB1 or SMB2 in order to use shared locks.
+*Syslog Message*::
+Attempt to access FlexGroup volumes with Master Data Set ID "%u" with "%s" is denied.
+*Parameters*::
+*msid* (INT): Master Data Set ID of the FlexGroup volume being accessed.
+*protocol* (STRING): Client protocol being used.

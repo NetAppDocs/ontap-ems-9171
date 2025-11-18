@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: nblade-fastrecoverybegin-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.fastrecoverybegin events
+---
+
+= nblade.fastrecoverybegin events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.fastRecoveryBegin
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NFSv4.x server enters the fast recovery mode as part of the LIF migration event, during which the NFS server will not be able to serve any data for NFSv4.x clients.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NFS server fast recovery has started for SVM "%s", LIF ID "%d", LIP IP address "%s".
+*Parameters*::
+*vserverName* (STRING): SVM Name.
+*lifId* (INT): LIF ID
+*lifIpAddress* (STRING): LIF IP address for the NFS server.

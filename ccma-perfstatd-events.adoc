@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ccma-perfstatd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ccma.perfstatd events
+---
+
+= ccma.perfstatd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ccma.perfstatd.disabled
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Perfstat daemon (perfstatd) has been disabled for more than an hour. This is caused by setting the -perfstat-sampling-period value to 0. This message will be repeated every hour perfstatd is turned off. The messages will only displayed once a day.
+*Corrective Action*::
+Run the 'statistics archive config modify -perfstat-sampling-period 5' command. This will enable the perfstatd and it will set the Perfstat sampling period to the default value of 5 minutes.
+*Syslog Message*::
+The Perfstat daemon (perfstatd) has been disabled for more than an hour. It is important for the analysis and diagnoses of performance related issues. Consider enabling it.
+*Parameters*::
+(None).

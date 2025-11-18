@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sfu-partnerinaccessible-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfu.partnerinaccessible events
+---
+
+= sfu.partnerinaccessible events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfu.partnerInaccessible
+*Severity*::
+ALERT
+*Description*::
+This message occurs in a high-availability (HA) configuration in which communication between partner nodes cannot be established.
+*Corrective Action*::
+Verify that the HA interconnect is operational. Retry the (advanced privilege) "storage shelf firmware update" command.
+*Syslog Message*::
+HA partner is inaccessible. Shelf firmware update canceled.
+*Parameters*::
+(None).

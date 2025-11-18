@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: disk-toomanynvmespindles-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.toomanynvmespindles events
+---
+
+= disk.toomanynvmespindles events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.tooManyNvmeSpindles
+*Severity*::
+ALERT
+*Description*::
+This message occurs when Data ONTAP(R) finds more NVMe disks present on a platform than the platform actually supports. Additional disks above the support number are ignored. Correct this issue before rebooting the system.
+*Corrective Action*::
+Too many NVMe disks have been installed. Reconfigure the system to the maximum number of NVMe disks supported.
+*Syslog Message*::
+Reached the maximum number of NVMe disks that are supported on this system of %d NVMe disks. All additional NVMe disks will be ignored. This problem must be resolved before the system is rebooted.
+*Parameters*::
+*maxSpindle* (INT): Maximum number of NVMe disks supported on this platform.

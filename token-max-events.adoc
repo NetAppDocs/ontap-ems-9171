@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: token-max-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: token.max events
+---
+
+= token.max events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== token.max.count.in.volume
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the maximum number of tokens that can be created in a volume is determined.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume %s can contain up to %d tokens.
+*Parameters*::
+*volume_name* (STRING): Name of the volume in which tokens can be created.
+*max* (INT): Maximum number of tokens in the volume.

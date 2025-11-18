@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: nblade-fpolpassthruonsmb1-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.fpolpassthruonsmb1 events
+---
+
+= nblade.fpolpassthruonsmb1 events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.fpolPassthruOnSMB1
+*Severity*::
+ERROR
+*Description*::
+This message occurs during a client attempt to establish an FPolicy pass-through read channel over SMB1, which is not supported.
+*Corrective Action*::
+Verify that both the client and Data ONTAP(R) support and are configured for SMB2 or later.
+*Syslog Message*::
+For Vserver "%s", the FPolicy pass-through read channel request coming from the client "%s" is rejected because it is not supported for SMB1.
+*Parameters*::
+*vserverName* (STRING): Vserver associated with this operation.
+*fpserverIp* (STRING): IP address of the client.

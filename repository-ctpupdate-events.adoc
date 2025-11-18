@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: repository-ctpupdate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repository.ctpupdate events
+---
+
+= repository.ctpupdate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Repository.CTPUpdate.Failed
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an update to the Create Time Placement (CTP) ruleset fails.
+*Corrective Action*::
+Retry updating the ruleset by using the "vserver data-policy import" command. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Create Time Placement (CTP) ruleset update failed on the Infinite Volume. Reason: %s.
+*Parameters*::
+*reason* (STRING): Reason for the failure.

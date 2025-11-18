@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: lifp-net-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lifp.net events
+---
+
+= lifp.net events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lifp.net.bdmismatch
+*Severity*::
+ERROR
+*Description*::
+This message occurs while assigning network ports to broadcast domains, when LIF Placement subnet discovery finds a port that is assigned to a broadcast domain that is different from the broadcast domain to which other ports in the same physical broadcast domain are assigned.
+*Corrective Action*::
+Ports assigned to broadcast-domains need to be corrected by the admin. The ports in one physical broadcast domain must be assigned to a single broadcast-domain.
+*Syslog Message*::
+In IPspace %s, other ports in the same physical broadcast domain are assigned to broadcast-domain %s but %s is assigned to broadcast-domain %s.
+*Parameters*::
+*ipspacename* (STRING): IPspace name.
+*broadcastdomainOnOtherPorts* (STRING): Broadcast-domain name.
+*port* (STRING): Port name.
+*broadcastdomainOnCurrentPort* (STRING): Broadcast-domain name.

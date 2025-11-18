@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: moveagent-detected-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: moveagent.detected events
+---
+
+= moveagent.detected events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== moveagent.detected.on.MCC.SO
+*Deprecated*::
+This EMS is no longer needed as the issue that caused the volume inconsistency after an MCC switchback operation is fixed.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a volume move operation is interrupted by a disaster after the critical cutover phase has started but before the source volume is deleted. It might lead to volume inconsistencies and data access disruption on the disaster site when a MetroCluster(R) switchback operation is performed.
+*Corrective Action*::
+To avoid data access disruption after MetroCluster switchback, some additional cleanup steps might need to be taken on the disaster site. Please run the commands 'debug vreport show' and 'debug vreport fix' on the disaster site to perform the cleanup. Contact NetApp technical support for further assistance if needed.
+*Syslog Message*::
+A disaster event interrupted the volume move operation in the critical cutover phase before the source volume %s was deleted.
+*Parameters*::
+*volname* (STRING): Source volume name.

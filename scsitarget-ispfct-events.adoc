@@ -1,0 +1,117 @@
+---
+sidebar: sidebar
+permalink: scsitarget-ispfct-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsitarget.ispfct events
+---
+
+= scsitarget.ispfct events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsitarget.ispfct.AENErr
+*Severity*::
+ALERT
+*Description*::
+This message occurs when Fibre Channel host bus adapter(HBA) returns an event notification to the driver but the driver did not recognize the event type.
+*Corrective Action*::
+Contact technical support with the code and status information for further analysis.
+*Syslog Message*::
+Fibre Channel target HBA %s received unexpected AEN code 0x%x, Status1 0x%x, Status2 0x%x, Status3 0x%x and Status4 0x%x.
+*Parameters*::
+*hba* (STRING): Name of the target HBA that gave the error.
+*code* (INTHEX): Firmware error code.
+*status1* (INTHEX): Firmware status code 1.
+*status2* (INTHEX): Firmware status code 2.
+*status3* (INTHEX): Firmware status code 3.
+*status4* (INTHEX): Firmware status code 4.
+
+== scsitarget.ispfct.cfmodeChanged
+*Severity*::
+NOTICE
+*Description*::
+This event generates a notification that the cfmode was changed. Changing the cfmode should only be done in coordination with FCP connected hosts as this can cause devices to change, appear, or disappear on the hosts.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FCP cfmode changed from %s to %s.
+*Parameters*::
+*old_mode* (STRING): The cfmode setting before the change.
+*new_mode* (STRING): The cfmode setting after the change.
+
+== scsitarget.ispfct.configChanged
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the ISPFCT driver determines that a port configuration has changed.
+*Corrective Action*::
+Check to ensure the initiator is still connected to the fabric.
+*Syslog Message*::
+FCP target %s reported a port configuration change. %s.
+*Parameters*::
+*hba* (STRING): FCP target adapter name.
+*message* (STRING): Description of the configuration change.
+
+== scsitarget.ispfct.fwErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when firmware on the Fibre Channel (FC) target host bus adapter (HBA) returns a system error. The system is resetting the HBA in an attempt to recover from the error, but further analysis is necessary to determine the cause of the problem and whether further corrective action is needed.
+*Corrective Action*::
+Contact NetApp technical support with the subsequent SRAM dump so that the cause of the problem and applicable corrective action can be determined.
+*Syslog Message*::
+Firmware on FC target HBA %s returned a system error code 0x%x, status1 0x%x, status2 0x%x, status3 0x%x, and status4 0x%x. Resetting HBA to recover from the error, but SRAM dump analysis is needed.
+*Parameters*::
+*hba* (STRING): Name of the target HBA that failed.
+*code* (INTHEX): Firmware error code.
+*status1* (INTHEX): Firmware status code 1.
+*status2* (INTHEX): Firmware status code 2.
+*status3* (INTHEX): Firmware status code 3.
+*status4* (INTHEX): Firmware status code 4.
+
+== scsitarget.ispfct.fwfileCksumFailed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Fibre Channel driver fails to load the firmware file when initializing the adapter. The adapter cannot serve data until the firmware is loaded successfully.
+*Corrective Action*::
+Reboot the node to reinitialize the adapter. If the adapter still fails to initialize, replace the adapter. For further assistance, contact NetApp technical support.
+*Syslog Message*::
+Fibre Channel target adapter %s firmware file %s failed checksum after reading %d bytes.
+*Parameters*::
+*hba* (STRING): Adapter that failed to load the firmware file.
+*filename* (STRING): Name of file that could not be loaded.
+*bytesread* (INT): Number of bytes that have been read in from the firmware file so far.
+
+== scsitarget.ispfct.invalidNVRAMNodeName
+*Severity*::
+ALERT
+*Description*::
+This message occurs when ONTAP(R) software reads an invalid World Wide Node Name (WWNN) from a Fibre Channel target adapter's NVRAM. A default WWNN will be temporarily assigned to the adapter. This might cause fabric zoning not to work correctly and might cause problems with anything that depends on consistent WWNNs and WWPNs.
+*Corrective Action*::
+Reboot the node. If the problem still exists, replace the adapter. Contact NetApp technical support for assistance.
+*Syslog Message*::
+Invalid WWNN of Fibre Channel target adapter %s. Assigning temporary default: %s.
+*Parameters*::
+*hba* (STRING): Name of the target HBA that has invalid NVRAM
+*default_name* (STRING): Node name being applied to the HBA.
+
+== scsitarget.ispfct.linkBreak
+*Severity*::
+ERROR
+*Description*::
+ispfct link break notification
+*Corrective Action*::
+If link break is unexpected check cables, switches and the other host (if direct connected). Please check the Firmware status code 1, 2 and 4 for reason.
+*Syslog Message*::
+Link break detected on Fibre Channel target adapter %s. Firmware status code status1 0x%x, status2 0x%x, and status4 0x%x.
+*Parameters*::
+*hba* (STRING): Name of the target HBA which has lost link
+*status1* (INTHEX): Firmware status code 1.
+*status2* (INTHEX): Firmware status code 2.
+*status4* (INTHEX): Firmware status code 4.

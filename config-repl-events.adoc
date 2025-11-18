@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: config-repl-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.repl events
+---
+
+= config.repl events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.repl.bypass.disabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the configuration replication bypass has been disabled. Configuration replication to any partner clusters will now resume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The configuration replication bypass has been disabled.
+*Parameters*::
+(None).
+
+== config.repl.bypass.enabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the configuration replication bypass has been enabled. Configuration replication to any partner clusters will cease until the bypass is disabled using the 'debug crs replication-bypass disable' command.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The configuration replication bypass has been enabled.
+*Parameters*::
+(None).

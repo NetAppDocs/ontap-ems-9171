@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: secd-dc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: secd.dc events
+---
+
+= secd.dc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== secd.dc.out.of.pipe.instances
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Windows Domain Controller (DC), while responding to an MSRPC request from Data ONTAP(R), returns an error indicating that it ran out of pipe instances in the listening state. This can happen when the requests from Data ONTAP are received by the DC during a timing window when the limited number of listening pipe instance are already allocated to other requests. Such errors received by Data ONTAP might result in longer CIFS/NFS authentication and/or access times, potentially resulting in CIFS/NFS client timeouts.
+*Corrective Action*::
+Contact Microsoft support.
+*Syslog Message*::
+MSRPC for Vserver %s to %s:%s was retried %d times (delay: %d usecs).
+*Parameters*::
+*vserver* (STRING): Vserver that encountered the failure.
+*dc* (STRING): DC that returned the error.
+*pipe* (STRING): Pipe on the DC.
+*retries* (INT): Number of retries.
+*delay* (INT): Time (usecs) spent retrying.

@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: esh-module-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: esh.module events
+---
+
+= esh.module events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== esh.module.multiprob
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the ESH might have failed because it is reporting multiple problems.
+*Corrective Action*::
+Replace the ESH module if the reported multiple problems are not valid.
+*Syslog Message*::
+channels %s disk shelf ID %d %s%s.
+*Parameters*::
+*channels* (STRING): Channels that have the error if local, PARTNER for high-availability partner, UNUSED if unconnected.
+*shelfID* (INT): Disk shelf ID (1-7) of the disk shelf reporting the error.
+*element* (STRING): ESH module designator (A is the upper module, B is the lower module).
+*reason* (STRING): Reason the message is being sent.

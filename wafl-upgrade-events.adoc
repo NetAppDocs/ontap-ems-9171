@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: wafl-upgrade-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.upgrade events
+---
+
+= wafl.upgrade events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.upgrade.useActiveInofile
+*Severity*::
+NOTICE
+*Description*::
+This event is issued during an upgrade where the system need to use the active filesystem inofile.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Using active filesystem inofile on upgrade from legacy %s %s%s%s%s.
+*Parameters*::
+*type* (STRING): The type of object (volume/aggregate)
+*owner* (STRING): The owner of the volume
+*vol* (STRING): The name of the volume
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.

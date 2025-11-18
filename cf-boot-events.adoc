@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cf-boot-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.boot events
+---
+
+= cf.boot events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.boot.continuing
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the failover monitor continues booting after waiting for giveback.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).

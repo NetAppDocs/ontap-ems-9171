@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: quota-reinit-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: quota.reinit events
+---
+
+= quota.reinit events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== quota.reinit.required
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an unplanned MetroCluster(tm) switchover happens. If a quota operation was running on a volume located on a disaster site during the unplanned switchover, the quota database could be in an incomplete state and quotas need to be reinitialized on that volume.
+*Corrective Action*::
+After the unplanned switchover is complete, use the "quota off" CLI command followed by the "quota on" CLI command to reinitialize quotas for the indicated volume.
+*Syslog Message*::
+Quota reinitialization is required on %s%s%s due to an unplanned switchover.
+*Parameters*::
+*volname* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume in cases in which the volume name alone is insufficient.

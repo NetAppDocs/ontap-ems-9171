@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: cam-timeout-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cam.timeout events
+---
+
+= cam.timeout events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cam.timeout.retry
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an I/O request to a Common Access Method (CAM) device driver times out. This might be indicative of an overloaded back-end storage subsystem. The I/O operation will be retried; this message does not indicate failure.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+CAM device driver I/O timeout. %s%s%s.
+*Parameters*::
+*cam_timeout* (STRING): Timeout message for an I/O request from a CAM device driver.
+*uuid* (STRING): Unique identifier for the device.
+*outstanding* (STRING): Command that timed out and its elapsed time.

@@ -1,0 +1,104 @@
+---
+sidebar: sidebar
+permalink: smbc-aufo-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: smbc.aufo events
+---
+
+= smbc.aufo events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== smbc.aufo.completed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the SnapMirror(R) active sync automatic unplanned failover operation completes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror automatic failover completed. Destination path: %s.
+*Parameters*::
+*dstpath* (STRING): Path name of the destination group of the SnapMirror(R) active sync relationship.
+
+== smbc.aufo.during.expand
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a SnapMirror(R) active sync automatic unplanned failover operation starts while a SnapMirror(R) active sync expand operation is in progress. The new volumes of the consistency group that are going through the expand operation do not participate in the failover and remain as data protection (DP) after completion of failover.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Automatic unplanned failover has started on the SnapMirror(R) active sync relationship while the relationship is expanding. The new volumes of the consistency group that are going through the expand operation do not participate in the failover and remain as DP after completion of failover.
+*Parameters*::
+*dstpath* (STRING): Path name for the destination consistency group of SnapMirror(R) active sync relationship.
+
+== smbc.aufo.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the SnapMirror(R) active sync automatic unplanned failover operation fails.
+*Corrective Action*::
+Perform "snapmirror delete -destination-path destination_path" followed by "snapmirror break" on the volumes.
+*Syslog Message*::
+SnapMirror automatic failover failed. Destination path: %s.
+*Parameters*::
+*dstpath* (STRING): Path name of the destination group of the SnapMirror(R) active sync relationship.
+
+== smbc.aufo.failover.incapable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the SnapMirror(R) active sync automatic unplanned failover operation fails because the destination site is not failover capable.
+*Corrective Action*::
+Before applying corrective action, the User must ensure that the primary/master copy is unavailable, otherwise the assumption is that Master copy is actively being used by the Application workload. Perform "snapmirror delete -destination-path destination_path" followed by "snapmirror break" on the volumes.
+*Syslog Message*::
+SnapMirror automatic failover encountered a failure because the site with destination path "%s" is not failover-capable.
+*Parameters*::
+*dstpath* (STRING): Path name of the destination group of the SnapMirror(R) active sync relationship.
+
+== smbc.aufo.io.outage.complete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when I/O can resume after an automatic unplanned failover of a SnapMirror(R) active sync relationship.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+In the automatic unplanned failover of the SnapMirror(R) active sync relationship with destination path %s and relationship-ID %s, I/O disruption started at %s and lasted for %u msecs. Mediator Agent processing started at %s and lasted for %u msecs.
+*Parameters*::
+*dstpath* (STRING): Destination path of the SnapMirror(R) active sync relationship.
+*cg_rel_id* (STRING): ID of the SnapMirror(R) active sync relationship.
+*io_outage_start_time* (STRING): I/O disruption start time.
+*io_outage_latency* (LONGINT): I/O disruption window (msecs).
+*tba_trigger_start_time* (STRING): Mediator Agent processing start time.
+*tba_trigger_latency* (LONGINT): Mediator Agent processing window (msecs).
+
+== smbc.aufo.queued
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the SnapMirror(R) active sync relationship automatic unplanned failover operation is queued.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror(R) active sync automatic unplanned operation failover queued. Destination path: %s.
+*Parameters*::
+*dstpath* (STRING): Path name of the destination group of the SnapMirror(R) active sync relationship.
+
+== smbc.aufo.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the SnapMirror(R) active sync automatic unplanned failover operation starts.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror automatic failover started. Destination path: %s.
+*Parameters*::
+*dstpath* (STRING): Path name of the destination group of the SnapMirror(R) active sync relationship.

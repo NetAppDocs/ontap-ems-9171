@@ -1,0 +1,57 @@
+---
+sidebar: sidebar
+permalink: exports-netgroup-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: exports.netgroup events
+---
+
+= exports.netgroup events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== exports.netgroup.dnsNoPtrRec
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the reverse lookup record mapping an IP address to its hostname cannot be found in the configured name servers. This record must be present to evaluate the membership of a hostname in the netgroup named in the clientmatch of an export-policy rule.
+*Corrective Action*::
+The reverse mapping record might have been incorrectly entered, inadvertently removed from the name service, or never entered at all. Check the configuration with the appropriate tools for each name service.
+*Syslog Message*::
+IP address "%s" does not have a reverse mapping for its corresponding hostname in the configured name servers when evaluating the export-policy rules for netgroup "%s" on Vserver "%s".
+*Parameters*::
+*ipaddr* (STRING): IP address of the client that does not have the reverse lookup record.
+*netgroup* (STRING): Name of the netgroup that is being evaluated.
+*vserver* (STRING): Name of the Vserver for which the problem is occurring.
+
+== exports.netgroup.notFound
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a netgroup named in a clientmatch of an export-policy rule is not found in the configured name servers.
+*Corrective Action*::
+The netgroup name might have been incorrectly entered, inadvertently removed from the name service, or never entered at all. Check the configuration with the appropriate tools for each name service.
+*Syslog Message*::
+Netgroup "%s" cannot be found when evaluating export-policy rules on Vserver "%s".
+*Parameters*::
+*netgroup* (STRING): Name of the netgroup that is not being found.
+*vserver* (STRING): Name of the Vserver for which the problem is occurring.
+
+== exports.netgroup.partial
+*Severity*::
+ERROR
+*Description*::
+This message occurs when partial netgroup results are returned by the name services because of errors in the netgroup mapping.
+*Corrective Action*::
+If the netgroup mapping is greater than 1024 characters for netgroups on Network Information Service (NIS) or 4096 for netgroups in a local file, consider creating a sub netgroup to divide it. If the nesting of the netgroup is too deep, consider reducing the depth by adding the entries directly to the netgroup instead of adding to sub netgroups. If the netgroup has a sub netgroup that is not available as a top level netgroup in the mapping, add an empty entry for the sub netgroup to resolve the error. Ensure the line length and nesting limits are not exceeded.
+*Syslog Message*::
+Netgroup %s expansion failed with %s (error: %d) when evaluating export-policy rules on Vserver "%s".
+*Parameters*::
+*netgroup* (STRING): Name of the netgroup that could not be expanded.
+*reason* (STRING): Specific reason for the netgroup expansion failure.
+*error* (INT): Error code returned during netgroup expansion.
+*vserver* (STRING): Name of the Vserver in which the problem is occurring.

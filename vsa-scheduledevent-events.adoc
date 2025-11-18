@@ -1,0 +1,61 @@
+---
+sidebar: sidebar
+permalink: vsa-scheduledevent-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsa.scheduledevent events
+---
+
+= vsa.scheduledevent events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsa.scheduledEvent.mlx.detch
+*Deprecated*::
+This event is replaced with vsa.mlx.nic.detach which is the same, but with a new non-confusing name.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP(R) software is running as an instance in Azure and a NIC SR-IOV driver detach event is detected. ONTAP will continue to use the Hyper-V netsvc driver without the SR-IOV functionality for a short time. On an HA configuration, unsynchronized logs might appear during this time, which will be resolved if a subsequent SR-IOV attach event occurs. If the SR-IOV attach event does not occur quickly, high-availability (HA) takeover might occur.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NIC SR-IOV driver detach event detected. On an HA configuration, unsynchronized logs might be seen or HA takeover might occur if SR-IOV driver remains detached.
+*Parameters*::
+(None).
+
+== vsa.scheduledEvent.scheduled
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects that a cloud provider event has been scheduled that will result in a node rebooting or becoming unavailable. In a High-Availability (HA) configuration, only one partner will be affected.
+*Corrective Action*::
+In a single-node configuration, a data-serving failure will occur for an event of type "reboot" or "rehost", and a data-serving failure or timeout might occur during a "freeze". Prepare client applications for the event. For an HA configuration, no action is required.
+*Syslog Message*::
+Cloud provider event %s for node "%s". ID: %s. Type: %s. Not before: %s.
+*Parameters*::
+*detail* (STRING): Cloud provider infrastructure might cause nodes to reboot or freeze. This happens when the provider needs to update the underlying infrastructure or move the node to a new host. Typically, the event will be detected before it happens, and information about when it might start is provided via a "not before" time. In an HA configuration, only one node in an HA pair will be affected by an event. During this time, the cluster will not be protected from a data-serving failure if the remaining HA partner goes down.
+*node* (STRING): Node affected by the event.
+*event_id* (STRING): Cloud-provider-specific event ID.
+*event_type* (STRING): String "reboot", "rehost", or "freeze".
+*not_before_time* (STRING): Timestamp in the general form: Mon, 19 Sep 2018 18:29:47 GMT If this string is empty, the event is in progress.
+
+== vsa.scheduledEvent.update
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects that the status of a previously scheduled cloud provider maintenance event has been updated.
+*Corrective Action*::
+Cloud provider infrastructure will restart the node after a "reboot" or "rehost" event, and during a "freeze" the node might restart. In any case, intervention might be required to be sure that the cluster is up and running normally.
+*Syslog Message*::
+Cloud provider event %s for node "%s". ID: %s. Type: %s. Status: %s.
+*Parameters*::
+*detail* (STRING): Cloud provider maintenance events have a lifecycle. When the event is scheduled, the "scheduled" event is raised. Subsequently, the status of the event will change state to "started" or "complete". When that is detected, this event is raised.
+*node* (STRING): Node affected by the event.
+*event_id* (STRING): Cloud-provider-specific event ID.
+*event_type* (STRING): String "reboot", "rehost", or "freeze".
+*status* (STRING): Current status of the event: "scheduled", "started", "complete".

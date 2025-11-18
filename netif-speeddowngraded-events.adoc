@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: netif-speeddowngraded-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.speeddowngraded events
+---
+
+= netif.speeddowngraded events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.speedDowngraded
+*Severity*::
+ERROR
+*Description*::
+This message occcurs when the interface is operating at a lower speed than expected.
+*Corrective Action*::
+The physical connection may be faulty. Replace the cable and check the switch port configuration for errors.
+*Syslog Message*::
+Interface %s operating at %d Mbps. This might occur due to faulty cable, faulty switch hardware, or faulty switch software.
+*Parameters*::
+*ifName* (STRING): Name of the network interface.
+*speed* (INT): Speed used by the interface.

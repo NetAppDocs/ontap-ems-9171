@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sp-postupd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sp.postupd events
+---
+
+= sp.postupd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sp.postupd.ck.unexpt.sp.rev
+*Severity*::
+ERROR
+*Description*::
+This message occurs after a scheduled firmware update, when the servprocd daemon detects that the Service Processor(SP) firmware version changed to an unexpected value.
+*Corrective Action*::
+Check whether the SP firmware has been updated through the SP CLI. If not: 1. Manually update the SP firmware. 2. If the failures persist, contact NetApp technical support.
+*Syslog Message*::
+%s.
+*Parameters*::
+*reason* (STRING): Reason for the failure: %s.

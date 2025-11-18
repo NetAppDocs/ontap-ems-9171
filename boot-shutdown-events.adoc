@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: boot-shutdown-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: boot.shutdown events
+---
+
+= boot.shutdown events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== boot.shutdown.issue
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an error is detected while shutting down the system.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Failed to shutdown the system. Error: %s
+*Parameters*::
+*err_str* (STRING): Error string.

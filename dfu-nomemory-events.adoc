@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: dfu-nomemory-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dfu.nomemory events
+---
+
+= dfu.nomemory events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dfu.noMemory
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the disk firmware update routine cannot allocate memory to update the disk firmware.
+*Corrective Action*::
+Memory allocation relies on the availability of memory resources in the system. If possible, reduce the workload so that fewer resources are needed. Rebooting the system can recover memory resources that might have been lost. If the failure persists after reducing the workload and rebooting, contact NetApp technical support for assistance in determining whether additional system memory is indicated.
+*Syslog Message*::
+Could not allocate memory for disk firmware update. Unable to download firmware to disk %s [%s %s %s] S/N [%s].
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*vendorName* (STRING): Name of the vendor of the disk.
+*productId* (STRING): Product ID of the disk.
+*fwVersion* (STRING): Firmware version of the disk.
+*serialno* (STRING): Serial number of the disk.

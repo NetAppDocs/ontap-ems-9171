@@ -1,0 +1,53 @@
+---
+sidebar: sidebar
+permalink: monitor-ioexpansiontemperature-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.ioexpansiontemperature events
+---
+
+= monitor.ioexpansiontemperature events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.ioexpansionTemperature.cool
+*Severity*::
+EMERGENCY
+*Description*::
+This warning message occurs when the I/O expansion module is too cold.
+*Corrective Action*::
+The system cannot function in an environment that is too cold; find ways to warm the system.
+*Syslog Message*::
+I/O expansion module is too cold: %s
+*Parameters*::
+*describe_toocool* (STRING): Reading and state of the temperature sensors on the I/O expansion module.
+
+== monitor.ioexpansionTemperature.ok
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the temperature of the I/O expansion module is normal. It can occur for the following two cases: 1) LOG_NOTICE to show that a bad condition has reverted to normal. 2) LOG_INFO for hourly to indicate that the temperature is OK.
+*Corrective Action*::
+No corrective action is needed.
+*Syslog Message*::
+Temperature of the I/O expansion module is OK.
+*Parameters*::
+(None).
+
+== monitor.ioexpansionTemperature.warm
+*Deprecated*::
+Deprecated as of version 9.2.0 to address the EMS ID length violation.
+*Severity*::
+ALERT
+*Description*::
+This warning message occurs when the I/O expansion module is too warm.
+*Corrective Action*::
+Evaluate the environment in which the system is functioning: are air conditioning units needed or is the current air conditioning not functioning properly?
+*Syslog Message*::
+I/O expansion module is too warm: %s
+*Parameters*::
+*describe_toowarm* (STRING): Reading and state of the temperature sensors on the I/O expansion module.

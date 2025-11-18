@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: mcc-encryption-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mcc.encryption events
+---
+
+= mcc.encryption events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mcc.encryption.disabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the encryption for NVLog and storage data in a MetroCluster (tm) configuration is disabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The MetroCluster encryption feature has been disabled.
+*Parameters*::
+(None).

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: audit-cap-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: audit.cap events
+---
+
+= audit.cap events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== audit.cap.staging.event.failure
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system fails to generate an audit staging event as a part of the Central Access Policy (CAP) evaluation during access checks.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failed to generate an audit staging event when evaluating CAPs for the Vserver "%s". Reason: "%s".
+*Parameters*::
+*vserverUuidStr* (STRING): UUID of the Vserver.
+*errorStr* (STRING): Error encountered.

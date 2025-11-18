@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: san-volrehostlunmapcreated-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.volrehostlunmapcreated events
+---
+
+= san.volrehostlunmapcreated events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.volRehostLunMapCreated
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs on clustered Data ONTAP(R) systems for Volume Rehost operation on successful creation of the LUN map the destination Vserver.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LUN "%s" successfully mapped with igroup "%s" for Vserver "%s".
+*Parameters*::
+*lun_path* (STRING): LUN path.
+*igroup_name* (STRING): Igroup name.
+*vserver_name* (STRING): Vserver name.

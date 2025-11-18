@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: sis-auto-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.auto events
+---
+
+= sis.auto events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.auto.session.change
+*Severity*::
+NOTICE
+*Description*::
+This message occurs whenever the number of background deduplication sessions change on a node because of throttling based on system load for the volumes with efficiency policy type as auto.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ADS: Number of auto sessions changed from %d to %d
+*Parameters*::
+*old_sessions* (INT): prev sessions count.
+*new_sessions* (INT): new sessions count.

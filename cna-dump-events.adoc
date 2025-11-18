@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: cna-dump-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cna.dump events
+---
+
+= cna.dump events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cna.dump
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an unexpected event or illegal condition is detected by the Converged Network Adapter (CNA) driver and the contents of the adapter's static RAM and memory must be dumped. After the dump, the adapter is reset and the contents of the dump are stored in a file in the /etc/log/ directory.
+*Corrective Action*::
+No corrective action is needed; the adapter was reset.
+*Syslog Message*::
+CNA coredump generated for CNA adapter CNA_%s, %s
+*Parameters*::
+*adapter* (STRING): Name of the Converged Network Adapter.
+*reason* (STRING): Reason for the dump.
+
+== cna.dump.saved
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an unexpected event or illegal condition is detected by the Converged Network Adapter (CNA) driver and the contents of the adapter's static RAM and memory are saved. The dump files are stored on the appliance's root volume in the /etc/log/ directory, with the following file name format: [adapter]_[date]_[time].bin
+*Corrective Action*::
+Send the dump file to technical support for analysis.
+*Syslog Message*::
+A dump for CNA adapter CNA_%s was stored in %s
+*Parameters*::
+*adapter* (STRING): Name of the CNA.
+*filename* (STRING): Name of the file containing the dump.

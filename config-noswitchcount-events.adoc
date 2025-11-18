@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-noswitchcount-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.noswitchcount events
+---
+
+= config.noswitchcount events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.NoSwitchCount
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an attempt to obtain the switch port count fails because it does not exist.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Unable to obtain switch port count information for attached switches.
+*Parameters*::
+(None).

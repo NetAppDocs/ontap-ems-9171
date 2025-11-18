@@ -1,0 +1,68 @@
+---
+sidebar: sidebar
+permalink: qos-viodet-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: qos.viodet events
+---
+
+= qos.viodet events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== qos.VioDet.maxThrottle
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Quality of Service (QoS) subsystem has already throttled requests severely to help workloads meet their min-throughput and their service-level objectives (SLOs) and will not throttle any further. Possible reasons for severe throttling could be that there are bully workloads or insufficient resources, which means the system cannot support the specified targets in the SLOs.
+*Corrective Action*::
+Collect ONTAP statistics counters and use 'qos statistics' CLI command on the node to monitor the workload and policy group to find the workloads that do not meet their min-throughput SLOs. The cpu utilization and aggregate utilization can be used to help identify if there is sufficient load or if the system is over-provisioned. First validate if the policy group client generates sufficient load. If the system is over provisioned, identify the critical resources (cpu, memory, network, disk, etc.) that could lead to the violation, or identify the hot spot in a clustered system and move workloads around to avoid the hot spot or limit bully workloads by setting a QoS limit to reduce the contention.
+*Syslog Message*::
+QoS violation limit for %s %s is %u IOPS.
+*Parameters*::
+*object_type* (STRING): Type of resource object under notification. For this EMS, the object_type will always be NODE.
+*object_uuid* (STRING): UUID of the resource object. For this EMS, the UUID will be of the node.
+*vdlimit* (INT): Current limit value in terms of IOPS and a block size of 4K.
+
+== qos.VioDet.Mintput.Throttle
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Quality of Service (QoS) subsystem starts throttling requests to help workloads meet their min-throughput and their service-level objectives (SLOs). Possible reasons for throttling could be that there are bully workloads or insufficient resources, which means the system cannot support the specified targets in the SLOs.
+*Corrective Action*::
+Collect ONTAP statistics counters and use 'qos statistics' CLI command on the node to monitor the workload and policy group to find the workloads that do not meet their min-throughput SLOs. The CPU utilization and aggregate utilization can be used to help identify if there is sufficient load or if the system is over-provisioned. Firstly validate if the policy group client generates sufficient load. If the system is over provisioned, identify the critical resources (CPU, memory, network, disk, etc.) that could lead to the violation, or identify the hot spot in a clustered system and move workloads around to avoid the hot spot. Or limit bully workloads by setting a QoS limit to reduce the contention.
+*Syslog Message*::
+QoS min-throughput feature has started throttling requests for node: "%s" with uuid: "%s".
+*Parameters*::
+*object_type* (STRING): Type of resource object under notification. The object_type will always be NODE.
+*object_uuid* (STRING): Universal unique identifier (UUID) of the resource object. The UUID is of the node.
+
+== qos.VioDet.noMemory
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Quality-of-Service (QoS) process cannot allocate memory required for the Violation Detection subsystem (likely there is not enough system memory available). As a result workloads will not meet their min-throughput and their service-level objectives (SLOs).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+QoS dynamic memory has reached its limit. QoS min-throughput might operate in a limited capacity.
+*Parameters*::
+*object_type* (STRING): Type of resource object under notification. For this EMS, the object_type will always be NODE.
+*object_uuid* (STRING): UUID of the resource object. For this EMS, the UUID will be of the node.
+
+== qos.VioDet.publishFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Quality-of-Service (QoS) process cannot communicate throttle limits due to an internal error. As a result workloads might not meet their min-throughput and their service-level objectives (SLOs).
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+QoS subsystem cannot publish throttle limits.
+*Parameters*::
+*object_type* (STRING): Type of resource object under notification. For this EMS, the object_type will always be NODE.
+*object_uuid* (STRING): UUID of the resource object. For this EMS, the UUID will be of the node.

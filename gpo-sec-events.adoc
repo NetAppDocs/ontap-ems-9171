@@ -1,0 +1,233 @@
+---
+sidebar: sidebar
+permalink: gpo-sec-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: gpo.sec events
+---
+
+= gpo.sec events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== gpo.sec.EvtAdt.applied
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when applying group policy object (GPO) event audit policy settings succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Successfully applied event audit and log settings to Vserver %s.
+*Parameters*::
+*vserver* (STRING): Vserver name.
+
+== gpo.sec.EvtAdt.notApplied
+*Severity*::
+ERROR
+*Description*::
+This message occurs when applying group policy object (GPO) event audit policy settings fails.
+*Corrective Action*::
+Address the specific reason for the issue, and then apply the settings again by entering the "vserver cifs group-policy update -force-reapply-all-settings true -vserver <vserver-name>" command.
+*Syslog Message*::
+Failed to apply event audit and log settings to Vserver %s, reason: %s.
+*Parameters*::
+*vserver* (STRING): Vserver name.
+*reason* (STRING): Reason for the failure.
+
+== gpo.sec.fsec.applied
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the group policy object (GPO) file security settings are applied.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Successfully applied file security settings to Vserver %s.
+*Parameters*::
+*vserver* (STRING): Vserver name.
+
+== gpo.sec.fsec.notApplied
+*Severity*::
+ERROR
+*Description*::
+This message occurs when applying group policy object (GPO) file security setings fails.
+*Corrective Action*::
+Address the specific reason for the issue, and then apply the settings again by entering the "vserver cifs group-policy update -force-reapply-all-settings true -vserver <vserver-name>" command.
+*Syslog Message*::
+Failed to apply file security settings to Vserver %s, reason: %s.
+*Parameters*::
+*vserver* (STRING): Vserver name.
+*reason* (STRING): Reason for the failure.
+
+== gpo.sec.fsec.notAppliedFor
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when applying a group policy object (GPO) security descriptor to a given file fails.
+*Corrective Action*::
+Address the specific reason for the issue, and then apply the settings again by entering the "vserver cifs group-policy update -force-reapply-all-settings true -vserver <vserver-name>" command.
+*Syslog Message*::
+Failed to apply file security settings to path %s in Vserver %s, reason: %s.
+*Parameters*::
+*path* (STRING): File and directory path to which a security descriptor is to be applied.
+*vserver* (STRING): Vserver name.
+*reason* (STRING): Reason for the failure.
+
+== gpo.sec.kerb.applied
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when applying group policy object (GPO) Kerberos settings succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Successfully applied Kerberos settings to Vserver %s.
+*Parameters*::
+*vserver* (STRING): Vserver name.
+
+== gpo.sec.kerb.notApplied
+*Severity*::
+ERROR
+*Description*::
+This message occurs when applying group policy object (GPO) Kerberos settings fails.
+*Corrective Action*::
+Address the specific reason for the issue, and then apply the settings again by entering the "vserver cifs group-policy update -force-reapply-all-settings true -vserver <vserver-name>" command.
+*Syslog Message*::
+Failed to apply Kerberos settings to Vserver %s, reason: %s.
+*Parameters*::
+*vserver* (STRING): Vserver name.
+*reason* (STRING): Reason for the failure.
+
+== gpo.sec.privR.applied
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when applying group policy object (GPO) privilege-rights settings succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Successfully applied privilege rights settings to Vserver %s.
+*Parameters*::
+*vserver* (STRING): Vserver name.
+
+== gpo.sec.privR.notApplied
+*Severity*::
+ERROR
+*Description*::
+This message occurs when applying group policy object (GPO) privilege-rights settings fails.
+*Corrective Action*::
+Address the specific reason for the issue, and then apply the settings again by entering the "vserver cifs group-policy update -force-reapply-all-settings true -vserver <vserver-name>" command.
+*Syslog Message*::
+Failed to apply privilege-rights settings to Vserver %s, reason: %s.
+*Parameters*::
+*vserver* (STRING): Vserver name.
+*reason* (STRING): Reason for the failure.
+
+== gpo.sec.privR.notAppliedFor
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when applying group policy object (GPO) privilege-rights fails for a supported setting.
+*Corrective Action*::
+Address the specific reason for the issue, and then apply the settings again by entering the "vserver cifs group-policy update -force-reapply-all-settings true -vserver <vserver-name>" command.
+*Syslog Message*::
+Failed to apply privilege-rights %s setting to Vserver %s, reason: %s.
+*Parameters*::
+*setting* (STRING): Name of the setting: Take ownership, Security privilege, or Bypass traverse.
+*vserver* (STRING): Vserver name.
+*reason* (STRING): Reason for the failure.
+
+== gpo.sec.reg.applied
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when applying group policy object (GPO) security registry settings succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Successfully applied security registry settings to Vserver %s.
+*Parameters*::
+*vserver* (STRING): Vserver name.
+
+== gpo.sec.reg.notAppliedFor
+*Severity*::
+ERROR
+*Description*::
+This message occurs when applying a group policy object (GPO) security registry setting fails.
+*Corrective Action*::
+Address the specific reason for the issue, and then apply the settings again by entering the "vserver cifs group-policy update -force-reapply-all-settings true -vserver <vserver-name>" command.
+*Syslog Message*::
+Failed to apply security registry %s setting to Vserver %s, reason: %s.
+*Parameters*::
+*setting* (STRING): Name of the setting: SMB signing.
+*vserver* (STRING): Vserver name.
+*reason* (STRING): Reason for the failure.
+
+== gpo.sec.resAno.applied
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when applying group policy object (GPO) security restrict anonymous settings succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Successfully applied restrict anonymous settings to Vserver %s.
+*Parameters*::
+*vserver* (STRING): Vserver name.
+
+== gpo.sec.resAno.notApplied
+*Severity*::
+ERROR
+*Description*::
+This message occurs when applying group policy object (GPO) security restrict anonymous settings fails.
+*Corrective Action*::
+Address the specific reason for the issue, and then apply the settings again by entering the "vserver cifs group-policy update -force-reapply-all-settings true -vserver <vserver-name>" command.
+*Syslog Message*::
+Failed to apply restrict anonymous settings to Vserver %s, reason: %s.
+*Parameters*::
+*vserver* (STRING): Vserver name.
+*reason* (STRING): Reason for the failure.
+
+== gpo.sec.resGrp.applied
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when applying group policy object (GPO) restricted-groups settings succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Successfully applied restricted group settings to Vserver %s.
+*Parameters*::
+*vserver* (STRING): Vserver name.
+
+== gpo.sec.resGrp.notApplied
+*Severity*::
+ERROR
+*Description*::
+This message occurs when applying group policy object (GPO) restricted-groups settings fails.
+*Corrective Action*::
+Address the specific reason for the issue, and then apply the settings again by entering the "vserver cifs group-policy update -force-reapply-all-settings true -vserver <vserver-name>" command.
+*Syslog Message*::
+Failed to apply restricted-groups settings to Vserver %s, reason: %s.
+*Parameters*::
+*vserver* (STRING): Vserver name.
+*reason* (STRING): Reason for the failure.
+
+== gpo.sec.resGrp.notAppliedFor
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when applying group policy object (GPO) restricted-groups settings fails for a given group.
+*Corrective Action*::
+Address the specific reason for the issue, and then apply the settings again by entering the "vserver cifs group-policy update -force-reapply-all-settings true -vserver <vserver-name>" command.
+*Syslog Message*::
+Failed to apply restricted-groups settings for group %s in Vserver %s, reason: %s.
+*Parameters*::
+*group* (STRING): Group name.
+*vserver* (STRING): Vserver name.
+*reason* (STRING): Reason for the failure.

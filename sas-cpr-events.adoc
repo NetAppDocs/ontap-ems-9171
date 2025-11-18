@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: sas-cpr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sas.cpr events
+---
+
+= sas.cpr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sas.cpr.failed
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the CPR (Core PCIe Resilience) infrastructure determines that the SAS controller hardware cannot be recovered, and the associated SAS ports will be taken offline.
+*Corrective Action*::
+Replace the SAS controller.
+*Syslog Message*::
+CPR recovery failed on SAS HBA %s.
+*Parameters*::
+*adapterName* (STRING): Name of the associated SAS host bus adapter (HBA).
+
+== sas.cpr.recoveryThreshold
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the SAS driver determines that CPR (Core PCIe Resilience) recovery of the SAS controller hardware has exceeded thresholds, and the associated SAS ports will be taken offline.
+*Corrective Action*::
+Replace the SAS controller.
+*Syslog Message*::
+CPR recovery threshold has been exceeded on SAS HBA %s.
+*Parameters*::
+*adapterName* (STRING): Name of the associated SAS host bus adapter (HBA).
+
+== sas.cpr.recoveryTimeout
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the SAS driver determines that CPR (Core PCIe Resilience) recovery of the SAS controller hardware has timed out, and the associated SAS ports will be taken offline.
+*Corrective Action*::
+Replace the SAS controller.
+*Syslog Message*::
+CPR recovery timed out on SAS HBA %s.
+*Parameters*::
+*adapterName* (STRING): Name of the associated SAS host bus adapter (HBA).

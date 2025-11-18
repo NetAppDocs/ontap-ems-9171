@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: netif-sfpnotsupported-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.sfpnotsupported events
+---
+
+= netif.sfpnotsupported events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.sfpNotSupported
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the installed Small Form-factor Pluggable (SFP+ or QSFP+) module is not supported.
+*Corrective Action*::
+Replace the SFP+ or QSFP+ module with one purchased from NetApp for this interface.
+*Syslog Message*::
+The SFP+ or QSFP+ module (%s %s) installed in %s is not supported with this network interface.
+*Parameters*::
+*sfpVendor* (STRING): SFP+ or QSFP+ vendor name.
+*sfpPn* (STRING): SFP+ or QSFP+ part number.
+*ifName* (STRING): Name of the network interface; for example, "e2a".

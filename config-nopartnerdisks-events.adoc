@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-nopartnerdisks-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.nopartnerdisks events
+---
+
+= config.nopartnerdisks events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.noPartnerDisks
+*Severity*::
+ERROR
+*Description*::
+This message occurs in a High-Availablity (HA> configuration when there are no partner disks.
+*Corrective Action*::
+Ensure that both nodes of the HA pair are cabled so they have access to all the disks. Check that the adapter interface to the disk shelves is up using the "storage adapter show" command. Ensure that any switches are correctly zoned for disk visibility by the nodes.
+*Syslog Message*::
+No disks were detected for the partner; this node cannot perform takeover correctly.
+*Parameters*::
+(None).

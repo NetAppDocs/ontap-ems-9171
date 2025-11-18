@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: moveagent-commitsrc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: moveagent.commitsrc events
+---
+
+= moveagent.commitsrc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== moveagent.commitsrc.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an active volume move operation cannot commit the source volume. The system continues to retry the operation until it is successful. In the time between the failure and a successful retry, there might be disruption to client traffic associated with the volume being moved.
+*Corrective Action*::
+Monitor the volume move job. If the problem persists, contact NetApp technical support
+*Syslog Message*::
+Unable to finish the volume move operation for DSID %llu. Failed to commit the source volume.
+*Parameters*::
+*volume_dsid* (LONGINT): Source volume Data Set ID (DSID).

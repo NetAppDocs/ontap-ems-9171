@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: certificate-invalid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: certificate.invalid events
+---
+
+= certificate.invalid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== certificate.invalid.chain
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an installed certificate record contains multiple X.509 certificates. Such records are not treated consistently by the system, but were unintentionally permitted in prior releases.
+*Corrective Action*::
+Delete the problematic record by using the "security certificate delete" command. Install the constituent certificates separately by using the "security certificate install" command once for each certificate.
+*Syslog Message*::
+The certificate record with UUID %s, named "%s" in Vserver "%s", contains multiple certificates.
+*Parameters*::
+*uuid* (STRING): UUID of the offending record.
+*cert_name* (STRING): Name (unique within a Vserver) of the offending record.
+*vserver* (STRING): Name of the Vserver in which the offending record is installed.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nblade-aclcompliance-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.aclcompliance events
+---
+
+= nblade.aclcompliance events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.AclCompliance
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the nfs "-v4-acl-compliance" option is enabled but not functional because the SnapMirror Synchronous secondary cluster or FlexCache origin cluster is running an ONTAP version older than 9.14.1
+*Corrective Action*::
+Upgrade the secondary cluster to ONTAP 9.14.1 or later to use the ACL compliance feature or disable the "-v4-acl-compliance" option by running the "vserver nfs modify "-v4-acl-compliance disabled" command.
+*Syslog Message*::
+NFS "-v4-acl-compliance" option is enabled but not functional because the SnapMirror Synchronous secondary cluster or FlexCache origin cluster is running an ONTAP version older than 9.14.1
+*Parameters*::
+(None).

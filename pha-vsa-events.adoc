@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: pha-vsa-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: pha.vsa events
+---
+
+= pha.vsa events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== pha.vsa.uuid.too.long
+*Severity*::
+ALERT
+*Description*::
+This message occurs when ONTAP(R) software detects a device with a device descriptor length greater than 40 characters. Such devices are not presented to ONTAP.
+*Corrective Action*::
+Detach the device from all ONTAP virtual machines, and then delete it. Create a similar device with a descriptor length less than or equal to 40 characters, and then attach it to the ONTAP virtual machines.
+*Syslog Message*::
+The device descriptor %s is too long and was not presented to ONTAP.
+*Parameters*::
+*Descriptor* (STRING): Descriptor of the device.

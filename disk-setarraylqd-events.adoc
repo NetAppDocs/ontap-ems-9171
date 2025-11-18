@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: disk-setarraylqd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.setarraylqd events
+---
+
+= disk.setarraylqd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.setArrayLQD
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when you set the LUN queue depth for all the LUNs of an array.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+All the LUNs on array '%s' have a LUN queue depth value set to %d.
+*Parameters*::
+*arrayName* (STRING): Name of the array.
+*lqd* (INT): LUN queue depth value.

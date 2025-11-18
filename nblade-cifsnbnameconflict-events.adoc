@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: nblade-cifsnbnameconflict-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.cifsnbnameconflict events
+---
+
+= nblade.cifsnbnameconflict events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.cifsNbNameConflict
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the NetBIOS Name Service receives a negative response from a remote machine for a name registration request. This is typically caused by a conflict in the NetBIOS name or an alias. As a result, clients might not be able to access data or connect to the right data-serving node in the cluster.
+*Corrective Action*::
+1. If applicable, delete the duplicate NetBIOS alias by using the "vserver cifs delete -aliases alias -vserver vserver" command. Alternatively, rename a NetBIOS alias by deleting the duplicate name and adding an alias with a new name by using the "vserver cifs create -aliases alias -vserver vserver" command. 2. If there are no aliases configured and there is a conflict in the NetBIOS name, then rename the CIFS server by using the "vserver cifs delete -vserver vserver" and "vserver cifs create -cifs-server netbiosname" commands. Note that deleting a CIFS server can cause data to be inaccessible. 3. Remove or rename the NetBIOS name on the remote machine.
+*Syslog Message*::
+The NetBIOS Name Service received a negative name registration response. The name %s is owned by a remote machine. The IP address being registered is %s. Object type is: %s with UUID: %s.
+*Parameters*::
+*nbName* (STRING): NetBIOS name or alias being registered by the NetBIOS Name Service.
+*IpAddress* (STRING): IP address being registered by the NetBIOS Name Service.
+*object_type* (STRING): Type of resource object.
+*object_uuid* (STRING): UUID of the resource object.

@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: nvmeof-onlyoneport-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvmeof.onlyoneport events
+---
+
+= nvmeof.onlyoneport events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvmeof.onlyoneport.clear
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when there is no longer only one port cabled from a node to a shelf.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+There is no longer only one port cabled from node %s to shelf with SN %s.
+*Parameters*::
+*node_name* (STRING): Host name connected to the cable.
+*shelf_sn* (STRING): Serial number of the shelf connected to the cable.
+
+== nvmeof.onlyoneport.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when host port is incorrectly cabled to a shelf.
+*Corrective Action*::
+The host port is incorrectly cabled to shelf. two ports must be connected to ensure redundancy.
+*Syslog Message*::
+There is only one port cabled from node %s to Shelf with SN %s.
+*Parameters*::
+*node_name* (STRING): Host name connected to the cable.
+*shelf_sn* (STRING): Serial number of the shelf connected to the cable.

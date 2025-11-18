@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-clam-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.clam events
+---
+
+= callhome.clam events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.clam.node.ooq
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the Kernel Cluster Services (KCS) Connectivity, Liveness, Availability Monitor (CLAM) determines that one of the nodes is out of "cluster quorum".
+*Corrective Action*::
+One or more of the following actions may be needed: - Check if the node that is out of quorum is administratively down; if it is, enable it with: "cluster modify -node node_name -eligibility true"; - Check if the node that is out of quorum has panic'ed or hung; if it is, troubleshoot and resolve that problem. - Check the connectivity of the node that is out of quorum to the cluster interconnect. Fix any issues, if needed. - Check if there is a version incompatibility between the node that is out of quorum and the rest of the nodes in the cluster; if there is, upgrade nodes as needed so that they are compatible.
+*Syslog Message*::
+Call home for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

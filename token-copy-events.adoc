@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: token-copy-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: token.copy events
+---
+
+= token.copy events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== token.copy.complete.info
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a 'copy complete' request fails to free the reference on a remote node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A 'copy complete' request on node %s and volume DSID %d failed - %s.
+*Parameters*::
+*blade_id* (STRING): Blade ID of the node to which the 'copy complete' request was sent.
+*dsid* (LONGINT): DSID of the source volume where the token was created.
+*reason* (STRING): Reason for the failure.

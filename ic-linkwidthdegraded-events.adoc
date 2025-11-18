@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: ic-linkwidthdegraded-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ic.linkwidthdegraded events
+---
+
+= ic.linkwidthdegraded events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ic.linkWidthDegraded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the high-availability (HA) interconnect detects a degraded link width. This can affect the write performance of the system.
+*Corrective Action*::
+For externally connected links, make sure that the interconnect cables are connected properly and that small form-factor pluggable (SFP) modules, if applicable, are seated properly on both controllers. For internally connected links, disable and reenable the links one at a time by using the (privilege: advanced) "system ha interconnect link off" and "system ha interconnect link on" commands. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+HA interconnect: Link width of link #%d degraded. Current: %dX, expected: %dX.
+*Parameters*::
+*link_num* (INT): Number that identifies the link.
+*link_width* (INT): Current link width.
+*expected_width* (INT): Link width expected for the HA interconnect type.

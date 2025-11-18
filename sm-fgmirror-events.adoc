@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sm-fgmirror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sm.fgmirror events
+---
+
+= sm.fgmirror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sm.fgmirror.stale.grp.wkflw
+*Severity*::
+ERROR
+*Description*::
+This message occurs when improper group workflow cleanup caused the subsequent SnapMirror(R) operation to fail.
+*Corrective Action*::
+Run the "snapmirror abort -h {-relationship-id <relationshipID>}" command, and then retry the SnapMirror operation.
+*Syslog Message*::
+SnapMirror operation on relationship with relationshipID %s failed because of an existing stale group workflow.
+*Parameters*::
+*relationshipID* (STRING): UUID of the SnapMirror relationship.

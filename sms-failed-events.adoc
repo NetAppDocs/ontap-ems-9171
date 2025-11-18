@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: sms-failed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sms.failed events
+---
+
+= sms.failed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sms.failed.precheck
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) Sync relationship cannot be established due to precheck failures.
+*Corrective Action*::
+Monitor the status of the SnapMirror Sync relationship by using the "snapmirror show" command. Retry the SnapMirror Sync operation after resolving the issue that caused the precheck failure.
+*Syslog Message*::
+SnapMirror Sync operation failed for source volume "%s" and destination volume "%s" with relationship UUID "%s" due to the following reason: "%s".
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume of the SnapMirror relationship.
+*dstpath* (STRING): Path name of the destination volume of the SnapMirror relationship.
+*relationship_id* (STRING): Relationship UUID.
+*error_msg* (STRING): Reason for the failure.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: coredump-coreid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: coredump.coreid events
+---
+
+= coredump.coreid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== coredump.coreid.not.found
+*Severity*::
+INFORMATIONAL
+*Description*::
+Could not find the specified core
+*Corrective Action*::
+Double-check the core id, and try again.
+*Syslog Message*::
+Core %d could not be found
+*Parameters*::
+*coreid* (INT): The core id that could not be found

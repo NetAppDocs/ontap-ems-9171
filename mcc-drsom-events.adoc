@@ -1,0 +1,203 @@
+---
+sidebar: sidebar
+permalink: mcc-drsom-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mcc.drsom events
+---
+
+= mcc.drsom events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mcc.drsom.disk.filter.fail
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when it cannot be determined whether a disk belongs to a root aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*disk* (STRING): Name of the disk.
+*op* (STRING): Operation during which this check failed.
+*status* (INT): Status of the check that failed.
+
+== mcc.drsom.disk.skipped
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when disaster recovery switchover manager determines that a disk needs to be skipped from an assign request.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*disk* (STRING): Name of the disk.
+*op* (STRING): Operation during which this check failed.
+*reason* (STRING): Reason why the disk was skipped.
+
+== mcc.drsom.fsm.execute
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the disaster recovery Switchover Monitor(DRSOM) FSM (Finite State Machine) starts processing an event.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+DRSOM FSM state is (%s) and it will process the event (%s). Whether this event will be processed for the DR auxiliary partner: (%s)
+*Parameters*::
+*fsm_state* (STRING): Current state of the DRSOM FSM.
+*fsm_event* (STRING): Event to be processed by the DRSOM FSM.
+*DR_aux* (STRING): Indication of whether the event will be processed for the DR auxiliary partner.
+
+== mcc.drsom.fsm.invalid.state
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the disaster recovery (DR) Switchover Monitor (DRSOM) FSM (Finite State Machine) reaches an invalid state.
+*Corrective Action*::
+If this problem is seen persistently, contact NetApp technical support for assistance in resolving this issue.
+*Syslog Message*::
+MCC DRSOM FSM state saw an invalid transition from %s to %s.
+*Parameters*::
+*prev_st* (STRING): Previous DRSOM FSM state.
+*st* (STRING): Current DRSOM FSM state.
+
+== mcc.drsom.fsm.invalidState
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an unexpected disaster recovery Switchover Monitor(DRSOM) FSM (Finite State Machine) event is generated.
+*Corrective Action*::
+This can happen in cases where a new DR operation was issued before the previous one could finish and it might require a forced-recovery operation. Contact NetApp technical support for assistance in resolving this issue.
+*Syslog Message*::
+DRSOM FSM event (%s) generated in state (%s) will cause an invalid FSM state transition.
+*Parameters*::
+*fsm_event* (STRING): DRSOM FSM event.
+*fsm_state* (STRING): DRSOM FSM state in which the event is generated.
+
+== mcc.drsom.fsm.sb.rec.pending
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the disaster recovery switchover monitor (DRSOM) transitions to a switchback recovery pending state.
+*Corrective Action*::
+If this node is booting up for the first time after a disaster, no action is required. If not, please check the states of all the nodes and contact NetApp technical support if they are incorrect.
+*Syslog Message*::
+This node has entered the Switchback Recovery Pending State.
+*Parameters*::
+(None).
+
+== mcc.drsom.fsmState.EarlySb
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the disaster recovery switchover monitor (DRSOM) recovers from unexpected error conditions by transitioning to perform an early switchback. An early switchback is performed in the following three cases: a node panics while processing a switchover; a node panics or reboots while retrying a switchover operation; or a node either encounters a subsystem failure, panics, or reboots while aborting a switchover operation. The switchover was reverted and the DRSOM state on all nodes is 'normal'.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).
+
+== mcc.drsom.mbxRecovery
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the disaster recover Switchover Monitor(DRSOM) FSM (Finite State Machine) state stored persistently in the mailbox is inconsistent with the DRC (DR Coordinator) and has been recovered.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+DRSOM FSM state stored in the mailbox is inconsistent with the DRC. It has been recovered and intialized to %s.
+*Parameters*::
+*next_fsm_state* (STRING): State to which the DRSOM FSM will be initialized.
+
+== mcc.drsom.process.op.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the disaster recovery (DR) Switchover Monitor (DRSOM) cannot perform the DR operation.
+*Corrective Action*::
+If this problem is seen persistently, contact NetApp technical support for assistance in resolving this issue.
+*Syslog Message*::
+MCC state machine received invalid operation %s while it was in state %s.
+*Parameters*::
+*op* (STRING): DR operation issued.
+*st* (STRING): Current FSM (Finite State Machine) state.
+
+== mcc.drsom.sbRecSt.change
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when there is a change in the disaster recovery Switchover Monitor(DRSOM) switchback recovery state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Switchback recovery state changed from (%d) to (%d) due to (%s).
+*Parameters*::
+*old_state* (INT): Previous switchback recovery state.
+*new_state* (INT): New switchback recovery state.
+*reason* (STRING): Reason for change of state.
+
+== mcc.drsom.sstbl.configErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs during switchback processing, when the disaster recovery(DR) partner cannot be contacted to confirm that it is in a valid MetroCluster(tm) configuration state.
+*Corrective Action*::
+Make sure that the DR partner is online and accessible by this node.
+*Syslog Message*::
+(None).
+*Parameters*::
+*partner* (STRING): Name of the failed partner.
+
+== mcc.drsom.sstbl.sanownCompEr
+*Severity*::
+ERROR
+*Description*::
+This message occurs during switchback processing, when the disaster recover(DR) partner cannot be contacted to enable or suspend a sanown completion event.
+*Corrective Action*::
+Make sure that the DR partner is online and accessible by this node.
+*Syslog Message*::
+(None).
+*Parameters*::
+*operation* (STRING): Disable or enable completion event.
+*partner* (STRING): Name of the failed partner.
+
+== mcc.drsom.sstblRunFailure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a particular subsystem cannot proceed with the disaster recovery (DR) operation.
+*Corrective Action*::
+Refer to the subsystem-specific error that would have been logged before this message.
+*Syslog Message*::
+(None).
+*Parameters*::
+*dr_operation* (STRING): DR operation.
+*sub_system* (STRING): Name of the subsystem that encountered the failure.
+
+== mcc.drsom.watch.conflict
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message shows drsom watchdog information on conflicting operations
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*enabled* (INT): Current state of watchdog.
+*extended* (INT): Current extended state of watchdog.
+*last_update_time* (LONGINT): Last update time.
+*current_time* (LONGINT): Current time.
+*last_update_count* (LONGINT): Last update count.
+*last_thread* (LONGINT): ID of last thread to update.
+*last_thread_info* (STRING): Text describing last udpate.
+*curr_thread_info* (STRING): Text describing current update.

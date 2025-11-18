@@ -1,0 +1,236 @@
+---
+sidebar: sidebar
+permalink: disk-init-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.init events
+---
+
+= disk.init events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.init.badSectorSize
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk reports a sector size that does not match the drive qualification table.
+*Corrective Action*::
+Replace the disk.
+*Syslog Message*::
+Disk %s has an unexpected sector size (%d bytes) and cannot be used.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*sector_size* (INT): Invalid sector size.
+
+== disk.init.err.capacityFlash
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a capacity-optimized flash solid-state drive (SSD) is detected by a node that does not support this type of SSD.
+*Corrective Action*::
+Remove the disk from the system.
+*Syslog Message*::
+Disk %s cannot be used on a node that does not support capacity-optimized flash.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+
+== disk.init.err.flashOptimized
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a hard disk drive (HDD) is detected by a node configured with the All-Flash Optimized personality. With this personality, only solid-state drives (SSD) can be used.
+*Corrective Action*::
+Remove the disk from the system.
+*Syslog Message*::
+Disk %s cannot be used on a node configured as All-Flash Optimized.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+
+== disk.init.err.not.NVMe
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a non-NVMe drive is detected by a node that only supports NVMe drives.
+*Corrective Action*::
+Remove the drive from the system.
+*Syslog Message*::
+Drive %s cannot be used on a node that only supports NVMe drives.
+*Parameters*::
+*diskName* (STRING): Name of the drive.
+
+== disk.init.err.not.SED
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a non-self-encrypting drive (non-SED) is detected by a node that only supports self-encrypting drives (SEDs).
+*Corrective Action*::
+Remove the drive from the system.
+*Syslog Message*::
+Drive %s cannot be used on a node that only supports SEDs.
+*Parameters*::
+*diskName* (STRING): Name of the drive.
+
+== disk.init.err.unsupp.shelf
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an unsupported NVMe solid-state drive (SSD) is discovered in an external NVMe shelf. This NVMe SSD is only supported as an internal drive on the A800 system.
+*Corrective Action*::
+Remove the drive from the external NVMe shelf.
+*Syslog Message*::
+Drive %s cannot be used in an external NVMe shelf.
+*Parameters*::
+*disk_name* (STRING): Name of the SSD.
+*disk_information* (STRING): Formatted information about the SSD. This includes the drive's vendor, model, firmware revision, and serial number.
+
+== disk.init.err.unsupported
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an unsupported disk is detected on a node.
+*Corrective Action*::
+Remove the disk from the system.
+*Syslog Message*::
+Disk %s is not recognized as a supported disk and cannot be used on this node.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+
+== disk.init.err.zns
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a zoned namespace solid-state drive (SSD-ZNS) is detected by a node that does not support this type of SSD.
+*Corrective Action*::
+Remove the disk from the system.
+*Syslog Message*::
+Disk "%s" cannot be used on a node that does not support SSD-ZNS disks.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+
+== disk.init.error.capacity
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk reports an unexpected capacity.
+*Corrective Action*::
+Replace the disk.
+*Syslog Message*::
+Disk %s has an unexpected capacity (%llu sectors) and cannot be used. Replace it.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*lastSector* (LONGINT): Last sector of the disk.
+*productID* (STRING): Product name of the disk.
+
+== disk.init.error.serialno
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the inquiry command does not return a valid serial number or device ID for the device. The device is failed during initialization.
+*Corrective Action*::
+Replace the disk.
+*Syslog Message*::
+Serial number or device ID not available for %s.
+*Parameters*::
+*disk_name* (STRING): Disk name.
+*page_code* (INT): Page code that was sent.
+*error_pcode* (INT): Page code received in error.
+
+== disk.init.failure.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a drive fails initialization. For NVMe drives, the returned error information is translated into the SCSI equivalent.
+*Corrective Action*::
+Replace the drive.
+*Syslog Message*::
+Drive %s failed initialization due to error %d, sense code(%x %x %x %x).
+*Parameters*::
+*diskName* (STRING): Name of the drive.
+*errorCode* (INT): Internal E_SCSI return code.
+*sense_key* (INTHEX): Sense key.
+*sense_code* (INTHEX): Additional sense code.
+*qualifier* (INTHEX): Additional sense code qualifier.
+*fru_failed* (INTHEX): FRU code.
+
+== disk.init.failure.spinup
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk cannot spin up during initialization. The disk is marked as failed and is not used.
+*Corrective Action*::
+Removed the disk from the system.
+*Syslog Message*::
+Disk %s has failed to spin up and cannot be used. Replace it with a new drive.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+
+== disk.init.failureBytes
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system discovers a previously failed disk. The system will not use the disk and it should be replaced.
+*Corrective Action*::
+Replace the failed disk.
+*Syslog Message*::
+Failed disk %s detected during disk initialization.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+
+== disk.init.invalidDDR
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a disk contains a Dynamic Drive Recognition (DDR) label entry that is not for this disk. The system rewrites the DDR label with proper values.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s has an invalid DDR entry. DDR label will be corrected and rewritten automatically.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*vendorID* (STRING): Vendor name of the disk.
+*productID* (STRING): Product name of the disk.
+
+== disk.init.prottype.incompat
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a hard disk drive (HDD) has a protection type enabled that is not supported. Protection type is a disk option that determines how information is physically saved on the disk.
+*Corrective Action*::
+Remove the disk from the system.
+*Syslog Message*::
+Disk %s has protection type %x enabled and cannot be used. %s
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*protType* (INTHEX): Value indicating the version of the enabled protection type.
+*disk_information* (STRING): Formatted information about the disk. This includes the disk's vendor, model, firmware revision, and serial number.
+
+== disk.init.recognizedDDR
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a Dynamic Drive Recognition (DDR) label on a drive with dynamically qualified data is properly updated with aliased data.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s has been updated with the proper drive name alias. The DDR label will be rewritten automatically.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*vendorID* (STRING): Vendor name of the disk.
+*productID* (STRING): Product name of the disk.
+
+== disk.init.unknownDisk
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a unique identifier cannot be created for a disk due to internal disk problems.
+*Corrective Action*::
+The disk needs to be replaced, remove it from the system.
+*Syslog Message*::
+Unable to identify disk %s.
+*Parameters*::
+*diskName* (STRING): Name of the disk.

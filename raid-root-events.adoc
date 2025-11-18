@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: raid-root-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.root events
+---
+
+= raid.root events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.root.unmirrored
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the root volume is not mirrored in a MetroCluster(tm) configuration.
+*Corrective Action*::
+Mirror the root volume if this storage controller is part of a MetroCluster configuration by using the "storage aggregate mirror" command.
+*Syslog Message*::
+The root volume is not mirrored. A takeover/switchover of this storage controller might not be possible if a disaster occurs.
+*Parameters*::
+(None).
+
+== raid.root.vol.noFaultIsolation
+*Severity*::
+ALERT
+*Description*::
+This message occurs when creation of the initial root aggregate is forced to use disks that would be from both Pool0 and Pool1 if it was to be upgraded to a mirrored root.
+*Corrective Action*::
+a) Determine how this occurred: possible cause is a wiring problem. b) Based on the information you gather, determine how to correct the issue. For example, use the "storage disk replace" command to copy the disk belonging to the wrong pool to a disk belonging to the right pool. For MetroCluster configurations, this would mean using "storage disk replace" to copy any pool1 disk in the root to a pool0 disk. c) If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Root volume %s%s: Current plex will have disks from mixed pools if the root volume is upgraded to mirror.
+*Parameters*::
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.

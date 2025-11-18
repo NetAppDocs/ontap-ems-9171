@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: secd-lsa-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: secd.lsa events
+---
+
+= secd.lsa events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== secd.lsa.noServers
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when none of the configured LSA servers are accepting connections.
+*Corrective Action*::
+Ensure that all configured LSA servers are responding to requests. Ensure that there are no networking issues stopping the cluster from communicating with the configured LSA servers.
+*Syslog Message*::
+None of the LSA servers configured for Vserver (%s) are currently accessible via the network.
+*Parameters*::
+*vserverName* (STRING): vserver associated with this operation.

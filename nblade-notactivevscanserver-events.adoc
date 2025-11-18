@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: nblade-notactivevscanserver-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.notactivevscanserver events
+---
+
+= nblade.notactivevscanserver events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.NotActiveVscanServer
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a connection from a remote IP is not found in the Vscan scanner pool belonging to the storage virtual machine (SVM). Session setup request fails.
+*Corrective Action*::
+Investigate if the associated IPs need to be added to the active scanner pool.
+*Syslog Message*::
+CIFS connection on SVM %s (ID %u) from IP address %s fails to bind to an established Vscan related session because the IP address is not in the active scanner pool.
+*Parameters*::
+*vserverName* (STRING): Name of the SVM associated with this operation.
+*vsId* (INT): ID of the SVM on which this event occurred.
+*remoteIpAddress* (STRING): IP address of the client machine.

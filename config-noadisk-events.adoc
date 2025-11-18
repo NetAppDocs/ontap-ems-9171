@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-noadisk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.noadisk events
+---
+
+= config.noadisk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.noAdisk
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the local node in an HA configuration is connected to its disk shelves through the shelf B module instead of the shelf A module. In an HA configuration, the local node must be connected to its disk shelves through the shelf A module, and the partner node must be connected to those disk shelves through the shelf B module.
+*Corrective Action*::
+For a standard HA configuration, identify and connect the local node's disk shelves to the local node using the shelf's module A. Then connect those disk shelves to the partner node using the shelf module B. For a shared storage or multipathed HA, assign disk ownership to the local and partner nodes by using the "disk assign" command in Maintenance mode.
+*Syslog Message*::
+All disk shelves are attached to the local node through shelf module B. Some of these shelves should be attached via shelf module A.
+*Parameters*::
+(None).

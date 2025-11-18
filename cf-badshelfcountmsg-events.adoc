@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cf-badshelfcountmsg-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cf.badshelfcountmsg events
+---
+
+= cf.badshelfcountmsg events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cf.badShelfCountMsg
+*Severity*::
+ERROR
+*Description*::
+This event occurs if we are sent an invalid negotiated failover shelf count message. The message size is incorrect. This is likely due to an InterConnect problem.
+*Corrective Action*::
+Check for and resolve any interconnect errors. If the nodes are on different releases, upgrade the down-rev node.
+*Syslog Message*::
+Invalid disk shelf count message was received from partner.
+*Parameters*::
+(None).

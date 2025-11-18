@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: zapi-snapshot-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: zapi.snapshot events
+---
+
+= zapi.snapshot events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== zapi.snapshot.success
+*Severity*::
+NOTICE
+*Description*::
+This event occurs when an asynchronous Snapshot(tm) copy is created successfully through the Zephyr API (ZAPI) interface.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Asynchronous creation of Snapshot copy named %s in volume %s was successful. The Snapshot copy was created %d milliseconds after the request was received by ZAPI.
+*Parameters*::
+*snapshot* (STRING): Name of the Snapshot copy.
+*volume* (STRING): Volume name in which the Snapshot copy was created.
+*time* (INT): Duration, in milliseconds, that it took to create the Snapshot copy.

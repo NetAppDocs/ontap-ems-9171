@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: ipmultipath-init-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ipmultipath.init events
+---
+
+= ipmultipath.init events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ipmultipath.init.badChksumType
+*Severity*::
+ERROR
+*Description*::
+This message occurs during IP Multipath session initialization, when an INIT packet with an unknown checksum type is received.
+*Corrective Action*::
+The two end points are possibly running incompatible versions of ONTAP. Run identical/compatible versions of ONTAP on the two end points and try again.
+*Syslog Message*::
+Unknown checksum type (%d) in IP Multipath INIT packet.
+*Parameters*::
+*chksum_type* (INT): Checksum type received.
+
+== ipmultipath.init.badVersion
+*Severity*::
+ERROR
+*Description*::
+This message occurs during IP Multipath session initialization, when an INIT packet with an unknown version number is received.
+*Corrective Action*::
+The two end points are possibly running incompatible versions of ONTAP. Run identical/compatible versions of ONTAP on the two end points and try again.
+*Syslog Message*::
+Unknown version (%d) in IP Multipath INIT packet.
+*Parameters*::
+*version* (INT): Version number received.

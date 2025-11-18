@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: backup-abort-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: backup.abort events
+---
+
+= backup.abort events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== backup.abort.ROOLR
+*Severity*::
+NOTICE
+*Description*::
+This event is generated when backup event like dump has been aborted and currently ROOLR (Read Only On Line Replica) is running on the Filer. This event might have been aborted because of user intervention or device like bad tape has encountered backup failure.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The abort event, %s, is just notified.
+*Parameters*::
+*errmsg* (STRING): Error Description
+
+== backup.abort.STSP
+*Severity*::
+NOTICE
+*Description*::
+This event is generated when a backup started by VERITAS NBU STSP Protocol has been aborted. This event might have been aborted because of user intervention or device like bad tape has encountered backup failure.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The abort event, %s, is just notified.
+*Parameters*::
+*errmsg* (STRING): Error Description

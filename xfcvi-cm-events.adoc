@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: xfcvi-cm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: xfcvi.cm events
+---
+
+= xfcvi.cm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== xfcvi.cm.timedout
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when connection requests times out.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Connection request timedout on port %s. QP name = %s, QP index = %d, Remote node's system id = %llu. %s
+*Parameters*::
+*port* (STRING): xfcvi Interconnect NIC.
+*qpname* (STRING): QP name.
+*qpnum* (INT): QP index.
+*system_id* (LONGINT): Remote node's system id.
+*info* (STRING): Additional info.

@@ -1,0 +1,45 @@
+---
+sidebar: sidebar
+permalink: mcc-ctlbe-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mcc.ctlbe events
+---
+
+= mcc.ctlbe events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mcc.ctlbe.IODelayed
+*Severity*::
+INFORMATIONAL
+*Description*::
+SCSI IO for RSM is delayed significantly in the iSCSI stack.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*devSerial* (STRING): Device Serial Number
+*lunId* (INT): The LUN ID.
+*cdb* (STRING): A string containing the opcode byte of the CDB.
+*delay* (LONGINT): The delay in milliseconds experienced by this IO in the software iSCSI stack.
+
+== mcc.ctlbe.IOResponseDelayed
+*Severity*::
+INFORMATIONAL
+*Description*::
+SCSI IO for RSM is delayed significantly in the storage stack.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*devSerial* (STRING): Device Serial Number
+*lunId* (INT): The LUN ID.
+*cdb* (STRING): A string containing the opcode byte of the CDB.
+*delay* (LONGINT): The delay in milliseconds experienced by this IO in the D-blade storage stack.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: sis-idedup-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.idedup events
+---
+
+= sis.idedup events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.idedup.disable
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when inline deduplication is disabled if aggregate is not hybrid or not part of All-Flash Optimized node since inline deduplication is not supported on them.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disabled inline deduplication on volume %s%s because the aggregate is not hybrid or not part of All-Flash Optimized node.
+*Parameters*::
+*path* (STRING): Path to the deduplicated volume.
+*volident* (STRING): Unique volume identifier.

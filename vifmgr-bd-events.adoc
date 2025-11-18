@@ -1,0 +1,45 @@
+---
+sidebar: sidebar
+permalink: vifmgr-bd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.bd events
+---
+
+= vifmgr.bd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.bd.badmtu
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an MTU is entered on a Broadcast Domain that its member ports cannot support. The ports that failed will continue using their present values.
+*Corrective Action*::
+Change the MTU of the Broadcast Domain to a value supported by all member ports.
+*Syslog Message*::
+In IPspace %s, Broadcast Domain %s has an MTU of %d, which is not supported by the following ports: %s.
+*Parameters*::
+*ipspace* (STRING): Name of the IPspace in which the Broadcast Domain resides.
+*broadcast_domain* (STRING): Name of the Broadcast Domain.
+*mtu* (INT): MTU of the Broadcast Domain.
+*port_names* (STRING): Ports in the Broadcast Domain that are failing.
+
+== vifmgr.bd.conflicts
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the administrator modifies properties of a node management LIF while the node is out of quorum, and the broadcast domain of the home port, current port, and subnet are not all the same.
+*Corrective Action*::
+The node management LIF's configuration before the node went out of quorum was automatically applied. You can change this configuration now that the node is online.
+*Syslog Message*::
+LIF %s had mismatching broadcast domains. The previous values were: home-port (%s), current-port (%s), and subnet (%s).
+*Parameters*::
+*LIF* (STRING): Name of the LIF.
+*home_port_bd* (STRING): Broadcast domain name of this LIF's home port prior to going out of quorum.
+*current_port_bd* (STRING): Broadcast domain name of this LIF's current port prior to going out of quorum.
+*sub_bd* (STRING): Broadcast domain name of this LIF's subnet prior to going out of quorum.

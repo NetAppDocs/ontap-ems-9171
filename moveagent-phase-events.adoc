@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: moveagent-phase-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: moveagent.phase events
+---
+
+= moveagent.phase events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== moveagent.phase.queryerr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an active volume move operation cannot access the volume move phase information.
+*Corrective Action*::
+Monitor the currently running volume move job using the 'volume move show' clustered Data ONTAP command. If the volume move completes successfully, no further action is necessary. If the volume move fails, you can retry the volume move or contact NetApp technical support for assistance.
+*Syslog Message*::
+Cannot determine the vol move phase information for volume with DSID %llu.
+*Parameters*::
+*volume_dsid* (LONGINT): Destination volume data set identifier(DSID).

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: sm-log-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sm.log events
+---
+
+= sm.log events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sm.log.write.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when writing SnapMirror(R) data to a log file fails. The most likely cause is insufficient space on the root volume.
+*Corrective Action*::
+If the failure is due to lack of space, increase the root volume size or identify any SnapMirror logs that might not be needed, verify that backups exist for them, and then remove them. To check for available space across the cluster, use the 'df' command. If the condition persists, contact NetApp technical support.
+*Syslog Message*::
+Writing log data of size %d bytes to SnapMirror log file '%s' failed with error '%s'.
+*Parameters*::
+*size* (INT): Data size in bytes.
+*filepath* (STRING): Log file path.
+*error* (STRING): Error string.

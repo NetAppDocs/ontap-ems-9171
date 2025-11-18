@@ -1,0 +1,1026 @@
+---
+sidebar: sidebar
+permalink: ses-status-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ses.status events
+---
+
+= ses.status events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ses.status.ACPError
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a failure has been detected in ACP processor that provides alternate control path capability.
+*Corrective Action*::
+Replace the module. In some disk shelf types, this function is integrated into the SAS interface modules.
+*Syslog Message*::
+%s ACP Processor error for %s %d: %s %s %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this element.
+*electrNumber* (INT): SES element number of this element.
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Exact wording of the warning.
+*locationText* (STRING): Location of the module on the disk shelf.
+
+== ses.status.ACPInfo
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a problem previously reported about the ACP Processor has been corrected or when other information about the ACP Processor that does not necessarily require customer action is reported.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s ACP Processor information for %s %d: %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this element.
+*electrNumber* (INT): SES element number of this element.
+*infoMsg* (STRING): Generic SES information.
+
+== ses.status.ACPWarn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a non-fatal condition has been detected in the ACP Processor that provides alternate control path capability.
+*Corrective Action*::
+Replace the module. In some disk shelf types, this function is integrated into the SAS interface modules.
+*Syslog Message*::
+%s ACP Processor warning for %s %d: %s. %s %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this element.
+*electrNumber* (INT): SES element number of this element.
+*warningMsg* (STRING): Generic SES Warning.
+*warningText* (STRING): Exact wording of the warning.
+*locationText* (STRING): Location of the module on the disk shelf.
+
+== ses.status.ATFCXError
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the reporting disk shelf detects an error in the indicated AT-FCX module. The module might not be able to perform I/O to disks within the disk shelf.
+*Corrective Action*::
+Verify that the AT-FCX module is fully seated and secured. If the problem persists, replace the AT-FCX module.
+*Syslog Message*::
+%s error for %s SES controller module %s: %s%s. %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and disk shelf number).
+*typeText* (STRING): SES type descriptor text for this AT-FCX module.
+*module* (STRING): Module A is the upper module in the enclosure on the back side. Module B is the lower module in the enclosure on the back side.
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Description of the exact warning.
+*locationText* (STRING): Location of the module on the disk shelf.
+
+== ses.status.ATFCXInfo
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a previously reported error in the AT-FCX module is corrected, or the system reports other information that does not necessarily require customer action.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s information for %s SES controller module %s: %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and disk shelf number).
+*typeText* (STRING): SES type descriptor text for this element.
+*module* (STRING): Module A is the upper module in the enclosure on the back side. Module B is the lower module in the enclosure on the back side.
+*infoMsg* (STRING): Generic SES information.
+
+== ses.status.battery.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a storage shelf reports a generic "battery error detected" error. The error could be due to an inability to read the A/D convertor or because the intermodule connections are down.
+*Corrective Action*::
+If the intermodule connection is down on one or both of the PCIe Switch Modules (PSMs), bring the intermodule connection up (by rebooting the affected module). If the intermodule connection is up on both of the PSMs (there are no errors on both PSMs), replace the coin cell battery. If the issue persists, a module might need to be replaced. Contact NetApp technical support.
+*Syslog Message*::
+%s battery failure error for %s %d: %s%s. %s.
+*Parameters*::
+*prodChannel* (STRING): Storage shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SCSI Enclosure Services (SES) type descriptor text for the battery.
+*batteryNumber* (INT): SES element number of the battery.
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Description of the error.
+*locationText* (STRING): Location of the element on the storage shelf.
+
+== ses.status.battery.info
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a condition that was previously reported about a storage shelf battery has been corrected or when other information about the battery that might not require customer action is reported.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s battery information for %s %d: %s.
+*Parameters*::
+*prodChannel* (STRING): Storage shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SCSI Enclosure Services (SES) type descriptor text for the battery.
+*batteryNumber* (INT): SES element number of the battery.
+*infoMsg* (STRING): Generic SES information.
+
+== ses.status.battery.missing
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a storage shelf reports that a battery is not installed.
+*Corrective Action*::
+Install the battery. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+%s battery warning for %s %d: %s%s. %s.
+*Parameters*::
+*prodChannel* (STRING): Storage shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SCSI Enclosure Services (SES) type descriptor text for the battery.
+*batteryNumber* (INT): SES element number of the battery.
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Exact wording of the warning.
+*locationText* (STRING): Location of the battery on the storage shelf.
+
+== ses.status.battery.threshErr
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the element threshold of a battery on a storage shelf is outside the threshold limits.
+*Corrective Action*::
+Install a new battery. If the problem persists, this indicate a hardware failure. Contact NetApp technical support.
+*Syslog Message*::
+%s battery failure error for %s %d: %s%s. %s.
+*Parameters*::
+*prodChannel* (STRING): Storage shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SCSI Enclosure Services (SES) type descriptor text for the battery.
+*batteryNumber* (INT): SES element number of the failing battery.
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Exact description of the error.
+*locationText* (STRING): Location of the battery on the storage shelf.
+
+== ses.status.bootDv.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a storage shelf reports a boot device SMART error on a PCIe Switch Module (PSM)
+*Corrective Action*::
+Replace the boot device. If the issue persists, contact NetApp technical support.
+*Syslog Message*::
+%s boot device failure for %s %d: %s%s. %s.
+*Parameters*::
+*prodChannel* (STRING): Storage shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SCSI Enclosure Services (SES) type descriptor text for the boot device.
+*bootDvNumber* (INT): SES element number of the boot device.
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Description of the error.
+*locationText* (STRING): Location of the boot device on the storage shelf.
+
+== ses.status.bootDv.info
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a condition that was previously reported about a storage shelf boot device has been corrected or when other information about the boot device that might not require customer action is reported.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s boot device notification for %s %d: %s.
+*Parameters*::
+*prodChannel* (STRING): Storage shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SCSI Enclosure Services (SES) type descriptor text for the boot device.
+*bootDvNumber* (INT): SES element number of the boot device.
+*infoMsg* (STRING): Generic SES information.
+
+== ses.status.bootDv.missing
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the PCIe Switch Module (PSM) of a storage shelf reports that a partner PSM boot device is not installed.
+*Corrective Action*::
+Install the boot device on the partner PSM. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+%s partner %s %d: %s%s. %s.
+*Parameters*::
+*prodChannel* (STRING): Storage shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SCSI Enclosure Services (SES) type descriptor text for the boot device.
+*bootDvNumber* (INT): SES element number of the boot device.
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Description of the error.
+*locationText* (STRING): Location of the boot device on the storage shelf.
+
+== ses.status.connectorInfo
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a problem previously reported about the SAS connector has been corrected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s SAS connector information for %s %d: %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this element.
+*electrNumber* (INT): SES element number of this element.
+*infoMsg* (STRING): Generic SES information.
+
+== ses.status.connectorWarn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a non-fatal condition has been detected in communication with the SAS connector or its EEPROM. This error does not necessarily mean that the data path through the connector is faulty.
+*Corrective Action*::
+Ensure that the connector is completely installed. If the error persists, replace the cable first, then the disk shelf I/O module.
+*Syslog Message*::
+%s SAS connector warning for %s %d: %s. %s %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this element.
+*electrNumber* (INT): SES element number of this element.
+*warningMsg* (STRING): Generic SES Warning.
+*warningText* (STRING): Exact wording of the warning.
+*locationText* (STRING): Location of the module on the disk shelf.
+
+== ses.status.currentError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a critical condition is detected in the indicated disk shelf current sensor. The disk shelf might be able to continue operation.
+*Corrective Action*::
+Verify that the PSU and the AC line are supplying power. Monitor the power grid for abnormalities. If all seems to be normal, replace the PSU. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+%s current error for %s %d: %s%s. %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and disk shelf number).
+*typeText* (STRING): SCSI Enclosure Services (SES) type descriptor text for this power supply.
+*psNumber* (INT): SES element number of the power supply.
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Description of the exact warning.
+*locationText* (STRING): Location of the module on the disk shelf.
+
+== ses.status.currentInfo
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an error or warning condition previously reported by or about the disk shelf current sensor is corrected, or the system reports other information about the current in the disk shelf that does not necessarily require customer action.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s current information for %s %d: %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and disk shelf number).
+*typeText* (STRING): SCSI Enclosure Services (SES) type descriptor text for this sensor.
+*sensorNumber* (INT): SES element number of the reporting sensor.
+*infoMsg* (STRING): Generic SES information.
+
+== ses.status.currentWarning
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a warning condition is detected in the indicated disk shelf current sensor. The disk shelf might be able to continue operation.
+*Corrective Action*::
+Verify that the PSU and the AC line are supplying power. Monitor the power grid for abnormalities. If all seems to be normal, replace the PSU. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+%s current warning for %s %d: %s%s. %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and disk shelf number).
+*typeText* (STRING): SCSI Enclosure Services (SES) type descriptor text for this power supply.
+*psNumber* (INT): SES element number of the power supply.
+*errorMsg* (STRING): generic SES error.
+*errorText* (STRING): Description of the exact warning.
+*locationText* (STRING): Location of the module on the shelf.
+
+== ses.status.dimm.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a storage shelf reports a generic "DIMM error detected" error on a PCIe Switch Module (PSM). The error could be because intermodule connections are down.
+*Corrective Action*::
+If the intermodule connection is down on one or both of the PCIe Switch Modules (PSMs), bring the intermodule connection up (by rebooting the affected module). If the intermodule connection is up on both of the PSMs (there are no errors on both PSMs), replace the DIMM. If the issue persists, a module might need to be replaced. Contact NetApp technical support.
+*Syslog Message*::
+%s DIMM failure for %s %d: %s%s. %s.
+*Parameters*::
+*prodChannel* (STRING): Storage shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SCSI Enclosure Services (SES) type descriptor text for the DIMM.
+*dimmNumber* (INT): SES element number of the DIMM.
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Description of the error.
+*locationText* (STRING): Location of the DIMM on the storage shelf.
+
+== ses.status.dimm.info
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a condition that was previously reported about a storage shelf DIMM has been corrected or when other information about the DIMM that might not require customer action is reported.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s DIMM notification for %s %d: %s.
+*Parameters*::
+*prodChannel* (STRING): Storage shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SCSI Enclosure Services (SES) type descriptor text for the DIMM.
+*dimmNumber* (INT): SES element number of the DIMM.
+*infoMsg* (STRING): Generic SES information.
+
+== ses.status.dimm.missing
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the PCIe Switch Module (PSM) of a storage shelf reports that a DIMM is not installed.
+*Corrective Action*::
+Install the DIMM. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+%s %s %d: %s%s. %s.
+*Parameters*::
+*prodChannel* (STRING): Storage shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SCSI Enclosure Services (SES) type descriptor text for the DIMM.
+*dimmNumber* (INT): SES element number of the DIMM.
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Description of the error.
+*locationText* (STRING): Location of the DIMM on the storage shelf.
+
+== ses.status.dimm.threshErr
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the element threshold of a DIMM is outside the threshold limits in the indicated PCIe Switch Module (PSM) of a storage shelf.
+*Corrective Action*::
+Install a new DIMM. If the problem persists, this indicates a hardware failure. Contact NetApp technical support.
+*Syslog Message*::
+%s DIMM threshold failure error for %s %d: %s%s. %s.
+*Parameters*::
+*prodChannel* (STRING): Storage shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SCSI Enclosure Services (SES) type descriptor text for the DIMM.
+*dimmNumber* (INT): SES element number of the failing DIMM.
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Description of the error.
+*locationText* (STRING): Location of the DIMM on the storage shelf.
+
+== ses.status.displayInfo
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a previous condition in the display panel has been corrected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s display information for %s %d: %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this display panel.
+*displayNumber* (INT): SES element number of this display panel.
+*infoMsg* (STRING): Generic SES information.
+
+== ses.status.displayWarning
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the enclosure services module has detected a warning condition for the disk shelf display panel. The disk shelf might be unable to provide correct addresses to its disks.
+*Corrective Action*::
+If possible, verify that the connection between the disk shelf and the display is secure. Verify that the Enclosure Services module or modules are fully seated; replacing them might solve the problem. If the problem persists, the Enclosure Services module that detected the warning condition might be faulty. If the problem persists after the module or modules are replaced, replace the disk shelf. If the problem persists, contact NetApp technical support for assistance.
+*Syslog Message*::
+%s display warning for %s %d: %s%s. %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this display panel.
+*displayNumber* (INT): SES element number of the this display panel.
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Exact wording of the warning.
+*locationText* (STRING): Location of the module on the disk shelf.
+
+== ses.status.driveError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a critical condition has been detected for the disk drive in the shelf. The drive might fail.
+*Corrective Action*::
+Make sure that the drive is not running on a degraded volume. If it is, then add as many spares as necessary into the system, up to the specifed level. After the volume is no longer in degraded mode, replace the drive that is failing.
+*Syslog Message*::
+Error on drive %d on %s shelf %s.%d%s.
+*Parameters*::
+*driveNumber* (INT): SES element number of the failing drive.
+*shelfType* (STRING): Type of the disk shelf that is experiencing the problem.
+*channel* (STRING): Channel the shelf is on.
+*shelfNumber* (INT): Number of the disk shelf the drive is on.
+*ErrorText* (STRING): Exact error description.
+
+== ses.status.driveOk
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a disk drive that was previously experiencing problem returns to normal operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The error on drive %d on %s shelf %s.%d has been corrected.
+*Parameters*::
+*driveNumber* (INT): SES element number of the drive.
+*shelfType* (STRING): Type of the disk shelf that contains the drive.
+*channel* (STRING): Channel the shelf is on.
+*shelfNumber* (INT): Number of the disk shelf the drive is on.
+
+== ses.status.driveWarning
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a non-critical condition has been detected for the disk drive in the shelf. The drive might fail.
+*Corrective Action*::
+Make sure that the drive is not running on a degraded volume. If it is, then add as many spares as necessary into the system, up to the specified level. After the volume is no longer in degraded mode, replace the drive that is failing.
+*Syslog Message*::
+Error on drive %d on %s shelf %s.%d%s.
+*Parameters*::
+*driveNumber* (INT): SES element number of the failing drive.
+*shelfType* (STRING): Type of the disk shelf that is experiencing the problem.
+*channel* (STRING): Channel the shelf is on.
+*shelfNumber* (INT): Number of the disk shelf the drive is on.
+*warningText* (STRING): Exact warning description.
+
+== ses.status.electronicsError
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a failure is detected in a module that provides disk enclosure services monitoring capability.
+*Corrective Action*::
+Replace the shelf module.
+*Syslog Message*::
+%s environmental monitoring error for %s %d: %s %s %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this element.
+*electrNumber* (INT): SES element number of this element.
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Exact wording of the warning.
+*locationText* (STRING): Location of the module on the disk shelf.
+
+== ses.status.electronicsInfo
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a problem previously reported about the disk shelf enclosure services electronics has been corrected or when other information about the enclosure electronics that does not necessarily require customer action is reported.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s environmental monitoring information for %s %d: %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SCSI Enclosure Services (SES) type descriptor text for this element.
+*electrNumber* (INT): SES element number of this element.
+*infoMsg* (STRING): Generic SES information.
+
+== ses.status.electronicsWarn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a non-fatal condition is detected in a module that provides disk enclosure services monitoring capability.
+*Corrective Action*::
+Replace the module. In most disk shelf types, this function is integrated into the FC, SCSI, or SAS interface modules.
+*Syslog Message*::
+%s environmental monitoring warning for %s %d: %s. %s %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this element.
+*electrNumber* (INT): SES element number of this element.
+*warningMsg* (STRING): Generic SES Warning.
+*warningText* (STRING): Exact wording of the warning.
+*locationText* (STRING): Location of the module on the disk shelf.
+
+== ses.status.enclError
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a failure is detected in the disk enclosure (shelf) internal hardware.
+*Corrective Action*::
+Contact NetApp technical support for assistance with shelf or shelf midplane replacement.
+*Syslog Message*::
+%s environmental monitoring error for %s %d: %s %s %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SCSI Enclosure Services (SES) type descriptor text for this element.
+*electrNumber* (INT): SES element number of this element.
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Exact wording of the warning.
+*locationText* (STRING): Location of the failed component on the disk shelf.
+
+== ses.status.enclInfo
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a problem previously reported about the disk shelf hardware has been corrected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s disk inclosure information for %s %d: %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SCSI Enclosure Services (SES) type descriptor text for this element.
+*electrNumber* (INT): SES element number of this element.
+*infoMsg* (STRING): Generic SES information.
+
+== ses.status.enclWarn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an error condition is present in the disk shelf that causes the shelf fault LED to be lit, including faults in shelf components or disks marked as failed by ONTAP(R) software.
+*Corrective Action*::
+Correct error conditions in the disk shelf. Check that the power supplies are in the proper locations, that there are the required number of them, and that they are powered on. Remove failed disk drives. If multiple shelf modules are expected, install a missing module, and ensure that the firmware revisions are at the same level, preferably the latest revision available. If the error persists, contact NetApp technical support for assistance.
+*Syslog Message*::
+%s disk enclosure warning for %s %d: %s. %s %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this element.
+*electrNumber* (INT): SES element number of this element.
+*warningMsg* (STRING): Generic SES Warning.
+*warningText* (STRING): Exact wording of the warning.
+*locationText* (STRING): Location of the module on the disk shelf.
+
+== ses.status.etherConn.info
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a problem previously reported about a PCIe switch module (PSM) port's Ethernet connector has been corrected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s Ethernet connector information for port %s: %s.
+*Parameters*::
+*prodChannel* (STRING): Storage shelf identity (channel, product, and shelf number).
+*connName* (STRING): SES element name of this Ethernet connector.
+*infoMsg* (STRING): Generic SES information.
+
+== ses.status.etherConn.warn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a non-fatal condition has been detected in communication with a PCIe switch module (PSM) port's external Ethernet connector or its EEPROM. This error does not necessarily mean that the data path through the connector is faulty.
+*Corrective Action*::
+Verify that the Ethernet cable or transceiver is correctly installed. If the error persists, replace the cable. If necessary,replace the PSM.
+*Syslog Message*::
+%s Ethernet connector warning for port %s: %s. %s %s.
+*Parameters*::
+*prodChannel* (STRING): Storage shelf identity (channel, product, and shelf number).
+*connName* (STRING): SES element name of this Ethernet connector.
+*warningMsg* (STRING): Generic SES warning.
+*warningText* (STRING): Warning text.
+*locationText* (STRING): Location of the module on the storage shelf.
+
+== ses.status.fanError
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the indicated disk shelf cooling fan or fan module has failed, and the shelf or its components are not receiving required cooling airflow.
+*Corrective Action*::
+Verify that the fan module is fully seated and secured (the fan is integrated into the power supply module in some disk shelves). If the problem persists, replace the fan module. If the problem still persists, contact NetApp technical support for assistance.
+*Syslog Message*::
+%s cooling fan error for %s %d: %s%s. %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this fan.
+*fanNumber* (INT): SES element number of this fan.
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Exact wording of the error.
+*locationText* (STRING): Location of the module on the disk shelf.
+
+== ses.status.fanInfo
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a condition previously reported about the disk shelf cooling fan or fan module has been corrected or when other information about the fans that does not necessarily require customer action is reported.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s cooling fan information for %s %d: %s.
+*Parameters*::
+*prodChannel* (STRING): Shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this fan.
+*fanNumber* (INT): SES element number of this fan.
+*infoMsg* (STRING): Generic SES information.
+
+== ses.status.fanWarning
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a disk shelf cooling fan is not operating to specification, or a component of a fan module has stopped functioning. The disk shelf components continue to receive cooling airflow but might eventually reach temperatures that are out of specification.
+*Corrective Action*::
+Verify that the fan or fan module is fully seated and secured (fans are integrated into the power supply module in some shelves). If the problem persists, replace the fan module. If the problem still persists, contact NetApp technical support for assistance.
+*Syslog Message*::
+%s cooling fan warning for %s %d: %s%s. %s.
+*Parameters*::
+*prodChannel* (STRING): Shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this fan.
+*fanNumber* (INT): SES element number of this fan.
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Exact wording of the warning.
+*locationText* (STRING): Location of the module on the disk shelf.
+
+== ses.status.inputPowerError
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects a failure in the Input Power Monitor. The Input Power Monitor monitors power to the Power Supply Units (PSU).
+*Corrective Action*::
+Check that the PSU is receiving sufficient power from an AC source.
+*Syslog Message*::
+%s Input Power Monitor error for %s %d: %s %s %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this element.
+*electrNumber* (INT): SES element number of this element.
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Exact wording of the error.
+*locationText* (STRING): Location of the PSU on the disk shelf.
+
+== ses.status.inputPowerInfo
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a previously reported Input Power Monitor problem of a disk shelf is corrected, or when the system is reporting information about the Input Power Monitor that does not necessarily require customer action.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s Input Power Monitor information for %s %d: %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this element.
+*electrNumber* (INT): SES element number of this element.
+*infoMsg* (STRING): Generic SES information.
+
+== ses.status.inputPowerWarn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects a non-fatal condition in the Input Power Monitor of a disk shelf. The Input Power Monitor monitors power to the Power Supply Units (PSU).
+*Corrective Action*::
+Check that the PSU is receiving sufficient power from an AC source.
+*Syslog Message*::
+%s Input Power Monitor warning for %s %d: %s. %s %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this element.
+*electrNumber* (INT): SES element number of this element.
+*warningMsg* (STRING): Generic SES warning.
+*warningText* (STRING): Exact wording of the warning.
+*locationText* (STRING): Location of the PSU on the disk shelf.
+
+== ses.status.ModuleError
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the reporting disk shelf has detected an error in the indicated disk shelf module.
+*Corrective Action*::
+Verify that the shelf module is fully seated and secure. If the problem persists, replace the disk shelf module.
+*Syslog Message*::
+%s %s error for %s %d: %s%s. %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*moduleType* (STRING): Type of this module.
+*typeText* (STRING): SES type descriptor text for this module.
+*ModuleNumber* (INT): Element number of this module: either 1 for Module A or 2 for Module B.
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Exact wording of the warning.
+*locationText* (STRING): Location of the module on the disk shelf.
+
+== ses.status.ModuleInfo
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a previously reported error in the shelf module has been corrected or when other information that does not necessarily require customer action is reported.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s information for %s %d: %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*moduleType* (STRING): Type of this module.
+*typeText* (STRING): SES type descriptor text for this module.
+*ModuleNumber* (INT): Element number of this module: either 1 for Module A or 2 for Module B.
+*infoMsg* (STRING): Generic SES information.
+
+== ses.status.ModuleWarn
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the reporting disk shelf detects a warning condition in the indicated disk shelf module.
+*Corrective Action*::
+Verify that the shelf module is fully seated and secure. If the problem persists, replace the disk shelf module.
+*Syslog Message*::
+%s %s warning for %s %d: %s%s. %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*moduleType* (STRING): Type of this module.
+*typeText* (STRING): SES type descriptor text for this module.
+*moduleNumber* (INT): Element number of this module: either 1 for Module A or 2 for Module B.
+*warningMsg* (STRING): Generic SES warning.
+*warnText* (STRING): Exact wording of the warning.
+*locationText* (STRING): Location of the module on the disk shelf.
+
+== ses.status.powerCrestError
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects a failure in the Power Crest Factor Monitor for a disk shelf PSU. The Power Crest Factor Monitor will detect issues with the disk shelf power supply unit (PSU).
+*Corrective Action*::
+If an abnormal power crest factor is indicated, replace the corresponding PSU.
+*Syslog Message*::
+%s Power Crest Factor Monitor error for %s %d: %s %s %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this element.
+*electrNumber* (INT): SES element number of this element.
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Exact wording of the warning.
+*locationText* (STRING): Location of the PSU on the disk shelf.
+
+== ses.status.powerCrestInfo
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a previously reported Power Crest Factor Monitor problem of a disk shelf is corrected, or when the system is reporting information about the Power Crest Factor Monitor that does not necessarily require customer action.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s Power Crest Factor Monitor information for %s %d: %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this element.
+*electrNumber* (INT): SES element number of this element.
+*infoMsg* (STRING): Generic SES information.
+
+== ses.status.powerCrestWarn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects a non-fatal condition in the Power Crest Factor Monitor of a power supply unit (PSU) of a disk shelf.
+*Corrective Action*::
+Replace the PSU of the disk shelf.
+*Syslog Message*::
+%s Power Crest Factor Monitor warning for %s %d: %s. %s %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this element.
+*electrNumber* (INT): SES element number of this element.
+*warningMsg* (STRING): Generic SES warning.
+*warningText* (STRING): Exact wording of the warning.
+*locationText* (STRING): Location of the PSU on the disk shelf.
+
+== ses.status.procCplxError
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects a failure in the Processor Complex. The Processor Complex is the set of electronic hardware, including the CPU, memory, and so on, that runs ONTAP(R) software.
+*Corrective Action*::
+If insufficient power or abnormal voltage is indicated, check the power supply configuration; otherwise, replace the module. In some disk shelf types, this function is integrated into the SAS interface modules.
+*Syslog Message*::
+%s Processor Complex error for %s %d: %s %s %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this element.
+*electrNumber* (INT): SES element number of this element.
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Exact wording of the warning.
+*locationText* (STRING): Location of the module on the disk shelf.
+
+== ses.status.procCplxInfo
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a previously reported Processor Complex problem is corrected, or when the system is reporting information about the Processor Complex that does not necessarily require customer action. The Processor Complex is the set of electronic hardware, including the CPU, memory, and so on, that runs ONTAP(R) software.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s Processor Complex information for %s %d: %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this element.
+*electrNumber* (INT): SES element number of this element.
+*infoMsg* (STRING): Generic SES information.
+
+== ses.status.procCplxWarn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects a non-fatal condition in the Processor Complex. The Processor Complex is the set of electronic hardware, including the CPU, memory, and so on, that runs ONTAP(R) software.
+*Corrective Action*::
+Replace the module. In some disk shelf types, this function is integrated into the SAS interface modules.
+*Syslog Message*::
+%s Processor Complex warning for %s %d: %s. %s %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this element.
+*electrNumber* (INT): SES element number of this element.
+*warningMsg* (STRING): Generic SES warning.
+*warningText* (STRING): Exact wording of the warning.
+*locationText* (STRING): Location of the module on the disk shelf.
+
+== ses.status.psError
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a critical condition is detected in the indicated storage shelf power supply. The power supply might fail.
+*Corrective Action*::
+Verify that input power to the shelf is working correctly. If separate events of this type are reported simultaneously, then the common power distribution point might be at fault. Make sure that the shelf power cords are fully inserted and secured, the supply is fully seated and secured, and the supply is switched on. Verify that power supply fans, if any, are functioning. If the problem persists, replace the power supply. If the problem still persists, contact NetApp technical support.
+*Syslog Message*::
+%s power error for %s %d: %s%s. %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this power supply.
+*psNumber* (INT): SES element number of the failing power supply.
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Exact description of the error.
+*locationText* (STRING): Location of the module on the disk shelf.
+
+== ses.status.psInfo
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a condition previously reported about the disk shelf power supply has been corrected or when other information about the power supply that does not necessarily require customer action is reported.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s power supply information for %s %d: %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this supply.
+*psNumber* (INT): SES element number of the reporting supply.
+*infoMsg* (STRING): Generic SES information.
+
+== ses.status.psWarning
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a warning condition has been detected in the indicated storage shelf power supply. The power supply might be able to continue operation.
+*Corrective Action*::
+Verify that the disk shelf is receiving power. If separate events of this type are reported simultaneously, then the common power distribution point might be at fault. Make sure that the disk shelf power cords are fully inserted and secured, the supply is fully seated and secured, and the supply is switched on. If the problem persists, replace the power supply. If the problem still persists, contact NetApp technical support.
+*Syslog Message*::
+%s power warning for %s %d: %s%s. %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this supply.
+*psNumber* (INT): SES element number of the erring supply.
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Exact wording of the warning.
+*locationText* (STRING): Location of the module on the disk shelf.
+
+== ses.status.shelfCount.info
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the shelf count changes due to shelf removal, insertion or the controller was rebooted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The new shelf count is %d, the old shelf count was %d.
+*Parameters*::
+*currentShelfCount* (INT): New shelf count.
+*oldShelfCount* (INT): Previous shelf count.
+
+== ses.status.temperatureError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the indicated disk shelf temperature sensor reports a temperature that exceeds the specifications for the disk shelf or its components.
+*Corrective Action*::
+Verify that the ambient temperature where the shelf is installed is within NetApp equipment specifications using the "storage shelf show" command and that airflow clearances are maintained. If the same disk shelf also reports fan or fan module failures, correct that problem now. If the problem is reported by the ambient temperature sensor (located on the operator panel), verify that the connection between the disk shelf and the panel is secure, if possible. If the problem persists, and if the shelf has multiple temperature sensors of which only one exhibits the problem, replace the module that contains the sensor that reports the error. If problem still persists, contact NetApp technical support for assistance. The temperature thresholds for each shelf can be displayed by using the "storage shelf show" command. command.
+*Syslog Message*::
+%s temperature error for %s %d: %s%s. Current temperature: %s C (%s F). %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this sensor.
+*thermNumber* (INT): SES element number of this sensor.
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Exact wording of the error.
+*currentCTemp* (STRING): Temperature reported by the sensor, in Celsius, if available.
+*currentFTemp* (STRING): Temperature reported by the sensor, in Fahrenheit, if available.
+*locationText* (STRING): Location of the module on the disk shelf.
+
+== ses.status.temperatureInfo
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an error or warning condition previously reported by or about the disk shelf temperature sensor has been corrected or when other information about the temperature in the disk shelf that does not necessarily require customer action is reported.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s temperature information for %s %d: %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this sensor.
+*thermNumber* (INT): SES element number of this sensor.
+*infoMsg* (STRING): Generic SES information.
+
+== ses.status.temperatureWarning
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the indicated disk shelf temperature sensor reports a temperature that is close to exceeding the specifications for the disk shelf or its components.
+*Corrective Action*::
+Verify that the ambient temperature where the disk shelf is installed is within NetApp equipment specifications by using the "storage shelf show" command, and that airflow clearances are maintained. If this disk shelf also reports fan or fan module errors or warnings, correct those problems now. If the problem persists, and the shelf has multiple temperature sensors of which only one exhibits the problem, replace the module that contains the sensor. If the problem persists, contact NetApp technical support for assistance. The temperature thresholds for each shelf can also be displayed by using the "storage shelf show" command.
+*Syslog Message*::
+%s temperature warning for %s %d: %s%s. Current temperature: %s C (%s F). %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this sensor.
+*thermNumber* (INT): SES element number of this sensor.
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Exact wording of the warning.
+*currentCTemp* (STRING): Temperature reported by the sensor, in Celsius, if available.
+*currentFTemp* (STRING): Temperature reported by the sensor, in Fahrenheit, if available.
+*locationText* (STRING): Location of the module on the disk shelf.
+
+== ses.status.upsError
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the disk shelf has detected a failure in the uninterruptible power supply (UPS) attached to it. This might occur, for example, if power to the UPS has been lost.
+*Corrective Action*::
+Restore power to the UPS. Verify that the connection from the UPS to the disk shelf is in place and secured, and that the UPS is enabled. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+%s uninterruptible power error for %s %d: %s%s. %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this UPS
+*upsNumber* (INT): SES element number of the UPS
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Exact wording of the error.
+*locationText* (STRING): Location of the module on the disk shelf.
+
+== ses.status.upsInfo
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a condition previously reported about the uninterruptible power supply (UPS) attached to the disk shelf has been corrected or when other information about the UPS that does not necessarily require customer action is reported.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s uninterruptible power information for %s %d: %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this UPS.
+*upsNumber* (INT): SES element number of the reporting UPS.
+*infoMsg* (STRING): Generic SES information.
+
+== ses.status.upsWarning
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the disk shelf has detected a warning condition in the uninterruptible power supply (UPS) attached to it. This might occur, for example, if power to the UPS has been lost.
+*Corrective Action*::
+Restore power to the UPS. Verify that the connection from the UPS to the disk shelf is attached and secured, and that the UPS is enabled. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+%s uninterruptible power warning for %s %d: %s%s. %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and shelf number).
+*typeText* (STRING): SES type descriptor text for this UPS.
+*upsNumber* (INT): SES element number of the UPS.
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Exact wording of the warning.
+*locationText* (STRING): Location of the module on the disk shelf.
+
+== ses.status.volError
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a critical condition is detected in the indicated disk shelf voltage sensor. The disk shelf might be able to continue operation.
+*Corrective Action*::
+Verify that the power supply unit (PSU) and the AC line are supplying power. Monitor the power grid for abnormalities. If all seems to be normal, replace the PSU. If the problem persists, contact technical support.
+*Syslog Message*::
+%s voltage error for %s %d: %s%s. %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and disk shelf number).
+*typeText* (STRING): SCSI Enclosure Services (SES) type descriptor text for this power supply.
+*psNumber* (INT): SES element number of the power supply.
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Description of the exact warning.
+*locationText* (STRING): Location of the module on the disk shelf.
+
+== ses.status.volInfo
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an error or warning condition previously reported by or about the disk shelf voltage sensor is corrected, or the system reports other information about the voltage in the disk shelf that does not necessarily require customer action.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s voltage information for %s %d: %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and disk shelf number).
+*typeText* (STRING): SCSI Enclosure Services (SES) type descriptor text for this sensor.
+*sensorNumber* (INT): SES element number of the reporting sensor.
+*infoMsg* (STRING): Generic SES information.
+
+== ses.status.volWarning
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a warning condition is detected in the indicated disk shelf voltage sensor. The shelf might be able to continue operation.
+*Corrective Action*::
+Verify that the power supply and the AC line are supplying power. Monitor the power grid for abnormalities. If all seems to be normal, replace the power supply. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+%s voltage warning for %s %d: %s%s. %s.
+*Parameters*::
+*prodChannel* (STRING): Disk shelf identity (channel, product, and disk shelf number).
+*typeText* (STRING): SCSI Enclosure Services (SES) type descriptor text for the power supply.
+*psNumber* (INT): SES element number of the power supply.
+*errorMsg* (STRING): Generic SES error.
+*errorText* (STRING): Description of the exact warning.
+*locationText* (STRING): Location of the module on the disk shelf.

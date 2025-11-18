@@ -1,0 +1,416 @@
+---
+sidebar: sidebar
+permalink: ses-shelf-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ses.shelf events
+---
+
+= ses.shelf events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ses.shelf.bay.populate
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when one of the drive in bay 1 or 2 is missing.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk shelf %s is recommended to have slot 1 and slot 2 populated at all times.
+*Parameters*::
+*shelfName* (STRING): Disk shelf name.
+
+== ses.shelf.changedId
+*Severity*::
+ERROR
+*Description*::
+This message occurs on a SAS disk shelf when the disk shelf ID changed after power is applied to the disk shelf.
+*Corrective Action*::
+Verify that the disk shelf ID displayed in this message is the same as the disk shelf ID shown on the disk shelf. If they are different and the disk shelf ID displayed in this message is the one you want, reset the disk shelf number to match it. If you want the new disk shelf ID instead of the disk shelf ID displayed in the message, verify that the disk shelf ID you want does not conflict with other disk shelves in the domain. Then power-cycle the disk shelf chassis. You can wait to perform this procedure until your next maintenance window. If the warning persists on both disk shelf modules after you completed the procedure, replace the disk shelf chassis. If it persists on only one disk shelf module, replace the disk shelf module.
+*Syslog Message*::
+Disk shelf module %d on disk shelf %s.%d indicates that the disk shelf ID has been changed since the disk shelf module was powered on. %s.
+*Parameters*::
+*moduleNumber* (INT): Element number of this module: either 1 for Module A or 2 for Module B.
+*channelName* (STRING): Name of the adapter port or switch port associated with the disk shelf; for example, "7a" or "myswitch:5".
+*shelfNumber* (INT): Disk shelf ID reported by the disk shelf before the ID change on the thumbwheel switch.
+*locationText* (STRING): Location of the disk shelf module on the disk shelf.
+
+== ses.shelf.ctrlFailErr
+*Severity*::
+ALERT
+*Description*::
+This message occurs when SCSI Enclosure Services' (SES) control to a disk shelf fails.
+*Corrective Action*::
+Check the LEDs on the disk shelf and the disk shelf modules on the back of the disk shelf to see whether there are any abnormalities. If the modules appear to be problematic, replace the applicable module. If the SES target is a disk drive, check to see whether the disk drive failed. If it failed, replace the disk drive.
+*Syslog Message*::
+Enclosure control failed via %s (disk shelf %d). Alternate path will be used if available.
+*Parameters*::
+*SESTarget* (STRING): Address of the SES target for which the SES control failed.
+*shelfID* (INT): Disk shelf ID of the disk shelf that failed.
+
+== ses.shelf.disable.block.request
+*Severity*::
+ALERT
+*Description*::
+This message is generated when there is a failure while disabling the auto power cycle feature for all shelves that support auto power cycle feature on the system.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Fail while disabling shelf auto power cycle capability during %s (%d).
+*Parameters*::
+*requestOwner* (STRING): Name of the requestor who requests to disable the auto power cycle feature.
+*status* (INT): Failure status.
+
+== ses.shelf.drawer.min.drives
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when one of the first 4 drives are missing in a drawer.
+*Corrective Action*::
+Please insert a disk in one of the first 4 bays of the indicated drawer.
+*Syslog Message*::
+Disk shelf %d, drawer %d, bay %d missing, drawer needs first 4 drives installed.
+*Parameters*::
+*shelfID* (INT): Disk shelf ID.
+*drawerNum* (INT): Disk drawer number.
+*bayNum* (INT): Disk bay number.
+
+== ses.shelf.drawer.open
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when one of the drawers of a disk shelf has been left open.
+*Corrective Action*::
+Please close the drawer of the indicated drawer. If a drawer has been left open for an extended period of time, this can affect the cooling of components within the disk shelf.
+*Syslog Message*::
+Disk shelf %d has drawer %d open.
+*Parameters*::
+*shelfID* (INT): Disk shelf ID.
+*drawerNum* (INT): Disk drawer number.
+
+== ses.shelf.drwr.phy.rateunkwn
+*Severity*::
+ALERT
+*Description*::
+This message occurs when one of the PHY ports of a shelf drawer is reporting an unknown link rate. The PHY port is a physical port in the drawer of the storage shelf that resides on the shelf side. This message indicates an internal error might have occurred in the shelf firmware or software. Communication between the PHY ports and the disk drives in the shelf might have failed or be in degraded states.
+*Corrective Action*::
+Contact NetApp technical support for assistance.
+*Syslog Message*::
+Drive shelf "%d", module "%s", drawer "%d", PHY "%d" is reporting an unknown link rate.
+*Parameters*::
+*shelfID* (INT): Drive shelf ID.
+*module* (STRING): Drive shelf module.
+*drawerNum* (INT): Shelf drawer number.
+*phyNum* (INT): Shelf drawer PHY number.
+
+== ses.shelf.em.ctrlFailErr
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when SCSI Enclosure Services' (SES) control to the internal disk drives of a system fails.
+*Corrective Action*::
+Run the "storage shelf show" command to see whether that disk shelf is still being actively monitored. If the command indicates a failure, there is a hardware failure in the system's internal disk shelf.
+*Syslog Message*::
+Enclosure control failed via embedded disk shelf %d.
+*Parameters*::
+*shelfID* (INT): Disk shelf ID of the embedded disk shelf that failed.
+
+== ses.shelf.fw.disrUpdFW
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a disk shelf firmware update operation causes temporary but noticeable interruption of disk I/O. Current disk shelf firware levels do not support nondisruptive upgrade (NDU).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SCSI Enclosure Services (SES) disk shelf firmware update disrupts disk I/O. The current shelf firmware (product revision level %.4s) does not support nondisruptive upgrade (NDU).
+*Parameters*::
+*ProductRev* (STRING): Product revision level.
+
+== ses.shelf.fw.disrUpdPath
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a disk shelf firmware update operation causes temporary but noticeable interruption of disk I/O. Redundant paths to the disk shelf are required for nondisruptive upgrade (NDU).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SCSI Enclosure Services (SES) disk shelf firmware update disrupts disk I/O. Redundant paths to the disk shelf are needed for nondisruptive upgrade (NDU) to be used.
+*Parameters*::
+(None).
+
+== ses.shelf.fw.update.ndu
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a shelf firmware update is performed using the nondisruptive upgrade (NDU) procedure.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SCSI Enclosure Services (SES) shelf firmware update will be performed using nondisruptive upgrade (NDU).
+*Parameters*::
+(None).
+
+== ses.shelf.fw.update.pfu.nrdnt
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a shelf firmware update is performed using the Package Firmware Update (PFU) process because redundant paths to the shelf are not present.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SCSI Enclosure Services (SES) shelf firmware update will be performed using Package Firmware Update (PFU) because redundant paths are not present.
+*Parameters*::
+(None).
+
+== ses.shelf.IdBasedAddr
+*Severity*::
+ERROR
+*Description*::
+This message occurs on a serial attached SCSI (SAS) disk shelf when the SAS address of the devices are based on the disk shelf ID instead of the disk shelf backplane serial number. This indicates problems communicating with the disk shelf backplane.
+*Corrective Action*::
+Reseat the master disk shelf module as indicated by the output of the "storage shelf show" command. If the problem persists, reseat the slave disk shelf module. If the problem persists, find the new master disk shelf module, and replace it. If the problem persists, replace the other disk shelf module. If the problem persists, replace the disk shelf enclosure.
+*Syslog Message*::
+Disk shelf module %d on disk shelf %s.%d indicates that its SAS addresses are based on the disk shelf ID, instead of on the disk shelf backplane serial number. %s.
+*Parameters*::
+*moduleNumber* (INT): Element number of this module: either 1 for Module A or 2 for Module B.
+*channelName* (STRING): Name of the adapter port or switch port associated with the disk shelf; for example, "7a" or "myswitch:5".
+*shelfNumber* (INT): Disk shelf ID.
+*locationText* (STRING): Location of the disk shelf module on the disk shelf.
+
+== ses.shelf.invalNum
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) software detects that an SAS disk shelf connected to the system has an invalid disk shelf number.
+*Corrective Action*::
+Power-cycle the disk shelf. If the problem persists, replace the disk shelf modules. If the problem still persists, replace the disk shelf.
+*Syslog Message*::
+A disk shelf on adapter %s has an invalid disk shelf number of %d. %s.
+*Parameters*::
+*channelName* (STRING): Name of the channel the disk shelf is on that is reporting an error.
+*shelfNumber* (INT): Invalid Disk shelf ID.
+*softId* (STRING): String indicating whether a soft disk shelf number is assigned to the disk shelf.
+
+== ses.shelf.maxExceeded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when more disk shelves are attached than the controller can monitor. The controller cannot detect or identify abnormal conditions in excess shelves, nor can it download firmware to unmonitored shelves. The reported device address is one instance of a device in an unmonitored disk shelf. There might be multiple unmonitored shelves.
+*Corrective Action*::
+Consult system documentation for the maximum number of supported disk shelves, which might be lower than the number reported here. Reduce the number of attached disk shelves to no more than the documented number. Consolidating disk drives into sparsely populated shelves and removing excess shelves is one way to reduce shelf count.
+*Syslog Message*::
+More than %d disk shelves are attached. Shelf containing %s and possibly other shelves are not monitored.
+*Parameters*::
+*max_enclosures* (INT): Maximum number of disk shelves this system can monitor and control.
+*device* (STRING): Address of the device.
+
+== ses.shelf.mmErr
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a disk shelf is not supported by the platform it was booted on.
+*Corrective Action*::
+Check whether the current version of ONTAP(R) software supports the disk shelf. If not, install an ONTAP version that supports the disk shelf. If the disk shelf is supported, the error might be cleared by hourly attempts by ONTAP to establish proper contact with the disk shelf.
+*Syslog Message*::
+SCSI Enclosure Services (SES) device accessed by %s (product revision level [%.4s]) (enclosure vendor ID [%.8s]) (enclosure product ID [%.16s]) is not supported on this platform.
+*Parameters*::
+*DeviceName* (STRING): Address of the unqualified Enclosure Services device.
+*ProductRev* (STRING): Product revision level.
+*EnclosureVendorID* (STRING): Enclosure Vendor Identification.
+*EnclosureProductID* (STRING): Enclosure Product Identification.
+
+== ses.shelf.OSmmErr
+*Severity*::
+ALERT
+*Description*::
+This message occurs when there are incompatible ONTAP(R) software versions in a Shared Storage configuration that would cause SCSI Enclosure Services (SES) not to function properly.
+*Corrective Action*::
+Update the system that has an earlier ONTAP version to match the one that has the latest ONTAP version.
+*Syslog Message*::
+Incompatible versions of ONTAP are running on the different systems in a Shared Storage Configuration.
+*Parameters*::
+(None).
+
+== ses.shelf.powercycle.done
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a disk shelf power-cycle finishes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk shelf power-cycled; resuming disk I/O.
+*Parameters*::
+(None).
+
+== ses.shelf.powercycle.start
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a disk shelf is power-cycled and SCSI Enclosure Services (SES) needs to wait for it to finish.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Waiting for disk shelf power-cycle to be complete.
+*Parameters*::
+(None).
+
+== ses.shelf.RAS.suggestion
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is generated when various different supported combinations of ESHx type storage controller I/O modules are used in the various different ESHx type storage enclosures. Though this could be a supported configuration, to make the best of the power cycle features it is recommended to keep the FC loops as homogenous as possible.
+*Corrective Action*::
+For best practices, use only the ESH4 controller modules in the DS14-Mk4-FC enclosures.
+*Syslog Message*::
+ses.shelf.RAS.suggestion INFO Channel %s, Mixing %s I/O modules is fully supported on a FC loop. However, for improved reliability migration to homogeneous ESH4 configurations is recommended.
+*Parameters*::
+*channelName* (STRING): Name of the adapter port or switch port of the disk shelf.
+*supportedControllerModules* (STRING): ESHx enclosure modules, ESH/ESH2/ESH4
+
+== ses.shelf.reset.auto.fail
+*Severity*::
+ERROR
+*Description*::
+This event is generated when the automated power cycle attempt in the shelf enclosure - identified by the channel.shelf_id - had failed. The trigger condition for the automated reset is also reported.
+*Corrective Action*::
+Try the 'storage power_cycle shelf' on the same shelf. If it still fails, please refer to the "Trouble Shooting Section" of the NDR documentation.
+*Syslog Message*::
+%s disk shelf %s.%d [%s] failed to perform an automatic reset (0x%x)
+*Parameters*::
+*shelfType* (STRING): Shelf enclosure type, DS14-Mk4-FC, DS14-Mk2-FC or DS14-Mk2-AT.
+*channelName* (STRING): Name of the adapter port or switch port of the disk shelf that was attempted to be power cycled.
+*shelfId* (INT): ID of the disk shelf that was attempted to be power cycled.
+*serialNumber* (STRING): Serial number of the storage shelf enclosure.
+*triggerCondition* (INT): Trigger reason for the automated reset, as reported by the shelf enclosure.
+
+== ses.shelf.reset.auto.good
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is generated when the automated power cycle attempt in the shelf enclosure - identified by the channel.shelf_id - had succeeded. The trigger for the automated reset is also reported.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s disk shelf %s.%d [%s] has recovered from an automatic reset (0x%x)
+*Parameters*::
+*shelfType* (STRING): Shelf enclosure type, DS14-Mk4-FC, DS14-Mk2-FC or DS14-Mk2-AT.
+*channelName* (STRING): Name of the adapter port or switch port of the disk shelf that was power cycled.
+*shelfId* (INT): ID of the disk shelf that was power cycled.
+*serialNumber* (STRING): Serial number of the storage shelf enclosure.
+*triggerCondition* (INT): Trigger reason for the automated reset, as reported by the shelf enclosure.
+
+== ses.shelf.reset.capability
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is generated when the periodic storage enclosure services monitor detects some of the DS14-Mk4-FC,DS14-Mk2-FC and DS14-Mk2-AT storage enclosures are not being upgraded to the correct requirements, to avail the enhanced power cycle features. This is just an informational message only, not an error. The idea is to make the admin follow the suggested best practices, so that the Filer could make use of the advanced features provided.
+*Corrective Action*::
+Check the power supply unit information on all the DS14-Mk4-FC, DS14-Mk2-FC and the DS14-Mk2-AT shelf enclosure modules by executing the 'environment shelf' command. Plan to replace the power supply units that are not "Type:HRE capable".
+*Syslog Message*::
+Some %s disk shelves on this system are capable of automatic power reset, but some do not have appropriate firmware or PSU model. For improved system RAS, consider upgrading shelves to have this capability. The environ shelf command shows this feature's status.
+*Parameters*::
+*shelfType* (STRING): Shelf enclosure type, DS14-Mk4-FC, DS14-Mk2-FC or DS14-Mk2-AT.
+
+== ses.shelf.reset.request
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is generated when the command 'storage power_cycle shelf start' is successfully sent to the shelf - identified by the channel.shelf_id, and is of type DS14-Mk4-FC, DS14-Mk2-FC or DS14-Mk2-AT.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Reset requested on %s disk shelf %s.%d [%s].
+*Parameters*::
+*shelfType* (STRING): Shelf enclosure type, DS14-Mk4-FC, DS14-Mk2-FC or DS14-Mk2-AT.
+*channelName* (STRING): Name of the adapter port or switch port of the disk shelf to be power cycled.
+*shelfId* (INT): ID of the disk shelf that is to be power cycled.
+*serialNumber* (STRING): Serial number of the storage shelf enclosure.
+
+== ses.shelf.reset.request.fail
+*Severity*::
+ERROR
+*Description*::
+This event is generated when the command 'storage power_cycle shelf start' sent to the shelf enclosure - identified by the channel.shelf_id - could not power cycle the shelf enclosure successfully.
+*Corrective Action*::
+Try the 'storage power_cycle shelf start' on the same shelf again. If it still fails, please refer to the "Trouble Shooting Section" of the NDR documentation.
+*Syslog Message*::
+%s disk shelf %s.%d [%s] failed to reset when requested.
+*Parameters*::
+*shelfType* (STRING): Shelf enclosure type, DS14-Mk4-FC, DS14-Mk2-FC or DS14-Mk2-AT.
+*channelName* (STRING): Name of the adapter port or switch port of the disk shelf that was attempted to be power cycled.
+*shelfId* (INT): ID of the disk shelf that was attempted to be power cycled.
+*serialNumber* (STRING): Serial number of the storage shelf enclosure.
+
+== ses.shelf.reset.request.good
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is generated when the command 'storage power_cycle shelf start' sent to the shelf - identified by the channel.shelf_id, and is of type DS14-Mk4-FC, DS14-Mk2-FC or DS14-Mk2-AT - has successfully recovered.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s disk shelf %s.%d [%s] has recovered from a requested reset.
+*Parameters*::
+*shelfType* (STRING): Shelf enclosure type, DS14-Mk4-FC, DS14-Mk2-FC or DS14-Mk2-AT.
+*channelName* (STRING): Name of the adapter port or switch port of the disk shelf that was power cycled.
+*shelfId* (INT): ID of the disk shelf that was power cycled.
+*serialNumber* (STRING): Serial number of the storage shelf enclosure.
+
+== ses.shelf.reset.unsup.drives
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Nondisruptive Recovery (NDR) functionality is disabled due to the presence of Parallel ATA (PATA) disk drives on the disk loop.
+*Corrective Action*::
+Replace all X266_MTOMC320PSX or X262_MCALY250PSX disk drives and then turn on the automatic reset capability.
+*Syslog Message*::
+NDR functionality is disabled due to the presence of X266_MTOMC320PSX or X262_MCALY250PSX disk drives on the disk loop.
+*Parameters*::
+(None).
+
+== ses.shelf.sameNumReassign
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) software detects more than one SAS shelf connected to the same adapter has the same disk shelf number.
+*Corrective Action*::
+Change the disk shelf number on the disk shelf to one that does not conflict with other disk shelves attached to the same adapter. Then halt the system and reboot the disk shelf.
+*Syslog Message*::
+Multiple disk shelves with disk shelf number %d are found on channel %s. Disk shelf with serial number %s has been assigned the soft disk shelf number of %d.
+*Parameters*::
+*prevId* (INT): Conflicting disk shelf number.
+*channelName* (STRING): Name of the channel the disk shelf is on that is reporting an error.
+*serialNum* (STRING): Serial number of the disk shelf that is being assigned the soft ID.
+*softId* (INT): Newly assigned soft disk shelf number.
+
+== ses.shelf.unsupportAllowErr
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a disk shelf is not supported by ONTAP(R) software. ONTAP will continue to use the disk shelf, but environmental monitoring of the disk shelf is not possible.
+*Corrective Action*::
+Check whether the current version of ONTAP supports this disk shelf. If not, install an appropriate version. If ONTAP does support this disk shelf, this error might be cleared on hourly attempts by ONTAP to establish proper contact with the disk shelf.
+*Syslog Message*::
+Unsupported disk shelf found on channel %s.
+*Parameters*::
+*ChannelName* (STRING): Name of the channel that contains the disk shelf.
+
+== ses.shelf.unsupportedErr
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a disk shelf is not supported by ONTAP(R) software.
+*Corrective Action*::
+Check whether the current version of ONTAP supports this disk shelf. If not, install an appropriate version.
+*Syslog Message*::
+Unsupported disk shelf found. Taking channel %s offline.
+*Parameters*::
+*ChannelName* (STRING): Name of the channel that contains the disk shelf. This channel will be taken offline.

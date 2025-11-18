@@ -1,0 +1,38 @@
+---
+sidebar: sidebar
+permalink: diskown-changingowner-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.changingowner events
+---
+
+= diskown.changingowner events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.changingOwner
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the ownership of a disk is being changed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The ownership of disk %s (S/N %s) is being changed from node "%s" (ID: %u, home ID: %u, DR home ID: %u) to node "%s" (ID: %u, home ID: %u, DR home ID: %u).
+*Parameters*::
+*diskname* (STRING): Name of the disk.
+*serialno* (STRING): Serial number of the disk.
+*oldownername* (STRING): Name of the former owner node.
+*oldownerid* (LONGINT): System ID of the former owner node.
+*oldhomeownerid* (LONGINT): System ID of the former home node.
+*olddrhomeownerid* (LONGINT): System ID of the former disaster recovery home node.
+*newownername* (STRING): Name of the new owner node.
+*newownerid* (LONGINT): System ID of the new owner node.
+*newhomeownerid* (LONGINT): System ID of the new home node.
+*newdrhomeownerid* (LONGINT): System ID of the new disaster recovery home node.
+*thread* (STRING): Name of the thread that issued the ownership change request.
+*APIname* (STRING): Name of the API that issued the ownership change request.

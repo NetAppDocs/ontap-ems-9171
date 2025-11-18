@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: mcc-nso-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mcc.nso events
+---
+
+= mcc.nso events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mcc.nso.abort.dump
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when dump/restore is aborted during a MetroCluster switch-over operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Dump/restore operations were aborted because %s is in progress.
+*Parameters*::
+*nso* (STRING): Describes whether a MetroCluster switch-over operation is progress.
+
+== mcc.nso.veto.repl
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an MetroCluster(tm) switch-over is vetoed by a critical replication transfer (for example, volume move in the cutover phase).
+*Corrective Action*::
+Either abort the replication transfer that is preventing the MetroCluster switch-over from being completed, retry the MetroCluster switch-over operation with the '-override-vetoes true' option, or wait for the transfer to finish.
+*Syslog Message*::
+Could not complete switch-over because a replication transfer with UUID %s is in progress.
+*Parameters*::
+*transferId* (STRING): UUID of the SnapMirror(R) replication transfer that vetoed MetroCluster switch-over.

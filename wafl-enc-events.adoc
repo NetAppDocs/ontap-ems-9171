@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: wafl-enc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.enc events
+---
+
+= wafl.enc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.enc.aggrMFRecreated
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a corrupted WAFL aggregate encryption keys metafile and creates a corrected replacement.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"Recreated aggregate %s encryption keys metafile."
+*Parameters*::
+*aggr* (STRING): Aggregate name.
+
+== wafl.enc.aggrMFRecreateFail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects a corrupted WAFL aggregate encryption keys metafile and is unable to create a corrected replacement. The system might not be able to mount volumes.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+"Failed to recreate aggregate %s encryption key metafile."
+*Parameters*::
+*aggr* (STRING): Aggregate name.

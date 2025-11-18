@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: auto-cds-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: auto.cds events
+---
+
+= auto.cds events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== auto.cds.feature.disable.failed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during upgrade to Data ONTAP(R) 9.11.1 or later, when volume efficiency inactive data compression scan disablement failed on the existing compatible volumes.
+*Corrective Action*::
+Manually try disabling the inline Volume Efficiency Inactive data compression on the volume using the "volume efficiency inactive-data-compression" command.
+*Syslog Message*::
+Volume Inactive Data Compression disablement failed on Volume %s of Vserver %s.
+*Parameters*::
+*volume* (STRING): Volume name.
+*vserver* (STRING): Vserver name.
+*reason* (STRING): Reason for failure.
+
+== auto.cds.feature.disable.success
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during upgrade to Data ONTAP(R) 9.11.1 or later, when volume efficiency inactive data compression scan is disabled on the existing compatible volumes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume Inactive Data Compression disabled on Volume %s of Vserver %s.
+*Parameters*::
+*volume* (STRING): Volume name.
+*vserver* (STRING): Vserver name.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: spm-schmd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: spm.schmd events
+---
+
+= spm.schmd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== spm.schmd.process.exit
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the System Connectivity Health Monitor process (schmd) involuntarily terminates. The termination of this process can affect system connectivity monitoring for HA pair in SAS subsystem.
+*Corrective Action*::
+The system attempts to recover by restarting the system connectivity process. If the process does not restart within the threshold number of retries, then an AutoSupport message is sent. If your system is not configured to send AutoSupport messages and the issue persists, contact technical support.
+*Syslog Message*::
+System Connectivity Health Monitor process (schmd) with ID %d exited as a result of %s. This server will attempt to restart.
+*Parameters*::
+*id* (INT): Process identifier.
+*cause* (STRING): Plain text description of why the process exited.

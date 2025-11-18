@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: san-iscsilifrepaired-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.iscsilifrepaired events
+---
+
+= san.iscsilifrepaired events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.iscsiLifRepaired
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an iSCSI LIF is repaired during Vserver initialization. The LIF did not have a relative target port ID (rtpid) assigned, so a unique ID was associated with this LIF.
+*Corrective Action*::
+None.
+*Syslog Message*::
+The iSCSI LIF "%s" on Vserver "%s" was repaired during Vserver initialization. The LIF did not have a relative target port ID (rtpid) assigned, so a unique ID was associated with this LIF.
+*Parameters*::
+*lif_name* (STRING): Igroup name.
+*vserver_name* (STRING): Vserver name.

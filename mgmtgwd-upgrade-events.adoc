@@ -1,0 +1,63 @@
+---
+sidebar: sidebar
+permalink: mgmtgwd-upgrade-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmtgwd.upgrade events
+---
+
+= mgmtgwd.upgrade events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmtgwd.upgrade.aborted
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an upgrade task is aborted. The node will not be fully operational.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).
+
+== mgmtgwd.upgrade.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when one or more upgrade tasks fails. The node will not be fully operational.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).
+
+== mgmtgwd.upgrade.started
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an upgrade is started.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).
+
+== mgmtgwd.upgrade.success
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an upgrade is completed successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).

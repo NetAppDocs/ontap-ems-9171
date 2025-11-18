@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: nvmeof-cabling-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvmeof.cabling events
+---
+
+= nvmeof.cabling events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvmeof.cabling.clear
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when all of the cabling issues to the shelf have been corrected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The storage cabling issues on node "%s" have been corrected.
+*Parameters*::
+*node_name* (STRING): Node name connected to the cable.
+
+== nvmeof.cabling.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there are errors with the cabling to the shelf.
+*Corrective Action*::
+Run the "storage check-cables" node shell command to list the errors. Follow the cabling guide to correct the issues.
+*Syslog Message*::
+There is a storage cabling issue on node "%s". Run the "storage check-cables" node shell command to list the errors.
+*Parameters*::
+*node_name* (STRING): Node name connected to the cable.

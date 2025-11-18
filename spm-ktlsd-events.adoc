@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: spm-ktlsd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: spm.ktlsd events
+---
+
+= spm.ktlsd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== spm.ktlsd.process.exit
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Kernel Transport Layer Security Daemon support process (ktlsd) involuntarily terminates. The termination of this process can affect monitoring of the subsystems of KTLS.
+*Corrective Action*::
+The system attempts to recover by restarting the KTLS Daemon process. If the process does not restart within the threshold number of retries, then an AutoSupport message is sent. If your system is not configured to send AutoSupport messages and the issue persists, contact technical support.
+*Syslog Message*::
+Kernel TLS support process (ktlsd) with ID %d exited as a result of %s. This server will attempt to restart.
+*Parameters*::
+*id* (INT): Process identifier.
+*cause* (STRING): Plain text description of why the process exited.

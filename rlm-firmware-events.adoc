@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: rlm-firmware-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rlm.firmware events
+---
+
+= rlm.firmware events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rlm.firmware.upgrade.reqd
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Remote LAN Module (RLM) firmware version and the Data ONTAP(R) software version are incompatible and cannot communicate correctly about a particular capability.
+*Corrective Action*::
+For more information about upgrading your firmware, check your support provider's web site or knowledgebase. After the RLM is running the new firmware, this message should no longer occur. If the problem persists or you need further assistance, contact NetApp technical support.
+*Syslog Message*::
+The RLM firmware %s is incompatible with Data ONTAP for %s.
+*Parameters*::
+*current_rlm_fw_version* (STRING): Current firmware version on the RLM.
+*capability* (STRING): RLM capability needed by Data ONTAP.
+
+== rlm.firmware.version.unsupported
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the firmware on the Remote LAN Module (RLM) is not an official release and must be upgraded.
+*Corrective Action*::
+For more information about upgrading your firmware, check your support provider's web site or knowledgebase. After the RLM is running the new firmware, this message should no longer occur. If the problem persists or you need further assistance, contact NetApp technical support.
+*Syslog Message*::
+The RLM firmware version %s is not an official release.
+*Parameters*::
+*current_rlm_fw_version* (STRING): Current firmware version on the RLM.

@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: ipmultipath-setup-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ipmultipath.setup events
+---
+
+= ipmultipath.setup events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ipmultipath.setup.bindFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs during IP Multipath connection setup, when the IP Multipath listener process cannot bind to any IP address of the source.
+*Corrective Action*::
+The source host information provided to IP Multipath is probably incorrect. Correct the configuration information and retry.
+*Syslog Message*::
+IP Multipath failed to bind to %s.
+*Parameters*::
+*src* (STRING): Host name on which the failure occurred.
+
+== ipmultipath.setup.connFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs during IP Multipath connection setup, when it cannot connect to the remote end point.
+*Corrective Action*::
+The destination host information provided to IP Multipath is incorrect or the remote host is unreachable. Correct configuration information and retry. If the remote host is unreachable, IP Multipath automatically establishes the connection after the problem is corrected.
+*Syslog Message*::
+IP Multipath failed to connect to %s.
+*Parameters*::
+*dst* (STRING): Host name of the remote host.

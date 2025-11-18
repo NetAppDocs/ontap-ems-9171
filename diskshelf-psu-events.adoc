@@ -1,0 +1,45 @@
+---
+sidebar: sidebar
+permalink: diskshelf-psu-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskshelf.psu events
+---
+
+= diskshelf.psu events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskShelf.psu.added
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a power supply unit is added to the disk shelf.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s power supply was added to %s.shelf%d
+*Parameters*::
+*location* (STRING): Which power supply was added.
+*channelName* (STRING): Channel connected to disk shelf.
+*shelfIdent* (INT): ID number displayed on the disk shelf OPS panel.
+*serialNumber* (STRING): Serial number of disk shelf.
+
+== diskShelf.psu.removed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a power supply unit is removed from the disk shelf.
+*Corrective Action*::
+Insert a functional power supply unit into the disk shelf.
+*Syslog Message*::
+%s power supply was removed from %s.shelf%d
+*Parameters*::
+*location* (STRING): Which power supply was removed.
+*channelName* (STRING): Channel connected to disk shelf.
+*shelfIdent* (INT): ID number displayed on the disk shelf OPS panel.
+*serialNumber* (STRING): Serial number of disk shelf.

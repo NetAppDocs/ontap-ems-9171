@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: vsdr-adtcreate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsdr.adtcreate events
+---
+
+= vsdr.adtcreate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsdr.adtcreate.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an audit staging volume cannot be created at the destination cluster in Async-DR (asynchronous disaster recovery), either because there is not enough disk space on the aggregates or the aggregates are in offline state.
+*Corrective Action*::
+If the aggregates are offline, bring them online. Ensure that each aggregate has at least 2GB of free space, adding disks, reducing volume size or moving volumes as needed, and then try the following commands: Then try the following commands: prompt> snapmirror initialize prompt> snapmirror resync
+*Syslog Message*::
+Vserver audit create failed at the destination cluster with Async-DR.
+*Parameters*::
+(None).

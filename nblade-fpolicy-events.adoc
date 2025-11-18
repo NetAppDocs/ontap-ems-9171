@@ -1,0 +1,57 @@
+---
+sidebar: sidebar
+permalink: nblade-fpolicy-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.fpolicy events
+---
+
+= nblade.fpolicy events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nblade.fpolicy.extn.failed
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when an I/O operation directed at a FlexCache(R) volume fails because the file extension include and exclude list of one of the policies is too long to send to the origin of the FlexCache volume.
+*Corrective Action*::
+Decrease the number of file extensions configured in the include and exclude list in the FPolicy scope by using the "fpolicy policy scope modify" command.
+*Syslog Message*::
+FPolicy processing failed on volume MSID "%lu", for Vserver ID "%lu", policy ID "%lu", as the combined length for the file extension include and exclude list is greater than %llu. Decrease the number of file extensions configured.
+*Parameters*::
+*msid* (LONGINT): MSID of FlexCache volume.
+*vserverid* (LONGINT): ID of the Vserver.
+*policyid* (LONGINT): ID of the FPolicy.
+*maxmimumListLengthAllowed* (LONGINT): Maximum length that can be sent to the origin volume.
+
+== Nblade.fpolicy.flow.control
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when FPolicy flow control is engaged due to large number of file operations being monitored by FPolicy. If this condition persists, there might be an adverse effect on client operation latency.
+*Corrective Action*::
+Check the FPolicy configuration to make sure that only intended file operations are monitored and appropriate filters are applied.
+*Syslog Message*::
+FPolicy flow control is engaged as the monitored file operations rate crossed the sustainable limit[%d] for this platform.
+*Parameters*::
+*flowControlLimit* (INT): Maximum number of file operations per second that can be monitored by FPolicy.
+
+== nblade.fpolicy.policy.skip
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a non-mandatory FPolicy(tm) policy check is skipped while processing an I/O on the FlexCache(R) volume because the file extension include and exclude list of the policy is too long to send to the origin volume of the FlexCache volume. The error does not fail the operation and other policies, if any, are matched.
+*Corrective Action*::
+Decrease the number of file extensions configured in the include and exclude list in the FPolicy scope by using the "fpolicy policy scope modify" command.
+*Syslog Message*::
+FPolicy check is skipped for a non-mandatory policy ID "%lu" on volume MSID "%lu" for Vserver ID "%lu" because the combined length for the file extension include and exclude list is greater than %llu.
+*Parameters*::
+*policyid* (LONGINT): ID of the FPolicy policy.
+*msid* (LONGINT): MSID of the FlexCache volume.
+*vserverid* (LONGINT): ID of the Vserver.
+*maximumListLengthAllowed* (LONGINT): Maximum length that can be sent to the origin volume.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: diskown-shareddsk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.shareddsk events
+---
+
+= diskown.shareddsk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.sharedDsk.nonHACfg
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk is shared by multiple nodes in a non-HA or stand-alone configuration. If the procedure to convert an HA configuration to a non-HA configuration is not followed properly, the system may end up either having disks whose partitions are owned by another node, or owning partitions on non-local disks.
+*Corrective Action*::
+Refer to the High-Availability Configuration Guide.
+*Syslog Message*::
+Either some local disks have partitions that are not owned by the local node, or the local node owns partitions on non-local disks.
+*Parameters*::
+(None).

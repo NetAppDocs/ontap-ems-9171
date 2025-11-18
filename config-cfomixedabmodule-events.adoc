@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-cfomixedabmodule-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.cfomixedabmodule events
+---
+
+= config.cfomixedabmodule events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.CFOmixedABmodule
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a disk shelf attached to a node is miscabled so that one disk shelf's module A is connected to the next disk shelf's module B, or vice versa.
+*Corrective Action*::
+Identify the miscabled disk shelf, and then recable it. For FC shelves, ensure that each disk shelf's module A is connected Output to Input to the next disk shelf's module A, and that the disk shelf's module B is connected Output to Input to the next disk shelf's module B. For SAS shelves, connect the port identified with a circle on disk shelf module A to the port identified with a square on the next disk shelf's module A, and the "circle" port on module B to the next disk shelf's "square" port.
+*Syslog Message*::
+Host adapter %s has miscabled disk shelves; one disk shelf's module A is connected to the next disk shelf's module B, or vice versa.
+*Parameters*::
+*adapter* (STRING): Adapter that the miscabled disk shelf is on.

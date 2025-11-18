@@ -1,0 +1,78 @@
+---
+sidebar: sidebar
+permalink: ha-takeover-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.takeover events
+---
+
+= ha.takeover events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.takeover.bypOptimChange
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the value of the 'bypass-takeover-optimization' parameter of the "storage failover" command is changed on a node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*node_name* (STRING): Name of the node.
+*new_value* (STRING): New value of the 'bypass-takeover-optimization' parameter.
+
+== ha.takeover.checkEnd
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a node is simulating a takeover. This marks the end of a simulated takeover on the local node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+This node is testing the takeover workflow. This test is a simulation only. The simulation has ended on the local node.
+*Parameters*::
+(None).
+
+== ha.takeover.checkError
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a takeover with the check-only flag detects an error that would prevent takeover.
+*Corrective Action*::
+Use the "storage failover check-takeover" command to identify the failures that occured along the takeover path. Perform corrective action based on error information shown by the command.
+*Syslog Message*::
+This node is testing the takeover workflow. This test is a simulation only. The simulation has encountered and error that would disrupt takeover.
+*Parameters*::
+(None).
+
+== ha.takeover.checkStart
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a node is simulating a takeover. This marks the start of a simulated takeover on the local node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+This node is testing the takeover workflow. This test is a simulation only. The simulation has started on the local node.
+*Parameters*::
+(None).
+
+== ha.takeover.stateDuration
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a node has been in the takeover state for a set time period of 1 hour and every hour thereafter the node continues to be in that state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Node (%s) in takeover for %d days and %d hours.
+*Parameters*::
+*host* (STRING): Name of the host
+*days_in_TO* (INT): Number of days in takeover
+*hours_in_TO* (INT): Number of hours in takeover

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: volmigrate-migrating-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: volmigrate.migrating events
+---
+
+= volmigrate.migrating events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== volmigrate.migrating
+*Severity*::
+INFORMATIONAL
+*Description*::
+A volume is being migrated from the filer by means of a SAN ownership change.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Migrating volume %s to %s (ID %s).
+*Parameters*::
+*volName* (STRING): Volume being migrated
+*recipientFiler* (STRING): Name of the filer to which the volume is being migrated
+*recipientSysID* (STRING): System ID of the filer to which the volume is being migrated

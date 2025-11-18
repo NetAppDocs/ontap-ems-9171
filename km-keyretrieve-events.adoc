@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: km-keyretrieve-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: km.keyretrieve events
+---
+
+= km.keyretrieve events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== km.keyretrieve.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a node fails to retrieve a complete set of encryption keys from the configured key servers by the time the management process comes online. Should this node take ownership of an encrypted volume associated with a missing key before the key becomes available, the encrypted volume cannot come online.
+*Corrective Action*::
+Use the "security key-manager external restore -node <node> -vserver <vserver>" command to manually restore the keys.
+*Syslog Message*::
+Key auto-retrieve failed on node %s for Vserver %s (ID %u, UUID %s).
+*Parameters*::
+*node* (STRING): Name of the node whose management process goes online.
+*vserver* (STRING): Name of the Vserver that could not retrieve all of the keys.
+*vserverId* (INT): Vserver ID of the Vserver.
+*vserverUuid* (STRING): UUID of the related Vserver.

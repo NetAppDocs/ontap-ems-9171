@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: platform-reducedmemory-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: platform.reducedmemory events
+---
+
+= platform.reducedmemory events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== platform.reducedMemory
+*Severity*::
+ALERT
+*Description*::
+This message occurs when system memory is less than expected for this model, likely due to slots that contain incorrect, failed, or missing DIMMs.
+*Corrective Action*::
+Replace the incorrect, failed, or missing DIMMs.
+*Syslog Message*::
+System memory (%d GB) is less than expected (%d GB). Check DIMMs slots %s.
+*Parameters*::
+*mem_detected* (INT): Amount of system memory that was detected.
+*mem_expected* (INT): Amount of system memory that this model supports.
+*slots* (STRING): List of slots with incorrect, failed, or missing DIMMs.

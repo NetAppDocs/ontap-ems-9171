@@ -1,0 +1,293 @@
+---
+sidebar: sidebar
+permalink: callhome-mcc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.mcc events
+---
+
+= callhome.mcc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.mcc.auso.2min
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a MetroCluster(tm) automatic unplanned switchover operation has completed and the outage window was longer than 120 sec. If your system is configured to do so, it generates and transmits an AutoSupport(tm) (or "call home") message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Check why switchover was triggered by using the "event log show" command and search for event "mcc.auso.triggered". Use the "metrocluster operation show" command to view the details of the switchover operation. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multinode ASUP.
+
+== callhome.mcc.auso.complete
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a MetroCluster(tm) automatic unplanned switchover operation has completed. If your system is configured to do so, it generates and transmits an AutoSupport(tm) (or "call home") message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Check why switchover was triggered by using the "event log show" command and search for event "mcc.auso.triggered". Use the "metrocluster operation show" command to view the details of the switchover operation. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multinode ASUP.
+
+== callhome.mcc.auso.trig.fail
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a MetroCluster(tm) automatic unplanned switchover trigger failed to initiate a switchover operation. If your system is configured to do so, it generates and transmits an AutoSupport(tm) (or "call home") message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Verify the health of each node and that automatic unplanned switchover is enabled on both by using the "metrocluster node show" command. Use the "metrocluster switchover -forced-on-disaster true" command to switch over the DR-site storage manually. For further assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.mcc.auso.trig.shut
+*Severity*::
+ALERT
+*Description*::
+This message occurs when automatic unplanned switchover (AUSO) in a MetroCluster(tm) IP configuration is triggered due to remote site shutdown.
+*Corrective Action*::
+Check the hardware conditions at the remote site for the cause of the environmental shutdown. Use the "metrocluster operation show" command to view the details the switchover operation. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Callhome for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.mcc.clst.dm.wd.gvup
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Cluster DM Watchdog thread has given up after retrying for over an hour. Cluster configuration replication services are affected and configuration updates might be lost. If your system is configured to do so, it generates and transmits an AutoSupport(tm) (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Examine the event management system (EMS) logs for any related issues. Perform any provided corrective actions. For further assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for METROCLUSTER CLUSTER DM WATCHDOG GAVE UP
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.mcc.cluster_dm.stream_in_error
+*Severity*::
+ALERT
+*Description*::
+This message occurs when cluster-domain sender/receiver stream has an error. The stream type is indicated through the flag. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for METROCLUSTER CLUSTER_DM SENDER/RECEIVER STREAM_IN_ERROR
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*stream* (STRING): Stream is sender or receiver.
+
+== callhome.mcc.config.complete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the "metrocluster configure" operation is successful. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for METROCLUSTER CONFIGURE COMPLETE
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.mcc.encryption.enabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when encryption for NVLog and storage replication is enabled in a MetroCluster(tm) IP configuration.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Callhome for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.mcc.fcvi.reset
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when fcvi adapter has been reset. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for METROCLUSTER FCVI RESET
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.mcc.heal_aggr.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when metrocluster heal aggregates operation has failed. The failure could be partial or complete. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Run 'metrocluster operation show' to determine the failure reason and take appropriate corrective measure. Retry the operation following the corrective measure. If the failures persists or need assistance, contact NetApp technical support
+*Syslog Message*::
+Call home for METROCLUSTER HEAL_AGGR FAILED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multi node ASUP.
+
+== callhome.mcc.heal_root.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when metrocluster heal root-aggregates operation has failed. The failure could be partial or complete. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Run 'metrocluster operation show' to determine the failure reason and take appropriate corrective measure. Retry the operation following the corrective measure. If the failures persists or need assistance, contact NetApp technical support
+*Syslog Message*::
+Call home for METROCLUSTER HEAL_ROOT FAILED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multi node ASUP.
+
+== callhome.mcc.network.stats
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a MetroCluster over IP configuration detects network behavior change over the inter-cluster links (ISL) that connect sites. Diagnostic information is collected as part of this event. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for %s. Number of times network changed since last callhome: %d.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*event_count* (INT): Number of times network behavior change was flagged by the analysis engine since the last callhome message was sent.
+
+== callhome.mcc.okm.sync.needed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when clusters in a MetroCluster(tm) configuration have inconsistent Onboard Key Manager (OKM) data, including differing cluster passphrases or differing OKM hierarchies. The "security key-manager onboard sync" command should be run to prevent any failures in future switchover or switchback events. This message will be generated on both the local cluster and the peer cluster. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for METROCLUSTER OKM SYNC NEEDED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.mcc.personality
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the All-Flash Optimized node in a MetroCluster configuration detects that it has a different personality setting. This error can occur when a node loses its All-Flash Optimized setting. When this happens, the node may not function properly. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+A node configured with All-Flash Optimized personality recognizes only SSD disks and ignores hard disk drives(HDD). The personality is determined at boot time by checking the bootarg value "bootarg.init.flash_optimized". If the intended configuration of the node is All-Flash Optimized, any HDDs need to be removed and the bootarg needs to be set to true using the "setenv bootarg.init.flash_optimized true" command in maintenance mode. Otherwise, use the "unsetenv bootarg.init.flash_optimized" command to support HDDs on the system.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.mcc.sb.vetoed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects that a MetroCluster (tm) switchback operation has been vetoed, and creates an AutoSupport message for delivery to NetApp technical support for further analysis.
+*Corrective Action*::
+Enter "metrocluster operation show" to determine the failure reason and take appropriate corrective measures as indicated by the output of this command. Retry the operation following the corrective measure. If the failures persist, or you need further assistance, contact NetApp technical support
+*Syslog Message*::
+Call home for METROCLUSTER SWITCHBACK VETOED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Correlating tag value used in the AutoSupport message. Other cluster nodes that have detected related events may also have sent AutoSupport messages with this value to NetApp technical support.
+
+== callhome.mcc.sbca
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when metrocluster switchback continuation agent (SBCA) is run on the disaster site. This happens as part of the metrocluster switchback operation run on the surviving site. This ASUP provides troubleshooting information from the site which is being recovered (disaster hit). If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for METROCLUSTER SWITCHBACK CONTINUATION AGENT
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multi node ASUP.
+
+== callhome.mcc.so.vetoed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects that a MetroCluster (tm) switchover operation has been vetoed, and creates an AutoSupport message for delivery to NetApp technical support for further analysis.
+*Corrective Action*::
+Enter "metrocluster operation show" to determine the failure reason and take appropriate corrective measures as indicated by the output of this command. Retry the operation following the corrective measure. If the failures persist, or you need further assistance, contact NetApp technical support
+*Syslog Message*::
+Call home for METROCLUSTER SWITCHOVER VETOED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Correlating tag value used in the AutoSupport message. Other cluster nodes that have detected related events may also have sent AutoSupport messages with this value to NetApp technical support.
+
+== callhome.mcc.switchback.complete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when metrocluster switchback operation is complete. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for METROCLUSTER SWITCHBACK COMPLETE
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multi node ASUP.
+
+== callhome.mcc.switchback.failed
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when metrocluster switchback operation has failed. The failure could be partial or complete. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Run 'metrocluster operation show' to determine the failure reason and take appropriate corrective measure. Retry the operation following the corrective measure. If the failures persists or need assistance, contact NetApp technical support
+*Syslog Message*::
+Call home for METROCLUSTER SWITCHBACK FAILED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multi node ASUP.
+
+== callhome.mcc.switchover.2min
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when MetroCluster(tm) switchover operation is complete and the client outage window has exceeded two minutes. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multi node ASUP.
+
+== callhome.mcc.switchover.complete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when metrocluster switchover operation is complete. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for METROCLUSTER SWITCHOVER COMPLETE
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multi node ASUP.
+
+== callhome.mcc.switchover.failed
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when metrocluster switchover operation has failed. The failure could be partial or complete. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Run 'metrocluster operation show' to determine the failure reason and take appropriate corrective measure. Retry the operation following the corrective measure. If the failures persists or need assistance, contact NetApp technical support
+*Syslog Message*::
+Call home for METROCLUSTER SWITCHOVER FAILED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*epoch* (STRING): Identifying tag for multi node ASUP.

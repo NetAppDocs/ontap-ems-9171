@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: nameserv-netgrpbyhost-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nameserv.netgrpbyhost events
+---
+
+= nameserv.netgrpbyhost events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nameserv.netgrpbyhost.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when netgroup is configured but the netgroup byhost database is not generated during an upgrade operation. Absence of the netgroup byhost database might impact performance or access during subsequent netgroup-related data access attempts.
+*Corrective Action*::
+Use the "vserver services name-service netgroup load" command to reload the netgroup configuration file. Use the (privilege: advanced) "vserver services name-service netgroup status" command to verify that the netgroup file was successfully loaded and the netgroup byhost database successfully generated. If there are any syntax errors after the load operation, fix them and reload the netgroup file.
+*Syslog Message*::
+Netgroup byhost database failed to generate for Vserver %s on node %s with error %s.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+*node_name* (STRING): Name of the node.
+*error_string* (STRING): Error encountered during creation of netgroup byhost.

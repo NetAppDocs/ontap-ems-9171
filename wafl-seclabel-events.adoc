@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: wafl-seclabel-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.seclabel events
+---
+
+= wafl.seclabel events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.seclabel.syncsm.mutex
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the mutual exclusion has failed between the SnapMirror Synchronous and NFS v4.2 Security Labels features. This happens when an existing volume participating in a SnapMirror relationship receives an NFS "open", "create", or "setattr" operation carrying a security label. The system will not let a security label operation continue on a volume that participates in a SnapMirror Synchronous relationship, so the system administrator must either stop mirroring the volume or drop the security label operation completely.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+An incompatible NFS v4.2 security label operation was received on a file in volume "%s" having a SnapMirror Synchronous relationship. To allow NFS operations carrying security label on the volume, the mirroring must be stopped first: FSID "%d" SNAPID "%d" FILEID "%llu": "%s"
+*Parameters*::
+*volname* (STRING): Volume name.
+*fsid* (INT): File System ID (FSID) of the volume.
+*snapid* (INT): Snapshot ID.
+*fileid* (LONGINT): File ID.
+*error_msg* (STRING): Detailed error message to provide context while debugging the issue. The relevant input/output parameters of the message are also included to aid in debugging.

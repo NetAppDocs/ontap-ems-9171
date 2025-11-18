@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: callhome-netif-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.netif events
+---
+
+= callhome.netif events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.netif.fatal.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Network Interface Card encountered a fatal error. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Check for the following EMS message in the EMS log that has the EMS event name "netif.fatal.err". For example: "...netif.fatal.err:crit]: The network device in slot 1 Encountered Fatal Error" The netif.fatal.err EMS message provides the slot number of the NIC device which encountered fatal error. If you need assistance, contact NetApp technical support
+*Syslog Message*::
+Call home for NETWORK INTERFACE CARD FATAL ERROR.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.netif.init.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when initialization of a network interface failed due to an unexpected software error. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Review the cabling and network configuration. Collect faulty NIC statistics. If you need assistance, contact NetApp technical support
+*Syslog Message*::
+Call home for NETWORK INTERFACE INITIALIZATION FAILURE, port %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.netif.uncorEccError
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a network interface controller encountered an unrecoverable ECC error. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Review the cabling and network configuration. Replace the faulty NIC device. If you need assistance, contact NetApp technical support
+*Syslog Message*::
+Call home for NETWORK INTERFACE UNRECOVERABLE ECC ERROR, port %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: vldb-aggregateuuid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vldb.aggregateuuid events
+---
+
+= vldb.aggregateuuid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vldb.aggregateUUID.mismatch
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an aggregate's Universally Unique Identifier (UUID) in the Volume Location Database does not match the aggregate's current UUID. This could happen if the UUID of the aggregate was changed or if another aggregate in the cluster with the same name is plugged in.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The aggregate '%s' with UUID '%s' on node '%s' was changed to '%s' in the Volume Location Database.
+*Parameters*::
+*aggregate* (STRING): Name of the aggregate.
+*existingUUID* (STRING): Existing Universally Unique Identifier (UUID) of the aggregate.
+*node* (STRING): Name of the node.
+*newUUID* (STRING): New Universally Unique Identifier (UUID) of the aggregate.
+
+== vldb.aggregateUUID.missing
+*Severity*::
+ERROR
+*Description*::
+This message occurs due to a Volume Location Database inconsistency. The Volume Location Database contains a volume that exists on a aggregate whose universal unique identifier (UUID) is not in the Volume Location Database. This might happen if an aggregate that contains volumes is deleted: for example, through the maintenance menu.
+*Corrective Action*::
+Contact technical support.
+*Syslog Message*::
+The volume '%s' is located on the aggregate with UUID '%s' which does not exist in the Volume Location Database.
+*Parameters*::
+*volume* (STRING): Name of the volume
+*aggregateUUID* (STRING): Universal Unique Identifier (UUID) of the aggregate

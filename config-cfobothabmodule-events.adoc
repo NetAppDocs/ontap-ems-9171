@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-cfobothabmodule-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.cfobothabmodule events
+---
+
+= config.cfobothabmodule events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.CFObothABmodule
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a disk shelf in a node is cabled for multipathing and the configuration does not support it. Multipathing means that the disk shelf is connected to one node through both disk shelf module A and module B. In HA configurations, multipathing is only supported if software disk ownership is being used and the storage shelf supports it.
+*Corrective Action*::
+For a standard HA configuration, identify the miscabled disk shelf and attach either module A or module B to the partner node. For a shared storage or multipathed HA, assign disk ownership to the partner node by using the "disk assign" command in Maintenance mode.
+*Syslog Message*::
+The disk shelf where disk %s resides is connected to this node through both disk shelf module A and module B; one of the modules must be connected to the partner node instead.
+*Parameters*::
+*disk* (STRING): Name of the disk that is cabled for multipathing.

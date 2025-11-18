@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: cfvm-failed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cfvm.failed events
+---
+
+= cfvm.failed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cfvm.failed.cutover.commit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a copy free volume move operation is attempted but the commit cutover phase fails due to an internal error. The operation will be retried, but may result in an outage to data service if the condition persists.
+*Corrective Action*::
+Volume Move cutover failed to commit. This condition should self correct. Contact NetApp technical support if the condition persists.
+*Syslog Message*::
+Volume move operation of volume "%s%s%s" on aggregate "%s" failed to commit cutover to FA ID %u, volume DSID: %u, error %u.
+*Parameters*::
+*vol* (STRING): The volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*aggrname* (STRING): Aggregate name.
+*fa_id* (LONGINT): Unique identifier (FAID) of the destination aggregate.
+*dst_dsid* (LONGINT): Unique identifier (DSID) of the volume.
+*error* (INT): Error code.

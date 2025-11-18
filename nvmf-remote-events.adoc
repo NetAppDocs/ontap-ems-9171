@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: nvmf-remote-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvmf.remote events
+---
+
+= nvmf.remote events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvmf.remote.status.cb
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when NVMe over Fabric(NVMeOF) receives a status callback from the connection manager for the Cluster Session Manager(CSM) session is used for remote IO.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NVMeOF remote status callback endpoint=%s, status=%s.
+*Parameters*::
+*endpoint* (STRING): CSM session endpoint on which the status callback is received.
+*status* (STRING): Reason for the status callback.

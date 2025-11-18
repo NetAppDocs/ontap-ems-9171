@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: repl-dst-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.dst events
+---
+
+= repl.dst events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.dst.snaps.check.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror(R) logical transfer is not possible due to an incompatible reference snapshot on the destination.
+*Corrective Action*::
+Continue with physical transfers until a new snapshot is created on the source volume and the source volume is converted to dual inode space. Logical transfers can be started after this new snapshot is replicated to the destination volume.
+*Syslog Message*::
+SnapMirror operation failed because the reference snapshot on the destination volume is either a) from a release prior to Data ONTAP 8.2 b) captured in a nonclustered format c) not upgraded to dual inode space.
+*Parameters*::
+*dstVolMsid* (LONGINT): Destination volume Master Data Set ID (MSID).
+*dstVolDsid* (LONGINT): Destination volume Data Set ID (DSID).
+*dstVolVserverId* (INT): Destination volume Vserver ID.
+*dstInstanceRefImageUuid* (STRING): Destination reference instance snapshot UUID.
+*dstVersionRefImageUuid* (STRING): Destination reference version snapshot UUID.

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: air-fc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: air.fc events
+---
+
+= air.fc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== air.fc.origin.corrupt
+*Severity*::
+ALERT
+*Description*::
+This message occurs when inconsistencies are detected in the origin of this FlexCache(R) volume. The affected files remain inaccessible from this FlexCache volume until the corrective action is taken.
+*Corrective Action*::
+If the origin of this FlexCache volume is a FlexVol(R) volume, then run wafliron on the origin FlexVol volume. If the origin is a FlexGroup volume, then list the affected files from a NFS or a CIFS client on the origin volume. For more information or assistance, contact NetApp technical support.
+*Syslog Message*::
+The fh %s in Origin of this FlexCache volume %s%s contains inconsistencies.
+*Parameters*::
+*fh* (STRING): File handle of the affected inode.
+*vol* (STRING): FlexCache volume name.
+*volident* (STRING): Unique identifier for the volume if volume name alone is insufficient.

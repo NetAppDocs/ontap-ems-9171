@@ -1,0 +1,72 @@
+---
+sidebar: sidebar
+permalink: fci-fwupdate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fci.fwupdate events
+---
+
+= fci.fwupdate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fci.fwupdate.AutoBoot
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Service Level Initiator Fibre Channel (SLIFC) Initiator driver successfully updates the firmware of the host bus adapter (HBA).
+*Corrective Action*::
+None; the controller is rebooted automatically to enable the new HBA firmware.
+*Syslog Message*::
+FC Initiator HBA %s firmware updated from version %s to %s. The adapter will be reset automatically to enable the new HBA firmware.
+*Parameters*::
+*hba* (STRING): HBA where the firmware version update occurred.
+*currentversion* (STRING): Firmware version the HBA is running.
+*bundleversion* (STRING): Firmware version bundled with ONTAP(R) software.
+
+== fci.fwupdate.NeedBoot
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Service Level Interface Fibre Channel (SLIFC) Initiator driver successfully updates the firmware version of the host bus adapter (HBA), and requires a reboot of the controller to complete the process.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC Initiator HBA %s firmware updated from version %s to %s. Reboot the controller to enable the new HBA firmware.
+*Parameters*::
+*hba* (STRING): HBA where the firmware update occurred.
+*currentversion* (STRING): Firmware version the HBA is running.
+*bundleversion* (STRING): Firmware version bundled with ONTAP(R) software.
+
+== fci.fwupdate.UpdDone
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Service Level Initiator Fibre Channel (SLIFC) Initiator driver successfully updates the firmware of the host bus adapter (HBA).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC Inititator HBA %s firmware updated successfully from version %s to %s.
+*Parameters*::
+*hba* (STRING): HBA where the firmware update occurred.
+*currentversion* (STRING): Firmware version the HBA was running.
+*bundleversion* (STRING): Firmware version bundled with ONTAP(R) software.
+
+== fci.fwupdate.UpdErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Service Level Initiator Fibre Channel (SLIFC) Initiator driver encounters an error while updating the firmware of the host bus adapter (HBA).
+*Corrective Action*::
+Contact NetApp technical support for further analysis.
+*Syslog Message*::
+FC Initator HBA %s failed to update the firmware from version %s to %s with the status of %d.
+*Parameters*::
+*hba* (STRING): HBA where the firmware update failure occurred.
+*currentversion* (STRING): Firmware version the HBA is running.
+*bundleversion* (STRING): Firmware version bundled with ONTAP(R) software.
+*status* (INT): Status code of the firmware update process.

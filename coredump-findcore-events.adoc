@@ -1,0 +1,68 @@
+---
+sidebar: sidebar
+permalink: coredump-findcore-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: coredump.findcore events
+---
+
+= coredump.findcore events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== coredump.findcore.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the core dump process detects an error while checking for an unsaved core in the dump device. The dump is not aborted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Ignored the error (%d: %s) when trying to find an unsaved core in the dump device.
+*Parameters*::
+*errCode* (INT): Error code.
+*errString* (STRING): Error code represented as a string.
+
+== coredump.findcore.nospace
+*Severity*::
+ERROR
+*Description*::
+There are too many unsaved cores on the system to handle them all at one time. Some cores are being ignored.
+*Corrective Action*::
+Run "savecore" multiple times to save all the cores. Alternatively, run "savecore -k" to delete all of them.
+*Syslog Message*::
+Too many unsaved cores
+*Parameters*::
+(None).
+
+== coredump.findcore.partial
+*Severity*::
+ERROR
+*Description*::
+This message occurs during a core dump, when only a partial core is found. Although enough of this core is present for the core to be partially saved, there might be errors while doing so. These occur when data essential to the core creation process is lost with the missing disks.
+*Corrective Action*::
+Run the "savecore" command to attempt to save the partial core, or run the "savecore -k" command to delete all unsaved cores.
+*Syslog Message*::
+Partial core %s is missing %d of %d disks.
+*Parameters*::
+*corefile* (STRING): Name of the kernel core file.
+*missing* (INT): Number of disks that are missing.
+*total* (INT): Total number of disks used in this dump.
+
+== coredump.findcore.partial.nosave
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a partial core is found with too much missing to be saved.
+*Corrective Action*::
+Run the "savecore -k" command to delete all unsaved cores.
+*Syslog Message*::
+Cannot save partial core %s, missing %d of %d disks.
+*Parameters*::
+*corefile* (STRING): Name of the kernel core file.
+*missing* (INT): Number of disks that are missing.
+*total* (INT): Total number of disks used in this dump.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: scsiblade-isolated-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsiblade.isolated events
+---
+
+= scsiblade.isolated events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsiblade.isolated
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the node loses connectivity with the majority of the cluster. When this occurs, both FCP and iSCSI traffic are isolated to local access only. Remote cluster traffic is impacted. After connectivity is restored, the node automatically recovers and allows remote FCP and iSCSI access.
+*Corrective Action*::
+Correct the issue that caused the node to lose connectivity with the majority of the cluster. After the issue is corrected, remote service is restored.
+*Syslog Message*::
+This node lost connectivity with the majority of the cluster. When this occurs, both FCP and iSCSI traffic are isolated to local access only. Remote cluster traffic will be impacted until connectivity is restored.
+*Parameters*::
+(None).

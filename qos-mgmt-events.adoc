@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: qos-mgmt-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: qos.mgmt events
+---
+
+= qos.mgmt events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== qos.mgmt.operation.failed
+*Severity*::
+ERROR
+*Description*::
+This message indicates that cluster quality of service (QoS) cannot propagate settings to the classification and control components on the specified node. This might be a transient condition, or it might indicate insufficient resources to complete the operation. QoS workload classification and control might behave incorrectly on this node.
+*Corrective Action*::
+Inspect the management gateway process log for errors indicating why the command failed. If this behavior persists, contact NetApp technical support.
+*Syslog Message*::
+QoS configuration update failed on node %s: %s
+*Parameters*::
+*node* (STRING): Node on which operation failed.
+*error* (STRING): Error description.

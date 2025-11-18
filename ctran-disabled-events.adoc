@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ctran-disabled-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ctran.disabled events
+---
+
+= ctran.disabled events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ctran.disabled
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when Kernel Cluster Services (KCS) Cluster Transaction Manager (CTRAN) subsystem is disabled.
+*Corrective Action*::
+This happens only when the local node went out of CLAM quorum. Take the corrective action specified in EMS_clam_node_ooq event.
+*Syslog Message*::
+CTRAN subsystem is now disabled.
+*Parameters*::
+(None).

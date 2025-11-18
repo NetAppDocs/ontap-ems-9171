@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: configbr-deletefailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: configbr.deletefailed events
+---
+
+= configbr.deletefailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== configbr.deleteFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an old configuration backup cannot be deleted.
+*Corrective Action*::
+Ensure that the node is accessible and healthy. If necessary, delete the backup manually with the (privilege: advanced) "system configuration backup delete" command.
+*Syslog Message*::
+The %s configuration backup %s on node %s cannot be deleted. Error: '%s'.
+*Parameters*::
+*type* (STRING): Type of backup, either cluster or local.
+*backup* (STRING): Backup file.
+*node* (STRING): Node on which the backup file exists.
+*reason* (STRING): Reason for the error.

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: scsiblade-prop-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsiblade.prop events
+---
+
+= scsiblade.prop events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsiblade.prop.done.error
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a CTRAN "proposal done" message is not received. The SAN management plane is inoperative for the Vserver until the corrective action is taken.
+*Corrective Action*::
+For further information about correcting the problem, search the knowledgebase of the NetApp technical support support web site for the "scsiblade.prop.done.error" keyword.
+*Syslog Message*::
+An internal error occurred in a %s group (MSID: %llu). The Vserver %s will not be able to process any management commands.
+*Parameters*::
+*groupType* (STRING): CTRAN group type.
+*volumeMSID* (LONGINT): MSID of the volume in case the CTRAN group type is "volume"; otherwise, 0.
+*vserver* (STRING): Name or UUID of the Vserver.

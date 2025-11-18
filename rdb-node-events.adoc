@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: rdb-node-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rdb.node events
+---
+
+= rdb.node events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rdb.node.starvation
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the replicated database (RDB) detects CPU starvation on this node, potentially causing it to leave cluster quorum.
+*Corrective Action*::
+Reduce the incoming traffic to this node by migrating network interfaces (LIFs) or moving volumes, as necessary.
+*Syslog Message*::
+CPU starvation detected in the RDB.
+*Parameters*::
+(None).

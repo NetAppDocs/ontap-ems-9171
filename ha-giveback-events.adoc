@@ -1,0 +1,146 @@
+---
+sidebar: sidebar
+permalink: ha-giveback-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.giveback events
+---
+
+= ha.giveback events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.giveback.aggrOnlineFailed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the RAID or WAFL(R) subsystem fails to bring online the aggregate or its containing volumes after giveback.
+*Corrective Action*::
+Check the EMS logs for messages from the RAID and WAFL subsystems to determine the exact cause of the failure and corrective action.
+*Syslog Message*::
+Bringing online of aggregate %s or its volumes failed after giveback with error %d.
+*Parameters*::
+*aggrName* (STRING): Name of the aggregate that was given back.
+*error* (INT): Error that occurred while bringing online the aggregate or its volumes after giveback.
+
+== ha.giveback.aggrOnlineTimeout
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a node fails to bring online the aggregate and its containing volumes within the specified time after giveback.
+*Corrective Action*::
+Use the "storage aggregate show" command to verify that the aggregate and its volumes are online.
+*Syslog Message*::
+Node did not bring online the aggregate %s and its volumes after the giveback for %llu milliseconds.
+*Parameters*::
+*aggrUUID* (STRING): UUID of the aggregate that was given back.
+*time* (LONGINT): Timeout, in milliseconds, to bring online the aggregate and its volumes after the giveback.
+
+== ha.giveback.aggrPartnerTimeout
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during a giveback operation, when a node does not receive notification from its high-availability (HA) partner within the specified time that the aggregate is online.
+*Corrective Action*::
+Use the "storage aggregate show" command to verify that the aggregate and its volumes are online on the partner node.
+*Syslog Message*::
+Node did not receive notification from its partner in %llu milliseconds that aggregate %s is online after the giveback.
+*Parameters*::
+*time* (LONGINT): Timeout, in milliseconds, for notification from the partner node that an aggregate is online after giveback.
+*aggrName* (STRING): Name of the aggregate that was given back.
+
+== ha.giveback.commWithPartnerFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the local node cannot communicate over the cluster network with the d-blade of its high-availability (HA) partner while giving back an aggregate.
+*Corrective Action*::
+1. Verify that the partner node is up. 2. Use the "network interface show" command to verify that the cluster network interfaces on the local and the partner node are up. 3. If the preceding checks pass, then run the "storage failover giveback" command to initiate giveback.
+*Syslog Message*::
+Failed to communicate with the partner %s over the cluster network while giving back aggregate %s.
+*Parameters*::
+*partnerName* (STRING): Name of the partner node.
+*aggrName* (STRING): Name of the aggregate being given back.
+
+== ha.giveback.connectToPartnerFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the local node cannot connect over the cluster network to the d-blade of its high-availability (HA) partner while giving back an aggregate.
+*Corrective Action*::
+1. Verify that the partner node is up. 2. Use the "network interface show" command to verify that the cluster network interfaces on the local node and the partner node are up. 3. If the preceding checks pass, then run the "storage failover giveback" command to initiate giveback.
+*Syslog Message*::
+Failed to connect with the partner node %s (d-blade ID: %s) over the cluster network while giving back aggregate %s.
+*Parameters*::
+*partnerName* (STRING): Name of the partner node.
+*partnerDbladeid* (STRING): D-blade ID of the partner node.
+*aggrName* (STRING): Name of the aggregate being given back.
+
+== ha.giveback.emptyAggr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the local node does not find any disks in the aggregate being given back.
+*Corrective Action*::
+1. Use the "storage disk show -aggregate aggrName" command to verify that the aggregate has disks. 2. If the preceding check passes, then run the "storage failover giveback" command to initiate giveback.
+*Syslog Message*::
+Aggregate %s does not have any disks.
+*Parameters*::
+*aggrName* (STRING): Name of the aggregate being given back.
+
+== ha.giveback.sysCommit
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during the commit phase of the giveback of an aggregate to indicate the time taken by the specified subsystem to commit.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Subsystem %s took %llu msecs to commit giveback of aggregate '%s'.
+*Parameters*::
+*subsys* (STRING): Name of the subsystem performing the commit.
+*time* (LONGINT): Time taken by the subsystem to commit the giveback.
+*aggr* (STRING): Name of the aggregate being given back.
+
+== ha.giveback.sysVetoChk
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during the veto phase of the giveback of an aggregate to indicate the time taken by the specified subsystem to check whether giveback should be aborted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Subsystem %s took %llu msecs to check whether to veto giveback of aggregate '%s'.
+*Parameters*::
+*subsys* (STRING): Name of the subsystem performing the veto check.
+*time* (LONGINT): Time taken by the subsystem to check whether giveback should be aborted.
+*aggr* (STRING): Name of the aggregate being given back.
+
+== ha.giveback.totalCommit
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during the giveback of an aggregate to indicate the total time taken by the commit phase.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Total time taken to commit the giveback of aggregate '%s' was %llu msecs.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate being given back.
+*time* (LONGINT): Total time taken to commit the giveback.
+
+== ha.giveback.usingHAInterconnect
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the local node uses the high-availability (HA) interconnect instead of the preferred cluster network to communicate with its HA partner during giveback.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Local node used the HA interconnect to communicate with the partner during giveback of aggregate %s.
+*Parameters*::
+*aggrName* (STRING): Name of the aggregate being given back.

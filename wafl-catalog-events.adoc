@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: wafl-catalog-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.catalog events
+---
+
+= wafl.catalog events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.catalog.invalid
+*Severity*::
+NOTICE
+*Description*::
+This event indicates that WAFL catalog block in nvram is invalid during nvram replay.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Wafl Catalog invalid.
+*Parameters*::
+(None).

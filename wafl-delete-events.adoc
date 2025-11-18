@@ -1,0 +1,69 @@
+---
+sidebar: sidebar
+permalink: wafl-delete-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.delete events
+---
+
+= wafl.delete events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.delete.bad.indirect
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system encounters a lost indirect block while deleting a file. As a result, some space occupied by the file being deleted might not be reclaimed.
+*Corrective Action*::
+Run wafliron to fix any space accounting discrepancies.
+*Syslog Message*::
+Lost indirect block encountered while deleting inode %d (level %d, vbn %llu) on %s %s%s%s%s. Contact NetApp technical support.
+*Parameters*::
+*ino* (INT): Inode number of the file.
+*level* (INT): Indirection level of the block.
+*vbn* (LONGINT): Block number of the block within the volume.
+*type* (STRING): Type of the object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Name of the volume containing the file.
+*app* (STRING): Application UUID.
+*volident* (STRING): Uniquely identifies the volume in cases where the volume name itself is insufficient.
+
+== wafl.delete.fenced.file
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the user attempts to delete a fenced file. Depending on the type of fence, reads and/or writes will not be permitted for the file.
+*Corrective Action*::
+Use the "volume file show-inode" command to confirm the file name that matches the inode, for example, "volume file show-inode -vserver 'vserver that fenced file is stored on' -volume 'volume that fenced file is stored on' -inode-number 'inode number of fenced file'". Clear the fenced status by using the "iofence clear 'file path name'" diagnostic privilege nodeshell command, and then the file can be deleted from the NFS/CIFS client.
+*Syslog Message*::
+The file with inode %d on volume %s cannot be deleted because it is fenced by %s operation.
+*Parameters*::
+*fid* (INT): Inode of the fenced file.
+*vol* (STRING): Name of the volume that contains the fenced file.
+*owner* (STRING): Name of the operation that fenced the file.
+
+== wafl.delete.specdev
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system encounters a block or character device during zombie delete processing.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Block or character device encountered in zombie path: inode: %d, type: %d, size: %lld, block count: %llu. Possible inconsistency detected on %s %s%s%s%s.
+*Parameters*::
+*ino* (INT): Inode number.
+*inotype* (INT): Inode type.
+*size* (LONGINT): Size.
+*blocks* (LONGINT): Block count.
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*vendor* (STRING): Vendor contact information.

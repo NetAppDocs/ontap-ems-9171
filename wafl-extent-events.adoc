@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: wafl-extent-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.extent events
+---
+
+= wafl.extent events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.extent.size.reset
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the volume extent option is set and WAFL(R) encounters an invalid extent size. This message indicates that the extent size was reset to a valid default value.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Extent size for volume %s was reset to %d.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*extent_size* (INT): New extent size.

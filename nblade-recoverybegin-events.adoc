@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: nblade-recoverybegin-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.recoverybegin events
+---
+
+= nblade.recoverybegin events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.recoveryBegin
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NFS server enters the lock recovery state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NFS server lock recovery has begun for Vserver "%s", LIFID "%d", LIF IP address "%s".
+*Parameters*::
+*vserverName* (STRING): Vserver Name.
+*lifId* (INT): LIF ID
+*lifIpAddress* (STRING): LIF IP address for the NFS server.

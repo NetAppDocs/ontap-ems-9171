@@ -1,0 +1,141 @@
+---
+sidebar: sidebar
+permalink: wafl-c2c-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.c2c events
+---
+
+= wafl.c2c events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.c2c.increase.vol.max.size.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when attempt to increase volume max size limit during c2c restore fails due to an error.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Attempt to increase max size limit for volume:%s failed with Error:%d.
+*Parameters*::
+*vvolname* (STRING): Name of the volume.
+*errorCode* (INT): Error code
+
+== wafl.c2c.od.restore.scan.cloud.config.failed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when cloud config is unavailable and SMC on-demand restore from object store failed to start.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Phase:%s of the on-demand restore process for volume:%s with FSID:0x%x has failed. Attempt to restart SMC on-demand restore on this volume will continue in the background.
+*Parameters*::
+*restore_phase* (STRING): Specifies the phase for which the restore has been failed.
+*vol* (STRING): Volume name.
+*fsid* (INT): File system identifier of the volume.
+
+== wafl.c2c.od.restore.scan.initiated
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an on-demand restore from object store has been initiated.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Phase:%s of the on-demand restore process for volume:%s with FSID:0x%x has initiated.
+*Parameters*::
+*restore_phase* (STRING): Specifies the phase for which the restore has been initiated.
+*vol* (STRING): Volume name.
+*fsid* (INT): File system identifier of the volume.
+
+== wafl.c2c.od.restore.scan.restart.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when SMC lazy restore scan restart attempt for transient error failed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Restart Phase:%s of the on-demand restore process for volume:%s with FSID:0x%x has failed and error number %d. For more information or assistance, contact NetApp technical support.
+*Parameters*::
+*restore_phase* (STRING): Specifies the phase for which the restore has been failed.
+*vol* (STRING): Volume name.
+*fsid* (INT): File system identifier of the volume.
+*error* (INT): Error number.
+
+== wafl.c2c.restore.scan.abort
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an operation to restore file(s)/volume from a cloud storage was aborted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s%s, %s Restore from cloud storage aborted.
+*Parameters*::
+*type* (STRING): The type of object (volume/aggregate)
+*owner* (STRING): The volume owner
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*restore_type* (STRING): Indicates whether the operation is Full Volume, Single File or On-demand Restore.
+
+== wafl.c2c.restore.scan.done
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an operation to restore file(s)/volume from a cloud storage was completed successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s%s, %s Restore from cloud storage completed.
+*Parameters*::
+*type* (STRING): The type of object (volume/aggregate)
+*owner* (STRING): The volume owner
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*restore_type* (STRING): Indicates whether the operation is Full Volume, Single File or On-demand Restore.
+
+== wafl.c2c.restore.scan.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is an error during restoring of file(s) or Volume from a Cloud storage.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Restoring file with inode %d from cloud has failed with error %d for the volume %s with FSID 0x%x during %s Restore.
+*Parameters*::
+*fileid* (INT): File identifier.
+*error* (INT): Error Code.
+*vol* (STRING): Volume name.
+*fsid* (INT): File system identifier of the volume.
+*restore_type* (STRING): Indicates whether the operation is Full Volume, Single File or On-demand Restore.
+
+== wafl.c2c.rst.fsize.exceeded
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the size of a file being restored exceeds the maximum file size allowed by the system during the restoration of either files or a volume from cloud storage. The restore operation will fail for that particular file or volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s%s%s, FSID 0x%x, Restoring file with file ID %d from cloud has failed because the file size exceeded the maximum file size allowed on the current system, which is %lu bytes. The size of the file being restored is %lu bytes.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume if the volume name itself is insufficient.
+*fsid* (INT): File system identifier of the volume.
+*fileid* (INT): File identifier.
+*maxsize* (LONGINT): Maximum file size allowed on this system.
+*filesize* (LONGINT): Size of the file being restored.

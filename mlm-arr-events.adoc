@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: mlm-arr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mlm.arr events
+---
+
+= mlm.arr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mlm.arr.affinity.not.queued
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the current processing of an error event prevents the Asymmetric Logical Unit Access (ALUA) handler from queuing an affinity switch event.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Affinity event %s not queued for LUN %s.
+*Parameters*::
+*event* (STRING): Affinity event for asymmetric array.
+*serialno* (STRING): Serial number of the array LUN.
+
+== mlm.arr.many.affinity.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Asymmetric Logical Unit Access (ALUA) handler encounters too many affinity errors, which might lead to reduced I/O throughput.
+*Corrective Action*::
+Evaluate the back-end array connectivity for optimal LUN balance across array controllers. Also check for failures reported by the back-end array with regards to ALUA target port group settings. Verify that FlexArray connectivity is done as per best-practice guide.
+*Syslog Message*::
+Failing cmd %s for LUN %s due to too many affinity errors.
+*Parameters*::
+*cdb* (STRING): String containing the opcode byte of the command descriptor block (CDB) that was sent to the device.
+*serialno* (STRING): Serial number of the array LUN.

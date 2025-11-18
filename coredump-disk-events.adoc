@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: coredump-disk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: coredump.disk events
+---
+
+= coredump.disk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== coredump.disk.write.details
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a kernel core is written to disk. Details about disk operations are reported.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s, disk write time %llu msec, disk write count %llu, disk write bytes %llu, disk write bandwidth %llu MB/s.
+*Parameters*::
+*type* (STRING): Type of dump. Possible types are compressed core, compressed spraycore, spraycore and sparecore.
+*writeTime* (LONGINT): Disk write time, in milliseconds.
+*writeCount* (LONGINT): Number of disk writes.
+*writeBytes* (LONGINT): Number of bytes written to disk.
+*writeBandwidth* (LONGINT): Disk write bandwidth, in MBps.

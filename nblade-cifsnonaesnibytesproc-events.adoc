@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nblade-cifsnonaesnibytesproc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.cifsnonaesnibytesproc events
+---
+
+= nblade.cifsnonaesnibytesproc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.cifsNonAesNiBytesProc
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a system with CPUs that do not support the AES-NI instruction set is performing SMB3 encryption or signing of a large amount of data. These cryptographic operations can degrade performance severely for both SMB and other system operations.
+*Corrective Action*::
+Avoid encrypted or signed SMB3 traffic on systems that do not support the AES-NI instruction set.
+*Syslog Message*::
+Excessive SMB3 cryptographic processing load (AES-NI instruction set is not supported).
+*Parameters*::
+(None).

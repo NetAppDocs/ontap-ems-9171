@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: sis-verify-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.verify events
+---
+
+= sis.verify events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.verify.suspended
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system suspends a Single Instance Storage (SIS) volume checking operation to to run a queued SIS operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*path* (STRING): Path to the SIS volume.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.

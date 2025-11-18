@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: dump-inconsistent_streamdir_lunclone-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dump.inconsistent_streamdir_lunclone events
+---
+
+= dump.inconsistent_streamdir_lunclone events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dump.inconsistent_streamdir_lunclone
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the dump engine encounters a disk error in a stream directory of an inconsistent LUN clone in a Snapshot(tm) copy. Backup will abort because the user selected the option to abort on disk error.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Dump of source path (%s), Snapshot copy ID (%d): WAFL metadata inconsistent due to disk errors. Aborting the backup.
+*Parameters*::
+*src_path* (STRING): Source path being backed up.
+*snap_id* (INT): ID of the Snapshot copy where the disk error was encountered.

@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: scsiblade-illegal-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsiblade.illegal events
+---
+
+= scsiblade.illegal events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsiblade.illegal.xfer.len
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an error is returned for a SCSI command that exceeds the LUN's maximum supported transfer length of 1MB.
+*Corrective Action*::
+This error is due to a problem on the host. Use one of the following recovery actions to address the problem. 1) Rescan the LUNs or reboot the host to enable discovery of the supported maximum transfer length. 2) Disable the host application that is causing the problem. 3) Report the bug to the host operating system or application provider.
+*Syslog Message*::
+Returned Illegal Request response to host type %s for command opcode 0x%x with a transfer length of %lld bytes on LUN %s.
+*Parameters*::
+*host_os_type* (STRING): Host OS type.
+*opcode* (INT): SCSI opcode.
+*length* (LONGINT): Request transfer length.
+*LUNSerialNumber* (STRING): Serial number of the LUN.

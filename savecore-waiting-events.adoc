@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: savecore-waiting-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: savecore.waiting events
+---
+
+= savecore.waiting events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== savecore.waiting
+*Severity*::
+INFORMATIONAL
+*Description*::
+Savecore is running synchronously, and the console will be unresponsive until it is complete. This happens when savecore is given the "-f" or "-w" argument, or when previous attempts to save the core asynchronously fail.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Pausing to wait for savecore admin to finish
+*Parameters*::
+(None).

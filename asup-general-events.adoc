@@ -1,0 +1,66 @@
+---
+sidebar: sidebar
+permalink: asup-general-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: asup.general events
+---
+
+= asup.general events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== asup.general.drop
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system cannot generate an AutoSupport message from a callhome EMS event.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Could not create AutoSupport message (sequence #: %u, ID: %s). %s.
+*Parameters*::
+*sequence* (LONGINT): AutoSupport sequence number assigned to the callhome event.
+*trigger* (STRING): AutoSupport callhome EMS event ID.
+*detail* (STRING): Additional details about why an AutoSupport message could not be created for the callhome EMS event.
+*parameters* (STRING): A comma-delimited list of the parameter name and value pairs passed to the callhome EMS event.
+
+== asup.general.optout
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an opt-out condition exists to notify you that you can turn off AutoSupport(R) reporting to NetApp, if desired. To disable AutoSupport reporting to NetApp, run the "system node autosupport modify -support disable" command within 24 hours of system initialization. Enabling AutoSupport can significantly speed problem determination and resolution, should a problem occur on your system.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+AutoSupport will be enabled 24 hours after system initialization.
+*Parameters*::
+(None).
+
+== asup.general.queue.deleted
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when all entries have been deleted from the AutoSupport queue and the disk file spool. This should only occur when the autosupport.content option is changed from complete to minimal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+All AutoSupport message queue entries have been deleted.
+*Parameters*::
+(None).
+
+== asup.general.reminder
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when AutoSupport is not configured to send messages to NetApp.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+AutoSupport is not configured to send messages to NetApp. Enabling AutoSupport can significantly speed problem determination and resolution should a problem occur on your system. More information about AutoSupport is available at http://support.netapp.com/autosupport/.
+*Parameters*::
+(None).

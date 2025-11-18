@@ -1,0 +1,159 @@
+---
+sidebar: sidebar
+permalink: callhome-sfo-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.sfo events
+---
+
+= callhome.sfo events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.sfo.downrev
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the appliance software boots and detects out-of-date motherboard firmware, which can cause serious issues. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Upgrade the motherboard open firmware (OFW) version to the recommended version for this software and appliance as soon as possible. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for HA GROUP DOWNREV BOOT FIRMWARE
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.sfo.giveback
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when this appliance successfully completed a giveback of the storage to its partner appliance. The partner appliance is expected to be performing normal operations. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Call home for CONTROLLER GIVEBACK COMPLETE
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.sfo.miscount
+*Severity*::
+ERROR
+*Description*::
+This message occurs when each partner in the High Availability (HA) storage configuration detects a different number of disk drives than its partner. This error is typically transient, and can occur for the following reasons: 1) A disk drive failed. 2) A disk drive was replaced. 3) One or more disk drives were added. The problem is usually corrected automatically within 60 seconds, requiring no action from you. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+If the problem persists, check the cabling on or reseat any replaced or added disk drives, and check for failed disk drives. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for HA GROUP ERROR: DISK/SHELF COUNT MISMATCH
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.sfo.personality
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an All Flash Optimized node in a high-availability (HA) configuration detects its partner having a different personality setting. This mismatch might be due to either one node not being configured as All Flash Optimized, or the nodes being configured for different personalities (performance optimized or capacity optimized). Storage failover might be at risk of not functioning properly. HDDs taken over during failover events might not be able to serve data. If your system is configured to do so, it generates and transmits an AutoSupport(R) (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+An All-Flash Optimized node only recognizes SSDs and ignores HDDs. For the HA pair to be considered All-Flash Optimized, both nodes must be configured with the same personality (performance optimized or capacity optimized). Use the "system node show -instance" command to display each node's personality and optimization settings. If both nodes are configured with the same personality, all HDDs should be removed from the HA pair, because they will not be able to serve data. Contact NetApp technical support for assistance.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.sfo.takeover
+*Severity*::
+ALERT
+*Description*::
+This message occurs when automatic takeover of the cluster partner is successful. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Address the issue that caused the takeover, then restore the cluster partner to normal operations. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.sfo.takeover.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when automatic takeover of the cluster partner is not successful. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Determine why the takeover did not succeed. Restore the cluster partner to normal operations. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for CONTROLLER TAKEOVER FAILED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.sfo.takeover.halt
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when takeover of the HA partner is successful. The takeover occurred because of an administrative halt on the HA partner. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Address the issue that caused you to halt the HA partner and then restore it to normal operations. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for CONTROLLER TAKEOVER COMPLETE HALT
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.sfo.takeover.m
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when manual takeover of the cluster partner is successful.
+*Corrective Action*::
+Address the issue that caused you to take over the cluster partner manually, then restore the cluster partner to normal operations. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for CONTROLLER TAKEOVER COMPLETE MANUAL
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.sfo.takeover.m.dr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when manual takeover of the High Availability (HA) partner for disaster recovery (DR) is successful. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Address the issue that required you to perform a DR takeover of the HA partner. After the issue is resolved, restore the HA partner to normal operations. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for CONTROLLER TAKEOVER COMPLETE MANUAL(DR)
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.sfo.takeover.panic
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when automatic takeover of the HA partner is successful. The controller takeover occurred because of a HA partner software failure or panic.
+*Corrective Action*::
+Address the cause of the cluster partner software failure or panic, then restore the cluster partner to normal operations. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for CONTROLLER TAKEOVER COMPLETE PANIC
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.sfo.takeover.reboot
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when takeover of the HA partner is successful. The takeover occurred because of an administrative reboot on the HA partner. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Address the issue that caused you to reboot the HA partner and then restore it to normal operations. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for CONTROLLER TAKEOVER COMPLETE REBOOT
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.sfo.to.comm.loss
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when automatic takeover of the HA partner is successful. The controller takeover occurred because of a HA partner lost communication. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Address the cause of the cluster partner lost communication, then restore the cluster partner to normal operations. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

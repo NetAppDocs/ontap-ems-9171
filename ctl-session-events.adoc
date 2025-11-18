@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: ctl-session-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ctl.session events
+---
+
+= ctl.session events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ctl.session.stateChanged
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when iSCSI CAM target layer session status is changed.
+*Corrective Action*::
+If the identified iSCSI CAM target layer session is experiencing unexpected events (disconnecting, reconnecting, or connected), examine the link for excessive errors or latency.
+*Syslog Message*::
+iSCSI CAM target layer's session state is changed to %s for the initiator %s (address: %s). %s
+*Parameters*::
+*ctl_session_state* (STRING): New iSCSI CAM target layer session state.
+*ctl_initiator* (STRING): iSCSI CAM target layer initiator's name.
+*ctl_initiator_address* (STRING): iSCSI CAM target layer initiator's address.
+*ctl_session_state_change_reason* (STRING): Reason for the iSCSI CAM target layer session state change.
+*ctl_timeout_value* (INT): iSCSI CAM target layer timeout value.

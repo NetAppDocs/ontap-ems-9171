@@ -1,0 +1,69 @@
+---
+sidebar: sidebar
+permalink: ctl-ctlbe-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ctl.ctlbe events
+---
+
+= ctl.ctlbe events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ctl.ctlbe.IOInternalError
+*Severity*::
+ERROR
+*Description*::
+IO failure due to internal error
+*Corrective Action*::
+The command failure associated with the device specified in this event is caused by some internal error.
+*Syslog Message*::
+Device Serial Number %s - Internal error reason: %s - SCSI error : %s
+*Parameters*::
+*devSerial* (STRING): Device Serial Number
+*reason* (STRING): Internal error
+*scsiError* (STRING): SCSI error code
+
+== ctl.ctlbe.lunCreationFailed
+*Severity*::
+ERROR
+*Description*::
+LUN creation failed in the CAM target layer.
+*Corrective Action*::
+The creation of a CAM target end point for the LUN failed. This will cause the disk or partition to not be exported to the DR cluster, and therefore cannot be used for storage mirroring.
+*Syslog Message*::
+LUN %d - endpoint creation failed, reason: %s
+*Parameters*::
+*lunId* (INT): The LUN ID
+*errorString* (STRING): Description of the error
+
+== ctl.ctlbe.lunError
+*Severity*::
+ERROR
+*Description*::
+The LUN has been deleted or is not configured properly
+*Corrective Action*::
+The command failure associated with the device specified in this event is caused by the device being not configured or in error state. The device may be in the process of being deleted or the path to this device may not be accessible. Check the state of the device.
+*Syslog Message*::
+Device Serial Number %s - Device is not configured or in error state - SCSI error : %s - LUN flags : 0x%x
+*Parameters*::
+*devSerial* (STRING): Device Serial Number
+*scsiError* (STRING): SCSI error code
+*lunFlags* (INT): Internal CTL Backend LUN flags
+
+== ctl.ctlbe.lunNotConfigured
+*Severity*::
+ERROR
+*Description*::
+The LUN is not configured
+*Corrective Action*::
+The command failure associated with the device specified in this event is caused by the device not being configured. Check the state of the device.
+*Syslog Message*::
+Device Serial Number %s - Device is not configured - SCSI error : %s
+*Parameters*::
+*devSerial* (STRING): Device Serial Number
+*scsiError* (STRING): SCSI error code

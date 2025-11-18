@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: vifmgr-vifidmissing-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.vifidmissing events
+---
+
+= vifmgr.vifidmissing events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.vifidmissing
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a LIF ID, associated with a particular storage virtual machine (SVM), is configured in the VIFMgr but is missing in the vifids UI table.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+LIF "%s" with ID %s on Vserver SVM "%s" (IP address: %s) is configured in the VIF manager but it is not visible in the UI.
+*Parameters*::
+*lif_name* (STRING): Name of the LIF.
+*id* (STRING): ID of the LIF.
+*vserver* (STRING): Name of the SVM.
+*vifip* (STRING): LIF IP address

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: phf-manage-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: phf.manage events
+---
+
+= phf.manage events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== phf.manage.add.upcall
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when peripheral host bus adapter freebsd (phf) detects a device to be added to the system.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Added unit %d type %d.
+*Parameters*::
+*unit* (INT): Unit number.
+*pman_disk_type* (INT): Disk type.

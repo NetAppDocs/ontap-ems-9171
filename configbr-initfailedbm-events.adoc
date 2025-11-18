@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: configbr-initfailedbm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: configbr.initfailedbm events
+---
+
+= configbr.initfailedbm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== configbr.initFailedBM
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the configuration backup and restore feature cannot initialize the necessary software components. Given time, the system might recover by retrying the initialization.
+*Corrective Action*::
+Verify the boot media file system is available and has enough space to create a backup. From the systemshell, run the "df /droot/etc" command to check the available space on the boot media. If replicated database entries could not be populated, wait five minutes and verify that the backup schedules are listed with the (privilege: advanced) "system configuration backup settings show -instance" command. If the backup jobs could not be created, wait five minutes and verify that backup jobs are displayed for each schedule with the "job show" command.
+*Syslog Message*::
+Configuration backup and restore feature could not be initialized. Error: '%s'.
+*Parameters*::
+*reason* (STRING): Reason for the initialization failure.

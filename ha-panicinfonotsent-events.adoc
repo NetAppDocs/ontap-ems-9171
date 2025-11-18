@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: ha-panicinfonotsent-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.panicinfonotsent events
+---
+
+= ha.panicinfonotsent events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.panicInfoNotSent
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a node cannot send panic information to its high-availability (HA) partner over the HA interconnect. The HA partner might still initiate takeover if it detects that the partner is down by other means, and takeover of the panicking node is allowed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Local node cannot send a panic information message to the HA partner over the HA interconnect due to error: %s. Partner name: %s. Partner system ID: %llu.
+*Parameters*::
+*error* (STRING): Reason the node cannot send panic information to its HA partner.
+*partner_name* (STRING): Name of the HA partner.
+*partner_systemid* (LONGINT): System ID of the HA partner.

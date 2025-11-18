@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: sis-default-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.default events
+---
+
+= sis.default events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.default.auto.se.enable
+*Severity*::
+NOTICE
+*Description*::
+This message occurs whenever volume move is done from a non All Flash Optimized node to an All Flash Optimized node and we attempt to enable storage efficiency features and automatic offline volume efficiency.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume efficiency features will be enabled for volume %s on aggregate %s.
+*Parameters*::
+*vvol_name* (STRING): Flex volume name.
+*aggr_name* (STRING): Aggregate name.
+
+== sis.default.auto.se.enable.fail
+*Severity*::
+NOTICE
+*Description*::
+This message occurs whenever volume move is done from a non All Flash Optimized node to an All Flash Optimized node and the attempt to enable automatic offline volume efficiency failed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failed to enable automatic offline volume efficiency features for volume %s on aggregate %s.
+*Parameters*::
+*vvol_name* (STRING): Flex volume name.
+*aggr_name* (STRING): Aggregate name.
+*reason* (STRING): Reason for the failure.

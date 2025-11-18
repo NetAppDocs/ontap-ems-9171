@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-ibretimerprog-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.ibretimerprog events
+---
+
+= callhome.ibretimerprog events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.ibretimerprog.fail
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when InfiniBand (IB) retimer programming of the high- availability (HA) interconnect link failed after multiple retry attempts. The affected InfiniBand HA interconnect link is down. The failure can be due to any of the following reasons: InfiniBand device not found, GPIO read failure, QSFP register dump failure, QSFP parse failure, or retimer failure. If your system is configured to do so, it generates and transmits an AutoSupport (or "call home") message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+This failure can be due to defective hardware or cabling. Contact NetApp technical support for further assistance.
+*Syslog Message*::
+Call home for INFINIBAND RETIMER PROGRAMMING FAILURE
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

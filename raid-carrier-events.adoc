@@ -1,0 +1,82 @@
+---
+sidebar: sidebar
+permalink: raid-carrier-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.carrier events
+---
+
+= raid.carrier events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.carrier.diskEvacuated
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the evacuation operation is complete on a disk in a multidisk carrier that contains at least one failed disk. When a disk in a multidisk carrier fails, Data ONTAP(R) initiates evacuation of the other disks in the carrier so that you can replace the carrier after the evacuation is done. The disk's amber Attention LED is lit continuously after the carrier evacuation is complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk evacuation operation is complete on %s.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk being evacuated.
+*shelf* (STRING): Disk shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of the disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*failure_reason* (STRING): Text description of the storage error leading to disk failure.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.carrier.doNotRemove
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a single disk fails while it is in a carrier that contains more than one disk. This disk carrier should not be removed because another disk might be in use. If another disk is in use, Data ONTAP(R) performs a disk copy operation on the other disk so that the carrier can be replaced after the disk copy is completed.
+*Corrective Action*::
+Do not remove the disk carrier with the failed disk until the disk copy operation is completed. You can remove the carrier after the 'raid.carrier.remove' event is issued.
+*Syslog Message*::
+%s in a multi-disk carrier failed. DO NOT REMOVE the disk carrier with the failed disk until the 'raid.carrier.remove' event is issued.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk object.
+*shelf* (STRING): Disk shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of the disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.
+
+== raid.carrier.remove
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the last disk in a carrier that contains more than one disk has failed.
+*Corrective Action*::
+Replace the carrier containing the failed disks.
+*Syslog Message*::
+%s failed after all other disks have failed in the carrier. Replace the carrier.
+*Parameters*::
+*disk_info* (STRING): Information about the last failed disk, including disk name, path, shelf, bay, serial number, vendor, model, rpm, and carrier serial number.
+*shelf* (STRING): Identifier of the shelf where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): String representing the model type of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is "Local".

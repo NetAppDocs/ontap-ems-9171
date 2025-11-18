@@ -1,0 +1,55 @@
+---
+sidebar: sidebar
+permalink: ses-loop-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ses.loop events
+---
+
+= ses.loop events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ses.loop.configErr
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system finds a disk shelf with a Loop Resiliency Circuit (LRC) module before a disk shelf with an Electronically Switched Hub (ESH) module in the loop map.
+*Corrective Action*::
+Reorder the disk shelves so that the LRC disk shelf is found after the ESH disk shelf.
+*Syslog Message*::
+Unsupported loop configuration for disk shelves attached to channel %s: A %s (ID %d) was found ahead of a %s (ID %d).
+*Parameters*::
+*channelName* (STRING): Name of the channel the disk shelves are attached to.
+*prodChannel1* (STRING): Disk shelf identity (channel, product, and disk shelf number).
+*shelfId1* (INT): Disk shelf ID of the disk shelf on the unsupported loop.
+*prodChannel2* (STRING): Disk shelf identity (channel, product, and disk shelf number).
+*shelfId2* (INT): Disk shelf ID of the disk shelf on the unsupported loop.
+
+== ses.loop.configOk
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an unsupported Fibre Channel loop configuration error is corrected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Unsupported loop configuration for disk shelves attached to channel %s was corrected.
+*Parameters*::
+*channelName* (STRING): Name of the channel on which the unsupported loop configuration error was corrected.
+
+== ses.loop.loopMapUnavailable
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when ONTAP(R) software cannot contact the disk shelf module on a disk shelf and, therefore, cannot resolve the loop map for a disk shelf.
+*Corrective Action*::
+For Fibre Channel disk shelves, check whether disk drives are connected to slots 0 and 1 of the disk shelf module and that the disk drives are functional. If not, replace the disk drives. For all other disk shelf types, or if the preceding actions do not correct the error for Fiber Channel disk shelves, reseat the disk shelf module and check if the error is corrected. If not, replace the shelf module.
+*Syslog Message*::
+Loop map unavailable for loop on channel %s. Could not check for unsupported disk shelf configurations.
+*Parameters*::
+*channelName* (STRING): Name of the channel on which the loop map was unavailable.

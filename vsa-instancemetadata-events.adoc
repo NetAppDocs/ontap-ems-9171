@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: vsa-instancemetadata-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsa.instancemetadata events
+---
+
+= vsa.instancemetadata events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsa.instanceMetadata.change
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects that a field in the virtual machine's instance metadata settings has changed. The virtual machine instance metadata holds configuration settings for the instance. Some virtual machine settings can be changed after deployment, and can be changed using cloud provider tools. These settings include some that can affect the performance or stability of the instance. One example is the instance type. If the instance type is changed to an unsupported value, this might result in hard-to-diagnose stability issues if that instance type does not have enough memory or CPU cores. This message is generated only for changes that might impact the performance or reliability of the instance.
+*Corrective Action*::
+If the field is changed to an unsupported value, manual reconfiguration will be required.
+*Syslog Message*::
+Virtual machine instance metadata setting %s. Field: %s. Previous value: "%s". New value: "%s".
+*Parameters*::
+*detail* (STRING): Detail about how the change affects the instance.
+*field_name* (STRING): Instance metadata field name.
+*previous_value* (STRING): Previous value of field.
+*current_value* (STRING): Current value of field.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: snapmirror-resync-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapmirror.resync events
+---
+
+= snapmirror.resync events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapmirror.resync.blkRclmtn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a flexible volume restored from a snapshot might not be able to relinquish free blocks to its containing aggregate. As a result, the containing aggregate might run out of space if this condition continues past the next incremental SnapMirror(R) transfer.
+*Corrective Action*::
+Monitor the state after the next incremental SnapMirror update for this volume to verify that space is available in the containing aggregate. Free up space in the containing aggregate if the condition persists.
+*Syslog Message*::
+Flexible volume '%s' cannot release free blocks to its containing aggregate '%s'.
+*Parameters*::
+*vol* (STRING): Volume name.
+*aggr* (STRING): Aggregate name.

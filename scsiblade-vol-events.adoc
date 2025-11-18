@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: scsiblade-vol-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsiblade.vol events
+---
+
+= scsiblade.vol events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsiblade.vol.init.failed
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when SAN initialization fails for the specified volume on this node. Access to LUNs contained in this volume from this node is not available.
+*Corrective Action*::
+Reboot the node by performing a planned takeover and giveback.
+*Syslog Message*::
+SAN configuration in Vserver %s failed to initialize for volume with MSID %llu. Access to LUNs contained in this volume from this node is not available.
+*Parameters*::
+*vserver* (STRING): Name or UUID of the Vserver.
+*volumeMSID* (LONGINT): MSID of the volume.
+*errorType* (LONGINT): Error type.
+*errorCode* (LONGINT): Error code.
+
+== scsiblade.vol.lun.stale.map
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a volume lookup operation fails because the volume is not found. This is an indication that there might be stale LUN maps associated with the volume.
+*Corrective Action*::
+Contact NetApp technical support for assistance with the (privilege: diag) "lun stale-map" commands.
+*Syslog Message*::
+Could not lookup the volume with MSID '%llu' in Vserver '%s'. This is an indication that there might be stale lun maps associated with the volume.
+*Parameters*::
+*volume* (LONGINTHEX): Volume identifier.
+*vserver* (STRING): Name or UUID of the Vserver.

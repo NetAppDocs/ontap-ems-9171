@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: diskown-assign-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.assign events
+---
+
+= diskown.assign events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.assign.splitOwner
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the "storage disk assign" command fail to assign a disk to a different owner from the other disks within the carrier. This is because the "storage disk assign" command with the -f option must be used in such cases.
+*Corrective Action*::
+Use the "storage disk assign" command with the -f option to assign the disk to a different owner from the other disks within the carrier.
+*Syslog Message*::
+Assigning ownership failed for disk %s. Use the "storage disk assign" command with the -f option to assign the disk to a different owner from the other disks within the carrier.
+*Parameters*::
+*diskname* (STRING): Name of the disk.

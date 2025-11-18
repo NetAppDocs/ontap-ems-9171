@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: lun-out-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lun.out events
+---
+
+= lun.out events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== LUN.out.of.space
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a LUN is brought offline by the SCSI layer because of a write failure due to lack of space.
+*Corrective Action*::
+Add space to the volume, and then bring the LUN online using the "lun online" command.
+*Syslog Message*::
+LUN %s, vol %s (DSID %llu) is out of space (UUID: %s).
+*Parameters*::
+*lun_path* (STRING): Path for the LUN that was brought offline.
+*volume_name* (STRING): Name of the containing volume.
+*volume_dsid* (LONGINT): Data set ID (DSID) of the containing volume.
+*object_uuid* (STRING): UUID of the LUN.
+*object_type* (STRING): Type of object under notification.

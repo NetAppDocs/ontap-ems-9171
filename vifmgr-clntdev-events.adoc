@@ -1,0 +1,45 @@
+---
+sidebar: sidebar
+permalink: vifmgr-clntdev-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.clntdev events
+---
+
+= vifmgr.clntdev events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.clntdev.removed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a remote device is removed from the cluster or storage network.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Remote device %s (model: %s) was removed from the %s network.
+*Parameters*::
+*device* (STRING): Device name of the connected switch or node.
+*model* (STRING): Model name of the remote device.
+*network* (STRING): Network where the device was detected.
+
+== vifmgr.clntdev.updated
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a new remote device is detected on the cluster or storage network.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Remote device %s (model: %s, version: %s, IP address: %s) has been detected on the %s network.
+*Parameters*::
+*device* (STRING): Device name of the connected switch or node.
+*model* (STRING): Model name of the remote device.
+*version* (STRING): Software version of the remote device.
+*address* (STRING): IP address of the remote device.
+*network* (STRING): Network where the device was detected.

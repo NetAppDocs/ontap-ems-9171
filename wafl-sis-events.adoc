@@ -1,0 +1,109 @@
+---
+sidebar: sidebar
+permalink: wafl-sis-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.sis events
+---
+
+= wafl.sis events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.sis.clone.autodelete.file
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a file clone is autodeleted
+*Corrective Action*::
+(None).
+*Syslog Message*::
+'%s' is sent for auto deletion.
+*Parameters*::
+*path* (STRING): File path.
+
+== wafl.sis.clone.autodelete.threshold
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when file clone create operation fails because volume crossed autodelete threshold.
+*Corrective Action*::
+Increase the space available to the volume by either adding disks or by freeing space in the volume to allow the cloning operation to continue.
+*Syslog Message*::
+File clone creation cannot be completed because volume crossed autodelete threshold.
+*Parameters*::
+*name* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Uniquely identifies the volume in cases where the volume name itself is insufficient.
+
+== wafl.sis.clone.backup.file.cleanup.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when clone create gets an error while cleaning up the backup file of the pre-existing clone.
+*Corrective Action*::
+A backup of the pre-existing clone file is saved at the backup file location. Its cleanup needs manual intervention.
+*Syslog Message*::
+File clone create for the source %s and clone %s returned error while cleaning up the backup file %s of the pre-existing clone with error: %d. Backup file should be deleted to reclaim space.
+*Parameters*::
+*src_filename* (STRING): Source filename.
+*clone_filename* (STRING): Clone filename.
+*backup_filename* (STRING): Backup filename.
+*error* (INT): Error returned from FlexClone(R) subsystem.
+
+== wafl.sis.clone.backup.file.restore.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when clone create errors out while restoring the backup file to the pre-existing clone.
+*Corrective Action*::
+Clone create failed after deleting the pre-existing clone. A backup of the pre-existing clone file is saved at the backup file location. It can be used to recover the pre-existing clone file.
+*Syslog Message*::
+File clone create for the source %s and clone %s failed while restoring the backup file %s to the pre-existing clone with error: %d. Backup file can be moved to the pre-existing clone location for recovering the clone file.
+*Parameters*::
+*src_filename* (STRING): Source filename.
+*clone_filename* (STRING): Clone filename.
+*backup_filename* (STRING): Backup filename.
+*error* (INT): Error returned from FlexClone(R) subsystem.
+
+== wafl.sis.clone.create.failed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when attempts to create a file clone fail.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+File clone create of clone file %s (fileid: %d) from source file %s (fileid: %d) in volume %s failed with error:%s at line %d with src_fsid %d, dst_fsid %d, src_snapid %d, dir_fileid %d, type %s, category %s.
+*Parameters*::
+*clone_filename* (STRING): Clone filename.
+*dst_fileid* (INT): File identifier for destination file.
+*src_filename* (STRING): Source filename.
+*src_fileid* (INT): File identifier for source file.
+*volname* (STRING): Volume name.
+*error* (STRING): Error returned from the FlexClone(R) subsystem.
+*line_number* (INT): Line number where the error has occurred.
+*src_fsid* (INT): File system identifier of source volume.
+*dst_fsid* (INT): File system identifier of destination volume.
+*snapid* (INT): Snapshot identifier.
+*dir_fileid* (INT): File identifier for the directory.
+*type* (STRING): Type of Cloning.
+*category* (STRING): Clone create requestor information.
+
+== wafl.sis.clone.unlock.snapshot
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the volume options are set such that the autodelete destroy policy is allowed to destroy backing snapshots for sis clones. The snapshot autodelete destroy policy is used as a last resort to recover space in a thin provisioned aggregate. The disruptive effect of destroying sis clone backing snapshots should be understood when setting this policy.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Unlocked sis clone backing snapshot in volume %s. Clone files based on snapshot (%d, %d) might become inconsistent.
+*Parameters*::
+*name* (STRING): The volume name
+*snapid* (INT): Snapshot identifier.
+*cp_cnt* (INT): The CP(Consistency Point) count. The (snapid, cp_count) pair uniquely identifies a snapshot.

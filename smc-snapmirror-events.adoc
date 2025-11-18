@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: smc-snapmirror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: smc.snapmirror events
+---
+
+= smc.snapmirror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== smc.snapmirror.xfer.complete
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a SnapMirror(R) transfer completes successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Snapmirror transfer from source volume '%s' to destination volume '%s' is successful. '%s'. Relationship UUID '%s'.
+*Parameters*::
+*srcpath* (STRING): Path name of the source volume of the SnapMirror relationship.
+*dstpath* (STRING): Path name of the destination volume to which the snapmirror transfer failed.
+*info* (STRING): Transfer information.
+*relationshipID* (STRING): Relationship UUID.

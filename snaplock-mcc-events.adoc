@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: snaplock-mcc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snaplock.mcc events
+---
+
+= snaplock.mcc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snaplock.mcc.veto.worm
+*Severity*::
+ERROR
+*Description*::
+This message occurs when SnapLock legal-hold or event based retention operations are aborted during a MetroCluster Switchback or a MetroCluster Switchover operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+All SnapLock legal-hold and event based retention operations were aborted because a %s is in progress.
+*Parameters*::
+*mcc_op* (STRING): Describes the operation i.e. a MetroCluster Switchback or a MetroCluster Switchover.

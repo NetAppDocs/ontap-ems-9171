@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: ses-giveback-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ses.giveback events
+---
+
+= ses.giveback events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ses.giveback.restartAfter
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when SCSI Enclosure Services (SES) is restarted after giveback.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Enclosure Services restarting after release of reservations.
+*Parameters*::
+(None).
+
+== ses.giveback.wait
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when SCSI Enclosure Services (SES) information is not available because the system is waiting for giveback.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Enclosure Services will be unavailable while waiting for giveback.
+*Parameters*::
+(None).

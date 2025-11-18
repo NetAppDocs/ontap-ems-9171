@@ -1,0 +1,47 @@
+---
+sidebar: sidebar
+permalink: repl-cloud-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.cloud events
+---
+
+= repl.cloud events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.cloud.incons.buf
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the replication engine encounters an inconsistent block in the cloud.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+REPL cloud inconsistent: bad block in %s inode (fileid:%s rootcbn:%u) at fbn:%llu level:%u in volume %llu. Abort when corruption is encountered:%u.
+*Parameters*::
+*file_space* (STRING): File space.
+*fileid* (STRING): Identifying number for the suspect inode.
+*rootcbn* (LONGINT): Snapshot inofile root.
+*fbn* (LONGINT): File block number.
+*level* (INT): Buffer level.
+*dsid* (LONGINT): Dsid of the volume.
+*abort* (INT): Abort when corrupt block is encountered.
+
+== repl.cloud.incons.gc
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the replication engine encounters inconsistent map object in the cloud. This does not cause user data corruption but can result in few dangling objects.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+REPL cloud inconsistent: Corrupted cloud data detected in cloud snapshot:%s, cloud snapshot UUID:%s, cloud object:%s.
+*Parameters*::
+*snapshot_name* (STRING): Cloud snapshot name.
+*snapshot_uuid* (STRING): Cloud snapshot Universally Unique ID (UUID).
+*object_name* (STRING): Cloud object name.

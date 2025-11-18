@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: netgroup-ldap-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netgroup.ldap events
+---
+
+= netgroup.ldap events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netgroup.ldap.byhost.missing
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when netgroup.byhost is disabled in the Lightweight Directory Access Protocol (LDAP) client configuration on the storage system, and LDAP is configured as an ns-switch source for the Vserver. Enabling netgroup.byhost enables mount operations to succeed faster when the netgroup size is large.
+*Corrective Action*::
+Consider configuring the netgroup.byhost database on the LDAP server and enabling netgroup.byhost on the LDAP client configuration on the storage system by using the "ldap client modify" command.
+*Syslog Message*::
+LDAP client config has netgroup.byhost disabled for Vserver "%s" during lookup for netgroup "%s".
+*Parameters*::
+*vserver* (STRING): Name of the Vserver on which the problem is occurring.
+*netgroup* (STRING): Name of the netgroup for the lookup request.
+
+== netgroup.ldap.config
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a netgroup lookup request finds that Lightweight Directory Access Protocol (LDAP) is specified as a ns-switch source, but LDAP is not configured for the Vserver. Netgroup lookups using LDAP will not function.
+*Corrective Action*::
+Check the ns-switch sources configured for the netgroup database using "vserver services name-service ns-switch show" and the LDAP configuration for the Vserver using "ldap show" and "ldap client show". Either remove LDAP as a ns-switch source, or configure LDAP.
+*Syslog Message*::
+LDAP configuration issues found for Vserver "%s" during lookup for netgroup "%s".
+*Parameters*::
+*vserver* (STRING): Name of the Vserver on which the problem is occurring.
+*netgroup* (STRING): Name of the netgroup for the lookup request.

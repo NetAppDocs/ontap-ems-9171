@@ -1,0 +1,63 @@
+---
+sidebar: sidebar
+permalink: wafl-relocating-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.relocating events
+---
+
+= wafl.relocating events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.relocating.fence.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot perform an aggregate relocation because a fence is set on one of the volumes in the aggregate. The relocation is aborted.
+*Corrective Action*::
+A volume in the aggregate is currently fenced for group operations. Retry aggregate relocation after any group SnapRestore(R) or mirror transfers are complete. If the problem persists, contact technical support.
+*Syslog Message*::
+%s %s%s%s%s has a fence set. Canceling aggregate relocation.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique volume identity when the volume name itself is insufficient.
+
+== wafl.relocating.iron.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot perform an aggregate relocation because wafliron is active. The relocation is aborted.
+*Corrective Action*::
+Retry aggregate relocation after wafliron is finished.
+*Syslog Message*::
+%s %s%s%s%s is running vol wafliron. Canceling aggregate relocation.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique volume identity when the volume name itself is insufficient.
+
+== wafl.relocating.sp.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot perform an aggregate relocation because a secure purge operation is in progress on one of the volumes in the aggregate. The relocation is aborted.
+*Corrective Action*::
+A volume in the aggregate is currently going through a secure purge operation. Retry aggregate relocation after this operation is complete, or after you abort the operation by using the "volume encryption secure-purge abort" command. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+A secure purge operation is in progress on %s %s%s%s. Canceling aggregate relocation.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique volume identity when the volume name itself is insufficient.

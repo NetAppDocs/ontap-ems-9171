@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: asyncdelete-cancel-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: asyncdelete.cancel events
+---
+
+= asyncdelete.cancel events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== asyncDelete.cancel.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when cancellation of async delete jobs is started on a node due to Vserver migrate operation. The administrator will need to restart the jobs after the migration is complete or aborted.
+*Corrective Action*::
+The administrator will need to restart the cancelled async delete jobs after the migration is complete or aborted. Command to start an async-delete job: "volume file async-delete start -volume <volume-name< -vserver <vserver-name< -path <directory path<".
+*Syslog Message*::
+Cancellation of async delete jobs was started on node "%s" because of Vserver migration. The administrator will need to restart the jobs after the migration is complete or aborted.
+*Parameters*::
+*Node* (STRING): Node where async delete jobs are running.

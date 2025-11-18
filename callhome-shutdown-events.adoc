@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-shutdown-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.shutdown events
+---
+
+= callhome.shutdown events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.shutdown.pending
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a disk drive fails but there are no suitable spares available for reconstruction. To protect your data, the system enters degraded mode. The system halts automatically to prevent a double disk drive failure, and possible loss of data, if it runs in degraded mode for the time interval given by the following command: "storage raid-options show -name raid.timeout -node local" The default timeout is usually 24 hours. If a spare drive becomes available while the system is running in degraded mode, the system immediately begins rebuilding the failed drive. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+To prevent the system from shutting down in 24 hours, perform either of the following actions: 1. Add a spare disk drive suitable for reconstructing the failed disk drive. 2. Change the timeout period with the following command: "storage raid-options modify -name raid.timeout -node local -value X" where X equals the number of hours for the new timeout value. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for SHUTDOWN PENDING (degraded mode)
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

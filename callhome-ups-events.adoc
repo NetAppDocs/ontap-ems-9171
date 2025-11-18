@@ -1,0 +1,87 @@
+---
+sidebar: sidebar
+permalink: callhome-ups-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.ups events
+---
+
+= callhome.ups events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.ups.line
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when line power for an Uninterruptible Power Supply (UPS) system is restored and the battery power is normal.
+*Corrective Action*::
+Maintain the environment and ensure that the line power to the UPS continues to be normal. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for UPS LINE POWER RESTORED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.ups.low.battery
+*Severity*::
+ALERT
+*Description*::
+This message occurs when battery power for an Uninterruptible Power Supply (UPS) system has under 5 minutes of charge left. The system is currently serving data but will eventually shut down if the UPS continues to run without line power. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Check the environment and restore the line power to the UPS as soon as possible to avoid system shutdown. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for UPS LOW BATTERY
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.ups.ok.low.battery
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when line power for an Uninterruptible Power Supply (UPS) system is restored but the battery power is low. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Maintain the environment and ensure that the line power to the UPS continues to be normal. As line power continues to be normal, the battery is recharged. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for UPS PWR GOOD LOW BATTERY
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.ups.ok.no.battery
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when line power for an Uninterruptible Power Supply (UPS) system is restored but the battery power is very low. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Maintain the environment and ensure that the line power to the UPS continues to be normal. As line power continues to be normal, the battery is recharged. If line power is disrupted or leaves the normal range, the system might shut down immediately to protect your data. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for UPS PWR GOOD CRITICAL BATTERY
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.ups.on.battery
+*Severity*::
+ALERT
+*Description*::
+This message occurs when line power for an Uninterruptible Power Supply (UPS) system fails and the system is running on battery power. The server is currently serving data but will eventually shut down if the UPS continues to run without line power. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Check the environment and restore line power to the UPS as soon as possible to avoid system shutdown. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for UPS ON BATTERY
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.ups.shutting.down
+*Severity*::
+ALERT
+*Description*::
+This message occurs when battery power for an Uninterruptible Power Supply (UPS) system is almost depleted and the system is shutting down to protect your data. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Restore the line power to the UPS immediately to prevent system shutdown. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for UPS SHUTTING DOWN
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: wafl-maxdirsize-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.maxdirsize events
+---
+
+= wafl.maxdirsize events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.maxdirsize.boot.notice
+*Severity*::
+NOTICE
+*Description*::
+This message occurs for each volume that has a maximum directory size greater than the default during boot.
+*Corrective Action*::
+Use the (privilege:advanced) option of the "volume modify -volume vol_name -maxdir-size new_value" command to set the volume's maximum directory size to the default maxdirsize. However, doing so could impact system performance. If you need to increase the maximum directory size, work with NetApp technical support. For ASA r2, contact NetApp technical support for assistance to resolve this internal error.
+*Syslog Message*::
+%s%s%s%s: This volume's maxdirsize (%uKB) is higher than the default (%uKB). There might be a performance penalty when doing operations on large directories.
+*Parameters*::
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): UUID of the volume when the volume name alone is insufficient.
+*current_maxdirsize* (INT): Default maximum directory size value.
+*default_maxdirsize* (INT): Default maximum directory size value.

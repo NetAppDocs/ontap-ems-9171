@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ha-noprogrammaticto-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.noprogrammaticto events
+---
+
+= ha.noprogrammaticto events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.noProgrammaticTO
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a takeover is initiated programmatically by Data ONTAP(R) and the takeover request fails because giveback or aggregate relocation cleanup is still in progress.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failover monitor: Programmatic takeover failed due to giveback or aggregate relocation post-processing cleanup not yet complete.
+*Parameters*::
+(None).

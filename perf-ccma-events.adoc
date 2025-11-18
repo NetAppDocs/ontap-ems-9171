@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: perf-ccma-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: perf.ccma events
+---
+
+= perf.ccma events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== perf.ccma.off
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the performance archiver is not enabled, which makes it difficult for technical support to troubleshoot performance issues on the system.
+*Corrective Action*::
+Enable the performance archiver to track system activity and allow technical support to troubleshoot performance problems by running the "statistics archive config modify -is-enabled true" command. Note that the performance archiver is disabled during takeover and giveback, and in a failure scenario when the archiver loses communication with the Counter Manager Quota Management system; these two scenarios do not resolve by administratively enabling the archiver.
+*Syslog Message*::
+Performance archiver is not enabled for datastore '%s'.
+*Parameters*::
+*datastore* (STRING): Datastore name.
+
+== perf.ccma.startupFailed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the performance archiver fails to startup.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Performance archiver failed to startup.
+*Parameters*::
+*reason* (STRING): Reason for failure to startup
+
+== perf.ccma.stop
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the performance archiver is disabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Performance archiver stopped.
+*Parameters*::
+(None).

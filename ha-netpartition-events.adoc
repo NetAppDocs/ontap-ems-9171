@@ -1,0 +1,60 @@
+---
+sidebar: sidebar
+permalink: ha-netpartition-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.netpartition events
+---
+
+= ha.netpartition events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.netPartition
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a Data ONTAP(R) subsystem detects an error potentially due to network partitioning, but cannot take over the partner node or allow the partner to take over because both takeover-of-partner and takeover-by-partner are both disabled. Network partitioning is indicated by concurrent errors on more than one of a node's interfaces, if a halt, reboot, takeover or similar action affecting connectivity is not already in progress.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Network partition error. Internal error code %d; status: 0x%x; internal request ID: %d.
+*Parameters*::
+*error_code* (INT): Internal error code.
+*error_status* (INTHEX): Additional internal status bits related to error_code.
+*req_id* (INT): Internal request ID.
+*duration* (LONGINT): Elapsed time in msecs spent resolving the reported error.
+
+== ha.netPartition.reboot
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a Data ONTAP(R) subsystem detects an error potentially due to network partitioning, and reboots the local node due to the network partition. The reboot occurs only if ` takeover-by-partner is enabled on the local node. Network partitioning is indicated by concurrent errors on more than one of a node's interfaces, if a halt, reboot, takeover or similar action affecting connectivity is not already in progress.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Rebooting the local node due to a network partition error. Internal error code %d; status: 0x%x; internal request ID: %d.
+*Parameters*::
+*error_code* (INT): Internal error code.
+*error_status* (INTHEX): Additional internal status bits related to error_code.
+*req_id* (INT): Internal request ID.
+*duration* (LONGINT): Elapsed time in msecs spent resolving the reported error.
+
+== ha.netPartition.takeover
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a Data ONTAP(R) subsystem detects an error potentially due to network partitioning, and initiates a takeover of the partner node due to the partition. Network partitioning is indicated by concurrent errors on more than one of a node's interfaces, if a halt, reboot, takeover or similar action affecting connectivity is not already in progress.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Taking over the partner node due to a network partition error. Internal error code %d; status: 0x%x; internal request ID: %d.
+*Parameters*::
+*error_code* (INT): Internal error code.
+*error_status* (INTHEX): Additional internal status bits related to error_code.
+*req_id* (INT): Internal request ID.
+*duration* (LONGINT): Elapsed time in msecs spent resolving the reported error.

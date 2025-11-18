@@ -1,0 +1,109 @@
+---
+sidebar: sidebar
+permalink: repl-dest-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.dest events
+---
+
+= repl.dest events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.dest.css.upload.notsup
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Replication Engine encounters CSS Upload Table in a snapshot.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror transfer failed because the transfer snapshot contains CSS upload table.
+*Parameters*::
+(None).
+
+== repl.dest.dir.index.notsup
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a snapshot that contains public directory indexes is being transferred to a destination volume that does not support them.
+*Corrective Action*::
+Update the destination node to a version of ONTAP that supports directory indexes in the public inospace.
+*Syslog Message*::
+SnapMirror transfer failed because the transfer snapshot contains directory indexes in public inospace and the destination volume does not support them.
+*Parameters*::
+(None).
+
+== repl.dest.ilabels.notsup
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a snapshot that contains ilabels is transferred to a destination whose ONTAP version that does not support ilabels.
+*Corrective Action*::
+Update the destination node version of ONTAP to 9.9.1 or above.
+*Syslog Message*::
+SnapMirror transfer with transfer ID %s will not send existing ilabels because the destination node %s does not support them.
+*Parameters*::
+*transferUuid* (STRING): UUID of the SnapMirror(R) transfer.
+*dstNode* (STRING): UUID of the node where the SnapMirror(R) destination is present.
+
+== repl.dest.lun.notsup
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a LUN is being replicated to a Snapmirror destination on this platform that does not support LUNs.
+*Corrective Action*::
+To continue Snapmirror(R) transfers to this platform, delete LUNs and existing snapshots with LUNs on the source volume.
+*Syslog Message*::
+SnapMirror transfer with transfer ID %s encountered an error, since LUN replication is not supported on this platform.
+*Parameters*::
+*transferUuid* (STRING): UUID of the SnapMirror(R) transfer.
+
+== repl.dest.multipart.inodes.notsup
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a snapshot that contains multipart inodes is transferred to a destination volume that does not support them. Multipart inodes are created on volumes with granular data enabled.
+*Corrective Action*::
+Update the destination node to a version of ONTAP that supports granular data and enable granular data on the destination volume.
+*Syslog Message*::
+SnapMirror transfer failed because the transfer snapshot contains multipart inodes and the destination volume does not support them.
+*Parameters*::
+(None).
+
+== repl.dest.space.guarantee.no.space
+*Severity*::
+ERROR
+*Description*::
+This message occurs when replication fails to set the space guarantee on the destination volume because there is not enough space on the destination aggregate.
+*Corrective Action*::
+Changing the space guarantee type failed because the destination aggregate does not have enough free space. Please increase the amount of free space on the destination aggregate or change the space guarantee type of the source volume to NONE.
+*Syslog Message*::
+The volume with DSID %llu, name %s%s, Vserver UUID %s cannot support changing the space guarantee to %s because the aggregate does not have enough free space. Please increase the amount of free space on the destination aggregate by at least %s.
+*Parameters*::
+*dstVolDsid* (LONGINT): Destination volume Data Set ID (DSID).
+*dstVolName* (STRING): Destination volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume
+*srcSpcGuarantee* (STRING): Source volume space guarantee.
+*shortBy* (STRING): Amount of extra free space required on the destination aggregate to support changing the guarantee type of the destination volume.
+
+== repl.dest.volume.too.small
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the transfer snapshot from the source is unexpectedly larger than the size of the destination volume.
+*Corrective Action*::
+Increase the destination volume size to be greater than or equal to the source volume size.
+*Syslog Message*::
+The volume with vserver UUID %s, DSID, %llu, name %s, and size %lld bytes, is not large enough to allow replication of a transfer snapshot with size %lld from the source volume.
+*Parameters*::
+*dstVolOwnerUUID* (STRING): UUID of the vserver that owns the destination volume.
+*dstVolDsid* (LONGINT): Destination volume Data Set ID (DSID).
+*dstVolName* (STRING): Destination volume name.
+*dstVolSize* (LONGINT): Destination volume size in bytes.
+*srcVolSize* (LONGINT): Source transfer snapshot size in bytes.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: diskown-ownernameupdatefailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.ownernameupdatefailed events
+---
+
+= diskown.ownernameupdatefailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.OwnerNameUpdateFailed
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when we have to rewrite a DOWN because it is out of date wrt the other DOWNs.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+owner name update failed for disk %s (S/N %s)
+*Parameters*::
+*diskname* (STRING): The name of the disk
+*serialno* (STRING): The serial number of the disk

@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: asup-aods-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: asup.aods events
+---
+
+= asup.aods events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== asup.aods.response.overLimit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the size of the response from the AutoSupport OnDemand Server (AODS) goes over the AOD response buffer size limit in ONTAP.
+*Corrective Action*::
+Contact NetApp technical support for assistance.
+*Syslog Message*::
+AutoSupport OnDemand Server (AODS) response went over the response buffer size limit in ONTAP. Size limit: %u bytes.
+*Parameters*::
+*SizeLimit* (INT): AOD response buffer size limit in bytes.
+
+== asup.aods.response.timeOut
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a response is not received from the AutoSupport OnDemand Server (AODS) before the system time limit.
+*Corrective Action*::
+Check AOD Server connectivity using the "autosupport check show-details -check-type ondemand-server" command. If the issue persists, contact NetApp technical support.
+*Syslog Message*::
+AutoSupport OnDemand Server (AODS) response was not received before the %u second time limit.
+*Parameters*::
+*TimeLimit* (INT): System AODS response time limit in seconds.

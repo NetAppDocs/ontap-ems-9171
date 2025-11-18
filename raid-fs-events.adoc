@@ -1,0 +1,38 @@
+---
+sidebar: sidebar
+permalink: raid-fs-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.fs events
+---
+
+= raid.fs events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.fs.disk.ownership.change
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a filesystem disk is prepared for ownership change by administrator forcibly.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Ownership of %s, which is part of an aggregate %s, is being changed by administrator forcibly.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the disk.
+*vol_name* (STRING): Name of the aggregate.
+*shelf* (STRING): Disk shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the disk shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.

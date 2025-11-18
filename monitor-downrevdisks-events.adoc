@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: monitor-downrevdisks-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.downrevdisks events
+---
+
+= monitor.downrevdisks events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.downRevDisks
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) detects that downrev disks are still present in the system.
+*Corrective Action*::
+Download the latest disk firmware on each node and ensure that automatic background firmware update is enabled. If necessary, use the (advanced privilege) "storage disk firmware update" command to manually update disk firmware. Consult the man page for cautions.
+*Syslog Message*::
+Downrev disks still present!!
+*Parameters*::
+(None).

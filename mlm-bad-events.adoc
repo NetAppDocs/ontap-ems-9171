@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: mlm-bad-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mlm.bad events
+---
+
+= mlm.bad events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mlm.bad.topology.data
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a device reports invalid data for "REPORT LUNS" command. The invalid data may include one or more instances of duplicate LUN IDs and/or the "list length value" from the "REPORT LUNS" command may not match the amount of data received.
+*Corrective Action*::
+Repair or replace the faulty hardware associated with the wwnn and wwpn
+*Syslog Message*::
+The device with wwnn %s and wwpn %s is reporting inconsistent "REPORT LUNS" data.
+*Parameters*::
+*wwnn* (STRING): World Wide Node Name(wwnn) of the Device.
+*wwpn* (STRING): World Wide Port Name(wwpn) of the Device.

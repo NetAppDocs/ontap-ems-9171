@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: km-mcc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: km.mcc events
+---
+
+= km.mcc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== km.mcc.okm.hierarchy.bad
+*Severity*::
+ALERT
+*Description*::
+This message occurs in a MetroCluster(tm) configuration, when one or both clusters have been configured with the Onboard Key Manager, but one or both of the Onboard Key Manager key hierarchies are corrupted. Specifically, the 'hashed_pass' object does not contain the same value in each Onboard Key Manager key hierarchy.
+*Corrective Action*::
+Reboot each of the nodes in the MetroCluster configuration.
+*Syslog Message*::
+This cluster is part of a MetroCluster configuration. The Onboard Key Manager key hierarchy on one or both of the clusters is corrupted. The replication subsystem has failed to update the 'hashed_pass' field in the 'cluster_kdb' table.
+*Parameters*::
+(None).
+
+== km.mcc.okmkey.mismatch
+*Severity*::
+ALERT
+*Description*::
+This message occurs in a NetApp MetroCluster configuration, where both peer clusters are configured with Onboard Key Manager (OKM) and the lists of OKM hierarchy keys on the peer clusters are not consistent. A mismatch in the OKM hierarchy keys can lead to a failure during a reboot or future switchover/switchback event.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+This cluster is part of a MetroCluster configuration. The list of OKM hierarchy keys on one or both of the clusters is potentially corrupted.
+*Parameters*::
+(None).
+
+== km.mcc.svmkek.missing.local
+*Severity*::
+ALERT
+*Description*::
+This message occurs in a NetApp MetroCluster configuration, where both peer clusters are configured with Onboard Key Manager (OKM) and an SVM key encryption key is created on the remote peer, but due to various conditions, is not replicated to the local cluster. Creation of a new SVM key encryption key (KEK) on the local cluster is prevented to avoid failure during a reboot or future switchover/switchback event.
+*Corrective Action*::
+Contact Contact NetApp technical support. for assistance.
+*Syslog Message*::
+This cluster is part of a MetroCluster configuration. An SVM key encryption key created on the remote cluster has not been replicated to the local cluster.
+*Parameters*::
+(None).

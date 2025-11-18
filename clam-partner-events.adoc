@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: clam-partner-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: clam.partner events
+---
+
+= clam.partner events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== clam.partner.halting
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Kernel Cluster Services (KCS) Connectivity, Liveness, Availability Monitor (CLAM) is notified that its high-availability (HA) partner node is undergoing a planned shutdown.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+CLAM is notified that its HA partner node is undergoing a planned shutdown (reason: %s).
+*Parameters*::
+*reason* (STRING): Reason for the partner beginning the halt process.

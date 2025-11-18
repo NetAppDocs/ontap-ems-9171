@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: arl-postmigrnotok-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: arl.postmigrnotok events
+---
+
+= arl.postmigrnotok events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== arl.postMigrNotOk
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the specified subsystem encounters an error during the post-migration phase of the aggregate relocation (ARL) operation.
+*Corrective Action*::
+Check the event log for a subsystem-specific reason as to why the subsystem failed the post-migration phase of the relocation operation. The corrective action is subsystem-specific and is detailed in the corrective action portion of the message. Follow the corrective action specified by that message.
+*Syslog Message*::
+Relocation of aggregate '%s' encountered an error during post-migration processing. The error was encountered by the subsystem '%s'.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate on which the subsystem attempted the relocation operation.
+*subsystem* (STRING): Name of the subsystem that failed the relocation operation.

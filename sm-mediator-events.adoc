@@ -1,0 +1,219 @@
+---
+sidebar: sidebar
+permalink: sm-mediator-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sm.mediator events
+---
+
+= sm.mediator events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sm.mediator.added
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP(R) Mediator is added successfully on a cluster.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ONTAP Mediator (version %s) is added on cluster '%s' having peer cluster '%s' and mediator IP address '%s'.
+*Parameters*::
+*version* (STRING): ONTAP Mediator version.
+*cluster* (STRING): Cluster name on which ONTAP Mediator was added.
+*peerCluster* (STRING): Peer cluster name.
+*ipAddress* (STRING): ONTAP Mediator IP address.
+
+== sm.mediator.cacert.expired
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the ONTAP(R) Mediator certificate authority (CA) certificate has expired. As a result, all further communication to the ONTAP Mediator will not be possible.
+*Corrective Action*::
+Remove the configuration of the current ONTAP Mediator by using the "snapmirror mediator remove" command. Update a new CA certificate on the ONTAP Mediator server. Reconfigure access to the ONTAP Mediator by using the "snapmirror mediator add" command.
+*Syslog Message*::
+CA certificate of the ONTAP Mediator (IP: %s) expired on %s.
+*Parameters*::
+*ipAddress* (STRING): ONTAP Mediator IP address.
+*expiryDate* (STRING): Expiry date of the ONTAP Mediator CA certificate.
+
+== sm.mediator.cacert.expiring
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the ONTAP(R) Mediator certificate authority (CA) certificate is due to expire within the next 30 days.
+*Corrective Action*::
+Before this certificate expires, remove the configuration of the current ONTAP Mediator by using the "snapmirror mediator remove" command. Update a new CA certificate on the ONTAP Mediator server. Reconfigure access to the ONTAP Mediator by using the "snapmirror mediator add" command.
+*Syslog Message*::
+CA certificate for the ONTAP Mediator (IP: %s) will expire in %d days. Expiry: %s.
+*Parameters*::
+*ipAddress* (STRING): ONTAP Mediator IP address.
+*daysToExpire* (INT): Number of days remaining until the certificate expires.
+*expiryDate* (STRING): Expiry date of the ONTAP Mediator CA certificate.
+
+== sm.mediator.clientc.expired
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the ONTAP(R) Mediator client certificate has expired. As a result, all further communication to the ONTAP Mediator will not be possible.
+*Corrective Action*::
+Remove the configuration of the current ONTAP Mediator by using the "snapmirror mediator remove" command. Reconfigure access to the ONTAP Mediator by using the "snapmirror mediator add" command.
+*Syslog Message*::
+Client certificate of the ONTAP Mediator (IP: %s) expired on %s.
+*Parameters*::
+*ipAddress* (STRING): ONTAP Mediator IP address.
+*expiryDate* (STRING): Expiry date of the ONTAP Mediator client certificate.
+
+== sm.mediator.clientc.expiring
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the ONTAP(R) Mediator client certificate is due to expire within the next 30 days.
+*Corrective Action*::
+Before this certificate expires, remove the configuration of the current ONTAP Mediator by using the "snapmirror mediator remove" command. Reconfigure access to the ONTAP Mediator by using the "snapmirror mediator add" command.
+*Syslog Message*::
+Client certificate for the ONTAP Mediator (IP: %s) will expire in %d days. Expiry: %s.
+*Parameters*::
+*ipAddress* (STRING): ONTAP Mediator IP address.
+*daysToExpire* (INT): Number of days remaining until the certificate expires.
+*expiryDate* (STRING): Expiry date of the ONTAP Mediator client certificate.
+
+== sm.mediator.in.quorum
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the ONTAP(R) Mediator connectivity is reestablished, its records are resynchronized and it is ready to participate in SnapMirror(R) active sync quorum activities.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The ONTAP Mediator (IP: %s) connectivity is reestablished, its records are resynchronized and it is ready to participate in SnapMirror(R) active sync quorum activities. Peer cluster: %s.
+*Parameters*::
+*ipAddress* (STRING): ONTAP Mediator IP address.
+*peerCluster* (STRING): Peer cluster name.
+
+== sm.mediator.misconfigured
+*Severity*::
+ALERT
+*Description*::
+This message occurs when either the ONTAP(R) Mediator is repurposed or the Mediator package is no longer installed on the Mediator server. As a result, SnapMirror(R) failover is not possible.
+*Corrective Action*::
+Remove the configuration of the current ONTAP Mediator by using the "snapmirror mediator remove" command. Reconfigure access to the ONTAP Mediator by using the "snapmirror mediator add" command.
+*Syslog Message*::
+ONTAP Mediator is not accessible on cluster "%s" with Mediator IP address "%s".
+*Parameters*::
+*cluster* (STRING): Name of the cluster that is attempting to access the ONTAP Mediator.
+*ipAddress* (STRING): IP address of the ONTAP Mediator.
+
+== sm.mediator.removed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP(R) Mediator is removed successfully from a cluster.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ONTAP Mediator (version %s) was removed on cluster '%s' having peer cluster '%s' and mediator IP address '%s'.
+*Parameters*::
+*version* (STRING): ONTAP Mediator version.
+*cluster* (STRING): Cluster name on which ONTAP Mediator was removed.
+*peerCluster* (STRING): Peer cluster name.
+*ipAddress* (STRING): ONTAP Mediator IP address.
+
+== sm.mediator.removed.force
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) Mediator fails to be removed from the peer cluster but is removed from the local cluster because the "force" option is given. As a result, the ONTAP Mediator configuration might still be present on the peer cluster. This results in a partial configuration that could lead to the failure of a SnapMirror(R) failover operation.
+*Corrective Action*::
+Check whether the current ONTAP Mediator is configured on the peer cluster. If so, remove the ONTAP Mediator by using the (diagnostic privilege) "snapmirror mediator remove -force true" command. Reconfigure access to the ONTAP Mediator by using the "snapmirror mediator add" command.
+*Syslog Message*::
+ONTAP Mediator (IP: "%s", version: "%s") was removed using the "force" option on cluster "%s". Peer cluster "%s".
+*Parameters*::
+*ipAddress* (STRING): ONTAP Mediator IP address.
+*version* (STRING): ONTAP Mediator version.
+*cluster* (STRING): Cluster name on which ONTAP Mediator was removed.
+*peerCluster* (STRING): Peer cluster name.
+
+== sm.mediator.resumed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP(R) Mediator is resumed successfully on a cluster.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ONTAP Mediator was resumed on cluster '%s' having mediator IP address '%s'.
+*Parameters*::
+*cluster* (STRING): Cluster name on which ONTAP Mediator was resumed.
+*ipAddress* (STRING): ONTAP Mediator IP address.
+
+== sm.mediator.serverc.expired
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the ONTAP(R) Mediator server certificate has expired. As a result, all further communication to the ONTAP Mediator will not be possible.
+*Corrective Action*::
+Remove the configuration of the current ONTAP Mediator by using the "snapmirror mediator remove" command. Update a new server certificate on the ONTAP Mediator server. Reconfigure access to the ONTAP Mediator by using the "snapmirror mediator add" command.
+*Syslog Message*::
+Server certificate of the ONTAP Mediator (IP: %s) expired on %s.
+*Parameters*::
+*ipAddress* (STRING): ONTAP Mediator IP address.
+*expiryDate* (STRING): Expiry date of the ONTAP Mediator server certificate.
+
+== sm.mediator.serverc.expiring
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the ONTAP(R) Mediator server certificate is due to expire within the next 30 days.
+*Corrective Action*::
+Before this certificate expires, remove the configuration of the current ONTAP Mediator by using the "snapmirror mediator remove" command. Update a new server certificate on the ONTAP Mediator server. Reconfigure access to the ONTAP Mediator by using the "snapmirror mediator add" command.
+*Syslog Message*::
+Server certificate for the ONTAP Mediator (IP: %s) will expire in %d days. Expiry: %s.
+*Parameters*::
+*ipAddress* (STRING): ONTAP Mediator IP address.
+*daysToExpire* (INT): Number of days remaining until the certificate expires.
+*expiryDate* (STRING): Expiry date of the ONTAP Mediator server certificate.
+
+== sm.mediator.suspended
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP(R) Mediator is suspended successfully on a cluster.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ONTAP Mediator was suspended on cluster '%s' having mediator IP address '%s'.
+*Parameters*::
+*cluster* (STRING): Cluster name on which ONTAP Mediator was suspended.
+*ipAddress* (STRING): ONTAP Mediator IP address.
+
+== sm.mediator.unreachable
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the ONTAP(R) Mediator is unreachable on a cluster. As a result, SnapMirror(R) failover is not possible.
+*Corrective Action*::
+Check the network connectivity to the ONTAP Mediator by using the "network ping" and "network traceroute" commands. If the issue persists, remove the configuration of the current ONTAP Mediator by using the "snapmirror mediator remove" command. Reconfigure access to the ONTAP Mediator by using the "snapmirror mediator add" command.
+*Syslog Message*::
+ONTAP Mediator (IP: %s) is unreachable from cluster %s.
+*Parameters*::
+*ipAddress* (STRING): IP address of the ONTAP Mediator.
+*cluster* (STRING): Name of the cluster that is attempting to access the ONTAP Mediator.
+
+== sm.mediator.unusable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) Mediator is unusable due to a corrupted mediator server database. If ONTAP Mediator is in this state, SnapMirror(R) failover will not be possible.
+*Corrective Action*::
+Remove ONTAP Mediator by using the "snapmirror mediator remove" command, and then add it again by using the "snapmirror mediator add" command.
+*Syslog Message*::
+ONTAP Mediator is unusable on cluster '%s' having mediator IP address '%s'.
+*Parameters*::
+*cluster* (STRING): Cluster name on which ONTAP Mediator is unusable.
+*ipAddress* (STRING): ONTAP Mediator IP address.

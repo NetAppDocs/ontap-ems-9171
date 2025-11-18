@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: vsdr-periodic-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsdr.periodic events
+---
+
+= vsdr.periodic events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsdr.periodic.check.errors
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Vserver DR subsystem periodic check detects issues with the Vserver DR components. These issues could potentially result in a degraded Vserver DR relationship. So, some corrective action is required by the admin to resolve the issue.
+*Corrective Action*::
+Contact NetApp technical support to identify and resolve the issues with Vserver DR components.
+*Syslog Message*::
+Vserver DR check between source Vserver %s and destination Vserver %s found issues with the attribute %s.
+*Parameters*::
+*source_vserver* (STRING): Name of the source Vserver of the Vserver DR relationship.
+*destination_vserver* (STRING): Name of the destination Vserver of the Vserver DR relationship.
+*attribute* (STRING): Name of the attribute that is being checked.
+
+== vsdr.periodic.msid.preserve
+*Severity*::
+ALERT
+*Description*::
+Vserver DR subsystem has detected that volume MSIDs are not preserved. This would require remounting NFS clients after a DR fail-over. Such relationships may not be supported in future ONTAP releases. Convert the relationship into an MSID preserving relationship. As part of conversion, the DR Vserver will be stopped and the volume MSIDs will be re-stamped.
+*Corrective Action*::
+See the KB article https://kb.netapp.com/support/s/article/How-to-convert-DR-Relationship-into-MSID-preserving-relation for more information on how to convert the relationship into an MSID preserving one.
+*Syslog Message*::
+Vserver DR: Possibly deprecated variant of Vserver DR relationship for the destination Vserver %s.
+*Parameters*::
+*destination_vserver* (STRING): Name of the destination Vserver of the Vserver DR relationship.

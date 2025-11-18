@@ -1,0 +1,99 @@
+---
+sidebar: sidebar
+permalink: raid-nvram-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.nvram events
+---
+
+= raid.nvram events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.nvram.bad.entry
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when RAID NVRAM contains some bad entries. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RAID NVRAM contains bad entries.
+*Parameters*::
+(None).
+
+== raid.nvram.clean.vol.entry
+*Severity*::
+NOTICE
+*Description*::
+This message tracks the status of RAID nonvolatile RAM (NVRAM), which contained entries for a clean shutdown volume. No action is required.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RAID NVRAM contains entries for a clean shutdown volume.
+*Parameters*::
+(None).
+
+== raid.nvram.miss.disk.entry
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when RAID NVRAM contains entries for nonexistent disks. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RAID NVRAM contains entries for nonexistent disks.
+*Parameters*::
+(None).
+
+== raid.nvram.miss.group.entry
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when RAID NVRAM contains entries for nonexistent RAID groups. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RAID NVRAM contains entries for nonexistent groups.
+*Parameters*::
+(None).
+
+== raid.nvram.miss.plex.entry
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when RAID NVRAM contains entries for nonexistent plexes. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RAID NVRAM contains entries for nonexistent plexes.
+*Parameters*::
+(None).
+
+== raid.nvram.miss.vol.entry
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when RAID NVRAM contains entries for nonexistent volumes. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RAID NVRAM contains entries for nonexistent volumes.
+*Parameters*::
+(None).
+
+== raid.nvram.stale.entry
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when RAID NVRAM contains some stale entries. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RAID NVRAM contains stale entries.
+*Parameters*::
+(None).

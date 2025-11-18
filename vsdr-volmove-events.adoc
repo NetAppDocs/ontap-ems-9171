@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: vsdr-volmove-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsdr.volmove events
+---
+
+= vsdr.volmove events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsdr.volmove.esrc.plaindst
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a volume at the source of a Vserver-DR setup is encrypted, but the volume at the destination is not configured to be encrypted.
+*Corrective Action*::
+Verify that the intended destination aggregate supports encryption and Key Management capability is enabled. If so, make the destination volume encrypted by performing a volume move operation at the destination: "volume move start -vserver <vserver-name> -volume <volume-name> -destination-aggregate <aggregate> -encrypt-destination true".
+*Syslog Message*::
+Source volume for volume "%s" in Vserver "%s" is encrypted, but the destination is not.
+*Parameters*::
+*dest_vserver_name* (STRING): Name of the destination Vserver.
+*dest_volume_name* (STRING): Name of the destination volume.

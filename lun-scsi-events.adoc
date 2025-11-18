@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: lun-scsi-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lun.scsi events
+---
+
+= lun.scsi events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== LUN.SCSI.reservation.removal.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the SCSI reservation for one or more LUNs in the secondary or primary Vserver cannot be deleted during a Vserver disaster recovery(DR) resynchronize operation. This might result in the host accessing stale SCSI reservation entries for the LUN during a subsequent Vserver DR activate operation.
+*Corrective Action*::
+Use the "lun persistent-reservation clear" command to remove the LUN's SCSI reservation.
+*Syslog Message*::
+SCSI reservation for LUN %s in volume %s (DSID %llu) could not be deleted.
+*Parameters*::
+*lun_path* (STRING): Path for the LUN whose SCSI reservation could not be removed.
+*volume_name* (STRING): Name of the containing volume.
+*volume_dsid* (LONGINT): Data set ID (DSID) of the containing volume.

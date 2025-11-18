@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: lun-vol-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lun.vol events
+---
+
+= lun.vol events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== LUN.vol.no.space
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an operation on a LUN or NVMe namespace fails due to insufficient space in the volume.
+*Corrective Action*::
+Add space to the volume and retry the operation.
+*Syslog Message*::
+An operation on %s in volume %s (DSID %llu) failed due to lack of space in the volume.
+*Parameters*::
+*lun_path* (STRING): Path for the LUN or NVMe namespace.
+*volume_name* (STRING): Name of the containing volume.
+*volume_dsid* (LONGINT): Data Set ID (DSID) of the containing volume.
+
+== LUN.vol.proc.fail.no.space
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the processing for LUNs or NVMe namespaces in the volume has failed due to lack of space in the volume or containing aggregate.
+*Corrective Action*::
+Platform specifics: Unified ONTAP: Check accompanying event messages to determine whether the volume or containing aggregate lacks space. Add space to the volume or aggregate containing the volume as necessary before retrying the operation. If the volume was being transitioned, issue the command 'lun transition start' to retry; otherwise issue the command 'lun rescan -sync' to complete processing of LUNs in the volume. ASA r2: Contact NetApp technical support for assistance.
+*Syslog Message*::
+Processing for LUNs or NVMe namespaces in volume %s (DSID %llu) failed due to lack of space.
+*Parameters*::
+*volume_name* (STRING): Name of the volume for which the processing failed.
+*volume_dsid* (LONGINT): Data Set ID (DSID) of the volume for which the processing failed.

@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: dfu-clusterpartner-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dfu.clusterpartner events
+---
+
+= dfu.clusterpartner events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dfu.clusterPartner
+*Severity*::
+ERROR
+*Description*::
+This message occurs when automatic firmware download is performed as part of system boot and partner disks are downrev.
+*Corrective Action*::
+Firmware download is not allowed to update partner disks automatically. Manual invocation of the "storage disk firmware update" command is required. See the "storage disk firmware update" man page for details.
+*Syslog Message*::
+Operator must issue disk_fw_update command to download firmware to partner Disk %s [%s %s %s] S/N [%s].
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*vendorName* (STRING): Vendor name of the disk.
+*productId* (STRING): Product ID of the disk.
+*fwVersion* (STRING): Firmware version of the disk.
+*serialno* (STRING): Serial number of the disk.

@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: repository-dc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repository.dc events
+---
+
+= repository.dc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Repository.DC.Dangling.Lock
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+ERROR
+*Description*::
+This message occurs during a client file operation request, when the Infinite Volume runs into failures that prevent it from cleaning up a transient or client-originated lock on the data constituent. If there are enough of these dangling locks on the data constituent, the lock resource might be exhausted, which causes certain operations to fail.
+*Corrective Action*::
+Clear the reported lock ID by using the 'vserver locks break' command at the advanced privilege level.
+*Syslog Message*::
+Failures prevented the cleanup of a lock with UUID %s on the data constituent in Vserver %u.
+*Parameters*::
+*lockid* (STRING): Lock UUID of the lock that is left dangling.
+*vserverId* (INT): Vserver ID for which the error occurred.

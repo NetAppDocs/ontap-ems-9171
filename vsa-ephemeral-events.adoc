@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: vsa-ephemeral-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsa.ephemeral events
+---
+
+= vsa.ephemeral events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsa.ephemeral.vnvram.reset
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a node is configured to use ephemeral vNVRAM and the virtual machine has been re-hosted, using new ephemeral disk for vNVRAM.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Ephemeral vNVRAM disk for node has changed, due to re-hosting of VM. New serial number: "%s".
+*Parameters*::
+*ephemeral_vnvram_serial_number* (STRING): Value of the serial number of the updated ephemeral disk used for vNVRAM.

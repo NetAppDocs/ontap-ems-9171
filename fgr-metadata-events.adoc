@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: fgr-metadata-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fgr.metadata events
+---
+
+= fgr.metadata events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fgr.metadata.repaired
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an inconsistency in the volume capacity rebalancing metadata. As a consequence, the inconsistent metadata is deleted and new metadata will be repopulated according to latest volume capacity rebalancing state.
+*Corrective Action*::
+None.
+*Syslog Message*::
+The system detected an inconsistency in the volume capacity rebalancing metadata associated with volume %s:%s.
+*Parameters*::
+*vserveruuid* (STRING): Universal unique identifier (UUID) of the volume's Vserver.
+*volname* (STRING): Volume name.

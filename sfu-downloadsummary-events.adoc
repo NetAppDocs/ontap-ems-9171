@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: sfu-downloadsummary-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfu.downloadsummary events
+---
+
+= sfu.downloadsummary events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfu.downloadSummary
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a disk shelf firmware update completes successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Shelf firmware updated on %d %s.
+*Parameters*::
+*shelfCount* (INT): Number of shelves that successfully updated.
+*pluralShelf* (STRING): Shelf or Shelves.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: phdb-removedmailboxdisk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: phdb.removedmailboxdisk events
+---
+
+= phdb.removedmailboxdisk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== phdb.removedMailboxDisk
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Cloud Volume ONTAP (CVO) removes a cloud mailbox disk. A cloud mailbox disk is a fake disk using Cloud Database such as AWS DynamoDB to store CVO non-share HA metadata.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cloud mailbox disk unit number: %d with uuid: "%s" was removed.
+*Parameters*::
+*unit* (INT): Unit number.
+*uuid* (STRING): Disk UUID.

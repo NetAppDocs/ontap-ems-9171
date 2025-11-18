@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: ha-resvconflicthalt-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.resvconflicthalt events
+---
+
+= ha.resvconflicthalt events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.resvConflictHalt
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the node halts itself after it finds disks with reservation conflicts. Reservations are placed on disks as part of a node taking over its partner. This disk reservation conflict is due to this node being taken over by its partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A disk reservation conflict was detected on disk %s at %-20s. Typically, this only occurs when the node was taken over by its partner.
+*Parameters*::
+*disk_name* (STRING): Name of the disk.
+*time* (STRING): Time when the disk reservation was detected.
+*last_update* (INT): Time passed since last rescan, in milliseconds.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: spm-ntpd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: spm.ntpd events
+---
+
+= spm.ntpd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== spm.ntpd.process.exit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Network Time Protocol Daemon process (ntpd) involuntarily terminates. The termination of this process can affect synchronization of system time with network time servers.
+*Corrective Action*::
+The system attempts to recover by restarting the ntpd process. If the process does not restart within the threshold number of retries, then an AutoSupport message is sent. If your system is not configured to send AutoSupport messages and the issue persists, contact NetApp technical support.
+*Syslog Message*::
+The ntpd with ID %d exited as a result of %s. This server will attempt to restart.
+*Parameters*::
+*id* (INT): Process identifier.
+*cause* (STRING): Reason the process exited.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: kmip2-ssl-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: kmip2.ssl events
+---
+
+= kmip2.ssl events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== kmip2.ssl.cannot.connect
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a KMIP SSL/TLS connection error is detected in either a Cloud ONTAP system with encrypted aggregates or a NSE system. On a Cloud ONTAP(R) system, this message indicates one of the following: 1) A request to create an encrypted aggregate will not succeed because the key cannot be sent to the external KMIP server, or 2) The request to retrieve a key from the external KMIP server will fail. In this case, the encrypted aggregate will not be able to be mounted. On a NSE system, this message indicates one of the following: 1) A request to re-key a NSE drive will not succeed because the key cannot be sent to the external KMIP server, or 2) The ability to read/write data to/from a NSE drive might be impacted if power to the drive or to the disk shelf is lost.
+*Corrective Action*::
+Examine the KMIP certificates and ensure that the certificates have been created properly.
+*Syslog Message*::
+Unable to make SSL/TLS connection to KMIP server. Error: %s
+*Parameters*::
+*err* (STRING): KMIP error code with details.

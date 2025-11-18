@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: pvif-lacp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: pvif.lacp events
+---
+
+= pvif.lacp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== pvif.lacp.outofsync
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a link is operationally up and cannot be aggregated into its configured ifgrp within the time limit. This might occur due to misconfiguration, physical link error, or implementation limits on the number of links allowed.
+*Corrective Action*::
+Verify that the switch configuration is correct, and that the physical links are operating without error.
+*Syslog Message*::
+ifgrp %s, port %s cannot synchronize with the LACP aggregate.
+*Parameters*::
+*vifName* (STRING): Name of the ifgrp.
+*linkName* (STRING): Name of the link.

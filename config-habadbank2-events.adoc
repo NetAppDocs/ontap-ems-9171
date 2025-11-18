@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-habadbank2-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.habadbank2 events
+---
+
+= config.habadbank2 events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.HABadBank2
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a local host adapter is connected to a different switch bank (on ports 0-7) than other adapters on this controller, which are connected to ports 8-15. This is an illegal configuration.
+*Corrective Action*::
+Connect all of the adapters of this controller to the same bank of switch ports.
+*Syslog Message*::
+Other local host adapters are connected to Switch bank 2 (ports 8-15). Host adapter %s is connected to Switch bank 1 (ports 0-7). This is an illegal configuration.
+*Parameters*::
+*ha* (STRING): Name of the host adapter.

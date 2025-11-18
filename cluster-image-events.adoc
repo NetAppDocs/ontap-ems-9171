@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cluster-image-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cluster.image events
+---
+
+= cluster.image events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cluster.image.update.aborted
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a non-disruptive data ONTAP upgrade of the cluster was aborted by the user.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A non-disruptive data ONTAP upgrade of the cluster was aborted by the user
+*Parameters*::
+(None).

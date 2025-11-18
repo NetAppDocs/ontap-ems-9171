@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ndmp-max-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ndmp.max events
+---
+
+= ndmp.max events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ndmp.max.warning
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the maximum number of NDMP sessions has been reached.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cannot accept new requests because the NDMP connection limit has been reached.
+*Parameters*::
+(None).

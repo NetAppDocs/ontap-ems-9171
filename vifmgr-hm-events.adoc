@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: vifmgr-hm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.hm events
+---
+
+= vifmgr.hm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.hm.promoted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a health monitor has been fully activated for an IPspace. A fully activated health monitor marks ports as unhealthy if the port fails the monitor's health check.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The %s has been promoted on IPspace %s.
+*Parameters*::
+*monitor* (STRING): Health monitor name.
+*ipspace* (STRING): IPspace name for which the health monitor has been promoted.

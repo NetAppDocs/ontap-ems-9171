@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: mpt-action-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mpt.action events
+---
+
+= mpt.action events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mpt.action.reset.bus
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system bus is reset in the message processing technology (MPT) adapter driver.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Bus reset on path %s for device status %s.
+*Parameters*::
+*path* (STRING): Device path.
+*msg* (STRING): Detail about device status.
+
+== mpt.action.reset.dev
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system device is reset in the message processing technology (MPT) adapter driver.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Device reset on path %s for device status %s.
+*Parameters*::
+*path* (STRING): Device path.
+*msg* (STRING): Detail about device status.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: wafl-8-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.8 events
+---
+
+= wafl.8 events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.8.0.mirror.upgrade.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when WAFL(R) unexpectedly encounters a Data ONTAP(R) 8.0.x logical mirror volume during an upgrade. This logical mirror volume should have been deleted prior to the upgrade.
+*Corrective Action*::
+Avoid this event by destroying all Data ONTAP 8.0.x logical mirror volumes prior to the upgrade. This event resulted in the volume being marked offline, corrupt, and unrecoverable. Because the current version of Data ONTAP does not support logical mirror volume, the volume cannot be recovered by file system repair mechanisms such as wafliron and cannot be brought online.
+*Syslog Message*::
+Data ONTAP 8.0.x mirror (type %d) cannot be upgraded by the current version of Data ONTAP. Logical mirror volume '%s' was marked offline, corrupt, and unrecoverable. Read the upgrade notes for this release. Such volumes should be deleted prior to the upgrade.
+*Parameters*::
+*type* (INT): Mirror type in Data ONTAP 8.0.x.
+*vol* (STRING): Volume name.

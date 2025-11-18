@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: scsiblade-vserver-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsiblade.vserver events
+---
+
+= scsiblade.vserver events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsiblade.vserver.op.timeout
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a command or other internal operation becomes blocked within Data ONTAP(R). When this situation occurs, the corresponding Vserver cannot handle any other management changes for SAN until this condition is resolved. Also, the command that timed out might not have been completed, limiting access to LUNs within the Vserver.
+*Corrective Action*::
+For further information about correcting the problem, search the knowledgebase of the NetApp technical support support web site for the "scsiblade.vserver.op.timeout" keyword.
+*Syslog Message*::
+A Vserver internal operation (0x%08x) has timed out. Vserver %s might not be available to process additional SAN management commands and events.
+*Parameters*::
+*operation* (LONGINT): Operation code.
+*vserver* (STRING): Name or UUID of the Vserver.

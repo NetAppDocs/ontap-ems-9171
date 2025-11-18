@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: repl-ckpt-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.ckpt events
+---
+
+= repl.ckpt events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.ckpt.update.generation
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs to record new checkpoint generations subsequent to the first. Transfer will update the current checkpoint if the new checkpoints are smaller.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume '%s%s%s' (DSID %llu) received a new checkpoint generation: %llu, current checkpoint generation: %llu.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume.
+*volDsid* (LONGINT): Data set identifier (DSID) of the volume.
+*newCkpt* (LONGINT): New checkpoint generation received.
+*oldCkpt* (LONGINT): Existing checkpoint generation.

@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: replication-rmt-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: replication.rmt events
+---
+
+= replication.rmt events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== replication.rmt.noHostname
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the remote system of a SnapMirror(R) or SnapVault(R) transfer does not have a host name.
+*Corrective Action*::
+Configure the host name on the remote system before attempting a SnapMirror or SnapVault transfer from that system.
+*Syslog Message*::
+%s transfer from %s:%s to %s:%s cannot be started because the remote system does not have a host name.
+*Parameters*::
+*rtype* (STRING): Replication type (SnapMirror, SnapVault, and so on).
+*srcfiler* (STRING): Replication source system.
+*srcpath* (STRING): Replication source path.
+*dstfiler* (STRING): Replication destination system.
+*dstpath* (STRING): Replication destination path.
+*rplerror* (STRING): Replication error message.
+*waflerror* (STRING): WAFL(R) error.

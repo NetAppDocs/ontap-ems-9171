@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: nvmens-online-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvmens.online events
+---
+
+= nvmens.online events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== NVMeNS.online
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an NVMe namespace is brought online manually.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NVMe namespace %s, vol %s (DSID %llu) was brought online (UUID: %s).
+*Parameters*::
+*path* (STRING): Path for the NVMe namespace that was brought online.
+*volume_name* (STRING): Name of the containing volume.
+*volume_dsid* (LONGINT): Data set ID (DSID) of the containing volume.
+*object_uuid* (STRING): UUID of the NVMe namespace.
+*object_type* (STRING): Type of object under notification.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-encl-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.encl events
+---
+
+= callhome.encl events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.encl.access
+*Severity*::
+ERROR
+*Description*::
+This message occurs when contact to one or more disk shelf enclosure services (environmental monitoring) is lost, possibly due to storage cabling, adapter, or configuration problems. The system uses the enclosure services to monitor the environment continuously to ensure that conditions remain at safe operating levels. If the system cannot contact the enclosure services, it cannot detect when operating conditions move into unsafe ranges and cannot minimize any damage that might result. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Use the "storage errors show" command to display the current outstanding shelf error conditions. Use the "event log show" command to identify earlier EMS messages related to shelf connectivity errors. Restore connectivity to the disk shelf enclosure services. Check cabling for loose connections. Swap out adapters, if possible. Double-check the configuration. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for ENCLOSURE SERVICES ACCESS ERROR
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

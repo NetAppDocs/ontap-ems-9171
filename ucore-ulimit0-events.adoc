@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: ucore-ulimit0-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ucore.ulimit0 events
+---
+
+= ucore.ulimit0 events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ucore.ulimit0
+*Deprecated*::
+This event is deprecated as of ONTAP 9.2.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a userspace core is not dumped because the core size limit is set to 0.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+'Process ID %d (%s) cannot be dumped because the coredump ulimit is set to 0.'
+*Parameters*::
+*process_id* (INT): Process ID of the process.
+*process_name* (STRING): Name of the process.

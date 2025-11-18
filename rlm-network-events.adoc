@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: rlm-network-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rlm.network events
+---
+
+= rlm.network events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rlm.network.link.down
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Remote LAN Module (RLM) detects a link error on the RLM network port. This can happen if a network cable is not plugged into the RLM network port. It can also happen if the network that the RLM is connected to cannot run at 10/100 Mbps.
+*Corrective Action*::
+1. Check whether the network cable is correctly plugged into the RLM network port. 2. Check the link status LED on the RLM. 3. The RLM supports a 10/100 Mbps Ethernet network in autonegotiation mode. Verify that the network that the RLM is connected to supports autonegotiation to 10/100 Mbps or is running at one of those speeds; otherwise, RLM network connectivity won't work.
+*Syslog Message*::
+Remote LAN Module (RLM) network port link down due to cable or network errors.
+*Parameters*::
+(None).

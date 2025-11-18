@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: san-nosupportedsamenamedfcport-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.nosupportedsamenamedfcport events
+---
+
+= san.nosupportedsamenamedfcport events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.NoSupportedSameNamedFCport
+*Severity*::
+ERROR
+*Description*::
+This message occurs in MetroCluster(tm) configurations on clustered Data ONTAP(R) systems, when Data ONTAP cannot find the same named port that support the FCP/FC-NVMe data-protocol to place an FC logical interface (LIF) in the destination cluster. A same named port is an FC port in the destination cluster that has the same name as that of the FC port in the source cluster hosting the FC logical interface (LIF).
+*Corrective Action*::
+Before enabling the Non-Shared Fabrics lif placement mechanism, please ensure that the same-named ports in the corresponding DR-partner node at the destination cluster have the same capabilities as the source cluster node's port.
+*Syslog Message*::
+Same named FC port %s as the one in the source cluster that is hosting LIF %s on primary Vserver %s, does not support the %s data-protocol in the destination cluster.
+*Parameters*::
+*home_port* (STRING): Name of the destination cluster FC port.
+*lif* (STRING): Name of the FC/FC-NVMe LIF.
+*vserver* (STRING): Name of the primary Vserver.
+*data_protocol* (STRING): Data-Protocol of the LIF.

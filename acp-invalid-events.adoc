@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: acp-invalid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: acp.invalid events
+---
+
+= acp.invalid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== acp.invalid.vpd.info
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Alternate Control Path (ACP) system detects that an Alternate Control Path Processor (ACPP) has invalid VPD (Vital Product Data) info.
+*Corrective Action*::
+Replace the Alternate Control Path Processor (ACPP).
+*Syslog Message*::
+ACPP module %s (%s) has invalid VPD.
+*Parameters*::
+*inband_id* (STRING): In-band ID of the ACPP module.
+*ip* (STRING): IP address of the ACPP module.

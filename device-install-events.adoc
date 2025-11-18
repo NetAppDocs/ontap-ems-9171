@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: device-install-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: device.install events
+---
+
+= device.install events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== device.install.successful
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when Data ONTAP(R) successfully installs one or more devices after a prior installation failure.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Device type %s installation successful for one or more devices that reported installation failure previously.
+*Parameters*::
+*devtype* (STRING): SCSI device type.

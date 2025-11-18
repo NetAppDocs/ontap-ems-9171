@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: dfu-suspended_disasterrecovery-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dfu.suspended_disasterrecovery events
+---
+
+= dfu.suspended_disasterrecovery events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dfu.suspended_DisasterRecovery
+*Severity*::
+ERROR
+*Description*::
+This message occurs in a MetroCluster(TM) environment when firmware download to remote disks is suspended during disaster recovery. This event is signaled at most once during disaster recovery, the first time firmware download to a remote disk is suspended.
+*Corrective Action*::
+Firmware download to remote disks is suspended during MetroCluster disaster recovery. Wait until switchback has completed, and either allow the firmware to be downloaded automatically, or run the "storage disk firmware update" command. See the "storage disk firmware update" man page for details.
+*Syslog Message*::
+Suspend firmware download to remote disks while in MetroCluster Disaster Recovery state %s
+*Parameters*::
+*dr_state* (STRING): Current MetroCluster disaster recovery state.

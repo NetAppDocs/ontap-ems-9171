@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: vserver-config-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vserver.config events
+---
+
+= vserver.config events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vserver.config.createDirectoryFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Vserver create operation cannot create the Vserver-specific configuration directory.
+*Corrective Action*::
+Ensure that, the root volume File System(FS) is available and has enough space to create Vserver-specific configuration directory.
+*Syslog Message*::
+"Failed to create the Vserver-specific configuration directory for Vserver %s. Reason: The root volume is full or not available."
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+
+== vserver.config.nameService.createDirectoryFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Vserver-specific name-service configuration directory cannot be created.
+*Corrective Action*::
+Ensure that, the root volume File System(FS) is available and has enough space to create Vserver-specific name-service configuration directory.
+*Syslog Message*::
+Failed to create the Vserver-specific name-service configuration directory for Vserver %s. Reason: The root volume is full or not available.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.

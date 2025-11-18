@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: rdb-corruption-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rdb.corruption events
+---
+
+= rdb.corruption events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rdb.corruption.reported
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the cluster management Data Replication Module determines that the node's local replica set is corrupted. Automatic recovery of this data will be attempted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Corruption reported in the local database of Data Replication Module %s, error: %s.
+*Parameters*::
+*unit* (STRING): The unit that is reporting corruption.
+*message* (STRING): Error message.

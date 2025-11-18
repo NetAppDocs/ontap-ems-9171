@@ -1,0 +1,52 @@
+---
+sidebar: sidebar
+permalink: netinet6-input-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netinet6.input events
+---
+
+= netinet6.input events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netinet6.input.addr.notReady
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the destination address is not ready, so the packet is discarded.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ip6_input: packet was sent to an unready address %s->%s.
+*Parameters*::
+*srcAddr* (STRING): Source IP6 address.
+*dstAddr* (STRING): Destination IP6 address.
+
+== netinet6.input.opt.payload
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the length of the payload option in the header is inconsistent.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Length of jumbopayload option is inconsistent(%d).
+*Parameters*::
+*option* (INT): Length of option.
+
+== netinet6.input.opt.rtrAlert
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the length of the router alert option in the header is inconsistent.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Length of router alert option is inconsistent(%d).
+*Parameters*::
+*option* (INT): Length of option.

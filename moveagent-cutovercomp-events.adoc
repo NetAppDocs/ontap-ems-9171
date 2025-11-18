@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: moveagent-cutovercomp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: moveagent.cutovercomp events
+---
+
+= moveagent.cutovercomp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== moveagent.cutovercomp.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a 'volume move' operation cannot complete cutover. The system continues to retry the operation until it is successful.
+*Corrective Action*::
+Monitor the volume move job. If the problem persists, contact NetApp technical support
+*Syslog Message*::
+Unable to finish the volume move operation for DSID %llu. Failed to complete cutover.
+*Parameters*::
+*volume_dsid* (LONGINT): Destination volume Data Set ID (DSID).

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: rlib-ifconfig-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rlib.ifconfig events
+---
+
+= rlib.ifconfig events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rlib.ifconfig.linkEvent
+*Severity*::
+NOTICE
+*Description*::
+This event is generated when there is a link event on the MCC/IP managed interface.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*ifname* (STRING): The name of the interface
+*eventType* (STRING): The event type

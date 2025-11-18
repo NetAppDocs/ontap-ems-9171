@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: rdb-internal-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rdb.internal events
+---
+
+= rdb.internal events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rdb.internal.error
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the cluster management Data Replication Module encounters an internal error, possibly causing the process to exit. The process should restart automatically, with full service restored.
+*Corrective Action*::
+Verify that all the cluster management processes are running using the diagnostic command 'cluster ring show.' If not, contact NetApp technical support.
+*Syslog Message*::
+Internal program error encountered: %s.
+*Parameters*::
+*message* (STRING): Error message.

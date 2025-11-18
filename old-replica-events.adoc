@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: old-replica-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: old.replica events
+---
+
+= old.replica events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== old.replica.volume
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a wafliron operation determines that a volume served as a SnapMirror(R) destination for a previous release of Data ONTAP(R).
+*Corrective Action*::
+Retry the wafliron operation after the SnapMirror relationship is updated for this volume.
+*Syslog Message*::
+Wafliron cannot start on aggregate %s because aggregate contains a volume %s which served as a snapmirror destination for a previous release of ONTAP.
+*Parameters*::
+*aggrname* (STRING): Name of the aggregate.
+*volname* (STRING): Name of the volume.

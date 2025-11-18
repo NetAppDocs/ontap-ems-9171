@@ -1,0 +1,350 @@
+---
+sidebar: sidebar
+permalink: wafl-aggr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.aggr events
+---
+
+= wafl.aggr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.aggr.addup.offline
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an aggregate is taken offline due to the aggregate has savings because of aggregate deduplication and this version of ONTAP does not support aggregate level deduplication.
+*Corrective Action*::
+Confirm that a version of Data ONTAP which supports aggregate level deduplication is in use.
+*Syslog Message*::
+Aggregate name:'%s' has aggregate level deduplication enabled. It is not supported in current Data ONTAP version and was taken offline.
+*Parameters*::
+*name* (STRING): Aggregate name.
+
+== wafl.aggr.arl.callbacks
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during an aggregate relocation operation, when the system ignores outstanding oplock recalls so that the relocation can progress.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Ignoring %d locks during aggregate relocation of %s %s%s%s%s.
+*Parameters*::
+*count* (INT): Number of ignored locks.
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Owner of the aggregate.
+*aggr* (STRING): Name of the aggregate.
+*app* (STRING): Application UUID.
+*aggrident* (STRING): Unique identifier of the aggregate in case the aggregate name itself is insufficient.
+
+== wafl.aggr.btiddb.build
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs at the completion of an aggregate buftreeid database construction. It records the time spent, inode scanned, msg restart count, and the result.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Buftreeid database for aggregate '%s' UUID '%s' was built in %llu msec, after scanning %d inodes and restarting %d times with a final result of %s.
+*Parameters*::
+*aggrName* (STRING): Name of the aggregate.
+*uuid* (STRING): UUID of the aggregate.
+*buildtime* (LONGINT): Total time taken for buftreeid database construction.
+*inodes* (INT): Total inodes seen for buftreeid database construction.
+*restarts* (INT): Number of message restarts for buftreeid database construction.
+*success* (STRING): Whether the constructino was a success or failure.
+
+== wafl.aggr.crt.offline
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an aggregate is taken offline due to the aggregate was migrated from 7-Mode controller and this version of ONTAP does not support aggregate transition.
+*Corrective Action*::
+Confirm that a version of Data ONTAP which supports 7-mode controller migration is in use.
+*Syslog Message*::
+Aggregate name:'%s' UUID: '%s' was migrated from 7-Mode controller. It is not supported in current Data ONTAP version and was taken offline.
+*Parameters*::
+*name* (STRING): Aggregate name.
+*UUID* (STRING): Aggregate UUID.
+
+== wafl.aggr.dump.metadir.rm
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system cannot remove the dump metadirectory, which was created by a backup job for a mirror. The dump metadirectory is created on the aggregate where the mirror resides, because mirrors are RO volumes. The metadirectory is per-session, which means that the metadirectory is removed at the end of every normal backup. Therefore, the metadirectory will be deleted the next time a backup of the same volume is completed normally.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Could not remove %s in aggregate %s for volume %s with UUID %s: %s
+*Parameters*::
+*path* (STRING): Path of the dump metadirectory.
+*aggr* (STRING): Aggregate where the dump metadirectory resides.
+*vol* (STRING): Volume that the dump metadirectory was created for.
+*voluuid* (STRING): UUID of the volume that the dump metadirectory was created for.
+*err* (STRING): Error indicating why the deletion of the dump metadirectory failed.
+
+== wafl.aggr.giveback.callbacks
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during a giveback operation, when the system ignores outstanding oplock recalls so that the giveback can progress.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Ignoring %d locks when giving back %s %s%s%s%s.
+*Parameters*::
+*count* (INT): Number of ignored locks.
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Owner of the aggregate.
+*aggr* (STRING): Name of the aggregate.
+*app* (STRING): Application UUID.
+*aggrident* (STRING): Unique identifier of the aggregate in case the aggregate name itself is insufficient.
+
+== wafl.aggr.giveback.times
+*Severity*::
+INFORMATIONAL
+*Description*::
+Issued upon successful completion of giveback of an SFO HA-policy aggregate to record sub-phase timings for different phases of wafl giveback.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*aggrName* (STRING): The name of the Aggregate.
+*timesString* (STRING): Report of sub phase times in SHCommit_wafl routine.
+
+== wafl.aggr.hya.eviction.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Flash Pool (tm) eviction cannot remove or update a read-cached block due to the corruption of its metadata.
+*Corrective Action*::
+Run wafliron on the containing aggregate to correct the Flash Pool metadata. For more information or assistance, contact NetApp technical support.
+*Syslog Message*::
+Eviction for aggregate %s found mismatch for SSD pvbn %llu, HDD pvbn %llu, found SSD pvbn %llu.
+*Parameters*::
+*aggr* (STRING): Aggregate name.
+*expected_ssd_pvbn* (LONGINT): SSD block number expected in the cache metadata for the original block.
+*hdd_pvbn* (LONGINT): HDD block number of the original block.
+*cachemap_ssd_pvbn* (LONGINT): SSD block number found in the cache metadata for the original block.
+
+== wafl.aggr.hya.full.high
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a hybrid aggregate unexpectedly runs low on SSD free space. Contact NetApp technical support.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+Hybrid aggregate %s SSD free space unexpectedly ran critically low. Contact NetApp technical support.
+*Parameters*::
+*vol* (STRING): Hybrid aggregate name.
+
+== wafl.aggr.hya.full.low
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a hybrid aggregate unexpectedly runs low on SSD free space. Contact NetApp technical support.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+Hybrid aggregate %s SSD free space unexpectedly ran low. Contact NetApp technical support.
+*Parameters*::
+*vol* (STRING): Hybrid aggregate name.
+
+== wafl.aggr.mcc.callbacks
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during a MetroCluster(tm) aggregate switchback operation, when the system ignores outstanding oplock recalls, which can take a long time. This is to allow the switchback operation to make progress.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Ignoring recalling %d locks for aggregate %s %s%s%s%s, so that the MetroCluster switchback can make progress.
+*Parameters*::
+*count* (INT): Number of ignored locks.
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Owner of the aggregate.
+*aggr* (STRING): Name of the aggregate.
+*app* (STRING): Application UUID.
+*aggrident* (STRING): Unique identifier of the aggregate in case the aggregate name itself is insufficient.
+
+== wafl.aggr.nospc.del.snapshot
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when snapshots of an aggregate are autodeleted to free up space for newer writes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Autodeletion of snapshots for aggregate "%s" was triggered due to: %s. Available space: %d%%, space used by snapshots: %d%%.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate.
+*reason* (STRING): The reason why autodeletion of snapshots was triggered.
+*avail_pct* (INT): Percentage of available space in the aggregate.
+*snap_used_pct* (INT): Percentage of space used by snapshots in the aggregate.
+
+== wafl.aggr.overcommitted.vsm
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is not enough free space in the aggregate to guarantee free space in all the SnapMirror(R) destinations.
+*Corrective Action*::
+Increase the free space in the aggregate by shrinking existing FlexVol(tm) volumes or adding more disk space.
+*Syslog Message*::
+Not enough free space in aggregate %s to guarantee free space in all SnapMirror destinations.
+*Parameters*::
+*aggr_name* (STRING): Aggregate name.
+
+== wafl.aggr.recompact.complete
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the "aggr recompact " scanner has finished.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s scanner finished on %s %s%s%s%s. %s tried on %ld blocks.
+*Parameters*::
+*opname* (STRING): Opname for the scanner.
+*voltype* (STRING): Volume type on which scanner was run.
+*aggr_owner* (STRING): Owner of the volume.
+*aggr_name* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*uuid* (STRING): Volume uuid .
+*opname1* (STRING): Opname for the scanner.
+*val* (LONGINT): Number of vbns acted on.
+
+== wafl.aggr.recompact.estimate
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the "aggr recompact analyze" command has finished and anaylzed how many compacted blocks are worth recompacting.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Recompact analyze scan finished on aggregate %s%s. Block fragmentation distribution is [%ld%%, %ld%%, %ld%%, %ld%%] for %llu compacted blocks. Average compaction ratio for the aggregate is %lu.%02lu:1 approximately.
+*Parameters*::
+*aggr_owner* (STRING): Owner of the aggregate.
+*aggr_name* (STRING): Aggregate name.
+*val_low* (LONGINT): Percentage of blocks less than 25% full.
+*val_mid* (LONGINT): Percentage of blocks less than 50% full.
+*val_high* (LONGINT): Percentage of blocks less than 75% full.
+*val_full* (LONGINT): Percentage of blocks greater than 75% full.
+*val_total* (LONGINT): Total number of compacted blocks.
+*avg_compaction* (LONGINT): Average compaction ratio.
+*avg_compaction1* (LONGINT): Average compaction ratio.
+
+== wafl.aggr.relocation.times
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an aggregate relocation is complete to record timing information about the relocation process.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*aggrName* (STRING): Name of the aggregate.
+*timesString* (STRING): Report of aggregate relocation phase timing.
+
+== wafl.aggr.reserve.set
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during mounting a volume, boot or takeover/giveback. This message indicates that the aggregate reserve was set to the saved value.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Aggregate reserve for aggregate %s was set to %d.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate.
+*value* (INT): New aggregate reserve.
+
+== wafl.aggr.reserve.short
+*Severity*::
+ERROR
+*Description*::
+This message occurs when we try to set an aggregate reserve. This message indicates that there is not enough space to honor the saved value of aggregate reserve.
+*Corrective Action*::
+Try creating space in the aggregate by shrinking or destroying volumes, adding disks or changing the guarantee type of volumes in the aggregate to NONE
+*Syslog Message*::
+Aggregate reserve for aggregate %s could not be set as we are short by %s.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate.
+*short_by* (STRING): How much disk space we are short by.
+
+== wafl.aggr.rsv.low.nomount
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when an aggregate consumes almost all of its free space reserve and should not be brought back online without assistance from technical support to address the free space issue.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Failing mount of aggregate %s. Free space reserve is too low. Contact NetApp technical support for assistance.
+*Parameters*::
+*aggr* (STRING): Aggregate name.
+
+== wafl.aggr.snapReserve
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system boot process detects that the aggregate snapshot spill percentage has been modified by bootargs.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Aggregate snapshot spill percentage is set to %d%%.
+*Parameters*::
+*aggr_snap_spill_pct* (INT): Aggregate snapshot spill percentage.
+
+== wafl.aggr.uncompact.complete
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the "aggr uncompact " scanner has finished.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Uncompact scanner finished on %s %s%s%s%s. Uncompacted %ld blocks.
+*Parameters*::
+*voltype* (STRING): Volume type on which scanner was run.
+*aggr_owner* (STRING): Owner of the volume.
+*aggr_name* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*uuid* (STRING): Volume uuid .
+*val* (LONGINT): Number of vbns acted on.
+
+== wafl.aggr.uncompact.rep.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the "aggr uncompact scan" command fails to uncompact some blocks because of RAID errors. The system cannot be restored to the previous release until the problem is corrected.
+*Corrective Action*::
+Uncompaction of blocks with RAID errors can be done safely only on flex volumes. Run the "vol efficiency undo -data-compaction" command on the flex volume that reported RAID errors.
+*Syslog Message*::
+RAID errors found when uncompaction scan was run on aggregate %s%s. Run uncompaction scan on flex volume %s.
+*Parameters*::
+*aggr_owner* (STRING): Owner of the aggregate.
+*aggr_name* (STRING): Aggregate name.
+*vvol_name* (STRING): Flex volume name.
+
+== wafl.aggr.uncompact.skipped
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when uncompact scanner has to abort due to some error conditions.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Skipping uncompact scan on aggregate %s. Volume %s encountered error %d.
+*Parameters*::
+*aggr_name* (STRING): Aggregate name.
+*vvol_name* (STRING): Flex volume name.
+*error_code* (INT): Error code for the abort.

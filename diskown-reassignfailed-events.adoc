@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: diskown-reassignfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.reassignfailed events
+---
+
+= diskown.reassignfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.ReassignFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk reassign request fails.
+*Corrective Action*::
+Verify that there are no disk connectivity issues and that the procedures for executing the 'storage disk reassign' command are being followed.
+*Syslog Message*::
+Disk reassign request failed. Reason: %s.
+*Parameters*::
+*reason* (STRING): Reason for failure.

@@ -1,0 +1,45 @@
+---
+sidebar: sidebar
+permalink: repository-ns-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repository.ns events
+---
+
+= repository.ns events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Repository.NS.Dangling.Lock
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+ERROR
+*Description*::
+This message occurs during a client file operation request, when the Infinite Volume namespace redirector runs into failures that prevent it from cleaning up a transient lock on the namespace constituent. If there are enough of these dangling locks on the namespace constituent, the lock resource might be exhausted, which causes certain operations to fail.
+*Corrective Action*::
+Clear the reported lock ID by using the 'vserver locks break' command at the advanced privilege level.
+*Syslog Message*::
+Failures prevented the cleanup of a transient lock with UUID %s on the namespace constituent in Vserver %u.
+*Parameters*::
+*lockid* (STRING): Lock UUID of the lock that is left dangling.
+*vserverId* (INT): Vserver ID for which the error occurred.
+
+== Repository.NS.Dangling.Streams
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a client wants to truncate the file and only the truncation of the data constituent file succeeds while the redirector truncation fails. This leaves behind dangling stream redirectors. These dangling stream redirectors cannot be read or modified and unnecessarily consume resources on the namespace constituent.
+*Corrective Action*::
+Go to controller system shell, and delete all streams corresponding to that redirector. Example of deleting dangling streams from the system shell: bash-3.2$ ls /clus/vs0/NS/File.txt/nmatr%/ s1.txt s2.txt bash-3.2$ sudo rm -f /clus/vs0/NS/File.txt/nmatr%/* If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Failures caused the Infinite Volume namespace redirector to leave dangling stream redirectors on file (handle: %s) on the namespace constituent in Vserver %u.
+*Parameters*::
+*filehandle* (STRING): File handle of the redirector base file that has dangling stream redirectors.
+*vserverId* (INT): Vserver ID for which the error occurred.

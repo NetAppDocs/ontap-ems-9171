@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: secd-rogue-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: secd.rogue events
+---
+
+= secd.rogue events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== secd.rogue.client.detected
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a CIFS authentication request fails more than 30 times in one minute with an invalid login password from a particular client.
+*Corrective Action*::
+Check if there is an unexpected increase in the number of authentication requests with an invalid login password from a particular CIFS client.
+*Syslog Message*::
+Too many CIFS authentication attempts with an invalid password from a client with IP "%s", user name "%s", and domain "%s" on SVM "%s".
+*Parameters*::
+*clientIP* (STRING): IP address of the client that attempts to mount with an invalid password.
+*userName* (STRING): User who is trying to mount with an invalid password.
+*domain* (STRING): Domain to which the user belongs.
+*vserverName* (STRING): Storage virtual machine(SVM) associated with this operation.

@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: wafl-compaction-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.compaction events
+---
+
+= wafl.compaction events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.compaction.CP.value
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the aggregates compaction CP value is changed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Compaction CP count in aggregate "%s" changed from %ld to %ld at aggregate's CP count %ld.
+*Parameters*::
+*volname* (STRING): Volume name on which value was changed.
+*oldval* (LONGINT): Old value of CP count.
+*newval* (LONGINT): New value of CP count.
+*fs_cpcount* (LONGINT): CP count of aggregate fsinfo.

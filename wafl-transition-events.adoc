@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: wafl-transition-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.transition events
+---
+
+= wafl.transition events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.transition.cp.completed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs at the completion of a WAFL(R) consistency point (CP) that occurs during a failover transition, such as takeover or giveback. This event logs the time spent and other important performance information.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Transition CP with reason %s for %s volumes with a total of %s dirty buffers took %ums with longest CP phases being %s on aggregate %s.
+*Parameters*::
+*tag* (STRING): Reason for the CP occurring and a status code.
+*vols* (STRING): Counts of flexible volumes that participated in the CP.
+*dirty_bufs* (STRING): Number of WAFL buffers that were in use when the CP began and the number required to complete the CP.
+*total_time* (INT): Number of milliseconds that the CP ran for.
+*top_phases* (STRING): Top time consuming phases of the CP.
+*aggrname* (STRING): Name of the aggregate.

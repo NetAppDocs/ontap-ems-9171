@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: raid-quiesce-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.quiesce events
+---
+
+= raid.quiesce events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.quiesce.diskProcessTime
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during the ownership change of a disk to indicate the time taken by RAID to quiesce disk active I/O's.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*process* (STRING): Description of the process.
+*disk* (STRING): Name of the disk.
+*time* (LONGINT): Time taken by the specified process.

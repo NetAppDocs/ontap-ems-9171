@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: sms-operation-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sms.operation events
+---
+
+= sms.operation events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sms.operation.blacklisted
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a blacklisted operation is performed on the primary volume of a SnapMirror(R) Sync relationship when the relationship status is "Transitioning".
+*Corrective Action*::
+Auto-resync will attempt to bring the SnapMirror Sync relationship status to "InSync". You can also use the "snapmirror resync" command to change the relationship status. Avoid issuing blacklisted operations while the relationship status is "Transitioning".
+*Syslog Message*::
+SnapMirror Sync operation encountered a failure while the relationship status is "Transitioning" for relationship UUID "%s" because blacklisted operation "%s" was performed in the "%s" state.
+*Parameters*::
+*relationship_id* (STRING): Relationship UUID.
+*operation* (STRING): Blacklisted operation that was executed during the transitioning state.
+*state* (STRING): Transitioning phase during which blacklisted operations are performed.

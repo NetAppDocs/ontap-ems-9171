@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: callhome-vol-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.vol events
+---
+
+= callhome.vol events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.vol.offline
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects an inconsistent volume and takes it offline. The file system inconsistency could be from one or more sources. The inconsistency might be related to previous operations or to current operations. Disabling access is a protective measure to ensure that further inconsistencies are avoided. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+If the operating environment for the system, storage, or associated cabling has changed in terms of temperature, humidity, vibration, unstable electrical power, or other physical factors, gracefully shut down and power off the system until the environment is restored to normal operations. If the operating environment has not changed, identify the source of the inconsistency by checking for previous errors and warnings. Also check for hardware statistics from Fibre Channel, SCSI, disk drives, other communications mechanisms, and previous administrative activities. Another approach is to consult with NetApp technical support (it is recommended that you do so before attempting this step), and then run WAFL(R) Iron (wafliron) on the volume to identify and optionally repair the inconsistency. If you need further assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for VOLUME INCONSISTENT AND TAKEN OFFLINE
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.vol.space.crit
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a volume has overallocated space. It will be taken offline soon and the node will reboot. If your system is configured to do so, it generates and transmits an AutoSupport (or "call home") message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+For non-ASA r2 platforms, create space by increasing volume or aggregate size or by deleting data. While changing the provisioning from thick to thin will prevent further utilization of space, it is no longer sufficient to prevent the volume or aggregate from being offlined. In a volume, size can be increased with the "volume size" command. To change provisioning in a volume, reserved files can be unreserved using the "volume file reservation" command. In an aggregate, size can be increased by adding disks. To change provisioning in an aggregate, volume guarantees can be changed from "volume" to "none" using the "space-guarantee" parameter in the "volume modify" command. The nodeshell "vol status -S" and "aggr status -S" commands display "Total Used" and "Total Physical Used" values greater than 100% when the reserve is being used. The "vol.log.overalloc" and "volume.phys.overalloc" EMS events and their associated SNMP traps of "volumeLogicalOverallocated" and "volumePhysicalOverallocated" are issued when the volume or aggregate is consuming more than the recommended amount of reserve. For ASA r2 platforms, create space in aggregate or volume. To create space in an aggregate, add more disks to the cluster. To create space in a volume, delete data or delete Snapshot copies. To delete a Snapshot copy, use the "vserver consistency-group snapshot delete" command.
+*Syslog Message*::
+Call home for VOLUME CRITICALLY OUT OF SPACE ERROR.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

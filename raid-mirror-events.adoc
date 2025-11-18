@@ -1,0 +1,737 @@
+---
+sidebar: sidebar
+permalink: raid-mirror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.mirror events
+---
+
+= raid.mirror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.mirror.aggrSnapUse
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a SyncMirror(R) aggregate uses aggregate snapshots other than SyncMirror aggregate snapshots. SyncMirror uses aggregate snapshots to allow fast resynchronization after one plex was temporarily offline. However, Data ONTAP(R) sometimes must delete aggregate snapshots to preserve space guarantees for flexible volumes. If that happens during SyncMirror resynchronization or while one plex is offline, the mirror must be reinitialized by copying all data from one plex to another. To reduce the chance of deleting SyncMirror snapshots, you should not create or schedule aggregate snapshots in SyncMirror aggregates.
+*Corrective Action*::
+Disable automatic aggregate snapshots and delete all snapshots in the aggregate except those with names starting with "mirror_resync" or "mirror_verify". To disable automatic aggregate snapshots, use the 'snap sched -A aggr-name 0' command. To list snapshots in the aggregate, use the 'snap list -A aggr-name' command. To delete a snapshot, use the 'snap delete -A aggr-name snapshot-name' command. For further information or assistance, contact NetApp technical support.
+*Syslog Message*::
+Aggregate snapshots are used in SyncMirror %s '%s%s'. Creating or scheduling snapshots in SyncMirror aggregates is not recommended.
+*Parameters*::
+*vol_type* (STRING): Always "aggregate," indicating that the warning is issued about an aggregate.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.mirror.bigio.restrict
+*Severity*::
+ALERT
+*Description*::
+An aggregate that experienced a medium error during reconstruction is restricted and marked wafl-inconsistent, but starting wafliron has failed. This event is issued to alert operator that aggregate is not accessible and wafliron must be started to allow access to it.
+*Corrective Action*::
+Start wafliron on the indicated aggregate.
+*Syslog Message*::
+%s %s is restricted. Start wafliron to allow access to it
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.mirror.bigio.restrict.failed
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when automatically restricting an aggregate fails after a medium error happened during a reconstruction.
+*Corrective Action*::
+Contact NetApp technical support. For further information about correcting the problem, see the knowledgebase article 3013638.
+*Syslog Message*::
+Failed to restrict the %s %s (%s)
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*vol* (STRING): Name of the aggregate.
+*reason* (STRING): Specific reason preventing the restrict operation.
+
+== raid.mirror.bigio.wafliron.nostart
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when wafliron fails to start automatically on an aggregate that experienced a medium error during reconstruction and is restricted and marked WAFL(R) inconsistent.
+*Corrective Action*::
+Contact NetApp technical support. For further information about correcting the problem, see the knowledgebase article 3013638.
+*Syslog Message*::
+Wafliron cannot start on %s %s (%s)
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*vol* (STRING): Name of the aggregate.
+*reason* (STRING): Specific reason preventing wafliron to start.
+
+== raid.mirror.faultIsolation.reminder
+*Severity*::
+ERROR
+*Description*::
+This message occurs when both plexes of a SyncMirror(R) configuration have disks in the same hardware-based disk pool.
+*Corrective Action*::
+a) Identify the problem aggregate from the system logs. b) Determine which mirror plexes have disks in the same hardware-based pools. c) Determine how this occurred: possible causes include 1) Wiring problem 2) Reconstruction forced mixed pools 3) Mirror was created forcibly d) Based on the information you gather, determine how to correct the issue. For example, use the "storage disk replace" command to copy the disk belonging to the wrong pool to a disk belonging to the right pool. e) If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+%s %s plexes not fault isolated. Multiple plexes have disks in: %s
+*Parameters*::
+*voltype* (STRING): Aggregate or volume.
+*volname* (STRING): Name of the aggregate or volume.
+*pool* (STRING): Disk pools that have disks from the aggregate.
+
+== raid.mirror.lowSnapReserve
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the aggregate snapshot reserve in a SyncMirror(R) aggregate is too low, increasing the risk of deleting SyncMirror snapshots. SyncMirror uses aggregate snapshots to allow fast resynchronization after a temporary loss of connectivity to one plex. However, Data ONTAP(R) sometimes must delete aggregate snapshots to preserve space guarantees for flexible volumes. If that happens during SyncMirror resynchronization or while one plex is offline, the mirror must be reinitialized by copying all data from one plex to another.
+*Corrective Action*::
+Increase the aggregate snapshot reserve using the command 'snap reserve -A aggr-name percent'. Do not decrease the aggregate snapshot reserve in SyncMirror aggregates below the default 5%. The suggested snapshot reserve might vary from message to message for the same aggregate if the write load on the aggregate changes and especially if the aggregate option 'resyncsnaptime' is set to a significantly lower value than the default 60 minutes. If one suggestion seems unreasonably high, you might want to track messages for several days and set the aggregate snapshot reserve to the highest value that is consistently suggested during periods of high write load on the aggregate.
+*Syslog Message*::
+Aggregate snapshot reserve in SyncMirror %s '%s%s' is too low. It is set to %d%%. Increase it to %d%%.
+*Parameters*::
+*vol_type* (STRING): Always "aggregate," indicating that the warning is issued about an aggregate.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*current_snap_reserve* (INT): Current aggregate snapshot reserve (percent).
+*suggested_snap_reserve* (INT): Suggested higher aggregate snapshot reserve (percent).
+
+== raid.mirror.read.mismatch
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a mismatch between data in two plexes of a SyncMirror(R) aggregate. The system does not perform data verification by reading from both plexes during normal operation, but it does so during wafliron. The system fixes the inconsistency across mirrored plexes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Mirror read verification failed in the %s '%s%s': mismatch between disks %s and %s (vbn %llu, blockNum %llu).
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*srcDisk* (STRING): Name of the disk in the first plex.
+*dstDisk* (STRING): Name of the disk in the second plex.
+*volumeBno* (LONGINT): Volume block number.
+*blockNum* (LONGINT): Disk block number.
+
+== raid.mirror.readerr.block.rewrite
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when mirror read error handling fixes a multi-disk media or checksum error on Raid0 volumes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Mirror error handler rewriting bad block on %s%s, block #%llu
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*disk* (STRING): The name of the disk containing the block being rewritten.
+*blockNum* (LONGINT): The physical block number of the disks being rewritten.
+
+== raid.mirror.resync.deferred
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a mirror plex resynchronization is deferred due to inadequate incore resources.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: resynchronization deferred (%s)
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*mirror* (STRING): Name of the mirror object that could not resynchronize.
+*reason* (STRING): Text describing the reason.
+
+== raid.mirror.resync.deferred.ok
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a previously deferred resynchronization is now ready to proceed because of availability of incore resources.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: resynchronization previously deferred, now proceeding
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*mirror* (STRING): Name of the mirror object that can now resynchronize.
+
+== raid.mirror.resync.done
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when resynchronization has been completed on a specific mirror.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: resynchronization completed in %s
+*Parameters*::
+*mirror* (STRING): The name of the mirror object that is completed resynchronization
+*duration* (STRING): The amount of time the resynchronization required
+
+== raid.mirror.resync.progress
+*Severity*::
+NOTICE
+*Description*::
+This message occurs every five minutes while RAID mirror resynchronization is in progress. It also occurs at the end of RAID group synchronization.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: mirror resync is %s%% completed. At current throughput rate of %d MB/s it is estimated to finish in %s (HH:MM:SS).
+*Parameters*::
+*tree* (STRING): RAID mirrored tree name.
+*percent* (STRING): Percentage of mirror resync completed.
+*throughput* (INT): Current input/output (I/O) rate.
+*eta_duration* (STRING): The amount of time the resynchronization is expected to run.
+
+== raid.mirror.resync.snap.base
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs at the beginning of a resynchronization and it lists the base and the resynchronization snapshots for the resynchronization.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s: base snapshot %d, CP %d (%d), resync snapshot %d, CP %d (%d)
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*base_snapid* (INT): Base snapshot identifier.
+*base_CP_count* (INT): Base snapshot consistency point count.
+*base_timestamp* (INT): Base snapshot timestamp (seconds since 1/1/1970).
+*next_snapid* (INT): Resynchronization snapshot identifier.
+*next_CP_count* (INT): Resynchronization snapshot consistency point count.
+*next_timestamp* (INT): Resynchronization snapshot timestamp (seconds since 1/1/1970).
+
+== raid.mirror.resync.snapcrtfail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when resynchronization fails to create a mirror resync snapshot.
+*Corrective Action*::
+Increase the size of the root volume or delete old snapshots.
+*Syslog Message*::
+%s %s%s: could not create mirror resynchronization snapshot %s (%s)
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate object that is being resynchronized.
+*snapName* (STRING): Name of the snapshot that was not created.
+*error* (STRING): Error code returned by the failed operation.
+
+== raid.mirror.resync.snapdelfail
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when resynchronization fails to delete a mirror resync snapshot. The WAFL(R) snapshot autodelete functionality will automatically delete the snapshot.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s: could not delete mirror resynchronization snapshot %s (%s)
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate object that is being resynchronized.
+*snapName* (STRING): Name of the snapshot that was not deleted.
+*error* (STRING): Error code returned by the failed operation.
+
+== raid.mirror.resync.snaprenamefail
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when resynchronization has failed to rename a mirror resync snapshot. The snapshot is marked as invalid and is deleted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s: could not rename mirror resynchronization snapshot %s to %s (%s)
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate object that is being resynchronized.
+*snapName* (STRING): Name of the snapshot that was not renamed.
+*snapName2* (STRING): Attempted new name of the snapshot.
+*error* (STRING): Error code returned by the failed operation.
+
+== raid.mirror.resync.snaprenameok
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when resynchronization renames a mirror resync snapshot.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s: renamed mirror resynchronization snapshot %s to %s
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate object that is being resynchronized.
+*snapName* (STRING): Old name of the snapshot that has been renamed.
+*snapName2* (STRING): New name of the snapshot that has been renamed.
+
+== raid.mirror.resync.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when resynchronization is initiated on a specific mirror.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: start resynchronize to target %s
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*mirror* (STRING): Name of the mirror object that is initiating resynchronization.
+*plex* (STRING): Name of the plex object that is the resynchronization target.
+
+== raid.mirror.snapDel.degraded
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a SyncMirror(R) aggregate snapshot is deleted while one plex is offline or resynchronizing. Fast resynchronization of that plex (level 1) is no longer possible. The plex must be resynchronized by copying all data from the online plex (level 0). Without an intervention, it is likely that the level 0 resynchronization will also fail repeatedly, and that it will never be completed. SyncMirror uses aggregate snapshots for resynchronization after a temporary loss of connectivity to one plex. Data ONTAP(R) sometimes must delete aggregate snapshots to preserve space guarantees for flexible volumes. This message indicates that configuration of aggregate space use must be changed for SyncMirror resynchronization to be completed.
+*Corrective Action*::
+1. Disable automatic aggregate snapshots in the aggregate using the command 'snap sched -A aggr-name 0'. 2. Get a list of snapshots in the aggregate using the command 'snap list -A aggr-name'. Delete all snapshots in the aggregate except those with names starting with "mirror_resync". 3. Increase the aggregate snapshot reserve using the command 'snap reserve -A aggr-name percent'. Increase the aggregate snapshot reserve by as much free space as the aggregate allows, but there is no need to increase it beyond 50%. 4. If further increasing the aggregate snapshot reserve is not possible, disable automatic deletion of aggregate snapshots using the command 'aggr options snapshot_autodelete off'. That might also disable space guarantees on flexible volumes in the aggregate. In that case, you must monitor space used in the aggregate with the command 'df -A aggr-name'. If the aggregate gets full, the application write operations will fail. In environments that are sensitive to that error, such as CIFS or LUNs, disabling automatic deletion of aggregate snapshots should be avoided if possible. If you enable automatic deletion of aggregate snapshots using the command 'aggr options snapshot_autodelete on', the plex resynchronization will probably fail again. 5. If resynchronization cannot be completed without filling up the aggregate, consider adding more disks to the aggregate. 6. After successful resynchronization, enable automatic deletion of aggregate snapshots using the command 'aggr options snapshot_autodelete on'. Also restore the original aggregate snapshot reserve using the command 'snap reserve -A aggr-name percent'. Do not decrease the aggregate snapshot reserve in SyncMirror aggregates below the default 5%.
+*Syslog Message*::
+The SyncMirror aggregate snapshot in %s '%s%s' is being deleted while the aggregate is mirror-degraded. Level 1 resync is not possible.
+*Parameters*::
+*vol_type* (STRING): Always "aggregate," indicating that the message is issued about an aggregate.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.mirror.snapDel.normal
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SyncMirror(R) aggregate snapshot is deleted while plexes are synchronized. This creates no immediate problem because Data ONTAP(R) creates a new SyncMirror aggregate snapshot, but it indicates that the same event can occur when one plex is offline or resynchronizing, which is a problem. SyncMirror uses aggregate snapshots to allow fast resynchronization after a temporary loss of connectivity to one plex. Data ONTAP sometimes must delete aggregate snapshots to preserve space guarantees for flexible volumes. If that happens during SyncMirror resynchronization or while one plex is offline, the mirror must be reinitialized by copying all data from one plex to another.
+*Corrective Action*::
+Increase the aggregate snapshot reserve using the command 'snap reserve -A aggr-name percent'. Do not decrease the aggregate snapshot reserve in SyncMirror aggregates below the default 5%. The suggested snapshot reserve might vary from message to message for the same aggregate if the write load on the aggregate changes. If one suggestion seems unreasonably high, you might want to track messages for several days and set the aggregate snapshot reserve to the highest value that is consistently suggested during periods of high write load on the aggregate.
+*Syslog Message*::
+The SyncMirror aggregate snapshot in %s '%s%s' is being deleted. The aggregate snapshot reserve is set to %d%%. Increase it to %d%%.
+*Parameters*::
+*vol_type* (STRING): Always "aggregate," indicating that the warning is issued about an aggregate.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*current_snap_reserve* (INT): Current aggregate snapshot reserve (percent).
+*suggested_snap_reserve* (INT): Suggested higher aggregate snapshot reserve (percent).
+
+== raid.mirror.snapEst.degraded
+*Severity*::
+ERROR
+*Description*::
+This message occurs periodically when one plex in a SyncMirror(R) aggregate is offline or failed, and automatic deletion of aggregate snapshots is enabled. It provides an estimate of the time before a SyncMirror snapshot might get deleted. SyncMirror uses aggregate snapshots to allow fast resynchronization after a temporary loss of connectivity to one plex. However, Data ONTAP(R) sometimes must delete aggregate snapshots to preserve space guarantees for flexible volumes. If that happens during SyncMirror resynchronization or while one plex is offline, the mirror must be reinitialized by copying all data from one plex to another.
+*Corrective Action*::
+1. Disable automatic aggregate snapshots in the aggregate using the command 'snap sched -A aggr-name 0'. 2. Get a list of snapshots in the aggregate using the command 'snap list -A aggr-name'. Delete all snapshots in the aggregate except those with names starting with "mirror_resync". 3. Bring online the plex that is offline or failed as soon as possible. 4. Do not rely only on the estimate of the time before automatic deletion of aggregate snapshots. Monitor space used by the SyncMirror snapshots with the command 'df -A aggr-name'. If SyncMirror snapshots grow beyond the aggregate snapshot reserve, they might be automatically deleted, and that prevents fast SyncMirror resynchronization.
+*Syslog Message*::
+SyncMirror %s '%s%s' is mirror-degraded. %d%% of the snapshot reserve is used. SyncMirror snapshot is estimated to be automatically deleted in %s.
+*Parameters*::
+*vol_type* (STRING): Always "aggregate," indicating that the message is issued about an aggregate.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*snap_reserve_used* (INT): Percent of snapshot reserve space used.
+*est_time_left* (STRING): Estimated time until automatic deletion of aggregate snapshots.
+
+== raid.mirror.snapResChanged
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the aggregate snapshot reserve in a SyncMirror(R) aggregate is changed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The reserve of the aggregate snapshot in SyncMirror aggregate "%s%s" was changed from %d%% to %d%%.
+*Parameters*::
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*old_snap_reserve* (INT): Percent of the reserve of the old aggregate snapshot.
+*new_snap_reserve* (INT): Percent of the reserve of the new aggregate snapshot.
+
+== raid.mirror.snapResExpand.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when one plex in a SyncMirror(R) aggregate is offline, failed, or resynchronizing, and Data ONTAP(R) attempts to increase the aggregate snapshot reserve in that aggregate to delay deleting SyncMirror snapshots, but changing the aggregate snapshot reserve fails. SyncMirror uses aggregate snapshots to allow fast resynchronization after a temporary loss of connectivity to one plex. However, Data ONTAP sometimes must delete aggregate snapshots to preserve space guarantees for flexible volumes. If that happens during SyncMirror resynchronization or while one plex is offline, the mirror must be reinitialized by copying all data from one plex to another.
+*Corrective Action*::
+1. Try to increase aggregate snapshot reserve using the command 'snap reserve -A aggr-name new-snap-reserve'. 2. Disable automatic aggregate snapshots in the aggregate using the command 'snap sched -A aggr-name 0'. 3. Get a list of snapshots in the aggregate using the command 'snap list -A aggr-name'. Delete all snapshots in the aggregate except those with names starting with "mirror_resync". 4. Bring online the plex that is offline or failed as soon as possible. 5. Monitor space used by the SyncMirror snapshots with the command 'df -A aggr-name'. If SyncMirror snapshots grow beyond the aggregate snapshot reserve, they might be automatically deleted, and that prevents fast SyncMirror resynchronization. 6. When resynchronization is complete, restore the old value for the aggregate snapshot reserve using the command 'snap reserve -A aggr-name old-snap-reserve'.
+*Syslog Message*::
+An attempt to increase the aggregate snapshot reserve in SyncMirror %s '%s%s' from %d%% to %d%% failed (%s).
+*Parameters*::
+*vol_type* (STRING): Always "aggregate," indicating that the message is issued about an aggregate.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*old_snap_reserve* (INT): Old aggregate snapshot reserve (percent).
+*new_snap_reserve* (INT): New higher aggregate snapshot reserve (percent).
+*reason* (STRING): Reason for the failure.
+
+== raid.mirror.snapResExpanded
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when one plex in a SyncMirror(R) aggregate is offline, failed, or resynchronizing, and the aggregate snapshot reserve in that aggregate is increased to delay deleting SyncMirror snapshots. The aggregate snapshot reserve will be reverted to its previous value when resynchronization is complete. You can always change the aggregate snapshot reserve using the command 'snap reserve -A aggr-name percent'. SyncMirror uses aggregate snapshots to allow fast resynchronization after a temporary loss of connectivity to one plex. However, Data ONTAP(R) sometimes must delete aggregate snapshots to preserve space guarantees for flexible volumes. If that happens during SyncMirror resynchronization or while one plex is offline, the mirror must be reinitialized by copying all data from one plex to another.
+*Corrective Action*::
+1. Disable automatic aggregate snapshots in the aggregate using the command 'snap sched -A aggr-name 0'. 2. Get a list of snapshots in the aggregate using the command 'snap list -A aggr-name'. Delete all snapshots in the aggregate except those with names starting with "mirror_resync". 3. Bring online the plex that is offline or failed as soon as possible. 4. Monitor space used by the SyncMirror snapshots with the command 'df -A aggr-name'. If SyncMirror snapshots grow beyond the aggregate snapshot reserve, they might be automatically deleted, and that prevents fast SyncMirror resynchronization.
+*Syslog Message*::
+Aggregate snapshot reserve in SyncMirror %s '%s%s' is increased from %d%% to %d%% while the mirror is degraded or resyncing. Aggregate snapshot reserve will be reverted to the old value when resync is complete.
+*Parameters*::
+*vol_type* (STRING): Always "aggregate," indicating that the message is issued about an aggregate.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*old_snap_reserve* (INT): Old aggregate snapshot reserve (percent).
+*new_snap_reserve* (INT): New higher aggregate snapshot reserve (percent).
+
+== raid.mirror.snapResReverted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the aggregate snapshot reserve in a SyncMirror(R) aggregate is reverted to the original value after a successful resynchronization in that aggregate.
+*Corrective Action*::
+Verify that the new snapshot reserve is correct. You can always change the aggregate snapshot reserve using the command 'snap reserve -A aggr-name percent'.
+*Syslog Message*::
+Aggregate snapshot reserve in SyncMirror %s '%s%s' was reverted from %d%% back to %d%%.
+*Parameters*::
+*vol_type* (STRING): Always "aggregate," indicating that the message is issued about an aggregate.
+*owner* (STRING): Owner of the aggregate.
+*vol* (STRING): Name of the aggregate.
+*old_snap_reserve* (INT): Old aggregate snapshot reserve (percent).
+*new_snap_reserve* (INT): New aggregate snapshot reserve (percent).
+
+== raid.mirror.verify.aborted
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when verification has been completed on a specific mirror due to abort.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: verification stopped after %s
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*mirror* (STRING): The name of the mirror object that has aborted verification
+*duration* (STRING): The amount of time the verification required
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.mirror.verify.deferred
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the mirror verification process is postponed due to inadequate resources. Mirror verification is a long running I/O operation that compares the blocks on both sides of mirror and reports any mismatches it finds. The operation will start when it get available resources.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: verification deferred (%s)
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*mirror* (STRING): Name of the mirror object that could not be verified.
+*reason* (STRING): Reason code.
+
+== raid.mirror.verify.deferred.ok
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a deferred mirror verify operation is now ready to proceed because of availability of incore resources.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: verification previously deferred, now proceeding
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*mirror* (STRING): Name of the mirror object that can now be verified.
+
+== raid.mirror.verify.done
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when verification has been completed on a specific mirror.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: verification completed in %s
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*mirror* (STRING): The name of the mirror object that is completed verification
+*duration* (STRING): The amount of time the verification required
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.mirror.verify.mismatch
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when mirror verification detected and corrected a mismatch.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: verify mismatch, disks %s and %s (vbn %llu, blockNum %llu)%s.
+*Parameters*::
+*grpName* (STRING): Name of the RAID group object that is being corrected.
+*srcDisk* (STRING): Name of the disk with data used to correct the mismatch.
+*dstDisk* (STRING): Name of the disk being corrected.
+*volumeBno* (LONGINT): Volume block number.
+*blockNum* (LONGINT): Disk block number.
+*correcting* (STRING): " : correcting" if normal verify, "" if -n verify.
+
+== raid.mirror.verify.resume
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a verify has been resumed on a mirror pair.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: resume mirror verification
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*mirror* (STRING): The name of the mirror object that is resuming verification
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.mirror.verify.snapcrtfail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when mirror verification fails to create a mirror verify snapshot due to no space on the device for a snapshot or the maximum number of snapshots were reached. Mirror verification is a long running I/O operation that compares the blocks on both sides of mirror and reports any mismatches it finds.
+*Corrective Action*::
+Increase the size of the root volume or delete old snapshots.
+*Syslog Message*::
+%s %s%s: could not create mirror verification snapshot %s (%s)
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate object that is being verified.
+*snapName* (STRING): Name of the snapshot that was not created.
+*error* (STRING): Error code returned by the failed operation.
+
+== raid.mirror.verify.snapcrtok
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when verification has created a mirror verify snapshot.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s: created mirror verification snapshot %s
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate object that is being verified.
+*snapName* (STRING): Name of the snapshot that has been created.
+
+== raid.mirror.verify.snapdelfail
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when verification fails to delete a mirror verify snapshot. The WAFL(R) snapshot autodelete functionality will automatically delete the snapshot.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s: could not delete mirror verification snapshot %s (%s)
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate object that is being verified.
+*snapName* (STRING): Name of the snapshot that was not deleted.
+*error* (STRING): Error code returned by the failed operation.
+
+== raid.mirror.verify.snapdelok
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when verification has deleted a mirror verify snapshot.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s: deleted mirror verification snapshot %s
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate object that is being verified.
+*snapName* (STRING): Name of the snapshot that has been deleted.
+
+== raid.mirror.verify.snaprenamefail
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when verification fails to rename a mirror verify snapshot. It is marked as invalid and is deleted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s: could not rename mirror verification snapshot %s to %s (%s)
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate object that is being verified.
+*snapName* (STRING): Name of the snapshot that was not renamed.
+*snapName2* (STRING): Attempted new name of the snapshot.
+*error* (STRING): Error code returned by the failed operation.
+
+== raid.mirror.verify.snaprenameok
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when verification has renamed a mirror verify snapshot.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s: renamed mirror verification snapshot %s to %s
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate object that is being verified.
+*snapName* (STRING): Old name of the snapshot that has been renamed.
+*snapName2* (STRING): New name of the snapshot that has been renamed.
+
+== raid.mirror.verify.start
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a verify has been initiated on a mirror pair.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: start mirror verification
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*mirror* (STRING): The name of the mirror object that is initiating verification
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.mirror.verify.suspend
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a verify has been suspended on a mirror pair.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s%s: suspend mirror verification
+*Parameters*::
+*owner* (STRING): Owner of the affected aggregate.
+*mirror* (STRING): The name of the mirror object that is suspending verification
+*aggregate_uuid* (STRING): Universal Unique Identifier (UUID) of the aggregate.
+
+== raid.mirror.vote.badCksum
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the mirror vote blob contains an invalid checksum. The mirror vote blob holds information describing the active set of mirrored volumes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RAID: mirror information has an inconsistent checksum.
+*Parameters*::
+(None).
+
+== raid.mirror.vote.incorrectRecords
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the mirror vote blob has inconsistent contents. The mirror vote blob holds information describing the active set of mirrored volumes. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RAID: mirror information has inconsistent contents.
+*Parameters*::
+*count* (INT): Number of records listed in the blob.
+
+== raid.mirror.vote.invalidVersion
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the mirror vote blob contains an invalid version. The mirror vote blob holds information describing the active set of mirrored volumes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RAID: mirror information has an unsupported version number (%d).
+*Parameters*::
+*version* (INT): Version information in the blob.
+
+== raid.mirror.vote.invalidVol
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the mirror vote information describing a volume is internally inconsistent. The mirror vote information describes the active set of mirrored aggregate. The mirror vote information is ignored.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RAID: mirror information for volume UUID %s is inconsistent.
+*Parameters*::
+*aggr_id* (STRING): UUID of the affected volume.
+
+== raid.mirror.vote.noRecord
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a mirror vote is required on an aggregate but no vote is present in the mirror vote record. In this case, as both the plexes are available, we ignore mirror voting check.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RAID: mirror record missing for %s %s%s.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.mirror.vote.noRecord1Plex
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a mirror vote is required on an aggregate but no vote is present in the mirror vote record. In this case, only one plex is available. The aggregate will be kept offline because the existing plex might contain stale data.
+*Corrective Action*::
+1. In a storage environment with RAID SyncMirror(R), the plex could be missing due to several reasons such as disaster at the site, shelf failure, disk failures, and so on. Try to bring the missing plex online after addressing some of the listed possible causes. 2. If the plex does not come online, bring the aggregate online using the 'storage aggr online' or 'storage plex online' command. This aggregate was kept offline because the existing plex might contain stale data.
+*Syslog Message*::
+WARNING: Only one plex in %s %s%s is available. %s might contain stale data.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*vol_type2* (STRING): Volume type.
+
+== raid.mirror.vote.outOfDate
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Data ONTAP(R) detects an out-of-date plex. The plex is marked as out-of-date and a transaction subsequently occurs to update the internal RAID tree state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s has been detected as out-of-date and is being marked offline.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.mirror.vote.sbFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the local node cannot transfer mirror vote records for aggregates being switched back as part of a switchback operation.
+*Corrective Action*::
+1. Verify that the DR partner node is up. 2. Run the 'network interface show' command to verify that the cluster network interfaces on the local and DR partner node are up. If not, correct any network issues that could be preventing it.
+*Syslog Message*::
+Could not communicate with the DR node over the intercluster network while attempting a switchback operation.
+*Parameters*::
+*dr_host* (STRING): Disaster recovery (DR) host to which the local node failed to transfer the mirror vote records.
+
+== raid.mirror.vote.versionZero
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the mirror vote blob contains version 0. Typically, this occurs when the mirror vote blob is empty.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RAID: mirror information is empty.
+*Parameters*::
+(None).
+
+== raid.mirror.vote.xferFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the local node fails to transfer the mirror vote record of the aggregate during aggregate migration as part of giveback or aggregate relocation.
+*Corrective Action*::
+1. Verify that the destination node is up. 2. Run the 'network interface show' command to verify that the cluster network interfaces on the local and partner node are up. If they are not up, address any network issues.
+*Syslog Message*::
+Failed to communicate with the destination node over the cluster network while migrating the aggregate "%s" (UUID: %s) during giveback or aggregate relocation because %s.
+*Parameters*::
+*aggregate* (STRING): Name of the aggregate.
+*aggregate_uuid* (STRING): UUID of the aggregate.
+*reason* (STRING): The reason the transfer failed.

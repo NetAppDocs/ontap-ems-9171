@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: fcvi-attr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fcvi.attr events
+---
+
+= fcvi.attr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fcvi.attr.changed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when any of the FCVI attributes changes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: %s changed on port %s. %s
+*Parameters*::
+*attr_type* (STRING): Attribute type.
+*port* (STRING): FCVI Interconnect NIC.
+*info* (STRING): Additional info.

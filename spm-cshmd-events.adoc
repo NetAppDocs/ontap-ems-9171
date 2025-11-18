@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: spm-cshmd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: spm.cshmd events
+---
+
+= spm.cshmd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== spm.cshmd.process.exit
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Cluster Switch Health Monitor process (cshmd) involuntarily terminates. The termination of this process can affect monitoring of the subsystems of CSHM .
+*Corrective Action*::
+The system attempts to recover by restarting the cluster switch HM process. server. If the process does not restart within the threshold number of retries, then an AutoSupport message is sent. If your system is not configured to send AutoSupport messages and the issue persists, contact technical support.
+*Syslog Message*::
+Cluster Switch Health Monitor process (cshmd) with ID %d exited as a result of %s. This server will attempt to restart.
+*Parameters*::
+*id* (INT): Process identifier.
+*cause* (STRING): Plain text description of why the process exited.

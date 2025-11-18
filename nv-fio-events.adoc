@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: nv-fio-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nv.fio events
+---
+
+= nv.fio events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nv.fio.write.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the write to VNVRAM fails and the retry count has been exhausted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The write to VNVRAM failed with error %u; retry limit exhausted.
+*Parameters*::
+*error* (INT): Error returned by the last write.
+
+== nv.fio.write.retry
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the write to VNVRAM fails. The write will be retried.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The write to VNVRAM failed with error %u; will retry.
+*Parameters*::
+*error* (INT): Error returned by the write.

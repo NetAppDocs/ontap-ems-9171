@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: siw-cpubindingfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: siw.cpubindingfailed events
+---
+
+= siw.cpubindingfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== siw.cpuBindingFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system fails to bind a SW-iWARP thread to a CPU during the boot-up. If this happens, SW-iWARP cannot support polling and will be running in a degraded state.
+*Corrective Action*::
+Try a takeover and giveback of both of the nodes. If it still fails, contact NetApp technical support.
+*Syslog Message*::
+SW-iWARP thread could not be bound to a CPU because: "%s".
+*Parameters*::
+*reason* (STRING): Reason for the CPU binding failure

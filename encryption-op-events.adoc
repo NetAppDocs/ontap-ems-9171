@@ -1,0 +1,86 @@
+---
+sidebar: sidebar
+permalink: encryption-op-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: encryption.op events
+---
+
+= encryption.op events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== encryption.op.completed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a rekey or conversion to encryption operation is completed on a volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s operation is completed on the volume '%s' in Vserver '%s'.
+*Parameters*::
+*op* (STRING): Rekey or conversion operation.
+*volumename* (STRING): Name of the volume.
+*vservername* (STRING): Name of the Vserver.
+
+== encryption.op.paused.by.user
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a rekey or conversion to encryption operation is paused as a result of an operator request.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s operation is paused by user on the volume '%s' in Vserver '%s'.
+*Parameters*::
+*op* (STRING): Rekey or conversion operation.
+*volumename* (STRING): Name of the volume.
+*vservername* (STRING): Name of the Vserver.
+
+== encryption.op.paused.on.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a rekey or conversion to encryption operation is paused as a result of an error. If it is a rekey operation, volume uses two encryption keys until the rekey operation is completed. New writes and rekeyed blocks use the new key, while the data written before the rekey start still use the old key in the read path. If it is a conversion to encryption operation, new writes and converted blocks use the key, while data written before conversion does not use any key in the read path. Data access continues to be possible, although performance might be degraded.
+*Corrective Action*::
+For ASA r2, contact NetApp technical support for assistance to resume the encryption operation. For all other systems, determine the cause of the error by using either the "volume encryption rekey show -vserver <vserver-name> -volume <volume-name>" command or the "volume encryption conversion show -vserver <vserver-name> -volume <volume-name>" command. Correct the error. If the error is related to rekeying, continue the operation by using the "volume encryption rekey resume -vserver <vserver-name> -volume <volume-name>" command. If the error is related to conversion to encryption, continue by using the "volume encryption conversion resume -vserver < vserver-name> -volume <volume-name>" command.
+*Syslog Message*::
+%s operation on volume "%s" in SVM "%s" is paused due to an error. Reason '%s'.
+*Parameters*::
+*op* (STRING): Rekey or conversion operation.
+*volumename* (STRING): Name of the volume.
+*vservername* (STRING): Name of the storage virtual machine (SVM).
+*reason* (STRING): Reason for the failure.
+
+== encryption.op.queued
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a plaintext volume is queued for encryption.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume %s in Vserver %s is queued for %s.
+*Parameters*::
+*volumename* (STRING): Name of the volume.
+*vservername* (STRING): Name of the Vserver.
+*op* (STRING): Conversion operation.
+
+== encryption.op.started
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a rekey or conversion to encryption operation is started on a volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s operation is started on the volume '%s' in Vserver '%s'.
+*Parameters*::
+*op* (STRING): Rekey or conversion operation.
+*volumename* (STRING): Name of the volume.
+*vservername* (STRING): Name of the Vserver.

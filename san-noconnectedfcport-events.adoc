@@ -1,0 +1,48 @@
+---
+sidebar: sidebar
+permalink: san-noconnectedfcport-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.noconnectedfcport events
+---
+
+= san.noconnectedfcport events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.NoConnectedFCport
+*Severity*::
+ERROR
+*Description*::
+This message occurs in MetroCluster(tm) configurations on clustered Data ONTAP(R) systems, when Data ONTAP cannot replicate an FC/FC-NVMe (Nonvolatile Memory Express) logical interface (LIF) to a candidate port in the destination cluster. A candidate port is one that satisfies the following conditions: 1) It must reside on the disaster recovery (DR) partner node. 2) It must be connected to the same FC fabric as the home port of the primary Vserver FC/FC-NVMe LIF.
+*Corrective Action*::
+Check the cabling to ensure that ports on the destination cluster node (DR partner) are connected to the same fabric as the source cluster port hosting the primary Vserver FC/FC-NVMe LIF. Use the "fcp adapter show -fields fabric-name" command to view the port-fabric connectivity information. After ensuring proper fabric connectivity, run the "metrocluster check lif repair-placement" command on the source cluster with the Vserver name and LIF name as inputs to perform lif placement followed by the "metrocluster check lif show" command to verify the results of the command.
+*Syslog Message*::
+There are no ports on node "%s" connected to fabric "%s" in the destination cluster. Cannot place "%s" LIF "%s" hosted on the source cluster port %s of %s adapter type for Vserver "%s".
+*Parameters*::
+*node* (STRING): Name of the destination cluster node (DR partner) that does not have a port connected to the fabric.
+*fabric_name* (STRING): Name of the fabric that the source cluster port hosting the primary Vserver FC/FC-NVMe LIF is connected to.
+*data_protocol* (STRING): Data Protocol of the FC/FC-NVMe LIF.
+*lif* (STRING): Name of the FC/FC-NVMe LIF to be placed.
+*port* (STRING): Source cluster port that hosts the primary Vserver FC/FC-NVMe LIF.
+*adapter_type* (STRING): Adapter type of the source cluster port that hosts the primary Vserver FC/FC-NVMe LIF.
+*vserver* (STRING): Name of the secondary Vserver in the MetroCluster relationship.
+
+== san.NoConnectedFCport.prim
+*Severity*::
+ERROR
+*Description*::
+This message occurs in MetroCluster(tm) configurations on clustered Data ONTAP(R) systems, when the source cluster FC port that is hosting an FC/FC-NVMe LIF of the primary Vserver is not connected to any fabric. The LIF cannot be placed correctly at the destination cluster because fabric information is not available.
+*Corrective Action*::
+Check the wiring of the source cluster FC port to ensure that it is connected to the fabric. Use the "fcp adapter show -fields fabric-name" command to view the port-fabric connectivity information. After ensuring proper fabric connectivity, enter the "metrocluster check lif repair-placement -vserver <vserver_name> -lif <lif_name>" command in the source cluster to intiate the LIF placement at the secondary cluster. After LIF placement has been completed, enter the "metrocluster check lif show -vserver <vserver_name> -lif <lif_name>" to see whether lif placement succeeded or not.
+*Syslog Message*::
+The source cluster FC port %s that is hosting "%s" LIF %s on primary Vserver %s is not connected to any fabric.
+*Parameters*::
+*home_port* (STRING): Name of the source cluster FC port.
+*data_protocol* (STRING): Data Protocol of the lif.
+*lif* (STRING): Name of the FC/FC-NVMe LIF.
+*vserver* (STRING): Name of the primary Vserver.

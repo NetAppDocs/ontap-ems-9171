@@ -1,0 +1,239 @@
+---
+sidebar: sidebar
+permalink: wafl-ondemand-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.ondemand events
+---
+
+= wafl.ondemand events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.ondemand.aggr.rsv.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) fails to reserve space for a file operation due to lack of space on the aggregate.
+*Corrective Action*::
+Create free space on the aggregate by either adding more disks or manually deleting data. If this condition persists, contact NetApp technical support for further assistance.
+*Syslog Message*::
+Insufficient space on aggregate '%s %s' to perform file operation on volume '%s%s%s' (failed to re-create %s flexible space pool).
+*Parameters*::
+*owner* (STRING): Owner of the aggregate.
+*aggr* (STRING): Name of the aggregate.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*fsptype* (STRING): Type of the flexible space pool.
+
+== wafl.ondemand.destroy.pending
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a file operation cannot be immediately destroyed because the destination file has been captured in one or more snapshots.
+*Corrective Action*::
+Delete the snapshots that have captured the destination file.
+*Syslog Message*::
+%s
+*Parameters*::
+*destroy_info* (STRING): Status of the file operation.
+
+== wafl.ondemand.done
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a file operation is completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s
+*Parameters*::
+*done_info* (STRING): Status of the completed file operation.
+
+== wafl.ondemand.dst.fsize.exceeded
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the size of a file or LUN being moved or copied exceeds the maximum file or LUN size allowed by the system. The ondemand operation will fail for that particular file or LUN.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s destination job %s-%d. %s %s%s%s%s, FSID 0x%x, The file operation with file ID %d has failed because the file size exceeded the maximum file size allowed on the current system, which is %lu bytes. The size of the file being copied or moved is %lu bytes.
+*Parameters*::
+*job_type* (STRING): Operation type.
+*job_uuid* (STRING): Unique ID (UUID) of the file operation source job.
+*file_index* (INT): Unique identifier for the file in the source job.
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume if the volume name itself is insufficient.
+*fsid* (INT): File system identifier of the volume.
+*fileid* (INT): File identifier.
+*maxsize* (LONGINT): Maximum file size allowed on this system.
+*filesize* (LONGINT): Size of the file being copied or moved.
+
+== wafl.ondemand.dstPresent
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a file shows up in the public name space of destination volume during file operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s
+*Parameters*::
+*file_info* (STRING): Destination file's UUID and index.
+
+== wafl.ondemand.errPaused
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a file or LUN operation is paused due to an error condition.
+*Corrective Action*::
+Based on the information in the event, resolve the problem that is causing the error condition, if possible. The operation is retried automatically on an hourly interval, or you can unpause the operation by using the appropriate command: file copy modify, file move modify, lun copy resume, or lun move resume. If the error condition persists, contact NetApp technical support.
+*Syslog Message*::
+%s
+*Parameters*::
+*error_info* (STRING): Error information for the paused operation.
+
+== wafl.ondemand.jobLookupFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an ondemand msg returns an error and, upon trying to check if snapshots are fenced during the cleanup process, cannot find the associated job.
+*Corrective Action*::
+Check if snapshots can be taken on the volume. If not, try to abort the previous job using either 'file copy destroy' or 'file move destroy'. If neither suggestions are successful, contact technical support for assistance.
+*Syslog Message*::
+OnDemand lookup job failed: %s
+*Parameters*::
+*job_lookup_info* (STRING): Information regarding the OnDemand msg.
+
+== wafl.ondemand.metafileErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the special-purpose metafile that Data ONTAP(R) creates to store information on file operations cannot be read. The volume has been left offline as a consequence.
+*Corrective Action*::
+Issue the 'volume online' command to attempt to bring the affected volume back online. If this condition persists, contact NetApp technical support for futher assistance.
+*Syslog Message*::
+OnDemand metafile load error, volume '%s%s%s': %s
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*error_info* (STRING): Error infomation.
+
+== wafl.ondemand.repaired.metafile
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an inconsistency is discovered in the OnDemand metafile header or entry. The inconsistency is automatically repaired upon detection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s certification failed: %s, %s, %s, %s, %s, fbn (%llu), record_index (%llu)
+*Parameters*::
+*fh* (STRING): File handle of ondemand metafile which is repaired.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases in which the volume name itself is insufficient.
+*condition* (STRING): The initial metadata validation test that failed.
+*source* (STRING): The location of the failing metadata validation test.
+*fbn* (LONGINT): File block number (fbn) of the repaired block.
+*record_index* (LONGINT): Index of the record entry in the repaired block.
+
+== wafl.ondemand.space.rsv.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) fails to reserve space for a file operation due to lack of space on the volume.
+*Corrective Action*::
+Manually delete data to create free space on the volume, and then modify the job to unpause the data scanner by using the "volume file [copy|move] modify -job-uuid <job_uuid> -file-index <file_index> -scanner-paused false" command. If this condition persists, contact NetApp technical support for further assistance.
+*Syslog Message*::
+Insufficient space on '%s%s%s' to perform file operation %s-%d (failed to re-create %s flexible space pool).
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*job_uuid* (STRING): Unique ID (UUID) of the file operation.
+*file_index* (INT): Unique identifier for the file in the job.
+*fsptype* (STRING): Type of the flexible space pool.
+
+== wafl.ondemand.srcJobRecFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system fails to repair a corrupted record in the special-purpose metafile that holds information about file operations.
+*Corrective Action*::
+The source job recovery will be reattempted the next time the volume comes online. To explicitly reattempt the recovery, take the source volume offline and then bring it back online. If this error condition persists, contact NetApp technical support.
+*Syslog Message*::
+Volume %s%s%s: %s
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*result* (STRING): Result of the failed recovery.
+
+== wafl.ondemand.srcJobRecovery
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system repairs a corrupted record in the special-purpose metafile that holds information about file operations. If the file operation associated with the recovered source job is still in progress, the file operation can be resumed. Otherwise, the original source file can be recovered to lost+found by using the "file source recover" command.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Recovered file operation source job %s-%d in volume "%s%s%s".
+*Parameters*::
+*job_uuid* (STRING): Unique ID (UUID) of the file operation source job.
+*file_index* (INT): Unique identifier for the file in the source job.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+
+== wafl.ondemand.srcRecovered
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a file operation source recovery is completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Recovered %s source job %s-%d to {DSID:%d:%s}.
+*Parameters*::
+*type* (STRING): Operation type.
+*job_uuid* (STRING): Unique ID (UUID) of the file operation source job.
+*file_index* (INT): Unique identifier for the file in the source job.
+*dsid* (INT): Data set identifier (DSID) of the volume where the recovery was performed.
+*path* (STRING): Path to the recovered object.
+
+== wafl.ondemand.started
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an OnDemand file or LUN operation is started. The "operation_info" parameter contains information on the type and identity of the started operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+OnDemand operation started: %s
+*Parameters*::
+*operation_info* (STRING): Initial status of the OnDemand operation.
+
+== wafl.ondemand.volBusy
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a volume operation fails because the volume is the source or destination of one or more file operations. Continuing with the volume operation could potentially disrupt file operations.
+*Corrective Action*::
+Make sure that file operations are making progress, and if they are paused unpause them. Retry the volume operation after the completion of the file operations.
+*Syslog Message*::
+Volume %s%s%s can not be offlined, until all pending file operations are completed.
+*Parameters*::
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.

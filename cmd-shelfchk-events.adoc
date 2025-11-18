@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: cmd-shelfchk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cmd.shelfchk events
+---
+
+= cmd.shelfchk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cmd.shelfchk.config.OK
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is generated while verifying disk shelf cabling and configuration. The operator indicates that the correct disk LEDs have illuminated.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk Configuration - No Errors Identified.
+*Parameters*::
+(None).
+
+== cmd.shelfchk.config.warning
+*Severity*::
+ERROR
+*Description*::
+This event is generated while verifying disk shelf cabling and configuration on a channel. The operator has indicated that the intended set of disk LEDs is not illuminated.
+*Corrective Action*::
+Verify that the adapters and storage shelves are cabled correctly.
+*Syslog Message*::
+Disk Configuration - Failure Identified by Operator.
+*Parameters*::
+(None).

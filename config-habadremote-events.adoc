@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-habadremote-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.habadremote events
+---
+
+= config.habadremote events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.HABadRemote
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a remote host adapter is connected to the wrong switch bank.
+*Corrective Action*::
+Examine the cabling to determine which switch bank the local controller host adapters are attached to (the lower-numbered ports or the higher-numbered ports.) Recable the HA of the remote controller to be in the other bank of switch ports.
+*Syslog Message*::
+A remote host adapter is connected to the same switch bank as the local host adapters. This is an illegal configuration.
+*Parameters*::
+(None).

@@ -1,0 +1,57 @@
+---
+sidebar: sidebar
+permalink: adt-dest-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: adt.dest events
+---
+
+= adt.dest events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== adt.dest.access.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the audit consolidation job fails to write audit logs to the destination directory because the destination directory is not available. This event can leads to denial of service on Security Access Control List (SACL) enabled objects.
+*Corrective Action*::
+Use the "volume show" command to check whether the destination volume exists, is online, and has sufficient free space. Use the "volume modify" command to bring the volume online, or increase volume size. Use the "vserver audit modify" command to modify the destination volume.
+*Syslog Message*::
+Audit consolidation job failed to access destination directory "%s" of Vserver "%s"; consolidation job type is "%s".
+*Parameters*::
+*destination* (STRING): Destination directory of the Vserver into which the consolidation job failed to write audit logs.
+*vserver* (STRING): Vserver name whose consolidation job failed to write audit logs to the destination directory.
+*descriptor* (STRING): Type of consolidation job - CIFS/S3.
+
+== adt.dest.directory.full
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the audit consolidation process fails to write audit logs to the destination directory because the destination directory is full. This event can lead to denial of service on Security Access Control List (SACL) enabled objects.
+*Corrective Action*::
+Use the "volume show" command to check whether the destination volume exists, is online, and has sufficient free space. Use the "volume modify" command to increase volume size. Use the "vserver audit modify" command to modify the destination volume path.
+*Syslog Message*::
+Audit destination directory "%s" of Vserver "%s" is full; consolidation job type is "%s".
+*Parameters*::
+*destination* (STRING): Destination directory of the Vserver that is full.
+*vserver* (STRING): Vserver name whose audit consolidation process failed to write audit logs to the destination directory.
+*descriptor* (STRING): Type of consolidation job - CIFS/S3.
+
+== adt.dest.directory.unavail
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the audit consolidation job fails to write audit logs to the destination directory because the destination directory has become unavailable or has run out of space. This event can lead to denial of service for Security Access Control List (SACL) enabled objects.
+*Corrective Action*::
+Use the "volume show" command to check whether the destination volume exists, is online, and has sufficient free space. Use the "volume modify" command to bring the volume online, or increase volume size. Use the "vserver audit modify" command to modify the destination volume.
+*Syslog Message*::
+Audit destination directory "%s" of Vserver "%s" is unavailable or out of space; consolidation job type is "%s".
+*Parameters*::
+*destination* (STRING): Destination directory of the Vserver to which the consolidation job failed to write audit logs.
+*vserver* (STRING): Name of the Vserver name whose consolidation job failed to write audit logs to the destination directory.
+*descriptor* (STRING): Type of consolidation job - CIFS/S3.

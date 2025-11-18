@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: raid-preserve-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.preserve events
+---
+
+= raid.preserve events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.preserve.nvram
+*Severity*::
+INFORMATIONAL
+*Description*::
+During RAID replay of NVRAM, entries associated with a non-existent (offline or missing) aggregate were discovered. Since the volume is not available to replay those NVRAM entries, it will be saved in a system file on the root volume and will be replayed when the aggregate becomes available. This event is issued if the system is able to successfully save the NVRAM RAID entries associated with a non-existent aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+RAID replay detected NVRAM entries for a non-existent aggregate having raidtreeID %s. %d checksum, %d stripe and %d pzero entries were successfully preserved.
+*Parameters*::
+*raidtreeID* (STRING): RAIDtree identifier of the aggregate.
+*nchecksum_saved* (INT): Identifies the number of checksum NVRAM entries preserved
+*nstripe_saved* (INT): Identifies the number of stripe NVRAM entries preserved
+*nblkbuf_saved* (INT): Identifies the number of pzero NVRAM entries preserved
+
+== raid.preserve.nvram.issue
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event occurs when system finds an issue during an nvfile save or nvfile replay operation. During RAID replay of NVRAM, entries associated with a nonexistent (offline or missing) aggregate are discovered. Because the volume is unavailable to replay those NVRAM entries, it is saved in a system file on the root volume and is replayed when the aggregate becomes available.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s
+*Parameters*::
+*reason* (STRING): Description of the issue during nvfile save or replay phase.
+*identifier* (STRING): Description of raidtree identifier or filen name

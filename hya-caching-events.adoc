@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: hya-caching-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: hya.caching events
+---
+
+= hya.caching events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== hya.caching.cde.vol.warning
+*Severity*::
+ERROR
+*Description*::
+This message occurs when auto adaptive compression is enabled on a volume in a Flash Pool aggregate or when Flash Pool caching is enabled on an auto adaptive compression volume. Caching is skipped.
+*Corrective Action*::
+Caching is not supported on auto adaptive compressed blocks. If caching is needed, compression has to be disabled. Also note that existing compressed blocks will not get read cached.
+*Syslog Message*::
+Flash Pool caching of user data is not supported on auto adaptive compression enabled volume "%s" in aggregate "%s".
+*Parameters*::
+*vol* (STRING): Volume name.
+*aggr* (STRING): Aggregate name.

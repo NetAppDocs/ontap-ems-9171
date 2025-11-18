@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nv-data-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nv.data events
+---
+
+= nv.data events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nv.data.loss.possible
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a Cloud Volumes ONTAP node configured for high write speed unexpectedly shuts down, possibly resulting in a loss of data. This is expected because the NVRAM data does not have a chance to be flushed during the unforeseen shutdown.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+An unexpected shutdown occurred while in high write speed mode, which possibly caused a loss of data.
+*Parameters*::
+(None).

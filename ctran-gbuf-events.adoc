@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ctran-gbuf-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ctran.gbuf events
+---
+
+= ctran.gbuf events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ctran.gbuf.alloc.unsuccessful
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when one or more attempts to allocate a message buffer to convey messages between nodes for the Kernel Cluster Services (KCS) Cluster Transaction Manager (CTRAN) has been unsuccessful.
+*Corrective Action*::
+If this message occurs more than 10 times in a hour KCS CTRAN logs will need to be collected for further analysis. Trigger an ALL autosupport by using, "autosupport invoke -node * -message "ctran.gbuf.alloc.unsuccessful" -type all", a diagnostic autosupport by using "autosupport invoke-diagnostic -node * -message "ctran.gbuf.alloc.unsuccessful" -subsystem kcs" and contact NetApp technical support support.
+*Syslog Message*::
+Attempt to allocate a message buffer for CTRAN has been unsuccessful. Total number of unsuccessful attempts is %u.
+*Parameters*::
+*attempts_failed* (LONGINT): Total number of message buffer allocation attempts that have been unsuccessful.

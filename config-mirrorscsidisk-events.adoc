@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-mirrorscsidisk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.mirrorscsidisk events
+---
+
+= config.mirrorscsidisk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.MirrorSCSIdisk
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a SCSI disk is found in a SyncMirror(R) configuration.
+*Corrective Action*::
+Unconfigure SyncMirror on the aggregate that contains the SCSI disk. Configure SyncMirror using aggregates that do not contain SCSI disks.
+*Syslog Message*::
+Disk %s is a SCSI disk, and is illegal in a SyncMirror configuration.
+*Parameters*::
+*disk* (STRING): Name of the SCSI disk that was found.

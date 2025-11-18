@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: nvmens-512blksz-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvmens.512blksz events
+---
+
+= nvmens.512blksz events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== NVMeNS.512blksz.repl.unsupp
+*Severity*::
+ERROR
+*Description*::
+This message occurs when replication of a volume containing NVMe namespaces that use 512-byte block sizes fails because the destination does not support NVMe namespaces with this block size.
+*Corrective Action*::
+Replicate volumes containing NVMe namespaces with 512-byte block sizes only to destinations that support namespaces that use this block size.
+*Syslog Message*::
+Logical replication failed for volume %s (DSID %llu): No 512-byte block size NVMe namespace support on the destination.
+*Parameters*::
+*volume_name* (STRING): Name of the source volume.
+*volume_dsid* (LONGINT): Data set ID (DSID) of the source volume.

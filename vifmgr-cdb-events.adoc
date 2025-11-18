@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: vifmgr-cdb-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.cdb events
+---
+
+= vifmgr.cdb events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.cdb.merge.dupip
+*Severity*::
+ALERT
+*Description*::
+This message occurs when attempting to merge a LIF from the configuration database (CDB) to the replicated database (RDB), and the LIF from the CDB is found to have the same address as an existing LIF in the RDB.
+*Corrective Action*::
+Modify the IP address of the conflicting LIF configured in the database.
+*Syslog Message*::
+IP address %s is in use by multiple LIFs: local LIF %s (on node %s) and LIF %s (in IPspace %s) configured in the cluster database.
+*Parameters*::
+*vifip* (STRING): IP address of the affected LIF.
+*locallif* (STRING): Name of the local LIF.
+*node* (STRING): Name of the node on which the local LIF resides.
+*dblif* (STRING): Name of the conflicting LIF configured in the database.
+*ipspace* (STRING): Name of the IPspace.
+
+== vifmgr.cdb.unavail
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the configuration database (CDB) for a node is not accessible. The node will continue without the CDB.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The CDB for node %s is not accessible.
+*Parameters*::
+*node* (STRING): Name of the node.

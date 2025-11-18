@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: nblade-execsoverlimit-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.execsoverlimit events
+---
+
+= nblade.execsoverlimit events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nblade.execsOverLimit
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the number of active requests to a connection exceeds the allowed in-flight request threshold, which results in request throttling. Client connection performance might be degraded.
+*Corrective Action*::
+Check the RPC slot setting on the client. Refer to TR-4067 "NFS Best Practice and Implementation Guide" for the recommended value and how to set it. For additional guidance, search the NetApp knowledgebase on the support web site for "nblade.execsOverLimit".
+*Syslog Message*::
+The number of in-flight requests from client IP "[%s]:%d" to destination LIF "%s" (Vserver "%d") is greater than the maximum allowed (%d).
+*Parameters*::
+*clientIpAddress* (STRING): IP address of the client.
+*clientPort* (INT): Network port of the client.
+*lifIpAddress* (STRING): IP address of the network interface (LIF).
+*vserverId* (INT): ID of the Vserver.
+*execsLimit* (INT): Maximum number of in-flight requests allowed per connection.

@@ -1,0 +1,91 @@
+---
+sidebar: sidebar
+permalink: fg-member-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fg.member events
+---
+
+= fg.member events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fg.member.below.threshold
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a members available space is below the threshold. ONTAP will be reporting zero space for the entire flexgroup.
+*Corrective Action*::
+Correct the problem based on the reason specified. If the error persists, contact NetApp technical support for further assistance.
+*Syslog Message*::
+FlexGroup volume "%s" (Size: "%lu", Usage: "%lu"%%) has member volume "%s" (Size: "%lu", Usage: "%lu"%%) that is at or below the free space threshold of "%lu" blocks.
+*Parameters*::
+*flexgroupName* (STRING): Name of the FlexGroup volume.
+*flexgroupSize* (LONGINT): Size in blocks of the FlexGroup volume.
+*flexgroupUsage* (LONGINT): Usage percentage of the FlexGroup volume.
+*memberName* (STRING): Name of the FlexGroup member volume.
+*memberSize* (LONGINT): Size in blocks of the FlexGroup member volume.
+*memberUsage* (LONGINT): Usage percentage of the FlexGroup member volume.
+*thresholdSize* (LONGINT): Size of threshold that has been reached.
+
+== fg.member.elastic.sizing
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a constituent volume in a FlexGroup volume undergoes elastic sizing either to restore balance among constituent volumes or to resize them to accommodate space needs.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Constituent volume "%u" in FlexGroup volume "%s" was resized from %lu blocks to %lu blocks. This constituent volume (%s) %s by resizing the constituent volume "%s" (dsid "%u"). This constituent volume is %llu bytes in size with %llu bytes used (%u percent full). The FlexGroup volume is %llu bytes in size with %llu bytes used (%u percent full).
+*Parameters*::
+*constituent_dsid* (INT): DSID of the constituent volume undergoing elastic sizing.
+*object_name* (STRING): Name of the FlexGroup volume.
+*current_size* (LONGINT): Original block size of the constituent volume.
+*new_size* (LONGINT): New block size of the constituent volume.
+*constituent_name* (STRING): Name of the constituent volume.
+*operation* (STRING): Indicates whether the constituent volume is being grown or shrunk.
+*partner_name* (STRING): Name of the constituent volume's partner.
+*partner_dsid* (INT): DSID of the constituent volume's partner.
+*size* (LONGINT): Size in bytes of the constituent volume.
+*used* (LONGINT): Size in bytes of the used space of the constituent volume.
+*percent_full* (INT): Percentage of filled space in the constituent volume.
+*flexgroup_size* (LONGINT): Size in bytes of the FlexGroup volume.
+*flexgroup_used* (LONGINT): Size in bytes of the used space in the FlexGroup volume.
+*flexgroup_percent_full* (INT): Percentage of filled space in the FlexGroup volume.
+*event_time* (LONGINT): When the event occurred, shown in system time.
+
+== fg.member.invalid.fgindex
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the system attempts to add or update a member in a FlexGroup, using an internal FlexGroup index that is already in use or is invalid. This attempt is blocked by the FlexGroup SW. However, a rogue member with a duplicate or invalid fgindex can potentially result in data integrity issues, because data intended for one member could be spread across different members. The rogue member with the duplicate or invalid fgindex needs to be audited as soon as possible.
+*Corrective Action*::
+The rogue volume needs to be identified using its DSID, audited, and possibly removed from the system as soon as possible. Immediately contact NetApp technical support for assistance.
+*Syslog Message*::
+Attempt to add/update FG member with invalid fgindex. FlexGroup "%s" with MSID %u has existing member DSID %u and fgindex %u. Failed attempt for rogue member with DSID %u and fgindex %u.
+*Parameters*::
+*flexgroup_name* (STRING): Name of the FlexGroup.
+*flexgroup_msid* (INT): MSID of the FlexGroup.
+*existing_member_dsid* (INT): DSID of the existing flexgroup member.
+*existing_member_fgindex* (INT): Fgindex of the existing flexgroup member.
+*rogue_member_dsid* (INT): DSID of the rogue flexgroup member which has an invalid fgindex.
+*rogue_member_fgindex* (INT): Fgindex of the rogue flexgroup member.
+
+== fg.member.invalidated
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a FlexGroup volume has been invalidated by an operation that was performed directly on a constituent volume instead of on the overall FlexGroup. For example, a constituent volume was directly deleted or had an operation performed on it such as snapshot restore.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FlexGroup volume MSID "%lu" in Vserver "%s", has been been invalidated by an operation performed on constituent "%s" (DSID "%lu").
+*Parameters*::
+*volumeMsid* (LONGINT): Master Data Set ID (MSID) of the FlexGroup volume owning the invalidated constituent.
+*vserverName* (STRING): Name of the Vserver on which the FlexGroup volume resides.
+*constituentName* (STRING): Name of the invalidated constituent.
+*constituentDsid* (LONGINT): Data Set ID (DSID) of the invalidated constituent.

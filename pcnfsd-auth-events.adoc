@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: pcnfsd-auth-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: pcnfsd.auth events
+---
+
+= pcnfsd.auth events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== pcnfsd.auth.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the authorization for a user fails due to a corrupted password entry in /etc/passwd.
+*Corrective Action*::
+Restore the password entry for the user.
+*Syslog Message*::
+Corrupted password in /etc/passwd file.
+*Parameters*::
+(None).

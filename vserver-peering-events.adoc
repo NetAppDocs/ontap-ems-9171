@@ -1,0 +1,100 @@
+---
+sidebar: sidebar
+permalink: vserver-peering-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vserver.peering events
+---
+
+= vserver.peering events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vserver.peering.relCreated
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Vserver peer relationship is established.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Vserver peer relationship between %s and %s is established having remote peer Vserver name %s.
+*Parameters*::
+*vserver* (STRING): Name of the Vserver for which a peer is created.
+*peer_vserver_localname* (STRING): Name locally used for the peer Vserver created.
+*peer_vserver_remotename* (STRING): Actual name of the peer Vserver.
+
+== vserver.peering.relDeleted
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Vserver peer relationship is deleted successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"Vserver peer relationship between %s and %s is deleted."
+*Parameters*::
+*vserver* (STRING): Name of the Vserver.
+*peer_vserver* (STRING): Name of the peer Vserver.
+
+== vserver.peering.relRenamed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the storage virtual machine (SVM) peer relationship is modified.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The SVM peer relationship between local SVM "%s" (UUID "%s") and peer SVM "%s" (UUID "%s") is modified. The peer cluster changed from "%s" (ID "%s") to "%s" (ID "%s").
+*Parameters*::
+*local_vserver_name* (STRING): Local SVM name.
+*local_vserver_uuid* (STRING): Local SVM universally unique identifier (UUID).
+*peer_vserver_name* (STRING): Peer SVM name.
+*peer_vserver_uuid* (STRING): Peer SVM UUID.
+*old_peer_cluster_name* (STRING): Old peer cluster name.
+*old_peer_cluster_id* (STRING): Old peer cluster ID.
+*new_peer_cluster_name* (STRING): New peer cluster name.
+*new_peer_cluster_id* (STRING): New peer cluster ID.
+
+== vserver.peering.relResumed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Vserver peer relationship is resumed successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"Vserver peer relationship between %s and %s is resumed."
+*Parameters*::
+*vserver* (STRING): Name of the Vserver.
+*peer_vserver* (STRING): Name of the peer Vserver.
+
+== vserver.peering.relSuspended
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Vserver peer relationship is suspended successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"Vserver peer relationship between %s and %s is suspended."
+*Parameters*::
+*vserver* (STRING): Name of the Vserver.
+*peer_vserver* (STRING): Name of the peer Vserver.
+
+== vserver.peering.remCallFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when any Vserver peering command fails because of a communication failure with a remote system.
+*Corrective Action*::
+Use the "network interface show" command to verify that intercluster logical interfaces (LIFs) on both clusters are up. Use the "cluster peer health show -bypass-cache true" command to verify that cluster peering is healthy. If you want to retry a failed delete, suspend, or resume operation, consider using the "force" option, which bypasses network connectivity issues.
+*Syslog Message*::
+"Vserver peering command '%s' failed. Reason: %s. Vserver peering states might be inconsistent."
+*Parameters*::
+*command* (STRING): Vserver peering command.
+*reason* (STRING): Reason for failure.

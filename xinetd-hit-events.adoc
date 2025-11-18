@@ -1,0 +1,56 @@
+---
+sidebar: sidebar
+permalink: xinetd-hit-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: xinetd.hit events
+---
+
+= xinetd.hit events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== xinetd.hit.cps.limit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the rate of incoming network connections for a service exceeds the maximum allowed rate. The service is temporarily suspended and restarted after a configured wait time. Many such connection attempts can potentially disallow other users from logging in to the storage system, causing a Denial of Service (DOS) attack.
+*Corrective Action*::
+Reduce the rate at which the network connections are issued.
+*Syslog Message*::
+Number of incoming network connections exceeded the configured limit of %d connections per second for the service %s. This service will be stopped and restarted after %d seconds.
+*Parameters*::
+*connections* (INT): Maximum number of network connections allowed to access the service per second.
+*service* (STRING): Service invoked by xinetd.
+*seconds* (INT): Number of seconds xinetd must wait before reenabling the service.
+
+== xinetd.hit.instances.limit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the maximum number of SSH or Telnet requests that can be fulfilled simultaneously is reached. After the limit is reached, no new SSH or Telnet requests are accepted.
+*Corrective Action*::
+Reduce the number of SSH or Telnet connections attempted simultaneously.The storage administrator can monitor and terminate excessive sessions, if necessary, using the security session "kill-cli" command.
+*Syslog Message*::
+Maximum number of simultaneous incoming network connections exceeded the configured limit of %d connections for the service %s.
+*Parameters*::
+*instances* (INT): Maximum number of SSH or Telnet requests that can be fulfilled simultaneously.
+*service* (STRING): Service invoked by xinetd daemon.
+
+== xinetd.hit.per.source.limit
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the maximum number of incoming network connections per source IP address for a service is reached. New connection requests from this source IP address for the service are rejected until the existing connections are terminated. Many such connection attempts could potentially disallow other users from logging in to the storage system, causing a Denial of Service (DOS) attack.
+*Corrective Action*::
+If the remote host is retrying the network connection repeatedly, block the remote host by adding its IP address to the deny list using the "firewall policy" command.
+*Syslog Message*::
+Maximum number of network connections of %d received from the remote host %s for the service %s.
+*Parameters*::
+*limit* (INT): Maximum number of network connections for a service per source IP address.
+*ipaddress* (STRING): IP address of the remote host that triggered maximum number of network connections of a service.
+*service* (STRING): Service invoked by xinetd.

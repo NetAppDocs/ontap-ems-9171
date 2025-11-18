@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: net-ifconfig-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: net.ifconfig events
+---
+
+= net.ifconfig events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== net.ifconfig.addLimitExceed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the limit for adding logical virtual local area network (VLAN) and interface group (ifgrp) interfaces is exceeded. The latest attempt to add an interface did not succeed.
+*Corrective Action*::
+Delete any existing unused VLAN or ifgrp interface and retry adding the new logical interface.
+*Syslog Message*::
+The limit for adding logical virtual local area network (VLAN) and interface group (ifgrp) interfaces is exceeded. The maximum limit per host is %d.
+*Parameters*::
+*maxlimitperhost* (INT): Maximum interfaces per host.
+
+== net.ifconfig.ioctlError
+*Severity*::
+NOTICE
+*Description*::
+This event is generated when the ifconfig command encounters an error while attempting to perform an ioctl.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ioctl error encountered while configuring interface '%s' using ioctl '%s' (error string='%s', error code=%d).
+*Parameters*::
+*ifname* (STRING): The name of the interface
+*ioctl* (STRING): The name of the ioctl
+*errorString* (STRING): The error string
+*error* (INT): The internal error code

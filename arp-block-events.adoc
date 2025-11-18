@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: arp-block-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: arp.block events
+---
+
+= arp.block events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== arp.block.unsuitable.workload
+*Severity*::
+NOTICE
+*Description*::
+This message occurs after the anti-ransomware feature has completed its workload evaluation on the volume and determined that the data entropy is high. Consequently, the anti-ransomware feature cannot effectively differentiate between expected workload characteristics and ransomware characteristics. Maintaining the anti-ransomware feature on this volume offers no benefit.
+*Corrective Action*::
+If the specified volume contains only LUNs or NVMe namespaces, then it is recommended to disable the anti-ransomware feature. For more information, search on "ONTAP Autonomous Ransomware Protection"
+*Syslog Message*::
+Volume "%s" in SVM "%s" is unsuitable for anti-ransomware block device analysis.
+*Parameters*::
+*volumeName* (STRING): Name of the volume.
+*vserverName* (STRING): Name of the SVM.

@@ -1,0 +1,48 @@
+---
+sidebar: sidebar
+permalink: arw-snapshot-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: arw.snapshot events
+---
+
+= arw.snapshot events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== arw.snapshot.created
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a new ARP snapshot is created in anti-ransomware enabled volume. Additionally, it provides information about the reason behind the creation of the snapshot.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ARP snapshot created on volume "%s" (UUID: "%s") in SVM "%s" (UUID: "%s") at "%s". Reason: "%s".
+*Parameters*::
+*volumeName* (STRING): Name of the volume.
+*volumeUuid* (STRING): UUID of the Volume.
+*vserverName* (STRING): Name of the SVM.
+*vserverUuid* (STRING): UUID of the SVM.
+*time* (STRING): Time when new ARP snapshot is created.
+*reason* (STRING): Reason for snapshot creation.
+
+== arw.snapshot.expiry.time.extended
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the expiry time of a periodically created anti-ransomware snapshot is extended after detecting an increase in the encrypted data percentage, which signals an unusual activity. The length of the extension corresponds to the magnitude of the encrypted data percentage detected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Anti-ransomware snapshot expiry time extended. Snapshot "%s" in volume "%s" in SVM "%s" from "%s" to "%s".
+*Parameters*::
+*snapshotName* (STRING): Name of the snapshot.
+*volumeName* (STRING): Name of the volume.
+*vserverName* (STRING): Name of the SVM.
+*prevExpiryTime* (STRING): Previous expiry time of the anti-ransomware snapshot.
+*newExpiryTime* (STRING): Updated expiry time of the anti-ransomware snapshot.

@@ -1,0 +1,46 @@
+---
+sidebar: sidebar
+permalink: mgmt-cifssuperuser-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmt.cifssuperuser events
+---
+
+= mgmt.cifssuperuser events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmt.cifssuperuser.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when configuration of a CIFS super-user fails; CIFS access through this acccount may not grant full super-user privileges.
+*Corrective Action*::
+Check the reason for the error and take action accordingly.
+*Syslog Message*::
+Failed to configure CIFS superuser. Error: %s.
+*Parameters*::
+*reason* (STRING): Reason for the failure.
+*vservername* (STRING): Name of the vserver.
+*cifsservername* (STRING): Name of the cifs server.
+*cifsdomainname* (STRING): Name of the cifs domain.
+*accountname* (STRING): Name of the superuser account.
+
+== mgmt.cifssuperuser.success
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a CIFS super-user is successfully configured after a failure.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*vservername* (STRING): Name of the vserver.
+*cifsservername* (STRING): Name of the cifs server.
+*cifsdomainname* (STRING): Name of the cifs domain.
+*accountname* (STRING): Name of the superuser account.

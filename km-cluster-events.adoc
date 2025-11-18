@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: km-cluster-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: km.cluster events
+---
+
+= km.cluster events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== km.cluster.okm.hierarchy.bad
+*Severity*::
+ALERT
+*Description*::
+This message occurs in a MetroCluster(tm) configuration, when one or both clusters have been configured with the Onboard Key Manager, but one or both of the Onboard Key Manager key hierarchies are corrupted. Specifically, the 'hashed_pass' object does not match the 'hashed_pass_l' object in at least one cluster.
+*Corrective Action*::
+Reboot each of the nodes in the MetroCluster configuration.
+*Syslog Message*::
+This cluster is part of a MetroCluster configuration. The Onboard Key Manager key hierarchy on one or both of the clusters is corrupted. Specifically, the 'hashed_pass' object does not match the 'hashed_pass_l' object, part of the 'cluster_kdb' table, in either cluster.
+*Parameters*::
+(None).

@@ -1,0 +1,52 @@
+---
+sidebar: sidebar
+permalink: wafl-aadir-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.aadir events
+---
+
+= wafl.aadir events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.aadir.spaceLtThreshold
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the actual space available in a storage availability zone is below a specified threshold of total space.
+*Corrective Action*::
+Create space by adding storage to the cluster. Alternatively, recover space by deleting data or Snapshots of storage units.
+*Syslog Message*::
+Storage availability zone "%s" has less than (%u%%) of total available space remaining.
+*Parameters*::
+*spod_uuid* (STRING): Storage availability zone UUID with low space.
+*percent_threshold* (INT): Warning threshold percentage for low space.
+
+== wafl.aadir.spaceNoDonor
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a storage availability zone is running low on space and the system cannot reallocate space to it.
+*Corrective Action*::
+Create space by adding storage to the cluster. Alternatively, recover space by deleting data or Snapshots of storage units.
+*Syslog Message*::
+Storage availability zone "%s" is running low on space and the system cannot reallocate space to it.
+*Parameters*::
+*spod_uuid* (STRING): Storage availability zone UUID with low space.
+
+== wafl.aadir.unhealthy
+*Severity*::
+ERROR
+*Description*::
+This message occurs when space balancing has not been able to run for the past 30 minutes. Space balancing is not operational at this time.
+*Corrective Action*::
+Contact Contact NetApp technical support. for assistance.
+*Syslog Message*::
+Space Balancing has failed to run in over 30 minutes on storage availability zone: "%s"
+*Parameters*::
+*spod_uuid* (STRING): Storage availability zone UUID on which space balancing is unhealthy.

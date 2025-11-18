@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: repl-seq-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.seq events
+---
+
+= repl.seq events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.seq.split.enabled.SAN
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the SnapMirror sequential split is enabled on a SAN operating workload. This is meant to be enabled for NAS workloads only. SAN operating workload would experience a higher latency and is not recommended to be used with sequential splitting mode.
+*Corrective Action*::
+Switch back to parallel split mode by running the command "snapmirror policy modify -policy (policy name) -are-data-ops-sequentially-split false".
+*Syslog Message*::
+Sequential splitting mode is enabled in SAN operating workload for relationship with UUID "%s".
+*Parameters*::
+*relationship_id* (STRING): SnapMirror relationship universal unique identifier (UUID).

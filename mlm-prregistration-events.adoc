@@ -1,0 +1,50 @@
+---
+sidebar: sidebar
+permalink: mlm-prregistration-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mlm.prregistration events
+---
+
+= mlm.prregistration events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mlm.PRregistration.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the registration of a SCSI persistent reservation key fails. A number of conditions can cause this SCSI command to fail and most are transitory in nature. If there is not a subsequent EMS_mlm_PRregistration_succeeded message, it is indicative of a persistent hardware fault.
+*Corrective Action*::
+A SCSI persistent registration failure normally indicates an error at the device during execution of the requested command. Such cases are often the result of an intermittent device hardware that is automatically handled by the Data ONTAP(R) drivers through retries. In cases of repeated events, the specified device should be evaluated for proper operation and possible repair or replacement.
+*Syslog Message*::
+A SCSI persistent registration command failed on device %s on initiator port %s, target port World Wide Node Name %s, target port World Wide Port Name %s with a ha status of 0x%x, target status of 0x%x, sense key of 0x%x, additional sense code of 0x%x, additional sense code qualifier of 0x%x.
+*Parameters*::
+*device_name* (STRING): Electrical path name of the device on which the error occurred.
+*ha_name* (STRING): Name of the initiator port.
+*wwnn* (STRING): World Wide Node Name of the target port.
+*wwpn* (STRING): World Wide Port Name of the target port.
+*ha_status* (INTHEX): Integer value of the hardware adapter status for the failed command.
+*target_status* (INTHEX): Integer value of the target status for the failed command.
+*sense_key* (INTHEX): Integer value of the sense key for the failed command.
+*asc* (INTHEX): Integer value of the additional sense code for the failed command.
+*asq* (INTHEX): Integer value of the additional sense code qualifier for the failed command.
+
+== mlm.PRregistration.succeeded
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a successful registration of a SCSI persistent reservation key occurs that had previously failed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A SCSI persistent reservation command succeeded on device %s on initiator port %s, target port World Wide Node Name %s, target port World Wide Port Name %s where it had previously failed.
+*Parameters*::
+*device_name* (STRING): Electrical path name of the device on which the registration succeeded.
+*ha_name* (STRING): Name of the initiator port.
+*wwnn* (STRING): World Wide Node Name of the target port.
+*wwpn* (STRING): World Wide Port Name of the target port.

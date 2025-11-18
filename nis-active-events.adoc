@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nis-active-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nis.active events
+---
+
+= nis.active events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nis.active.false.removed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the last system to be upgraded in a cluster removes NIS configurations that were marked as inactive.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+All NIS configurations with the "-active" parameter set to "false" were removed.
+*Parameters*::
+(None).

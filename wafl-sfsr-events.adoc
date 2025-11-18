@@ -1,0 +1,131 @@
+---
+sidebar: sidebar
+permalink: wafl-sfsr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.sfsr events
+---
+
+= wafl.sfsr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.sfsr.abort.ino
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the system is forced to abort a file restore.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Single-file snaprestore of inode %u (snapid %d, %s %s%s%s%s) to inode %u prematurely halted.
+*Parameters*::
+*srcIno* (INT): The source inode number
+*snapId* (INT): The snapshot identifier
+*type* (STRING): The type of object (volume/aggregate)
+*owner* (STRING): The volume owner
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*dstIno* (INT): The target inode number
+
+== wafl.sfsr.abort.inoDeleted
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the system is forced to abort a file restore. The inode was deleted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Single-file snaprestore of inode %u (snapid %d, %s %s%s%s%s) to inode %u aborted. File was deleted.
+*Parameters*::
+*srcIno* (INT): The source inode number
+*snapId* (INT): The snapshot identifier
+*type* (STRING): The type of object (volume/aggregate)
+*owner* (STRING): The volume owner
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*dstIno* (INT): The target inode number
+
+== wafl.sfsr.done
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a file restore operation has completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Single-file snaprestore of inode %u (snapid %d, %s %s%s%s%s) to inode %u has completed.
+*Parameters*::
+*srcIno* (INT): Source inode number.
+*snapId* (INT): Snapshot identifier.
+*type* (STRING): Type of object (volume/aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.
+*dstIno* (INT): Target inode number.
+
+== wafl.sfsr.lun.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system attempts to restore a file onto a LUN. This is not a supported action; files cannot be restored onto a LUN.
+*Corrective Action*::
+No corrective action is possible; files cannot be restored onto a LUN.
+*Syslog Message*::
+Attempted to restore a file onto a LUN, but files cannot be restored onto a LUN. (vol='%s', volident='%s', snapname='%s', filename='%s')
+*Parameters*::
+*vol* (STRING): Volume name.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*snapname* (STRING): Name of the snapshot that the file is being restored from.
+*filename* (STRING): Name of the file that cannot be restored onto a LUN.
+
+== wafl.sfsr.lun.name.error
+*Severity*::
+ERROR
+*Description*::
+This event is issued when a LUN is being restored to a new location and the path to the new location contains invalid characters. The valid characters for the last component in the lun path are A-Z, a-z, 0-9, '-', '.', '_', '{' and '}'.
+*Corrective Action*::
+Make sure that the last component of the path to the new location contains characters from A-Z, a-z, 0-9, '-', '.', '_', '{' and '}'.
+*Syslog Message*::
+Can't restore LUN due to invalid restore path. The last component of the restore path can only contain characters from A-Z, a-z, 0-9, '-', '.', '_', '{' and '}'.
+*Parameters*::
+(None).
+
+== wafl.sfsr.lun.restore.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system attempts to restore a LUN to something other than qtree root. This is not a supported action; LUNs can only be restored into qtree roots.
+*Corrective Action*::
+No corrective action is possible; LUNs can only be restored into qtree roots.
+*Syslog Message*::
+Attempted to restore a LUN to something other than a qtree root, but LUNs can only be restored into qtree roots. (vol='%s', volident='%s', snapname='%s', filename='%s')
+*Parameters*::
+*vol* (STRING): Volume name.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*snapname* (STRING): Name of the snapshot that the LUN is being restored from.
+*filename* (STRING): Name of the file that the LUN is being restored from.
+
+== wafl.sfsr.sr.disabled
+*Severity*::
+ERROR
+*Description*::
+This event is generated when a single-file snap restore (sfsr) operation on a file with a space reservation fails because there is not enough space on the volume to restore the file with its space reservation. If there was room for the file without a space reservation, then the file was restored with its space reservation disabled.
+*Corrective Action*::
+If this event happened because the single-file snaprestore (sfsr) failed then space on the volume must be freed and the sfsr redone. If the sfsr was otherwise successful then space on the volume must be freed and reservations re-enabled by using "file reservation file-path enable".
+*Syslog Message*::
+Single-file snaprestore of inode %u on %s %s%s%s) did not restore space reservations due to lack of disk space.
+*Parameters*::
+*srcIno* (INT): The source inode number
+*type* (STRING): The type of object (volume/aggregate)
+*owner* (STRING): The volume owner
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.

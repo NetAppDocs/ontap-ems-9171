@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: replication-err-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: replication.err events
+---
+
+= replication.err events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== replication.err.snapCreateFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the replication engine fails to create an automatic snapshot.
+*Corrective Action*::
+Make sure that the snapshot limit is not reached for the volume. The current ONTAP version allows a maximum of 255 snapshots per volume.
+*Syslog Message*::
+%s transfer from %s:%s to %s:%s : %s.
+*Parameters*::
+*rtype* (STRING): Replication type (SnapMirror, SnapVault, and so on.).
+*srcfiler* (STRING): Replication source system.
+*srcpath* (STRING): Replication source path.
+*dstfiler* (STRING): Replication destination system.
+*dstpath* (STRING): Replication destination path.
+*rplerror* (STRING): Replication error message.
+*waflerror* (STRING): WAFL(R) error message.

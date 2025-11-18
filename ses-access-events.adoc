@@ -1,0 +1,65 @@
+---
+sidebar: sidebar
+permalink: ses-access-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ses.access events
+---
+
+= ses.access events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ses.access.noEnclServ
+*Severity*::
+ALERT
+*Description*::
+This message occurs when Enclosure Services in the storage system cannot establish contact with the enclosure monitoring process in any disk shelf on the channel. Enclosure Services in the storage system tries periodically to reestablish contact with the disk shelf.
+*Corrective Action*::
+If the error persists for more than an hour, then reboot the controller.
+*Syslog Message*::
+No Enclosure Services detected through channel %s.
+*Parameters*::
+*channelName* (STRING): Name of the adapter port or switch port associated with the error; for example, "7a" or "myswitch:5".
+
+== ses.access.noMoreValidPaths
+*Severity*::
+ALERT
+*Description*::
+This message occurs when Enclosure Services in the storage system loses access to the enclosure monitoring process in the disk shelf I/O module.
+*Corrective Action*::
+Enclosure Services in the storage system tries periodically to reestablish contact with the disk shelf. If the error persists for more than an hour, then halt the storage system, power-cycle the disk shelf, and reboot. If the error still persists, then the shelf I/O module might need to be replaced.
+*Syslog Message*::
+No more valid paths to Enclosure Services in shelf %d on channel %s.
+*Parameters*::
+*shelf* (INT): Disk shelf number on the channel with which access has been lost.
+*channelName* (STRING): Name of the adapter port or switch port associated with the shelf; for example, "7a" or "myswitch:5".
+
+== ses.access.noShelfSES
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Enclosure Services in the storage system cannot establish contact with the Enclosure Services process in the indicated disk shelf. The system tries periodically to reestablish contact with the disk shelf.
+*Corrective Action*::
+If the error persists for more than an hour, then the disk shelf module must be power-cycled. If the module is a system CPU module (such as IOM6E), or if the system is attached in a single path to the module, then halt the system, reseat the module, and reboot. In a multipath system, remove the shelf module, wait 30 seconds, and then reinsert the module. If the error persists, then replace the shelf module.
+*Syslog Message*::
+No SCSI-3 Enclosure Services on channel %s shelf %d.
+*Parameters*::
+*channelName* (STRING): Name of the adapter port or switch port associated with the error; for example, "7a" or "myswitch:5".
+*shelf* (INT): Disk shelf number on the channel with which contact has been lost.
+
+== ses.access.sesUnavailable
+*Severity*::
+ALERT
+*Description*::
+This message occurs when Enclosure Services in the storage system cannot establish contact with the enclosure monitoring process in one or more disk shelves on the channel. The system tries periodically to reestablish contact with the disk shelves.
+*Corrective Action*::
+If the error persists for more than an hour, then reboot the controller.
+*Syslog Message*::
+Enclosure Services unavailable for one or more shelves on channel %s.
+*Parameters*::
+*channelName* (STRING): Name of the adapter port or switch port associated with the error; for example, "7a" or "myswitch:5".

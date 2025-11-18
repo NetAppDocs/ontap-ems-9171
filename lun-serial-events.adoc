@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: lun-serial-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lun.serial events
+---
+
+= lun.serial events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lun.serial.timeWentBack
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event occurs when the system clock has been set back in time. It prints the current LUN serial number counter.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*counter* (LONGINT): Current value of LUN serial number counter.

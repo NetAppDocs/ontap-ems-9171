@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: ctran-net-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ctran.net events
+---
+
+= ctran.net events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ctran.net.unreachable
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Cluster Transaction Manager (CTRAN) on the local node is unable to reach a peer node that it believes is in CLAM quorum.
+*Corrective Action*::
+Check all cluster interfaces on the node initiating this error message and the peer node specified in the message. * Ensure all interfaces are in up state with "network interface show -role cluster". * Ensure that each node initiating this message can reach their peer node with "cluster ping". * Check the cluster interconnect switches and correct any issues found with the health or configuration found. If the error still persists KCS CTRAN logs will need to be collected for further analysis. Trigger an ALL autosupport by using, "autosupport invoke -node * -message "ctran.net.unreachable" -type all", a diagnostic autosupport by using "autosupport invoke-diagnostic -node * -message "ctran.net.unreachable" -subsystem kcs" and contact NetApp technical support support.
+*Syslog Message*::
+Node %s (id=%llu) is unable to reach peer node %s (id=%llu) on connection %s (ACN=0x%016llx).
+*Parameters*::
+*local_node_name* (STRING): Node name of the local node.
+*local_node_id* (LONGINT): Node ID of the local node.
+*peer_node_name* (STRING): Node name of the unreachable peer node.
+*peer_node_id* (LONGINT): Node ID of the unreachable peer node.
+*connection* (STRING): Name of connection that is unreachable.
+*acn* (LONGINTHEX): The ACN value.

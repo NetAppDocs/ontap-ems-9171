@@ -1,0 +1,44 @@
+---
+sidebar: sidebar
+permalink: esh-element-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: esh.element events
+---
+
+= esh.element events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== esh.element.fault
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the filer cannot communicate with the ESH module.
+*Corrective Action*::
+Check the cabling to the disk shelf. Verify that the SCSI Enclosure Services (SES) disk drives (0-1) are properly inserted. Check the status LED on the disk shelf, making sure that the fault LEDs are not lit. Clear any fault condition, if possible. Refer to the quick reference card beneath the disk shelf for information about the meanings of the LEDs.
+*Syslog Message*::
+State of ESH module %s is %s on channels %s disk shelf id %d
+*Parameters*::
+*element* (STRING): ESH module designator (A is the upper module, B is the lower module).
+*state* (STRING): Current state of ESH Module.
+*channels* (STRING): Channels that have the error if local, PARTNER for high-availability partner, UNUSED if unconnected.
+*shelfID* (INT): Disk shelf ID (1-7) of the disk shelf reporting the error.
+
+== esh.element.xport.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is a transport error.
+*Corrective Action*::
+Check the cabling to the disk shelf. Verify that the SCSI Enclosure Services (SES) disk drives (0-1) are properly inserted. Check the status LED on the disk shelf, making sure that the fault LEDs are not lit. Clear any fault condition, if possible. Refer to the quick reference card beneath the disk shelf for information about the meanings of the LEDs.
+*Syslog Message*::
+ESH %s XPORT ERROR on channels %s disk shelf ID %d.
+*Parameters*::
+*element* (STRING): ESH module designator (A is the upper module, B is the lower module).
+*channels* (STRING): Channels that have the error if local, PARTNER for high-availability partner, UNUSED if unconnected.
+*shelfID* (INT): Disk shelf ID (1-7) of the disk shelf reporting the error.

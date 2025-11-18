@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: diskown-bayctrlr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.bayctrlr events
+---
+
+= diskown.bayctrlr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.bayctrlr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs if the controller address is determined when the bay policy override option has been set. The controller address "A/B" is used to automatically assign the disks in odd/even bays.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Determined controller address %s based on shelf ID %d and slot number %d.
+*Parameters*::
+*ctrlr* (STRING): Controller address.
+*shelfId* (INT): ID of the shelf chosen to determine the controller address.
+*slot* (INT): Slot number of the shelf chosen to determine the controller address.
+
+== diskown.bayctrlr.unknown
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when disks in a shelf are not assigned to the current node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cannot make determination of controller address.
+*Parameters*::
+(None).

@@ -1,0 +1,53 @@
+---
+sidebar: sidebar
+permalink: sp-eth-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sp.eth events
+---
+
+= sp.eth events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sp.eth.switch.upd.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Service Processor (SP) or Baseboard Management Controller (BMC) fails to auto-update the internal Ethernet switch.
+*Corrective Action*::
+1. Perform a manual Ethernet Switch update from SP or BMC CLI. 2. If the failures persist, contact NetApp technical support.
+*Syslog Message*::
+%s Ethernet switch auto-update failed.
+*Parameters*::
+*sp_type* (STRING): SP type
+
+== sp.eth.switch.upd.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Service Processor (SP) or Baseboard Management Controller (BMC) starts an internal Ethernet switch auto-update. During the Ethernet switch update, SP or BMC and e0M network connections might be temporarily affected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s is starting Ethernet switch auto-update %s.
+*Parameters*::
+*sp_type* (STRING): SP type
+*switch_ver* (STRING): Current and bundled switch version.
+
+== sp.eth.switch.upd.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Service Processor (SP) or Baseboard Management Controller (BMC) completes an internal Ethernet switch auto-update.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s Ethernet switch version updated %s.
+*Parameters*::
+*sp_type* (STRING): SP type
+*switch_ver* (STRING): Previous and updated switch version.

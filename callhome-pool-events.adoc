@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-pool-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.pool events
+---
+
+= callhome.pool events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.pool.aggr.noncomp
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an aggregate does not comply with the current Capacity Pool entitlement, as determined by the Licensing Manager. In an HA configuration, noncompliant aggregates are prevented from being sent home during an HA takeover/giveback situation. In a non-HA configuration, these aggregates cannot be brought online if they are already offline. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Use the "system license license-manager check" command to determine whether the License Manager is accessible. Use the "system license show-aggregates -compliant false" command to find all aggregates that do not comply. From the web interface of the ONTAP(R) Select Deploy(R) instance, check the Capacity Pool licensing status, and ensure that sufficient capacity remains within the capacity pool used by this instance of ONTAP. If the capacity is insufficient, reduce the usage by instances of ONTAP that use the pool (for example, by deleting aggregates). If no reduction is possible, Contact NetApp technical support..
+*Syslog Message*::
+Call home for %s.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

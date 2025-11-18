@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: volcopy-flextotraderr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: volcopy.flextotraderr events
+---
+
+= volcopy.flextotraderr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== volcopy.flexToTradErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the user tries to copy a flexible volume into a traditional volume using the command 'vol copy'.
+*Corrective Action*::
+Retry the operation with a flexible volume as the destination.
+*Syslog Message*::
+vol copy: A flexible volume cannot be copied into a traditional volume.
+*Parameters*::
+(None).

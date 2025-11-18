@@ -1,0 +1,54 @@
+---
+sidebar: sidebar
+permalink: netgroup-nis-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netgroup.nis events
+---
+
+= netgroup.nis events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netgroup.nis.byhost.decode
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the netgroup.byhost remote procedure call to the Network Information Service (NIS) server returns a response that cannot be decoded.
+*Corrective Action*::
+Check the netgroup byhost database on the NIS server for lines that have more than 1024 characters.
+*Syslog Message*::
+NIS server returned an undecodable response for Vserver "%s" during lookup for netgroup "%s".
+*Parameters*::
+*vserver* (STRING): Name of the Vserver on which the problem is occurring.
+*netgroup* (STRING): Name of the netgroup for the lookup request.
+
+== netgroup.nis.byhost.missing
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the netgroup.byhost map is not configured on the Network Information Service (NIS) server and NIS is configured as a ns-switch source for the Vserver. Enabling netgroup.byhost enables mount operations to succeed faster when the netgroup size is large.
+*Corrective Action*::
+Consider configuring the netgroup.byhost map on the NIS server to gain better performance with netgroups.
+*Syslog Message*::
+NIS server missing netgroup.byhost map for Vserver "%s" during lookup for netgroup "%s".
+*Parameters*::
+*vserver* (STRING): Name of the Vserver on which the problem is occurring.
+*netgroup* (STRING): Name of the netgroup for the lookup request.
+
+== netgroup.nis.config
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a netgroup lookup request finds that Network Information Service (NIS) is specified as a ns-switch source, but NIS is not configured for the Vserver. Netgroup lookups using NIS will not function.
+*Corrective Action*::
+Check the ns-switch sources configured for the netgroup database using "vserver services name-service ns-switch show" and the NIS configuration for the Vserver using "nis-domain show". Either remove NIS as a ns-switch source, or configure NIS.
+*Syslog Message*::
+NIS configuration issues found for Vserver "%s" during lookup for netgroup "%s".
+*Parameters*::
+*vserver* (STRING): Name of the Vserver on which the problem is occurring.
+*netgroup* (STRING): Name of the netgroup for the lookup request.

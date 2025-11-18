@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: fg-provision-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fg.provision events
+---
+
+= fg.provision events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fg.provision.unmirrored.aggr
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a user provisions a FlexGroup on unmirrored aggregates on nodes in a MetroCluster(tm) configuration. However, unmirrored aggregates, as a rule, do not have synchronous disaster protection.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FlexGroup %s was provisioned on unmirrored aggregates on Vserver %s.
+*Parameters*::
+*volumeName* (STRING): Name of the FlexGroup created on the unmirrored aggregates.
+*vserverName* (STRING): Name of the Vserver on which the FlexGroup resides.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: net-vserverupdatefailure-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: net.vserverupdatefailure events
+---
+
+= net.vserverupdatefailure events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== net.vServerUpdateFailure
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a node cannot be updated with Vserver configuration. This can result in that node not being able to host LIFs.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Unable to update node %s with current Vservers.
+*Parameters*::
+*remote_node* (STRING): Node being updated.

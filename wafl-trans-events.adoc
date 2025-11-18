@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: wafl-trans-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.trans events
+---
+
+= wafl.trans events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.trans.ssd.cache.disable
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system transitions a hybrid aggregate from 7-Mode to clustered Data ONTAP. As part of transition, SSD caching is disabled until the transition is committed.
+*Corrective Action*::
+No action is required. After the transition operation is committed, SSD caching is automatically reenabled.
+*Syslog Message*::
+SSD caching on hybrid aggregate "%s" has been disabled because a transition operation is in the pre-commit phase.
+*Parameters*::
+*name* (STRING): Aggregate name.

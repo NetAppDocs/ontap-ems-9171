@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: callhome-mlm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.mlm events
+---
+
+= callhome.mlm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.mlm.array.portOneController
+*Severity*::
+ALERT
+*Description*::
+This message occurs when all paths for an array LUN are connected to the same controller on the array. This configuration results in a single point of failure at the array. If an active-passive array is connected at the back end, then all the partner controller's paths go to the alternate controller, which results in a tug of war on mailbox I/O or other events that talk to the partner's array LUNs. If the system is running in Cluster-Mode, use the 'storage errors show' command to detect this error. If your system is configured to do so, it generates and transmits an AutoSupport(tm) (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Reconfigure your back-end SAN so that array LUNs are presented from controllers in different fault domains on the target array. If you need further assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for ALL PATHS FOR THE ARRAY LUN ARE CONNECTED TO THE SAME CONTROLLER.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.mlm.lun.OnePath
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the logical devices (LDEVs) on an array LUN or group of array LUNs are connected using only one path. A proper configuration requires the LDEVs to be connected to at least two paths; otherwise, there is the potential for data loss caused by a single path failure. If an array LUN is assigned, an EMS message is logged to the console at least once a day indicating that it is a single-path assigned array LUN. If the system is running in Cluster-Mode, use the 'storage errors show' command to identify the error. If your system is configured to do so, it generates and transmits an AutoSupport(tm) (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Verify the configuration and identify the LDEVs that are connected to only one path. After you identify the LDEVs, change the system configuration to ensure that there are at least two paths to all these LDEVs. If you need further assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for ARRAY LUN CONNECTED USING ONLY ONE PATH.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

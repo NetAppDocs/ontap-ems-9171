@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: disk-fakereassignsuccess-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.fakereassignsuccess events
+---
+
+= disk.fakereassignsuccess events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.fakereassignSuccess
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a fake reassign is detected on a disk and the sector verify succeeds.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+disk %s: A fake reassign was issued on sector %llu for disk %s. Disable with boot arg disable-disk-fake-reassign? true.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*sector* (LONGINT): Sector where the error was detected.
+*disk_information* (STRING): Formatted information about the disk. This includes the disk's vendor, model, firmware revision, and serial number.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: connectx-ibretimerfailcount-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: connectx.ibretimerfailcount events
+---
+
+= connectx.ibretimerfailcount events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== connectx.IbRetimerFailCount
+*Severity*::
+ERROR
+*Description*::
+This message occurs when InfiniBand retimer programming fails due to one of the following reasons: InfiniBand device not found, GPIO read failure or retimer chip failure.
+*Corrective Action*::
+Automatic retry of InfiniBand retimer programming will be done and an AutoSupport(tm) message will be generated if two retries fail.
+*Syslog Message*::
+InfiniBand retimer programming failed on port %s due to %s.
+*Parameters*::
+*port_str* (STRING): InfiniBand port in which the cable is plugged.
+*reason* (STRING): Reason for the failure of InfiniBand retimer programming.

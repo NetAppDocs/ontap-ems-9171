@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: sync-subsystem-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sync.subsystem events
+---
+
+= sync.subsystem events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sync.subsystem.replicate.err
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an error occurs on replicating a subsystem synchronously.
+*Corrective Action*::
+To get further details on the subsystems that have replication errors, use the command: "vserver nvme subsystem show -replication-error !- -instance".
+*Syslog Message*::
+Replication of the subsystem between source Vserver "%s" and peer Vserver "%s" has failed with error "%s".
+*Parameters*::
+*vserver_name* (STRING): Name of the source Vserver.
+*peer_vserver_name* (STRING): Name of the replication peer Vserver.
+*error* (STRING): Error that occurred.
+*vserver_uuid* (STRING): UUID of the source Vserver.
+*peer_vserver_uuid* (STRING): UUID of the replication peer Vserver.
+*peer_relationship_uuid* (STRING): UUID of the relationship between the source and peer.

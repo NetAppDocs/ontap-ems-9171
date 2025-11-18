@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: nblade-pcp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.pcp events
+---
+
+= nblade.pcp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.pcp.linkThrashing
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a network port undergoes multiple link state transitions within a short period of time. The event might be triggered in response to a rapid sequence of switch events or there might be a bad link.
+*Corrective Action*::
+If this problem persists, check the physical connections between the affected port and its network switch. You can identify the faulty port by reviewing the event log for link state transitions reported by the NIC. One or more ports should have reported multiple linkUp and linkDown events prior to the linkThrashing message. ::> event log show -node <node> -messagename netif.link* If checking physical connections does not identify the problem, consider replacing the corresponding NIC.
+*Syslog Message*::
+Link thrashing detected on port %u.
+*Parameters*::
+*port* (INT): Port ID.

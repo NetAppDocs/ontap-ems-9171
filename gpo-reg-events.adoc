@@ -1,0 +1,65 @@
+---
+sidebar: sidebar
+permalink: gpo-reg-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: gpo.reg events
+---
+
+= gpo.reg events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== gpo.reg.applied
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the group policy object (GPO) registry policy settings are applied.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Successfully applied GPO registry settings to Vserver %s.
+*Parameters*::
+*vserver* (STRING): Vserver name.
+
+== gpo.reg.bCache.applied
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the group policy object (GPO) BranchCache settings are applied.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Successfully applied BranchCache settings to Vserver %s.
+*Parameters*::
+*vserver* (STRING): Vserver name.
+
+== gpo.reg.bCache.notApplied
+*Severity*::
+ERROR
+*Description*::
+This message occurs when applying group policy object (GPO) registry BranchCache policy settings fails.
+*Corrective Action*::
+Address the specific reason for the issue, and then apply the settings again by entering the "vserver cifs group-policy update -force-reapply-all-settings true -vserver <vserver-name>" command.
+*Syslog Message*::
+Failed to apply BranchCache settings for Vserver %s, reason: %s.
+*Parameters*::
+*vserver* (STRING): Vserver name.
+*reason* (STRING): Reason for the failure.
+
+== gpo.reg.notApplied
+*Severity*::
+ERROR
+*Description*::
+This message occurs when applying group policy object (GPO) registry policy settings fails.
+*Corrective Action*::
+Address the specific reason for the issue, and then apply the settings again by entering the "vserver cifs group-policy update -force-reapply-all-settings true -vserver <vserver-name>" command.
+*Syslog Message*::
+Failed to apply GPO registry settings for Vserver %s, reason: %s.
+*Parameters*::
+*vserver* (STRING): Vserver name.
+*reason* (STRING): Reason for the failure.

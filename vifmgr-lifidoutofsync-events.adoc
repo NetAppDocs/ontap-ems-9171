@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: vifmgr-lifidoutofsync-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.lifidoutofsync events
+---
+
+= vifmgr.lifidoutofsync events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.lifIdOutOfSync
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Logical Interface (LIF) is configured in the Logical Interface manager (VIFMgr) but is not visible in the user interface."
+*Corrective Action*::
+Using information from the message, use the "network interface ids create" diag privilege command to create the ID.
+*Syslog Message*::
+LIF %s with ID %s (on virtual server %s), IP address %s, is configured in the VIFMgr but is not visible in the user interface.
+*Parameters*::
+*vifname* (STRING): Name of the invisible LIF as it exists in the VIFMgr.
+*vifid* (STRING): Unique ID of the invisible LIF as it exists in VIFMgr.
+*vsrvid* (STRING): ID of the virtual server on which the LIF resides.
+*vifip* (STRING): IP address of the invisible LIF as it exists in the VIFMgr.

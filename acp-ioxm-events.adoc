@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: acp-ioxm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: acp.ioxm events
+---
+
+= acp.ioxm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== acp.ioxm.port.down
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the link status of one or more ports from the IOXM switch changes from "up" to "down".
+*Corrective Action*::
+Verify that all cables in the IOXM switch ports are seated properly.
+*Syslog Message*::
+IOXM switch port %d is down.
+*Parameters*::
+*port_num* (INT): Switch port number of the IOXM switch.
+
+== acp.ioxm.port.up
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the link status of one or more ports from the IOXM switch changes from "down" to "up".
+*Corrective Action*::
+(None).
+*Syslog Message*::
+IOXM switch port %d is up.
+*Parameters*::
+*port_num* (INT): Switch port number of the IOXM switch.

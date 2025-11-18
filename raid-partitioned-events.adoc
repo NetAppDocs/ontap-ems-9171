@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: raid-partitioned-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.partitioned events
+---
+
+= raid.partitioned events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.partitioned.disk.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a partitioned disk has failed upon assimilation by RAID. Partitioning is not supported on this deployment.
+*Corrective Action*::
+Partitioning is not supported, so unpartition the partitioned disk. If you need assistance, contact NetApp technical support
+*Syslog Message*::
+Partitioned disk "%s" has failed as partitioning is not supported on this deployment.
+*Parameters*::
+*disk_name* (STRING): Name of the disk.

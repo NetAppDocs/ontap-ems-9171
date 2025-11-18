@@ -1,0 +1,36 @@
+---
+sidebar: sidebar
+permalink: wafl-cp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.cp events
+---
+
+= wafl.cp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.cp.toolong
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a WAFL(R) consistency point (CP) takes longer than 30 seconds. A CP lasting more than 30 seconds might cause client latency and potentially a client outage.
+*Corrective Action*::
+For additional information about this specific CP, see the kernel log file and the corresponding CM archive. For further information about correcting the problem, search the knowledgebase of the NetApp technical support support web site for the "wafl.cp.toolong" keyword.
+*Syslog Message*::
+Aggregate %s experienced a long CP.
+*Parameters*::
+*aggrname* (STRING): Name of the aggregate.
+*repeats* (INT): Number of consecutive long CPs on this volume.
+*cp_count* (INT): CP count on the volume corresponding to the long CP.
+*total_ms* (INT): Total time taken by the CP, in milliseconds.
+*total_dbufs* (LONGINT): Total number of dirty buffers in the CP.
+*tetrises* (INT): Number of tetrises that were written across all raidgroups in volume.
+*blocks* (LONGINT): Number of blocks that were written across all raid groups in the volume.
+*rgid* (INT): ID of the raid group with the highest average tetris write time.
+*clean* (INT): Milliseconds to write allocate (clean) all normal files.
+*flush* (INT): Milliseconds to write all remaining blocks to disk.

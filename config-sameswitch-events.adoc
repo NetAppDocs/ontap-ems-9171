@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: config-sameswitch-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.sameswitch events
+---
+
+= config.sameswitch events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.SameSwitch
+*Severity*::
+ALERT
+*Description*::
+This message occurs when both ports of a disk is found to be attached to the same switch.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disks on port %s:%d are also connected to the same switch at port %s:%d. This is an illegal configuration.
+*Parameters*::
+*switch1* (STRING): name of the switch
+*port1* (INT): port number of 1st connection.
+*switch2* (STRING): (None).
+*port2* (INT): port number of 2nd connection.

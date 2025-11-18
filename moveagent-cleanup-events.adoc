@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: moveagent-cleanup-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: moveagent.cleanup events
+---
+
+= moveagent.cleanup events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== moveagent.cleanup.dest
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a volume move operation running on the partner cluster is interrupted by a disaster recovery event (such as switchover or switchback) in the MetroCluster(tm) configuration before the operation reaches the cutover phase. This leaves the temporary destination volume created on this cluster in an incomplete state. The temporary destination volume must be deleted.
+*Corrective Action*::
+If necessary, identify which temporary destination volume must be deleted by running the "volume show -fields volume,vserver -dsid" command, and then take that volume offline by running the "volume offline" command. Delete the volume by running the "volume delete" command while it is offline.
+*Syslog Message*::
+MetroCluster disaster recovery event requires deletion of the temporary destination volume (DSID: %llu) created by a recent volume move operation running on the partner cluster. Failure to delete the temporary destination volume might cause future switchback operations to fail.
+*Parameters*::
+*volume_dsid* (LONGINT): Destination volume data set ID (DSID).
+
+== moveagent.cleanup.src
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a volume move operation is interrupted by a disaster recovery event (such as switchover or switchback) in the MetroCluster(tm) configuration after the cutover phase has started but before the source volume is deleted. The source volume must be deleted.
+*Corrective Action*::
+If necessary, identify which source volume must be deleted by running the "volume show -fields volume, vserver -dsid" command, and then take the volume offline by running the "volume offline" command. Delete the volume by running the "volume delete" command while it is offline.
+*Syslog Message*::
+A MetroCluster disaster recovery event interrupted the volume move operation before the source volume was deleted. Delete the source volume (DSID: %llu). Failure to delete the source volume might cause future switchback operations to fail.
+*Parameters*::
+*volume_dsid* (LONGINT): Source volume data set ID (DSID).

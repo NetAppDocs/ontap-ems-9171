@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: netport-eth-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netport.eth events
+---
+
+= netport.eth events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netport.eth.discovered
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a physical network port has been discovered.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Physical network port %s (node %s) has been discovered.
+*Parameters*::
+*port* (STRING): Name of the network port.
+*node* (STRING): Name of the node on which the network port resides.

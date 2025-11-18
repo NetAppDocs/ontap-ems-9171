@@ -1,0 +1,162 @@
+---
+sidebar: sidebar
+permalink: scsitarget-slifct-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsitarget.slifct events
+---
+
+= scsitarget.slifct events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsitarget.slifct.asyncError
+*Deprecated*::
+Deprecated as of ONTAP(R) version 9.2.0 in an effort reduce event messages.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Fibre Channel target device driver encounters an unrecognized asynchronous event notification from the firmware, possibly as a result of a firmware update. The unrecognized event is ignored by the system.
+*Corrective Action*::
+No administrative action is required. If the messages persist, contact NetApp technical support with the event details for assistance.
+*Syslog Message*::
+FC port %s encountered an unexpected event of x%x, type of x%x, with additional status of x%x, x%x, x%x.
+*Parameters*::
+*hba* (STRING): Name of the port where the event occurred.
+*async_event_code* (INTHEX): Asynchronous event code that was unrecognized by the target driver.
+*async_event_type* (INTHEX): Asynchronous event type that was unrecognized by the target driver.
+*async_event_word1* (INTHEX): Asynchronous event word_1 that was unrecognized by the target driver.
+*async_event_word2* (INTHEX): Asynchronous event word_2 that was unrecognized by the target driver.
+*async_event_word3* (INTHEX): Asynchronous event word_3 that was unrecognized by the target driver.
+
+== scsitarget.slifct.fwAutoBoot
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the SLIFCT driver successfully updates the firmware version of the host bus adapter (HBA). The controller will be rebooted automatically to complete the process.
+*Corrective Action*::
+None; the controller will be rebooted automatically to enable the new HBA firmware.
+*Syslog Message*::
+FC target HBA %s firmware version updated from %s to %s. The controller will be rebooted automatically to enable the new HBA firmware.
+*Parameters*::
+*hba* (STRING): HBA where the firmware version update occurred.
+*currentversion* (STRING): Firmware version the HBA was running.
+*bundleversion* (STRING): Firmware version bundled with Data ONTAP(R).
+
+== scsitarget.slifct.fwNeedBoot
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the SLIFCT driver successfully updates the firmware version of the host bus adapter (HBA), and requires a reboot of the controller to complete the process.
+*Corrective Action*::
+Reboot the controller to enable the new HBA firmware.
+*Syslog Message*::
+FC target HBA %s firmware version updated from %s to %s. Reboot the controller to enable the new HBA firmware.
+*Parameters*::
+*hba* (STRING): HBA where the firmware version update occurred.
+*currentversion* (STRING): Firmware version the HBA was running.
+*bundleversion* (STRING): Firmware version bundled with Data ONTAP(R).
+
+== scsitarget.slifct.fwUpdDone
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the SLIFCT driver successfully updates the firmware version of the host bus adapter (HBA).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC target HBA %s firmware version updated from %s to %s.
+*Parameters*::
+*hba* (STRING): HBA where the firmware version update occurred.
+*currentversion* (STRING): Firmware version the HBA was running.
+*bundleversion* (STRING): Firmware version bundled with Data ONTAP(R).
+
+== scsitarget.slifct.fwUpdErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the SLIFCT driver encounters an error while updating the firmware version of the host bus adapter (HBA).
+*Corrective Action*::
+The corrective action for this error must be determined from system logs. For assistance, contact NetApp technical support with the current version, bundle version, status, and additional status values for further analysis.
+*Syslog Message*::
+FC target HBA %s failed to update the firmware version from %s to %s with the status of x%x and an additional status x%x.
+*Parameters*::
+*hba* (STRING): HBA where the firmware version update failure occurred.
+*currentversion* (STRING): Firmware version the HBA is running.
+*bundleversion* (STRING): Firmware version bundled with Data ONTAP(R).
+*status* (INT): Status code of the firmware update process.
+*additional_status* (INTHEX): Additional status value communicated by the firmware after login processing.
+
+== scsitarget.slifct.linkBreak
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the SLIFCT driver receives a link break notification.
+*Corrective Action*::
+If the link break was unexpected, check the cables and switch connection.
+*Syslog Message*::
+Link break detected on Fibre Channel target HBA %s with event status %d , topology type %d, status1 0x%x, status2 0x%x.
+*Parameters*::
+*hba* (STRING): Name of the target HBA (Host bus adapter) that lost link.
+*status* (INTHEX): Reported event's status.
+*topology* (INTHEX): Code for identifying the topology.
+*status1* (INTHEX): Value of the SLIPORT_ERROR1 register.
+*status2* (INTHEX): Value of the SLIPORT_ERROR2 register.
+
+== scsitarget.slifct.mboxError
+*Deprecated*::
+Deprecated as of ONTAP(R) version 9.2.0 in an effort to reduce event messages.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the SLIFCT host bus adapter (HBA) encounters an error while processing a mailbox command.
+*Corrective Action*::
+Contact NetApp technical support with the command, subsystem, subopcode, status, and extended status code for further analysis.
+*Syslog Message*::
+FC port %s has a mailbox processing failure for command x%x, subsystem x%x, subopcode x%x, with the status of %d and the extended status of x%x.
+*Parameters*::
+*hba* (STRING): HBA where the mailbox command failure occurred.
+*command* (INTHEX): Mailbox command code.
+*subsystem* (INTHEX): Mailbox subsystem code.
+*subopcode* (INTHEX): Mailbox command subsystem opcode.
+*status* (INT): Status communicated by the firmware for the mailbox command.
+*extended_status* (INTHEX): Extended status communicated by the firmware for the mailbox command.
+
+== scsitarget.slifct.rebootRequired
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a Fibre Channel adapter experiences an unrecoverable error. The adapter cannot serve data without a node reboot.
+*Corrective Action*::
+Reboot the node to reinitialize the adapter. If the adapter fails to initialize or continues to experience errors, replace the adapter. For further assistance, contact NetApp technical support.
+*Syslog Message*::
+Unrecoverable error detected on Fibre Channel target HBA %s with error codes %d and %d.
+*Parameters*::
+*hba* (STRING): Name of the target HBA that encountered the error.
+*ERROR_1* (INT): Value of the SLIPORT_ERROR1 register.
+*ERROR_2* (INT): Value of the SLIPORT_ERROR2 register.
+
+== scsitarget.slifct.retryExc
+*Deprecated*::
+Deprecated as of ONTAP(R) version 9.2.0 in an effort to reduce event messages.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the SLI Fibre Channel Target driver encounters multiple Work Queue Entry (WQE) failures of a certain type that exhaust the retry limit.
+*Corrective Action*::
+Contact NetApp technical support with the type, command code, subtype, status, and extended status values for further analysis.
+*Syslog Message*::
+FC port %s, NPIV port %d has reached the retry limit %d of WQE processing failure for type %s, command %s, subtype x%x with status of %d and an extended status of x%x.
+*Parameters*::
+*hba* (STRING): FC HBA where the WQE failure occurred.
+*npiv_port* (INT): NPIV LIF ID.
+*retry_limit* (INT): Number of times that this WQE can be retried.
+*type* (STRING): Type of WQE.
+*command* (STRING): Name of the command in the WQE.
+*subtype* (INTHEX): Subtype of the command.
+*status* (INT): Status value communicated by the firmware after WQE processing.
+*extended_status* (INTHEX): Extended status value communicated by the firmware after WQE processing.

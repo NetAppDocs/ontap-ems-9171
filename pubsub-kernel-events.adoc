@@ -1,0 +1,50 @@
+---
+sidebar: sidebar
+permalink: pubsub-kernel-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: pubsub.kernel events
+---
+
+= pubsub.kernel events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== pubsub.kernel.flow.control.enabled
+*Deprecated*::
+This event is deprecated as of 9.10.0.
+*Severity*::
+ERROR
+*Description*::
+This message will not be published as flow control is enabled on kernel pubsub.
+*Corrective Action*::
+Check the network connectivity to the broker and ensure the broker is running properly.
+*Syslog Message*::
+Kernel pubsub failed to send message with topic %s, object %s, object UUID %s and operation %s. Flow control is enabled.
+*Parameters*::
+*topic* (STRING): Topic of the message.
+*object* (STRING): Object of the message.
+*object_uuid* (STRING): Object UUID of the message.
+*operation* (STRING): Operation of the message.
+
+== pubsub.kernel.send.msg.failed
+*Deprecated*::
+This event is deprecated as of 9.10.0.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when kernel pubsub fails to send a message to the broker.
+*Corrective Action*::
+Check the network connectivity to the broker and ensure the broker is running properly.
+*Syslog Message*::
+Kernel pubsub failed to send message with topic %s, object %s, object UUID %s, operation %s, and error code %d.
+*Parameters*::
+*topic* (STRING): Topic of the message.
+*object* (STRING): Object of the message.
+*object_uuid* (STRING): Object UUID of the message.
+*operation* (STRING): Operation of the message.
+*error_code* (INT): Error code associated with the failure.

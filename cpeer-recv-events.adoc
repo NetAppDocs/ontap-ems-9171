@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: cpeer-recv-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cpeer.recv events
+---
+
+= cpeer.recv events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cpeer.recv.pp.mismatch
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when there is an incoming cluster peer request using the system-generated passphrase. However, the cluster peer request authentication failed due to passphrase mismatch and so the cluster peer offer is deleted.
+*Corrective Action*::
+Verify the peer request with peer cluster admin. If required, use the "cluster peer create" command with "generate-passphrase" option to generate the additional cluster peer offers.
+*Syslog Message*::
+The cluster peer offer with system-generated passphrase was attempted for cluster peering by the remote cluster (%s:%s) with address %s but cluster peer request failed due to passphrase mismatch. So, the offer is deleted.
+*Parameters*::
+*remotename* (STRING): Remote cluster name.
+*remoteuuid* (STRING): Remote cluster UUID.
+*address* (STRING): Remote cluster IP address.

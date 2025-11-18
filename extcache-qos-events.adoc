@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: extcache-qos-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: extcache.qos events
+---
+
+= extcache.qos events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== extCache.QoS
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when External Cache Quality of Service (QoS) monitoring is enabled/disabled.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+External Cache QoS is: %s.
+*Parameters*::
+*description* (STRING): State of External Cache QoS

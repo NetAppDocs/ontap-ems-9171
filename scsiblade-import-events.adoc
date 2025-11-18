@@ -1,0 +1,70 @@
+---
+sidebar: sidebar
+permalink: scsiblade-import-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsiblade.import events
+---
+
+= scsiblade.import events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsiblade.import.attr.mod
+*Severity*::
+ERROR
+*Description*::
+This message occurs when attributes of a SAN LUN under LUN import are modified. This is not a supported operation and the LUN import session needs to be deleted and re-created.
+*Corrective Action*::
+Run the "lun import delete" and "lun import create" commands to re-create the import session.
+*Syslog Message*::
+Attributes of the following SAN LUN under LUN import are modified: Vserver %s, volume with MSID %llu, LUN serial number %s, LUN UUID %s. This is not a supported operation and the LUN import session needs to be deleted and re-created.
+*Parameters*::
+*vserver* (STRING): Name or UUID of the Vserver.
+*volumeMSID* (LONGINT): MSID of the container volume.
+*LUN_Serial* (STRING): LUN serial number.
+*LUN_UUID* (STRING): LUN UUID.
+
+== scsiblade.import.dblade.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SAN LUN import failover event fails for a Vserver during takeover or giveback. Some LUN import sessions configured on the Vserver will be affected. The failed LUN import sessions might not progress until a planned takeover or giveback is performed.
+*Corrective Action*::
+Perform a planned takeover or giveback.
+*Syslog Message*::
+SAN LUN import failover event failed for Vserver %s. Some LUN import sessions configured on the Vserver will be affected and will be in a failed state.
+*Parameters*::
+*vserver* (STRING): Name or UUID of the Vserver.
+
+== scsiblade.import.lun.offline
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a LUN currently being imported is brought offline by Data ONTAP (R) because of an I/O failure on the foreign disk. The issue is either that data cannot be read from or written to the source (foreign LUN), or that there is an internal error.
+*Corrective Action*::
+Verify the connectivity to the foreign disk. After resolving any connectivity issues, delete the LUN import and create it again.
+*Syslog Message*::
+LUN %s in volume with MSID %llu on Vserver %s has been brought offline due to an I/O failure on the underlying foreign disk with serial number %s.
+*Parameters*::
+*lunSerial* (STRING): Serial number of the LUN.
+*volumeMSID* (LONGINT): MSID of the volume.
+*vserver* (STRING): Name or UUID of the Vserver.
+*foreignDiskSlNo* (STRING): Serial number of the foreign disk.
+
+== scsiblade.import.volume.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SAN LUN import failover event fails for a volume during takeover or giveback. All LUN import sessions configured in this volume are affected. The failed LUN import sessions might not progress until a planned takeover or giveback is performed.
+*Corrective Action*::
+Perform a planned takeover or giveback.
+*Syslog Message*::
+SAN LUN import failover event failed for Vserver %s, volume with MSID %llu. Some LUN import sessions configured on the volume will be affected and will be in a failed state.
+*Parameters*::
+*vserver* (STRING): Name of the Vserver.
+*volumeMSID* (LONGINT): MSID of the volume.

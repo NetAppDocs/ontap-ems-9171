@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: mgmtgwd-replace-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmtgwd.replace events
+---
+
+= mgmtgwd.replace events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmtgwd.replace.node.mgmt.lif
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the temporary node management LIF, which is normally deleted automatically, has not been replaced. It should be replaced to free the DHCP address.
+*Corrective Action*::
+Create a new node management LIF by using the 'network interface create' command, and then delete the temporary node management LIF by using the 'network interface delete' command.
+*Syslog Message*::
+Temporary node management LIF '%s' should be replaced with a new node management LIF.
+*Parameters*::
+*lif* (STRING): Temporary node management LIF.

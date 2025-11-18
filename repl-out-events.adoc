@@ -1,0 +1,50 @@
+---
+sidebar: sidebar
+permalink: repl-out-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.out events
+---
+
+= repl.out events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.out.of.band.vbn
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when replication source is asked to send certain blocks out of band because the replica volume did a snapshot restore.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Asked volume '%s%s%s' (DSID %llu) to send out-of-band VVBN %llu; current cursor: %llu; need-many-VBN value: %d.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume.
+*volDsid* (LONGINT): Data set identifier (DSID) of the volume.
+*oobVVBN* (LONGINT): Out-of-band Virtual Volume Block Number (VVBN).
+*cursor* (LONGINT): Current scan cursor.
+*many* (INT): Whether multiple out-of-band VVBNs were asked for.
+
+== repl.out.of.memory
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an out-of-memory error is encountered during a SnapMirror(R) replication operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror replication transfer encountered an out-of-memory error.
+*Parameters*::
+*memoryAllocation* (STRING): Type of memory allocation.
+*retry_time_msecs* (LONGINT): Retry time in milliseconds.
+*filename* (STRING): Name of the file where the event occurred.
+*functionName* (STRING): Name of the function for which the error occurred.
+*lineNumber* (INT): Line number at which error the occurred.
+*size* (LONGINT): Size of the memory allocation.

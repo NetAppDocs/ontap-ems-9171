@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: scsiblade-disabled-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: scsiblade.disabled events
+---
+
+= scsiblade.disabled events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== scsiblade.disabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the local node is made ineligible. When this occurs, both FCP and iSCSI traffic are disabled on the local node.
+*Corrective Action*::
+Modify the node's eligibility by using the (privilege: advanced) "cluster modify -eligibility true" command.
+*Syslog Message*::
+The local node is ineligible. FCP and iSCSI access is disabled.
+*Parameters*::
+(None).

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: extcache-aggregate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: extcache.aggregate events
+---
+
+= extcache.aggregate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== extCache.aggregate.invalidate
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message provides diagnostic information about background work taking place in the WAFL(R) external cache subsystem.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+WAFL external cache: %s
+*Parameters*::
+*detail* (STRING): Specific diagnostic information related to the aggregate invalidation event.

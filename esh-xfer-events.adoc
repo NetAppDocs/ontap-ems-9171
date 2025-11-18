@@ -1,0 +1,86 @@
+---
+sidebar: sidebar
+permalink: esh-xfer-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: esh.xfer events
+---
+
+= esh.xfer events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== esh.xfer.element.fault
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an element is unreachable during an I/O request. It might be due to a transient condition in loop connectivity.
+*Corrective Action*::
+Check the cabling to the disk shelf. Verify that the SCSI Enclosure Services (SES) disk drives (0-1) are properly inserted. Check the status LED on the disk shelf, making sure that the fault LEDs are not lit. Clear any fault condition, if possible. Refer to the quick reference card beneath the disk shelf for information about the meanings of the LEDs.
+*Syslog Message*::
+I/O failure on ESH module %s on channels %s disk shelf id %d, status is %s.
+*Parameters*::
+*element* (STRING): ESH module designator (A is the upper module, B is the lower module).
+*channels* (STRING): Channels that have the error if local, PARTNER for high-availability partner, UNUSED if unconnected.
+*shelfID* (INT): Disk shelf ID (1-7) of the disk shelf reporting the error.
+*state* (STRING): State of ESH module.
+
+== esh.xfer.not.sent
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an I/O transfer cannot be sent. It might be due to a transient condition in loop connectivity.
+*Corrective Action*::
+Check the cabling to the disk shelf. Verify that the SCSI Enclosure Services (SES) disk drives (0-1) are properly inserted. Check the status LED on the disk shelf, making sure that the fault LEDs are not lit. Clear any fault condition, if possible. Refer to the quick reference card beneath the disk shelf for information about the meanings of the LEDs.
+*Syslog Message*::
+ESH %s I/O failure NOT_SENT channels %s disk shelf ID %d.
+*Parameters*::
+*element* (STRING): ESH module designator (A is the upper module, B is the lower module).
+*channels* (STRING): Channels that have the error if local, PARTNER for high-availability partner, UNUSED if unconnected.
+*shelfID* (INT): Disk shelf ID (1-7) of the disk shelf reporting the error.
+
+== esh.xfer.pctl.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an error is encountered while sending a disk 'power control' command to SCSI Enclosure Services (SES).
+*Corrective Action*::
+Check the cabling to the disk shelf. Verify that the SES disk drives in slots 0 and 1 are properly seated. Check the status LEDs on the disk shelf and make sure that the fault LEDs are not lit. Clear any fault condition, if possible. See the quick reference cards beneath the fault disk shelf for information about interpreting the LEDs.
+*Syslog Message*::
+Error sending disk 'power control' command to SCSI Enclosure Services (SES) in disk shelf %d on channel %s.
+*Parameters*::
+*shelfID* (INT): Disk shelf ID of the disk shelf that reported an error.
+*channelName* (STRING): Name of the Fibre Channel adapter port.
+
+== esh.xfer.unknown.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is an unknown error during an I/O request.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+ESH %s I/O failure UNKNOWN: %d channels %s disk shelf ID %d.
+*Parameters*::
+*element* (STRING): ESH module designator (A is the upper module, B is the lower module).
+*status* (INT): Error status code.
+*channels* (STRING): Channels that have the error if local, PARTNER for high-availability partner, UNUSED if unconnected.
+*shelfID* (INT): Disk shelf ID (1-7) of the disk shelf reporting the error.
+
+== esh.xfer.xport.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is a transport error during an I/O request. It might be due to a transient condition in loop connectivity.
+*Corrective Action*::
+Check the cabling to the disk shelf. Verify that the SCSI Enclosure Services (SES) disk drives (0-1) are properly inserted. Check the status LED on the disk shelf, making sure that the fault LEDs are not lit. Clear any fault condition, if possible. Refer to the quick reference card beneath the disk shelf for information about the meanings of the LEDs.
+*Syslog Message*::
+ESH %s I/O failure TRANSPORT_ERROR channels %s disk shelf ID %d.
+*Parameters*::
+*element* (STRING): ESH module designator (A is the upper module, B is the lower module).
+*channels* (STRING): Channels that have the error if local, PARTNER for high-availability partner, UNUSED if unconnected.
+*shelfID* (INT): Disk shelf ID (1-7) of the disk shelf reporting the error.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: dfu-firmwaredownrev-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dfu.firmwaredownrev events
+---
+
+= dfu.firmwaredownrev events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dfu.firmwareDownrev
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system finds disks with a downrev version of firmware, as defined by the installed version of Data ONTAP(R).
+*Corrective Action*::
+Use the "storage disk firmware update" command to update the downrev firmware on the disks. Check your support provider for more information about obtaining the latest disk firmware. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Downrev firmware on %d disks.
+*Parameters*::
+*downrev* (INT): Number of disks with downrev firmware.

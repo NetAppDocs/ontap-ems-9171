@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: disk-diagnostic-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.diagnostic events
+---
+
+= disk.diagnostic events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.diagnostic.logs.saved
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when ONTAP retrieves the diagnostic logs from the disk. The logs are saved at /etc/log/drive_failure_logs/.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Diagnostic logs retrieved for disk "%s".
+*Parameters*::
+*diskName* (STRING): Name of the disk.

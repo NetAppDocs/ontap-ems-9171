@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: rdb-sql-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: rdb.sql events
+---
+
+= rdb.sql events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== rdb.sql.upgrade.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the cluster management Data Replication Module could not upgrade its database from RDB to SQL.
+*Corrective Action*::
+Contact Contact NetApp technical support. for assistance.
+*Syslog Message*::
+Error: %s. Unable to upgrade the local database from RDB to SQL of Data Replication Module: %s.
+*Parameters*::
+*message* (STRING): Error message.
+*unit* (STRING): Unit that failed the upgrade.
+
+== rdb.sql.upgrade.succeeded
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the cluster management Data Replication Module upgrades its database from RDB to SQL.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Successful upgrade of the local database from RDB to SQL of Data Replication Module: %s. Duration: %s sec Tables: %llu Records: %llu
+*Parameters*::
+*unit* (STRING): Unit that finished the upgrade.
+*duration* (STRING): Duration of the upgrade in seconds.
+*tables* (LONGINT): Number of tables processed.
+*records* (LONGINT): Number of records processed.

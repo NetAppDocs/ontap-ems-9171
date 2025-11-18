@@ -1,0 +1,75 @@
+---
+sidebar: sidebar
+permalink: callhome-wafl-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.wafl events
+---
+
+= callhome.wafl events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.wafl.check
+*Severity*::
+ALERT
+*Description*::
+This message occurs after a WAFL(R) check (wack) operation runs. WAFL check is a detection and repair process. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Check the appliance's log for valuable information that WAFL check might have reported. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for WAFL_check
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.wafl.inconsistent
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects that a volume is inconsistent. The file system inconsistency can be from one or more sources. The inconsistency can be related to previous operations or to current operations. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Consult with NetApp technical support (it is recommended that you do so before attempting this step), and then run WAFL(R) Iron (wafliron) on the volume to identify and optionally repair the inconsistency. If you need further assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for WAFL INCONSISTENT
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.wafl.inconsistent.block
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects a volume that contains an inconsistent block. The file system inconsistency can be from one or more sources. The inconsistency can be related to previous data operations or to current data operations. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Contact NetApp technical support for further assistance.
+*Syslog Message*::
+Call home for WAFL INCONSISTENT BLOCK
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.wafl.inconsistent.user.block
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects inconsistent user data within a volume. The file system inconsistency can be from one or more sources. The inconsistency can be related to previous data operations or to current data operations. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Contact NetApp technical support for further assistance.
+*Syslog Message*::
+Call home for WAFL INCONSISTENT USER BLOCK
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.wafl.iron.done
+*Severity*::
+NOTICE
+*Description*::
+This message occurs after a WAFL(R) Iron (wafliron) operation runs. WAFL(R) Iron is a detection and repair process. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Check the appliance's log for valuable information that WAFL Iron might have reported. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for WAFL IRON COMPLETED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

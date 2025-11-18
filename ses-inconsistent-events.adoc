@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ses-inconsistent-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ses.inconsistent events
+---
+
+= ses.inconsistent events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ses.inconsistent.config
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects an inconsistent configuration of shelf-to-channel connections. One or more shelves on the reported channel are connected to a different set of channels (adapter ports or switch ports) than other shelves in the stack.
+*Corrective Action*::
+Verify that all cables are fully inserted on the storage shelves connected to the channel. Verify that the shelves are cabled so that all shelves in a stack are connected to the same channels.
+*Syslog Message*::
+Inconsistent configuration detected for shelf connected to adapter %s.
+*Parameters*::
+*channelName* (STRING): Name of the adapter port or switch port where shelf connection inconsistencies are found.

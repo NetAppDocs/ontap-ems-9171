@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: bcomd-fcnvmelifadded-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: bcomd.fcnvmelifadded events
+---
+
+= bcomd.fcnvmelifadded events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== bcomd.fcNvmeLifAdded
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an FC NVMe (Nonvolatile Memory Express) logical interface (LIF) is added.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LIF %s (on Vserver %s), WWPN %s, was added to node %s, port %s.
+*Parameters*::
+*lifname* (STRING): Name of the LIF that was added.
+*vserver* (STRING): Name of the Vserver on which the LIF resides.
+*wwpn* (STRING): WWPN that was added.
+*node* (STRING): Name of the node on which the LIF is hosted.
+*port* (STRING): Name of the port on which the LIF is hosted.

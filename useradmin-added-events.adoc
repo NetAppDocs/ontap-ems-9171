@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: useradmin-added-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: useradmin.added events
+---
+
+= useradmin.added events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== useradmin.added.deleted
+*Severity*::
+INFORMATIONAL
+*Description*::
+A user, group, or role has been added, deleted, or modified.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The %s '%s' has been %s.
+*Parameters*::
+*type* (STRING): The type of the affected useradmin name. This can be one of the following values: "user", "group", or "role".
+*name* (STRING): The name of the affected user, group, or role.
+*action* (STRING): The action that occurred to the subject. This can be one of the following values: "added", "deleted", or "modified".

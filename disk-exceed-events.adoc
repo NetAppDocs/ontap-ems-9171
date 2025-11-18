@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: disk-exceed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.exceed events
+---
+
+= disk.exceed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.exceed.cmd.completeTime
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is generated during disk qualification testing when READ/WRITE I/O requests exceed their expected maximum completion time.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s has exceeded %d ms limit -- required %llu ms to complete command %s.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*timeLimit* (INT): Time limit to complete command.
+*timeTaken* (LONGINT): Time taken to complete command.
+*commandSTR* (STRING): Disk qualification command in string.

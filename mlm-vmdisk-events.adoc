@@ -1,0 +1,49 @@
+---
+sidebar: sidebar
+permalink: mlm-vmdisk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mlm.vmdisk events
+---
+
+= mlm.vmdisk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mlm.vmdisk.discovery
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system discovers a new virtual disk in a virtual machine (VM).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A new virtual disk with virtual device ID %d was discovered on initiator port %s on array %s with target port WWNN %s and WWPN: %s.
+*Parameters*::
+*VirtualDeviceID* (INT): Virtual device ID of the virtual disk.
+*adapterName* (STRING): Name of the initiator port discovering the virtual disk.
+*arrayName* (STRING): Name of the array.
+*wwnn* (STRING): World Wide Node Name (WWNN) of the array target port exporting the new virtual disk.
+*wwpn* (STRING): World Wide Port Name (WWPN) of the array target port exporting the new virtual disk.
+
+== mlm.vmdisk.PathAdded
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a new path is added for a virtual disk in a virtual machine (VM).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Virtual disk '%s' (%s) is now connected on initiator port %s through %s's target port: WWNN: %s, WWPN: %s at virtual device ID: %d.
+*Parameters*::
+*diskName* (STRING): Name of the virtual disk
+*serialno* (STRING): Serial number of the virtual disk.
+*adapterName* (STRING): Name of the initiator port discovering the virtual disk path.
+*arrayName* (STRING): Name of the array.
+*wwnn* (STRING): World Wide Node Name (WWNN) of the array target port.
+*wwpn* (STRING): World Wide Port Name (WWPN) of the array target port.
+*VirtualDeviceID* (INT): Virtual device ID of the virtual disk.

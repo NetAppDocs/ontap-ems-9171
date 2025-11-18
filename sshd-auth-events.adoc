@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sshd-auth-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sshd.auth events
+---
+
+= sshd.auth events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sshd.auth.loginDenied
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when sshd refuses a login attempt due to authentication failure.
+*Corrective Action*::
+Use a valid username/password combination to login.
+*Syslog Message*::
+(None).
+*Parameters*::
+*message* (STRING): Details about the failed login attempt.

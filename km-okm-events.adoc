@@ -1,0 +1,68 @@
+---
+sidebar: sidebar
+permalink: km-okm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: km.okm events
+---
+
+= km.okm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== km.okm.count.invalid
+*Severity*::
+ALERT
+*Description*::
+This message occurs in a NetApp MetroCluster configuration where both peer clusters are configured with the Onboard Key Manager (OKM), but the number of keys of the specified type is invalid. An incorrect number of OKM hierarchy keys can cause a failure during a reboot or future switchover/switchback event.
+*Corrective Action*::
+Contact Contact NetApp technical support. for assistance.
+*Syslog Message*::
+In a MetroCluster configuration with the Onboard Key Manager enabled, the number of %s keys is incorrect on cluster %s. Expected Count: %s, Actual Count: %s.
+*Parameters*::
+*keyType* (STRING): Type of the key with the invalid count.
+*clusterID* (STRING): Cluster ID where the invalid count occurred.
+*expectedCount* (STRING): Expected number of keys of the specified type.
+*actualCount* (STRING): Actual number of keys of the specified type.
+
+== km.okm.digest.missing
+*Severity*::
+ALERT
+*Description*::
+This message occurs in a NetApp MetroCluster configuration where both peer clusters are configured with the Onboard Key Manager (OKM), but an SVM-KEK key is missing a digest on either the local or remote cluster. A missing key digest in the OKM hierarchy can cause a failure during a reboot or future switchover/switchback event.
+*Corrective Action*::
+Contact Contact NetApp technical support. for assistance.
+*Syslog Message*::
+In a MetroCluster configuration with the Onboard Key Manager enabled, the following SVM-KEK key (%s) is missing a digest on cluster %s.
+*Parameters*::
+*keyID* (STRING): Key ID of the SVM-KEK key that is missing a digest.
+*clusterID* (STRING): Cluster ID where the SVM-KEK key digest is missing.
+
+== km.okm.key.mismatch
+*Severity*::
+ALERT
+*Description*::
+This message occurs in a NetApp MetroCluster configuration where both peer clusters are configured with the Onboard Key Manager (OKM), but the keys of the specified type do not match between the peer clusters. A mismatch in the OKM hierarchy keys can cause a failure during a reboot or future switchover/switchback event.
+*Corrective Action*::
+Contact Contact NetApp technical support. for assistance.
+*Syslog Message*::
+In a MetroCluster configuration with the Onboard Key Manager enabled, the %s keys do not match between the local and remote clusters.
+*Parameters*::
+*keyType* (STRING): Type of the key with the mismatch.
+
+== km.okm.key.missing
+*Severity*::
+ALERT
+*Description*::
+This message occurs in a NetApp MetroCluster configuration where both peer clusters are configured with the Onboard Key Manager (OKM), but one or more keys of the specified type are missing on either the local or peer cluster. A missing key in the OKM hierarchy can cause a failure during a reboot or future switchover/switchback event.
+*Corrective Action*::
+Contact Contact NetApp technical support. for assistance.
+*Syslog Message*::
+In a MetroCluster configuration with the Onboard Key Manager enabled, %s keys are missing from cluster %s.
+*Parameters*::
+*keyType* (STRING): Type of the missing key.
+*clusterID* (STRING): Cluster ID where the key is missing.

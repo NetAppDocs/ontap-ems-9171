@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: replication-wormlog-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: replication.wormlog events
+---
+
+= replication.wormlog events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== replication.wormlog.appendFail
+*Severity*::
+ERROR
+*Description*::
+This event is issued when failed to append to the replication worm log file. This can be seen when the worm log volume is full, or other hardware failure in the log volume.
+*Corrective Action*::
+Check the free space and the sanity of the worm log volume. Add or replace hard disk for the worm log volume.
+*Syslog Message*::
+Failed to append to the replication worm log: %s.
+*Parameters*::
+*error_msg* (STRING): Error message for the failure.

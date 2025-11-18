@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: qos-onnix-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: qos.onnix events
+---
+
+= qos.onnix events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== qos.onnix.classf.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the classification subsystem for Quality of Service (QoS) fails. Any limits that are configured for volumes will not be applied.
+*Corrective Action*::
+Contact Contact NetApp technical support. for assistance.
+*Syslog Message*::
+QoS classification failed. Any limits that are configured for volumes will not be applied.
+*Parameters*::
+(None).

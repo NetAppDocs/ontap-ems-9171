@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: host-app-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: host.app events
+---
+
+= host.app events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== host.app.component.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a host encounters an error specific to an application component.
+*Corrective Action*::
+For more information or assistance, contact NetApp technical support.
+*Syslog Message*::
+Application component %s (UUID: %s) belonging to application %s (UUID: %s) on host %s running %s reported error %d: %s.
+*Parameters*::
+*app_name* (STRING): Name of the application.
+*app_uuid* (STRING): UUID of the application.
+*component_name* (STRING): Name of the application component.
+*app_component_uuid* (STRING): UUID of the application component.
+*host_name* (STRING): Fully qualified domain name (FQDN) of the host.
+*software_product* (STRING): Name of the software product running on the host.
+*host_error_num* (INT): Number of the error on the host.
+*host_error_string* (STRING): Description of the error on the host.
+
+== host.app.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a host encounters an error specific to an application.
+*Corrective Action*::
+For more information or assistance, contact NetApp technical support.
+*Syslog Message*::
+Application %s (UUID: %s) on host %s running %s reported error %d: %s.
+*Parameters*::
+*app_name* (STRING): Name of the application.
+*app_uuid* (STRING): UUID of the application.
+*host_name* (STRING): Fully qualified domain name (FQDN) of the host.
+*software_product* (STRING): Name of the software product running on the host.
+*host_error_num* (INT): Number of the error on the host.
+*host_error_string* (STRING): Description of the error on the host.

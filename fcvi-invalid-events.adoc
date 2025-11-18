@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: fcvi-invalid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fcvi.invalid events
+---
+
+= fcvi.invalid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fcvi.invalid.advertisement
+*Severity*::
+ERROR
+*Description*::
+This message occurs when FCVI driver receives invalid advertisement.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: Port %s received invalid advertisement. %s
+*Parameters*::
+*port* (STRING): FCVI Interconnect NIC.
+*info* (STRING): Additional info.
+
+== fcvi.invalid.sfp
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the SFP (Small Form-Factor Pluggable) module of the Fibre Channel Virtual Interface (FC-VI) is invalid or incompatible.
+*Corrective Action*::
+Replace the SFP with a compatible one.
+*Syslog Message*::
+FC-VI adapter: Invalid SFP - Reason: %s on port %s.
+*Parameters*::
+*reason* (STRING): Reason for the incompatibility.
+*port* (STRING): Interconnect NIC.

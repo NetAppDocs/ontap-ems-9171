@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: misconfig-lif-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: misconfig.lif events
+---
+
+= misconfig.lif events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== misconfig.lif.info.lost
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the record for the incorrectly placed LIF is lost during MetroCluster(TM) switchover or switchback. As a result, the "metrocluster check lif show" command will not be able to fetch the incorrectly placed LIF on the surviving cluster after executing "metrocluster switchover" and on the disaster cluster after executing "metrocluster switchback". Also, the incorrectly placed LIF cannot be placed correctly with the "metrocluster check lif repair-placement" command.
+*Corrective Action*::
+The LIF is incorrectly placed and needs to be manually corrected. For an incorrectly placed LIF on HA partners, correct the "home-node" by using the "network interface modify -vserver <vserver_name> -lif <lif_name> -home-node <new_home_node>" command. For a LIF with a wrong port assignment, correct the "home-port" by using the "network interface modify -vserver <vserver_name> -lif <lif_name> -home-port <new_home_port>" command. For a SAN LIF, use the "network interface modify -vserver <vserver_name> -lif <lif_name> -status-admin down" command to bring down status-admin of the LIF, before modifying the "home-node" or the "home-port" of the LIF.
+*Syslog Message*::
+LIF "%s" in Vserver "%s" incorrectly placed needs manual recovery. Reason: "%s".
+*Parameters*::
+*lif* (STRING): LIF name.
+*vserver_name* (STRING): Vserver name.
+*error* (STRING): Reason for misconfigured LIF.

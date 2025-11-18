@@ -1,0 +1,194 @@
+---
+sidebar: sidebar
+permalink: raid-stripe-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.stripe events
+---
+
+= raid.stripe events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.stripe.replay.bad.block
+*Severity*::
+ERROR
+*Description*::
+This event is issued when we encounter a bad block buffer entry in NVRAM during stripe replay (indicating corrupted NVRAM). Reparity will start automatically and update parity in stripes involved in recent writes.
+*Corrective Action*::
+Need to replace NVRAM if observed repeatedly during different boot-ups.
+*Syslog Message*::
+Bad block buffer entry in NVRAM.
+*Parameters*::
+(None).
+
+== raid.stripe.replay.bad.checksum
+*Severity*::
+ERROR
+*Description*::
+This event is issued when we encounter a checksum error in NVRAM during stripe replay (indicating corrupted NVRAM). Reparity will start automatically and update parity in stripes involved in recent writes.
+*Corrective Action*::
+Need to replace NVRAM if observed repeatedly during different boot-ups.
+*Syslog Message*::
+Checksum error in NVRAM.
+*Parameters*::
+(None).
+
+== raid.stripe.replay.bad.key
+*Severity*::
+ERROR
+*Description*::
+This event is issued when we cannot find a block buffer using a key during stripe replay (indicating corrupted NVRAM). Reparity will start automatically and update parity in stripes involved in recent writes.
+*Corrective Action*::
+Need to replace NVRAM if observed repeatedly during different boot-ups.
+*Syslog Message*::
+Stripe %llu: cannot find NVRAM slot using key %d in %s %s.
+*Parameters*::
+*stripe* (LONGINT): The stripe number.
+*key* (INT): The key used.
+*vol_type* (STRING): Volume type.
+*vol* (STRING): Aggregate name if found, otherwise NOT FOUND.
+
+== raid.stripe.replay.bad.stripe
+*Severity*::
+ERROR
+*Description*::
+This event is issued when we encounter a bad stripe entry in NVRAM during stripe replay (indicating corrupted NVRAM). Reparity will start automatically and update parity in stripes involved in recent writes.
+*Corrective Action*::
+Need to replace NVRAM if observed repeatedly during different boot-ups.
+*Syslog Message*::
+Bad stripe entry in NVRAM.
+*Parameters*::
+(None).
+
+== raid.stripe.replay.nvgen.mismatch
+*Severity*::
+NOTICE
+*Description*::
+This message occcurs when RAID encounters an NVRAM generation mismatch for an aggregate during stripe replay. Reparity will start automatically and update parity in stripes involved in recent writes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NVRAM generation mismatch for %s %s%s.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.stripe.replay.plex.unavailable
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when RAID encounters an NVRAM stripe entry for an offline or failed plex during stripe replay. Reparity will start automatically when the plex comes online. At that time, reparity will update parity in stripes involved in recent writes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Plex %s in %s %s%s is offline or failed.
+*Parameters*::
+*plex* (STRING): Name of the plex.
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.stripe.replay.pzero.mismatch
+*Severity*::
+ERROR
+*Description*::
+This event is issued when the checksum of the parity block (as stored in the stripe slot) does not match the actual checksum of the parity block. This indicates corrupted NVRAM contents. Reparity will start automatically and update parity in stripes involved in recent writes.
+*Corrective Action*::
+Need to replace NVRAM if observed repeatedly during different boot-ups.
+*Syslog Message*::
+Parity block checksum mismatch detected in NVRAM for stripe %llu in %s %s.
+*Parameters*::
+*stripe* (LONGINT): The stripe number.
+*vol_type* (STRING): Volume type.
+*vol* (STRING): Aggregate name if found, otherwise NOT FOUND.
+
+== raid.stripe.replay.rg.failed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when RAID encounters a RAID group failure during stripe RAID replay. Data ONTAP(R) takes appropriate recovery actions, as described in additional logged events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Replay of %s %s%s, plex %s, RAID group %s, stripe %llu failed because of RAID group failure.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*plex* (STRING): Name of the plex.
+*rg* (STRING): Name of the RAID group.
+*stripe* (LONGINT): Stripe number.
+
+== raid.stripe.replay.rg.invalid
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when RAID encounters an NVRAM stripe entry for a missing RAID group during stripe replay.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Invalid RAID group identifier %d in %s %s%s, plex %s.
+*Parameters*::
+*rgid* (INT): Identifier of the RAID group.
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+*plex* (STRING): Name of the plex.
+
+== raid.stripe.replay.summary
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is generated when stripe replay is complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Replayed %u stripes.
+*Parameters*::
+*nstripes* (INT): The number of stripes
+
+== raid.stripe.replay.vol.cleanly.shutdown
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when RAID encounters an NVRAM stripe entry for a cleanly shutdown aggregate during stripe replay.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s was cleanly shut down.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.
+
+== raid.stripe.replay.volume.missing
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when RAID encounters an NVRAM stripe entry for a missing aggregate during stripe replay. Reparity will start automatically when the aggregate appears again. At that time, reparity will update parity in stripes involved in recent writes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cannot find aggregate with identifier %s.
+*Parameters*::
+*volId* (STRING): Identifier of the aggregate.
+
+== raid.stripe.replay.volume.offline
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when RAID encounters an NVRAM stripe entry for an offline aggregate during stripe replay. Reparity will start automatically when the aggregate comes online. At that time, reparity will update parity in stripes involved in recent writes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s %s is not online.
+*Parameters*::
+*vol_type* (STRING): Volume type.
+*owner* (STRING): Owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.

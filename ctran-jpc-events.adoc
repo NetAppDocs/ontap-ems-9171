@@ -1,0 +1,70 @@
+---
+sidebar: sidebar
+permalink: ctran-jpc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ctran.jpc events
+---
+
+= ctran.jpc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ctran.jpc.assigned
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a Join Proposal Coordinator (JPC) node is assigned by Kernel Cluster Services (KCS) Cluster Transaction Manager (CTRAN).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cluster node (name=%s, ID=%llu) is the Join Proposal Coordinator (JPC) node.
+*Parameters*::
+*nodename* (STRING): Host name of the JPC node.
+*node_id* (LONGINT): Node id of the JPC node.
+
+== ctran.jpc.multiple.nodes
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when multiple Join Proposal Coordinator (JPC) nodes for the Cluster Transaction Manager (CTRAN) are detected.
+*Corrective Action*::
+KCS CTRAN logs will need to be collected for further analysis. Trigger an ALL autosupport by using, "autosupport invoke -node * -message "ctran.jpc.multiple.nodes" -type all", a diagnostic autosupport by using "autosupport invoke-diagnostic -node * -message "ctran.jpc.multiple.nodes" -subsystem kcs" and contact NetApp technical support support.
+*Syslog Message*::
+Cluster node %u detected multiple JPC nodes (node %u reports JPC %u, node %u reports JPC %u)
+*Parameters*::
+*local_node_id* (LONGINT): ID of the local node.
+*src_node_id_1* (LONGINT): ID of the first node reporting a JPC.
+*jpc_node_id_1* (LONGINT): ID of the JPC node reported by src_node_id_1.
+*src_node_id_2* (LONGINT): ID of the second node reporting a JPC.
+*jpc_node_id_2* (LONGINT): ID of the JPC node reported by src_node_id_2.
+
+== ctran.jpc.not.found
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when this node cannot find a a Join Proposal Coordinator (JPC) within the cluster for Kernel Cluster Services (KCS) Cluster Transaction Manager (CTRAN). Until this error is resolved the reporting node will not be able to participate in distributed operations.
+*Corrective Action*::
+Perform a planned takeover/giveback sequence to reset the reporting node non-disruptively by using the "takeover -ofnode (reporting node)" and "giveback -ofnode (reporting node)" commands. If the error message is still seen KCS CTRAN logs will need to be collected for further analysis. Trigger an ALL autosupport by using, "autosupport invoke -node * -message "ctran.jpc.not.found" -type all", a diagnostic autosupport by using "autosupport invoke-diagnostic -node * -message "ctran.jpc.not.found" -subsystem kcs" and contact NetApp technical support support.
+*Syslog Message*::
+This node was unable to locate a Join Proposal Coordinator (JPC) node.
+*Parameters*::
+(None).
+
+== ctran.jpc.valid.failed
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the Join Proposal Coordinator (JPC) validation fails due to an inconsistent state of some of the Cluster Transaction Manager (CTRAN) group members following a JPC reselection event. In some cases, this can result in loss of SAN data access, CLI command failures and/or giveback failures.
+*Corrective Action*::
+Reset the CTRAN subsystem during a maintenance window by placing the node specified ineligible by using "cluster modify -node (node reporting error) -eligibility false". Once complete return the node to service by entering "cluster modify -node (node reporting error) -eligibility true". Note that making a node ineligible impacts all protocols on that node. During the time that a node is ineligible, it will not serve any data. If a non-disruptive resolution is desired, takeover the reporting node by using "takeover -of-node (reporting-node)", and then returning it to service by "giveback -of-node (reporting-node)" when it is ready. If the error is still seen KCS CTRAN logs will need to be collected for further analysis. Trigger an ALL autosupport by using "autosupport invoke -node * -message "ctran.jpc.valid.failed" -type all", a diagnostic autosupport by using "autosupport invoke-diagnostic -node * -message "ctran.jpc.valid.failed" -subsystem kcs" and contact NetApp technical support.
+*Syslog Message*::
+CTRAN JPC validation failed on local node (name=%s, id=%llu, num_groups=%llu).
+*Parameters*::
+*localhostname* (STRING): Host name of the local node.
+*localnodeid* (LONGINT): Node ID of the local node.
+*numgroups* (LONGINT): Number of inconsistent groups.

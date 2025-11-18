@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: spm-vserverdr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: spm.vserverdr events
+---
+
+= spm.vserverdr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== spm.vserverdr.process.exit
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Vserver DR process involuntarily terminates. This might cause interruptions in the automatic or scheduled configuration backup of the Vserver's data and configuration.
+*Corrective Action*::
+The system attempts to recover by restarting the Vserver DR process. Use the "debug process show -process-name vserverdr" command in the diagnostic privilege level to check whether the Vserver DR process has successfully restarted. If the process does not restart within the threshold number of retries, an AutoSupport(tm) message will be sent. If your system is not configured to send AutoSupport messages and the process has not automatically recovered, contact NetApp technical support.
+*Syslog Message*::
+The Vserver DR process with ID %d exited as a result of %s. The system will attempt to restart it.
+*Parameters*::
+*id* (INT): Process identifier.
+*cause* (STRING): Plain text description of why the process exited.

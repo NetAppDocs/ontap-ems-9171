@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: nv-flash-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nv.flash events
+---
+
+= nv.flash events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nv.flash.predict.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs when ONTAP(R) determines that failure is forthcoming or has occurred for the associated flash device on the nonvolatile memory (NVRAM) module.
+*Corrective Action*::
+Replace the device to prevent future failures.
+*Syslog Message*::
+%s
+*Parameters*::
+*reason* (STRING): Reason for failure.
+
+== nv.flash.unable.to.monitor
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the ONTAP(R) module that is responsible for monitoring the health of the NVRAM device cannot extract health information. This failure might indicate the NVRAM device is not operating properly.
+*Corrective Action*::
+Use the "system environment sensors show" command to verify the device's status. If the failure still exists, contact technical support for assistance.
+*Syslog Message*::
+Unable to monitor NVRAM device "%s".
+*Parameters*::
+*device* (STRING): Name of the device.

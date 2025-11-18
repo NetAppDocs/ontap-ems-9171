@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: mgr-module-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgr.module events
+---
+
+= mgr.module events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgr.module.address
+*Severity*::
+NOTICE
+*Description*::
+This occurs to inform you of where kernel modules were loaded in memory. This information helps NetApp technical support interpret the data in any mgr.stack.frameaddr events.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Module %s loaded from 0x%llx - 0x%llx.
+*Parameters*::
+*module_name* (STRING): Name of the module.
+*module_start* (PTR): Starting address of the module.
+*module_end* (PTR): Ending address of the module.

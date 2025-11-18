@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: icmp-ping-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: icmp.ping events
+---
+
+= icmp.ping events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== icmp.ping.throttle
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system receives a burst of ICMP ping packet within a one-second interval. The packets are dropped by the system because these packets could be due to an ICMP attack.
+*Corrective Action*::
+If the condition persists, determine the network source of the ICMP ping traffic and then block it by using a firewall rule. For assistance in determining the source, contact your network administrator.
+*Syslog Message*::
+icmp_input: The system dropped %d ping packets after limiting the packets to %d per second.
+*Parameters*::
+*pingDropped* (INT): ICMP_ECHO packets dropped due to throttling since the last time this message was generated.
+*icmpLimit* (INT): Maximum number of ICMP packets per second.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: platform-nopartnerpresent-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: platform.nopartnerpresent events
+---
+
+= platform.nopartnerpresent events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== platform.noPartnerPresent
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the HA partner's presence cannot be read via the GPIO ports on the controller.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Controller partner's presence could not be read via GPIO. Read partner ID: %d.
+*Parameters*::
+*partner_id* (INT): The partner ID that was read from the GPIO pins.

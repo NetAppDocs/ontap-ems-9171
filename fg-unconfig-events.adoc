@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: fg-unconfig-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fg.unconfig events
+---
+
+= fg.unconfig events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fg.unconfig.consts.exist
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a FlexGroup detects constituents that are not properly configured and have not been removed after a sufficient timeout. This usually means that a failed attempt to expand the volume also failed to delete constituents.
+*Corrective Action*::
+Contact NetApp technical support for assistance.
+*Syslog Message*::
+FlexGroup %s has had constituents that are not properly configured for longer than %d seconds.
+*Parameters*::
+*object_name* (STRING): Name of the FlexGroup.
+*seconds* (INT): Timeout period in seconds.

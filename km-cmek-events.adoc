@@ -1,0 +1,184 @@
+---
+sidebar: sidebar
+permalink: km-cmek-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: km.cmek events
+---
+
+= km.cmek events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== km.cmek.akvkms.available
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a configured Azure Key Vault Key Management Service (AKV-KMS) that was previously reported as unavailable for key operations is now available.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The AKV-KMS configuration with client ID: "%s", tenant ID: "%s", vault host: "%s", key vault: "%s", and key ID: "%s" is now available.
+*Parameters*::
+*clientId* (STRING): Client ID.
+*tenantId* (STRING): Tenant ID.
+*vaultHost* (STRING): Vault Host.
+*keyVault* (STRING): Key Vault.
+*keyId* (STRING): Key ID.
+
+== km.cmek.akvkms.keyExpired
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the current key version associated with the key identifier of the configured Azure Key Vault (AKV) has expired. The key version might be out of compliance. It is recommended that you update the key version to an active, non-expired key. The top-level internal key protection key can still be unwrapped with the expired key version and there is no interruption to data availability.
+*Corrective Action*::
+Renew the existing key version or create a new one at the Azure Key Vault (AKV) portal.
+*Syslog Message*::
+The AKV key version has expired. AKV configuration details are key ID with expired version: "%s", client ID: "%s", tenant ID: "%s", vault host: "%s", and key vault: "%s".
+*Parameters*::
+*keyId* (STRING): Key ID.
+*clientId* (STRING): Client ID.
+*tenantId* (STRING): Tenant ID.
+*vaultHost* (STRING): Vault Host.
+*keyVault* (STRING): Key Vault.
+
+== km.cmek.akvkms.keyVersionChg
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a change is made to the current key version associated with the key ID of the configured Azure Key Vault Key Management Service (AKV-KMS). The key version might have been auto-rotated or manually changed at the AKV-KMS. Additionally, the top-level internal key protection key is successfully re-wrapped with the current key version of the AKV-KMS key name.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The version of the key "%s" owned by AKV-KMS configuration with client ID: "%s", tenant ID: "%s", vault host: "%s", and key vault: "%s", has been changed from "%s" to "%s".
+*Parameters*::
+*keyId* (STRING): Key ID.
+*clientId* (STRING): Client ID.
+*tenantId* (STRING): Tenant ID.
+*vaultHost* (STRING): Vault Host.
+*keyVault* (STRING): Key Vault.
+*oldKeyVersion* (STRING): Prior key version.
+*newKeyVersion* (STRING): New key version.
+
+== km.cmek.akvkms.notAvailable
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a check for the availability of the configured Azure Key Vault Key Management Service (AKV-KMS) fails. The AKV-KMS might be down or there might be a network-related problem preventing communication. Without access to the AKV-KMS, the system might not be able to restore encryption keys needed to mount encrypted volumes. If the AKV-KMS is not available, then the next time this system boots, the failure to restore the keys might prevent the system from booting successfully or the encrypted volumes hosted on this system from coming online.
+*Corrective Action*::
+Verify that the AKV-KMS configuration and permissions are correct. Verify connectivity.
+*Syslog Message*::
+The AKV-KMS configuration with client ID: "%s", tenant ID: "%s", vault host: "%s", key vault: "%s", and key ID: "%s" is not available.
+*Parameters*::
+*clientId* (STRING): Client ID.
+*tenantId* (STRING): Tenant ID.
+*vaultHost* (STRING): Vault Host.
+*keyVault* (STRING): Key Vault.
+*keyId* (STRING): Key ID.
+
+== km.cmek.akvkms.volOffline
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the volumes belonging to a storage pool have been taken offline due to fatal errors received when attempting to access the key owned by the Azure Key Vault (AKV). Fatal errors include a disabled key, a key not being found, and a key missing encryption and decryption privileges. All volumes will remain offline until the key access issues are resolved at the AKV. When a successful poll is received, the volumes are brought back online automatically.
+*Corrective Action*::
+Resolve the key access issues at the Azure Key Vault (AKV) portal. Ensure that the key is active and has the required encryption and decryption privileges.
+*Syslog Message*::
+All volumes belonging to the storage pool have been taken offline due to key access errors. AKV configuration details are key ID : "%s", client ID: "%s", tenant ID: "%s", vault host: "%s", and key vault: "%s".
+*Parameters*::
+*keyId* (STRING): Key ID.
+*clientId* (STRING): Client ID.
+*tenantId* (STRING): Tenant ID.
+*vaultHost* (STRING): Vault Host.
+*keyVault* (STRING): Key Vault.
+
+== km.cmek.akvkms.volOnline
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the volumes belonging to the storage pool have been brought back online due to successfully polling the Azure Key Vault (AKV) configuration.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Encrypted volumes belonging to the storage pool are online. AKV configuration details are key ID: "%s", client ID: "%s", tenant ID: "%s", vault host: "%s", and key vault: "%s".
+*Parameters*::
+*keyId* (STRING): Key ID.
+*clientId* (STRING): Client ID.
+*tenantId* (STRING): Tenant ID.
+*vaultHost* (STRING): Vault Host.
+*keyVault* (STRING): Key Vault.
+
+== km.cmek.gckms.available
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a configured Google Cloud Key Management Service (GCKMS) that was previously reported as unavailable for key operations is now available.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The GCKMS with project ID: "%s", key ring location: "%s", key ring: "%s" and key name: "%s" configured is now available.
+*Parameters*::
+*projectId* (STRING): Project ID.
+*keyringLocation* (STRING): Location of the key ring.
+*keyringName* (STRING): Name of the key ring.
+*keyName* (STRING): Name of the key.
+
+== km.cmek.gckms.keyVersionChg
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a change is made to the current key version associated with the key name of the configured Google Cloud Key Management Service (GCKMS). The key version might have been auto-rotated or manually changed at the GCKMS. Additionally, the top-level internal key protection key is successfully re-wrapped with the current key version of the GCKMS key name.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The version of the key "%s" owned by GCKMS project ID "%s", with key ring "%s" at "%s", has been changed from "%s" to "%s".
+*Parameters*::
+*keyName* (STRING): Name of the key.
+*projectId* (STRING): Project ID of the GCKMS.
+*keyringName* (STRING): Name of the key ring.
+*keyringLocation* (STRING): Location of the key ring.
+*oldKeyVersion* (STRING): Prior key version.
+*newKeyVersion* (STRING): New key version.
+
+== km.cmek.gckms.notAvailable
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a check for the availability of the configured Google Cloud Key Management Service (GCKMS) fails. The GCKMS might be down or there might be a network-related problem preventing communication. Without access to the GCKMS, the system might not be able to restore encryption keys needed to mount encrypted volumes. If the GCKMS is not available, then the next time this system boots, the failure to restore the keys might prevent the system from booting successfully or the encrypted volumes hosted on this system from coming online.
+*Corrective Action*::
+Verify that the GCKMS configuration is correct and verify the permissions and connectivity are correct. If the issue still persists, contact technical support.
+*Syslog Message*::
+The GCKMS with project ID: "%s", key ring location: "%s", key ring: "%s" and key name: "%s" is not available.
+*Parameters*::
+*projectId* (STRING): Project ID.
+*keyringLocation* (STRING): Location of the key ring.
+*keyringName* (STRING): Name of the key ring.
+*keyName* (STRING): Name of the key.
+
+== km.cmek.init.failed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system fails to initialize the key hierarchy required for volume encryption and that is protected by the Customer Managed Encryption Key (CMEK). Reasons for failure include failure to create the key hierarchy, incorrect CMEK configuration, identity, networking or permission issues in communicating with the CMEK hosted service and failure to store the CMEK wrapped key hierarchy in an external store like etcd.
+*Corrective Action*::
+Ensure that the configuration, identity, networking and permissions required to communicate with the CMEK hosted service are configured correctly. If the issue persists, contact technical support.
+*Syslog Message*::
+Initialization of the CMEK protected key hierarchy fails. Reason: "%s".
+*Parameters*::
+*reason* (STRING): Reason for failure.
+
+== km.cmek.init.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system successfully initializes and protects the key hierarchy with a Customer Managed Encryption Key (CMEK). The system is ready to support encrypted volumes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+CMEK protected key hierarchy initialization successfully completed.
+*Parameters*::
+(None).

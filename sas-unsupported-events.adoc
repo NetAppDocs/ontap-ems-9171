@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: sas-unsupported-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sas.unsupported events
+---
+
+= sas.unsupported events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sas.unsupported.port
+*Severity*::
+ALERT
+*Description*::
+This message occurs when ONTAP detects that a cable is attached to an I/O module port that is permanently disabled and does not support attachment.
+*Corrective Action*::
+Remove the cable from the unsupported port on the I/O module.
+*Syslog Message*::
+Port 0b2 on shelf ID %lld.%s, cable detected on unsupported port.
+*Parameters*::
+*shelfID* (LONGINT): Shelf ID of the shelf reporting the error.
+*element* (STRING): I/O module designator (A or B).

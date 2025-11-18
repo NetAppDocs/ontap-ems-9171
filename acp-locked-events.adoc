@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: acp-locked-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: acp.locked events
+---
+
+= acp.locked events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== acp.locked.wrench.link.down
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the link status of a locked wrench Ethernet port (on the back of the storage controller) changes from "up" to "down".
+*Corrective Action*::
+Verify that the cable in the port is seated properly.
+*Syslog Message*::
+The on-board locked wrench port is down.
+*Parameters*::
+(None).
+
+== acp.locked.wrench.port.down
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the link status of a locked wrench Ethernet port (on the back of the storage controller) changes from "up" to "down".
+*Corrective Action*::
+Verify that the cable in the port is seated properly.
+*Syslog Message*::
+The on-board locked wrench port is down; Alternate Control Path (ACP) management is inactive.
+*Parameters*::
+(None).
+
+== acp.locked.wrench.port.up
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the link status of a locked wrench Ethernet port (on the back of the storage controller) changes from "down" to "up".
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The on-board locked wrench port is up.
+*Parameters*::
+(None).

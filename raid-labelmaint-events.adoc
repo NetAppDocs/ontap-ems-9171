@@ -1,0 +1,54 @@
+---
+sidebar: sidebar
+permalink: raid-labelmaint-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.labelmaint events
+---
+
+= raid.labelmaint events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.labelmaint.isolate.aggr
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system places an aggregate into online label maintenance mode.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Placing volume %s%s into online label maintenance mode.
+*Parameters*::
+*owner* (STRING): Owner of the disk drive.
+*vol* (STRING): Name of the aggregate.
+
+== raid.labelmaint.isolate.disk
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system places a disk drive into online label maintenance mode. Online label maintenance is a utility available in normal mode that enables users to perform operations on disk drives that typically are allowed only in maintenance mode. Examples of such operations are label editing and volume recovery.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Placing %s%s into online label maintenance mode.
+*Parameters*::
+*owner* (STRING): Owner of the disk drive.
+*disk_info* (STRING): Formatted information of the disk drive.
+
+== raid.labelmaint.unisolate
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system takes a disk drive out of online label maintenance mode.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Taking %s%s out of online label maintenance mode.
+*Parameters*::
+*owner* (STRING): Owner of the disk drive.
+*disk_info* (STRING): Formatted information of the disk drive.

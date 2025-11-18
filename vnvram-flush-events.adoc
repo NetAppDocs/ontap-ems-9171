@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: vnvram-flush-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vnvram.flush events
+---
+
+= vnvram.flush events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vnvram.flush.ems
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the write to the backing storage device for the EMS region of VNVRAM (virtual NVRAM) takes longer than 500 msec.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+EMS region write to VNVRAM persistent storage took %d seconds.
+*Parameters*::
+*vnvr_write_time* (LONGINT): Time in seconds taken for the EMS region write to persistent storage.

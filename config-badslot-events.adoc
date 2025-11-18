@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-badslot-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.badslot events
+---
+
+= config.badslot events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.BadSlot
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a disk is found to be attached to an invalid Host Adapter (HA) controller slot.
+*Corrective Action*::
+Consult the NetApp technical support guides for the supported slots for adapters in the hardware platform. If the adapter is in a supported slot, contact NetApp technical support for further assistance.
+*Syslog Message*::
+Disk %s is attached to an invalid HA slot. This is an illegal configuration.
+*Parameters*::
+*disk* (STRING): Name of the disk.

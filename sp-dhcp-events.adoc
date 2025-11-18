@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sp-dhcp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sp.dhcp events
+---
+
+= sp.dhcp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sp.dhcp.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Service Processor (SP) cannot obtain network configuration data through DHCP. The SP cannot be reached from the network.
+*Corrective Action*::
+Verify that DHCP services are available, or configure the SP with a static address. If failures persist, contact NetApp technical support.
+*Syslog Message*::
+Service Processor cannot obtain network configuration using DHCP.
+*Parameters*::
+(None).

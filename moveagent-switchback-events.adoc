@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: moveagent-switchback-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: moveagent.switchback events
+---
+
+= moveagent.switchback events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== moveagent.switchback.veto
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the volume move operation vetoes a MetroCluster(tm) switchback because the operations are mutually exclusive.
+*Corrective Action*::
+Reissue the "metrocluster switchback" command to initiate the MetroCluster switchback after the volume move operation is complete. Or use the "volume move abort" command to abort the volume move operation. Monitor the currently running volume move operation by using the "volume move show" command.
+*Syslog Message*::
+The volume move operation in progress prevents MetroCluster switchback. Monitor the currently running volume move operation by using the "volume move show" command.
+*Parameters*::
+(None).

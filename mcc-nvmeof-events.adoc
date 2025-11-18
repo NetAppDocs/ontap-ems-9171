@@ -1,0 +1,99 @@
+---
+sidebar: sidebar
+permalink: mcc-nvmeof-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mcc.nvmeof events
+---
+
+= mcc.nvmeof events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mcc.nvmeof.port.modify
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the mode of an NVMe-oF port is changed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Changing NVMe-oF port %s to %s mode.
+*Parameters*::
+*port* (STRING): Name of port being configured.
+*mode* (STRING): Mode in which to configure port: network or storage.
+
+== mcc.nvmeof.rdma.disconnect.event
+*Deprecated*::
+Deprecated as of version 9.13.1.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NVMe-oF driver detects an RDMA disconnect. There might be a decrease in performance while reconnecting.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NVMe-oF RDMA disconnect on subnqn %s, controller ID %d, qpair ID %d.
+*Parameters*::
+*subnqn* (STRING): Subsystem NVMe qualified name.
+*ctrlr_id* (INT): Controller ID.
+*qpair* (INT): Qpair ID.
+
+== mcc.nvmeof.rdma.disconnect.status
+*Deprecated*::
+Deprecated as of version 9.13.1.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NVMeoF driver detects a command that finishes with a disconnect status. There might be a decrease in performance while reconnecting.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NVMe-oF disconnect on subnqn %s, controller ID %d, qpair ID %d.
+*Parameters*::
+*subnqn* (STRING): Subsystem NVMe qualified name.
+*ctrlr_id* (INT): Controller ID.
+*qpair* (INT): Qpair ID.
+
+== mcc.nvmeof.subsystem.add
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an NVMe-oF subsystem is added.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NVMe-oF subsystem added at address %s.
+*Parameters*::
+*address* (STRING): IP address of susbsystem.
+
+== mcc.nvmeof.subsystem.delete
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an NVMe-oF subsystem is deleted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NVMe-oF subsystem deleted at address %s.
+*Parameters*::
+*address* (STRING): IP address of susbsystem.
+
+== mcc.nvmeof.timeout
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NVMeoF driver detects a timeout on a request. There might be a decrease in performance while retrying.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Timeout on subnqn %s, controller ID %d, qpair ID %d, sequence number %d.
+*Parameters*::
+*subnqn* (STRING): Subsytem NVMe qualified name.
+*ctrlr_id* (INT): Controller ID.
+*qpair* (INT): Qpair ID.
+*cid* (INT): NVMe-oF CID.

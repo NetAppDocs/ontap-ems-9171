@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: repl-exovol-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.exovol events
+---
+
+= repl.exovol events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.exovol.not.quiesced
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an exo-volume scanner detects a loss of volume quiescence during a volume move operation. This typically occurs when there is too much data to transfer within the allowed cutover window.
+*Corrective Action*::
+Check the network connectivity between the nodes involved in the volume move. Decrease the amount of client traffic to the volume. If those steps do not reduce the amount of data to be transferred enough to allow the transfer, force a volume move cutover with the "-cutover-action force" flag to the "volume move start" command.
+*Syslog Message*::
+(None).
+*Parameters*::
+*plugin* (STRING): Exo-volume plug-in name.
+*srcVolMsid* (LONGINT): Source volume Master Data Set ID (MSID).
+*srcVolDsid* (LONGINT): Source volume Data Set ID (DSID).
+*srcVolClusterId* (STRING): Source volume cluster Universally Unique ID (UUID).
+*srcVolVserverId* (INT): Source volume Vserver ID.
+*bytes_transferred* (LONGINT): Number of bytes already transferred.
+*elapsed_msecs* (LONGINT): Elapsed time in milliseconds.

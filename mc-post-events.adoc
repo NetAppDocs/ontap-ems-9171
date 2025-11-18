@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: mc-post-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mc.post events
+---
+
+= mc.post events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mc.post.replay.stats
+*Severity*::
+NOTICE
+*Description*::
+This message occurs post replay and conveys information regarding bdatas inserted, rejected, duplicate, hits and misses.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Mirror Cache post replay stats -- Name: %s Inserted: %llu Rejected: %llu Duplicate: %llu Hits: %llu Misses: %llu.
+*Parameters*::
+*name* (STRING): Aggr name
+*inserted* (LONGINT): Bdatas inserted
+*rejected* (LONGINT): Bdatas rejected
+*duplicate* (LONGINT): Duplicate bdatas
+*hits* (LONGINT): Bdata hits
+*misses* (LONGINT): Bdatas misses

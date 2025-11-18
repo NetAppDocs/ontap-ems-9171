@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: connectx-iblinkretrainnotreqd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: connectx.iblinkretrainnotreqd events
+---
+
+= connectx.iblinkretrainnotreqd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== connectx.IBLinkRetrainNotReqd
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the software detects that the previous InfiniBand link training was successful.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+InfiniBand Link training was successful for ConnectX in slot %d, port %d.
+*Parameters*::
+*pcie_slot* (INT): PCIe slot in which ConnectX is present.
+*port_num* (INT): Port number where the success was detected.

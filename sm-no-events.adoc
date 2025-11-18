@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sm-no-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sm.no events
+---
+
+= sm.no events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sm.no.metadata.objstore
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a SnapMirror(R) catalog metadata transfer is attempted and a SnapMirror object store configuration with "usage" of "metadata" is not configured on the system. Catalog metadata transfers will fail until an appropriate object store is configured.
+*Corrective Action*::
+Either add "usage" of "metadata" to an existing SnapMirror object store configuration or create a new SnapMirror object store configuration with "usage" of "metadata". Use the "snapmirror object-store config modify -usage" command or the "snapmirror object-store config create" command to modify or create an object store configuration.
+*Syslog Message*::
+No SnapMirror object store configuration with "usage" of "metadata" found for catalog metadata transfer to destination '%s'. Catalog metadata transfers will fail until an appropriate object store is configured.
+*Parameters*::
+*dst_path* (STRING): Destination of the SnapMirror relationship.

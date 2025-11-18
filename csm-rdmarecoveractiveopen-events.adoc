@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: csm-rdmarecoveractiveopen-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: csm.rdmarecoveractiveopen events
+---
+
+= csm.rdmarecoveractiveopen events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== csm.rdmaRecoverActiveOpen
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Cluster Session Manager (CSM) attempts to restore the use of the preferred remote direct memory access (RDMA) transport for the eligible sessions because the condition which triggered the CSM to use CT (TCP transport) as default might have resolved.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cluster Session Manager (CSM) is attempting to restore the use of the preferred RDMA connections for eligible sessions, which had previously defaulted to use TCP connections due to repeated active open failures.
+*Parameters*::
+(None).

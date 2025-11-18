@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: secd-ipq-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: secd.ipq events
+---
+
+= secd.ipq events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== secd.ipq.invalid.entry
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the IP qualified name-mapping entry is omitted because of an error during the name-mapping check. For example, an error can occur if a host name is configured as the value for ip-qualifier but the hostname lookup fails, in combination with no IP address defined in the name-mapping configuration to validate against the incoming user.
+*Corrective Action*::
+After resolving the error reported in this message, run the "vserver name-mapping refresh-hostname-ip" command to refresh the name-mapping information.
+*Syslog Message*::
+Skipping the name-mapping entry on Vserver "%s" for user "%s" at position %u. Reason: %s.
+*Parameters*::
+*vserverName* (STRING): Vserver associated with this operation.
+*userName* (STRING): Name of the user.
+*position* (INT): Name-mapping position.
+*errorString* (STRING): Description of the specific error condition: for example, "Failed to lookup hostname gpo.co.in."

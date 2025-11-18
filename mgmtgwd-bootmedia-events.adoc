@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: mgmtgwd-bootmedia-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmtgwd.bootmedia events
+---
+
+= mgmtgwd.bootmedia events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmtgwd.bootmedia.low.space
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the system detects that the boot media is dangerously low on space. The node is not fully operational. Data logical interfaces (LIFs) might have failed over within the cluster, so NFS and CIFS access is limited on this node. Administrative capability is limited to local recovery procedures for this node to make space available on the boot media.
+*Corrective Action*::
+Contact NetApp technical support for assistance to make space available on the boot media by deleting old Snapshot copies or unnecessary files. After space is available, controller needs to be rebooted.
+*Syslog Message*::
+The boot media on node "%s" is dangerously low on space. Less than %d MB of free space remaining.
+*Parameters*::
+*node* (STRING): Node on which the boot media is mounted is low on space.
+*threshold_in_mb* (INT): Threshold, in MB, that is being used to compare against the boot media's available space.

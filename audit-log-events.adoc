@@ -1,0 +1,99 @@
+---
+sidebar: sidebar
+permalink: audit-log-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: audit.log events
+---
+
+= audit.log events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== audit.log.event
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when there is an issue during message auditing. The system recovers by itself.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Auditing error (%s) occurred at %s.
+*Parameters*::
+*error* (STRING): Error encountered during message auditing.
+*time* (STRING): Time that this error occurred.
+
+== audit.log.file.recovered
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system recovers a previously deleted log file as part of audit log policy.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Recovered previously deleted audit log file "%s".
+*Parameters*::
+*log_name* (STRING): Log file name.
+*recovered_time* (STRING): File recovery timestamp.
+
+== audit.log.queue.high
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the syslog queue reaches 75% of its maximum size.
+*Corrective Action*::
+Verify remote server network reachability and processing performance.
+*Syslog Message*::
+Log queue for destination %s, protocol %s has exceeded 75%% of capacity. Last audit log was sent successfully at %s, number of pending messages: %d.
+*Parameters*::
+*syslog_dest* (STRING): Log forwarding destination for which messages are being dropped.
+*protocol* (STRING): Protocol used for syslog destination.
+*last_sent* (STRING): Time that the audit log was last successfully sent to the syslog destination.
+*pending_msg* (INT): Number of pending messages in queue.
+
+== audit.log.queue.overflow
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an internal queue overflow causes the audit logging mechanism to drop messages destined for a particular log forwarding destination.
+*Corrective Action*::
+Verify remote server network reachability and processing performance.
+*Syslog Message*::
+Log queue overflowed for destination %s, protocol %s. Current drop count: %ld.
+*Parameters*::
+*syslog_dest* (STRING): Log forwarding destination for which messages are being dropped.
+*protocol* (STRING): Protocol used for syslog destination.
+*drop_count* (LONGINT): Number of messages dropped since the last drop was reported.
+
+== audit.log.queue.recovered
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the audit logging queue recovers after earlier message drops, and the current queue is less than 75% full.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Log queue recovered for destination %s, protocol %s. Issue start time: %s, end time: %s, total number of drops during this period: %ld.
+*Parameters*::
+*syslog_dest* (STRING): Log forwarding destination for which the queue has recovered.
+*protocol* (STRING): Protocol used for the syslog destination.
+*issue_start_time* (STRING): Time that the queue overflowed.
+*recovered_time* (STRING): Time that the queue recovered.
+*drop_count* (LONGINT): Total number of drops since the last time the queue overflowed.
+
+== audit.log.rotate.size.limit
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system rotates a log file that has reached its size limit.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Log file %s has been rotated because size limit %ld was reached.
+*Parameters*::
+*log_name* (STRING): Log file name.
+*max_log_size* (LONGINT): Maximum log file size.

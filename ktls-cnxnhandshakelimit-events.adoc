@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ktls-cnxnhandshakelimit-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ktls.cnxnhandshakelimit events
+---
+
+= ktls.cnxnhandshakelimit events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ktls.cnxnHandshakeLimit
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the concurrent TLS connection handshake limit is reached. Any new TLS connection request will fail and an error status will be returned.
+*Corrective Action*::
+Reduce the encrypted connection load on ONTAP to avoid reaching the maximum concurrent TLS handshake limit.
+*Syslog Message*::
+ONTAP reached the maximum limit of %d concurrent TLS connection handshakes. If this limit is reached, subsequent TLS connections will fail.
+*Parameters*::
+*maxTLSConnHandles* (INT): Maximum number of concurrent TLS connection handshakes.

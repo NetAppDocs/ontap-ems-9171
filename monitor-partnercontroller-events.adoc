@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: monitor-partnercontroller-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.partnercontroller events
+---
+
+= monitor.partnercontroller events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.partnerController.notPresent
+*Severity*::
+ALERT
+*Description*::
+This message occurs when both controllers are configured as an HA (high-availability) pair, but the partner controller is not present. The system fan will run at a higher speed to prevent overheating due to the non-optimum air flow with only one controller in place.
+*Corrective Action*::
+Put the partner controller back into the HA configuration; otherwise, the system fan will run at a higher speed to prevent overheating due to the non-optimum air flow with only one controller in place.
+*Syslog Message*::
+Both controllers are configured as an HA (high-availability) pair, but the partner controller is not present. The system fan will run at a higher speed to prevent possible overheating.
+*Parameters*::
+(None).

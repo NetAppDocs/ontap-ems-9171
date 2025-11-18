@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: aps-rebalance-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: aps.rebalance events
+---
+
+= aps.rebalance events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== aps.rebalance.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the space rebalancing service encounters an error and fails to free up space on the flexaggr.
+*Corrective Action*::
+For further assistance, contact NetApp technical support.
+*Syslog Message*::
+Space rebalance service failed to free up space on flexaggr "%s".
+*Parameters*::
+*flexaggr* (STRING): Name of the flexaggr.
+
+== aps.rebalance.move.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the space rebalancing service encounters an error while moving the volume.
+*Corrective Action*::
+Use the "volume move start -vserver vsname -volume volname -destination-aggregate aggrname" command to manually move the volumes and free up space in the flexaggr. The command will be available in diag level. For further assistance, contact NetApp technical support.
+*Syslog Message*::
+Space rebalance service failed to move volume "%s". Reason: "%s".
+*Parameters*::
+*volume* (STRING): Name of the volume.
+*error* (STRING): The error that the space rebalancing service encountered during the volume move.

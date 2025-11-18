@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: sis-revertmetacreate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.revertmetacreate events
+---
+
+= sis.revertmetacreate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.revertmetacreate.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Single Instance Storage (SIS) metafiles cannot be created in the flexible volume metadir during a reversion to an earlier version of Data ONTAP(R).
+*Corrective Action*::
+Following this error, SIS is disabled for the volume. After correcting the underlying issue indicated by the error message, enable SIS again using the 'sis on' command. SIS then resumes normally.
+*Syslog Message*::
+Could not create the metafiles for the volume %s%s in the volume metadir: %s SIS is turned off for this volume.
+*Parameters*::
+*vol* (STRING): Path to the volume.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*err* (STRING): Reason for the failure.

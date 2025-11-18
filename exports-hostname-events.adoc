@@ -1,0 +1,48 @@
+---
+sidebar: sidebar
+permalink: exports-hostname-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: exports.hostname events
+---
+
+= exports.hostname events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== exports.hostname.notFound
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the forward lookup record mapping a host name to its IP address is not found in the configured name servers in a Vserver. This record must be present to evaluate the export-policy rule that has a host name in its clientmatch entry.
+*Corrective Action*::
+Ensure that the host has an interface configured for this address family, that the host name is correctly entered, that the host was not inadvertently removed from the name service, or that the host name was never entered at all. If the host should have an address for this address family, then check the configuration by using the appropriate tools for each name service.
+*Syslog Message*::
+Hostname "%s" does not have a forward mapping for its corresponding %s address in the configured name servers when evaluating the export-policy rule at index "%u" in policy-id "%llu" for Vserver "%s".
+*Parameters*::
+*hostname* (STRING): Name of the host that is not found.
+*addrfamily* (STRING): Name of the address family for which the problem occurs.
+*ruleindex* (INT): Index of the export-policy rule for which the problem occurs.
+*policyid* (LONGINT): Identifier for the export-policy that owns the export-policy rule.
+*vserver* (STRING): Name of the Vserver for which the problem occurs.
+
+== exports.hostname.transient
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a host named in a clientmatch entry of an export-policy rule is not resolved to an IP address using the configured name servers in a data Vserver.
+*Corrective Action*::
+Ensure that the name service is functioning correctly by checking the configuration by using the appropriate tools for each name service.
+*Syslog Message*::
+Hostname "%s" could not be resolved to an %s address (error %d) when evaluating export-policy rule at index "%u" in policy-id "%llu" on Vserver "%s".
+*Parameters*::
+*hostname* (STRING): Name of the host that is not resolved.
+*addrfamily* (STRING): Name of the address family for which the problem occurs.
+*retcode* (INT): Error code returned by the name service lookup.
+*ruleindex* (INT): Index of the export-policy rule for which the problem occurs.
+*policyid* (LONGINT): Identifier for the export-policy that owns the export-policy rule.
+*vserver* (STRING): Name of the data Vserver for which the problem occurs.

@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: isns-socket-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: isns.socket events
+---
+
+= isns.socket events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== isns.socket.conn.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the TCP socket connection in the Internet Storage Name Service (iSNS) fails to connect to the iSNS server.
+*Corrective Action*::
+The iSNS failed to create a socket for communicating with the iSNS server. Check the Data ONTAP(R) network configuration to ensure that the address for the iSNS server is in the routing group for all Vserver Management LIFs for the Vserver and that they are reachable via the clustered Data ONTAP "network ping" command.
+*Syslog Message*::
+The iSNS TCP socket connection failed for %s to %s: %s
+*Parameters*::
+*vserver* (STRING): Name of the Vserver
+*ip_address* (STRING): IP address for the iSNS server.
+*err_msg* (STRING): Reported network error.
+
+== isns.socket.setup.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Internet Storage Name Service (iSNS) fails to create a socket for communicating with the iSNS server.
+*Corrective Action*::
+Check the Data ONTAP(R) network configuration to ensure that the address for the iSNS server is in the routing group for all Vserver Management LIFs for the Vserver and that they are reachable via the clustered Data ONTAP "network ping" command.
+*Syslog Message*::
+The iSNS for %s failed to create a socket to %s; check the Data ONTAP network configuration.
+*Parameters*::
+*vserver* (STRING): Name of the Vserver
+*ip_address* (STRING): IP address for the iSNS server.

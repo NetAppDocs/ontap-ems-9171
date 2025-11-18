@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: lun-vdisk-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lun.vdisk events
+---
+
+= lun.vdisk events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== LUN.vdisk.cnt.exceeded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a volume contains more than the supported limit of LUNs in the volume. Performance degradation in volume management operations may occur as a result and it will not be possible to create more LUNs in this volume.
+*Corrective Action*::
+It is recommended that LUNs be moved to other volumes.
+*Syslog Message*::
+Volume %s (DSID %llu) contains more than the supported limit for LUNs (%d).
+*Parameters*::
+*volume_name* (STRING): Name of the volume which contains more than the supported limit of LUNs.
+*volume_dsid* (LONGINT): Data Set ID (DSID) of the volume which contains more than the supported limit of LUNs.
+*max_create_limit* (INT): The maximum number of LUNs that can be created in a volume.
+
+== LUN.vdisk.prov.cnt.exceeded
+*Severity*::
+ERROR
+*Description*::
+This message occurs when provisioning of metadata for some LUNs fails because the limit for provisioning LUNs in the volume has been exceeded.
+*Corrective Action*::
+It is recommended that LUNs be moved to other volumes and then mapped using the 'lun map' command.
+*Syslog Message*::
+Provisioning of metadata for some LUNs failed because the limit on the maximum supported LUNs in the volume %s (DSID %llu) has been exceeded. These LUNs cannot be discovered by hosts and will not be accessible for I/O. Metadata cannot be provisioned for more than %d LUNs.
+*Parameters*::
+*volume_name* (STRING): Name of the volume for which the LUN provisioning failed.
+*volume_dsid* (LONGINT): Data Set ID (DSID) of the volume for which the LUN provisioning failed.
+*max_prov_limit* (INT): Maximum number of LUNs for which metadata can be provisioned in a volume.

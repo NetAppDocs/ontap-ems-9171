@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: se-scan-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: se.scan events
+---
+
+= se.scan events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== se.scan.filecg.stopped
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Single Instance Storage (SIS) scanner is attempting to recompress file-based compression (secondary compression or 8k/16K/32K adaptive compression) in a volume and there is insufficient space in the volume.In this case the recompress operation is halted to allow you to check and enable the autogrow/ autodelete setting on the volume if it is not already enabled.
+*Corrective Action*::
+Consider rerunning the operation manually after enabling the autogrow/autodelete setting on the volume.
+*Syslog Message*::
+Recompression of file based compressed blocks to container level compression is halted because volume '%s' might run out of space during this procedure. SIS scan type '%s'.
+*Parameters*::
+*volume* (STRING): Volume name.
+*scan_type* (STRING): SIS scan type.

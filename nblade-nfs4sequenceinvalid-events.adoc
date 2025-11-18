@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: nblade-nfs4sequenceinvalid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.nfs4sequenceinvalid events
+---
+
+= nblade.nfs4sequenceinvalid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nblade.nfs4SequenceInvalid
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an NFS server detects an unexpected value for an incoming sequence number from a client.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NFS client (IP: %s) sent sequence# %d, but server expected sequence# %d. Server error: %s.
+*Parameters*::
+*clientIpAddress* (STRING): IP address of the NFS client.
+*InSeqid* (INT): Incoming sequence number from the client.
+*NextSeqid* (INT): Expected sequence number from the server.
+*NfsError* (STRING): NFS protocol error.

@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: disk-partner-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.partner events
+---
+
+= disk.partner events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.partner.encrRevertDone
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a node receives notice that its partner has completed a 'disk encrypt revert_original' operation. Check the command status on the partner node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The partner has completed a 'disk encrypt revert_original' operation on drive "%s". Check the partner node for the command status.
+*Parameters*::
+*diskName* (STRING): Name of the device.
+
+== disk.partner.encrRevertStart
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a node receives notice that a partner node has started a disk encrypt revert operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The partner has started reverting drive %s to its original state.
+*Parameters*::
+*diskName* (STRING): Name of the device.
+
+== disk.partner.sanitizeStart
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a message is received from the partner for a disk sanitize start.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The partner has started a disk sanitize on %s.
+*Parameters*::
+*diskName* (STRING): Name of the disk.

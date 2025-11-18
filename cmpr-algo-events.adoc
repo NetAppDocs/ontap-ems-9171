@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: cmpr-algo-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cmpr.algo events
+---
+
+= cmpr.algo events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cmpr.algo.not.enabled
+*Severity*::
+ALERT
+*Description*::
+This message occurs when compression algorithm specified has not been enabled on the node.
+*Corrective Action*::
+Contact technical support.
+*Syslog Message*::
+Volume '%s' has '%s' compression enabled but the necessary bootarg(s) have not been set on the node.
+*Parameters*::
+*vol* (STRING): Volume name.
+*comp_algo* (STRING): Compression Algorithm.

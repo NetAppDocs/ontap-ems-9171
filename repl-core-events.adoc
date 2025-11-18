@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: repl-core-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repl.core events
+---
+
+= repl.core events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== repl.core.nanny.cleanup
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a replication transfer that completed ten or more minutes ago is found and subsequently cleaned up.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The replication transfer identified by transfer Id %s was cleaned up since the transfer finished ten or more minutes ago.
+*Parameters*::
+*transferid* (STRING): Identifier given for a particular transfer by the replication initiator.
+*status* (INT): Progress status of the replication transfer when it was cleaned up.
+*failureReason* (INT): Failure reason code if there was a failure. Zero is returned on success.
+*failureMsg* (INT): Failure message code if there was a failure. Zero is returned on success.
+*failureMsgDetail* (INT): Failure message detail code if there was a failure. Zero is returned on success.

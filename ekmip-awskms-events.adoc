@@ -1,0 +1,101 @@
+---
+sidebar: sidebar
+permalink: ekmip-awskms-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ekmip.awskms events
+---
+
+= ekmip.awskms events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ekmip.awskms.available
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a configured Amazon Web Services (AWS) Key Management Service (KMS) that was unavailable for key operations is now available.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The AWS KMS with region: "%s" and key ID: "%s" configured for Vserver "%s" is now available.
+*Parameters*::
+*region* (STRING): AWS KMS region.
+*keyId* (STRING): Key ID.
+*vserver* (STRING): Name of the Vserver where the AWS KMS is configured.
+
+== ekmip.awskms.keyChg
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the key material associated with the key ID of the configured Amazon Web Services (AWS) Key Management Service (KMS) changes. The key material might have been auto-rotated or manually changed at the AWS KMS. Additionally, as a result of updated key material, the top-level internal key-protection key is successfully rewrapped with the current key material of the AWS KMS key ID.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The key material for key "%s" owned by AWS KMS region "%s" and configured for Vserver "%s" has changed.
+*Parameters*::
+*keyId* (STRING): Key ID.
+*region* (STRING): AWS KMS region.
+*vserver* (STRING): Name of the Vserver where the AWS KMS is configured.
+
+== ekmip.awskms.keyVersionChg
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the key version associated with the key ID of the configured Amazon Web Services (AWS) Key Management Service (KMS) changes. The key version might have been auto-rotated or manually changed at the AWS KMS. Additionally, as a result of updated key version, the top-level internal key-protection key is successfully rewrapped with the current key version of the AWS KMS key ID.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The version of the key "%s" owned by AWS KMS region "%s", configured for Vserver "%s", is changed from "%s" to "%s".
+*Parameters*::
+*keyId* (STRING): Key ID.
+*region* (STRING): AWS KMS region.
+*vserver* (STRING): Name of the Vserver where the AWS KMS is configured.
+*oldKeyVersion* (STRING): Prior key version.
+*newKeyVersion* (STRING): New key version.
+
+== ekmip.awskms.notAvailable
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a check for the availability of the configured Amazon Web Services (AWS) Key Management Service (KMS) fails. The AWS KMS might be down or there might be a network-related problem preventing communication. Without access to the AWS KMS, the node might be unable to restore authentication keys needed to unlock NetApp Storage Encryption (NSE) drives or encryption keys needed to mount encrypted volumes. If the AWS KMS is unavailable, then the next time this node boots, the failure to restore the keys might prevent the node from booting successfully or the encrypted volumes hosted on this node from coming online.
+*Corrective Action*::
+Verify that the AWS KMS configuration is correct by using the "security key-manager external aws show -vserver <vserver_name>" command, and verify that the AWS KMS cluster state is available. If the cluster state is unavailable, run the "security key-manager external aws restore" command to bring the cluster state to available. If the issue still persists, contact NetApp technical support.
+*Syslog Message*::
+The AWS KMS with region: %s and key ID: %s configured for Vserver "%s" is not available.
+*Parameters*::
+*region* (STRING): AWS KMS region.
+*keyId* (STRING): Key ID.
+*vserver* (STRING): Name of the Vserver where the AWS KMS is configured.
+
+== ekmip.awskms.volOffline
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Vserver has been blocked and any encrypted volumes belonging to the Vserver have been taken offline due to errors received when trying to access the key owned by the Amazon Web Services (AWS) Key Management Service (KMS). Reasons for AWS KMS key access errors include a disabled key, a destroyed key, key not found, or a user not having sufficient privileges to access the key. ONTAP polls the AWS KMS to verify key accessibility. If, after 60 minutes, ONTAP has not received a successful response to a poll, volumes are taken offline and remain offline until the key access issues are resolved at the AWS KMS. Subsequently, if ONTAP does receive a successful response, the volumes will be brought back online automatically.
+*Corrective Action*::
+Resolve the key access issues at the AWS KMS portal. Ensure that the key is active and the user has the required privileges to access the key.
+*Syslog Message*::
+The Vserver has been blocked and any encrypted volumes belonging to Vserver "%s" have been taken offline due to key access errors associated with key "%s" owned by AWS KMS region "%s".
+*Parameters*::
+*vserver* (STRING): Name of the Vserver where the AWS KMS is configured.
+*keyId* (STRING): Key ID.
+*region* (STRING): AWS KMS region.
+
+== ekmip.awskms.volOnline
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the volumes configured on the Amazon Web Services (AWS) Key Management Service (KMS) that were unavailable due to key access issues are now back online.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Encrypted volumes belonging to Vserver "%s" associated with key-id "%s" owned by Amazon Web Services (AWS) KMS region "%s" are now back online.
+*Parameters*::
+*vserver* (STRING): Name of the Vserver where the AWS KMS is configured.
+*keyId* (STRING): Key ID.
+*region* (STRING): AWS KMS region.

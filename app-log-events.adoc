@@ -1,0 +1,100 @@
+---
+sidebar: sidebar
+permalink: app-log-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: app.log events
+---
+
+= app.log events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== app.log.alert
+*Severity*::
+ALERT
+*Description*::
+This event is issued when an application is in a condition that should be corrected immediately.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: %s %s: (%u) %s: %s
+*Parameters*::
+*computerName* (STRING): Client Computer connected to the Filer.
+*eventSource* (STRING): Client application that generated this event.
+*appVersion* (STRING): Client application version.
+*eventID* (INT): Application eventID.
+*category* (STRING): Event category.
+*subject* (STRING): Event description.
+
+== app.log.emerg
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when an application encounters a fatal error and requires immediate attention.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+%s: %s %s: (%u) %s: %s
+*Parameters*::
+*computerName* (STRING): Client Computer connected to the Filer.
+*eventSource* (STRING): Client application that generated this event.
+*appVersion* (STRING): Client application version.
+*eventID* (INT): Application eventID.
+*category* (STRING): Event category.
+*subject* (STRING): Event description.
+
+== app.log.err
+*Severity*::
+ERROR
+*Description*::
+This event is issued when an application encounters an error condition.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: %s %s: (%u) %s: %s
+*Parameters*::
+*computerName* (STRING): Client Computer connected to the Filer.
+*eventSource* (STRING): Client application that generated this event.
+*appVersion* (STRING): Client application version.
+*eventID* (INT): Application eventID.
+*category* (STRING): Event category.
+*subject* (STRING): Event description.
+
+== app.log.info
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued when an application's message is meant for informational purposes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: %s %s: (%u) %s: %s
+*Parameters*::
+*computerName* (STRING): Client Computer connected to the Filer.
+*eventSource* (STRING): Client application that generated this event.
+*appVersion* (STRING): Client application version.
+*eventID* (INT): Application eventID.
+*category* (STRING): Event category.
+*subject* (STRING): Event description.
+
+== app.log.notice
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when an application is notifing of a certain event.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s: %s %s: (%u) %s: %s
+*Parameters*::
+*computerName* (STRING): Client Computer connected to the Filer.
+*eventSource* (STRING): Client application that generated this event.
+*appVersion* (STRING): Client application version.
+*eventID* (INT): Application eventID.
+*category* (STRING): Event category.
+*subject* (STRING): Event description.

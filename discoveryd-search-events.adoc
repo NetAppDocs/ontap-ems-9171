@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: discoveryd-search-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: discoveryd.search events
+---
+
+= discoveryd.search events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== discoveryd.search.request
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the discoveryd service is contacted during the initial cluster setup phase with an M-SEARCH multicast and a follow up HTTP GET to get the device description document.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The discoveryd service was contacted by a device (IP address: %s) to discover information about this node.
+*Parameters*::
+*client_ip* (STRING): IP address of the client machine requesting the discoveryd information.

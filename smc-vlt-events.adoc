@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: smc-vlt-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: smc.vlt events
+---
+
+= smc.vlt events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== smc.vlt.cascade.xfer.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the transfer for the SnapVault(R) relationship replicating the read-only source volume fails because the SnapMirror(R) policy prevents it from transferring the exported snapshot from the source. Generally this happens when the "keep" value of the rule associated with the SnapMirror label of the exported snapshot is reached and the "preserve" flag is set to "true".
+*Corrective Action*::
+Modify the rule for the SnapMirror policy associated with the SnapMirror label of the exported snapshot on the source volume and either set the "preserve" flag to "false" or increase the "keep" count.
+*Syslog Message*::
+Unable to transfer any snapshots to %s because the exported snapshot %s with snapmirror-label %s has a rule whose "keep" value has been reached and the "preserve" flag is set to "true".
+*Parameters*::
+*dst_path* (STRING): Destination volume of the SnapVault relationship.
+*snap_name* (STRING): Name of the exported snapshot on the source volume.
+*snapmirror_label* (STRING): SnapMirror label associated with the exported snapshot.

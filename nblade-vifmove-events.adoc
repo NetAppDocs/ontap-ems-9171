@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: nblade-vifmove-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.vifmove events
+---
+
+= nblade.vifmove events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.vifmove.RdmaAddFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is a failure adding a Remote Direct Memory Access (RDMA) listener during a Logical Interface (LIF) move. While this condition persists, an RDMA connection cannot be established on the LIF.
+*Corrective Action*::
+Toggle the LIF's "-status-admin" parameter "down" and then "up" using the below commands: ::> network interface modify -vserver [vserver] -lif [lif name] -status-admin down ::> network interface modify -vserver [vserver] -lif [lif name] -status-admin up If it does not fix the issue, the LIF will need to be migrated from the current port to another port that supports RDMA. The command below can be used: ::> network interface migrate -vserver [vserver] -lif [lif name] -destination-node [node name] -destination-port [port name]
+*Syslog Message*::
+Failed to start RDMA listening port on %s when moving IP address for LIF %d.
+*Parameters*::
+*interface* (STRING): Network interface or port name.
+*lif* (INT): LIF Id.
+*errorCode* (INT): Operation error code.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ems-asup-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ems.asup events
+---
+
+= ems.asup events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ems.asup.noteto.transition
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the e-mail addresses for deprecated AutoSupport "noteto" messages are copied to EMS event notification destinations during an upgrade to Data ONTAP(R) 9.0 or later. This results in duplicate event notifications: one EMS notification and one AutoSupport short note message. Use the "event notification destination {show|modify}" command to view or modify deprecated "noteto" e-mail addresses to use new e-mail destinations. This copy action also creates an event notification that maps the "important-events" filter to all of the newly created destinations. Use the "event notification {show|modify}" command to view or modify the new event notification, as necessary. All events that match the "important-events" filter send notifications to the new destinations, including the AutoSupport triggers with "noteto" enabled.
+*Corrective Action*::
+To remove event message duplication, remove the AutoSupport "noteto" addresses by entering the "system node autosupport modify -node * -noteto -" command.
+*Syslog Message*::
+AutoSupport -noteto e-mail addresses have been copied and transitioned to EMS event notification destinations.
+*Parameters*::
+(None).

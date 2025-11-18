@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: nblade-vscanexcessivetos-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.vscanexcessivetos events
+---
+
+= nblade.vscanexcessivetos events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.vscanExcessiveTOs
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP logs excessive timed-out scanning events which are due to delays in scanning response from the virus scanning (Vscan) server. Too many timed-out scanning events indicate that files are not being scanned in a timely manner.
+*Corrective Action*::
+Investigate the Vscan server for timed-out scanning events to ascertain the root cause for the delays.
+*Syslog Message*::
+Vscan timed-out scanning events exceeded %d in the last 30 minutes for Vscan server (IP: %s) in SVM "%s".
+*Parameters*::
+*ExcessiveVscanTimeOutsCount* (INT): Threshold count for for the maximum number of timed-out scanning events that can occur within a 30 minute interval.
+*scannerIp* (STRING): IP address of the Vscan server.
+*vserverName* (STRING): Name of the SVM.

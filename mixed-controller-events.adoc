@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: mixed-controller-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mixed.controller events
+---
+
+= mixed.controller events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mixed.controller.halt
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects a different type of partner controller and will shut down in 24 hours. When different models are in the same chassis the configuration is unsupported, but is temporarily allowed for controller upgrades.
+*Corrective Action*::
+No action is required if you are upgrading controllers in the chassis. Otherwise, use the "sysconfig" nodeshell command to determine the model for both controllers and install a matching model.
+*Syslog Message*::
+Partner controller is not the same model. Hours remaining before the system will halt: %d.
+*Parameters*::
+*hours* (INT): Number of hours before the system halts.
+
+== mixed.controller.partner.halt
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects partner controller has been replaced but it is still a different type. The partner will shut down in 24 hours unless it is replaced with the same model as the local node. When different models are in the same chassis the configuration is unsupported, but is temporarily allowed for controller upgrades.
+*Corrective Action*::
+No action is required if you are upgrading controllers in the chassis. Otherwise, use the "sysconfig" nodeshell command to determine the model for both controllers and install a matching model.
+*Syslog Message*::
+Partner controller is not the same model. Partner controller will shut down in 24 hours if no further action is taken.
+*Parameters*::
+(None).

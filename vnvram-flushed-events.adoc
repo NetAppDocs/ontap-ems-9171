@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: vnvram-flushed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vnvram.flushed events
+---
+
+= vnvram.flushed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vnvram.flushed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the VNVRAM contents of any ONTAP-based virtual appliance that is not using full-mode VNVRAM, are written to the backing storage device. The writes would have occurred during either a clean or dirty shutdown.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Write to VNVRAM persistent storage is complete (%s) elapsed %d ms.
+*Parameters*::
+*vnvr_reg* (STRING): Section of NVRAM that was written to the backing device.
+*flush_time_ms* (INT): Time taken to write the NVRAM section.

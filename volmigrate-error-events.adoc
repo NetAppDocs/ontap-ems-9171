@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: volmigrate-error-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: volmigrate.error events
+---
+
+= volmigrate.error events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== volmigrate.error
+*Severity*::
+INFORMATIONAL
+*Description*::
+Description of the reason a volume migrate failed or was not attempted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*volName* (STRING): Volume being migrated
+*recipientFiler* (STRING): Name of the filer to which the volume was being migrated
+*error* (STRING): The specific error string that details why migrate failed.

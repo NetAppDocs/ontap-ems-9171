@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: repository-cleanup-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: repository.cleanup events
+---
+
+= repository.cleanup events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Repository.Cleanup.BaseFile
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is a failure in the Infinite Volume while creating a stream on a nonexistent file, and the base file was left behind in the Vserver.
+*Corrective Action*::
+Delete the file created from the mounted file system. Example: To delete a file from the Windows cmd shell: C:\Users\Administrator>del Z:\File.txt If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+Failure happened in the Infinite Volume while creating a stream on a nonexistent file, and the base file (handle: %s) was left behind in Vserver %u.
+*Parameters*::
+*filehandle* (STRING): File handle of the base file that was created.
+*vserverId* (INT): Vserver ID for which the error occurred.

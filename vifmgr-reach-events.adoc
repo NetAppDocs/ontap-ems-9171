@@ -1,0 +1,138 @@
+---
+sidebar: sidebar
+permalink: vifmgr-reach-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.reach events
+---
+
+= vifmgr.reach events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.reach.avail
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the node has completed its initial scan of reachability for all ports.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Node %s has completed its initial scan of reachability for all ports.
+*Parameters*::
+*node* (STRING): Name of the node on which the network port resides.
+
+== vifmgr.reach.err
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a network port encountered errors while scanning for reachability.
+*Corrective Action*::
+Verify the network port's physical connectivity and switch configuration. A network port should have reachability only to its expected broadcast domain.
+*Syslog Message*::
+Network port %s on node %s encountered errors while scanning for reachability. Reachability was detected to the following broadcast domains: %s.
+*Parameters*::
+*port* (STRING): Name of the network port.
+*node* (STRING): Name of the node on which the network port resides.
+*reachableBroadcastDomains* (STRING): Names of the broadcast domains that are reachable from the port.
+
+== vifmgr.reach.miscfg
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a network port cannot reach its expected broadcast domain but has reachability to another broadcast domain.
+*Corrective Action*::
+Verify the network port's physical connectivity and switch configuration. A network port should have reachability only to its expected broadcast domain.
+*Syslog Message*::
+Network port %s on node %s cannot reach its expected broadcast domain %s, but reachability was detected to broadcast domain %s.
+*Parameters*::
+*port* (STRING): Name of the network port.
+*node* (STRING): Name of the node on which the network port resides.
+*broadcastDomain* (STRING): Name of the broadcast domain associated with the port.
+*reachableBroadcastDomains* (STRING): Names of the broadcast domains that are reachable from the port.
+
+== vifmgr.reach.miscfg.unassn
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a network port is not assigned to a broadcast domain but has reachability to a broadcast domain.
+*Corrective Action*::
+Verify the network port's physical connectivity and switch configuration. A network port should have reachability only to its expected broadcast domain.
+*Syslog Message*::
+Network port %s on node %s is not assigned to a broadcast domain, but reachability was detected to broadcast domain %s.
+*Parameters*::
+*port* (STRING): Name of the network port.
+*node* (STRING): Name of the node on which the network port resides.
+*reachableBroadcastDomains* (STRING): Names of the broadcast domains that are reachable from the port.
+
+== vifmgr.reach.multireach
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a network port is determined to have reachability to multiple broadcast domains.
+*Corrective Action*::
+Verify the network port's physical connectivity and switch configuration. A network port should have reachability only to its expected broadcast domain.
+*Syslog Message*::
+Network port %s on node %s can reach the following broadcast domains: %s.
+*Parameters*::
+*port* (STRING): Name of the network port.
+*node* (STRING): Name of the node on which the network port resides.
+*reachableBroadcastDomains* (STRING): Names of the broadcast domains that are reachable from the port.
+
+== vifmgr.reach.noreach
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a network port cannot reach its expected broadcast domain or any other broadcast domain.
+*Corrective Action*::
+Verify the network port's physical connectivity and switch configuration. A network port should have reachability only to its expected broadcast domain.
+*Syslog Message*::
+Network port %s on node %s cannot reach its expected broadcast domain %s. No other broadcast domains appear to be reachable from this port.
+*Parameters*::
+*port* (STRING): Name of the network port.
+*node* (STRING): Name of the node on which the network port resides.
+*broadcastDomain* (STRING): Name of the broadcast domain associated with the port.
+
+== vifmgr.reach.ok
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a network port's actual broadcast domain reachability matches its expected reachability, and no other broadcast domains appear to be reachable from the port.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Network port %s on node %s can reach its expected broadcast domain %s. No other broadcast domains appear to be reachable from this port.
+*Parameters*::
+*port* (STRING): Name of the network port.
+*node* (STRING): Name of the node on which the network port resides.
+*broadcastDomain* (STRING): Name of the broadcast domain associated with the port.
+
+== vifmgr.reach.skipped
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a network port was not scanned for reachability because it was administratively or operationally down at the time of the scan.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Network port %s on node %s was not scanned for reachability because it was administratively or operationally down at the time of the scan.
+*Parameters*::
+*port* (STRING): Name of the network port.
+*node* (STRING): Name of the node on which the network port resides.
+
+== vifmgr.reach.unassn
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a network port is not assigned to a broadcast domain, and has no reachability to any broadcast domains.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Network port %s on node %s is not assigned to any broadcast domain. No broadcast domains appear to be reachable from this port.
+*Parameters*::
+*port* (STRING): Name of the network port.
+*node* (STRING): Name of the node on which the network port resides.

@@ -1,0 +1,97 @@
+---
+sidebar: sidebar
+permalink: arl-netra-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: arl.netra events
+---
+
+= arl.netra events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== arl.netra.ca.check.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs during the relocation of an aggregate, when the destination node cannot reach the object stores.
+*Corrective Action*::
+Verify that your intercluster LIF is online and functional by using the 'network interface show' command. Also, check network connectivity to the object store server by using the 'ping' command over the destination node intercluster LIF. Additionally, verify that the configuration of your object store has not changed and that login and connectivity information is still accurate by using the 'aggregate object-store config show' command. It is possible to override this error by using the 'override-destination-checks' parameter of the relocation command. For more information or assistance, contact NetApp technical support.
+*Syslog Message*::
+Relocation of aggregate '%s' (uuid: %s) failed due to %s preventing object store access on the destination node.
+*Parameters*::
+*vol* (STRING): Name of the aggregate.
+*aggr_uuid* (STRING): UUID of the aggregate.
+*reason* (STRING): Activity that is preventing the aggregate relocation operation.
+
+== arl.netra.ha.dskChkFailed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when relocation of an aggregate fails because the destination node cannot see all disks belonging to the aggregate.
+*Corrective Action*::
+If the destination is the source node's high-availability (HA) partner, identify the missing disks by using the "storage failover show -fields local-missing-disks, partner-missing-disks" command. If the destination is not the source node's HA partner, use the "storage disk show -aggregate" command to list the disks belonging to the aggregate, and then verify that those disks are visible from the destination by using the "storage disk show" command.
+*Syslog Message*::
+Relocation of aggregate %s failed from node %s because the destination node cannot see all disks belonging to the aggregate.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate that was not relocated.
+*node* (STRING): Name of the node that failed the relocation.
+
+== arl.netra.lmgr.limit.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs during the relocation of an aggregate, when the destination node fails the lock count limit checks.
+*Corrective Action*::
+Ensure that the destination node supports the identified lock count limits, or select a different destination node and retry the operation.
+*Syslog Message*::
+Aggregate '%s': Lock limits check failed on destination node. %s
+*Parameters*::
+*vol* (STRING): Name of the aggregate.
+*reason* (STRING): Activity that is preventing the aggregate relocation operation.
+
+== arl.netra.lmgr.reserve.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an aggregate is being relocated, and the partner node fails to reserve lock resources needed for this aggregate.
+*Corrective Action*::
+Take the appropriate action based on the reason supplied in the logged message: - 'Partner reconstructing locks': Retry the relocation after reconstruction is complete on the partner node. You can check the reconstruction progress by using the 'debug locks reconstruction show' diagnostic privilege command. - 'Partner does not have sufficient lock resources': Free up lock resources on the partner and retry the relocation. You can free lock resources on the partner as client applications using locks are closed for volumes contained on that node. You can also free lock resources by moving volumes with locks from the partner node to a different node in the cluster. - 'Memory allocation failure': The system is running low on memory. Monitor memory statistics on the node and retry the relocation when more memory is available. - For other reason messages, or for further assistance, contact NetApp technical support.
+*Syslog Message*::
+Aggregate '%s': Lock reservation failed. Reason: %s.
+*Parameters*::
+*aggr* (STRING): Name of the aggregate being relocated.
+*reason* (STRING): Reason the lock reservation failed.
+
+== arl.netra.raid.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs during migration of an aggregate as part of aggregate relocation, when one of the aggregate checks fails on the destination node, which include duplicate aggregate name, duplicate Universally Unique Identifier (UUID), aggregate count, and capacity limits.
+*Corrective Action*::
+1. If checks fail due to aggregate count or capacity limits, then relocate this aggregate to an alternate destination node that has enough capacity to receive the aggregate. 2. If checks fail due to duplicate aggregate name or UUID, delete the duplicate aggregate created from previous "storage failover giveback" or "storage aggregate relocation" operations. Contact NetApp technical support for assistance with deletion of the unwanted duplicate aggregate.
+*Syslog Message*::
+Aggregate '%s' (UUID = %s, type = %s, home_owner_id = %llu, dr_home_owner_id = %llu): RAID aggregate migration checks failed on destination node %s.
+*Parameters*::
+*vol* (STRING): Name of the aggregate.
+*aggregate_uuid* (STRING): UUID of the aggregate.
+*raid_type* (STRING): RAID type of the volume.
+*home_owner_id* (LONGINT): NVRAM system ID of the aggregate's home owner.
+*dr_home_owner_id* (LONGINT): NVRAM system ID of the aggregate's disaster recovery (DR) home owner.
+*reason* (STRING): Activity that is preventing the aggregate relocation or giveback operation.
+
+== arl.netra.wafl.mcc.veto
+*Severity*::
+ERROR
+*Description*::
+This message occurs during the relocation of an aggregate, when one or more online left-behind disaster recovery(DR) aggregates are found on the destination node and the "node-object-limit" option is set to off.
+*Corrective Action*::
+Check whether there exists any online left-behind DR aggregates on the destination node from a previous switchover operation. If such an aggregate exists, then perform the corrective actions specified in the earlier EMS messages for the left-behind aggregate to return it to its original owner, and then retry the operation. If you cannot perform the corrective action, then use the "override-destination-checks" option in the "relocation" command to force the relocation.
+*Syslog Message*::
+Aggregate '%s': One or more online left-behind DR aggregates were found on the destination node and the "node-object-limit" option is set to off.
+*Parameters*::
+*vol* (STRING): Name of the aggregate.

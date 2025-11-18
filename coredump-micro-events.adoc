@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: coredump-micro-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: coredump.micro events
+---
+
+= coredump.micro events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== coredump.micro.completed
+*Severity*::
+INFORMATIONAL
+*Description*::
+Microcore generation has completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Microcore (%s) generation completed
+*Parameters*::
+*file* (STRING): Pathname of microcore that was created
+
+== coredump.micro.failed
+*Severity*::
+ERROR
+*Description*::
+Microcore generation has failed.
+*Corrective Action*::
+(Call support).
+*Syslog Message*::
+Generation of microcore failed
+*Parameters*::
+(None).

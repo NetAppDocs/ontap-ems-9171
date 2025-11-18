@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: fmmb-major-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fmmb.major events
+---
+
+= fmmb.major events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fmmb.major.reset.invalid
+*Severity*::
+ALERT
+*Description*::
+This event is issued when the HA Mailbox major reset data should exist and it doesn't. The major reset data in the mailbox is created and used when there is a major change of information kept in the HA mailbox records.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+HA %s Mailbox major reset header information is invalid.
+*Parameters*::
+*host* (STRING): The node which owns the HA mailbox disk. The node can be either local or partner.

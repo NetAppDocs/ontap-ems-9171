@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: dfu-fwdownloadfailedwbuf-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: dfu.fwdownloadfailedwbuf events
+---
+
+= dfu.fwdownloadfailedwbuf events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== dfu.fwDownloadFailedWbuf
+*Severity*::
+ERROR
+*Description*::
+This message occurs when retries are exhausted on the write buffer command that is used to download firmware to a disk.
+*Corrective Action*::
+Disk firmware might still need to be updated. See the disk_fw_update man page for complete details on performing this.
+*Syslog Message*::
+Write buffer command failed to Disk %s [%s %s %s] S/N [%s].
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*vendorName* (STRING): Vendor name of the disk.
+*productId* (STRING): Product ID of the disk.
+*fwVersion* (STRING): Firmware version of the disk.
+*serialno* (STRING): Serial number of the disk.

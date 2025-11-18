@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: diskown-wfgfencecheckbad-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: diskown.wfgfencecheckbad events
+---
+
+= diskown.wfgfencecheckbad events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== diskown.WFGFenceCheckBad
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the disk ownership module gets a bad status when it tries to find whether the local node is fenced during waitForGiveback check. The system attempts to recover from this condition on its own.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*status_str* (STRING): Status string for fence check.

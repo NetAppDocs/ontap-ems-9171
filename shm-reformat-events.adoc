@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: shm-reformat-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: shm.reformat events
+---
+
+= shm.reformat events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== shm.reformat.diskError
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system tries to reformat a disk, but an error is returned.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+shm: Unable to format disk %s as it is not supported.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+
+== shm.reformat.partnerDisk
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects a drive that started formatting during a sanitization, but did not finish.
+*Corrective Action*::
+Reboot the partner node to clear the formatting condition. Rerun the original sanitize operation.
+*Syslog Message*::
+shm: Disk %s on the partner has possibly not completed format. To reformat the disk, the partner must be rebooted.
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+
+== shm.reformat.startMsg
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system has begun to reformat a disk that was not completed during sanitization.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+shm: Disk %s is being reformatted due to an error during disk sanitize.
+*Parameters*::
+*diskName* (STRING): Name of the disk.

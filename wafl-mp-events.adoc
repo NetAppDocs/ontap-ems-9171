@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: wafl-mp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.mp events
+---
+
+= wafl.mp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.mp.vldb.update.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the value of the "multipart enabled" setting in the RAID label changes during the restoration of a snapshot, and an attempt to update the value in the Volume Location Database (VLDB) to match the new RAID label value fails.
+*Corrective Action*::
+Perform the following steps using the 'debug vreport' command to resolve the inconsistency in the VLDB. 1. Run the "debug vreport show" command to show the object name. 2. Run the "debug vreport fix -type volume -object object-name" command.
+*Syslog Message*::
+Updating the VLDB "granular-data" property of volume "%s" with DSID "%08x" to "%s" failed. Reason: %s.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*dsid* (LONGINT): Unique identifier (DSID) of the volume.
+*value* (STRING): New value to be set.
+*errmsg* (STRING): Error message.

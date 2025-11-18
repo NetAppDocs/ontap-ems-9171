@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: mcc-lunmgr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mcc.lunmgr events
+---
+
+= mcc.lunmgr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mcc.lunmgr.lunid_alloc_failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when failing to allocate a CTL Target LUN ID to a target disk
+*Corrective Action*::
+This indicates an internal error during the discovery of Target LUN devices.
+*Syslog Message*::
+Device S/N %s - Failed to allocate a LUN ID
+*Parameters*::
+*device_serial_number* (STRING): Device serial number

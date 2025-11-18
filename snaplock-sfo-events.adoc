@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: snaplock-sfo-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snaplock.sfo events
+---
+
+= snaplock.sfo events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snaplock.sfo.veto.worm
+*Severity*::
+ERROR
+*Description*::
+This message occurs when SnapLock legal-hold or event-retention operations are aborted during an aggregate relocation or a sendhome operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+All SnapLock legal-hold and event based retention operations were aborted for aggregate %s because %s is in progress.
+*Parameters*::
+*aggr_name* (STRING): Name of the aggregate for which operations were aborted.
+*arl_or_sendhome* (STRING): Describes the operation i.e. an aggregate relocation or a sendhome.

@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: clam-voting-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: clam.voting events
+---
+
+= clam.voting events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== clam.voting.state.change
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Kernel Cluster Services Connectivity, Liveliness, Availability Monitor (CLAM) detects that the voting state of the node changed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+CLAM on node (name=%s, ID=%llu) has %s voting for its HA partner node(name=%s, ID=%llu).
+*Parameters*::
+*local_hostname* (STRING): Host name of the local node.
+*localId* (LONGINT): Node ID of the local node.
+*state* (STRING): New voting state of the node.
+*partner_hostname* (STRING): Host name of the HA partner node.
+*partnerId* (LONGINT): Node ID of the HA partner node.

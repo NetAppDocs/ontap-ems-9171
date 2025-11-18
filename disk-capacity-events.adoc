@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: disk-capacity-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.capacity events
+---
+
+= disk.capacity events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.capacity.changed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a media size change is reported for the underlying storage device. The new size and previous size are measured in 4096-byte blocks.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A storage device reported a size change for device "%s". New size: %llu, previous size: %llu (4096-byte blocks).
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*new_size* (LONGINT): The new size measured in 4096-byte blocks.
+*previous_size* (LONGINT): The previous size measured in 4096-byte blocks.

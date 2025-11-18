@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: azurearc-himds-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: azurearc.himds events
+---
+
+= azurearc.himds events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== azurearc.himds.startup.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Hybrid Instance Metadata service (HIMDS) failed to start up at boot time. The Microsoft Connected Machine Agent will not be able to listen for connections. This message is only applicable to Azure NetApp Files systems.
+*Corrective Action*::
+Look at the logs in /var/opt/azcmagent/log/himds.log for more information. Reboot the machine. If this does not resolve the issue, contact NetApp technical support.
+*Syslog Message*::
+The Hybrid Instance Metadata service (HIMDS) failed to start.
+*Parameters*::
+(None).
+
+== azurearc.himds.startup.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Hybrid Instance Metadata service (HIMDS) starts up successfully and is listening for connections. This message is only applicable to Azure NetApp Files systems.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The Hybrid Instance Metadata service (HIMDS) started successfully.
+*Parameters*::
+(None).

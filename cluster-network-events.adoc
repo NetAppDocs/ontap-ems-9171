@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: cluster-network-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cluster.network events
+---
+
+= cluster.network events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cluster.network.config
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a two node cluster transitions between a switched and switchless configuration.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The cluster network configuration transitioned to %s.
+*Parameters*::
+*current_configuration* (STRING): Displays if the current configuration is switched or switchless.

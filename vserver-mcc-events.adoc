@@ -1,0 +1,55 @@
+---
+sidebar: sidebar
+permalink: vserver-mcc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vserver.mcc events
+---
+
+= vserver.mcc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vserver.mcc.repl.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs in a MetroCluster(TM) configuration when an attempt to create a Vserver on the partner cluster fails.
+*Corrective Action*::
+Run the 'metrocluster vserver show' command, and follow the corrective action specified in the output.
+*Syslog Message*::
+Vserver %s cannot be created on the partner cluster.
+*Parameters*::
+*vserver_name* (STRING): Name of the Vserver.
+
+== vserver.mcc.start.failed
+*Deprecated*::
+Deprecated as of version 9.2.0 as this EMS is not required.
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a sync-destination Vserver fails to get started during a MetroCluster(tm) switchover operation or a sync-source Vserver fails to get started during a MetroCluster switchback operation.
+*Corrective Action*::
+Start the Vserver which failed to get started during MetroCluster switchover/switchback.
+*Syslog Message*::
+Failed to start the Vserver %s during Metrocluster switchover/switchback operation.
+*Parameters*::
+*vserver_name* (STRING): Name of the vserver which failed to get started.
+
+== vserver.mcc.stop.failed
+*Deprecated*::
+Deprecated as of version 9.2.0 as this EMS is not required.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a sync-destination Vserver fails to get stopped during a MetroCluster switchback operation.
+*Corrective Action*::
+Stop the Vserver which failed to get stopped during MetroCluster switchback.
+*Syslog Message*::
+Failed to stop the Vserver %s during MetroCluster switchback operation.
+*Parameters*::
+*vserver_name* (STRING): Name of the vserver which failed to get stopped during MetroCluster switchback.

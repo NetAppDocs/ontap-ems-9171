@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: monitor-cpu-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.cpu events
+---
+
+= monitor.cpu events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.cpu.ok
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the CPU busy situation is corrected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s
+*Parameters*::
+*report* (STRING): Description of the current CPU usage.
+
+== monitor.cpu.tooBusy
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the CPU is too busy.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Warning: %s
+*Parameters*::
+*report* (STRING): Description of the problem.

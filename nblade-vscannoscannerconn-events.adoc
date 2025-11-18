@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: nblade-vscannoscannerconn-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.vscannoscannerconn events
+---
+
+= nblade.vscannoscannerconn events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.vscanNoScannerConn
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when ONTAP(R) has no vscan connection for servicing virus scan-requests. This might cause data unavailability if the scan-mandatory option is enabled.
+*Corrective Action*::
+Ensure that the scanner pool is properly configured and the AV servers are active and connected to ONTAP.
+*Syslog Message*::
+Vserver "%s" has no virus scanner connection.
+*Parameters*::
+*vserverName* (STRING): Vserver associated with this operation.
+*object_type* (STRING): Type of the resource object under notification.
+*object_uuid* (STRING): UUID of the resource object.

@@ -1,0 +1,47 @@
+---
+sidebar: sidebar
+permalink: wafl-encrypted-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.encrypted events
+---
+
+= wafl.encrypted events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.encrypted.aggr.created
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a NetApp(R) Aggregate Encryption (NAE) aggregate is created.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NAE aggregate "%s" is created.
+*Parameters*::
+*Aggregate* (STRING): Name of the aggregate.
+*KeyID_1* (STRING): Aggregate key ID of key1.
+*KeyID_2* (STRING): Aggregate key ID of key2.
+*KeyID_3* (STRING): Aggregate key ID of key3.
+*KeyID_4* (STRING): Aggregate key ID of key4.
+
+== wafl.encrypted.aggr.modified
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an aggregate is converted to a NetApp(R) Aggregate Encryption (NAE) aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Aggregate "%s" is converted to a NAE aggregate.
+*Parameters*::
+*Aggregate* (STRING): Name of the aggregate.
+*KeyID_1* (STRING): Aggregate key ID of key1.
+*KeyID_2* (STRING): Aggregate key ID of key2.
+*KeyID_3* (STRING): Aggregate key ID of key3.
+*KeyID_4* (STRING): Aggregate key ID of key4.

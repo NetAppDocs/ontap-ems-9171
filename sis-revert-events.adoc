@@ -1,0 +1,83 @@
+---
+sidebar: sidebar
+permalink: sis-revert-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.revert events
+---
+
+= sis.revert events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.revert.to.has.Aborted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Single Instance Storage (SIS) volume command 'sis revert_to' has failed. This might prevent running generic Data ONTAP(R) 'revert_to' command successfully
+*Corrective Action*::
+(None).
+*Syslog Message*::
+sis 'revert_to' command has failed on volume %s%s :%s
+*Parameters*::
+*path* (STRING): Path to the SIS volume
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*reason* (STRING): Reason for the failure.
+
+== sis.revert.to.has.Succeeded
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Single Instance Storage (SIS) volume command 'sis revert_to' has succeeded.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+'sis revert_to' command has succeeded on volume %s%s
+*Parameters*::
+*path* (STRING): Path to the SIS volume
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== sis.revert.to.large.vol
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Single Instance Storage (SIS) volume command 'sis revert_to' fails because the logical data exceeded the maximum allowed for SIS in the target release. This is to prevent growing deduplication metadata beyond the size that is supported in the target release. Logical data is the summation of used blocks, saved blocks, and compressed blocks in the volume. This might prevent running the generic Data ONTAP(R) 'revert_to' command successfully.
+*Corrective Action*::
+Shrink the volume or run 'sis revert_to -delete vol_path' to delete deduplication metadata from this volume.
+*Syslog Message*::
+'sis revert_to' command has failed on volume %s%s. Volume exceeded the maximum allowed logical data limit of %d TB for SIS in the target release.
+*Parameters*::
+*path* (STRING): Path to the SIS volume.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*maxVolSize* (INT): Maximum size of the SIS volume in the target release.
+
+== sis.revert.to.space.warning
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a Single Instance Storage (SIS) volume command 'sis revert_to' is run. This message indicates that adding more data during this command execution might abort that operation due to insufficient space.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Adding data to volume %s%s while the 'sis revert_to' command is running might lead to insufficient free space and failure of that operation.
+*Parameters*::
+*path* (STRING): Path to the SIS volume.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+
+== sis.revert.to.write.Failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Single Instance Storage (SIS) volume command 'sis revert_to' fails to write to a file or create a file related to a revert_to operation. This might prevent running generic Data ONTAP(R) 'revert_to' command successfully
+*Corrective Action*::
+Ensure that space is available in the indicated volume or in the aggregate it belongs to. After space is is available, rerun the 'sis revert_to' command.
+*Syslog Message*::
+'sis revert_to' command failed on volume %s%s :%s.
+*Parameters*::
+*path* (STRING): Path to the SIS volume.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*reason* (STRING): Reason for the failure.

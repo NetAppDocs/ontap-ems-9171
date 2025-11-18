@@ -1,0 +1,49 @@
+---
+sidebar: sidebar
+permalink: clam-takeover-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: clam.takeover events
+---
+
+= clam.takeover events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== clam.takeover
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Kernel Cluster Services Connectivity, Liveliness, Availability Monitor (CLAM) triggers takeover of a partner node after determining that the local node is in "CLAM quorum" and the partner node is out of "CLAM quorum".
+*Corrective Action*::
+Take one or more of the following actions: - If the node panicked or is hung, troubleshoot and resolve the problem. - Check the connectivity of the node to the cluster interconnect and fix any problems. - If the local node is administratively disabled, enable it by running the following command from the clustershell 'cluster modify -node node_name -eligibility true'. - If the node is supposed to be in an HA pair but is not, enable the HA pair. You can check whether a node is in an HA pair by running the 'storage failover show' command from the clustershell. You can enable storage failover by running the 'storage failover modify -enabled true' command from the clustershell. - If there is a version incompatibility between the local node and the other nodes in the cluster, upgrade the nodes as needed. You can see the software version of all the nodes from the clustershell using the 'version -node *' command.
+*Syslog Message*::
+Local node (name=%s, ID=%llu) initiated takeover of partner node (name=%s, ID=%llu, state=%llu) result=%s, type=%s.
+*Parameters*::
+*localhostname* (STRING): Host name of the local node.
+*localnodeid* (LONGINT): Node ID of the local node.
+*partnerhostname* (STRING): Host name of the partner node.
+*partnernodeid* (LONGINT): Node ID of the partner node.
+*partnerstate* (LONGINTHEX): The high-availability state of the partner node
+*result* (STRING): Result of the takeover initiation operation.
+*type* (STRING): Takeover Type.
+
+== clam.takeover.disallowed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when Kernel Cluster Services (KCS) Connectivity, Liveliness, Availability Monitor (CLAM) cannot initiate takeover operations. Takeover is disallowed by High Availability (HA) susbsystem on the partner node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+CLAM on node %s (ID=%llu) cannot proceed with a takeover operation of partner node %s (ID=%llu) because HA disallowed takeover. Reason :%s
+*Parameters*::
+*local_host_name* (STRING): Host name of the local node.
+*localnodeid* (LONGINT): Node ID of the local node.
+*partner_host_name* (STRING): Host name of the partner node.
+*partnernodeid* (LONGINT): Node ID of the partner node.
+*reason* (STRING): Reason takeover was disabled.

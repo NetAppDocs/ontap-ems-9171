@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: wafl-fc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.fc events
+---
+
+= wafl.fc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.fc.recl.csm.disconnect
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a FlexCache(R) origin node detects that its FlexCache volume has disconnected while a lock reclaim operation is in progress.
+*Corrective Action*::
+Verify that the intercluster LIFs on both nodes are operational.
+*Syslog Message*::
+FlexCache origin node with UUID %s detected potential disconnect with FlexCache with UUID %s while processing lock reclaims for the volume with MSID %u hosted on Vserver with UUID %s.
+*Parameters*::
+*localbladeuuid* (STRING): Universally unique identifier (UUID) of the origin node.
+*bladeuuid* (STRING): UUID of the FlexCache Cache node.
+*msid* (LONGINT): Volume master data set identifier (MSID) of the FlexCache volume.
+*vserveruuid* (STRING): UUID of the FlexCache Vserver.

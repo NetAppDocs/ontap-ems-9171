@@ -1,0 +1,64 @@
+---
+sidebar: sidebar
+permalink: wafl-gd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.gd events
+---
+
+= wafl.gd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.gd.alloc.size.rsrv.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when reserving allocation size fails for a file using granular data because there is no space available in the volume.
+*Corrective Action*::
+Create space by increasing the volume or aggregate sizes, or by deleting data or deleting snapshots. To increase a volume's size, use the "volume size" command. To delete a volume's snapshots, use the "volume snapshot delete" command. To increase an aggregate's size, add disks by using the "storage aggregate add-disks" command. Aggregate snapshots are deleted automatically when the aggregate is full.
+*Syslog Message*::
+Reserving allocation size for fileid "%d" on volume "%s%s%s%s" fails because there is no space available in the volume.
+*Parameters*::
+*fileid* (INT): File identifier.
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application universal unique identifier (UUID).
+*volident* (STRING): Volume identifier that uniquely identifies the volume in cases where the volume name itself is insufficient.
+
+== wafl.gd.convert.scan.running
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when converting a file to use granular data fails because a scanner is currently running on the volume. The conversion cannot be completed until the scan is complete or filesystem inconsistencies can occur. Granular data conversion is required for non-disruptive file moves that occur as part of volume rebalancing.
+*Corrective Action*::
+Retry the operation after some time to allow the scan to complete. If the problem persists, contact NetApp technical support for assistance.
+*Syslog Message*::
+Granular data conversion failed for fileid "%d" on volume "%s%s%s%s" because scan "%s" is currently running on the volume.
+*Parameters*::
+*fileid* (INT): File identifier.
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Volume identifier that uniquely identifies the volume in cases where the volume name itself is insufficient.
+*scantype* (STRING): Type of scan.
+
+== wafl.gd.convert.unknown.pvbn
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when converting a file to use granular data fails because the file contains unresolved physical block numbers (PVBNs). Unresolved PVBNs occur when you move a volume to a different aggregate. PVBNs are resolved by a background process following the volume move.
+*Corrective Action*::
+Retry the operation after some time to allow the background process to complete.
+*Syslog Message*::
+Granular data conversion failed for fileid "%d" on volume "%s%s%s%s" because the inode contains unresolved PVBNs.
+*Parameters*::
+*fileid* (INT): File identifier.
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Volume identifier that uniquely identifies the volume in cases where the volume name itself is insufficient.

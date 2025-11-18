@@ -1,0 +1,65 @@
+---
+sidebar: sidebar
+permalink: cluster-repl-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cluster.repl events
+---
+
+= cluster.repl events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cluster.repl.localNW.unreachable
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the cluster replication heartbeat to a peer cluster cannot reach the local management gateway process for a minimum of 300 seconds. This potentially affects MetroCluster(tm) and Vserver disaster recovery (DR) applications.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The cluster replication heartbeat could not reach the local management gateway process for at least %d seconds.
+*Parameters*::
+*durationSinceLastSuccess* (INT): Number of seconds since the problem first occurred.
+
+== cluster.repl.peer.reachable
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the cluster replication heartbeat can now reach the peer cluster, after previous failures resulted in raising one of the following events: cluster.repl.localNW.unreachable, cluster.repl.peerNW.unreachable, or cluster.repl.remoteApp.unreachable.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The cluster replication heartbeat can now reach peer cluster %s.
+*Parameters*::
+*peerIPaddress* (STRING): Peer cluster IP address that can now be reached.
+
+== cluster.repl.peerNW.unreachable
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the cluster replication heartbeat to the peer cluster fails for a minimum of 300 seconds. This potentially affects MetroCluster(tm) and Vserver disaster recovery (DR) applications.
+*Corrective Action*::
+Verify network connectivity between the local cluster and the peer cluster. Check the cluster peer EMS messages for more information.
+*Syslog Message*::
+The cluster replication heartbeat to peer cluster %s failed for at least %d seconds.
+*Parameters*::
+*peerIPaddress* (STRING): Cluster peer IP address that could not be reached.
+*durationSinceLastSuccess* (INT): Number of seconds since the problem first occurred.
+
+== cluster.repl.remoteApp.unreachable
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the cluster replication heartbeat to the remote cluster replication application fails for a minimum of 300 seconds. This potentially affects MetroCluster(tm) and Vserver disaster recovery (DR) applications.
+*Corrective Action*::
+Check the state of the replication application process running on the peer cluster by issuing the 'cluster ring show -unitname crs' command.
+*Syslog Message*::
+The cluster replication heartbeat to the remote application running on peer cluster %s failed for at least %d seconds.
+*Parameters*::
+*peerIPaddress* (STRING): Remote application cluster IP address that could not be reached.
+*durationSinceLastSuccess* (INT): Number of seconds since the problem first occurred.

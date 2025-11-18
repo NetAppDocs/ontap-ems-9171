@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: km-volume-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: km.volume events
+---
+
+= km.volume events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== km.volume.mount.fail
+*Severity*::
+ALERT
+*Description*::
+This message occurs during the recovery of the key manager when a volume is placed online, but fails to mount. Volumes need to be mounted manually.
+*Corrective Action*::
+The volume needs to be mounted manually with the provided junction using the "volume mount" command.
+*Syslog Message*::
+Vserver "%s" failed to mount volume: "%s" to junction path: "%s" during key manager recovery.
+*Parameters*::
+*vserver* (STRING): Name of the Vserver that owns the volumes being placed online.
+*volume* (STRING): Name of the the volume being placed online.
+*junction* (STRING): Name of the junction path to mount.
+
+== km.volume.mount.mismatch
+*Severity*::
+ALERT
+*Description*::
+This message occurs during recovery of the key manager when a junction path cannot identify the volume to mount. Pair the supplied junction with its volume and mount manually.
+*Corrective Action*::
+The volumes are online but need to be mounted manually using the "volume mount" command.
+*Syslog Message*::
+During health monitor recovery of the key manager on Vserver "%s", the junction path "%s" cannot be associated with the volume to mount.
+*Parameters*::
+*vserver* (STRING): Name of the Vserver that owns the volume that could not be mounted.
+*junction* (STRING): Name of the junction path to mount.

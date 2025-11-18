@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: mgmtgwd-repos-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmtgwd.repos events
+---
+
+= mgmtgwd.repos events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmtgwd.repos.conflictingOps
+*Deprecated*::
+Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an Infinite Volume operation cannot be started because another Infinite Volume operation is already in progress.
+*Corrective Action*::
+Check whether another Infinite Volume operation is currently in progress by running the 'job show' command. After the current operation is complete, try the new operation again. If the error persists, contact NetApp technical support.
+*Syslog Message*::
+Infinite Volume operation '%s' could not be started on volume '%s' on Vserver '%s', because operation '%s' is already in progress.
+*Parameters*::
+*attemptedOperation* (STRING): Name of the Infinite Volume operation that could not be started.
+*volumeName* (STRING): Name of the volume.
+*vserverName* (STRING): Name of the Vserver.
+*existingOperation* (STRING): Name of the Infinite Volume operation already running.

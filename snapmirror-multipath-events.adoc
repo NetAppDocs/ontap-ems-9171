@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: snapmirror-multipath-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapmirror.multipath events
+---
+
+= snapmirror.multipath events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapmirror.multipath.initErr
+*Severity*::
+ERROR
+*Description*::
+This event is issued during boot or during takeover when the filer is unable to setup the necessary infrastructure required for SnapMirror multipathing support.
+*Corrective Action*::
+Check the network connectivity on the source and the destination side. If the problem persists then, contact NetApp technical support
+*Syslog Message*::
+SnapMirror is unable to setup multipath connection support on %s host.
+*Parameters*::
+*host* (STRING): The host, local or partner

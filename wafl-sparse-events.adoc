@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: wafl-sparse-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.sparse events
+---
+
+= wafl.sparse events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.sparse.meta.rm
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a sparse config metafile can not be removed in recycling bin
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Unable to remove sparse metafile %s in recycle bin: error %s
+*Parameters*::
+*path* (STRING): The metadata filepath
+*err* (STRING): The error message

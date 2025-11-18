@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: raid-aggregate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.aggregate events
+---
+
+= raid.aggregate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.aggregate.relocate
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the source node prepares an aggregate for relocation to the specified destination node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Aggregate %s%s: Prepared for 'relocation' operation.
+*Parameters*::
+*owner* (STRING): String indicating the owner of the affected aggregate.
+*vol* (STRING): Name of the aggregate.

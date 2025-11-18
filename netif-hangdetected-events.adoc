@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: netif-hangdetected-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: netif.hangdetected events
+---
+
+= netif.hangdetected events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== netif.hangDetected
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a network interface driver detects that an interface is hung.
+*Corrective Action*::
+If hardware is reset and there are no further hangs, no corrective action is required. Otherwise, if the system reports frequent hangs, a core dump is forced, or no action is taken by the driver, contact NetApp technical support.
+*Syslog Message*::
+Network interface %s hung (%s). %s. Driver: %s.
+*Parameters*::
+*ifName* (STRING): Name of the network interface: for example, "e4a".
+*hangType* (STRING): Type of hang. For example, "transmit", "PCIe RcvMstAbt".
+*recoveryAction* (STRING): Action, if any, that will be taken by the driver to recover. For example, "Resetting to recover" or "Forcing panic for core dump" (for root cause analysis).
+*driver* (STRING): Driver name.

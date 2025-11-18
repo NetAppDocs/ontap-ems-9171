@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: sm-slc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sm.slc events
+---
+
+= sm.slc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sm.slc.async.resync.preserve
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a SnapMirror(R) resync operation detects data divergence between the common snapshot and the AFS on a resync destination volume where the destination volume is a SnapLock Compliance volume and the SnapMirror relationship is of "async-mirror" policy type. The resync operation preserves the data changes in a locked snapshot for the duration of the current volume expiry time. If the volume expiry time is in the past or has not been set, then the snapshot is locked for a duration of 30 days. The common snapshot is also locked for the same duration.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+SnapMirror resync operation created a new snapshot '%s' to preserve the data changes in the AFS with reference to common snapshot '%s' at destination SnapLock Compliance volume '%s'. Both snapshots are locked for the duration of the current volume expiry time '%s'. If the volume expiry time is in the past or has not been set, then the snapshots are locked for a duration of 30 days.
+*Parameters*::
+*new_snap_name* (STRING): Name of the new snapshot; where the data changes are preserved.
+*common_snap_name* (STRING): Name of the common snapshot on the destination volume.
+*dst_path* (STRING): Destination volume of the SnapMirror relationship.
+*dst_vol_expiry* (STRING): Expiry time of the destination volume.
+*relationship_id* (STRING): UUID of the SnapMirror relationship.

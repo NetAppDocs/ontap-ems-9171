@@ -1,0 +1,115 @@
+---
+sidebar: sidebar
+permalink: cluster-op-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cluster.op events
+---
+
+= cluster.op events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cluster.op.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a "cluster create" or a "cluster join" or a "cluster unjoin" operation is attempted but does not succeed.
+*Corrective Action*::
+Run the command specified to complete the cluster operation. Resolve the issue, and then try the command again.
+*Syslog Message*::
+(None).
+*Parameters*::
+*operation_type* (STRING): Type of cluster operation.
+*node* (STRING): Name of the node that attempted the cluster operation.
+*serial* (STRING): System serial number of the node that attempted the cluster operation.
+
+== cluster.op.not.complete
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a cluster create or cluster join operation fails to complete. The node is not fully operational and many commands will not work properly until this is resolved.
+*Corrective Action*::
+Run the command specified to complete the cluster operation. Resolve the issue, and then try the command again.
+*Syslog Message*::
+Cluster operation (%s) failed to complete for node %s. The node is not fully operational.
+*Parameters*::
+*command* (STRING): Command for the cluster operation.
+*node* (STRING): Name of the node.
+
+== cluster.op.rerun.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a previously failed cluster create or cluster join operation that is automatically rerun in background fails. The operation is automatically retried a maximum of 'max_retry_count' times at an interval of 'retry_interval' seconds.
+*Corrective Action*::
+To view the reason for failure, run the operation manually. Alternatively, allow the automatic reruns to execute in case the issue is temporary or fixed. To view the progress of these background attempts, use the command 'event log show -event cluster.op.rerun*'. You may rerun the operation manually at any time, without waiting for these background runs to complete.
+*Syslog Message*::
+Attempt to %s cluster named '%s' in the background failed. This was retry attempt %d of %d.
+*Parameters*::
+*operation_type* (STRING): Type of cluster operation.
+*cluster_name* (STRING): Name of the cluster that is being created or joined.
+*retry_count* (INT): Number of attempts made to rerun the cluster create or join operations in the background.
+*max_retry_count* (INT): Maximum number of retry attempts allowed to rerun the cluster create or join operation in the background.
+*retry_interval* (INT): Interval of time, in seconds, between each rerun attempt.
+
+== cluster.op.rerun.start
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a previously failed cluster create or cluster join operation is rerun in the background in an attempt to successfully complete the operation. The operation is automatically retried a maximum of 'max_retry_count' times at an interval of 'retry_interval' seconds.
+*Corrective Action*::
+To view the reason for failure, run the operation manually. Alternatively, allow the automatic reruns to execute in case the issue is temporary or fixed. To view the progress of these background attempts, use the command 'event log show -event cluster.op.rerun*' You may rerun the operation manually at any time, without waiting for these background runs to complete.
+*Syslog Message*::
+Attempt to %s cluster named '%s' in the background. This is retry attempt %d of %d.
+*Parameters*::
+*operation_type* (STRING): Type of cluster operation.
+*cluster_name* (STRING): Name of the cluster that is being created or joined.
+*retry_count* (INT): Number of attempts to retry the cluster create or join operation in the background.
+*max_retry_count* (INT): Maximum number of rerun attempts allowed.
+*retry_interval* (INT): Interval of time, in seconds, between each rerun attempt.
+
+== cluster.op.rerun.success
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a previously failed cluster create or cluster join operation automatically rerun in the background is successful.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cluster %s operation run in the background completed successfully for cluster name '%s'.
+*Parameters*::
+*operation_type* (STRING): Type of cluster operation.
+*cluster_name* (STRING): Name of the cluster that is being created or joined.
+
+== cluster.op.start
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a "cluster create" or a "cluster join" or a "cluster unjoin" operation is run.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*operation_type* (STRING): Type of cluster operation.
+*node* (STRING): Name of the node being operated on or empty if the name is not yet set.
+*serial* (STRING): System serial number of the node being operated on or empty if the serial number is not set.
+
+== cluster.op.success
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a cluster has been successfully created or a node has successfully joined or unjoined the cluster.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*operation_type* (STRING): Type of cluster operation.
+*node* (STRING): Name of the node that successfully performed the cluster operation.
+*serial* (STRING): System serial number of the node that successfully performed the cluster operation.

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ha-fencecheckbad-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ha.fencecheckbad events
+---
+
+= ha.fencecheckbad events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ha.fenceCheckBad
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the check for local fence returns a bad status, in the Failover Monitor during boot. The system attempts to recover from this condition on its own.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*status_str* (STRING): Status string for fence check.

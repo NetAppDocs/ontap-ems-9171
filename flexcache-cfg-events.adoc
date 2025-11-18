@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: flexcache-cfg-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: flexcache.cfg events
+---
+
+= flexcache.cfg events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== flexcache.cfg.refresh.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a FlexCache(R) configuration refresh operation fails during cluster takeover or giveback, or when there is a connection state update triggered when origin or cache moves from connected state to disconnected state, or the other way round. Data access through FlexCache volumes might be impacted as a result.
+*Corrective Action*::
+First, verify that the two SVMs in question are peered by using the "vserver peer show" command. Next, enter the "flexcache config-refresh -peer-vserver <peer-vserver> -peer-volume <peer-volume> -peer-endpoint-type <peer-endpoint-type>" command on a node within the cluster that directly manages the peer endpoint.
+*Syslog Message*::
+FlexCache configuration refresh fails on peer SVM %s for peer volume %s and peer endpoint %s on cluster %s.
+*Parameters*::
+*peeredVserverUuid* (STRING): Universal unique identifier (UUID) of the peered storage virtual machine (SVM).
+*peerVolumeName* (STRING): Name of the peer volume.
+*peerEndPointType* (STRING): Peer endpoint type.
+*clusterUuid* (STRING): UUID of the cluster with the peer endpoint.
+*localVserverUuid* (STRING): UUID of the local SVM.

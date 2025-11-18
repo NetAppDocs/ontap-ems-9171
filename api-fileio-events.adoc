@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: api-fileio-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: api.fileio events
+---
+
+= api.fileio events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== api.fileio
+*Severity*::
+NOTICE
+*Description*::
+This message occurs after a file I/O error that typically causes a Data ONTAP(R) API to fail. While processing Data ONTAP API requests, the system might write intermediate results to files. For example, a long running command returning quantities of data might send a batch of data and save remaining data in a file for subsequent delivery. An I/O error occurred during one of these operations.
+*Corrective Action*::
+If the problem is related to creating a file, use the system's "df" and "df -i" commands to determine whether the root volume is full or all inodes are in use. If so, it might be possible to remove unneeded files to release space or inodes needed for Data ONTAP API operations. If the problem is that an intermediate file is being deleted because of its age, no action is needed. Probably the client that requested the API did not complete the API processing.
+*Syslog Message*::
+(None).
+*Parameters*::
+*errorDescription* (STRING): Description of the I/O error that occurred.
+*targetDescription* (STRING): Description of the file or directory in which the error occurred.
+*errorCode* (INT): Numeric error code.
+*errorDetail* (STRING): Description of the error code.

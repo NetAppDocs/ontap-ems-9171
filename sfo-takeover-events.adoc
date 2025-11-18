@@ -1,0 +1,139 @@
+---
+sidebar: sidebar
+permalink: sfo-takeover-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfo.takeover events
+---
+
+= sfo.takeover events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfo.takeover.aborted
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the taking over node cannot complete an attempted optimized negotiated takeover. Any data LIFs that were migrated as part of the failed takeover operation will not be auto-reverted back.
+*Corrective Action*::
+1. Use the "storage failover show" command to verify that the partner node is up. 2. Use the "network interface show" command to verify that the cluster network interfaces on the local and partner nodes are up. If they are not up, correct any network issues that could be preventing it. 3. Check whether any operation is running on the partner that might have slowed it down. If so, either abort the operation or wait until it is over.
+*Syslog Message*::
+An optimized negotiated takeover of the HA partner node by the local node has been aborted. Reason: %s
+*Parameters*::
+*reason* (STRING): Reason for the failure, which might be as follows: 1. Conflicting takeover/giveback/relocation operation. 2. High-availability (HA) partner not being eligible for takeover. 3. Communication failure with the partner over the cluster network.
+
+== sfo.takeover.aggrProcessTime
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during the planned negotiated takeover of an aggregate, to indicate the time taken by a particular process during that takeover.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Time taken for %s during takeover of the aggregate '%s' was %llu milliseconds.
+*Parameters*::
+*process* (STRING): Description of the process.
+*aggr* (STRING): Name of the aggregate being taken over.
+*time* (LONGINT): Time taken by the specified process in milliseconds.
+
+== sfo.takeover.aggrSubsysTime
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during the planned negotiated takeover of an aggregate, to indicate the time taken by a subsystem to perform a particular process during that takeover.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Subsystem %s took %llu milliseconds to complete %s during planned negotiated takeover of the aggregate %s.
+*Parameters*::
+*subsystem* (STRING): Name of the subsystem performing the takeover operation.
+*time* (LONGINT): Time taken by the subsystem, in milliseconds, to complete the specified process.
+*process* (STRING): Description of the process.
+*aggr* (STRING): Name of the aggregate being taken over.
+
+== sfo.takeover.bypassed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a negotiated takeover bypasses the negotiated takeover optimization.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Negotiated takeover of node %s with system-ID %u has bypassed the negotiated takeover optimization. Reason: %s
+*Parameters*::
+*partner_name* (STRING): Name of the partner node.
+*partner_sysid* (LONGINT): System ID of the partner node.
+*reason* (STRING): Reason that negotiated takeover optimization was bypassed.
+
+== sfo.takeover.commExpired
+*Severity*::
+ERROR
+*Description*::
+This message occurs during optimized negotiated takeover, when the local node does not receive a response within a designated time period, while communicating over the cluster network with its high-availability (HA) partner.
+*Corrective Action*::
+1. Check whether any operation is running on the partner node that might have slowed it down, such as another aggregate relocation. Also check for conflicting operations, such as another takeover, giveback, or shutdown. If so, either abort the operation or wait until it is over.
+*Syslog Message*::
+The local node timed out while waiting for a response from its HA partner, %s, over the cluster network.
+*Parameters*::
+*partner_name* (STRING): Name of the partner node.
+*partner_dbladeid* (STRING): D-blade ID of the partner node.
+
+== sfo.takeover.commFailed
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the local node cannot communicate over the cluster network with its high-availability (HA) partner during an optimized negotiated takeover initiated by the local node.
+*Corrective Action*::
+1. Use the "storage failover show" command to verify that the partner node is up. 2. Use the "network interface show" command to verify that the cluster network interfaces on the local and partner nodes are up. If they are not up, address any network issues that could be preventing it.
+*Syslog Message*::
+The local node could not communicate with its HA partner, %s, (partner's D-blade ID: %s) during an optimized negotiated takeover initiated by the local node. The communication request returned a status of %d. The level %d returned a status of %lld.
+*Parameters*::
+*partner_name* (STRING): Name of the partner node.
+*partner_dbladeid* (STRING): D-blade ID of the partner node.
+*status* (INT): Status returned by the hamsg message layer.
+*scope* (INT): Specific module level where the message did not succeed.
+*scope_status* (LONGINT): Module-level specific reason the message did not succeed.
+
+== sfo.takeover.noAggrReloc
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when no SFO aggregate was relocated by the high-availability (HA) partner during optimized negotiated takeover.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*partner_name* (STRING): Name of the partner node.
+*partner_sysid* (LONGINT): System ID of the partner node.
+
+== sfo.takeover.relocDone
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during optimized negotiated takeover, when the local node receives a notification from its high-availability (HA) partner node stating that the partner has completed the relocation of all aggregates to the local node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*partner_name* (STRING): Name of the partner node.
+*partner_sysid* (LONGINT): System ID of the partner node.
+*relocation_status* (INT): Status of the "relocation done" response received from the HA partner.
+
+== sfo.takeover.sfoStart
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the node doing the takeover starts the SFO phase of the optimized negotiated takeover.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The local node has initiated optimized negotiated takeover of its partner (%s).
+*Parameters*::
+*partner_name* (STRING): Name of the partner node.
+*partner_sysid* (LONGINT): System ID of the partner node.

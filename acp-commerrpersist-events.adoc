@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: acp-commerrpersist-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: acp.commerrpersist events
+---
+
+= acp.commerrpersist events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== acp.commErrPersist
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Alternate Control Path (ACP) Administrator determines that a SAS shelf I/O module (IOM) configured for in-band ACP is experiencing persistent communication errors.
+*Corrective Action*::
+Examine the event log for I/O errors that might have a common source with this problem, such as faulty cabling. If other devices are not experiencing failures, then contact NetApp technical support to replace the IOM.
+*Syslog Message*::
+IOM %s has failed after reporting multiple in-band ACP errors. Shelf serial number: %s.
+*Parameters*::
+*inband_id* (STRING): Inband ID of the module.
+*shelf_sno* (STRING): Storage shelf serial number of the shelf where the IOM is seated.

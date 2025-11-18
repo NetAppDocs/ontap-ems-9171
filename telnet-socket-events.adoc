@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: telnet-socket-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: telnet.socket events
+---
+
+= telnet.socket events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== telnet.socket.failure
+*Severity*::
+ERROR
+*Description*::
+This message occurs when telnet could not create a socket.
+*Corrective Action*::
+Change the option 'telnet.port', to try to create another socket.
+*Syslog Message*::
+Telnet socket error: %s.
+*Parameters*::
+*reason* (STRING): Reason why telnet could not create a socket.
+
+== telnet.socket.timeout
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a telnet daemon socket was not able to send data to the telnet or ssh client after multiple attempts. This message can also occur when the client window size is set to zero by the telnet or ssh client.
+*Corrective Action*::
+Check the window size of the telnet/ssh client by typing "netstat" on the storage system. If it is zero, close the client and restart that session. Otherwise check for any network problem between telnet/ssh client and storage system and correct it.
+*Syslog Message*::
+Telnet daemon socket timed out for the %s connection.
+*Parameters*::
+*conntype* (STRING): The type of connection that timed out. The connection type can be an interactive SSH connection or a telnet connection.

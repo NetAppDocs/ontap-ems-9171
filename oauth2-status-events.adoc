@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: oauth2-status-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: oauth2.status events
+---
+
+= oauth2.status events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== oauth2.status.disabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the OAuth 2.0 status of the cluster is changed to DISABLED.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Status of OAuth 2.0 has been changed to DISABLED.
+*Parameters*::
+(None).
+
+== oauth2.status.enabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the OAuth 2.0 status of the cluster is changed to ENABLED.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Status of OAuth 2.0 has been changed to ENABLED.
+*Parameters*::
+(None).

@@ -1,0 +1,37 @@
+---
+sidebar: sidebar
+permalink: raid-initialize-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.initialize events
+---
+
+= raid.initialize events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.initialize.nonhomed.disk
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a foreign or partner homed spare disk is detected during system initialization.
+*Corrective Action*::
+In Maintenance mode, remove this disk's ownership by using the 'disk remove_ownership disk_name' command and assign it to the intended node by using the 'disk assign disk_name' command.
+*Syslog Message*::
+%s: foreign or partner homed spare disk detected during system initialization.
+*Parameters*::
+*disk_info* (STRING): Formatted information of the foreign spare disk.
+*shelf* (STRING): Shelf identifier where the disk is located.
+*bay* (STRING): Disk bay within the shelf where the disk is located.
+*vendor* (STRING): Name of the vendor of the disk.
+*model* (STRING): Model string of the disk.
+*firmware_revision* (STRING): Firmware revision number of the disk.
+*serialno* (STRING): Serial number of the disk.
+*disk_type* (INT): Type of disk.
+*disk_rpm* (STRING): Rotational speed of the disk, in RPM.
+*carrier* (STRING): Unique ID of the carrier in which the disk is installed.
+*site* (STRING): For a MetroCluster(tm) configuration, indicates the site {Local|Remote} where the disk is located. For non-MetroCluster configurations, site is 'Local'.

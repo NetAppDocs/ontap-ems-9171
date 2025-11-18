@@ -1,0 +1,49 @@
+---
+sidebar: sidebar
+permalink: esh-bypass-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: esh.bypass events
+---
+
+= esh.bypass events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== esh.bypass.err.disk
+*Severity*::
+ERROR
+*Description*::
+This message occurs when there is a disk bypass event. It indicates that a disk is bypassed by the embedded switched hub (ESH) due to one of the following reasons: Manually bypassed; Transmitter fault; LIP F8; Data timeout; Receiver loss of signal; Comma loss of signal; Loop test before insert failure; Redundant port configuration; Exceeded stall threshold; Exceeded word error threshold; Exceeded CRC error threshold; or Exceeded clock delta error threshold.
+*Corrective Action*::
+Replace the bypassed disk.
+*Syslog Message*::
+Disk %s%son channels %s disk shelf ID %d %s%s%s.
+*Parameters*::
+*diskID* (STRING): Disk that is being bypassed.
+*disk_data* (STRING): disk data includes vendor name, model, firmware revision and the serial number of the disabled disk. If won't bw able to access the disk then this field will be blank.
+*channels* (STRING): Channels that have the error if local, PARTNER for high-availability partner, UNUSED if unconnected.
+*shelfID* (INT): Disk shelf ID (1-7) of the disk shelf reporting the error.
+*element* (STRING): ESH module designator (A is the upper module, B is the lower module).
+*bay* (STRING): Bay in which the disk is installed.
+*reason* (STRING): Reason the disk was bypassed.
+
+== esh.bypass.host.port
+*Severity*::
+ALERT
+*Description*::
+This message occurs when there is a host port bypass event. It indicates that a host port is bypassed by the embedded switched hub (ESH) due to one of the following reasons: Manually bypassed; Transmitter fault; LIP F8; Data timeout; Receiver loss of signal; Comma loss of signal; Loop test before insert failure; Redundant port configuration; Exceeded stall threshold; Exceeded word error threshold; Exceeded CRC error threshold; or Exceeded clock delta error threshold.
+*Corrective Action*::
+Replace the disk shelf module to which the concerned host port belongs.
+*Syslog Message*::
+%s on channels %s disk shelf ID %d %s%s.
+*Parameters*::
+*portID* (STRING): Host port that is being bypassed.
+*channels* (STRING): Channels that have the error if local, PARTNER for high-availability partner, UNUSED if unconnected.
+*shelfID* (INT): Disk shelf ID (1-7) of the disk shelf reporting the error.
+*element* (STRING): ESH module designator (A is the upper module, B is the lower module).
+*reason* (STRING): Reason the host port was bypassed.

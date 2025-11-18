@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: cpeer-pm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cpeer.pm events
+---
+
+= cpeer.pm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cpeer.pm.update.warn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the peer manager job experiences a transient failure. The peer manager job periodically contacts one peer cluster and performs updates of cluster-wide state necessary to support cross-cluster enabled features.
+*Corrective Action*::
+Verify network connectivity between the local cluster and its peer clusters. It might be necessary to manually correct the peer clusters' configurations using the 'cluster peer modify' command if peer addresses have changed recently. Verify that each cluster is up.
+*Syslog Message*::
+Periodic update of peer information from %s failed. The following operations are incomplete: %s
+*Parameters*::
+*peer* (STRING): Peer whose updates failed.
+*failures* (STRING): Failed peer updates.

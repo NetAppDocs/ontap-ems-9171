@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: logger-usr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: logger.usr events
+---
+
+= logger.usr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== logger.usr
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the user runs the 'logger' command. The parameter indicates the message that is sought to be notified and is derived from the string passed in to the logger command.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s
+*Parameters*::
+*message* (STRING): Message passed by the user to the logger command.

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: exports-nsdb-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: exports.nsdb events
+---
+
+= exports.nsdb events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== exports.nsdb.anonNameToId
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a user string cannot be mapped to a user id when evaluating the "-anon" portion of an export-policy rule.
+*Corrective Action*::
+If the "-anon" value is a name, ensure that a mapping from that name to a UID exists in the configured name services. For both a name and a UID entry in "-anon", ensure that the resulting UID exists in the configured name services.
+*Syslog Message*::
+Cannot retrieve UID for UNIX username "%s" present in the "-anon" entry for the export-policy rule for Vserver "%d".
+*Parameters*::
+*anon* (STRING): Anonymous string that cannot be mapped to a user id.
+*vserver* (INT): Name of the Vserver owning the export-policy.

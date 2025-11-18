@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: wafl-afs-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.afs events
+---
+
+= wafl.afs events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.afs.first.disabled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the deswizzle scanner fails to enable the wafl.deswizzle.afs.first feature on the aggregate because block reallocation redirection cannot be enabled on the aggregate. The deswizzle scanner will run without the wafl.deswizzle.afs.first feature for any volume in the aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+afs.first option cannot be enabled on aggregate %s, for volume %s because it is not possible to enable block reallocation on the aggregate.
+*Parameters*::
+*aggr* (STRING): Aggregate name.
+*vol* (STRING): Volume name.

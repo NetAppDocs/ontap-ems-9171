@@ -1,0 +1,91 @@
+---
+sidebar: sidebar
+permalink: disk-dynamicqual-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.dynamicqual events
+---
+
+= disk.dynamicqual events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.dynamicqual.fail.parse
+*Severity*::
+ERROR
+*Description*::
+This message occurs when dynamic device qualification fails due to an invalid /etc/qual_devices file. The system is unable to properly recognize disk drives or fully enable all resiliency and performance features.
+*Corrective Action*::
+For further information about correcting the problem, search the knowledgebase of the NetApp technical support support web site for the "[disk.dynamicqual.fail.parse]" keyword. Request an updated qual_devices file from NetApp.
+*Syslog Message*::
+Device qualification information file (/etc/qual_devices) is invalid. The following error, "%s" has been detected. For further information about correcting the problem, search the knowledgebase of the NetApp technical support support web site for the "[disk.dynamicqual.fail.parse]" keyword.
+*Parameters*::
+*errorstring* (STRING): Error string for parsing error in /etc/qual_devices file.
+
+== disk.dynamicqual.failure.cleared
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a previous dynamic device qualification error has been corrected.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Device qualification failure condition has been corrected. All devices have been qualified.
+*Parameters*::
+(None).
+
+== disk.dynamicqual.failure.invalidFile
+*Severity*::
+ALERT
+*Description*::
+This message occurs when dynamic device qualification fails due to an invalid /etc/qual_devices file.
+*Corrective Action*::
+See the qual_devices man page for information about updating device qualification data. Request an updated qual_devices file from NetApp.
+*Syslog Message*::
+Device qualification information file (/etc/qual_devices) is invalid. See the qual_devices man page for corrective action. This problem must be corrected within %d hour(s) to avoid a forced system shutdown. The following disk(s) remain unqualified: %s.
+*Parameters*::
+*time* (INT): Time until forced shutdown.
+*disklist* (STRING): List of disks that are still not qualified.
+
+== disk.dynamicqual.failure.missingFile
+*Severity*::
+ALERT
+*Description*::
+This message occurs when dynamic device qualification fails with a missing qualification file.
+*Corrective Action*::
+See the qual_devices man page for information about updating device qualification data. Request a qual_devices file from NetApp.
+*Syslog Message*::
+Device Qualification information file (/etc/qual_devices) is missing. See the qual_devices man page for corrective action. This problem must be corrected within %d hour(s) to avoid a forced system shutdown. The following disk(s) remain unqualified: %s.
+*Parameters*::
+*time* (INT): Time until forced shutdown.
+*disklist* (STRING): List of disks that are still not qualified.
+
+== disk.dynamicqual.failure.occurred
+*Severity*::
+ALERT
+*Description*::
+This message occurs when dynamic device qualification fails with an unknown error.
+*Corrective Action*::
+See the qual_devices man page for information about updating device qualification data.
+*Syslog Message*::
+Device qualification failure occurred. See the qual_devices man page for corrective action. This problem must be corrected within %d hour(s) to avoid a forced system shutdown. The following disk(s) remain unqualified: %s.
+*Parameters*::
+*time* (INT): Time until forced shutdown.
+*disklist* (STRING): List of disks that are still not qualified.
+
+== disk.dynamicqual.failure.shutdown
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when one or more disks are not recognized by Data ONTAP(R). This can result in a forced system shutdown if the offending disks are not removed or recognized properly within the allowed window of time.
+*Corrective Action*::
+Download the latest Drive Qualification Package (DQP) from NetApp technical support, and then install it on your system.
+*Syslog Message*::
+Device qualification failure has not been corrected for the past %d hour(s). The following disk(s) remain unqualified: %s. System is SHUTTING DOWN.
+*Parameters*::
+*time* (INT): Time until forced shutdown.
+*disklist* (STRING): List of disks that are still not qualified.

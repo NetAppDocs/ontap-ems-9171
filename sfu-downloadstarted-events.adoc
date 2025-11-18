@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: sfu-downloadstarted-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfu.downloadstarted events
+---
+
+= sfu.downloadstarted events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfu.downloadStarted
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a disk shelf firmware update starts to download disk shelf firmware.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Update of disk shelf firmware started on %d %s.
+*Parameters*::
+*count* (INT): Number of shelves that are starting disk shelf firmware download.
+*pluralShelf* (STRING): Shelf or Shelves.

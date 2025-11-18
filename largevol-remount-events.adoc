@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: largevol-remount-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: largevol.remount events
+---
+
+= largevol.remount events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== largevol.remount.nfsclient
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the "is-large-size-enabled" property is set on a FlexVol volume or Flexgroup volume, which is NFS mounted for client access. Setting this field enables volumes to support large files, from 16TB to 128TB. If the volume has already been mounted via NFS, then the NFS client caches the older maximum file size, which is 16TB. For support of files up to 128TB to take effect, the NFS client needs to remount the volume. This issue does not occur if automount has been configured on NFS client to mount the volumes.
+*Corrective Action*::
+To support 128TB as the maximum file size on the NFS client, stop the applications using the NFS mount, remount the FlexVol volume in the NFS client and then restart the applications. If the issue still persists, Contact NetApp technical support.
+*Syslog Message*::
+Remount the volume on the NFS client.
+*Parameters*::
+*vvolname* (STRING): Volume name.
+*vserver* (STRING): Vserver name.

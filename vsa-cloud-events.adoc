@@ -1,0 +1,110 @@
+---
+sidebar: sidebar
+permalink: vsa-cloud-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsa.cloud events
+---
+
+= vsa.cloud events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsa.cloud.aws.api.rtUpdt
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when cluster LIF route update succeeds upon node switchover.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Command "%s" is successfully executed.
+*Parameters*::
+*action* (STRING): Amazon Web Services (AWS) API command for route table updates or description.
+
+== vsa.cloud.aws.api.rtUpdtFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when cluster LIF route update fails upon node switchover.
+*Corrective Action*::
+Verify that node has connectivity to Amazon Web Service(AWS) Elastic Cloud Computing(EC2) endpoint; check proxy and security group settings. Verify that node has permissions to access AWS EC2 endpoint, check Identity and Access Management (IAM) roles. Verify that any resource is properly specified; check any resource exists and is allowed to be used for specified purpose. Verify that resources have not reached capacity limits.
+*Syslog Message*::
+Action: "%s" has failed. HTTP_Response: "%s"
+*Parameters*::
+*action* (STRING): Amazon Web Services (AWS) API command for route table updates or description.
+*error* (STRING): HTTP error response.
+
+== vsa.cloud.diskReadsThrottled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Cloud Volumes ONTAP(R) detects disk I/O (Reads) throttling on its attached disks. Disk I/O throttling might be initiated by the underlying host or cloud provider when it detects that disk I/Os have reached a certain threshold level mandated per virtual machine instance.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Number of disks detected with read I/O throttling: %s. Interval: (%s) to (%s).
+*Parameters*::
+*start_interval* (STRING): Start time of the interval during which disk I/Os were throttled.
+*end_interval* (STRING): End time of the interval during which disk I/Os were throttled.
+*disk_list* (STRING): List of disk device names that were detected with throttled disk I/Os (reads).
+
+== vsa.cloud.diskWritesThrottled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Cloud Volumes ONTAP(R) detects disk I/O (writes) throttling on its attached disks. Disk I/O throttling might be initiated by the underlying host or cloud provider when it detects that disk I/Os have reached a certain threshold level mandated per virtual machine instance.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Number of disks detected with write I/O throttling: %s. Interval: (%s) to (%s).
+*Parameters*::
+*disk_list* (STRING): List of disk device names that detected with throttled disk I/Os (writes).
+*start_interval* (STRING): Start time of the interval during which disk I/Os were throttled.
+*end_interval* (STRING): End time of the interval during which disk I/Os were throttled.
+
+== vsa.cloud.nlb.probeActive
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when Cloud Volumes ONTAP(R) receives a probe from a Cloud Network Load Balancer, indicating that a transition to the expected normal state has occurred. The port has gone to active state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Received Cloud Load Balancer probe (now active) for %d ports (port range: %d to %d).
+*Parameters*::
+*activated_ports* (INT): Number of ports that received the probe.
+*first_activated_port* (INT): First (lowest) port that received a probe.
+*last_activated_port* (INT): Last (highest) port that received a probe.
+
+== vsa.cloud.nlb.probeInactive
+*Severity*::
+ALERT
+*Description*::
+This message occurs when Cloud Volumes ONTAP(R) does not receive expected health probes from the Cloud Network Load Balancer service within the expected time limit. This might cause the Cloud Network Load Balancer to fail over traffic from the corresponding address. If the Cloud Network Load Balancer does not have an active address, all traffic might be blocked from reaching the configured address.
+*Corrective Action*::
+Verify the configuration of the Cloud Network Load Balancer, using the cloud provider's console. Verify the ONTAP status of the Cloud Network Load Balancer, as well as the configuration and status of the LIF. To show the ONTAP status for all Cloud Network Load Balancer probe ports, use the (privilege: diagnostic) "virtual-machine show-network-load-balancer" command. To show the ONTAP status for just the inactive Cloud Network Load Balancer probe ports, use the (privilege: diagnostic) "virtual-machine show-network-load-balancer -active false" command. In the above command check if the "Last Probe Time" is being regularly updated(approximately every 5 seconds) and the Cloud Load Balancer probe port matches the "Probe Port".
+*Syslog Message*::
+Failed to receive Cloud Load Balancer probe (now inactive) for %d ports (port range: %d to %d), within %d seconds.
+*Parameters*::
+*missed_ports* (INT): Number of ports that did not receive a probe.
+*first_missed_port* (INT): First (lowest) port that did not receive a probe.
+*last_missed_port* (INT): Last (highest) port that did not receive a probe.
+*timeout_in_seconds* (LONGINT): Seconds before timeout occurs.
+
+== vsa.cloud.nlb.probeListening
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a Cloud Volumes ONTAP(R) probe port starts or stops listening for probes from a Cloud Network Load Balancer. The most common scenarios are when node boots up or shuts down.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ONTAP Load Balancer has %s listening for probes from a Cloud Network load Balancer on port %d.
+*Parameters*::
+*detail* (STRING): Whether the Cloud Volumes ONTAP probe port has started or stopped listening for probes from the Cloud Load Balancer.
+*probe_port* (INT): Port that the listening event occurred on.

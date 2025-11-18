@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: spm-ndmpd-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: spm.ndmpd events
+---
+
+= spm.ndmpd events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== spm.ndmpd.process.exit
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the Network Data Management Protocol (NDMP) server (ndmpd) involuntarily terminates. The termination of this server can affect NDMP client access.
+*Corrective Action*::
+The system attempts to recover by restarting the NDMP server. If the NDMP server does not restart within the threshold number of retries, then an AutoSupport message is sent. If your system is not configured to send AutoSupport messages and the issue persists, contact NetApp technical support.
+*Syslog Message*::
+Network Data Management Protocol server (ndmpd) with ID %d exited as a result of %s. This server will attempt to restart.
+*Parameters*::
+*id* (INT): Process identifier.
+*cause* (STRING): Plain text description of why the process exited.

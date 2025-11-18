@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: useradmin-lockedout-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: useradmin.lockedout events
+---
+
+= useradmin.lockedout events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== useradmin.lockedout.user
+*Severity*::
+ERROR
+*Description*::
+The user tried to log into the appliance using an invalid password and the account has been disabled. The amount of attempts a user has before being disabled is controled by the security.passwd.lockout.numtries option.
+*Corrective Action*::
+Another administrator must change the password of the disabled user's account.
+*Syslog Message*::
+User '%s' is locked out of the appliance for failing authentication '%d' times.
+*Parameters*::
+*username* (STRING): The name of the user that is now locked out from the appliance
+*attempts* (INT): The number of failed attempts that caused the lockout.

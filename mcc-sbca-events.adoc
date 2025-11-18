@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: mcc-sbca-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mcc.sbca events
+---
+
+= mcc.sbca events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mcc.sbca.mdvNotAvailable
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a MetroCluster (tm) system metadata volume that provides storage for the configuration replication services is not available.
+*Corrective Action*::
+Contact technical support for assistance.
+*Syslog Message*::
+A MetroCluster (tm) system metadata volume is not available in cluster %s.
+*Parameters*::
+*Cluster* (STRING): Cluster attempting to use the volume.

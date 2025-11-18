@@ -1,0 +1,34 @@
+---
+sidebar: sidebar
+permalink: fm-cpuutilduringtransition-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fm.cpuutilduringtransition events
+---
+
+= fm.cpuutilduringtransition events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fm.cpuUtilDuringTransition
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during various failover and aggregate mobility events, including start of a takeover, end of a successful takeover, start of root aggregate giveback, after completion of data aggregate giveback and completion of an aggregate relocation. This message records the maximum, minimum, and average CPU and disk utilization on the node executing the failover or aggregate mobility operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+CPU and disk utilization during the %d seconds %s: cpu_util_high: %lld; cpu_util_low: %lld; cpu_util_avg: %lld; disk_util_high: %lld; disk_util_low: %lld; disk_util_avg: %lld
+*Parameters*::
+*window_sz* (INT): Duration, in seconds, over which CPU and disk utilization are tracked.
+*when* (STRING): Event during which CPU and disk utilization are tracked.
+*cpu_util_high* (LONGINT): Maximum CPU utilization.
+*cpu_util_low* (LONGINT): Minimum CPU utilization.
+*cpu_util_avg* (LONGINT): Average CPU utilization.
+*disk_util_high* (LONGINT): Maximum disk utilization.
+*disk_util_low* (LONGINT): Minimum disk utilization.
+*disk_util_avg* (LONGINT): Average disk utilization.

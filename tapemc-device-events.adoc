@@ -1,0 +1,135 @@
+---
+sidebar: sidebar
+permalink: tapemc-device-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: tapemc.device events
+---
+
+= tapemc.device events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== tapemc.device.cmdAllocFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) cannot obtain a command block for sending operations to the device.
+*Corrective Action*::
+This problem is probably a temporary resource shortage within Data ONTAP. Retry the operation.
+*Syslog Message*::
+Failed to allocate SCSI command block for %s device %s.
+*Parameters*::
+*deviceType* (STRING): Type of device on which the command allocation failed.
+*deviceName* (STRING): Name of the device.
+
+== tapemc.device.lunNotConn
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the tape drive, media changer, or bridge device is reported as not being connected to its dependent LUN even though it indicated that the LUN device exists. Data ONTAP(R) cannot initialize the dependent device.
+*Corrective Action*::
+Consult the vendor documentation for the attached device to ensure that the device is configured correctly.
+*Syslog Message*::
+Aborting initialization of device %s at address L%d. The attached hardware indicates that no device is available at that LUN address.
+*Parameters*::
+*devName* (STRING): Name of the device.
+*lun* (INT): LUN number of this device.
+
+== tapemc.device.maxExceed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when more than the maximum supported number of devices of the reported type are attached to the controller.
+*Corrective Action*::
+The reported device cannot be accessed. If other devices of the same type are attached but unused, removing them can allow the named device to be reattached and used. For FC devices, unplug the devices and wait for the messages that indicate the devices have been removed. For SCSI devices, use the "storage adapter disable [name]" (7-Mode or Cluster-Mode nodeshell) command.
+*Syslog Message*::
+Maximum number of %s devices exceeded. Device %s cannot be accessed. The maximum is %d.
+*Parameters*::
+*deviceType* (STRING): Type of device that exceeded the maximum number allowed.
+*deviceName* (STRING): Name of the device.
+*deviceMax* (INT): Maximum number of devices of this device type.
+
+== tapemc.device.multipath
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a tape drive or media changer is reported as having a multipath connection when alias mapping is WWNN-based. WWNN-based aliasing does not support multipath connections.
+*Corrective Action*::
+Remove the multipath connection to the device. If multipathing is required: 1. Reboot or takeover the node and enter the boot menu (LOADER>) by pressing Ctrl+C when prompted. 2. Enter "unsetenv bootar.tape_mc.wwnn_alias?". 3. Enter "boot_ontap" to reboot the node. Aliasing will now be serial number-based.
+*Syslog Message*::
+%s device "%s" has a multipath connection with WWNN-based alias mapping. Multipath configurations are only supported with serial number-based aliases.
+*Parameters*::
+*deviceType* (STRING): Type of device.
+*deviceName* (STRING): Name of the device.
+
+== tapemc.device.noSerial
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the device can not return a serial number when requested to do so. The device can still be used, but the serial number will not be available for output.
+*Corrective Action*::
+This condition might be normal, especially with older device types, because SCSI-2 does not require serial numbers. If the vendor documentation indicates that the serial number should be available (look for a serial number request as an option of the Inquiry command), the device might need to be repaired.
+*Syslog Message*::
+Serial number not available for %s device %s, product ID %s.
+*Parameters*::
+*devType* (STRING): SCSI device type.
+*devAddr* (STRING): Device address.
+*prodID* (STRING): Vendor product ID of the device.
+
+== tapemc.device.notExpected
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) expects a media changer, tape device or bridgerouter but encounters an unexpected or unknown device type.
+*Corrective Action*::
+Consult the vendor documentation for the attached device to ensure that the device is configured correctly.
+*Syslog Message*::
+Aborting device initialization for %s. Expecting a %s device but discovered an unexpected %s device type.
+*Parameters*::
+*devName* (STRING): Name of the device.
+*expectedDevType* (STRING): Expected SCSI device type.
+*actualDevType* (STRING): Actual SCSI device type discovered.
+
+== tapemc.device.notSCSI2
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) requires that parallel SCSI and FC devices support, at a minimum, the SCSI-2 protocol. This device does not have the minimum support, and cannot be used with Data ONTAP unless it is upgraded.
+*Corrective Action*::
+Verify with vendor documentation that the device supports at least the SCSI-2 protocol. If it does, then the device might need to be power-cycled or repaired. Check with the vendor whether an upgrade to SCSI-2 is possible.
+*Syslog Message*::
+%s device %s not configured to support SCSI-2.
+*Parameters*::
+*devType* (STRING): SCSI device type.
+*devAddr* (STRING): Name of the device.
+
+== tapemc.device.releaseFail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) cannot remove a SCSI Persistent Reservation from this device.
+*Corrective Action*::
+Attempt the manual release of the reservation using the "storage release [tape|mc]" command (from the nodeshell in clustered environments) at the advanced privilege level. If the error persists, the device might need to be power-cycled.
+*Syslog Message*::
+Device reservation release failed on %s device %s.
+*Parameters*::
+*deviceType* (STRING): Type of device on which the reservation release failed.
+*deviceName* (STRING): Name of the device.
+
+== tapemc.device.resvConfl
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Data ONTAP(R) detects a SCSI reservation conflict while accessing this device. Data ONTAP routinely places reservations on devices to prevent multiple simultaneous accesses by more than one storage controller. A reservation conflict indicates that an existing reservation for another host system has been detected. Conflicts might occur in some error conditions where a reservation has been left on the device inadvertently, or if a device has been moved from one system to another without a power-cycle.
+*Corrective Action*::
+If another system is using the device, then this error is normal and no corrective action should be taken to release the reservation. If the reporting system is the only user, then the reservation is likely an error. Attempt manual release of the reservation using via the "storage release [tape|mc]" (from the nodeshell) command at the advanced privilege level. If the error persists, the device might need to be power-cycled.
+*Syslog Message*::
+Reservation conflict on %s device %s.
+*Parameters*::
+*deviceType* (STRING): Type of device on which the reservation release failed.
+*deviceName* (STRING): Name of the device.

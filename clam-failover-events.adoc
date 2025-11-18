@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: clam-failover-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: clam.failover events
+---
+
+= clam.failover events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== clam.failover.event
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Kernel Cluster Services (KCS) Connectivity, Liveliness, Availability Monitor (CLAM) receives a failover event from high-availability(HA) subsystem.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+CLAM on node (id=%llu) received an HA failover event for partner (ID=%llu) indicating that %s.
+*Parameters*::
+*localnodeid* (LONGINT): Node ID of the local node.
+*partnernodeid* (LONGINT): Node ID of the partner node.
+*event_description* (STRING): Description of the event that CLAM received from the HA subsystem.

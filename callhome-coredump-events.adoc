@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: callhome-coredump-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.coredump events
+---
+
+= callhome.coredump events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.coredump.save.done
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when all the core segments belonging to a coredump have been saved. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Use the "system node coredump show" command to obtain coredump file details.
+*Syslog Message*::
+Call home for %s
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*file* (STRING): Primary core segment file that was created.
+*node* (STRING): Name of the node whose core was saved.
+*size* (LONGINT): Size of primary core segment in bytes.
+*chksum* (STRING): Checksum of primary core segment file's data.
+*ancillary_segment_directory* (STRING): Directory which holds ancillary core segments.
+*ancillary_segments* (STRING): List of ancillary segments.

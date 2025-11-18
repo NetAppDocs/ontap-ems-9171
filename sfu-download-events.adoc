@@ -1,0 +1,48 @@
+---
+sidebar: sidebar
+permalink: sfu-download-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfu.download events
+---
+
+= sfu.download events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfu.download.details
+*Deprecated*::
+Deprecated as of ONTAP(R) version 9.6. A new EMS message is added.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a disk shelf firmware update completes download firmware to a disk shelf or shelves in the system.
+*Corrective Action*::
+Shelf firmware update will be attempted again in the next background shelf firmware update.
+*Syslog Message*::
+%s: Download of firmware file %s on %s.shelf%d might not have completed on one module as %s. An attempt to download again will be done in the next cycle.
+*Parameters*::
+*cmdName* (STRING): Name of the command issued, such as "storage shelf firmware update".
+*fileName* (STRING): Name of the file in /etc/shelf_fw that was being downloaded.
+*channelName* (STRING): Name of the adapter port or switch port on which the disk shelf firmware download error occurred.
+*shelfId* (INT): ID of the disk shelf on which the disk shelf firmware download error occurred.
+*ErrorReason* (STRING): More information about the reason for download error.
+
+== sfu.download.done.details
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a shelf firmware update finishes downloading firmware to a shelf or shelves in the system.
+*Corrective Action*::
+Shelf firmware update will be attempted again in the next background shelf firmware update.
+*Syslog Message*::
+%s: Download of firmware file on %s.shelf%d might not have been completed on one module because %s. An attempt to download again will be done in the next cycle.
+*Parameters*::
+*cmdName* (STRING): Name of the command issued, such as "storage shelf firmware update".
+*channelName* (STRING): Name of the adapter port or switch port on which the disk shelf firmware download error occurred.
+*shelfId* (INT): ID of the shelf on which the shelf firmware download error occurred.
+*ErrorReason* (STRING): More information about the reason for download error.

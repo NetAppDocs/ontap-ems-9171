@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sfo-tkovertoclusterwait-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sfo.tkovertoclusterwait events
+---
+
+= sfo.tkovertoclusterwait events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sfo.tkoverToClusterwait
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a node whose M-host applications have not fully stabilized initiates a takeover followed by a giveback to its high-availability (HA) partner. After the giveback, this node's Failover Monitor state indicates that M-host stabilization is not yet complete.
+*Corrective Action*::
+Contact NetApp technical support to diagnose the issue further.
+*Syslog Message*::
+(None).
+*Parameters*::
+(None).

@@ -1,0 +1,64 @@
+---
+sidebar: sidebar
+permalink: upgrademgr-fw-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: upgrademgr.fw events
+---
+
+= upgrademgr.fw events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== upgrademgr.fw.monitor.end
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an automated nondisruptive upgrade (ANDU) completes the firmware update monitoring job.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ANDU firmware update monitoring job completed. Status: %s.
+*Parameters*::
+*status* (STRING): Status of overall firmware monitoring job.
+
+== upgrademgr.fw.monitor.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an automated nondisruptive upgrade (ANDU) starts a firmware update monitoring job.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ANDU firmware update monitoring job started.
+*Parameters*::
+(None).
+
+== upgrademgr.fw.unsupported
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an automated nondisruptive upgrade (ANDU) runs on a platform that does not have SP/BMC API support.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+ANDU firmware update monitoring job skipped because "%s"
+*Parameters*::
+*reason* (STRING): ANDU firmware monitoring is not supported on this platform.
+
+== upgrademgr.fw.update.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an automatic non-disruptive upgrade (ANDU) operation is paused due to a firmware update failure. The issue has to be resolved before the ANDU operation can continue.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+ANDU firmware update failed for firmware component: %s. Status: %s.
+*Parameters*::
+*firmware_name* (STRING): Firmware component whose update has failed.
+*status* (STRING): Category of failure for the firmware component whose update has failed.

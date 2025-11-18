@@ -1,0 +1,148 @@
+---
+sidebar: sidebar
+permalink: wafl-ino-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.ino events
+---
+
+= wafl.ino events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.ino.upgrade.aborted
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an inode upgrade for the specified WAFL volume or aggregate is aborted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Inode upgrade of volume or aggregate '%s %s' has been aborted.
+*Parameters*::
+*owner* (STRING): Owner of the volume or aggregate.
+*volname* (STRING): Name of the volume or aggregate.
+
+== wafl.ino.upgrade.cantAbort
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an attempt to abort the inode upgrade scan by using the "wafl scan abort" command. The inode upgrade scan cannot be interrupted.
+*Corrective Action*::
+Wait for the inode upgrade to finish or use the "{ vol | aggr } inode-upgrade suspend" command to stop the scan.
+*Syslog Message*::
+User cannot abort the inode upgrade scan. Use the '{ vol | aggr } inode-upgrade suspend' command.
+*Parameters*::
+(None).
+
+== wafl.ino.upgrade.completed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the inode upgrade of the specified WAFL volume or aggregate is complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+An inode upgrade to version %d for volume or aggregate '%s %s' has completed.
+*Parameters*::
+*to_version* (INT): Version the inode upgraded to.
+*owner* (STRING): Owner of the volume or aggregate.
+*volname* (STRING): Name of the volume or aggregate.
+
+== wafl.ino.upgrade.disabled
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the inode upgrade is disabled on the node via the "wafl_v4ino_upgrade_disable" bootarg. All aggregates and volumes are still usable, but there might be some features that cannot be enabled on certain volumes until the inode upgrade is completed on those volumes.
+*Corrective Action*::
+Contact technical support for assistance.
+*Syslog Message*::
+Inode upgrade is disabled on this node.
+*Parameters*::
+(None).
+
+== wafl.ino.upgrade.rem.mdata
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when inode upgrade metadata was removed either by administrator actions or due to wafliron.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Inode upgrade metadata for volume or aggregate '%s %s' has been removed.
+*Parameters*::
+*owner* (STRING): Owner of the volume or aggregate.
+*volname* (STRING): Name of the volume or aggregate.
+
+== wafl.ino.upgrade.resumed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an inode upgrade of the specified WAFL volume or aggregate is resumed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+An inode upgrade for volume or aggregate '%s %s' was resumed.
+*Parameters*::
+*owner* (STRING): Owner of the volume or aggregate.
+*volname* (STRING): Name of the volume or aggregate.
+
+== wafl.ino.upgrade.stalled
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the administrator suspended an inode upgrade for the specified WAFL volume or aggregate sometime in the past. The volume or aggregate is still usable, but there might be some features that cannot be enabled until the inode upgrade is complete.
+*Corrective Action*::
+Use the command 'volume inode-upgrade resume "volume"' or 'storage aggregate inode-upgrade resume "aggregate"' to resume the upgrade.
+*Syslog Message*::
+Inode upgrade of volume or aggregate '%s %s' is suspended.
+*Parameters*::
+*owner* (STRING): Owner of the volume or aggregate.
+*volname* (STRING): Name of the volume or aggregate.
+
+== wafl.ino.upgrade.started
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the inode upgrade for the specified WAFL volume or aggregate begins.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+An inode upgrade from version %d for volume or aggregate '%s %s' has begun.
+*Parameters*::
+*from_version* (INT): Current inode version.
+*owner* (STRING): Owner of the volume or aggregate.
+*volname* (STRING): Name of the volume or aggregate.
+
+== wafl.ino.upgrade.susp
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an inode upgrade for the specified WAFL volume or aggregate is suspended by the administrator or because wafliron is running. The volume or aggregate is still usable, but there might be some features that cannot be enabled until the inode upgrade is complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+An inode upgrade for volume or aggregate '%s %s' was suspended. Reason %s. Metadata was %s.
+*Parameters*::
+*owner* (STRING): Owner of the volume or aggregate.
+*volname* (STRING): Name of the volume or aggregate.
+*reason* (STRING): Reason the upgrade was suspended.
+*metadata_removed* (STRING): Atring indicating whether metadata was removed as part of the suspension.
+
+== wafl.ino.upgrade.susp.nospc
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an inode upgrade for the specified WAFL volume or aggregate is suspended due to a lack of space. The volume or aggregate is still usable, but there might be some features that cannot be enabled until the inode upgrade is complete.
+*Corrective Action*::
+Ensure that the volume or aggregate has at least as many bytes available for use as indicated by 'space_required'. Simply add the space to the volume and the upgrade is automatically retried.
+*Syslog Message*::
+An inode upgrade for volume or aggregate '%s %s' was suspended due to a lack of space (space required: %d bytes).
+*Parameters*::
+*owner* (STRING): Owner of the volume or aggregate.
+*volname* (STRING): Name of the volume or aggregate.
+*space_required* (LONGINT): Estimated amount of disk space required, in bytes, to complete the upgrade.

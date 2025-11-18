@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: phdb-scsicmdfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: phdb.scsicmdfailed events
+---
+
+= phdb.scsicmdfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== phdb.scsiCmdFailed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when Cloud Volume ONTAP (CVO) fails to communicate with the cloud database to execute an SCSI command. ONTAP retries the SCSI command until the command succeeds. If command keeps failing, cloud mailbox disks are removed by ONTAP and takeover/failback is disabled.
+*Corrective Action*::
+Ensure that the cloud database connection is setup correctly and fix it if necessary. After the fix, the cloud mailbox disks should automatically be re-created and takover/failback is re-enabled.
+*Syslog Message*::
+Failed to send SCSI request to cloud database for command: %s, vm: %s, block: %s. Error: %s.
+*Parameters*::
+*cmd* (STRING): SCSI command.
+*vm* (STRING): Cloud ONTAP node name.
+*block* (STRING): Block number.
+*err* (STRING): Error message.

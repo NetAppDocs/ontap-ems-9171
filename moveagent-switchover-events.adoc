@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: moveagent-switchover-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: moveagent.switchover events
+---
+
+= moveagent.switchover events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== moveagent.switchover.veto
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the volume move operation vetoes a MetroCluster(tm) switchover because the operations are mutually exclusive.
+*Corrective Action*::
+Reissue the "metrocluster switchover" command to initiate the MetroCluster switchover after the volume move operation is complete. Or use the "-override-vetoes true" option to abort the volume move. Administrators can also abort running volume move operations by using the "volume move abort" command. Monitor the currently running volume move operation by using the "volume move show" command.
+*Syslog Message*::
+The volume move operation in progress prevents MetroCluster switchover. Monitor the currently running volume move operation by using the "volume move show" command.
+*Parameters*::
+(None).

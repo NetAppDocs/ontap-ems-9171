@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: mgr-partner-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgr.partner events
+---
+
+= mgr.partner events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgr.partner.stack.saved
+*Severity*::
+NOTICE
+*Description*::
+This event is generated after a successful cluster takeover caused by a partner panic, and indicates partner stack trace information was collected from the time of the panic. Partner stack trace information is saved in the node status area of the cluster mailbox disk
+*Corrective Action*::
+Generally when a panic occurs, if autosupport is configured a NetApp case is automatically created, case E-mail notifications are sent, and a point of contact at your site is contacted by NetApp technical support. If autosupport is not configured or if you are not sure a case was automatically created, contact NetApp technical support.
+*Syslog Message*::
+Cluster takeover has saved partner panic stack trace information for logging.
+*Parameters*::
+(None).

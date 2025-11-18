@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: reg-cookie-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: reg.cookie events
+---
+
+= reg.cookie events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== reg.cookie.null
+*Severity*::
+ERROR
+*Description*::
+This message occurs when allocation of cookies for traversing all keys under a prefix fails. An EFAULT error indicates that the cause is an empty registry tree. An ENOTSUPP error indicates that the prefix entered might not be supported on a vFiler unit. An ENOMEM error indicates that the system is running low on memory.
+*Corrective Action*::
+For an EFAULT error, check the prefix for spelling errors. For an ENOTSUPP error, try running the command on physical system, rather than a virtual system. For an ENOMEM error, close all applications that are consuming memory, as needed. If the problem persists,contact NetApp technical support
+*Syslog Message*::
+registry: Allocation of cookie for traversing all keys under the prefix %s, failed at function %s. Error number %d: %s.
+*Parameters*::
+*location* (STRING): Location in the registry code where the failure occurred.
+*prefix* (STRING): Name of the prefix that was passed as an argument to the function.
+*errorno* (INT): Internal error message number.
+*errormsg* (STRING): Internal error message description.

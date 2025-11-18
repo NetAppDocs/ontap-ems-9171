@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: vsdr-cluster-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vsdr.cluster events
+---
+
+= vsdr.cluster events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vsdr.cluster.sourceVersionIsHigherThanDestination
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a source cluster of SVMDR relationship is at higher version than destination cluster.
+*Corrective Action*::
+Upgrade source cluster and destination cluster to the same verion.
+*Syslog Message*::
+Resync failed becuase source cluster version "%s" is higher than destination cluster version "%s"
+*Parameters*::
+*source_cluster_version* (STRING): Version of source cluster of SVMDR relationship.
+*destination_cluster_version* (STRING): Version of destination cluster of SVMDR relationship.

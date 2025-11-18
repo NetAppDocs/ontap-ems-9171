@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: acp-post-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: acp.post events
+---
+
+= acp.post events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== acp.post.data.failed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a 'post data' request that was sent to the Alternate Controller Path Processor fails.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+A 'post data' request sent to %s (%s) failed with status (%s), (disk shelf serial number: %s).
+*Parameters*::
+*inband_id* (STRING): In-band ID of the module.
+*ip* (STRING): IP address of the module.
+*status* (STRING): Reason for the 'post data' failure.
+*shelf_sno* (STRING): Disk shelf serial number of the shelf where this I/O module is seated.

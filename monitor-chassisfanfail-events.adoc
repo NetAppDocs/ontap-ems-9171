@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: monitor-chassisfanfail-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.chassisfanfail events
+---
+
+= monitor.chassisfanfail events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.chassisFanFail.xMinShutdown
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when multiple chassis fans have failed, and the system will shut down in a few minutes unless corrected.
+*Corrective Action*::
+Reseat the chassis fans. If they do not restart, replace them.
+*Syslog Message*::
+Multiple Chassis Fan failure: System will shut down in %d minutes.
+*Parameters*::
+*num_minutes* (INT): Number of minutes until the system will shut down.

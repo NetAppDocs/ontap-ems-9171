@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: tcpip-duplicate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: tcpip.duplicate events
+---
+
+= tcpip.duplicate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== tcpip.duplicate.ip
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the local node detects that it and some other device are using the same IP address.
+*Corrective Action*::
+Check the IP address configuration on both the local node and the device using the Ethernet MAC address. Modify or remove the IP address on whichever device is misconfigured.
+*Syslog Message*::
+Duplicate IP address %s sent from link address %s.
+*Parameters*::
+*ipAddress* (STRING): IP address under contention.
+*macAddress* (STRING): Ethernet MAC address of the other device.

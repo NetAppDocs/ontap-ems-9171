@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: san-changedhomeport-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: san.changedhomeport events
+---
+
+= san.changedhomeport events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== san.ChangedHomePort
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the home port of an existing SAN LIF is modified during LIF placement.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Home port changed from %s to %s while placing LIF %s in Vserver %s.
+*Parameters*::
+*old_port_name* (STRING): Name of the old home port of the existing SAN LIF.
+*port_name* (STRING): Name of the new home port of the existing SAN LIF.
+*lif* (STRING): LIF name.
+*vserver_name* (STRING): Vserver name.

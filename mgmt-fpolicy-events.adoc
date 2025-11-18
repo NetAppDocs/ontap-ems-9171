@@ -1,0 +1,66 @@
+---
+sidebar: sidebar
+permalink: mgmt-fpolicy-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmt.fpolicy events
+---
+
+= mgmt.fpolicy events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmt.fpolicy.policy.disabled
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a Vserver administrator disables an FPolicy(R) policy. No subsequent client requests will be processed and no notifications will be sent to FPolicy servers attached with this policy.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FPolicy policy %s is disabled on Vserver %s.
+*Parameters*::
+*policyname* (STRING): Name of the policy.
+*vservername* (STRING): Name of the Vserver.
+
+== mgmt.fpolicy.policy.enabled
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a Vserver administrator enables an FPolicy(R) policy. Based on the event configuration, subsequent client requests will be processed, notifications will be generated, and notifications might be sent (based on the policy configuration) to FPolicy servers attached with this policy.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FPolicy policy %s is enabled on Vserver %s.
+*Parameters*::
+*policyname* (STRING): Name of the policy.
+*vservername* (STRING): Name of the Vserver.
+
+== mgmt.fpolicy.priv.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the creation of privileged share ONTAP_ADMIN$ fails. Attempted connections to ONTAP_ADMIN$ share by the FPolicy servers will fail.
+*Corrective Action*::
+Check the reason for failure and take action accordingly. If the problem persists, contact NetApp technical support for assistance.
+*Syslog Message*::
+Failed to create privileged share ONTAP_ADMIN$ for Vserver "%s". Reason: "%s".
+*Parameters*::
+*vserverName* (STRING): Name of the Vserver.
+*reason* (STRING): Reason for failure.
+
+== mgmt.fpolicy.replay.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an FPolicy(R) configuration replication mechanism fails after a maximum number of retries. FPolicy Service Manager (FSM) process will restart to resync configuration.
+*Corrective Action*::
+If the error persists, contact NetApp technical support for assistance.
+*Syslog Message*::
+FPolicy configuration replication process failed.
+*Parameters*::
+(None).

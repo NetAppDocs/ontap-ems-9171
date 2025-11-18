@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: km-kmip-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: km.kmip events
+---
+
+= km.kmip events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== km.kmip.key.mismatch
+*Severity*::
+ALERT
+*Description*::
+This message occurs in a NetApp MetroCluster configuration where both peer clusters are configured with the external key manager on the admin Vserver, but the NSE-AK keys do not match between the local and remote clusters. A mismatch in the NSE-AK keys can cause a failure during a reboot or future switchover/switchback event.
+*Corrective Action*::
+Contact Contact NetApp technical support. for assistance.
+*Syslog Message*::
+In a MetroCluster configuration with the external key manager enabled on the admin Vserver, the NSE-AK key digests do not match between the local and remote clusters.
+*Parameters*::
+(None).
+
+== km.kmip.key.missing
+*Severity*::
+ALERT
+*Description*::
+This message occurs in a NetApp MetroCluster configuration where both peer clusters are configured with the external key manager on the admin Vserver, but one or more NSE-AK keys are missing on either the local or remote cluster. A missing key can cause a failure during a reboot or future switchover/switchback event.
+*Corrective Action*::
+Contact Contact NetApp technical support. for assistance.
+*Syslog Message*::
+In a MetroCluster configuration with the external key manager enabled on the admin Vserver, an NSE-AK key is missing on cluster %s.
+*Parameters*::
+*clusterID* (STRING): Cluster ID where the NSE-AK key is missing.

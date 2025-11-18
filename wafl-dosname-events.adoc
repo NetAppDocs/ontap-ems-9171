@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: wafl-dosname-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.dosname events
+---
+
+= wafl.dosname events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.dosname.repair.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system cannot correct duplicate dosnames present in a directory.
+*Corrective Action*::
+From the NFS client, check the directory for file or subdirectory names like {******}. Rename these, and then run (privilege diag) the "wafl dosname" node shell command on the directory.
+*Syslog Message*::
+Dosname repair failed for file ID: %d volume %s:%s.
+*Parameters*::
+*fileid* (INT): Directory file ID where dosname repair failed.
+*vserver_uuid* (STRING): Universal Unique ID (UUID) of the volume's Vserver.
+*volume* (STRING): Volume name.
+
+== wafl.dosname.repair.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the "wafl dosname" command is completed successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+"wafl dosname" command successfully completed on volume %s:%s. Total files corrected: %d.
+*Parameters*::
+*vserver_uuid* (STRING): Universal Unique ID (UUID) of the volume's Vserver.
+*volume* (STRING): Volume name.
+*total* (INT): Total number of directory entries changed.

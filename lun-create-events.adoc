@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: lun-create-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lun.create events
+---
+
+= lun.create events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== LUN.create.nvfailed.volume
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a LUN is created in a volume that is in the nvfailed state.
+*Corrective Action*::
+Clear the nvfailed state of the containing volume, take the appropriate nvfail recovery action to recover from the possible data loss, and bring the LUN online. Note that the actual recovery steps vary based on the application and the host.
+*Syslog Message*::
+LUN %s was created in a volume %s (DSID %llu) that is in the nvfailed state. It is offline and in the nvfailed state.
+*Parameters*::
+*lun_path* (STRING): Path for the LUN.
+*volume_name* (STRING): Name of the containing volume.
+*volume_dsid* (LONGINT): Data set ID (DSID) of the containing volume.
+
+== LUN.create.resized.base
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when creating a LUN from a base file causes a permanent size change to that base file.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The base file of the LUN at path %s in volume %s (DSID %llu) has been resized.
+*Parameters*::
+*lun_path* (STRING): Path for the LUN.
+*volume_name* (STRING): Name of the containing volume.
+*volume_dsid* (LONGINT): Data set ID (DSID) of the containing volume.

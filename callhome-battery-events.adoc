@@ -1,0 +1,89 @@
+---
+sidebar: sidebar
+permalink: callhome-battery-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.battery events
+---
+
+= callhome.battery events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.battery.failure
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the battery is either incapable of maintaining data during a power-outage, or is experiencing a failure that poses a physical threat. To prevent data loss and/or damage, the system will shut down momentarily. If your system is configured to do so, it generates and transmits an AutoSupport(tm) (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Correct any environmental issues, such as a high ambient temperature. If the condition persists, replace the NVRAM card/battery. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s CRITICAL.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.battery.low
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the NVRAM battery capacity is critically low. If your system is configured to do so, it generates and transmits an AutoSupport(R) (or 'call home') message to NetApp(R) technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Use the "system node environment sensors show" command to view the battery's current status, capacity, and charging state. If the battery was recently replaced or the system was nonoperational for an extended period of time, monitor the battery to verify that it is charging properly. If the battery run time continues to decrease below critical levels, the storage system will automatically shut down. Contact NetApp technical support for assistance.
+*Syslog Message*::
+Call home for BATTERY_LOW.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+*object_type* (STRING): Type of resource object under notification. For this EMS, the object_type will always be NODE.
+*object_uuid* (STRING): UUID of the resource object. For this EMS, the UUID will be of the node.
+
+== callhome.battery.notice
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the battery is operating near the limit of its supported environment. If your system is configured to do so, it generates and transmits an AutoSupport(tm) (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Correct any environmental issues, such as a high ambient temperature. If the condition persists, replace the NVRAM card/battery in the next three months. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s NOTICE.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.battery.overchg
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the NVRAM card lithium battery is overcharged and is at risk of failure. The system is currently serving data but will shut down shortly. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Replace the NVRAM card/battery and start the system back up. The system will not boot with the battery in this state. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for BATTERY OVERCHARGED
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.battery.overtemp
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the sensor for the NVRAM card lithium battery over the intended temperature limit. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+If the system is excessively warm, allow it to cool gradually. If the battery temperature is still too high, replace the battery pack. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for BATTERY OVERTEMP
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.
+
+== callhome.battery.warning
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the battery is operating outside the limit of its supported environment. Under these conditions, the battery might not be capable of maintaining data during a power-loss event. To prevent data loss, the system will automatically shut down in 24 hours. If your system is configured to do so, it generates and transmits an AutoSupport(tm) (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+Correct any environmental issues, such as a high ambient temperature. If the condition persists, replace the NVRAM card/battery. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for %s WARNING.
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

@@ -1,0 +1,946 @@
+---
+sidebar: sidebar
+permalink: wafl-vol-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.vol events
+---
+
+= wafl.vol events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.vol.access.denied
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system rejects client access to a volume.
+*Corrective Action*::
+You can avoid this event by unmounting the volume.
+*Syslog Message*::
+Access to volume '%s' was denied, reason='%s'.
+*Parameters*::
+*vol* (STRING): Volume name.
+*reason* (STRING): Reason that access was denied.
+
+== wafl.vol.add
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message indicates that a new volume has been added to the system.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s%s%s has been added to the system.
+*Parameters*::
+*type* (STRING): Type of object (volume/aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.
+
+== wafl.vol.add.keyinfo.into.vldb
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when encryption key-info is added into vldb table.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Key-info is added into vldb for volume %s (dsid %lu, aggr '%s') with index %d, key-id %s.
+*Parameters*::
+*vol* (STRING): Volume name.
+*dsid* (LONGINT): Unique identifier (DSID) of the volume.
+*aggr* (STRING): Name of the containing aggregate.
+*key_idx* (INT): Key index.
+*key_id* (STRING): Key id.
+
+== wafl.vol.appdm.upgrade.nospc
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) software cannot increase the size of an AppDM volume by five percent during an upgrade to ONTAP 9.5.
+*Corrective Action*::
+ONTAP has increased the snapshot reserve percentage on this AppDM volume from zero to five percent as part of the upgrade to ONTAP 9.5. To retain the same available free space on the volume, consider increasing the size of the volume by five percent by using the "vol modify -size" command. It might be necessary to increase the size of the aggregate first, using the "aggr add-disks" command.
+*Syslog Message*::
+The file system on %s %s%s%s%s could not be grown 5%% larger as part of the upgrade to ONTAP 9.5.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique volume identifier when the volume name alone is insufficient.
+
+== wafl.vol.autoSize.done
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an autosize for a volume is successful. This can happen when the "autosize grow" option is on and the volume reaches the grow threshold percentage.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume autosize: Automatic %s of volume '%s%s%s' by %s is complete.
+*Parameters*::
+*event_type* (STRING): Type of autosize event.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*size* (STRING): Human readable size.
+*object_uuid* (STRING): Volume instance UUID of the resource object.
+
+== wafl.vol.autoSize.fail
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when automatic sizing of a volume fails.
+*Corrective Action*::
+Increase the maximum size of the volume while setting the autosize.
+*Syslog Message*::
+Unable to grow volume '%s%s%s' to recover space: %s.
+*Parameters*::
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier the volume in cases where the volume name itself is insufficient.
+*err* (STRING): Reason for the failure.
+*object_uuid* (STRING): Volume instance UUID of the resource object.
+
+== wafl.vol.autoSize.shrink.cap
+*Severity*::
+NOTICE
+*Description*::
+As a volume grows, there can be an automatic increase in the number of files that it is allowed to contain, but that number is unchanged as the volume shrinks. This number of files puts a constraint on the minimum size of the volume when it is automatically shrunk. This message indicates that the automatic shrinking of a volume did not reach the configuration's minimum size because it is constrained by the number of files the volume is allowed to contain.
+*Corrective Action*::
+Consider using the command "volume modify <volume-name> -files <new-files-value>" to decrease the number of files that the volume is allowed to contain. You can view the current value of the number of files by using the command "volume show <volume-name> -fields files".
+*Syslog Message*::
+Volume Autosize: Volume '%s%s%s' could not be auto shrunk below %s to recover space.
+*Parameters*::
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.
+*size* (STRING): Human-readable minimum size to which the volume can be automatically shrunk.
+
+== wafl.vol.bgTruncate.full
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a background truncation operation for large files stalls due to insufficient free space for allocating additional metadata on the volume.
+*Corrective Action*::
+Manually delete snapshots or increase the volume's size for one-time space issues. For frequent space issues, consider changing autogrow or autodelete settings for the volume in question.
+*Syslog Message*::
+Insufficient free space available on %s %s%s %s to complete background truncation operation.
+*Parameters*::
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Volume identifier.
+
+== wafl.vol.blks_used.done
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the 'blks used' calculation is complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*run_time* (LONGINT): Total run time of the scanner.
+
+== wafl.vol.clearing.in.nvfailed.state
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a volume that was marked as in-nvfailed-state is explicitly cleared.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume %s%s%s that was marked as in-nvfailed-state has been cleared.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): If the volume belongs to a Vserver, the Vserver's Universal Unique Identifier (UUID).
+
+== wafl.vol.clone.split.nospace
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when there's not enough free space to complete a volume clone split operation. The usual cause for this is when there are many data blocks in the snapshot that is shared between the clone volume and its parent.
+*Corrective Action*::
+Free space in the clone volume to allow the split operation to take place, for example by deleting all snapshots in the clone volume.
+*Syslog Message*::
+Volume clone split of '%s%s' cannot be completed, not enough disk space. Consider removing snapshots.
+*Parameters*::
+*name* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== wafl.vol.clone.unlock.snapshot.destroy.failed
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the volume options are set such that the autodelete destroy policy is allowed to destroy volume clones referring to the snapshot to be deleted. It indicates an attempt to destroy a volume clone has failed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume clone destroy of '%s' failed.
+*Parameters*::
+*name* (STRING): The volume clone name
+
+== wafl.vol.clone.unlock.snapshot.failure
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the volume options are set such that the autodelete destroy policy is allowed to destroy volume clones referring to the snapshot to be deleted. It indicates the process of destroying volume clones has failed. Some volume clones may have been destroyed or left offline as a result.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Process of destroying volume clones using volume %s snapid %d failed. Some volume clones may have been taken offline or destroyed.
+*Parameters*::
+*name* (STRING): The volume name
+*snapid* (INT): Snapshot identifier.
+
+== wafl.vol.clone.unlock.snapshot.offline.failed
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the volume options are set such that the autodelete destroy policy is allowed to destroy volume clones referring to the snapshot to be deleted. It indicates an attempt to offline a volume clone has failed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume clone offline of '%s' failed.
+*Parameters*::
+*name* (STRING): The volume clone name
+
+== wafl.vol.clone.unlock.snapshot.start
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the volume options are set so that the autodelete destroy policy is allowed to destroy volume clones referring to the snapshot to be deleted. The message indicates that the process of destroying volume clones is beginning. The snapshot autodelete destroy policy is used when all other attempts to recover space in a thin-provisioned aggregate fail. The disruptive effect of destroying volume clones should be understood when setting this policy.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Starting process of destroying volume clones using volume %s snapid %d.
+*Parameters*::
+*name* (STRING): Volume name.
+*snapid* (INT): Snapshot identifier.
+
+== wafl.vol.clone.unlock.snapshot.success
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the volume options are set so that the autodelete destroy policy is allowed to destroy volume clones referring to the snapshot to be deleted. The message indicates that the process of destroying volume clones has successfully completed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Destroyed all volume clones using using volume %s snapid %d.
+*Parameters*::
+*name* (STRING): Volume name.
+*snapid* (INT): Snapshot identifier.
+
+== wafl.vol.create.clusterVolOnCFOaggr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a volume is created on a Controller Failover (CFO) high-availablity (HA) style aggregate. File access delays will occur for a period following giveback.
+*Corrective Action*::
+To minimize file access delays following giveback, create the volume on an aggregate with a Storage Failover (SFO) HA policy.
+*Syslog Message*::
+Creating volume '%s' on an aggregate with a CFO HA policy. File access delays will occur for a period following giveback.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+
+== wafl.vol.deswizzle.done
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the deswizzle scan is complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*run_time* (LONGINT): Total run time of the scanner.
+
+== wafl.vol.fix.comp.algo.list
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when CP detects and rectifies an incorrect compression algorithm list in volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+List of used compression algorithms in the volume %s has been fixed. was %llu, now %llu.
+*Parameters*::
+*vol* (STRING): Volume name.
+*old_val* (LONGINT): Old value of compression algorithm list
+*new_val* (LONGINT): New value of compression algorithm list
+
+== wafl.vol.fsp.full
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an operation requests more space than is available in the Flexible Space Pool.
+*Corrective Action*::
+Report this condition to NetApp technical support.
+*Syslog Message*::
+%s %s%s%s%s: insufficient space in FSP %s to satisfy a request of %llu holes and %llu overwrites.
+*Parameters*::
+*type* (STRING): Type of object (volume/aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Volume identifier, in order to uniquely identify the volume in cases where volume name alone is insufficient.
+*fspname* (STRING): The name of the flexible space pool.
+*requested* (LONGINT): Amount of space requested from the flexible space pool.
+*requested_overwrites* (LONGINT): Amount of overwrite reserve space requested from the flexible space pool.
+
+== wafl.vol.full
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an operation requests more space than is available in the relevant volume.
+*Corrective Action*::
+Consider manually deleting data or increasing the volume's size for one-time space issues. For frequent space issues, consider changing autogrow/autodelete settings.
+*Syslog Message*::
+Insufficient space on %s %s%s%s%s to perform operation. %s was requested but only %s was available.
+*Parameters*::
+*type* (STRING): Type of object (volume/aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Volume identifier, in order to uniquely identify the volume in cases where volume name alone is insufficient.
+*requested* (STRING): Amount of space requested in the volume.
+*available* (STRING): Amount of space available in the volume.
+
+== wafl.vol.guarantee.fail
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an attempt is made to apply the space guarantee for a flexible volume, but there is not enough space in the aggregate to do so. The volume will be mounted, but subsequent writes to the volume might fail if the volume's aggregate becomes full.
+*Corrective Action*::
+Either increase the size of the corresponding aggregate by adding disks, or decrease the total volume space requirements in the aggregate by shrinking or destroying one or more volumes.
+*Syslog Message*::
+Space for volume %s%s is not guaranteed. %s of additional space is required to enable the guarantee.
+*Parameters*::
+*vol* (STRING): Name of the volume whose space guarantee could not be applied.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*short_by* (STRING): Amount of additional space required in the volume.
+
+== wafl.vol.guarantee.stayoff
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when WAFL(R) would otherwise have attempted to enable a volume's space guarantee, but the last time it tried, an error was encountered (most likely due to insufficient space). This error was recorded in the volume's on-disk RAID label so that the same error would not be repeated on future mounts. The volume will be mounted. However, because the volume is not guaranteed, it is possible that subsequent writes to the volume could fail if the volume's aggregate becomes full.
+*Corrective Action*::
+Determine the cause of the error the last time WAFL attempted to enable this guarantee, either through logs or by attempting to enable it again manually. Typically, the issue is a lack of space at mount time detected during boot, which can be resolved by increasing the size of the corresponding aggregate (by adding disks or by shrinking or destroying some of the aggregate's volumes). After the issue is resolved, manually attempt to re-enable the guarantee using the 'volume modify' command.
+*Syslog Message*::
+The space guarantee for volume %s%s was not enabled because an error occurred the last time a guarantee was enabled on this volume.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Volume identifier.
+
+== wafl.vol.inode.space.usage
+*Severity*::
+ERROR
+*Description*::
+This message occurs when public inode space usage exceeds threshold value configured by admin.
+*Corrective Action*::
+Use the command "volume modify <volume-name> -files <new-files-value>" to increase the number of files that the volume is allowed to contain. View the current value of the file threshold by using the command "volume show <volume-name> -fields files". If volume modify fails, increase volume size and try again.
+*Syslog Message*::
+The file system on %s %s%s%s%s is currently using %d%% of the files that can be contained on the volume. The admin has configured the threshold for monitoring public inode usage as %d%%.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique volume identifier when the volume name alone is insufficient.
+*current_inofile_used* (INT): Current value of inodes in public inode space.
+*threshold_ems_inofile_used_pct* (INT): Threshold percent value to monitor inodes usage.
+
+== wafl.vol.invalid.nomount
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a volume has not been fully copied and cannot be mounted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume %s is not fully copied and cannot be mounted.
+*Parameters*::
+*vol* (STRING): The volume name
+
+== wafl.vol.invalidate.fh
+*Severity*::
+NOTICE
+*Description*::
+This message indicates that an NVRAM failure is detected, invalidating outstanding filehandles.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s%s%s: Invalidating all filehandles due to previous NVRAM failure -- Filesystem must be remounted by the client(s)
+*Parameters*::
+*type* (STRING): Type of object (volume/aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.
+
+== wafl.vol.mirrorType.invalid
+*Severity*::
+ERROR
+*Description*::
+This message occurs when WAFL(R) attempts to bring online a mirror volume that does not have a valid mirror-type attribute. This situation might be a direct result of an upgrade to a version of Data ONTAP(R) that requires the mirror-type attribute or as a result of a corruption.
+*Corrective Action*::
+This condition cannot be fixed by file system repair mechanisms such as wafliron. The data is not lost, but it is inaccessible to the administrator. To access the data, contact NetApp technical support. Alternatively, the administrator can destroy the mirror volume by using the 'volume delete -vserver vserver_name -volume vol_name' command.
+*Syslog Message*::
+The mirror type associated with the mirror volume %s %s%s%s%s is invalid.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Owner of the volume.
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name by itself is insufficient.
+
+== wafl.vol.mislabeled.root
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a volume or aggregate is labeled as root but was not selected as the root volume or aggregate. It is used to indicate that the label will be removed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s '%s%s%s' was incorrectly labeled as root. Removing the label.
+*Parameters*::
+*type* (STRING): The type of object (volume/aggregate)
+*owner* (STRING): The volume owner Can be the empty string
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== wafl.vol.nvfail.offline
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the system detects an NVRAM failure and the volume is inconsistent. The volume might have data loss due to NVRAM failure. The volume has taken offlined.
+*Corrective Action*::
+Take the appropriate recovery action to recover from the possible data loss. Access to the volume is restricted until you clear the NVFAIL state manually.
+*Syslog Message*::
+Volume %s%s is offline.
+*Parameters*::
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+
+== wafl.vol.nvfail.recovery.needed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs periodically to inform the administrator that recovery procedures must be performed on a volume that is marked as in-nvfailed-state.
+*Corrective Action*::
+Take the appropriate recovery action to recover from the possible data loss. Access to the volume is restricted until you clear the NVFAIL state manually.
+*Syslog Message*::
+Volume %s%s%s is marked as in-nvfailed-state. The recovery process needs to be initiated on the volume to recover from the NVFAIL event.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): If the volume belongs to a Vserver, the Vserver's Universal Unique Identifier (UUID).
+
+== wafl.vol.offline
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message indicates that a volume has been taken offline.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s %s%s%s%s has been taken temporarily offline.
+*Parameters*::
+*type* (STRING): Type of object (volume/aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.
+*instuuid* (STRING): Volume Instance UUID
+
+== wafl.vol.offline.callbacks
+*Severity*::
+NOTICE
+*Description*::
+Data ONTAP was trying to offline a volume and had to ignore the result of file-locking callbacks being sent to clients in order to make progress. This is transparent to clients, as they will retry their original requests, which will be serviced when the volume comes back online.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Ignoring %d callbacks when offlining %s %s%s%s%s.
+*Parameters*::
+*count* (INT): The number of callbacks which were ignored
+*type* (STRING): The type of object (volume or aggregate)
+*owner* (STRING): The owner of the volume
+*vol* (STRING): The name of the volume
+*app* (STRING): Application UUID.
+*volident* (STRING): The unique identifier of the volume in case the volume name itself is insufficient
+
+== wafl.vol.outOfInodes
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a volume or aggregate reaches its maximum number of files and is out of inodes.
+*Corrective Action*::
+For a volume, either use the command "volume modify -files" to increase the number the files that the volume is allowed to contain, or delete files from the volume. For an aggregate, add space to the aggregate.
+*Syslog Message*::
+file system on %s %s%s%s%s is out of inodes because it has reached the maximum number of files
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate)
+*owner* (STRING): Owner of the volume or aggregate
+*vol* (STRING): Name of the volume or aggregate
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume or aggregate in cases where the name itself is insufficient.
+
+== wafl.vol.outOfPrInodes
+*Deprecated*::
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when the system discover that a volume is out of private inodes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+file system on %s %s%s%s%s is out of private inodes
+*Parameters*::
+*type* (STRING): The type of object (volume/aggregate)
+*owner* (STRING): The volume owner
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+
+== wafl.vol.quiesce.giveback
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued to indicate a volume quiescing has failed because wafl giveback is running.
+*Corrective Action*::
+Retry quiescing the volume after giveback has completed.
+*Syslog Message*::
+Quiescing volume %s failed because wafl giveback is running.
+*Parameters*::
+*vol* (STRING): The volume name
+
+== wafl.vol.quiesce.iron
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued to indicate a volume quiescing has failed because wafl iron is running.
+*Corrective Action*::
+Retry quiescing the volume after wafl iron has completed.
+*Syslog Message*::
+Quiescing volume %s failed because wafl iron is running.
+*Parameters*::
+*vol* (STRING): The volume name
+
+== wafl.vol.quiesce.notdrain
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a volume quiesce operation fails because of a general failure in draining the suspended messages or outstanding callbacks. This covers unknown cases that wafl.vol.quiesce.timeoutcb does not catch.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Quiescing of volume %s failed because draining message and callbacks failed. The total time spent quiescing the volume was %d milliseconds, %d of which was spent aborting scanners, %d milliseconds were spent flushing client requests for locks and watches, %d milliseconds were spent draining volume references and %d milliseconds were spent draining callbacks and suspended messages.
+*Parameters*::
+*vol* (STRING): Volume name.
+*ttq* (INT): Time spent (in milliseconds) quiescing the volume.
+*tws* (INT): Time spent (in milliseconds) waiting for scanners to abort.
+*twcr* (INT): Time spent (in milliseconds) flushing client requests for locks and watches.
+*twvr* (INT): Time spent (in milliseconds) waiting for draining of volume references.
+*twdcm* (INT): Time spent (in milliseconds) waiting for draining of suspended messages and callbacks.
+
+== wafl.vol.quiesce.notFlex
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued to indicate a volume quiescing has failed because it is not a flex vol.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Quiescing volume %s failed because it's not a flexible volume.
+*Parameters*::
+*vol* (STRING): The volume name
+
+== wafl.vol.quiesce.notMounted
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued to indicate a volume quiescing has failed because it is not in mounted state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Quiescing volume %s failed because it's not mounted. It's in %s state.
+*Parameters*::
+*vol* (STRING): The volume name
+*statename* (STRING): The state
+
+== wafl.vol.quiesce.relocating
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a volume cannot be quiesced because an aggregate relocation operation is running.
+*Corrective Action*::
+Retry the volume move operation after the aggregate relocation operation is complete.
+*Syslog Message*::
+Volume %s could not be quiesced because aggregate relocation is running.
+*Parameters*::
+*vol* (STRING): Volume name.
+
+== wafl.vol.quiesce.rootVol
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued to indicate a volume quiescing has failed because it is a root volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Quiescing volume %s failed because it's a root volume.
+*Parameters*::
+*vol* (STRING): The volume name
+
+== wafl.vol.quiesce.statusvol
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a volume cannot be quiesced because it is being used to host wafliron status files.
+*Corrective Action*::
+Use "aggr wafliron show" command to monitor the status of wafliron and retry the operation after wafliron is complete.
+*Syslog Message*::
+Volume %s could not be quiesced because it is being used by wafliron to host status files.
+*Parameters*::
+*vol* (STRING): Volume name.
+
+== wafl.vol.quiesce.timeoutcb
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a volume quiesce operation requiring draining of suspended callbacks or messages fails because of a timeout.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Quiescing of volume %s failed because there are %d outstanding callbacks and %d suspended messages. The time spent waiting for these to drain was %d milliseconds. The time spent quiescing the volume (%d milliseconds) was split between scan aborts (%d), flushing client requests (%d), and draining references (%d).
+*Parameters*::
+*vol* (STRING): Volume name.
+*ncbo* (INT): Number of outstanding callbacks.
+*nsm* (INT): Number of suspended messages.
+*twdcm* (INT): Time spent (in milliseconds) waiting for draining of suspended messages and callbacks.
+*ttq* (INT): Time spent (in milliseconds) quiescing the volume.
+*tws* (INT): Time spent (in milliseconds) waiting for scanners to abort.
+*twcr* (INT): Time spent (in millseconds) flushing client requests for locks and watches.
+*twvr* (INT): Time spent (in milliseconds) waiting for draining of volume references.
+
+== wafl.Vol.QuiesceTO.AbrtScan
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a volume quiesce operation requiring scanners to abort fails because of a timeout.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Quiescing of the volume %s failed because aborting the scanners resulted in a timeout. The time spent quiescing the volume was %d milliseconds of which %d milliseconds were spent waiting for the scanners to abort.
+*Parameters*::
+*vol* (STRING): Volume name.
+*tws* (INT): Time spent (in milliseconds) waiting for scanners to abort.
+*ttq* (INT): Time spent (in milliseconds) quiescing the volume.
+
+== wafl.Vol.QuiesceTO.ClntReqs
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a volume quiesce operation requiring flushing of client requests for locks and watches fails because of a timeout.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Quiescing of volume %s failed because time spent waiting for flushing of client requests for locks and watches (%d milliseconds) resulted in a timeout. The total time spent quiescing the volume was %d milliseconds - %d milliseconds were spent aborting scanners.
+*Parameters*::
+*vol* (STRING): Volume name.
+*twcr* (INT): Time spent (in milliseconds) flushing client requests for locks and watches.
+*ttq* (INT): Time spent (in milliseconds) quiescing the volume.
+*tws* (INT): Time spent (in milliseconds) waiting for scanners to abort.
+
+== wafl.Vol.QuiesceTO.RalDrain
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during a volume move operation, when a volume quiesce attempt fails to drain all of the outstanding remote cached inodes within the allowable time frame. This can occur and might persist on a heavily loaded system, and it prevents the move from being completed. However, as soon as the load drops to a more reasonable level, ONTAP flushes the cached inodes and completes the move without customer intervention.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Quiescing of volume %s failed because it was unable to drain all outstanding remote inodes for the volume. Initially the volume reported %d cached inodes, but timed out with %d cached inodes remaining.
+*Parameters*::
+*vol* (STRING): Volume name.
+*nStart* (INT): Number of cached inodes when drain starts.
+*nEnd* (INT): Number of cached inodes when request times out.
+
+== wafl.Vol.QuiesceTO.RefDrain
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a volume quiesce operation requiring draining of volume references fails because of a timeout.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Quiescing of volume %s failed because the time spent draining the references on the volume (%d milliseconds) resulted in a timeout. There are %d references on the volume. One of the owners is %s. The command "wafl vref status" under diag privileges can be used to view all the references on a volume on the node owning the volume. The time spent quiescing the volume (%d milliseconds) was split between scan aborts (%d) and flushing client requests(%d).
+*Parameters*::
+*vol* (STRING): Volume name.
+*twvr* (INT): Time spent (in milliseconds) waiting for draining of volume references.
+*wvc* (INT): Number of references on the volume.
+*vo_1* (STRING): Text string representing the first volume reference owner.
+*ttq* (INT): Time spent (in milliseconds) quiescing the volume.
+*tws* (INT): Time spent (in milliseconds) waiting for scanners to abort.
+*twcr* (INT): Time spent (in milliseconds) flushing client requests for locks and watches.
+
+== wafl.Vol.QuiesceTO.RefsDrain
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a volume quiesce operation requiring draining of volume references fails because of a timeout. The references are released.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Quiescing of volume %s failed because the time spent draining the references on the volume (%d milliseconds) resulted in a timeout. The time spent quiescing the volume (%d milliseconds), was split between scan aborts (%d) and flushing client requests (%d).
+*Parameters*::
+*vol* (STRING): Volume name.
+*twvr* (INT): Time spent (in milliseconds) waiting for draining of volume references.
+*ttq* (INT): Time spent (in milliseconds) quiescing the volume.
+*tws* (INT): Time spent (in milliseconds) waiting for scanners to abort.
+*twcr* (INT): Time spent (in milliseconds) flushing client requests for locks and watches.
+
+== wafl.Vol.QuiesceTO.SAN.Ntfy
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a volume quiesce operation requiring a notification to the SAN component fails because of a timeout.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Quiescing of volume %s failed because a quiesce notification to the SAN component (%d milliseconds) resulted in a timeout. The time spent quiescing the volume (%d milliseconds) was split between scan aborts (%d), flushing client requests (%d), draining references (%d), draining callbacks and suspended messages (%d), and draining zombies (%d).
+*Parameters*::
+*vol* (STRING): Volume name.
+*twsc* (INT): Time spent (in milliseconds) waiting to for quiescing of the SAN component.
+*ttq* (INT): Time spent (in milliseconds) quiescing the volume.
+*tws* (INT): Time spent (in milliseconds) waiting for scanners to abort.
+*twcr* (INT): Time spent (in milliseconds) flushing client requests for locks and watches.
+*twvr* (INT): Time spent (in milliseconds) waiting for draining of volume references.
+*twdcm* (INT): Time spent (in milliseconds) waiting for draining of suspended messages and callbacks.
+*twzd* (INT): Time spent (in milliseconds) waiting for draining of zombies.
+
+== wafl.Vol.QuiesceTO.ZmbDrain
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a volume quiesce operation requiring draining of zombies fails because of a timeout.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Quiescing of volume %s failed because the time spent draining zombies (%d milliseconds) resulted in a timeout. The time spent quiescing the volume (%d milliseconds) was split between scan aborts (%d), flushing client requests (%d), draining references (%d), and draining callbacks and suspended messages (%d).
+*Parameters*::
+*vol* (STRING): Volume name.
+*twzd* (INT): Time spent (in milliseconds) waiting for draining of zombies.
+*ttq* (INT): Time spent (in milliseconds) quiescing the volume.
+*tws* (INT): Time spent (in milliseconds) waiting for scanners to abort.
+*twcr* (INT): Time spent (in milliseconds) flushing client requests for locks and watches.
+*twvr* (INT): Time spent (in milliseconds) waiting for draining of volume references.
+*twdcm* (INT): Time spent (in milliseconds) waiting for draining of suspended messages and callbacks.
+
+== wafl.vol.rekey.stat
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when rekey scan ends to dump the stats.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Rekey scan is complete on volume '%s' (dsid %lu, aggr '%s'). Scan Stats: max_usecs_in_cpu = %lu, blks_total = %lu, max_blks_rekeyed_in_step = %lu, blks_rekeyed_by_scanner = %lu blks_rekeyed_by_client_io = %lu blks_with_error = %lu blks_skipped_dirty = %lu blks_suspended_fake_dirty = %lu blks_skipped_holes = %lu blks_packed = %lu
+*Parameters*::
+*vol* (STRING): Volume name.
+*dsid* (LONGINT): Unique identifier (DSID) of the volume.
+*aggr* (STRING): Name of the containing aggregate.
+*max_usecs_in_cpu* (LONGINT): Max. time (in micro-sec.) scanner runs in CPU.
+*blks_total* (LONGINT): Total number of blocks scanner is expected to process.
+*max_blks_rekeyed_in_step* (LONGINT): Max. number of blocks scanner process in one step.
+*blks_rekeyed_by_scanner* (LONGINT): Number of blocks rekeyed by scanner.
+*blks_rekeyed_by_client_io* (LONGINT): Number of blocks rekeyed by client I/O.
+*blks_with_error* (LONGINT): Number of blocks failed to be loaded by scanner due to error.
+*blks_skipped_dirty* (LONGINT): Number of blocks skipped by scanner because they are already dirty.
+*blks_suspended_fake_dirty* (LONGINT): Number of blocks rekey scanner suspended on because they were fake dirty.
+*blks_skipped_holes* (LONGINT): Number of blocks skipped by scanner because they are holes.
+*blks_packed* (LONGINT): Number of blocks packed.
+
+== wafl.vol.runningOutOfInodes
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects that a volume is close to reaching its limit on the number of files that it can contain.
+*Corrective Action*::
+Consider using the "volume modify <volume-name> -files <new-files-value>" command to increase the number of files that the volume is allowed to contain. You can view the current value of the file threshold by using the "volume show <volume-name> -fields files" command.
+*Syslog Message*::
+The file system on "%s %s%s%s%s" is using 80 percent or more of the files in %s inode space that can be contained on the volume.
+*Parameters*::
+*ino_type* (STRING): Inode type
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique volume identifier when the volume name alone is insufficient.
+
+== wafl.vol.setting.in.nvfailed.state
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects an NVFAIL event in a volume and marks the volume as in-nvfailed-state.
+*Corrective Action*::
+Access to the volume is restricted until you clear the NVFAIL state manually. See the Data Protection Online Backup and Recovery Guide.
+*Syslog Message*::
+Volume %s%s%s is marked as in-nvfailed-state: %s.
+*Parameters*::
+*vol* (STRING): Name of the volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): If the volume belongs to a Vserver, the Vserver's Universal Unique Identifier (UUID).
+*err* (STRING): Error that caused the volume to be marked in in-nvfailed-state.
+
+== wafl.vol.snap_create.done
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the 'snap create' scan is complete.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*run_time* (LONGINT): Total run time of the scanner.
+
+== wafl.vol.spcslo.conflict
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Service Level Objective related to space management (the space SLO setting) for a volume conflicts with other volume settings.
+*Corrective Action*::
+Try correcting the conflicting volume setting or space SLO by using the "volume modify <volname>" command.
+*Syslog Message*::
+The space SLO setting %s for volume %s%s is incompatible with the volume's %s setting (%s)%s.
+*Parameters*::
+*space_slo* (STRING): Space SLO of the volume.
+*vol* (STRING): Name of the volume with conflicting settings.
+*app* (STRING): Application UUID.
+*volident* (STRING): String that uniquely identifies the volume when the volume name is insufficient.
+*setting* (STRING): Name of the conflicting volume setting.
+*value* (STRING): Value of the conflicting volume setting.
+*detail* (STRING): Corrective action already taken, if any.
+
+== wafl.vol.tooFullForUnlink
+*Severity*::
+ALERT
+*Description*::
+This message occurs when an unlink operation requires more space than is available for unlinking in the relevant volume. Clients cannot remove files or directories until free space is added.
+*Corrective Action*::
+Manually delete snapshots or increase the volume's size for one-time space issues. For frequent space issues, consider changing autogrow or autodelete settings for the volume or aggregate in question.
+*Syslog Message*::
+Insufficient free space available on %s %s %s%s %s to perform unlink operation.
+*Parameters*::
+*type* (STRING): Type of object (volume or aggregate).
+*owner* (STRING): Volume owner.
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Volume identifier.
+
+== wafl.vol.unable.autogrow
+*Severity*::
+ERROR
+*Description*::
+This message occurs when automatically growing a volume fails because the underlying storage of the SVM (Vserver) has reached the SVM's storage limit.
+*Corrective Action*::
+Increase the storage of the SVM by raising the storage limit. Alternatively, recover storage space by deleting volumes, snapshots, LUNs, or files.
+*Syslog Message*::
+Auto-grow of volume "%s" failed because the SVM's storage limit has been reached.
+*Parameters*::
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume in cases where the volume name itself is insufficient.
+*object_uuid* (STRING): Volume instance UUID of the resource object.
+
+== wafl.vol.walloc.rsv.dbg.reset
+*Severity*::
+NOTICE
+*Description*::
+This event is issued to indicate that the write allocation reserve thresholds for a volume or aggregate have reset to normal. This message is issued on DEBUG builds only.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+DBG: Volume %s allocation reserve thresholds reset.
+*Parameters*::
+*vol* (STRING): The volume or aggregate name
+
+== wafl.vol.walloc.rsv.dbg.warn.blkcnt
+*Severity*::
+NOTICE
+*Description*::
+This event is issued to indicate that the write allocation reserve code has triggered but the volume block counters appear to be in the normal range.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+DBG: Volume (or aggregate) %s free space reserve hit %s threshold but block count doesn't match.
+*Parameters*::
+*vol* (STRING): The volume or aggregate name
+*type* (STRING): Threshold type: "low" or "high"
+
+== wafl.vol.walloc.rsv.failmount
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when a volume consumes almost all of its free space reserve and should not be brought back online without assistance from technical support to address the free space issue.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Failing mount of volume %s. Free space reserve is too low. Contact NetApp technical support for assistance.
+*Parameters*::
+*vol* (STRING): Volume name.
+
+== wafl.vol.walloc.rsv.offline
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a volume or aggregate has consumed almost all of its free space reserve. The system is being shut down and rebooted cleanly and the affected aggregate or volume will be taken offline until the situation can be corrected with help from technical support.
+*Corrective Action*::
+Contact NetApp technical support..
+*Syslog Message*::
+Volume %s free space reserve is critically low. Rebooting system to take volume offline. Contact technical support for assistance.
+*Parameters*::
+*vol* (STRING): Volume or aggregate name.
+
+== wafl.vol.walloc.rsv.root
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the root volume has consumed almost its entire free space reserve. This is a highly abnormal condition that can lead to data loss if the free space reserve is completely consumed.
+*Corrective Action*::
+Increasing the root volume size. Contact NetApp technical support for more information.
+*Syslog Message*::
+Root volume (or aggregate) %s free space reserve is critically low.
+*Parameters*::
+*vol* (STRING): Root volume or aggregate name.

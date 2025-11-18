@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: snaprestore-log-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snaprestore.log events
+---
+
+= snaprestore.log events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snaprestore.log.overalloc
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs during a SnapRestore(TM) operation, of a volume when the logical used space in the volume is greater than the total size of the volume and the Logical Space View enforcement feature was turned ON on the volume after creating the snapshot. This maight cause client modify operations to fail on the volume.
+*Corrective Action*::
+Create space by increasing the volumei size, or by deleting data or deleting snapshots. To increase a volume's size, use the "volume size" command. To delete a volume's snapshots, use the "volume snapshot delete" command.
+*Syslog Message*::
+During SnapRestore operation, volume %s in aggregate %s was logically overallocated during snap restore operation. It may impact client modify operations.
+*Parameters*::
+*volume* (STRING): Volume name.
+*aggr* (STRING): Name of the containing aggregate.

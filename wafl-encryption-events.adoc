@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: wafl-encryption-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.encryption events
+---
+
+= wafl.encryption events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.encryption.unsupported
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system takes offline an encrypted virtual volume because encryption became unsupported.
+*Corrective Action*::
+Reenable support for encryption by setting the bootarg "bootarg.disable.volume.softwareencryption.support" to "false", reboot the system and then bring online the encrypted volume.
+*Syslog Message*::
+Keeping encrypted volume "%s" (UUID: %s) offline because encryption has become unsupported.
+*Parameters*::
+*uuid* (STRING): UUID of the volume.
+*vol* (STRING): Volume name.

@@ -1,0 +1,68 @@
+---
+sidebar: sidebar
+permalink: flexcache-origin-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: flexcache.origin events
+---
+
+= flexcache.origin events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== flexcache.origin.config.sync.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the origin of the FlexCache volume expand operation fails to synchronize the configuration information between the newly created constituent volume and the cache cluster.
+*Corrective Action*::
+Use the "volume flexcache config-refresh" command on the cache cluster to update the origin of the FlexCache configuration.
+*Syslog Message*::
+Volume expand failed to create the origin configuration for the origin of the FlexCache volume "%s" in Vserver "%s" on the FlexCache cluster. Error: %s.
+*Parameters*::
+*originVolName* (STRING): Name of the origin of the FlexCache volume.
+*cacheVserver* (STRING): Name of the Vserver hosting the origin of the FlexCache volume.
+*errorString* (STRING): Error string.
+
+== flexcache.origin.size.sync.failed.disconnected.mode
+*Severity*::
+ERROR
+*Description*::
+This message occurs when syncing the size property of the origin volume between an origin of a FlexCache volume and its FlexCache volume fails because the cluster containing the FlexCache volume is not reachable.
+*Corrective Action*::
+Make sure that the cluster containing the FlexCache volume is reachable. Make sure that the FlexCache cluster and the origin of the FlexCache cluster are running on the same ONTAP(R) build.
+*Syslog Message*::
+Failed to sync origin size property for FlexCache Cluster "%s". Error: %s
+*Parameters*::
+*originClusterUuid* (STRING): Cache Cluster UUID.
+*errorString* (STRING): Error string.
+
+== flexcache.origin.size.sync.failed.for.cache.cluster
+*Severity*::
+ERROR
+*Description*::
+This message occurs when syncing the size property of the origin volume between an origin of a FlexCache volume and its FlexCache volume fails because we encountered some error on the cluster containing the FlexCache volume.
+*Corrective Action*::
+Look for an EMS on the cache cluster and take the corrective action needed. Make sure that the FlexCache cluster and the origin of the FlexCache cluster are running on the same ONTAP(R) build.
+*Syslog Message*::
+Failed to sync origin size property for Cache Cluster "%s".
+*Parameters*::
+*cacheClusterUuid* (STRING): Cache Cluster UUID.
+
+== flexcache.origin.size.sync.failed.for.cache.volume
+*Severity*::
+ERROR
+*Description*::
+This message occurs when syncing the size property of the origin volume between an origin of a FlexCache volume and its FlexCache volume fails, and the sync operation will be retried.
+*Corrective Action*::
+Take the appropriate action depending on the error message. Make sure that the FlexCache cluster and the origin of the FlexCache cluster are running on the same ONTAP(R) build.
+*Syslog Message*::
+Failed to sync origin size property for FlexCache volume "%s" in Vserver "%s". Error: %s.
+*Parameters*::
+*volumeName* (STRING): Cache Volume Name.
+*vserverName* (STRING): Cache Vserver Name.
+*errorString* (STRING): Error string.

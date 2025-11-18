@@ -1,0 +1,87 @@
+---
+sidebar: sidebar
+permalink: nvdimm-nvmem-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nvdimm.nvmem events
+---
+
+= nvdimm.nvmem events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nvdimm.nvmem.checkfail
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when NVDIMM-based NVMEM checks fail.
+*Corrective Action*::
+For all errors, check that the right type of NVDIMM is properly installed at the designated DIMM slot.
+*Syslog Message*::
+NVMEM subsystem configuration check failed because %s. To prevent NVMEM data loss, halt the system.
+*Parameters*::
+*error* (STRING): Description of the error, which could be: 1 device in slot-N is not accessbile. 2. device in slot-N is missing. 3. device in slot-N is not NVDIMM. 4. device in slot-N is the wrong size (N); expected size (N)
+
+== nvdimm.nvmem.destage.failure
+*Severity*::
+ALERT
+*Description*::
+This message occurs when NVDIMM fails to copy nonvolatile data to the flash on the NVDIMM-device.
+*Corrective Action*::
+This type of error indicates that the volatile data on the local NVMEM has been lost. A storage system in an HA configuration might recover the NVMEM content from its partner. To prevent future possible data loss, take the appropriate actions based on the error: 1. If the failure is caused by a malfunctioning battery, contact NetApp technical support for assistance with battery replacement. 2. If the failure is caused by an NVDIMM intermittent hardware failure, contact NetApp technical support for assistance.
+*Syslog Message*::
+NVMEM subsystem failed to copy nonvolatile data to flash memory on NVIDMM device because %s.
+*Parameters*::
+*error* (STRING): Reason for destage failure could be: (1) SDRAM is not in self-refresh mode (2) energy source (battery) is not functioning properly (3) of insufficient battery (4) destage process timeout (5) an intermitten hardware error results partial data saved (6) of a hardware error (7) of a firmware error (8) of a flash error
+
+== nvdimm.nvmem.destage.succeed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when all NVDIMM devices have copied nonvolatile data to flash memory.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NVMEM subsystem successfully copied nonvolatile data to flash memory on NVDIMM device in %ld seconds.
+*Parameters*::
+*seconds* (INT): Time taken by the destage operation.
+
+== nvdimm.nvmem.initfail
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the nvdimm-based NVMEM subsystem is not initialized succesfully.
+*Corrective Action*::
+For all errors, check if the error is persistent or intermittent by power cycling the controller and rebooting ONTAP. Note: If the last reboot is a dirty shutdown, set the bootarg.init.battery_override to force system to replay the NVLOG first when booting. Then, gracefully shut down and power cycle the controller.. If the failure is persistent: (a) For error (1) (2) (3) (5) (6) (7) (8), contact NetApp technical support for assistance with replacement.of NVDIMM or upgrade NVDIMM firmware. (b) For error (4), b.1 If failure cause is battery, contact NetApp technical support for assistance with replacement of the battery. b.2 For other failures, contact NetApp technical support for assistance with replacement of NVDIMM. (c) For error (9), contact NetApp technical support for assistance with replacement of the controller. (d) For error (10), verify the NVDIMM is installed properly and check if the correct BIOS is installed.
+*Syslog Message*::
+NVMEM subsystem initialization failed because %s. To prevent NVMEM data loss, halt the system.
+*Parameters*::
+*error* (STRING): Description of the error, which could be: 1.NVDIMM device in slot-N not accessible. 2.NVDIMM device in slot-N not ready. 3.NVDIMM device in slot-N is busy. 4.NVDIMM device in slot-N lost persistence due to [reason] 5.NVDIMM device in slot-N has worn-out flash (N percent remaining) 6.NVDIMM device in slot-N failed to configure energy source 7.NVDIMM device in slot-N failed to configure saveNPin. 8.NVDIMM device in slot-N failed to enable data preservation. 9.failed to enable battery. 10.NVDIMM memory address not mapped contiguously.
+
+== nvdimm.nvmem.restage.failure
+*Severity*::
+ALERT
+*Description*::
+This message occurs when nonvolatile data on the NVDIMM is either corrupt or not accessible. Because these errors cannot be corrected, nonvolatile data in flash memory is lost.
+*Corrective Action*::
+Frequent occurrence of these errors indicates that the NVDIMM is experiencing persistent intermittent hardware failure. Contact NetApp technical support for assistance with replacement.
+*Syslog Message*::
+NVMEM subsystem failed to restore nonvolatile data from flash memory on the NVIDMM module because of %s.
+*Parameters*::
+*error* (STRING): Reason for restage failure could be: (1) SDRAM is not in self-refresh mode (2) of SDRAM uncorrectable error (3) restage process timeout (4) of a hardware error
+
+== nvdimm.nvmem.restage.succeed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when all NVDIMM devices have restored nonvolatile data from flash memory.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NVMEM subsystem successfully restored nonvolatile data from flash memory on NVDIMM device in %ld seconds.
+*Parameters*::
+*seconds* (INT): Time taken by the restage operation.

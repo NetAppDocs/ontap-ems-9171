@@ -1,0 +1,167 @@
+---
+sidebar: sidebar
+permalink: mgmtgwd-configbr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmtgwd.configbr events
+---
+
+= mgmtgwd.configbr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmtgwd.configbr.backupCompleted
+*Deprecated*::
+This event was replaced by configbr.backupCompleted.
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a scheduled configuration backup is successfully created.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Scheduled configuration backup %s was created successfully.
+*Parameters*::
+*backup* (STRING): Backup file.
+
+== mgmtgwd.configbr.backupFailed
+*Deprecated*::
+This event was replaced by configbr.backupFailed.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the configuration backup cannot be created.
+*Corrective Action*::
+If the reason is about the root volume file system, ensure that it is available and has enough space to create a backup. If the reason is that a scheduled backup file could not be created, create the backup file manually and upload it to the remote URL.
+*Syslog Message*::
+The %s configuration backup %s cannot be created. Error: '%s'.
+*Parameters*::
+*type* (STRING): Type of backup, either cluster or local.
+*backup* (STRING): Backup file.
+*reason* (STRING): Reason for the error.
+
+== mgmtgwd.configbr.deleteFailed
+*Deprecated*::
+This event was replaced by configbr.deleteFailed.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an old configuration backup cannot be deleted.
+*Corrective Action*::
+Ensure that the node is accessible and healthy. If necessary, delete the backup manually.
+*Syslog Message*::
+The %s configuration backup %s on node %s cannot be deleted. Error: '%s'.
+*Parameters*::
+*type* (STRING): Type of backup, either cluster or local.
+*backup* (STRING): Backup file.
+*node* (STRING): Node on which the backup file exists.
+*reason* (STRING): Reason for the error.
+
+== mgmtgwd.configbr.distributeFailed
+*Deprecated*::
+This event was replaced by configbr.distributeFailed.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a configuration backup cannot be distributed to another node in the cluster.
+*Corrective Action*::
+Ensure that the destination node is accessible and healthy. If necessary, upload the backup file to the remote URL to increase the availability of the backup file.
+*Syslog Message*::
+Configuration backup %s cannot be distributed to node %s. Error: '%s'.
+*Parameters*::
+*backup* (STRING): Backup file.
+*destination_node* (STRING): Destination node to which the backup file failed to be distributed.
+*reason* (STRING): Reason for the error.
+
+== mgmtgwd.configbr.initFailed
+*Deprecated*::
+This event was replaced by configbr.initFailed.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the configuration backup and restore feature cannot initialize the necessary software components.
+*Corrective Action*::
+If the reason is about the backup directory under the root volume, ensure that the root volume is available and has enough free space. If the reason is about populating replicated database entries, wait five minutes and then use the advanced mode of the command-line interface to access the "Backup Settings" menu to ensure that backup schedules are listed. If the reason is about creating backup jobs, wait five minutes and then run the 'job show' command to ensure that backup jobs are displayed for each schedule.
+*Syslog Message*::
+Configuration backup and restore feature could not be initialized. Error: '%s'.
+*Parameters*::
+*reason* (STRING): Reason for the initialization failure.
+
+== mgmtgwd.configbr.intError
+*Deprecated*::
+This event was replaced by configbr.intError.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an attempt to create a configuration backup file encountered an internal software error.
+*Corrective Action*::
+Create the configuration backup file manually by using the "system configuration backup create" command.
+*Syslog Message*::
+Configuration backup and restore detected an internal software error. Error: '%s'.
+*Parameters*::
+*error* (STRING): Internal software error.
+
+== mgmtgwd.configbr.noDestURL
+*Deprecated*::
+This event was replaced by configbr.noDestURL.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the cluster backup is saved on only one node and no offsite configuration backup destination URL is configured.
+*Corrective Action*::
+Configure an offsite configuration backup destination URL as soon as possible, using the commands "system configuration backup settings modify -destination <destination-url> -username <username-on-destination-url>" and "system configuration backup settings set-password".
+*Syslog Message*::
+Cluster backup is saved on only one node and no offsite configuration backup destination URL is configured.
+*Parameters*::
+(None).
+
+== mgmtgwd.configbr.snapshotDeleteFailed
+*Deprecated*::
+This event was replaced by configbr.snapshotDelFailed.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a Snapshot(tm) copy on the root volume cannot be deleted. The Snapshot copy was created during a configuration backup.
+*Corrective Action*::
+Ensure that the root volume file system is available.
+*Syslog Message*::
+Snapshot copy %s on the root volume cannot be deleted on node %s. Error: '%s'.
+*Parameters*::
+*name* (STRING): Name of the Snapshot copy.
+*node* (STRING): Node on which the Snapshot copy was created.
+*reason* (STRING): Reason for the error.
+
+== mgmtgwd.configbr.unpubFailed
+*Deprecated*::
+This event was replaced by configbr.unpubFailed.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the configuration backup and restore feature fails to unpublish a package by using the file replication service. The configuration backup process creates file packages and registers them with the file replication service, which stores the package in the root file system. When the configuration backup process is complete, it cleans up these files by unpublishing the package by using the file replication service. When unpublishing fails, these files are not be cleaned up and remain in the root file system. This message does not indicate a failure in the configuration backup process, which continues despite the event. You can monitor the status of an ongoing configuration backup process by using the "job show" command. The completed configuration backup files are visible when you run the "system configuration backup show" command.
+*Corrective Action*::
+Obtain diagnostic privilege and view the file replication packages by using the "system services replication show" command. Unpublish the file replication packages by issuing the "system services replication unpublish" command, for which you also need diagnostic privilege. Check the "cluster ring show" command to ensure that the node is in quorum; management quorum is required for the unpublish command to succeed. Do not take these actions while an active configuration backup process is running.
+*Syslog Message*::
+Configuration backup and restore failed to unpublish package %s; Error: '%s'.
+*Parameters*::
+*package_name* (STRING): Name of the package.
+*reason* (STRING): Reason for the unpublishing failure.
+
+== mgmtgwd.configbr.uploadFailed
+*Deprecated*::
+This event was replaced by configbr.uploadFailed.
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the configuration backup cannot be uploaded to the destination URL.
+*Corrective Action*::
+Ensure that the destination URL is reachable, the protocol in the URL is supported, and the user credentials are valid.
+*Syslog Message*::
+Configuration backup file %s cannot be uploaded to the destination URL %s. Error: '%s'.
+*Parameters*::
+*backup* (STRING): Backup file.
+*destination* (STRING): Destination URL.
+*reason* (STRING): Reason for the upload failure.

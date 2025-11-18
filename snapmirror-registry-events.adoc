@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: snapmirror-registry-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapmirror.registry events
+---
+
+= snapmirror.registry events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapmirror.registry.cleanup
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system cleans up an invalid value in SnapMirror(R) registry.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cleanup invalid registry %s: %s.
+*Parameters*::
+*type* (STRING): SnapMirror registry key or value .
+*invalid* (STRING): Invalid SnapMirror registry key or value.

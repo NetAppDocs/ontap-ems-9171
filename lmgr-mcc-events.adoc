@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: lmgr-mcc-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lmgr.mcc events
+---
+
+= lmgr.mcc events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lmgr.mcc.oplock.recall.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system vetoes MetroCluster(TM) switchback or negotiated switchover because CIFS oplock recall fails. Some oplocks could not be recalled because of CPU overload, slow CIFS client response, or a large number of open files.
+*Corrective Action*::
+Recall oplocks for Vservers participating in negotiated switchover or switchback operations by using the command 'volume qtree oplocks -volume <vol-name> -qtree <qtree-name> -vserver <vserver-name> -oplock-mode disable' for volumes or qtrees with oplocks enabled. Then retry the MetroCluster operation, and reenable oplocks after the operation is complete. If the error persists, then contact NetApp technical support for assistance.
+*Syslog Message*::
+Vetoed MetroCluster switchback or negotiated switchover because CIFS oplock recall failed with internal error (%d).
+*Parameters*::
+*error* (INT): Error number.

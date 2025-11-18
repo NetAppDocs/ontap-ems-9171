@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: config-invalid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.invalid events
+---
+
+= config.invalid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.invalid.PortToPort
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SAS (Serial Attached SCSI) port is attached to another SAS port. This is not a valid connection.
+*Corrective Action*::
+Check and correct the cabling; connecting two SAS ports together in this configuration is not permitted.
+*Syslog Message*::
+SAS adapter "%s" is attached to another SAS adapter.
+*Parameters*::
+*adapterName* (STRING): Name of the associated SAS host bus adapter.

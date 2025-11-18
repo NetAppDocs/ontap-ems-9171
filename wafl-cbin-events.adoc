@@ -1,0 +1,66 @@
+---
+sidebar: sidebar
+permalink: wafl-cbin-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.cbin events
+---
+
+= wafl.cbin events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.cbin.iron.mirror.config.changed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when cloud mirror configuration changes during the WAFLiron operation on a FabricPool aggregate with unified format enabled.
+*Corrective Action*::
+Run wafliron again on the aggregate.
+*Syslog Message*::
+The wafliron cannot update total physical size on bin label as cloud mirror configuartion has changed on aggreagate %s. Please run wafliron again on the aggregate.
+*Parameters*::
+*aggregate_name* (STRING): Aggregate name.
+
+== wafl.cbin.iron.objslothdr.invalid.entry.threshold.reached
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when number of invalid entries in objslothdr metafile reaches the upper threshold during the WAFLiron operation on a FabricPool aggregate with unified format enabled.
+*Corrective Action*::
+Run the fixup tool on the Fabricpool aggregate and after the fixup tool finishes, run wafliron again on the aggregate.
+*Syslog Message*::
+The wafliron cannot update total physical size on bin label as number of invalid entries in slothdr metafile reached the upper threshold on aggregate %s. Please run the fixup tool on the aggregate before running wafliron again.
+*Parameters*::
+*aggregate_name* (STRING): Aggregate name.
+
+== wafl.cbin.label.total.physical.size.overcounted
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when overcounting of total physical size on the bin label happens due to invalid entries in slothdr metafile belonging to a Fabricpool aggregate with unified format enabled.
+*Corrective Action*::
+Run the fixup tool on the Fabricpool aggregate and after the fixup tool finishes, run wafliron again on the aggregate.
+*Syslog Message*::
+The total physical size on bin label belonging to Fabricpool aggregate %s might be overcounted as there were %llu invalid entries in slothdr metafile. The current physical used is %llu. Previously physical used was %llu. For further assistance, contact NetApp technical support.
+*Parameters*::
+*aggregate_name* (STRING): Aggregate name.
+*invalid_entry_count* (LONGINT): Number of invalid entries present in slothdr metafile.
+*physical_used* (LONGINT): Current total physical used in capacity tier.
+*old_physical_used* (LONGINT): Previous total physical used in capacity tier.
+
+== wafl.cbin.objslothdr.iron.skip.resync.in.progress
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when wafliron skips ironing objslothdr metafile on a FabricPool aggregate with unified format enabled as resync operation is in progress.
+*Corrective Action*::
+Run wafliron again once resync operation is complete.
+*Syslog Message*::
+Wafliron has skipped ironing objslothdr metafile on aggregate %s as resync operation is in progress on this aggregate. Please run wafliron after resync operation is complete.
+*Parameters*::
+*aggregate_name* (STRING): Aggregate name.

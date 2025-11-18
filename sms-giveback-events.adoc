@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: sms-giveback-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sms.giveback events
+---
+
+= sms.giveback events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sms.giveback.veto.override
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during an SFO aggregate giveback, when the SnapMirror(R) subsystem indicates that giveback should be vetoed but the veto was overridden by the automated nondisruptive update procedure. The automated nondisruptive update procedure verifies the expected state of the aggregate.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+snapmirror subsystem veto was overridden during giveback operation of "%s" aggregate.
+*Parameters*::
+*aggregate* (STRING): Name of the aggregate.

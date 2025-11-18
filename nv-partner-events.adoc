@@ -1,0 +1,64 @@
+---
+sidebar: sidebar
+permalink: nv-partner-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nv.partner events
+---
+
+= nv.partner events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== nv.partner.disabled
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when checking the partner nonvolatile RAM (NVRAM) and the partner NVRAM is disabled. This event most commonly occurs during the takeover or switchover process after the partner has gone down.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NVRAM validate: %s NVRAM was disabled.
+*Parameters*::
+*host* (STRING): Name of the partner host.
+
+== nv.partner.nvcheck.failure
+*Severity*::
+ALERT
+*Description*::
+This message occurs when nonvolatile RAM (NVRAM) inconsistencies are detected during takeover. Takeover is continued only if the option for consistent NVRAM mirroring is disabled or if the takeover is forced.
+*Corrective Action*::
+When the partner node recovers, NVRAM will be reinitialized to a consistent state. The error string provides additional information to assist NetApp technical support in identifying the inconsistency and subsystem that caused the failure.
+*Syslog Message*::
+NVRAM validate: %s
+*Parameters*::
+*error* (STRING): Error string describing which subsystem caused the failure and what the mismatching values are.
+
+== nv.partner.size.mismatch
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the HA pair nonvolatile RAM (NVRAM) sizes do not match. In this case, an HA pair cannot be formed.
+*Corrective Action*::
+Check to make sure that the local NVRAM hardware size matches the partner NVRAM hardware size. Verify that the same bootargs are in use on both nodes. One or both nodes might need to be rebooted. Contact NetApp technical support if the problem persists.
+*Syslog Message*::
+CF monitor: NVRAM size mismatch between nodes detected; node requires %llu bytes, partner exported %llu bytes.
+*Parameters*::
+*localNVSize* (LONGINT): Size of the local NVRAM.
+*partnerNVSize* (LONGINT): Size of the partner NVRAM.
+
+== nv.partner.takeover.continued
+*Severity*::
+ALERT
+*Description*::
+This message occurs when takeover proceeds even when nonvolatile RAM (NVRAM) inconsistencies are detected in the HA pair. This most commonly occurs when the NVRAM mirror consistency has been disabled or if the takeover is forced.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NVRAM validate: Error encountered (%s), but continuing takeover; some data might be lost.
+*Parameters*::
+*error* (STRING): Error string.

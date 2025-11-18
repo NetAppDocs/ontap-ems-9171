@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: cecc_log-summary-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cecc_log.summary events
+---
+
+= cecc_log.summary events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cecc_log.summary
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the ECC error logger reports its periodic summary of new correctable ECC errors that occurred after the last report and the total number of ECC errors that occurred since boot. These errors were corrected by the system.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Total of %lld new correctable ECC errors just reported. You might want to check system memory. %lld correctable ECC errors reported since booting.
+*Parameters*::
+*num_ceccs* (LONGINT): Number of new correctable ECC errors after the last summary.
+*total_num_ceccs* (LONGINT): Number of correctable ECC errors since boot.

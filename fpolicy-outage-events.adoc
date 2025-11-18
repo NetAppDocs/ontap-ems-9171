@@ -1,0 +1,122 @@
+---
+sidebar: sidebar
+permalink: fpolicy-outage-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fpolicy.outage events
+---
+
+= fpolicy.outage events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fpolicy.outage.file.invalid
+*Severity*::
+ERROR
+*Description*::
+This message occurs when file creation fails under the configured resiliency directory path.
+*Corrective Action*::
+Check the configured resiliency directory path. To find the configured resiliency directory path by using the "vserver fpolicy policy external-engine show" command.
+*Syslog Message*::
+Failed to create file under configured resiliency directory path of FPolicy external engine "%s" for policy "%s". Reason: %s.
+*Parameters*::
+*engine* (STRING): FPolicy external engine.
+*policy* (STRING): FPolicy policy.
+*reason* (STRING): Reason for the failure.
+
+== fpolicy.outage.msg.lost
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the send operation fails for the network outage notification.
+*Corrective Action*::
+Find the file in the configured resiliency directory path.
+*Syslog Message*::
+Failed to send outage notification message to any FPolicy server for policy "%s" and path "%s".
+*Parameters*::
+*policy* (STRING): FPolicy policy.
+*path* (STRING): File path.
+
+== fpolicy.outage.msg.success
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a network outage notification is successfully sent.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Outage notification message sent to at least one FPolicy server for policy "%s" and file path "%s".
+*Parameters*::
+*policy* (STRING): FPolicy policy.
+*path* (STRING): File path.
+
+== fpolicy.outage.over
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the FPolicy external engine, acting asynchronously and with resiliency support enabled, is reconnected after a network outage.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The network outage (duration: "%llu" sec) is over. At least one FPolicy server is now connected successfully for FPolicy external engine "%s" of policy "%s".
+*Parameters*::
+*Duration* (LONGINT): Network outage duration in seconds.
+*engine* (STRING): Asynchronous FPolicy external engine.
+*policy* (STRING): FPolicy policy.
+
+== fpolicy.outage.start
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the FPolicy external engine, acting asynchronously and with resiliency support enabled, is disconnected due to a network outage.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Network outage for FPolicy external engine "%s" of policy "%s".
+*Parameters*::
+*engine* (STRING): Asynchronous FPolicy external engine.
+*policy* (STRING): FPolicy policy.
+
+== fpolicy.outage.timeout
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the maximum notification retention duration for the FPolicy external engine expires, and the engine is configured to operate asynchronously with resiliency support enabled. The storage controller stores no more notifications.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Maximum notification retention time has expired for FPolicy external engine "%s" of policy "%s".
+*Parameters*::
+*engine* (STRING): Asynchronous FPolicy external engine.
+*policy* (STRING): FPolicy policy.
+
+== fpolicy.outage.write
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when FPolicy cannot store file notifications using the configured resiliency directory path.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Failed to store notifications in configured resiliency directory path of FPolicy external engine "%s" for policy "%s". Reason: %s.
+*Parameters*::
+*engine* (STRING): FPolicy external engine.
+*policy* (STRING): FPolicy policy.
+*reason* (STRING): Reason for the failure.
+
+== fpolicy.outage.writes.lost
+*Severity*::
+ERROR
+*Description*::
+This message occurs when FPolicy fails multiple consecutive times to store file notifications using the configured resiliency directory path.
+*Corrective Action*::
+Check the configured resiliency directory path. To find the configured resiliency directory path by using the "vserver fpolicy policy external-engine show" command.
+*Syslog Message*::
+Unable to store notifications in configured resiliency directory path of FPolicy external engine "%s" for policy "%s".
+*Parameters*::
+*engine* (STRING): FPolicy external engine.
+*policy* (STRING): FPolicy policy.

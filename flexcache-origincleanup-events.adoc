@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: flexcache-origincleanup-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: flexcache.origincleanup events
+---
+
+= flexcache.origincleanup events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== flexcache.origincleanup.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the origin of a FlexCache(R) volume cleanup job fails to clean up the origin volume. All future FlexCache operations on the origin volume will fail.
+*Corrective Action*::
+Use the "volume flexcache origin cleanup-cache-relationship -force-retry true" command on the origin cluster to cleanup origin of a FlexCache volume. If the problem persists then contact technical support for assistance.
+*Syslog Message*::
+Origin volume cleanup job failed to clean up the origin volume of the FlexCache volume %s in Vserver %s in the origin cluster %s.
+*Parameters*::
+*originVolName* (STRING): Name of the origin volume of the FlexCache volume.
+*originVserver* (STRING): Name of the Vserver hosting the origin of a FlexCache volume.
+*originClusterUuid* (STRING): UUID of the origin cluster of a FlexCache volume.
+
+== flexcache.origincleanup.retry
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the RAL cleanup at the origin volume of a FlexCache(R) volume fails due to timeout. All future FlexCache operations on the origin volume will fail.
+*Corrective Action*::
+Use the "volume flexcache origin cleanup-cache-relationship -force-retry true" command on the origin cluster to cleanup origin of a FlexCache volume. If the problem persists then contact technical support for assistance.
+*Syslog Message*::
+RAL cleanup incomplete for the origin volume of the FlexCache volume %s in Vserver %s.
+*Parameters*::
+*originVolName* (STRING): Name of the origin volume of the FlexCache volume.
+*originVserver* (STRING): Name of the Vserver hosting the origin of a FlexCache volume.

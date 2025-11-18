@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: vifmgr-viplifwithoutbgp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.viplifwithoutbgp events
+---
+
+= vifmgr.viplifwithoutbgp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.vipLifWithoutBgp
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a logical interface (LIF) associated with the Virtual IP (VIP) feature does not have a BGP peer group.
+*Corrective Action*::
+Use the "network bgp peer-group create" command to create a BGP peer group with the same IPspace and node as the affected LIF.
+*Syslog Message*::
+VIP lif %s on Vserver %s does not have BGP peer group in IPspace %s on node %s.
+*Parameters*::
+*lif* (STRING): LIF name.
+*vserver_name* (STRING): Vserver name.
+*ipspace_name* (STRING): IPspace name.
+*node_name* (STRING): Name of the node to which LIFs could not be replicated.

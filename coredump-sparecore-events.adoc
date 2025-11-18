@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: coredump-sparecore-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: coredump.sparecore events
+---
+
+= coredump.sparecore events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== coredump.sparecore.killed
+*Severity*::
+INFORMATIONAL
+*Description*::
+Sparecore was aborted by partner.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Sparcore was aborted by partner.
+*Parameters*::
+(None).

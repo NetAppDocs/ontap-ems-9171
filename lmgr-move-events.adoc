@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: lmgr-move-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: lmgr.move events
+---
+
+= lmgr.move events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== lmgr.move.dump.lock.counts
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a volume move operation fails the cutover phase, due to volume quiesce timer expiration, and not all locks were transferred before the failure.
+*Corrective Action*::
+Run the "vserver locks show -vserver <vserver> -volume <volume>" command to check the locks and the client IP addresses they are associated with. For NFS v4 locks, run instead the "vserver locks nfsv4 show -fields client-name" command in all nodes to get the same information. Reduce locks so that the number of locks remaining in this volume is fewer than the number scanned, and then attempt the volume move cutover again.
+*Syslog Message*::
+The volume move of volume with DSID %llu did not cut over due to volume quiesce timer expiration. The volume move has scanned %d out of %d locks in the volume.
+*Parameters*::
+*volDsid* (LONGINT): Data set identifier (DSID) of the volume.
+*scanned_locks* (INT): Number of locks in the volume that were scanned before the failure.
+*total_locks* (INT): Total number of locks in the volume.

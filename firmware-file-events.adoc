@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: firmware-file-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: firmware.file events
+---
+
+= firmware.file events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== firmware.file.invalid
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system detects an invalid disk or shelf firmware file. This file cannot be used to update firmware on any disk or shelf device. This message repeats every 24 hours as long as the invalid file is present. There might be other invalid files on the system, and messages for those files are suppressed if they are detected within 24 hours of this event.
+*Corrective Action*::
+Check your support provider for more information about obtaining the latest disk and shelf firmware. If the problem persists, contact NetApp technical support.
+*Syslog Message*::
+%s %s failed verification due to: %s.
+*Parameters*::
+*fwFileType* (STRING): Type of the firmware file, for example disk or shelf firmware file.
+*fwFileName* (STRING): Name of the firmware file.
+*reason* (STRING): Reason for mismatch.

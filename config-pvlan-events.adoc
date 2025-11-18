@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: config-pvlan-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: config.pvlan events
+---
+
+= config.pvlan events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== config.pvlan.created
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a pseudo-VLAN port is created.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Pseudo-VLAN "%s" was created on the network interface "%s".
+*Parameters*::
+*pvlanName* (STRING): Pseudo-VLAN name.
+*interface* (STRING): Interface name that the pseudo-VLAN will be on.
+
+== config.pvlan.deleted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a pseudo-VLAN port is deleted.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Pseudo-VLAN "%s" was deleted from the network interface "%s".
+*Parameters*::
+*pvlanName* (STRING): Pseudo-VLAN name.
+*interface* (STRING): Interface name that the pseudo-VLAN is on.

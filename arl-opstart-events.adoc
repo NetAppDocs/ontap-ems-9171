@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: arl-opstart-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: arl.opstart events
+---
+
+= arl.opstart events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== arl.OpStart
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the aggregate relocation operation starts. After this message is displayed, aggregates are relocated to the specified destination serially.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Starting relocation to destination %s at time %llu. 'override-vetoes' set to %s, and 'override-destination-checks' set to %s.
+*Parameters*::
+*destName* (STRING): Name of the destination node.
+*time* (LONGINT): Time at which relocation started.
+*override_vetoes* (STRING): Flag that indicates whether the system should override veto checks for a relocation operation. This flag corresponds to the "-override-vetoes" parameter of the "storage aggregate relocation start" command. When set to true, it might result in the relocation proceeding even if the node detects outstanding issues that would make aggregate relocation dangerous or disruptive.
+*override_dest_checks* (STRING): Flag that indicates whether the system should override checks done on the destination node. This flag corresponds to the "-override-destination-checks" parameter of the "storage aggregate relocation start" command. When set to true, it can be used to force relocation of aggregates even if the destination has outstanding issues. Note that this could make the relocation dangerous or disruptive.

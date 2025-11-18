@@ -1,0 +1,56 @@
+---
+sidebar: sidebar
+permalink: mcc-drmsg-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mcc.drmsg events
+---
+
+= mcc.drmsg events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mcc.drmsg.received
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a DR message is successfully received from a DR partner node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*version* (INT): Version of the DR message.
+*type* (STRING): Type of message sent.
+*request* (STRING): Type of request being sent.
+*seq_num* (LONGINT): Sequence number of the message.
+*recv_sysid* (LONGINT): System ID of receiving Node
+*sysid* (LONGINT): System ID of sending node.
+*recv_time* (LONGINT): Time when message was sent.
+*send_time* (LONGINT): Time when message was sent.
+*status* (STRING): Status of the DR message.
+*fsm_state* (STRING): FSM state of the responding node.
+*sb_reason* (STRING): SB reason if any specified.
+*dr_op_state* (INT): DR operation state of the responding node.
+*ha_fw_state* (STRING): HA firmware state of the responding node.
+
+== mcc.drmsg.sent
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a DR message is successfully sent to a partner node.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*version* (INT): Version of the DR message.
+*type* (STRING): Type of message sent.
+*request* (STRING): Type of request being sent.
+*seq_num* (LONGINT): Sequence number of the message.
+*sysid* (LONGINT): System ID of sending Node.
+*send_time* (LONGINT): Time when message was sent.

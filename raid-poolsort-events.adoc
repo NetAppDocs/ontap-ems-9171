@@ -1,0 +1,71 @@
+---
+sidebar: sidebar
+permalink: raid-poolsort-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.poolsort events
+---
+
+= raid.poolsort events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.poolsort.disks_per_channel
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system detects an invalid number of disks on a single channel.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*channel_name* (STRING): Name of the channel containing too many disks.
+*num_disks* (INT): Number of disks connected to this channel.
+*max_disks* (INT): Maximum number of disks expected to be connected to this channel.
+
+== raid.poolsort.disks_per_shelf
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the system detects too many disks reporting the same disk shelf ID. This usually indicates that multiple shelves on one channel are using the same shelf ID.
+*Corrective Action*::
+Change the conflicting shelf IDs to unique values using the supported procedures for the affected shelves.
+*Syslog Message*::
+Shelf ID %d on channel %s is reporting too many disks.
+*Parameters*::
+*shelf_id* (INT): Shelf ID being reported by the disks.
+*channel_name* (STRING): Channel the disks are connected to.
+*num_disks* (INT): Number of disks reporting this shelf ID.
+*max_disks* (INT): Maximum number of disks expected to report this shelf ID.
+
+== raid.poolsort.num_channels
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system detects an invalid number of channels.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*num_channels* (INT): Number of channels detected.
+*max_channels* (INT): Maximum number of channels allowed on the system.
+
+== raid.poolsort.shelves_per_channel
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the system detects an invalid number of disk shelves on a single channel.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*channel_name* (STRING): Channel containing too many shelves.
+*num_shelves* (INT): Number of shelves connected to this channel.
+*max_shelves* (INT): Maximum number of shelves expected to be connected to this channel.

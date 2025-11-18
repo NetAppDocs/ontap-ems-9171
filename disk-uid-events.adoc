@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: disk-uid-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.uid events
+---
+
+= disk.uid events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.uid.changed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a SCSI (Small Computer System Interface) INQUIRY command done during a disk drive initialization sequence finds different data in the INQUIRY response for page 0x83. The unique id (UID) derived from this information has changed unexpectedly.
+*Corrective Action*::
+Locate the failed disk drive by looking for a disk drive whose amber LED fault light is lit. Replace the disk drive.
+*Syslog Message*::
+Disk %s has unexpectedly changed its unique ID. vendor:%s product:%s serial_number:%s
+*Parameters*::
+*diskName* (STRING): Name of the disk that had the UID change.
+*disk_vendor_id* (STRING): Vendor name of the disk that had the UID change.
+*disk_product_id* (STRING): Product name of the disk that had the UID change.
+*disk_serialno* (STRING): Serial number of the disk that had the UID change.

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: sis-clog-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.clog events
+---
+
+= sis.clog events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.clog.disabled
+*Severity*::
+ERROR
+*Description*::
+This message occurs while mounting a volume, when an error with the SIS metafile operation results in the change logging function being disabled to avoid inconsistencies.
+*Corrective Action*::
+Reinitialize the change logging operation by using the 'sis on' command.
+*Syslog Message*::
+Change logging has been disabled for %s%s due to an error that occurred while mounting the volume during the SIS metafile operation: %s.
+*Parameters*::
+*path* (STRING): Path to the SIS volume.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*reason* (STRING): Reason for the failure.

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: xfcvi-attr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: xfcvi.attr events
+---
+
+= xfcvi.attr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== xfcvi.attr.changed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when any of the xfcvi attributes changes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+FC-VI adapter: %s changed on port %s. %s
+*Parameters*::
+*attr_type* (STRING): Attribute type.
+*port* (STRING): xfcvi Interconnect NIC.
+*info* (STRING): Additional info.

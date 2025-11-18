@@ -1,0 +1,44 @@
+---
+sidebar: sidebar
+permalink: cpeer-ping-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: cpeer.ping events
+---
+
+= cpeer.ping events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== cpeer.ping.family.mismatch
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an attempt is made to check the cluster peering relationship and no intercluster LIFs of the same address family and the correct IPspace are found on this node. Stable addresses are typically provided by the administrator during cluster peer creation and can be modified by modifying the peer relationship. The IPspace for a cluster peer relationship may be supplied when creating or modifying the relationship.
+*Corrective Action*::
+Correct the stable IP address by using the "cluster peer modify" command. Ensure that LIFs of the appropriate address family exist on both the local cluster and the remote peer. Ensure that LIFs of the local cluster exist in the given IPspace.
+*Syslog Message*::
+Failed to find LIFs of type %s on node %s for destination address %s in IPspace %s belonging to destination cluster %s.
+*Parameters*::
+*peering_family* (STRING): IP address family.
+*node* (STRING): Originating node.
+*dest_address* (STRING): Destination IP address.
+*ipspace* (STRING): IPspace for the relationship.
+*dest_cluster* (STRING): Destination cluster.
+
+== cpeer.ping.no.lifs
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an attempt is made to check the cluster peering relationship and no intercluster LIFs in the correct IPspace are found on this node.
+*Corrective Action*::
+Create intercluster LIFs with the same address family and IPspace as the peering relationship. If the peering relationship is obsolete, remove it by using the "cluster peer delete" command.
+*Syslog Message*::
+Failed to find intercluster LIFs in IPspace %s on node %s.
+*Parameters*::
+*ipspace* (STRING): IPspace for the relationship.
+*node* (STRING): Originating node.

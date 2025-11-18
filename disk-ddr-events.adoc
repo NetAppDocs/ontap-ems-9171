@@ -1,0 +1,138 @@
+---
+sidebar: sidebar
+permalink: disk-ddr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.ddr events
+---
+
+= disk.ddr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.ddr.dqp.out.of.date
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the Dynamic Drive Recognition (DDR) Scanner detects a disk that is not part of its qualification table.
+*Corrective Action*::
+Check your support provider's web site or knowledgebase for more information about downloading and installing an updated Disk Qualification Package (DQP) file.
+*Syslog Message*::
+The DDR Scanner has detected that the latest DQP is not present on this system.
+*Parameters*::
+(None).
+
+== disk.ddr.invalid.azcs.capacity
+*Severity*::
+ERROR
+*Description*::
+This event is generated when the DDR Scanner detects a capacity value that does not match with the alias string associated with it.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The DDR Scanner has detected an invalid AZCS alias capacity on disk %s
+*Parameters*::
+*diskname* (STRING): Name of the disk.
+*capacity_value* (LONGINT): The value of the invalid capacity
+
+== disk.ddr.invalid.bcs.capacity
+*Severity*::
+ERROR
+*Description*::
+This event is generated when the DDR Scanner detects a capacity value that does not match with the alias string associated with it.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The DDR Scanner has detected an invalid BCS alias capacity on disk %s
+*Parameters*::
+*diskname* (STRING): Name of the disk.
+*capacity_value* (LONGINT): The value of the invalid capacity
+
+== disk.ddr.scanner.ddr.failure
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a the ddr scanner has failed to read the new DDR label it just placed on the disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s Shelf %s Bay %s [%s %s %s] S/N [%s] [%s]: DDR label verify Failure - DDR Error
+*Parameters*::
+*disk_name* (STRING): The name of the disk
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision of the disk
+*serialno* (STRING): Serial number of the disk
+*ddr_error* (STRING): DDR Error string which has been parsed
+
+== disk.ddr.scanner.label.done
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a the ddr scanner has completed has completed scanning a disk successfully
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s Shelf %s Bay %s [%s %s %s] S/N [%s] : DDR label write complete
+*Parameters*::
+*disk_name* (STRING): The name of the disk
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision of the disk
+*serialno* (STRING): Serial number of the disk
+
+== disk.ddr.scanner.verify.failure
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a the ddr scanner has failed to read the new DDR label it just placed on the disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s Shelf %s Bay %s [%s %s %s] S/N [%s] : DDR label verify Failure
+*Parameters*::
+*disk_name* (STRING): The name of the disk
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision of the disk
+*serialno* (STRING): Serial number of the disk
+
+== disk.ddr.scanner.write.failure
+*Severity*::
+NOTICE
+*Description*::
+This event is issued when a the ddr scanner has failed to write a new DDR label to the disk
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Disk %s Shelf %s Bay %s [%s %s %s] S/N [%s] : DDR label write Failure
+*Parameters*::
+*disk_name* (STRING): The name of the disk
+*shelf* (STRING): Shelf identifier where the disk is located
+*bay* (STRING): Disk bay within the shelf where disk is located
+*vendor* (STRING): Name of the vendor of the disk
+*model* (STRING): Model string of the disk drive
+*firmware_revision* (STRING): Firmware revision of the disk
+*serialno* (STRING): Serial number of the disk
+
+== disk.ddr.unable.add.disk
+*Severity*::
+ALERT
+*Description*::
+This event is generated when the DDR Scanner is unable to re-add a disk to the filer after trying for 2 minutes. This means there are no more spare disk_Cbs in the filer.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The filer has not freed a disk_Cb for over 2 mintues for %s.
+*Parameters*::
+*diskuid* (STRING): The unique identifier of the disk

@@ -1,0 +1,79 @@
+---
+sidebar: sidebar
+permalink: disk-iorecoverederror-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.iorecoverederror events
+---
+
+= disk.iorecoverederror events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.ioRecoveredError.pfa
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk determines that it will fail shortly. This occurs when a threshold internal to the disk indicates that a failure is imminent.
+*Corrective Action*::
+To avoid an uncontrolled failure, replace the disk as soon as possible. If the disk is a member of a RAID volume, the disk will be failed by RAID when this error occurs on a RAID I/O and the RAID group is not in degraded mode.
+*Syslog Message*::
+Recovered error predictive failure alert on disk %s: op %s sector %llu %s - %s (%x %x %x %x)
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*op* (STRING): I/O operation being performed.
+*sector* (LONGINT): Sector where the error was detected.
+*senseInfo* (STRING): Sense data.
+*disk_info* (STRING): Static description of events on the disk.
+*sense_key* (INTHEX): Actual sense key.
+*sense_code* (INTHEX): Actual sense code.
+*qualifier* (INTHEX): Actual sense code qualifier.
+*fru_failed* (INTHEX): Actual FRU code.
+*disk_information* (STRING): Formatted information about the disk. This includes the disk's vendor, model, firmware revision, and serial number.
+
+== disk.ioRecoveredError.reassign
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a disk automatically reassigns a sector on a disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Recovered error on disk %s: op %s sector %llu %s - %s (%x %x %x %x) %s
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*op* (STRING): I/O operation being performed.
+*sector* (LONGINT): Sector where the error was detected.
+*senseInfo* (STRING): Sense data.
+*disk_info* (STRING): Static description of events on the disk.
+*sense_key* (INTHEX): Actual sense key.
+*sense_code* (INTHEX): Actual sense code.
+*qualifier* (INTHEX): Actual sense code qualifier.
+*fru_failed* (INTHEX): Actual FRU code.
+*disk_information* (STRING): Formatted information about the disk. This includes the disk's vendor, model, firmware revision, and serial number.
+
+== disk.ioRecoveredError.retry
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a recovered error is detected on a disk.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Recovered error on disk %s: op %s sector %llu %s - %s (%x %x %x %x) (%d) %s
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*op* (STRING): I/O operation being performed.
+*sector* (LONGINT): Sector where the error was detected.
+*senseInfo* (STRING): Sense data.
+*disk_info* (STRING): Static description of events on the disk.
+*sense_key* (INTHEX): Actual sense key.
+*sense_code* (INTHEX): Actual sense code.
+*qualifier* (INTHEX): Actual sense code qualifier.
+*fru_failed* (INTHEX): Actual FRU code.
+*ETime* (INT): Time, in milliseconds, from when the command was first issued until this I/O operation failed.
+*disk_information* (STRING): Formatted information about the disk. This includes the disk's vendor, model, firmware revision, and serial number.

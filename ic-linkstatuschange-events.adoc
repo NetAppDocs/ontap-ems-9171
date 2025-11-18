@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: ic-linkstatuschange-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ic.linkstatuschange events
+---
+
+= ic.linkstatuschange events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ic.linkStatusChange
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the link status changes for a high-availability (HA) interconnect port.
+*Corrective Action*::
+Verify that both controllers in the HA pair are operational. For externally connected links, make sure that the interconnect cables are connected properly and that small form-factor pluggable (SFP) modules, if applicable, are seated properly on both controllers. For internally connected links, disable and reenable the links one at a time by using the (privilege: advanced) "system ha interconnect link off" and "system ha interconnect link on" commands. When one link is down on platforms with two available links, HA link redundancy is lost. However, HA services are still working and enabled on the secondary link.
+*Syslog Message*::
+HA interconnect: Port %s link is %s.
+*Parameters*::
+*port_name* (STRING): Name of the port for which link status changed.
+*link_status* (STRING): Link status string: "up" or "down".

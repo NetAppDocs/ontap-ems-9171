@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: sis-policy-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sis.policy events
+---
+
+= sis.policy events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sis.policy.predef.create.upgradeError
+*Severity*::
+NOTICE
+*Description*::
+This message occurs during system software upgrade to Data ONTAP(R) 8.1 or later, while creating predefined policies. There is a user policy with the same name as a predefined policy prior to upgrade, and it cannot be renamed.Therefore, the predefined policy cannot be created.
+*Corrective Action*::
+Rename pre-existing user policy and run system software upgrade again.
+*Syslog Message*::
+Policy upgrade failed because the user policy %s could not be renamed to %s.
+*Parameters*::
+*old_user_policy* (STRING): Name of the preexisting user policy.
+*renamed_user_policy* (STRING): New name for the preexisting user policy.
+
+== sis.policy.rename.upgrade
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs during upgrade to Data ONTAP(R) 8.1 or later, while creating predefined efficiency policies. The user policy was renamed because of the creation of predefined policies.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+During upgrade, user policy name %s is changed to %s.
+*Parameters*::
+*old_user_policy* (STRING): Name of the preexisting user policy.
+*renamed_user_policy* (STRING): New name for the preexisting user policy.

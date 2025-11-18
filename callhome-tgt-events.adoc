@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: callhome-tgt-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: callhome.tgt events
+---
+
+= callhome.tgt events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== callhome.tgt.lun.nospc
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the SCSI Target subsystem begins failing SCSI Write commands due to to an out of space (ENOSPC) condition on the appliance. This event is seen only when thin provisioning is used together with FCP or iSCSI. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
+*Corrective Action*::
+When this event occurs the customer should verify that all volumes containing luns on the appliance are properly configured for thin provisioning. Under some conditions additional disks may need to be added to the volume/aggragate. Contact NetApp support for more information. If you need assistance, contact NetApp technical support.
+*Syslog Message*::
+Call home for LUN OUT OF SPACE
+*Parameters*::
+*subject* (STRING): AutoSupport subject or title for this event.

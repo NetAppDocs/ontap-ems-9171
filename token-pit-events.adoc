@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: token-pit-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: token.pit events
+---
+
+= token.pit events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== token.pit.file.create.info
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the token manager cannot create a PIT file in a volume. This can happen for the following reasons: insufficient space in the volume, unable to create the directory, or unable to set attributes.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+PIT file creation in volume %s failed - %s.
+*Parameters*::
+*volume_name* (STRING): Name of the volume in which PIT file creation failed.
+*reason* (STRING): Reason for the failure.
+
+== token.pit.file.deleted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the PIT file of a volume is deleted. A new PIT file will be created automatically during the first 'token create' request for this volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+PIT file in volume %s was deleted.
+*Parameters*::
+*volume_name* (STRING): Name of the volume in which the PIT file was deleted.

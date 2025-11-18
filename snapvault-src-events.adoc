@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: snapvault-src-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snapvault.src events
+---
+
+= snapvault.src events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snapvault.src.notEnabled
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapVault(R) source appliance receives a transfer request when the service is not enabled. The license needed depends on the transfer type. For SnapVault restore transfers, the appliance must have a secondary license. For other transfers, the appliance must have a primary license.
+*Corrective Action*::
+Enable the service by issuing the command 'options snapvault.enable on'. You might need to license the service before you enable it.
+*Syslog Message*::
+Command request (%d) from host %s while SnapVault is not enabled.
+*Parameters*::
+*cmd* (INT): Protocol command number for the type of transfer being requested.
+*dst_ip* (STRING): IP address of the destination issuing the transfer request.
+
+== snapvault.src.volume.migrating
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapVault(R) snapshot target is initiated on a SnapVault primary volume while the volume is being migrated. The target might have been scheduled or manually invoked (through the 'snapvault snap create' command or programmatic interfaces).
+*Corrective Action*::
+Wait for the volume migration to be completed.
+*Syslog Message*::
+SnapVault primary volume %s is currently being migrated.
+*Parameters*::
+*volname* (STRING): Name of the SnapVault primary volume, on which the target is invoked.

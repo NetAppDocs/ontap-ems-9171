@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: boot-bootmenu-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: boot.bootmenu events
+---
+
+= boot.bootmenu events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== boot.bootmenu.issue
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when an error is detected while booting into, or using, the system boot menu.
+*Corrective Action*::
+Retry the boot. If the problem persists, contact NetApp technical support for assistance in replacing the boot device media.
+*Syslog Message*::
+Failed to boot the system. Error: %s
+*Parameters*::
+*err_str* (STRING): Error string.

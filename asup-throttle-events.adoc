@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: asup-throttle-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: asup.throttle events
+---
+
+= asup.throttle events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== asup.throttle.drop
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an AutoSupport message is dropped because it is believed to be spam.
+*Corrective Action*::
+To disable AutoSupport throttling, run the (privilege: diagnostic) "system node autosupport modify -throttle false -node <node name>" command.
+*Syslog Message*::
+Too many AutoSupport messages in too short a time, throttling AutoSupport: %s
+*Parameters*::
+*subject* (STRING): AutoSupport message title.

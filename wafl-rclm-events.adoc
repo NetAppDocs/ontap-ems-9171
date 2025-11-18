@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: wafl-rclm-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.rclm events
+---
+
+= wafl.rclm events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.rclm.est.scan.done
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an attempt to estimate the space that can be reclaimed for the aggregate was completed successfully.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Estimate Reclaim Scanner done for %s with estimated free logical blocks=%llu, physical blocks=%llu, duration=%ld ms.
+*Parameters*::
+*aggr* (STRING): Aggregate name.
+*logical_free_blks* (LONGINT): Estimated number of reclaimable logical blocks found by the scanner.
+*physical_free_blks* (LONGINT): Estimated number of reclaimable physical blocks found by the scanner.
+*run_time* (LONGINT): Duration of the scan in milliseconds.

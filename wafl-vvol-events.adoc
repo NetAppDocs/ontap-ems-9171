@@ -1,0 +1,336 @@
+---
+sidebar: sidebar
+permalink: wafl-vvol-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.vvol events
+---
+
+= wafl.vvol events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.vvol.create.encrypted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an encrypted flexible volume is created.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+New %s encrypted volume %s is created on aggregate %s.
+*Parameters*::
+*key_type* (STRING): This Indicates encryption type of this volume is NetApp Aggregate Encryption (NAE) or NetApp Volume Encryption (NVE).
+*vol* (STRING): Volume name.
+*aggr* (STRING): Name of the containing aggregate.
+*voluuid* (STRING): Volume UUID.
+*keyid* (STRING): Encryption Key ID.
+*buftreeid* (LONGINT): Buftreeid.
+*cp_count* (INT): Consistency Point (CP) at which this volume is created.
+
+== wafl.vvol.delete.metadata.recrm
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system cannot remove volume metadata during a volume delete operation after moving it to recycle bin.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Could not remove volume %s%s%s metadata. Error: %d.
+*Parameters*::
+*vol* (STRING): Name of the flexible volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume when the volume name alone is insufficient.
+*errorCode* (INT): Error number.
+
+== wafl.vvol.delete.metadata.rename
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system cannot rename volume metadata during a volume delete operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Could not rename volume %s%s%s metadata. Error: %d.
+*Parameters*::
+*vol* (STRING): Name of the flexible volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume when the volume name alone is insufficient.
+*errorCode* (INT): Error number.
+
+== wafl.vvol.delete.metadata.rm
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system cannot remove volume metadata during a volume delete operation. The system will retry removing the metadata during any operation that brings the containing aggregate online(for example, takeover).
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Cannot remove volume %s%s%s metadata. Error: %s(%d).
+*Parameters*::
+*vol* (STRING): Name of the flexible volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume when the volume name alone is insufficient.
+*reason* (STRING): Reason for the failure.
+*errorCode* (INT): Error number.
+
+== wafl.vvol.delete.recovered
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event occurs when a flexible volume that was queued for delete is recovered.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume %s%s%s%s recovered.
+*Parameters*::
+*owner* (STRING): String indicating the owner of the affected volume.
+*vol* (STRING): Name of the flexible volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume when the volume name alone is insufficient.
+
+== wafl.vvol.destroyed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a flexible volume is destroyed.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume %s%s%s%s destroyed.
+*Parameters*::
+*owner* (STRING): String indicating the owner of the affected volume.
+*vol* (STRING): Name of the flexible volume.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier for the volume when the volume name alone is insufficient.
+*vol_btid* (LONGINT): Internal buftree identifier for the volume.
+
+== wafl.vvol.encrypted.offline
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when an encrypted virtual volume is taken offline.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume '%s%s%s' is encrypted and was taken offline.
+*Parameters*::
+*name* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.
+
+== wafl.vvol.excessive.contsize
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a flexible volume container that exceeds the maximum size supported on the running platform is detected. This event can be encountered after a headswap to a platform supporting a lower maximum capacity.
+*Corrective Action*::
+Back up the dataset in the volume as soon as possible and take the volume offline. Alternatively, consider a system or hardware upgrade to a platform that supports a higher maximum capacity.
+*Syslog Message*::
+Volume '%s' exceeded the maximum container capacity supported on this platform (container blkcnt=%llu, maxlimit=%llu). Back up the dataset and take the volume offline as soon as possible.
+*Parameters*::
+*vol* (STRING): The volume name
+*blkcount* (LONGINT): The total blocks capacity of the volume container
+*maxblkcount* (LONGINT): The maximum container capacity supported on the platform
+
+== wafl.vvol.excessive.volsize
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a flexible volume that exceeds the maximum size supported on the running platform is detected. This event can be encountered after a headswap to a platform supporting a lower maximum capacity.
+*Corrective Action*::
+If possible, shrink the flexible volume using the 'vol size' command. If not, back up the dataset in the volume as soon as possible and take the volume offline. Alternatively, consider a system or hardware upgrade to a platform that supports a higher maximum capacity.
+*Syslog Message*::
+Volume '%s' exceeded the maximum volume size supported on this platform (nominal blkcnt=%llu, maxlimit=%llu). Shrink the volume or back up the dataset and take the volume offline as soon as possible.
+*Parameters*::
+*vol* (STRING): Volume name
+*blkcount* (LONGINT): Total block count of the volume.
+*maxblkcount* (LONGINT): Maximum block count supported on the platform.
+
+== wafl.vvol.invalid.DSID
+*Severity*::
+ERROR
+*Description*::
+This message occurs when ONTAP(R) finds a volume with an invalid data set identifier (DSID). This might have occurred as a result of disk corruption.
+*Corrective Action*::
+Contact NetApp technical support to have a new DSID assigned to the volume as soon as possible.
+*Syslog Message*::
+Volume '%s%s%s' has an invalid DSID (0x%x).
+*Parameters*::
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*dsid* (LONGINT): Data set identifier.
+
+== wafl.vvol.move.encrypted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an encrypted destination volume is created as part of volume move operation.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s encrypted volume %s%s%s is created on aggregate %s as part of a volume move operation.
+*Parameters*::
+*key_type* (STRING): This Indicates encryption type of this volume is NetApp Aggregate Encryption (NAE) or NetApp Volume Encryption (NVE).
+*vol* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+*aggr* (STRING): Name of the containing aggregate.
+*voluuid* (STRING): Volume UUID.
+*keyid* (STRING): Encryption Key ID.
+*buftreeid* (LONGINT): Buftreeid.
+*cp_count* (INT): Consistency Point (CP) at which this volume is created.
+
+== wafl.vvol.offline
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message indicates when a virtual volume is taken offline.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume '%s%s%s' has been set temporarily offline
+*Parameters*::
+*name* (STRING): Volume name.
+*app* (STRING): Application UUID.
+*volident* (STRING): Unique identifier of the volume when the volume name by itself is insufficient.
+*instuuid* (STRING): Volume Instance UUID
+
+== wafl.vvol.offline.err
+*Severity*::
+NOTICE
+*Description*::
+This event is issued if the system fail to set the raid label of the virtual volume when it's taken offline.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Error persistently transitioning volume %s%s%s from 'restricted' to 'offline', unable to update descriptor, error %d
+*Parameters*::
+*name* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*error* (INT): The error code
+
+== wafl.vvol.offline.persist
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when a flexible volume that was marked temporarily offline as part of the volume migration process is now marked persistently offline.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*name* (STRING): Volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where the volume name itself is insufficient.
+
+== wafl.vvol.online
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event occurs when the state of flexible volume moves to the online state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*vol* (STRING): The name of the flexible volume
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*instuuid* (STRING): Volume instance UUID
+
+== wafl.vvol.ownVserver.changed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when either a cluster repair tool changes the owning vserver of the volume, or when the volume is transitioned from being a node volume to a cluster volume or vice versa.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume '%s%s' owning vserver / name changed to '%s%s%s'.
+*Parameters*::
+*oldname* (STRING): Original name of the volume.
+*oldownerIdent* (STRING): Original vserver identifier.
+*newname* (STRING): New name of the volume.
+*app* (STRING): Application UUID.
+*newownerIdent* (STRING): New vserver identifier.
+
+== wafl.vvol.renamed
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the administrator renames a flexible volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Volume '%s%s' renamed to '%s%s%s'.
+*Parameters*::
+*oldname* (STRING): Original volume name.
+*volident1* (STRING): Unique identifier of the volume in cases where the volume name itself is insufficient.
+*newname* (STRING): New volume name.
+*app* (STRING): Application UUID.
+*volident2* (STRING): Unique identifier of the volume in cases where the volume name itself is insufficient.
+
+== wafl.vvol.restrict
+*Severity*::
+INFORMATIONAL
+*Description*::
+This event is issued to indicate a flexible volume has been restricted
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*vol* (STRING): The volume name
+*app* (STRING): Application UUID.
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*instuuid* (STRING): Volume Instance UUID
+
+== wafl.vvol.vvlabel.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the verification of the vvlabel fails on a flexible volume. This event provides all the information available in the vvlabel so that it can be used later, for recovery.
+*Corrective Action*::
+Contact NetApp technical support.
+*Syslog Message*::
+Cannot determine volume label information (%s). (Flexible volume with UUID '%s', unique ID '%d' on aggregate '%s' with raidtree ID '%s')
+*Parameters*::
+*err* (STRING): Error string.
+*voluuid* (STRING): UUID of the flexible volume as identified by the metadir.
+*id_in_aggr* (INTHEX): Unique ID within the containing aggregate.
+*aggr_name* (STRING): Containing aggregate name.
+*aggr_rtid* (STRING): RAID tree ID of the aggregate.
+*version* (INTHEX): vvlabel version.
+*mirror_flags* (INTHEX): Mirror type flags.
+*vol_flags* (INTHEX): Flags for the volume.
+*fsid* (INTHEX): File system identifier for the volume.
+*clone_parent* (INTHEX): 'id_in_aggr' value of the clone's parent volume.
+*base_snapid* (INTHEX): Clone base snapshot ID.
+*vvuuid* (STRING): UUID of the flexible volume as identified by the vvlabel.
+*vvol_type* (INTHEX): Flexible volume's type.
+*dsid* (LONGINTHEX): Volume data set identifier.
+*msid* (LONGINTHEX): Volume master data set identifier.
+*owneruuid* (STRING): UUID of the owning Vserver.
+*volname* (STRINGARRAY): Volume name in raw hexadecimal format.
+
+== wafl.vvol.xfer.nospacedestErr
+*Severity*::
+ERROR
+*Description*::
+This message occurs when transfer to a destination flexible volume has fails because the aggregate that contains this volume is out of space.
+*Corrective Action*::
+For non-ASA r2 platforms, increase space available in the aggregate by either adding disks or freeing space by deleting aggregate Snapshot copies, shrinking flexible volumes or moving flexible volumes to another aggregate. Ensure that there is sufficient space available in the aggregate (using the "df -A command") to accommodate the flexible volumes it contains. The "volume size" command may be used to obtain flexible volume sizes and also to grow or shrink them. For ASA r2 platforms, increase space in an aggregate by either adding disks to the cluster or freeing space by deleting data or Snapshot copies. To delete a Snapshot copy, use the "vserver consistency-group snapshot delete" command.
+*Syslog Message*::
+Transfer to volume "%s%s%s" failed because the containing aggregate, "%s", is out of space.
+*Parameters*::
+*vol* (STRING): The volume name
+*app* (STRING): Application universal unique identifier(UUID)
+*volident* (STRING): To uniquely identify the volume in cases where volume name itself is insufficient.
+*aggr* (STRING): The aggregate name.

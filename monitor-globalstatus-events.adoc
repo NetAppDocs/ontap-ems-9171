@@ -1,0 +1,63 @@
+---
+sidebar: sidebar
+permalink: monitor-globalstatus-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: monitor.globalstatus events
+---
+
+= monitor.globalstatus events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== monitor.globalStatus.critical
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the system's global health is critical; for example, if a fan failed.
+*Corrective Action*::
+Check the event log for other conditions that can cause this global status message. Follow the corrective actions in those messages.
+*Syslog Message*::
+%s
+*Parameters*::
+*problem* (STRING): System problem description.
+
+== monitor.globalStatus.nonCritical
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the system's global health is degraded; for example, if a file system is nearly full.
+*Corrective Action*::
+Check the event log for other conditions that can cause this global status message. Follow the corrective actions in those messages.
+*Syslog Message*::
+%s
+*Parameters*::
+*problem* (STRING): System problem description.
+
+== monitor.globalStatus.nonRecoverable
+*Severity*::
+EMERGENCY
+*Description*::
+This message occurs when the system's global health is non-recoverable, and the system is shutting down. There are currently no examples of this failure.
+*Corrective Action*::
+Check the event log for other conditions that can cause this global status message. Follow the corrective actions in those messages.
+*Syslog Message*::
+%s
+*Parameters*::
+*problem* (STRING): System problem description.
+
+== monitor.globalStatus.ok
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system's global health returns to normal.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s
+*Parameters*::
+*problem* (STRING): Description of the system's normal condition.

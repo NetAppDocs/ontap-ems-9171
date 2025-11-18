@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: ndmp-fail-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: ndmp.fail events
+---
+
+= ndmp.fail events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== ndmp.fail.log
+*Severity*::
+ERROR
+*Description*::
+This event is generated when there is an error in NDMP
+*Corrective Action*::
+(None).
+*Syslog Message*::
+Error message: %s
+*Parameters*::
+*Error_message* (STRING): The error is hinted

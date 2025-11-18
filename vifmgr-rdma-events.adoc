@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: vifmgr-rdma-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: vifmgr.rdma events
+---
+
+= vifmgr.rdma events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== vifmgr.RDMA.lifMoved
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a logical interface (LIF) is moved from a port that does not support the required remote direct memory access (RDMA) protocols of the LIF.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+LIF "%s" (on virtual server "%s"), with IP address "%s", is being moved to node "%s", port "%s", from node "%s", port "%s", because the port does not support the LIF's RDMA protocols.
+*Parameters*::
+*vifName* (STRING): Name of the LIF that is being moved.
+*vsrvId* (STRING): ID of the virtual server on which the LIF resides.
+*vifIp* (STRING): IP address of the LIF that is being moved.
+*toNode* (STRING): Name of the node to which the LIF is being moved.
+*toPort* (STRING): Name of the port to which the LIF is being moved.
+*fromNode* (STRING): Name of the node on which the LIF is currently hosted.
+*fromPort* (STRING): Name of the port on which the LIF is currently hosted.

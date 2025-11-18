@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: disk-encryptgetmsidfailed-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.encryptgetmsidfailed events
+---
+
+= disk.encryptgetmsidfailed events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.encryptGetMSIDFailed
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when an encrypting disk reports a SCSI data protection error, but Data ONTAP(R) cannot obtain the Manufacturer's Secure ID (MSID) that is mandatory on disks that support storage encryption methods. Some conditions can cause this error temporarily.
+*Corrective Action*::
+If the error persists, replace the disk or remove it from the system.
+*Syslog Message*::
+Unable to obtain MSID from disk %s; status "%s" (0x%x).
+*Parameters*::
+*diskName* (STRING): Name of the disk.
+*status_string* (STRING): Status code description from the SCSI driver.
+*status* (INT): Status code from the SCSI driver.

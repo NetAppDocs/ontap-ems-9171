@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: clam-enable-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: clam.enable events
+---
+
+= clam.enable events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== clam.enable
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Kernel Cluster Services (KCS) Connectivity, Liveliness, Availability Monitor (CLAM) is enabled to operate on this node. When all nodes in the cluster are upgraded to a KCS-available image, KCS capability gets turned on. This event is an indication that CLAM will be now begin to function.
+*Corrective Action*::
+No action is needed.
+*Syslog Message*::
+CLAM functionality is enabled.
+*Parameters*::
+(None).
+
+== clam.enable.takeover
+*Severity*::
+INFORMATIONAL
+*Description*::
+This message occurs when the Kernel Cluster Services (KCS) Connectivity, Liveliness, Availability Monitor (CLAM) is enabled to initiate storage failover requests when the CLAM OOQ (Out Of Quorum) condition is detected on the partner node. This capability is automatically enabled in a scalable SAN configuration. To control the setting of CLAM takeover, additional interfaces, such as sysctl bootarg, are provided.
+*Corrective Action*::
+No action is needed.
+*Syslog Message*::
+CLAM is enabled to perform storage failover when partner node is OOQ.
+*Parameters*::
+(None).

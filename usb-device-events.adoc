@@ -1,0 +1,68 @@
+---
+sidebar: sidebar
+permalink: usb-device-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: usb.device events
+---
+
+= usb.device events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== usb.device.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when multiple consecutive commands to the specified universal serial bus (USB) device are not completed within the allotted time. All recovery actions have been taken and the device cannot be used anymore.
+*Corrective Action*::
+Ensure that all attached devices are supported devices and that they are seated correctly. If the problem persists, replace the attach devices. If the problem still persists, contact NetApp technical support for assistance in diagnosing a USB issue.
+*Syslog Message*::
+Device %s attached to adapter %s has become unresponsive. Taking the device offline.
+*Parameters*::
+*deviceName* (STRING): Name of the failed USB device.
+*adapterName* (STRING): Name of the associated USB adapter.
+
+== usb.device.initialize.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Data ONTAP(R) universal serial bus (USB) adapter driver fails to initialize the device attached to the associated port in the associated adapter for one of the following reasons: Cannot set a unique address for the device; device descriptor is invalid or contains incorrect data; cannot set an active configuration for the device or the device had multiple interfaces. Note that the Data ONTAP(R) USB driver only supports USB 2.0 bulk-only mass storage devices.
+*Corrective Action*::
+If the device is connected to an external USB port, try reinserting the device. If that fails, try replacing the device with a device from a different product family. If the device is connected to the mother board and the problem persists, contact NetApp technical support for assistance in diagnosing a USB issue.
+*Syslog Message*::
+Device attached to adapter %s, in port %d failed initialization, %s.
+*Parameters*::
+*adapterName* (STRING): Name of the associated USB adapter.
+*port* (INT): Associated port number.
+*error* (STRING): Reason the device initialization failed.
+
+== usb.device.timeout
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an outstanding command to the specified universal serial bus (USB) device is not completed within the allotted time. As part of the standard error handling sequence managed by the Data ONTAP(R) USB adapter driver, this command to the device is aborted and reissued.
+*Corrective Action*::
+Device level timeouts are a common indication of a USB link stability problem. In some cases, the link is operating normally and the specified device is having internal trouble processing I/O requests in a timely manner. In such cases, evaluate the specified device for possible replacement. Quite often the problem results from the partial failure of a component involved in the USB transport. The most common thing to check is the seating of the USB device into the USB port or the header.
+*Syslog Message*::
+Adapter %s encountered a device timeout on USB device %s.
+*Parameters*::
+*adapterName* (STRING): Name of the associated USB adapter.
+*deviceName* (STRING): Name of the USB device where the timeout occurred.
+
+== usb.device.unsupported.speed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the Data ONTAP(R) universal serial bus (USB) adapter driver detects a non high-speed device in the associated port.
+*Corrective Action*::
+Remove all non high speed devices attached to the system because the Data ONTAP USB adapter driver does not support non high-speed devices.
+*Syslog Message*::
+Ignoring non high-speed device detected in adapter %s on port %d.
+*Parameters*::
+*adapterName* (STRING): Name of the associated USB adapter.
+*port* (INT): Port number within the adapter to which the non high-speed device is connected.

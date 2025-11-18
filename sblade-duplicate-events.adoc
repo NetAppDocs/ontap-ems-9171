@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: sblade-duplicate-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: sblade.duplicate events
+---
+
+= sblade.duplicate events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== sblade.duplicate.iscsi.addr
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a duplicate IP address is detected on more than one iSCSI interface. Only one of the interfaces is sent as an iSCSI target portal.
+*Corrective Action*::
+Delete all but one of the iSCSI interfaces which share an IP address.
+*Syslog Message*::
+Vserver '%s' iSCSI interface '%s' has the same IP address '%s' as another iSCSI interface. This interface will not be sent as an iSCSI target portal.
+*Parameters*::
+*vserver* (STRING): Vserver containing the iSCSI interfaces.
+*interface* (STRING): Interface that contains a duplicate IP address.
+*ipAddress* (STRING): IP address that was duplicated.

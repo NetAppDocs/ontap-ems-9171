@@ -1,0 +1,55 @@
+---
+sidebar: sidebar
+permalink: hm-alert-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: hm.alert events
+---
+
+= hm.alert events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== hm.alert.cleared
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a system health monitor alert is successfully cleared. Because health monitors evaluate the conditions dynamically, they might determine that the alerting condition is no longer valid. The alert is then removed from the system and this message is generated.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+%s cleared by monitor %s
+*Parameters*::
+*detailed_info* (STRING): Specific information for the deleted alert.
+*monitor* (STRING): Health monitor hm_type value for this alert.
+*alert_id* (STRING): Alert ID for the alert.
+*alerting_resource* (STRING): Alert resource related to this alert.
+
+== hm.alert.raised
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a system health monitor alert is detected. Based on predefined policies, alerts are created dynamically as and when conditions are evaluated. The alert is then populated with the actual names of the resources causing it.
+*Corrective Action*::
+Run the "system health alert show" command to see the alert that was created with this event. Follow the suggested actions listed in the "Corrective Actions" field of the alert.
+*Syslog Message*::
+%s raised by monitor %s
+*Parameters*::
+*detailed_info* (STRING): Specific information for the created alert.
+*monitor* (STRING): Health monitor hm_type value for this alert.
+*alert_id* (STRING): Alert ID for the alert.
+*alerting_resource* (STRING): Alert resource related to this alert.
+*probable_cause_description* (STRING): Description of what could have caused the alert.
+*alert_corrective_action* (STRING): Instructions to correct the alerting condition.
+*possible_effect* (STRING): Possible effect on the system if the alert is not addressed.
+*additional_info* (STRING): Additional information related to the alert.
+*tags* (STRING): Tags to categorize the alert.
+*acknowledge* (INT): True indicates the alert has been acknowledged.
+*acknowledger* (STRING): Text describing the user that acknowledged the alert.
+*suppress* (INT): True indicated the alert has been suppressed.
+*suppressor* (STRING): Text describing the user that suppressed the alert.
+*asup_enable* (INT): True indicates that this alert will trigger an AutoSupport(R) message.

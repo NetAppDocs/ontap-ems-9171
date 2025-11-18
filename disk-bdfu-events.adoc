@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: disk-bdfu-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: disk.bdfu events
+---
+
+= disk.bdfu events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== disk.bdfu.suspended
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the background drive firmware update process fails to unlock SAS NetApp(R) Storage Encryption (NSE) drives in FIPS-compliance mode. The FIPS-certified SAS NSE drives must be unlocked with a valid authentication key before firmware can be downloaded to them. If the number of failed unlock attempts reaches a certain threshold, the drives will be locked out, leading to permanent loss of data in certain conditions. The system will automatically suspend the background drive firmware update for 12 hours, after which it is reenabled.
+*Corrective Action*::
+Contact NetApp technical support for assistance with restoring valid authentication keys on the drive.
+*Syslog Message*::
+Background drive firmware update is suspended because FIPS NSE drives cannot be unlocked. Reason: %s.
+*Parameters*::
+*suspend_reason* (STRING): Reason for the drive unlock failure.

@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: km-restore-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: km.restore events
+---
+
+= km.restore events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== km.restore.invalid.key
+*Severity*::
+ALERT
+*Description*::
+This message occurs when the key manager attempts to restore a key which has an invalid length.
+*Corrective Action*::
+Run the "security key-manager restore" command to restore keys from external key servers.
+*Syslog Message*::
+ONTAP has attempted to restore an %s key which has an invalid key length. Vserver: %s, Key ID: %s, Key server: %s.
+*Parameters*::
+*keyType* (STRING): Key type (NSE, AES, XTS) that has invalid length.
+*vserverName* (STRING): Vserver name.
+*keyId* (STRING): Key ID of the key being restored.
+*keyServer* (STRING): Key server from which the key is being restored.

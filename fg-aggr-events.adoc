@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: fg-aggr-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fg.aggr events
+---
+
+= fg.aggr events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fg.aggr.mixed.types.error
+*Severity*::
+ERROR
+*Description*::
+This message occurs when the constituents of a FlexGroup volume are located on different types of aggregates (FabricPool-enabled aggregates and non-FabricPool-enabled aggregates) for more than one week. It is reported once per week if a FlexGroup volume remains in this state. Leaving a FlexGroup volume in a mixed-aggregate state might lead to unbalanced data placement and unexpected performance issues.
+*Corrective Action*::
+Move all the constituents of the FlexGroup volume to the same aggregate type, i.e., either FabricPool-enabled aggregates or non-FabricPool-enabled aggregates, using the 'volume move start' command with the 'allow-mixed-aggr-types' option set to true.
+*Syslog Message*::
+The constituents of FlexGroup volume '%s' with UUID '%s' have been located on different types of aggregates (FabricPool-enabled aggregates and non-FabricPool-enabled aggregates) for more than one week.
+*Parameters*::
+*vol* (STRING): Name of the FlexGroup volume.
+*uuid* (STRING): UUID of the FlexGroup volume.
+
+== fg.aggr.mixed.types.notice
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the constituents of a FlexGroup volume are located on different types of aggregates (FabricPool-enabled aggregates and non-FabricPool-enabled aggregates). It is reported once per hour. Leaving a FlexGroup volume in a mixed-aggregate state might lead to unbalanced data placement and unexpected performance issues.
+*Corrective Action*::
+Move all the constituents of the FlexGroup volume to the same aggregate type, i.e., either FabricPool-enabled aggregates or non-FabricPool-enabled aggregates, using the 'volume move start' command with the 'allow-mixed-aggr-types' option set to true.
+*Syslog Message*::
+The constituents of FlexGroup volume '%s' with UUID '%s' are located on different types of aggregates (FabricPool-enabled aggregates and non-FabricPool-enabled aggregates).
+*Parameters*::
+*vol* (STRING): Name of the FlexGroup volume.
+*uuid* (STRING): UUID of the FlexGroup volume.

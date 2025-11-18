@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: mgmtgwd-volcreatedrestricted-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: mgmtgwd.volcreatedrestricted events
+---
+
+= mgmtgwd.volcreatedrestricted events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== mgmtgwd.volcreatedrestricted
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a volume is created in the restricted state. This message is used to update the status of the health dashboard.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+(None).
+*Parameters*::
+*vserver* (STRING): The vserver that owns the volume.
+*volume* (STRING): The name of the volume.

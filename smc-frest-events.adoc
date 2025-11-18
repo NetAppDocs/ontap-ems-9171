@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: smc-frest-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: smc.frest events
+---
+
+= smc.frest events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== smc.frest.snap.delete.fail
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a SnapMirror file restore operation fails to delete a local file restore snapshot on the destination volume.
+*Corrective Action*::
+Manually delete snapshot by issuing snapshot delete command.
+*Syslog Message*::
+Unable to delete snapshot '%s' from volume '%s'.
+*Parameters*::
+*snapname* (STRING): Snapshot that was not deleted.
+*dstpath* (STRING): Path name of the destination volume to which restore was issued.

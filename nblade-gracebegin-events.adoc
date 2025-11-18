@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: nblade-gracebegin-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: nblade.gracebegin events
+---
+
+= nblade.gracebegin events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Nblade.graceBegin
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the NFS server enters the grace state.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+NFS server grace state has begun for Vserver "%s", LIF ID "%d", LIP IP address "%s".
+*Parameters*::
+*vserverName* (STRING): Vserver Name.
+*lifId* (INT): LIF ID
+*lifIpAddress* (STRING): LIF IP address for the NFS server.

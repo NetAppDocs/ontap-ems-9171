@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: application-volume-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: application.volume events
+---
+
+= application.volume events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== application.volume.removed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an application is destroyed, but a member volume was not deleted after an error was encountered. This volume is no longer associated with the application and must be deleted manually.
+*Corrective Action*::
+Delete the volume using the "volume delete" command. For ASA r2, contact NetApp technical support for assistance to resolve this internal error.
+*Syslog Message*::
+Fails to destroy member volume %s in storage virtual machine %s during an application destroy operation. The volume must be deleted manually. The volume was previously associated with an application with UUID %s.
+*Parameters*::
+*volumeName* (STRING): Name of the volume.
+*vserver* (STRING): Storage virtual machine (SVM) containing the volume.
+*applicationUUID* (STRING): Universal unique identifier (UUID) of the application.

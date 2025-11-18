@@ -1,0 +1,30 @@
+---
+sidebar: sidebar
+permalink: fg-modify-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: fg.modify events
+---
+
+= fg.modify events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== fg.modify.workflow
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when a user modifies the workflow type of a FlexGroup volume.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The workflow type for FlexGroup volume "%s" in Vserver "%s" was modified from "%s" to "%s".
+*Parameters*::
+*volumeName* (STRING): Name of the FlexGroup volume.
+*vserverName* (STRING): Name of the Vserver on which the FlexGroup volume resides.
+*oldWorkflow* (STRING): The old workflow type of the FlexGroup volume.
+*newWorkflow* (STRING): The new workflow type for the FlexGroup volume.

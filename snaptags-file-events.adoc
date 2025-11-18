@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: snaptags-file-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: snaptags.file events
+---
+
+= snaptags.file events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== snaptags.file.inconsist
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the system detects an inconsistency in the header of a snapshot tag's metafile of a volume. The snapshot tags for all of the snapshots on the volume are considered lost. The next snapshot tag update starts from a clean metafile.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+An inconsistency was detected in the snapshot tag's metafile on volume '%s'. The snapshot tags for all of the snapshots on the volume are lost.
+*Parameters*::
+*vol* (STRING): Name of the volume.
