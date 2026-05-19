@@ -37,3 +37,15 @@ None.
 IO card on slot %d is OK
 *Parameters*::
 *slot_number* (INT): Slot number of the card.
+
+== monitor.ioCard.sfp.noTemp
+*Severity*::
+ERROR
+*Description*::
+This message occurs when an optical transceiver or cable connected to the I/O module does not report an internal temperature reading. The transceiver or cable might not include a temperature sensor or the sensor is not currently readable. The system's environmental policy will not be able to regulate cooling for this hardware component via system fan speed changes.
+*Corrective Action*::
+If possible, exchange or replace the transceiver with one that includes a temperature sensor.
+*Syslog Message*::
+Optical transceiver or cable does not support an internal temperature sensor. Sensor: %s.
+*Parameters*::
+*sensor* (STRING): Sensor ID of the optical transceiver.

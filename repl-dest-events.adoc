@@ -38,6 +38,18 @@ SnapMirror transfer failed because the transfer snapshot contains directory inde
 *Parameters*::
 (None).
 
+== repl.dest.ilabel.notsup
+*Severity*::
+ERROR
+*Description*::
+This message occurs when replication engine encounters Ilabels in a snapshot.
+*Corrective Action*::
+To continue transfers, upgrade destination to an ONTAP version which supports replication of the Ilabel type.
+*Syslog Message*::
+SnapMirror transfer fails because the transfer snapshot contains Ilabel of type %s.
+*Parameters*::
+*ilabelType* (STRING): Type of Ilabel which is not supported.
+
 == repl.dest.ilabels.notsup
 *Severity*::
 ERROR
@@ -50,6 +62,18 @@ SnapMirror transfer with transfer ID %s will not send existing ilabels because t
 *Parameters*::
 *transferUuid* (STRING): UUID of the SnapMirror(R) transfer.
 *dstNode* (STRING): UUID of the node where the SnapMirror(R) destination is present.
+
+== repl.dest.lmgr.notsup
+*Severity*::
+ERROR
+*Description*::
+This message occurs when replication engine encounters lock manager persistent metafile in a snapshot.
+*Corrective Action*::
+To continue transfers, upgrade the destination to an ONTAP version (9.14.1 and later) which supports replication of lock manager persistent metafiles.
+*Syslog Message*::
+SnapMirror transfer fails because the transfer snapshot contains lock manager persistent metafile.
+*Parameters*::
+(None).
 
 == repl.dest.lun.notsup
 *Severity*::

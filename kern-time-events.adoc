@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: kern-time-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: kern.time events
+---
+
+= kern.time events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== kern.time.stamp.reset
+*Severity*::
+NOTICE
+*Description*::
+A timestamp reset event occurred.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+last_uniq_micro_in_sec is %lu seconds, last_uniq_nano_in_sec is %lu seconds, wall time is %lu seconds.
+*Parameters*::
+*last_uniq_micro_in_sec* (LONGINT): The current last_uniq_micro time in seconds.
+*last_uniq_nano_in_sec* (LONGINT): The current last_uniq_nano time in seconds.
+*wall_time* (LONGINT): The current wall time in seconds.
