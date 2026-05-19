@@ -1,0 +1,57 @@
+---
+sidebar: sidebar
+permalink: time-stamp-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: time.stamp events
+---
+
+= time.stamp events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== time.stamp.micro.base
+*Severity*::
+NOTICE
+*Description*::
+Base timestamp event occurred.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+last_uniq is %lu seconds, wall time is %lu seconds.
+*Parameters*::
+*last_uniq* (LONGINT): The current last_uniq time in seconds.
+*wall_time* (LONGINT): The current wall time in seconds.
+
+== time.stamp.nano.base
+*Severity*::
+NOTICE
+*Description*::
+Base timestamp nano event occurred.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+last_uniq_nano is %lu seconds, wall time is %lu seconds.
+*Parameters*::
+*last_uniq_nano* (LONGINT): The current last_uniq_nano time in seconds.
+*wall_time* (LONGINT): The current wall time in seconds.
+
+== time.stamp.nano.drift.reset
+*Severity*::
+NOTICE
+*Description*::
+timestamp nano drift is now reset
+*Corrective Action*::
+(None).
+*Syslog Message*::
+last_uniq is %lu seconds, wall time is %lu seconds, last_uniq at drift is %lu seconds, wall time at drift is %lu seconds, drift count is %lu.
+*Parameters*::
+*last_uniq* (LONGINT): The current last_uniq time in seconds.
+*wall_time* (LONGINT): The current wall time in seconds.
+*last_uniq_sec_at_drift* (LONGINT): The last_uniq time in seconds when drift was recorded.
+*wall_time_at_drift* (LONGINT): The wall time in seconds when drift was recorded.
+*drift_cnt* (LONGINT): The number of ops that recorded drift before it is reset.

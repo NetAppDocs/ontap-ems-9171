@@ -46,7 +46,7 @@ This message occurs when an I/O error is detected causing the /var file system t
 *Corrective Action*::
 The /var file system has been forced umounted due to I/O errors. Since /var is on the boot device, the forced umount of /var may cause errors on other components going forward. Please contact your hypervisor provider./>.
 *Syslog Message*::
-I/O error caused forced umount of the /var file system.
+I/O error caused forced umount of the /var file system. %s
 *Parameters*::
 *err_str* (STRING): Error string.
 
