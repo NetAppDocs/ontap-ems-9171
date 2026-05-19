@@ -15,22 +15,26 @@ summary: license.cert events
 :imagesdir: ./media/
 
 == license.cert.expired
+*Deprecated*::
+Deprecated as of version 9.12.1. If the license validation certificate expires, license validation workflows are unaffected and no customer action is required.
 *Severity*::
 ALERT
 *Description*::
-This message occurs when the license validation certificate is expired. No new license can be validated.
+This message occurs when the license validation certificate is expired. A new license cannot be validated.
 *Corrective Action*::
 Contact your sales representative or reseller about renewing your license validation certificate.
 *Syslog Message*::
-No new license can be validated. Certificate expired on %s.
+A new license cannot be validated. Certificate expired on %s.
 *Parameters*::
 *exp_date* (STRING): Expiration date.
 
 == license.cert.expired.check
+*Deprecated*::
+Deprecated as of version 9.12.1. If the license validation certificate expires, license validation workflows are unaffected and no customer action is required.
 *Severity*::
 NOTICE
 *Description*::
-This message occurs when the license validation certificate is near its expiration date. After the certificate expires, no new license can be validated.
+This message occurs when the license validation certificate is near its expiration date. After the certificate expires, a new license cannot be validated.
 *Corrective Action*::
 Contact your sales representative or reseller about renewing your license validation certificate.
 *Syslog Message*::

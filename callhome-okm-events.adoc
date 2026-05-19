@@ -20,7 +20,7 @@ ALERT
 *Description*::
 This message occurs when the cluster has reached an inconsistent state with respect to the onboard key hierarchy. This is an alert that the "security key-manager onboard sync" command should be run on the local cluster to prevent any future usage failures with onboard key management. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to Netapp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.
 *Corrective Action*::
-(None).
+The Onboard Key Manager hierarchy is incomplete. Run the "security key-manager onboard sync" command to restore the Onboard Key Manager hierarchy.
 *Syslog Message*::
 Call home for CLUSTER OKM SYNC NEEDED
 *Parameters*::

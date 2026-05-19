@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: raid-foreign-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: raid.foreign events
+---
+
+= raid.foreign events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== raid.foreign.disk.failed
+*Severity*::
+ERROR
+*Description*::
+This message occurs when a disk is found to have a different storage pod uuid than what this node is allowed to access.
+*Corrective Action*::
+This disk has been marked as foreign disk. Unfail the failed disk using command 'disk unfail' with '-spare true' option and mark it as a spare or contact NetApp technical support
+*Syslog Message*::
+Disk "%s" has failed as the uuid on the RAID label "%s" does not match with stamped uuid "%s"
+*Parameters*::
+*disk_name* (STRING): Name of the disk.
+*label_uuid* (STRING): Actual Storage Pod UUID on the RAID label.
+*cached_uuid* (STRING): Storage Pod UUID stamped on the disk in terms of ownership.

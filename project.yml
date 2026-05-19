@@ -2295,6 +2295,8 @@ sidebar:
       url: /kern-syslog-events.html
     - title: kern.syslogd events
       url: /kern-syslogd-events.html
+    - title: kern.time events
+      url: /kern-time-events.html
     - title: kern.timezone events
       url: /kern-timezone-events.html
     - title: kern.uptime events
@@ -3755,6 +3757,8 @@ sidebar:
       url: /raid-flexvol-events.html
     - title: raid.fm events
       url: /raid-fm-events.html
+    - title: raid.foreign events
+      url: /raid-foreign-events.html
     - title: raid.foreignaggregate events
       url: /raid-foreignaggregate-events.html
     - title: raid.fs events
@@ -5187,6 +5191,10 @@ sidebar:
       url: /telnet-socket-events.html
     - title: telnet.threadcreate events
       url: /telnet-threadcreate-events.html
+  - title: time events
+    entries:
+    - title: time.stamp events
+      url: /time-stamp-events.html
   - title: tls events
     entries:
     - title: tls.insecure events
@@ -5883,6 +5891,8 @@ sidebar:
       url: /wafl-raid-events.html
     - title: wafl.rclm events
       url: /wafl-rclm-events.html
+    - title: wafl.rclone events
+      url: /wafl-rclone-events.html
     - title: wafl.readdir events
       url: /wafl-readdir-events.html
     - title: wafl.reallocate events

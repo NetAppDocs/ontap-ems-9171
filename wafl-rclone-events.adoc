@@ -1,0 +1,35 @@
+---
+sidebar: sidebar
+permalink: wafl-rclone-events.html
+keywords: ems, message, messages, event, events, group, catalog
+summary: wafl.rclone events
+---
+
+= wafl.rclone events
+:toc: macro
+:toclevels: 1
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== wafl.rclone.cache.copy.evict
+*Severity*::
+NOTICE
+*Description*::
+This message occurs when the remote clone's cached copy is evicted during cleanup or delete operations.
+*Corrective Action*::
+(None).
+*Syslog Message*::
+The cached copy fileid: %d, generation: %d on volume %s, which was generated from remote source fileid: %d, snapid: %d, generation: %d, fg_index: %d has been deleted. src_ctime: %d, dest_ctime: %d
+*Parameters*::
+*local_src_fileid* (INT): File identifier of local source file.
+*local_src_generation* (INT): Local source file generation number.
+*vol* (STRING): Volume name.
+*src_fileid* (INT): File identifier of remote source file.
+*src_snapid* (INT): Snapshot identifier for source file.
+*src_generation* (INT): Source file generation number.
+*src_fgindex* (INT): Source FlexGroup index.
+*src_ctime* (INT): Last inode change time of source file.
+*dest_ctime* (INT): Last inode change time of destination file.

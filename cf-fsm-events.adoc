@@ -159,6 +159,18 @@ CLAM requests graceful shutdown of the HA partner to initiate a takeover while N
 *Parameters*::
 (None).
 
+== cf.fsm.clam.selfShutdown
+*Severity*::
+ALERT
+*Description*::
+This message occurs when a node's connectivity, liveness, availability monitor (CLAM) initiates a graceful self-shutdown while the nonvolatile log (nvlog) is out of sync, prompting a takeover by its high-availability (HA) partner. This shutdown is triggered by a loss of connectivity across the cluster, HA, and other monitored network ports, disrupting both internal and external communication.
+*Corrective Action*::
+Restore connectivity across the cluster, HA and other ports. If these ports report that links are down, check the cabling and switch port configuration. On virtual platforms, rehost the node if rebooting does not solve the issue. If the connectivity cannot be restored, contact NetApp technical support.
+*Syslog Message*::
+CLAM initiated a graceful self-shutdown to allow the HA partner to take over while nvlog is out of sync. This occurs due to a loss of connectivity across the cluster, HA, and other monitored network ports.
+*Parameters*::
+(None).
+
 == cf.fsm.clam.shtdwnThruMbx
 *Severity*::
 ALERT
