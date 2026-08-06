@@ -14,6 +14,9 @@ summary: nblade.showmountdisabled events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the "showmount" command is triggered by client, but the command is disabled on the NFS server.
+
 == nblade.showmountdisabled
 *Severity*::
 ERROR

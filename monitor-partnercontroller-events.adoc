@@ -14,6 +14,9 @@ summary: monitor.partnercontroller events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when both controllers are configured as an HA (high-availability) pair, but the partner controller is not present.
+
 == monitor.partnerController.notPresent
 *Severity*::
 ALERT

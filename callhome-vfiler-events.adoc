@@ -14,6 +14,9 @@ summary: callhome.vfiler events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs on the destination controller during the final phase of migrating a vfiler when the 120 second time limit has been reached .
+
 == callhome.vfiler.move.to.dst
 *Severity*::
 ALERT

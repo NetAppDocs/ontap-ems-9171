@@ -14,6 +14,9 @@ summary: wafl.aggr events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when an aggregate is taken offline due to the aggregate has savings because of aggregate deduplication and this version of ONTAP does not support aggregate level deduplication.
+
 == wafl.aggr.addup.offline
 *Severity*::
 ERROR

@@ -14,6 +14,9 @@ summary: cloud.aws events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the IAM Role thread acquires Amazon Web Services (AWS) Identity and Access Management (IAM) role-based credentials that have already expired.
+
 == cloud.aws.iamCredsExpired
 *Severity*::
 ERROR

@@ -14,6 +14,9 @@ summary: disk.timeout events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the disk driver stops flushing aggressive timeout I/Os.
+
 == disk.timeout.flush.end
 *Severity*::
 NOTICE

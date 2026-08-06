@@ -14,6 +14,9 @@ summary: moveagent.commitdst events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when a 'volume move' operation finishes moving the volume to the destination but fails to update the appropriate information on the destination.
+
 == moveagent.commitdst.fail
 *Severity*::
 ALERT

@@ -14,6 +14,9 @@ summary: coredump.encryption events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when encryption is configured on the controller, but the coredump subsystem cannot encrypt data.
+
 == coredump.encryption.disabled
 *Severity*::
 ERROR

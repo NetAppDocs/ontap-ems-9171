@@ -14,6 +14,9 @@ summary: netif.toomanynics events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when a network interface was not initialized because the number of interfaces of this type exceeds the maximum supported.
+
 == netif.tooManyNics
 *Severity*::
 ERROR

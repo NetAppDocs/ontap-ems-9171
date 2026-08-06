@@ -14,6 +14,9 @@ summary: sla.shelf events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when a shelf firmware module is rebooted administratively, or when a reboot occurs normally when the system powers up, the firmware is updated, or the alternate control path (ACP) is reset.
+
 == sla.shelf.mod.reboot
 *Severity*::
 NOTICE

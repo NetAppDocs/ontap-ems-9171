@@ -14,6 +14,9 @@ summary: config.cfomixedabmodule events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when a disk shelf attached to a node is miscabled so that one disk shelf's module A is connected to the next disk shelf's module B, or vice versa.
+
 == config.CFOmixedABmodule
 *Severity*::
 ALERT

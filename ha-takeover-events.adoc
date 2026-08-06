@@ -14,6 +14,9 @@ summary: ha.takeover events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the value of the 'bypass-takeover-optimization' parameter of the "storage failover" command is changed on a node.
+
 == ha.takeover.bypOptimChange
 *Severity*::
 INFORMATIONAL

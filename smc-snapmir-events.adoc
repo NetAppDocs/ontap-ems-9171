@@ -14,6 +14,9 @@ summary: smc.snapmir events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the destination volume of a SnapMirror(R) relationship is not a Data Protection (DP) type and a snapmirror initialize operation is attempted.
+
 == smc.snapmir.dst.invalidType
 *Severity*::
 ERROR

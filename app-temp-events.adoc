@@ -14,6 +14,9 @@ summary: app.temp events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when a S3 Bucket cannot be deleted as a part of an application destroy operation.
+
 == app.temp.delete.s3bucket.fail
 *Severity*::
 ERROR

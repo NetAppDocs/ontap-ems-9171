@@ -14,6 +14,9 @@ summary: wafl.snaprestore events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs during a snapshot restore operation, when the system cannot recognize the version of Data ONTAP(R) from the snapshot it is reverting to.
+
 == wafl.snaprestore.badVersion
 *Severity*::
 ERROR

@@ -14,6 +14,9 @@ summary: mgmtgwd.volmove events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when a volume move operation does not take the optimized path to avoid read requests from a cloud-based tier.
+
 == mgmtgwd.volmove.notoptimized
 *Severity*::
 NOTICE

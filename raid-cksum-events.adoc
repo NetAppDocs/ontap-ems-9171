@@ -14,6 +14,9 @@ summary: raid.cksum events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This event is issued when WAFL accesses a block that was zeroed because it could not be recovered correctly.
+
 == raid.cksum.bad.file.block
 *Severity*::
 ERROR

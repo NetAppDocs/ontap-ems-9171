@@ -14,6 +14,9 @@ summary: vifmgr.startup events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the logical interface manager (VIFMgr) encounters an error while initializing the structures required for logical interface (LIF) failover.
+
 == vifmgr.startup.failover.err
 *Severity*::
 ALERT

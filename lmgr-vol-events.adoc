@@ -14,6 +14,9 @@ summary: lmgr.vol events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when a volume cannot reclaim certain file locks when the system attempts to bring it online.
+
 == lmgr.vol.lock.reclaim.partial
 *Severity*::
 NOTICE

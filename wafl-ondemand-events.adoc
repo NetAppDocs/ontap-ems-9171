@@ -14,6 +14,9 @@ summary: wafl.ondemand events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when Data ONTAP(R) fails to reserve space for a file operation due to lack of space on the aggregate.
+
 == wafl.ondemand.aggr.rsv.fail
 *Severity*::
 ERROR

@@ -14,6 +14,9 @@ summary: tar.extract events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs during the process of extracting a TAR archive, when an error while processing a particular entry causes the extraction of the archive to fail.
+
 == tar.extract.failure
 *Severity*::
 ERROR

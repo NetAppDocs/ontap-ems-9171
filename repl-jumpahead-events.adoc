@@ -14,6 +14,9 @@ summary: repl.jumpahead events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the system cannot bring a replica volume online after applying the latest update to the replica because of possible inconsistencies detected in the update.
+
 == repl.jumpahead.failed
 *Severity*::
 ERROR

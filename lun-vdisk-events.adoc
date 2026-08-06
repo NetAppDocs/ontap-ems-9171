@@ -14,6 +14,9 @@ summary: lun.vdisk events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when a volume contains more than the supported limit of LUNs in the volume.
+
 == LUN.vdisk.cnt.exceeded
 *Severity*::
 ERROR

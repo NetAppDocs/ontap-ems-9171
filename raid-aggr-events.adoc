@@ -14,6 +14,9 @@ summary: raid.aggr events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the usable size of an aggregate does not expand after a corresponding increase in the size of the underlying storage.
+
 == raid.aggr.autoGrow.abort
 *Severity*::
 NOTICE

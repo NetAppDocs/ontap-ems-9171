@@ -14,6 +14,9 @@ summary: secd.rpc events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when a user with the same domain and same client IP address is blocked due to continuous authentication requests with an invalid login password.
+
 == secd.rpc.authRequest.blocked
 *Severity*::
 ALERT

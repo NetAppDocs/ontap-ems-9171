@@ -14,6 +14,9 @@ summary: application.volume events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when an application is destroyed, but a member volume was not deleted after an error was encountered.
+
 == application.volume.removed
 *Severity*::
 ERROR

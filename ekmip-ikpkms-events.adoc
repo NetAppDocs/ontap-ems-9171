@@ -14,6 +14,9 @@ summary: ekmip.ikpkms events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when trying to access the key owned by the IBM Key Protect (IKP) Key Management Service (KMS) and an "OK" response (code 200) is received but one field of the response is not populated.
+
 == ekmip.ikpkms.200.missingField
 *Severity*::
 ALERT

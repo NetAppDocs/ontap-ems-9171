@@ -14,6 +14,9 @@ summary: coredump.long events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the coredump manager thread detects that a message has been queued longer than expected, as defined by an internal threshold.
+
 == coredump.long.queued.msg
 *Severity*::
 NOTICE

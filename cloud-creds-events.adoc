@@ -14,6 +14,9 @@ summary: cloud.creds events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the system cannot establish a communication link with the cloud provider's metadata server, in order to acquire the necessary temporary credentials used in signing API requests to the cloud object store server.
+
 == cloud.creds.metadataConnFail
 *Severity*::
 ERROR

@@ -14,6 +14,9 @@ summary: netinet6.input events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the destination address is not ready, so the packet is discarded.
+
 == netinet6.input.addr.notReady
 *Severity*::
 INFORMATIONAL

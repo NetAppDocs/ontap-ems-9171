@@ -14,6 +14,9 @@ summary: wafl.no events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occur when a volume don't have 'large_size_enabled' flag set even when the nominal size crosses the 100TB limit.
+
 == wafl.no.large.vvol.size.set
 *Severity*::
 ERROR

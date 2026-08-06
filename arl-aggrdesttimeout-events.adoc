@@ -14,6 +14,9 @@ summary: arl.aggrdesttimeout events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs during an aggregate relocation operation, when the source node does not receive notification from the destination node, within the specified time, that the aggregate is online.
+
 == arl.aggrDestTimeout
 *Severity*::
 NOTICE

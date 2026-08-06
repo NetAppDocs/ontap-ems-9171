@@ -14,6 +14,9 @@ summary: platform.reducedmemory events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when system memory is less than expected for this model, likely due to slots that contain incorrect, failed, or missing DIMMs.
+
 == platform.reducedMemory
 *Severity*::
 ALERT

@@ -14,6 +14,9 @@ summary: secd.nfsauth events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when an NFS authorization attempt fails because of the inability of the system to retrieve a matching CIFS credential for use in multi-protocol security operations.
+
 == secd.nfsAuth.noCifsCred
 *Severity*::
 ERROR

@@ -14,6 +14,9 @@ summary: asup.aods events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the size of the response from the AutoSupport OnDemand Server (AODS) goes over the AOD response buffer size limit in ONTAP.
+
 == asup.aods.response.overLimit
 *Severity*::
 ERROR

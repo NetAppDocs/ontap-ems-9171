@@ -14,6 +14,9 @@ summary: user.group events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the number of UNIX users or groups in the cluster reaches or exceeds system limits.
+
 == user.group.limit.reached
 *Severity*::
 ERROR

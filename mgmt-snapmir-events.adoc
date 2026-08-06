@@ -14,6 +14,9 @@ summary: mgmt.snapmir events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the destination volume of a SnapMirror(R) relationship is not a Data Protection (DP) or Load Sharing (LS) type, and a SnapMirror initialize operation is attempted.
+
 == mgmt.snapmir.dst.invalidType
 *Severity*::
 ERROR

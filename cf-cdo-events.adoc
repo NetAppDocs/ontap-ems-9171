@@ -14,6 +14,9 @@ summary: cf.cdo events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This event is issued when the filer receives a disk operation message over the High Availability (HA) interconnect that it does not recognize.
+
 == cf.cdo.badMsg
 *Severity*::
 ERROR

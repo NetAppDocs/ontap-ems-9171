@@ -14,6 +14,9 @@ summary: gb.cfo events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when a high-availability (HA) controller failover (CFO) giveback is canceled due to RAID activity on a partner aggregate.
+
 == gb.cfo.abort.raid.fm
 *Severity*::
 ERROR

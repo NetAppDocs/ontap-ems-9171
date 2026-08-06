@@ -14,6 +14,9 @@ summary: ha.tkover events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when a pending takeover is waiting for an in-progress aggregate relocation (ARL) operation to complete or abort before proceeding with the takeover.
+
 == ha.tkover.waitARLabort
 *Severity*::
 INFORMATIONAL

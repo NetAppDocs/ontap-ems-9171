@@ -14,6 +14,9 @@ summary: scsitarget.ispfct events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when Fibre Channel host bus adapter(HBA) returns an event notification to the driver but the driver did not recognize the event type.
+
 == scsitarget.ispfct.AENErr
 *Severity*::
 ALERT

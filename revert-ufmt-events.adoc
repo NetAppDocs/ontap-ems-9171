@@ -14,6 +14,9 @@ summary: revert.ufmt events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the revert operation to convert the unified object format is paused because the FabricPool aggregate has reached the maximum supported size of the capacity tier.
+
 == revert.ufmt.cap.tier.full
 *Severity*::
 ALERT

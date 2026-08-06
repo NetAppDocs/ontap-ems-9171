@@ -14,6 +14,9 @@ summary: nameserv.ddns events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when a request to delete the fully qualified domain name (FQDN) of all or some of the logical interfaces of a Vserver from the DNS server fails, resulting in stale records on the DNS server.
+
 == nameserv.ddns.bulk.delete
 *Severity*::
 ALERT

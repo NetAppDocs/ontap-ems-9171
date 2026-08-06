@@ -14,6 +14,9 @@ summary: wafl.snapshot events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This event is issued when the system discover that a filesize is out of range in a snapshot.
+
 == wafl.snapshot.badFilesize
 *Severity*::
 NOTICE

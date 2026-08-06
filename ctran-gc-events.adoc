@@ -14,6 +14,9 @@ summary: ctran.gc events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the Cluster Transaction Manager (CTRAN) Group Coordinator (GC) of a group runs a prop-done probe for a proposal longer than anticipated.
+
 == ctran.gc.proposal.stuck
 *Severity*::
 EMERGENCY

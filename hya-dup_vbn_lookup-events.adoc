@@ -14,6 +14,9 @@ summary: hya.dup_vbn_lookup events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This event is generated if we detect redundant lookups of a PVBN without an intervening suspend.
+
 == hya.dup_vbn_lookup
 *Severity*::
 ERROR

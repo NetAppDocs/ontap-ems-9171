@@ -14,6 +14,9 @@ summary: nvmem.voltage events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the NVMEM supply voltage is high and the system is at a high risk of data loss if power fails.
+
 == nvmem.voltage.high
 *Severity*::
 EMERGENCY

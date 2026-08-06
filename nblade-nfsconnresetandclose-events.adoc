@@ -14,6 +14,9 @@ summary: nblade.nfsconnresetandclose events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the server aborts the connection with the client by sending one or more RST segments, immediately resulting in the connection state being discarded.
+
 == Nblade.nfsConnResetAndClose
 *Severity*::
 ERROR

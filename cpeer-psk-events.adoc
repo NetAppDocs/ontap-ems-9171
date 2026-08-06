@@ -14,6 +14,9 @@ summary: cpeer.psk events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the system receives an authentication request for a remote cluster whose peer authentication has been revoked by the local cluster administrator.
+
 == cpeer.psk.cluster.revoked
 *Severity*::
 ERROR

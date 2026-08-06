@@ -14,6 +14,9 @@ summary: lun.inplace events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when an in-place restore from a dump fails and creates a metadata inconsistency because the source object type does not match the existing destination object.
+
 == LUN.inplace.dmpRstrLUNonNS
 *Severity*::
 ERROR

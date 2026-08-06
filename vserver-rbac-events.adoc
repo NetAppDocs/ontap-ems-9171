@@ -14,6 +14,9 @@ summary: vserver.rbac events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when a custom role associated with a Storage Virtual Machine (SVM) has an aliased command directory associated with it.
+
 == vserver.rbac.alias.command
 *Deprecated*::
 ONTAP now directly creates a role entry on the target of the alias.

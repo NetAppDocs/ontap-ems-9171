@@ -14,6 +14,9 @@ summary: scsiblade.mcc events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the Vserver load during MCC switchover/switchback consumes majority of the 120 second MAX timeout.
+
 == scsiblade.mcc.vs.load.wm
 *Severity*::
 NOTICE

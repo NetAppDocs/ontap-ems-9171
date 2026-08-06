@@ -14,6 +14,9 @@ summary: hashd.maxstore events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the size of hashes in the hash store is greater than the maximum size configured.
+
 == hashd.maxstore.oversize
 *Severity*::
 NOTICE

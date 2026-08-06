@@ -14,6 +14,9 @@ summary: callhome.syncm events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when both plexes of a SyncMirror(R) configuration have disk drives in the same hardware-based disk pool; that is, the plexes are not hardware-fault isolated.
+
 == callhome.syncm.isolation
 *Severity*::
 ALERT

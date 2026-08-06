@@ -14,6 +14,9 @@ summary: malloc.failure events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This event is generated if malloc is called unsafely.
+
 == malloc.failure
 *Severity*::
 ERROR

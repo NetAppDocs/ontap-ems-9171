@@ -14,6 +14,9 @@ summary: sp.reboot events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the node's Service Processor (SP) or Baseboard Management Controller (BMC) log partition is mounted as read-only after an internal error has occurred.
+
 == sp.reboot.ro.partition
 *Severity*::
 NOTICE

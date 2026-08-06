@@ -14,6 +14,9 @@ summary: wafl.bad events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when you attempt to bring an aggregate online whose file system buftree type and RAID label format are inconsistent.
+
 == wafl.bad.aggr.buftree.type
 *Severity*::
 EMERGENCY

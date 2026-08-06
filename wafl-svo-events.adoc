@@ -14,6 +14,9 @@ summary: wafl.svo events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This event is generated if a write to a svo enabled volume fails to pass a check
+
 == wafl.svo.checkFailed
 *Severity*::
 NOTICE

@@ -14,6 +14,9 @@ summary: scsitarget.slifct events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the Fibre Channel target device driver encounters an unrecognized asynchronous event notification from the firmware, possibly as a result of a firmware update.
+
 == scsitarget.slifct.asyncError
 *Deprecated*::
 Deprecated as of ONTAP(R) version 9.2.0 in an effort reduce event messages.

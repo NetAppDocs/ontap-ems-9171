@@ -14,6 +14,9 @@ summary: raid.config events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs during a mirror check, when the system discovers that all plexes have failed in an aggregate.
+
 == raid.config.check.failed
 *Severity*::
 ERROR

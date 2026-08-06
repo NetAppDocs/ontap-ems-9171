@@ -14,6 +14,9 @@ summary: cluster.repl events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the cluster replication heartbeat to a peer cluster cannot reach the local management gateway process for a minimum of 300 seconds.
+
 == cluster.repl.localNW.unreachable
 *Severity*::
 NOTICE

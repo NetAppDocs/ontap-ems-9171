@@ -14,6 +14,9 @@ summary: smtape.bkp events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when an SMTape backup operation is aborted because a write to tape device fails.
+
 == smtape.bkp.abort.write.err
 *Severity*::
 ERROR

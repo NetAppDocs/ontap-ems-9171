@@ -14,6 +14,9 @@ summary: diskown.uprevversion events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when disk ownership information has been read and found to be from a version that is higher (newer) than what the current version of Data ONTAP understands.
+
 == diskown.UpRevVersion
 *Severity*::
 NOTICE

@@ -14,6 +14,9 @@ summary: ha.giveback events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the RAID or WAFL(R) subsystem fails to bring online the aggregate or its containing volumes after giveback.
+
 == ha.giveback.aggrOnlineFailed
 *Severity*::
 INFORMATIONAL

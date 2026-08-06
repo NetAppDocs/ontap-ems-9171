@@ -14,6 +14,9 @@ summary: replication.vol events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when SnapMirror(R) or VolCopy replication encounters a disk error in the active map delta blocks on the destination and cannot continue replication.
+
 == replication.vol.activemapdelta.err
 *Severity*::
 ERROR

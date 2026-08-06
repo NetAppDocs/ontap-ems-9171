@@ -14,6 +14,9 @@ summary: cf.nm events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the controller performs a soft reset of the HA interconnect card as part of automatic recovery from a timeout or link error.
+
 == cf.nm.nicReset
 *Severity*::
 NOTICE

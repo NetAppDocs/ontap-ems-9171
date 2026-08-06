@@ -14,6 +14,9 @@ summary: vldb.aggrvote events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when a row of the aggr vote table is not replicated to the local table when an update is received from the remote cluster.
+
 == vldb.aggrVote.noRepl
 *Severity*::
 INFORMATIONAL

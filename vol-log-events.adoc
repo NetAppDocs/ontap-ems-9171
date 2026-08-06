@@ -14,6 +14,9 @@ summary: vol.log events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the volume or aggregate allocates more space than it can honor by way of reservations, or the aggregate has allocated more space than it can honor by way of guarantees.
+
 == vol.log.overalloc
 *Severity*::
 ALERT

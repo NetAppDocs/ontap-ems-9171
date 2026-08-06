@@ -14,6 +14,9 @@ summary: repl.out events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when replication source is asked to send certain blocks out of band because the replica volume did a snapshot restore.
+
 == repl.out.of.band.vbn
 *Severity*::
 INFORMATIONAL

@@ -14,6 +14,9 @@ summary: adt.dest events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the audit consolidation job fails to write audit logs to the destination directory because the destination directory is not available.
+
 == adt.dest.access.fail
 *Severity*::
 ERROR

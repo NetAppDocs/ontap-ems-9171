@@ -14,6 +14,9 @@ summary: token.inactive events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when a reference is deleted on a token that has existed for longer than the timeout window.
+
 == token.inactive.ref.deleted
 *Severity*::
 NOTICE

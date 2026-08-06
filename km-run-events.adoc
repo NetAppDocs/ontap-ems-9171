@@ -14,6 +14,9 @@ summary: km.run events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when a node successfully performs a join operation to join a cluster, but the other nodes in the cluster have the External Key Manager configured and the new node does not.
+
 == km.run.external.setup
 *Severity*::
 ERROR

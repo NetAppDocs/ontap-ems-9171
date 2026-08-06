@@ -14,6 +14,9 @@ summary: wafl.gd events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when reserving allocation size fails for a file using granular data because there is no space available in the volume.
+
 == wafl.gd.alloc.size.rsrv.fail
 *Severity*::
 ERROR

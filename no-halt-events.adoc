@@ -14,6 +14,9 @@ summary: no.halt events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the option raid.timeout is set to 0 or if the option hasn't been set by the user, disabling automatic shutdown on a disk failure.
+
 == no.halt.brokenDisk
 *Severity*::
 ALERT

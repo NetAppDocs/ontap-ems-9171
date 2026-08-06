@@ -14,6 +14,9 @@ summary: pubsub.kernel events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message will not be published as flow control is enabled on kernel pubsub.
+
 == pubsub.kernel.flow.control.enabled
 *Deprecated*::
 This event is deprecated as of 9.10.0.

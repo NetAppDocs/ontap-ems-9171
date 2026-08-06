@@ -14,6 +14,9 @@ summary: wafl.readdir events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when a READDIR file operation has exceeded the timeout that it is allowed to run in WAFL.
+
 == wafl.readdir.expired
 *Severity*::
 ERROR

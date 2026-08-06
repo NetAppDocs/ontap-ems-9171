@@ -14,6 +14,9 @@ summary: km.keyserver events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when a check by the key manager for connectivity with a configured key management server indicates that the key management server that was previously unavailable is now available.
+
 == km.keyserver.available
 *Severity*::
 NOTICE

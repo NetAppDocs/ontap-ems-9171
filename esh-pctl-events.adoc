@@ -14,6 +14,9 @@ summary: esh.pctl events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when a 'power control' command cannot be performed on the specified disk device because the backplane CPLD (Complex Programmable Logic Device) is not operational.
+
 == esh.pctl.bpCPLDFailed
 *Severity*::
 ERROR

@@ -14,6 +14,9 @@ summary: gb.netra events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs during the migration of an aggregate as a part of storage failover (SFO) giveback, when the destination node cannot reach the object stores.
+
 == gb.netra.ca.check.failed
 *Severity*::
 ERROR

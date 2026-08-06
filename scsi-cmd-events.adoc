@@ -14,6 +14,9 @@ summary: scsi.cmd events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+The aborted event is issued if an I/O request is aborted by a class driver.
+
 == scsi.cmd.aborted
 *Deprecated*::
 This event has been removed as it does not provide any useful information for a customer.

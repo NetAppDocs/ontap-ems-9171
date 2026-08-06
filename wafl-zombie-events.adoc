@@ -14,6 +14,9 @@ summary: wafl.zombie events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the aggregate encounters the zombie throttling limits during zombie delete processing for large number of file deletions.
+
 == wafl.zombie.susp.aggr.limit
 *Severity*::
 NOTICE

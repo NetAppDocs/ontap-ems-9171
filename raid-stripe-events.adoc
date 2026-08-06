@@ -14,6 +14,9 @@ summary: raid.stripe events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This event is issued when we encounter a bad block buffer entry in NVRAM during stripe replay (indicating corrupted NVRAM).
+
 == raid.stripe.replay.bad.block
 *Severity*::
 ERROR

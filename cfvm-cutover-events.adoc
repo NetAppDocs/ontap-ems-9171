@@ -14,6 +14,9 @@ summary: cfvm.cutover events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when a copy free volume move operation languishes beyond the volume move cutover outage window.
+
 == cfvm.cutover.languish
 *Severity*::
 ALERT

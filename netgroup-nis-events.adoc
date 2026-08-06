@@ -14,6 +14,9 @@ summary: netgroup.nis events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the netgroup.byhost remote procedure call to the Network Information Service (NIS) server returns a response that cannot be decoded.
+
 == netgroup.nis.byhost.decode
 *Severity*::
 ERROR

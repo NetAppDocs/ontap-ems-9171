@@ -14,6 +14,9 @@ summary: mgmt.cifssymlink events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when configuration of a CIFS symbolic link fails; the symbolic link might not be available through CIFS.
+
 == mgmt.cifssymlink.failure
 *Severity*::
 ERROR

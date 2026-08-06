@@ -14,6 +14,9 @@ summary: cf.fsm events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when a node initiates an automatic giveback to its partner following a takeover that was due to a panic on the partner.
+
 == cf.fsm.autoGBTkoverOnPanic
 *Severity*::
 INFORMATIONAL

@@ -14,6 +14,9 @@ summary: sp.autoupd events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when a Service Processor (SP) or baseboard management controller (BMC) firmware automatic update is cancelled because the high-availability (HA) partner node is offline.
+
 == sp.autoupd.partner.offline
 *Severity*::
 ERROR

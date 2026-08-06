@@ -14,6 +14,9 @@ summary: sp.firmware events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when neither of the firmware images of the node's Service Processor (SP) or Baseboard Management Controller (BMC) on the primary flash chip can be booted.
+
 == sp.firmware.corruption
 *Severity*::
 ALERT

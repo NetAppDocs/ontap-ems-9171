@@ -14,6 +14,9 @@ summary: monitor.power events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the main unit power supply is in a degraded mode.
+
 == monitor.power.degraded
 *Deprecated*::
 Deprecated as of version 9.2. Last used in 7.3.6 on Tin and Dell one-PSU systems. It is the last user of snmp trap 43.

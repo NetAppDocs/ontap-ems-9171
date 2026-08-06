@@ -14,6 +14,9 @@ summary: kern.syslog events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This event is generated when we detect that syslog messages were dropped before being logged.
+
 == kern.syslog.drops
 *Severity*::
 ERROR

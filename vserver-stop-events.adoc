@@ -14,6 +14,9 @@ summary: vserver.stop events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when a 'vserver stop' operation fails due to failure to stop either a logical interface (LIF) or a protocol for the Vserver specified.
+
 == vserver.stop.failed
 *Severity*::
 ERROR

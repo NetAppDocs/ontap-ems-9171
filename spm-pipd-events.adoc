@@ -14,6 +14,9 @@ summary: spm.pipd events
 :linkattrs:
 :imagesdir: ./media/
 
+[role="lead"]
+This message occurs when the post-ingest processing daemon (pipd) involuntarily terminates.
+
 == spm.pipd.process.exit
 *Deprecated*::
 Deprecated as of Data ONTAP 9.7 because the pipd process no longer exists.
