@@ -15,7 +15,7 @@ summary: mav.disabled events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when multi-admin verification (MAV) is enabled, the bootarg "bootarg.multi_admin.enable" is set to false, and an operation that normally requires MAV approval is executed via the console.
+mav.disabled events are presented when multi-admin verification (MAV) is enabled, the bootarg "bootarg.multi_admin.enable" is set to false, and an operation that normally requires MAV approval is executed via the console which is typically fixed by updating configuration.
 
 == mav.disabled.used.console
 *Severity*::

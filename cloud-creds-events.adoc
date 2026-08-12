@@ -15,7 +15,7 @@ summary: cloud.creds events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the system cannot establish a communication link with the cloud provider's metadata server, in order to acquire the necessary temporary credentials used in signing API requests to the cloud object store server.
+cloud.creds events are presented when the system cannot establish a communication link with the cloud provider's metadata server, in order to acquire the necessary temporary credentials used in signing API requests to the cloud object store server which is typically fixed by verifying system state and updating configuration.
 
 == cloud.creds.metadataConnFail
 *Severity*::

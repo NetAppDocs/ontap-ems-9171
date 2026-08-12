@@ -15,7 +15,7 @@ summary: net.cg events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the current connection group experiences backpressure.
+net.cg events are presented when the current connection group experiences backpressure which is typically fixed by verifying system state and updating configuration.
 
 == net.cg.backpressureEntered
 *Severity*::

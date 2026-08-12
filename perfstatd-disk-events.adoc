@@ -15,7 +15,7 @@ summary: perfstatd.disk events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the perfstat daemon (perfstatd) startup fails due to a full disk.This failure impacts the continuous archiving of performance data that technical support uses to troubleshoot performance issues.
+perfstatd.disk events are presented when the perfstat daemon (perfstatd) startup fails due to a full disk.This failure impacts the continuous archiving of performance data that technical support uses to troubleshoot performance issues which may require restarting affected services or nodes.
 
 == perfstatd.disk.full
 *Severity*::

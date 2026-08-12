@@ -15,7 +15,7 @@ summary: disk.encryptcmdfailed events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the indicated "storage encryption disk" command fails on an encrypting disk that supports storage encryption methods.
+disk.encryptcmdfailed events are presented when the indicated "storage encryption disk" command fails on an encrypting disk that supports storage encryption methods which is typically fixed by verifying system state and connectivity.
 
 == disk.encryptCmdFailed
 *Severity*::

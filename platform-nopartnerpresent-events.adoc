@@ -15,7 +15,7 @@ summary: platform.nopartnerpresent events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the HA partner's presence cannot be read via the GPIO ports on the controller.
+platform.nopartnerpresent events are presented when the HA partner's presence cannot be read via the GPIO ports on the controller which typically does not require corrective action.
 
 == platform.noPartnerPresent
 *Severity*::

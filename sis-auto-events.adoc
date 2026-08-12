@@ -15,7 +15,7 @@ summary: sis.auto events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs whenever the number of background deduplication sessions change on a node because of throttling based on system load for the volumes with efficiency policy type as auto.
+sis.auto events are presented when ever the number of background deduplication sessions change on a node because of throttling based on system load for the volumes with efficiency policy type as auto which typically does not require corrective action.
 
 == sis.auto.session.change
 *Severity*::

@@ -15,7 +15,7 @@ summary: tapemc.iopending events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when Data ONTAP(R) detects that multiple I/Os were sent to a device that supports only one I/O at a time.
+tapemc.iopending events are presented when data ONTAP(R) detects that multiple I/Os were sent to a device that supports only one I/O at a time which typically does not require corrective action.
 
 == tapemc.iopending.exceeded
 *Severity*::

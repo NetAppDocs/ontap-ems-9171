@@ -15,7 +15,7 @@ summary: ipfw.reachedmaxstates events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the ipfw firewall fails to create a new dynamic state entry for a "keep-state" rule because the number of dynamic state entries has reached the maximum allowed value of 32768.
+ipfw.reachedmaxstates events are presented when the ipfw firewall fails to create a new dynamic state entry for a "keep-state" rule because the number of dynamic state entries has reached the maximum allowed value of 32768 which typically does not require corrective action.
 
 == ipfw.ReachedMaxStates
 *Severity*::

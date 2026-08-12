@@ -15,7 +15,7 @@ summary: coredump.findcore events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the core dump process detects an error while checking for an unsaved core in the dump device.
+coredump.findcore events are presented when the core dump process detects an error while checking for an unsaved core in the dump device which typically does not require corrective action.
 
 == coredump.findcore.error
 *Severity*::

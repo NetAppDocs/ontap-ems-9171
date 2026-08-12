@@ -15,7 +15,7 @@ summary: exports.netgroup events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the reverse lookup record mapping an IP address to its hostname cannot be found in the configured name servers.
+exports.netgroup events are presented when the reverse lookup record mapping an IP address to its hostname cannot be found in the configured name servers which is typically fixed by verifying system state and connectivity.
 
 == exports.netgroup.dnsNoPtrRec
 *Severity*::

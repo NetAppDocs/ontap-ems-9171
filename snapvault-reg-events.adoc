@@ -15,7 +15,7 @@ summary: snapvault.reg events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when you downgrade from a kernel with newer version to one with an older version and the system attempts to read a registry entry that is supported only in the newer version of the kernel.
+snapvault.reg events are presented when you downgrade from a kernel with newer version to one with an older version and the system attempts to read a registry entry that is supported only in the newer version of the kernel which typically does not require corrective action.
 
 == snapvault.reg.unknownOpt
 *Severity*::

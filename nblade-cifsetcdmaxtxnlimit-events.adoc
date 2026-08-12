@@ -15,7 +15,7 @@ summary: nblade.cifsetcdmaxtxnlimit events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the number of Access Control Entries (ACE) present in an MSRPC request for updating share permissions exceeds the supported maximum etcd limit of 1,022 entries.
+nblade.cifsetcdmaxtxnlimit events are presented when the number of Access Control Entries (ACE) present in an MSRPC request for updating share permissions exceeds the supported maximum etcd limit of 1,022 entries which is typically fixed by following the documented corrective steps.
 
 == Nblade.cifsEtcdMaxTxnLimit
 *Severity*::

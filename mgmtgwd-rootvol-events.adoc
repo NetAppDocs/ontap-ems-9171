@@ -15,7 +15,7 @@ summary: mgmtgwd.rootvol events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the system detects that a root volume might have changed, causing the local management databases to be out of sync with the replicated databases.
+mgmtgwd.rootvol events are presented when the system detects that a root volume might have changed, causing the local management databases to be out of sync with the replicated databases which may require contacting NetApp support.
 
 == mgmtgwd.rootvol.recovery.changed
 *Severity*::

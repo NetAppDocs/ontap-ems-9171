@@ -15,7 +15,7 @@ summary: quota.softlimit events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a user exceeds the soft quota limit (file and/or block limit).
+quota.softlimit events are presented when a user exceeds the soft quota limit (file and/or block limit) which typically does not require corrective action.
 
 == quota.softlimit.exceeded
 *Severity*::

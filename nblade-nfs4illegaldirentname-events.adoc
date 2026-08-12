@@ -15,7 +15,7 @@ summary: nblade.nfs4illegaldirentname events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a user attempts to list a directory over NFSv4 that contains an entry name with non UTF-8 characters.
+nblade.nfs4illegaldirentname events are presented when a user attempts to list a directory over NFSv4 that contains an entry name with non UTF-8 characters which is typically fixed by verifying system state and connectivity.
 
 == Nblade.Nfs4IllegalDirentName
 *Severity*::

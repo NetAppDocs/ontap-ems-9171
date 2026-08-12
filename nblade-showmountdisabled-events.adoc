@@ -15,7 +15,7 @@ summary: nblade.showmountdisabled events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the "showmount" command is triggered by client, but the command is disabled on the NFS server.
+nblade.showmountdisabled events are presented when the "showmount" command is triggered by client, but the command is disabled on the NFS server which is typically fixed by verifying system state and updating configuration.
 
 == nblade.showmountdisabled
 *Severity*::

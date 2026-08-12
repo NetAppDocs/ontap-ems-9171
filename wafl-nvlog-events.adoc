@@ -15,7 +15,7 @@ summary: wafl.nvlog events
 :imagesdir: ./media/
 
 [.lead]
-This event is issued to indicate that the system is unable to create nvlog stats file.
+wafl.nvlog events are presented when to indicate that the system is cannot create nvlog stats file, which typically does not require corrective action.
 
 == wafl.nvlog.stats.createError
 *Severity*::

@@ -15,7 +15,7 @@ summary: callhome.vfiler events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs on the destination controller during the final phase of migrating a vfiler when the 120 second time limit has been reached .
+callhome.vfiler events are presented when the 120 second time limit has been reached on the destination controller during the final phase of migrating a vfiler, which is typically fixed by verifying system state and connectivity.
 
 == callhome.vfiler.move.to.dst
 *Severity*::

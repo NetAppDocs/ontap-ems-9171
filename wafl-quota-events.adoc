@@ -15,7 +15,7 @@ summary: wafl.quota events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the quota control file is inconsistent, or when it is consistent but the qtree metatdata file refers to a vFiler(tm) unit that no longer exists.
+wafl.quota events are presented when the system cannot create the quota database file which typically does not require corrective action.
 
 == wafl.quota.control.inconsistent
 *Severity*::

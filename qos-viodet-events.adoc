@@ -15,7 +15,7 @@ summary: qos.viodet events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the Quality of Service (QoS) subsystem has already throttled requests severely to help workloads meet their min-throughput and their service-level objectives (SLOs) and will not throttle any further.
+qos.viodet events are presented when the Quality of Service (QoS) subsystem has already throttled requests severely to help workloads meet their min-throughput and their service-level objectives (SLOs) and will not throttle any further which is typically fixed by following the documented corrective steps.
 
 == qos.VioDet.maxThrottle
 *Severity*::

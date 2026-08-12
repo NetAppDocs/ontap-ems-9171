@@ -15,7 +15,7 @@ summary: rpc.xprt events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the number of active connections to a side band Remote Procedure Call (RPC) reaches the limit.
+rpc.xprt events are presented when the number of active connections to a side band Remote Procedure Call (RPC) reaches the limit which is typically fixed by verifying system state and connectivity.
 
 == rpc.xprt.limit
 *Deprecated*::

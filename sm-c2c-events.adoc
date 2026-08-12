@@ -15,7 +15,7 @@ summary: sm.c2c events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when SnapMirror(R) performs a SnapMirror Cloud rebaseline transfer because certain conditions for an incremental transfer haven't been met between the source volume and the object-store destination endpoint of the transfer.
+sm.c2c events are presented when snapMirror(R) performs a SnapMirror Cloud rebaseline transfer because certain conditions for an incremental transfer haven't been met between the source volume and the object-store destination endpoint of the transfer which typically does not require corrective action.
 
 == sm.c2c.rebaseline.xfer
 *Severity*::

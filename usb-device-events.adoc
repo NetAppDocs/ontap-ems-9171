@@ -15,7 +15,7 @@ summary: usb.device events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when multiple consecutive commands to the specified universal serial bus (USB) device are not completed within the allotted time.
+usb.device events are presented when multiple consecutive commands to the specified universal serial bus (USB) device are not completed within the allotted time which may require reseating or replacing affected hardware.
 
 == usb.device.failed
 *Severity*::

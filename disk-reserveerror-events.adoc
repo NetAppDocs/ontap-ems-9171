@@ -15,7 +15,7 @@ summary: disk.reserveerror events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a SCSI reservation is requested for a disk or LUN that is no longer seen.
+disk.reserveerror events are presented when a SCSI reservation is requested for a disk or LUN that is no longer seen which is typically fixed by verifying system state and connectivity.
 
 == disk.reserveError
 *Severity*::

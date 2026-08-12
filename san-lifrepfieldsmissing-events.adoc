@@ -15,7 +15,7 @@ summary: san.lifrepfieldsmissing events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the system cannot replicate a SAN logical interface (LIF) in a MetroCluster(tm) configuration, because one or more attributes of the source LIF cannot be determined.
+san.lifrepfieldsmissing events are presented when the system cannot replicate a SAN logical interface (LIF) in a MetroCluster(tm) configuration, because one or more attributes of the source LIF cannot be determined which is typically fixed by verifying system state and connectivity.
 
 == san.LifRepFieldsMissing
 *Severity*::

@@ -15,7 +15,7 @@ summary: config.badpoolassign events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when SyncMirror(R) is in use and disks are assigned to different pools on the same interface or loop.
+config.badpoolassign events are presented when syncMirror(R) is in use and disks are assigned to different pools on the same interface or loop which may require reseating or replacing affected hardware.
 
 == config.BadPoolAssign
 *Severity*::

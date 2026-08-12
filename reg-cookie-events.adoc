@@ -15,7 +15,7 @@ summary: reg.cookie events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when allocation of cookies for traversing all keys under a prefix fails.
+reg.cookie events are presented when allocation of cookies for traversing all keys under a prefix fails which is typically fixed by verifying system state and connectivity.
 
 == reg.cookie.null
 *Severity*::

@@ -15,7 +15,7 @@ summary: netif.badeeprom events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the network interface has an electronically erasable programmable read-only memory (EEPROM) with a bad cyclic redundancy check (CRC) or media access control (MAC) address.
+netif.badeeprom events are presented when the network interface has an electronically erasable programmable read-only memory (EEPROM) with a bad cyclic redundancy check (CRC) or media access control (MAC) address which may require reseating or replacing affected hardware.
 
 == netif.badEeprom
 *Severity*::

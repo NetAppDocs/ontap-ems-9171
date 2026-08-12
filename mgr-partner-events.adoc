@@ -15,7 +15,7 @@ summary: mgr.partner events
 :imagesdir: ./media/
 
 [.lead]
-This event is generated after a successful cluster takeover caused by a partner panic, and indicates partner stack trace information was collected from the time of the panic.
+mgr.partner events are presented when after a successful cluster takeover caused by a partner panic, and indicates partner stack trace information was collected from the time of the panic, which may require contacting NetApp support.
 
 == mgr.partner.stack.saved
 *Severity*::

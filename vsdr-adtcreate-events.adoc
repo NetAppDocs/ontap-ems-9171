@@ -15,7 +15,7 @@ summary: vsdr.adtcreate events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when an audit staging volume cannot be created at the destination cluster in Async-DR (asynchronous disaster recovery), either because there is not enough disk space on the aggregates or the aggregates are in offline state.
+vsdr.adtcreate events are presented when an audit staging volume cannot be created at the destination cluster in Async-DR (asynchronous disaster recovery), either because there is not enough disk space on the aggregates or the aggregates are in offline state which is typically fixed by following the documented corrective steps.
 
 == vsdr.adtcreate.fail
 *Severity*::

@@ -15,7 +15,7 @@ summary: rdb.recovery events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the cluster management Data Replication Module could not automatically repair its local replicas.
+rdb.recovery events are presented when the cluster management Data Replication Module could not automatically repair its local replicas which is typically fixed by following the documented corrective steps.
 
 == rdb.recovery.failed
 *Severity*::

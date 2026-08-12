@@ -15,7 +15,7 @@ summary: acp.downrev events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the Alternate Control Path Administrator cannot successfully download up-to-date firmware to an Alternate Control Path Processor (ACPP) or when the most up-to-date firmware image is not present in the /etc/acpp_fw/ directory.
+acp.downrev events are presented when the Alternate Control Path Administrator cannot successfully download up-to-date firmware to an Alternate Control Path Processor (ACPP) or when the most up-to-date firmware image is not present in the /etc/acpp_fw/ directory which is typically fixed by verifying system state and updating configuration.
 
 == acp.downrev.acpp
 *Severity*::

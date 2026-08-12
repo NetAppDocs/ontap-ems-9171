@@ -15,7 +15,7 @@ summary: callhome.ses events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the storage adapter detects a disk on the Fibre Channel loop or the SCSI bus, but enclosure services in the disk shelf does not report a disk with that address.
+callhome.ses events are presented when the storage adapter detects a disk on the Fibre Channel loop or the SCSI bus, but enclosure services in the disk shelf does not report a disk with that address which is typically fixed by verifying system state and connectivity.
 
 == callhome.ses.drive.missing
 *Severity*::

@@ -15,7 +15,7 @@ summary: snaprestore.fail events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a SnapRestore(R) operation on a volume fails due to insufficient space in the target volume to hold the data present in the snapshot.
+snaprestore.fail events are presented when a SnapRestore(R) operation on a volume fails due to insufficient space in the target volume to hold the data present in the snapshot which is typically fixed by following the documented corrective steps.
 
 == snaprestore.fail.volume.size
 *Severity*::

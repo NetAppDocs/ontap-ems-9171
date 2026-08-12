@@ -15,7 +15,7 @@ summary: pn.mvia events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the pass-through network layer depletes its supply of buffers for sending traffic, which could cause an Interconnect timeout.
+pn.mvia events are presented when the round-trip-time (RTT) measured in pass-through network layer exceeds predefined threshold which typically does not require corrective action.
 
 == pn.mvia.freeq.empty
 *Severity*::

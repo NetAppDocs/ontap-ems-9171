@@ -15,7 +15,7 @@ summary: quota.intr events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when previous quota initialization was interrupted due to a system reboot or file system consistency checking.
+quota.intr events are presented when previous quota initialization was interrupted due to a system reboot or file system consistency checking which typically does not require corrective action.
 
 == quota.intr.boot.fschk
 *Severity*::

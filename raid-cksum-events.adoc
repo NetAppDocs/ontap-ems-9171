@@ -15,7 +15,7 @@ summary: raid.cksum events
 :imagesdir: ./media/
 
 [.lead]
-This event is issued when WAFL accesses a block that was zeroed because it could not be recovered correctly.
+raid.cksum events are presented when WAFL accesses a block that was zeroed because it could not be recovered correctly, which is typically fixed by following the documented corrective steps.
 
 == raid.cksum.bad.file.block
 *Severity*::

@@ -15,7 +15,7 @@ summary: vsdr.fpvoldropqospolicy events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the system clears or drops an incompatible quality of service (QoS) policy group setting with minimum throughput value set on a destination volume having tiering policy other than "none" on a FabricPool aggregate at the destination cluster.
+vsdr.fpvoldropqospolicy events are presented when the system clears or drops an incompatible quality of service (QoS) policy group setting with minimum throughput value set on a destination volume having tiering policy other than "none" on a FabricPool aggregate at the destination cluster which typically does not require corrective action.
 
 == vsdr.FPVolDropQosPolicy
 *Severity*::

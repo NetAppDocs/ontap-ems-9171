@@ -15,7 +15,7 @@ summary: ha.aggregate events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when an aggregate ownership change has failed.
+ha.aggregate events are presented when an aggregate ownership change has failed which is typically fixed by verifying system state and connectivity.
 
 == ha.aggregate.ownershipChangeFailed
 *Severity*::

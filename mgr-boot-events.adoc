@@ -15,7 +15,7 @@ summary: mgr.boot events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the system boots from its backup BIOS image because either it failed to boot from its primary BIOS image within the expected timeframe or the image is corrupted.
+mgr.boot events are presented when the system boots from its backup BIOS image because either it failed to boot from its primary BIOS image within the expected timeframe or the image is corrupted which may require contacting NetApp support.
 
 == mgr.boot.bios_backup_flash
 *Severity*::

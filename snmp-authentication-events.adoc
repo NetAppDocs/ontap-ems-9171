@@ -15,7 +15,7 @@ summary: snmp.authentication events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when there is an authentication failure during an SNMP query.
+snmp.authentication events are presented when there is an authentication failure during an SNMP query which is typically fixed by verifying system state and connectivity.
 
 == snmp.authentication.failure
 *Severity*::

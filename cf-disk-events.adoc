@@ -15,7 +15,7 @@ summary: cf.disk events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when one of the nodes in a high-availability (HA) pair reports that multiple disks in the disk inventory do not match what the partner node reported.
+cf.disk events are presented when one of the nodes in a high-availability (HA) pair reports that multiple disks in the disk inventory do not match what the partner node reported which is typically fixed by verifying system state and connectivity.
 
 == cf.disk.invent.mismatchalt
 *Severity*::

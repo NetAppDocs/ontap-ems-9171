@@ -15,7 +15,7 @@ summary: shm.ssd events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when ONTAP(R) detects that a solid-state drive (SSD) has an average block latency during a five-minute timeframe that is greater than expected.
+shm.ssd events are presented when oNTAP(R) detects that a solid-state drive (SSD) has an average block latency during a five-minute timeframe that is greater than expected which typically does not require corrective action.
 
 == shm.ssd.threshold.ioLatency
 *Severity*::

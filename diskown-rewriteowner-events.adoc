@@ -15,7 +15,7 @@ summary: diskown.rewriteowner events
 :imagesdir: ./media/
 
 [.lead]
-This event is issued when we have to rewrite a DOWN because it is out of date wrt the other DOWNs.
+diskown.rewriteowner events are presented when we have to rewrite a DOWN because it is out of date wrt the other DOWNs, which typically does not require corrective action.
 
 == diskown.rewriteOwner
 *Severity*::

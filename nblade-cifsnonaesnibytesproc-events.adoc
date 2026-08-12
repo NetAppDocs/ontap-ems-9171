@@ -15,7 +15,7 @@ summary: nblade.cifsnonaesnibytesproc events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a system with CPUs that do not support the AES-NI instruction set is performing SMB3 encryption or signing of a large amount of data.
+nblade.cifsnonaesnibytesproc events are presented when a system with CPUs that do not support the AES-NI instruction set is performing SMB3 encryption or signing of a large amount of data which is typically fixed by updating configuration.
 
 == Nblade.cifsNonAesNiBytesProc
 *Severity*::

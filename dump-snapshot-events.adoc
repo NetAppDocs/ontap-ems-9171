@@ -15,7 +15,7 @@ summary: dump.snapshot events
 :imagesdir: ./media/
 
 [.lead]
-This event is generated during dump restarting and looking for the snapshot that was created by the dump while it was terminating last time and we are unable to locate the snapshot
+dump.snapshot events are presented when during dump restarting and looking for the snapshot that was created by the dump while it was terminating last time and we are cannot locate the snapshot, which typically does not require corrective action.
 
 == dump.snapshot.fail
 *Severity*::

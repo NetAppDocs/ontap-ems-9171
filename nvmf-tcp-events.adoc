@@ -15,7 +15,7 @@ summary: nvmf.tcp events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when there is an internal error while creating a NVMe-over-TCP (NVMe/TCP) logical network interface (LIF).
+nvmf.tcp events are presented when there is an internal error while creating a NVMe-over-TCP (NVMe/TCP) logical network interface (LIF) which is typically fixed by updating configuration.
 
 == nvmf.tcp.lif.create.fail
 *Severity*::

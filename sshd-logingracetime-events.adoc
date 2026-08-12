@@ -15,7 +15,7 @@ summary: sshd.logingracetime events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a user tries to establish a Secure Shell (SSH) connection to a storage system and does not provide the password within the allotted timeout period.
+sshd.logingracetime events are presented when a user tries to establish a Secure Shell (SSH) connection to a storage system and does not provide the password within the allotted timeout period which is typically fixed by following the documented corrective steps.
 
 == sshd.loginGraceTime.expired
 *Severity*::

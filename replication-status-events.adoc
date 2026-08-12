@@ -15,7 +15,7 @@ summary: replication.status events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the time skew between the source and destination system is greater than 1 minute.
+replication.status events are presented when the time skew between the source and destination system is greater than 1 minute which is typically fixed by following the documented corrective steps.
 
 == replication.status.timeSkewed
 *Severity*::

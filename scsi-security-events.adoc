@@ -15,7 +15,7 @@ summary: scsi.security events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a self-encrypting drive (SED) reports excessive sequential failed authentication attempts with an incorrect Authentication Key (AK).
+scsi.security events are presented when a self-encrypting drive (SED) reports excessive sequential failed authentication attempts with an incorrect Authentication Key (AK) which is typically fixed by verifying system state and connectivity.
 
 == scsi.security.authLockOut
 *Deprecated*::

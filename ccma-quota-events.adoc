@@ -15,7 +15,7 @@ summary: ccma.quota events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a datastore has been orphaned due to the system not having sufficient memory to keep track of it in the quota system.
+ccma.quota events are presented when a datastore has been orphaned due to the system not having sufficient memory to keep track of it in the quota system which may require restarting affected services or nodes.
 
 == ccma.quota.datastore.leak
 *Severity*::

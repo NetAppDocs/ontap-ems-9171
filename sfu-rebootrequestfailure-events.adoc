@@ -15,7 +15,7 @@ summary: sfu.rebootrequestfailure events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when an attempt to issue a reboot request after downloading disk shelf firmware fails, indicating a software error.
+sfu.rebootrequestfailure events are presented when an attempt to issue a reboot request after downloading disk shelf firmware fails, indicating a software error which is typically fixed by updating configuration.
 
 == sfu.rebootRequestFailure
 *Severity*::

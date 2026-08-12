@@ -15,7 +15,7 @@ summary: mlm.scsi events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when an array target port contains SCSI INQUIRY data with an incorrect support level.
+mlm.scsi events are presented when an array target port contains SCSI INQUIRY data with an incorrect support level which is typically fixed by verifying system state and updating configuration.
 
 == mlm.SCSI.supportLvl.bad
 *Severity*::

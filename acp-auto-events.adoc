@@ -15,7 +15,7 @@ summary: acp.auto events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the Alternate Control Path (ACP) Administrator determines that the ACP Processor has an older firmware image compared to the file revision present in '/etc/acp/acpp_fw'.
+acp.auto events are presented when the Alternate Control Path (ACP) Administrator determines that the ACP Processor has an older firmware image compared to the file revision present in '/etc/acp/acpp_fw' which typically does not require corrective action.
 
 == acp.auto.upgrade
 *Severity*::

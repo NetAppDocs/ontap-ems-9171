@@ -15,7 +15,7 @@ summary: vldb.aggregateuuid events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when an aggregate's Universally Unique Identifier (UUID) in the Volume Location Database does not match the aggregate's current UUID.
+vldb.aggregateuuid events are presented when an aggregate's Universally Unique Identifier (UUID) in the Volume Location Database does not match the aggregate's current UUID which typically does not require corrective action.
 
 == vldb.aggregateUUID.mismatch
 *Severity*::

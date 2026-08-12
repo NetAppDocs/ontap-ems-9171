@@ -15,7 +15,7 @@ summary: netinet6.rtr events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the Maximum Transmission Unit (MTU) size of the Router Advertisement (RA) message, sent from the specified source IPv6 address, is higher than the upper bound of the Link MTU.
+netinet6.rtr events are presented when the Maximum Transmission Unit (MTU) size of the Router Advertisement (RA) message, sent from the specified source IPv6 address, is higher than the upper bound of the Link MTU which typically does not require corrective action.
 
 == netinet6.rtr.high.mtu
 *Severity*::

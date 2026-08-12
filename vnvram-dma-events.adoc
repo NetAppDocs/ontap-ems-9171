@@ -15,7 +15,7 @@ summary: vnvram.dma events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a vNVRAM flush operation on an ONTAP-v system is taking too much time.
+vnvram.dma events are presented when a vNVRAM flush operation on an ONTAP-v system is taking too much time which is typically fixed by verifying system state and connectivity.
 
 == vnvram.dma.long.wait
 *Severity*::

@@ -15,7 +15,7 @@ summary: san.noportsinipspace events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when an attempt to place an IP LIF on a particular node fails because the system cannot find any ports in an IPspace on that node.
+san.noportsinipspace events are presented when an attempt to place an IP LIF on a particular node fails because the system cannot find any ports in an IPspace on that node which is typically fixed by following the documented corrective steps.
 
 == san.NoPortsInIpspace
 *Severity*::

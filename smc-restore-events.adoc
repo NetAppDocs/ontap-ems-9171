@@ -15,7 +15,7 @@ summary: smc.restore events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a SnapMirror restore operation or a SnapMirror restore cleanup operation fails to cleanup a SnapMirror restore source relationship information.
+smc.restore events are presented when a SnapMirror restore operation or a SnapMirror restore cleanup operation fails to cleanup a SnapMirror restore source relationship information which is typically fixed by verifying system state and connectivity.
 
 == smc.restore.src.cleanup.fail
 *Severity*::

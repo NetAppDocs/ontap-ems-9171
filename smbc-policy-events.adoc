@@ -15,7 +15,7 @@ summary: smbc.policy events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the system detects during a flip on a SnapMirror(R) Sync relationship that the custom policy has been deleted from the source cluster and automatically falls back to the system policy of type "automated-failover".
+smbc.policy events are presented when the system detects during a flip on a SnapMirror(R) Sync relationship that the custom policy has been deleted from the source cluster and automatically falls back to the system policy of type "automated-failover" which typically does not require corrective action.
 
 == smbc.policy.reassign
 *Severity*::

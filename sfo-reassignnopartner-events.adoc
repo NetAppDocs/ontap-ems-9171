@@ -15,7 +15,7 @@ summary: sfo.reassignnopartner events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs during the Storage Failover takeover process, when the disks from the failed node cannot be reassigned because they are unaccessible to the surviving node.
+sfo.reassignnopartner events are presented when the disks from the failed node cannot be reassigned because they are unaccessible to the surviving node during the Storage Failover takeover process, which is typically fixed by verifying system state and connectivity.
 
 == sfo.reassignNoPartner
 *Severity*::

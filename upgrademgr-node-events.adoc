@@ -15,7 +15,7 @@ summary: upgrademgr.node events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a cluster node takes more than 30 minutes to reach giveback ready state during automated nondisruptive upgrade.
+upgrademgr.node events are presented when a cluster node takes more than 30 minutes to reach giveback ready state during automated nondisruptive upgrade which typically does not require corrective action.
 
 == upgrademgr.node.slowboot
 *Severity*::

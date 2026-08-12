@@ -15,7 +15,7 @@ summary: callhome.ctran events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the Kernel Cluster Services (KCS) / Cluster Transaction Manager (CTRAN) detects that one or more newly selected Group Coordinators (GCs) are taking too long to successfully complete the GC Ready on Reselect procedure.
+callhome.ctran events are presented when the Kernel Cluster Services (KCS) / Cluster Transaction Manager (CTRAN) detects that one or more newly selected Group Coordinators (GCs) are taking too long to successfully complete the GC Ready on Reselect procedure which may require contacting NetApp support.
 
 == callhome.ctran.gcror.timeout
 *Severity*::

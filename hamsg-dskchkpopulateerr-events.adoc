@@ -15,7 +15,7 @@ summary: hamsg.dskchkpopulateerr events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a disk inventory check cannot be sent to the local node's high-availability (HA) partner because the disk check request could not be correctly constructed.
+hamsg.dskchkpopulateerr events are presented when a disk inventory check cannot be sent to the local node's high-availability (HA) partner because the disk check request could not be correctly constructed which is typically fixed by verifying system state and connectivity.
 
 == hamsg.dskChkPopulateErr
 *Severity*::

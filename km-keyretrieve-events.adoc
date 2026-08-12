@@ -15,7 +15,7 @@ summary: km.keyretrieve events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a node fails to retrieve a complete set of encryption keys from the configured key servers by the time the management process comes online.
+km.keyretrieve events are presented when a node fails to retrieve a complete set of encryption keys from the configured key servers by the time the management process comes online which is typically fixed by following the documented corrective steps.
 
 == km.keyretrieve.failed
 *Severity*::

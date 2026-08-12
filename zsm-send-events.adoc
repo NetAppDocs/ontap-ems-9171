@@ -15,7 +15,7 @@ summary: zsm.send events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a socket timeout occurs on an intracluster Manage ONTAP(R) API request to an internal ONTAPI(R) server.
+zsm.send events are presented when a socket timeout occurs on an intracluster Manage ONTAP(R) API request to an internal ONTAPI(R) server which is typically fixed by verifying system state and connectivity.
 
 == zsm.send.request.timeout
 *Severity*::

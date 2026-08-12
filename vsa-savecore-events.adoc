@@ -15,7 +15,7 @@ summary: vsa.savecore events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the savecore tool determines that the space available is not sufficient for storing the core image from a dump device to a readable core file in the /etc/crash directory.
+vsa.savecore events are presented when the savecore tool determines that the space available is not sufficient for storing the core image from a dump device to a readable core file in the /etc/crash directory which is typically fixed by verifying system state and updating configuration.
 
 == vsa.savecore.nospace
 *Severity*::

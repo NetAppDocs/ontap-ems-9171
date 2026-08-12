@@ -15,7 +15,7 @@ summary: flexcache.cfg events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a FlexCache(R) configuration refresh operation fails during cluster takeover or giveback, or when there is a connection state update triggered when origin or cache moves from connected state to disconnected state, or the other way round.
+flexcache.cfg events are presented when a FlexCache(R) configuration refresh operation fails during cluster takeover or giveback, or when there is a connection state update triggered when origin or cache moves from connected state to disconnected state, or the other way round which is typically fixed by verifying system state and connectivity.
 
 == flexcache.cfg.refresh.failed
 *Severity*::

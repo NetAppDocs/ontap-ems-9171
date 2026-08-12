@@ -15,7 +15,7 @@ summary: wafl.scan events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the system is aborting the WORM clear scan because there is no space available in the volume.
+wafl.scan events are presented when the system is aborting the WORM clear scan because there is no space available in the volume which is typically fixed by updating configuration.
 
 == wafl.scan.abort.nospace
 *Severity*::

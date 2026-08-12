@@ -15,7 +15,7 @@ summary: moveagent.commitdst events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a 'volume move' operation finishes moving the volume to the destination but fails to update the appropriate information on the destination.
+moveagent.commitdst events are presented when a 'volume move' operation finishes moving the volume to the destination but fails to update the appropriate information on the destination which may require contacting NetApp support.
 
 == moveagent.commitdst.fail
 *Severity*::

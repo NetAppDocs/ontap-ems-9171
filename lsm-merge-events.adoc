@@ -15,7 +15,7 @@ summary: lsm.merge events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a block store encounters an error while merging an append log.
+lsm.merge events are presented when a block store encounters an error while merging an append log which typically does not require corrective action.
 
 == lsm.merge.alog.problem
 *Severity*::

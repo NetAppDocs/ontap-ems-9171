@@ -15,7 +15,7 @@ summary: mgmtgwd.fips events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when an unrecoverable error prevents initialization of the cryptographic subsystem into FIPS mode.
+mgmtgwd.fips events are presented when an unrecoverable error prevents initialization of the cryptographic subsystem into FIPS mode which may require restarting affected services or nodes.
 
 == mgmtgwd.fips.post.failure
 *Severity*::

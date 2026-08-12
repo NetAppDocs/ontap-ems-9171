@@ -15,7 +15,7 @@ summary: msata.boot events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when Data ONTAP(R) module that is responsible for monitoring the health of the mSATA device determines that the associated boot device is reporting a failure condition.
+msata.boot events are presented when data ONTAP(R) module that is responsible for monitoring the health of the mSATA device determines that the associated boot device is reporting a failure condition which may require reseating or replacing affected hardware.
 
 == msata.boot.device.failed
 *Severity*::

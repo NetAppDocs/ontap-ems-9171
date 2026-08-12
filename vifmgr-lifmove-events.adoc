@@ -15,7 +15,7 @@ summary: vifmgr.lifmove events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when an attempt to move a logical interface (LIF) IP address to another node/port due to a load-balance event has failed because the LIF has active connections which can not be safely migrated.
+vifmgr.lifmove events are presented when an attempt to move a logical interface (LIF) IP address to another node/port due to a load-balance event has failed because the LIF has active connections which can not be safely migrated which typically does not require corrective action.
 
 == vifmgr.lifmove.blocked
 *Severity*::

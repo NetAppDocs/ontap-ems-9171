@@ -15,7 +15,7 @@ summary: wafl.atime events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the access time updates of all the files in the volumes of an aggregate start because the aggregate has enough free space.
+wafl.atime events are presented when the access time updates of all the files in the volumes of an aggregate start because the aggregate has enough free space which typically does not require corrective action.
 
 == wafl.atime.updates.restarted
 *Severity*::

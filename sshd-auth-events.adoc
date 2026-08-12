@@ -15,7 +15,7 @@ summary: sshd.auth events
 :imagesdir: ./media/
 
 [.lead]
-This event is issued when sshd refuses a login attempt due to authentication failure.
+sshd.auth events are presented when sshd refuses a login attempt due to authentication failure, which is typically fixed by following the documented corrective steps.
 
 == sshd.auth.loginDenied
 *Severity*::

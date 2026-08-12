@@ -15,7 +15,7 @@ summary: ctran.net events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the Cluster Transaction Manager (CTRAN) on the local node is unable to reach a peer node that it believes is in CLAM quorum.
+ctran.net events are presented when the Cluster Transaction Manager (CTRAN) on the local node is cannot reach a peer node that it believes is in CLAM quorum which is typically fixed by verifying system state and connectivity.
 
 == ctran.net.unreachable
 *Severity*::

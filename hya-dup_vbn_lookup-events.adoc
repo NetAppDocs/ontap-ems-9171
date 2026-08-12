@@ -15,7 +15,7 @@ summary: hya.dup_vbn_lookup events
 :imagesdir: ./media/
 
 [.lead]
-This event is generated if we detect redundant lookups of a PVBN without an intervening suspend.
+hya.dup_vbn_lookup events are presented when if we detect redundant lookups of a PVBN without an intervening suspend, which typically does not require corrective action.
 
 == hya.dup_vbn_lookup
 *Severity*::

@@ -15,7 +15,7 @@ summary: clam.peer events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the Kernel Cluster Services (KCS) Connectivity, Liveness, and Availability Monitor (CLAM) is notified that its high-availability (HA) partner node is undergoing a planned shutdown.
+clam.peer events are presented when the Kernel Cluster Services (KCS) Connectivity, Liveliness, and Availability Monitor (CLAM) is notified that its high-availability (HA) partner node is undergoing a planned shutdown which typically does not require corrective action.
 
 == clam.peer.halting
 *Severity*::

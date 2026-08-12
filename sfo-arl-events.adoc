@@ -15,7 +15,7 @@ summary: sfo.arl events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when ARL/giveback of the Storage Failover (SFO) aggregate fails because of active volume conversion operations against one or more volumes on this aggregate while acquiring the RAID lock.
+sfo.arl events are presented when aRL/giveback of the Storage Failover (SFO) aggregate fails because of active volume conversion operations against one or more volumes on this aggregate while acquiring the RAID lock which may require a reboot.
 
 == sfo.arl.gb.failed.conversion
 *Severity*::

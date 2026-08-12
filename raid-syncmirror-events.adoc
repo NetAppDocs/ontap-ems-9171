@@ -15,7 +15,7 @@ summary: raid.syncmirror events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs in a SyncMirror(R) configuration (with SyncMirror aggressive timeout capability), when a disk I/O times out with an error.
+raid.syncmirror events are presented when, in a SyncMirror(R) configuration (with SyncMirror aggressive timeout capability), a disk I/O times out with an error, which is typically fixed by following the documented corrective steps.
 
 == raid.syncmirror.agrsv.to
 *Severity*::

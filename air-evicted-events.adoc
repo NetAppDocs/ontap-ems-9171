@@ -15,7 +15,7 @@ summary: air.evicted events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the Automated Incremental Repair (AIR) subsystem evicts an entry in the qtree metafile because of inconsistent data within that entry.
+air.evicted events are presented when the Automated Incremental Repair (AIR) subsystem evicts an entry in the qtree metafile because of inconsistent data within that entry which typically does not require corrective action.
 
 == air.evicted.qtm.entry
 *Severity*::

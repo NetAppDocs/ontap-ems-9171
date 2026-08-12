@@ -15,7 +15,7 @@ summary: pci.init events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs to warn about the time taken by PCI initialization when PCI configuration is waiting for outstanding background threads that might still be running.
+pci.init events are presented when PCI configuration is waiting for outstanding background threads that might still be running, which typically does not require corrective action.
 
 == PCI.init.process.timeWarn
 *Severity*::

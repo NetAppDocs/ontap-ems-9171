@@ -15,7 +15,7 @@ summary: wafl.incons events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the WAFL(R) kernel detects inconsistent compression metadata for a compression group.
+wafl.incons events are presented when the WAFL(R) kernel detects inconsistent compression metadata for a compression group which is typically fixed by verifying system state and updating configuration.
 
 == wafl.incons.compr.metadata
 *Severity*::

@@ -15,7 +15,7 @@ summary: sms.qr events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when wafl fails to allocate required memory for storing streams attributes information or asked buffer memory length is too less to hold all the streams attributes info, in both the cases the status of Snapmirror Synchronous relationship changes to "OutOfSync".
+sms.qr events are presented when wafl fails to allocate required memory for storing streams attributes information or asked buffer memory length is too less to hold all the streams attributes info, in both the cases the status of Snapmirror Synchronous relationship changes to "OutOfSync" which is typically fixed by verifying system state and connectivity.
 
 == sms.qr.mem.alloc.issue
 *Severity*::

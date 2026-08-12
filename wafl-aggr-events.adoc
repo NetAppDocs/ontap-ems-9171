@@ -15,7 +15,7 @@ summary: wafl.aggr events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when an aggregate is taken offline due to the aggregate has savings because of aggregate deduplication and this version of ONTAP does not support aggregate level deduplication.
+wafl.aggr events are presented when an aggregate is taken offline due to the aggregate has savings because of aggregate deduplication and this version of ONTAP does not support aggregate level deduplication which is typically fixed by verifying system state and connectivity.
 
 == wafl.aggr.addup.offline
 *Severity*::

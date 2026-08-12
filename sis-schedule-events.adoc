@@ -15,7 +15,7 @@ summary: sis.schedule events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the Single Instance Storage (SIS) schedule of a volume is changed to the default schedule (sun-san@0) because the node's clusterid does not match with the SIS config clusterid.
+sis.schedule events are presented when the Single Instance Storage (SIS) schedule of a volume is changed to the default schedule (sun-san@0) because the node's clusterid does not match with the SIS config clusterid which is typically fixed by updating configuration.
 
 == sis.schedule.notify.change
 *Severity*::

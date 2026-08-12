@@ -15,7 +15,7 @@ summary: fabriclink.retry events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when object replication encounters an error when attempting to contact a remote object store.
+fabriclink.retry events are presented when object replication encounters an error when attempting to contact a remote object store which typically does not require corrective action.
 
 == fabriclink.retry.delay
 *Severity*::

@@ -15,7 +15,7 @@ summary: nblade.cifsmaxopensamefilenotice events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the number of open instances of a particular file under a CIFS tree nears the configuration limit.
+nblade.cifsmaxopensamefilenotice events are presented when the number of open instances of a particular file under a CIFS tree nears the configuration limit which is typically fixed by verifying system state and updating configuration.
 
 == Nblade.cifsMaxOpenSameFileNotice
 *Severity*::

@@ -15,7 +15,7 @@ summary: shm.failurebytes events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when writing the failure byte area returns an error due to being full.
+shm.failurebytes events are presented when writing the failure byte area returns an error due to being full which typically does not require corrective action.
 
 == shm.failureBytes.fullError
 *Severity*::

@@ -15,7 +15,7 @@ summary: vsdr.clonetmp events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs during a SnapMirror(R) resync operation on a Storage Virtual Machine (SVM) disaster recovery (DR) relationship, when the MSID of a volume on the source SVM is the same as the MSID of a temporary volume on the destination SVM and the temporary volume is created for a clone parent volume.
+vsdr.clonetmp events are presented when the MSID of a volume on the source SVM is the same as the MSID of a temporary volume on the destination SVM and the temporary volume is created for a clone parent volume during a SnapMirror(R) resync operation on a Storage Virtual Machine (SVM) disaster recovery (DR) relationship, which is typically fixed by following the documented corrective steps.
 
 == vsdr.clonetmp.msid.conflict
 *Severity*::

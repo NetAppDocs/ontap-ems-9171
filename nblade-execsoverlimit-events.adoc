@@ -15,7 +15,7 @@ summary: nblade.execsoverlimit events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the number of active requests to a connection exceeds the allowed in-flight request threshold, which results in request throttling.
+nblade.execsoverlimit events are presented when the number of active requests to a connection exceeds the allowed in-flight request threshold, which results in request throttling which is typically fixed by verifying system state and updating configuration.
 
 == nblade.execsOverLimit
 *Severity*::

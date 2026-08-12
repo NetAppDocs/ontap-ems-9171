@@ -15,7 +15,7 @@ summary: disk.encryptfipspassphnosync events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a system with NetApp(R) Storage Encryption (NSE) enabled detects that the authentication keys (AKs, or passphrases) for the internal FIPS-compliance authorities in a FIPS-certified drive are inconsistent.
+disk.encryptfipspassphnosync events are presented when a system with NetApp(R) Storage Encryption (NSE) enabled detects that the authentication keys (AKs, or passphrases) for the internal FIPS-compliance authorities in a FIPS-certified drive are inconsistent which is typically fixed by updating configuration.
 
 == disk.encryptFIPSPassphNoSync
 *Severity*::

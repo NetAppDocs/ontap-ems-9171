@@ -15,7 +15,7 @@ summary: diskown.raid events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a disk assign or disk remove ownership request is rejected at the RAID layer.
+diskown.raid events are presented when a disk assign or disk remove ownership request is rejected at the RAID layer which is typically fixed by verifying system state and connectivity.
 
 == diskown.RAID.Ownershipchange
 *Severity*::

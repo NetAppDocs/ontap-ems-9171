@@ -15,7 +15,7 @@ summary: adt.max events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a management command or file operation tries to generate an audit record, that is greater than the max_audit_record_size value.
+adt.max events are presented when a management command or file operation tries to generate an audit record, that is greater than the max_audit_record_size value which may require contacting NetApp support.
 
 == adt.max.record.size.exceeded
 *Severity*::

@@ -15,7 +15,7 @@ summary: sms.giveback events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs during an SFO aggregate giveback, when the SnapMirror(R) subsystem indicates that giveback should be vetoed but the veto was overridden by the automated nondisruptive update procedure.
+sms.giveback events are presented when the SnapMirror(R) subsystem indicates that giveback should be vetoed but the veto was overridden by the automated nondisruptive update procedure during an SFO aggregate giveback, which typically does not require corrective action.
 
 == sms.giveback.veto.override
 *Severity*::

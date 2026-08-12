@@ -15,7 +15,7 @@ summary: raid.encrypt events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a node is enabled for encryption by RAID, but the system is not FIPS compliant.
+raid.encrypt events are presented when a node is enabled for encryption by RAID, but the system is not FIPS compliant which may require a reboot.
 
 == raid.encrypt.disabled
 *Severity*::

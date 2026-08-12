@@ -15,7 +15,7 @@ summary: vsdr.rulemodifiedofsmpolicy events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a rule attached to a SnapMirror(R) policy with "mirror-vault" type must be modified, so that L2 scheduled snapshots can be reused during a MAX Data schedule update.
+vsdr.rulemodifiedofsmpolicy events are presented when a rule attached to a SnapMirror(R) policy with "mirror-vault" type must be modified, so that L2 scheduled snapshots can be reused during a MAX Data schedule update which is typically fixed by updating configuration.
 
 == vsdr.RuleModifiedOfSmPolicy
 *Severity*::

@@ -15,7 +15,7 @@ summary: snmp.traphost events
 :imagesdir: ./media/
 
 [.lead]
-The snmp daemon could not resolve (find an IP address via DNS for) a traphost.
+snmp.traphost events are presented when the snmp daemon could not resolve (find an IP address via DNS for) a traphost which is typically fixed by following the documented corrective steps.
 
 == snmp.traphost.resolve.failed
 *Severity*::

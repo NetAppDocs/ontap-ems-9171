@@ -15,7 +15,7 @@ summary: repl.send events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a SnapMirror(R) transfer uses logical mode without even attempting raw directory negotiation.
+repl.send events are presented when a SnapMirror(R) transfer uses logical mode without even attempting raw directory negotiation which typically does not require corrective action.
 
 == repl.send.mgr.forcedLogical
 *Severity*::

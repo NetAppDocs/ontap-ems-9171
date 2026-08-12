@@ -15,7 +15,7 @@ summary: fpolicy.server events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the FPolicy server has applied backpressure which means that the server is busy and does not want to receive requests until it removes backpressure.
+fpolicy.server events are presented when the FPolicy server has applied backpressure which means that the server is busy and does not want to receive requests until it removes backpressure which typically does not require corrective action.
 
 == fpolicy.server.bkPressApply
 *Severity*::

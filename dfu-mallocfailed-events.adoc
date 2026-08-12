@@ -15,7 +15,7 @@ summary: dfu.mallocfailed events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when Data ONTAP(R) cannot allocate memory to read the disk firmware file and aborts the disk firmware update.
+dfu.mallocfailed events are presented when data ONTAP(R) cannot allocate memory to read the disk firmware file and aborts the disk firmware update which may require a reboot.
 
 == dfu.mallocFailed
 *Severity*::

@@ -15,7 +15,7 @@ summary: tcp.change events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when an attempt to change the TCP congestion control algorithm fails.
+tcp.change events are presented when an attempt to change the TCP congestion control algorithm fails which is typically fixed by verifying system state and connectivity.
 
 == tcp.change.cc.algorithm
 *Severity*::

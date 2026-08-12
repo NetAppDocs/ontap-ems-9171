@@ -15,7 +15,7 @@ summary: raid.disable events
 :imagesdir: ./media/
 
 [.lead]
-This event is issued when RAID sub system disables recording in the partner's NVRAM entries for the log based file system.
+raid.disable events are presented when RAID sub system disables recording in the partner's NVRAM entries for the log based file system, which may require reseating or replacing affected hardware.
 
 == raid.disable.remote.nvlog
 *Severity*::

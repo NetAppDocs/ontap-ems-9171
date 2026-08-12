@@ -15,7 +15,7 @@ summary: dump.volume events
 :imagesdir: ./media/
 
 [.lead]
-This event is generated when we are trying to dump a volume which is full and we cannot write the offsetmap on to the disk and we are using memory instead of disk to do this.
+dump.volume events are presented when we are trying to dump a volume, which is full and we cannot write the offsetmap on to the disk and we are using memory instead of disk to do this which is typically fixed by following the documented corrective steps.
 
 == dump.volume.memory
 *Severity*::

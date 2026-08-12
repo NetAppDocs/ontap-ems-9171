@@ -15,7 +15,7 @@ summary: ucore.not events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a userspace core cannot be dumped either because coredumps are not enabled or because the process called setuid, and coredump is disabled for processes that have changed their user credentials.
+ucore.not events are presented when a userspace core cannot be dumped either because coredumps are not enabled or because the process called setuid, and coredump is disabled for processes that have changed their user credentials which may require contacting NetApp support.
 
 == ucore.not.enabled
 *Severity*::

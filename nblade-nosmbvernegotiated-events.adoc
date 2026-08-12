@@ -15,7 +15,7 @@ summary: nblade.nosmbvernegotiated events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when Data ONTAP(R) does not support any of the SMB protocol versions sent by the client for negotiation.
+nblade.nosmbvernegotiated events are presented when data ONTAP(R) does not support any of the SMB protocol versions sent by the client for negotiation which is typically fixed by verifying system state and connectivity.
 
 == Nblade.noSmbVerNegotiated
 *Severity*::

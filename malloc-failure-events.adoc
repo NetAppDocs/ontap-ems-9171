@@ -15,7 +15,7 @@ summary: malloc.failure events
 :imagesdir: ./media/
 
 [.lead]
-This event is generated if malloc is called unsafely.
+malloc.failure events are presented when if malloc is called unsafely, which typically does not require corrective action.
 
 == malloc.failure
 *Severity*::

@@ -15,7 +15,7 @@ summary: saml.cfg events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the Security Assertion Markup Language (SAML) Service Provider (SP) configuration fails to download the Identity Provider (IdP) metadata.
+saml.cfg events are presented when the Security Assertion Markup Language (SAML) Service Provider (SP) configuration fails to download the Identity Provider (IdP) metadata which is typically fixed by verifying system state and connectivity.
 
 == saml.cfg.idp.download
 *Severity*::

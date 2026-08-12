@@ -15,7 +15,7 @@ summary: raid.shared events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a node receives an indication from its HA partner node that a shared disk is undergoing a change in state and the partner is waiting for the local node to complete a shared state transition.
+raid.shared events are presented when a node receives an indication from its HA partner node that a shared disk is undergoing a change in state and the partner is waiting for the local node to complete a shared state transition which typically does not require corrective action.
 
 == raid.shared.disk.awaiting.done
 *Severity*::

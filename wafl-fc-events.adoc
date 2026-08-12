@@ -15,7 +15,7 @@ summary: wafl.fc events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a FlexCache(R) origin node detects that its FlexCache volume has disconnected while a lock reclaim operation is in progress.
+wafl.fc events are presented when a FlexCache(R) origin node detects that its FlexCache volume has disconnected while a lock reclaim operation is in progress which is typically fixed by verifying system state and connectivity.
 
 == wafl.fc.recl.csm.disconnect
 *Severity*::

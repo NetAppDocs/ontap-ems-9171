@@ -15,7 +15,7 @@ summary: kern.syslog events
 :imagesdir: ./media/
 
 [.lead]
-This event is generated when we detect that syslog messages were dropped before being logged.
+kern.syslog events are presented when we detect that syslog messages were dropped before being logged, which is typically fixed by following the documented corrective steps.
 
 == kern.syslog.drops
 *Severity*::

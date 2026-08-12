@@ -15,7 +15,7 @@ summary: wafl.gran events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a SnapMirror transfer fails because a snapshot that contains multipart inodes is transferred to a destination volume that does not support advanced granular data.
+wafl.gran events are presented when a SnapMirror transfer fails because a snapshot that contains multipart inodes is transferred to a destination volume that does not support advanced granular data which is typically fixed by following the documented corrective steps.
 
 == wafl.gran.data.adv.not.on
 *Severity*::

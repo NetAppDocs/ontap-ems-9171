@@ -15,7 +15,7 @@ summary: mcc.hwassist events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a HW assist trap is received from the Service Processor of the DR-partner and is used to trigger an Automatic SwitchOver.
+mcc.hwassist events are presented when a HW assist trap is received from the Service Processor of the DR-partner and is used to trigger an Automatic SwitchOver which typically does not require corrective action.
 
 == mcc.hwassist.trap.AUSO
 *Severity*::

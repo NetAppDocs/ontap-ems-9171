@@ -15,7 +15,7 @@ summary: bcomd.lun events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the SAN Kernel Agent is unable to process a LUN metadata update resulting from a Snapshot(R) copy restore operation or other LUN event.
+bcomd.lun events are presented when the SAN Kernel Agent is cannot process a LUN metadata update resulting from a Snapshot(R) copy restore operation or other LUN event which is typically fixed by following the documented corrective steps.
 
 == bcomd.lun.update.lost
 *Severity*::

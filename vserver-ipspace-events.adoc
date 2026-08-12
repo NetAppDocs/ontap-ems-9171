@@ -15,7 +15,7 @@ summary: vserver.ipspace events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs in a MetroCluster(R) configuration when attempting to replicate a "vserver create" operation onto the destination cluster, but the configured IPspace cannot be found on the destination cluster.
+vserver.ipspace events are presented when, in a MetroCluster(R) configuration, attempting to replicate a "vserver create" operation onto the destination cluster, but the configured IPspace cannot be found on the destination cluster, which is typically fixed by verifying system state and connectivity.
 
 == vserver.ipspace.lookupfailed
 *Severity*::

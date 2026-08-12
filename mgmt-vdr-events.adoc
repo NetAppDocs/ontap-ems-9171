@@ -15,7 +15,7 @@ summary: mgmt.vdr events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a "snapmirror break" operation is executed while a file security job is running and the previous "snapmirror update" operation only partially transfers the changes made to the file system by the file security job.
+mgmt.vdr events are presented when a "snapmirror break" operation is executed while a file security job is running and the previous "snapmirror update" operation only partially transfers the changes made to the file system by the file security job which is typically fixed by verifying system state and connectivity.
 
 == mgmt.vdr.fsecurity.cfig.err
 *Severity*::

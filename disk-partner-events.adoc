@@ -15,7 +15,7 @@ summary: disk.partner events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a node receives notice that its partner has completed a 'disk encrypt revert_original' operation.
+disk.partner events are presented when a node receives notice that its partner has completed a 'disk encrypt revert_original' operation which typically does not require corrective action.
 
 == disk.partner.encrRevertDone
 *Severity*::

@@ -15,7 +15,7 @@ summary: nblade.callbacktimedout events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the Nblade is unable to successfully complete a PORTMAP/SM call to the client within 1 seconds.
+nblade.callbacktimedout events are presented when the Nblade is cannot successfully complete a PORTMAP/SM call to the client within 1 seconds which is typically fixed by verifying system state and connectivity.
 
 == Nblade.CallbackTimedOut
 *Severity*::

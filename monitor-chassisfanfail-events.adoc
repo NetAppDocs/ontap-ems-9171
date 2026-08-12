@@ -15,7 +15,7 @@ summary: monitor.chassisfanfail events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when multiple chassis fans have failed, and the system will shut down in a few minutes unless corrected.
+monitor.chassisfanfail events are presented when multiple chassis fans have failed, and the system will shut down in a few minutes unless corrected which may require restarting affected services or nodes.
 
 == monitor.chassisFanFail.xMinShutdown
 *Severity*::

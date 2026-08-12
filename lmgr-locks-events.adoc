@@ -15,7 +15,7 @@ summary: lmgr.locks events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a lock manager lock object cannot be allocated due to reaching the limit for lock objects in the associated pool.
+lmgr.locks events are presented when a lock manager lock object cannot be allocated due to reaching the limit for lock objects in the associated pool which is typically fixed by verifying system state and connectivity.
 
 == lmgr.locks.limit.hit
 *Severity*::

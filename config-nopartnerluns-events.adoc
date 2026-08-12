@@ -15,7 +15,7 @@ summary: config.nopartnerluns events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs in a High-Availablity (HA) configuration with array LUNS when there is no attachment to both local and partner LUNs.
+config.nopartnerluns events are presented when, in a High-Availablity (HA) configuration with array LUNS, there is no attachment to both local and partner LUNs, which is typically fixed by verifying system state and connectivity.
 
 == config.noPartnerLUNs
 *Severity*::

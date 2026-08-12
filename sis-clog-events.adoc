@@ -15,7 +15,7 @@ summary: sis.clog events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs while mounting a volume, when an error with the SIS metafile operation results in the change logging function being disabled to avoid inconsistencies.
+sis.clog events are presented when, while mounting a volume, an error with the SIS metafile operation results in the change logging function being disabled to avoid inconsistencies, which may require restarting affected services or nodes.
 
 == sis.clog.disabled
 *Severity*::

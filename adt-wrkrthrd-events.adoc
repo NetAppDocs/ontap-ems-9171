@@ -15,7 +15,7 @@ summary: adt.wrkrthrd events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when audit initialization fails because the necessary execution threads cannot be created.
+adt.wrkrthrd events are presented when audit initialization fails because the necessary execution threads cannot be created which may require a reboot.
 
 == adt.wrkrthrd.create.fail
 *Severity*::

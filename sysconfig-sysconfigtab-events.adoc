@@ -15,7 +15,7 @@ summary: sysconfig.sysconfigtab events
 :imagesdir: ./media/
 
 [.lead]
-This event is issued when the sysconfigtab file cannot be opened.
+sysconfig.sysconfigtab events are presented when the sysconfigtab file cannot be opened, which typically does not require corrective action.
 
 == sysconfig.sysconfigtab.openFailed
 *Severity*::

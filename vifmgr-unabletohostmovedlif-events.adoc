@@ -15,7 +15,7 @@ summary: vifmgr.unabletohostmovedlif events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when an attempt to move a logical interface (LIF) IP address to a specific node/port failed, and a subsequent attempt was made to move that LIF to another location.
+vifmgr.unabletohostmovedlif events are presented when an attempt to move a logical interface (LIF) IP address to a specific node/port failed, and a subsequent attempt was made to move that LIF to another location which typically does not require corrective action.
 
 == vifmgr.unabletohostmovedlif
 *Severity*::

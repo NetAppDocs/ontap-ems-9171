@@ -15,7 +15,7 @@ summary: cf.nopartner_takeover events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the partner node fails but requested not to be taken over to prevent multiple, simultaneous RAID reconstructs from starting.
+cf.nopartner_takeover events are presented when the partner node fails but requested not to be taken over to prevent multiple, simultaneous RAID reconstructs from starting which is typically fixed by verifying system state and connectivity.
 
 == cf.noPartner_takeover
 *Severity*::

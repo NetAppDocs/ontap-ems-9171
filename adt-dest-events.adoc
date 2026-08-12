@@ -15,7 +15,7 @@ summary: adt.dest events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the audit consolidation job fails to write audit logs to the destination directory because the destination directory is not available.
+adt.dest events are presented when the audit consolidation job fails to write audit logs to the destination directory because the destination directory is not available which is typically fixed by verifying system state and updating configuration.
 
 == adt.dest.access.fail
 *Severity*::

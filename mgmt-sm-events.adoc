@@ -15,7 +15,7 @@ summary: mgmt.sm events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a SnapMirror(R) protect operation fails because the source volume is already protected with a SnapMirror relationship in the specified destination Vserver with the same policy, schedule, relationship type, destination volume prefix, and destination volume suffix and auto-initialize parameter set to true.
+mgmt.sm events are presented when a SnapMirror(R) protect operation fails because the source volume is already protected with a SnapMirror relationship in the specified destination Vserver with the same policy, schedule, relationship type, destination volume prefix, and destination volume suffix and auto-initialize parameter set to true which typically does not require corrective action.
 
 == mgmt.sm.cant.clear.autoInit
 *Severity*::

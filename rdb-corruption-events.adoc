@@ -15,7 +15,7 @@ summary: rdb.corruption events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the cluster management Data Replication Module determines that the node's local replica set is corrupted.
+rdb.corruption events are presented when the cluster management Data Replication Module determines that the node's local replica set is corrupted which typically does not require corrective action.
 
 == rdb.corruption.reported
 *Severity*::

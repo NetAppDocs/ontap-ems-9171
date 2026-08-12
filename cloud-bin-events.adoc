@@ -15,7 +15,7 @@ summary: cloud.bin events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the cloud bin object copy operation (which copies objects from a source object store to a destination object store) fails because it is unable to read source objects due to unauthorized access to the object store container.
+cloud.bin events are presented when the cloud bin object copy operation (which copies objects from a source object store to a destination object store) fails because it is cannot read source objects due to unauthorized access to the object store container which is typically fixed by updating configuration.
 
 == cloud.bin.objcopy.failed
 *Severity*::

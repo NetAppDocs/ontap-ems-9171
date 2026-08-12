@@ -15,7 +15,7 @@ summary: nblade.aclcompliance events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the nfs "-v4-acl-compliance" option is enabled but not functional because the SnapMirror Synchronous secondary cluster or FlexCache origin cluster is running an ONTAP version older than 9.14.1
+nblade.aclcompliance events are presented when the nfs "-v4-acl-compliance" option is enabled but not functional because the SnapMirror Synchronous secondary cluster or FlexCache origin cluster is running an ONTAP version older than 9.14.1 which is typically fixed by updating configuration.
 
 == Nblade.AclCompliance
 *Severity*::

@@ -15,7 +15,7 @@ summary: disk.encryptgetmsidfailed events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when an encrypting disk reports a SCSI data protection error, but Data ONTAP(R) cannot obtain the Manufacturer's Secure ID (MSID) that is mandatory on disks that support storage encryption methods.
+disk.encryptgetmsidfailed events are presented when an encrypting disk reports a SCSI data protection error, but Data ONTAP(R) cannot obtain the Manufacturer's Secure ID (MSID) that is mandatory on disks that support storage encryption methods which may require reseating or replacing affected hardware.
 
 == disk.encryptGetMSIDFailed
 *Severity*::

@@ -15,7 +15,7 @@ summary: cfvm.failed events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a copy free volume move operation is attempted but the commit cutover phase fails due to an internal error.
+cfvm.failed events are presented when a copy free volume move operation is attempted but the commit cutover phase fails due to an internal error which may require contacting NetApp support.
 
 == cfvm.failed.cutover.commit
 *Severity*::

@@ -15,7 +15,7 @@ summary: netinet.ethr events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a high arrival rate of address resolution protocol (ARP) frames has been detected (possible ARP storm).
+netinet.ethr events are presented when a high arrival rate of address resolution protocol (ARP) frames has been detected (possible ARP storm) which is typically fixed by verifying system state and connectivity.
 
 == netinet.ethr.arpstorm
 *Severity*::

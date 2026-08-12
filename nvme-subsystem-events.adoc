@@ -15,7 +15,7 @@ summary: nvme.subsystem events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the replication of an NVMe subsystem fails due to a name conflict.
+nvme.subsystem events are presented when the replication of an NVMe subsystem fails due to a name conflict which is typically fixed by updating configuration.
 
 == nvme.subsystem.repl.name.err
 *Severity*::

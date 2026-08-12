@@ -15,7 +15,7 @@ summary: flexcache.config events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the FlexCache volume expand operation fails to synchronize the FlexCache configuration information between the newly created constituent volume and the origin cluster.
+flexcache.config events are presented when the FlexCache volume expand operation fails to synchronize the FlexCache configuration information between the newly created constituent volume and the origin cluster which is typically fixed by updating configuration.
 
 == flexcache.config.sync.failed
 *Severity*::

@@ -15,7 +15,7 @@ summary: tapemc.passthru events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a data underrun (less data is transferred than requested) happens on a read operation to the device, and the number of data bytes reported as not transferred is unexpectedly larger than the number of bytes requested.
+tapemc.passthru events are presented when a data underrun (less data is transferred than requested) happens on a read operation to the device, and the number of data bytes reported as not transferred is unexpectedly larger than the number of bytes requested which is typically fixed by following the documented corrective steps.
 
 == tapemc.passthru.negUnderrun
 *Severity*::

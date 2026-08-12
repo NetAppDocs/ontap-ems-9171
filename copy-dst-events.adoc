@@ -15,7 +15,7 @@ summary: copy.dst events
 :imagesdir: ./media/
 
 [.lead]
-This event is issued when a SnapMirror or aggregate copy operation attempts to update a flexible volume RAID block on the destination but is unable to do so.
+copy.dst events are presented when a SnapMirror or aggregate copy operation attempts to update a flexible volume RAID block on the destination but is cannot do so, which is typically fixed by verifying system state and connectivity.
 
 == copy.dst.raid.convert.fail
 *Severity*::

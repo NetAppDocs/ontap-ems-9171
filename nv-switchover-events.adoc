@@ -15,7 +15,7 @@ summary: nv.switchover events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when switchover proceeds even when nonvolatile RAM (NVRAM) inconsistencies are detected in the DR partner sections.
+nv.switchover events are presented when switchover proceeds even when nonvolatile RAM (NVRAM) inconsistencies are detected in the DR partner sections which typically does not require corrective action.
 
 == nv.switchover.continued
 *Severity*::

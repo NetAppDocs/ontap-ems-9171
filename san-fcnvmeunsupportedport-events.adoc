@@ -15,7 +15,7 @@ summary: san.fcnvmeunsupportedport events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs in MetroCluster(tm) configurations on clustered Data ONTAP(R) systems, when Data ONTAP has an FC NVMe (Nonvolatile Memory Express) logical interface (LIF) hosted on an unsupported FC port.
+san.fcnvmeunsupportedport events are presented when, in MetroCluster(tm) configurations on clustered Data ONTAP(R) systems, Data ONTAP has an FC NVMe (Nonvolatile Memory Express) logical interface (LIF) hosted on an unsupported FC port, which is typically fixed by verifying system state and updating configuration.
 
 == san.FcNvmeUnsupportedPort
 *Severity*::

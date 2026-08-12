@@ -15,7 +15,7 @@ summary: config.nocheck events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the system should be halting, but it cannot because the "no-config-check? " environment variable is set to true.
+config.nocheck events are presented when the system should be halting, but it cannot because the "no-config-check? " environment variable is set to true which typically does not require corrective action.
 
 == config.NoCheck
 *Severity*::

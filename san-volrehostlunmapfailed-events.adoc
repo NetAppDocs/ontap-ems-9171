@@ -15,7 +15,7 @@ summary: san.volrehostlunmapfailed events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs on clustered Data ONTAP(R) systems, during Volume Rehost operation when Data ONTAP fails to create LUN map the destination Vserver.
+san.volrehostlunmapfailed events are presented when Data ONTAP fails to create LUN map the destination Vserver on clustered Data ONTAP(R) systems, during Volume Rehost operation, which is typically fixed by following the documented corrective steps.
 
 == san.volRehostLunMapFailed
 *Severity*::

@@ -15,7 +15,7 @@ summary: netinet6.input events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the destination address is not ready, so the packet is discarded.
+netinet6.input events are presented when the destination address is not ready, so the packet is discarded which typically does not require corrective action.
 
 == netinet6.input.addr.notReady
 *Severity*::

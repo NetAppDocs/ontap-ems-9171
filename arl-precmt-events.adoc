@@ -15,7 +15,7 @@ summary: arl.precmt events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs during aggregate relocation, when automatic lock resynchronization with the node's high-availability (HA) partner for files on this aggregate was aborted.
+arl.precmt events are presented when automatic lock resynchronization with the node's high-availability (HA) partner for files on this aggregate was aborted during aggregate relocation, which typically does not require corrective action.
 
 == arl.precmt.lmgr.resync.abrt
 *Severity*::

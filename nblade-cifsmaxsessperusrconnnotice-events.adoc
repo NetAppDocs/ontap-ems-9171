@@ -15,7 +15,7 @@ summary: nblade.cifsmaxsessperusrconnnotice events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the number of sessions allowed per user over a TCP connection nears the configured limit.
+nblade.cifsmaxsessperusrconnnotice events are presented when the number of sessions allowed per user over a TCP connection nears the configured limit which is typically fixed by verifying system state and updating configuration.
 
 == Nblade.cifsMaxSessPerUsrConnNotice
 *Severity*::

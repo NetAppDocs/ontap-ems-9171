@@ -15,7 +15,7 @@ summary: acp.init events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when ONTAP(R) software cannot configure the Ethernet port designated for the Alternate Control Path (ACP) with 30 seconds, and marks the ACP as inactive.
+acp.init events are presented when oNTAP(R) software cannot configure the Ethernet port designated for the Alternate Control Path (ACP) with 30 seconds, and marks the ACP as inactive which is typically fixed by verifying system state and connectivity.
 
 == acp.init.configIP
 *Severity*::

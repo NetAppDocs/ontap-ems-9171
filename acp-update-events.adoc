@@ -15,7 +15,7 @@ summary: acp.update events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the Alternate Control Path (ACP) Administrator receives notification from the ACP Processor that it cannot upgrade the firmware because it is in some faulty state or the firmware file is not valid.
+acp.update events are presented when the Alternate Control Path (ACP) Administrator receives notification from the ACP Processor that it cannot upgrade the firmware because it is in some faulty state or the firmware file is not valid which is typically fixed by following the documented corrective steps.
 
 == acp.update.failed
 *Severity*::

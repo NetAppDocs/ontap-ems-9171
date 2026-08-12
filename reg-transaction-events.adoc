@@ -15,7 +15,7 @@ summary: reg.transaction events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when ONTAP(R) cannot commit a registry transaction.
+reg.transaction events are presented when oNTAP(R) cannot commit a registry transaction which is typically fixed by verifying system state and connectivity.
 
 == reg.transaction.commitFail
 *Severity*::

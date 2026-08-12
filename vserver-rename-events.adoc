@@ -15,7 +15,7 @@ summary: vserver.rename events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the "vserver rename" command fails to update the peer Vserver name on the peer cluster in a Vserver peer relationship.
+vserver.rename events are presented when the "vserver rename" command fails to update the peer Vserver name on the peer cluster in a Vserver peer relationship which is typically fixed by updating configuration.
 
 == vserver.rename.fail.peer
 *Severity*::

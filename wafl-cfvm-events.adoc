@@ -15,7 +15,7 @@ summary: wafl.cfvm events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a copy free volume move operation is not able to perform successful cutover because the destination volume is not recoverable.
+wafl.cfvm events are presented when a copy free volume move operation is not able to perform successful cutover because the destination volume is not recoverable which may require contacting NetApp support.
 
 == wafl.cfvm.cutover.unrecoverable.vol
 *Severity*::

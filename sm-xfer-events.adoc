@@ -15,7 +15,7 @@ summary: sm.xfer events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when deletion of a snapshot on the destination volume fails, and therefore a subsequent transfer exceeds the maximum supported snapshot count for the vault destination.
+sm.xfer events are presented when deletion of a snapshot on the destination volume fails, and therefore a subsequent transfer exceeds the maximum supported snapshot count for the vault destination which is typically fixed by following the documented corrective steps.
 
 == sm.xfer.fail.del.snap
 *Severity*::

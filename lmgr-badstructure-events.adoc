@@ -15,7 +15,7 @@ summary: lmgr.badstructure events
 :imagesdir: ./media/
 
 [.lead]
-This event is issued whenever the multi-protocol lock manager finds a bad file pointer and turns off the logging of lock manipulation to preserve trace information.
+lmgr.badstructure events are presented when the multi-protocol lock manager finds a bad file pointer and turns off the logging of lock manipulation to preserve trace information, which typically does not require corrective action.
 
 == lmgr.badStructure.found
 *Severity*::

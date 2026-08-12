@@ -15,7 +15,7 @@ summary: ha.toafterrcvpanicinfo events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the local node initiates a takeover of its high-availability (HA) partner after detecting a panic of the HA partner node.
+ha.toafterrcvpanicinfo events are presented when the local node initiates a takeover of its high-availability (HA) partner after detecting a panic of the HA partner node which typically does not require corrective action.
 
 == ha.toAfterRcvPanicInfo
 *Severity*::

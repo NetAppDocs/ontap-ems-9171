@@ -15,7 +15,7 @@ summary: san.nofcportsonnode events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs in MetroCluster(TM) configurations on clustered Data ONTAP(R) systems when an attempt to place an FCP LIF on a particular node fails because the system cannot find any active ports on that node.
+san.nofcportsonnode events are presented when, in MetroCluster(TM) configurations on clustered Data ONTAP(R) systems, an attempt to place an FCP LIF on a particular node fails because the system cannot find any active ports on that node, which is typically fixed by verifying system state and updating configuration.
 
 == san.NoFCPortsOnNode
 *Severity*::

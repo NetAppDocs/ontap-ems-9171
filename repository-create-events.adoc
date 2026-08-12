@@ -15,7 +15,7 @@ summary: repository.create events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs during a create request from a client, when the Infinite Volume namespace redirector encounters one or more of the following: 1.
+repository.create events are presented when the Infinite Volume namespace redirector encounters one or more of the following: 1 during a create request from a client, which is typically fixed by verifying system state and connectivity.
 
 == Repository.Create.Placement.Failed
 *Deprecated*::

@@ -15,7 +15,7 @@ summary: socket.limit events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the operating system is unable to allocate a new socket because that would exceed the maximum open sockets.
+socket.limit events are presented when the operating system is cannot allocate a new socket because that would exceed the maximum open sockets which typically does not require corrective action.
 
 == socket.limit.exceeded
 *Severity*::

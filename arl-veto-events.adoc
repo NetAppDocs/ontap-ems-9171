@@ -15,7 +15,7 @@ summary: arl.veto events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the coredump subsystem vetoes the use of storage failover (SFO) during takeover because a coredump save is in progress; cluster failover (CFO) will be used instead.
+arl.veto events are presented when the coredump subsystem vetoes the use of storage failover (SFO) during takeover because a coredump save is in progress; cluster failover (CFO) will be used instead which typically does not require corrective action.
 
 == arl.veto.coredump.saveinprog
 *Severity*::

@@ -15,7 +15,7 @@ summary: nblade.vifmove events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when there is a failure adding a Remote Direct Memory Access (RDMA) listener during a Logical Interface (LIF) move.
+nblade.vifmove events are presented when there is a failure adding a Remote Direct Memory Access (RDMA) listener during a Logical Interface (LIF) move which is typically fixed by updating configuration.
 
 == Nblade.vifmove.RdmaAddFail
 *Severity*::

@@ -15,7 +15,7 @@ summary: ha.resvconflicthalt events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the node halts itself after it finds disks with reservation conflicts.
+ha.resvconflicthalt events are presented when the node halts itself after it finds disks with reservation conflicts which typically does not require corrective action.
 
 == ha.resvConflictHalt
 *Severity*::

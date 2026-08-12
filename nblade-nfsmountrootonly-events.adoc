@@ -15,7 +15,7 @@ summary: nblade.nfsmountrootonly events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a non-root user performs MOUNT or NFS operation when the respective options '-mount-rootonly' or 'nfs-rootonly' are enabled.
+nblade.nfsmountrootonly events are presented when a non-root user performs MOUNT or NFS operation when the respective options '-mount-rootonly' or 'nfs-rootonly' are enabled which typically does not require corrective action.
 
 == Nblade.NfsMountRootOnly
 *Severity*::

@@ -15,7 +15,7 @@ summary: objstore.host events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the object-store server host name cannot be resolved to an IP address.
+objstore.host events are presented when the object-store server host name cannot be resolved to an IP address which is typically fixed by verifying system state and connectivity.
 
 == objstore.host.unresolvable
 *Severity*::

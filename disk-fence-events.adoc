@@ -15,7 +15,7 @@ summary: disk.fence events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a node's access to a disk is blocked due to a high-availability (HA) takeover event.
+disk.fence events are presented when a node's access to a disk is blocked due to a high-availability (HA) takeover event which typically does not require corrective action.
 
 == disk.fence.BridgeIOBlocked
 *Severity*::

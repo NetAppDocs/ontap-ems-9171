@@ -15,7 +15,7 @@ summary: secd.rogue events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a CIFS authentication request fails more than 30 times in one minute with an invalid login password from a particular client.
+secd.rogue events are presented when a CIFS authentication request fails more than 30 times in one minute with an invalid login password from a particular client which is typically fixed by verifying system state and updating configuration.
 
 == secd.rogue.client.detected
 *Severity*::

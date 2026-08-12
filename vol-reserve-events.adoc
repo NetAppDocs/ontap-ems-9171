@@ -15,7 +15,7 @@ summary: vol.reserve events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when WAFL(R) grows the reserve of a flexible volume that is running dangerously low on blocks for writing.
+vol.reserve events are presented when wAFL(R) grows the reserve of a flexible volume that is running dangerously low on blocks for writing which is typically fixed by updating configuration.
 
 == vol.reserve.grew
 *Severity*::

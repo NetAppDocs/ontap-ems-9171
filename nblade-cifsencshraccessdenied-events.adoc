@@ -15,7 +15,7 @@ summary: nblade.cifsencshraccessdenied events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a client not capable of SMB encryption tries to connect to a CIFS share that requires SMB encryption.
+nblade.cifsencshraccessdenied events are presented when a client not capable of SMB encryption tries to connect to a CIFS share that requires SMB encryption which is typically fixed by following the documented corrective steps.
 
 == Nblade.cifsEncShrAccessDenied
 *Severity*::

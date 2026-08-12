@@ -15,7 +15,7 @@ summary: clam.heartbeat events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the Kernel Cluster Services Connectivity, Liveliness, Availability Monitor (CLAM) detects that the state of the heartbeats to a node changed(that is, either the heartbeats started succeeding or they started failing).
+clam.heartbeat events are presented when the Kernel Cluster Services Connectivity, Liveliness, Availability Monitor (CLAM) detects that the state of the heartbeats to a node changed(that is, either the heartbeats started succeeding or they started failing) which is typically fixed by verifying system state and connectivity.
 
 == clam.heartbeat.state.change
 *Severity*::

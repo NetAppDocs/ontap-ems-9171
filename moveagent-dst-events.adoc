@@ -15,7 +15,7 @@ summary: moveagent.dst events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the move agent detects that the attributes of the destination volume are partially updated during the commit destination phase.
+moveagent.dst events are presented when the move agent detects that the attributes of the destination volume are partially updated during the commit destination phase which is typically fixed by verifying system state and connectivity.
 
 == moveagent.dst.partial.commit
 *Severity*::

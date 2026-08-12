@@ -15,7 +15,7 @@ summary: lmgr.precommit events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the system fails aggregate giveback or relocation because SMB oplock or NFSv4 delegation recall fails.
+lmgr.precommit events are presented when the system fails aggregate giveback or relocation because SMB oplock or NFSv4 delegation recall fails which may require a reboot.
 
 == lmgr.precommit.oplock.recall.fail
 *Severity*::

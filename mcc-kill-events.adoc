@@ -15,7 +15,7 @@ summary: mcc.kill events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the node is halting because it received a "kill" message from the disaster recovery (DR) partner.
+mcc.kill events are presented when the node is halting because it received a "kill" message from the disaster recovery (DR) partner which typically does not require corrective action.
 
 == mcc.kill.received
 *Severity*::

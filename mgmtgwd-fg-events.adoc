@@ -15,7 +15,7 @@ summary: mgmtgwd.fg events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the user creates a FlexGroup on a Vserver that has NFSv3 enabled, but uses 32-bit identifiers, which could cause file ID collisions.
+mgmtgwd.fg events are presented when the user creates a FlexGroup on a Vserver that has NFSv3 enabled, but uses 32-bit identifiers, which could cause file ID collisions which may require contacting NetApp support.
 
 == mgmtgwd.fg.32bit.nfs3ids
 *Severity*::

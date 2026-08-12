@@ -15,7 +15,7 @@ summary: raid.config events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs during a mirror check, when the system discovers that all plexes have failed in an aggregate.
+raid.config events are presented when the system discovers that all plexes have failed in an aggregate during a mirror check, which may require reseating or replacing affected hardware.
 
 == raid.config.check.failed
 *Severity*::

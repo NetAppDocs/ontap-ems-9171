@@ -15,7 +15,7 @@ summary: san.nosamenamediscsiport events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a MetroCluster(TM) configuration cannot be implemented, because the destination cluster for an IP logical interface (LIF) does not appear to contain a port with the same name as the one used within the source cluster.
+san.nosamenamediscsiport events are presented when a MetroCluster(TM) configuration cannot be implemented, because the destination cluster for an IP logical interface (LIF) does not appear to contain a port with the same name as the one used within the source cluster which is typically fixed by verifying system state and connectivity.
 
 == san.NoSameNamedIscsiPort
 *Severity*::

@@ -15,7 +15,7 @@ summary: raid.stripe events
 :imagesdir: ./media/
 
 [.lead]
-This event is issued when we encounter a bad block buffer entry in NVRAM during stripe replay (indicating corrupted NVRAM).
+raid.stripe events are presented when we encounter a bad block buffer entry in NVRAM during stripe replay (indicating corrupted NVRAM), which may require reseating or replacing affected hardware.
 
 == raid.stripe.replay.bad.block
 *Severity*::

@@ -15,7 +15,7 @@ summary: aws.nic events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when Data ONTAP(R) is running in Amazon Web Services (AWS) and a network interface stops processing packets at the beginning of system boot.
+aws.nic events are presented when data ONTAP(R) is running in Amazon Web Services (AWS) and a network interface stops processing packets at the beginning of system boot which may require a reboot.
 
 == aws.nic.noTxIntr
 *Severity*::

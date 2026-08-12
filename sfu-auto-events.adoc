@@ -15,7 +15,7 @@ summary: sfu.auto events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when ONTAP(R) software cannot automatically upgrade the firmware on a disk shelf because the hidden 'shelf.fw.auto.update' option is set to off.
+sfu.auto events are presented when oNTAP(R) software cannot automatically upgrade the firmware on a disk shelf because the hidden 'shelf.fw.auto.update' option is set to off which is typically fixed by updating configuration.
 
 == sfu.auto.update.off.impact
 *Severity*::

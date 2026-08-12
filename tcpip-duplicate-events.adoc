@@ -15,7 +15,7 @@ summary: tcpip.duplicate events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the local node detects that it and some other device are using the same IP address.
+tcpip.duplicate events are presented when the local node detects that it and some other device are using the same IP address which is typically fixed by verifying system state and updating configuration.
 
 == tcpip.duplicate.ip
 *Severity*::

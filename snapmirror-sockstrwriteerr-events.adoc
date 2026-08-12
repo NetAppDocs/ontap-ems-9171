@@ -15,7 +15,7 @@ summary: snapmirror.sockstrwriteerr events
 :imagesdir: ./media/
 
 [.lead]
-This event is issued when SnapMirror tries to write a large string to the socket.
+snapmirror.sockstrwriteerr events are presented when SnapMirror tries to write a large string to the socket, which typically does not require corrective action.
 
 == snapmirror.sockStrWriteErr
 *Severity*::

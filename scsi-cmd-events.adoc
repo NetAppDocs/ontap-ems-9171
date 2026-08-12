@@ -15,7 +15,7 @@ summary: scsi.cmd events
 :imagesdir: ./media/
 
 [.lead]
-The aborted event is issued if an I/O request is aborted by a class driver.
+scsi.cmd events are presented when the aborted event is issued if an I/O request is aborted by a class driver which typically does not require corrective action.
 
 == scsi.cmd.aborted
 *Deprecated*::

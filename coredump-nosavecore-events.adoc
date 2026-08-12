@@ -15,7 +15,7 @@ summary: coredump.nosavecore events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the process that saves a coredump is not able to flush to the boot device at the end of coredump.
+coredump.nosavecore events are presented when the process that saves a coredump is not able to flush to the boot device at the end of coredump which typically does not require corrective action.
 
 == coredump.nosavecore.noflush
 *Severity*::

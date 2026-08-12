@@ -15,7 +15,7 @@ summary: callhome.fs events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the system has detected that a filesystem logical disk array or LUN (Logical Unit Number) stored raw size no longer matches the reported physical size of the LUN.
+callhome.fs events are presented when the system has detected that a filesystem logical disk array or LUN (Logical Unit Number) stored raw size no longer matches the reported physical size of the LUN which may require contacting NetApp support.
 
 == callhome.fs.lun.resized
 *Severity*::

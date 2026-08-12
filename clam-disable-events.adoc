@@ -15,7 +15,7 @@ summary: clam.disable events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the Kernel Cluster Services (KCS) Connectivity, Liveliness, Availability Monitor (CLAM) is disabled by either turning off the KCS capability or by setting the 'clam sysctl/bootarg' variable.
+clam.disable events are presented when the Kernel Cluster Services (KCS) Connectivity, Liveliness, Availability Monitor (CLAM) is disabled by either turning off the KCS capability or by setting the 'clam sysctl/bootarg' variable which may require a reboot.
 
 == clam.disable
 *Severity*::

@@ -15,7 +15,7 @@ summary: osc.tcp events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when ONTAP is unable to connect to the IP address that the object store server hostname resolves to.
+osc.tcp events are presented when oNTAP is cannot connect to the IP address that the object store server hostname resolves to which is typically fixed by verifying system state and connectivity.
 
 == osc.tcp.connectFailed
 *Severity*::

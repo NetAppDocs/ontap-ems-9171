@@ -15,7 +15,7 @@ summary: moveagent.detected events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a volume move operation is interrupted by a disaster after the critical cutover phase has started but before the source volume is deleted.
+moveagent.detected events are presented when a volume move operation is interrupted by a disaster after the critical cutover phase has started but before the source volume is deleted which is typically fixed by verifying system state and connectivity.
 
 == moveagent.detected.on.MCC.SO
 *Deprecated*::

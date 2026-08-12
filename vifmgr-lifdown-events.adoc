@@ -15,7 +15,7 @@ summary: vifmgr.lifdown events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a logical interface (LIF) IP address cannot serve data because there are no eligible ports on which to host the LIF.
+vifmgr.lifdown events are presented when a logical interface (LIF) IP address cannot serve data because there are no eligible ports on which to host the LIF which is typically fixed by following the documented corrective steps.
 
 == vifmgr.lifdown.noports
 *Severity*::

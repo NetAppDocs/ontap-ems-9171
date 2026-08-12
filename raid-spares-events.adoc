@@ -15,7 +15,7 @@ summary: raid.spares events
 :imagesdir: ./media/
 
 [.lead]
-This event is issued when a media_scrub i/o detects a medium error on a spare disk
+raid.spares events are presented when a media_scrub i/o detects a medium error on a spare disk, which typically does not require corrective action.
 
 == raid.spares.media_scrub.media.err
 *Severity*::

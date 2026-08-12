@@ -15,7 +15,7 @@ summary: raid.rg events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a RAID group background long running I/O encounters an error that is fatal to the RAID group and the aggregate (cannot be fixed even by a mirror read from the other plex, if it exists).
+raid.rg events are presented when a RAID group background long running I/O encounters an error that is fatal to the RAID group and the aggregate (cannot be fixed even by a mirror read from the other plex, if it exists) which may require contacting NetApp support.
 
 == raid.rg.bigio.fatal
 *Severity*::

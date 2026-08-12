@@ -15,7 +15,7 @@ summary: raid.aggrvote events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the mirror vote pull from the replicated database (RDB) to the mailbox fails.
+raid.aggrvote events are presented when the mirror vote pull from the replicated database (RDB) to the mailbox fails which typically does not require corrective action.
 
 == raid.aggrvote.pullNotOk
 *Severity*::

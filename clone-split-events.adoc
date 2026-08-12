@@ -15,7 +15,7 @@ summary: clone.split events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the volume clone split object copy operation (which copies objects from source volume to a clone) fails because it is unable to read source objects due to unauthorized access to the object store container.
+clone.split events are presented when the volume clone split object copy operation (which copies objects from source volume to a clone) fails because it is cannot read source objects due to unauthorized access to the object store container which is typically fixed by updating configuration.
 
 == clone.split.objcopy.failed
 *Severity*::

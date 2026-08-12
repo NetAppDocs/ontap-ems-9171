@@ -15,7 +15,7 @@ summary: sfu.statuscheckfailure events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the (advanced privilege) "storage shelf firmware update" command encounters a failure while attempting to read the status of the firmware update in progress.
+sfu.statuscheckfailure events are presented when the (advanced privilege) "storage shelf firmware update" command encounters a failure while attempting to read the status of the firmware update in progress which is typically fixed by updating configuration.
 
 == sfu.statusCheckFailure
 *Severity*::

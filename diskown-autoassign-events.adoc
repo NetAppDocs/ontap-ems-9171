@@ -15,7 +15,7 @@ summary: diskown.autoassign events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when automatic assigning of a disk fails because the disks on the loop are owned by multiple systems.
+diskown.autoassign events are presented when automatic assigning of a disk fails because the disks on the stack are owned by multiple systems which is typically fixed by verifying system state and connectivity.
 
 == diskown.AutoAssign.MultipleOwners
 *Severity*::

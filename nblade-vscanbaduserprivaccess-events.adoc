@@ -15,7 +15,7 @@ summary: nblade.vscanbaduserprivaccess events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs during a client attempt to connect to the privileged ONTAP_ADMIN$ share, when the logged-in user of that client is not found in the list of allowed users.
+nblade.vscanbaduserprivaccess events are presented when the logged-in user of that client is not found in the list of allowed users during a client attempt to connect to the privileged ONTAP_ADMIN$ share, which is typically fixed by verifying system state and connectivity.
 
 == Nblade.vscanBadUserPrivAccess
 *Severity*::

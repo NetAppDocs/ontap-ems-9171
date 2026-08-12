@@ -15,7 +15,7 @@ summary: secd.nonetgroupfile events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when trying to process a netgroup in an export policy while the Vserver "ns-switch" option is set exclusively to "file" but no netgroup file is loaded.
+secd.nonetgroupfile events are presented when trying to process a netgroup in an export policy while the Vserver "ns-switch" option is set exclusively to "file" but no netgroup file is loaded which is typically fixed by following the documented corrective steps.
 
 == secd.noNetgroupFile
 *Severity*::

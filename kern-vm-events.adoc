@@ -15,7 +15,7 @@ summary: kern.vm events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when an attempt to create a new mapping in the virtual address space of a process has failed.
+kern.vm events are presented when an attempt to create a new mapping in the virtual address space of a process has failed which typically does not require corrective action.
 
 == kern.vm.mmap.return
 *Severity*::

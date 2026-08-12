@@ -15,7 +15,7 @@ summary: raid.aggr events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the usable size of an aggregate does not expand after a corresponding increase in the size of the underlying storage.
+raid.aggr events are presented when the usable size of an aggregate does not expand after a corresponding increase in the size of the underlying storage which is typically fixed by verifying system state and connectivity.
 
 == raid.aggr.autoGrow.abort
 *Severity*::

@@ -15,7 +15,7 @@ summary: dfu.nomemory events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the disk firmware update routine cannot allocate memory to update the disk firmware.
+dfu.nomemory events are presented when the disk firmware update routine cannot allocate memory to update the disk firmware which may require contacting NetApp support.
 
 == dfu.noMemory
 *Severity*::

@@ -15,7 +15,7 @@ summary: snaplock.raidlbl events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the periodic SnapLock disk protection check fails to validate the RAID label on disks.
+snaplock.raidlbl events are presented when the periodic SnapLock disk protection check fails to validate the RAID label on disks which is typically fixed by verifying system state and connectivity.
 
 == snaplock.raidlbl.update.fail
 *Severity*::

@@ -15,7 +15,7 @@ summary: lmgr.meta events
 :imagesdir: ./media/
 
 [.lead]
-This event occurs when the system detects that the lock manager host metafile is corrupted.
+lmgr.meta events are presented when the system detects that the lock manager host metafile is corrupted, which is typically fixed by verifying system state and connectivity.
 
 == lmgr.meta.corrupted
 *Severity*::

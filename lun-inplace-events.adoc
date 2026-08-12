@@ -15,7 +15,7 @@ summary: lun.inplace events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when an in-place restore from a dump fails and creates a metadata inconsistency because the source object type does not match the existing destination object.
+lun.inplace events are presented when an in-place restore from a dump fails and creates a metadata inconsistency because the source object type does not match the existing destination object which is typically fixed by following the documented corrective steps.
 
 == LUN.inplace.dmpRstrLUNonNS
 *Severity*::

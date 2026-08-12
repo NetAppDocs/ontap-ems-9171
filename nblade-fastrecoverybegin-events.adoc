@@ -15,7 +15,7 @@ summary: nblade.fastrecoverybegin events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the NFSv4.x server enters the fast recovery mode as part of the LIF migration event, during which the NFS server will not be able to serve any data for NFSv4.x clients.
+nblade.fastrecoverybegin events are presented when the NFSv4.x server enters the fast recovery mode as part of the LIF migration event, during which the NFS server will not be able to serve any data for NFSv4.x clients which typically does not require corrective action.
 
 == Nblade.fastRecoveryBegin
 *Severity*::

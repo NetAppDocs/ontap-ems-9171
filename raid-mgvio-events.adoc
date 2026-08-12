@@ -15,7 +15,7 @@ summary: raid.mgvio events
 :imagesdir: ./media/
 
 [.lead]
-This message is generated after detecting an inconsistent RAID write signature on a RAID stripe, during SyncMirror verify operation.
+raid.mgvio events are presented when after detecting an inconsistent RAID write signature on a RAID stripe, during SyncMirror verify operation, which typically does not require corrective action.
 
 == raid.mgvio.lw.id.inconsist
 *Severity*::

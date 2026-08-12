@@ -15,7 +15,7 @@ summary: fsm.low events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when Fpolicy Service Manager (FSM) fails to send outage, alert, handshake, cancel or volume operation notification to the FPolicy server due to memory allocation error.
+fsm.low events are presented when fpolicy Service Manager (FSM) fails to send outage, alert, handshake, cancel or volume operation notification to the FPolicy server due to memory allocation error which is typically fixed by verifying system state and connectivity.
 
 == fsm.low.memory
 *Severity*::

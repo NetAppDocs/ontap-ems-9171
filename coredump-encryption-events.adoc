@@ -15,7 +15,7 @@ summary: coredump.encryption events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when encryption is configured on the controller, but the coredump subsystem cannot encrypt data.
+coredump.encryption events are presented when encryption is configured on the controller, but the coredump subsystem cannot encrypt data which is typically fixed by following the documented corrective steps.
 
 == coredump.encryption.disabled
 *Severity*::

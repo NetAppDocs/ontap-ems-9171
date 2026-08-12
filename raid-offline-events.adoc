@@ -15,7 +15,7 @@ summary: raid.offline events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when an attempt to offline an aggregate fails due to active operations on the contained volumes.
+raid.offline events are presented when an attempt to offline an aggregate fails due to active operations on the contained volumes which typically does not require corrective action.
 
 == raid.offline.busy
 *Severity*::

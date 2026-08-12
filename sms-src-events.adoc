@@ -15,7 +15,7 @@ summary: sms.src events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a SnapMirror(R) Synchronous operation has successfully cleared the persistent fence (read/write I/O has resumed) on the source volume.
+sms.src events are presented when a SnapMirror(R) Synchronous operation has successfully cleared the persistent fence (read/write I/O has resumed) on the source volume which typically does not require corrective action.
 
 == sms.src.clear.fence.complete
 *Severity*::

@@ -15,7 +15,7 @@ summary: vserver.volume events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a volume is placed on nonhomogeneous aggregates, because of errors on homogeneous aggregates, such as max volumes is reached or aggregate is not home.
+vserver.volume events are presented when a volume is placed on nonhomogeneous aggregates, because of errors on homogeneous aggregates, such as max volumes is reached or aggregate is not home which typically does not require corrective action.
 
 == vserver.volume.nonhomogen
 *Severity*::

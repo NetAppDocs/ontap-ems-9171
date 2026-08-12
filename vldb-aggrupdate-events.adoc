@@ -15,7 +15,7 @@ summary: vldb.aggrupdate events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs in a MetroCluster(tm) configuration, when the blade UUID (Universal Unique Identifier) is updated on the local cluster, but a failure prevents the aggregate ownership update from being replicated to the remote cluster.
+vldb.aggrupdate events are presented when, in a MetroCluster(tm) configuration, the blade UUID (Universal Unique Identifier) is updated on the local cluster, but a failure prevents the aggregate ownership update from being replicated to the remote cluster, which may require contacting NetApp support.
 
 == vldb.aggrUpdate.noRepl
 *Severity*::

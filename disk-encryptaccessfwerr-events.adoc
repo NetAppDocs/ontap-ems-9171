@@ -15,7 +15,7 @@ summary: disk.encryptaccessfwerr events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a disk reports a SCSI data protection error on an attempt to download firmware and ONTAP(R) cannot restore permission to access the firmware through storage encryption methods.
+disk.encryptaccessfwerr events are presented when a disk reports a SCSI data protection error on an attempt to download firmware and ONTAP(R) cannot restore permission to access the firmware through storage encryption methods which is typically fixed by following the documented corrective steps.
 
 == disk.encryptAccessFWErr
 *Severity*::

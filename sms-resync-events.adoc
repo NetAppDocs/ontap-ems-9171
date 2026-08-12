@@ -15,7 +15,7 @@ summary: sms.resync events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a resynchronize operation between the source volume and destination volume fails.
+sms.resync events are presented when a resynchronize operation between the source volume and destination volume fails which is typically fixed by verifying system state and connectivity.
 
 == sms.resync.attempt.failed
 *Severity*::

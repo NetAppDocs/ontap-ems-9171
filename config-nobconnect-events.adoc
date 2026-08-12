@@ -15,7 +15,7 @@ summary: config.nobconnect events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the local node in an HA configuration has no access to its partner node's disk shelves because the partner node's shelves are not connected to the local node through the shelf's module B.
+config.nobconnect events are presented when the local node in an HA configuration has no access to its partner node's disk shelves because the partner node's shelves are not connected to the local node through the shelf's module B which is typically fixed by verifying system state and connectivity.
 
 == config.noBconnect
 *Severity*::

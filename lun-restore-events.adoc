@@ -15,7 +15,7 @@ summary: lun.restore events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the SFSR (Single File SnapRestore(R)) for a LUN or NVMe namespace is complete.
+lun.restore events are presented when the SFSR (Single File SnapRestore(R)) for a LUN or NVMe namespace is complete which typically does not require corrective action.
 
 == LUN.restore.complete
 *Severity*::

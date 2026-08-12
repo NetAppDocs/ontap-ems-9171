@@ -15,7 +15,7 @@ summary: coredump.mcc events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the coredump subsystem vetoes MetroCluster(tm) negotiated switchover because a coredump save is in progress.
+coredump.mcc events are presented when the coredump subsystem vetoes MetroCluster(tm) negotiated switchover because a coredump save is in progress which is typically fixed by verifying system state and connectivity.
 
 == coredump.mcc.nso.veto
 *Severity*::

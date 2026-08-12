@@ -15,7 +15,7 @@ summary: ha.netpartition events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a Data ONTAP(R) subsystem detects an error potentially due to network partitioning, but cannot take over the partner node or allow the partner to take over because both takeover-of-partner and takeover-by-partner are both disabled.
+ha.netpartition events are presented when a Data ONTAP(R) subsystem detects an error potentially due to network partitioning, but cannot take over the partner node or allow the partner to take over because both takeover-of-partner and takeover-by-partner are both disabled which typically does not require corrective action.
 
 == ha.netPartition
 *Severity*::

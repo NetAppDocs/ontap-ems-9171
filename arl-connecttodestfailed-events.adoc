@@ -15,7 +15,7 @@ summary: arl.connecttodestfailed events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the local node cannot connect over the cluster network to the d-blade of the destination node while relocating an aggregate.
+arl.connecttodestfailed events are presented when the local node cannot connect over the cluster network to the d-blade of the destination node while relocating an aggregate which is typically fixed by verifying system state and connectivity.
 
 == arl.connectToDestFailed
 *Severity*::

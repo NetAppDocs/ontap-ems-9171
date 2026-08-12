@@ -15,7 +15,7 @@ summary: lib.nvtrace events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the system sorts the syslog messages when syslog is not yet initialized, and the panic messages are relogged.
+lib.nvtrace events are presented when the system sorts the syslog messages when syslog is not yet initialized, and the panic messages are relogged which typically does not require corrective action.
 
 == lib.nvtrace.syslog.relog.alert
 *Deprecated*::

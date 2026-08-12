@@ -15,7 +15,7 @@ summary: wafl.rclone events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the remote clone's cached copy is evicted during cleanup or delete operations.
+wafl.rclone events are presented when the remote clone's cached copy is evicted during cleanup or delete operations which typically does not require corrective action.
 
 == wafl.rclone.cache.copy.evict
 *Severity*::

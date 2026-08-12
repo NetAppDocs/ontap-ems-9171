@@ -15,7 +15,7 @@ summary: sfo.giveback events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when giveback of storage failover (SFO) aggregates is aborted because the background disk firmware update either on the source node or destination node took more than 120 seconds to finish.
+sfo.giveback events are presented when giveback of storage failover (SFO) aggregates is aborted because the background disk firmware update either on the source node or destination node took more than 120 seconds to finish which may require a reboot.
 
 == sfo.giveback.aborted.bdfu
 *Severity*::

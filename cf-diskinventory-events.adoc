@@ -15,7 +15,7 @@ summary: cf.diskinventory events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the computed checksum of the disk inventory message is different from the checksum sent as part of the disk inventory message.
+cf.diskinventory events are presented when the computed checksum of the disk inventory message is different from the checksum sent as part of the disk inventory message which typically does not require corrective action.
 
 == cf.diskinventory.cksum.fail
 *Severity*::

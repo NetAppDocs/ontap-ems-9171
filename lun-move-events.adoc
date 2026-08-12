@@ -15,7 +15,7 @@ summary: lun.move events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a LUN appears in the public namespace of the destination volume during a LUN move operation.
+lun.move events are presented when a LUN appears in the public namespace of the destination volume during a LUN move operation which typically does not require corrective action.
 
 == LUN.move.dstPresent
 *Severity*::

@@ -15,7 +15,7 @@ summary: mgmt.cifssymlink events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when configuration of a CIFS symbolic link fails; the symbolic link might not be available through CIFS.
+mgmt.cifssymlink events are presented when configuration of a CIFS symbolic link fails; the symbolic link might not be available through CIFS which is typically fixed by verifying system state and connectivity.
 
 == mgmt.cifssymlink.failure
 *Severity*::

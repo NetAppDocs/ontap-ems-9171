@@ -15,7 +15,7 @@ summary: raid.hybrid events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the sum of all sizes of solid state disks (SSDs) disks of hybrid aggregates on this node and its partner node is larger than the maximum system limit.
+raid.hybrid events are presented when the sum of all sizes of solid state disks (SSDs) disks of hybrid aggregates on this node and its partner node is larger than the maximum system limit which is typically fixed by updating configuration.
 
 == raid.hybrid.SSDHAExceed
 *Severity*::

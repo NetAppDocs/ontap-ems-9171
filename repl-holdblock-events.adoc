@@ -15,7 +15,7 @@ summary: repl.holdblock events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs during an incremental transfer when the replica volume did a snapshot restore before the transfer.
+repl.holdblock events are presented when the replica volume did a snapshot restore before the transfer during an incremental transfer, which typically does not require corrective action.
 
 == repl.holdblock.arrived
 *Severity*::

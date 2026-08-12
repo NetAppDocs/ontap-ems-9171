@@ -15,7 +15,7 @@ summary: sfu.firmwareuptodate events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a disk shelf firmware update is requested but all shelves are determined to be updated already to the latest version of firmware available on the system.
+sfu.firmwareuptodate events are presented when a disk shelf firmware update is requested but all shelves are determined to be updated already to the latest version of firmware available on the system which typically does not require corrective action.
 
 == sfu.firmwareUpToDate
 *Severity*::

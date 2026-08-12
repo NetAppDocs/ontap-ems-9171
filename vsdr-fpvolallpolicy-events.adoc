@@ -15,7 +15,7 @@ summary: vsdr.fpvolallpolicy events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when SnapMirror(R) transfer happens between the source volume of an SVM disaster recovery (SVMDR) relationship having a tiering policy of "all" residing on a FabricPool aggregate on the primary cluster and destination volume residing on a FabricPool aggregate at the secondary cluster.
+vsdr.fpvolallpolicy events are presented when snapMirror(R) transfer happens between the source volume of an SVM disaster recovery (SVMDR) relationship having a tiering policy of "all" residing on a FabricPool aggregate on the primary cluster and destination volume residing on a FabricPool aggregate at the secondary cluster which is typically fixed by updating configuration.
 
 == vsdr.FPVolAllPolicy
 *Severity*::

@@ -15,7 +15,7 @@ summary: sms.transition events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a SnapMirror(R) initialize or resynchronize operation takes a long time to bring the relationship "in-sync" due to intermittent failure.
+sms.transition events are presented when a SnapMirror(R) initialize or resynchronize operation takes a long time to bring the relationship "in-sync" due to intermittent failure which typically does not require corrective action.
 
 == sms.transition.retry
 *Severity*::

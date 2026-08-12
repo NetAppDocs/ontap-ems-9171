@@ -15,7 +15,7 @@ summary: cluster.vol events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the volume required to store the system data needed for cluster-wide storage is created successfully after one or more attempts to create it failed.
+cluster.vol events are presented when the volume required to store the system data needed for cluster-wide storage is created successfully after one or more attempts to create it failed which typically does not require corrective action.
 
 == cluster.vol.create.success
 *Severity*::

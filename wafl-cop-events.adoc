@@ -15,7 +15,7 @@ summary: wafl.cop events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the system is out of the flow control mode which was earlier initiated as a high number of volumes were receiving modify operations concurrently beyond a certain threshold.
+wafl.cop events are presented when the system is out of the flow control mode which was earlier initiated as a high number of volumes were receiving modify operations concurrently beyond a certain threshold which typically does not require corrective action.
 
 == wafl.cop.flowcontrol.end
 *Severity*::

@@ -15,7 +15,7 @@ summary: disk.bdfu events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the background drive firmware update process fails to unlock SAS NetApp(R) Storage Encryption (NSE) drives in FIPS-compliance mode.
+disk.bdfu events are presented when the background drive firmware update process fails to unlock SAS NetApp(R) Storage Encryption (NSE) drives in FIPS-compliance mode which may require contacting NetApp support.
 
 == disk.bdfu.suspended
 *Severity*::

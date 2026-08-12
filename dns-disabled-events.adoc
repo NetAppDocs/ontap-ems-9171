@@ -15,7 +15,7 @@ summary: dns.disabled events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the last system to be upgraded in a cluster removes DNS configurations that were marked as disabled.
+dns.disabled events are presented when the last system to be upgraded in a cluster removes DNS configurations that were marked as disabled which typically does not require corrective action.
 
 == dns.disabled.configs.removed
 *Severity*::

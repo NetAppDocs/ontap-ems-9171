@@ -15,7 +15,7 @@ summary: mcc.switchover events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a MetroCluster switchover operation finds a system metadata volume, used by config replication applications, in the nvfailed state.
+mcc.switchover events are presented when a MetroCluster switchover operation finds a system metadata volume, used by config replication applications, in the nvfailed state which is typically fixed by verifying system state and connectivity.
 
 == mcc.switchover.mdvInNvfailedState
 *Severity*::

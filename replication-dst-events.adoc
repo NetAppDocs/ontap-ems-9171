@@ -15,7 +15,7 @@ summary: replication.dst events
 :imagesdir: ./media/
 
 [.lead]
-This message is issued at the end of a Qtree SnapMirror(R) or SnapVault(R) transfer or checker/fixer operation when the replication destination detects that the replication source has sent file attributes that the replication destination does not support, and the replication destination has not saved those attributes.
+replication.dst events are presented when the replication destination detects that the replication source has sent file attributes that the replication destination does not support, and the replication destination has not saved those attributes at the end of a Qtree SnapMirror(R) or SnapVault(R) transfer or checker/fixer operation, which is typically fixed by following the documented corrective steps.
 
 == replication.dst.attrsNotSaved
 *Severity*::

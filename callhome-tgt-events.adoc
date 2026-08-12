@@ -15,7 +15,7 @@ summary: callhome.tgt events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the SCSI Target subsystem begins failing SCSI Write commands due to to an out of space (ENOSPC) condition on the appliance.
+callhome.tgt events are presented when the SCSI Target subsystem begins failing SCSI Write commands due to to an out of space (ENOSPC) condition on the appliance which is typically fixed by verifying system state and connectivity.
 
 == callhome.tgt.lun.nospc
 *Severity*::

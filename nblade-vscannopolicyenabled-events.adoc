@@ -15,7 +15,7 @@ summary: nblade.vscannopolicyenabled events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a file access is not considered for virus scanning because none of the configured On-Access policies are enabled for the Vserver.
+nblade.vscannopolicyenabled events are presented when a file access is not considered for virus scanning because none of the configured On-Access policies are enabled for the Vserver which is typically fixed by following the documented corrective steps.
 
 == Nblade.vscanNoPolicyEnabled
 *Severity*::

@@ -15,7 +15,7 @@ summary: sfu.downloadsummaryerrors events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a disk shelf firmware update completes without successfully downloading to all shelves it attempted.
+sfu.downloadsummaryerrors events are presented when a disk shelf firmware update completes without successfully downloading to all shelves it attempted which is typically fixed by updating configuration.
 
 == sfu.downloadSummaryErrors
 *Severity*::

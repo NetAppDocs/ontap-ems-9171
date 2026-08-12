@@ -15,7 +15,7 @@ summary: wafl.relocating events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the system cannot perform an aggregate relocation because a fence is set on one of the volumes in the aggregate.
+wafl.relocating events are presented when the system cannot perform an aggregate relocation because a fence is set on one of the volumes in the aggregate which may require contacting NetApp support.
 
 == wafl.relocating.fence.fail
 *Severity*::

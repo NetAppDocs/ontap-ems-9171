@@ -15,7 +15,7 @@ summary: protocol.exportcheckfailed events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when there is an export check failure due to, either export-policy configuration not allowing access, or a non-existing filesystem/junction access attempt.
+protocol.exportcheckfailed events are presented when there is an export check failure due to, either export-policy configuration not allowing access, or a non-existing filesystem/junction access attempt which is typically fixed by verifying system state and connectivity.
 
 == protocol.exportCheckFailed
 *Severity*::

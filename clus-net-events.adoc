@@ -15,7 +15,7 @@ summary: clus.net events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the cluster network ports with "link" reported as "up" are neither receiving CDP nor LLDP neighbor announcements.
+clus.net events are presented when the cluster network ports with "link" reported as "up" are neither receiving CDP nor LLDP neighbor announcements which is typically fixed by verifying system state and connectivity.
 
 == clus.net.noNeighbors
 *Severity*::

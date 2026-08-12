@@ -15,7 +15,7 @@ summary: vifmgr.clusterbd events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when ONTAP detects that the cluster broadcast domain is partitioned; some local ports in the cluster broadcast domain do not have layer-2 connectivity to one another.
+vifmgr.clusterbd events are presented when oNTAP detects that the cluster broadcast domain is partitioned; some local ports in the cluster broadcast domain do not have layer-2 connectivity to one another which is typically fixed by verifying system state and connectivity.
 
 == vifmgr.clusterBD.Partition
 *Severity*::

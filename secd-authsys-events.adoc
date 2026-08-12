@@ -15,7 +15,7 @@ summary: secd.authsys events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the incoming UNIX user ID (UID) that tries to mount or access a mount point cannot be looked up in any of the name-services (NIS, LDAP, file).
+secd.authsys events are presented when the incoming UNIX user ID (UID) that tries to mount or access a mount point cannot be looked up in any of the name-services (NIS, LDAP, file) which is typically fixed by following the documented corrective steps.
 
 == secd.authsys.lookup.failed
 *Severity*::

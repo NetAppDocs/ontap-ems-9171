@@ -15,7 +15,7 @@ summary: wafl.write events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a write to a file with CIFS-style space reservations fails due to a lack of space in the volume or aggregate.
+wafl.write events are presented when a write to a file with CIFS-style space reservations fails due to a lack of space in the volume or aggregate which is typically fixed by updating configuration.
 
 == wafl.write.fail.cifsSpace
 *Severity*::

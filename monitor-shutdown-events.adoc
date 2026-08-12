@@ -15,7 +15,7 @@ summary: monitor.shutdown events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when an automatic shutdown sequence is initiated due to a degraded RAID group that cannot be reconstructed because there are insufficient appropriate spare disks.
+monitor.shutdown events are presented when an automatic shutdown sequence is initiated due to a degraded RAID group that cannot be reconstructed because there are insufficient appropriate spare disks which is typically fixed by following the documented corrective steps.
 
 == monitor.shutdown.brokenDisk
 *Severity*::

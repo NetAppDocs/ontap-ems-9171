@@ -15,7 +15,7 @@ summary: lun.op events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a LUN is restored or a LUN clone is created in a volume that is currently in the nvfailed state.
+lun.op events are presented when a LUN is restored or a LUN clone is created in a volume that is currently in the nvfailed state which is typically fixed by verifying system state and connectivity.
 
 == LUN.op.nvfail.offline
 *Severity*::

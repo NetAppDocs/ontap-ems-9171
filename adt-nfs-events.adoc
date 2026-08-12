@@ -15,7 +15,7 @@ summary: adt.nfs events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs in the auditing subsytem, when the NFS root user is accessing the file without a valid CIFS credential.
+adt.nfs events are presented when, in the auditing subsystem, the NFS root user is accessing the file without a valid CIFS credential, which is typically fixed by verifying system state and updating configuration.
 
 == adt.nfs.root.access.no.map
 *Severity*::

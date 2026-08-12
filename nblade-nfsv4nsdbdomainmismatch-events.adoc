@@ -15,7 +15,7 @@ summary: nblade.nfsv4nsdbdomainmismatch events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when an NFSv4 client queries or updates the user or group attribute of a file object but the requested value does not match the '-v4-id-domain' option value of a virtual server's NFS service.
+nblade.nfsv4nsdbdomainmismatch events are presented when an NFSv4 client queries or updates the user or group attribute of a file object but the requested value does not match the '-v4-id-domain' option value of a virtual server's NFS service which is typically fixed by updating configuration.
 
 == Nblade.Nfsv4NsdbDomainMismatch
 *Severity*::

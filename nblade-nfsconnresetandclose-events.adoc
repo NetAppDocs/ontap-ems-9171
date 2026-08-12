@@ -15,7 +15,7 @@ summary: nblade.nfsconnresetandclose events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the server aborts the connection with the client by sending one or more RST segments, immediately resulting in the connection state being discarded.
+nblade.nfsconnresetandclose events are presented when the server aborts the connection with the client by sending one or more RST segments, immediately resulting in the connection state being discarded which is typically fixed by verifying system state and connectivity.
 
 == Nblade.nfsConnResetAndClose
 *Severity*::

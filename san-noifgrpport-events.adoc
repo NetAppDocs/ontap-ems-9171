@@ -15,7 +15,7 @@ summary: san.noifgrpport events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs in MetroCluster(TM) configurations on clustered ONTAP(R) systems, when ONTAP places a LIF on a physical port because an ifgrp port cannot be found on the destination cluster node (DR partner) to host an IP LIF.
+san.noifgrpport events are presented when, in MetroCluster(TM) configurations on clustered ONTAP(R) systems, ONTAP places a LIF on a physical port because an ifgrp port cannot be found on the destination cluster node (DR partner) to host an IP LIF, which is typically fixed by verifying system state and connectivity.
 
 == san.NoIfGrpPort
 *Severity*::

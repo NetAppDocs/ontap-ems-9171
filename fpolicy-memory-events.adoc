@@ -15,7 +15,7 @@ summary: fpolicy.memory events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when either the FPolicy Service Manager (FSM) receives too many requests to process immediately, or when the number of requests is accumulating due to server connectivity issues.
+fpolicy.memory events are presented when either the FPolicy Service Manager (FSM) receives too many requests to process immediately, or when the number of requests is accumulating due to server connectivity issues which is typically fixed by verifying system state and connectivity.
 
 == fpolicy.memory.pressure
 *Severity*::

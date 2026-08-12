@@ -15,7 +15,7 @@ summary: vscan.rdbupdregister events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the Vscan configuration replication mechanism fails to register RDB update callback.
+vscan.rdbupdregister events are presented when the Vscan configuration replication mechanism fails to register RDB update callback which may require a reboot.
 
 == vscan.rdbUpdRegister.failed
 *Severity*::

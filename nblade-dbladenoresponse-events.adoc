@@ -15,7 +15,7 @@ summary: nblade.dbladenoresponse events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a CIFS network data protocol operation times out because the requesting node cannot communicate with the data-serving node to complete the file operation.
+nblade.dbladenoresponse events are presented when a CIFS network data protocol operation times out because the requesting node cannot communicate with the data-serving node to complete the file operation which is typically fixed by verifying system state and connectivity.
 
 == Nblade.dBladeNoResponse.CIFS
 *Severity*::

@@ -15,7 +15,7 @@ summary: splog.warnings events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the ONTAP(R) splogd process has been unable to retrieve a log from the Service Processor (SP) or baseboard management controller (BMC) for at least 24 hours.
+splog.warnings events are presented when the ONTAP(R) splogd process has been cannot retrieve a log from the Service Processor (SP) or baseboard management controller (BMC) for at least 24 hours which may require a reboot.
 
 == splog.warnings
 *Severity*::

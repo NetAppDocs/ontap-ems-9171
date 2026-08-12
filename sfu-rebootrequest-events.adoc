@@ -15,7 +15,7 @@ summary: sfu.rebootrequest events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the disk shelf firmware update is complete and the disk shelf will be rebooted to run the new code.
+sfu.rebootrequest events are presented when the disk shelf firmware update is complete and the disk shelf will be rebooted to run the new code which typically does not require corrective action.
 
 == sfu.rebootRequest
 *Severity*::

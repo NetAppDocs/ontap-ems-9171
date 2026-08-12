@@ -15,7 +15,7 @@ summary: splog.running events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the Data ONTAP(R) process (splogd) that monitors the Service Processor (SP) for available SP logs starts successfully or when it returns to normal operation from degraded mode.
+splog.running events are presented when the Data ONTAP(R) process (splogd) that monitors the Service Processor (SP) for available SP logs starts successfully or when it returns to normal operation from degraded mode which typically does not require corrective action.
 
 == splog.running.normally
 *Severity*::

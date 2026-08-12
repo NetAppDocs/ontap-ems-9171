@@ -15,7 +15,7 @@ summary: reg.errno events
 :imagesdir: ./media/
 
 [.lead]
-This event is issued when Data ONTAP(tm) cannot add an errno-style error to the list of errors.
+reg.errno events are presented when Data ONTAP(tm) cannot add an errno-style error to the list of errors, which typically does not require corrective action.
 
 == reg.errno.addAfterReadable
 *Severity*::

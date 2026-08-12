@@ -15,7 +15,7 @@ summary: disk.uid events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a SCSI (Small Computer System Interface) INQUIRY command done during a disk drive initialization sequence finds different data in the INQUIRY response for page 0x83.
+disk.uid events are presented when a SCSI (Small Computer System Interface) INQUIRY command done during a disk drive initialization sequence finds different data in the INQUIRY response for page 0x83 which may require reseating or replacing affected hardware.
 
 == disk.uid.changed
 *Severity*::

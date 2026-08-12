@@ -15,7 +15,7 @@ summary: secd.conn events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the Vserver cannot establish a TCP/UDP connection to or be authenticated by an outside server such as NIS, LSA, LDAP and KDC.
+secd.conn events are presented when the Vserver cannot establish a TCP/UDP connection to or be authenticated by an outside server such as NIS, LSA, LDAP and KDC which is typically fixed by updating configuration.
 
 == secd.conn.auth.failure
 *Severity*::

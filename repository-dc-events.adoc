@@ -15,7 +15,7 @@ summary: repository.dc events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs during a client file operation request, when the Infinite Volume runs into failures that prevent it from cleaning up a transient or client-originated lock on the data constituent.
+repository.dc events are presented when the Infinite Volume runs into failures that prevent it from cleaning up a transient or client-originated lock on the data constituent during a client file operation request, which is typically fixed by following the documented corrective steps.
 
 == Repository.DC.Dangling.Lock
 *Deprecated*::

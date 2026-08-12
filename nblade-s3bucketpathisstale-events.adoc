@@ -15,7 +15,7 @@ summary: nblade.s3bucketpathisstale events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the path of the NAS directory corresponding to an S3 NAS Bucket is stale (deleted or deleted and recreated) after the bucket was created.
+nblade.s3bucketpathisstale events are presented when the path of the NAS directory corresponding to an S3 NAS Bucket is stale (deleted or deleted and recreated) after the bucket was created which is typically fixed by verifying system state and connectivity.
 
 == Nblade.s3BucketPathIsStale
 *Severity*::

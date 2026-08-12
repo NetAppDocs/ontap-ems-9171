@@ -15,7 +15,7 @@ summary: netif.tcp events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a bad checksum is detected in the incoming TCP packets.
+netif.tcp events are presented when a bad checksum is detected in the incoming TCP packets which is typically fixed by verifying system state and connectivity.
 
 == netif.tcp.conn.bad.checksum
 *Severity*::

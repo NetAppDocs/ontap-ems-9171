@@ -15,7 +15,7 @@ summary: disk.toomanypartitioneddisks events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when Data ONTAP(R) finds more partitioned disks present on a platform than the platform supports.
+disk.toomanypartitioneddisks events are presented when data ONTAP(R) finds more partitioned disks present on a platform than the platform supports which is typically fixed by updating configuration.
 
 == disk.tooManyPartitionedDisks
 *Severity*::

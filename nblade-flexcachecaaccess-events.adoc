@@ -15,7 +15,7 @@ summary: nblade.flexcachecaaccess events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a client tries to access a FlexCache(R) volume via SMB3 using a continuously available share but is denied because FlexCache does not support persistent handle capability.
+nblade.flexcachecaaccess events are presented when a client tries to access a FlexCache(R) volume via SMB3 using a continuously available share but is denied because FlexCache does not support persistent handle capability which is typically fixed by following the documented corrective steps.
 
 == Nblade.flexcacheCAAccess
 *Severity*::

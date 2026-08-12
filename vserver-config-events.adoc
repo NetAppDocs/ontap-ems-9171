@@ -15,7 +15,7 @@ summary: vserver.config events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the Vserver create operation cannot create the Vserver-specific configuration directory.
+vserver.config events are presented when the Vserver create operation cannot create the Vserver-specific configuration directory which is typically fixed by following the documented corrective steps.
 
 == vserver.config.createDirectoryFailed
 *Severity*::

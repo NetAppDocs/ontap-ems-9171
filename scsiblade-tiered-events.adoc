@@ -15,7 +15,7 @@ summary: scsiblade.tiered events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a LUN is brought offline by Data ONTAP (R) because of too many consecutive failures to access object storage or no response from object storage.
+scsiblade.tiered events are presented when a LUN is brought offline by Data ONTAP (R) because of too many consecutive failures to access object storage or no response from object storage which is typically fixed by updating configuration.
 
 == scsiblade.tiered.lun.offline
 *Severity*::

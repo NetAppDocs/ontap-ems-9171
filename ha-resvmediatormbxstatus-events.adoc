@@ -15,7 +15,7 @@ summary: ha.resvmediatormbxstatus events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the local node attempts to reserve a mailbox disk while trying to acquire the takeover lock as part of the takeover operation.
+ha.resvmediatormbxstatus events are presented when the local node attempts to reserve a mailbox disk while trying to acquire the takeover lock as part of the takeover operation which typically does not require corrective action.
 
 == ha.ResvMediatorMbxStatus
 *Severity*::

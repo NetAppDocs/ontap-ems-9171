@@ -15,7 +15,7 @@ summary: nvmem.battery events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the NVMEM battery lacks the capacity to preserve the NVMEM contents for the required minimum of 72 hours.
+nvmem.battery events are presented when the NVMEM battery lacks the capacity to preserve the NVMEM contents for the required minimum of 72 hours which may require reseating or replacing affected hardware.
 
 == nvmem.battery.capacity.low
 *Severity*::

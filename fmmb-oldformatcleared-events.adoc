@@ -15,7 +15,7 @@ summary: fmmb.oldformatcleared events
 :imagesdir: ./media/
 
 [.lead]
-This event is issued when the older format HA mailboxes (special area of disk used for bookkeeping) are cleared on an upgrade from a pre 7.0 version of Data ONTAP to a 7.0 or later version.
+fmmb.oldformatcleared events are presented when the older format HA mailboxes (special area of disk used for bookkeeping) are cleared on an upgrade from a pre 7.0 version of Data ONTAP to a 7.0 or later version, which typically does not require corrective action.
 
 == fmmb.oldFormatCleared
 *Severity*::

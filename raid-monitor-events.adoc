@@ -15,7 +15,7 @@ summary: raid.monitor events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the hourly monitor indicates that the current aggregate or volume number exceeded the maximum number of supported volumes on the host.
+raid.monitor events are presented when the hourly monitor indicates that the current aggregate or volume number exceeded the maximum number of supported volumes on the host which is typically fixed by verifying system state and connectivity.
 
 == raid.monitor.maxVols
 *Severity*::

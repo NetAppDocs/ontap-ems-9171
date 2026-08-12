@@ -15,7 +15,7 @@ summary: vsdr.missing events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the clone parent volume does not exist during the Vserver SnapMirror(R)/MetroCluster(tm) baseline replication on the secondary site.
+vsdr.missing events are presented when the clone parent volume does not exist during the Vserver SnapMirror(R)/MetroCluster(tm) baseline replication on the secondary site which is typically fixed by verifying system state and connectivity.
 
 == vsdr.missing.clone.parent.volume
 *Severity*::

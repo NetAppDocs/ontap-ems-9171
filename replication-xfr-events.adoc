@@ -15,7 +15,7 @@ summary: replication.xfr events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a SnapMirror(R)/SnapVault(tm) operation is not completed because a block received from the source system failed checksum verification.
+replication.xfr events are presented when a SnapMirror(R)/SnapVault(tm) operation is not completed because a block received from the source system failed checksum verification which is typically fixed by updating configuration.
 
 == replication.xfr.checksum.fail
 *Severity*::

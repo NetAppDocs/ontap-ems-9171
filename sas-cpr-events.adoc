@@ -15,7 +15,7 @@ summary: sas.cpr events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the CPR (Core PCIe Resilience) infrastructure determines that the SAS controller hardware cannot be recovered, and the associated SAS ports will be taken offline.
+sas.cpr events are presented when the CPR (Core PCIe Resilience) infrastructure determines that the SAS controller hardware cannot be recovered, and the associated SAS ports will be taken offline which may require reseating or replacing affected hardware.
 
 == sas.cpr.failed
 *Severity*::

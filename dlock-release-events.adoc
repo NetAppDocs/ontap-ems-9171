@@ -15,7 +15,7 @@ summary: dlock.release events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when ONTAP(R) software reports an error while attempting to release an internal lock.
+dlock.release events are presented when oNTAP(R) software reports an error while attempting to release an internal lock which is typically fixed by verifying system state and connectivity.
 
 == dlock.release.error
 *Severity*::

@@ -15,7 +15,7 @@ summary: isns.socket events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the TCP socket connection in the Internet Storage Name Service (iSNS) fails to connect to the iSNS server.
+isns.socket events are presented when the TCP socket connection in the Internet Storage Name Service (iSNS) fails to connect to the iSNS server which is typically fixed by verifying system state and connectivity.
 
 == isns.socket.conn.failed
 *Severity*::

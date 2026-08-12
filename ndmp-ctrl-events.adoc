@@ -15,7 +15,7 @@ summary: ndmp.ctrl events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the IP address of the logical interface (LIF) that hosts the NDMP control connection is hosted on maintenance port "e0M".
+ndmp.ctrl events are presented when the IP address of the logical interface (LIF) that hosts the NDMP control connection is hosted on maintenance port "e0M" which is typically fixed by following the documented corrective steps.
 
 == ndmp.ctrl.on.e0m
 *Severity*::

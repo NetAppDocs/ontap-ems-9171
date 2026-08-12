@@ -15,7 +15,7 @@ summary: callhome.fcp events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a Fibre Channel Protocol (FCP) HBA Host Bus Adapter (HBA) in this node has failed to read a critical setting from the adapter's internal configuration.
+callhome.fcp events are presented when a Fibre Channel Protocol (FCP) HBA Host Bus Adapter (HBA) in this node has failed to read a critical setting from the adapter's internal configuration which may require reseating or replacing affected hardware.
 
 == callhome.fcp.adapter.failed
 *Severity*::

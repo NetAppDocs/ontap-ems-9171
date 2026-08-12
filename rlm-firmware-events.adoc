@@ -15,7 +15,7 @@ summary: rlm.firmware events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when the Remote LAN Module (RLM) firmware version and the Data ONTAP(R) software version are incompatible and cannot communicate correctly about a particular capability.
+rlm.firmware events are presented when the Remote LAN Module (RLM) firmware version and the Data ONTAP(R) software version are incompatible and cannot communicate correctly about a particular capability which is typically fixed by verifying system state and connectivity.
 
 == rlm.firmware.upgrade.reqd
 *Severity*::

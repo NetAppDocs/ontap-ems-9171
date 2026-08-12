@@ -15,7 +15,7 @@ summary: diskown.cleaningownership events
 :imagesdir: ./media/
 
 [.lead]
-This message occurs when a "storage disk assign -f" command is run for an SES drive and the system discovers that the newly assigned owner already owns an SES drive on the same loop and shelf as the supplied drive.
+diskown.cleaningownership events are presented when a "storage disk assign -f" command is run for an SES drive and the system discovers that the newly assigned owner already owns an SES drive on the same stack and shelf as the supplied drive which typically does not require corrective action.
 
 == diskown.cleaningOwnership
 *Severity*::
