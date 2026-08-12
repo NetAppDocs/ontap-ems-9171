@@ -14,7 +14,7 @@ summary: nvmens.512blksz events
 :linkattrs:
 :imagesdir: ./media/
 
-[role="lead"]
+[.lead]
 This message occurs when replication of a volume containing NVMe namespaces that use 512-byte block sizes fails because the destination does not support NVMe namespaces with this block size.
 
 == NVMeNS.512blksz.repl.unsupp

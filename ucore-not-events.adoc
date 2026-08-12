@@ -14,7 +14,7 @@ summary: ucore.not events
 :linkattrs:
 :imagesdir: ./media/
 
-[role="lead"]
+[.lead]
 This message occurs when a userspace core cannot be dumped either because coredumps are not enabled or because the process called setuid, and coredump is disabled for processes that have changed their user credentials.
 
 == ucore.not.enabled

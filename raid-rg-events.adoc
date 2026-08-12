@@ -14,7 +14,7 @@ summary: raid.rg events
 :linkattrs:
 :imagesdir: ./media/
 
-[role="lead"]
+[.lead]
 This message occurs when a RAID group background long running I/O encounters an error that is fatal to the RAID group and the aggregate (cannot be fixed even by a mirror read from the other plex, if it exists).
 
 == raid.rg.bigio.fatal

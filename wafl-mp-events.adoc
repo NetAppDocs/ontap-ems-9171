@@ -14,7 +14,7 @@ summary: wafl.mp events
 :linkattrs:
 :imagesdir: ./media/
 
-[role="lead"]
+[.lead]
 This message occurs when the value of the "multipart enabled" setting in the RAID label changes during the restoration of a snapshot, and an attempt to update the value in the Volume Location Database (VLDB) to match the new RAID label value fails.
 
 == wafl.mp.vldb.update.failed

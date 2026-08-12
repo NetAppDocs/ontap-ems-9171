@@ -14,7 +14,7 @@ summary: wafl.onoff events
 :linkattrs:
 :imagesdir: ./media/
 
-[role="lead"]
+[.lead]
 This message occurs when WAFL(R) attempts to bring online or take offline a mirror volume that does not have a valid mirror-type attribute.This situation might be a direct result of an upgrade to a version of Data ONTAP(R) that requires the mirror-type attribute or as a result of a corruption.
 
 == wafl.onOff.mirType.inv

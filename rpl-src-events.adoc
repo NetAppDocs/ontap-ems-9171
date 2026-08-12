@@ -14,7 +14,7 @@ summary: rpl.src events
 :linkattrs:
 :imagesdir: ./media/
 
-[role="lead"]
+[.lead]
 This message occurs when the replication source finds a LUN clone in a snapshot that was created on a ONTAP version earlier than 7.3 and was attempting to transfer as a LUN clone instead of a LUN.
 
 == rpl.src.lun.old_clone

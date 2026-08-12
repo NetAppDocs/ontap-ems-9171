@@ -14,7 +14,7 @@ summary: oauth2.localroles events
 :linkattrs:
 :imagesdir: ./media/
 
-[role="lead"]
+[.lead]
 This message occurs when an authentication fails when the "use-local-roles-if-present" setting is set to "true", but the user information does not exist in ONTAP, or the scope information within the access token does not grant sufficient access in ONTAP.
 
 == oauth2.localroles.unauth

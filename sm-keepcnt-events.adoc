@@ -14,7 +14,7 @@ summary: sm.keepcnt events
 :linkattrs:
 :imagesdir: ./media/
 
-[role="lead"]
+[.lead]
 This message occurs when new snapshots on the source volume cannot be transferred because the snapshot retention count (keep count) for snapshots with a given snapmirror-label has been reached on the destination volume and the 'preserve' flag is set to 'true'.
 
 == sm.keepcnt.reached

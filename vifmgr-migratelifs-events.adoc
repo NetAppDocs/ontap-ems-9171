@@ -14,7 +14,7 @@ summary: vifmgr.migratelifs events
 :linkattrs:
 :imagesdir: ./media/
 
-[role="lead"]
+[.lead]
 This message occurs when the network load balancing listener is not responding to probes over a node management LIF, and cluster-scoped LIFs with the same current port have been migrated elsewhere.
 
 == vifmgr.migrateLifs.nlbdDown

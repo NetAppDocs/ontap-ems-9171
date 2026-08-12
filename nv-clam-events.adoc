@@ -14,7 +14,7 @@ summary: nv.clam events
 :linkattrs:
 :imagesdir: ./media/
 
-[role="lead"]
+[.lead]
 This message occurs when a node's connectivity, liveness, availability monitor (CLAM) requests a graceful shutdown of its HA partner, but during the takeover it is determined that the partner volumes are unexpectedly dirty.
 
 == nv.clam.dirty.shutdown

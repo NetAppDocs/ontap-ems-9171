@@ -14,7 +14,7 @@ summary: snaplock.nse events
 :linkattrs:
 :imagesdir: ./media/
 
-[role="lead"]
+[.lead]
 This message occurs when any of the following commands could not be run against a SnapLock Compliance disk, since doing so could risk the destruction of compliance data: "storage encryption disk sanitize", "storage encryption disk destroy", "storage encryption disk revert-to-original-state".
 
 == snaplock.NSE.conflict

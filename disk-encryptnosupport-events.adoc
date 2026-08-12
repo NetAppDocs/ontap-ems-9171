@@ -14,7 +14,7 @@ summary: disk.encryptnosupport events
 :linkattrs:
 :imagesdir: ./media/
 
-[role="lead"]
+[.lead]
 This message occurs when ONTAP(R) software detects one or more FIPS-certified self-encrypting drives, but the environment variable 'bootarg.storageencryption.support' is not present or is set to "false" to indicate that FIPS-certified drives are not supported.
 
 == disk.encryptNoSupport

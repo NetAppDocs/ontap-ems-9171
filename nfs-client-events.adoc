@@ -14,7 +14,7 @@ summary: nfs.client events
 :linkattrs:
 :imagesdir: ./media/
 
-[role="lead"]
+[.lead]
 This message occurs when an NFS connected client's cache settings are changed using the REST API "/api/protocol/nfs/connected-client-settings", but the value is not updated in the network component.
 
 == nfs.client.cache.modify.err

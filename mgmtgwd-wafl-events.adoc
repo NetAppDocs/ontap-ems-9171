@@ -14,7 +14,7 @@ summary: mgmtgwd.wafl events
 :linkattrs:
 :imagesdir: ./media/
 
-[role="lead"]
+[.lead]
 This message occurs when the system will automatically enter RDB recovery because the system has detected that a root volume might have changed, possibly causing the local management databases to be out of sync with the replicated databases .
 
 == mgmtgwd.wafl.rdb.autorecover

@@ -14,7 +14,7 @@ summary: smc.snap events
 :linkattrs:
 :imagesdir: ./media/
 
-[role="lead"]
+[.lead]
 This message occurs when a SnapMirror operation fails to copy the retention period of a snapshot from the source endpoint to the destination endpoint because the ONTAP(R) version of the destination cluster does not support copying the retention period.
 
 == smc.snap.upd.retention.fail

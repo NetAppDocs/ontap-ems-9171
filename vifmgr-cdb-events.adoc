@@ -14,7 +14,7 @@ summary: vifmgr.cdb events
 :linkattrs:
 :imagesdir: ./media/
 
-[role="lead"]
+[.lead]
 This message occurs when attempting to merge a LIF from the configuration database (CDB) to the replicated database (RDB), and the LIF from the CDB is found to have the same address as an existing LIF in the RDB.
 
 == vifmgr.cdb.merge.dupip

@@ -14,7 +14,7 @@ summary: vserver.dest events
 :linkattrs:
 :imagesdir: ./media/
 
-[role="lead"]
+[.lead]
 This message occurs after you have modified either the size or maximum autosize of a source volume in a SnapMirror sync relationship and the maximum autosize at the destination DP volume (which is in a storage limit enabled SVM) fails to modify automatically.
 
 == vserver.dest.volume.modify.failed

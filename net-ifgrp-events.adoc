@@ -14,7 +14,7 @@ summary: net.ifgrp events
 :linkattrs:
 :imagesdir: ./media/
 
-[role="lead"]
+[.lead]
 This message occurs when the system fails to create a new interface group because the number of such groups already present on the node exceed either the number of physical ports on the node or the upper bound on number of interface groups supported.
 
 == net.ifgrp.addLimitExceeded

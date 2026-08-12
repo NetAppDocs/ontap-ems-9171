@@ -14,7 +14,7 @@ summary: wafl.ntfsunixsecurityops events
 :linkattrs:
 :imagesdir: ./media/
 
-[role="lead"]
+[.lead]
 This message occurs when a UNIX-type permissions or ownership change is attempted by an NFS client on an NTFS (Windows) volume, but changes of this type are prohibited by an export policy rule.
 
 == wafl.ntfsUnixSecurityOps
