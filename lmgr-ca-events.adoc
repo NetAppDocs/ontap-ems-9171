@@ -14,6 +14,9 @@ summary: lmgr.ca events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+lmgr.ca EMS events occur when the system vetoes MetroCluster(tm) switchback or negotiated switchover because one of the volumes affected by the switch has CIFS Continuously Available (CA) locks that are still being reconstructed.
+
 == lmgr.CA.recons.mcc.veto
 *Severity*::
 ALERT

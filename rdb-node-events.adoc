@@ -14,6 +14,9 @@ summary: rdb.node events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+rdb.node EMS events occur when the replicated database (RDB) detects CPU starvation on this node, potentially causing it to leave cluster quorum.
+
 == rdb.node.starvation
 *Severity*::
 ERROR

@@ -14,6 +14,9 @@ summary: fmmb.revert events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+fmmb.revert EMS events occur when the HA Mailbox opaque recieves a write request for the opaque area and a revert_to command is in progress.
+
 == fmmb.revert.opaque
 *Severity*::
 ERROR

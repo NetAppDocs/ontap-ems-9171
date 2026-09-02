@@ -14,6 +14,9 @@ summary: san.noconnectediscsiport events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+san.noconnectediscsiport EMS events occur in MetroCluster(TM) configurations on clustered ONTAP(R) systems, when ONTAP cannot replicate an IP logical interface (LIF) to a candidate port in the destination cluster.
+
 == san.NoConnectediSCSIPort
 *Severity*::
 ERROR

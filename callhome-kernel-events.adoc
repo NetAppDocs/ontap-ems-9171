@@ -14,6 +14,9 @@ summary: callhome.kernel events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+callhome.kernel EMS events occur when ONTAP encounters issues associated with kernel coredump file collection.
+
 == callhome.kernel.core
 *Deprecated*::
 Deprecated as of ONTAP 9.3. This event is replaced by the callhome.kernel.coreinfo event.

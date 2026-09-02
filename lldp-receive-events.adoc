@@ -14,6 +14,9 @@ summary: lldp.receive events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+lldp.receive EMS events occur when the LLDP (Link Layer Discovery Protocol) daemon running on the storage controller receives more unique neighbor advertisements than it can cache.
+
 == lldp.receive.maximum.entries
 *Severity*::
 NOTICE

@@ -14,6 +14,9 @@ summary: lun.scsi events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+lun.scsi EMS events occur when the SCSI reservation for one or more LUNs in the secondary or primary Vserver cannot be deleted during a Vserver disaster recovery(DR) resynchronize operation.
+
 == LUN.SCSI.reservation.removal.failed
 *Severity*::
 ALERT

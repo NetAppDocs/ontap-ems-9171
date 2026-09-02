@@ -14,6 +14,9 @@ summary: nameserv.netgrpbyhost events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+nameserv.netgrpbyhost EMS events occur when netgroup is configured but the netgroup byhost database is not generated during an upgrade operation.
+
 == nameserv.netgrpbyhost.failed
 *Severity*::
 ERROR

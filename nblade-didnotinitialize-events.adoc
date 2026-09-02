@@ -14,6 +14,9 @@ summary: nblade.didnotinitialize events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+nblade.didnotinitialize EMS events occur when the appliance's network process failed during initialization due to an internal error (likely there is not enough system memory available to start the necessary kernel threads).
+
 == Nblade.DidNotInitialize
 *Severity*::
 EMERGENCY

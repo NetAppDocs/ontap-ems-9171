@@ -14,6 +14,9 @@ summary: repository.cleanup events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+repository.cleanup EMS events occur when there is a failure in the Infinite Volume while creating a stream on a nonexistent file, and the base file was left behind in the Vserver.
+
 == Repository.Cleanup.BaseFile
 *Deprecated*::
 Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.

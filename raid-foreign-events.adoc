@@ -14,6 +14,9 @@ summary: raid.foreign events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+raid.foreign EMS events occur when a disk is found to have a different storage pod uuid than what this node is allowed to access.
+
 == raid.foreign.disk.failed
 *Severity*::
 ERROR

@@ -14,6 +14,9 @@ summary: application.volume events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+application.volume EMS events occur when an application is destroyed, but a member volume was not deleted after an error was encountered.
+
 == application.volume.removed
 *Severity*::
 ERROR

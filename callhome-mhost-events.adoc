@@ -14,6 +14,9 @@ summary: callhome.mhost events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+callhome.mhost EMS events occur when ONTAP encounters issues associated with userspace coredump files.
+
 == callhome.mhost.core
 *Deprecated*::
 Deprecated as of ONTAP 9.3. This event is replaced by the callhome.mhost.coreinfo event.

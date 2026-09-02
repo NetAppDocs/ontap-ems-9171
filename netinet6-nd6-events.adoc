@@ -14,6 +14,9 @@ summary: netinet6.nd6 events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+netinet6.nd6 EMS events occur when the port MTU (Maximum Transmission Unit) is set to a smaller value than the IPv6 minimum MTU of 1280.
+
 == netinet6.nd6.setmtu.small
 *Severity*::
 NOTICE

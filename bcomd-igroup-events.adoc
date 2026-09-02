@@ -14,6 +14,9 @@ summary: bcomd.igroup events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+bcomd.igroup EMS events occur when an initiator group marked with the delete-on-unmap flag is not automatically deleted when it is no longer part of a LUN mapping relationship.
+
 == bcomd.igroup.auto.delete.fail
 *Severity*::
 ERROR

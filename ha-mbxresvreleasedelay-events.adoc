@@ -14,6 +14,9 @@ summary: ha.mbxresvreleasedelay events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+ha.mbxresvreleasedelay EMS events occur when the takeover node cannot release a disk reservation for a mailbox disk in preparation for a giveback event.
+
 == ha.mbxResvReleaseDelay
 *Severity*::
 NOTICE

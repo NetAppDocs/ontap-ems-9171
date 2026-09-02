@@ -14,6 +14,9 @@ summary: lmgr.lockstate events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+lmgr.lockstate EMS events occur when the system cannot clean up the lock state associated with the active file system.
+
 == lmgr.lockstate.cleanup.fail
 *Severity*::
 ERROR

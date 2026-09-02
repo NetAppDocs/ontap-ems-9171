@@ -14,6 +14,9 @@ summary: fips.post events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+fips.post EMS events occur when an unrecoverable error prevents initialization of the cryptographic subsystem into FIPS mode.
+
 == fips.post.failure
 *Severity*::
 ERROR

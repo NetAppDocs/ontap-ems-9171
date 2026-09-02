@@ -14,6 +14,9 @@ summary: dump.volume events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+dump.volume EMS events occur when we are trying to dump a volume which is full and we cannot write the offsetmap on to the disk and we are using memory instead of disk to do this.
+
 == dump.volume.memory
 *Severity*::
 NOTICE

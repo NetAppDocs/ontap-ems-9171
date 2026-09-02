@@ -14,6 +14,9 @@ summary: disk.encryptprotdiff events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+disk.encryptprotdiff EMS events occur when self-encrypting drives have different settings of data-at-rest protections; that is, some are protected, having a nondefault Data Key ID, and some are not, having one of the default Data Key IDs.
+
 == disk.encryptProtDiff
 *Severity*::
 NOTICE

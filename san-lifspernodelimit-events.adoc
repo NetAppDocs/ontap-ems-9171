@@ -14,6 +14,9 @@ summary: san.lifspernodelimit events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+san.lifspernodelimit EMS events occur in MetroCluster(tm) configurations on clustered Data ONTAP(R) systems, when Data ONTAP cannot replicate a SAN or NVMe logical interface (LIF) in the destination cluster due to the LIF limits per node per Vserver.
+
 == san.LifsPerNodeLimit
 *Severity*::
 ERROR

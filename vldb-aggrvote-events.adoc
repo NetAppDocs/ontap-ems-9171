@@ -14,6 +14,9 @@ summary: vldb.aggrvote events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+vldb.aggrvote EMS events occur when a row of the aggr vote table is not replicated to the local table when an update is received from the remote cluster.
+
 == vldb.aggrVote.noRepl
 *Severity*::
 INFORMATIONAL

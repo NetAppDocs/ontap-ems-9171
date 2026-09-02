@@ -14,6 +14,9 @@ summary: secd.authsys events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+secd.authsys EMS events occur when the incoming UNIX user ID (UID) that tries to mount or access a mount point cannot be looked up in any of the name-services (NIS, LDAP, file).
+
 == secd.authsys.lookup.failed
 *Severity*::
 ERROR

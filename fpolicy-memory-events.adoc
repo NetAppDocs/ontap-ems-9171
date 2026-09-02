@@ -14,6 +14,9 @@ summary: fpolicy.memory events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+fpolicy.memory EMS events occur when either the FPolicy Service Manager (FSM) receives too many requests to process immediately, or when the number of requests is accumulating due to server connectivity issues.
+
 == fpolicy.memory.pressure
 *Severity*::
 ALERT

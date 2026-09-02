@@ -14,6 +14,9 @@ summary: msata.unable events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+msata.unable EMS events occur when Data ONTAP(R) module that is responsible for monitoring the health of the mSATA device cannot extract health information from the associated device.
+
 == msata.unable.to.monitor
 *Severity*::
 ERROR

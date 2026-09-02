@@ -14,6 +14,9 @@ summary: osc.tcp events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+osc.tcp EMS events occur when ONTAP is unable to connect to the IP address that the object store server hostname resolves to.
+
 == osc.tcp.connectFailed
 *Severity*::
 ERROR

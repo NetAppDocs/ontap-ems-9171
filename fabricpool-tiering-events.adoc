@@ -14,6 +14,9 @@ summary: fabricpool.tiering events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+fabricpool.tiering EMS events occur when ONTAP has stopped tiering data to the cloud tier because it has lost contact with the Service Control Unit used for one or more cloud subscription licenses.
+
 == fabricpool.tiering.stopped.no.scu
 *Severity*::
 ALERT

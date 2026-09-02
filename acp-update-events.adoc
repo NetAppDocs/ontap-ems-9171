@@ -14,6 +14,9 @@ summary: acp.update events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+acp.update EMS events occur when the Alternate Control Path (ACP) Administrator receives notification from the ACP Processor that it cannot upgrade the firmware because it is in some faulty state or the firmware file is not valid.
+
 == acp.update.failed
 *Severity*::
 ERROR

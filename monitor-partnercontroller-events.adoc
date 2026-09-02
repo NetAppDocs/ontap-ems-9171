@@ -14,6 +14,9 @@ summary: monitor.partnercontroller events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+monitor.partnercontroller EMS events occur when both controllers are configured as an HA (high-availability) pair, but the partner controller is not present.
+
 == monitor.partnerController.notPresent
 *Severity*::
 ALERT

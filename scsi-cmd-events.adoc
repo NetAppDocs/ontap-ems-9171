@@ -14,6 +14,9 @@ summary: scsi.cmd events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+scsi.cmd EMS events occur when ONTAP encounters issues associated with SCSI command execution and transport errors.
+
 == scsi.cmd.aborted
 *Deprecated*::
 This event has been removed as it does not provide any useful information for a customer.

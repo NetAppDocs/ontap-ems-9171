@@ -14,6 +14,9 @@ summary: km.restore events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+km.restore EMS events occur when the key manager attempts to restore a key which has an invalid length.
+
 == km.restore.invalid.key
 *Severity*::
 ALERT

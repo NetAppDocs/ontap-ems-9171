@@ -14,6 +14,9 @@ summary: mcc.toomany events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+mcc.toomany EMS events occur when a volume is added to an aggregate in which the recommended maximum number of volumes for an aggregate in a MetroCluster setup is exceeded.
+
 == mcc.toomany.vols.per.aggr
 *Severity*::
 ALERT

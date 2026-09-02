@@ -14,6 +14,9 @@ summary: mgmtgwd.repos events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+mgmtgwd.repos EMS events occur when an Infinite Volume operation cannot be started because another Infinite Volume operation is already in progress.
+
 == mgmtgwd.repos.conflictingOps
 *Deprecated*::
 Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.

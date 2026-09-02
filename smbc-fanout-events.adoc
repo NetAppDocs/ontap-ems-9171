@@ -14,6 +14,9 @@ summary: smbc.fanout events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+smbc.fanout EMS events occur when ONTAP(R) detects that source volumes of SnapMirror(R) active sync relationships are involved in an async fanout protection, but the two destination storage virtual machine (SVM)s are not peered with each other.
+
 == smbc.fanout.svms.not.peered
 *Severity*::
 ERROR

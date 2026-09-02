@@ -14,6 +14,9 @@ summary: boot.varfs events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+boot.varfs EMS events occur when ONTAP encounters issues associated with backing up or restoring the /var file system to the boot media or node root volume.
+
 == boot.varfs.backup.issue
 *Severity*::
 EMERGENCY

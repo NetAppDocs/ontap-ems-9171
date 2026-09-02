@@ -14,6 +14,9 @@ summary: callhome.jpc events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+callhome.jpc EMS events occur when the Kernel Cluster Services (KCS) / Cluster Transaction Manager (CTRAN) detects that the algorithm to reselect the Join Proposal Coordinator (JPC) is failing repeatedly.
+
 == callhome.jpc.selection.fail
 *Severity*::
 ALERT

@@ -14,6 +14,9 @@ summary: dfu.clusterdisknotready events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+dfu.clusterdisknotready EMS events occur when the controller failover partner reports that a disk selected for download is in the NOT READY state.
+
 == dfu.clusterDiskNotReady
 *Severity*::
 ERROR

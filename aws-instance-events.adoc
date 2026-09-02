@@ -14,6 +14,9 @@ summary: aws.instance events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+aws.instance EMS events occur when instance metadata retrieval fails on a hypervisor hosting an Amazon Web Services (AWS) ONTAP instance.
+
 == aws.instance.metadata.fail
 *Severity*::
 ERROR

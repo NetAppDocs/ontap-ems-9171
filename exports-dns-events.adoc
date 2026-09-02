@@ -14,6 +14,9 @@ summary: exports.dns events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+exports.dns EMS events occur when a name services lookup request finds that DNS is configured as an ns-switch source for hosts, but DNS is not configured for the Vserver.
+
 == exports.dns.config
 *Severity*::
 ERROR

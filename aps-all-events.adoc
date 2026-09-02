@@ -14,6 +14,9 @@ summary: aps.all events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+aps.all EMS events occur when the space rebalancing service detects that all flexaggrs in the HA Pair are at risk of running out of space over the next space exhaustion window.
+
 == aps.all.aggrs.full
 *Severity*::
 ALERT

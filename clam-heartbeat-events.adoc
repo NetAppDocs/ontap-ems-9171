@@ -14,6 +14,9 @@ summary: clam.heartbeat events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+clam.heartbeat EMS events occur when the Kernel Cluster Services Connectivity, Liveliness, Availability Monitor (CLAM) detects that the state of the heartbeats to a node changed(that is, either the heartbeats started succeeding or they started failing).
+
 == clam.heartbeat.state.change
 *Severity*::
 INFORMATIONAL

@@ -14,6 +14,9 @@ summary: raid.disable events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+raid.disable EMS events occur when RAID sub system disables recording in the partner's NVRAM entries for the log based file system.
+
 == raid.disable.remote.nvlog
 *Severity*::
 INFORMATIONAL

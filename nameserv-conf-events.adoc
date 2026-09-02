@@ -14,6 +14,9 @@ summary: nameserv.conf events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+nameserv.conf EMS events occur when a UNIX user or group name exceeds 64 characters.
+
 == nameserv.conf.limit.reached
 *Severity*::
 ERROR

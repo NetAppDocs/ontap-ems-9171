@@ -14,6 +14,9 @@ summary: netif.toomanynics events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+netif.toomanynics EMS events occur when a network interface was not initialized because the number of interfaces of this type exceeds the maximum supported.
+
 == netif.tooManyNics
 *Severity*::
 ERROR

@@ -14,6 +14,9 @@ summary: lsm.rangedelete events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+lsm.rangedelete EMS events occur when a block store encounters an error while performing a range delete operation.
+
 == lsm.rangeDelete.problem
 *Severity*::
 NOTICE

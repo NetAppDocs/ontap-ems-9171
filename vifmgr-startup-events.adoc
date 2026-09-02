@@ -14,6 +14,9 @@ summary: vifmgr.startup events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+vifmgr.startup EMS events occur when ONTAP encounters issues associated with the logical interface manager (VIFMgr) initialization process.
+
 == vifmgr.startup.failover.err
 *Severity*::
 ALERT

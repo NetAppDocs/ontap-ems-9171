@@ -14,6 +14,9 @@ summary: nblade.flexcachecaaccess events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+nblade.flexcachecaaccess EMS events occur when a client tries to access a FlexCache(R) volume via SMB3 using a continuously available share but is denied because FlexCache does not support persistent handle capability.
+
 == Nblade.flexcacheCAAccess
 *Severity*::
 ERROR

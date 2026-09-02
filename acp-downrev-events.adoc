@@ -14,6 +14,9 @@ summary: acp.downrev events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+acp.downrev EMS events occur when the Alternate Control Path Administrator cannot successfully download up-to-date firmware to an Alternate Control Path Processor (ACPP) or when the most up-to-date firmware image is not present in the /etc/acpp_fw/ directory.
+
 == acp.downrev.acpp
 *Severity*::
 ERROR

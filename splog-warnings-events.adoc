@@ -14,6 +14,9 @@ summary: splog.warnings events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+splog.warnings EMS events occur when the ONTAP(R) splogd process has been unable to retrieve a log from the Service Processor (SP) or baseboard management controller (BMC) for at least 24 hours.
+
 == splog.warnings
 *Severity*::
 ERROR

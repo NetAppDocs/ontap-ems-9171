@@ -14,6 +14,9 @@ summary: snmp.snmpv3 events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+snmp.snmpv3 EMS events occur when SNMPv3 is disabled due to a cluster in FIPS mode being upgraded to a version of ONTAP(R) software supporting the SNMPv3 FIPS feature.
+
 == snmp.snmpv3.enable
 *Severity*::
 ERROR

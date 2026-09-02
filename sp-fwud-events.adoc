@@ -14,6 +14,9 @@ summary: sp.fwud events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+sp.fwud EMS events occur when the Service Processor (SP) or baseboard management controller (BMC) firmware update fails because the image failed digital signature verification.
+
 == sp.fwud.cert.verify.failed
 *Severity*::
 ALERT

@@ -14,6 +14,9 @@ summary: ucore.not events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+ucore.not EMS events occur when a userspace core cannot be dumped either because coredumps are not enabled or because the process called setuid, and coredump is disabled for processes that have changed their user credentials.
+
 == ucore.not.enabled
 *Severity*::
 ERROR

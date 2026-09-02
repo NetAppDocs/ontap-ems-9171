@@ -14,6 +14,9 @@ summary: disk.unabletorewritedata events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+disk.unabletorewritedata EMS events occur when Data ONTAP(R) receives too many errors reading from a particular location on an ATA disk drive, but its attempt to rewrite the data to the disk drive fails.
+
 == disk.unableToRewriteData
 *Severity*::
 INFORMATIONAL

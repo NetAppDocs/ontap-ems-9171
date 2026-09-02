@@ -14,6 +14,9 @@ summary: sfu.partnerupdatecomplete events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+sfu.partnerupdatecomplete EMS events occur in a high-availability (HA) configuration in which an HA partner was downloading disk shelf firmware and the download was completed, at which point this notification is sent and enclosure services are resumed by the partner.
+
 == sfu.partnerUpdateComplete
 *Severity*::
 INFORMATIONAL

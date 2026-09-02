@@ -14,6 +14,9 @@ summary: ipmultipath.session events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+ipmultipath.session EMS events occur when an IP Multipath session is dropped due to failure to allocate memory.
+
 == ipmultipath.session.noMemory
 *Severity*::
 ERROR

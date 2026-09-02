@@ -14,6 +14,9 @@ summary: csm.rdmarecoverswitchless events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+csm.rdmarecoverswitchless EMS events occur when the Cluster Session Manager (CSM) attempts to restore the use of the preferred remote direct memory access (RDMA) transport for the eligible sessions because the condition which triggered the CSM to use CT (TCP transport) as default might have been resolved in the switchless cluster.
+
 == csm.rdmaRecoverSwitchless
 *Severity*::
 NOTICE

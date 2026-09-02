@@ -14,6 +14,9 @@ summary: disk.reservedelay events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+disk.reservedelay EMS events occur when a SCSI reservation command has a longer latency than expected during takeover.
+
 == disk.reserveDelay
 *Severity*::
 NOTICE

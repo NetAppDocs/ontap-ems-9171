@@ -14,6 +14,9 @@ summary: callhome.ses events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+callhome.ses EMS events occur when the storage adapter detects a disk on the Fibre Channel loop or the SCSI bus, but enclosure services in the disk shelf does not report a disk with that address.
+
 == callhome.ses.drive.missing
 *Severity*::
 ERROR

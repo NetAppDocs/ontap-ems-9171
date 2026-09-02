@@ -14,6 +14,9 @@ summary: mgmtgwd.configbr events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+mgmtgwd.configbr EMS events occur when ONTAP encounters issues associated with configuration backup and restore operations.
+
 == mgmtgwd.configbr.backupCompleted
 *Deprecated*::
 This event was replaced by configbr.backupCompleted.

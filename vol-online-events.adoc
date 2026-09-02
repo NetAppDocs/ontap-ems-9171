@@ -14,6 +14,9 @@ summary: vol.online events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+vol.online EMS events occur when ONTAP cannot correctly trigger volume upgrade tasks when a volume is brought online outside of an ONTAP upgrade cycle.
+
 == vol.online.upgrade.tasks.failure
 *Severity*::
 ERROR

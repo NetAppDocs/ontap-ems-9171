@@ -14,6 +14,9 @@ summary: nvme.cmds events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+nvme.cmds EMS events occur when an NVMe controller detects one or more commands that did not have a command completion response in the allotted time frame.
+
 == nvme.cmds.timedout
 *Severity*::
 NOTICE

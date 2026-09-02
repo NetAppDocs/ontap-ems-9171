@@ -14,6 +14,9 @@ summary: adt.max events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+adt.max EMS events occur when a management command or file operation tries to generate an audit record, that is greater than the max_audit_record_size value.
+
 == adt.max.record.size.exceeded
 *Severity*::
 ERROR

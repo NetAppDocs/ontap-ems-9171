@@ -14,6 +14,9 @@ summary: qos.bgtask events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+qos.bgtask EMS events occur when the Quality of Service (QoS) subsystem starts throttling requests to help critical background tasks meet their min-throughput and their service-level objectives (SLOs).
+
 == qos.BgTask.Throttle
 *Severity*::
 NOTICE

@@ -14,6 +14,9 @@ summary: netif.fatal events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+netif.fatal EMS events occur when the network device's driver encounters an error from which it cannot recover.
+
 == netif.fatal.err
 *Severity*::
 ALERT

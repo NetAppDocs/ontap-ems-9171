@@ -14,6 +14,9 @@ summary: cpeer.access events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+cpeer.access EMS events occur when an access request from a peer cluster is rejected, either because the request is made to a restricted Vserver or to a restricted table.
+
 == cpeer.access.restricted
 *Severity*::
 ERROR

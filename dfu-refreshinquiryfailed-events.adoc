@@ -14,6 +14,9 @@ summary: dfu.refreshinquiryfailed events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+dfu.refreshinquiryfailed EMS events occur after a successful disk firmware update, when the 'SCSI inquiry' command, which is issued to all disks as part of the disk firmware download process, fails to finish.
+
 == dfu.refreshInquiryFailed
 *Severity*::
 ERROR

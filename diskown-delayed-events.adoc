@@ -14,6 +14,9 @@ summary: diskown.delayed events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+diskown.delayed EMS events occur when the software disk ownership module completes the process of updating its view of the disks attached to the system but delays notifying other layers of the completion of this process.
+
 == diskown.delayed.completionEvent
 *Severity*::
 INFORMATIONAL

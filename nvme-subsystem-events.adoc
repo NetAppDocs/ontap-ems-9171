@@ -14,6 +14,9 @@ summary: nvme.subsystem events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+nvme.subsystem EMS events occur when the replication of an NVMe subsystem fails due to a name conflict.
+
 == nvme.subsystem.repl.name.err
 *Severity*::
 ERROR

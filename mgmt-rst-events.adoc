@@ -14,6 +14,9 @@ summary: mgmt.rst events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+mgmt.rst EMS events occur when the SnapMirror(R) 'restore' command fails because compression is enabled on the destination volume.
+
 == mgmt.rst.fail.dst.compressed
 *Severity*::
 ERROR

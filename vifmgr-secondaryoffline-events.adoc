@@ -14,6 +14,9 @@ summary: vifmgr.secondaryoffline events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+vifmgr.secondaryoffline EMS events occur when the system determines that a remote node has been offline for more than a minute and assigns logical network interfaces (LIFs) from that node to other available nodes in the cluster.
+
 == vifmgr.secondaryOffline
 *Severity*::
 NOTICE

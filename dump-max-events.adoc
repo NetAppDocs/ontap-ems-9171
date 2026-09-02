@@ -14,6 +14,9 @@ summary: dump.max events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+dump.max EMS events occur when new dump or restore sessions cannot be started because the limit for this platform has been reached.
+
 == dump.max.limit
 *Severity*::
 ERROR

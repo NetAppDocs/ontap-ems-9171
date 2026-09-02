@@ -14,6 +14,9 @@ summary: nfs.krb events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+nfs.krb EMS events occur when a Kerberos-enabled LIF in a Vserver shares NFS Kerberos credentials with a LIF in another Vserver.
+
 == nfs.krb.lif.disabled
 *Severity*::
 ALERT

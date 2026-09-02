@@ -14,6 +14,9 @@ summary: nvdimm.excessive events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+nvdimm.excessive EMS events occur when excessive correctable error-correcting code (ECC) memory errors are reported by the NVDIMM controller.
+
 == nvdimm.excessive.cecc.errs
 *Severity*::
 ALERT

@@ -14,6 +14,9 @@ summary: nodewatchdog.gfc events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+nodewatchdog.gfc EMS events occur when the storage system is low in networking buffers (mbuf) for longer than the duration threshold, which indicates abnormal circumstances.
+
 == nodewatchdog.gfc.too.long
 *Severity*::
 ALERT

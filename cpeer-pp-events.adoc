@@ -14,6 +14,9 @@ summary: cpeer.pp events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+cpeer.pp EMS events occur when an incoming cluster peer authentication request fails due to a passphrase mismatch.
+
 == cpeer.pp.mismatch
 *Severity*::
 ERROR

@@ -14,6 +14,9 @@ summary: disk.max events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+disk.max EMS events occur when ONTAP(R) software cannot partition a disk because the system already has the maximum number of partitioned disks.
+
 == disk.max.partitions
 *Severity*::
 ERROR

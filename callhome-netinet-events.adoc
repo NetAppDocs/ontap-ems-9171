@@ -14,6 +14,9 @@ summary: callhome.netinet events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+callhome.netinet EMS events occur when a new node that is trying to join the cluster is using the same IP address that is configured on this node's cluster interface.
+
 == callhome.netinet.dup.clustIP
 *Severity*::
 EMERGENCY

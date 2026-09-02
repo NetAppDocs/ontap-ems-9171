@@ -14,6 +14,9 @@ summary: vsdr.adtcreate events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+vsdr.adtcreate EMS events occur when an audit staging volume cannot be created at the destination cluster in Async-DR (asynchronous disaster recovery), either because there is not enough disk space on the aggregates or the aggregates are in offline state.
+
 == vsdr.adtcreate.fail
 *Severity*::
 ERROR

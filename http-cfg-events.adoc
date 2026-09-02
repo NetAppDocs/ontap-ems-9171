@@ -14,6 +14,9 @@ summary: http.cfg events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+http.cfg EMS events occur when the maximum number of Cross-Site Request Forgery (CSRF) tokens has been reached.
+
 == http.cfg.csrf.max.tokens
 *Severity*::
 NOTICE

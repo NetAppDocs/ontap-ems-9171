@@ -14,6 +14,9 @@ summary: wafl.toomany events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+wafl.toomany EMS events occur when too many access requests are received for inaccessible user data (area blocked by wafliron) in a short time span.
+
 == wafl.toomany.inaccess.udata
 *Severity*::
 ERROR

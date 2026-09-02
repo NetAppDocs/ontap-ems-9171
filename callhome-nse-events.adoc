@@ -14,6 +14,9 @@ summary: callhome.nse events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+callhome.nse EMS events occur when the node's key-management database lacks authentication keys (AKs) needed by self-encrypting drives that are owned by the node.
+
 == callhome.nse.ak.check.failed
 *Severity*::
 EMERGENCY

@@ -14,6 +14,9 @@ summary: lmgr.clients events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+lmgr.clients EMS events occur when the number of NFSv4 clients reaches the max limit of available per client object allocations, thereby prohibiting allocations for any new NFSv4 clients.
+
 == lmgr.clients.st.limit.hit
 *Severity*::
 ERROR

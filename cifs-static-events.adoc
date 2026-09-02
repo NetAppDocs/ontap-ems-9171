@@ -14,6 +14,9 @@ summary: cifs.static events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+cifs.static EMS events occur when a user creates a static home directory without a substitution value (%u or %w) to uniquely identify a home directory share.
+
 == cifs.static.homedir.create
 *Severity*::
 ERROR

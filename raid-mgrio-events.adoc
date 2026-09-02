@@ -14,6 +14,9 @@ summary: raid.mgrio events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+raid.mgrio EMS events occur during a SyncMirror(R) resynchronization operation, when the system detects an inconsistent RAID write signature on a RAID stripe.
+
 == raid.mgrio.lw.id.inconsist
 *Severity*::
 NOTICE

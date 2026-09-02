@@ -14,6 +14,9 @@ summary: netif.autonegfailed events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+netif.autonegfailed EMS events occur when autonegotiation fails and the interface is operating at half-duplex, which might not be the desired mode.
+
 == netif.autoNegFailed
 *Severity*::
 ERROR

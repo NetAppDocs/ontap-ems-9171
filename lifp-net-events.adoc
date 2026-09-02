@@ -14,6 +14,9 @@ summary: lifp.net events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+lifp.net EMS events occur while assigning network ports to broadcast domains, when LIF Placement subnet discovery finds a port that is assigned to a broadcast domain that is different from the broadcast domain to which other ports in the same physical broadcast domain are assigned.
+
 == lifp.net.bdmismatch
 *Severity*::
 ERROR

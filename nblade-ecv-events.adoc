@@ -14,6 +14,9 @@ summary: nblade.ecv events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+nblade.ecv EMS events occur when ONTAP(R) software uses a default Effective Cluster Version (ECV) before the actual ECV has been conclusively determined.
+
 == nblade.ecv.not.ready
 *Severity*::
 NOTICE

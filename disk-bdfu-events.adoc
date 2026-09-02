@@ -14,6 +14,9 @@ summary: disk.bdfu events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+disk.bdfu EMS events occur when the background drive firmware update process fails to unlock SAS NetApp(R) Storage Encryption (NSE) drives in FIPS-compliance mode.
+
 == disk.bdfu.suspended
 *Severity*::
 ERROR

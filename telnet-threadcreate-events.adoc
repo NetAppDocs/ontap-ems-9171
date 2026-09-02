@@ -14,6 +14,9 @@ summary: telnet.threadcreate events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+telnet.threadcreate EMS events occur when creation of telnet daemon threads or telnet session threads fails because required virtual memory is unavailable.
+
 == telnet.threadCreate.failure
 *Severity*::
 ERROR

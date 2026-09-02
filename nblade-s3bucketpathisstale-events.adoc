@@ -14,6 +14,9 @@ summary: nblade.s3bucketpathisstale events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+nblade.s3bucketpathisstale EMS events occur when the path of the NAS directory corresponding to an S3 NAS Bucket is stale (deleted or deleted and recreated) after the bucket was created.
+
 == Nblade.s3BucketPathIsStale
 *Severity*::
 ERROR

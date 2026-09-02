@@ -14,6 +14,9 @@ summary: san.nosamenamediscsiport events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+san.nosamenamediscsiport EMS events occur when a MetroCluster(TM) configuration cannot be implemented, because the destination cluster for an IP logical interface (LIF) does not appear to contain a port with the same name as the one used within the source cluster.
+
 == san.NoSameNamedIscsiPort
 *Severity*::
 ERROR

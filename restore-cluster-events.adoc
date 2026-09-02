@@ -14,6 +14,9 @@ summary: restore.cluster events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+restore.cluster EMS events occur during an ONTAP revert operation when the auto-enable-analytics parameter in the cluster configuration is restored from "-" (not set) to "false".
+
 == restore.cluster.fsa.default
 *Severity*::
 NOTICE

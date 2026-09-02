@@ -14,6 +14,9 @@ summary: replication.status events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+replication.status EMS events occur when the time skew between the source and destination system is greater than 1 minute.
+
 == replication.status.timeSkewed
 *Severity*::
 NOTICE

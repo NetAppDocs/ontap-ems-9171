@@ -14,6 +14,9 @@ summary: aggr.resize events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+aggr.resize EMS events occur when ONTAP encounters issues associated with aggregate resize requests sent to the REST server as part of storage thin provisioning.
+
 == aggr.resize.request.sent
 *Severity*::
 NOTICE

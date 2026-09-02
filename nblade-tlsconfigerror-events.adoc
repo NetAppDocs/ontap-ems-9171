@@ -14,6 +14,9 @@ summary: nblade.tlsconfigerror events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+nblade.tlsconfigerror EMS events occur when the client is trying to use NFS over TLS (Transport Layer Security), but it is disabled on the NFS server side.
+
 == Nblade.TLSConfigError
 *Severity*::
 ERROR

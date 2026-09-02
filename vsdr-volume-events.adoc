@@ -14,6 +14,9 @@ summary: vsdr.volume events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+vsdr.volume EMS events occur when ONTAP encounters issues associated with volume identity conflicts or naming conflicts during Vserver DR operations.
+
 == vsdr.volume.idconflict
 *Severity*::
 ERROR

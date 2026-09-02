@@ -14,6 +14,9 @@ summary: sp.autoupd events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+sp.autoupd EMS events occur when a Service Processor (SP) or baseboard management controller (BMC) firmware automatic update is cancelled because the high-availability (HA) partner node is offline.
+
 == sp.autoupd.partner.offline
 *Severity*::
 ERROR

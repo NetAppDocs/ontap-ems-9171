@@ -14,6 +14,9 @@ summary: nv.clam events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+nv.clam EMS events occur when a node's connectivity, liveness, availability monitor (CLAM) requests a graceful shutdown of its HA partner, but during the takeover it is determined that the partner volumes are unexpectedly dirty.
+
 == nv.clam.dirty.shutdown
 *Severity*::
 ALERT

@@ -14,6 +14,9 @@ summary: sis.clog events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+sis.clog EMS events occur while mounting a volume, when an error with the SIS metafile operation results in the change logging function being disabled to avoid inconsistencies.
+
 == sis.clog.disabled
 *Severity*::
 ERROR

@@ -14,6 +14,9 @@ summary: nblade.cifsmemexceeded events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+nblade.cifsmemexceeded EMS events occur when the CIFS subsystem, which operates all the CIFS servers exposed through a given node, has requested more memory than it is allowed in this node.
+
 == Nblade.cifsMemExceeded
 *Severity*::
 ERROR

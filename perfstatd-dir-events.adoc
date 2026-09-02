@@ -14,6 +14,9 @@ summary: perfstatd.dir events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+perfstatd.dir EMS events occur when the perfstat daemon (perfstatd) startup fails due to improper permissions for the '/mroot/etc/log' directory.
+
 == perfstatd.dir.permission
 *Severity*::
 ERROR

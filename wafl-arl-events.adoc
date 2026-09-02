@@ -14,6 +14,9 @@ summary: wafl.arl events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+wafl.arl EMS events occur during the relocation of an aggregate, when the destination node fails the volume count limit and volume size limit checks.
+
 == wafl.arl.vol.limitChkFailed
 *Severity*::
 ERROR

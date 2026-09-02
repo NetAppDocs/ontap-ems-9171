@@ -14,6 +14,9 @@ summary: disk.encryptsupportreqd events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+disk.encryptsupportreqd EMS events occur when ONTAP(R) software detects one or more nonencrypting drives or non-FIPS-certified self-encrypting drives (SEDs), but the environment variable 'bootarg.storageencryption.support' is set to "true" to indicate that all drives must be FIPS-certified.
+
 == disk.encryptSupportReqd
 *Severity*::
 ALERT

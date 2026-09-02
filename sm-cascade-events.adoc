@@ -14,6 +14,9 @@ summary: sm.cascade events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+sm.cascade EMS events occur when concurrent SnapMirror(R) transfers are attempted while in a cascaded scenario, which is not supported.
+
 == SM.cascade.concurrency.unsupported
 *Severity*::
 NOTICE

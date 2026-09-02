@@ -14,6 +14,9 @@ summary: cpeer.ip events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+cpeer.ip EMS events occur when an attempt is made to insert an IP address whose address family does not match the family style specified for the cluster peer relationship.
+
 == cpeer.ip.family.mismatch
 *Severity*::
 ERROR

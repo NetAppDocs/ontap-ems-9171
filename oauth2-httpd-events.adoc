@@ -14,6 +14,9 @@ summary: oauth2.httpd events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+oauth2.httpd EMS events occur when the httpd process fails to restart when the OAuth 2.0 status changes.
+
 == oauth2.httpd.restart.failed
 *Severity*::
 ERROR

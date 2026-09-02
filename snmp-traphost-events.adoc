@@ -14,6 +14,9 @@ summary: snmp.traphost events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+snmp.traphost EMS events occur when the snmp daemon could not resolve (find an IP address via DNS for) a traphost.
+
 == snmp.traphost.resolve.failed
 *Severity*::
 ERROR

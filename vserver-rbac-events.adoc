@@ -14,6 +14,9 @@ summary: vserver.rbac events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+vserver.rbac EMS events occur when ONTAP encounters issues associated with custom role configuration using aliased command directories.
+
 == vserver.rbac.alias.command
 *Deprecated*::
 ONTAP now directly creates a role entry on the target of the alias.

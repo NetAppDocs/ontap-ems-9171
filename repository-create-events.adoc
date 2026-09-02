@@ -14,6 +14,9 @@ summary: repository.create events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+repository.create EMS events occur during a create request from a client, when the Infinite Volume namespace redirector encounters one or more of the following: 1.
+
 == Repository.Create.Placement.Failed
 *Deprecated*::
 Deprecated as of Data ONTAP 9.6 because Infinite Volumes no longer exist.

@@ -14,6 +14,9 @@ summary: pci.init events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+pci.init EMS events occur to warn about the time taken by PCI initialization when PCI configuration is waiting for outstanding background threads that might still be running.
+
 == PCI.init.process.timeWarn
 *Severity*::
 NOTICE

@@ -14,6 +14,9 @@ summary: qos.mgmt events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+qos.mgmt EMS events occur when this message indicates that cluster quality of service (QoS) cannot propagate settings to the classification and control components on the specified node.
+
 == qos.mgmt.operation.failed
 *Severity*::
 ERROR

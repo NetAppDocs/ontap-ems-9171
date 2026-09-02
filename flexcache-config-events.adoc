@@ -14,6 +14,9 @@ summary: flexcache.config events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+flexcache.config EMS events occur when the FlexCache volume expand operation fails to synchronize the FlexCache configuration information between the newly created constituent volume and the origin cluster.
+
 == flexcache.config.sync.failed
 *Severity*::
 ERROR

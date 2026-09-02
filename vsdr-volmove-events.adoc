@@ -14,6 +14,9 @@ summary: vsdr.volmove events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+vsdr.volmove EMS events occur when a volume at the source of a Vserver-DR setup is encrypted, but the volume at the destination is not configured to be encrypted.
+
 == vsdr.volmove.esrc.plaindst
 *Severity*::
 ALERT

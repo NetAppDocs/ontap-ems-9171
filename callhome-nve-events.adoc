@@ -14,6 +14,9 @@ summary: callhome.nve events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+callhome.nve EMS events occur when the digest of an NetApp Volume Encryption (NVE) or NetApp Aggregate Encryption (NAE) key being restored does not match the expected key digest.
+
 == callhome.nve.digest.mismatch
 *Severity*::
 EMERGENCY

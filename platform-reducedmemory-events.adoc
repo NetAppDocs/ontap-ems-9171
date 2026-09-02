@@ -14,6 +14,9 @@ summary: platform.reducedmemory events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+platform.reducedmemory EMS events occur when system memory is less than expected for this model, likely due to slots that contain incorrect, failed, or missing DIMMs.
+
 == platform.reducedMemory
 *Severity*::
 ALERT

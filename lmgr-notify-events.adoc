@@ -14,6 +14,9 @@ summary: lmgr.notify events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+lmgr.notify EMS events occur when the volume lock manager cannot write to the notify hosts file due to an error, for example, insufficient space.
+
 == lmgr.notify.host.skip.write
 *Severity*::
 INFORMATIONAL

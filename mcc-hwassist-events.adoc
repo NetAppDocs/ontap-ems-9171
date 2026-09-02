@@ -14,6 +14,9 @@ summary: mcc.hwassist events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+mcc.hwassist EMS events occur when a HW assist trap is received from the Service Processor of the DR-partner and is used to trigger an Automatic SwitchOver.
+
 == mcc.hwassist.trap.AUSO
 *Severity*::
 NOTICE

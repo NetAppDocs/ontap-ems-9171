@@ -14,6 +14,9 @@ summary: cf.multidisk events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+cf.multidisk EMS events occur when the node is waiting for the partner to take over, after the node encounters a multidisk error or some other fatal error.
+
 == cf.multidisk.fatalProblem
 *Severity*::
 ERROR

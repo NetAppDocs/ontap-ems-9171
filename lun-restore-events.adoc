@@ -14,6 +14,9 @@ summary: lun.restore events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+lun.restore EMS events occur when the SFSR (Single File SnapRestore(R)) for a LUN or NVMe namespace is complete.
+
 == LUN.restore.complete
 *Severity*::
 INFORMATIONAL

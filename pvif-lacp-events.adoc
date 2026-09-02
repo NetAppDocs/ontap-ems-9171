@@ -14,6 +14,9 @@ summary: pvif.lacp events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+pvif.lacp EMS events occur when a link is operationally up and cannot be aggregated into its configured ifgrp within the time limit.
+
 == pvif.lacp.outofsync
 *Severity*::
 ALERT

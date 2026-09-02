@@ -14,6 +14,9 @@ summary: sfu.rebootrequestfailure events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+sfu.rebootrequestfailure EMS events occur when an attempt to issue a reboot request after downloading disk shelf firmware fails, indicating a software error.
+
 == sfu.rebootRequestFailure
 *Severity*::
 ERROR

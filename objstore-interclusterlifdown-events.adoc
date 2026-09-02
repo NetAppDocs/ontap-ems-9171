@@ -14,6 +14,9 @@ summary: objstore.interclusterlifdown events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+objstore.interclusterlifdown EMS events occur when the object store client cannot find an operational LIF to communicate with the object store server.
+
 == objstore.interclusterlifDown
 *Severity*::
 ERROR

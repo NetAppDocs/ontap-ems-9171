@@ -14,6 +14,9 @@ summary: krb.config events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+krb.config EMS events occur when the CIFS server's security settings could not be written to the configuration file on this node.
+
 == krb.config.updateFail
 *Severity*::
 ERROR

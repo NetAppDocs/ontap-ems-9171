@@ -14,6 +14,9 @@ summary: acp.voltage events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+acp.voltage EMS events occur when a 'voltage status' request that was sent to the Alternate Controller Path Processor fails.
+
 == acp.voltage.status.failed
 *Severity*::
 INFORMATIONAL

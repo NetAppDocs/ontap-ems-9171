@@ -14,6 +14,9 @@ summary: ipsec.ob events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+ipsec.ob EMS events occur when the kernel cannot acquire an IPsec Security Association (SA) to protect an outbound packet.
+
 == ipsec.ob.no.acquire
 *Severity*::
 NOTICE

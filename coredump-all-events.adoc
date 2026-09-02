@@ -14,6 +14,9 @@ summary: coredump.all events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+coredump.all EMS events occur when all disks available to coredump already contain unsaved cores.
+
 == coredump.all.disks.used
 *Severity*::
 ERROR

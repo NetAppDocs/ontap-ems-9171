@@ -14,6 +14,9 @@ summary: wafl.bad events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+wafl.bad EMS events occur when ONTAP encounters issues associated with file system buftree type and RAID label format inconsistencies in aggregates or volumes.
+
 == wafl.bad.aggr.buftree.type
 *Severity*::
 EMERGENCY

@@ -14,6 +14,9 @@ summary: sm.break events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+sm.break EMS events occur when the "storage efficiency" feature is enabled on a destination volume due to a broken SnapMirror(R) relationship on an All Flash Optimized system.
+
 == sm.break.enable.se
 *Deprecated*::
 Deprecated as of version 9.14.1.

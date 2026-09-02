@@ -14,6 +14,9 @@ summary: nblade.nfsmountrootonly events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+nblade.nfsmountrootonly EMS events occur when a non-root user performs MOUNT or NFS operation when the respective options '-mount-rootonly' or 'nfs-rootonly' are enabled.
+
 == Nblade.NfsMountRootOnly
 *Severity*::
 NOTICE

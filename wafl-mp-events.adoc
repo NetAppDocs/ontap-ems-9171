@@ -14,6 +14,9 @@ summary: wafl.mp events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+wafl.mp EMS events occur when the value of the "multipart enabled" setting in the RAID label changes during the restoration of a snapshot, and an attempt to update the value in the Volume Location Database (VLDB) to match the new RAID label value fails.
+
 == wafl.mp.vldb.update.failed
 *Severity*::
 ERROR

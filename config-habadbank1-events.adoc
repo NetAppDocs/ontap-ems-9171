@@ -14,6 +14,9 @@ summary: config.habadbank1 events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+config.habadbank1 EMS events occur when a local host adapter is connected to a different switch bank (on ports 8-15) than other adapters on this controller, which are connected to ports 0-7.
+
 == config.HABadBank1
 *Severity*::
 ALERT

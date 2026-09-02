@@ -14,6 +14,9 @@ summary: raid.monitor events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+raid.monitor EMS events occur when the hourly monitor indicates that the current aggregate or volume number exceeded the maximum number of supported volumes on the host.
+
 == raid.monitor.maxVols
 *Severity*::
 ERROR

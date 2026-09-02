@@ -14,6 +14,9 @@ summary: diskown.ownerreservationmismatch events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+diskown.ownerreservationmismatch EMS events occur when the system discovers a disk that is supposed to be owned by one node, but the persistent reservation is owned by another node.
+
 == diskown.ownerReservationMismatch
 *Severity*::
 ERROR

@@ -14,6 +14,9 @@ summary: lun.provisioning events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+lun.provisioning EMS events occur during the creation of a LUN or NVME namespace when the provisioning for its metadata fails due to insufficient space in the aggregate.
+
 == LUN.provisioning.failed
 *Severity*::
 ERROR

@@ -14,6 +14,9 @@ summary: pcp.linkstatechangesucceed events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+pcp.linkstatechangesucceed EMS events occur when a change of network port state can now be confirmed after the initial attempt failed due to some race condition.
+
 == pcp.linkStateChangeSucceed
 *Severity*::
 NOTICE

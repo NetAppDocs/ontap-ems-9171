@@ -14,6 +14,9 @@ summary: kern.cron events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+kern.cron EMS events occur when ONTAP encounters issues associated with kernel cron daemon daylight savings time handling.
+
 == kern.cron.dstError
 *Severity*::
 ERROR

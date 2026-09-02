@@ -14,6 +14,9 @@ summary: clam.peer events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+clam.peer EMS events occur when the Kernel Cluster Services (KCS) Connectivity, Liveliness, and Availability Monitor (CLAM) is notified that its high-availability (HA) partner node is undergoing a planned shutdown.
+
 == clam.peer.halting
 *Severity*::
 INFORMATIONAL

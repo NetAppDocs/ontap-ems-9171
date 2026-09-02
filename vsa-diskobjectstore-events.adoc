@@ -14,6 +14,9 @@ summary: vsa.diskobjectstore events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+vsa.diskobjectstore EMS events occur when the system detects that a disk object store configuration is not synchronized between both nodes in a shared-storage High-Availability (HA) pair.
+
 == vsa.diskObjectStore.cfg.sync
 *Severity*::
 ALERT

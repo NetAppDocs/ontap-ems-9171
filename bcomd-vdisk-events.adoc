@@ -14,6 +14,9 @@ summary: bcomd.vdisk events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+bcomd.vdisk EMS events occur when ONTAP encounters issues associated with LUN or NVMe namespace configuration replication in a MetroCluster configuration.
+
 == bcomd.vdisk.repl.failed
 *Severity*::
 ERROR

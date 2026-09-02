@@ -14,6 +14,9 @@ summary: moveagent.detected events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+moveagent.detected EMS events occur when a volume move operation is interrupted by a disaster after the critical cutover phase has started but before the source volume is deleted.
+
 == moveagent.detected.on.MCC.SO
 *Deprecated*::
 This EMS is no longer needed as the issue that caused the volume inconsistency after an MCC switchback operation is fixed.

@@ -14,6 +14,9 @@ summary: disk.encryptaccessfwerr events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+disk.encryptaccessfwerr EMS events occur when a disk reports a SCSI data protection error on an attempt to download firmware and ONTAP(R) cannot restore permission to access the firmware through storage encryption methods.
+
 == disk.encryptAccessFWErr
 *Severity*::
 ERROR

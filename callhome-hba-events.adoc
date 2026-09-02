@@ -14,6 +14,9 @@ summary: callhome.hba events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+callhome.hba EMS events occur when a HBA port is taken offline due to read-after-write verification errors.
+
 == callhome.hba.failed
 *Severity*::
 EMERGENCY

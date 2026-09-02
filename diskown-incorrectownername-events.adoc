@@ -14,6 +14,9 @@ summary: diskown.incorrectownername events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+diskown.incorrectownername EMS events occur when we find a system finds a disk that it owns, but which has a different owner name than the system name.
+
 == diskown.IncorrectOwnerName
 *Severity*::
 INFORMATIONAL

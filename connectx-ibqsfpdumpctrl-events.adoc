@@ -14,6 +14,9 @@ summary: connectx.ibqsfpdumpctrl events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+connectx.ibqsfpdumpctrl EMS events occur when InfiniBand retimer programming fails due to a quad small form-factor pluggable (QSFP) transceiver register dump failure, causing the control registers of QSFP to be dumped.
+
 == connectx.IbQsfpDumpCtrl
 *Severity*::
 ERROR

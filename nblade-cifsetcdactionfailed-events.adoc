@@ -14,6 +14,9 @@ summary: nblade.cifsetcdactionfailed events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+nblade.cifsetcdactionfailed EMS events occur when the DMAP container encounters an error processing an etcd request, such as a connection failure.
+
 == Nblade.cifsEtcdActionFailed
 *Severity*::
 ERROR

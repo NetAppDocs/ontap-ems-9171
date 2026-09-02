@@ -14,6 +14,9 @@ summary: vifmgr.unabletohostmovedlif events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+vifmgr.unabletohostmovedlif EMS events occur when an attempt to move a logical interface (LIF) IP address to a specific node/port failed, and a subsequent attempt was made to move that LIF to another location.
+
 == vifmgr.unabletohostmovedlif
 *Severity*::
 NOTICE

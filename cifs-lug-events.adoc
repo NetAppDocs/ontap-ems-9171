@@ -14,6 +14,9 @@ summary: cifs.lug events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+cifs.lug EMS events occur when the job to import CIFS local users and groups is completed successfully only at a primary site within a MetroCluster(R) configuration or Vserver DR setup.
+
 == cifs.lug.import.fail
 *Severity*::
 ERROR

@@ -14,6 +14,9 @@ summary: wafl.volmove events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+wafl.volmove EMS events occur when the active map delta file for a volume move destination is corrupt.
+
 == wafl.volmove.dst.amd.corrupt
 *Severity*::
 ALERT

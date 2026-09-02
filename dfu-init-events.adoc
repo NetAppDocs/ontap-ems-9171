@@ -14,6 +14,9 @@ summary: dfu.init events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+dfu.init EMS events occur when the disk firmware update initialization routine cannot allocate memory.
+
 == dfu.init.noMemory
 *Severity*::
 ERROR

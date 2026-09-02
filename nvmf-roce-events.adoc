@@ -14,6 +14,9 @@ summary: nvmf.roce events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+nvmf.roce EMS events occur when there was an internal error while creating a NVMe over RoCE logical network interface (LIF).
+
 == nvmf.roce.lif.create.failed
 *Severity*::
 ERROR

@@ -14,6 +14,9 @@ summary: mgr.partner events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+mgr.partner EMS events occur when after a successful cluster takeover caused by a partner panic, and indicates partner stack trace information was collected from the time of the panic.
+
 == mgr.partner.stack.saved
 *Severity*::
 NOTICE

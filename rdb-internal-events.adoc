@@ -14,6 +14,9 @@ summary: rdb.internal events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+rdb.internal EMS events occur when the cluster management Data Replication Module encounters an internal error, possibly causing the process to exit.
+
 == rdb.internal.error
 *Severity*::
 ALERT

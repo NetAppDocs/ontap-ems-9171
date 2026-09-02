@@ -14,6 +14,9 @@ summary: lun.create events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+lun.create EMS events occur when ONTAP encounters issues associated with LUN creation in nvfailed state volumes.
+
 == LUN.create.nvfailed.volume
 *Severity*::
 ERROR

@@ -14,6 +14,9 @@ summary: cpeer.duplicate events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+cpeer.duplicate EMS events occur when an IP address from a peer cluster is also in use by the local cluster in the same IPspace.
+
 == cpeer.duplicate.remote.addr
 *Severity*::
 ERROR

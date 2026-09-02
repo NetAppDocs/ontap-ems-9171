@@ -14,6 +14,9 @@ summary: bsdsocket.queuelimit events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+bsdsocket.queuelimit EMS events occur when the number of connection requests for a socket reaches the maximum number.
+
 == bsdsocket.queueLimit.reached
 *Severity*::
 ERROR

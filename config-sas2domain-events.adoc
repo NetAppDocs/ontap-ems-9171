@@ -14,6 +14,9 @@ summary: config.sas2domain events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+config.sas2domain EMS events occur when a disk is multipathed to one SAS domain; that is, both ports of the disk are visible from the same HBA port.
+
 == config.SAS2Domain
 *Severity*::
 ERROR

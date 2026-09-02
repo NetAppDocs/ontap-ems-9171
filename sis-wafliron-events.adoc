@@ -14,6 +14,9 @@ summary: sis.wafliron events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+sis.wafliron EMS events occur when a requested SIS volume 'undo' operation fails to correct on-disk corruption and requires wafliron to be run.
+
 == sis.wafliron.required
 *Severity*::
 ALERT

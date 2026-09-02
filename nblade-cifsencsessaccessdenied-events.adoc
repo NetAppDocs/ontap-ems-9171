@@ -14,6 +14,9 @@ summary: nblade.cifsencsessaccessdenied events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+nblade.cifsencsessaccessdenied EMS events occur when a client not capable of SMB encryption tries to establish a CIFS session that requires SMB encryption.
+
 == Nblade.cifsEncSessAccessDenied
 *Severity*::
 ERROR

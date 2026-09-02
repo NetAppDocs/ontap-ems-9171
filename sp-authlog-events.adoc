@@ -14,6 +14,9 @@ summary: sp.authlog events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+sp.authlog EMS events occur when the Service Processor (SP) or baseboard management controller (BMC) fails to log an authentication event in the system event log (SEL).
+
 == sp.authlog.failure
 *Severity*::
 ERROR

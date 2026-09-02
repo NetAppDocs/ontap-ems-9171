@@ -14,6 +14,9 @@ summary: hotplug.generic events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+hotplug.generic EMS events occur when a module replacement or removal command fails because the driver or system is busy.
+
 == hotplug.generic.busy_not_ready
 *Severity*::
 ERROR

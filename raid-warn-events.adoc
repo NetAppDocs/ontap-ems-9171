@@ -14,6 +14,9 @@ summary: raid.warn events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+raid.warn EMS events occur when there are no suitable spare disks left on the node to use for a potential future coredump operation.
+
 == raid.warn.no.sparecore.disk
 *Severity*::
 ERROR

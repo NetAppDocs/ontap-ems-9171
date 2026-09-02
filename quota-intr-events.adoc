@@ -14,6 +14,9 @@ summary: quota.intr events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+quota.intr EMS events occur when previous quota initialization was interrupted due to a system reboot or file system consistency checking.
+
 == quota.intr.boot.fschk
 *Severity*::
 INFORMATIONAL

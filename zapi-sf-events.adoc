@@ -14,6 +14,9 @@ summary: zapi.sf events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+zapi.sf EMS events occur when the M-host layer is operational and has notified the high-availability (HA) subsystem, which can then proceed with certain storage failover operations, such as giveback.
+
 == zapi.sf.up.ready
 *Severity*::
 INFORMATIONAL

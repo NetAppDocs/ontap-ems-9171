@@ -14,6 +14,9 @@ summary: aps.aggr events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+aps.aggr EMS events occur when ONTAP encounters issues associated with the space rebalancing service detecting that a flexaggr is at risk of running out of space.
+
 == aps.aggr.full.advisory
 *Severity*::
 ALERT

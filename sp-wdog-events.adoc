@@ -14,6 +14,9 @@ summary: sp.wdog events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+sp.wdog EMS events occur when ONTAP(R) software fails to disable or enable the service-processor' (SP or BMC) watchdog timer.
+
 == sp.wdog.set.fail
 *Severity*::
 ERROR

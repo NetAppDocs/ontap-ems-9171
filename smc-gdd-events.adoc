@@ -14,6 +14,9 @@ summary: smc.gdd events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+smc.gdd EMS events occur when a file restore to a destination FlexGroup volume on which granular data distribution is enabled fails because the file already exists on the destination FlexGroup.
+
 == smc.gdd.restore.file.exists
 *Severity*::
 ERROR

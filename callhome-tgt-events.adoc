@@ -14,6 +14,9 @@ summary: callhome.tgt events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+callhome.tgt EMS events occur when the SCSI Target subsystem begins failing SCSI Write commands due to to an out of space (ENOSPC) condition on the appliance.
+
 == callhome.tgt.lun.nospc
 *Severity*::
 ERROR

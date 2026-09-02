@@ -14,6 +14,9 @@ summary: lun.outplace events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+lun.outplace EMS events occur when an out-of-place restore of a LUN from dump fails because the source LUN is of a higher version than this Data ONTAP(R) release supports.
+
 == LUN.outplace.dumpRestoreFail
 *Severity*::
 ERROR

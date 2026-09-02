@@ -14,6 +14,9 @@ summary: secd.nonetgroupfile events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+secd.nonetgroupfile EMS events occur when trying to process a netgroup in an export policy while the Vserver "ns-switch" option is set exclusively to "file" but no netgroup file is loaded.
+
 == secd.noNetgroupFile
 *Severity*::
 ALERT

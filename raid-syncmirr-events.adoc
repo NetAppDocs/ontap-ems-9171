@@ -14,6 +14,9 @@ summary: raid.syncmirr events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+raid.syncmirr EMS events occur in a SyncMirror(R) configuration (with SyncMirror aggressive timeout capability), when RAID cannot service earlier timed-out I/O from the other plex.
+
 == raid.syncmirr.at.IOrecovery
 *Severity*::
 ERROR

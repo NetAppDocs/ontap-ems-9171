@@ -14,6 +14,9 @@ summary: tcpip.conn events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+tcpip.conn EMS events occur when a connection is leaked because it can't be closed.
+
 == tcpip.conn.leaked
 *Severity*::
 INFORMATIONAL

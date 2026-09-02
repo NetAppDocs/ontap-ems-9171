@@ -14,6 +14,9 @@ summary: sis.idedup events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+sis.idedup EMS events occur when inline deduplication is disabled if aggregate is not hybrid or not part of All-Flash Optimized node since inline deduplication is not supported on them.
+
 == sis.idedup.disable
 *Severity*::
 NOTICE

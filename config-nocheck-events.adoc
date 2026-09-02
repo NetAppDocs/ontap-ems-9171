@@ -14,6 +14,9 @@ summary: config.nocheck events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+config.nocheck EMS events occur when the system should be halting but cannot because the "no-config-check?" environment variable is set to true.
+
 == config.NoCheck
 *Severity*::
 NOTICE

@@ -14,6 +14,9 @@ summary: snaprestore.fail events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+snaprestore.fail EMS events occur when a SnapRestore(R) operation on a volume fails due to insufficient space in the target volume to hold the data present in the snapshot.
+
 == snaprestore.fail.volume.size
 *Severity*::
 ALERT

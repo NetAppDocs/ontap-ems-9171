@@ -14,6 +14,9 @@ summary: callhome.sync events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+callhome.sync EMS events occur when ONTAP(R) cannot create a new base snapshot in a SyncMirror aggregate after multiple attempts.
+
 == callhome.sync.mirror.nospc
 *Severity*::
 ALERT

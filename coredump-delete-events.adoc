@@ -14,6 +14,9 @@ summary: coredump.delete events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+coredump.delete EMS events occur when a requested coredump delete cannot occur because an aggregate relocation or a takeover is in progress.
+
 == coredump.delete.denied
 *Severity*::
 INFORMATIONAL

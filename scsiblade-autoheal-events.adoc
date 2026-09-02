@@ -14,6 +14,9 @@ summary: scsiblade.autoheal events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+scsiblade.autoheal EMS events occur when the node loses connectivity with the majority of the cluster and autoheal has been explicitly disabled by the user.
+
 == scsiblade.autoheal.disabled
 *Severity*::
 NOTICE

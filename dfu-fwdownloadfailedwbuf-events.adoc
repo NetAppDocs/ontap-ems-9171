@@ -14,6 +14,9 @@ summary: dfu.fwdownloadfailedwbuf events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+dfu.fwdownloadfailedwbuf EMS events occur when retries are exhausted on the write buffer command that is used to download firmware to a disk.
+
 == dfu.fwDownloadFailedWbuf
 *Severity*::
 ERROR

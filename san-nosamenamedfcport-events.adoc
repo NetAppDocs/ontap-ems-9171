@@ -14,6 +14,9 @@ summary: san.nosamenamedfcport events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+san.nosamenamedfcport EMS events occur in MetroCluster(tm) configurations on clustered Data ONTAP(R) systems, when Data ONTAP cannot find the same named port to place an FC/FC-NVMe logical interface (LIF) in the destination cluster.
+
 == san.NoSameNamedFCport
 *Severity*::
 ERROR

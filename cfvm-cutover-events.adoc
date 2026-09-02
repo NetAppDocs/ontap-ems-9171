@@ -14,6 +14,9 @@ summary: cfvm.cutover events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+cfvm.cutover EMS events occur when a copy free volume move operation languishes beyond the volume move cutover outage window.
+
 == cfvm.cutover.languish
 *Severity*::
 ALERT

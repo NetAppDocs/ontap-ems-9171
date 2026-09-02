@@ -14,6 +14,9 @@ summary: disk.uid events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+disk.uid EMS events occur when a SCSI (Small Computer System Interface) INQUIRY command done during a disk drive initialization sequence finds different data in the INQUIRY response for page 0x83.
+
 == disk.uid.changed
 *Severity*::
 NOTICE

@@ -14,6 +14,9 @@ summary: moveagent.switchback events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+moveagent.switchback EMS events occur when the volume move operation vetoes a MetroCluster(tm) switchback because the operations are mutually exclusive.
+
 == moveagent.switchback.veto
 *Severity*::
 INFORMATIONAL

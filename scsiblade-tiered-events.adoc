@@ -14,6 +14,9 @@ summary: scsiblade.tiered events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+scsiblade.tiered EMS events occur when a LUN is brought offline by Data ONTAP (R) because of too many consecutive failures to access object storage or no response from object storage.
+
 == scsiblade.tiered.lun.offline
 *Severity*::
 ERROR

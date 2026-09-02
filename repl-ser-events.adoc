@@ -14,6 +14,9 @@ summary: repl.ser events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+repl.ser EMS events occur when number of operations serialized on parent directory exceed an internal limit.
+
 == repl.ser.ops.pardir.breach
 *Severity*::
 NOTICE

@@ -14,6 +14,9 @@ summary: smc.restore events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+smc.restore EMS events occur when a SnapMirror restore operation or a SnapMirror restore cleanup operation fails to cleanup a SnapMirror restore source relationship information.
+
 == smc.restore.src.cleanup.fail
 *Severity*::
 ERROR

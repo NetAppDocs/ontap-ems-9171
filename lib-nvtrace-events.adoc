@@ -14,6 +14,9 @@ summary: lib.nvtrace events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+lib.nvtrace EMS events occur when the system sorts the syslog messages when syslog is not yet initialized, and the panic messages are relogged.
+
 == lib.nvtrace.syslog.relog.alert
 *Deprecated*::
 This event is deprecated as of ONTAP 9.1.

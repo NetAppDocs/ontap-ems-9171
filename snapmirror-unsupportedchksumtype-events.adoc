@@ -14,6 +14,9 @@ summary: snapmirror.unsupportedchksumtype events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+snapmirror.unsupportedchksumtype EMS events occur when checksum type crc32c_header_only is configured for a SnapMirror(R) relationship and the source for the relationship is not compatible with this checksum type.
+
 == snapmirror.unsupportedChksumType
 *Severity*::
 NOTICE

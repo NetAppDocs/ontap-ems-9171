@@ -14,6 +14,9 @@ summary: wafl.timer events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+wafl.timer EMS events occur when disk I/O is stalled, possibly during a disk firmware download operation.
+
 == wafl.timer.disk.io.stalled
 *Severity*::
 ERROR

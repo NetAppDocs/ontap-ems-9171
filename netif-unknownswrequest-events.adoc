@@ -14,6 +14,9 @@ summary: netif.unknownswrequest events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+netif.unknownswrequest EMS events occur when a network driver does not recognize a request from another software module, possibly because the request is invalid.
+
 == netif.unknownSwRequest
 *Severity*::
 ERROR

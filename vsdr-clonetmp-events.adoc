@@ -14,6 +14,9 @@ summary: vsdr.clonetmp events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+vsdr.clonetmp EMS events occur during a SnapMirror(R) resync operation on a Storage Virtual Machine (SVM) disaster recovery (DR) relationship, when the MSID of a volume on the source SVM is the same as the MSID of a temporary volume on the destination SVM and the temporary volume is created for a clone parent volume.
+
 == vsdr.clonetmp.msid.conflict
 *Severity*::
 ERROR

@@ -14,6 +14,9 @@ summary: san.noportsinipspace events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+san.noportsinipspace EMS events occur when an attempt to place an IP LIF on a particular node fails because the system cannot find any ports in an IPspace on that node.
+
 == san.NoPortsInIpspace
 *Severity*::
 ERROR

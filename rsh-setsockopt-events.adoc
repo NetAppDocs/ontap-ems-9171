@@ -14,6 +14,9 @@ summary: rsh.setsockopt events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+rsh.setsockopt EMS events occur when the setsockopt option on the RemoteShell(RSH) socket fails; RSH is not available.
+
 == rsh.setsockopt.failure
 *Severity*::
 ERROR

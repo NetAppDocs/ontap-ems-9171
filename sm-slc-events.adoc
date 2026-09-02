@@ -14,6 +14,9 @@ summary: sm.slc events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+sm.slc EMS events occur when a SnapMirror(R) resync operation detects data divergence between the common snapshot and the AFS on a resync destination volume where the destination volume is a SnapLock Compliance volume and the SnapMirror relationship is of "async-mirror" policy type.
+
 == sm.slc.async.resync.preserve
 *Severity*::
 NOTICE

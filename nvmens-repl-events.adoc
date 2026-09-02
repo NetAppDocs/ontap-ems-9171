@@ -14,6 +14,9 @@ summary: nvmens.repl events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+nvmens.repl EMS events occur when replication of a volume containing NVMe namespaces has failed because the destination does not support NVMe namespaces.
+
 == NVMeNS.repl.unsupp.ver
 *Severity*::
 ERROR

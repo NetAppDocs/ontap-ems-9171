@@ -14,6 +14,9 @@ summary: aps.rebalance events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+aps.rebalance EMS events occur when ONTAP encounters issues associated with the space rebalancing service encountering errors during volume move operations.
+
 == aps.rebalance.failed
 *Severity*::
 ERROR

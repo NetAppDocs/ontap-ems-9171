@@ -14,6 +14,9 @@ summary: adt.aucb events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+adt.aucb EMS events occur in the auditing subsystem, when the subsystem overwrites an existing audit control block during audit control block creation.
+
 == adt.aucb.overwrite
 *Severity*::
 INFORMATIONAL

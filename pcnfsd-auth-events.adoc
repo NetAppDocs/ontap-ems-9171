@@ -14,6 +14,9 @@ summary: pcnfsd.auth events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+pcnfsd.auth EMS events occur when the authorization for a user fails due to a corrupted password entry in /etc/passwd.
+
 == pcnfsd.auth.failure
 *Severity*::
 ERROR

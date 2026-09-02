@@ -14,6 +14,9 @@ summary: nblade.nfsv4writetoolarge events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+nblade.nfsv4writetoolarge EMS events occur when a client attempts to write over NFSv4 with an amount of data that is greater than the maximum allowed TCP transfer size.
+
 == Nblade.Nfsv4WriteTooLarge
 *Severity*::
 ERROR

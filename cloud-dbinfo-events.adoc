@@ -14,6 +14,9 @@ summary: cloud.dbinfo events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+cloud.dbinfo EMS events occur when ONTAP detects that the connection to the cloud database has been closed, which the database service may do periodically for enhanced security.
+
 == cloud.DBInfo
 *Severity*::
 NOTICE

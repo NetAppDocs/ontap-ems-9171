@@ -14,6 +14,9 @@ summary: repl.switch events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+repl.switch EMS events occur when the average Op Latency increases beyond the threshold value in parallel splitting mode.
+
 == repl.switch.to.seq.split
 *Severity*::
 NOTICE

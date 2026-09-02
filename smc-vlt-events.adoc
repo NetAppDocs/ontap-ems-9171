@@ -14,6 +14,9 @@ summary: smc.vlt events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+smc.vlt EMS events occur when the transfer for the SnapVault(R) relationship replicating the read-only source volume fails because the SnapMirror(R) policy prevents it from transferring the exported snapshot from the source.
+
 == smc.vlt.cascade.xfer.fail
 *Severity*::
 ERROR

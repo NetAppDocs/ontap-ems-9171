@@ -14,6 +14,9 @@ summary: flexcache.autogrow events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+flexcache.autogrow EMS events occur when automatically growing a FlexCache volume fails because the total cluster-wide FlexCache provisioned space has exceeded the licensed limit.
+
 == flexcache.autogrow.fail
 *Severity*::
 ERROR

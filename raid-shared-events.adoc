@@ -14,6 +14,9 @@ summary: raid.shared events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+raid.shared EMS events occur when ONTAP encounters issues associated with shared disk state transitions in high availability (HA) configurations.
+
 == raid.shared.disk.awaiting.done
 *Severity*::
 INFORMATIONAL

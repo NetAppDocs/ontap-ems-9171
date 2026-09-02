@@ -14,6 +14,9 @@ summary: snapmirror.corrupted events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+snapmirror.corrupted EMS events occur when metadata replay fails in the process of making a Synchronous SnapMirror(R) destination flexible volume writable.
+
 == snapmirror.corrupted.replay
 *Severity*::
 ALERT

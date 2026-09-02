@@ -14,6 +14,9 @@ summary: dump.fail events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+dump.fail EMS events occur when while dump is trying to restart and there is no space left in the snap reserve.
+
 == dump.fail.snapreserve
 *Severity*::
 ERROR

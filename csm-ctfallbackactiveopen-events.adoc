@@ -14,6 +14,9 @@ summary: csm.ctfallbackactiveopen events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+csm.ctfallbackactiveopen EMS events occur when the Cluster Session Manager (CSM) uses CT (TCP transport) as the default when creating LIF pairs because connections running CSM over remote direct memory access (RDMA) repeatedly fail during successive retry attempts.
+
 == csm.ctFallbackActiveOpen
 *Severity*::
 NOTICE

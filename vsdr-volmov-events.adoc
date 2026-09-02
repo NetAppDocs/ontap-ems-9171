@@ -14,6 +14,9 @@ summary: vsdr.volmov events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+vsdr.volmov EMS events occur during a SnapMirror(R) resync operation on a Storage Virtual Machine (SVM) disaster recovery (DR) relationship, when the MSID of a volume on the source SVM is the same as the MSID of a temporary volume on the destination SVM and the temporary volume is created for a volume move operation.
+
 == vsdr.volmov.msid.conflict
 *Severity*::
 ERROR

@@ -14,6 +14,9 @@ summary: nblade.vscanconninvaliduser events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+nblade.vscanconninvaliduser EMS events occur during a client attempt to establish a vscan connection, when the logged-in user of that client is not found in the list of allowed users.
+
 == Nblade.vscanConnInvalidUser
 *Severity*::
 NOTICE

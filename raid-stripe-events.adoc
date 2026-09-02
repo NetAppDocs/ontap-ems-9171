@@ -14,6 +14,9 @@ summary: raid.stripe events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+raid.stripe EMS events occur when ONTAP encounters issues associated with stripe replay from NVRAM.
+
 == raid.stripe.replay.bad.block
 *Severity*::
 ERROR

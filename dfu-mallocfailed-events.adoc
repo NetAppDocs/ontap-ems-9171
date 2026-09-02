@@ -14,6 +14,9 @@ summary: dfu.mallocfailed events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+dfu.mallocfailed EMS events occur when Data ONTAP(R) cannot allocate memory to read the disk firmware file and aborts the disk firmware update.
+
 == dfu.mallocFailed
 *Severity*::
 ALERT

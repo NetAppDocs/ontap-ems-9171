@@ -14,6 +14,9 @@ summary: csm.ctfallbackswitchless events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+csm.ctfallbackswitchless EMS events occur when the Cluster Session Manager (CSM) defaults to use CT (TCP transport) when creating LIF pairs because remote device ID information is not available on switchless clusters running CSM over remote direct memory access (RDMA).
+
 == csm.ctFallbackSwitchless
 *Severity*::
 NOTICE

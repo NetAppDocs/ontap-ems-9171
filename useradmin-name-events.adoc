@@ -14,6 +14,9 @@ summary: useradmin.name events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+useradmin.name EMS events occur when an administrative name in the cluster is longer than the maximum allowed 255 characters.
+
 == useradmin.name.too.long
 *Severity*::
 ERROR

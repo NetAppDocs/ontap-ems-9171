@@ -14,6 +14,9 @@ summary: ha.noprogrammaticto events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+ha.noprogrammaticto EMS events occur when a takeover is initiated programmatically by Data ONTAP(R) and the takeover request fails because giveback or aggregate relocation cleanup is still in progress.
+
 == ha.noProgrammaticTO
 *Severity*::
 NOTICE

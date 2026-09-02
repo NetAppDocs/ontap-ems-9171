@@ -14,6 +14,9 @@ summary: wafl.spcmgmt events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+wafl.spcmgmt EMS events occur when a space management strategy or an autosize grow threshold for a volume is being configured and the autogrow or autodelete thresholds conflict with the space-mgmt-try-first policy.
+
 == wafl.spcmgmt.policyConflict
 *Severity*::
 NOTICE

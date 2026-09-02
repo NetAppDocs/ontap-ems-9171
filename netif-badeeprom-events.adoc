@@ -14,6 +14,9 @@ summary: netif.badeeprom events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+netif.badeeprom EMS events occur when the network interface has an electronically erasable programmable read-only memory (EEPROM) with a bad cyclic redundancy check (CRC) or media access control (MAC) address.
+
 == netif.badEeprom
 *Severity*::
 EMERGENCY

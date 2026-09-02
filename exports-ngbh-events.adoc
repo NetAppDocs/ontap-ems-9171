@@ -14,6 +14,9 @@ summary: exports.ngbh events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+exports.ngbh EMS events occur when a netgroup by host request fails because all ns-switch sources for the netgroup database have returned connection errors and files are unusable as a source.
+
 == exports.ngbh.allFailed
 *Severity*::
 ERROR

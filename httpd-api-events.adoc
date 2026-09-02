@@ -14,6 +14,9 @@ summary: httpd.api events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+httpd.api EMS events occur when a Manage ONTAP(R) API request to an internal server expires due to configured session limits.
+
 == httpd.api.expired.session.limit
 *Severity*::
 ERROR

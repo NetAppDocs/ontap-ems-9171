@@ -14,6 +14,9 @@ summary: scsi.security events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+scsi.security EMS events occur when a self-encrypting drive (SED) reports excessive sequential failed authentication attempts with an incorrect Authentication Key (AK).
+
 == scsi.security.authLockOut
 *Deprecated*::
 This event is removed to disassociate from SCSI, with the advent of NVMe encrypting drives. See replacement message EMS_nse_authLockedOut.

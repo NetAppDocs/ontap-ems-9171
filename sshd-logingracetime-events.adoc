@@ -14,6 +14,9 @@ summary: sshd.logingracetime events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+sshd.logingracetime EMS events occur when a user tries to establish a Secure Shell (SSH) connection to a storage system and does not provide the password within the allotted timeout period.
+
 == sshd.loginGraceTime.expired
 *Severity*::
 ERROR

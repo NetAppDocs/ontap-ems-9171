@@ -14,6 +14,9 @@ summary: secd.strong events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+secd.strong EMS events occur when the external LDAP server configured for a Vserver is enforcing stronger authentication than what the ONTAP(R) LDAP client is configured for.
+
 == secd.strong.auth.required
 *Severity*::
 ALERT

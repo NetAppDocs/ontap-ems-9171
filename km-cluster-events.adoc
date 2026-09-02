@@ -14,6 +14,9 @@ summary: km.cluster events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+km.cluster EMS events occur in a MetroCluster(tm) configuration, when one or both clusters have been configured with the Onboard Key Manager, but one or both of the Onboard Key Manager key hierarchies are corrupted.
+
 == km.cluster.okm.hierarchy.bad
 *Severity*::
 ALERT

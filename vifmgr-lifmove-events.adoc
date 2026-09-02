@@ -14,6 +14,9 @@ summary: vifmgr.lifmove events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+vifmgr.lifmove EMS events occur when an attempt to move a logical interface (LIF) IP address to another node/port due to a load-balance event has failed because the LIF has active connections which can not be safely migrated.
+
 == vifmgr.lifmove.blocked
 *Severity*::
 NOTICE

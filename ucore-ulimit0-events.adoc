@@ -14,6 +14,9 @@ summary: ucore.ulimit0 events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+ucore.ulimit0 EMS events occur when a userspace core is not dumped because the core size limit is set to 0.
+
 == ucore.ulimit0
 *Deprecated*::
 This event is deprecated as of ONTAP 9.2.

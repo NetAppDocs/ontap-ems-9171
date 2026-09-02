@@ -14,6 +14,9 @@ summary: adt.cmdthrd events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+adt.cmdthrd EMS events occur when audit initialization fails because the necessary execution threads cannot be created.
+
 == adt.cmdthrd.create.fail
 *Severity*::
 ALERT

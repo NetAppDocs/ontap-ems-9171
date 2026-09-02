@@ -14,6 +14,9 @@ summary: kmip2.invalid events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+kmip2.invalid EMS events occur when ONTAP cannot push a key to a KMIP key server because the key has an invalid length.
+
 == kmip2.invalid.key.length
 *Severity*::
 ALERT

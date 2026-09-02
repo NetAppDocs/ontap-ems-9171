@@ -14,6 +14,9 @@ summary: pn.driver events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+pn.driver EMS events occur when the pass-through network layer detects driver send latencies that are too high, indicating a noisy neighbor issue in cloud providers that is causing an I/O latency spike.
+
 == pn.driver.send.latency.high
 *Severity*::
 NOTICE

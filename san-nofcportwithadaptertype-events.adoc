@@ -14,6 +14,9 @@ summary: san.nofcportwithadaptertype events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+san.nofcportwithadaptertype EMS events occur in MetroCluster(tm) configurations on clustered Data ONTAP(R) systems, when Data ONTAP cannot replicate an FC/FC-NVMe logical interface (LIF) to a candidate port in the destination cluster.
+
 == san.NoFCportwithAdapterType
 *Severity*::
 ERROR

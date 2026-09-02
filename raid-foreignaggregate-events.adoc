@@ -14,6 +14,9 @@ summary: raid.foreignaggregate events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+raid.foreignaggregate EMS events occur when the system changes the RAID tree ID of a foreign aggregate that is being brought online.
+
 == raid.foreignAggregate.online.rtIDChanged
 *Severity*::
 NOTICE

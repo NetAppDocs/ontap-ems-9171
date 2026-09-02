@@ -14,6 +14,9 @@ summary: rdmalib.multichan events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+rdmalib.multichan EMS events occur when this node's high-availability (HA) partner reports an update on the number of interconnect channels (multichan count) in use.
+
 == rdmalib.multichan.count
 *Severity*::
 NOTICE

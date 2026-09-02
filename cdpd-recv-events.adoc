@@ -14,6 +14,9 @@ summary: cdpd.recv events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+cdpd.recv EMS events occur when the CDP (Cisco Discovery Protocol) daemon running on the storage controller receives more unique neighbor advertisements than it can cache.
+
 == cdpd.recv.cacheOverflow
 *Severity*::
 ERROR

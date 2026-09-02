@@ -14,6 +14,9 @@ summary: sp.snmp events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+sp.snmp EMS events occur each time a system boots, if the advanced privilege level in Data ONTAP(R) was used to disable the SNMP Trap feature of the Service Processor (SP).
+
 == sp.snmp.traps.off
 *Severity*::
 INFORMATIONAL

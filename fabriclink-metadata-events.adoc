@@ -14,6 +14,9 @@ summary: fabriclink.metadata events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+fabriclink.metadata EMS events occur when object replication encounters metadata key-value pairs that are too long when replicating an object from a remote object store.
+
 == fabriclink.metadata.too.long
 *Severity*::
 ERROR

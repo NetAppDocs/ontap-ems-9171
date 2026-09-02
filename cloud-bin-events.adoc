@@ -14,6 +14,9 @@ summary: cloud.bin events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+cloud.bin EMS events occur when the cloud bin object copy operation (which copies objects from a source object store to a destination object store) fails because it is unable to read source objects due to unauthorized access to the object store container.
+
 == cloud.bin.objcopy.failed
 *Severity*::
 ERROR

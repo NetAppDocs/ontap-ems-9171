@@ -14,6 +14,9 @@ summary: disk.exceed events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+disk.exceed EMS events occur when during disk qualification testing when READ/WRITE I/O requests exceed their expected maximum completion time.
+
 == disk.exceed.cmd.completeTime
 *Severity*::
 INFORMATIONAL

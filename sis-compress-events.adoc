@@ -14,6 +14,9 @@ summary: sis.compress events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+sis.compress EMS events occur when postprocess compression is skipped during a deduplication operation, even though postprocess compression is enabled on the volume.
+
 == sis.compress.skip
 *Severity*::
 INFORMATIONAL

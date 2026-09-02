@@ -14,6 +14,9 @@ summary: callhome.fg events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+callhome.fg EMS events occur when the system attempts to add or update a member in a FlexGroup using an internal FlexGroup index that is already in use or is invalid.
+
 == callhome.fg.memb.bad.fgindex
 *Severity*::
 EMERGENCY

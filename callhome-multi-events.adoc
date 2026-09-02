@@ -14,6 +14,9 @@ summary: callhome.multi events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+callhome.multi EMS events occur when checksum verification errors are seen on two or more disks connected to the same HBA port, and the port is not taken offline or the "disk.offline_adapter.enable" option is disabled.
+
 == callhome.multi.dsk.cksum.err
 *Severity*::
 EMERGENCY

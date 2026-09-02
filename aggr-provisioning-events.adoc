@@ -14,6 +14,9 @@ summary: aggr.provisioning events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+aggr.provisioning EMS events occur when the aggregate provisioning recommendation generated for the cluster is found to be incomplete due to the presence of unassigned disks.
+
 == aggr.provisioning.unassigned.detected
 *Severity*::
 NOTICE

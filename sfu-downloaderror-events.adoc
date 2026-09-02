@@ -14,13 +14,16 @@ summary: sfu.downloaderror events
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
+sfu.downloaderror EMS events occur when a disk shelf firmware update fails to successfully download firmware to a disk shelf or shelves in the system.
+
 == sfu.downloadError
 *Severity*::
 ERROR
 *Description*::
 This message occurs when a disk shelf firmware update fails to successfully download firmware to a disk shelf or shelves in the system.
 *Corrective Action*::
-Redownload the latest disk shelf firmware from the NetApp Support Site at http://support.netapp.com/NOW/download/tools/diskshelf/ and attempt to download disk shelf firmware again, using the (advanced privilege) "storage shelf firmware update" command.
+Redownload the latest disk shelf firmware from the NetApp Support Site at https://mysupport.netapp.com/site/downloads/firmware/disk-shelf-firmware and attempt to download disk shelf firmware again, using the (advanced privilege) "storage shelf firmware update" command.
 *Syslog Message*::
 %s: Error downloading firmware file %s on %s.shelf%d.%s
 *Parameters*::
