@@ -15,7 +15,7 @@ summary: cluster.epsilon events
 :imagesdir: ./media/
 
 [.lead]
-cluster.epsilon events are presented when automatic assignment of epsilon to a node fails, alerting the customer that there is no epsilon on their system which is typically fixed by updating configuration.
+cluster.epsilon EMS events occur when ONTAP encounters issues associated with epsilon assignment operations.
 
 == cluster.epsilon.assign.fail
 *Severity*::

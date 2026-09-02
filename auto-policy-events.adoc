@@ -15,7 +15,7 @@ summary: auto.policy events
 :imagesdir: ./media/
 
 [.lead]
-auto.policy events are presented when we start enabling the "auto" efficiency policy on the existing compatible volumes on All-Flash Optimized nodes in the background during upgrade to Data ONTAP(R) 9.3 or later, which typically does not require corrective action.
+auto.policy EMS events occur when ONTAP encounters issues associated with enabling the "auto" efficiency policy on volumes during upgrade to Data ONTAP 9.3 or later.
 
 == auto.policy.feature.enable
 *Severity*::

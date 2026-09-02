@@ -15,7 +15,7 @@ summary: coredump.dr events
 :imagesdir: ./media/
 
 [.lead]
-coredump.dr events are presented when coredump subsystem detects that disaster recovery (DR) partner sparecore dump did not start which is typically fixed by following the documented corrective steps.
+coredump.dr EMS events occur when ONTAP encounters issues associated with disaster recovery (DR) partner sparecore dump operations.
 
 == coredump.dr.dump.not.started
 *Severity*::

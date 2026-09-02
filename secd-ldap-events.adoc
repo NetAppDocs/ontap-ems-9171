@@ -15,7 +15,7 @@ summary: secd.ldap events
 :imagesdir: ./media/
 
 [.lead]
-secd.ldap events are presented when the -bind-dn user is not configured and the -bind-as-cifs-server option is set to false in the Lightweight Directory Access Protocol (LDAP) client configuration which is typically fixed by updating configuration.
+secd.ldap EMS events occur when ONTAP encounters issues associated with Lightweight Directory Access Protocol (LDAP) server communications.
 
 == secd.ldap.bindDn.missing
 *Severity*::

@@ -15,7 +15,7 @@ summary: vsdr.clone events
 :imagesdir: ./media/
 
 [.lead]
-vsdr.clone events are presented when a clone create job fails prematurely which is typically fixed by verifying system state and connectivity.
+vsdr.clone EMS events occur when ONTAP encounters issues associated with volume clone create operations in Vserver DR or MetroCluster configurations.
 
 == vsdr.clone.cleanup.fail
 *Severity*::

@@ -15,7 +15,7 @@ summary: clam.mailbox events
 :imagesdir: ./media/
 
 [.lead]
-clam.mailbox events are presented when the Kernel Cluster Services (KCS) Connectivity, Liveliness, Availability Monitor (CLAM) has written to the high availability (HA) mailboxes that it has initialized and is ready to participate in CLAM quorum which typically does not require corrective action.
+clam.mailbox EMS events occur when the Kernel Cluster Services (KCS) Connectivity, Liveliness, Availability Monitor (CLAM) has written to the high availability (HA) mailboxes that it has initialized and is ready to participate in CLAM quorum.
 
 == clam.mailbox.initialized
 *Severity*::

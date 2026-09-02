@@ -15,7 +15,7 @@ summary: nblade.fcvoldisconnected events
 :imagesdir: ./media/
 
 [.lead]
-nblade.fcvoldisconnected events are presented when the NFS client attempts to access a FlexCache(R) volume, but the origin of the FlexCache volume cannot be accessed due to poor network connectivity which is typically fixed by verifying system state and connectivity.
+nblade.fcvoldisconnected EMS events occur when the NFS client attempts to access a FlexCache(R) volume, but the origin of the FlexCache volume cannot be accessed due to poor network connectivity.
 
 == Nblade.fcVolDisconnected
 *Severity*::

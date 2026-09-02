@@ -15,7 +15,7 @@ summary: wafl.raid events
 :imagesdir: ./media/
 
 [.lead]
-wafl.raid events are presented when an aggregate snapshot created in a 7-Mode environment is missing during an aggregate transition workflow, which is typically fixed by following the documented corrective steps.
+wafl.raid EMS events occur when ONTAP encounters issues associated with RAID-level data consistency and aggregate transitions.
 
 == wafl.raid.cft.aggr.snapshot.missing
 *Severity*::

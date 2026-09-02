@@ -15,7 +15,7 @@ summary: smbc.cg events
 :imagesdir: ./media/
 
 [.lead]
-smbc.cg events are presented when read of Consistency Group aggregate information entry fails for the SnapMirror(R) active sync volume which results into IO disruption which is typically fixed by following the documented corrective steps.
+smbc.cg EMS events occur when ONTAP encounters issues associated with SnapMirror(R) active sync Consistency Group operations.
 
 == smbc.cg.info.read.failed
 *Severity*::

@@ -15,7 +15,7 @@ summary: monitor.vol events
 :imagesdir: ./media/
 
 [.lead]
-monitor.vol events are presented when one or more file systems are full, typically indicating at least 98% full which is typically fixed by updating configuration.
+monitor.vol EMS events occur when ONTAP encounters issues associated with volume space utilization including storage efficiency savings.
 
 == monitor.vol.full.inc.sav
 *Severity*::

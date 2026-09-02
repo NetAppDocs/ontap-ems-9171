@@ -15,7 +15,7 @@ summary: no.halt events
 :imagesdir: ./media/
 
 [.lead]
-no.halt events are presented when the option raid.timeout is set to 0 or if the option hasn't been set by the user, disabling automatic shutdown on a disk failure which is typically fixed by following the documented corrective steps.
+no.halt EMS events occur when ONTAP encounters issues associated with automatic shutdown being disabled.
 
 == no.halt.brokenDisk
 *Severity*::

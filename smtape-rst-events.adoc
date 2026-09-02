@@ -15,7 +15,7 @@ summary: smtape.rst events
 :imagesdir: ./media/
 
 [.lead]
-smtape.rst events are presented when an SMTape restore operation from tape is aborted due to checksum error which may require contacting NetApp support.
+smtape.rst EMS events occur when ONTAP encounters issues associated with SMTape restore operations.
 
 == smtape.rst.abort.chksum.err
 *Severity*::

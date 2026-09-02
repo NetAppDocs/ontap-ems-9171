@@ -15,7 +15,7 @@ summary: raid.spares events
 :imagesdir: ./media/
 
 [.lead]
-raid.spares events are presented when a media_scrub i/o detects a medium error on a spare disk, which typically does not require corrective action.
+raid.spares EMS events occur when ONTAP encounters issues associated with media scrub operations on spare disks.
 
 == raid.spares.media_scrub.media.err
 *Severity*::

@@ -15,7 +15,7 @@ summary: app.cg events
 :imagesdir: ./media/
 
 [.lead]
-app.cg events are presented when a consistency group on either side of a SnapMirror(R) active sync relationship cannot be resolved to the remote consistency group for correctly replicating consistency group snapshots which is typically fixed by verifying system state and connectivity.
+app.cg EMS events occur when a consistency group on either side of a SnapMirror(R) active sync relationship cannot be resolved to the remote consistency group for correctly replicating consistency group snapshots.
 
 == app.cg.snap.smbc.lookup.fail
 *Severity*::

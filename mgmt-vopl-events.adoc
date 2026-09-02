@@ -15,7 +15,7 @@ summary: mgmt.vopl events
 :imagesdir: ./media/
 
 [.lead]
-mgmt.vopl events are presented when the system encounters an error trying to clean up after a failed 'volume move' operation which may require contacting NetApp support.
+mgmt.vopl EMS events occur when ONTAP encounters issues associated with volume move operations.
 
 == mgmt.vopl.cleanup.failed
 *Severity*::

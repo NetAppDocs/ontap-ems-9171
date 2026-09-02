@@ -15,7 +15,7 @@ summary: raid.diskadd events
 :imagesdir: ./media/
 
 [.lead]
-raid.diskadd events are presented when the system aborts the addition of disks to an aggregate which may require contacting NetApp support.
+raid.diskadd EMS events occur when ONTAP encounters issues associated with disk addition to aggregates.
 
 == raid.diskadd.abort
 *Severity*::

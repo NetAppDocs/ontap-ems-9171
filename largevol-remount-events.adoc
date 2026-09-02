@@ -15,7 +15,7 @@ summary: largevol.remount events
 :imagesdir: ./media/
 
 [.lead]
-largevol.remount events are presented when the "is-large-size-enabled" property is set on a FlexVol volume or Flexgroup volume, which is NFS mounted for client access which may require restarting affected services or nodes.
+largevol.remount EMS events occur when the "is-large-size-enabled" property is set on a FlexVol volume or Flexgroup volume, which is NFS mounted for client access.
 
 == largevol.remount.nfsclient
 *Severity*::

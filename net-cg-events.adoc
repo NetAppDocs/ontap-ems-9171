@@ -15,7 +15,7 @@ summary: net.cg events
 :imagesdir: ./media/
 
 [.lead]
-net.cg events are presented when the current connection group experiences backpressure which is typically fixed by verifying system state and updating configuration.
+net.cg EMS events occur when ONTAP encounters issues associated with connection group resource utilization.
 
 == net.cg.backpressureEntered
 *Severity*::

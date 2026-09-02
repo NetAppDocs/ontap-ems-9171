@@ -15,7 +15,7 @@ summary: cfvm.failed events
 :imagesdir: ./media/
 
 [.lead]
-cfvm.failed events are presented when a copy free volume move operation is attempted but the commit cutover phase fails due to an internal error which may require contacting NetApp support.
+cfvm.failed EMS events occur when a copy free volume move operation is attempted but the commit cutover phase fails due to an internal error.
 
 == cfvm.failed.cutover.commit
 *Severity*::

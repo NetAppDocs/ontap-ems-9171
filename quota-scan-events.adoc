@@ -15,7 +15,7 @@ summary: quota.scan events
 :imagesdir: ./media/
 
 [.lead]
-quota.scan events are presented when the quota scanner aborts without finishing due to an error condition after the administrator uses the "volume quota on" command, which may require contacting NetApp support.
+quota.scan EMS events occur when ONTAP encounters issues associated with quota scanner operations.
 
 == quota.scan.abort
 *Severity*::

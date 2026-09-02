@@ -15,7 +15,7 @@ summary: asup.smtp events
 :imagesdir: ./media/
 
 [.lead]
-asup.smtp events are presented when the AutoSupport(R) mechanism drops email messages after having retried for the specified times which is typically fixed by verifying system state and connectivity.
+asup.smtp EMS events occur when ONTAP encounters issues associated with the AutoSupport mechanism delivering email messages via SMTP.
 
 == asup.smtp.drop
 *Severity*::

@@ -15,7 +15,7 @@ summary: tar.extract events
 :imagesdir: ./media/
 
 [.lead]
-tar.extract events are presented when an error while processing a particular entry causes the extraction of the archive to fail during the process of extracting a TAR archive, which typically does not require corrective action.
+tar.extract EMS events occur when ONTAP encounters issues associated with TAR archive extraction operations.
 
 == tar.extract.failure
 *Severity*::

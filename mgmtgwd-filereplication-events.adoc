@@ -15,7 +15,7 @@ summary: mgmtgwd.filereplication events
 :imagesdir: ./media/
 
 [.lead]
-mgmtgwd.filereplication events are presented when the startup scan of the file replication publishing root directory fails to verify packages which may require contacting NetApp support.
+mgmtgwd.filereplication EMS events occur when ONTAP encounters issues associated with the file replication service.
 
 == mgmtgwd.filereplication.failverify
 *Severity*::

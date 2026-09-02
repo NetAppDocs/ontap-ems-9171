@@ -15,7 +15,7 @@ summary: sm.xfer events
 :imagesdir: ./media/
 
 [.lead]
-sm.xfer events are presented when deletion of a snapshot on the destination volume fails, and therefore a subsequent transfer exceeds the maximum supported snapshot count for the vault destination which is typically fixed by following the documented corrective steps.
+sm.xfer EMS events occur when ONTAP encounters issues associated with SnapMirror(R) transfer operations.
 
 == sm.xfer.fail.del.snap
 *Severity*::

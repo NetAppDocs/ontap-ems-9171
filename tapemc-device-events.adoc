@@ -15,7 +15,7 @@ summary: tapemc.device events
 :imagesdir: ./media/
 
 [.lead]
-tapemc.device events are presented when data ONTAP(R) cannot obtain a command block for sending operations to the device which is typically fixed by following the documented corrective steps.
+tapemc.device EMS events occur when ONTAP encounters issues associated with tape and media changer devices.
 
 == tapemc.device.cmdAllocFail
 *Severity*::

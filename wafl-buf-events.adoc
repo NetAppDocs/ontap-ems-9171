@@ -15,7 +15,7 @@ summary: wafl.buf events
 :imagesdir: ./media/
 
 [.lead]
-wafl.buf events are presented when the system encounters a bad header in the snapshot of the active map block of the filesystem which may require contacting NetApp support.
+wafl.buf EMS events occur when ONTAP encounters issues associated with file system buffer inconsistencies or corruption.
 
 == wafl.buf.badHeader
 *Severity*::

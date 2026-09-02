@@ -15,7 +15,7 @@ summary: repository.invalid events
 :imagesdir: ./media/
 
 [.lead]
-repository.invalid events are presented when the Infinite Volume namespace redirector detects an internal inconsistency in a redirector file in the namespace constituent during a client file operation request, which may require contacting NetApp support.
+repository.invalid EMS events occur during a client file operation request, when the Infinite Volume namespace redirector detects an internal inconsistency in a redirector file in the namespace constituent.
 
 == Repository.Invalid.Redirector
 *Deprecated*::

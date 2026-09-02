@@ -15,7 +15,7 @@ summary: vpeer.request events
 :imagesdir: ./media/
 
 [.lead]
-vpeer.request events are presented when the Vserver peer request is received and Vserver peer permission exists for the Vserver and peer-cluster, but the Vserver belongs to an ipspace that is different from the cluster peer relationship ipspace which is typically fixed by verifying system state and connectivity.
+vpeer.request EMS events occur when the Vserver peer request is received and Vserver peer permission exists for the Vserver and peer-cluster, but the Vserver belongs to an ipspace that is different from the cluster peer relationship ipspace.
 
 == vpeer.request.diff.ipspace
 *Severity*::

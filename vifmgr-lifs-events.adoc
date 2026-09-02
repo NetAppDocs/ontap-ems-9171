@@ -15,7 +15,7 @@ summary: vifmgr.lifs events
 :imagesdir: ./media/
 
 [.lead]
-vifmgr.lifs events are presented when the total number of logical interfaces (LIFs) exceeds the supported per-cluster limit which is typically fixed by verifying system state and connectivity.
+vifmgr.lifs EMS events occur when ONTAP encounters issues associated with the total number of logical interfaces (LIFs) or their failover configuration.
 
 == vifmgr.lifs.clusterlimit
 *Severity*::

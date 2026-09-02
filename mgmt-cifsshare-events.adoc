@@ -15,7 +15,7 @@ summary: mgmt.cifsshare events
 :imagesdir: ./media/
 
 [.lead]
-mgmt.cifsshare events are presented when a network client attempts to set a CIFS share's discretionary access control list (DACL) to a list where any security descriptor (SID) appears in more than one access control entry (ACE) which typically does not require corrective action.
+mgmt.cifsshare EMS events occur when ONTAP encounters issues associated with CIFS share configuration.
 
 == mgmt.cifsshare.duplicatesid
 *Severity*::

@@ -15,7 +15,7 @@ summary: cf.cdo events
 :imagesdir: ./media/
 
 [.lead]
-cf.cdo events are presented when the filer receives a disk operation message over the High Availability (HA) interconnect that it does not recognize, which is typically fixed by following the documented corrective steps.
+cf.cdo EMS events occur when ONTAP encounters issues associated with disk operations over the High Availability (HA) interconnect.
 
 == cf.cdo.badMsg
 *Severity*::

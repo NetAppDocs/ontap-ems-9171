@@ -15,7 +15,7 @@ summary: callhome.snapmirror events
 :imagesdir: ./media/
 
 [.lead]
-callhome.snapmirror events are presented when a sync-granular consistency group (CG) transitions from in-sync status to out-of-sync status which is typically fixed by following the documented corrective steps.
+callhome.snapmirror EMS events occur when ONTAP encounters issues associated with SnapMirror(R) Synchronous relationships.
 
 == callhome.snapmirror.oos
 *Severity*::

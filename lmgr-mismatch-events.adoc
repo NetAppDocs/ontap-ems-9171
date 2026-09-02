@@ -15,7 +15,7 @@ summary: lmgr.mismatch events
 :imagesdir: ./media/
 
 [.lead]
-lmgr.mismatch events are presented when the current file object of a lock does not match the file object found through the file handle which is typically fixed by following the documented corrective steps.
+lmgr.mismatch EMS events occur when the current file object of a lock does not match the file object found through the file handle.
 
 == lmgr.mismatch.file.objects
 *Severity*::

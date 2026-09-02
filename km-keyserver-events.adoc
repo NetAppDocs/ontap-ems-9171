@@ -15,7 +15,7 @@ summary: km.keyserver events
 :imagesdir: ./media/
 
 [.lead]
-km.keyserver events are presented when a check by the key manager for connectivity with a configured key management server indicates that the key management server that was previously unavailable is now available which typically does not require corrective action.
+km.keyserver EMS events occur when ONTAP encounters issues associated with external key management server connectivity.
 
 == km.keyserver.available
 *Severity*::

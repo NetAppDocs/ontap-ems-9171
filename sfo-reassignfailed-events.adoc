@@ -15,7 +15,7 @@ summary: sfo.reassignfailed events
 :imagesdir: ./media/
 
 [.lead]
-sfo.reassignfailed events are presented when the disks from the failed node cannot be reassigned due to the failure listed during the Storage Failover takeover process, which is typically fixed by verifying system state and connectivity.
+sfo.reassignfailed EMS events occur during the Storage Failover takeover process, when the disks from the failed node cannot be reassigned due to the failure listed.
 
 == sfo.reassignFailed
 *Severity*::

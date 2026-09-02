@@ -15,7 +15,7 @@ summary: wafl.cleanup events
 :imagesdir: ./media/
 
 [.lead]
-wafl.cleanup events are presented when after WAFL(R) completes the post-giveback cleanup which typically does not require corrective action.
+wafl.cleanup EMS events occur when ONTAP encounters issues associated with post-giveback or post-relocation cleanup operations.
 
 == wafl.cleanup.after.giveback
 *Severity*::

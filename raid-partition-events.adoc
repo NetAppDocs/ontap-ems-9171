@@ -15,7 +15,7 @@ summary: raid.partition events
 :imagesdir: ./media/
 
 [.lead]
-raid.partition events are presented when indicates a disk was successfully partitioned which typically does not require corrective action.
+raid.partition EMS events occur when ONTAP encounters issues associated with disk partitioning operations.
 
 == raid.partition.disk
 *Severity*::

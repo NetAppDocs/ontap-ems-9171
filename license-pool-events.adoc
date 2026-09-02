@@ -15,7 +15,7 @@ summary: license.pool events
 :imagesdir: ./media/
 
 [.lead]
-license.pool events are presented when a storage failover giveback is vetoed because the aggregate has no valid capacity lease from the capacity pool which is typically fixed by verifying system state and connectivity.
+license.pool EMS events occur when a storage failover giveback is vetoed because the aggregate has no valid capacity lease from the capacity pool.
 
 == license.pool.sfo.gb.veto
 *Severity*::

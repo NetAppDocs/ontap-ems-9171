@@ -15,7 +15,7 @@ summary: sp.postupd events
 :imagesdir: ./media/
 
 [.lead]
-sp.postupd events are presented when the servprocd daemon detects that the Service Processor(SP) firmware version changed to an unexpected value after a scheduled firmware update, which is typically fixed by verifying system state and updating configuration.
+sp.postupd EMS events occur after a scheduled firmware update, when the servprocd daemon detects that the Service Processor(SP) firmware version changed to an unexpected value.
 
 == sp.postupd.ck.unexpt.sp.rev
 *Severity*::

@@ -15,7 +15,7 @@ summary: asyncdelete.message events
 :imagesdir: ./media/
 
 [.lead]
-asyncdelete.message events are presented when an async delete job fails which is typically fixed by following the documented corrective steps.
+asyncdelete.message EMS events occur when ONTAP encounters issues associated with async delete jobs starting, succeeding, or failing.
 
 == asyncDelete.message.fail
 *Severity*::

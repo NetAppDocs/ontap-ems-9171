@@ -15,7 +15,7 @@ summary: object.store events
 :imagesdir: ./media/
 
 [.lead]
-object.store events are presented when the node can connect to the object store again after an "object.store.unavailable" error which typically does not require corrective action.
+object.store EMS events occur when ONTAP encounters issues associated with object store connectivity and operations.
 
 == object.store.available
 *Severity*::

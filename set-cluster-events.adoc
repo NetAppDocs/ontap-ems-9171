@@ -15,7 +15,7 @@ summary: set.cluster events
 :imagesdir: ./media/
 
 [.lead]
-set.cluster events are presented when the existing auto-enable-analytics configuration parameter is changed from "false" to "-" (not set) during an ONTAP upgrade to 9.17.1 or a later release, which typically does not require corrective action.
+set.cluster EMS events occur during an ONTAP upgrade to 9.17.1 or a later release, when the existing auto-enable-analytics configuration parameter is changed from "false" to "-" (not set).
 
 == set.cluster.fsa.default
 *Severity*::

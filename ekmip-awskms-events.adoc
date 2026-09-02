@@ -15,7 +15,7 @@ summary: ekmip.awskms events
 :imagesdir: ./media/
 
 [.lead]
-ekmip.awskms events are presented when a configured Amazon Web Services (AWS) Key Management Service (KMS) that was unavailable for key operations is now available which typically does not require corrective action.
+ekmip.awskms EMS events occur when ONTAP encounters issues associated with Amazon Web Services (AWS) Key Management Service operations.
 
 == ekmip.awskms.available
 *Severity*::

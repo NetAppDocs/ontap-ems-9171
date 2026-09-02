@@ -15,7 +15,7 @@ summary: fmmb.destroy events
 :imagesdir: ./media/
 
 [.lead]
-fmmb.destroy events are presented when the high-availability (HA) Mailbox contents are cleared, typically by the 'mailbox destroy' command, which typically does not require corrective action.
+fmmb.destroy EMS events occur when ONTAP encounters issues associated with high-availability (HA) Mailbox destruction.
 
 == fmmb.destroy.mbx
 *Severity*::

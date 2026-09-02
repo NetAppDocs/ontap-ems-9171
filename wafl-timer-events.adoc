@@ -15,7 +15,7 @@ summary: wafl.timer events
 :imagesdir: ./media/
 
 [.lead]
-wafl.timer events are presented when disk I/O is stalled, possibly during a disk firmware download operation which may require restarting affected services or nodes.
+wafl.timer EMS events occur when disk I/O is stalled, possibly during a disk firmware download operation.
 
 == wafl.timer.disk.io.stalled
 *Severity*::

@@ -15,7 +15,7 @@ summary: replaycache.arcbktallocerr events
 :imagesdir: ./media/
 
 [.lead]
-replaycache.arcbktallocerr events are presented when the replay-cache bucket (which is used to hold the responses of non-idempotent operations, to prevent the execution of duplicate I/O requests) that is associated with a bin (through a client connection) has fully utilized the maximum allowed memory and old bins holding the bucket is not able to release requests due to the configured expiration time which is typically fixed by updating configuration.
+replaycache.arcbktallocerr EMS events occur when the replay-cache bucket (which is used to hold the responses of non-idempotent operations, to prevent the execution of duplicate I/O requests) that is associated with a bin (through a client connection) has fully utilized the maximum allowed memory and old bins holding the bucket is not able to release requests due to the configured expiration time.
 
 == ReplayCache.ArcBktAllocErr
 *Severity*::

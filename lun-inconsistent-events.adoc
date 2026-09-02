@@ -15,7 +15,7 @@ summary: lun.inconsistent events
 :imagesdir: ./media/
 
 [.lead]
-lun.inconsistent events are presented when the block containing a LUN or NVMe namespace's attributes is found to be inconsistent which may require contacting NetApp support.
+lun.inconsistent EMS events occur when ONTAP encounters issues associated with LUN or NVMe namespace attribute block consistency.
 
 == LUN.inconsistent.blocks
 *Severity*::

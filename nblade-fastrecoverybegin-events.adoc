@@ -15,7 +15,7 @@ summary: nblade.fastrecoverybegin events
 :imagesdir: ./media/
 
 [.lead]
-nblade.fastrecoverybegin events are presented when the NFSv4.x server enters the fast recovery mode as part of the LIF migration event, during which the NFS server will not be able to serve any data for NFSv4.x clients which typically does not require corrective action.
+nblade.fastrecoverybegin EMS events occur when the NFSv4.x server enters the fast recovery mode as part of the LIF migration event, during which the NFS server will not be able to serve any data for NFSv4.x clients.
 
 == Nblade.fastRecoveryBegin
 *Severity*::

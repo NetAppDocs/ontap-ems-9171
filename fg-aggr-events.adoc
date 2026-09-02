@@ -15,7 +15,7 @@ summary: fg.aggr events
 :imagesdir: ./media/
 
 [.lead]
-fg.aggr events are presented when the constituents of a FlexGroup volume are located on different types of aggregates (FabricPool-enabled aggregates and non-FabricPool-enabled aggregates) for more than one week which is typically fixed by updating configuration.
+fg.aggr EMS events occur when ONTAP encounters issues associated with FlexGroup volume constituents on mixed aggregate types.
 
 == fg.aggr.mixed.types.error
 *Severity*::

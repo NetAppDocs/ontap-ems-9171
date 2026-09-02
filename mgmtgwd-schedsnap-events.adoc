@@ -15,7 +15,7 @@ summary: mgmtgwd.schedsnap events
 :imagesdir: ./media/
 
 [.lead]
-mgmtgwd.schedsnap events are presented when the system fails to create a Snapshot(tm) copy for the given volume which may require contacting NetApp support.
+mgmtgwd.schedsnap EMS events occur when ONTAP encounters issues associated with scheduled Snapshot(tm) copy creation.
 
 == mgmtgwd.schedSnap.createFail
 *Severity*::

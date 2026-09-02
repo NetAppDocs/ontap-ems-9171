@@ -15,7 +15,7 @@ summary: sp.autoconfig events
 :imagesdir: ./media/
 
 [.lead]
-sp.autoconfig events are presented when the system cannot automatically obtain IP configuration because the subnet associated with the Service Processor does not have any available IP addresses which may require contacting NetApp support.
+sp.autoconfig EMS events occur when the system cannot automatically obtain IP configuration because the subnet associated with the Service Processor does not have any available IP addresses.
 
 == sp.autoconfig.out.of.address
 *Severity*::

@@ -15,7 +15,7 @@ summary: wafl.br events
 :imagesdir: ./media/
 
 [.lead]
-wafl.br events are presented when if block reallocation has not been performed on an aggregate but a reallocated block was found that subsequently needs to be redirected, which is typically fixed by following the documented corrective steps.
+wafl.br EMS events occur when ONTAP encounters issues associated with block reallocation and redirection operations.
 
 == wafl.br.redir.invalid
 *Severity*::

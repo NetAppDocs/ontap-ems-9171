@@ -15,7 +15,7 @@ summary: wafl.fsa events
 :imagesdir: ./media/
 
 [.lead]
-wafl.fsa events are presented when enabling file system analytics on a volume with autosize enabled fails because there is insufficient space in the volume which is typically fixed by updating configuration.
+wafl.fsa EMS events occur when enabling file system analytics on a volume with autosize enabled fails because there is insufficient space in the volume.
 
 == wafl.fsa.autosize.valid.fail
 *Severity*::

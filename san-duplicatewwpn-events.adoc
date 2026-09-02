@@ -15,7 +15,7 @@ summary: san.duplicatewwpn events
 :imagesdir: ./media/
 
 [.lead]
-san.duplicatewwpn events are presented when, in MetroCluster(tm) configurations of clustered Data ONTAP(R), an FC LIF is created in the source cluster, but one of the Vservers in the destination cluster is already configured with an FC LIF having the same WWPN, which may require contacting NetApp support.
+san.duplicatewwpn EMS events occur in MetroCluster(tm) configurations of clustered Data ONTAP(R), when an FC LIF is created in the source cluster, but one of the Vservers in the destination cluster is already configured with an FC LIF having the same WWPN.
 
 == san.DuplicateWWPN
 *Severity*::

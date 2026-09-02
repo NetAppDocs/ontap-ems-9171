@@ -15,7 +15,7 @@ summary: scsiblade.mgmt events
 :imagesdir: ./media/
 
 [.lead]
-scsiblade.mgmt events are presented when a SAN management event is lost because the system could not allocate enough free memory which may require a reboot.
+scsiblade.mgmt EMS events occur when ONTAP encounters issues associated with SAN management event processing and configuration locks.
 
 == scsiblade.mgmt.evt.lost.mem
 *Severity*::

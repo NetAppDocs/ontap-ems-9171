@@ -15,7 +15,7 @@ summary: wafl.repl events
 :imagesdir: ./media/
 
 [.lead]
-wafl.repl events are presented when a replication operation receives a timestamp with an invalid nanoseconds portion, and clears it which typically does not require corrective action.
+wafl.repl EMS events occur when ONTAP encounters issues associated with replication operations.
 
 == wafl.repl.badTimestamp
 *Severity*::

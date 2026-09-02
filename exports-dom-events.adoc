@@ -15,7 +15,7 @@ summary: exports.dom events
 :imagesdir: ./media/
 
 [.lead]
-exports.dom events are presented when the reverse lookup record mapping an IP address to its hostname cannot be found in the configured name servers which is typically fixed by verifying system state and connectivity.
+exports.dom EMS events occur when ONTAP encounters issues associated with reverse DNS lookups for export-policy evaluation.
 
 == exports.dom.notFound
 *Severity*::

@@ -15,7 +15,7 @@ summary: disk.exceed events
 :imagesdir: ./media/
 
 [.lead]
-disk.exceed events are presented when READ/WRITE I/O requests exceed their expected maximum completion time during disk qualification testing, which typically does not require corrective action.
+disk.exceed EMS events occur when during disk qualification testing when READ/WRITE I/O requests exceed their expected maximum completion time.
 
 == disk.exceed.cmd.completeTime
 *Severity*::

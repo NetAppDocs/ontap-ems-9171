@@ -15,7 +15,7 @@ summary: scsitarget.ispfct events
 :imagesdir: ./media/
 
 [.lead]
-scsitarget.ispfct events are presented when fibre Channel host bus adapter(HBA) returns an event notification to the driver but the driver did not recognize the event type which may require contacting NetApp support.
+scsitarget.ispfct EMS events occur when ONTAP encounters issues associated with Fibre Channel host bus adapter (HBA) firmware and communications.
 
 == scsitarget.ispfct.AENErr
 *Severity*::

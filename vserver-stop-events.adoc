@@ -15,7 +15,7 @@ summary: vserver.stop events
 :imagesdir: ./media/
 
 [.lead]
-vserver.stop events are presented when a 'vserver stop' operation fails due to failure to stop either a logical interface (LIF) or a protocol for the Vserver specified which is typically fixed by following the documented corrective steps.
+vserver.stop EMS events occur when ONTAP encounters issues associated with Vserver stop operations.
 
 == vserver.stop.failed
 *Severity*::

@@ -15,7 +15,7 @@ summary: sis.undo events
 :imagesdir: ./media/
 
 [.lead]
-sis.undo events are presented when a SIS volume 'undo' operation is aborted due to unexpected conditions, which typically does not require corrective action.
+sis.undo EMS events occur when ONTAP encounters issues associated with Single Instance Storage (SIS) undo operations.
 
 == sis.undo.aborted
 *Severity*::

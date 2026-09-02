@@ -15,7 +15,7 @@ summary: usbmon.boot events
 :imagesdir: ./media/
 
 [.lead]
-usbmon.boot events are presented when the Data ONTAP(R) module that is responsible for monitoring the health of the Universal Serial Bus (USB) boot devices determines that the associated boot device will fail all writes to the media which may require reseating or replacing affected hardware.
+usbmon.boot EMS events occur when ONTAP encounters issues associated with USB boot device health monitoring.
 
 == usbmon.boot.device.failed
 *Severity*::

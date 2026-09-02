@@ -15,7 +15,7 @@ summary: moveagent.swapvldb events
 :imagesdir: ./media/
 
 [.lead]
-moveagent.swapvldb events are presented when a 'volume move' operation finishes moving the volume to the destination but fails to update the volume location database (VLDB) which is typically fixed by verifying system state and connectivity.
+moveagent.swapvldb EMS events occur when ONTAP encounters issues associated with volume location database (VLDB) updates during volume move operations.
 
 == moveagent.swapvldb.fail
 *Severity*::

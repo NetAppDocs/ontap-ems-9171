@@ -15,7 +15,7 @@ summary: shm.failurebytes events
 :imagesdir: ./media/
 
 [.lead]
-shm.failurebytes events are presented when writing the failure byte area returns an error due to being full which typically does not require corrective action.
+shm.failurebytes EMS events occur when writing the failure byte area returns an error due to being full.
 
 == shm.failureBytes.fullError
 *Severity*::

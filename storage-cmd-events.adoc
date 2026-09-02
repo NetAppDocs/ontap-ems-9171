@@ -15,7 +15,7 @@ summary: storage.cmd events
 :imagesdir: ./media/
 
 [.lead]
-storage.cmd events are presented when indicates a user request to balance I/O across initiator ports has been issued which typically does not require corrective action.
+storage.cmd EMS events occur when ONTAP encounters issues associated with storage I/O balancing across initiator ports.
 
 == storage.cmd.balanceRequest
 *Severity*::

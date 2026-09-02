@@ -15,7 +15,7 @@ summary: raid.readerr events
 :imagesdir: ./media/
 
 [.lead]
-raid.readerr events are presented when the system detects an inconsistent RAID write signature, during a RAID error handling operation to log the on-disk RAID checksum information of the data block on the corresponding RAID stripe which typically does not require corrective action.
+raid.readerr EMS events occur when ONTAP encounters issues associated with disk read errors.
 
 == raid.readerr.lw.data.ckinfo
 *Severity*::

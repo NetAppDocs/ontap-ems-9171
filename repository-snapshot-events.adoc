@@ -15,7 +15,7 @@ summary: repository.snapshot events
 :imagesdir: ./media/
 
 [.lead]
-repository.snapshot events are presented when the Infinite Volume namespace redirector restores access to the Infinite Volume Snapshot(tm) copies after it recovers from an internal communication problem that had previously shut down access which typically does not require corrective action.
+repository.snapshot EMS events occur when ONTAP encounters issues associated with Infinite Volume Snapshot(tm) copy access.
 
 == Repository.Snapshot.Access
 *Deprecated*::

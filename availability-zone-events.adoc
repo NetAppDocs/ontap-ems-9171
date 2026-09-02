@@ -15,7 +15,7 @@ summary: availability.zone events
 :imagesdir: ./media/
 
 [.lead]
-availability.zone events are presented when the storage availability zone space usage has exceeded the full threshold value which is typically fixed by following the documented corrective steps.
+availability.zone EMS events occur when ONTAP encounters issues associated with storage availability zone space usage exceeding threshold values.
 
 == availability.zone.full
 *Severity*::

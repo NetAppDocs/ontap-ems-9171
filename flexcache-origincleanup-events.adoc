@@ -15,7 +15,7 @@ summary: flexcache.origincleanup events
 :imagesdir: ./media/
 
 [.lead]
-flexcache.origincleanup events are presented when the origin of a FlexCache(R) volume cleanup job fails to clean up the origin volume which may require contacting NetApp support.
+flexcache.origincleanup EMS events occur when ONTAP encounters issues associated with FlexCache origin volume cleanup operations.
 
 == flexcache.origincleanup.fail
 *Severity*::

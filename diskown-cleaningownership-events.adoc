@@ -15,7 +15,7 @@ summary: diskown.cleaningownership events
 :imagesdir: ./media/
 
 [.lead]
-diskown.cleaningownership events are presented when a "storage disk assign -f" command is run for an SES drive and the system discovers that the newly assigned owner already owns an SES drive on the same stack and shelf as the supplied drive which typically does not require corrective action.
+diskown.cleaningownership EMS events occur when a "storage disk assign -f" command is run for an SES drive and the system discovers that the newly assigned owner already owns an SES drive on the same stack and shelf as the supplied drive.
 
 == diskown.cleaningOwnership
 *Severity*::

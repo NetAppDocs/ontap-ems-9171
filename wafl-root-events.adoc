@@ -15,7 +15,7 @@ summary: wafl.root events
 :imagesdir: ./media/
 
 [.lead]
-wafl.root events are presented when the contents of the root volume are changed to those of a previous point in time which is typically fixed by verifying system state and connectivity.
+wafl.root EMS events occur when ONTAP encounters issues associated with root volume content changes.
 
 == wafl.root.content.changed
 *Severity*::

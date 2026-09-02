@@ -15,7 +15,7 @@ summary: san.lifmoveafterswitchback events
 :imagesdir: ./media/
 
 [.lead]
-san.lifmoveafterswitchback events are presented when a LIF cannot be placed on one of the disaster recovery (DR) nodes because it is offline during MetroCluster(tm) switchback, which is typically fixed by updating configuration.
+san.lifmoveafterswitchback EMS events occur during MetroCluster(tm) switchback, when a LIF cannot be placed on one of the disaster recovery (DR) nodes because it is offline.
 
 == san.lifmoveafterswitchback
 *Severity*::

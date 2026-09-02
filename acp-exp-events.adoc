@@ -15,7 +15,7 @@ summary: acp.exp events
 :imagesdir: ./media/
 
 [.lead]
-acp.exp events are presented when the Alternate Control Path (ACP) Processor receives a command to power-cycle the SAS expander which typically does not require corrective action.
+acp.exp EMS events occur when ONTAP encounters issues associated with the Alternate Control Path (ACP) Processor receiving commands to power-cycle or reset the SAS expander.
 
 == acp.exp.power.cycle
 *Severity*::

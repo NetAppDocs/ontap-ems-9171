@@ -15,7 +15,7 @@ summary: sfu.adaptersuspendio events
 :imagesdir: ./media/
 
 [.lead]
-sfu.adaptersuspendio events are presented when during a disk shelf firmware update on a disk shelf that cannot perform I/O while updating firmware which is typically fixed by updating configuration.
+sfu.adaptersuspendio EMS events occur when ONTAP encounters issues associated with disk shelf firmware update I/O suspension.
 
 == sfu.adapterSuspendIO
 *Severity*::

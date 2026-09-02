@@ -15,7 +15,7 @@ summary: wafl.atime events
 :imagesdir: ./media/
 
 [.lead]
-wafl.atime events are presented when the access time updates of all the files in the volumes of an aggregate start because the aggregate has enough free space which typically does not require corrective action.
+wafl.atime EMS events occur when ONTAP encounters issues associated with access time update operations based on aggregate free space availability.
 
 == wafl.atime.updates.restarted
 *Severity*::

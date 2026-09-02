@@ -15,7 +15,7 @@ summary: wafl.incons events
 :imagesdir: ./media/
 
 [.lead]
-wafl.incons events are presented when the WAFL(R) kernel detects inconsistent compression metadata for a compression group which is typically fixed by verifying system state and updating configuration.
+wafl.incons EMS events occur when ONTAP encounters issues associated with compression metadata consistency.
 
 == wafl.incons.compr.metadata
 *Severity*::

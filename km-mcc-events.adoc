@@ -15,7 +15,7 @@ summary: km.mcc events
 :imagesdir: ./media/
 
 [.lead]
-km.mcc events are presented when, in a MetroCluster(tm) configuration, one or both clusters have been configured with the Onboard Key Manager, but one or both of the Onboard Key Manager key hierarchies are corrupted, which may require a reboot.
+km.mcc EMS events occur when ONTAP encounters issues associated with Onboard Key Manager in MetroCluster configurations.
 
 == km.mcc.okm.hierarchy.bad
 *Severity*::

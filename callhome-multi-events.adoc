@@ -15,7 +15,7 @@ summary: callhome.multi events
 :imagesdir: ./media/
 
 [.lead]
-callhome.multi events are presented when checksum verification errors are seen on two or more disks connected to the same HBA port, and the port is not taken offline or the "disk.offline_adapter.enable" option is disabled which may require contacting NetApp support.
+callhome.multi EMS events occur when checksum verification errors are seen on two or more disks connected to the same HBA port, and the port is not taken offline or the "disk.offline_adapter.enable" option is disabled.
 
 == callhome.multi.dsk.cksum.err
 *Severity*::

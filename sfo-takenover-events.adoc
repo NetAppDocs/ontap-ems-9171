@@ -15,7 +15,7 @@ summary: sfo.takenover events
 :imagesdir: ./media/
 
 [.lead]
-sfo.takenover events are presented when an attempted optimized negotiated takeover is aborted by the node about to be taken over which is typically fixed by verifying system state and connectivity.
+sfo.takenover EMS events occur when ONTAP encounters issues associated with optimized negotiated takeover operations on the node being taken over.
 
 == sfo.takenOver.aborted
 *Severity*::

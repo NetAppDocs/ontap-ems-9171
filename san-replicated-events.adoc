@@ -15,7 +15,7 @@ summary: san.replicated events
 :imagesdir: ./media/
 
 [.lead]
-san.replicated events are presented when an unreplicated LUN becomes mapped to a replicated initiator group which is typically fixed by updating configuration.
+san.replicated EMS events occur when ONTAP encounters issues associated with LUN replication and initiator group mapping.
 
 == san.replicated.igroup.map.unreplicated.lun
 *Severity*::

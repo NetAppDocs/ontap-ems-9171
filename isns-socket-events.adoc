@@ -15,7 +15,7 @@ summary: isns.socket events
 :imagesdir: ./media/
 
 [.lead]
-isns.socket events are presented when the TCP socket connection in the Internet Storage Name Service (iSNS) fails to connect to the iSNS server which is typically fixed by verifying system state and connectivity.
+isns.socket EMS events occur when ONTAP encounters issues associated with Internet Storage Name Service (iSNS) TCP socket operations.
 
 == isns.socket.conn.failed
 *Severity*::

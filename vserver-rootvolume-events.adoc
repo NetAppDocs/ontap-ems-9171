@@ -15,7 +15,7 @@ summary: vserver.rootvolume events
 :imagesdir: ./media/
 
 [.lead]
-vserver.rootvolume events are presented when there is no space left on Vserver root Volume which is typically fixed by updating configuration.
+vserver.rootvolume EMS events occur when ONTAP encounters issues associated with Vserver root volume space or inode availability.
 
 == vserver.rootVolume.full
 *Severity*::

@@ -15,7 +15,7 @@ summary: netinet6.mld6 events
 :imagesdir: ./media/
 
 [.lead]
-netinet6.mld6 events are presented when the system discovers an illegal Internet Control Message Protocol (ICMP) type field in a multicast listener discovery structure which typically does not require corrective action.
+netinet6.mld6 EMS events occur when ONTAP encounters issues associated with IPv6 multicast listener discovery operations.
 
 == netinet6.mld6.illegal.type
 *Severity*::

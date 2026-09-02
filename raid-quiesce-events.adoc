@@ -15,7 +15,7 @@ summary: raid.quiesce events
 :imagesdir: ./media/
 
 [.lead]
-raid.quiesce events are presented when during the ownership change of a disk to indicate the time taken by RAID to quiesce disk active I/O's which typically does not require corrective action.
+raid.quiesce EMS events occur during the ownership change of a disk to indicate the time taken by RAID to quiesce disk active I/O's.
 
 == raid.quiesce.diskProcessTime
 *Severity*::

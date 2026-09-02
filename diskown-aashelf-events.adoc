@@ -15,7 +15,7 @@ summary: diskown.aashelf events
 :imagesdir: ./media/
 
 [.lead]
-diskown.aashelf events are presented when the controller cannot automatically assign a disk because disks on the shelf and disks on the stack have the same owner but belong to different pools which is typically fixed by verifying system state and connectivity.
+diskown.aashelf EMS events occur when ONTAP encounters issues associated with shelf-level automatic disk assignment.
 
 == diskown.AAShelf.InterPools
 *Severity*::

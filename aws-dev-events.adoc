@@ -15,7 +15,7 @@ summary: aws.dev events
 :imagesdir: ./media/
 
 [.lead]
-aws.dev events are presented when oNTAP(R) is running as an instance in Amazon Web Services (AWS), and a data disk failure occurs because of an I/O hang which is typically fixed by following the documented corrective steps.
+aws.dev EMS events occur when ONTAP encounters issues associated with data disk failures, duplicate UUIDs, or device attachment limits in Amazon Web Services (AWS) instances.
 
 == aws.dev.diskFailure
 *Severity*::

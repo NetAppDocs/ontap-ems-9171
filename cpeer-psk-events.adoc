@@ -15,7 +15,7 @@ summary: cpeer.psk events
 :imagesdir: ./media/
 
 [.lead]
-cpeer.psk events are presented when the system receives an authentication request for a remote cluster whose peer authentication has been revoked by the local cluster administrator which is typically fixed by following the documented corrective steps.
+cpeer.psk EMS events occur when ONTAP encounters issues associated with pre-shared key authentication for cluster peering.
 
 == cpeer.psk.cluster.revoked
 *Severity*::

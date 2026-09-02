@@ -15,7 +15,7 @@ summary: cf.rsrc events
 :imagesdir: ./media/
 
 [.lead]
-cf.rsrc events are presented when a failure is detected during giveback which may require a reboot.
+cf.rsrc EMS events occur when ONTAP encounters issues associated with resource management during takeover and giveback operations.
 
 == cf.rsrc.givebackFail
 *Severity*::

@@ -15,7 +15,7 @@ summary: tapemc.iopending events
 :imagesdir: ./media/
 
 [.lead]
-tapemc.iopending events are presented when data ONTAP(R) detects that multiple I/Os were sent to a device that supports only one I/O at a time which typically does not require corrective action.
+tapemc.iopending EMS events occur when Data ONTAP(R) detects that multiple I/Os were sent to a device that supports only one I/O at a time.
 
 == tapemc.iopending.exceeded
 *Severity*::

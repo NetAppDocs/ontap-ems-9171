@@ -15,7 +15,7 @@ summary: snapmirror.multipath events
 :imagesdir: ./media/
 
 [.lead]
-snapmirror.multipath events are presented when the filer is cannot setup the necessary infrastructure required for SnapMirror multipathing support during boot or during takeover, which is typically fixed by verifying system state and connectivity.
+snapmirror.multipath EMS events occur when during boot or during takeover when the filer is unable to setup the necessary infrastructure required for SnapMirror multipathing support.
 
 == snapmirror.multipath.initErr
 *Severity*::

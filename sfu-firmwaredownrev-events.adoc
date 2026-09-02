@@ -15,13 +15,13 @@ summary: sfu.firmwaredownrev events
 :imagesdir: ./media/
 
 [.lead]
-sfu.firmwaredownrev events are presented when disk shelf firmware is downrev and therefore cannot be updated automatically which is typically fixed by updating configuration.
+sfu.firmwaredownrev EMS events occur when ONTAP encounters issues associated with downrev disk shelf firmware.
 
 == sfu.firmwareDownrev
 *Severity*::
 ERROR
 *Description*::
-This message occurs when disk shelf firmware is downrev and therefore cannot be updated automatically. Before updating the disk shelf firmware, always check the NetApp Support Site for the latest disk shelf firmware available: http://support.netapp.com/NOW/download/tools/diskshelf/.
+This message occurs when disk shelf firmware is downrev and therefore cannot be updated automatically. Before updating the disk shelf firmware, always check the NetApp Support Site for the latest disk shelf firmware available: https://mysupport.netapp.com/site/downloads/firmware/disk-shelf-firmware.
 *Corrective Action*::
 Copy updated disk shelf firmware into the /etc/shelf_fw directory on the storage appliance and then manually issue the (advanced privilege) "storage shelf firmware update" command.
 *Syslog Message*::

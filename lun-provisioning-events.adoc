@@ -15,7 +15,7 @@ summary: lun.provisioning events
 :imagesdir: ./media/
 
 [.lead]
-lun.provisioning events are presented when the provisioning for its metadata fails due to insufficient space in the aggregate during the creation of a LUN or NVME namespace, which is typically fixed by following the documented corrective steps.
+lun.provisioning EMS events occur during the creation of a LUN or NVME namespace when the provisioning for its metadata fails due to insufficient space in the aggregate.
 
 == LUN.provisioning.failed
 *Severity*::

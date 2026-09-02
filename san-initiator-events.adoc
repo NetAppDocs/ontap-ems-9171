@@ -15,7 +15,7 @@ summary: san.initiator events
 :imagesdir: ./media/
 
 [.lead]
-san.initiator events are presented when oNTAP detects that an initiator which was previously not logged on is now logged on which typically does not require corrective action.
+san.initiator EMS events occur when ONTAP encounters issues associated with initiator login status and connectivity.
 
 == san.initiator.login
 *Severity*::

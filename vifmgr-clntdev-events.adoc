@@ -15,7 +15,7 @@ summary: vifmgr.clntdev events
 :imagesdir: ./media/
 
 [.lead]
-vifmgr.clntdev events are presented when a remote device is removed from the cluster or storage network which typically does not require corrective action.
+vifmgr.clntdev EMS events occur when ONTAP encounters issues associated with remote device detection on cluster or storage networks.
 
 == vifmgr.clntdev.removed
 *Severity*::

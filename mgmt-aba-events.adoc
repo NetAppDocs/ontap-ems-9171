@@ -15,7 +15,7 @@ summary: mgmt.aba events
 :imagesdir: ./media/
 
 [.lead]
-mgmt.aba events are presented when auto Balance Aggregate initiates a move of a volume that was then changed to a FlexClone(R) parent which typically does not require corrective action.
+mgmt.aba EMS events occur when ONTAP encounters issues associated with Auto Balance Aggregate operations.
 
 == mgmt.aba.abortCloneParent
 *Severity*::

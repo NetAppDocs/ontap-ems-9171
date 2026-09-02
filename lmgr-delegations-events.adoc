@@ -15,7 +15,7 @@ summary: lmgr.delegations events
 :imagesdir: ./media/
 
 [.lead]
-lmgr.delegations events are presented when a lock manager WAN FlexCache(R) delegation object cannot be allocated due to reaching the limit for WAN FlexCache delegation objects in the associated pool which is typically fixed by verifying system state and connectivity.
+lmgr.delegations EMS events occur when a lock manager WAN FlexCache(R) delegation object cannot be allocated due to reaching the limit for WAN FlexCache delegation objects in the associated pool.
 
 == lmgr.delegations.limit.hit
 *Severity*::

@@ -15,7 +15,7 @@ summary: wafl.gs events
 :imagesdir: ./media/
 
 [.lead]
-wafl.gs events are presented when wafl is unsuccessful to check and load Granular Set metafile for the volume which is typically fixed by verifying system state and connectivity.
+wafl.gs EMS events occur when ONTAP encounters issues associated with the Granular Set metafile and consistency group operations.
 
 == wafl.gs.metafile.load.failed
 *Severity*::

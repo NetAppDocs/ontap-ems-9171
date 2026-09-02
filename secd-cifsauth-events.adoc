@@ -15,7 +15,7 @@ summary: secd.cifsauth events
 :imagesdir: ./media/
 
 [.lead]
-secd.cifsauth events are presented when a CIFS authentication attempt fails for any reason other than an unknown user name or bad password which is typically fixed by following the documented corrective steps.
+secd.cifsauth EMS events occur when ONTAP encounters issues associated with CIFS authentication.
 
 == secd.cifsAuth.denied
 *Severity*::

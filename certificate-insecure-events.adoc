@@ -15,7 +15,7 @@ summary: certificate.insecure events
 :imagesdir: ./media/
 
 [.lead]
-certificate.insecure events are presented when an installed certificate uses a hash function that is no longer considered secure which may require reseating or replacing affected hardware.
+certificate.insecure EMS events occur when ONTAP encounters issues associated with insecure digital certificates.
 
 == certificate.insecure.hash
 *Severity*::

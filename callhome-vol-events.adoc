@@ -15,7 +15,7 @@ summary: callhome.vol events
 :imagesdir: ./media/
 
 [.lead]
-callhome.vol events are presented when the system detects an inconsistent volume and takes it offline which is typically fixed by verifying system state and connectivity.
+callhome.vol EMS events occur when ONTAP encounters issues associated with volume consistency and space.
 
 == callhome.vol.offline
 *Severity*::

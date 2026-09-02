@@ -15,7 +15,7 @@ summary: raid.ns events
 :imagesdir: ./media/
 
 [.lead]
-raid.ns events are presented when the system removes ownership of its disks during initialization of a non-shared HA system which typically does not require corrective action.
+raid.ns EMS events occur when ONTAP encounters issues associated with non-shared HA system initialization.
 
 == raid.ns.init.removeOwnership
 *Severity*::

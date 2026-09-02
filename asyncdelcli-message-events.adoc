@@ -15,7 +15,7 @@ summary: asyncdelcli.message events
 :imagesdir: ./media/
 
 [.lead]
-asyncdelcli.message events are presented when an async-delete job has finished on the specified path which typically does not require corrective action.
+asyncdelcli.message EMS events occur when ONTAP encounters issues associated with async-delete jobs starting or finishing on a specified path.
 
 == asyncDelCli.message.finish
 *Severity*::

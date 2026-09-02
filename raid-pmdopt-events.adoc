@@ -15,7 +15,7 @@ summary: raid.pmdopt events
 :imagesdir: ./media/
 
 [.lead]
-raid.pmdopt events are presented when the option raid.panic.missing.disks was set to panic and halt the appliance when a hardware error prevents access to multiple file system disks which is typically fixed by following the documented corrective steps.
+raid.pmdopt EMS events occur when ONTAP encounters issues associated with the raid.panic.missing.disks option.
 
 == raid.pmdOpt.misconfigured
 *Severity*::

@@ -15,7 +15,7 @@ summary: pha.add events
 :imagesdir: ./media/
 
 [.lead]
-pha.add events are presented when an attempt to add a passthrough host adapter (PHA) disk to a virtual disk adapter fails because the supplied disk number exceeds the maximum supported disk ID which is typically fixed by following the documented corrective steps.
+pha.add EMS events occur when an attempt to add a passthrough host adapter (PHA) disk to a virtual disk adapter fails because the supplied disk number exceeds the maximum supported disk ID.
 
 == pha.add.dev.limitExceeded
 *Severity*::

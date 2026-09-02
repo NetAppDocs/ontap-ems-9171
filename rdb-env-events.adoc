@@ -15,7 +15,7 @@ summary: rdb.env events
 :imagesdir: ./media/
 
 [.lead]
-rdb.env events are presented when the cluster management Data Replication Module determines that I/O operations on the node's mroot filesystem are failing which may require contacting NetApp support.
+rdb.env EMS events occur when ONTAP encounters issues associated with the cluster management Data Replication Module environment.
 
 == rdb.env.IOFailure
 *Severity*::

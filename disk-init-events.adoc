@@ -15,7 +15,7 @@ summary: disk.init events
 :imagesdir: ./media/
 
 [.lead]
-disk.init events are presented when a disk reports a sector size that does not match the drive qualification table which may require reseating or replacing affected hardware.
+disk.init EMS events occur when ONTAP encounters issues associated with disk initialization.
 
 == disk.init.badSectorSize
 *Severity*::

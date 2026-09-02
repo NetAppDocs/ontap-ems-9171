@@ -15,7 +15,7 @@ summary: cf.takeover events
 :imagesdir: ./media/
 
 [.lead]
-cf.takeover events are presented when negotiated takeover is aborted because the background disk firmware update took more than 120 seconds to finish which is typically fixed by following the documented corrective steps.
+cf.takeover EMS events occur when ONTAP encounters issues associated with takeover operations.
 
 == cf.takeover.aborted.bdfu
 *Severity*::

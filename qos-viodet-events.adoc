@@ -15,7 +15,7 @@ summary: qos.viodet events
 :imagesdir: ./media/
 
 [.lead]
-qos.viodet events are presented when the Quality of Service (QoS) subsystem has already throttled requests severely to help workloads meet their min-throughput and their service-level objectives (SLOs) and will not throttle any further which is typically fixed by following the documented corrective steps.
+qos.viodet EMS events occur when ONTAP encounters issues associated with Quality of Service (QoS) minimum throughput and service-level objectives.
 
 == qos.VioDet.maxThrottle
 *Severity*::

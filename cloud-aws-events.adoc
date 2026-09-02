@@ -15,7 +15,7 @@ summary: cloud.aws events
 :imagesdir: ./media/
 
 [.lead]
-cloud.aws events are presented when the IAM Role thread acquires Amazon Web Services (AWS) Identity and Access Management (IAM) role-based credentials that have already expired which is typically fixed by verifying system state and connectivity.
+cloud.aws EMS events occur when ONTAP encounters issues associated with Amazon Web Services (AWS) Identity and Access Management (IAM) credentials.
 
 == cloud.aws.iamCredsExpired
 *Severity*::

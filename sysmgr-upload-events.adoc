@@ -15,7 +15,7 @@ summary: sysmgr.upload events
 :imagesdir: ./media/
 
 [.lead]
-sysmgr.upload events are presented when an attempt to upload a file through the System Manager web service fails because the HTTP method is not POST which is typically fixed by following the documented corrective steps.
+sysmgr.upload EMS events occur when ONTAP encounters issues associated with System Manager file upload operations.
 
 == sysmgr.upload.bad.method
 *Severity*::

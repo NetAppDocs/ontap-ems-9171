@@ -15,7 +15,7 @@ summary: scsitarget.hwpfct events
 :imagesdir: ./media/
 
 [.lead]
-scsitarget.hwpfct events are presented when an unexpected event or illegal condition is detected by the FC target driver and the contents of the FC target's memory is saved which may require contacting NetApp support.
+scsitarget.hwpfct EMS events occur when ONTAP encounters issues associated with Fibre Channel (FC) target host bus adapter operations.
 
 == scsitarget.hwpfct.dump.saved
 *Severity*::

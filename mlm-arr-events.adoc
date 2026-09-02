@@ -15,7 +15,7 @@ summary: mlm.arr events
 :imagesdir: ./media/
 
 [.lead]
-mlm.arr events are presented when the current processing of an error event prevents the Asymmetric Logical Unit Access (ALUA) handler from queuing an affinity switch event which typically does not require corrective action.
+mlm.arr EMS events occur when ONTAP encounters issues associated with Asymmetric Logical Unit Access (ALUA) affinity operations.
 
 == mlm.arr.affinity.not.queued
 *Severity*::

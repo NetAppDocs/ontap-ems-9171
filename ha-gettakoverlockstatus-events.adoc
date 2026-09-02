@@ -15,7 +15,7 @@ summary: ha.gettakoverlockstatus events
 :imagesdir: ./media/
 
 [.lead]
-ha.gettakoverlockstatus events are presented when the HA subsystem attempts to acquire takeover lock as part of the takeover operation which typically does not require corrective action.
+ha.gettakoverlockstatus EMS events occur when the HA subsystem attempts to acquire takeover lock as part of the takeover operation.
 
 == ha.getTakoverLockStatus
 *Severity*::

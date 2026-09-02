@@ -15,7 +15,7 @@ summary: raid.encrypt events
 :imagesdir: ./media/
 
 [.lead]
-raid.encrypt events are presented when a node is enabled for encryption by RAID, but the system is not FIPS compliant which may require a reboot.
+raid.encrypt EMS events occur when ONTAP encounters issues associated with RAID encryption and volume encryption keys.
 
 == raid.encrypt.disabled
 *Severity*::

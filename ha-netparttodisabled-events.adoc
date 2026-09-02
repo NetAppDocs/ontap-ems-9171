@@ -15,7 +15,7 @@ summary: ha.netparttodisabled events
 :imagesdir: ./media/
 
 [.lead]
-ha.netparttodisabled events are presented when takeovers due to network partitioning are disabled because of the number of previous, consecutive, network-partition takeovers that occurred within a preceding detection period which typically does not require corrective action.
+ha.netparttodisabled EMS events occur when takeovers due to network partitioning are disabled because of the number of previous, consecutive, network-partition takeovers that occurred within a preceding detection period.
 
 == ha.netPartToDisabled
 *Severity*::

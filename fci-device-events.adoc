@@ -15,7 +15,7 @@ summary: fci.device events
 :imagesdir: ./media/
 
 [.lead]
-fci.device events are presented when the Fibre Channel port transmits a frame that is rejected which typically does not require corrective action.
+fci.device EMS events occur when ONTAP encounters issues associated with Fibre Channel device communication.
 
 == fci.device.general.reject
 *Severity*::

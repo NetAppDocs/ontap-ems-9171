@@ -15,7 +15,7 @@ summary: sp.ipmi events
 :imagesdir: ./media/
 
 [.lead]
-sp.ipmi events are presented when data ONTAP(R) is no longer receiving the heartbeats from the Service Processor (SP) after all the SP recovery actions have been taken which may require reseating or replacing affected hardware.
+sp.ipmi EMS events occur when Data ONTAP(R) is no longer receiving the heartbeats from the Service Processor (SP) after all the SP recovery actions have been taken.
 
 == sp.ipmi.lost.shutdown
 *Severity*::

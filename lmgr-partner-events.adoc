@@ -15,7 +15,7 @@ summary: lmgr.partner events
 :imagesdir: ./media/
 
 [.lead]
-lmgr.partner events are presented when a partner node's mirrored lock state goes out of sync with the actual lock state which is typically fixed by following the documented corrective steps.
+lmgr.partner EMS events occur when ONTAP encounters issues associated with partner node mirrored lock state synchronization.
 
 == lmgr.partner.locks.outOfSync
 *Severity*::

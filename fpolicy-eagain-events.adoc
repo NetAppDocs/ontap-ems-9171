@@ -15,7 +15,7 @@ summary: fpolicy.eagain events
 :imagesdir: ./media/
 
 [.lead]
-fpolicy.eagain events are presented when the TCP connection to the FPolicy server is broken four times in a two minute interval due to EAGAIN error which is typically fixed by verifying system state and connectivity.
+fpolicy.eagain EMS events occur when ONTAP encounters issues associated with FPolicy server connectivity EAGAIN errors.
 
 == fpolicy.eagain.disconnect
 *Severity*::

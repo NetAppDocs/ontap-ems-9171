@@ -15,7 +15,7 @@ summary: mgwd.notify events
 :imagesdir: ./media/
 
 [.lead]
-mgwd.notify events are presented when reports the result of the Management Gateway process notification attempt to the Connectivity, Liveliness, Availability Monitor (CLAM) instance on its high-availability (HA) partner node that this node is undergoing a planned shutdown which typically does not require corrective action.
+mgwd.notify EMS events occur when this message reports the result of the Management Gateway process notification attempt to the Connectivity, Liveliness, Availability Monitor (CLAM) instance on its high-availability (HA) partner node that this node is undergoing a planned shutdown.
 
 == mgwd.notify.halt.result
 *Severity*::

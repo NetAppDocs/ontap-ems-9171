@@ -15,7 +15,7 @@ summary: ipsec.ib events
 :imagesdir: ./media/
 
 [.lead]
-ipsec.ib events are presented when an inbound IPsec packet cannot be successfully decrypted which is typically fixed by updating configuration.
+ipsec.ib EMS events occur when ONTAP encounters issues associated with inbound IPsec packet processing.
 
 == ipsec.ib.bad.encrypt
 *Severity*::

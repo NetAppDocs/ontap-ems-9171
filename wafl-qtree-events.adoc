@@ -15,7 +15,7 @@ summary: wafl.qtree events
 :imagesdir: ./media/
 
 [.lead]
-wafl.qtree events are presented when a qtree ID derived from a WAFL(R) buffer does not match the given tree ID in a snapshot which is typically fixed by updating configuration.
+wafl.qtree EMS events occur when ONTAP encounters issues associated with qtree metadata and SnapMirror relationships.
 
 == wafl.qtree.id.mismatch
 *Severity*::

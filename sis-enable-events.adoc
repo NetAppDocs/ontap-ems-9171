@@ -15,7 +15,7 @@ summary: sis.enable events
 :imagesdir: ./media/
 
 [.lead]
-sis.enable events are presented when the "storage efficiency" feature is enabled on a destination volume due to a broken SnapMirror(R) relationship on an All Flash Optimized system which typically does not require corrective action.
+sis.enable EMS events occur when ONTAP encounters issues associated with storage efficiency feature enablement.
 
 == sis.enable.post.sm.break
 *Severity*::

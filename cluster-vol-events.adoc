@@ -15,7 +15,7 @@ summary: cluster.vol events
 :imagesdir: ./media/
 
 [.lead]
-cluster.vol events are presented when the volume required to store the system data needed for cluster-wide storage is created successfully after one or more attempts to create it failed which typically does not require corrective action.
+cluster.vol EMS events occur when ONTAP encounters issues associated with cluster-wide storage volumes.
 
 == cluster.vol.create.success
 *Severity*::

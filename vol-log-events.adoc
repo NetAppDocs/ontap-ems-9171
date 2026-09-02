@@ -15,7 +15,7 @@ summary: vol.log events
 :imagesdir: ./media/
 
 [.lead]
-vol.log events are presented when the volume or aggregate allocates more space than it can honor by way of reservations, or the aggregate has allocated more space than it can honor by way of guarantees which is typically fixed by updating configuration.
+vol.log EMS events occur when ONTAP encounters issues associated with volume or aggregate space overallocation.
 
 == vol.log.overalloc
 *Severity*::

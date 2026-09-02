@@ -15,7 +15,7 @@ summary: callhome.clus events
 :imagesdir: ./media/
 
 [.lead]
-callhome.clus events are presented when the cluster network has experienced an issue that could potentially affect connectivity, reliability, redundancy, or performance, as observed from the local node which is typically fixed by verifying system state and updating configuration.
+callhome.clus EMS events occur when ONTAP encounters issues associated with cluster network degradation or cluster-wide storage volume creation and deletion.
 
 == callhome.clus.net.degraded
 *Severity*::

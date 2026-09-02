@@ -15,7 +15,7 @@ summary: wafl.vvclock events
 :imagesdir: ./media/
 
 [.lead]
-wafl.vvclock events are presented when an operation is run on an aggregate while the flexible volume level admin (vvc) lock of one of volumes of the aggregate is held by another subsystem which is typically fixed by following the documented corrective steps.
+wafl.vvclock EMS events occur when an operation is run on an aggregate while the flexible volume level admin (vvc) lock of one of volumes of the aggregate is held by another subsystem.
 
 == wafl.vvclock.string
 *Severity*::

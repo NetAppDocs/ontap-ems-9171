@@ -15,7 +15,7 @@ summary: cifs.shadowcopy events
 :imagesdir: ./media/
 
 [.lead]
-cifs.shadowcopy events are presented when a shadow copy set is automatically aborted when no activity has been detected for a certain period of time which is typically fixed by verifying system state and connectivity.
+cifs.shadowcopy EMS events occur when ONTAP encounters issues associated with shadow copy operations.
 
 == cifs.shadowcopy.abort
 *Severity*::

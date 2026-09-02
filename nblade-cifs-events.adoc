@@ -15,7 +15,7 @@ summary: nblade.cifs events
 :imagesdir: ./media/
 
 [.lead]
-nblade.cifs events are presented when there is a budget allocation failure for a CIFS subsystem because other CIFS subsystems are consuming too much memory which may require contacting NetApp support.
+nblade.cifs EMS events occur when ONTAP encounters issues associated with CIFS subsystem memory allocation and logon operations.
 
 == Nblade.cifs.budgetAllocFailure
 *Severity*::

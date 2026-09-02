@@ -15,7 +15,7 @@ summary: vsdr.fpvolallpolicyonfpaggr events
 :imagesdir: ./media/
 
 [.lead]
-vsdr.fpvolallpolicyonfpaggr events are presented when source volume of an SVM disaster recovery (SVMDR) relationship having a volume tiering policy of "all" residing on FabricPool aggregate on the primary cluster is placed on a FabricPool aggregate at the destination cluster which is typically fixed by updating configuration.
+vsdr.fpvolallpolicyonfpaggr EMS events occur when source volume of an SVM disaster recovery (SVMDR) relationship having a volume tiering policy of "all" residing on FabricPool aggregate on the primary cluster is placed on a FabricPool aggregate at the destination cluster.
 
 == vsdr.FPVolAllPolicyOnFPAggr
 *Severity*::

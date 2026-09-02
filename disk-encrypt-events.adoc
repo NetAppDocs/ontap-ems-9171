@@ -15,7 +15,7 @@ summary: disk.encrypt events
 :imagesdir: ./media/
 
 [.lead]
-disk.encrypt events are presented when the disk encrypt destroy operation is completed which typically does not require corrective action.
+disk.encrypt EMS events occur when ONTAP encounters issues associated with disk encryption operations.
 
 == disk.encrypt.destroy.complete
 *Severity*::

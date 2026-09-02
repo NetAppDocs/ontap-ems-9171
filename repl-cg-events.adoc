@@ -15,7 +15,7 @@ summary: repl.cg events
 :imagesdir: ./media/
 
 [.lead]
-repl.cg events are presented when the number of Consistency Group Items involved in a SnapMirror(R) Granular Sync relationship exceeds its limit in the system which is typically fixed by following the documented corrective steps.
+repl.cg EMS events occur when ONTAP encounters issues associated with Consistency Groups in SnapMirror(R) Granular Sync relationships.
 
 == repl.cg.item.limit.exceeded
 *Severity*::

@@ -15,7 +15,7 @@ summary: vifmgr.lif events
 :imagesdir: ./media/
 
 [.lead]
-vifmgr.lif events are presented when a LIF's failover policy has been modified which typically does not require corrective action.
+vifmgr.lif EMS events occur when ONTAP encounters issues associated with logical interface (LIF) configuration modifications or inconsistencies.
 
 == vifmgr.lif.foPolicyMod
 *Severity*::

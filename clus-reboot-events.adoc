@@ -15,7 +15,7 @@ summary: clus.reboot events
 :imagesdir: ./media/
 
 [.lead]
-clus.reboot events are presented when the cluster reboot detection feature detects an internal software error due to insufficient system resources which may require a reboot.
+clus.reboot EMS events occur when ONTAP encounters issues associated with cluster reboot detection.
 
 == clus.reboot.internalError
 *Severity*::

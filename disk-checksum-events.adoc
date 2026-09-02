@@ -15,7 +15,7 @@ summary: disk.checksum events
 :imagesdir: ./media/
 
 [.lead]
-disk.checksum events are presented when multiple errors are detected during checksum verification which may require reseating or replacing affected hardware.
+disk.checksum EMS events occur when ONTAP encounters issues associated with disk checksum verification.
 
 == disk.checksum.offlineAdapter
 *Severity*::

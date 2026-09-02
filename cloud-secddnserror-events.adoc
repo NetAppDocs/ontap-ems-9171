@@ -15,7 +15,7 @@ summary: cloud.secddnserror events
 :imagesdir: ./media/
 
 [.lead]
-cloud.secddnserror events are presented when this ONTAP Cloud instance fails to communicate with DNS/SECD for the cloud database endpoint which is typically fixed by verifying system state and updating configuration.
+cloud.secddnserror EMS events occur when this ONTAP Cloud instance fails to communicate with DNS/SECD for the cloud database endpoint.
 
 == cloud.SecdDNSError
 *Severity*::

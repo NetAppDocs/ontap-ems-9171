@@ -15,7 +15,7 @@ summary: diskown.replayingownership events
 :imagesdir: ./media/
 
 [.lead]
-diskown.replayingownership events are presented when a disk ownership request is replayed from NVRAM during a boot or takeover, which typically does not require corrective action.
+diskown.replayingownership EMS events occur when ONTAP encounters issues associated with replaying disk ownership requests from NVRAM.
 
 == diskown.replayingOwnership
 *Severity*::

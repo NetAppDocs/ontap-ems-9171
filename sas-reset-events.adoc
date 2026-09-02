@@ -15,7 +15,7 @@ summary: sas.reset events
 :imagesdir: ./media/
 
 [.lead]
-sas.reset events are presented when sAS adapter driver resets the expander because of failure status of discovery response which may require contacting NetApp support.
+sas.reset EMS events occur when ONTAP encounters issues associated with SAS expander resets.
 
 == sas.reset.exp.discovery.resp
 *Severity*::

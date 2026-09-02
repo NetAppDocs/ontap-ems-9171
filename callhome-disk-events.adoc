@@ -15,7 +15,7 @@ summary: callhome.disk events
 :imagesdir: ./media/
 
 [.lead]
-callhome.disk events are presented when a system does not contain enough spares to correct existing disk failures which may require reseating or replacing affected hardware.
+callhome.disk EMS events occur when ONTAP encounters issues associated with insufficient spare disks, disk carrier evacuation, low disk throughput, or orphaned drives.
 
 == callhome.disk.carrier.evacuation.notpossible
 *Severity*::

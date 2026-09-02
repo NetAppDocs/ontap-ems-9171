@@ -15,7 +15,7 @@ summary: extcache.io events
 :imagesdir: ./media/
 
 [.lead]
-extcache.io events are presented when the external cache detects a block checksum verification error while performing a read operation which typically does not require corrective action.
+extcache.io EMS events occur when ONTAP encounters issues associated with external cache I/O operations.
 
 == extCache.io.BlockChecksumError
 *Severity*::

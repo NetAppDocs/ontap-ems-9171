@@ -15,7 +15,7 @@ summary: sms.src events
 :imagesdir: ./media/
 
 [.lead]
-sms.src events are presented when a SnapMirror(R) Synchronous operation has successfully cleared the persistent fence (read/write I/O has resumed) on the source volume which typically does not require corrective action.
+sms.src EMS events occur when ONTAP encounters issues associated with SnapMirror(R) Synchronous source volume fencing operations.
 
 == sms.src.clear.fence.complete
 *Severity*::

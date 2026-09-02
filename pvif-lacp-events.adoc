@@ -15,7 +15,7 @@ summary: pvif.lacp events
 :imagesdir: ./media/
 
 [.lead]
-pvif.lacp events are presented when a link is operationally up and cannot be aggregated into its configured ifgrp within the time limit which is typically fixed by verifying system state and connectivity.
+pvif.lacp EMS events occur when a link is operationally up and cannot be aggregated into its configured ifgrp within the time limit.
 
 == pvif.lacp.outofsync
 *Severity*::

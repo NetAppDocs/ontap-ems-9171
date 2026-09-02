@@ -15,7 +15,7 @@ summary: repl.out events
 :imagesdir: ./media/
 
 [.lead]
-repl.out events are presented when replication source is asked to send certain blocks out of band because the replica volume did a snapshot restore which typically does not require corrective action.
+repl.out EMS events occur when ONTAP encounters issues associated with out-of-band block transfers and memory allocation.
 
 == repl.out.of.band.vbn
 *Severity*::

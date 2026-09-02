@@ -15,7 +15,7 @@ summary: rdb.ha events
 :imagesdir: ./media/
 
 [.lead]
-rdb.ha events are presented when the management process goes online as the master under two-node 'cluster HA' failover which typically does not require corrective action.
+rdb.ha EMS events occur when ONTAP encounters issues associated with cluster HA failover in two-node configurations.
 
 == rdb.ha.active
 *Severity*::

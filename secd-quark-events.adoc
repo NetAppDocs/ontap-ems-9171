@@ -15,7 +15,7 @@ summary: secd.quark events
 :imagesdir: ./media/
 
 [.lead]
-secd.quark events are presented when the server can not a send dynamic DNS (DDNS) update to the DNS server which is typically fixed by verifying system state and connectivity.
+secd.quark EMS events occur when ONTAP encounters issues associated with dynamic DNS (DDNS) updates and Security Identifier (SID) lookups.
 
 == secd.quark.ddns.updt.failure
 *Severity*::

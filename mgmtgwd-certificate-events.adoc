@@ -15,7 +15,7 @@ summary: mgmtgwd.certificate events
 :imagesdir: ./media/
 
 [.lead]
-mgmtgwd.certificate events are presented when a digital certificate for a Vserver expires which may require reseating or replacing affected hardware.
+mgmtgwd.certificate EMS events occur when ONTAP encounters issues associated with digital certificate expiration for Vservers.
 
 == mgmtgwd.certificate.expired
 *Severity*::

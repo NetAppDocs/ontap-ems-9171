@@ -15,7 +15,7 @@ summary: acp.need events
 :imagesdir: ./media/
 
 [.lead]
-acp.need events are presented when the Alternate Control Path (ACP) Administrator determines that the ACP processor is running an older firmware revision that supports only the Secure Socket Library (SSL) channel which is typically fixed by following the documented corrective steps.
+acp.need EMS events occur when ONTAP encounters issues associated with the Alternate Control Path (ACP) processor requiring firmware or module upgrades.
 
 == acp.need.firmware.update
 *Severity*::

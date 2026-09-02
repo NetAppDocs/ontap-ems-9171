@@ -15,7 +15,7 @@ summary: sasmon.adapter events
 :imagesdir: ./media/
 
 [.lead]
-sasmon.adapter events are presented when a Serial Attached SCSI (SAS) transceiver (phy) attached to a SAS host bus adapter (HBA) is disabled due to one of the following reasons: exceeded loss of double word synchronization error threshold; exceeded running disparity error threshold; exceeded invalid double word error threshold; exceeded phy reset problem threshold; exceeded broadcast change threshold which is typically fixed by verifying system state and connectivity.
+sasmon.adapter EMS events occur when a Serial Attached SCSI (SAS) transceiver (phy) attached to a SAS host bus adapter (HBA) is disabled due to one of the following reasons: exceeded loss of double word synchronization error threshold; exceeded running disparity error threshold; exceeded invalid double word error threshold; exceeded phy reset problem threshold; exceeded broadcast change threshold.
 
 == sasmon.adapter.phy.disable
 *Severity*::

@@ -15,7 +15,7 @@ summary: nblade.nfsconnresetandclose events
 :imagesdir: ./media/
 
 [.lead]
-nblade.nfsconnresetandclose events are presented when the server aborts the connection with the client by sending one or more RST segments, immediately resulting in the connection state being discarded which is typically fixed by verifying system state and connectivity.
+nblade.nfsconnresetandclose EMS events occur when the server aborts the connection with the client by sending one or more RST segments, immediately resulting in the connection state being discarded.
 
 == Nblade.nfsConnResetAndClose
 *Severity*::

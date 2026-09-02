@@ -15,7 +15,7 @@ summary: sms.status events
 :imagesdir: ./media/
 
 [.lead]
-sms.status events are presented when a SnapMirror(R) Sync initialize or resynchronize operation is completed successfully, and the source volume and destination volume are in "in-sync" status which typically does not require corrective action.
+sms.status EMS events occur when ONTAP encounters issues associated with SnapMirror(R) Sync relationship status.
 
 == sms.status.in.sync
 *Severity*::

@@ -15,7 +15,7 @@ summary: rbac.spuser events
 :imagesdir: ./media/
 
 [.lead]
-rbac.spuser events are presented when the role that was earlier associated with the service-processor application user in a previous release was deleted in the current release and is not found during a revert to a previous release which is typically fixed by following the documented corrective steps.
+rbac.spuser EMS events occur when the role that was earlier associated with the service-processor application user in a previous release was deleted in the current release and is not found during a revert to a previous release.
 
 == rbac.spuser.role.notfound
 *Severity*::

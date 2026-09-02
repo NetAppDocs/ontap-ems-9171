@@ -15,7 +15,7 @@ summary: tapemc.sas events
 :imagesdir: ./media/
 
 [.lead]
-tapemc.sas events are presented when data ONTAP(R) detects a SAS device that is connected to a port that is dedicated for SAS disk storage attachment, but is not a disk shelf or a bridge device which is typically fixed by following the documented corrective steps.
+tapemc.sas EMS events occur when ONTAP encounters issues associated with SAS tape and media changer devices.
 
 == tapemc.SAS.dedicatedPort
 *Severity*::

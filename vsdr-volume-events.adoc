@@ -15,7 +15,7 @@ summary: vsdr.volume events
 :imagesdir: ./media/
 
 [.lead]
-vsdr.volume events are presented when the volume to be created on the destination cluster fails because of an internal identity conflict with another volume in the system which is typically fixed by following the documented corrective steps.
+vsdr.volume EMS events occur when ONTAP encounters issues associated with volume identity conflicts or naming conflicts during Vserver DR operations.
 
 == vsdr.volume.idconflict
 *Severity*::

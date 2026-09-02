@@ -15,7 +15,7 @@ summary: vsdr.vol events
 :imagesdir: ./media/
 
 [.lead]
-vsdr.vol events are presented when a Vserver DR subsystem does not enable inline deduplication on the destination volume which is typically fixed by following the documented corrective steps.
+vsdr.vol EMS events occur when ONTAP encounters issues associated with volume configuration replication in Vserver DR setups.
 
 == vsdr.vol.aff.inline.dedup
 *Severity*::

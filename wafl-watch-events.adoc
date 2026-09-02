@@ -15,7 +15,7 @@ summary: wafl.watch events
 :imagesdir: ./media/
 
 [.lead]
-wafl.watch events are presented when wAFL(R) "change notify" requests approach the size limit of the inode cache pool which may require contacting NetApp support.
+wafl.watch EMS events occur when ONTAP encounters issues associated with WAFL(R) change notify requests.
 
 == wafl.watch.cache.limit.near
 *Severity*::

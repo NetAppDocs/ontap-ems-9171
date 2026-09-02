@@ -15,7 +15,7 @@ summary: sfo.giveback events
 :imagesdir: ./media/
 
 [.lead]
-sfo.giveback events are presented when giveback of storage failover (SFO) aggregates is aborted because the background disk firmware update either on the source node or destination node took more than 120 seconds to finish which may require a reboot.
+sfo.giveback EMS events occur when ONTAP encounters issues associated with storage failover (SFO) giveback operations.
 
 == sfo.giveback.aborted.bdfu
 *Severity*::

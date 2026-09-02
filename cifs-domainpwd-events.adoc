@@ -15,7 +15,7 @@ summary: cifs.domainpwd events
 :imagesdir: ./media/
 
 [.lead]
-cifs.domainpwd events are presented when disabling of CIFS domain password change schedule fails to delete the job for a Vserver which is typically fixed by following the documented corrective steps.
+cifs.domainpwd EMS events occur when ONTAP encounters issues associated with CIFS domain password change operations.
 
 == cifs.domainpwd.job.deletion
 *Severity*::

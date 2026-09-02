@@ -15,7 +15,7 @@ summary: ses.loop events
 :imagesdir: ./media/
 
 [.lead]
-ses.loop events are presented when the system finds a disk shelf with a Loop Resiliency Circuit (LRC) module before a disk shelf with an Electronically Switched Hub (ESH) module in the loop map which is typically fixed by following the documented corrective steps.
+ses.loop EMS events occur when ONTAP encounters issues associated with disk shelf loop configuration.
 
 == ses.loop.configErr
 *Severity*::

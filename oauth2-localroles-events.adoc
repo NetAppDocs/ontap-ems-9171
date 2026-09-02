@@ -15,7 +15,7 @@ summary: oauth2.localroles events
 :imagesdir: ./media/
 
 [.lead]
-oauth2.localroles events are presented when an authentication fails when the "use-local-roles-if-present" setting is set to "true", but the user information does not exist in ONTAP, or the scope information within the access token does not grant sufficient access in ONTAP which is typically fixed by following the documented corrective steps.
+oauth2.localroles EMS events occur when an authentication fails when the "use-local-roles-if-present" setting is set to "true", but the user information does not exist in ONTAP, or the scope information within the access token does not grant sufficient access in ONTAP.
 
 == oauth2.localroles.unauth
 *Severity*::

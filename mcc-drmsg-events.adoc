@@ -15,7 +15,7 @@ summary: mcc.drmsg events
 :imagesdir: ./media/
 
 [.lead]
-mcc.drmsg events are presented when a DR message is successfully received from a DR partner node which typically does not require corrective action.
+mcc.drmsg EMS events occur when ONTAP encounters issues associated with disaster recovery message communications between partner nodes.
 
 == mcc.drmsg.received
 *Severity*::

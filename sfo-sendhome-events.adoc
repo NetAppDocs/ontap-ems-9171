@@ -15,7 +15,7 @@ summary: sfo.sendhome events
 :imagesdir: ./media/
 
 [.lead]
-sfo.sendhome events are presented when the giveback request fails because there are no disks that belong to the partner which is typically fixed by verifying system state and updating configuration.
+sfo.sendhome EMS events occur when ONTAP encounters issues associated with storage failover giveback operations.
 
 == sfo.sendhome.NoPartnerDisks
 *Severity*::

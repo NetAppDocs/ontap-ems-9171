@@ -15,7 +15,7 @@ summary: wafl.aadir events
 :imagesdir: ./media/
 
 [.lead]
-wafl.aadir events are presented when the actual space available in a storage availability zone is below a specified threshold of total space which is typically fixed by following the documented corrective steps.
+wafl.aadir EMS events occur when ONTAP encounters issues associated with storage availability zone space thresholds or space balancing operations.
 
 == wafl.aadir.spaceLtThreshold
 *Severity*::

@@ -15,7 +15,7 @@ summary: dns.disabled events
 :imagesdir: ./media/
 
 [.lead]
-dns.disabled events are presented when the last system to be upgraded in a cluster removes DNS configurations that were marked as disabled which typically does not require corrective action.
+dns.disabled EMS events occur when the last system to be upgraded in a cluster removes DNS configurations that were marked as disabled.
 
 == dns.disabled.configs.removed
 *Severity*::

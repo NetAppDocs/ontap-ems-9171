@@ -15,7 +15,7 @@ summary: wafl.ca events
 :imagesdir: ./media/
 
 [.lead]
-wafl.ca events are presented when the space used in the capacity tier of a FabricPool aggregate has exceeded or is projected to exceed the size limit set on the capacity tier which is typically fixed by updating configuration.
+wafl.ca EMS events occur when ONTAP encounters issues associated with FabricPool capacity tier operations and object storage.
 
 == wafl.ca.cap.tier.usage.limit
 *Severity*::

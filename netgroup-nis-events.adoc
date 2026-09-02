@@ -15,7 +15,7 @@ summary: netgroup.nis events
 :imagesdir: ./media/
 
 [.lead]
-netgroup.nis events are presented when the netgroup.byhost remote procedure call to the Network Information Service (NIS) server returns a response that cannot be decoded which is typically fixed by verifying system state and connectivity.
+netgroup.nis EMS events occur when ONTAP encounters issues associated with NIS netgroup configuration.
 
 == netgroup.nis.byhost.decode
 *Severity*::

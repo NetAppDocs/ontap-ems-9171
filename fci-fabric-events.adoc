@@ -15,7 +15,7 @@ summary: fci.fabric events
 :imagesdir: ./media/
 
 [.lead]
-fci.fabric events are presented when a switch in the fabric attached to the Fibre Channel adapter exceeds the maximum number of ports allowed on a switch which is typically fixed by following the documented corrective steps.
+fci.fabric EMS events occur when ONTAP encounters issues associated with Fibre Channel fabric configuration limits.
 
 == fci.fabric.max.ports
 *Severity*::

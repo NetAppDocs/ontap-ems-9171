@@ -15,7 +15,7 @@ summary: nblade.vifdel events
 :imagesdir: ./media/
 
 [.lead]
-nblade.vifdel events are presented when there is a failure removing the IP address of a LIF that is being deleted which may require a reboot.
+nblade.vifdel EMS events occur when ONTAP encounters issues associated with logical interface (LIF) deletion operations.
 
 == Nblade.vifdel.ipRemoveFailed
 *Severity*::

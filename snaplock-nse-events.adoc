@@ -15,7 +15,7 @@ summary: snaplock.nse events
 :imagesdir: ./media/
 
 [.lead]
-snaplock.nse events are presented when any of the following commands could not be run against a SnapLock Compliance disk, since doing so could risk the destruction of compliance data: "storage encryption disk sanitize", "storage encryption disk destroy", "storage encryption disk revert-to-original-state" which typically does not require corrective action.
+snaplock.nse EMS events occur when any of the following commands could not be run against a SnapLock Compliance disk, since doing so could risk the destruction of compliance data: "storage encryption disk sanitize", "storage encryption disk destroy", "storage encryption disk revert-to-original-state".
 
 == snaplock.NSE.conflict
 *Severity*::

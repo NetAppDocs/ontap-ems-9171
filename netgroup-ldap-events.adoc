@@ -15,7 +15,7 @@ summary: netgroup.ldap events
 :imagesdir: ./media/
 
 [.lead]
-netgroup.ldap events are presented when netgroup.byhost is disabled in the Lightweight Directory Access Protocol (LDAP) client configuration on the storage system, and LDAP is configured as an ns-switch source for the Vserver which is typically fixed by updating configuration.
+netgroup.ldap EMS events occur when ONTAP encounters issues associated with LDAP netgroup configuration.
 
 == netgroup.ldap.byhost.missing
 *Severity*::

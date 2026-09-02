@@ -15,7 +15,7 @@ summary: callhome.netinet events
 :imagesdir: ./media/
 
 [.lead]
-callhome.netinet events are presented when a new node that is trying to join the cluster is using the same IP address that is configured on this node's cluster interface which is typically fixed by verifying system state and connectivity.
+callhome.netinet EMS events occur when a new node that is trying to join the cluster is using the same IP address that is configured on this node's cluster interface.
 
 == callhome.netinet.dup.clustIP
 *Severity*::

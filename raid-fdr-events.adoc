@@ -15,7 +15,7 @@ summary: raid.fdr events
 :imagesdir: ./media/
 
 [.lead]
-raid.fdr events are presented when we detect an entry in the failed disk registry, and have forcibly failed the disk which may require reseating or replacing affected hardware.
+raid.fdr EMS events occur when ONTAP encounters issues associated with failed disk registry operations.
 
 == raid.fdr.failed.ok
 *Severity*::

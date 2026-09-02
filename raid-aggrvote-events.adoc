@@ -15,7 +15,7 @@ summary: raid.aggrvote events
 :imagesdir: ./media/
 
 [.lead]
-raid.aggrvote events are presented when the mirror vote pull from the replicated database (RDB) to the mailbox fails which typically does not require corrective action.
+raid.aggrvote EMS events occur when ONTAP encounters issues associated with mirror vote operations and the replicated database (RDB).
 
 == raid.aggrvote.pullNotOk
 *Severity*::

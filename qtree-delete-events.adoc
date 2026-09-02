@@ -15,7 +15,7 @@ summary: qtree.delete events
 :imagesdir: ./media/
 
 [.lead]
-qtree.delete events are presented when the delete operation on a qtree fails which is typically fixed by verifying system state and connectivity.
+qtree.delete EMS events occur when ONTAP encounters issues associated with qtree deletion operations.
 
 == qtree.delete.failed
 *Severity*::

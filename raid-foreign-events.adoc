@@ -15,7 +15,7 @@ summary: raid.foreign events
 :imagesdir: ./media/
 
 [.lead]
-raid.foreign events are presented when a disk is found to have a different storage pod uuid than what this node is allowed to access which may require contacting NetApp support.
+raid.foreign EMS events occur when a disk is found to have a different storage pod uuid than what this node is allowed to access.
 
 == raid.foreign.disk.failed
 *Severity*::

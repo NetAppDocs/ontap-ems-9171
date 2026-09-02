@@ -15,7 +15,7 @@ summary: lun.clone events
 :imagesdir: ./media/
 
 [.lead]
-lun.clone events are presented when lun clone creation fails because the limit on the maximum number of supported clone log entries (32705) is exceeded which is typically fixed by following the documented corrective steps.
+lun.clone EMS events occur when ONTAP encounters issues associated with LUN clone operations.
 
 == LUN.clone.log.full
 *Severity*::

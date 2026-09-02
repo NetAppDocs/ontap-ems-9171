@@ -15,7 +15,7 @@ summary: vdom.aggr events
 :imagesdir: ./media/
 
 [.lead]
-vdom.aggr events are presented when an internal timeout has been reached while processing volumes for an aggregate coming online during a takeover, giveback, or aggregate relocation event which typically does not require corrective action.
+vdom.aggr EMS events occur when ONTAP encounters issues associated with aggregate volume operations during takeover, giveback, or relocation.
 
 == vdom.aggr.bulkmount.timeout
 *Severity*::

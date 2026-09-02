@@ -15,7 +15,7 @@ summary: lun.vol events
 :imagesdir: ./media/
 
 [.lead]
-lun.vol events are presented when an operation on a LUN or NVMe namespace fails due to insufficient space in the volume which is typically fixed by following the documented corrective steps.
+lun.vol EMS events occur when ONTAP encounters issues associated with insufficient volume space for LUN or NVMe namespace operations.
 
 == LUN.vol.no.space
 *Severity*::

@@ -15,7 +15,7 @@ summary: vserver.config events
 :imagesdir: ./media/
 
 [.lead]
-vserver.config events are presented when the Vserver create operation cannot create the Vserver-specific configuration directory which is typically fixed by following the documented corrective steps.
+vserver.config EMS events occur when ONTAP encounters issues associated with Vserver configuration directory creation.
 
 == vserver.config.createDirectoryFailed
 *Severity*::

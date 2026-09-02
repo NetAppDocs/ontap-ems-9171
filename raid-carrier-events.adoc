@@ -15,7 +15,7 @@ summary: raid.carrier events
 :imagesdir: ./media/
 
 [.lead]
-raid.carrier events are presented when the evacuation operation is complete on a disk in a multidisk carrier that contains at least one failed disk which typically does not require corrective action.
+raid.carrier EMS events occur when ONTAP encounters issues associated with multidisk carrier operations.
 
 == raid.carrier.diskEvacuated
 *Severity*::

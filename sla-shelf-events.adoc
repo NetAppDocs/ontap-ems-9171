@@ -15,7 +15,7 @@ summary: sla.shelf events
 :imagesdir: ./media/
 
 [.lead]
-sla.shelf events are presented when a shelf firmware module is rebooted administratively, or when a reboot occurs normally when the system powers up, the firmware is updated, or the alternate control path (ACP) is reset which typically does not require corrective action.
+sla.shelf EMS events occur when ONTAP encounters issues associated with shelf firmware module reboots.
 
 == sla.shelf.mod.reboot
 *Severity*::

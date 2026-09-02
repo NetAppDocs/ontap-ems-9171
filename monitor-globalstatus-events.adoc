@@ -15,7 +15,7 @@ summary: monitor.globalstatus events
 :imagesdir: ./media/
 
 [.lead]
-monitor.globalstatus events are presented when the system's global health is critical; for example, if a fan failed which is typically fixed by verifying system state and connectivity.
+monitor.globalstatus EMS events occur when ONTAP encounters issues associated with system global health status.
 
 == monitor.globalStatus.critical
 *Severity*::

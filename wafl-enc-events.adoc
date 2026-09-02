@@ -15,7 +15,7 @@ summary: wafl.enc events
 :imagesdir: ./media/
 
 [.lead]
-wafl.enc events are presented when the system detects a corrupted WAFL aggregate encryption keys metafile and creates a corrected replacement which typically does not require corrective action.
+wafl.enc EMS events occur when ONTAP encounters issues associated with the WAFL aggregate encryption keys metafile.
 
 == wafl.enc.aggrMFRecreated
 *Severity*::

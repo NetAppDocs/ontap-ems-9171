@@ -15,7 +15,7 @@ summary: nblade.fpolicy events
 :imagesdir: ./media/
 
 [.lead]
-nblade.fpolicy events are presented when an I/O operation directed at a FlexCache(R) volume fails because the file extension include and exclude list of one of the policies is too long to send to the origin of the FlexCache volume which is typically fixed by updating configuration.
+nblade.fpolicy EMS events occur when ONTAP encounters issues associated with FPolicy(tm) file operation monitoring.
 
 == nblade.fpolicy.extn.failed
 *Severity*::

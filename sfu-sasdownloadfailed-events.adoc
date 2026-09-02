@@ -15,7 +15,7 @@ summary: sfu.sasdownloadfailed events
 :imagesdir: ./media/
 
 [.lead]
-sfu.sasdownloadfailed events are presented when a disk shelf firmware update fails to download disk shelf firmware to a disk shelf successfully which is typically fixed by updating configuration.
+sfu.sasdownloadfailed EMS events occur when a disk shelf firmware update fails to download disk shelf firmware to a disk shelf successfully.
 
 == sfu.SASDownloadFailed
 *Severity*::
@@ -23,7 +23,7 @@ ERROR
 *Description*::
 This message occurs when a disk shelf firmware update fails to download disk shelf firmware to a disk shelf successfully.
 *Corrective Action*::
-Go to the NetApp Support Site at http://support.netapp.com/NOW/download/tools/diskshelf/ and try downloading the disk shelf firmware again by using the (advanced privilege) "storage shelf firmware update" command.
+Go to the NetApp Support Site at https://mysupport.netapp.com/site/downloads/firmware/disk-shelf-firmware and try downloading the disk shelf firmware again by using the (advanced privilege) "storage shelf firmware update" command.
 *Syslog Message*::
 %s: Download failed on %s on disk shelf controller module %s on disk shelf %s.%d.
 *Parameters*::

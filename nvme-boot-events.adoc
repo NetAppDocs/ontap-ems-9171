@@ -15,7 +15,7 @@ summary: nvme.boot events
 :imagesdir: ./media/
 
 [.lead]
-nvme.boot events are presented when the NVMe boot device firmware has been updated which typically does not require corrective action.
+nvme.boot EMS events occur when ONTAP encounters issues associated with NVMe boot device firmware updates.
 
 == nvme.boot.fw.update.complete
 *Severity*::

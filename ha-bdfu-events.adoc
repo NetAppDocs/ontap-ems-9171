@@ -15,7 +15,7 @@ summary: ha.bdfu events
 :imagesdir: ./media/
 
 [.lead]
-ha.bdfu events are presented when the source node cannot reenable background disk firmware update (BDFU) on the destination node during storage failover (SFO) giveback or aggregate relocation, which typically does not require corrective action.
+ha.bdfu EMS events occur during storage failover (SFO) giveback or aggregate relocation when the source node cannot reenable background disk firmware update (BDFU) on the destination node.
 
 == ha.bdfu.notEnabledOnDest
 *Severity*::

@@ -15,7 +15,7 @@ summary: qos.qtree events
 :imagesdir: ./media/
 
 [.lead]
-qos.qtree events are presented when the Quality of Service (QoS) subsystem recognizes that an older version of a filehandle is still being used to access a qtree associated with a QoS policy group which may require restarting affected services or nodes.
+qos.qtree EMS events occur when the Quality of Service (QoS) subsystem recognizes that an older version of a filehandle is still being used to access a qtree associated with a QoS policy group.
 
 == qos.qtree.fh.error.report
 *Severity*::

@@ -15,7 +15,7 @@ summary: mgmt.s3 events
 :imagesdir: ./media/
 
 [.lead]
-mgmt.s3 events are presented when the total cluster-wide logical used size for S3 Snapmirror external object store relationships is near the license capacity limit but does not exceed the limit which is typically fixed by updating configuration.
+mgmt.s3 EMS events occur when ONTAP encounters issues associated with S3 Snapmirror capacity license limits for external object store relationships.
 
 == mgmt.s3.sm.license.near.limit
 *Severity*::

@@ -15,7 +15,7 @@ summary: callhome.hwaccel events
 :imagesdir: ./media/
 
 [.lead]
-callhome.hwaccel events are presented when the hardware accelerator gets certain threshold number of errors and collects related diagnostic data concerning the device which typically does not require corrective action.
+callhome.hwaccel EMS events occur when ONTAP encounters issues associated with hardware accelerator errors and resets.
 
 == callhome.hwaccel.qat.dump
 *Severity*::

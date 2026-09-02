@@ -15,7 +15,7 @@ summary: vsdr.rulemodifiedofsmpolicy events
 :imagesdir: ./media/
 
 [.lead]
-vsdr.rulemodifiedofsmpolicy events are presented when a rule attached to a SnapMirror(R) policy with "mirror-vault" type must be modified, so that L2 scheduled snapshots can be reused during a MAX Data schedule update which is typically fixed by updating configuration.
+vsdr.rulemodifiedofsmpolicy EMS events occur when a rule attached to a SnapMirror(R) policy with "mirror-vault" type must be modified, so that L2 scheduled snapshots can be reused during a MAX Data schedule update.
 
 == vsdr.RuleModifiedOfSmPolicy
 *Severity*::

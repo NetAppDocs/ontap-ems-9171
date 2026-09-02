@@ -15,7 +15,7 @@ summary: cf.giveback events
 :imagesdir: ./media/
 
 [.lead]
-cf.giveback events are presented when giveback of a partner node is delayed due to the cleanup of a previous giveback event which typically does not require corrective action.
+cf.giveback EMS events occur when ONTAP encounters issues associated with giveback operations.
 
 == cf.giveback.delayed.cleanup
 *Severity*::

@@ -15,7 +15,7 @@ summary: ipmultipath.setup events
 :imagesdir: ./media/
 
 [.lead]
-ipmultipath.setup events are presented when the IP Multipath listener process cannot bind to any IP address of the source during IP Multipath connection setup, which is typically fixed by following the documented corrective steps.
+ipmultipath.setup EMS events occur when ONTAP encounters issues associated with IP Multipath connection setup.
 
 == ipmultipath.setup.bindFailed
 *Severity*::

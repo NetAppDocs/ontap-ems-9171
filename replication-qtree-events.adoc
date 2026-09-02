@@ -15,7 +15,7 @@ summary: replication.qtree events
 :imagesdir: ./media/
 
 [.lead]
-replication.qtree events are presented when the replication destination engine receives blocks with disk errors from the source for the first time in a transfer and continues with replication which may require contacting NetApp support.
+replication.qtree EMS events occur when ONTAP encounters issues associated with disk errors during qtree replication.
 
 == replication.qtree.dst.disk.error
 *Severity*::

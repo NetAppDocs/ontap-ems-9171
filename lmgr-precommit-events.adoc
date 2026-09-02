@@ -15,7 +15,7 @@ summary: lmgr.precommit events
 :imagesdir: ./media/
 
 [.lead]
-lmgr.precommit events are presented when the system fails aggregate giveback or relocation because SMB oplock or NFSv4 delegation recall fails which may require a reboot.
+lmgr.precommit EMS events occur when ONTAP encounters issues associated with SMB oplock or NFSv4 delegation recall during aggregate operations.
 
 == lmgr.precommit.oplock.recall.fail
 *Severity*::

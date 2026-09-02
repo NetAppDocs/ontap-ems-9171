@@ -15,7 +15,7 @@ summary: lun.move events
 :imagesdir: ./media/
 
 [.lead]
-lun.move events are presented when a LUN appears in the public namespace of the destination volume during a LUN move operation which typically does not require corrective action.
+lun.move EMS events occur when ONTAP encounters issues associated with LUN move operations.
 
 == LUN.move.dstPresent
 *Severity*::

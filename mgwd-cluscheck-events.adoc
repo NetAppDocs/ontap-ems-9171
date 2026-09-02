@@ -15,7 +15,7 @@ summary: mgwd.cluscheck events
 :imagesdir: ./media/
 
 [.lead]
-mgwd.cluscheck events are presented when the system changes the cluster LIFs used for internal replicated database (RDB) operations, ensuring they are connected to different cluster switches for optimal cluster resiliency which typically does not require corrective action.
+mgwd.cluscheck EMS events occur when the system changes the cluster LIFs used for internal replicated database (RDB) operations, ensuring they are connected to different cluster switches for optimal cluster resiliency.
 
 == mgwd.cluscheck.rmtDevRepair
 *Severity*::

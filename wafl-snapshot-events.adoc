@@ -15,7 +15,7 @@ summary: wafl.snapshot events
 :imagesdir: ./media/
 
 [.lead]
-wafl.snapshot events are presented when the system discover that a filesize is out of range in a snapshot, which typically does not require corrective action.
+wafl.snapshot EMS events occur when ONTAP encounters issues associated with snapshot metadata consistency.
 
 == wafl.snapshot.badFilesize
 *Severity*::

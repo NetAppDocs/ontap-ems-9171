@@ -15,7 +15,7 @@ summary: smc.snap events
 :imagesdir: ./media/
 
 [.lead]
-smc.snap events are presented when a SnapMirror operation fails to copy the retention period of a snapshot from the source endpoint to the destination endpoint because the ONTAP(R) version of the destination cluster does not support copying the retention period which is typically fixed by verifying system state and connectivity.
+smc.snap EMS events occur when a SnapMirror operation fails to copy the retention period of a snapshot from the source endpoint to the destination endpoint because the ONTAP(R) version of the destination cluster does not support copying the retention period.
 
 == smc.snap.upd.retention.fail
 *Severity*::

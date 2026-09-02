@@ -15,7 +15,7 @@ summary: nvmens.512blksz events
 :imagesdir: ./media/
 
 [.lead]
-nvmens.512blksz events are presented when replication of a volume containing NVMe namespaces that use 512-byte block sizes fails because the destination does not support NVMe namespaces with this block size which is typically fixed by following the documented corrective steps.
+nvmens.512blksz EMS events occur when replication of a volume containing NVMe namespaces that use 512-byte block sizes fails because the destination does not support NVMe namespaces with this block size.
 
 == NVMeNS.512blksz.repl.unsupp
 *Severity*::

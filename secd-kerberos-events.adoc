@@ -15,7 +15,7 @@ summary: secd.kerberos events
 :imagesdir: ./media/
 
 [.lead]
-secd.kerberos events are presented when there is a "time error"(clock skew, time skew, time out of bounds) which is typically fixed by updating configuration.
+secd.kerberos EMS events occur when ONTAP encounters issues associated with Kerberos authentication.
 
 == secd.kerberos.clockskew
 *Severity*::

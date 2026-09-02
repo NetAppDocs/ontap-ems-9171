@@ -15,7 +15,7 @@ summary: nblade.cifsnonaesnibytesproc events
 :imagesdir: ./media/
 
 [.lead]
-nblade.cifsnonaesnibytesproc events are presented when a system with CPUs that do not support the AES-NI instruction set is performing SMB3 encryption or signing of a large amount of data which is typically fixed by updating configuration.
+nblade.cifsnonaesnibytesproc EMS events occur when a system with CPUs that do not support the AES-NI instruction set is performing SMB3 encryption or signing of a large amount of data.
 
 == Nblade.cifsNonAesNiBytesProc
 *Severity*::

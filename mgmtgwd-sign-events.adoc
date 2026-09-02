@@ -15,7 +15,7 @@ summary: mgmtgwd.sign events
 :imagesdir: ./media/
 
 [.lead]
-mgmtgwd.sign events are presented when a digital certificate for a Vserver expires which is typically fixed by following the documented corrective steps.
+mgmtgwd.sign EMS events occur when ONTAP encounters issues associated with signed digital certificate expiration for Vservers.
 
 == mgmtgwd.sign.cert.expired
 *Severity*::

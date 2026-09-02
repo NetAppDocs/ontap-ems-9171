@@ -15,7 +15,7 @@ summary: callhome.ntp events
 :imagesdir: ./media/
 
 [.lead]
-callhome.ntp events are presented when severe NTP clock skew is detected between nodes in the cluster or with an external NTP server which may require contacting NetApp support.
+callhome.ntp EMS events occur when severe NTP clock skew is detected between nodes in the cluster or with an external NTP server.
 
 == callhome.ntp.clock.skew.detected
 *Severity*::

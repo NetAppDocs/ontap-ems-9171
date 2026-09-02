@@ -15,7 +15,7 @@ summary: raid.mirror events
 :imagesdir: ./media/
 
 [.lead]
-raid.mirror events are presented when a SyncMirror(R) aggregate uses aggregate snapshots other than SyncMirror aggregate snapshots which may require contacting NetApp support.
+raid.mirror EMS events occur when ONTAP encounters issues associated with SyncMirror(R) aggregate operations.
 
 == raid.mirror.aggrSnapUse
 *Severity*::

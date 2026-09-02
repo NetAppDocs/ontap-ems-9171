@@ -15,7 +15,7 @@ summary: adt.aggrcb events
 :imagesdir: ./media/
 
 [.lead]
-adt.aggrcb events are presented when the auditing subsystem cannot remove a stale aggregate control block entry from the Audit aggregate hash table which may require a reboot.
+adt.aggrcb EMS events occur when the auditing subsystem cannot remove a stale aggregate control block entry from the Audit aggregate hash table.
 
 == adt.aggrcb.unlinkfail
 *Severity*::

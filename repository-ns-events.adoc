@@ -15,7 +15,7 @@ summary: repository.ns events
 :imagesdir: ./media/
 
 [.lead]
-repository.ns events are presented when the Infinite Volume namespace redirector runs into failures that prevent it from cleaning up a transient lock on the namespace constituent during a client file operation request, which is typically fixed by following the documented corrective steps.
+repository.ns EMS events occur when ONTAP encounters issues associated with Infinite Volume namespace redirector transient locks.
 
 == Repository.NS.Dangling.Lock
 *Deprecated*::

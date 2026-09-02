@@ -15,7 +15,7 @@ summary: httpd.api events
 :imagesdir: ./media/
 
 [.lead]
-httpd.api events are presented when a Manage ONTAP(R) API request to an internal server expires due to configured session limits which is typically fixed by verifying system state and connectivity.
+httpd.api EMS events occur when a Manage ONTAP(R) API request to an internal server expires due to configured session limits.
 
 == httpd.api.expired.session.limit
 *Severity*::

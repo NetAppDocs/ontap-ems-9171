@@ -15,7 +15,7 @@ summary: wafl.fs events
 :imagesdir: ./media/
 
 [.lead]
-wafl.fs events are presented when the fractional reservation value for a volume is found to be corrupted during volume mount, which typically does not require corrective action.
+wafl.fs EMS events occur when ONTAP encounters issues associated with volume fractional reservation and space guarantee configuration.
 
 == wafl.fs.corrupt.fr.pct.changed
 *Severity*::

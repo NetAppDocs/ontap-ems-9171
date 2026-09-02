@@ -15,7 +15,7 @@ summary: vf.cleanup events
 :imagesdir: ./media/
 
 [.lead]
-vf.cleanup events are presented when some subsystems are cannot cleanup properly when a local host vfiler is destroyed or when a partner vfiler is being shutdown during giveback, which may require contacting NetApp support.
+vf.cleanup EMS events occur when some subsystems are unable to cleanup properly when a local host vfiler is destroyed or when a partner vfiler is being shutdown during giveback.
 
 == vf.cleanup.error
 *Severity*::

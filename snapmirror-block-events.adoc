@@ -15,7 +15,7 @@ summary: snapmirror.block events
 :imagesdir: ./media/
 
 [.lead]
-snapmirror.block events are presented when a SnapMirror(R) operation needs to reconstruct the block type bits which is typically fixed by following the documented corrective steps.
+snapmirror.block EMS events occur when ONTAP encounters issues associated with SnapMirror(R) block type bits reconstruction.
 
 == snapmirror.block.on.reconstruct
 *Severity*::

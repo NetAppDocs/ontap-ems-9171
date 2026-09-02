@@ -15,7 +15,7 @@ summary: pha.disk events
 :imagesdir: ./media/
 
 [.lead]
-pha.disk events are presented when the backing disk type for an existing disk was changed from the cloud API which is typically fixed by verifying system state and connectivity.
+pha.disk EMS events occur when ONTAP encounters issues associated with backing disk types for existing disks.
 
 == pha.disk.type.changed
 *Severity*::

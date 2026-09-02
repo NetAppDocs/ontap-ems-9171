@@ -15,7 +15,7 @@ summary: nvmf.mgmt events
 :imagesdir: ./media/
 
 [.lead]
-nvmf.mgmt events are presented when a management operation fails in an NVMe-oF subsystem which may require a reboot.
+nvmf.mgmt EMS events occur when ONTAP encounters issues associated with NVMe-oF subsystem management operations.
 
 == nvmf.mgmt.op.failed
 *Severity*::

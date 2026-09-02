@@ -15,7 +15,7 @@ summary: lmgr.persistent events
 :imagesdir: ./media/
 
 [.lead]
-lmgr.persistent events are presented when the persistent open lock count for a single file reaches its maximum supported limit, which is typically fixed by verifying system state and connectivity.
+lmgr.persistent EMS events occur when ONTAP encounters issues associated with persistent open lock count limits.
 
 == lmgr.persistent.file.open.limit.hit
 *Severity*::

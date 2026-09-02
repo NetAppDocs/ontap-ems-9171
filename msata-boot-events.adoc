@@ -15,7 +15,7 @@ summary: msata.boot events
 :imagesdir: ./media/
 
 [.lead]
-msata.boot events are presented when data ONTAP(R) module that is responsible for monitoring the health of the mSATA device determines that the associated boot device is reporting a failure condition which may require reseating or replacing affected hardware.
+msata.boot EMS events occur when ONTAP encounters issues associated with mSATA boot device health.
 
 == msata.boot.device.failed
 *Severity*::

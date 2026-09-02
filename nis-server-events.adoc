@@ -15,7 +15,7 @@ summary: nis.server events
 :imagesdir: ./media/
 
 [.lead]
-nis.server events are presented when the Storage Virtual Machine (SVM, formerly Vserver) binds to any of the configured NIS servers which typically does not require corrective action.
+nis.server EMS events occur when ONTAP encounters issues associated with NIS server connectivity.
 
 == nis.server.active
 *Severity*::

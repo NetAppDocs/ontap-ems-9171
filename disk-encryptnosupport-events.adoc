@@ -15,7 +15,7 @@ summary: disk.encryptnosupport events
 :imagesdir: ./media/
 
 [.lead]
-disk.encryptnosupport events are presented when oNTAP(R) software detects one or more FIPS-certified self-encrypting drives, but the environment variable 'bootarg.storageencryption.support' is not present or is set to "false" to indicate that FIPS-certified drives are not supported which is typically fixed by following the documented corrective steps.
+disk.encryptnosupport EMS events occur when ONTAP(R) software detects one or more FIPS-certified self-encrypting drives, but the environment variable 'bootarg.storageencryption.support' is not present or is set to "false" to indicate that FIPS-certified drives are not supported.
 
 == disk.encryptNoSupport
 *Severity*::

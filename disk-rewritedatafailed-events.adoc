@@ -15,7 +15,7 @@ summary: disk.rewritedatafailed events
 :imagesdir: ./media/
 
 [.lead]
-disk.rewritedatafailed events are presented when the system encounters an error and cannot rewrite data that was difficult to read on ATA drives which typically does not require corrective action.
+disk.rewritedatafailed EMS events occur when the system encounters an error and cannot rewrite data that was difficult to read on ATA drives.
 
 == disk.rewriteDataFailed
 *Severity*::

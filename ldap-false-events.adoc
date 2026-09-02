@@ -15,7 +15,7 @@ summary: ldap.false events
 :imagesdir: ./media/
 
 [.lead]
-ldap.false events are presented when the last system to be upgraded in a cluster removes LDAP configurations that were marked as disabled which typically does not require corrective action.
+ldap.false EMS events occur when the last system to be upgraded in a cluster removes LDAP configurations that were marked as disabled.
 
 == ldap.false.configs.removed
 *Severity*::

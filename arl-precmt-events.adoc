@@ -15,7 +15,7 @@ summary: arl.precmt events
 :imagesdir: ./media/
 
 [.lead]
-arl.precmt events are presented when automatic lock resynchronization with the node's high-availability (HA) partner for files on this aggregate was aborted during aggregate relocation, which typically does not require corrective action.
+arl.precmt EMS events occur when ONTAP encounters issues associated with lock resynchronization and mirrored lock state creation during the aggregate relocation pre-commit phase.
 
 == arl.precmt.lmgr.resync.abrt
 *Severity*::

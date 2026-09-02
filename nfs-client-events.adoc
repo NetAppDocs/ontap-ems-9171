@@ -15,7 +15,7 @@ summary: nfs.client events
 :imagesdir: ./media/
 
 [.lead]
-nfs.client events are presented when an NFS connected client's cache settings are changed using the REST API "/api/protocol/nfs/connected-client-settings", but the value is not updated in the network component which is typically fixed by updating configuration.
+nfs.client EMS events occur when an NFS connected client's cache settings are changed using the REST API "/api/protocol/nfs/connected-client-settings", but the value is not updated in the network component.
 
 == nfs.client.cache.modify.err
 *Severity*::

@@ -15,7 +15,7 @@ summary: mlm.scsi events
 :imagesdir: ./media/
 
 [.lead]
-mlm.scsi events are presented when an array target port contains SCSI INQUIRY data with an incorrect support level which is typically fixed by verifying system state and updating configuration.
+mlm.scsi EMS events occur when ONTAP encounters issues associated with SCSI INQUIRY data support levels.
 
 == mlm.SCSI.supportLvl.bad
 *Severity*::

@@ -15,7 +15,7 @@ summary: wafl.relocate events
 :imagesdir: ./media/
 
 [.lead]
-wafl.relocate events are presented when the system cannot perform an aggregate relocation because one or more of its volumes are used by wafliron to host status files which is typically fixed by verifying system state and connectivity.
+wafl.relocate EMS events occur when ONTAP encounters issues associated with aggregate relocation operations.
 
 == wafl.relocate.statusvol.fail
 *Severity*::

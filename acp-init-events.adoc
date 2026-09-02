@@ -15,7 +15,7 @@ summary: acp.init events
 :imagesdir: ./media/
 
 [.lead]
-acp.init events are presented when oNTAP(R) software cannot configure the Ethernet port designated for the Alternate Control Path (ACP) with 30 seconds, and marks the ACP as inactive which is typically fixed by verifying system state and connectivity.
+acp.init EMS events occur when ONTAP encounters issues associated with initialization and configuration of the Alternate Control Path (ACP) Ethernet port.
 
 == acp.init.configIP
 *Severity*::

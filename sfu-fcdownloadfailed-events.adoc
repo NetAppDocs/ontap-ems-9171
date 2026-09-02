@@ -15,7 +15,7 @@ summary: sfu.fcdownloadfailed events
 :imagesdir: ./media/
 
 [.lead]
-sfu.fcdownloadfailed events are presented when a disk shelf firmware update fails to download shelf firmware to an FC or an ATA shelf successfully which is typically fixed by updating configuration.
+sfu.fcdownloadfailed EMS events occur when a disk shelf firmware update fails to download shelf firmware to an FC or an ATA shelf successfully.
 
 == sfu.FCDownloadFailed
 *Severity*::
@@ -23,7 +23,7 @@ ERROR
 *Description*::
 This message occurs when a disk shelf firmware update fails to download shelf firmware to an FC or an ATA shelf successfully.
 *Corrective Action*::
-Redownload the latest disk shelf firmware from the NetApp Support Site at http://support.netapp.com/NOW/download/tools/diskshelf/ and attempt to download disk shelf firmware again by using the (advanced privilege) "storage shelf firmware update" command.
+Redownload the latest disk shelf firmware from the NetApp Support Site at https://mysupport.netapp.com/site/downloads/firmware/disk-shelf-firmware and attempt to download disk shelf firmware again by using the (advanced privilege) "storage shelf firmware update" command.
 *Syslog Message*::
 %s: Download failed on %s on ES controller module %s via SES device %s.%d on %s.shelf%d.
 *Parameters*::

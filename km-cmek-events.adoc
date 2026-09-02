@@ -15,7 +15,7 @@ summary: km.cmek events
 :imagesdir: ./media/
 
 [.lead]
-km.cmek events are presented when the configured Azure Key Vault Key Management Service (AKV-KMS) transitions to the active state after previously being in the blocked state which typically does not require corrective action.
+km.cmek EMS events occur when ONTAP encounters issues associated with Customer Managed Encryption Key (CMEK) operations.
 
 == km.cmek.akvkms.available
 *Severity*::

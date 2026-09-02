@@ -15,7 +15,7 @@ summary: wafl.nvsave events
 :imagesdir: ./media/
 
 [.lead]
-wafl.nvsave events are presented when one or more NVSave files are deleted from the local root volume or the partner root volume while in takeover mode, or from the partner node when the partner node is not in takeover mode which typically does not require corrective action.
+wafl.nvsave EMS events occur when ONTAP encounters issues associated with NVSave file management and replay operations.
 
 == wafl.nvsave.deletion.status
 *Severity*::

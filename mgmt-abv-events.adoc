@@ -15,7 +15,7 @@ summary: mgmt.abv events
 :imagesdir: ./media/
 
 [.lead]
-mgmt.abv events are presented when the percentage of data used on one or more data constituents in a storage service of a managed Infinite Volume exceeds the full watermark which is typically fixed by updating configuration.
+mgmt.abv EMS events occur when ONTAP encounters issues associated with data constituent space usage in Infinite Volume storage services.
 
 == mgmt.abv.service.filling
 *Deprecated*::

@@ -15,7 +15,7 @@ summary: nvram.flash events
 :imagesdir: ./media/
 
 [.lead]
-nvram.flash events are presented when the capacity of the NVRAM flash memory spare blocks is low, before it becomes critically low periodically, which may require contacting NetApp support.
+nvram.flash EMS events occur periodically when the capacity of the NVRAM flash memory spare blocks is low, before it becomes critically low.
 
 == nvram.flash.spare.low
 *Severity*::

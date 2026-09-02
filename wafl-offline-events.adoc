@@ -15,7 +15,7 @@ summary: wafl.offline events
 :imagesdir: ./media/
 
 [.lead]
-wafl.offline events are presented when the system attempts to place a volume online, but cannot read the volinfo or fsinfo data for the volume which may require contacting NetApp support.
+wafl.offline EMS events occur when ONTAP encounters issues associated with volume online operations and metadata access.
 
 == wafl.offline.infoError
 *Severity*::

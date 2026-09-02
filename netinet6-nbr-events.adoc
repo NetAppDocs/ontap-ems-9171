@@ -15,7 +15,7 @@ summary: netinet6.nbr events
 :imagesdir: ./media/
 
 [.lead]
-netinet6.nbr events are presented when oNTAP receives unexpected Neighbor Discovery (ND) packets which is typically fixed by verifying system state and connectivity.
+netinet6.nbr EMS events occur when ONTAP encounters issues associated with IPv6 Neighbor Discovery operations.
 
 == netinet6.nbr.bad.addr
 *Severity*::

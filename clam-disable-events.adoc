@@ -15,7 +15,7 @@ summary: clam.disable events
 :imagesdir: ./media/
 
 [.lead]
-clam.disable events are presented when the Kernel Cluster Services (KCS) Connectivity, Liveliness, Availability Monitor (CLAM) is disabled by either turning off the KCS capability or by setting the 'clam sysctl/bootarg' variable which may require a reboot.
+clam.disable EMS events occur when ONTAP encounters issues associated with Connectivity, Liveliness, Availability Monitor (CLAM) being disabled.
 
 == clam.disable
 *Severity*::

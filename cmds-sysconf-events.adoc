@@ -15,7 +15,7 @@ summary: cmds.sysconf events
 :imagesdir: ./media/
 
 [.lead]
-cmds.sysconf events are presented when to log the reason for system halt, before actually system is halted which typically does not require corrective action.
+cmds.sysconf EMS events occur when ONTAP encounters issues associated with system configuration verification.
 
 == cmds.sysconf.haltERR1
 *Severity*::

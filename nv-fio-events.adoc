@@ -15,7 +15,7 @@ summary: nv.fio events
 :imagesdir: ./media/
 
 [.lead]
-nv.fio events are presented when the write to VNVRAM fails and the retry count has been exhausted which typically does not require corrective action.
+nv.fio EMS events occur when ONTAP encounters issues associated with VNVRAM write operations.
 
 == nv.fio.write.err
 *Severity*::

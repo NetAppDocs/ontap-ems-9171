@@ -15,7 +15,7 @@ summary: lun.copy events
 :imagesdir: ./media/
 
 [.lead]
-lun.copy events are presented when a LUN appears in the public namespace of the destination volume during a LUN copy operation which typically does not require corrective action.
+lun.copy EMS events occur when ONTAP encounters issues associated with LUN copy operations.
 
 == LUN.copy.dstPresent
 *Severity*::

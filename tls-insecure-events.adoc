@@ -15,7 +15,7 @@ summary: tls.insecure events
 :imagesdir: ./media/
 
 [.lead]
-tls.insecure events are presented when during the TLS handshake a peer negotiates a cipher suite that is no longer considered sufficiently secure to be enabled in the default configuration which is typically fixed by updating configuration.
+tls.insecure EMS events occur when ONTAP encounters issues associated with insecure TLS cipher suites and protocols.
 
 == tls.insecure.cipher
 *Severity*::

@@ -15,7 +15,7 @@ summary: callhome.hostport events
 :imagesdir: ./media/
 
 [.lead]
-callhome.hostport events are presented when an Embedded Switched Hub (ESH) bypasses a host port due to excessive errors on the port which may require reseating or replacing affected hardware.
+callhome.hostport EMS events occur when ONTAP encounters issues associated with host ports being bypassed by ESH or disabled by IOM due to excessive errors.
 
 == callhome.hostport.bypass
 *Severity*::

@@ -15,7 +15,7 @@ summary: zsm.socket events
 :imagesdir: ./media/
 
 [.lead]
-zsm.socket events are presented when the event posted when the listener socket for the ZAPI Socket Manager (ZSM) service cannot be created which may require a reboot.
+zsm.socket EMS events occur when ONTAP encounters issues associated with the ZAPI Socket Manager (ZSM) service listener socket.
 
 == zsm.socket.listener.create
 *Severity*::

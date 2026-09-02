@@ -15,7 +15,7 @@ summary: sp.firmware events
 :imagesdir: ./media/
 
 [.lead]
-sp.firmware events are presented when neither of the firmware images of the node's Service Processor (SP) or Baseboard Management Controller (BMC) on the primary flash chip can be booted which may require contacting NetApp support.
+sp.firmware EMS events occur when ONTAP encounters issues associated with Service Processor (SP) or Baseboard Management Controller (BMC) firmware.
 
 == sp.firmware.corruption
 *Severity*::

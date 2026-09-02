@@ -15,7 +15,7 @@ summary: snapmirror.conf events
 :imagesdir: ./media/
 
 [.lead]
-snapmirror.conf events are presented when there an entry in the snapmirror.conf file is configured to use the outstanding value of greater than or equal to 10 seconds which is typically fixed by following the documented corrective steps.
+snapmirror.conf EMS events occur when ONTAP encounters issues associated with the SnapMirror(R) configuration file.
 
 == snapmirror.conf.depre.cpsync
 *Severity*::

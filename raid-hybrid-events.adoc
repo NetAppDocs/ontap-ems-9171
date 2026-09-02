@@ -15,7 +15,7 @@ summary: raid.hybrid events
 :imagesdir: ./media/
 
 [.lead]
-raid.hybrid events are presented when the sum of all sizes of solid state disks (SSDs) disks of hybrid aggregates on this node and its partner node is larger than the maximum system limit which is typically fixed by updating configuration.
+raid.hybrid EMS events occur when ONTAP encounters issues associated with solid state disk (SSD) capacity in hybrid aggregates.
 
 == raid.hybrid.SSDHAExceed
 *Severity*::

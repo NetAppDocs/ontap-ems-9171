@@ -15,7 +15,7 @@ summary: wafl.lmgr events
 :imagesdir: ./media/
 
 [.lead]
-wafl.lmgr events are presented when the appliance file lock state for a volume could not be moved during a file system check operation (wafliron) which typically does not require corrective action.
+wafl.lmgr EMS events occur when ONTAP encounters issues associated with appliance file lock state management during wafliron.
 
 == wafl.lmgr.meta.mv
 *Severity*::

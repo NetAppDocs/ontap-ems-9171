@@ -15,7 +15,7 @@ summary: revert.ufmt events
 :imagesdir: ./media/
 
 [.lead]
-revert.ufmt events are presented when the revert operation to convert the unified object format is paused because the FabricPool aggregate has reached the maximum supported size of the capacity tier which may require contacting NetApp support.
+revert.ufmt EMS events occur when ONTAP encounters issues associated with unified object format conversion operations.
 
 == revert.ufmt.cap.tier.full
 *Severity*::

@@ -15,7 +15,7 @@ summary: wafl.dir events
 :imagesdir: ./media/
 
 [.lead]
-wafl.dir events are presented when indicates that CIFS directory conversion is in progress and WAFL will not hang due to timeout which typically does not require corrective action.
+wafl.dir EMS events occur when ONTAP encounters issues associated with directory operations, size limits, or Unicode conversion.
 
 == wafl.dir.convert
 *Severity*::

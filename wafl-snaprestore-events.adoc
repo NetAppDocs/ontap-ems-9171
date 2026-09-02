@@ -15,7 +15,7 @@ summary: wafl.snaprestore events
 :imagesdir: ./media/
 
 [.lead]
-wafl.snaprestore events are presented when the system cannot recognize the version of Data ONTAP(R) from the snapshot it is reverting to during a snapshot restore operation, which is typically fixed by following the documented corrective steps.
+wafl.snaprestore EMS events occur when ONTAP encounters issues associated with snapshot restore operations.
 
 == wafl.snaprestore.badVersion
 *Severity*::

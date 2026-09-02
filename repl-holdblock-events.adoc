@@ -15,7 +15,7 @@ summary: repl.holdblock events
 :imagesdir: ./media/
 
 [.lead]
-repl.holdblock events are presented when the replica volume did a snapshot restore before the transfer during an incremental transfer, which typically does not require corrective action.
+repl.holdblock EMS events occur when ONTAP encounters issues associated with incremental transfers after snapshot restore operations.
 
 == repl.holdblock.arrived
 *Severity*::

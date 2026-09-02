@@ -15,7 +15,7 @@ summary: config.bridge events
 :imagesdir: ./media/
 
 [.lead]
-config.bridge events are presented when an FC-to-SAS bridge is attached to an unsupported FC adapter port which is typically fixed by following the documented corrective steps.
+config.bridge EMS events occur when ONTAP encounters issues associated with FC-to-SAS bridge configuration.
 
 == config.bridge.adapter.invalid
 *Severity*::

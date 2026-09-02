@@ -15,7 +15,7 @@ summary: dfu.badbridgeshelfconfig events
 :imagesdir: ./media/
 
 [.lead]
-dfu.badbridgeshelfconfig events are presented when the disk firmware update aborts because it cannot contact the two peer FC-to-SAS bridges which is typically fixed by following the documented corrective steps.
+dfu.badbridgeshelfconfig EMS events occur when the disk firmware update aborts because it cannot contact the two peer FC-to-SAS bridges.
 
 == dfu.badBridgeShelfConfig
 *Severity*::

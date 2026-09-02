@@ -15,7 +15,7 @@ summary: replication.stats events
 :imagesdir: ./media/
 
 [.lead]
-replication.stats events are presented when SnapMirror(R) or SnapVault(R) cannot load the statistics (for example during system boot, which typically does not require corrective action.
+replication.stats EMS events occur when ONTAP encounters issues associated with loading or saving SnapMirror(R) or SnapVault(R) statistics.
 
 == replication.stats.notLoaded
 *Severity*::

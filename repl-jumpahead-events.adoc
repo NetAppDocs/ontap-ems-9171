@@ -15,7 +15,7 @@ summary: repl.jumpahead events
 :imagesdir: ./media/
 
 [.lead]
-repl.jumpahead events are presented when the system cannot bring a replica volume online after applying the latest update to the replica because of possible inconsistencies detected in the update which may require contacting NetApp support.
+repl.jumpahead EMS events occur when the system cannot bring a replica volume online after applying the latest update to the replica because of possible inconsistencies detected in the update.
 
 == repl.jumpahead.failed
 *Severity*::

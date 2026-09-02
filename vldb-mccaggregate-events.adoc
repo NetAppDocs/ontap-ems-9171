@@ -15,7 +15,7 @@ summary: vldb.mccaggregate events
 :imagesdir: ./media/
 
 [.lead]
-vldb.mccaggregate events are presented when the aggregate at the destination site is renamed to handle a name collision during MetroCluster(tm) configuration setup, which is typically fixed by following the documented corrective steps.
+vldb.mccaggregate EMS events occur during MetroCluster(tm) configuration setup, when the aggregate at the destination site is renamed to handle a name collision.
 
 == vldb.mccaggregate.rename
 *Severity*::

@@ -15,7 +15,7 @@ summary: cr.del events
 :imagesdir: ./media/
 
 [.lead]
-cr.del events are presented when an attempt to delete corrupt stream data fails which typically does not require corrective action.
+cr.del EMS events occur when ONTAP encounters issues associated with deleting corrupt or dangling stream data and redirectors.
 
 == CR.Del.CrptStreamData.Fail
 *Deprecated*::

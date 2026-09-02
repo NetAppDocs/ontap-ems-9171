@@ -15,7 +15,7 @@ summary: snapvault.tgt events
 :imagesdir: ./media/
 
 [.lead]
-snapvault.tgt events are presented when snapVault(R) detects more than one coalesced snapshot of a specific type in a SnapVault secondary volume which typically does not require corrective action.
+snapvault.tgt EMS events occur when ONTAP encounters issues associated with SnapVault(R) snapshot targets.
 
 == snapvault.tgt.dupCoalesced
 *Severity*::

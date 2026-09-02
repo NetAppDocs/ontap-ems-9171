@@ -15,7 +15,7 @@ summary: exports.hostname events
 :imagesdir: ./media/
 
 [.lead]
-exports.hostname events are presented when the forward lookup record mapping a host name to its IP address is not found in the configured name servers in a Vserver which is typically fixed by verifying system state and connectivity.
+exports.hostname EMS events occur when ONTAP encounters issues associated with forward DNS lookups for export-policy evaluation.
 
 == exports.hostname.notFound
 *Severity*::

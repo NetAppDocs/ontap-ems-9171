@@ -15,7 +15,7 @@ summary: callhome.sas events
 :imagesdir: ./media/
 
 [.lead]
-callhome.sas events are presented when the SAS adapter does not start the link which is typically fixed by verifying system state and connectivity.
+callhome.sas EMS events occur when the SAS adapter fails to initialize the link.
 
 == callhome.sas.init.failed
 *Severity*::

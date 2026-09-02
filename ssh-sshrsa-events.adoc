@@ -15,7 +15,7 @@ summary: ssh.sshrsa events
 :imagesdir: ./media/
 
 [.lead]
-ssh.sshrsa events are presented when informs the user that future ONTAP releases will, by default, disable the "ssh-rsa (RSA/SHA-1)" form of the signature scheme used with RSA keys for host-based authentication and publickey-based user authentication which is typically fixed by updating configuration.
+ssh.sshrsa EMS events occur when this message informs the user that future ONTAP releases will, by default, disable the "ssh-rsa (RSA/SHA-1)" form of the signature scheme used with RSA keys for host-based authentication and publickey-based user authentication.
 
 == ssh.sshrsa.defDisabledFuture
 *Severity*::

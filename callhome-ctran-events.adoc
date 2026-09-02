@@ -15,7 +15,7 @@ summary: callhome.ctran events
 :imagesdir: ./media/
 
 [.lead]
-callhome.ctran events are presented when the Kernel Cluster Services (KCS) / Cluster Transaction Manager (CTRAN) detects that one or more newly selected Group Coordinators (GCs) are taking too long to successfully complete the GC Ready on Reselect procedure which may require contacting NetApp support.
+callhome.ctran EMS events occur when ONTAP encounters issues associated with the Kernel Cluster Services (KCS) / Cluster Transaction Manager (CTRAN).
 
 == callhome.ctran.gcror.timeout
 *Severity*::

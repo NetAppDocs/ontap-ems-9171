@@ -15,7 +15,7 @@ summary: xinetd.hit events
 :imagesdir: ./media/
 
 [.lead]
-xinetd.hit events are presented when the rate of incoming network connections for a service exceeds the maximum allowed rate which is typically fixed by following the documented corrective steps.
+xinetd.hit EMS events occur when ONTAP encounters issues associated with incoming network connection rate limits.
 
 == xinetd.hit.cps.limit
 *Severity*::

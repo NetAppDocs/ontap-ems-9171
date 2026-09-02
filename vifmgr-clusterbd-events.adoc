@@ -15,7 +15,7 @@ summary: vifmgr.clusterbd events
 :imagesdir: ./media/
 
 [.lead]
-vifmgr.clusterbd events are presented when oNTAP detects that the cluster broadcast domain is partitioned; some local ports in the cluster broadcast domain do not have layer-2 connectivity to one another which is typically fixed by verifying system state and connectivity.
+vifmgr.clusterbd EMS events occur when ONTAP detects that the cluster broadcast domain is partitioned; some local ports in the cluster broadcast domain do not have layer-2 connectivity to one another.
 
 == vifmgr.clusterBD.Partition
 *Severity*::

@@ -15,7 +15,7 @@ summary: kmip2.cannot events
 :imagesdir: ./media/
 
 [.lead]
-kmip2.cannot events are presented when the KMIP2 client cannot import the MROOT-AK key from a Key Management Interoperability Protocol (KMIP) key server which may require a reboot.
+kmip2.cannot EMS events occur when ONTAP encounters issues associated with the KMIP2 client importing keys from Key Management Interoperability Protocol (KMIP) key servers.
 
 == kmip2.cannot.import.MROOTAK
 *Severity*::

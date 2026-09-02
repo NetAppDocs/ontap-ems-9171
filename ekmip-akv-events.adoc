@@ -15,7 +15,7 @@ summary: ekmip.akv events
 :imagesdir: ./media/
 
 [.lead]
-ekmip.akv events are presented when a configured Azure Key Vault (AKV) that was previously reported unavailable for key operations is now available which typically does not require corrective action.
+ekmip.akv EMS events occur when ONTAP encounters issues associated with Azure Key Vault (AKV) key operations.
 
 == ekmip.akv.available
 *Severity*::

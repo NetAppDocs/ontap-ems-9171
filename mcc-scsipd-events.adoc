@@ -15,7 +15,7 @@ summary: mcc.scsipd events
 :imagesdir: ./media/
 
 [.lead]
-mcc.scsipd events are presented when iSCSI session maintenance thread was signaled to reconnect and destroy SIM paths which typically does not require corrective action.
+mcc.scsipd EMS events occur when iSCSI session maintenance thread was signaled to reconnect and destroy SIM paths.
 
 == mcc.scsipd.iScsiSessionReconnectDestroySim
 *Severity*::

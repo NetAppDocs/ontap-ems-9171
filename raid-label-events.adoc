@@ -15,7 +15,7 @@ summary: raid.label events
 :imagesdir: ./media/
 
 [.lead]
-raid.label events are presented when a RAID label read I/O failure is detected which typically does not require corrective action.
+raid.label EMS events occur when ONTAP encounters issues associated with RAID label read and write operations.
 
 == raid.label.io.readError
 *Severity*::

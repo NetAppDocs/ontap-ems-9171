@@ -15,7 +15,7 @@ summary: fci.flash events
 :imagesdir: ./media/
 
 [.lead]
-fci.flash events are presented when there is a failure updating the Fibre Channel adapter flash preload table which may require reseating or replacing affected hardware.
+fci.flash EMS events occur when ONTAP encounters issues associated with Fibre Channel adapter flash preload table updates.
 
 == fci.flash.preload.failed
 *Severity*::

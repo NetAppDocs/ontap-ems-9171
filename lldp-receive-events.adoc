@@ -15,7 +15,7 @@ summary: lldp.receive events
 :imagesdir: ./media/
 
 [.lead]
-lldp.receive events are presented when the LLDP (Link Layer Discovery Protocol) daemon running on the storage controller receives more unique neighbor advertisements than it can cache which is typically fixed by following the documented corrective steps.
+lldp.receive EMS events occur when the LLDP (Link Layer Discovery Protocol) daemon running on the storage controller receives more unique neighbor advertisements than it can cache.
 
 == lldp.receive.maximum.entries
 *Severity*::

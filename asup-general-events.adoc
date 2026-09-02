@@ -15,7 +15,7 @@ summary: asup.general events
 :imagesdir: ./media/
 
 [.lead]
-asup.general events are presented when the system cannot generate an AutoSupport message from a callhome EMS event which typically does not require corrective action.
+asup.general EMS events occur when ONTAP encounters issues associated with AutoSupport message generation, queue management, and configuration.
 
 == asup.general.drop
 *Severity*::

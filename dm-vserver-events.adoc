@@ -15,7 +15,7 @@ summary: dm.vserver events
 :imagesdir: ./media/
 
 [.lead]
-dm.vserver events are presented when resynchronization of the Vserver configuration failed in a MetroCluster(tm) configuration which is typically fixed by following the documented corrective steps.
+dm.vserver EMS events occur when ONTAP encounters issues associated with Vserver configuration replication.
 
 == dm.vserver.mcc.rebaselinefailed
 *Severity*::

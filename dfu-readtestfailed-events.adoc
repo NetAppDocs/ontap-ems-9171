@@ -15,7 +15,7 @@ summary: dfu.readtestfailed events
 :imagesdir: ./media/
 
 [.lead]
-dfu.readtestfailed events are presented when a read of the disk fails after downloading firmware to a disk which is typically fixed by updating configuration.
+dfu.readtestfailed EMS events occur when ONTAP encounters issues associated with disk media access after firmware updates.
 
 == dfu.readTestFailed
 *Severity*::

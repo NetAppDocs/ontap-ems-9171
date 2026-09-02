@@ -15,7 +15,7 @@ summary: gpo.job events
 :imagesdir: ./media/
 
 [.lead]
-gpo.job events are presented when the Group Policy Object (GPO) Main Update job run fails which is typically fixed by verifying system state and updating configuration.
+gpo.job EMS events occur when ONTAP encounters issues associated with Group Policy Object (GPO) job execution.
 
 == gpo.job.mainUpdateFailed
 *Severity*::

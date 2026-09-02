@@ -15,7 +15,7 @@ summary: root.vol events
 :imagesdir: ./media/
 
 [.lead]
-root.vol events are presented when system creates a root volume automatically, after a cluster reboot occurred before root volume creation which is typically fixed by following the documented corrective steps.
+root.vol EMS events occur when ONTAP encounters issues associated with automatic root volume creation.
 
 == root.vol.cluster.autocreate
 *Severity*::

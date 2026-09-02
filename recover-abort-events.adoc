@@ -15,7 +15,7 @@ summary: recover.abort events
 :imagesdir: ./media/
 
 [.lead]
-recover.abort events are presented when restore has been aborted and currently ROOLR (Read Only On Line Replica) is running on the Filer, which typically does not require corrective action.
+recover.abort EMS events occur when ONTAP encounters issues associated with restore operations being aborted.
 
 == recover.abort.ROOLR
 *Severity*::

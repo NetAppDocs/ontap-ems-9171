@@ -15,7 +15,7 @@ summary: sp.network events
 :imagesdir: ./media/
 
 [.lead]
-sp.network events are presented when either a user or the system disables the network IPv6 option and the service processor (SP) is configured only with an IPv6 address which is typically fixed by following the documented corrective steps.
+sp.network EMS events occur when ONTAP encounters issues associated with Service Processor (SP) network configuration.
 
 == sp.network.ipv6.disable
 *Severity*::

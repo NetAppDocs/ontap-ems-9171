@@ -15,7 +15,7 @@ summary: netinet.ethr events
 :imagesdir: ./media/
 
 [.lead]
-netinet.ethr events are presented when a high arrival rate of address resolution protocol (ARP) frames has been detected (possible ARP storm) which is typically fixed by verifying system state and connectivity.
+netinet.ethr EMS events occur when ONTAP encounters issues associated with Ethernet address resolution and IP address conflicts.
 
 == netinet.ethr.arpstorm
 *Severity*::

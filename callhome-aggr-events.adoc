@@ -15,7 +15,7 @@ summary: callhome.aggr events
 :imagesdir: ./media/
 
 [.lead]
-callhome.aggr events are presented when after WAFL(R) Iron (wafliron) detects and repairs corruption in an aggregate metafile which is typically fixed by verifying system state and connectivity.
+callhome.aggr EMS events occur when ONTAP encounters issues associated with aggregate metafile corruption repairs and inconsistent aggregates being taken offline.
 
 == callhome.aggr.meta.repair
 *Severity*::

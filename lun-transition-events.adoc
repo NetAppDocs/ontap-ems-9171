@@ -15,7 +15,7 @@ summary: lun.transition events
 :imagesdir: ./media/
 
 [.lead]
-lun.transition events are presented when the transition of a 7-Mode LUN to clustered Data ONTAP(R) fails because the i2p database for the destination volume is not fully built which is typically fixed by following the documented corrective steps.
+lun.transition EMS events occur when ONTAP encounters issues associated with the transition of 7-Mode LUNs to clustered Data ONTAP(R).
 
 == LUN.transition.fail.no.i2p
 *Severity*::

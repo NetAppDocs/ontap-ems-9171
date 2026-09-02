@@ -15,7 +15,7 @@ summary: scsiblade.vol events
 :imagesdir: ./media/
 
 [.lead]
-scsiblade.vol events are presented when sAN initialization fails for the specified volume on this node which may require a reboot.
+scsiblade.vol EMS events occur when ONTAP encounters issues associated with SAN volume initialization.
 
 == scsiblade.vol.init.failed
 *Severity*::

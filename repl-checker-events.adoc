@@ -15,7 +15,7 @@ summary: repl.checker events
 :imagesdir: ./media/
 
 [.lead]
-repl.checker events are presented when a SnapMirror(R) check command detects a missing block on a SnapMirror(R) destination volume and the volume might be in an inconsistent state that should be fixed as soon as possible which is typically fixed by verifying system state and connectivity.
+repl.checker EMS events occur when a SnapMirror(R) check command detects a missing block on a SnapMirror(R) destination volume.
 
 == repl.checker.block.missing
 *Severity*::

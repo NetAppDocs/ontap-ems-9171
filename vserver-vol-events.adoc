@@ -15,7 +15,7 @@ summary: vserver.vol events
 :imagesdir: ./media/
 
 [.lead]
-vserver.vol events are presented when the size or the maximum autosize of a destination DP volume in a storage-limit enabled SVM is reduced, which is part of a SnapMirror relationship which typically does not require corrective action.
+vserver.vol EMS events occur when ONTAP encounters issues associated with destination DP volume size modifications in storage-limit enabled SVMs.
 
 == vserver.vol.max.size.reduced
 *Severity*::

@@ -15,7 +15,7 @@ summary: snapmirror.resync events
 :imagesdir: ./media/
 
 [.lead]
-snapmirror.resync events are presented when a flexible volume restored from a snapshot might not be able to relinquish free blocks to its containing aggregate which is typically fixed by verifying system state and updating configuration.
+snapmirror.resync EMS events occur when a flexible volume restored from a snapshot might not be able to relinquish free blocks to its containing aggregate.
 
 == snapmirror.resync.blkRclmtn
 *Severity*::

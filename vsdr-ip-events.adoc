@@ -15,7 +15,7 @@ summary: vsdr.ip events
 :imagesdir: ./media/
 
 [.lead]
-vsdr.ip events are presented when a logical interface (LIF) is automatically created through configuration replication in a MetroCluster(TM) configuration which typically does not require corrective action.
+vsdr.ip EMS events occur when ONTAP encounters issues associated with logical interface (LIF) automatic creation or placement in MetroCluster configurations.
 
 == vsdr.ip.lif.auto.created
 *Severity*::

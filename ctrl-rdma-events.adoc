@@ -15,7 +15,7 @@ summary: ctrl.rdma events
 :imagesdir: ./media/
 
 [.lead]
-ctrl.rdma events are presented when an invalid system ID is found which typically does not require corrective action.
+ctrl.rdma EMS events occur when ONTAP encounters issues associated with HA interconnect RDMA operations.
 
 == ctrl.rdma.badSystemId
 *Severity*::

@@ -15,7 +15,7 @@ summary: raid.multierr events
 :imagesdir: ./media/
 
 [.lead]
-raid.multierr events are presented when rAID encounters more errors than the RAID level protection affords, and RAID cannot recover the block which is typically fixed by verifying system state and connectivity.
+raid.multierr EMS events occur when ONTAP encounters issues associated with multiple RAID errors exceeding protection levels.
 
 == raid.multierr.bad.block
 *Severity*::

@@ -15,7 +15,7 @@ summary: mgmtgwd.volmove events
 :imagesdir: ./media/
 
 [.lead]
-mgmtgwd.volmove events are presented when a volume move operation does not take the optimized path to avoid read requests from a cloud-based tier which typically does not require corrective action.
+mgmtgwd.volmove EMS events occur when ONTAP encounters issues associated with volume move operations.
 
 == mgmtgwd.volmove.notoptimized
 *Severity*::

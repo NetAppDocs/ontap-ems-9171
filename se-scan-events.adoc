@@ -15,7 +15,7 @@ summary: se.scan events
 :imagesdir: ./media/
 
 [.lead]
-se.scan events are presented when the Single Instance Storage (SIS) scanner is attempting to recompress file-based compression (secondary compression or 8k/16K/32K adaptive compression) in a volume and there is insufficient space in the volume.In this case the recompress operation is halted to allow you to check and enable the autogrow/ autodelete setting on the volume if it is not already enabled which is typically fixed by following the documented corrective steps.
+se.scan EMS events occur when the Single Instance Storage (SIS) scanner is attempting to recompress file-based compression (secondary compression or 8k/16K/32K adaptive compression) in a volume and there is insufficient space in the volume.In this case the recompress operation is halted to allow you to check and enable the autogrow/ autodelete setting on the volume if it is not already enabled.
 
 == se.scan.filecg.stopped
 *Severity*::

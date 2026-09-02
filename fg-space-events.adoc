@@ -15,7 +15,7 @@ summary: fg.space events
 :imagesdir: ./media/
 
 [.lead]
-fg.space events are presented when conditions that led to previous "fg.space.member.nearlyFull" and "fg.space.member.full" events no longer apply which typically does not require corrective action.
+fg.space EMS events occur when ONTAP encounters issues associated with FlexGroup constituent volume space availability.
 
 == fg.space.member.allOK
 *Severity*::

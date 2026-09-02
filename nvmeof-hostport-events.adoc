@@ -15,7 +15,7 @@ summary: nvmeof.hostport events
 :imagesdir: ./media/
 
 [.lead]
-nvmeof.hostport events are presented when a node shelf is no longer cabled incorrectly from a port that is not a storage port which typically does not require corrective action.
+nvmeof.hostport EMS events occur when ONTAP encounters issues associated with host port connections to shelves.
 
 == nvmeof.hostport.clear
 *Severity*::

@@ -15,7 +15,7 @@ summary: ata.timeout events
 :imagesdir: ./media/
 
 [.lead]
-ata.timeout events are presented when an I/O request to the ATA driver times out which typically does not require corrective action.
+ata.timeout EMS events occur when ONTAP encounters issues associated with I/O requests to the ATA driver timing out.
 
 == ata.timeout.failed
 *Deprecated*::

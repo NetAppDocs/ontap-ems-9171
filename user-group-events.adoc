@@ -15,7 +15,7 @@ summary: user.group events
 :imagesdir: ./media/
 
 [.lead]
-user.group events are presented when the number of UNIX users or groups in the cluster reaches or exceeds system limits which is typically fixed by updating configuration.
+user.group EMS events occur when ONTAP encounters issues associated with UNIX user and group system limits.
 
 == user.group.limit.reached
 *Severity*::

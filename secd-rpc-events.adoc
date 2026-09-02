@@ -15,7 +15,7 @@ summary: secd.rpc events
 :imagesdir: ./media/
 
 [.lead]
-secd.rpc events are presented when a user with the same domain and same client IP address is blocked due to continuous authentication requests with an invalid login password which is typically fixed by verifying system state and updating configuration.
+secd.rpc EMS events occur when ONTAP encounters issues associated with Security Daemon (SecD) remote procedure call (RPC) processing.
 
 == secd.rpc.authRequest.blocked
 *Severity*::

@@ -15,7 +15,7 @@ summary: zapi.killed events
 :imagesdir: ./media/
 
 [.lead]
-zapi.killed events are presented when zAPI Socket Manager (ZSM) terminates and no longer offers a connection on which a client can deliver Zephyr API (ZAPI) requests which typically does not require corrective action.
+zapi.killed EMS events occur when ZAPI Socket Manager (ZSM) terminates and no longer offers a connection on which a client can deliver Zephyr API (ZAPI) requests.
 
 == zapi.killed
 *Severity*::

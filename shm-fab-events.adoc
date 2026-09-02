@@ -15,7 +15,7 @@ summary: shm.fab events
 :imagesdir: ./media/
 
 [.lead]
-shm.fab events are presented when an error is received while writing the failure bytes which typically does not require corrective action.
+shm.fab EMS events occur when ONTAP encounters issues associated with disk failure byte operations.
 
 == shm.fab.writeError
 *Severity*::

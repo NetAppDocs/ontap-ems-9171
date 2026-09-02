@@ -15,7 +15,7 @@ summary: dfu.init events
 :imagesdir: ./media/
 
 [.lead]
-dfu.init events are presented when the disk firmware update initialization routine cannot allocate memory which may require contacting NetApp support.
+dfu.init EMS events occur when the disk firmware update initialization routine cannot allocate memory.
 
 == dfu.init.noMemory
 *Severity*::

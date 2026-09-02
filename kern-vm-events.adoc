@@ -15,7 +15,7 @@ summary: kern.vm events
 :imagesdir: ./media/
 
 [.lead]
-kern.vm events are presented when an attempt to create a new mapping in the virtual address space of a process has failed which typically does not require corrective action.
+kern.vm EMS events occur when an attempt to create a new mapping in the virtual address space of a process has failed.
 
 == kern.vm.mmap.return
 *Severity*::

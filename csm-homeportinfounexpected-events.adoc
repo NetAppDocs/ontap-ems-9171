@@ -15,7 +15,7 @@ summary: csm.homeportinfounexpected events
 :imagesdir: ./media/
 
 [.lead]
-csm.homeportinfounexpected events are presented when the Cluster Session Manager (CSM) establishes a connection between nodes over the cluster network interface of a switchless cluster and detects that the logical interface's (LIF's) home port and the corresponding remote device information are not the expected values which is typically fixed by following the documented corrective steps.
+csm.homeportinfounexpected EMS events occur when the Cluster Session Manager (CSM) establishes a connection between nodes over the cluster network interface of a switchless cluster and detects that the logical interface's (LIF's) home port and the corresponding remote device information are not the expected values.
 
 == csm.homePortInfoUnexpected
 *Severity*::

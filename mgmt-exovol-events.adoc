@@ -15,7 +15,7 @@ summary: mgmt.exovol events
 :imagesdir: ./media/
 
 [.lead]
-mgmt.exovol events are presented when the replication engine fails to transfer exo-volume data which may require contacting NetApp support.
+mgmt.exovol EMS events occur when ONTAP encounters issues associated with exo-volume data replication transfers.
 
 == mgmt.exovol.transfer.failed
 *Severity*::

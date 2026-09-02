@@ -15,7 +15,7 @@ summary: snapmirror.status events
 :imagesdir: ./media/
 
 [.lead]
-snapmirror.status events are presented when ONTAP cannot update the latest base snapshot for the replication destination, which is typically fixed by verifying system state and connectivity.
+snapmirror.status EMS events occur when ONTAP encounters issues associated with SnapMirror(R) replication status.
 
 == snapmirror.status.dstUpdateSnapErr
 *Severity*::

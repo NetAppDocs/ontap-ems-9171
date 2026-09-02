@@ -15,7 +15,7 @@ summary: wafl.gran events
 :imagesdir: ./media/
 
 [.lead]
-wafl.gran events are presented when a SnapMirror transfer fails because a snapshot that contains multipart inodes is transferred to a destination volume that does not support advanced granular data which is typically fixed by following the documented corrective steps.
+wafl.gran EMS events occur when ONTAP encounters issues associated with advanced granular data support during SnapMirror transfers.
 
 == wafl.gran.data.adv.not.on
 *Severity*::

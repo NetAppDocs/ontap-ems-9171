@@ -15,7 +15,7 @@ summary: arl.veto events
 :imagesdir: ./media/
 
 [.lead]
-arl.veto events are presented when the coredump subsystem vetoes the use of storage failover (SFO) during takeover because a coredump save is in progress; cluster failover (CFO) will be used instead which typically does not require corrective action.
+arl.veto EMS events occur when ONTAP encounters issues associated with conditions that veto or prevent aggregate relocation operations.
 
 == arl.veto.coredump.saveinprog
 *Severity*::

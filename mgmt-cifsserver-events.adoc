@@ -15,7 +15,7 @@ summary: mgmt.cifsserver events
 :imagesdir: ./media/
 
 [.lead]
-mgmt.cifsserver events are presented when a CIFS server fails to be configured and, therefore, CIFS access might not be available which is typically fixed by verifying system state and connectivity.
+mgmt.cifsserver EMS events occur when ONTAP encounters issues associated with CIFS server configuration.
 
 == mgmt.cifsserver.failure
 *Severity*::

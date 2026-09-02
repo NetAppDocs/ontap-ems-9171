@@ -15,7 +15,7 @@ summary: san.nosamenamedfcport events
 :imagesdir: ./media/
 
 [.lead]
-san.nosamenamedfcport events are presented when, in MetroCluster(tm) configurations on clustered Data ONTAP(R) systems, Data ONTAP cannot find the same named port to place an FC/FC-NVMe logical interface (LIF) in the destination cluster, which is typically fixed by verifying system state and connectivity.
+san.nosamenamedfcport EMS events occur in MetroCluster(tm) configurations on clustered Data ONTAP(R) systems, when Data ONTAP cannot find the same named port to place an FC/FC-NVMe logical interface (LIF) in the destination cluster.
 
 == san.NoSameNamedFCport
 *Severity*::

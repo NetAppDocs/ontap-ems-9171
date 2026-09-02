@@ -15,7 +15,7 @@ summary: acp.locked events
 :imagesdir: ./media/
 
 [.lead]
-acp.locked events are presented when the link status of a locked wrench Ethernet port (on the back of the storage controller) changes from "up" to "down" which is typically fixed by verifying system state and connectivity.
+acp.locked EMS events occur when ONTAP encounters issues associated with the link status of the locked wrench Ethernet port on the back of the storage controller.
 
 == acp.locked.wrench.link.down
 *Severity*::

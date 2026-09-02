@@ -15,7 +15,7 @@ summary: secd.dc events
 :imagesdir: ./media/
 
 [.lead]
-secd.dc events are presented when the Windows Domain Controller (DC), while responding to an MSRPC request from Data ONTAP(R), returns an error indicating that it ran out of pipe instances in the listening state which is typically fixed by following the documented corrective steps.
+secd.dc EMS events occur when the Windows Domain Controller (DC), while responding to an MSRPC request from Data ONTAP(R), returns an error indicating that it ran out of pipe instances in the listening state.
 
 == secd.dc.out.of.pipe.instances
 *Severity*::

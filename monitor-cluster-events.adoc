@@ -15,7 +15,7 @@ summary: monitor.cluster events
 :imagesdir: ./media/
 
 [.lead]
-monitor.cluster events are presented when the cluster is full after consuming space beyond the threshold value which is typically fixed by following the documented corrective steps.
+monitor.cluster EMS events occur when ONTAP encounters issues associated with cluster space utilization.
 
 == monitor.cluster.full
 *Severity*::

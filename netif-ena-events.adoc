@@ -15,7 +15,7 @@ summary: netif.ena events
 :imagesdir: ./media/
 
 [.lead]
-netif.ena events are presented when the network throughput exceeds the bandwidth allowance for the node which typically does not require corrective action.
+netif.ena EMS events occur when ONTAP encounters issues associated with AWS Elastic Network Adapter (ENA) operations.
 
 == netif.ena.express.changed
 *Severity*::

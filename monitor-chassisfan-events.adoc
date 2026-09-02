@@ -15,7 +15,7 @@ summary: monitor.chassisfan events
 :imagesdir: ./media/
 
 [.lead]
-monitor.chassisfan events are presented when a chassis fan is degraded which may require reseating or replacing affected hardware.
+monitor.chassisfan EMS events occur when ONTAP encounters issues associated with chassis fan operation.
 
 == monitor.chassisFan.degraded
 *Severity*::

@@ -15,7 +15,7 @@ summary: vm.dev events
 :imagesdir: ./media/
 
 [.lead]
-vm.dev events are presented when data ONTAP(R) is running on a virtual platform, and slow I/O is detected which may require contacting NetApp support.
+vm.dev EMS events occur when ONTAP encounters issues associated with disk I/O performance or device write-protection on virtual platforms.
 
 == vm.dev.diskSlowIO
 *Severity*::

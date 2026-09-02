@@ -15,7 +15,7 @@ summary: raid.stripe events
 :imagesdir: ./media/
 
 [.lead]
-raid.stripe events are presented when we encounter a bad block buffer entry in NVRAM during stripe replay (indicating corrupted NVRAM), which may require reseating or replacing affected hardware.
+raid.stripe EMS events occur when ONTAP encounters issues associated with stripe replay from NVRAM.
 
 == raid.stripe.replay.bad.block
 *Severity*::

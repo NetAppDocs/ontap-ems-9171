@@ -15,7 +15,7 @@ summary: vldb.aggrupdate events
 :imagesdir: ./media/
 
 [.lead]
-vldb.aggrupdate events are presented when, in a MetroCluster(tm) configuration, the blade UUID (Universal Unique Identifier) is updated on the local cluster, but a failure prevents the aggregate ownership update from being replicated to the remote cluster, which may require contacting NetApp support.
+vldb.aggrupdate EMS events occur in a MetroCluster(tm) configuration, when the blade UUID (Universal Unique Identifier) is updated on the local cluster, but a failure prevents the aggregate ownership update from being replicated to the remote cluster.
 
 == vldb.aggrUpdate.noRepl
 *Severity*::

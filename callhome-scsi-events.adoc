@@ -15,7 +15,7 @@ summary: callhome.scsi events
 :imagesdir: ./media/
 
 [.lead]
-callhome.scsi events are presented when a LUN (Logical Unit Number) mapping or igroup type misconfiguration has been detected when the cluster interconnect has transitioned from down to up which may require contacting NetApp support.
+callhome.scsi EMS events occur when a LUN (Logical Unit Number) mapping or igroup type misconfiguration has been detected when the cluster interconnect has transitioned from down to up.
 
 == callhome.scsi.tgt.misconfig
 *Severity*::

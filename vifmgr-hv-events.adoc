@@ -15,7 +15,7 @@ summary: vifmgr.hv events
 :imagesdir: ./media/
 
 [.lead]
-vifmgr.hv events are presented when no Hypervisor host configuration is available which is typically fixed by verifying system state and connectivity.
+vifmgr.hv EMS events occur when ONTAP encounters issues associated with Hypervisor host configuration or SNMP configuration required for monitoring hypervisor uplinks.
 
 == vifmgr.hv.nohostconfig
 *Severity*::

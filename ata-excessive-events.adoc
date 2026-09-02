@@ -15,7 +15,7 @@ summary: ata.excessive events
 :imagesdir: ./media/
 
 [.lead]
-ata.excessive events are presented when an I/O request to the ATA driver in ONTAP(R) Select takes longer than five seconds which is typically fixed by verifying system state and connectivity.
+ata.excessive EMS events occur when an I/O request to the ATA driver in ONTAP(R) Select takes longer than five seconds.
 
 == ata.excessive.latency
 *Severity*::

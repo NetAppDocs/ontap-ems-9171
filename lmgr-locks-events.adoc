@@ -15,7 +15,7 @@ summary: lmgr.locks events
 :imagesdir: ./media/
 
 [.lead]
-lmgr.locks events are presented when a lock manager lock object cannot be allocated due to reaching the limit for lock objects in the associated pool which is typically fixed by verifying system state and connectivity.
+lmgr.locks EMS events occur when ONTAP encounters issues associated with lock manager lock object allocation limits.
 
 == lmgr.locks.limit.hit
 *Severity*::

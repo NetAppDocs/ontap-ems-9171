@@ -15,7 +15,7 @@ summary: wafl.readdir events
 :imagesdir: ./media/
 
 [.lead]
-wafl.readdir events are presented when a READDIR file operation has exceeded the timeout that it is allowed to run in WAFL which is typically fixed by verifying system state and connectivity.
+wafl.readdir EMS events occur when ONTAP encounters issues associated with READDIR file operations.
 
 == wafl.readdir.expired
 *Severity*::

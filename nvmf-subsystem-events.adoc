@@ -15,7 +15,7 @@ summary: nvmf.subsystem events
 :imagesdir: ./media/
 
 [.lead]
-nvmf.subsystem events are presented when a NVMe-oF target subsystem is hidden due to a SnapMirror(R) Active Synchronous relationship going out of sync which may require contacting NetApp support.
+nvmf.subsystem EMS events occur when ONTAP encounters issues associated with NVMe-oF target subsystems and SnapMirror(R) Active Synchronous relationships.
 
 == nvmf.subsystem.hidden
 *Severity*::

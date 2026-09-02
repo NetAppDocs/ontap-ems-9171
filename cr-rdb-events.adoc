@@ -15,7 +15,7 @@ summary: cr.rdb events
 :imagesdir: ./media/
 
 [.lead]
-cr.rdb events are presented when the RDB (replicated database) cannot be updated with the inode counters for a particular scan which typically does not require corrective action.
+cr.rdb EMS events occur when ONTAP encounters issues associated with updating the replicated database with volume check scan information.
 
 == CR.RDB.Counters.Not.Updated
 *Deprecated*::

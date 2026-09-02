@@ -15,7 +15,7 @@ summary: clam.node events
 :imagesdir: ./media/
 
 [.lead]
-clam.node events are presented when the local Connectivity, Liveliness and Availability Monitor (CLAM) concludes that the local node is now disabled which is typically fixed by following the documented corrective steps.
+clam.node EMS events occur when ONTAP encounters issues associated with Connectivity, Liveliness, Availability Monitor (CLAM) node state.
 
 == clam.node.disabled
 *Severity*::

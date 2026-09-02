@@ -15,7 +15,7 @@ summary: csm.badauthaccess events
 :imagesdir: ./media/
 
 [.lead]
-csm.badauthaccess events are presented when a blade fails an attempt to authenticate as a given peer cluster, and Cluster Session Manager (CSM), which establishes and manages SpinNP sessions between blades in the cluster, denies access of the unauthenticated blade which typically does not require corrective action.
+csm.badauthaccess EMS events occur when a blade fails an attempt to authenticate as a given peer cluster, and Cluster Session Manager (CSM), which establishes and manages SpinNP sessions between blades in the cluster, denies access of the unauthenticated blade.
 
 == csm.badAuthAccess
 *Severity*::

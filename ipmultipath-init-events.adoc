@@ -15,7 +15,7 @@ summary: ipmultipath.init events
 :imagesdir: ./media/
 
 [.lead]
-ipmultipath.init events are presented when an INIT packet with an unknown checksum type is received during IP Multipath session initialization, which is typically fixed by following the documented corrective steps.
+ipmultipath.init EMS events occur when ONTAP encounters issues associated with IP Multipath session initialization.
 
 == ipmultipath.init.badChksumType
 *Severity*::

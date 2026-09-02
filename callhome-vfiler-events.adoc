@@ -15,7 +15,7 @@ summary: callhome.vfiler events
 :imagesdir: ./media/
 
 [.lead]
-callhome.vfiler events are presented when the 120 second time limit has been reached on the destination controller during the final phase of migrating a vfiler, which is typically fixed by verifying system state and connectivity.
+callhome.vfiler EMS events occur when ONTAP encounters issues associated with vfiler migration operations.
 
 == callhome.vfiler.move.to.dst
 *Severity*::

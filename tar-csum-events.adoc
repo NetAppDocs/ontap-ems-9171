@@ -15,7 +15,7 @@ summary: tar.csum events
 :imagesdir: ./media/
 
 [.lead]
-tar.csum events are presented when the system accesses a TAR archive and compares the calculated checksum of this archive to a stored checksum, but the checksum calculation does not succeed which typically does not require corrective action.
+tar.csum EMS events occur when ONTAP encounters issues associated with TAR archive checksum operations.
 
 == tar.csum.csumUnsuccessful
 *Severity*::

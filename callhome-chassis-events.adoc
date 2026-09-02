@@ -15,7 +15,7 @@ summary: callhome.chassis events
 :imagesdir: ./media/
 
 [.lead]
-callhome.chassis events are presented when the chassis temperature is too warm and might cause an environmental problem, or when there is faulty hardware in the system, such as a fan failure or a malfunctioning temperature sensor which may require reseating or replacing affected hardware.
+callhome.chassis EMS events occur when ONTAP encounters issues associated with chassis temperature, power supply units, or environmental conditions.
 
 == callhome.chassis.hitemp
 *Severity*::

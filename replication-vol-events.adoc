@@ -15,7 +15,7 @@ summary: replication.vol events
 :imagesdir: ./media/
 
 [.lead]
-replication.vol events are presented when snapMirror(R) or VolCopy replication encounters a disk error in the active map delta blocks on the destination and cannot continue replication which is typically fixed by updating configuration.
+replication.vol EMS events occur when ONTAP encounters issues associated with volume replication and disk errors.
 
 == replication.vol.activemapdelta.err
 *Severity*::

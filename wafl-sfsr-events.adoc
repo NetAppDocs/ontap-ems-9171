@@ -15,7 +15,7 @@ summary: wafl.sfsr events
 :imagesdir: ./media/
 
 [.lead]
-wafl.sfsr events are presented when the system is forced to abort a file restore, which typically does not require corrective action.
+wafl.sfsr EMS events occur when ONTAP encounters issues associated with single-file SnapRestore operations.
 
 == wafl.sfsr.abort.ino
 *Severity*::

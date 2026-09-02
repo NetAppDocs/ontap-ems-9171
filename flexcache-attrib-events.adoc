@@ -15,7 +15,7 @@ summary: flexcache.attrib events
 :imagesdir: ./media/
 
 [.lead]
-flexcache.attrib events are presented when syncing properties between an origin of a FlexCache volume and its FlexCache volume fails, and due to which FlexCache volume may not be able to proceed with accurate data which is typically fixed by following the documented corrective steps.
+flexcache.attrib EMS events occur when ONTAP encounters issues associated with FlexCache volume property synchronization.
 
 == flexcache.attrib.sync.failed
 *Severity*::

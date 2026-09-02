@@ -15,7 +15,7 @@ summary: raid.data events
 :imagesdir: ./media/
 
 [.lead]
-raid.data events are presented when a WAFL(R) generated read detects a stale block due to a lost write which typically does not require corrective action.
+raid.data EMS events occur when ONTAP encounters issues associated with stale block detection and lost write errors.
 
 == raid.data.lw.blkErr
 *Severity*::

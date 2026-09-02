@@ -15,7 +15,7 @@ summary: encryption.op events
 :imagesdir: ./media/
 
 [.lead]
-encryption.op events are presented when a rekey or conversion to encryption operation is completed on a volume which typically does not require corrective action.
+encryption.op EMS events occur when ONTAP encounters issues associated with volume encryption and rekey operations.
 
 == encryption.op.completed
 *Severity*::

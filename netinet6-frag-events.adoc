@@ -15,7 +15,7 @@ summary: netinet6.frag events
 :imagesdir: ./media/
 
 [.lead]
-netinet6.frag events are presented when the incoming fragment overlaps some of the existing previous fragment in the reassembly queue which typically does not require corrective action.
+netinet6.frag EMS events occur when the incoming fragment overlaps some of the existing previous fragment in the reassembly queue.
 
 == netinet6.frag.bytes.overlap
 *Severity*::

@@ -15,7 +15,7 @@ summary: disk.timeout events
 :imagesdir: ./media/
 
 [.lead]
-disk.timeout events are presented when the disk driver stops flushing aggressive timeout I/Os which typically does not require corrective action.
+disk.timeout EMS events occur when ONTAP encounters issues associated with disk I/O timeouts.
 
 == disk.timeout.flush.end
 *Severity*::

@@ -15,7 +15,7 @@ summary: wafl.cfvm events
 :imagesdir: ./media/
 
 [.lead]
-wafl.cfvm events are presented when a copy free volume move operation is not able to perform successful cutover because the destination volume is not recoverable which may require contacting NetApp support.
+wafl.cfvm EMS events occur when a copy free volume move operation is not able to perform successful cutover because the destination volume is not recoverable.
 
 == wafl.cfvm.cutover.unrecoverable.vol
 *Severity*::

@@ -15,7 +15,7 @@ summary: sasmon.disable events
 :imagesdir: ./media/
 
 [.lead]
-sasmon.disable events are presented when the Data ONTAP(R) module responsible for monitoring Serial Attached SCSI (SAS) domain's transient errors is disabled due to the environment variable disable-sasmon? being set to "true" which is typically fixed by updating configuration.
+sasmon.disable EMS events occur when the Data ONTAP(R) module responsible for monitoring Serial Attached SCSI (SAS) domain's transient errors is disabled due to the environment variable disable-sasmon.
 
 == sasmon.disable.module
 *Severity*::

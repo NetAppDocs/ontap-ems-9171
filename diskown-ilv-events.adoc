@@ -15,7 +15,7 @@ summary: diskown.ilv events
 :imagesdir: ./media/
 
 [.lead]
-diskown.ilv events are presented when the controller cannot automatically assign drives to a shelf using interleaved-half-shelf-based drive assignment, either because the shelf is offline, or is temporarily unavailable and therefore cannot be queried for the information required to properly divide the drives for assignment to the controller which is typically fixed by verifying system state and connectivity.
+diskown.ilv EMS events occur when ONTAP encounters issues associated with interleaved-half-shelf based drive assignment.
 
 == diskown.ilv.hShlf.invShlf
 *Severity*::

@@ -15,7 +15,7 @@ summary: backup.abort events
 :imagesdir: ./media/
 
 [.lead]
-backup.abort events are presented when backup event like dump has been aborted and currently ROOLR (Read Only On Line Replica) is running on the Filer, which typically does not require corrective action.
+backup.abort EMS events occur when ONTAP encounters issues associated with backup operations being aborted during ROOLR or VERITAS NBU STSP Protocol operations.
 
 == backup.abort.ROOLR
 *Severity*::

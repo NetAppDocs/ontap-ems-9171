@@ -15,7 +15,7 @@ summary: monitor.raid events
 :imagesdir: ./media/
 
 [.lead]
-monitor.raid events are presented when the monitor detects a broken disk which may require reseating or replacing affected hardware.
+monitor.raid EMS events occur when ONTAP encounters issues associated with RAID disk failures and reconstruction.
 
 == monitor.raid.brokenDisk
 *Severity*::

@@ -15,7 +15,7 @@ summary: vserver.name events
 :imagesdir: ./media/
 
 [.lead]
-vserver.name events are presented when use of the "vserver rename" command creates a Vserver name conflict in the local cluster, and the local cluster resolves the name conflict by incorporating the Vserver Unique Identifier (UID) into the name which is typically fixed by following the documented corrective steps.
+vserver.name EMS events occur when ONTAP encounters issues associated with Vserver name conflicts during rename operations.
 
 == vserver.name.conflict.local
 *Severity*::

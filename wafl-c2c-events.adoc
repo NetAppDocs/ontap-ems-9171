@@ -15,7 +15,7 @@ summary: wafl.c2c events
 :imagesdir: ./media/
 
 [.lead]
-wafl.c2c events are presented when attempt to increase volume max size limit during c2c restore fails due to an error which typically does not require corrective action.
+wafl.c2c EMS events occur when ONTAP encounters issues associated with cloud-to-cloud restore operations from object storage.
 
 == wafl.c2c.increase.vol.max.size.failed
 *Severity*::

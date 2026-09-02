@@ -15,7 +15,7 @@ summary: scsi.scan events
 :imagesdir: ./media/
 
 [.lead]
-scsi.scan events are presented when the creation of the SCSI transport (xpt) path fails which is typically fixed by verifying system state and connectivity.
+scsi.scan EMS events occur when ONTAP encounters issues associated with SCSI transport (xpt) path creation.
 
 == scsi.scan.bus.halted
 *Severity*::

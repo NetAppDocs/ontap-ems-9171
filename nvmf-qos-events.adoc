@@ -15,7 +15,7 @@ summary: nvmf.qos events
 :imagesdir: ./media/
 
 [.lead]
-nvmf.qos events are presented when an NVMe over Fabrics (NVMe-oF) target subsystem contains namespaces that have different quality of service (QoS) policies which might affect the I/O of the namespaces with higher QoS policies which is typically fixed by verifying system state and connectivity.
+nvmf.qos EMS events occur when ONTAP encounters issues associated with NVMe over Fabrics (NVMe-oF) quality of service (QoS) policies.
 
 == nvmf.qos.mismatch.policy.r2
 *Severity*::

@@ -15,7 +15,7 @@ summary: raid.read events
 :imagesdir: ./media/
 
 [.lead]
-raid.read events are presented when the system detects a checksum block media error in an advanced zoned checksums(AZCS) RAID group during a read operation which typically does not require corrective action.
+raid.read EMS events occur when ONTAP encounters issues associated with disk read operations.
 
 == raid.read.cksum.blk.err
 *Deprecated*::

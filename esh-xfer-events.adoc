@@ -15,7 +15,7 @@ summary: esh.xfer events
 :imagesdir: ./media/
 
 [.lead]
-esh.xfer events are presented when an element is unreachable during an I/O request which is typically fixed by verifying system state and connectivity.
+esh.xfer EMS events occur when ONTAP encounters issues associated with embedded switched hub (ESH) I/O operations.
 
 == esh.xfer.element.fault
 *Severity*::

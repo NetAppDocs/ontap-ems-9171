@@ -15,7 +15,7 @@ summary: wackiron.past events
 :imagesdir: ./media/
 
 [.lead]
-wackiron.past events are presented when the number of hours since wafliron was last run on the specified volume is past its limit which is typically fixed by following the documented corrective steps.
+wackiron.past EMS events occur when ONTAP encounters issues associated with wafliron operation time limits exceeding their maximum threshold.
 
 == wackiron.past.hour.limit
 *Severity*::

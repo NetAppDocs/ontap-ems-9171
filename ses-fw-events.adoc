@@ -15,7 +15,7 @@ summary: ses.fw events
 :imagesdir: ./media/
 
 [.lead]
-ses.fw events are presented when a firmware file is found to be empty during a disk shelf firmware update which is typically fixed by following the documented corrective steps.
+ses.fw EMS events occur when ONTAP encounters issues associated with disk shelf firmware files.
 
 == ses.fw.emptyFile
 *Severity*::

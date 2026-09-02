@@ -15,7 +15,7 @@ summary: pubsub.kernel events
 :imagesdir: ./media/
 
 [.lead]
-pubsub.kernel events are presented when will not be published as flow control is enabled on kernel pubsub which is typically fixed by verifying system state and connectivity.
+pubsub.kernel EMS events occur when ONTAP encounters issues associated with kernel publish-subscribe (pubsub) operations.
 
 == pubsub.kernel.flow.control.enabled
 *Deprecated*::

@@ -15,7 +15,7 @@ summary: azurearc.agent events
 :imagesdir: ./media/
 
 [.lead]
-azurearc.agent events are presented when the Microsoft Connected Machine Agent failed to connect to Azure Arc which may require contacting NetApp support.
+azurearc.agent EMS events occur when ONTAP encounters issues associated with the Microsoft Connected Machine Agent connection to Azure Arc.
 
 == azurearc.agent.connection.failed
 *Severity*::

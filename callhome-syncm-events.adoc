@@ -15,7 +15,7 @@ summary: callhome.syncm events
 :imagesdir: ./media/
 
 [.lead]
-callhome.syncm events are presented when both plexes of a SyncMirror(R) configuration have disk drives in the same hardware-based disk pool; that is, the plexes are not hardware-fault isolated which may require contacting NetApp support.
+callhome.syncm EMS events occur when ONTAP encounters issues associated with SyncMirror(R) configurations.
 
 == callhome.syncm.isolation
 *Severity*::

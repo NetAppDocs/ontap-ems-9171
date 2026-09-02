@@ -15,7 +15,7 @@ summary: s3.schedsnap events
 :imagesdir: ./media/
 
 [.lead]
-s3.schedsnap events are presented when the system fails to create a scheduled S3 bucket snapshot for the given S3 bucket which may require contacting NetApp support.
+s3.schedsnap EMS events occur when ONTAP encounters issues associated with scheduled S3 bucket snapshot creation.
 
 == s3.schedSnap.create.fail
 *Severity*::

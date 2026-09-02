@@ -15,7 +15,7 @@ summary: nse.authlockout events
 :imagesdir: ./media/
 
 [.lead]
-nse.authlockout events are presented when a NetApp(R) Storage Encryption (NSE) self-encrypting drive (SED) reports excessive sequential failed authentication attempts with an incorrect Authentication Key (AK) on the indicated SED authority which is typically fixed by verifying system state and connectivity.
+nse.authlockout EMS events occur when a NetApp(R) Storage Encryption (NSE) self-encrypting drive (SED) reports excessive sequential failed authentication attempts with an incorrect Authentication Key (AK) on the indicated SED authority.
 
 == nse.authLockOut
 *Severity*::

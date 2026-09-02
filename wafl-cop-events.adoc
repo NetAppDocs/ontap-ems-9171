@@ -15,7 +15,7 @@ summary: wafl.cop events
 :imagesdir: ./media/
 
 [.lead]
-wafl.cop events are presented when the system is out of the flow control mode which was earlier initiated as a high number of volumes were receiving modify operations concurrently beyond a certain threshold which typically does not require corrective action.
+wafl.cop EMS events occur when ONTAP encounters issues associated with high concurrency operations and flow control on volumes.
 
 == wafl.cop.flowcontrol.end
 *Severity*::

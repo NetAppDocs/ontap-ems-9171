@@ -15,7 +15,7 @@ summary: arl.aggrdesttimeout events
 :imagesdir: ./media/
 
 [.lead]
-arl.aggrdesttimeout events are presented when the source node does not receive notification from the destination node, within the specified time, that the aggregate is online during an aggregate relocation operation, which is typically fixed by verifying system state and connectivity.
+arl.aggrdesttimeout EMS events occur during an aggregate relocation operation, when the source node does not receive notification from the destination node, within the specified time, that the aggregate is online.
 
 == arl.aggrDestTimeout
 *Severity*::

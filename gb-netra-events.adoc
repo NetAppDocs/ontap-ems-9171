@@ -15,7 +15,7 @@ summary: gb.netra events
 :imagesdir: ./media/
 
 [.lead]
-gb.netra events are presented when the destination node cannot reach the object stores during the migration of an aggregate as a part of storage failover (SFO) giveback, which may require a reboot.
+gb.netra EMS events occur when ONTAP encounters issues associated with storage failover (SFO) giveback object store connectivity.
 
 == gb.netra.ca.check.failed
 *Severity*::

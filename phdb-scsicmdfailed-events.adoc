@@ -15,7 +15,7 @@ summary: phdb.scsicmdfailed events
 :imagesdir: ./media/
 
 [.lead]
-phdb.scsicmdfailed events are presented when cloud Volume ONTAP (CVO) fails to communicate with the cloud database to execute an SCSI command which is typically fixed by following the documented corrective steps.
+phdb.scsicmdfailed EMS events occur when Cloud Volume ONTAP (CVO) fails to communicate with the cloud database to execute an SCSI command.
 
 == phdb.scsiCmdFailed
 *Severity*::

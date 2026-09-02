@@ -15,7 +15,7 @@ summary: mgmt.cifssuperuser events
 :imagesdir: ./media/
 
 [.lead]
-mgmt.cifssuperuser events are presented when configuration of a CIFS super-user fails; CIFS access through this account may not grant full super-user privileges which is typically fixed by verifying system state and connectivity.
+mgmt.cifssuperuser EMS events occur when ONTAP encounters issues associated with CIFS super-user configuration.
 
 == mgmt.cifssuperuser.failure
 *Severity*::

@@ -15,7 +15,7 @@ summary: wafl.failed events
 :imagesdir: ./media/
 
 [.lead]
-wafl.failed events are presented when the ONTAP(R) kernel cannot mount a volume because of file system inconsistency which may require contacting NetApp support.
+wafl.failed EMS events occur when ONTAP encounters issues associated with volume mounting and online operations.
 
 == wafl.failed.mount
 *Severity*::

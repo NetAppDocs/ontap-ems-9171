@@ -15,7 +15,7 @@ summary: sp.upd events
 :imagesdir: ./media/
 
 [.lead]
-sp.upd events are presented when the Service Processor (SP) daemon cannot extract the SP firmware version from the metadata file which may require contacting NetApp support.
+sp.upd EMS events occur when ONTAP encounters issues associated with Service Processor (SP) firmware update operations.
 
 == sp.upd.bad.fw.package
 *Severity*::

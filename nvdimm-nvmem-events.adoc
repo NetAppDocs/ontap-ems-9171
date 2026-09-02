@@ -15,7 +15,7 @@ summary: nvdimm.nvmem events
 :imagesdir: ./media/
 
 [.lead]
-nvdimm.nvmem events are presented when nVDIMM-based NVMEM checks fail which is typically fixed by verifying system state and connectivity.
+nvdimm.nvmem EMS events occur when ONTAP encounters issues associated with NVDIMM-based NVMEM subsystem operations and checks.
 
 == nvdimm.nvmem.checkfail
 *Severity*::

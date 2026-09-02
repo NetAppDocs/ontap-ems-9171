@@ -15,7 +15,7 @@ summary: aggr.resize events
 :imagesdir: ./media/
 
 [.lead]
-aggr.resize events are presented when a request to resize an aggregate is sent to the REST server as part of the storage thin provisioning feature in Quark which typically does not require corrective action.
+aggr.resize EMS events occur when ONTAP encounters issues associated with aggregate resize requests sent to the REST server as part of storage thin provisioning.
 
 == aggr.resize.request.sent
 *Severity*::

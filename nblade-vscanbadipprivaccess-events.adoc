@@ -15,7 +15,7 @@ summary: nblade.vscanbadipprivaccess events
 :imagesdir: ./media/
 
 [.lead]
-nblade.vscanbadipprivaccess events are presented when the IP address of that client is not found in the list of allowed IP addresses during a client attempt to connect to the privileged ONTAP_ADMIN$ share, which is typically fixed by verifying system state and connectivity.
+nblade.vscanbadipprivaccess EMS events occur during a client attempt to connect to the privileged ONTAP_ADMIN$ share, when the IP address of that client is not found in the list of allowed IP addresses.
 
 == Nblade.vscanBadIPPrivAccess
 *Severity*::

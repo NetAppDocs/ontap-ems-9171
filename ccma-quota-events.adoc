@@ -15,7 +15,7 @@ summary: ccma.quota events
 :imagesdir: ./media/
 
 [.lead]
-ccma.quota events are presented when a datastore has been orphaned due to the system not having sufficient memory to keep track of it in the quota system which may require restarting affected services or nodes.
+ccma.quota EMS events occur when ONTAP encounters issues associated with quota system memory and performance archive data collection.
 
 == ccma.quota.datastore.leak
 *Severity*::

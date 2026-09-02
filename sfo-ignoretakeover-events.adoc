@@ -15,7 +15,7 @@ summary: sfo.ignoretakeover events
 :imagesdir: ./media/
 
 [.lead]
-sfo.ignoretakeover events are presented when the environment indicating that mailbox takeover state should be rewritten could not be removed which is typically fixed by following the documented corrective steps.
+sfo.ignoretakeover EMS events occur when ONTAP encounters issues associated with storage failover mailbox takeover state management.
 
 == sfo.ignoretakeover.envVarClearFailed
 *Severity*::

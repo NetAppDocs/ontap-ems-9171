@@ -15,7 +15,7 @@ summary: cluster.repl events
 :imagesdir: ./media/
 
 [.lead]
-cluster.repl events are presented when the cluster replication heartbeat to a peer cluster cannot reach the local management gateway process for a minimum of 300 seconds which typically does not require corrective action.
+cluster.repl EMS events occur when ONTAP encounters issues associated with cluster replication heartbeat operations.
 
 == cluster.repl.localNW.unreachable
 *Severity*::

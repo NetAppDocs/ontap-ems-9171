@@ -15,7 +15,7 @@ summary: raid.flexvol events
 :imagesdir: ./media/
 
 [.lead]
-raid.flexvol events are presented when a configuration operation on an aggregate (for example, adding disks, relocating aggregate disks, etc.), fails to get exclusive lock access because of one or more indirect conflict volume locks held by child volumes within the aggregate which is typically fixed by following the documented corrective steps.
+raid.flexvol EMS events occur when a configuration operation on an aggregate (for example, adding disks, relocating aggregate disks, etc.), fails to get exclusive lock access because of one or more indirect conflict volume locks held by child volumes within the aggregate.
 
 == raid.flexvol.lock.conflict
 *Severity*::

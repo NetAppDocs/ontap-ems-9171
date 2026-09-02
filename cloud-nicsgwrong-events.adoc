@@ -15,7 +15,7 @@ summary: cloud.nicsgwrong events
 :imagesdir: ./media/
 
 [.lead]
-cloud.nicsgwrong events are presented when the network interface card(NIC) port e0d doesn't have the correct security group to talk to the cloud database endpoint which is typically fixed by verifying system state and connectivity.
+cloud.nicsgwrong EMS events occur when the network interface card(NIC) port e0d doesn't have the correct security group to talk to the cloud database endpoint.
 
 == cloud.NicSGWrong
 *Severity*::

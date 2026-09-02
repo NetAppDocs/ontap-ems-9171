@@ -15,7 +15,7 @@ summary: wafl.rclone events
 :imagesdir: ./media/
 
 [.lead]
-wafl.rclone events are presented when the remote clone's cached copy is evicted during cleanup or delete operations which typically does not require corrective action.
+wafl.rclone EMS events occur when the remote clone's cached copy is evicted during cleanup or delete operations.
 
 == wafl.rclone.cache.copy.evict
 *Severity*::

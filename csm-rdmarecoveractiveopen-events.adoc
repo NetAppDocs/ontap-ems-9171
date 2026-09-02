@@ -15,7 +15,7 @@ summary: csm.rdmarecoveractiveopen events
 :imagesdir: ./media/
 
 [.lead]
-csm.rdmarecoveractiveopen events are presented when the Cluster Session Manager (CSM) attempts to restore the use of the preferred remote direct memory access (RDMA) transport for the eligible sessions because the condition which triggered the CSM to use CT (TCP transport) as default might have resolved which typically does not require corrective action.
+csm.rdmarecoveractiveopen EMS events occur when the Cluster Session Manager (CSM) attempts to restore the use of the preferred remote direct memory access (RDMA) transport for the eligible sessions because the condition which triggered the CSM to use CT (TCP transport) as default might have resolved.
 
 == csm.rdmaRecoverActiveOpen
 *Severity*::

@@ -15,7 +15,7 @@ summary: ha.netra events
 :imagesdir: ./media/
 
 [.lead]
-ha.netra events are presented when the destination node either cannot determine whether at least one disk in the aggregate is a disk partition, or the associated container disk is not visible to the destination node during an aggregate migration, which is typically fixed by verifying system state and updating configuration.
+ha.netra EMS events occur during an aggregate migration, when the destination node either cannot determine whether at least one disk in the aggregate is a disk partition, or the associated container disk is not visible to the destination node.
 
 == ha.netra.dskChkNoContDsk
 *Severity*::

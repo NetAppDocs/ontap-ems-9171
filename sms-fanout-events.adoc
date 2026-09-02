@@ -15,7 +15,7 @@ summary: sms.fanout events
 :imagesdir: ./media/
 
 [.lead]
-sms.fanout events are presented when an older snapshot is deleted as part of a SnapMirror(R) Synchronous resynchronize or update (common snapshot) operation, which could lead to a "no common snapshot scenario" between the synchronous and asynchronous disaster recovery (DR) copies that share the same source volume which is typically fixed by updating configuration.
+sms.fanout EMS events occur when an older snapshot is deleted as part of a SnapMirror(R) Synchronous resynchronize or update (common snapshot) operation, which could lead to a "no common snapshot scenario" between the synchronous and asynchronous disaster recovery (DR) copies that share the same source volume.
 
 == sms.fanout.comm.snap.deleted
 *Severity*::

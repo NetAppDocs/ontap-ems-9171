@@ -15,7 +15,7 @@ summary: adt.stgvol events
 :imagesdir: ./media/
 
 [.lead]
-adt.stgvol events are presented when retrieving staging volume information fails which is typically fixed by verifying system state and connectivity.
+adt.stgvol EMS events occur when ONTAP encounters issues associated with retrieving or accessing staging volume information for the audit subsystem.
 
 == adt.stgvol.info.notavailable
 *Severity*::

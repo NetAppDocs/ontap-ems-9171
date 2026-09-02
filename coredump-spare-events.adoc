@@ -15,7 +15,7 @@ summary: coredump.spare events
 :imagesdir: ./media/
 
 [.lead]
-coredump.spare events are presented when coredump attempts to terminate any sparecore dump that might be in progress on the partner which typically does not require corrective action.
+coredump.spare EMS events occur when ONTAP encounters issues associated with sparecore dump operations.
 
 == coredump.spare.abort
 *Severity*::

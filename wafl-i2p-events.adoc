@@ -15,7 +15,7 @@ summary: wafl.i2p events
 :imagesdir: ./media/
 
 [.lead]
-wafl.i2p events are presented when the ONTAP(R) kernel detects that an i2p metafile on one of the snapshot has more entries than necessary for an inode which typically does not require corrective action.
+wafl.i2p EMS events occur when ONTAP encounters issues associated with the inode-to-parent (i2p) metafile.
 
 == wafl.i2p.entries.mismatch
 *Severity*::

@@ -15,7 +15,7 @@ summary: san.slmsupportcheckfailed events
 :imagesdir: ./media/
 
 [.lead]
-san.slmsupportcheckfailed events are presented when SAN capability is enabled, the cluster has more than 8 nodes and lun.reporting.nodes options is disabled during reboot, which is typically fixed by updating configuration.
+san.slmsupportcheckfailed EMS events occur during reboot when SAN capability is enabled, the cluster has more than 8 nodes and lun.reporting.nodes options is disabled.
 
 == san.slmSupportCheckFailed
 *Severity*::

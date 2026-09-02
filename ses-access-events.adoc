@@ -15,7 +15,7 @@ summary: ses.access events
 :imagesdir: ./media/
 
 [.lead]
-ses.access events are presented when enclosure Services in the storage system cannot establish contact with the enclosure monitoring process in any disk shelf on the channel which may require a reboot.
+ses.access EMS events occur when ONTAP encounters issues associated with Enclosure Services communications with disk shelves.
 
 == ses.access.noEnclServ
 *Severity*::

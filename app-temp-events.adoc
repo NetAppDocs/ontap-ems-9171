@@ -15,7 +15,7 @@ summary: app.temp events
 :imagesdir: ./media/
 
 [.lead]
-app.temp events are presented when a S3 Bucket cannot be deleted as a part of an application destroy operation which is typically fixed by following the documented corrective steps.
+app.temp EMS events occur when ONTAP encounters issues associated with application destroy operations.
 
 == app.temp.delete.s3bucket.fail
 *Severity*::

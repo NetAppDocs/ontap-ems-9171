@@ -15,7 +15,7 @@ summary: vserver.vsdr events
 :imagesdir: ./media/
 
 [.lead]
-vserver.vsdr events are presented when, in Async Vserver-DR setup, an auditing-configured Vserver is starting up in Read-Only (RO) mode, which is typically fixed by following the documented corrective steps.
+vserver.vsdr EMS events occur when ONTAP encounters issues associated with auditing-configured Vservers operating in Async Vserver-DR Read-Only mode.
 
 == vserver.vsdr.adt.romode
 *Severity*::

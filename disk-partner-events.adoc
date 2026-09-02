@@ -15,7 +15,7 @@ summary: disk.partner events
 :imagesdir: ./media/
 
 [.lead]
-disk.partner events are presented when a node receives notice that its partner has completed a 'disk encrypt revert_original' operation which typically does not require corrective action.
+disk.partner EMS events occur when ONTAP encounters issues associated with disk operations on HA partner nodes.
 
 == disk.partner.encrRevertDone
 *Severity*::

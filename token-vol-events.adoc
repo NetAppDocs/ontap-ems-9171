@@ -15,7 +15,7 @@ summary: token.vol events
 :imagesdir: ./media/
 
 [.lead]
-token.vol events are presented when a 'volume offline' operation results in clearing the token cache for that volume which typically does not require corrective action.
+token.vol EMS events occur when ONTAP encounters issues associated with volume-level token operations.
 
 == token.vol.cache.cleared
 *Severity*::

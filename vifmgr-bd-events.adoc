@@ -15,7 +15,7 @@ summary: vifmgr.bd events
 :imagesdir: ./media/
 
 [.lead]
-vifmgr.bd events are presented when an MTU is entered on a Broadcast Domain that its member ports cannot support which is typically fixed by following the documented corrective steps.
+vifmgr.bd EMS events occur when ONTAP encounters issues associated with broadcast domain configuration.
 
 == vifmgr.bd.badmtu
 *Severity*::

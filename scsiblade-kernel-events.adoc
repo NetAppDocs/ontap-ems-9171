@@ -15,7 +15,7 @@ summary: scsiblade.kernel events
 :imagesdir: ./media/
 
 [.lead]
-scsiblade.kernel events are presented when the kernel cluster group for the specified volume is in an indeterminate state which may require contacting NetApp support.
+scsiblade.kernel EMS events occur when ONTAP encounters issues associated with kernel cluster groups for volumes or Vservers.
 
 == scsiblade.kernel.volume.limbo.group
 *Severity*::

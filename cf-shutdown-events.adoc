@@ -15,7 +15,7 @@ summary: cf.shutdown events
 :imagesdir: ./media/
 
 [.lead]
-cf.shutdown events are presented when the controller receives a message from its partner over the HA interconnect that indicates a condition related to the partner's attempted graceful shutdown which typically does not require corrective action.
+cf.shutdown EMS events occur when the controller receives a message from its partner over the HA interconnect that indicates a condition related to the partner's attempted graceful shutdown.
 
 == cf.shutdown.info
 *Severity*::

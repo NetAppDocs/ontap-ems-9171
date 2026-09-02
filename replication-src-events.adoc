@@ -15,7 +15,7 @@ summary: replication.src events
 :imagesdir: ./media/
 
 [.lead]
-replication.src events are presented when the system detects an error on a SnapMirror(R) or SnapVault(R) source volume or qtree which typically does not require corrective action.
+replication.src EMS events occur when ONTAP encounters issues associated with SnapMirror(R) or SnapVault(R) source operations.
 
 == replication.src.err
 *Severity*::

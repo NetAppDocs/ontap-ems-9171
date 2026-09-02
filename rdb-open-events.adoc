@@ -15,7 +15,7 @@ summary: rdb.open events
 :imagesdir: ./media/
 
 [.lead]
-rdb.open events are presented when the cluster management data replication module encounters an error and fails to open the unit, causing the process to exit which is typically fixed by verifying system state and connectivity.
+rdb.open EMS events occur when the cluster management data replication module encounters an error and fails to open the unit, causing the process to exit.
 
 == rdb.open.unit.error
 *Severity*::

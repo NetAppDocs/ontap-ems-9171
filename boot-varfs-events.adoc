@@ -15,7 +15,7 @@ summary: boot.varfs events
 :imagesdir: ./media/
 
 [.lead]
-boot.varfs events are presented when an error is detected while trying to back up the /var file system to the boot media or node root volume (mroot) which may require contacting NetApp support.
+boot.varfs EMS events occur when ONTAP encounters issues associated with backing up or restoring the /var file system to the boot media or node root volume.
 
 == boot.varfs.backup.issue
 *Severity*::

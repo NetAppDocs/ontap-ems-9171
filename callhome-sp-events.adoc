@@ -15,7 +15,7 @@ summary: callhome.sp events
 :imagesdir: ./media/
 
 [.lead]
-callhome.sp events are presented when oNTAP(R) does not receive an expected "heartbeat" signal from the Service Processor (SP) which may require contacting NetApp support.
+callhome.sp EMS events occur when ONTAP encounters issues associated with Service Processor (SP) heartbeat signals.
 
 == callhome.sp.hbt.missed
 *Severity*::

@@ -15,7 +15,7 @@ summary: hotplug.init events
 :imagesdir: ./media/
 
 [.lead]
-hotplug.init events are presented when the "slot module insert" command encounters an error while initializing the module which may require contacting NetApp support.
+hotplug.init EMS events occur when ONTAP encounters issues associated with hot plug module initialization.
 
 == hotplug.init.failed
 *Severity*::

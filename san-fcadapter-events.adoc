@@ -15,7 +15,7 @@ summary: san.fcadapter events
 :imagesdir: ./media/
 
 [.lead]
-san.fcadapter events are presented when fC adapters hosting LIFs does not start during node boot which may require a reboot.
+san.fcadapter EMS events occur when FC adapters hosting LIFs fails to initialize during node boot.
 
 == san.fcadapter.init.failure
 *Severity*::

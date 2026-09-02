@@ -15,7 +15,7 @@ summary: wafl.scan events
 :imagesdir: ./media/
 
 [.lead]
-wafl.scan events are presented when the system is aborting the WORM clear scan because there is no space available in the volume which is typically fixed by updating configuration.
+wafl.scan EMS events occur when ONTAP encounters issues associated with WAFL scanner operations.
 
 == wafl.scan.abort.nospace
 *Severity*::

@@ -15,7 +15,7 @@ summary: boot.verify events
 :imagesdir: ./media/
 
 [.lead]
-boot.verify events are presented when the verification of digitally signed kernel modules has been disabled which may require contacting NetApp support.
+boot.verify EMS events occur when ONTAP encounters issues associated with the verification of digitally signed kernel modules.
 
 == boot.verify.kmods.disabled
 *Severity*::

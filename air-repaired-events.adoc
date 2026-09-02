@@ -15,7 +15,7 @@ summary: air.repaired events
 :imagesdir: ./media/
 
 [.lead]
-air.repaired events are presented when oNTAP(R) discovers an inconsistency in a metadata bucket header record which typically does not require corrective action.
+air.repaired EMS events occur when ONTAP encounters issues associated with metadata inconsistencies that are automatically repaired immediately upon detection.
 
 == air.repaired.bucket.header
 *Severity*::

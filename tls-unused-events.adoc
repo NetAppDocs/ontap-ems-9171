@@ -15,7 +15,7 @@ summary: tls.unused events
 :imagesdir: ./media/
 
 [.lead]
-tls.unused events are presented when a cipher suite that is enabled in the configuration has not been used in any TLS handshakes for a user-specified duration of time which is typically fixed by verifying system state and updating configuration.
+tls.unused EMS events occur when ONTAP encounters issues associated with unused TLS cipher suites and protocols.
 
 == tls.unused.cipher
 *Severity*::

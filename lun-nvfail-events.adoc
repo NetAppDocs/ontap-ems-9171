@@ -15,7 +15,7 @@ summary: lun.nvfail events
 :imagesdir: ./media/
 
 [.lead]
-lun.nvfail events are presented when the nvfail option for the named volume is turned on which typically does not require corrective action.
+lun.nvfail EMS events occur when ONTAP encounters issues associated with the nvfail option and LUN or NVMe namespace nvfail processing.
 
 == LUN.nvfail.option.on
 *Severity*::

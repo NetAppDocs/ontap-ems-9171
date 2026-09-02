@@ -15,7 +15,7 @@ summary: image.install events
 :imagesdir: ./media/
 
 [.lead]
-image.install events are presented when oNTAP software installation was performed via the boot menu, which does not verify the digital signature of the software image which is typically fixed by following the documented corrective steps.
+image.install EMS events occur when ONTAP encounters issues associated with ONTAP software installation operations.
 
 == image.install.bypass.ds.chk
 *Severity*::

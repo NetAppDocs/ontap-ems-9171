@@ -15,7 +15,7 @@ summary: lsm.merge events
 :imagesdir: ./media/
 
 [.lead]
-lsm.merge events are presented when a block store encounters an error while merging an append log which typically does not require corrective action.
+lsm.merge EMS events occur when ONTAP encounters issues associated with block store log merging operations.
 
 == lsm.merge.alog.problem
 *Severity*::

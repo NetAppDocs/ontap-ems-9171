@@ -15,7 +15,7 @@ summary: wafl.ondemand events
 :imagesdir: ./media/
 
 [.lead]
-wafl.ondemand events are presented when data ONTAP(R) fails to reserve space for a file operation due to lack of space on the aggregate which may require contacting NetApp support.
+wafl.ondemand EMS events occur when ONTAP encounters issues associated with file operation space reservation.
 
 == wafl.ondemand.aggr.rsv.fail
 *Severity*::

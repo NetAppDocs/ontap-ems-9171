@@ -15,7 +15,7 @@ summary: mcc.nso events
 :imagesdir: ./media/
 
 [.lead]
-mcc.nso events are presented when dump/restore is aborted during a MetroCluster switch-over operation which typically does not require corrective action.
+mcc.nso EMS events occur when ONTAP encounters issues associated with dump or restore operations during MetroCluster switch-over.
 
 == mcc.nso.abort.dump
 *Severity*::

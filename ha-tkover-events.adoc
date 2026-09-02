@@ -15,7 +15,7 @@ summary: ha.tkover events
 :imagesdir: ./media/
 
 [.lead]
-ha.tkover events are presented when a pending takeover is waiting for an in-progress aggregate relocation (ARL) operation to complete or abort before proceeding with the takeover which typically does not require corrective action.
+ha.tkover EMS events occur when ONTAP encounters issues associated with high-availability (HA) takeover waiting for in-progress operations.
 
 == ha.tkover.waitARLabort
 *Severity*::

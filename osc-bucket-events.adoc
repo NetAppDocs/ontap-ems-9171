@@ -15,7 +15,7 @@ summary: osc.bucket events
 :imagesdir: ./media/
 
 [.lead]
-osc.bucket events are presented when the object-store bucket or container is not found while trying to access an object which is typically fixed by verifying system state and connectivity.
+osc.bucket EMS events occur when the object-store bucket or container is not found while trying to access an object.
 
 == osc.bucket.notFound
 *Severity*::
